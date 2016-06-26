@@ -1,0 +1,42 @@
+
+Offene Fragen:
+--------------
+- Welche Programmiersprache? > Java
+- Integration mit Sirius?
+- Welche Sprache? > English
+- Worüber soll Roboy sprechen? > mit Jana absprechen
+  - Wissensbasis?
+  - Spiele?
+  - Aktionen triggern?
+  - Witze erzählen?
+- Soll er proaktiv oder reaktiv sein?
+
+
+TODOs:
+------
+- Entscheidung ling. Framework: OpenNLP, StanfordNLP oder DKPro
+- Integration
+- Fragentypen, Aussagetypen erkennen
+- Ontologieformat
+- Weltmodel:
+  - Personen
+  - Handlungen
+  - Orte
+  - Zeit
+  - Organisationen
+  - Mathematik
+- Ontologie aufbauen
+- Präfixbaum?
+- Bereinigung von Input (falsch erkannte Begriffe)
+
+
+Kollaboration, Interview, Story Telling, Conversation (Greetings), Introduction (mach dies, mach das)
+Kurzzeitgedächtnis
+Name, Wohnort, Alter, ...
+
+Evtl. schnelle (für Gespräch) und langsame (für Datenbank) Verarbeitung
+Wissensbasis aufbauen
+
+Roboy-Github einchecken, Link rumschicken (Lucas), Rafa schicken
+
+
