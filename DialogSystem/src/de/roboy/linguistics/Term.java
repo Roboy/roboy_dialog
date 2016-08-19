@@ -4,7 +4,11 @@ import java.util.List;
 
 public class Term {
 
-	private List<String> pos;
-	private float prob;
-	private String concept;
+	public List<String> pos;
+	public float prob;
+	public String concept;
+	
+	public String toString(){
+		return concept+" ("+prob+","+pos+")";
+	}
 }
