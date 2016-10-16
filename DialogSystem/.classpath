@@ -3,7 +3,8 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="C:/Users/pblohm/workspace/workspaceRoboy/DialogSystem/lib/commons-codec-1.10.jar"/>
-	<classpathentry kind="lib" path="C:/Users/pblohm/workspace/workspaceRoboy/DialogSystem/lib/gson-2.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/pblohm/git/DialogSystem/DialogSystem/lib/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/pblohm/git/DialogSystem/DialogSystem/lib/gson-2.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/pblohm/git/DialogSystem/DialogSystem/lib/opennlp-tools-1.6.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
