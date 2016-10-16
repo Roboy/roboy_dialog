@@ -47,14 +47,14 @@ public class CuriousPersonality implements Personality {
 		Sentence sentence = analyzer.analyze(input);
 
 		List<Action> result = new ArrayList<>();
-		if(sentence.sentenceType == SENTENCE_TYPE.DOES_IT){
+		if(sentence.sentenceType == SENTENCE_TYPE.DOES_IT || sentence.sentenceType == SENTENCE_TYPE.IS_IT){
 			Triple t = remember(sentence.triple.predicate, sentence.triple.agens, sentence.triple.patiens);
 			if(t==null){
 				result.add(new SpeechAction("No, not that I know of."));
 			} else {
 				result.add(new SpeechAction("Yes."));
 			}
-		} else if(sentence.sentenceType == SENTENCE_TYPE.HOW){
+		} else if(sentence.sentenceType == SENTENCE_TYPE.HOW_IS){
 			Triple t = remember(sentence.triple.predicate, sentence.triple.agens, sentence.triple.patiens);
 			if(t==null){
 				result.add(new SpeechAction("I don't know. You tell me."));

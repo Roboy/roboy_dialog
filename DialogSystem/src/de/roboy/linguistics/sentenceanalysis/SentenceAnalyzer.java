@@ -24,8 +24,30 @@ import opennlp.tools.postag.POSTaggerME;
 public class SentenceAnalyzer {
 	
 	private Map<String,String> meanings;
+	POSTaggerME tagger;
 	
 	public SentenceAnalyzer () throws JsonSyntaxException, JsonIOException, FileNotFoundException{
+		// load POS tagger
+		InputStream modelIn = null;
+		try {
+		  modelIn = new FileInputStream("resources/en-pos-maxent.bin");
+		  POSModel model = new POSModel(modelIn);
+		  tagger = new POSTaggerME(model);
+		}
+		catch (IOException e) {
+		  // Model loading failed, handle the error
+		  e.printStackTrace();
+		}
+		finally {
+		  if (modelIn != null) {
+		    try {
+		      modelIn.close();
+		    }
+		    catch (IOException e) {
+		    }
+		  }
+		}
+
 		// find meaning
 		meanings = new HashMap<>();
 		ClassLoader cl = this.getClass().getClassLoader();
@@ -56,28 +78,11 @@ public class SentenceAnalyzer {
 	}
 	
 	private String[] posTag(String[] tokens){
-		InputStream modelIn = null;
-
-		try {
-		  modelIn = new FileInputStream("resources/en-pos-maxent.bin");
-		  POSModel model = new POSModel(modelIn);
-		  POSTaggerME tagger = new POSTaggerME(model);
-		  return tagger.tag(tokens);
-		}
-		catch (IOException e) {
-		  // Model loading failed, handle the error
-		  e.printStackTrace();
-		  return null;
-		}
-		finally {
-		  if (modelIn != null) {
-		    try {
-		      modelIn.close();
-		    }
-		    catch (IOException e) {
-		    }
+		  String[] posTags =  tagger.tag(tokens);
+		  for(int i=0; i<posTags.length; i++){
+			  System.out.println("  "+tokens[i]+":"+posTags[i]);
 		  }
-		}
+		  return posTags;
 	}
 
 	private SENTENCE_TYPE determineSentenceType(String[] tokens, String[] posTags){
@@ -88,22 +93,28 @@ public class SentenceAnalyzer {
 		if("what".equals(first)) return SENTENCE_TYPE.WHAT;
 		if("when".equals(first)) return SENTENCE_TYPE.WHEN;
 		if("why".equals(first)) return SENTENCE_TYPE.WHY;
-		if("how".equals(first)) return SENTENCE_TYPE.HOW;
 		if("do".equals(first)) return SENTENCE_TYPE.DOES_IT;
 		if("does".equals(first)) return SENTENCE_TYPE.DOES_IT;
 		if("did".equals(first)) return SENTENCE_TYPE.DOES_IT;
-		if("is".equals(first)) return SENTENCE_TYPE.DOES_IT;
-		if("are".equals(first)) return SENTENCE_TYPE.DOES_IT;
-		if("am".equals(first)) return SENTENCE_TYPE.DOES_IT;
+		if("is".equals(first)) return SENTENCE_TYPE.IS_IT;
+		if("are".equals(first)) return SENTENCE_TYPE.IS_IT;
+		if("am".equals(first)) return SENTENCE_TYPE.IS_IT;
+		if(tokens.length==1) return SENTENCE_TYPE.STATEMENT;
+		String second = tokens[1].toLowerCase();
+		if("how".equals(first) && 
+				("is".equals(second)||"are".equals("second")||"am".equals(second))){
+			return SENTENCE_TYPE.HOW_IS;
+		}
 		return SENTENCE_TYPE.STATEMENT;
 	}
 	
 	private Sentence extractPAS(String[] tokens, String[] posTags, SENTENCE_TYPE sentenceType){
+		System.out.println("  "+sentenceType);
 		switch(sentenceType){
 			case STATEMENT: return new Sentence(analyzeStatement(tokens, posTags),sentenceType);
-			case DOES_IT:   return new Sentence(analyzeDoesIt(tokens, posTags),sentenceType);
+			case IS_IT:     return new Sentence(analyzeIsIt(tokens, posTags),sentenceType);
 			case WHO:       return new Sentence(analyzeWho(tokens, posTags),sentenceType);
-			case HOW:       return new Sentence(analyzeHow(tokens, posTags),sentenceType);
+			case HOW_IS:       return new Sentence(analyzeHow(tokens, posTags),sentenceType);
 			default:        return new Sentence(new Triple(null,"",""),sentenceType);
 		}
 	}
@@ -113,26 +124,30 @@ public class SentenceAnalyzer {
 		String agens = "";
 		String patiens = "";
 		for(int i=0; i<tokens.length; i++){
-			if(meanings.containsKey(tokens[i])){
+			if(posTags[i].startsWith("V")){
 				for(int j=0; j<i; j++){
-					if(j>0) agens+=" ";
-					agens+=tokens[j];
+					if(posTags[j].startsWith("N")||posTags[j].startsWith("J")){
+						if(j>0) agens+=" ";
+						agens+=tokens[j];
+					}
 				}
-				predicate = tokens[i]; //meanings.get(tokens[i]);
+				predicate = tokens[i];
 				for(int j=i+1; j<tokens.length; j++){
-					if(j>i+1) patiens+=" ";
-					patiens+=tokens[j];
+					if(posTags[j].startsWith("N")||posTags[j].startsWith("J")){
+						if(j>i+1) patiens+=" ";
+						patiens+=tokens[j];
+					}
 				}
 			}
 		}
 		return new Triple(predicate,agens,patiens);
 	}
 	
-	private Triple analyzeDoesIt(String[] tokens, String[] posTags){
+	private Triple analyzeIsIt(String[] tokens, String[] posTags){
 		String predicate = null;
 		String agens = "";
 		String patiens = "";
-		if(tokens.length>2 && meanings.containsKey(tokens[0].toLowerCase())){
+		if(tokens.length>2){
 			predicate = tokens[0];
 			agens = tokens[1];
 			for(int j=2; j<tokens.length; j++){
@@ -147,7 +162,7 @@ public class SentenceAnalyzer {
 		String predicate = null;
 		String agens = "";
 		String patiens = "";
-		if(tokens.length>2 && meanings.containsKey(tokens[1].toLowerCase())){
+		if(tokens.length>2 && posTags[1].startsWith("V")){
 			agens = null;
 			predicate = tokens[1];
 			for(int j=2; j<tokens.length; j++){
@@ -162,7 +177,7 @@ public class SentenceAnalyzer {
 		String predicate = null;
 		String agens = "";
 		String patiens = "";
-		if(tokens.length>2 && meanings.containsKey(tokens[1].toLowerCase())){
+		if(tokens.length>2){
 			patiens = null;
 			predicate = tokens[1];
 			for(int j=2; j<tokens.length; j++){
@@ -173,4 +188,11 @@ public class SentenceAnalyzer {
 		return new Triple(predicate,agens,patiens);
 	}
 	
+//	private int detectNP(String[] posTags){
+//		
+//	}
+	
+//	private int detectHeadVerb(String[] posTags){
+//		
+//	}
 }
