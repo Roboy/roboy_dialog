@@ -21,7 +21,7 @@ import de.roboy.linguistics.sentenceanalysis.Sentence.SENTENCE_TYPE;
 import opennlp.tools.postag.POSModel;
 import opennlp.tools.postag.POSTaggerME;
 
-public class SentenceAnalyzer {
+public class SentenceAnalyzer implements Analyzer{
 	
 	private Map<String,String> meanings;
 	POSTaggerME tagger;
@@ -65,12 +65,14 @@ public class SentenceAnalyzer {
 	    }
 	}
 	
+	@Override
 	public Sentence analyze(String sentence){
 		// NLP pipeline
 		String[] tokens = tokenize(sentence);
 		String[] posTags = posTag(tokens);
 		SENTENCE_TYPE sentenceType = determineSentenceType(tokens, posTags);
-		return extractPAS(tokens, posTags, sentenceType);
+		Sentence result = extractPAS(sentence, tokens, posTags, sentenceType);
+		return result;
 	}
 	
 	private String[] tokenize(String sentence){
@@ -79,9 +81,9 @@ public class SentenceAnalyzer {
 	
 	private String[] posTag(String[] tokens){
 		  String[] posTags =  tagger.tag(tokens);
-		  for(int i=0; i<posTags.length; i++){
-			  System.out.println("  "+tokens[i]+":"+posTags[i]);
-		  }
+//		  for(int i=0; i<posTags.length; i++){
+//			  System.out.println("  "+tokens[i]+":"+posTags[i]);
+//		  }
 		  return posTags;
 	}
 
@@ -108,14 +110,14 @@ public class SentenceAnalyzer {
 		return SENTENCE_TYPE.STATEMENT;
 	}
 	
-	private Sentence extractPAS(String[] tokens, String[] posTags, SENTENCE_TYPE sentenceType){
-		System.out.println("  "+sentenceType);
+	private Sentence extractPAS(String sentence, String[] tokens, String[] posTags, SENTENCE_TYPE sentenceType){
+//		System.out.println("  "+sentenceType);
 		switch(sentenceType){
-			case STATEMENT: return new Sentence(analyzeStatement(tokens, posTags),sentenceType);
-			case IS_IT:     return new Sentence(analyzeIsIt(tokens, posTags),sentenceType);
-			case WHO:       return new Sentence(analyzeWho(tokens, posTags),sentenceType);
-			case HOW_IS:       return new Sentence(analyzeHow(tokens, posTags),sentenceType);
-			default:        return new Sentence(new Triple(null,"",""),sentenceType);
+			case STATEMENT: return new Sentence(sentence,analyzeStatement(tokens, posTags),sentenceType);
+			case IS_IT:     return new Sentence(sentence,analyzeIsIt(tokens, posTags),sentenceType);
+			case WHO:       return new Sentence(sentence,analyzeWho(tokens, posTags),sentenceType);
+			case HOW_IS:       return new Sentence(sentence,analyzeHow(tokens, posTags),sentenceType);
+			default:        return new Sentence(sentence,new Triple(null,"",""),sentenceType);
 		}
 	}
 	

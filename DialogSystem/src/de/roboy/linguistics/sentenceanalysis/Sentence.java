@@ -8,9 +8,11 @@ public class Sentence {
 
 	public Triple triple;
 	public SENTENCE_TYPE sentenceType;
+	public String sentence;
 	
-	public Sentence(Triple triple, SENTENCE_TYPE sentenceType){
+	public Sentence(String sentence, Triple triple, SENTENCE_TYPE sentenceType){
 		this.triple = triple;
 		this.sentenceType = sentenceType;
+		this.sentence = sentence;
 	}
 }

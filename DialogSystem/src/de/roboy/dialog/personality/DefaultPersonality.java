@@ -6,6 +6,7 @@ import java.util.List;
 import de.roboy.dialog.action.Action;
 import de.roboy.dialog.action.ShutDownAction;
 import de.roboy.dialog.action.SpeechAction;
+import de.roboy.linguistics.sentenceanalysis.Sentence;
 
 public class DefaultPersonality implements Personality{
 
@@ -30,7 +31,8 @@ public class DefaultPersonality implements Personality{
 	private CONVERSATIONAL_STATE state = CONVERSATIONAL_STATE.GREETING;
 	
 	@Override
-	public List<Action> answer(String input) {
+	public List<Action> answer(Sentence inputSentence) {
+		String input = inputSentence.sentence;
 		switch (state) {
 		case GREETING:
 			if(checkForTerm(input, greetings)){

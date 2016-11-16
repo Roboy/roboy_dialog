@@ -24,10 +24,8 @@ import opennlp.tools.postag.POSTaggerME;
 public class CuriousPersonality implements Personality {
 	
 	private List<Triple> memory;
-	private SentenceAnalyzer analyzer;
 	
 	public CuriousPersonality() throws JsonSyntaxException, JsonIOException, IOException {
-		analyzer = new SentenceAnalyzer();
 	    // fill memory
 	    memory = new ArrayList<>();
 		ClassLoader cl = this.getClass().getClassLoader();
@@ -43,8 +41,7 @@ public class CuriousPersonality implements Personality {
 	}
 
 	@Override
-	public List<Action> answer(String input) {
-		Sentence sentence = analyzer.analyze(input);
+	public List<Action> answer(Sentence sentence) {
 
 		List<Action> result = new ArrayList<>();
 		if(sentence.sentenceType == SENTENCE_TYPE.DOES_IT || sentence.sentenceType == SENTENCE_TYPE.IS_IT){

@@ -1,30 +1,45 @@
 package de.roboy.io;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Scanner;
+
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
 
 import de.roboy.dialog.action.Action;
 import de.roboy.dialog.action.ShutDownAction;
 import de.roboy.dialog.action.SpeechAction;
 import de.roboy.dialog.personality.Personality;
+import de.roboy.linguistics.sentenceanalysis.Sentence;
+import de.roboy.linguistics.sentenceanalysis.SentenceAnalyzer;
 
+@Deprecated
 public class CommandLineCommunication implements Communication{
 
 	private Personality personality;
+	private SentenceAnalyzer analyzer;
 	
 	@Override
 	public void setPersonality(Personality p) {
 		personality = p;
+		try {
+			analyzer = new SentenceAnalyzer();
+		} catch (JsonSyntaxException | JsonIOException | FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void communicate() {
 		Scanner sc = new Scanner(System.in);
-		String input = sc.nextLine();
+		String raw = sc.nextLine();
+		Sentence input = analyzer.analyze(raw);
 		List<Action> roboy =  personality.answer(input);
 		while(roboy.size()==1 && !(roboy.get(0) instanceof ShutDownAction)){
 			talk(roboy);
-			input = sc.nextLine();
+			raw = sc.nextLine();
+			input = analyzer.analyze(raw);
 			roboy = personality.answer(input);
 		}
 		List<Action> lastwords = ((ShutDownAction)roboy.get(0)).getLastWords();
