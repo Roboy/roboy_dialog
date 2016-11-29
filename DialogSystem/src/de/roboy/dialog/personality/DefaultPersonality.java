@@ -8,6 +8,7 @@ import de.roboy.dialog.action.ShutDownAction;
 import de.roboy.dialog.action.SpeechAction;
 import de.roboy.linguistics.sentenceanalysis.Sentence;
 
+@Deprecated
 public class DefaultPersonality implements Personality{
 
 	private static final List<String> greetings =

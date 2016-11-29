@@ -12,6 +12,7 @@ import de.roboy.dialog.personality.CuriousPersonality;
 import de.roboy.dialog.personality.DefaultPersonality;
 import de.roboy.dialog.personality.KnockKnochPersonality;
 import de.roboy.dialog.personality.Personality;
+import de.roboy.dialog.personality.SmallTalkPersonality;
 import de.roboy.io.CommandLineCommunication;
 import de.roboy.io.CommandLineInput;
 import de.roboy.io.CommandLineOutput;
@@ -27,15 +28,16 @@ public class DialogSystem {
 	public static void main(String[] args) throws JsonSyntaxException, JsonIOException, IOException {
 //		Personality p = new DefaultPersonality();
 //		Personality p = new CuriousPersonality();
-		Personality p = new KnockKnochPersonality();
+//		Personality p = new KnockKnochPersonality();
+		Personality p = new SmallTalkPersonality();
 		
 		InputDevice input = new CommandLineInput();
 		OutputDevice output = new CommandLineOutput();
 		Analyzer analyzer = new SentenceAnalyzer();
 		
-		String raw = input.listen();
-		Sentence interpretation = analyzer.analyze(raw);
-		List<Action> actions =  p.answer(interpretation);
+		String raw; //  = input.listen();
+		Sentence interpretation; // = analyzer.analyze(raw);
+		List<Action> actions =  p.answer(new Sentence(""));
 		while(actions.size()>=1 && !(actions.get(0) instanceof ShutDownAction)){
 			output.act(actions);
 			raw = input.listen();

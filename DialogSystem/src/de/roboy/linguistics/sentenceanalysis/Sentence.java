@@ -10,6 +10,10 @@ public class Sentence {
 	public SENTENCE_TYPE sentenceType;
 	public String sentence;
 	
+	public Sentence(String sentence){
+		this.sentence = sentence;
+	}
+	
 	public Sentence(String sentence, Triple triple, SENTENCE_TYPE sentenceType){
 		this.triple = triple;
 		this.sentenceType = sentenceType;

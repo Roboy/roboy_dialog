@@ -1,0 +1,10 @@
+package de.roboy.talk;
+
+import java.util.List;
+
+public class StatementBuilder {
+
+	public static String random(List<String> list){
+		return list.get((int)(Math.random()*list.size()));
+	}
+}
