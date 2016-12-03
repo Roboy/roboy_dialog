@@ -4,7 +4,7 @@ import java.util.List;
 
 import de.roboy.dialog.action.Action;
 import de.roboy.dialog.action.SpeechAction;
-import de.roboy.linguistics.sentenceanalysis.Sentence;
+import de.roboy.linguistics.sentenceanalysis.Interpretation;
 import de.roboy.logic.StatementInterpreter;
 import de.roboy.util.Lists;
 
@@ -26,7 +26,7 @@ public class InquiryState extends AbstractBooleanState{
 	}
 
 	@Override
-	public Reaction react(Sentence input) {
+	public Reaction react(Interpretation input) {
 		boolean successful = StatementInterpreter.isFromList(input.sentence, successTerms);
 		if(successful){
 			return new Reaction(success);

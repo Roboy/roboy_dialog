@@ -6,7 +6,7 @@ import java.util.List;
 import de.roboy.dialog.action.Action;
 import de.roboy.dialog.action.ShutDownAction;
 import de.roboy.dialog.action.SpeechAction;
-import de.roboy.linguistics.sentenceanalysis.Sentence;
+import de.roboy.linguistics.sentenceanalysis.Interpretation;
 
 public class KnockKnochPersonality implements Personality{
 	
@@ -44,7 +44,7 @@ public class KnockKnochPersonality implements Personality{
 	};
 	
 	@Override
-	public List<Action> answer(Sentence input) {
+	public List<Action> answer(Interpretation input) {
 		List<Action> result = new ArrayList<Action>();
 		switch(state){
 		case WELCOME:

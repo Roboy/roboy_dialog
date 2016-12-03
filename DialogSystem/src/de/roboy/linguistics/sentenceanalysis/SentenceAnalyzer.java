@@ -17,7 +17,7 @@ import com.google.gson.JsonSyntaxException;
 
 import de.roboy.linguistics.Term;
 import de.roboy.linguistics.Triple;
-import de.roboy.linguistics.sentenceanalysis.Sentence.SENTENCE_TYPE;
+import de.roboy.linguistics.sentenceanalysis.Interpretation.SENTENCE_TYPE;
 import opennlp.tools.postag.POSModel;
 import opennlp.tools.postag.POSTaggerME;
 
@@ -66,12 +66,12 @@ public class SentenceAnalyzer implements Analyzer{
 	}
 	
 	@Override
-	public Sentence analyze(String sentence){
+	public Interpretation analyze(String sentence){
 		// NLP pipeline
 		String[] tokens = tokenize(sentence);
 		String[] posTags = posTag(tokens);
 		SENTENCE_TYPE sentenceType = determineSentenceType(tokens, posTags);
-		Sentence result = extractPAS(sentence, tokens, posTags, sentenceType);
+		Interpretation result = extractPAS(sentence, tokens, posTags, sentenceType);
 		return result;
 	}
 	
@@ -110,14 +110,14 @@ public class SentenceAnalyzer implements Analyzer{
 		return SENTENCE_TYPE.STATEMENT;
 	}
 	
-	private Sentence extractPAS(String sentence, String[] tokens, String[] posTags, SENTENCE_TYPE sentenceType){
+	private Interpretation extractPAS(String sentence, String[] tokens, String[] posTags, SENTENCE_TYPE sentenceType){
 //		System.out.println("  "+sentenceType);
 		switch(sentenceType){
-			case STATEMENT: return new Sentence(sentence,analyzeStatement(tokens, posTags),sentenceType);
-			case IS_IT:     return new Sentence(sentence,analyzeIsIt(tokens, posTags),sentenceType);
-			case WHO:       return new Sentence(sentence,analyzeWho(tokens, posTags),sentenceType);
-			case HOW_IS:       return new Sentence(sentence,analyzeHow(tokens, posTags),sentenceType);
-			default:        return new Sentence(sentence,new Triple(null,"",""),sentenceType);
+			case STATEMENT: return new Interpretation(sentence,analyzeStatement(tokens, posTags),sentenceType);
+			case IS_IT:     return new Interpretation(sentence,analyzeIsIt(tokens, posTags),sentenceType);
+			case WHO:       return new Interpretation(sentence,analyzeWho(tokens, posTags),sentenceType);
+			case HOW_IS:       return new Interpretation(sentence,analyzeHow(tokens, posTags),sentenceType);
+			default:        return new Interpretation(sentence,new Triple(null,"",""),sentenceType);
 		}
 	}
 	

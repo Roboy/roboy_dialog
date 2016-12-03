@@ -15,8 +15,8 @@ import com.google.gson.JsonSyntaxException;
 import de.roboy.dialog.action.Action;
 import de.roboy.dialog.action.SpeechAction;
 import de.roboy.linguistics.Triple;
-import de.roboy.linguistics.sentenceanalysis.Sentence;
-import de.roboy.linguistics.sentenceanalysis.Sentence.SENTENCE_TYPE;
+import de.roboy.linguistics.sentenceanalysis.Interpretation;
+import de.roboy.linguistics.sentenceanalysis.Interpretation.SENTENCE_TYPE;
 import de.roboy.linguistics.sentenceanalysis.SentenceAnalyzer;
 import opennlp.tools.postag.POSModel;
 import opennlp.tools.postag.POSTaggerME;
@@ -41,7 +41,7 @@ public class CuriousPersonality implements Personality {
 	}
 
 	@Override
-	public List<Action> answer(Sentence sentence) {
+	public List<Action> answer(Interpretation sentence) {
 
 		List<Action> result = new ArrayList<>();
 		if(sentence.sentenceType == SENTENCE_TYPE.DOES_IT || sentence.sentenceType == SENTENCE_TYPE.IS_IT){

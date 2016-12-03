@@ -20,7 +20,7 @@ import de.roboy.io.Communication;
 import de.roboy.io.InputDevice;
 import de.roboy.io.OutputDevice;
 import de.roboy.linguistics.sentenceanalysis.Analyzer;
-import de.roboy.linguistics.sentenceanalysis.Sentence;
+import de.roboy.linguistics.sentenceanalysis.Interpretation;
 import de.roboy.linguistics.sentenceanalysis.SentenceAnalyzer;
 
 public class DialogSystem {
@@ -36,8 +36,8 @@ public class DialogSystem {
 		Analyzer analyzer = new SentenceAnalyzer();
 		
 		String raw; //  = input.listen();
-		Sentence interpretation; // = analyzer.analyze(raw);
-		List<Action> actions =  p.answer(new Sentence(""));
+		Interpretation interpretation; // = analyzer.analyze(raw);
+		List<Action> actions =  p.answer(new Interpretation(""));
 		while(actions.size()>=1 && !(actions.get(0) instanceof ShutDownAction)){
 			output.act(actions);
 			raw = input.listen();

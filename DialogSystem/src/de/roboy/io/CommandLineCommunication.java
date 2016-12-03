@@ -11,7 +11,7 @@ import de.roboy.dialog.action.Action;
 import de.roboy.dialog.action.ShutDownAction;
 import de.roboy.dialog.action.SpeechAction;
 import de.roboy.dialog.personality.Personality;
-import de.roboy.linguistics.sentenceanalysis.Sentence;
+import de.roboy.linguistics.sentenceanalysis.Interpretation;
 import de.roboy.linguistics.sentenceanalysis.SentenceAnalyzer;
 
 @Deprecated
@@ -34,7 +34,7 @@ public class CommandLineCommunication implements Communication{
 	public void communicate() {
 		Scanner sc = new Scanner(System.in);
 		String raw = sc.nextLine();
-		Sentence input = analyzer.analyze(raw);
+		Interpretation input = analyzer.analyze(raw);
 		List<Action> roboy =  personality.answer(input);
 		while(roboy.size()==1 && !(roboy.get(0) instanceof ShutDownAction)){
 			talk(roboy);

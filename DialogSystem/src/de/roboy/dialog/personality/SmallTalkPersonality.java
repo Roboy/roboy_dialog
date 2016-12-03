@@ -10,7 +10,7 @@ import de.roboy.dialog.personality.states.InquiryState;
 import de.roboy.dialog.personality.states.IntroductionState;
 import de.roboy.dialog.personality.states.Reaction;
 import de.roboy.dialog.personality.states.State;
-import de.roboy.linguistics.sentenceanalysis.Sentence;
+import de.roboy.linguistics.sentenceanalysis.Interpretation;
 
 public class SmallTalkPersonality implements Personality{
 
@@ -37,7 +37,7 @@ public class SmallTalkPersonality implements Personality{
 	}
 	
 	@Override
-	public List<Action> answer(Sentence input) {
+	public List<Action> answer(Interpretation input) {
 		Reaction reaction = state.react(input);
 		List<Action> talk = reaction.getReactions();
 		state = reaction.getState();

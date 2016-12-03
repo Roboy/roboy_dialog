@@ -6,7 +6,7 @@ import java.util.List;
 
 import de.roboy.dialog.action.Action;
 import de.roboy.dialog.action.SpeechAction;
-import de.roboy.linguistics.sentenceanalysis.Sentence;
+import de.roboy.linguistics.sentenceanalysis.Interpretation;
 import de.roboy.logic.StatementInterpreter;
 import de.roboy.talk.StatementBuilder;
 import de.roboy.util.Lists;
@@ -22,7 +22,7 @@ public class GreetingState extends AbstractBooleanState{
 	}
 
 	@Override
-	public Reaction react(Sentence input) {
+	public Reaction react(Interpretation input) {
 		if("".equals(input.sentence)) return new Reaction(this,new ArrayList<Action>());
 		boolean successful = StatementInterpreter.isFromList(input.sentence, greetings);
 		if(successful){

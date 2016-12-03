@@ -4,7 +4,7 @@ import java.util.List;
 
 import de.roboy.dialog.action.Action;
 import de.roboy.dialog.action.SpeechAction;
-import de.roboy.linguistics.sentenceanalysis.Sentence;
+import de.roboy.linguistics.sentenceanalysis.Interpretation;
 import de.roboy.util.Lists;
 
 public class IntroductionState extends AbstractBooleanState{
@@ -15,7 +15,7 @@ public class IntroductionState extends AbstractBooleanState{
 	}
 
 	@Override
-	public Reaction react(Sentence input) {
+	public Reaction react(Interpretation input) {
 		if(input.sentence.split(" ").length>2){
 			return new Reaction(failure, Lists.actionList(new SpeechAction("I did not ask for your life story, just your name. So again: ")));
 		} else {
