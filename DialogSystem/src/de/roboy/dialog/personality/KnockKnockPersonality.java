@@ -6,9 +6,10 @@ import java.util.List;
 import de.roboy.dialog.action.Action;
 import de.roboy.dialog.action.ShutDownAction;
 import de.roboy.dialog.action.SpeechAction;
+import de.roboy.linguistics.Linguistics;
 import de.roboy.linguistics.sentenceanalysis.Interpretation;
 
-public class KnockKnochPersonality implements Personality{
+public class KnockKnockPersonality implements Personality{
 	
 	private enum KnockKnockState {WELCOME, KNOCKKNOCK, WHOSETHERE, PUNCHLINE}
 	private KnockKnockState state = KnockKnockState.WELCOME;
@@ -46,6 +47,7 @@ public class KnockKnochPersonality implements Personality{
 	@Override
 	public List<Action> answer(Interpretation input) {
 		List<Action> result = new ArrayList<Action>();
+		String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
 		switch(state){
 		case WELCOME:
 			joke = pickJoke();
@@ -58,7 +60,7 @@ public class KnockKnochPersonality implements Personality{
 			state = KnockKnockState.WHOSETHERE;
 			return result;
 		case WHOSETHERE:
-			if(input.sentence.toLowerCase().contains("who") && input.sentence.toLowerCase().contains("there")){
+			if(sentence.toLowerCase().contains("who") && sentence.toLowerCase().contains("there")){
 				result.add(new SpeechAction(joke[0]));
 				state = KnockKnockState.PUNCHLINE;
 			} else {
@@ -67,7 +69,7 @@ public class KnockKnochPersonality implements Personality{
 			}
 			return result;
 		case PUNCHLINE:
-			if(input.sentence.toLowerCase().contains("who") && input.sentence.toLowerCase().contains(joke[0].toLowerCase())){
+			if(sentence.toLowerCase().contains("who") && sentence.toLowerCase().contains(joke[0].toLowerCase())){
 				result.add(new SpeechAction(joke[1]));
 				state = KnockKnockState.KNOCKKNOCK;
 			} else {

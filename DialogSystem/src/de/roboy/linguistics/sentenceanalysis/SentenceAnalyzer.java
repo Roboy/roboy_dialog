@@ -15,9 +15,11 @@ import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 
+import de.roboy.linguistics.Linguistics;
+import de.roboy.linguistics.Linguistics.SENTENCE_TYPE;
 import de.roboy.linguistics.Term;
 import de.roboy.linguistics.Triple;
-import de.roboy.linguistics.sentenceanalysis.Interpretation.SENTENCE_TYPE;
+import de.roboy.util.Maps;
 import opennlp.tools.postag.POSModel;
 import opennlp.tools.postag.POSTaggerME;
 
@@ -113,11 +115,11 @@ public class SentenceAnalyzer implements Analyzer{
 	private Interpretation extractPAS(String sentence, String[] tokens, String[] posTags, SENTENCE_TYPE sentenceType){
 //		System.out.println("  "+sentenceType);
 		switch(sentenceType){
-			case STATEMENT: return new Interpretation(sentence,analyzeStatement(tokens, posTags),sentenceType);
-			case IS_IT:     return new Interpretation(sentence,analyzeIsIt(tokens, posTags),sentenceType);
-			case WHO:       return new Interpretation(sentence,analyzeWho(tokens, posTags),sentenceType);
-			case HOW_IS:       return new Interpretation(sentence,analyzeHow(tokens, posTags),sentenceType);
-			default:        return new Interpretation(sentence,new Triple(null,"",""),sentenceType);
+			case STATEMENT: return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,analyzeStatement(tokens, posTags)));
+			case IS_IT:     return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,analyzeIsIt(tokens, posTags)));
+			case WHO:       return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,analyzeWho(tokens, posTags)));
+			case HOW_IS:       return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,analyzeHow(tokens, posTags)));
+			default:        return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,new Triple(null,"","")));
 		}
 	}
 	

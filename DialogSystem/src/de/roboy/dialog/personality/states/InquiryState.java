@@ -2,8 +2,7 @@ package de.roboy.dialog.personality.states;
 
 import java.util.List;
 
-import de.roboy.dialog.action.Action;
-import de.roboy.dialog.action.SpeechAction;
+import de.roboy.linguistics.Linguistics;
 import de.roboy.linguistics.sentenceanalysis.Interpretation;
 import de.roboy.logic.StatementInterpreter;
 import de.roboy.util.Lists;
@@ -21,17 +20,18 @@ public class InquiryState extends AbstractBooleanState{
 	}
 	
 	@Override
-	public List<Action> act() {
-		return Lists.actionList(new SpeechAction(inquiry));
+	public List<Interpretation> act() {
+		return Lists.interpretationList(new Interpretation(inquiry));
 	}
 
 	@Override
 	public Reaction react(Interpretation input) {
-		boolean successful = StatementInterpreter.isFromList(input.sentence, successTerms);
+		String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
+		boolean successful = StatementInterpreter.isFromList(sentence, successTerms);
 		if(successful){
 			return new Reaction(success);
 		} else {
-			return new Reaction(failure,Lists.actionList(new SpeechAction(failureText)));
+			return new Reaction(failure,Lists.interpretationList(new Interpretation(failureText)));
 		}
 	}
 	

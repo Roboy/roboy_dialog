@@ -2,10 +2,8 @@ package de.roboy.dialog.personality;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,12 +12,10 @@ import com.google.gson.JsonSyntaxException;
 
 import de.roboy.dialog.action.Action;
 import de.roboy.dialog.action.SpeechAction;
+import de.roboy.linguistics.Linguistics;
+import de.roboy.linguistics.Linguistics.SENTENCE_TYPE;
 import de.roboy.linguistics.Triple;
 import de.roboy.linguistics.sentenceanalysis.Interpretation;
-import de.roboy.linguistics.sentenceanalysis.Interpretation.SENTENCE_TYPE;
-import de.roboy.linguistics.sentenceanalysis.SentenceAnalyzer;
-import opennlp.tools.postag.POSModel;
-import opennlp.tools.postag.POSTaggerME;
 
 public class CuriousPersonality implements Personality {
 	
@@ -43,31 +39,32 @@ public class CuriousPersonality implements Personality {
 	@Override
 	public List<Action> answer(Interpretation sentence) {
 
+		Triple triple = (Triple) sentence.getFeatures().get(Linguistics.TRIPLE);
 		List<Action> result = new ArrayList<>();
-		if(sentence.sentenceType == SENTENCE_TYPE.DOES_IT || sentence.sentenceType == SENTENCE_TYPE.IS_IT){
-			Triple t = remember(sentence.triple.predicate, sentence.triple.agens, sentence.triple.patiens);
+		if(sentence.getSentenceType() == SENTENCE_TYPE.DOES_IT || sentence.getSentenceType() == SENTENCE_TYPE.IS_IT){
+			Triple t = remember(triple.predicate, triple.agens, triple.patiens);
 			if(t==null){
 				result.add(new SpeechAction("No, not that I know of."));
 			} else {
 				result.add(new SpeechAction("Yes."));
 			}
-		} else if(sentence.sentenceType == SENTENCE_TYPE.HOW_IS){
-			Triple t = remember(sentence.triple.predicate, sentence.triple.agens, sentence.triple.patiens);
+		} else if(sentence.getSentenceType() == SENTENCE_TYPE.HOW_IS){
+			Triple t = remember(triple.predicate, triple.agens, triple.patiens);
 			if(t==null){
 				result.add(new SpeechAction("I don't know. You tell me."));
 			} else {
 				result.add(new SpeechAction(t.patiens));
 			}
-		} else if(sentence.sentenceType == SENTENCE_TYPE.WHO){
-			Triple t = remember(sentence.triple.predicate, sentence.triple.agens, sentence.triple.patiens);
+		} else if(sentence.getSentenceType() == SENTENCE_TYPE.WHO){
+			Triple t = remember(triple.predicate, triple.agens, triple.patiens);
 			if(t==null){
 				result.add(new SpeechAction("I don't know. You tell me."));
 			} else {
 				result.add(new SpeechAction(t.agens));
 			}
-		} else if(sentence.sentenceType == SENTENCE_TYPE.STATEMENT && sentence.triple.predicate!=null){
+		} else if(sentence.getSentenceType() == SENTENCE_TYPE.STATEMENT && triple.predicate!=null){
 			result.add(new SpeechAction("Great, I will keep that in mind."));
-			memory.add(new Triple(sentence.triple.predicate.toLowerCase(), sentence.triple.agens.toLowerCase(), sentence.triple.patiens.toLowerCase()));
+			memory.add(new Triple(triple.predicate.toLowerCase(), triple.agens.toLowerCase(), triple.patiens.toLowerCase()));
 		} else {
 			result.add(new SpeechAction("Ok, if you say so."));
 		}

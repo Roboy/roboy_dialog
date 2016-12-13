@@ -1,22 +1,44 @@
 package de.roboy.linguistics.sentenceanalysis;
 
-import de.roboy.linguistics.Triple;
+import java.util.HashMap;
+import java.util.Map;
+
+import de.roboy.linguistics.Linguistics;
+import de.roboy.linguistics.Linguistics.SENTENCE_TYPE;
 
 public class Interpretation {
 
-	public enum SENTENCE_TYPE { WHO, HOW_IS, WHY, WHEN, WHERE, WHAT, IS_IT, DOES_IT, STATEMENT, NONE}
-
-	public Triple triple;
-	public SENTENCE_TYPE sentenceType;
-	public String sentence;
+	private Map<String,Object> features;
+	private SENTENCE_TYPE sentenceType;
 	
 	public Interpretation(String sentence){
-		this.sentence = sentence;
+		features = new HashMap<>();
+		features.put(Linguistics.SENTENCE,sentence);
+		sentenceType = SENTENCE_TYPE.STATEMENT;
 	}
 	
-	public Interpretation(String sentence, Triple triple, SENTENCE_TYPE sentenceType){
-		this.triple = triple;
+	public Interpretation(SENTENCE_TYPE sentenceType){
 		this.sentenceType = sentenceType;
-		this.sentence = sentence;
+	}
+	
+	public Interpretation(SENTENCE_TYPE sentenceType, Map<String,Object> features){
+		this.sentenceType = sentenceType;
+		this.features = features;
+	}
+
+	public Map<String, Object> getFeatures() {
+		return features;
+	}
+
+	public void setFeatures(Map<String, Object> features) {
+		this.features = features;
+	}
+
+	public SENTENCE_TYPE getSentenceType() {
+		return sentenceType;
+	}
+
+	public void setSentenceType(SENTENCE_TYPE sentenceType) {
+		this.sentenceType = sentenceType;
 	}
 }

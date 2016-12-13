@@ -5,12 +5,19 @@ import java.util.Arrays;
 import java.util.List;
 
 import de.roboy.dialog.action.Action;
+import de.roboy.linguistics.sentenceanalysis.Interpretation;
 
 public class Lists {
 	
 	public static List<Action> actionList(Action... actions){
 		List<Action> result = new ArrayList<>();
 		result.addAll(Arrays.asList(actions));
+		return result;
+	}
+	
+	public static List<Interpretation> interpretationList(Interpretation... interpretations){
+		List<Interpretation> result = new ArrayList<>();
+		result.addAll(Arrays.asList(interpretations));
 		return result;
 	}
 	

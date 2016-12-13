@@ -3,24 +3,24 @@ package de.roboy.dialog.personality.states;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.roboy.dialog.action.Action;
+import de.roboy.linguistics.sentenceanalysis.Interpretation;
 
 public class Reaction {
 
-	private List<Action> reactions;
+	private List<Interpretation> reactions;
 	private State state;
 	
-	public Reaction(State state, List<Action> reactions){
+	public Reaction(State state, List<Interpretation> reactions){
 		this.state = state;
 		this.reactions = reactions;
 	}
 	
 	public Reaction(State state){
 		this.state=state;
-		reactions = new ArrayList<Action>();
+		reactions = new ArrayList<Interpretation>();
 	}
 
-	public List<Action> getReactions() {
+	public List<Interpretation> getReactions() {
 		return reactions;
 	}
 

@@ -6,6 +6,7 @@ import java.util.List;
 import de.roboy.dialog.action.Action;
 import de.roboy.dialog.action.ShutDownAction;
 import de.roboy.dialog.action.SpeechAction;
+import de.roboy.linguistics.Linguistics;
 import de.roboy.linguistics.sentenceanalysis.Interpretation;
 
 @Deprecated
@@ -33,7 +34,7 @@ public class DefaultPersonality implements Personality{
 	
 	@Override
 	public List<Action> answer(Interpretation inputSentence) {
-		String input = inputSentence.sentence;
+		String input = (String) inputSentence.getFeatures().get(Linguistics.SENTENCE);
 		switch (state) {
 		case GREETING:
 			if(checkForTerm(input, greetings)){

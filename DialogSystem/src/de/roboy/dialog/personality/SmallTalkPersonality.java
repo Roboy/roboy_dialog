@@ -11,6 +11,8 @@ import de.roboy.dialog.personality.states.IntroductionState;
 import de.roboy.dialog.personality.states.Reaction;
 import de.roboy.dialog.personality.states.State;
 import de.roboy.linguistics.sentenceanalysis.Interpretation;
+import de.roboy.talk.Verbalizer;
+import de.roboy.util.Lists;
 
 public class SmallTalkPersonality implements Personality{
 
@@ -18,8 +20,11 @@ public class SmallTalkPersonality implements Personality{
 			Arrays.asList("enthusiastic","awesome","great","very good",
 					"dope","smashing","happy","cheerful","good","phantastic");
 	private State state;
+	private Verbalizer verbalizer;
 	
-	public SmallTalkPersonality() {
+	public SmallTalkPersonality(Verbalizer verbalizer) {
+		this.verbalizer = verbalizer;
+		
 		// build state machine
 		GreetingState greetings = new GreetingState();
 		IntroductionState intro = new IntroductionState();
@@ -39,9 +44,16 @@ public class SmallTalkPersonality implements Personality{
 	@Override
 	public List<Action> answer(Interpretation input) {
 		Reaction reaction = state.react(input);
-		List<Action> talk = reaction.getReactions();
+		List<Action> talk = Lists.actionList();
+		List<Interpretation> intentions = reaction.getReactions();
+		for(Interpretation i: intentions){
+			talk.add(verbalizer.verbalize(i));
+		}
 		state = reaction.getState();
-		talk.addAll(state.act());
+		intentions = state.act();
+		for(Interpretation i: intentions){
+			talk.add(verbalizer.verbalize(i));
+		}
 		return talk;
 	}
 
