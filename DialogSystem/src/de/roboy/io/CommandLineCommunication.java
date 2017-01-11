@@ -34,12 +34,12 @@ public class CommandLineCommunication implements Communication{
 	public void communicate() {
 		Scanner sc = new Scanner(System.in);
 		String raw = sc.nextLine();
-		Interpretation input = analyzer.analyze(raw);
+		Interpretation input = analyzer.analyze(new Interpretation(raw));
 		List<Action> roboy =  personality.answer(input);
 		while(roboy.size()==1 && !(roboy.get(0) instanceof ShutDownAction)){
 			talk(roboy);
 			raw = sc.nextLine();
-			input = analyzer.analyze(raw);
+			input = analyzer.analyze(new Interpretation(raw));
 			roboy = personality.answer(input);
 		}
 		List<Action> lastwords = ((ShutDownAction)roboy.get(0)).getLastWords();

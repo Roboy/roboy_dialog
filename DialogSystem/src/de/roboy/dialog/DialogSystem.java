@@ -1,6 +1,7 @@
 package de.roboy.dialog;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.JsonIOException;
@@ -19,7 +20,10 @@ import de.roboy.io.InputDevice;
 import de.roboy.io.OutputDevice;
 import de.roboy.linguistics.sentenceanalysis.Analyzer;
 import de.roboy.linguistics.sentenceanalysis.Interpretation;
+import de.roboy.linguistics.sentenceanalysis.OntologyNERAnalyzer;
+import de.roboy.linguistics.sentenceanalysis.OpenNLPPPOSTagger;
 import de.roboy.linguistics.sentenceanalysis.SentenceAnalyzer;
+import de.roboy.linguistics.sentenceanalysis.SimpleTokenizer;
 import de.roboy.talk.Verbalizer;
 
 public class DialogSystem {
@@ -32,7 +36,11 @@ public class DialogSystem {
 		
 		InputDevice input = new CommandLineInput();
 		OutputDevice output = new CommandLineOutput();
-		Analyzer analyzer = new SentenceAnalyzer();
+		List<Analyzer> analyzers = new ArrayList<Analyzer>();
+		analyzers.add(new SimpleTokenizer());
+		analyzers.add(new OpenNLPPPOSTagger());
+		analyzers.add(new SentenceAnalyzer());
+		analyzers.add(new OntologyNERAnalyzer());
 		
 		String raw; //  = input.listen();
 		Interpretation interpretation; // = analyzer.analyze(raw);
@@ -40,7 +48,10 @@ public class DialogSystem {
 		while(actions.size()>=1 && !(actions.get(0) instanceof ShutDownAction)){
 			output.act(actions);
 			raw = input.listen();
-			interpretation = analyzer.analyze(raw);
+			interpretation = new Interpretation(raw);
+			for(Analyzer a : analyzers){
+				interpretation = a.analyze(interpretation);
+			}
 			actions = p.answer(interpretation);
 		}
 		List<Action> lastwords = ((ShutDownAction)actions.get(0)).getLastWords();

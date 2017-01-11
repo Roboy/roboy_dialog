@@ -1,11 +1,8 @@
 package de.roboy.linguistics.sentenceanalysis;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashMap;
@@ -20,36 +17,12 @@ import de.roboy.linguistics.Linguistics.SENTENCE_TYPE;
 import de.roboy.linguistics.Term;
 import de.roboy.linguistics.Triple;
 import de.roboy.util.Maps;
-import opennlp.tools.postag.POSModel;
-import opennlp.tools.postag.POSTaggerME;
 
 public class SentenceAnalyzer implements Analyzer{
 	
 	private Map<String,String> meanings;
-	POSTaggerME tagger;
 	
 	public SentenceAnalyzer () throws JsonSyntaxException, JsonIOException, FileNotFoundException{
-		// load POS tagger
-		InputStream modelIn = null;
-		try {
-		  modelIn = new FileInputStream("resources/en-pos-maxent.bin");
-		  POSModel model = new POSModel(modelIn);
-		  tagger = new POSTaggerME(model);
-		}
-		catch (IOException e) {
-		  // Model loading failed, handle the error
-		  e.printStackTrace();
-		}
-		finally {
-		  if (modelIn != null) {
-		    try {
-		      modelIn.close();
-		    }
-		    catch (IOException e) {
-		    }
-		  }
-		}
-
 		// find meaning
 		meanings = new HashMap<>();
 		ClassLoader cl = this.getClass().getClassLoader();
@@ -68,27 +41,17 @@ public class SentenceAnalyzer implements Analyzer{
 	}
 	
 	@Override
-	public Interpretation analyze(String sentence){
+	public Interpretation analyze(Interpretation interpretation){
+		String sentence = (String) interpretation.getFeatures().get(Linguistics.SENTENCE);
 		// NLP pipeline
-		String[] tokens = tokenize(sentence);
-		String[] posTags = posTag(tokens);
+		String[] tokens = (String[]) interpretation.getFeatures().get(Linguistics.TOKENS);
+		String[] posTags = (String[]) interpretation.getFeatures().get(Linguistics.POSTAGS);
 		SENTENCE_TYPE sentenceType = determineSentenceType(tokens, posTags);
-		Interpretation result = extractPAS(sentence, tokens, posTags, sentenceType);
-		return result;
+		Interpretation result = extractPAS(sentence, tokens, posTags, sentenceType); //TODO: avoid object creation
+		interpretation.getFeatures().putAll(result.getFeatures());
+		return interpretation;
 	}
 	
-	private String[] tokenize(String sentence){
-		return sentence.split("\\s+");
-	}
-	
-	private String[] posTag(String[] tokens){
-		  String[] posTags =  tagger.tag(tokens);
-//		  for(int i=0; i<posTags.length; i++){
-//			  System.out.println("  "+tokens[i]+":"+posTags[i]);
-//		  }
-		  return posTags;
-	}
-
 	private SENTENCE_TYPE determineSentenceType(String[] tokens, String[] posTags){
 		if(tokens.length==0) return SENTENCE_TYPE.NONE;
 		String first = tokens[0].toLowerCase();

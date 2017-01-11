@@ -1,0 +1,11 @@
+{
+	"concept" : "0.0.1",
+	"forms" : {
+		"VBP" : "talks",
+		"VB"  : "talk"
+	},
+	"objects" : {
+		"Addressee" : "to",
+		"Topic" : "about"
+	}
+}

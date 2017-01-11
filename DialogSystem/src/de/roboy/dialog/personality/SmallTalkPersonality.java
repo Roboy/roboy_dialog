@@ -9,6 +9,7 @@ import de.roboy.dialog.personality.states.GreetingState;
 import de.roboy.dialog.personality.states.InquiryState;
 import de.roboy.dialog.personality.states.IntroductionState;
 import de.roboy.dialog.personality.states.Reaction;
+import de.roboy.dialog.personality.states.SegueState;
 import de.roboy.dialog.personality.states.State;
 import de.roboy.linguistics.sentenceanalysis.Interpretation;
 import de.roboy.talk.Verbalizer;
@@ -29,14 +30,18 @@ public class SmallTalkPersonality implements Personality{
 		GreetingState greetings = new GreetingState();
 		IntroductionState intro = new IntroductionState();
 		InquiryState inquiry = new InquiryState("How are you?", positive, "That's not good enough. Again: ");
+		InquiryState inquiry2 = new InquiryState("So, anything else you want to talk about?", Lists.stringList(), "");
+		SegueState segue = new SegueState(inquiry2);
 		FarewellState farewell = new FarewellState();
 		
 		greetings.setSuccess(intro);
 		greetings.setFailure(greetings);
 		intro.setSuccess(inquiry);
 		intro.setFailure(intro);
-		inquiry.setSuccess(farewell);
+		inquiry.setSuccess(segue);
 		inquiry.setFailure(inquiry);
+		inquiry2.setSuccess(farewell);
+		inquiry2.setFailure(segue);
 		
 		state = greetings;
 	}
