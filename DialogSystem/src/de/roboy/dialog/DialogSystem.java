@@ -14,6 +14,7 @@ import de.roboy.dialog.personality.DefaultPersonality;
 import de.roboy.dialog.personality.KnockKnockPersonality;
 import de.roboy.dialog.personality.Personality;
 import de.roboy.dialog.personality.SmallTalkPersonality;
+import de.roboy.io.BingInput;
 import de.roboy.io.CommandLineInput;
 import de.roboy.io.CommandLineOutput;
 import de.roboy.io.InputDevice;
@@ -28,13 +29,14 @@ import de.roboy.talk.Verbalizer;
 
 public class DialogSystem {
 	
-	public static void main(String[] args) throws JsonSyntaxException, JsonIOException, IOException {
+	public static void main(String[] args) throws JsonSyntaxException, JsonIOException, IOException, InterruptedException {
 //		Personality p = new DefaultPersonality();
 //		Personality p = new CuriousPersonality();
 //		Personality p = new KnockKnochPersonality();
 		Personality p = new SmallTalkPersonality(new Verbalizer());
 		
-		InputDevice input = new CommandLineInput();
+//		InputDevice input = new CommandLineInput();
+		InputDevice input = new BingInput();
 		OutputDevice output = new CommandLineOutput();
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new SimpleTokenizer());
