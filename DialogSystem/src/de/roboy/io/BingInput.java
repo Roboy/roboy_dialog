@@ -8,21 +8,14 @@ import edu.wpi.rail.jrosbridge.services.ServiceResponse;
 public class BingInput implements InputDevice 
 {
 	
-	private Service BingSTT;
-	
-	public BingInput() throws InterruptedException
-	{
-		Ros ros = new Ros("localhost");
-	    ros.connect();
-	    BingSTT = new Service(ros, "bing_stt", "TextSpoken");
-	}
-
 	
 	@Override
 	public String listen() throws InterruptedException 
 	{
-		
-		ServiceRequest request = new ServiceRequest("");
+		Ros ros = new Ros("localhost");
+	    ros.connect();
+	    Service BingSTT = new Service(ros, "TextSpoken", "TextSpoken");
+	    ServiceRequest request = new ServiceRequest();
 	    ServiceResponse response = BingSTT.callServiceAndWait(request);
 	    String input = response.toString();
 	    
