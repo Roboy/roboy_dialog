@@ -16,6 +16,7 @@ import de.roboy.dialog.personality.Personality;
 import de.roboy.dialog.personality.SmallTalkPersonality;
 import de.roboy.io.CommandLineInput;
 import de.roboy.io.CommandLineOutput;
+import de.roboy.io.FreeTTSOutput;
 import de.roboy.io.InputDevice;
 import de.roboy.io.OutputDevice;
 import de.roboy.linguistics.sentenceanalysis.Analyzer;
@@ -31,11 +32,12 @@ public class DialogSystem {
 	public static void main(String[] args) throws JsonSyntaxException, JsonIOException, IOException {
 //		Personality p = new DefaultPersonality();
 //		Personality p = new CuriousPersonality();
-//		Personality p = new KnockKnochPersonality();
+//		Personality p = new KnockKnockPersonality();
 		Personality p = new SmallTalkPersonality(new Verbalizer());
 		
 		InputDevice input = new CommandLineInput();
-		OutputDevice output = new CommandLineOutput();
+//		OutputDevice output = new CommandLineOutput();
+		OutputDevice output = new FreeTTSOutput();
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new SimpleTokenizer());
 		analyzers.add(new OpenNLPPPOSTagger());
