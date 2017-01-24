@@ -49,7 +49,7 @@ public class DialogSystem {
 		String raw; //  = input.listen();
 		Interpretation interpretation; // = analyzer.analyze(raw);
 		List<Action> actions =  p.answer(new Interpretation(""));
-		while(actions.size()>=1 && !(actions.get(0) instanceof ShutDownAction)){
+		while(actions.isEmpty() || !(actions.get(0) instanceof ShutDownAction)){
 			output.act(actions);
 			raw = input.listen();
 			interpretation = new Interpretation(raw);

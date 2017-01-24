@@ -5,6 +5,7 @@ import java.util.List;
 
 import roboy.dialog.action.Action;
 import roboy.dialog.personality.states.FarewellState;
+import roboy.dialog.personality.states.GenerativeCommunicationState;
 import roboy.dialog.personality.states.GreetingState;
 import roboy.dialog.personality.states.InquiryState;
 import roboy.dialog.personality.states.IntroductionState;
@@ -30,18 +31,19 @@ public class SmallTalkPersonality implements Personality{
 		GreetingState greetings = new GreetingState();
 		IntroductionState intro = new IntroductionState();
 		InquiryState inquiry = new InquiryState("How are you?", positive, "That's not good enough. Again: ");
-		InquiryState inquiry2 = new InquiryState("So, anything else you want to talk about?", Lists.stringList(), "");
-		SegueState segue = new SegueState(inquiry2);
+//		InquiryState inquiry2 = new InquiryState("So, anything else you want to talk about?", Lists.stringList(), "");
+		GenerativeCommunicationState generative = new GenerativeCommunicationState();
+		SegueState segue = new SegueState(generative);
 		FarewellState farewell = new FarewellState();
 		
 		greetings.setSuccess(intro);
-		greetings.setFailure(greetings);
+		greetings.setFailure(intro);
 		intro.setSuccess(inquiry);
-		intro.setFailure(intro);
+		intro.setFailure(inquiry);
 		inquiry.setSuccess(segue);
-		inquiry.setFailure(inquiry);
-		inquiry2.setSuccess(farewell);
-		inquiry2.setFailure(segue);
+		inquiry.setFailure(segue);
+		generative.setSuccess(farewell);
+		generative.setFailure(segue);
 		
 		state = greetings;
 	}

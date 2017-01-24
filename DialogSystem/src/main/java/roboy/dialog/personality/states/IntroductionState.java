@@ -14,13 +14,9 @@ public class IntroductionState extends AbstractBooleanState{
 	}
 
 	@Override
-	public Reaction react(Interpretation input) {
+	protected boolean determineSuccess(Interpretation input) {
 		String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
-		if(sentence.split(" ").length>2){
-			return new Reaction(failure, Lists.interpretationList(new Interpretation("I did not ask for your life story, just your name. So again: ")));
-		} else {
-			return new Reaction(success);
-		}
+		return sentence.split(" ").length<=2;
 	}
 
 }

@@ -23,12 +23,13 @@ public class GreetingState extends AbstractBooleanState{
 		if("".equals(sentence)){
 			return new Reaction(this,Lists.interpretationList()); // new Interpretation(SENTENCE_TYPE.GREETING)
 		}
-		boolean successful = StatementInterpreter.isFromList(sentence, Verbalizer.greetings);
-		if(successful){
-			return new Reaction(success);
-		} else {
-			return new Reaction(failure,Lists.interpretationList(new Interpretation("Is that a way to greet somebody? Let's try that again.")));
-		}
+		return super.react(input);
+	}
+
+	@Override
+	protected boolean determineSuccess(Interpretation input) {
+		String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
+		return StatementInterpreter.isFromList(sentence, Verbalizer.greetings);
 	}
 
 }

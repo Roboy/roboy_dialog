@@ -25,14 +25,9 @@ public class InquiryState extends AbstractBooleanState{
 	}
 
 	@Override
-	public Reaction react(Interpretation input) {
+	protected boolean determineSuccess(Interpretation input) {
 		String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
-		boolean successful = StatementInterpreter.isFromList(sentence, successTerms);
-		if(successful){
-			return new Reaction(success);
-		} else {
-			return new Reaction(failure,Lists.interpretationList(new Interpretation(failureText)));
-		}
+		return StatementInterpreter.isFromList(sentence, successTerms);
 	}
 	
 
