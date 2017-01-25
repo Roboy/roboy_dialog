@@ -7,7 +7,7 @@ public class Linguistics {
 		FAREWELL,
 		SEGUE,
 		ANECDOTE,
-		WHO, HOW_IS, WHY, WHEN, WHERE, WHAT, IS_IT, DOES_IT, STATEMENT, NONE
+		WHO, HOW_IS, HOW_DO, WHY, WHEN, WHERE, WHAT, IS_IT, DOES_IT, STATEMENT, NONE
 		}
 	
 	public static final String SENTENCE = "sentence";

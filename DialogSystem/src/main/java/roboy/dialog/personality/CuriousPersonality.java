@@ -17,6 +17,7 @@ import roboy.linguistics.Linguistics.SENTENCE_TYPE;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 
+@Deprecated
 public class CuriousPersonality implements Personality {
 	
 	private List<Triple> memory;

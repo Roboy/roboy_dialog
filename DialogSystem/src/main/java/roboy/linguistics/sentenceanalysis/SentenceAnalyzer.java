@@ -49,6 +49,7 @@ public class SentenceAnalyzer implements Analyzer{
 		SENTENCE_TYPE sentenceType = determineSentenceType(tokens, posTags);
 		Interpretation result = extractPAS(sentence, tokens, posTags, sentenceType); //TODO: avoid object creation
 		interpretation.getFeatures().putAll(result.getFeatures());
+		interpretation.setSentenceType(sentenceType);
 		return interpretation;
 	}
 	
@@ -72,6 +73,10 @@ public class SentenceAnalyzer implements Analyzer{
 				("is".equals(second)||"are".equals("second")||"am".equals(second))){
 			return SENTENCE_TYPE.HOW_IS;
 		}
+		if("how".equals(first) && 
+				("do".equals(second)||"did".equals("second"))){
+			return SENTENCE_TYPE.HOW_DO;
+		}
 		return SENTENCE_TYPE.STATEMENT;
 	}
 	
@@ -81,7 +86,10 @@ public class SentenceAnalyzer implements Analyzer{
 			case STATEMENT: return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,analyzeStatement(tokens, posTags)));
 			case IS_IT:     return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,analyzeIsIt(tokens, posTags)));
 			case WHO:       return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,analyzeWho(tokens, posTags)));
-			case HOW_IS:       return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,analyzeHow(tokens, posTags)));
+			case HOW_IS:       return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,analyzeHowIs(tokens, posTags)));
+			case HOW_DO:       return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,analyzeHowDo(tokens, posTags)));
+			case WHAT:       return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,analyzeWhat(tokens, posTags)));
+			case DOES_IT:       return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,analyzeDoesIt(tokens, posTags)));
 			default:        return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,new Triple(null,"","")));
 		}
 	}
@@ -125,31 +133,73 @@ public class SentenceAnalyzer implements Analyzer{
 		return new Triple(predicate,agens,patiens);
 	}
 	
-	private Triple analyzeWho(String[] tokens, String[] posTags){
+	private Triple analyzeDoesIt(String[] tokens, String[] posTags){
 		String predicate = null;
 		String agens = "";
 		String patiens = "";
-		if(tokens.length>2 && posTags[1].startsWith("V")){
-			agens = null;
-			predicate = tokens[1];
-			for(int j=2; j<tokens.length; j++){
-				if(j>2) patiens+=" ";
+		if(tokens.length>3 && (posTags[3].startsWith("V") || posTags[2].startsWith("V"))){
+			predicate = posTags[3].startsWith("V") ? tokens[3] : tokens[2];
+			agens = tokens[1];
+			for(int j=3; j<tokens.length; j++){
+				if(j>3) patiens+=" ";
 				patiens+=tokens[j];
 			}
 		}
 		return new Triple(predicate,agens,patiens);
 	}
 	
-	private Triple analyzeHow(String[] tokens, String[] posTags){
+	private Triple analyzeWho(String[] tokens, String[] posTags){
 		String predicate = null;
 		String agens = "";
 		String patiens = "";
-		if(tokens.length>2){
+		if(tokens.length>2 && posTags[1].startsWith("V")){
 			patiens = null;
 			predicate = tokens[1];
 			for(int j=2; j<tokens.length; j++){
 				if(j>2) agens+=" ";
 				agens+=tokens[j];
+			}
+		}
+		return new Triple(predicate,agens,patiens);
+	}
+	
+	private Triple analyzeWhat(String[] tokens, String[] posTags){
+		String predicate = null;
+		String agens = "";
+		String patiens = "";
+		if(tokens.length>3 && posTags[3].startsWith("V")){
+			agens = tokens[2];
+			predicate = tokens[3];
+			patiens = null;
+		}
+		return new Triple(predicate,agens,patiens);
+	}
+	
+	private Triple analyzeHowIs(String[] tokens, String[] posTags){
+		String predicate = null;
+		String agens = "";
+		String patiens = "";
+		if(tokens.length>2 && posTags[1].startsWith("V")){
+			patiens = null;
+			predicate = tokens[1];
+			for(int j=2; j<tokens.length; j++){
+				if(j>2) agens+=" ";
+				agens+=tokens[j];
+			}
+		}
+		return new Triple(predicate,agens,patiens);
+	}
+	
+	private Triple analyzeHowDo(String[] tokens, String[] posTags){
+		String predicate = null;
+		String agens = "";
+		String patiens = "";
+		if(tokens.length>3 && posTags[3].startsWith("V")){
+			agens = tokens[2];
+			predicate = tokens[3];
+			for(int j=4; j<tokens.length; j++){
+				if(j>4) patiens+=" ";
+				patiens+=tokens[j];
 			}
 		}
 		return new Triple(predicate,agens,patiens);

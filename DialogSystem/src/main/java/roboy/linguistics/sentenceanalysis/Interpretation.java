@@ -41,4 +41,9 @@ public class Interpretation {
 	public void setSentenceType(SENTENCE_TYPE sentenceType) {
 		this.sentenceType = sentenceType;
 	}
+
+	@Override
+	public String toString(){
+		return sentenceType+" "+features;
+	}
 }
