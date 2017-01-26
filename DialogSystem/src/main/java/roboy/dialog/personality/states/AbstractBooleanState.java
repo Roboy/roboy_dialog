@@ -1,14 +1,12 @@
 package roboy.dialog.personality.states;
 
-import main.java.roboy.io.Ros;
-import main.java.roboy.io.Service;
-import main.java.roboy.io.ServiceRequest;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.Lists;
 import edu.wpi.rail.jrosbridge.Ros;
 import edu.wpi.rail.jrosbridge.Service;
 import edu.wpi.rail.jrosbridge.services.ServiceRequest;
+import org.json.*;
 
 public abstract class AbstractBooleanState implements State{
 
@@ -45,11 +43,14 @@ public abstract class AbstractBooleanState implements State{
 		
 		Ros ros = new Ros("localhost");
 		ros.connect();
-		Service GenerativeModel = new Service(ros, "/roboy/gnlp_predict", "seq2seq_predict");
+		Service GenerativeModel = new Service(ros, "/roboy/gnlp_predict", "generative_nlp/seq2seq_predict");
+		System.out.println(sentence);
 	    ServiceRequest request = new ServiceRequest("{\"text_input\": " + "\"" + sentence + "\"}");
-	    String response = GenerativeModel.callServiceAndWait(request);
-	    System.out.println(response.ToString());
-		return "Generated text";
+	    String response = GenerativeModel.callServiceAndWait(request).toString();
+	    
+	    JSONObject obj = new JSONObject(response);
+	    String text = obj.getString("text_output");
 		ros.disconnect();
+		return text;
 	}
 }
