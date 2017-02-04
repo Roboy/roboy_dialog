@@ -51,5 +51,10 @@
       <artifactId>json</artifactId>
       <version>20160810</version>
   </dependency>
+  <dependency>
+    <groupId>org.mobicents.external.freetts</groupId>
+    <artifactId>freetts</artifactId>
+    <version>1.0</version>
+  </dependency>
   </dependencies>
 </project>
