@@ -18,6 +18,7 @@ import roboy.io.BingInput;
 import roboy.io.BingOutput;
 import roboy.io.CommandLineInput;
 import roboy.io.CommandLineOutput;
+import roboy.io.CerevoiceOutput;
 import roboy.io.InputDevice;
 import roboy.io.OutputDevice;
 import roboy.linguistics.sentenceanalysis.Analyzer;
