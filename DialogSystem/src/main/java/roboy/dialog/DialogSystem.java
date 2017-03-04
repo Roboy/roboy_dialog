@@ -37,10 +37,10 @@ public class DialogSystem {
 //		Personality p = new KnockKnochPersonality();
 		Personality p = new SmallTalkPersonality(new Verbalizer());
 		
-//		InputDevice input = new CommandLineInput();
-		InputDevice input = new BingInput();
-//		OutputDevice output = new CommandLineOutput();
-		OutputDevice output = new BingOutput();
+		InputDevice input = new CommandLineInput();
+		// InputDevice input = new BingInput();
+		OutputDevice output = new CerevoiceOutput();
+		// OutputDevice output = new BingOutput();
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new SimpleTokenizer());
 		analyzers.add(new OpenNLPPPOSTagger());
