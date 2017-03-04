@@ -30,7 +30,7 @@ public class CerevoiceOutput implements OutputDevice
 	
 	public void say(String text)
 	{
-	    Service CerevoiceTTS = new Service(ros, "CerevoiceTTS", "CerevoiceTTS");
+	    Service CerevoiceTTS = new Service(ros, "/speech_synthesis/talk", "/speech_synthesis/Talk");
 	    ServiceRequest request = new ServiceRequest("{\"text\": " + "\"" + text + "\"}");
 	    CerevoiceTTS.callServiceAndWait(request);
 	}
