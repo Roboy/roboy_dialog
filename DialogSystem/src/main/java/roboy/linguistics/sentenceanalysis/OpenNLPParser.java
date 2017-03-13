@@ -62,20 +62,20 @@ public class OpenNLPParser implements Analyzer{
 		String verb = null;
 		for(int i=0; i<children.length; i++){
 			if("NP".equals(children[i].getType())){
-				subject = children[i].getText();
+				subject = children[i].toString();
 			} else if("VP".equals(children[i].getType())){
 				Parse[] vpChildren = children[i].getChildren();
 				for(int j=0; j<vpChildren.length; j++){
 					if("NP".equals(vpChildren[j].getType())){
-						object = vpChildren[j].getText();
+						object = vpChildren[j].toString();
 					} else if("VP".equals(vpChildren[j].getType())){
 						modverb = true;
-						Parse[] vp2Children = children[j].getChildren();
+						Parse[] vp2Children = vpChildren[j].getChildren();
 						for(int k=0; k<vpChildren.length; k++){
 							if("NP".equals(vp2Children[k].getType())){
-								object = vp2Children[k].getText();
+								object = vp2Children[k].toString();
 							} else if(vp2Children[k].getType().startsWith("V")){
-								result.put(SEMANTIC_ROLE.PREDICATE, vp2Children[k].getText());
+								result.put(SEMANTIC_ROLE.PREDICATE, vp2Children[k].toString());
 							} else if("SBAR".equals(vp2Children[k].getType())){
 								Parse[] sbarChildren = vp2Children[k].getChildren();
 								for(int l=0; l<sbarChildren.length; l++){
@@ -88,7 +88,7 @@ public class OpenNLPParser implements Analyzer{
 							}
 						}
 					} else if(vpChildren[j].getType().startsWith("V")){
-						verb = vpChildren[j].getText();
+						verb = vpChildren[j].toString();
 					} else if("SBAR".equals(vpChildren[j].getType())){
 						Parse[] sbarChildren = vpChildren[j].getChildren();
 						for(int l=0; l<sbarChildren.length; l++){
@@ -105,12 +105,14 @@ public class OpenNLPParser implements Analyzer{
 			}
 		}
 		// check passive
-		if(modverb && Linguistics.tobe.contains(verb.toLowerCase())){
-			if(subject!=null) result.put(SEMANTIC_ROLE.PATIENT, subject);
-			if(object!=null) result.put(SEMANTIC_ROLE.AGENT, object);
-		} else {
-			if(subject!=null) result.put(SEMANTIC_ROLE.AGENT, subject);
-			if(object!=null) result.put(SEMANTIC_ROLE.PATIENT, object);
+		if(verb!=null){
+			if(modverb && Linguistics.tobe.contains(verb.toLowerCase())){
+				if(subject!=null) result.put(SEMANTIC_ROLE.PATIENT, subject);
+				if(object!=null) result.put(SEMANTIC_ROLE.AGENT, object);
+			} else {
+				if(subject!=null) result.put(SEMANTIC_ROLE.AGENT, subject);
+				if(object!=null) result.put(SEMANTIC_ROLE.PATIENT, object);
+			}
 		}
 		if(!result.containsKey(SEMANTIC_ROLE.PREDICATE) && verb!=null){
 			result.put(SEMANTIC_ROLE.PREDICATE, verb);
@@ -133,8 +135,8 @@ public class OpenNLPParser implements Analyzer{
 	}
 	
 	public static void main(String[] args) {
-		Interpretation i = new Interpretation("The man is seen by the boy with the binoculars.");
-//		Interpretation i = new Interpretation("Bill said that Mike like to play the piano.");
+//		Interpretation i = new Interpretation("The man is seen by the boy with the binoculars.");
+		Interpretation i = new Interpretation("Bill said that Mike like to play the piano.");
 		new OpenNLPParser().analyze(i);
 	}
 
