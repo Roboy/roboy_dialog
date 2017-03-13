@@ -12,11 +12,9 @@ public class CerevoiceOutput implements OutputDevice
 {
 	private Ros ros;
 	
-	public CerevoiceOutput()
+	public CerevoiceOutput(Ros ros_)
 	{
-		ros = new Ros("localhost");
-	    ros.connect();
-	    System.out.println("ROS bridge is set up");	
+		this.ros = ros_;
 	}
 	
 	@Override

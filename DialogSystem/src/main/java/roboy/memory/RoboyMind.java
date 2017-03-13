@@ -15,12 +15,12 @@ public class RoboyMind implements Memory
 
     public RoboyMind(Ros ros_)
 	{
-		ros = ros_;
+		this.ros = ros_;
 	}
 
 	private ServiceResponse CreateInstance(String object_class, int id)
 	{
-		Service CreateInstanceSrv = new Service(ros, "/roboy_mind/create_instance", "/roboy_mind/create_instance");
+		Service CreateInstanceSrv = new Service(this.ros, "/roboy_mind/create_instance", "/roboy_mind/create_instance");
 		String params = "{\"object_class\": " + "\"" + object_class + "\", \"id\": " +  id + "}";
 		ServiceRequest request = new ServiceRequest(params);
 		ServiceResponse response = CreateInstanceSrv.callServiceAndWait(request);
@@ -29,28 +29,28 @@ public class RoboyMind implements Memory
 
 	private ServiceResponse AssertProperty(String object, String property, String instance, boolean data)
 	{
-		Service AssertPropertySrv = new Service(ros, "/roboy_mind/assert_property", "/roboy_mind/assert_property");
+		Service AssertPropertySrv = new Service(this.ros, "/roboy_mind/assert_property", "/roboy_mind/assert_property");
 		String params = "{\"object\": " + "\"" + object + "\", \"property\": \"" +  property + "\", \"instance\": \"" + instance + "\", \"data\": " + String.valueOf(data) + "}";
 		ServiceRequest request = new ServiceRequest(params);
 		ServiceResponse response = AssertPropertySrv.callServiceAndWait(request);
 		return response;
 	}
 
-	private boolean FindInstances(String property, String value, boolean data)
+	private ServiceResponse FindInstances(String property, String value, boolean data)
 	{
-		Service FindInstancesSrv = new Service(ros, "/roboy_mind/find_instances", "/roboy_mind/find_instances");
+		Service FindInstancesSrv = new Service(this.ros, "/roboy_mind/find_instances", "/roboy_mind/find_instances");
 		String params = "{\"property\": " + "\"" + property + "\", \"value\": \"" + value + "\", \"data\": " + String.valueOf(data) + "}";
 		ServiceRequest request = new ServiceRequest(params);
-		response = FindInstancesSrv.callServiceAndWait(request);
+		ServiceResponse response = FindInstancesSrv.callServiceAndWait(request);
 		return response;
 	}
 
-	private boolean ShowInstances(String object_class)
+	private ServiceResponse ShowInstances(String object_class)
 	{
 		Service ShowInstanceSrv = new Service(ros, "/roboy_mind/show_instances", "/roboy_mind/show_instances");
 		String params = "{\"object_class\": " + "\"" + object_class + "\"}";
 		ServiceRequest request = new ServiceRequest(params);
-		response = ShowInstanceSrv.callServiceAndWait(request);
+		ServiceResponse response = ShowInstanceSrv.callServiceAndWait(request);
 		return response;
 	}
 

@@ -8,14 +8,14 @@ import org.json.*;
 
 public class BingInput implements InputDevice 
 {
+
 	private Ros ros;
-	
-	public BingInput()
+
+    public BingInput(Ros ros_)
 	{
-		ros = new Ros("localhost");
-	    ros.connect();
-	    System.out.println("ROS bridge is set up");	
+		this.ros = ros_;
 	}
+
 	@Override
 	public String listen() throws InterruptedException 
 	{

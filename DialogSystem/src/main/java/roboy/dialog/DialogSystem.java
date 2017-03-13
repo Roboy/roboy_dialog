@@ -29,17 +29,30 @@ import roboy.linguistics.sentenceanalysis.SentenceAnalyzer;
 import roboy.linguistics.sentenceanalysis.SimpleTokenizer;
 import roboy.talk.Verbalizer;
 
+import roboy.memory.RoboyMind;
+import edu.wpi.rail.jrosbridge.Ros;
+
 public class DialogSystem {
+
+	private static Ros start_rosbridge()
+	{
+		Ros ros = new Ros("localhost");
+	    ros.connect();
+	    System.out.println("ROS bridge is set up");	
+	    return ros;	
+	}
 	
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
-//		Personality p = new DefaultPersonality();
+
+		Ros ros = start_rosbridge();
+		// Personality p = new DefaultPersonality();
 //		Personality p = new CuriousPersonality();
 //		Personality p = new KnockKnochPersonality();
 		Personality p = new SmallTalkPersonality(new Verbalizer());
 		
 		InputDevice input = new CommandLineInput();
-		// InputDevice input = new BingInput();
-		OutputDevice output = new CerevoiceOutput();
+		// InputDevice input = new BingInput(rosbridge());
+		OutputDevice output = new CerevoiceOutput(ros);
 		// OutputDevice output = new BingOutput();
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new SimpleTokenizer());
