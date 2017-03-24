@@ -18,10 +18,14 @@ The repository contains a project that can be readily imported into Eclipse. Bes
 
 **UPD** (maven related)
 In order to compile, in the directory containing `pom.xml` run: 
-`mvn compile`
+```
+mvn compile
+```
 
 To execute:
-`mvn exec:java -Dexec.mainClass="roboy.dialog.DialogSystem"`
+```
+mvn exec:java -Dexec.mainClass="roboy.dialog.DialogSystem"
+```
 
 ## How to extend it?
 
