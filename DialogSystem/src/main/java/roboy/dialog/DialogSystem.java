@@ -22,6 +22,7 @@ import roboy.io.CerevoiceOutput;
 import roboy.io.InputDevice;
 import roboy.io.OutputDevice;
 import roboy.linguistics.sentenceanalysis.Analyzer;
+import roboy.linguistics.sentenceanalysis.DictionaryBasedSentenceTypeDetector;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.linguistics.sentenceanalysis.OntologyNERAnalyzer;
 import roboy.linguistics.sentenceanalysis.OpenNLPPPOSTagger;
@@ -44,7 +45,7 @@ public class DialogSystem {
 	
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
 
-		Ros ros = start_rosbridge();
+//		Ros ros = start_rosbridge();
 		// Personality p = new DefaultPersonality();
 //		Personality p = new CuriousPersonality();
 //		Personality p = new KnockKnochPersonality();
@@ -52,11 +53,13 @@ public class DialogSystem {
 		
 		InputDevice input = new CommandLineInput();
 		// InputDevice input = new BingInput(rosbridge());
-		OutputDevice output = new CerevoiceOutput(ros);
+//		OutputDevice output = new CerevoiceOutput(ros);
 		// OutputDevice output = new BingOutput();
+		OutputDevice output = new CommandLineOutput();
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new SimpleTokenizer());
 		analyzers.add(new OpenNLPPPOSTagger());
+		analyzers.add(new DictionaryBasedSentenceTypeDetector());
 		analyzers.add(new SentenceAnalyzer());
 		analyzers.add(new OntologyNERAnalyzer());
 		
