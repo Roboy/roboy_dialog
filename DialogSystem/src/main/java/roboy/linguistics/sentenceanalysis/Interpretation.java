@@ -29,6 +29,10 @@ public class Interpretation {
 	public Map<String, Object> getFeatures() {
 		return features;
 	}
+	
+	public Object getFeature(String featureName){
+		return features.get(featureName);
+	}
 
 	public void setFeatures(Map<String, Object> features) {
 		this.features = features;

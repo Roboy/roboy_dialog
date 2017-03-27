@@ -26,4 +26,5 @@ public class Linguistics {
 	public static final String POSTAGS = "postags";
 	public static final String KEYWORDS = "keywords";
 	public static final String ASSOCIATION = "association";
+	public static final String PAS = "pas";
 }
