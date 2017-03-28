@@ -3,6 +3,8 @@ package roboy.linguistics;
 import java.util.Arrays;
 import java.util.List;
 
+import roboy.util.Lists;
+
 public class Linguistics {
 
 	public enum SENTENCE_TYPE { 
@@ -19,6 +21,7 @@ public class Linguistics {
 	}
 	
 	public static final List<String> tobe = Arrays.asList("am","are","is","was","were","been");
+	public static final List<String> beMod = Lists.stringList("am","are","is","was","were","has been","have been","had been");
 	
 	public static final String SENTENCE = "sentence";
 	public static final String TRIPLE = "triple";
@@ -27,4 +30,5 @@ public class Linguistics {
 	public static final String KEYWORDS = "keywords";
 	public static final String ASSOCIATION = "association";
 	public static final String PAS = "pas";
+	public static final String NAME = "name";
 }

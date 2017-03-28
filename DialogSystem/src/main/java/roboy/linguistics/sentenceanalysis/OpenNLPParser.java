@@ -65,7 +65,7 @@ public class OpenNLPParser implements Analyzer{
 		for(Parse child : children){
 			switch(child.getType()){
 				case "SBARQ":
-				case "SBAR": 
+				case "SBAR":
 					result = sbar(child,result);
 					break;
 				default:
@@ -74,8 +74,6 @@ public class OpenNLPParser implements Analyzer{
 		}
 		return result;
 	}
-	
-	private static final List<String> be = Lists.stringList("am","are","is","was","were","has been","have been","had been");
 	
 	private Map<SEMANTIC_ROLE,Object> sbar(Parse parse, Map<SEMANTIC_ROLE,Object> result){
 		Parse[] children = parse.getChildren();
@@ -89,13 +87,23 @@ public class OpenNLPParser implements Analyzer{
 				case "VBZ":
 				case "VBD":
 					String verbMod = child.toString().toLowerCase();
-					if(be.contains(verbMod)) passive = true;
+					if(Linguistics.beMod.contains(verbMod)) passive = true;
 					break;
 				case "NP":
 					result.put(SEMANTIC_ROLE.AGENT, child.toString());
 					break;
 				case "VP":
 					result = vp(child,result);
+					break;
+				case "WHNP":
+					result.put(SEMANTIC_ROLE.AGENT, child.toString());
+					break;
+				case "WHADVP":
+				case "WHADJP":
+					String questionTerm = child.toString().toLowerCase(); 
+					if(questionTerm.startsWith("how")) result.put(SEMANTIC_ROLE.MANNER, child.toString());
+					if(questionTerm.startsWith("when")) result.put(SEMANTIC_ROLE.TIME, child.toString());
+					if(questionTerm.startsWith("where")) result.put(SEMANTIC_ROLE.LOCATION, child.toString());
 					break;
 			}
 		}

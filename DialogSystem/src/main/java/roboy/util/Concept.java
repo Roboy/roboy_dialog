@@ -1,6 +1,9 @@
 package roboy.util;
 
 import java.util.Map;
+
+import roboy.linguistics.Linguistics;
+
 import java.util.HashMap;
 
 public class Concept {
@@ -10,6 +13,11 @@ public class Concept {
 	public Concept()
 	{
 		this.attributes = new HashMap<String, Object>();
+	}
+	
+	public Concept(String name){
+		this();
+		attributes.put(Linguistics.NAME, name);
 	}
 
 	public void addAttribute(String property, Object value)
@@ -25,6 +33,10 @@ public class Concept {
 	public Map<String, Object> getAttributes()
 	{
 		return this.attributes;
+	}
+	
+	public Object getAttribute(String key){
+		return attributes.get(key);
 	}
 
 }
