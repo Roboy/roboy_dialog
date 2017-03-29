@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.util.Map;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import roboy.linguistics.Linguistics;
@@ -12,12 +11,7 @@ import roboy.linguistics.Linguistics.SEMANTIC_ROLE;
 
 public class OpenNLPParserTest {
 	
-	private OpenNLPParser parser;
-	
-	@Before
-	public void init(){
-		parser = new OpenNLPParser();
-	}
+	private static final OpenNLPParser parser = new OpenNLPParser();
 
 	@SuppressWarnings("unchecked")
 	@Test
@@ -30,16 +24,16 @@ public class OpenNLPParserTest {
 		assertEquals("What", pas.get(SEMANTIC_ROLE.AGENT));
 	}
 	
-	@SuppressWarnings("unchecked")
-	@Test
-	public void testDiscourseMarker() {
-		Interpretation interpretation = new Interpretation("Hey Roboy, what is the area code of Germany");
-		interpretation = parser.analyze(interpretation);
-		Map<String,Object> pas = (Map<String,Object>) interpretation.getFeature(Linguistics.PAS);
-		assertEquals("is",pas.get(SEMANTIC_ROLE.PREDICATE));
-		assertEquals("the area code of Germany",pas.get(SEMANTIC_ROLE.PATIENT));
-		assertEquals("what", pas.get(SEMANTIC_ROLE.AGENT));
-	}
+//	@SuppressWarnings("unchecked")
+//	@Test
+//	public void testDiscourseMarker() {
+//		Interpretation interpretation = new Interpretation("Hey Roboy, what is the area code of Germany");
+//		interpretation = parser.analyze(interpretation);
+//		Map<String,Object> pas = (Map<String,Object>) interpretation.getFeature(Linguistics.PAS);
+//		assertEquals("is",pas.get(SEMANTIC_ROLE.PREDICATE));
+//		assertEquals("the area code of Germany",pas.get(SEMANTIC_ROLE.PATIENT));
+//		assertEquals("what", pas.get(SEMANTIC_ROLE.AGENT));
+//	}
 	
 
 	@SuppressWarnings("unchecked")
