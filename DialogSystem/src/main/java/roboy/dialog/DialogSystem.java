@@ -26,6 +26,7 @@ import roboy.linguistics.sentenceanalysis.DictionaryBasedSentenceTypeDetector;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.linguistics.sentenceanalysis.OntologyNERAnalyzer;
 import roboy.linguistics.sentenceanalysis.OpenNLPPPOSTagger;
+import roboy.linguistics.sentenceanalysis.OpenNLPParser;
 import roboy.linguistics.sentenceanalysis.SentenceAnalyzer;
 import roboy.linguistics.sentenceanalysis.SimpleTokenizer;
 import roboy.talk.Verbalizer;
@@ -61,6 +62,7 @@ public class DialogSystem {
 		analyzers.add(new OpenNLPPPOSTagger());
 		analyzers.add(new DictionaryBasedSentenceTypeDetector());
 		analyzers.add(new SentenceAnalyzer());
+		analyzers.add(new OpenNLPParser());
 		analyzers.add(new OntologyNERAnalyzer());
 		
 		String raw; //  = input.listen();

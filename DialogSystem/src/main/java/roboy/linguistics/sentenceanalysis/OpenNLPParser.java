@@ -43,9 +43,18 @@ public class OpenNLPParser implements Analyzer{
 
 	@Override
 	public Interpretation analyze(Interpretation interpretation) {
-		String sentence = (String) interpretation.getFeatures().get(Linguistics.SENTENCE);
+		String sentence = ((String) interpretation.getFeatures().get(Linguistics.SENTENCE)).trim();
+		if(!sentence.endsWith(".")
+				&& !sentence.endsWith("?")
+				&& !sentence.endsWith("!")){
+			sentence = sentence+" .";
+		}
+		if(sentence.length()>0 && Character.isLowerCase(sentence.charAt(0))){
+			sentence = Character.toUpperCase(sentence.charAt(0))+sentence.substring(1, sentence.length());
+		}
 		Parse parse = ParserTool.parseLine(sentence, parser, 1)[0];
 		interpretation = extractPAS(interpretation,parse);
+//		System.out.println("Done analyzing");
 		return interpretation;
 	}
 	
