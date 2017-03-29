@@ -2,10 +2,15 @@ package roboy.memory;
 
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
+
+import java.io.StringReader;
 
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonArray;
+import javax.json.JsonValue;
+import javax.json.JsonReader;
 
 import edu.wpi.rail.jrosbridge.Ros;
 import edu.wpi.rail.jrosbridge.Service;
@@ -52,18 +57,38 @@ public class RoboyMind implements Memory<Concept>
 		return response;
 	}
 
+	private JsonObject ListAttributes(String object)
+	{
+		Service ShowInstanceSrv = new Service(ros, "/roboy_mind/show_property", "/roboy_mind/show_property");
+
+		JsonObject params = Json.createObjectBuilder()
+	     .add("object", object)
+	     .build();
+
+		System.out.println(params);
+
+		ServiceRequest request = new ServiceRequest(params);
+		ServiceResponse response = ShowInstanceSrv.callServiceAndWait(request);
+		System.out.println(response.toString());
+
+
+		JsonReader jsonReader = Json.createReader(new StringReader(response.toJsonObject().getString("property")));
+		JsonObject attributes = jsonReader.readObject();
+		jsonReader.close();
+
+		return attributes;
+	}
+
 	private ServiceResponse SaveObject(String object_class, int object_id, String properties, String values)
 	{
 		Service ShowInstanceSrv = new Service(ros, "/roboy_mind/save_object", "/roboy_mind/save_object");
 
 		JsonObject params = Json.createObjectBuilder()
-	     .add("object_class", "object_class")
+	     .add("class_name", object_class)
 	     .add("id", object_id)
 	     .add("properties", properties)
 	     .add("values", values)
 	     .build();
-
-		// String params = "{\"object_class\": " + "\"" + object_class + "\", \"id\": " +  object_id + ", \"properties\": \"" +  properties + "\", \"values\": \"" +  values + "\"}";
 
 		System.out.println(params);
 
@@ -72,25 +97,30 @@ public class RoboyMind implements Memory<Concept>
 		return response;
 	}
 
-	// private Concept GetObject(String object_class, int object_id, String properties, String values)
-	// {
-	// 	Service ShowInstanceSrv = new Service(ros, "/roboy_mind/save_object", "/roboy_mind/save_object");
+	private Concept GetObject(String properties, String values)
+	{
+		Service ShowInstanceSrv = new Service(ros, "/roboy_mind/get_object", "/roboy_mind/get_object");
 
-	// 	JsonObject params = Json.createObjectBuilder()
-	//      .add("object_class", "object_class")
-	//      .add("id", object_id)
-	//      .add("properties", properties)
-	//      .add("values", values)
-	//      .build();
+		JsonObject params = Json.createObjectBuilder()
+	     .add("properties", properties)
+	     .add("values", values)
+	     .build();
 
-	// 	// String params = "{\"object_class\": " + "\"" + object_class + "\", \"id\": " +  object_id + ", \"properties\": \"" +  properties + "\", \"values\": \"" +  values + "\"}";
+		System.out.println(params);
 
-	// 	System.out.println(params);
+		ServiceRequest request = new ServiceRequest(params);
+		ServiceResponse response = ShowInstanceSrv.callServiceAndWait(request);
 
-	// 	ServiceRequest request = new ServiceRequest(params);
-	// 	ServiceResponse response = ShowInstanceSrv.callServiceAndWait(request);
-	// 	return response;
-	// }
+		System.out.println("Get object service response:");
+		System.out.println(response.toString());
+
+		Concept result = new Concept();
+		result.addAttribute("class_name", response.toJsonObject().getString("class_name"));
+		// String instance = response.toJsonObject().getString("instance");
+		result.addAttribute("instance", response.toJsonObject().getString("instance"));
+
+		return result;
+	}
 
 	private ServiceResponse ShowInstance(String object_class)
 	{
@@ -101,7 +131,6 @@ public class RoboyMind implements Memory<Concept>
 		return response;
 	}
 
-
 	@Override
 	public boolean save(Concept object) 
 	{
@@ -110,46 +139,32 @@ public class RoboyMind implements Memory<Concept>
 		String object_class = object.getAttributes().get("class").toString();
 		int object_id = (int) object.getAttributes().get("id");
 		
-		String properties = ""; 
-		String values = "";
+		String properties = object.getProperties();
+		String values = object.getValues();
+		
+		ServiceResponse srvCall = SaveObject(object_class, object_id, properties, values);
 
-		//separate values and attributes
-		for (Map.Entry<String, Object> attribute : object.getAttributes().entrySet())
-		{
-		    if (attribute.getKey() != "class" && attribute.getKey() != "id")
-		    {
-		    	// valuesList.add(attribute.getValue().toString());
-		    	// propertiesList.add(attribute.getKey());
-		    	properties += "\n- \'" + attribute.getKey() + "\'";
-		    	values += "\n- \'" + attribute.getValue().toString() + "\'";
-		    }
-		}
-
-		SaveObject(object_class, object_id, properties, values);
-
-		//TODO check the service response
-		return true;
+		return srvCall.getResult();
 	}
 	
 	@Override
 	public Concept retrieve(Concept object)
 	{
-		// TODO implement service on the python side
+		// get the object
+
+		String properties = object.getProperties();
+		String values = object.getValues();
+
+		Concept objectOfInterest = GetObject(properties, values);
+
+		// get attributes
+		String instance = objectOfInterest.getAttribute("instance").toString();
+		for (Map.Entry<String, JsonValue> entry : ListAttributes(instance).entrySet())
+		{
+		    object.addAttribute(entry.getKey(), entry.getValue());
+		}
+
 		return object;
 	}
-	
-	// @Override
-	// public boolean save(Relation object) 
-	// {
-	// 	// TODO define relations in Python roboy_mind
-	// 	return false;
-	// }
-	
-	// @Override
-	// public boolean retrieve(Relation object) 
-	// {
-	// 	// TODO define relations in Python roboy_mind
-	// 	return false;
-	// }
 	
 }
