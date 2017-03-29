@@ -16,11 +16,16 @@ import roboy.dialog.personality.Personality;
 import roboy.dialog.personality.SmallTalkPersonality;
 import roboy.io.BingInput;
 import roboy.io.BingOutput;
+import roboy.io.CelebritySimilarityInput;
 import roboy.io.CommandLineInput;
 import roboy.io.CommandLineOutput;
+import roboy.io.Input;
 import roboy.io.CerevoiceOutput;
 import roboy.io.InputDevice;
+import roboy.io.MultiInputDevice;
 import roboy.io.OutputDevice;
+import roboy.io.RoboyNameDetectionInput;
+import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Analyzer;
 import roboy.linguistics.sentenceanalysis.DictionaryBasedSentenceTypeDetector;
 import roboy.linguistics.sentenceanalysis.Interpretation;
@@ -54,6 +59,10 @@ public class DialogSystem {
 		
 		InputDevice input = new CommandLineInput();
 		// InputDevice input = new BingInput(rosbridge());
+		InputDevice celebInput = new CelebritySimilarityInput();
+		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
+		InputDevice multi = new MultiInputDevice(input, celebInput, roboyDetectInput);
+		
 //		OutputDevice output = new CerevoiceOutput(ros);
 		// OutputDevice output = new BingOutput();
 		OutputDevice output = new CommandLineOutput();
@@ -65,13 +74,17 @@ public class DialogSystem {
 		analyzers.add(new OpenNLPParser());
 		analyzers.add(new OntologyNERAnalyzer());
 		
-		String raw; //  = input.listen();
+		System.out.println("Initialized...");
+		while(!multi.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)){
+		}
+		
+		Input raw; //  = input.listen();
 		Interpretation interpretation; // = analyzer.analyze(raw);
 		List<Action> actions =  p.answer(new Interpretation(""));
 		while(actions.isEmpty() || !(actions.get(0) instanceof ShutDownAction)){
 			output.act(actions);
-			raw = input.listen();
-			interpretation = new Interpretation(raw);
+			raw = multi.listen();
+			interpretation = new Interpretation(raw.sentence,raw.attributes);
 			for(Analyzer a : analyzers){
 				interpretation = a.analyze(interpretation);
 			}

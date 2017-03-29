@@ -7,9 +7,9 @@ public class CommandLineInput implements InputDevice{
 	private Scanner sc = new Scanner(System.in);
 
 	@Override
-	public String listen() {
+	public Input listen() {
 		String input = sc.nextLine();
-		return input;
+		return new Input(input);
 	}
 
 	@Override

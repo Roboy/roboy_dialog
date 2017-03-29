@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import roboy.dialog.action.Action;
+import roboy.dialog.personality.states.CelebrityState;
 import roboy.dialog.personality.states.FarewellState;
 import roboy.dialog.personality.states.GenerativeCommunicationState;
 import roboy.dialog.personality.states.GreetingState;
@@ -36,16 +37,20 @@ public class SmallTalkPersonality implements Personality{
 		GenerativeCommunicationState generative = new GenerativeCommunicationState();
 		QuestionAnsweringState qa = new QuestionAnsweringState(generative);
 		SegueState segue = new SegueState(qa);
+		CelebrityState celeb = new CelebrityState(segue);
 		FarewellState farewell = new FarewellState();
+		
+		qa.setTop(celeb);
+		segue.setTop(celeb);
 		
 		greetings.setSuccess(intro);
 		greetings.setFailure(intro);
 		intro.setSuccess(inquiry);
 		intro.setFailure(inquiry);
-		inquiry.setSuccess(segue);
-		inquiry.setFailure(segue);
+		inquiry.setSuccess(celeb);
+		inquiry.setFailure(celeb);
 		generative.setSuccess(farewell);
-		generative.setFailure(segue);
+		generative.setFailure(celeb);
 		
 		state = greetings;
 	}

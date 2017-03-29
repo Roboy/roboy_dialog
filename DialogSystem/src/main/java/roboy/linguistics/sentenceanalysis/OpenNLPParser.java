@@ -59,12 +59,12 @@ public class OpenNLPParser implements Analyzer{
 	}
 	
 	private Interpretation extractPAS(Interpretation interpretation, Parse parse){
-		System.out.println(parseToString(parse,0));
+//		System.out.println(parseToString(parse,0));
 //		Map<SEMANTIC_ROLE,Object> result = pas(parse);
 		Map<SEMANTIC_ROLE,Object> parseResult = new HashMap<>();
 		Map<SEMANTIC_ROLE,Object> result = top(parse,parseResult);
 		
-		System.out.println(result);
+//		System.out.println(result);
 		interpretation.getFeatures().put(Linguistics.PAS, result);
 		return interpretation;
 	}

@@ -22,12 +22,14 @@ public class QuestionAnsweringState implements State{
 	private boolean first = true;
 	private List<Triple> memory;
 	private State inner;
+	private State top;
 	private List<Memory<Relation>> memories;
 	
 	public QuestionAnsweringState(State inner){
+		this.inner = inner;
+		this.top = this;
 		memories = new ArrayList<>();
 		memories.add(new DBpediaMemory());
-		this.inner = inner;
 	    // fill memory
 	    memory = new ArrayList<>(); //TODO: Refactor all that triples stuff to separate memory class
 		ClassLoader cl = this.getClass().getClassLoader();
@@ -44,6 +46,10 @@ public class QuestionAnsweringState implements State{
 	    }catch(Exception e){
 	    	e.printStackTrace();
 	    }
+	}
+	
+	public void setTop(State top){
+		this.top = top;
 	}
 
 	@Override
@@ -109,7 +115,7 @@ public class QuestionAnsweringState implements State{
 		} else {
 			return innerReaction(input,result);
 		}
-		return new Reaction(this,result);
+		return new Reaction(top,result);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -117,13 +123,13 @@ public class QuestionAnsweringState implements State{
 		Map<String, Object> pas = (Map<String, Object>) input.getFeature(Linguistics.PAS);
 		if(pas!=null && !pas.isEmpty()){
 			Relation relation = PASInterpreter.pas2DBpediaRelation(pas);
-			System.out.println("Relation: "+relation);
+//			System.out.println("Relation: "+relation);
 			for(Memory<Relation> mem : memories){
 				try{
 					Relation remembered = mem.retrieve(relation);
 					if(remembered!=null&&remembered.object!=null){ // TODO: check for proper role
 						result.add(new Interpretation((String)remembered.object.getAttribute(Linguistics.NAME)));
-						return new Reaction(this,result);
+						return new Reaction(top,result);
 					}
 				} catch(Exception e){}
 			}
