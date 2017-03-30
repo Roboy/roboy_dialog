@@ -4,9 +4,9 @@ import roboy.util.Concept;
 
 public class Relation {
 	
-	private Concept subject;
-	private Concept object;
-	private String predicate;
+	public Concept subject;
+	public Concept object;
+	public String predicate;
 	
 	public Relation(Concept subject, String predicate, Concept object){
 		this.subject = subject;
