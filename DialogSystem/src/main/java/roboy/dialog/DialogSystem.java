@@ -19,10 +19,12 @@ import roboy.io.BingOutput;
 import roboy.io.CelebritySimilarityInput;
 import roboy.io.CommandLineInput;
 import roboy.io.CommandLineOutput;
+import roboy.io.EmotionOutputDevice;
 import roboy.io.Input;
 import roboy.io.CerevoiceOutput;
 import roboy.io.InputDevice;
 import roboy.io.MultiInputDevice;
+import roboy.io.MultiOutputDevice;
 import roboy.io.OutputDevice;
 import roboy.io.RoboyNameDetectionInput;
 import roboy.linguistics.Linguistics;
@@ -61,11 +63,14 @@ public class DialogSystem {
 		// InputDevice input = new BingInput(rosbridge());
 		InputDevice celebInput = new CelebritySimilarityInput();
 		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
-		InputDevice multi = new MultiInputDevice(input, celebInput, roboyDetectInput);
+		InputDevice multiIn = new MultiInputDevice(input, celebInput, roboyDetectInput);
 		
 //		OutputDevice output = new CerevoiceOutput(ros);
 		// OutputDevice output = new BingOutput();
 		OutputDevice output = new CommandLineOutput();
+		OutputDevice emotion = new EmotionOutputDevice();
+		OutputDevice multiOut = new MultiOutputDevice(output,emotion);
+		
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new SimpleTokenizer());
 		analyzers.add(new OpenNLPPPOSTagger());
@@ -75,15 +80,15 @@ public class DialogSystem {
 		analyzers.add(new OntologyNERAnalyzer());
 		
 		System.out.println("Initialized...");
-		while(!multi.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)){
+		while(!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)){
 		}
 		
 		Input raw; //  = input.listen();
 		Interpretation interpretation; // = analyzer.analyze(raw);
 		List<Action> actions =  p.answer(new Interpretation(""));
 		while(actions.isEmpty() || !(actions.get(0) instanceof ShutDownAction)){
-			output.act(actions);
-			raw = multi.listen();
+			multiOut.act(actions);
+			raw = multiIn.listen();
 			interpretation = new Interpretation(raw.sentence,raw.attributes);
 			for(Analyzer a : analyzers){
 				interpretation = a.analyze(interpretation);
@@ -91,7 +96,7 @@ public class DialogSystem {
 			actions = p.answer(interpretation);
 		}
 		List<Action> lastwords = ((ShutDownAction)actions.get(0)).getLastWords();
-		output.act(lastwords);
+		multiOut.act(lastwords);
 	}
 
 }
