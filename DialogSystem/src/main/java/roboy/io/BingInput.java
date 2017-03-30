@@ -17,7 +17,7 @@ public class BingInput implements InputDevice
 	}
 
 	@Override
-	public String listen() throws InterruptedException 
+	public Input listen() throws InterruptedException 
 	{
 	    Service BingSTT = new Service(ros, "TextSpoken", "TextSpoken");
 	    ServiceRequest request = new ServiceRequest("{}");
@@ -31,7 +31,7 @@ public class BingInput implements InputDevice
 	    String text = obj.getString("text");
 	    
 	    System.out.println(text);
-		return text;
+		return new Input(text);
 	}
 	
 }

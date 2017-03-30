@@ -43,19 +43,28 @@ public class OpenNLPParser implements Analyzer{
 
 	@Override
 	public Interpretation analyze(Interpretation interpretation) {
-		String sentence = (String) interpretation.getFeatures().get(Linguistics.SENTENCE);
+		String sentence = ((String) interpretation.getFeatures().get(Linguistics.SENTENCE)).trim();
+		if(!sentence.endsWith(".")
+				&& !sentence.endsWith("?")
+				&& !sentence.endsWith("!")){
+			sentence = sentence+" .";
+		}
+		if(sentence.length()>0 && Character.isLowerCase(sentence.charAt(0))){
+			sentence = Character.toUpperCase(sentence.charAt(0))+sentence.substring(1, sentence.length());
+		}
 		Parse parse = ParserTool.parseLine(sentence, parser, 1)[0];
 		interpretation = extractPAS(interpretation,parse);
+//		System.out.println("Done analyzing");
 		return interpretation;
 	}
 	
 	private Interpretation extractPAS(Interpretation interpretation, Parse parse){
-		System.out.println(parseToString(parse,0));
+//		System.out.println(parseToString(parse,0));
 //		Map<SEMANTIC_ROLE,Object> result = pas(parse);
 		Map<SEMANTIC_ROLE,Object> parseResult = new HashMap<>();
 		Map<SEMANTIC_ROLE,Object> result = top(parse,parseResult);
 		
-		System.out.println(result);
+//		System.out.println(result);
 		interpretation.getFeatures().put(Linguistics.PAS, result);
 		return interpretation;
 	}

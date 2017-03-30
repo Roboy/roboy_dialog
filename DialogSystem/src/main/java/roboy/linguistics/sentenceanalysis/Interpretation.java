@@ -17,6 +17,12 @@ public class Interpretation {
 		sentenceType = SENTENCE_TYPE.STATEMENT;
 	}
 	
+	public Interpretation(String sentence, Map<String,Object> features){
+		this.features = features;
+		this.features.put(Linguistics.SENTENCE,sentence);
+		sentenceType = SENTENCE_TYPE.STATEMENT;
+	}
+	
 	public Interpretation(SENTENCE_TYPE sentenceType){
 		this.sentenceType = sentenceType;
 	}

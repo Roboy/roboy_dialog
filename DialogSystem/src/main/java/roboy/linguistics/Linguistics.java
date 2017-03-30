@@ -31,4 +31,6 @@ public class Linguistics {
 	public static final String ASSOCIATION = "association";
 	public static final String PAS = "pas";
 	public static final String NAME = "name";
+	public static final String CELEBRITY = "celebrity";
+	public static final String ROBOYDETECTED = "roboydetected";
 }

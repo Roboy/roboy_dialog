@@ -55,8 +55,8 @@ public class PASInterpreter {
 				((String)patient).contains(" of ")
 				){
 			String[] parts = ((String)patient).split("of");
-			if(dbpediaRelations.containsKey(parts[0])){
-				return new Relation(new Concept(parts[1]),dbpediaRelations.get(parts[0]),null);
+			if(dbpediaRelations.containsKey(parts[0].trim())){
+				return new Relation(new Concept(parts[1].trim()),dbpediaRelations.get(parts[0].trim()),null);
 			}
 		} else if(
 				time != null && 
@@ -67,6 +67,14 @@ public class PASInterpreter {
 				){
 			return new Relation(new Concept((String)patient),dbpediaRelations.get("when-"+predicate),null);
 		} else if(
+				time != null && 
+				predicate != null &&
+				agent != null &&
+				((String)time).toLowerCase().startsWith("when") &&
+				dbpediaRelations.containsKey("when-"+predicate)
+				){
+			return new Relation(new Concept((String)agent),dbpediaRelations.get("when-"+predicate),null);
+		} else if(
 				location != null && 
 				predicate != null &&
 				patient != null &&
@@ -74,6 +82,14 @@ public class PASInterpreter {
 				dbpediaRelations.containsKey("where-"+predicate)
 				){
 			return new Relation(new Concept((String)patient),dbpediaRelations.get("where-"+predicate),null);
+		} else if(
+				location != null && 
+				predicate != null &&
+				agent != null &&
+				((String)location).toLowerCase().startsWith("where") &&
+				dbpediaRelations.containsKey("where-"+predicate)
+				){
+			return new Relation(new Concept((String)agent),dbpediaRelations.get("where-"+predicate),null);
 		} else if(
 				manner != null && 
 				predicate != null &&
@@ -86,12 +102,12 @@ public class PASInterpreter {
 			return new Relation(new Concept((String)patient),dbpediaRelations.get(agent),null);
 		} else if(
 				predicate != null &&
-				patient != null &&
+				location != null &&
 				agent != null && 
 				((String)agent).toLowerCase().startsWith("how") &&
 				dbpediaRelations.containsKey(agent.toString().toLowerCase()+"-"+predicate)
 				){
-			return new Relation(new Concept((String)patient),dbpediaRelations.get(agent.toString().toLowerCase()+"-"+predicate),null);
+			return new Relation(new Concept((String)location),dbpediaRelations.get(agent.toString().toLowerCase()+"-"+predicate),null);
 		}
 			
 		return null;
