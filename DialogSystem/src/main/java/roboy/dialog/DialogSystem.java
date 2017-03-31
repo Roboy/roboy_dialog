@@ -3,6 +3,8 @@ package roboy.dialog;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
@@ -41,6 +43,9 @@ import roboy.linguistics.sentenceanalysis.SimpleTokenizer;
 import roboy.talk.Verbalizer;
 
 import roboy.memory.RoboyMind;
+
+import roboy.util.Concept;
+
 import edu.wpi.rail.jrosbridge.Ros;
 
 public class DialogSystem {
@@ -55,7 +60,28 @@ public class DialogSystem {
 	
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
 
-		Ros ros = start_rosbridge();
+		// Ros ros = start_rosbridge();
+
+		// RoboyMind memory = new RoboyMind(ros);
+		// Map<String, Object> attributes = new HashMap<String, Object>(){{
+		// 	put("class_name", "Person"); 
+		// 	put("id", 0); 
+		// 	put("name", "John"); 
+		// 	put("occupation", "student");
+		// }};
+		// Concept object1 = new Concept(attributes);
+		// attributes.put("name", "Anna");
+		// attributes.put("id", 1);
+		// System.out.print(attributes);
+		// Concept object2 = new Concept(attributes);
+		// memory.save(object1);
+		// memory.save(object2);
+		// Map<String, Object> attributes1 = new HashMap<String, Object>(){{
+		// 	put("occupation", "student");
+		// }};
+		// Concept object3 = new Concept(attributes1);
+		// memory.retrieve(object3);
+
 		// Personality p = new DefaultPersonality();
 //		Personality p = new CuriousPersonality();
 //		Personality p = new KnockKnochPersonality();

@@ -20,6 +20,7 @@ public class Concept {
 
 	public Concept(Map<String, Object> attrs)
 	{
+		this.attributes = new HashMap<String, Object>();
 		this.addAttributes(attrs);
 	}
 
@@ -63,7 +64,7 @@ public class Concept {
 		{
 		    if (attribute.getKey() != "class" && attribute.getKey() != "id")
 		    {
-		    	properties +=  "'" + attribute.getKey() + "',";
+		    	properties +=  attribute.getKey() + ",";
 		    }
 		}
 
@@ -85,7 +86,7 @@ public class Concept {
 		{
 		    if (attribute.getKey() != "class" && attribute.getKey() != "id")
 		    {
-		    	values += "'" + attribute.getValue().toString() + "',";
+		    	values +=  attribute.getValue().toString() + ",";
 		    }
 		    
 		}

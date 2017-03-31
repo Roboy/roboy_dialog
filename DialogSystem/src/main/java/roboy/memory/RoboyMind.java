@@ -48,12 +48,18 @@ public class RoboyMind implements Memory<Concept>
 		return response;
 	}
 
-	private ServiceResponse FindInstances(String property, String value, boolean data)
+	private ServiceResponse FindInstances(String property, String value)
 	{
 		Service FindInstancesSrv = new Service(this.ros, "/roboy_mind/find_instances", "/roboy_mind/find_instances");
-		String params = "{\"property\": " + "\"" + property + "\", \"value\": \"" + value + "\", \"data\": " + String.valueOf(data) + "}";
+		
+		JsonObject params = Json.createObjectBuilder()
+	     .add("property", property)
+	     .add("value", value)
+	     .build();
+
 		ServiceRequest request = new ServiceRequest(params);
 		ServiceResponse response = FindInstancesSrv.callServiceAndWait(request);
+		System.out.println(response.toString());
 		return response;
 	}
 
@@ -136,7 +142,7 @@ public class RoboyMind implements Memory<Concept>
 	{
 
 		//create an object
-		String object_class = object.getAttributes().get("class").toString();
+		String object_class = object.getAttributes().get("class_name").toString();
 		int object_id = (int) object.getAttributes().get("id");
 		
 		String properties = object.getProperties();
@@ -155,14 +161,16 @@ public class RoboyMind implements Memory<Concept>
 		String properties = object.getProperties();
 		String values = object.getValues();
 
-		Concept objectOfInterest = GetObject(properties, values);
+		FindInstances(properties, values);
 
-		// get attributes
-		String instance = objectOfInterest.getAttribute("instance").toString();
-		for (Map.Entry<String, JsonValue> entry : ListAttributes(instance).entrySet())
-		{
-		    object.addAttribute(entry.getKey(), entry.getValue());
-		}
+		// Concept objectOfInterest = GetObject(properties, values);
+
+		// // get attributes
+		// String instance = objectOfInterest.getAttribute("instance").toString();
+		// for (Map.Entry<String, JsonValue> entry : ListAttributes(instance).entrySet())
+		// {
+		//     object.addAttribute(entry.getKey(), entry.getValue());
+		// }
 
 		return object;
 	}
