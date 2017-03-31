@@ -14,12 +14,13 @@ import roboy.dialog.personality.DefaultPersonality;
 import roboy.dialog.personality.KnockKnockPersonality;
 import roboy.dialog.personality.Personality;
 import roboy.dialog.personality.SmallTalkPersonality;
+
 import roboy.io.BingInput;
 import roboy.io.BingOutput;
 import roboy.io.CelebritySimilarityInput;
 import roboy.io.CommandLineInput;
 import roboy.io.CommandLineOutput;
-import roboy.io.EmotionOutputDevice;
+import roboy.io.EmotionOutput;
 import roboy.io.Input;
 import roboy.io.CerevoiceOutput;
 import roboy.io.InputDevice;
@@ -27,6 +28,7 @@ import roboy.io.MultiInputDevice;
 import roboy.io.MultiOutputDevice;
 import roboy.io.OutputDevice;
 import roboy.io.RoboyNameDetectionInput;
+
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Analyzer;
 import roboy.linguistics.sentenceanalysis.DictionaryBasedSentenceTypeDetector;
@@ -53,7 +55,7 @@ public class DialogSystem {
 	
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
 
-//		Ros ros = start_rosbridge();
+		Ros ros = start_rosbridge();
 		// Personality p = new DefaultPersonality();
 //		Personality p = new CuriousPersonality();
 //		Personality p = new KnockKnochPersonality();
@@ -68,7 +70,7 @@ public class DialogSystem {
 //		OutputDevice output = new CerevoiceOutput(ros);
 		// OutputDevice output = new BingOutput();
 		OutputDevice output = new CommandLineOutput();
-		OutputDevice emotion = new EmotionOutputDevice();
+		OutputDevice emotion = new EmotionOutput(ros);
 		OutputDevice multiOut = new MultiOutputDevice(output,emotion);
 		
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
