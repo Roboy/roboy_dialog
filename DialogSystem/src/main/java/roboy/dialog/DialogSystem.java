@@ -60,7 +60,7 @@ public class DialogSystem {
 	
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
 
-		// Ros ros = start_rosbridge();
+		Ros ros = start_rosbridge();
 
 		// RoboyMind memory = new RoboyMind(ros);
 		// Map<String, Object> attributes = new HashMap<String, Object>(){{
