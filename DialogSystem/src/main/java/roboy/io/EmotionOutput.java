@@ -23,14 +23,17 @@ public class EmotionOutput implements OutputDevice
 	}
 	
 	@Override
-	public void act(List<Action> actions) 
-	{
-		for(Action a : actions)
-		{
-			if(a instanceof FaceAction)
-			{
+	public void act(List<Action> actions) {
+		for (Action a : actions) {
+			if (a instanceof FaceAction) {
 				ChangeFaceState((FaceAction) a);
 			}
+		}
+	}
+
+	public void act(Action action) {
+		if (action instanceof FaceAction) {
+			ChangeFaceState((FaceAction) action);
 		}
 	}
 	
