@@ -13,7 +13,7 @@ public class OpenNLPPPOSTagger implements Analyzer{
 	private POSTaggerME tagger;
 	
 	public OpenNLPPPOSTagger() {
-		// load POS tagger
+		// load POS tagger https://opennlp.apache.org/documentation/manual/opennlp.html#tools.postagger
 		InputStream modelIn = null;
 		try {
 		  modelIn = new FileInputStream("resources/en-pos-maxent.bin");
