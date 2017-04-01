@@ -65,11 +65,18 @@ public class Vision
 	    return response.toJsonObject().getString("object_name");
 	}
 
-	public void findFaces()
+	public boolean findFaces()
 	{
-		Topic t = new Topic(ros, "/test", "geometry_msgs/Pose");
-		VisionCallback cb = new VisionCallback();
-		t.subscribe(cb);
+		// Topic t = new Topic(ros, "/test", "geometry_msgs/Pose");
+		// VisionCallback cb = new VisionCallback();
+		// t.subscribe(cb);
+
+		Service Recognize = new Service(ros, "/roboy_vision/find_face", "/roboy_face/find_face");
+	    
+	    ServiceRequest request = new ServiceRequest();
+	    ServiceResponse response = Recognize.callServiceAndWait(request);
+
+	    return response.toJsonObject().getBoolean("face_detected");
 	}
 
 }
