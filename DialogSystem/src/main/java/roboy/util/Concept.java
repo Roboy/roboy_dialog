@@ -68,7 +68,7 @@ public class Concept {
 		    }
 		}
 
-		if (properties.charAt(properties.length()-1)==',')
+		if (properties.length()>0 && properties.charAt(properties.length()-1)==',')
 		{
 			properties = properties.substring(0, properties.length()-1);
 		}
@@ -91,12 +91,21 @@ public class Concept {
 		    
 		}
 
-		if (values.charAt(values.length()-1)==',')
+		if (values.length()>0 && values.charAt(values.length()-1)==',')
 		{
 			values = values.substring(0, values.length()-1);
 		}
 
 		return values;
+	}
+	
+	public boolean hasAttribute(String property)
+	{
+		if (this.getProperties() != "" && this.getProperties().contains(property))
+		{
+			return true;
+		}
+		return false;
 	}
 
 	// TODO getClass
