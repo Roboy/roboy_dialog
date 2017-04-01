@@ -61,7 +61,6 @@ public class DialogSystem {
 		// Concept object1 = new Concept(attributes);
 		// attributes.put("name", "Anna");
 		// attributes.put("id", 1);
-		// System.out.print(attributes);
 		// Concept object2 = new Concept(attributes);
 		// memory.save(object1);
 		// memory.save(object2);
@@ -69,7 +68,7 @@ public class DialogSystem {
 		// 	put("occupation", "student");
 		// }};
 		// Concept object3 = new Concept(attributes1);
-		// memory.retrieve(object3);
+		// List<Concept> found_objects = memory.retrieve(object3);
 
 		// Personality p = new DefaultPersonality();
 //		Personality p = new CuriousPersonality();

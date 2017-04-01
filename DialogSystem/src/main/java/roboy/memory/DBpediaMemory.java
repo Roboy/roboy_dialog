@@ -2,6 +2,7 @@ package roboy.memory;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.ArrayList;
 
 import roboy.util.Concept;
 import roboy.util.Lists;
@@ -41,12 +42,13 @@ public class DBpediaMemory implements Memory<Relation>{
 
 	
 	@Override
-	public Relation retrieve(Relation object) throws InterruptedException, IOException {
+	public List<Relation> retrieve(Relation object) throws InterruptedException, IOException {
 		// TODO: Replace this with actual DBpedia call
+		List<Relation> result = new ArrayList();
 		if(object!=null&&supportedRelations.contains(object.predicate)){
-			return new Relation(object.subject,object.predicate,new Concept("Putin"));
+			result.add(new Relation(object.subject,object.predicate,new Concept("Putin")));
 		}
-		return null;
+		return result;
 	}
 
 }

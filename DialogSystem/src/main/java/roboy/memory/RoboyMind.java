@@ -3,6 +3,8 @@ package roboy.memory;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Arrays;
+import java.util.ArrayList;
 
 import java.io.StringReader;
 
@@ -59,7 +61,7 @@ public class RoboyMind implements Memory<Concept>
 
 		ServiceRequest request = new ServiceRequest(params);
 		ServiceResponse response = FindInstancesSrv.callServiceAndWait(request);
-		System.out.println(response.toString());
+		// System.out.println(response.toString());
 		return response;
 	}
 
@@ -68,14 +70,14 @@ public class RoboyMind implements Memory<Concept>
 		Service ShowInstanceSrv = new Service(ros, "/roboy_mind/show_property", "/roboy_mind/show_property");
 
 		JsonObject params = Json.createObjectBuilder()
-	     .add("object", object)
+	     .add("object", object.replace("\"", ""))
 	     .build();
 
-		System.out.println(params);
+		// System.out.println(params);
 
 		ServiceRequest request = new ServiceRequest(params);
 		ServiceResponse response = ShowInstanceSrv.callServiceAndWait(request);
-		System.out.println(response.toString());
+		// System.out.println(response.toString());
 
 
 		JsonReader jsonReader = Json.createReader(new StringReader(response.toJsonObject().getString("property")));
@@ -96,7 +98,7 @@ public class RoboyMind implements Memory<Concept>
 	     .add("values", values)
 	     .build();
 
-		System.out.println(params);
+		// System.out.println(params);
 
 		ServiceRequest request = new ServiceRequest(params);
 		ServiceResponse response = ShowInstanceSrv.callServiceAndWait(request);
@@ -112,13 +114,13 @@ public class RoboyMind implements Memory<Concept>
 	     .add("values", values)
 	     .build();
 
-		System.out.println(params);
+		// System.out.println(params);
 
 		ServiceRequest request = new ServiceRequest(params);
 		ServiceResponse response = ShowInstanceSrv.callServiceAndWait(request);
 
-		System.out.println("Get object service response:");
-		System.out.println(response.toString());
+		// System.out.println("Get object service response:");
+		// System.out.println(response.toString());
 
 		Concept result = new Concept();
 		result.addAttribute("class_name", response.toJsonObject().getString("class_name"));
@@ -137,6 +139,7 @@ public class RoboyMind implements Memory<Concept>
 		return response;
 	}
 
+
 	@Override
 	public boolean save(Concept object) 
 	{
@@ -154,25 +157,31 @@ public class RoboyMind implements Memory<Concept>
 	}
 	
 	@Override
-	public Concept retrieve(Concept object)
+	public List<Concept> retrieve(Concept object)
 	{
-		// get the object
-
+		// get objects matching the requested attributes
 		String properties = object.getProperties();
 		String values = object.getValues();
 
-		FindInstances(properties, values);
+		JsonArray instances = FindInstances(properties, values).toJsonObject().getJsonArray("instances");
+		
+		List<Concept> result = new ArrayList();
 
-		// Concept objectOfInterest = GetObject(properties, values);
+		// get these objects' attributes
+		for (JsonValue i: instances)
+		{
+			JsonObject attributes = ListAttributes(i.toString());
+			Concept instance = new Concept();
 
-		// // get attributes
-		// String instance = objectOfInterest.getAttribute("instance").toString();
-		// for (Map.Entry<String, JsonValue> entry : ListAttributes(instance).entrySet())
-		// {
-		//     object.addAttribute(entry.getKey(), entry.getValue());
-		// }
+			for (Map.Entry<String, JsonValue> entry : attributes.entrySet())
+			{
+			    instance.addAttribute(entry.getKey(), entry.getValue());
+			}
 
-		return object;
+			result.add(instance);
+		}
+		
+		return result;
 	}
 	
 }
