@@ -25,7 +25,7 @@ public class FaceAction implements Action
 
 	public double getDuration()
 	{
-		return this.getDuration();
+		return this.duration;
 	}
 
 }
