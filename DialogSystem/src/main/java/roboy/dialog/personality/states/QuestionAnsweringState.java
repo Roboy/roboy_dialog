@@ -126,11 +126,15 @@ public class QuestionAnsweringState implements State{
 //			System.out.println("Relation: "+relation);
 			for(Memory<Relation> mem : memories){
 				try{
-					Relation remembered = mem.retrieve(relation);
-					if(remembered!=null&&remembered.object!=null){ // TODO: check for proper role
+					List<Relation> rememberedList = mem.retrieve(relation);
+					for (Relation remembered: rememberedList)
+					{
+						if(remembered!=null&&remembered.object!=null){ // TODO: check for proper role
 						result.add(new Interpretation((String)remembered.object.getAttribute(Linguistics.NAME)));
 						return new Reaction(top,result);
 					}
+					}
+					
 				} catch(Exception e){}
 			}
 		}
