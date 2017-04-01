@@ -34,23 +34,11 @@ import roboy.talk.Verbalizer;
 import roboy.memory.RoboyMind;
 
 import roboy.util.Concept;
-
-import edu.wpi.rail.jrosbridge.Ros;
+import roboy.util.Ros;
 
 public class DialogSystem {
-
-	private static Ros start_rosbridge()
-	{
-		Ros ros = new Ros("10.25.13.211");
-	    ros.connect();
-	    System.out.println("ROS bridge is set up");	
-	    return ros;	
-	}
 	
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
-
-		Ros ros = start_rosbridge();
-
 		// RoboyMind memory = new RoboyMind(ros);
 		// Map<String, Object> attributes = new HashMap<String, Object>(){{
 		// 	put("class_name", "Person"); 
@@ -84,7 +72,7 @@ public class DialogSystem {
 //		OutputDevice output = new CerevoiceOutput(ros);
 		// OutputDevice output = new BingOutput();
 		OutputDevice output = new CommandLineOutput();
-		EmotionOutput emotion = new EmotionOutput(ros);
+		EmotionOutput emotion = new EmotionOutput(Ros.getInstance());
 		OutputDevice multiOut = new MultiOutputDevice(output,emotion);
 		
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
@@ -97,7 +85,7 @@ public class DialogSystem {
 		
 		System.out.println("Initialized...");
 
-        Vision vision = new Vision(ros);
+        Vision vision = new Vision(Ros.getInstance());
 
         while(true) {
 
@@ -120,6 +108,7 @@ public class DialogSystem {
                     interpretation = a.analyze(interpretation);
                 }
                 actions = p.answer(interpretation);
+
             }
             List<Action> lastwords = ((ShutDownAction) actions.get(0)).getLastWords();
             multiOut.act(lastwords);
