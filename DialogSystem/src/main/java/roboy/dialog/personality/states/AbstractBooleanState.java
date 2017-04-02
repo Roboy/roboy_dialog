@@ -59,22 +59,9 @@ public abstract class AbstractBooleanState implements State {
         if (successful) {
             return new Reaction(success);
         } else {
-            return new Reaction(failure, Lists.interpretationList(new Interpretation(callGenerativeModel(sentence))));
+            return new Reaction(failure);
         }
     }
 
     abstract protected boolean determineSuccess(Interpretation input);
-
-    protected String callGenerativeModel(String sentence) {
-
-
-        Service GenerativeModel = new Service(Ros.getInstance(), "/roboy/gnlp_predict", "generative_nlp/seq2seq_predict");
-        System.out.println(sentence);
-        ServiceRequest request = new ServiceRequest("{\"text_input\": " + "\"" + sentence + "\"}");
-        String response = GenerativeModel.callServiceAndWait(request).toString();
-
-        JSONObject obj = new JSONObject(response);
-        String text = obj.getString("text_output");
-        return text;
-    }
 }

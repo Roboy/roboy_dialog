@@ -4,17 +4,7 @@ import java.util.*;
 
 import roboy.dialog.action.Action;
 import roboy.dialog.action.SpeechAction;
-import roboy.dialog.personality.states.CelebrityState;
-import roboy.dialog.personality.states.FarewellState;
-import roboy.dialog.personality.states.GenerativeCommunicationState;
-import roboy.dialog.personality.states.GreetingState;
-import roboy.dialog.personality.states.InquiryState;
-import roboy.dialog.personality.states.IntroductionState;
-import roboy.dialog.personality.states.QuestionAnsweringState;
-import roboy.dialog.personality.states.QuestionAskingState;
-import roboy.dialog.personality.states.Reaction;
-import roboy.dialog.personality.states.SegueState;
-import roboy.dialog.personality.states.State;
+import roboy.dialog.personality.states.*;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.talk.Verbalizer;
 import roboy.util.Lists;
@@ -74,8 +64,10 @@ public class SmallTalkPersonality implements Personality {
         QuestionAnsweringState answer = new QuestionAnsweringState(generative);
         SegueState segue = new SegueState(answer);
         CelebrityState celeb = new CelebrityState(segue);
-        QuestionAskingState ask = new QuestionAskingState(answer, questions);
+        QuestionAskingState ask = new QuestionAskingState(answer, questions, this);
         FarewellState farewell = new FarewellState();
+        WildTalkState wild = new WildTalkState();
+        IdleState idle = new IdleState();
 
         ask.setTop(celeb);
         answer.setTop(celeb);
@@ -85,6 +77,10 @@ public class SmallTalkPersonality implements Personality {
         intro.setNextState(ask);
         ask.setSuccess(answer);
         ask.setFailure(ask);
+//        ask.setFailure(idle);
+//        idle.setSuccess(wild);
+//        idle.setFailure(farewell);
+//        wild.setFailure(idle);
         inquiry.setNextState(celeb);
         generative.setSuccess(farewell);
         generative.setFailure(celeb);
@@ -96,7 +92,7 @@ public class SmallTalkPersonality implements Personality {
     public List<Action> answer(Interpretation input) {
         Reaction reaction = state.react(input);
         List<Action> talk = Lists.actionList();
-        if (!(name==null) && Math.random() < 0.3) {
+        if (name != null && Math.random() < 0.3) {
             List<String> namePhrases = Arrays.asList("So %s, ", "Hey %s, ", "%s, listen to me, ", "%s, I have a question, ", "%s, ");
             String phrase = String.format(namePhrases.get(new Random().nextInt(4)), name);
             talk.add(0, new SpeechAction(phrase));
@@ -113,4 +109,11 @@ public class SmallTalkPersonality implements Personality {
         return talk;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
