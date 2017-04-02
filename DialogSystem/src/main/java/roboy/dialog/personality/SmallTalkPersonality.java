@@ -88,7 +88,7 @@ public class SmallTalkPersonality implements Personality{
 		inquiry.setNextState(celeb);
 		generative.setSuccess(farewell);
 		generative.setFailure(celeb);
-		
+
 		state = greetings;
 	}
 	

@@ -61,7 +61,7 @@ public class DialogSystem {
 		// Personality p = new DefaultPersonality();
 //		Personality p = new CuriousPersonality();
 //		Personality p = new KnockKnochPersonality();
-		Personality p = new SmallTalkPersonality(new Verbalizer());
+
 		
 		InputDevice input = new CommandLineInput();
 		// InputDevice input = new BingInput(rosbridge());
@@ -99,6 +99,7 @@ public class DialogSystem {
 
             Input raw; //  = input.listen();
             Interpretation interpretation; // = analyzer.analyze(raw);
+            Personality p = new SmallTalkPersonality(new Verbalizer());
             List<Action> actions = p.answer(new Interpretation(""));
             while (actions.isEmpty() || !(actions.get(0) instanceof ShutDownAction)) {
                 multiOut.act(actions);
