@@ -108,7 +108,6 @@ public class DialogSystem {
                     interpretation = a.analyze(interpretation);
                 }
                 actions = p.answer(interpretation);
-
             }
             List<Action> lastwords = ((ShutDownAction) actions.get(0)).getLastWords();
             multiOut.act(lastwords);

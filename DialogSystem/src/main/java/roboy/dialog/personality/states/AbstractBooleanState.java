@@ -25,6 +25,7 @@ public abstract class AbstractBooleanState implements State{
 	public void setFailure(State failure) {
 		this.failure = failure;
 	}
+    public void setNextState(State state) { this.success = this.failure = state; }
 	
 	@Override
 	public Reaction react(Interpretation input) {
