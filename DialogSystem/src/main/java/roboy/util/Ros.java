@@ -4,10 +4,10 @@ public class Ros {
 
     private static edu.wpi.rail.jrosbridge.Ros ros;
 
-    private static final String ROS_URL = "localhost";
+    private static final String ROS_URL = "10.25.13.211";
 
     private Ros() {
-        ros = new edu.wpi.rail.jrosbridge.Ros();
+        ros = new edu.wpi.rail.jrosbridge.Ros(ROS_URL);
         ros.connect();
         System.out.println("ROS bridge is set up");
     }
