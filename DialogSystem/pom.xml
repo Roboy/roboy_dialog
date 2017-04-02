@@ -24,7 +24,15 @@
        <directory>resources</directory>
      </resource>
    </resources>
-  </build>  
+  </build>
+    <repositories>
+        <repository>
+            <id>snapshots-repo</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+    </repositories>
   <dependencies>
   	<dependency>
 	    <groupId>org.apache.opennlp</groupId>
@@ -73,5 +81,15 @@
     <artifactId>jena-core</artifactId>
     <version>3.2.0</version>
 </dependency>
-  </dependencies>
+<dependency>
+    <groupId>edu.cmu.sphinx</groupId>
+    <artifactId>sphinx4-core</artifactId>
+    <version>5prealpha-SNAPSHOT</version>
+</dependency>
+<dependency>
+    <groupId>edu.cmu.sphinx</groupId>
+    <artifactId>sphinx4-data</artifactId>
+    <version>5prealpha-SNAPSHOT</version>
+</dependency>
+</dependencies>
 </project>
