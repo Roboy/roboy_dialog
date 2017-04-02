@@ -10,7 +10,7 @@ public class IntroductionState extends AbstractBooleanState{
 
 	@Override
 	public List<Interpretation> act() {
-		return Lists.interpretationList(new Interpretation("I am Roboy. A humanoid robot. I'm pleased to meet you. How are you?"));
+		return Lists.interpretationList(new Interpretation("I am Roboy. A humanoid robot. I'm pleased to meet you. How are you today?"));
 	}
 
 	@Override

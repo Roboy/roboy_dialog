@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
+import roboy.dialog.personality.SmallTalkPersonality;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.Linguistics.SENTENCE_TYPE;
@@ -25,17 +26,21 @@ public class QuestionAskingState extends AbstractBooleanState
 
 	private boolean first = true;
 	private State inner;
-	private State top;
+	//is used to change the name
+    //smallTalkPersonality.setName();
+    private SmallTalkPersonality smallTalkPersonality;
+    private State top;
 	private Concept objectOfFocus;
 	private String currentIntention;
 	private Map<String, List<String>> questions;
 
 
 
-	public QuestionAskingState(State inner, Map<String, List<String>> questions)
+	public QuestionAskingState(State inner, Map<String, List<String>> questions, SmallTalkPersonality smallTalkPersonality)
 	{
-		this.inner = inner; 
-		this.top = this;
+		this.inner = inner;
+        this.smallTalkPersonality = smallTalkPersonality;
+        this.top = this;
 		this.questions = questions;
 		this.objectOfFocus = new Concept();
 		this.objectOfFocus.memorize("Person");
