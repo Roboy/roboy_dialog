@@ -2,6 +2,7 @@ package roboy.util;
 
 import java.util.Map;
 import java.util.HashMap;
+import roboy.memory.RoboyMind;
 
 import roboy.linguistics.Linguistics;
 
@@ -16,12 +17,14 @@ public class Concept {
 	public Concept()
 	{
 		this.attributes = new HashMap<String, Object>();
+		this.memorize();
 	}
 
 	public Concept(Map<String, Object> attrs)
 	{
 		this.attributes = new HashMap<String, Object>();
 		this.addAttributes(attrs);
+		this.memorize();
 	}
 
 	// public Concept(JsonObject _attributes)
@@ -35,16 +38,19 @@ public class Concept {
 	public Concept(String name){
 		this();
 		attributes.put(Linguistics.NAME, name);
+		this.updateMemory();
 	}
 
 	public void addAttribute(String property, Object value)
 	{
-		this.attributes.put(property, value);	
+		this.attributes.put(property, value);
+		this.updateMemory();
 	}
 
 	public void addAttributes(Map<String, Object> attrs)
 	{
 		this.attributes.putAll(attrs);
+		this.updateMemory();
 	}
 
 	public Map<String, Object> getAttributes()
@@ -106,6 +112,21 @@ public class Concept {
 			return true;
 		}
 		return false;
+	}
+
+	public boolean memorize()
+	{
+		return RoboyMind.getInstance().save(this);
+	}
+
+	public Object retrieve()
+	{
+		return RoboyMind.getInstance().retrieve(this);
+	}
+
+	public boolean updateMemory()
+	{
+		return RoboyMind.getInstance().update(this);
 	}
 
 	// TODO getClass

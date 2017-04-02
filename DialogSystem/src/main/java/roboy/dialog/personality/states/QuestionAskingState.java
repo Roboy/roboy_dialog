@@ -15,7 +15,6 @@ import roboy.linguistics.Linguistics.SENTENCE_TYPE;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.PASInterpreter;
 import roboy.memory.DBpediaMemory;
-import roboy.memory.Memory;
 import roboy.util.Lists;
 import roboy.util.Relation;
 import roboy.util.Concept;
@@ -39,6 +38,7 @@ public class QuestionAskingState extends AbstractBooleanState
 		this.top = this;
 		this.questions = questions;
 		this.objectOfFocus = new Concept();
+		objectOfFocus.addAttribute("object_class", "Person");
 	
 	}
 
@@ -74,6 +74,7 @@ public class QuestionAskingState extends AbstractBooleanState
 		Triple triple = (Triple) input.getFeatures().get(Linguistics.TRIPLE);
 		
 		objectOfFocus.addAttribute(this.currentIntention, triple.patiens);
+
 
 		// check if RoboyMind contains any information on the extracted attributes
 		// list people with the same attributes

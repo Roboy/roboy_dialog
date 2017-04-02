@@ -2,8 +2,6 @@ package roboy.memory;
 
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
-import java.util.Arrays;
 import java.util.ArrayList;
 
 import java.io.StringReader;
@@ -19,12 +17,25 @@ import edu.wpi.rail.jrosbridge.services.ServiceRequest;
 import edu.wpi.rail.jrosbridge.services.ServiceResponse;
 
 import roboy.util.Concept;
-import roboy.util.Relation;
 import roboy.util.Ros;
 
 public class RoboyMind implements Memory<Concept>
 {
+	private static RoboyMind roboyMemory;
+	private int object_id = -1;
+	private RoboyMind()
+	{
+		roboyMemory = new RoboyMind();
+	}
 
+	public static RoboyMind getInstance()
+	{
+		if (roboyMemory == null)
+		{
+			new RoboyMind();
+		}
+		return roboyMemory;
+	}
 	private ServiceResponse CreateInstance(String object_class, int object_id)
 	{
 		Service CreateInstanceSrv = new Service(Ros.getInstance(), "/roboy_mind/create_instance", "/roboy_mind/create_instance");
@@ -34,12 +45,20 @@ public class RoboyMind implements Memory<Concept>
 		return response;
 	}
 
-	private ServiceResponse AssertProperty(String object, String property, Object instance, boolean data)
+	private boolean AssertProperty(String object, String property, String value, boolean data)
 	{
 		Service AssertPropertySrv = new Service(Ros.getInstance(), "/roboy_mind/assert_property", "/roboy_mind/assert_property");
-		String params = "{\"object\": " + "\"" + object + "\", \"property\": \"" +  property + "\", \"instance\": \"" + String.valueOf(instance) + "\", \"data\": " + String.valueOf(data) + "}";
+
+		JsonObject params = Json.createObjectBuilder()
+				.add("object", object.replace("\"", ""))
+				.add("property", property)
+				.add("instance", value)
+				.add("data", String.valueOf(data))
+				.build();
+
+//		String params = "{\"object\": " + "\"" + object + "\", \"property\": \"" +  property + "\", \"instance\": \"" + String.valueOf(instance) + "\", \"data\": " + String.valueOf(data) + "}";
 		ServiceRequest request = new ServiceRequest(params);
-		ServiceResponse response = AssertPropertySrv.callServiceAndWait(request);
+		boolean response = AssertPropertySrv.callServiceAndWait(request).toJsonObject().getBoolean("success");
 		return response;
 	}
 
@@ -80,13 +99,13 @@ public class RoboyMind implements Memory<Concept>
 		return attributes;
 	}
 
-	private ServiceResponse SaveObject(String object_class, int object_id, String properties, String values)
+	private ServiceResponse SaveObject(String object_class, String properties, String values)
 	{
 		Service ShowInstanceSrv = new Service(Ros.getInstance(), "/roboy_mind/save_object", "/roboy_mind/save_object");
 
 		JsonObject params = Json.createObjectBuilder()
 	     .add("class_name", object_class)
-	     .add("id", object_id)
+	     .add("id", this.object_id++)
 	     .add("properties", properties)
 	     .add("values", values)
 	     .build();
@@ -144,7 +163,7 @@ public class RoboyMind implements Memory<Concept>
 		String properties = object.getProperties();
 		String values = object.getValues();
 		
-		ServiceResponse srvCall = SaveObject(object_class, object_id, properties, values);
+		ServiceResponse srvCall = SaveObject(object_class, properties, values);
 
 		return srvCall.getResult();
 	}
@@ -175,6 +194,44 @@ public class RoboyMind implements Memory<Concept>
 		}
 		
 		return result;
+	}
+
+	public boolean update(Concept object) // requires having attributes id and class_name
+	{
+		String object_name = object.getAttribute("object_class").toString() + "_" + object.getAttribute("id").toString();
+		List<Concept> saved_objects = roboyMemory.retrieve(object);
+		if (saved_objects.size() == 0)
+		{
+			System.out.println("Cannot update properties. Memory does not contains the requested object yet.");
+			return false;
+		}
+		else if(saved_objects.size()>1)
+		{
+			System.out.println("Multiple objects with the requested properties are store in memory. Cannot update");
+			return false;
+		}
+		else
+		{
+			String[] propertiesToUpdate = object.getProperties().split(",");
+			String[] valuesToUpdate = object.getValues().split(",");
+			int numOfPropsUpdated = 0;
+			for (int i=0; i<propertiesToUpdate.length; i++)
+			{
+				boolean updated = AssertProperty(object_name, propertiesToUpdate[i], valuesToUpdate[i], false);
+				if (updated)
+				{
+					numOfPropsUpdated++;
+				}
+
+				if (i==propertiesToUpdate.length && numOfPropsUpdated==propertiesToUpdate.length)
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+
 	}
 	
 }
