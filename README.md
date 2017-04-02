@@ -16,6 +16,17 @@ The implementation of the pipeline is in Java. Integrations with tools in other 
 
 The repository contains a project that can be readily imported into Eclipse. Best use the EGit Eclipse Plugin to check it out. The code can be executed by running de.roboy.dialog.DialogSystem.
 
+**UPD** (maven related)
+In order to compile, in the directory containing `pom.xml` run: 
+```
+mvn compile
+```
+
+To execute:
+```
+mvn exec:java -Dexec.mainClass="roboy.dialog.DialogSystem"
+```
+
 ## How to extend it?
 
 Pick the corresponding interface, depending on which part of the system you want to extend. If you want to add new devices go for the input or output device interfaces. If you want to extend the linguistic analysis implement the Analyzer interface or extend the SentenceAnalyzer class. If you are happy with input, linguistics and output and just want to create more dialog, implement the Personality interface.
