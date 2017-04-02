@@ -12,8 +12,6 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Line;
 import javax.sound.sampled.Mixer;
 import javax.sound.sampled.TargetDataLine;
-
-import net.beadsproject.beads.core.io.JavaSoundAudioIO;
 //----
 
 public class RoboyNameDetectionInput implements InputDevice{
@@ -22,8 +20,7 @@ public class RoboyNameDetectionInput implements InputDevice{
 	protected LiveSpeechRecognizer recog_copy;
 	
 	//constructor which initialises recognition
-	RoboyNameDetectionInput()
-	{
+	public RoboyNameDetectionInput() throws IOException {
 		//configure input sound stream reader
 		Mixer.Info[] mixerInfo;
 		mixerInfo = AudioSystem.getMixerInfo();
@@ -36,9 +33,9 @@ public class RoboyNameDetectionInput implements InputDevice{
 			if( currentMixer.isLineSupported(targetDLInfo) )
 				System.out.println( mixerInfo[i].getName()+'\n' );
 		}
-		*/
 		JavaSoundAudioIO aio = new JavaSoundAudioIO();
-		aio.selectMixer(1);//number of port on my PC!
+		aio.selectMixer(1);
+		*/
 		//configure sphinx for 'Roboy' itself and phrases with it
 		Configuration configuration = new Configuration();
 		//contains phonetic model - how all words to recognize may be pronounced
