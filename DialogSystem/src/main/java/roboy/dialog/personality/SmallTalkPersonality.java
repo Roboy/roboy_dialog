@@ -96,7 +96,7 @@ public class SmallTalkPersonality implements Personality {
     public List<Action> answer(Interpretation input) {
         Reaction reaction = state.react(input);
         List<Action> talk = Lists.actionList();
-        if (!name.isEmpty() && Math.random() < 0.3) {
+        if (!(name==null) && Math.random() < 0.3) {
             List<String> namePhrases = Arrays.asList("So %s, ", "Hey %s, ", "%s, listen to me, ", "%s, I have a question, ", "%s, ");
             String phrase = String.format(namePhrases.get(new Random().nextInt(4)), name);
             talk.add(0, new SpeechAction(phrase));

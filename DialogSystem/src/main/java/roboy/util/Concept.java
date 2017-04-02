@@ -23,25 +23,25 @@ public class Concept {
 	{
 		this.attributes = new HashMap<String, Object>();
 		this.addAttributes(attrs);
-		this.memorize();
+		this.memorize((String)this.getAttribute("object_class"));
 	}
 	
 	public Concept(String name){
 		this();
 		attributes.put(Linguistics.NAME, name);
-		this.updateMemory();
+		this.memorize("Person"); //TODO remove this constructor
 	}
 
-	public void addAttribute(String property, Object value)
+	public boolean addAttribute(String property, Object value)
 	{
 		this.attributes.put(property, value);
-		this.updateMemory();
+		return this.updateMemory();
 	}
 
-	public void addAttributes(Map<String, Object> attrs)
+	public boolean addAttributes(Map<String, Object> attrs)
 	{
 		this.attributes.putAll(attrs);
-		this.updateMemory();
+		return this.updateMemory();
 	}
 
 	public Map<String, Object> getAttributes()
@@ -105,9 +105,9 @@ public class Concept {
 		return false;
 	}
 
-	public boolean memorize()
+	public boolean memorize(String object_class)
 	{
-		return RoboyMind.getInstance().save(this);
+		return this.addAttribute("object_class", object_class);
 	}
 
 	public Object retrieve()
@@ -117,6 +117,10 @@ public class Concept {
 
 	public boolean updateMemory()
 	{
+		if (RoboyMind.getInstance().retrieve(this)==null)
+		{
+			RoboyMind.getInstance().save(this);
+		}
 		return RoboyMind.getInstance().update(this);
 	}
 

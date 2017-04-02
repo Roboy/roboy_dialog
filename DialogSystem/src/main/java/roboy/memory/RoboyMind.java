@@ -98,13 +98,12 @@ public class RoboyMind implements Memory<Concept>
 		return attributes;
 	}
 
-	private ServiceResponse SaveObject(String object_class, String properties, String values)
+	private ServiceResponse SaveObject(String object_class, String properties, String values, int object_id)
 	{
 		Service ShowInstanceSrv = new Service(Ros.getInstance(), "/roboy_mind/save_object", "/roboy_mind/save_object");
-
 		JsonObject params = Json.createObjectBuilder()
 	     .add("class_name", object_class)
-	     .add("id", this.object_id++)
+	     .add("id", object_id)
 	     .add("properties", properties)
 	     .add("values", values)
 	     .build();
@@ -160,8 +159,10 @@ public class RoboyMind implements Memory<Concept>
 		
 		String properties = object.getProperties();
 		String values = object.getValues();
+
+		object.addAttribute("id", this.object_id++);
 		
-		ServiceResponse srvCall = SaveObject(object_class, properties, values);
+		ServiceResponse srvCall = SaveObject(object_class, properties, values, this.object_id++);
 
 		return srvCall.getResult();
 	}
@@ -196,7 +197,7 @@ public class RoboyMind implements Memory<Concept>
 
 	public boolean update(Concept object) // requires having attributes id and class_name
 	{
-		String object_name = object.getAttribute("object_class").toString() + "_" + this.object_id;
+		String object_name = object.getAttribute("object_class").toString() + "_" + object.getAttribute("id");
 		List<Concept> saved_objects = RoboyMind.getInstance().retrieve(object);
 		if (saved_objects.size() == 0)
 		{

@@ -38,8 +38,9 @@ public class QuestionAskingState extends AbstractBooleanState
 		this.top = this;
 		this.questions = questions;
 		this.objectOfFocus = new Concept();
-		this.objectOfFocus.addAttribute("object_class", "Person");
-	
+		this.objectOfFocus.memorize("Person");
+//		this.objectOfFocus.addAttribute("object_class", "Person");
+
 	}
 
 	@Override
