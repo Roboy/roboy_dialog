@@ -21,7 +21,7 @@ import roboy.util.Lists;
 
 public class SmallTalkPersonality implements Personality {
 
-    private String name = "John";
+    private String name;
 
     private static final List<String> positive =
             Arrays.asList("enthusiastic", "awesome", "great", "very good",
