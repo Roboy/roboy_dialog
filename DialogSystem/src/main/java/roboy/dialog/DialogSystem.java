@@ -72,7 +72,7 @@ public class DialogSystem {
 //		OutputDevice output = new CerevoiceOutput(ros);
 		// OutputDevice output = new BingOutput();
 		OutputDevice output = new CommandLineOutput();
-		EmotionOutput emotion = new EmotionOutput(Ros.getInstance());
+		EmotionOutput emotion = new EmotionOutput();
 		OutputDevice multiOut = new MultiOutputDevice(output,emotion);
 		
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
@@ -85,7 +85,7 @@ public class DialogSystem {
 		
 		System.out.println("Initialized...");
 
-        Vision vision = new Vision(Ros.getInstance());
+        Vision vision = new Vision();
 
         while(true) {
 
