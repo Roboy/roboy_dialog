@@ -7,6 +7,14 @@ import roboy.dialog.personality.states.Reaction;
 
 public class Maps {
 
+	public static Map<String,String> stringMap(String... elements){
+		Map<String, String> result = new HashMap<>();
+		for(int i=0; i<elements.length; i+=2){
+			result.put(elements[i],elements[i+1]);
+		}
+		return result;
+	}
+	
 	public static Map<String,Object> stringObjectMap(Object... elements){
 		Map<String, Object> result = new HashMap<>();
 		for(int i=0; i<elements.length; i+=2){

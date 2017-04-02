@@ -24,11 +24,13 @@ public class SegueState implements State{
 	private static final Map<SENTENCE_TYPE, Reaction> sentenceTypeAssociations = new HashMap<>();
 	
 	private State inner;
+	private State top;
 //	private List<State> possibilities;
 	private Map<String,String> redditTIL;
 	
 	public SegueState(State inner){ // , List<State> possibilities
 		this.inner = inner;
+		this.top = this;
 //		this.possibilities = possibilities;
 		redditTIL = new HashMap<>();
 		ClassLoader cl = this.getClass().getClassLoader();
@@ -50,6 +52,10 @@ public class SegueState implements State{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void setTop(State top){
+		this.top = top;
 	}
 
 	@Override
@@ -79,7 +85,7 @@ public class SegueState implements State{
 				String base = e.getEntity().getForm("base");
 				if(redditTIL.containsKey(base)){
 					String anecdote = redditTIL.get(base);
-					return new Reaction(new AnecdoteState(this, anecdote),
+					return new Reaction(new AnecdoteState(top, anecdote),
 							Lists.interpretationList(new Interpretation(SENTENCE_TYPE.SEGUE, 
 									Maps.stringObjectMap(Linguistics.ASSOCIATION,base))));
 				}

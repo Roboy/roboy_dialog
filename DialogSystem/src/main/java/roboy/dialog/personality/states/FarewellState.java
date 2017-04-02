@@ -10,7 +10,7 @@ public class FarewellState implements State{
 
 	@Override
 	public List<Interpretation> act() {
-		return Lists.interpretationList(new Interpretation(SENTENCE_TYPE.FAREWELL)); //(new ShutDownAction(Lists.actionList()));
+		return Lists.interpretationList(new Interpretation(SENTENCE_TYPE.FAREWELL));
 	}
 
 	@Override

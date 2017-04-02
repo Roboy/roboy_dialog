@@ -1,6 +1,6 @@
 package roboy.io;
 
-import edu.wpi.rail.jrosbridge.Ros;
+import roboy.util.Ros;
 import edu.wpi.rail.jrosbridge.Service;
 import edu.wpi.rail.jrosbridge.services.ServiceRequest;
 import edu.wpi.rail.jrosbridge.services.ServiceResponse;
@@ -8,18 +8,11 @@ import org.json.*;
 
 public class BingInput implements InputDevice 
 {
-	private Ros ros;
-	
-	public BingInput()
-	{
-		ros = new Ros("localhost");
-	    ros.connect();
-	    System.out.println("ROS bridge is set up");	
-	}
+
 	@Override
-	public String listen() throws InterruptedException 
+	public Input listen() throws InterruptedException 
 	{
-	    Service BingSTT = new Service(ros, "TextSpoken", "TextSpoken");
+	    Service BingSTT = new Service(Ros.getInstance(), "TextSpoken", "TextSpoken");
 	    ServiceRequest request = new ServiceRequest("{}");
 //	    ServiceRequest request = new ServiceRequest("{\"text\": \"eat a dick java!\"}");
 	    System.out.println("Sending TTS request");	
@@ -31,7 +24,7 @@ public class BingInput implements InputDevice
 	    String text = obj.getString("text");
 	    
 	    System.out.println(text);
-		return text;
+		return new Input(text);
 	}
 	
 }
