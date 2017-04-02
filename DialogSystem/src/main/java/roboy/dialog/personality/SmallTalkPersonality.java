@@ -81,17 +81,14 @@ public class SmallTalkPersonality implements Personality{
 		answer.setTop(celeb);
 		segue.setTop(celeb);
 		
-		greetings.setSuccess(intro);
-		greetings.setFailure(intro);
-		intro.setSuccess(ask);
-		intro.setFailure(ask);
+		greetings.setNextState(intro);
+		intro.setNextState(ask);
 		ask.setSuccess(answer);
 		ask.setFailure(ask);
-		inquiry.setSuccess(celeb);
-		inquiry.setFailure(celeb);
+		inquiry.setNextState(celeb);
 		generative.setSuccess(farewell);
 		generative.setFailure(celeb);
-		
+
 		state = greetings;
 	}
 	
