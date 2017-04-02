@@ -27,11 +27,11 @@ public class Lexicon
 	}
 
 
-	public List<LexiconLiteral> getLiterals(String question, int limit, int topN, int choiceOfQuestion)
+	public List<LexiconLiteral> getLiterals(String question, int limit, int topN, String choiceOfQuestion)
 			throws Exception
 	{
-		String questionClass = "Person";
-
+		//String questionClass = "Place";
+		String questionClass = choiceOfQuestion;
 		List<LexiconLiteral> interLiteralList = new ArrayList<LexiconLiteral>();
 		permutationList = new ArrayList<String>();
 		permutationList.add(question);
@@ -157,12 +157,12 @@ public class Lexicon
 			// adding typeOfOwner to the finally short listed literalList
 			literalList = addTypeOfOwner(literalList);
 			literalFilled = true;
-			long endTime = System.currentTimeMillis();
-			for (LexiconLiteral lexiconLiteral : literalList)
-			{
-				System.out.println("Literal: " + lexiconLiteral.URI + " SCore: " + lexiconLiteral.score);
-				
-			}
+//			long endTime = System.currentTimeMillis();
+//			for (LexiconLiteral lexiconLiteral : literalList)
+//			{
+//				System.out.println("Literal: " + lexiconLiteral.URI + " SCore: " + lexiconLiteral.score);
+//				
+//			}
 			return literalList;
 		}
 	}

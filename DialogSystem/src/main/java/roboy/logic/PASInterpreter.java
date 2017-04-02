@@ -34,7 +34,18 @@ public class PASInterpreter {
 					"where-work","careerStation",
 					"high","elevation",
 					"tall","elevation",
-					"how many people-live","populationTotal"
+					"how many people-live","populationTotal",
+					"national anthem","nationalAnthem",
+					"capital","capital",
+					"official language","officialLanguage",
+					"demonym","demonym",
+					"residence","residence",
+					"currency","currency",
+					"occupation", "occupation",
+					"spouse","spouse",
+					"wife","spouse",
+					"husband","spouse",
+					"alma mater","almaMater"
 					);
 	
 	public static Relation pas2DBpediaRelation(Map<String,Object> pas){
