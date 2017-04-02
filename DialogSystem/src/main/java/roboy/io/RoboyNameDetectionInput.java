@@ -12,6 +12,8 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Line;
 import javax.sound.sampled.Mixer;
 import javax.sound.sampled.TargetDataLine;
+
+import net.beadsproject.beads.core.io.JavaSoundAudioIO;
 //----
 
 public class RoboyNameDetectionInput implements InputDevice{
