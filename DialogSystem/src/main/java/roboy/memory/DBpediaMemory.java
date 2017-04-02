@@ -4,14 +4,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
-
+import java.util.Map;
 
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.*;
 
+import opennlp.tools.util.HashList;
 import roboy.memory.LexiconLiteral;
 import roboy.util.Concept;
 import roboy.util.Lists;
+import roboy.util.Maps;
 import roboy.util.Relation;
 
 public class DBpediaMemory implements Memory<Relation>{
@@ -32,36 +34,75 @@ public class DBpediaMemory implements Memory<Relation>{
 		return false;
 	}
 
-	private static final List<String> supportedRelations = Lists.stringList(
-			"areaCode",
-			"birthDate",
-			"birthPlace",
-			"birthYear",
-			"deathDate",
-			"deathPlace",
-			"deathYear",
-			"elevation",
-			"family",
-			"genre",
-			"kingdom",
-			"location",
-			"order",
-			"populationTotal",
-			"postalCode",
-			"birthDate",
-			"deathDate",
-			"birthPlace",
-			"deathPlace",
-			"careerStation",
-			"elevation",
-			"elevation",
-			"populationTotal");
+//	private static final List<String> supportedRelations = Lists.stringList(
+//			"areaCode",
+//			"birthDate",
+//			"birthPlace",
+//			"birthYear",
+//			"deathDate",
+//			"deathPlace",
+//			"deathYear",
+//			"elevation",
+//			"family",
+//			"genre",
+//			"kingdom",
+//			"location",
+//			"order",
+//			"populationTotal",
+//			"postalCode",
+//			"birthDate",
+//			"deathDate",
+//			"birthPlace",
+//			"deathPlace",
+//			"careerStation",
+//			"elevation",
+//			"elevation",
+//			"populationTotal");
+private static final Map<String, String> supportedRelations = Maps.stringMap(
+	 "areaCode","Place" ,
+	 "birthDate","Person" ,
+	 "birthPlace","Person" ,
+	 "birthYear","Person" ,
+	 "deathDate","Person" ,
+	 "deathPlace","Person" ,
+	 "deathYear","Person" ,
+	 "elevation","Place" ,
+	 "family","Person" ,
+	 "genre","Thing" ,
+	 "kingdom","Place" ,
+	 "location","Place" ,
+	 "order","Species" ,
+	 "populationTotal","Place" ,
+	 "postalCode","Place" ,
+	 "birthDate","Person" ,
+	 "deathDate","Person" ,
+	 "birthPlace","Person" ,
+	 "deathPlace","Person" ,
+	 "careerStation","Person" ,
+	 	"elevation","Place" ,
+	 "elevation","Place" ,
+	 "populationTotal","Place",
+	"nationalAnthem","Place",
+		"capital","Place",
+		"officialLanguage","Place",
+		"demonym","Place",
+		"residence","Place",
+		"currency","Place",
+		 "occupation","Person",
+		"spouse","Person",
+		"almaMater","Person"
+		);
+	
 
+
+private Map<String,String> forms;
 	
 	@Override
 	public List<Relation> retrieve(Relation object) throws InterruptedException, IOException {
 		LinkedHashSet<String> queries;
 		List<Relation> result = new ArrayList();
+		if(object == null)
+			return null;
 		List<String> answersFinal = new ArrayList<String>();
 		String objectToReturn = "";
 		try {
@@ -80,16 +121,30 @@ public class DBpediaMemory implements Memory<Relation>{
 					{
 						QuerySolution answer = answersList.nextSolution();
 						RDFNode ans = answer.get("x");
+						String answerStr = ans.toString();
 						RDFNode label = answer.get("label");
-						if(label != null)
-							objectToReturn = label.toString();
+						
+							
 						if ( ans != null )
 						{
+							if(label != null)
+								answerStr = label.toString();
 							if ( i < numberOfAnswersToSend )
 							{						
-								answersFinal.add(ans.toString());
-								result.add(new Relation(object.subject,object.predicate,new Concept(objectToReturn)));
-								//System.out.println("Answer:"+object.subject.getValues()+":"+ans.toString());
+								answersFinal.add(answerStr);
+								if ( answerStr.matches(".*@.*") )
+								{
+									answerStr = answerStr.substring(0, answerStr.length() - 3);
+									if ( answerStr.matches("\\(.*\\)") || answerStr.matches("\\(.*\\)") )
+									{
+										answerStr = answerStr.replace("\\(.*\\)", " ");
+										answerStr = answerStr.replace("  ", " ");
+										answerStr = answerStr.trim();
+									}
+								}
+								
+								result.add(new Relation(object.subject,object.predicate,new Concept(answerStr)));
+								//System.out.println("Answer:"+object.subject.getValues()+":"+answerStr);
 								i++;
 							}		
 						}
@@ -104,7 +159,7 @@ public class DBpediaMemory implements Memory<Relation>{
 			e1.printStackTrace();
 		}
 
-		if(object!=null&&supportedRelations.contains(object.predicate)){
+		if(object!=null&&supportedRelations.containsKey(object.predicate)){
 			return result;
 		}
 		result.add(new Relation(object.subject,object.predicate,new Concept("")));
@@ -113,9 +168,10 @@ public class DBpediaMemory implements Memory<Relation>{
 	
 
 	public static LinkedHashSet<String> buildQueries(Relation object) throws Exception{
+		
 		LinkedHashSet<String> queries = new LinkedHashSet<String>();
 		Lexicon lexicon = new Lexicon();
-		List<LexiconLiteral> literalList = lexicon.getLiterals(object.subject.getValues(), 10, 5, 1);
+		List<LexiconLiteral> literalList = lexicon.getLiterals(object.subject.getValues(), 10, 5, supportedRelations.get(object.predicate));
 		String predicate = object.predicate;
 		List<String> predicateList = new ArrayList<String>();
 		predicateList.add("http://dbpedia.org/ontology/"+predicate);

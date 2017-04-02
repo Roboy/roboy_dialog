@@ -64,17 +64,24 @@ public class DialogSystem {
 
 		
 		InputDevice input = new CommandLineInput();
-		// InputDevice input = new BingInput();
+		// InputDevice input = new BingInput(rosbridge());
 		InputDevice celebInput = new CelebritySimilarityInput();
 		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
 		InputDevice multiIn = new MultiInputDevice(input, celebInput, roboyDetectInput);
 		
-		//OutputDevice output = new CerevoiceOutput();
+//		OutputDevice output = new CerevoiceOutput(ros);
 		// OutputDevice output = new BingOutput();
 		OutputDevice output = new CommandLineOutput();
 		EmotionOutput emotion = new EmotionOutput();
 		OutputDevice multiOut = new MultiOutputDevice(output,emotion);
 		
+<<<<<<< HEAD
+		InputDevice input = new CommandLineInput();
+		// InputDevice input = new BingInput();
+		OutputDevice output = new CerevoiceOutput();
+		// OutputDevice output = new BingOutput();
+=======
+>>>>>>> cb88929b4d6dabd5763fd231d1fdd905ceac6783
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new SimpleTokenizer());
 		analyzers.add(new OpenNLPPPOSTagger());
