@@ -25,14 +25,13 @@ public class RoboyMind implements Memory<Concept>
 	private int object_id = -1;
 	private RoboyMind()
 	{
-		roboyMemory = new RoboyMind();
 	}
 
 	public static RoboyMind getInstance()
 	{
 		if (roboyMemory == null)
 		{
-			new RoboyMind();
+			roboyMemory =  new RoboyMind();
 		}
 		return roboyMemory;
 	}
@@ -158,7 +157,6 @@ public class RoboyMind implements Memory<Concept>
 
 		//create an object
 		String object_class = object.getAttributes().get("class_name").toString();
-		int object_id = (int) object.getAttributes().get("id");
 		
 		String properties = object.getProperties();
 		String values = object.getValues();
@@ -198,8 +196,8 @@ public class RoboyMind implements Memory<Concept>
 
 	public boolean update(Concept object) // requires having attributes id and class_name
 	{
-		String object_name = object.getAttribute("object_class").toString() + "_" + object.getAttribute("id").toString();
-		List<Concept> saved_objects = roboyMemory.retrieve(object);
+		String object_name = object.getAttribute("object_class").toString() + "_" + this.object_id;
+		List<Concept> saved_objects = RoboyMind.getInstance().retrieve(object);
 		if (saved_objects.size() == 0)
 		{
 			System.out.println("Cannot update properties. Memory does not contains the requested object yet.");

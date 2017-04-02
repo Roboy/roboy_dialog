@@ -17,7 +17,6 @@ public class Concept {
 	public Concept()
 	{
 		this.attributes = new HashMap<String, Object>();
-		this.memorize();
 	}
 
 	public Concept(Map<String, Object> attrs)
@@ -26,14 +25,6 @@ public class Concept {
 		this.addAttributes(attrs);
 		this.memorize();
 	}
-
-	// public Concept(JsonObject _attributes)
-	// {
-	// 	for (_attributes: attribute) 
-	// 	{
-	// 	    System.out.println(jsonValue);
-	// 	}
-	// }
 	
 	public Concept(String name){
 		this();

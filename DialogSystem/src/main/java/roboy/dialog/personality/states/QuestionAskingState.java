@@ -38,7 +38,7 @@ public class QuestionAskingState extends AbstractBooleanState
 		this.top = this;
 		this.questions = questions;
 		this.objectOfFocus = new Concept();
-		objectOfFocus.addAttribute("object_class", "Person");
+		this.objectOfFocus.addAttribute("object_class", "Person");
 	
 	}
 
@@ -68,45 +68,28 @@ public class QuestionAskingState extends AbstractBooleanState
 	public Reaction react(Interpretation input) 
 	{
 
-		// interpret the answer
-
-		// add to memory what was understood
-		Triple triple = (Triple) input.getFeatures().get(Linguistics.TRIPLE);
-		
-		objectOfFocus.addAttribute(this.currentIntention, triple.patiens);
-
-
-		// check if RoboyMind contains any information on the extracted attributes
-		// list people with the same attributes
-		// check if DBpedia has any info on the attribute
-		// say the fact from DBpedia
-		// send to question answering state if couldn't answer
 		String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
 		if("".equals(sentence))
 		{
 			return new Reaction(this,Lists.interpretationList()); // new Interpretation(SENTENCE_TYPE.GREETING)
 		}
+
+		// add to memory what was understood
+		Triple triple = (Triple) input.getFeatures().get(Linguistics.TRIPLE);
+
+		if (triple.patiens!=null)
+		{
+			objectOfFocus.addAttribute(this.currentIntention, triple.patiens);
+		}
+
 		return super.react(input);
+
 	}
 	
 	@Override
 	protected boolean determineSuccess(Interpretation input) {
-		int questionsAsked = 0;
-		List<String> intents = new ArrayList (this.questions.keySet());
-		for (String intent: intents)
-		{
-			if (objectOfFocus.getProperties().contains(intent))
-			{
-				questionsAsked++;
-			}
-		}
-		System.out.println(objectOfFocus.getProperties());
-		System.out.println(objectOfFocus.getValues());
-		if (questionsAsked>=3)
-		{
-			return true;
-		}
-		return false;
+		String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
+		return ("".equals(sentence))?false:true;
 	}
 
 	@SuppressWarnings("unchecked")
