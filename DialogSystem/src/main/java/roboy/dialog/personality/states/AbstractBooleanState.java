@@ -1,5 +1,7 @@
 package roboy.dialog.personality.states;
 
+import roboy.dialog.action.FaceAction;
+import roboy.io.EmotionOutput;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.StatementInterpreter;
@@ -45,6 +47,12 @@ public abstract class AbstractBooleanState implements State {
         if (StatementInterpreter.isFromList(sentence, Verbalizer.farewells)) {
             //if found stop conversation
             return new Reaction(new FarewellState());
+        }
+
+        //check for profanity words
+        if(sentence.contains("profanity")) {
+            EmotionOutput emotion = new EmotionOutput();
+            emotion.act(new FaceAction("angry"));
         }
 
         boolean successful = determineSuccess(input);
