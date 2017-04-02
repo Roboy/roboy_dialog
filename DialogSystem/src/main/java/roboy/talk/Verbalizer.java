@@ -3,13 +3,15 @@ package roboy.talk;
 import java.util.Arrays;
 import java.util.List;
 
+import roboy.dialog.action.Action;
+import roboy.dialog.action.ShutDownAction;
 import roboy.dialog.action.SpeechAction;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 
 public class Verbalizer {
 	
-	public SpeechAction verbalize(Interpretation interpretation){
+	public Action verbalize(Interpretation interpretation){
 		switch(interpretation.getSentenceType()){
 		case GREETING: return greet(interpretation);
 		case FAREWELL: return farewell(interpretation);
@@ -26,12 +28,12 @@ public class Verbalizer {
 		return new SpeechAction(StatementBuilder.random(greetings));
 	}
 	
-	private static final List<String> farewells = 
+	public static final List<String> farewells =
 			Arrays.asList("ciao","goodbye","cheerio","bye","see you",
 					"farewell","bye-bye");
 	
-	private SpeechAction farewell(Interpretation interpretation){
-		return new SpeechAction(StatementBuilder.random(farewells));
+	private ShutDownAction farewell(Interpretation interpretation){
+		return new ShutDownAction(Arrays.<Action>asList(new SpeechAction(StatementBuilder.random(farewells))));
 	}
 	
 	private static final List<String> segues = 
