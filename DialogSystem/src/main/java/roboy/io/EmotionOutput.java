@@ -5,22 +5,16 @@ import java.util.List;
 import javax.json.Json;
 import javax.json.JsonObject;
 
-import edu.wpi.rail.jrosbridge.Ros;
 import edu.wpi.rail.jrosbridge.Service;
 import edu.wpi.rail.jrosbridge.services.ServiceRequest;
 import edu.wpi.rail.jrosbridge.services.ServiceResponse;
 
 import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
+import roboy.util.Ros;
 
 public class EmotionOutput implements OutputDevice 
 {
-	private Ros ros;
-	
-	public EmotionOutput(Ros ros_)
-	{
-		this.ros = ros_;
-	}
 	
 	@Override
 	public void act(List<Action> actions) {
@@ -39,7 +33,7 @@ public class EmotionOutput implements OutputDevice
 	
 	private void ChangeFaceState(FaceAction action)
 	{
-	    Service FaceState = new Service(ros, "/roboy_face/change_state", "/roboy_face/change_state");
+	    Service FaceState = new Service(Ros.getInstance(), "/roboy_face/change_state", "/roboy_face/change_state");
 	    
 	    JsonObject params = Json.createObjectBuilder()
 	     .add("action", action.getState())

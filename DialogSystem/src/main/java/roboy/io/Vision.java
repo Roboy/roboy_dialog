@@ -7,7 +7,6 @@ import java.util.HashMap;
 import javax.json.Json;
 import javax.json.JsonObject;
 
-import edu.wpi.rail.jrosbridge.Ros;
 import edu.wpi.rail.jrosbridge.Service;
 import edu.wpi.rail.jrosbridge.services.ServiceRequest;
 import edu.wpi.rail.jrosbridge.services.ServiceResponse;
@@ -17,10 +16,11 @@ import edu.wpi.rail.jrosbridge.Topic;
 
 import roboy.util.Concept;
 import roboy.util.Relation;
+import roboy.util.Ros;
 
 public class Vision 
 {
-	private Ros ros;
+
 
 	private class VisionCallback implements TopicCallback {
 
@@ -46,14 +46,10 @@ public class Vision
 	}
 
 
-	public Vision(Ros ros_)
-	{
-		this.ros = ros_;
-	}
 
 	public String recognize()
 	{
-		Service Recognize = new Service(ros, "/roboy_vision/recognize", "/roboy_face/recognize");
+		Service Recognize = new Service(Ros.getInstance(), "/roboy_vision/recognize", "/roboy_face/recognize");
 
 		JsonObject params = Json.createObjectBuilder()
 	     .add("object_id", 0) //TODO send actual id

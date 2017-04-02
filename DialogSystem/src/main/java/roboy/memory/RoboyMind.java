@@ -14,27 +14,20 @@ import javax.json.JsonArray;
 import javax.json.JsonValue;
 import javax.json.JsonReader;
 
-import edu.wpi.rail.jrosbridge.Ros;
 import edu.wpi.rail.jrosbridge.Service;
 import edu.wpi.rail.jrosbridge.services.ServiceRequest;
 import edu.wpi.rail.jrosbridge.services.ServiceResponse;
 
 import roboy.util.Concept;
 import roboy.util.Relation;
+import roboy.util.Ros;
 
 public class RoboyMind implements Memory<Concept>
 {
 
-	private Ros ros;
-
-    public RoboyMind(Ros ros_)
-	{
-		this.ros = ros_;
-	}
-
 	private ServiceResponse CreateInstance(String object_class, int object_id)
 	{
-		Service CreateInstanceSrv = new Service(this.ros, "/roboy_mind/create_instance", "/roboy_mind/create_instance");
+		Service CreateInstanceSrv = new Service(Ros.getInstance(), "/roboy_mind/create_instance", "/roboy_mind/create_instance");
 		String params = "{\"object_class\": " + "\"" + object_class + "\", \"id\": " +  object_id + "}";
 		ServiceRequest request = new ServiceRequest(params);
 		ServiceResponse response = CreateInstanceSrv.callServiceAndWait(request);
@@ -43,7 +36,7 @@ public class RoboyMind implements Memory<Concept>
 
 	private ServiceResponse AssertProperty(String object, String property, Object instance, boolean data)
 	{
-		Service AssertPropertySrv = new Service(this.ros, "/roboy_mind/assert_property", "/roboy_mind/assert_property");
+		Service AssertPropertySrv = new Service(Ros.getInstance(), "/roboy_mind/assert_property", "/roboy_mind/assert_property");
 		String params = "{\"object\": " + "\"" + object + "\", \"property\": \"" +  property + "\", \"instance\": \"" + String.valueOf(instance) + "\", \"data\": " + String.valueOf(data) + "}";
 		ServiceRequest request = new ServiceRequest(params);
 		ServiceResponse response = AssertPropertySrv.callServiceAndWait(request);
@@ -52,7 +45,7 @@ public class RoboyMind implements Memory<Concept>
 
 	private ServiceResponse FindInstances(String property, String value)
 	{
-		Service FindInstancesSrv = new Service(this.ros, "/roboy_mind/find_instances", "/roboy_mind/find_instances");
+		Service FindInstancesSrv = new Service(Ros.getInstance(), "/roboy_mind/find_instances", "/roboy_mind/find_instances");
 		
 		JsonObject params = Json.createObjectBuilder()
 	     .add("property", property)
@@ -67,7 +60,7 @@ public class RoboyMind implements Memory<Concept>
 
 	private JsonObject ListAttributes(String object)
 	{
-		Service ShowInstanceSrv = new Service(ros, "/roboy_mind/show_property", "/roboy_mind/show_property");
+		Service ShowInstanceSrv = new Service(Ros.getInstance(), "/roboy_mind/show_property", "/roboy_mind/show_property");
 
 		JsonObject params = Json.createObjectBuilder()
 	     .add("object", object.replace("\"", ""))
@@ -89,7 +82,7 @@ public class RoboyMind implements Memory<Concept>
 
 	private ServiceResponse SaveObject(String object_class, int object_id, String properties, String values)
 	{
-		Service ShowInstanceSrv = new Service(ros, "/roboy_mind/save_object", "/roboy_mind/save_object");
+		Service ShowInstanceSrv = new Service(Ros.getInstance(), "/roboy_mind/save_object", "/roboy_mind/save_object");
 
 		JsonObject params = Json.createObjectBuilder()
 	     .add("class_name", object_class)
@@ -107,7 +100,7 @@ public class RoboyMind implements Memory<Concept>
 
 	private Concept GetObject(String properties, String values)
 	{
-		Service ShowInstanceSrv = new Service(ros, "/roboy_mind/get_object", "/roboy_mind/get_object");
+		Service ShowInstanceSrv = new Service(Ros.getInstance(), "/roboy_mind/get_object", "/roboy_mind/get_object");
 
 		JsonObject params = Json.createObjectBuilder()
 	     .add("properties", properties)
@@ -132,7 +125,7 @@ public class RoboyMind implements Memory<Concept>
 
 	private ServiceResponse ShowInstance(String object_class)
 	{
-		Service ShowInstanceSrv = new Service(ros, "/roboy_mind/show_instances", "/roboy_mind/show_instances");
+		Service ShowInstanceSrv = new Service(Ros.getInstance(), "/roboy_mind/show_instances", "/roboy_mind/show_instances");
 		String params = "{\"object_class\": " + "\"" + object_class + "\"}";
 		ServiceRequest request = new ServiceRequest(params);
 		ServiceResponse response = ShowInstanceSrv.callServiceAndWait(request);
