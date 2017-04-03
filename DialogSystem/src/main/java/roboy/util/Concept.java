@@ -123,7 +123,12 @@ public class Concept {
 		return RoboyMind.getInstance().update(this);
 	}
 
+	public int getID()
+	{
+		return Integer.parseInt(this.getAttribute("id").toString().replace("\"", ""));
+	}
+
 	// TODO getClass
-	// TODO getID
+
 
 }

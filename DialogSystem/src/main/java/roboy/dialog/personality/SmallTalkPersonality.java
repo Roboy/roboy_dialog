@@ -74,8 +74,6 @@ public class SmallTalkPersonality implements Personality {
         greetings.setNextState(intro);
         intro.setNextState(ask);
 
-        ask.setSuccess(wild);
-        ask.setFailure(converse);
         converse.setFailure(idle);
         converse.setSuccess(ask);
         wild.setSuccess(wild);

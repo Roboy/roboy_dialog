@@ -1,5 +1,6 @@
 package roboy.memory;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ public class RoboyMind implements Memory<Concept>
 		return response;
 	}
 
-	private boolean AssertProperty(String object, String property, String value, boolean data)
+	private boolean AssertProperty(String object, String property, String value)
 	{
 		Service AssertPropertySrv = new Service(Ros.getInstance(), "/roboy_mind/assert_property", "/roboy_mind/assert_property");
 
@@ -52,16 +53,15 @@ public class RoboyMind implements Memory<Concept>
 				.add("object", object.replace("\"", ""))
 				.add("property", property)
 				.add("instance", value)
-				.add("data", String.valueOf(data))
 				.build();
 
 //		String params = "{\"object\": " + "\"" + object + "\", \"property\": \"" +  property + "\", \"instance\": \"" + String.valueOf(instance) + "\", \"data\": " + String.valueOf(data) + "}";
 		ServiceRequest request = new ServiceRequest(params);
-		boolean response = AssertPropertySrv.callServiceAndWait(request).toJsonObject().getBoolean("success");
-		return response;
+//		ServiceResponse response = AssertPropertySrv.callServiceAndWait(request);
+		return AssertPropertySrv.callServiceAndWait(request).getResult();
 	}
 
-	private ServiceResponse FindInstances(String property, String value)
+	private List<Concept> FindInstances(String property, String value)
 	{
 		Service FindInstancesSrv = new Service(Ros.getInstance(), "/roboy_mind/find_instances", "/roboy_mind/find_instances");
 		
@@ -71,9 +71,24 @@ public class RoboyMind implements Memory<Concept>
 	     .build();
 
 		ServiceRequest request = new ServiceRequest(params);
-		ServiceResponse response = FindInstancesSrv.callServiceAndWait(request);
-		// System.out.println(response.toString());
-		return response;
+		JsonArray response = FindInstancesSrv.callServiceAndWait(request).toJsonObject().getJsonArray("instances");
+
+		List<Concept> result = new ArrayList();
+
+		// get these objects' attributes
+		for (JsonValue i: response)
+		{
+			JsonObject attributes = ListAttributes(i.toString());
+			Concept instance = new Concept();
+
+			for (Map.Entry<String, JsonValue> entry : attributes.entrySet()) {
+				instance.addAttribute(entry.getKey(), entry.getValue());
+			}
+
+			result.add(instance);
+
+		}
+		return result;
 	}
 
 	private JsonObject ListAttributes(String object)
@@ -182,23 +197,7 @@ public class RoboyMind implements Memory<Concept>
 		String properties = "id";
 		String values = object.getAttribute("id").toString();
 
-		JsonArray instances = FindInstances(properties, values).toJsonObject().getJsonArray("instances");
-		
-		List<Concept> result = new ArrayList();
-
-		// get these objects' attributes
-		for (JsonValue i: instances)
-		{
-			JsonObject attributes = ListAttributes(i.toString());
-			Concept instance = new Concept();
-
-			for (Map.Entry<String, JsonValue> entry : attributes.entrySet())
-			{
-			    instance.addAttribute(entry.getKey(), entry.getValue());
-			}
-
-			result.add(instance);
-		}
+		List<Concept> result = FindInstances(properties, values);
 		
 		return result;
 	}
@@ -224,13 +223,13 @@ public class RoboyMind implements Memory<Concept>
 			int numOfPropsUpdated = 0;
 			for (int i=0; i<propertiesToUpdate.length; i++)
 			{
-				boolean updated = AssertProperty(object_name, propertiesToUpdate[i], valuesToUpdate[i], false);
+				boolean updated = AssertProperty(object_name, propertiesToUpdate[i], valuesToUpdate[i]);
 				if (updated)
 				{
 					numOfPropsUpdated++;
 				}
 
-				if (i==propertiesToUpdate.length && numOfPropsUpdated==propertiesToUpdate.length)
+				if (i+1==propertiesToUpdate.length && numOfPropsUpdated==propertiesToUpdate.length)
 				{
 					return true;
 				}
@@ -239,6 +238,27 @@ public class RoboyMind implements Memory<Concept>
 			return false;
 		}
 
+	}
+
+	public Map<String,List<Concept>> match (Concept object)
+	{
+		Map<String,List<Concept>> result = new HashMap<>();
+
+		for (Map.Entry<String, Object> attribute: object.getAttributes().entrySet())
+		{
+			if (!attribute.getKey().equals("id") && !attribute.getKey().equals("class_name"))
+			{
+				List<Concept> matches = FindInstances(attribute.getKey(), attribute.getValue().toString());
+
+				if (!matches.isEmpty())
+				{
+					result.put(attribute.getKey(),matches);
+				}
+			}
+
+		}
+
+		return result;
 	}
 	
 }

@@ -5,11 +5,13 @@ import java.util.*;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.memory.PersistentKnowledge;
+import roboy.memory.RoboyMind;
 import roboy.util.Lists;
 import roboy.util.Concept;
 
 
-public class QuestionAskingState extends AbstractBooleanState
+public class QuestionAskingState implements State
 {
 
 //	private boolean first = true;
@@ -92,17 +94,102 @@ public class QuestionAskingState extends AbstractBooleanState
 			objectOfFocus.addAttribute(this.currentIntent, triple.patiens);
 			objectOfFocus.updateInMemory();
 		}
-		HashMap<String,Object> features = new HashMap<>();
-		features.put("intent", currentIntent);
-		return super.react(new Interpretation(sentence, features));
+		// call DBpedia or memory (about himself or person) and put the answers to input
+		List<Interpretation> comments = checkOwnMemory(input);
+		if (!comments.isEmpty())
+		{
+			return new Reaction(determineNextState(input), comments);
+		}
+		comments.add(checkRoboyMind());
+		comments.add(checkDBpedia(input));
+		return new Reaction(determineNextState(input), comments);
 
 	}
-	
-	@Override
-	protected boolean determineSuccess(Interpretation input)
+
+	protected State determineNextState(Interpretation input)
 	{
-		// all questions are asked
-		return TOASK==questionsCount;
+		String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
+
+		if (TOASK==questionsCount)
+		{
+			return new WildTalkState();
+		}
+		else if (sentence.isEmpty())
+		{
+			return new IdleState();
+		}
+		return this;
+
 	}
+
+	private Interpretation checkRoboyMind()
+	{
+		Map<String, List<Concept>> matches = RoboyMind.getInstance().match(objectOfFocus);
+
+		if (!matches.isEmpty() && matches.containsKey(currentIntent))
+		{
+			return new Interpretation("I know " + matches.get(currentIntent).size() + " people with the same " + currentIntent);
+		}
+
+		return new Interpretation("");
+	}
+
+	private Interpretation checkDBpedia(Interpretation input)
+	{
+		return new Interpretation("fun fact from DBpedia");
+	}
+
+	private List<Interpretation> checkOwnMemory(Interpretation input)
+	{
+		Triple triple = (Triple) input.getFeatures().get(Linguistics.TRIPLE);
+
+		// reverse you <-> I
+		if(triple.agens!=null && "you".equals(triple.agens.toLowerCase())) triple.agens = "i";
+		if(triple.patiens!=null && "you".equals(triple.patiens.toLowerCase())) triple.patiens = "i";
+		if(triple.predicate!=null && "are".equals(triple.predicate.toLowerCase())) triple.predicate = "am";
+
+		//TODO remove this ugly parsing!
+		List<Interpretation> result = new ArrayList<>();
+		if(input.getSentenceType() == Linguistics.SENTENCE_TYPE.DOES_IT || input.getSentenceType() == Linguistics.SENTENCE_TYPE.IS_IT){
+			List<Triple> t = PersistentKnowledge.getInstance().retrieve(new Triple(triple.predicate, triple.agens, null));
+			if(!t.isEmpty()){
+				result.add(new Interpretation("Yes. "));
+				for(int i=0; i<t.size(); i++){
+					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
+					result.add(new Interpretation(prefix+t.get(i).agens+" "+t.get(i).predicate+" "+t.get(i).patiens));
+				}
+			}
+		} else if(input.getSentenceType() == Linguistics.SENTENCE_TYPE.WHO){
+			List<Triple> t = PersistentKnowledge.getInstance().retrieve(new Triple(triple.predicate, triple.agens, triple.patiens));
+			if(!t.isEmpty()){
+				for(int i=0; i<t.size(); i++){
+					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
+					result.add(new Interpretation(prefix+t.get(i).agens+" "+t.get(i).predicate+" "+t.get(i).patiens));
+				}
+			}
+		} else if(input.getSentenceType() == Linguistics.SENTENCE_TYPE.WHAT){
+			List<Triple> t = PersistentKnowledge.getInstance().retrieve(new Triple(triple.predicate, triple.agens, triple.patiens));
+			if(!t.isEmpty()){
+
+				for(int i=0; i<t.size(); i++){
+					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
+					result.add(new Interpretation(prefix+t.get(i).agens+" "+t.get(i).predicate+" "+t.get(i).patiens));
+				}
+			}
+		} else if(input.getSentenceType() == Linguistics.SENTENCE_TYPE.HOW_DO){
+			List<Triple> t = PersistentKnowledge.getInstance().retrieve(new Triple(triple.predicate, triple.agens, null));
+			if(!t.isEmpty())
+			{
+				for(int i=0; i<t.size(); i++){
+					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
+					result.add(new Interpretation(prefix+t.get(i).agens+" "+t.get(i).predicate+" "+t.get(i).patiens));
+				}
+			}
+		}
+		return result;
+	}
+
+
+
 
 }
