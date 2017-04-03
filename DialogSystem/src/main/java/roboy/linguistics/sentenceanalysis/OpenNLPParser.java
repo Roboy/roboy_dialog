@@ -75,6 +75,7 @@ public class OpenNLPParser implements Analyzer{
 			switch(child.getType()){
 				case "SBARQ":
 				case "SBAR":
+				case "S":
 					result = sbar(child,result);
 					break;
 				default:
@@ -136,6 +137,9 @@ public class OpenNLPParser implements Analyzer{
 					break;
 				case "PP":
 					result.put(SEMANTIC_ROLE.LOCATION, child.toString()); //TODO: check for proper modifiers
+					break;
+				case "VP":
+					result = vp(child,result);
 					break;
 				default:
 					result.put(SEMANTIC_ROLE.PREDICATE, child.toString());

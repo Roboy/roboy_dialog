@@ -32,10 +32,9 @@ public class SmallTalkPersonality implements Personality {
                 "Who are you?");
         List<String> occupationQuestions = Arrays.asList(
                 "What do you do?",
-                "What is you your profession?");
+                "What is your profession?");
         List<String> originQuestions = Arrays.asList(
                 "Where are you from?",
-                "Where do you live?",
                 "Where were you born?",
                 "I have hard time guessing your home country. What is it?",
                 "Which town do you call your home?");
@@ -51,7 +50,7 @@ public class SmallTalkPersonality implements Personality {
                 "What is your favorite TV show?",
                 "Which comedy do you like the most?");
 
-        Map<String, List<String>> questions = new HashMap();
+        Map<String, List<String>> questions = new HashMap<>();
         questions.put("name", nameQuestions);
         questions.put("origin", originQuestions);
         questions.put("hobby", hobbyQuestions);

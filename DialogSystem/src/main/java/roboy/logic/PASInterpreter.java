@@ -35,17 +35,28 @@ public class PASInterpreter {
 					"high","elevation",
 					"tall","elevation",
 					"how many people-live","populationTotal",
-					"national anthem","nationalAnthem",
-					"capital","capital",
-					"official language","officialLanguage",
+					"the national anthem","nationalAnthem",
+					"the anthem","nationalAnthem",
+					"the capital","capital",
+					"the official language","officialLanguage",
 					"demonym","demonym",
-					"residence","residence",
-					"currency","currency",
-					"occupation", "occupation",
-					"spouse","spouse",
-					"wife","spouse",
-					"husband","spouse",
-					"alma mater","almaMater"
+					"who-live","residence",
+					"who-lives","residence",
+					"who-living","residence",
+					"who-reside","residence",
+					"who-resides","residence",
+					"who-residing","residence",
+					"the currency","currency",
+					"the money","currency",
+					"the occupation", "occupation",
+					"the profession", "occupation",
+					"the vocation", "occupation",
+					"the job", "occupation",
+					"the spouse","spouse",
+					"the partner","spouse",
+					"the wife","spouse",
+					"the husband","spouse",
+					"where-study","almaMater"
 					);
 	
 	public static Relation pas2DBpediaRelation(Map<String,Object> pas){
@@ -61,11 +72,11 @@ public class PASInterpreter {
 				agent != null && 
 				predicate != null &&
 				patient != null &&
-				((String)agent).toLowerCase().startsWith("what") &&
+				( ((String)agent).toLowerCase().startsWith("what") || ((String)agent).toLowerCase().startsWith("who")) &&
 				Linguistics.beMod.contains(((String)predicate).toLowerCase()) &&
 				((String)patient).contains(" of ")
 				){
-			String[] parts = ((String)patient).split("of");
+			String[] parts = ((String)patient).split(" of ");
 			if(dbpediaRelations.containsKey(parts[0].trim())){
 				return new Relation(new Concept(parts[1].trim()),dbpediaRelations.get(parts[0].trim()),null);
 			}
@@ -77,6 +88,14 @@ public class PASInterpreter {
 				dbpediaRelations.containsKey("when-"+predicate)
 				){
 			return new Relation(new Concept((String)patient),dbpediaRelations.get("when-"+predicate),null);
+		} else if(
+				agent != null && 
+				predicate != null &&
+				location != null &&
+				((String)agent).toLowerCase().startsWith("who") &&
+				dbpediaRelations.containsKey("who-"+predicate)
+				){
+			return new Relation(new Concept((String)location),dbpediaRelations.get("who-"+predicate),null);
 		} else if(
 				time != null && 
 				predicate != null &&
