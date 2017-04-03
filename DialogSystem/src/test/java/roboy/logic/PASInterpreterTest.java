@@ -133,5 +133,101 @@ public class PASInterpreterTest {
 		assertNull(relation.object);
 	}
 
+
+	@SuppressWarnings("unchecked")
+	@Test
+	public void testWhatIsNewExamples() {
+		Interpretation interpretation = new Interpretation("What is the capital of Germany");
+		interpretation = parser.analyze(interpretation);
+		Map<String,Object> pas = (Map<String,Object>) interpretation.getFeature(Linguistics.PAS);
+		Relation relation = PASInterpreter.pas2DBpediaRelation(pas);
+		assertNotNull(relation);
+		assertEquals("Germany",relation.subject.getAttribute(Linguistics.NAME));
+		assertEquals("capital",relation.predicate);
+		assertNull(relation.object);
+		
+		interpretation = new Interpretation("What is the official language of Germany");
+		interpretation = parser.analyze(interpretation);
+		pas = (Map<String,Object>) interpretation.getFeature(Linguistics.PAS);
+		relation = PASInterpreter.pas2DBpediaRelation(pas);
+		assertNotNull(relation);
+		assertEquals("Germany",relation.subject.getAttribute(Linguistics.NAME));
+		assertEquals("officialLanguage",relation.predicate);
+		assertNull(relation.object);
+		
+		interpretation = new Interpretation("What is the national anthem of Germany");
+		interpretation = parser.analyze(interpretation);
+		pas = (Map<String,Object>) interpretation.getFeature(Linguistics.PAS);
+		relation = PASInterpreter.pas2DBpediaRelation(pas);
+		assertNotNull(relation);
+		assertEquals("Germany",relation.subject.getAttribute(Linguistics.NAME));
+		assertEquals("nationalAnthem",relation.predicate);
+		assertNull(relation.object);
+		
+		interpretation = new Interpretation("What is the currency of Germany");
+		interpretation = parser.analyze(interpretation);
+		pas = (Map<String,Object>) interpretation.getFeature(Linguistics.PAS);
+		relation = PASInterpreter.pas2DBpediaRelation(pas);
+		assertNotNull(relation);
+		assertEquals("Germany",relation.subject.getAttribute(Linguistics.NAME));
+		assertEquals("currency",relation.predicate);
+		assertNull(relation.object);
+		
+		interpretation = new Interpretation("What is the job of Putin");
+		interpretation = parser.analyze(interpretation);
+		pas = (Map<String,Object>) interpretation.getFeature(Linguistics.PAS);
+		relation = PASInterpreter.pas2DBpediaRelation(pas);
+		assertNotNull(relation);
+		assertEquals("Putin",relation.subject.getAttribute(Linguistics.NAME));
+		assertEquals("occupation",relation.predicate);
+		assertNull(relation.object);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Test
+	public void testWhereDidNewExamples() {
+		Interpretation interpretation = new Interpretation("Where did Putin study ?");
+		interpretation = parser.analyze(interpretation);
+		Map<String,Object> pas = (Map<String,Object>) interpretation.getFeature(Linguistics.PAS);
+		Relation relation = PASInterpreter.pas2DBpediaRelation(pas);
+		assertNotNull(relation);
+		assertEquals("Putin",relation.subject.getAttribute(Linguistics.NAME));
+		assertEquals("almaMater",relation.predicate);
+		assertNull(relation.object);
+	}
 	
+	@SuppressWarnings("unchecked")
+	@Test
+	public void testWhoIsNewExamples() {
+		Interpretation interpretation = new Interpretation("Who is the partner of Donald Trump");
+		interpretation = parser.analyze(interpretation);
+		Map<String,Object> pas = (Map<String,Object>) interpretation.getFeature(Linguistics.PAS);
+		Relation relation = PASInterpreter.pas2DBpediaRelation(pas);
+		assertNotNull(relation);
+		assertEquals("Donald Trump",relation.subject.getAttribute(Linguistics.NAME));
+		assertEquals("spouse",relation.predicate);
+		assertNull(relation.object);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Test
+	public void testWhoLivesNewExamples() {
+		Interpretation interpretation = new Interpretation("Who lives in Sweden");
+		interpretation = parser.analyze(interpretation);
+		Map<String,Object> pas = (Map<String,Object>) interpretation.getFeature(Linguistics.PAS);
+		Relation relation = PASInterpreter.pas2DBpediaRelation(pas);
+		assertNotNull(relation);
+		assertEquals("in Sweden",relation.subject.getAttribute(Linguistics.NAME));
+		assertEquals("residence",relation.predicate);
+		assertNull(relation.object);
+		
+		interpretation = new Interpretation("Who is living in Sweden");
+		interpretation = parser.analyze(interpretation);
+		pas = (Map<String,Object>) interpretation.getFeature(Linguistics.PAS);
+		relation = PASInterpreter.pas2DBpediaRelation(pas);
+		assertNotNull(relation);
+		assertEquals("in Sweden",relation.subject.getAttribute(Linguistics.NAME));
+		assertEquals("residence",relation.predicate);
+		assertNull(relation.object);
+	}
 }

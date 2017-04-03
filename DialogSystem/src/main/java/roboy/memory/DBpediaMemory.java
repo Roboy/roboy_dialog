@@ -85,8 +85,8 @@ private static final Map<String, String> supportedRelations = Maps.stringMap(
 	"nationalAnthem","Place",
 		"capital","Place",
 		"officialLanguage","Place",
-		"demonym","Place",
-		"residence","Place",
+		"demonym","Place",            //
+		"residence","Place",          // who lives in
 		"currency","Place",
 		 "occupation","Person",
 		"spouse","Person",
