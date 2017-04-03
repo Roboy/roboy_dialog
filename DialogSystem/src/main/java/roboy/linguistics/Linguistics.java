@@ -33,4 +33,7 @@ public class Linguistics {
 	public static final String NAME = "name";
 	public static final String CELEBRITY = "celebrity";
 	public static final String ROBOYDETECTED = "roboydetected";
+	public static final String OBJ_ANSWER = "objanswer";
+	public static final String PRED_ANSWER = "predanswer";
+	
 }
