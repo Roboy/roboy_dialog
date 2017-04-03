@@ -11,7 +11,7 @@ public class IdleState extends AbstractBooleanState {
 
     @Override
     public List<Interpretation> act() {
-        return Lists.interpretationList(new Interpretation("I'm so lonely."));
+        return Lists.interpretationList(new Interpretation("I'm such a lonely little robot. No one wants to play with me."));
     }
 
 

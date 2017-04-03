@@ -25,9 +25,9 @@ public class QuestionAnsweringState implements State{
 	private State top;
 	private List<Memory<Relation>> memories;
 	
-	public QuestionAnsweringState(State inner){
-		this.inner = inner;
-		this.top = this;
+	public QuestionAnsweringState(){
+//		this.inner = inner;
+//		this.top = this;
 		memories = new ArrayList<>();
 		memories.add(new DBpediaMemory());
 	    // fill memory
@@ -112,33 +112,35 @@ public class QuestionAnsweringState implements State{
 					result.add(new Interpretation(prefix+t.get(i).agens+" "+t.get(i).predicate+" "+t.get(i).patiens));
 				}
 			}
-		} else {
-			return innerReaction(input,result);
 		}
+//		else {
+//			return innerReaction(input,result);
+//		}
 		return new Reaction(top,result);
 	}
 	
 	@SuppressWarnings("unchecked")
 	private Reaction innerReaction(Interpretation input,List<Interpretation> result){
-		Map<String, Object> pas = (Map<String, Object>) input.getFeature(Linguistics.PAS);
-		if(pas!=null && !pas.isEmpty()){
-			Relation relation = PASInterpreter.pas2DBpediaRelation(pas);
-//			System.out.println("Relation: "+relation);
-			for(Memory<Relation> mem : memories){
-				try{
-					List<Relation> rememberedList = mem.retrieve(relation);
-					for (Relation remembered: rememberedList)
-					{
-						if(remembered!=null&&remembered.object!=null){ // TODO: check for proper role
-						result.add(new Interpretation((String)remembered.object.getAttribute(Linguistics.NAME)));
-						return new Reaction(top,result);
-					}
-					}
-					
-				} catch(Exception e){}
-			}
-		}
-		return inner.react(input);
+//		Map<String, Object> pas = (Map<String, Object>) input.getFeature(Linguistics.PAS);
+//		if(pas!=null && !pas.isEmpty()){
+//			Relation relation = PASInterpreter.pas2DBpediaRelation(pas);
+////			System.out.println("Relation: "+relation);
+//			for(Memory<Relation> mem : memories){
+//				try{
+//					List<Relation> rememberedList = mem.retrieve(relation);
+//					for (Relation remembered: rememberedList)
+//					{
+//						if(remembered!=null&&remembered.object!=null){ // TODO: check for proper role
+//						result.add(new Interpretation((String)remembered.object.getAttribute(Linguistics.NAME)));
+//						return new Reaction(top,result);
+//					}
+//					}
+//
+//				} catch(Exception e){}
+//			}
+//		}
+//		return inner.react(input);
+		return new Reaction(top,Lists.interpretationList(new Interpretation("who are you?")));
 	}
 
 	private List<Triple> remember(String predicate, String agens, String patiens){

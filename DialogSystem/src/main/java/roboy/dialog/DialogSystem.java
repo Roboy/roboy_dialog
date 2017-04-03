@@ -67,7 +67,7 @@ public class DialogSystem {
 		// InputDevice input = new BingInput();
 		InputDevice celebInput = new CelebritySimilarityInput();
 		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
-		InputDevice multiIn = new MultiInputDevice(input, celebInput, roboyDetectInput);
+		InputDevice multiIn = new MultiInputDevice(input);//, celebInput, roboyDetectInput);
 		
 		//OutputDevice output = new CerevoiceOutput();
 		// OutputDevice output = new BingOutput();
@@ -94,8 +94,8 @@ public class DialogSystem {
             }
             emotion.act(new FaceAction("normal"));
 
-            while (!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)) {
-            }
+//            while (!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)) {
+//            }
 
             Input raw; //  = input.listen();
             Interpretation interpretation; // = analyzer.analyze(raw);
