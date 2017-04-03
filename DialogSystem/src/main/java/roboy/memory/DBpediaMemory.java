@@ -101,6 +101,8 @@ private Map<String,String> forms;
 	public List<Relation> retrieve(Relation object) throws InterruptedException, IOException {
 		LinkedHashSet<String> queries;
 		List<Relation> result = new ArrayList();
+		if(object == null)
+			return null;
 		List<String> answersFinal = new ArrayList<String>();
 		String objectToReturn = "";
 		try {
@@ -166,6 +168,7 @@ private Map<String,String> forms;
 	
 
 	public static LinkedHashSet<String> buildQueries(Relation object) throws Exception{
+		
 		LinkedHashSet<String> queries = new LinkedHashSet<String>();
 		Lexicon lexicon = new Lexicon();
 		List<LexiconLiteral> literalList = lexicon.getLiterals(object.subject.getValues(), 10, 5, supportedRelations.get(object.predicate));
