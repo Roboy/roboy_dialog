@@ -22,7 +22,7 @@ import roboy.util.Ros;
 public class RoboyMind implements Memory<Concept>
 {
 	private static RoboyMind roboyMemory;
-	private int object_id = -1;
+	public int object_id = 0;
 	private RoboyMind()
 	{
 	}
@@ -35,10 +35,10 @@ public class RoboyMind implements Memory<Concept>
 		}
 		return roboyMemory;
 	}
-	private ServiceResponse CreateInstance(String object_class, int object_id)
+	private ServiceResponse CreateInstance(String class_name, int object_id)
 	{
 		Service CreateInstanceSrv = new Service(Ros.getInstance(), "/roboy_mind/create_instance", "/roboy_mind/create_instance");
-		String params = "{\"object_class\": " + "\"" + object_class + "\", \"id\": " +  object_id + "}";
+		String params = "{\"class_name\": " + "\"" + class_name + "\", \"id\": " +  object_id + "}";
 		ServiceRequest request = new ServiceRequest(params);
 		ServiceResponse response = CreateInstanceSrv.callServiceAndWait(request);
 		return response;
@@ -98,11 +98,11 @@ public class RoboyMind implements Memory<Concept>
 		return attributes;
 	}
 
-	private ServiceResponse SaveObject(String object_class, String properties, String values, int object_id)
+	private ServiceResponse SaveObject(String class_name, String properties, String values, int object_id)
 	{
 		Service ShowInstanceSrv = new Service(Ros.getInstance(), "/roboy_mind/save_object", "/roboy_mind/save_object");
 		JsonObject params = Json.createObjectBuilder()
-	     .add("class_name", object_class)
+	     .add("class_name", class_name)
 	     .add("id", object_id)
 	     .add("properties", properties)
 	     .add("values", values)
@@ -140,10 +140,10 @@ public class RoboyMind implements Memory<Concept>
 		return result;
 	}
 
-	private ServiceResponse ShowInstance(String object_class)
+	private ServiceResponse ShowInstance(String class_name)
 	{
 		Service ShowInstanceSrv = new Service(Ros.getInstance(), "/roboy_mind/show_instances", "/roboy_mind/show_instances");
-		String params = "{\"object_class\": " + "\"" + object_class + "\"}";
+		String params = "{\"class_name\": " + "\"" + class_name + "\"}";
 		ServiceRequest request = new ServiceRequest(params);
 		ServiceResponse response = ShowInstanceSrv.callServiceAndWait(request);
 		return response;
@@ -151,28 +151,36 @@ public class RoboyMind implements Memory<Concept>
 
 
 	@Override
-	public boolean save(Concept object) 
+	public boolean save(Concept object)  throws NullPointerException
 	{
 
 		//create an object
-		String object_class = object.getAttributes().get("class_name").toString();
-		
-		String properties = object.getProperties();
-		String values = object.getValues();
+		try
+		{
+			String class_name = object.getAttributes().get("class_name").toString();
+			int object_id = (int) object.getAttribute("id");
+			String properties = object.getProperties();
+			String values = object.getValues();
 
-		object.addAttribute("id", this.object_id++);
-		
-		ServiceResponse srvCall = SaveObject(object_class, properties, values, this.object_id++);
+			ServiceResponse srvCall = SaveObject(class_name, properties, values, object_id);
 
-		return srvCall.getResult();
+			return srvCall.getResult();
+		}
+		catch (NullPointerException e)
+		{
+			System.out.println("The object you are trying to save does not have an attribute which is required (id or class_name) ");
+			return false;
+		}
+		
+		
 	}
 	
 	@Override
 	public List<Concept> retrieve(Concept object)
 	{
 		// get objects matching the requested attributes
-		String properties = object.getProperties();
-		String values = object.getValues();
+		String properties = "id";
+		String values = object.getAttribute("id").toString();
 
 		JsonArray instances = FindInstances(properties, values).toJsonObject().getJsonArray("instances");
 		
@@ -197,11 +205,11 @@ public class RoboyMind implements Memory<Concept>
 
 	public boolean update(Concept object) // requires having attributes id and class_name
 	{
-		String object_name = object.getAttribute("object_class").toString() + "_" + object.getAttribute("id");
+		String object_name = object.getAttribute("class_name").toString() + "_" + object.getAttribute("id");
 		List<Concept> saved_objects = RoboyMind.getInstance().retrieve(object);
 		if (saved_objects.size() == 0)
 		{
-			System.out.println("Cannot update properties. Memory does not contains the requested object yet.");
+			System.out.println("Cannot update properties. Memory does not contain the requested object yet.");
 			return false;
 		}
 		else if(saved_objects.size()>1)

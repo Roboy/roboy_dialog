@@ -17,31 +17,35 @@ public class Concept {
 	public Concept()
 	{
 		this.attributes = new HashMap<String, Object>();
+		this.attributes.put("class_name", "Person"); //TODO remove hardcoded person constructor
+		this.attributes.put("id", RoboyMind.getInstance().object_id++);
 	}
 
 	public Concept(Map<String, Object> attrs)
 	{
 		this.attributes = new HashMap<String, Object>();
-		this.addAttributes(attrs);
-		this.memorize((String)this.getAttribute("object_class"));
+		this.attributes.put("class_name", "Person");
+		this.attributes.put("id", RoboyMind.getInstance().object_id++);
+		for (Map.Entry<String,Object> attr: attrs.entrySet())
+		{
+			this.attributes.put(attr.getKey(),attr.getValue());
+		}
 	}
 	
 	public Concept(String name){
-		this();
+		this.attributes = new HashMap<String, Object>();
 		attributes.put(Linguistics.NAME, name);
-		this.memorize("Person"); //TODO remove this constructor
+		this.attributes.put("id", RoboyMind.getInstance().object_id++);
 	}
 
-	public boolean addAttribute(String property, Object value)
+	public void addAttribute(String property, Object value)
 	{
 		this.attributes.put(property, value);
-		return this.updateMemory();
 	}
 
-	public boolean addAttributes(Map<String, Object> attrs)
+	public void addAttributes(Map<String, Object> attrs)
 	{
 		this.attributes.putAll(attrs);
-		return this.updateMemory();
 	}
 
 	public Map<String, Object> getAttributes()
@@ -59,10 +63,10 @@ public class Concept {
 
 		for (Map.Entry<String, Object> attribute : this.getAttributes().entrySet())
 		{
-		    if (attribute.getKey() != "class" && attribute.getKey() != "id")
-		    {
+//		    if (attribute.getKey() != "class_name" && attribute.getKey() != "id")
+//		    {
 		    	properties +=  attribute.getKey() + ",";
-		    }
+//		    }
 		}
 
 		if (properties.length()>0 && properties.charAt(properties.length()-1)==',')
@@ -81,10 +85,10 @@ public class Concept {
 
 		for (Map.Entry<String, Object> attribute : this.getAttributes().entrySet())
 		{
-		    if (attribute.getKey() != "class" && attribute.getKey() != "id")
-		    {
+//		    if (attribute.getKey() != "class" && attribute.getKey() != "id")
+//		    {
 		    	values +=  attribute.getValue().toString() + ",";
-		    }
+//		    }
 		    
 		}
 
@@ -105,19 +109,14 @@ public class Concept {
 		return false;
 	}
 
-	public boolean memorize(String object_class)
-	{
-		return this.addAttribute("object_class", object_class);
-	}
-
 	public Object retrieve()
 	{
 		return RoboyMind.getInstance().retrieve(this);
 	}
 
-	public boolean updateMemory()
+	public boolean updateInMemory()
 	{
-		if (RoboyMind.getInstance().retrieve(this)==null)
+		if (RoboyMind.getInstance().retrieve(this).size()==0)
 		{
 			RoboyMind.getInstance().save(this);
 		}
