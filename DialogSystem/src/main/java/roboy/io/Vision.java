@@ -63,17 +63,9 @@ public class Vision
 
 	public boolean findFaces()
 	{
-		// Topic t = new Topic(ros, "/test", "geometry_msgs/Pose");
-		// VisionCallback cb = new VisionCallback();
-		// t.subscribe(cb);
-
-//		Service Recognize = new Service(ros, "/roboy_vision/find_face", "/roboy_face/find_face");
-//
-//	    ServiceRequest request = new ServiceRequest();
-//	    ServiceResponse response = Recognize.callServiceAndWait(request);
-
-	    //return response.toJsonObject().getBoolean("face_detected");
-		return true;
+		Service RecognizeSrv = new Service(Ros.getInstance(), "/detect_face", "/detect_face");
+		ServiceRequest request = new ServiceRequest();
+		return RecognizeSrv.callServiceAndWait(request).toJsonObject().getBoolean("face_detected");
 	}
 
 }

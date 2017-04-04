@@ -3,6 +3,8 @@ package roboy.dialog.personality.states;
 import java.io.IOException;
 import java.util.*;
 
+import edu.wpi.rail.jrosbridge.Service;
+import edu.wpi.rail.jrosbridge.services.ServiceRequest;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.*;
@@ -12,6 +14,10 @@ import roboy.memory.RoboyMind;
 import roboy.util.Lists;
 import roboy.util.Concept;
 import roboy.util.Relation;
+import roboy.util.Ros;
+
+import javax.json.Json;
+import javax.json.JsonObject;
 
 
 public class QuestionAskingState implements State
@@ -167,7 +173,7 @@ public class QuestionAskingState implements State
 		if (currentIntent == "name")
 		{
 			//request face recognition
-			String recognizedFace = "Trump";
+			String recognizedFace = recognizeFace();
 			replies.add(new Interpretation("Wow " + objectOfFocus.getAttribute("name") + " you actually look like" + recognizedFace));
 
 			Map<String, String> possibleQuestions = new HashMap<>();
@@ -272,6 +278,16 @@ public class QuestionAskingState implements State
 		Interpretation interpretation = new Interpretation(sentence);
 		for (Analyzer a : analyzers) interpretation = a.analyze(interpretation);
 		return (String) interpretation.getFeature(Linguistics.PRED_ANSWER);
+	}
+
+	private String recognizeFace()
+	{
+		Service RecognizeSrv = new Service(Ros.getInstance(), "/recognize_face", "/recognize_face");
+		JsonObject params = Json.createObjectBuilder()
+				.add("object_id", 0)
+				.build();
+		ServiceRequest request = new ServiceRequest(params);
+		return RecognizeSrv.callServiceAndWait(request).toJsonObject().getString("object_name");
 	}
 
 
