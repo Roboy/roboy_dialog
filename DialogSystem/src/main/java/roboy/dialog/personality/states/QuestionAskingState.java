@@ -4,7 +4,7 @@ import java.util.*;
 
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
-import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.linguistics.sentenceanalysis.*;
 import roboy.memory.PersistentKnowledge;
 import roboy.memory.RoboyMind;
 import roboy.util.Lists;
@@ -25,16 +25,21 @@ public class QuestionAskingState implements State
 	private int questionsCount;
 	private Map<String, List<String>> questions;
 	private Random generator;
+	private Map<String, State> children;
 
+	private static final SimpleTokenizer tokenizer = new SimpleTokenizer();
+	private static final OpenNLPPPOSTagger pos = new OpenNLPPPOSTagger();
+	private static final OpenNLPParser parser = new OpenNLPParser();
+	private static final AnswerAnalyzer answer = new AnswerAnalyzer();
 
-
-	public QuestionAskingState(Map<String, List<String>> questions)
+	public QuestionAskingState(Map<String, List<String>> questions, Map<String,State> children)
 	{
 //        this.smallTalkPersonality = smallTalkPersonality;
 		this.questions = questions;
 		this.objectOfFocus = new Concept();
 		this.questionsCount = 0;
 		this.generator = new Random();
+		this.children = children;
 
 
 	}
@@ -81,28 +86,38 @@ public class QuestionAskingState implements State
 	{
 
 		String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
-		if("".equals(sentence))
-		{
-			return new Reaction(this,Lists.interpretationList()); // new Interpretation(SENTENCE_TYPE.GREETING)
-		}
+//		if("".equals(sentence))
+//		{
+//			return new Reaction(this,Lists.interpretationList()); // new Interpretation(SENTENCE_TYPE.GREETING)
+//		}
 
 		// add to memory what was understood
-		Triple triple = (Triple) input.getFeatures().get(Linguistics.TRIPLE); //TODO: improve triples formation
-
-		if (triple.patiens!="")
+		String answer = "";
+		if (currentIntent.contains("occupation") || currentIntent.contains("hobby"))
 		{
-			objectOfFocus.addAttribute(this.currentIntent, triple.patiens);
+			answer = analyzePredicate(sentence);
+		}
+		else
+		{
+			answer = analyzeObject(sentence);
+		}
+
+		if (!"".equals(answer))
+		{
+			objectOfFocus.addAttribute(this.currentIntent, answer);
 			objectOfFocus.updateInMemory();
 		}
-		// call DBpedia or memory (about himself or person) and put the answers to input
-		List<Interpretation> comments = checkOwnMemory(input);
-		if (!comments.isEmpty())
+
+		// call DBpedia or memory (about himself or person)
+		List<Interpretation> reply = new ArrayList<>();
+		reply = checkOwnMemory(input);
+		if (!reply.isEmpty())
 		{
-			return new Reaction(determineNextState(input), comments);
+			return new Reaction(determineNextState(input), reply);
 		}
-		comments.add(checkRoboyMind());
-		comments.add(checkDBpedia(input));
-		return new Reaction(determineNextState(input), comments);
+		reply.add(checkRoboyMind());
+		reply.add(checkDBpedia(input));
+		return new Reaction(determineNextState(input), reply);
 
 	}
 
@@ -112,11 +127,11 @@ public class QuestionAskingState implements State
 
 		if (TOASK==questionsCount)
 		{
-			return new WildTalkState();
+			return children.get("wild");
 		}
 		else if (sentence.isEmpty())
 		{
-			return new IdleState();
+			return children.get("idle");
 		}
 		return this;
 
@@ -126,9 +141,9 @@ public class QuestionAskingState implements State
 	{
 		Map<String, List<Concept>> matches = RoboyMind.getInstance().match(objectOfFocus);
 
-		if (!matches.isEmpty() && matches.containsKey(currentIntent))
+		if ( matches.containsKey(currentIntent))
 		{
-			return new Interpretation("I know " + matches.get(currentIntent).size() + " people with the same " + currentIntent);
+			return new Interpretation("I know " + (matches.get(currentIntent).size()) + " people with the same " + currentIntent);
 		}
 
 		return new Interpretation("");
@@ -136,6 +151,7 @@ public class QuestionAskingState implements State
 
 	private Interpretation checkDBpedia(Interpretation input)
 	{
+
 		return new Interpretation("fun fact from DBpedia");
 	}
 
@@ -189,7 +205,27 @@ public class QuestionAskingState implements State
 		return result;
 	}
 
+	private String analyzeObject(String sentence){
+		List<Analyzer> analyzers = new ArrayList<Analyzer>();
+		analyzers.add(tokenizer);
+		analyzers.add(pos);
+		analyzers.add(parser);
+		analyzers.add(answer);
+		Interpretation interpretation = new Interpretation(sentence);
+		for (Analyzer a : analyzers) interpretation = a.analyze(interpretation);
+		return (String) interpretation.getFeature(Linguistics.OBJ_ANSWER);
+	}
 
+	private String analyzePredicate(String sentence){
+		List<Analyzer> analyzers = new ArrayList<Analyzer>();
+		analyzers.add(tokenizer);
+		analyzers.add(pos);
+		analyzers.add(parser);
+		analyzers.add(answer);
+		Interpretation interpretation = new Interpretation(sentence);
+		for (Analyzer a : analyzers) interpretation = a.analyze(interpretation);
+		return (String) interpretation.getFeature(Linguistics.PRED_ANSWER);
+	}
 
 
 }

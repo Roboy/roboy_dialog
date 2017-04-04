@@ -21,7 +21,7 @@ public class WildTalkState extends AbstractBooleanState {
             return Lists.interpretationList();
         } else {
             this.talking = true;
-            return Lists.interpretationList(new Interpretation("That's interesting. Please continue."));
+            return Lists.interpretationList(new Interpretation("Oh, man, i don't even know what to say"));
 
         }
     }
@@ -46,7 +46,6 @@ public class WildTalkState extends AbstractBooleanState {
 
     protected String callGenerativeModel(String sentence) {
         Service GenerativeModel = new Service(Ros.getInstance(), "/roboy/gnlp_predict", "generative_nlp/seq2seq_predict");
-        System.out.println(sentence);
         ServiceRequest request = new ServiceRequest("{\"text_input\": " + "\"" + sentence + "\"}");
         String response = GenerativeModel.callServiceAndWait(request).toString();
 

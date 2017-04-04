@@ -23,8 +23,7 @@ public class SmallTalkPersonality implements Personality {
         this.verbalizer = verbalizer;
 
         // build state machine
-        GreetingState greetings = new GreetingState();
-        IntroductionState intro = new IntroductionState();
+
 
         List<String> nameQuestions = Arrays.asList(
                 "How can I call you?",
@@ -59,28 +58,28 @@ public class SmallTalkPersonality implements Personality {
 
 //        InquiryState inquiry = new InquiryState("How are you?", positive, "That's not good enough. Again: ");
 //		InquiryState inquiry2 = new InquiryState("So, anything else you want to talk about?", Lists.stringList(), "");
-        GenerativeCommunicationState generative = new GenerativeCommunicationState();
-        QuestionAnsweringState answer = new QuestionAnsweringState();
+//        GenerativeCommunicationState generative = new GenerativeCommunicationState();
+//        QuestionAnsweringState answer = new QuestionAnsweringState();
 //        SegueState segue = new SegueState(answer);
 //        CelebrityState celeb = new CelebrityState(segue);
-        QuestionAskingState ask = new QuestionAskingState(questions);
+        //TODO detect goodbye from all the states
+        GreetingState greetings = new GreetingState();
+        IntroductionState intro = new IntroductionState();
         FarewellState farewell = new FarewellState();
         WildTalkState wild = new WildTalkState();
         IdleState idle = new IdleState();
-        ConverseState converse = new ConverseState();
-
+        Map<String,State> children = new HashMap<>();
+        children.put("wild", wild);
+        children.put("idle", idle);
+        QuestionAskingState ask = new QuestionAskingState(questions,children);
 
         greetings.setNextState(intro);
         intro.setNextState(ask);
 
-        converse.setFailure(idle);
-        converse.setSuccess(ask);
         wild.setSuccess(wild);
         wild.setFailure(idle);
         idle.setSuccess(wild);
         idle.setFailure(farewell);
-        generative.setFailure(idle);
-        generative.setSuccess(generative);
 
 //        generative.setSuccess(farewell);
 //        generative.setFailure(celeb);

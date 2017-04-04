@@ -243,6 +243,7 @@ public class RoboyMind implements Memory<Concept>
 	public Map<String,List<Concept>> match (Concept object)
 	{
 		Map<String,List<Concept>> result = new HashMap<>();
+		List<Concept> matchedConcepts = new ArrayList<>();
 
 		for (Map.Entry<String, Object> attribute: object.getAttributes().entrySet())
 		{
@@ -252,7 +253,16 @@ public class RoboyMind implements Memory<Concept>
 
 				if (!matches.isEmpty())
 				{
-					result.put(attribute.getKey(),matches);
+					for (Concept match: matches)
+					{
+						if(match.getID()!=object.getID())
+						{
+							matchedConcepts.add(match);
+						}
+					}
+				}
+				if (!matchedConcepts.isEmpty()) {
+					result.put(attribute.getKey(), matchedConcepts);
 				}
 			}
 
