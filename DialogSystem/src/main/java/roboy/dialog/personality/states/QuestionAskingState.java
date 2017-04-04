@@ -1,14 +1,17 @@
 package roboy.dialog.personality.states;
 
+import java.io.IOException;
 import java.util.*;
 
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.*;
+import roboy.memory.DBpediaMemory;
 import roboy.memory.PersistentKnowledge;
 import roboy.memory.RoboyMind;
 import roboy.util.Lists;
 import roboy.util.Concept;
+import roboy.util.Relation;
 
 
 public class QuestionAskingState implements State
@@ -116,7 +119,15 @@ public class QuestionAskingState implements State
 			return new Reaction(determineNextState(input), reply);
 		}
 		reply.add(checkRoboyMind());
-		reply.add(checkDBpedia(input));
+		try
+		{
+			reply.add(checkDBpedia());
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
 		return new Reaction(determineNextState(input), reply);
 
 	}
@@ -149,10 +160,46 @@ public class QuestionAskingState implements State
 		return new Interpretation("");
 	}
 
-	private Interpretation checkDBpedia(Interpretation input)
+	private Interpretation checkDBpedia() throws IOException, InterruptedException
 	{
 
-		return new Interpretation("fun fact from DBpedia");
+		List<Interpretation> replies = Lists.interpretationList();
+		if (currentIntent == "name")
+		{
+			//request face recognition
+			String recognizedFace = "Trump";
+			replies.add(new Interpretation("Wow " + objectOfFocus.getAttribute("name") + " you actually look like" + recognizedFace));
+
+			Map<String, String> possibleQuestions = new HashMap<>();
+			possibleQuestions.put("Who is " + recognizedFace, recognizedFace + " is ");
+			possibleQuestions.put("when was " + recognizedFace + " born", recognizedFace + " was born in ");
+			possibleQuestions.put("where was " + recognizedFace + " born", recognizedFace + " was born in ");
+			possibleQuestions.put("what does " + recognizedFace + " do", recognizedFace + " is ");
+			possibleQuestions.put("where did " + recognizedFace + " study", recognizedFace + " studied at ");
+
+
+			String currentQuestion = possibleQuestions.keySet().toArray()[generator.nextInt(possibleQuestions.size())].toString();
+			Interpretation interpretation = new Interpretation (currentQuestion);
+			interpretation = parser.analyze(interpretation);
+			Map<String,Object> pas = (Map<String,Object>) interpretation.getFeature(Linguistics.PAS);
+			Concept object = new Concept((String) pas.get(Linguistics.SEMANTIC_ROLE.PATIENT));
+			Concept subject = new Concept((String) pas.get(Linguistics.SEMANTIC_ROLE.AGENT));
+			String predicate = (String) pas.get(Linguistics.SEMANTIC_ROLE.PREDICATE);
+			List<Relation> retrieved = new ArrayList<>();
+			try
+			{
+				retrieved = DBpediaMemory.getInstance().retrieve(new Relation(subject,predicate,object));
+			}
+			catch (Exception e)
+ 			{
+				e.printStackTrace();
+			}
+			if (!retrieved.isEmpty())
+			{
+				replies.add(new Interpretation(possibleQuestions.get(currentQuestion) + retrieved.get(generator.nextInt(retrieved.size()))));
+			}
+		}
+		return replies.get(generator.nextInt(replies.size()));
 	}
 
 	private List<Interpretation> checkOwnMemory(Interpretation input)

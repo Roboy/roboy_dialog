@@ -14,4 +14,13 @@ public class Relation {
 		this.predicate = predicate;
 	}
 
+	public String getSubject()
+	{
+		return (String) subject.getAttribute("name");
+	}
+	public String getObject()
+	{
+		return (String) object.getAttribute("name");
+	}
+
 }

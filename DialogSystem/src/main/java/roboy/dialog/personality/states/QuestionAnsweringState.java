@@ -29,7 +29,7 @@ public class QuestionAnsweringState implements State{
 //		this.inner = inner;
 //		this.top = this;
 		memories = new ArrayList<>();
-		memories.add(new DBpediaMemory());
+		memories.add(DBpediaMemory.getInstance());
 	    // fill memory
 	    memory = new ArrayList<>(); //TODO: Refactor all that triples stuff to separate memory class
 		ClassLoader cl = this.getClass().getClassLoader();

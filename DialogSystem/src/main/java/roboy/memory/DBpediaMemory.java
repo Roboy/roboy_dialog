@@ -27,7 +27,19 @@ public class DBpediaMemory implements Memory<Relation>{
 //		DBpediaMemory shit = new DBpediaMemory();
 //		shit.retrieve(rel);
 //	}
-	
+	private static DBpediaMemory dbpediaMemory;
+	private DBpediaMemory()
+	{
+	}
+
+	public static DBpediaMemory getInstance()
+	{
+		if (dbpediaMemory == null)
+		{
+			dbpediaMemory =  new DBpediaMemory();
+		}
+		return dbpediaMemory;
+	}
 	
 	@Override
 	public boolean save(Relation object) throws InterruptedException, IOException {
@@ -95,7 +107,7 @@ private static final Map<String, String> supportedRelations = Maps.stringMap(
 	
 
 
-private Map<String,String> forms;
+	private Map<String,String> forms;
 	
 	@Override
 	public List<Relation> retrieve(Relation object) throws InterruptedException, IOException {
