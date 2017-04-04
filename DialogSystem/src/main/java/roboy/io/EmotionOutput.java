@@ -27,23 +27,27 @@ public class EmotionOutput implements OutputDevice
 
 	public void act(Action action) {
 		if (action instanceof FaceAction) {
-			ChangeFaceState((FaceAction) action);
+			if (((FaceAction) action).getDuration()>0)
+			{
+				ChangeFaceState((FaceAction) action);
+			}
+
 		}
 	}
 	
 	private void ChangeFaceState(FaceAction action)
 	{
-	    Service FaceState = new Service(Ros.getInstance(), "/roboy_face/change_state", "/roboy_face/change_state");
+	    Service FaceState = new Service(Ros.getInstance(), "/roboy/face", "/roboy/face");
 	    
 	    JsonObject params = Json.createObjectBuilder()
-	     .add("action", action.getState())
+	     .add("emotion", action.getState())
 	     .add("duration", action.getDuration())
 	     .build();
 
 	    System.out.println("Face state: " + action.getState());
 
-	    // ServiceRequest request = new ServiceRequest(params);
-	    // FaceState.callServiceAndWait(request);
+		ServiceRequest request = new ServiceRequest(params);
+		FaceState.callServiceAndWait(request);
 	}
 	
 }

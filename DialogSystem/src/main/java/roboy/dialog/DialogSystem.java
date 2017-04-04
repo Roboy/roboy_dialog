@@ -71,8 +71,10 @@ public class DialogSystem {
 		
 		//OutputDevice output = new CerevoiceOutput();
 		// OutputDevice output = new BingOutput();
-		OutputDevice output = new CommandLineOutput();
+
 		EmotionOutput emotion = new EmotionOutput();
+//        OutputDevice output = new CommandLineOutput(emotion);
+        OutputDevice output = new CerevoiceOutput(emotion);
 		OutputDevice multiOut = new MultiOutputDevice(output,emotion);
 		
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
@@ -90,9 +92,9 @@ public class DialogSystem {
         while(true) {
 
             while (!vision.findFaces()) {
-                emotion.act(new FaceAction("sleep"));
+                emotion.act(new FaceAction("angry"));
             }
-            emotion.act(new FaceAction("normal"));
+//            emotion.act(new FaceAction("neutral"));
 
 //            while (!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)) {
 //            }

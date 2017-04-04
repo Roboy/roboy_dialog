@@ -4,7 +4,7 @@ public class FaceAction implements Action
 {
 
 	private String state;
-	private double duration; 
+	private int duration;
 	
 	public FaceAction(String state)
 	{
@@ -12,7 +12,7 @@ public class FaceAction implements Action
 		this.duration = 1;
 	}
 
-	public FaceAction(String state, double duration)
+	public FaceAction(String state, int duration)
 	{
 		this.state = state;
 		this.duration = duration;
@@ -23,7 +23,7 @@ public class FaceAction implements Action
 		return this.state;
 	}
 
-	public double getDuration()
+	public int getDuration()
 	{
 		return this.duration;
 	}
