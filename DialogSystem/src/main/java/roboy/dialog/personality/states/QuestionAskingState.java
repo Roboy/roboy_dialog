@@ -5,6 +5,8 @@ import java.util.*;
 
 import edu.wpi.rail.jrosbridge.Service;
 import edu.wpi.rail.jrosbridge.services.ServiceRequest;
+import roboy.dialog.personality.Personality;
+import roboy.dialog.personality.SmallTalkPersonality;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.*;
@@ -35,13 +37,14 @@ public class QuestionAskingState implements State
 	private Map<String, List<String>> questions;
 	private Random generator;
 	private Map<String, State> children;
+	private SmallTalkPersonality personality;
 
 	private static final SimpleTokenizer tokenizer = new SimpleTokenizer();
 	private static final OpenNLPPPOSTagger pos = new OpenNLPPPOSTagger();
 	private static final OpenNLPParser parser = new OpenNLPParser();
 	private static final AnswerAnalyzer answer = new AnswerAnalyzer();
 
-	public QuestionAskingState(Map<String, List<String>> questions, Map<String,State> children)
+	public QuestionAskingState(Map<String, List<String>> questions, Map<String,State> children, SmallTalkPersonality personality)
 	{
 //        this.smallTalkPersonality = smallTalkPersonality;
 		this.questions = questions;
@@ -49,6 +52,7 @@ public class QuestionAskingState implements State
 		this.questionsCount = 0;
 		this.generator = new Random();
 		this.children = children;
+		this.personality = personality;
 
 
 	}
@@ -109,6 +113,10 @@ public class QuestionAskingState implements State
 		else
 		{
 			answer = analyzeObject(sentence);
+			if (currentIntent == "name")
+			{
+				personality.setName(answer);
+			}
 		}
 
 		if (!"".equals(answer))
@@ -174,7 +182,10 @@ public class QuestionAskingState implements State
 		{
 			//request face recognition
 			String recognizedFace = recognizeFace();
-			replies.add(new Interpretation("Wow " + objectOfFocus.getAttribute("name") + " you actually look like" + recognizedFace));
+			if (!recognizedFace.isEmpty())
+			{
+				replies.add(new Interpretation("Wow " + objectOfFocus.getAttribute("name") + " you actually look like" + recognizedFace));
+			}
 
 			Map<String, String> possibleQuestions = new HashMap<>();
 			possibleQuestions.put("Who is " + recognizedFace, recognizedFace + " is ");

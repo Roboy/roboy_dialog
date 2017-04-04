@@ -71,7 +71,7 @@ public class SmallTalkPersonality implements Personality {
         Map<String,State> children = new HashMap<>();
         children.put("wild", wild);
         children.put("idle", idle);
-        QuestionAskingState ask = new QuestionAskingState(questions,children);
+        QuestionAskingState ask = new QuestionAskingState(questions,children, this);
 
         greetings.setNextState(intro);
         intro.setNextState(ask);
