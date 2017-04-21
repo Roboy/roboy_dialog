@@ -28,8 +28,9 @@ public class RoboyNameDetectionInput implements InputDevice{
 	* deletion of the RoboyNameDetectorInput object
 	*/
 	protected LiveSpeechRecognizer recog_copy;
-	
-	///constructor which initialises recognition
+	/**
+	* constructor which initialises recognition
+	*/
 	public RoboyNameDetectionInput() throws IOException {
 		//configure input sound stream reader
 		Mixer.Info[] mixerInfo;
@@ -66,15 +67,17 @@ public class RoboyNameDetectionInput implements InputDevice{
 		//create external 'link' to the object of recognizer to be able to stop it correctly before deletion of the RoboyNameDetectorInput object
 		recog_copy = recognizer;
 	}
-	///function for correct stopping recognition
+	/**
+	* function for correct stopping recognition
+	*/
 	public void stopListening(){
 		 recog_copy.stopRecognition();
 		 recog_copy = null;
 	}
 	
-	@Override
-	///tracks what was said 
+	@Override 
 	/**
+	* tracks what was said
 	* \return A signal that Roboy is one of the words in just said phrase
 	*/
 	public Input listen() throws InterruptedException, IOException {
