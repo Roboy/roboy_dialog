@@ -19,17 +19,6 @@ Stable functionality:
 - Roboy asks questions people he meets
 - Roboy stores information (name, occupation, ect.) about people he meets (not persistant)
 
-.. _requirements_overview:
-
-Requirements Overview
----------------------
-
-The **software requirements** define the system from a blackbox/interfaces perspective. They are split into the following sections:
-
-- **User Interfaces** - :ref:`user-interfaces`
-- **Technical Interfaces** - :ref:`technical-interfaces`
-- **Runtime Interfaces and Constraints** - :ref:`runtime_interfaces`
-
 
 Contents:
 ----------
