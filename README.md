@@ -1,5 +1,7 @@
 # DialogSystem
 
+[![Documentation Status](http://roboydialog.readthedocs.io/)](http://roboydialog.readthedocs.io/)
+
 ## What is it?
 
 This repository contains a dialog system developed for the humanoid robot Roboy (roboy.org). 
