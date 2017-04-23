@@ -1,4 +1,4 @@
-Public Interfaces
+API
 =================
 
 .. doxygenindex::
