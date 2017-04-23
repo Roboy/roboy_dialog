@@ -4,13 +4,7 @@ Getting started
 How does it work?
 -----------------
 
-The basic NLP architecture is designed as a pipeline. An input device
-(derived from ``de.roboy.io.InputDevice``) is producing text, which is
-passed to a variety of linguistic analyzers (derived from ``de.roboy.linguistics.sentenceanalysis.Analyzer``). This currently consists of a Tokenizer and a POS tagger (both in ``de.roboy.linguistics.sentenceanalysis.SentenceAnalyzer``) but could in the
-future be accompanied by named entity recognition, a syntactical and semantical analysis, an interpretation of the sentence type or other tools. The results of all these linguistics analyzers are collected
-together with the original text (``de.roboy.linguistics.sentenceanalysis.Interpretation``) and passed on to
-a state machine (states are derived from ``de.roboy.dialog.personality.states.State``) within a personality class
-(derived from ``de.roboy.dialog.personality.Personality``) that decides how to react to the utterance. In the future, the intentions (``de.roboy.logic.Intention``) determined by the state machine will then formulated into proper sentences or other actions (``de.roboy.dialog.action.Action``) by a module called Verbalizer.
+The basic NLP architecture is designed as a pipeline. An input device (derived from ``de.roboy.io.InputDevice``) is producing text, which is passed to a variety of linguistic analyzers (derived from ``de.roboy.linguistics.sentenceanalysis.Analyzer``). This currently consists of a Tokenizer and a POS tagger (both in ``de.roboy.linguistics.sentenceanalysis.SentenceAnalyzer``) but could in the future be accompanied by named entity recognition, a syntactical and semantical analysis, an interpretation of the sentence type or other tools. The results of all these linguistics analyzers are collected together with the original text (``de.roboy.linguistics.sentenceanalysis.Interpretation``) and passed on to a state machine (states are derived from ``de.roboy.dialog.personality.states.State``) within a personality class (derived from ``de.roboy.dialog.personality.Personality``) that decides how to react to the utterance. In the future, the intentions (``de.roboy.logic.Intention``) determined by the state machine will then formulated into proper sentences or other actions (``de.roboy.dialog.action.Action``) by a module called Verbalizer.
 
 Currently, these actions are still directly created in the personality class. Finally, the created actions are sent to the corresponding output device (``de.roboy.io.OutputDevice``).
 
