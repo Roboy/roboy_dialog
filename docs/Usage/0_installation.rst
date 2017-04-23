@@ -1,18 +1,16 @@
 Installation
 =============
 
-We use Maven build automation tool. Import Dialog System as a maven project in your IDE or get maven using:
+We use Maven build automation tool. 
 
-  ``sudo apt install maven``
-  
-1. Get the source code
+Using command line:
 
-  ``git clone https://github.com/Roboy/DialogSystem``
+``sudo apt install maven``
+``git clone https://github.com/Roboy/DialogSystem``
+``mvn compile``
+``mvn exec:java -Dexec.mainClass="roboy.dialog.DialogSystem"``
 
-2. Build
+Using IDE (Eclipse, Intellij IDEA):
+``git clone https://github.com/Roboy/DialogSystem``
+Now, import Dialog System as a Maven project into the IDE of your choice. Build and execute using `roboy.dialog.DialogSystem` as the main class.
 
-  ``mvn compile``
-
-3. Execute 
-
-  ``mvn exec:java -Dexec.mainClass="roboy.dialog.DialogSystem"``
