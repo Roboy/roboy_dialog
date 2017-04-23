@@ -7,6 +7,7 @@ import edu.wpi.rail.jrosbridge.Service;
 import edu.wpi.rail.jrosbridge.services.ServiceRequest;
 import roboy.dialog.personality.Personality;
 import roboy.dialog.personality.SmallTalkPersonality;
+import roboy.io.Vision;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.*;
@@ -35,7 +36,7 @@ public class QuestionAskingState implements State
 //    private State top;
 	private Concept objectOfFocus;
 	private String currentIntent;
-	private static final int TOASK = 3;
+	private static final int TOASK = 4;
 	private int questionsCount;
 	private Map<String, List<String>> questions;
 	private Random generator;
@@ -49,14 +50,13 @@ public class QuestionAskingState implements State
 
 	public QuestionAskingState(Map<String, List<String>> questions, Map<String,State> children, SmallTalkPersonality personality)
 	{
-//        this.smallTalkPersonality = smallTalkPersonality;
+
 		this.questions = questions;
 		this.objectOfFocus = new Concept();
 		this.questionsCount = 0;
 		this.generator = new Random();
 		this.children = children;
 		this.personality = personality;
-
 
 	}
 
@@ -106,10 +106,7 @@ public class QuestionAskingState implements State
 	{
 
 		String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
-//		if("".equals(sentence))
-//		{
-//			return new Reaction(this,Lists.interpretationList()); // new Interpretation(SENTENCE_TYPE.GREETING)
-//		}
+
 
 		// add to memory what was understood
 		String answer = "";
@@ -132,23 +129,16 @@ public class QuestionAskingState implements State
 			objectOfFocus.updateInMemory();
 		}
 
-		// call DBpedia or memory (about himself or person)
-		List<Interpretation> reply = new ArrayList<>();
-		reply = checkOwnMemory(input);
-		if (!reply.isEmpty())
-		{
-			return new Reaction(determineNextState(input), reply);
-		}
-		reply.add(checkRoboyMind());
-		try
-		{
-			reply.add(checkDBpedia());
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
+		// react to the answer of the person
 
+		List<Interpretation> reply = checkOwnMemory(input); // if the question was about Roboy
+
+//		if (!reply.isEmpty())
+//		{
+//			return new Reaction(determineNextState(input), reply);
+//		}
+
+		reply.add(checkRoboyMind()); // in case Roboy know a person with same name, hobby, etc.
 		return new Reaction(determineNextState(input), reply);
 
 	}
@@ -188,7 +178,7 @@ public class QuestionAskingState implements State
 		if (currentIntent == "name")
 		{
 			//request face recognition
-			String recognizedFace = recognizeFace();
+			String recognizedFace = Vision.getInstance().recognizeFace();
 			if (!recognizedFace.isEmpty())
 			{
 				replies.add(new Interpretation("Wow " + objectOfFocus.getAttribute("name") + " you actually look like" + recognizedFace));
@@ -276,7 +266,7 @@ public class QuestionAskingState implements State
 		return result;
 	}
 
-	private String analyzeObject(String sentence){
+	private String analyzeObject(String sentence){ //TODO move analyzeObject to sentence analysis
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(tokenizer);
 		analyzers.add(pos);
@@ -287,7 +277,7 @@ public class QuestionAskingState implements State
 		return (String) interpretation.getFeature(Linguistics.OBJ_ANSWER);
 	}
 
-	private String analyzePredicate(String sentence){
+	private String analyzePredicate(String sentence){ //TODO move analyzePredicate to sentence analysis
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(tokenizer);
 		analyzers.add(pos);
@@ -297,16 +287,5 @@ public class QuestionAskingState implements State
 		for (Analyzer a : analyzers) interpretation = a.analyze(interpretation);
 		return (String) interpretation.getFeature(Linguistics.PRED_ANSWER);
 	}
-
-	private String recognizeFace()
-	{
-		Service RecognizeSrv = new Service(Ros.getInstance(), "/recognize_face", "/recognize_face");
-		JsonObject params = Json.createObjectBuilder()
-				.add("object_id", 0)
-				.build();
-		ServiceRequest request = new ServiceRequest(params);
-		return RecognizeSrv.callServiceAndWait(request).toJsonObject().getString("object_name");
-	}
-
 
 }

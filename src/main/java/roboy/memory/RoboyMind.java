@@ -39,6 +39,7 @@ public class RoboyMind implements Memory<Concept>
 		}
 		return roboyMemory;
 	}
+
 	private ServiceResponse CreateInstance(String class_name, int object_id)
 	{
 		Service CreateInstanceSrv = new Service(Ros.getInstance(), "/roboy_mind/create_instance", "/roboy_mind/create_instance");

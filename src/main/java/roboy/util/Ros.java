@@ -7,7 +7,7 @@ public class Ros {
 
     private static edu.wpi.rail.jrosbridge.Ros ros;
 
-    private static final String ROS_URL = "10.25.13.211";
+    private static final String ROS_URL = "10.177.255.133";
 
     private Ros() {
         ros = new edu.wpi.rail.jrosbridge.Ros(ROS_URL);

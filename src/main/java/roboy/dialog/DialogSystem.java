@@ -88,29 +88,6 @@ import roboy.util.Ros;
 public class DialogSystem {
 	
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
-		// RoboyMind memory = new RoboyMind(ros);
-		// Map<String, Object> attributes = new HashMap<String, Object>(){{
-		// 	put("class_name", "Person"); 
-		// 	put("id", 0); 
-		// 	put("name", "John"); 
-		// 	put("occupation", "student");
-		// }};
-		// Concept object1 = new Concept(attributes);
-		// attributes.put("name", "Anna");
-		// attributes.put("id", 1);
-		// Concept object2 = new Concept(attributes);
-		// memory.save(object1);
-		// memory.save(object2);
-		// Map<String, Object> attributes1 = new HashMap<String, Object>(){{
-		// 	put("occupation", "student");
-		// }};
-		// Concept object3 = new Concept(attributes1);
-		// List<Concept> found_objects = memory.retrieve(object3);
-
-		// Personality p = new DefaultPersonality();
-//		Personality p = new CuriousPersonality();
-//		Personality p = new KnockKnochPersonality();
-
 		
 		InputDevice input = new CommandLineInput();
 		// InputDevice input = new BingInput();
@@ -122,9 +99,9 @@ public class DialogSystem {
 		// OutputDevice output = new BingOutput();
 
 		EmotionOutput emotion = new EmotionOutput();
-//        OutputDevice output = new CommandLineOutput(emotion);
-        OutputDevice output = new CerevoiceOutput(emotion);
-		OutputDevice multiOut = new MultiOutputDevice(output,emotion);
+        OutputDevice output = new CommandLineOutput();
+//        OutputDevice output = new CerevoiceOutput(emotion);
+		OutputDevice multiOut = new MultiOutputDevice(output);//,emotion);
 		
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new SimpleTokenizer());
@@ -133,25 +110,28 @@ public class DialogSystem {
 		analyzers.add(new SentenceAnalyzer());
 		analyzers.add(new OpenNLPParser());
 		analyzers.add(new OntologyNERAnalyzer());
-		
-		System.out.println("Initialized...");
 
-        Vision vision = new Vision();
+        Input raw; //  = input.listen();
+        Interpretation interpretation; // = analyzer.analyze(raw);
+        Personality p = new SmallTalkPersonality(new Verbalizer());
+        List<Action> actions = p.answer(new Interpretation(""));
+
+        Ros.getInstance(); // initialize ROS bridge
+
+
+        System.out.println("Initialized...");
 
         while(true) {
 
-            while (!vision.findFaces()) {
-                emotion.act(new FaceAction("angry"));
-            }
+//            while (!Vision.getInstance().findFaces()) {
+//                emotion.act(new FaceAction("angry"));
+//            }
 //            emotion.act(new FaceAction("neutral"));
 
 //            while (!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)) {
 //            }
 
-            Input raw; //  = input.listen();
-            Interpretation interpretation; // = analyzer.analyze(raw);
-            Personality p = new SmallTalkPersonality(new Verbalizer());
-            List<Action> actions = p.answer(new Interpretation(""));
+
             while (actions.isEmpty() || !(actions.get(0) instanceof ShutDownAction)) {
                 multiOut.act(actions);
                 raw = multiIn.listen();
