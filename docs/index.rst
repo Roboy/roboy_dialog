@@ -31,10 +31,6 @@ The **software requirements** define the system from a blackbox/interfaces persp
 - **Runtime Interfaces and Constraints** - :ref:`runtime_interfaces`
 
 
-TODO:
-======
-.. todolist::
-
 Contents:
 
 .. _usage:
