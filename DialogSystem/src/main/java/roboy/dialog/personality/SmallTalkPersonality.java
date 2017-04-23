@@ -9,6 +9,15 @@ import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.talk.Verbalizer;
 import roboy.util.Lists;
 
+/**
+ * Currently Roboys main personality. It tries to engage with people in a general
+ * small talk, remember what was said and answer questions. The small talk personality
+ * is based on a state machine, where each input is interpreted in the context of the
+ * state Roboy is currently in to determine respective answers.
+ * 
+ * Since this was used for the last demo, quite some refaktoring is needed here to 
+ * tidy up the code again.
+ */
 public class SmallTalkPersonality implements Personality {
 
     private String name;
@@ -21,8 +30,6 @@ public class SmallTalkPersonality implements Personality {
 
     public SmallTalkPersonality(Verbalizer verbalizer) {
         this.verbalizer = verbalizer;
-
-        // build state machine
 
 
         List<String> nameQuestions = Arrays.asList(
@@ -63,6 +70,8 @@ public class SmallTalkPersonality implements Personality {
 //        SegueState segue = new SegueState(answer);
 //        CelebrityState celeb = new CelebrityState(segue);
         //TODO detect goodbye from all the states
+        
+        // build state machine
         GreetingState greetings = new GreetingState();
         IntroductionState intro = new IntroductionState();
         FarewellState farewell = new FarewellState();
@@ -87,11 +96,16 @@ public class SmallTalkPersonality implements Personality {
         state = greetings;
     }
 
+    /**
+     * Reacts to inputs based on the corresponding state Roboy is in. Each state
+     * returns a reaction to what was said and then proactively takes an action of
+     * its own. Both are combined to return the list of output actions.
+     */
     @Override
     public List<Action> answer(Interpretation input) {
         Reaction reaction = state.react(input);
         List<Action> talk = Lists.actionList();
-        if (name != null && Math.random() < 0.3) {
+        if (name != null && Math.random() < 0.3) { // TODO: this should go in the Verbalizer
             List<String> namePhrases = Arrays.asList("So %s, ", "Hey %s, ", "%s, listen to me, ", "%s, I have a question, ", "%s, ");
             String phrase = String.format(namePhrases.get(new Random().nextInt(4)), name);
             talk.add(0, new SpeechAction(phrase));

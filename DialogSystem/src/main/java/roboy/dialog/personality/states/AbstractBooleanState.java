@@ -6,14 +6,12 @@ import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.StatementInterpreter;
 import roboy.talk.Verbalizer;
-import roboy.util.Lists;
-import edu.wpi.rail.jrosbridge.Service;
-import edu.wpi.rail.jrosbridge.services.ServiceRequest;
-import org.json.*;
-import roboy.util.Ros;
 
-import java.util.List;
-
+/**
+ * Abstract super class for states that fork between two possible subsequent states.
+ * The determineSuccess method needs to be implemented by subclass to determine if
+ * the success or failure state should be moved into next.
+ */
 public abstract class AbstractBooleanState implements State {
 
     protected State success;
@@ -23,6 +21,12 @@ public abstract class AbstractBooleanState implements State {
         return success;
     }
 
+    /**
+     * Sets the state Roboy moves into if the determineSuccess method
+     * returns true.
+     * 
+     * @param success The following state
+     */
     public void setSuccess(State success) {
         this.success = success;
     }
@@ -31,6 +35,12 @@ public abstract class AbstractBooleanState implements State {
         return failure;
     }
 
+    /**
+     * Sets the state Roboy moves into if the determineSuccess method
+     * returns false.
+     * 
+     * @param failure The following state
+     */
     public void setFailure(State failure) {
         this.failure = failure;
     }
@@ -43,14 +53,14 @@ public abstract class AbstractBooleanState implements State {
     public Reaction react(Interpretation input) {
         String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
 
-        //check for stop key words
+        //check for stop key words  TODO: this should go into its own state
         if (StatementInterpreter.isFromList(sentence, Verbalizer.farewells)) {
             //if found stop conversation
             return new Reaction(new FarewellState());
         }
 
         //check for profanity words
-        if(sentence.contains("profanity")) {
+        if(sentence.contains("profanity")) { // TODO: this should go into its own state
             EmotionOutput emotion = new EmotionOutput();
             emotion.act(new FaceAction("angry"));
         }
@@ -63,5 +73,13 @@ public abstract class AbstractBooleanState implements State {
         }
     }
 
+    /**
+     * Needs to be implemented by subclasses. If the method returns true the
+     * state machine moves to the success state, if it returns false it moves
+     * to the failure state.
+     * 
+     * @param input The interpretation of all inputs
+     * @return true or false depending on the examined condition of the method
+     */
     abstract protected boolean determineSuccess(Interpretation input);
 }

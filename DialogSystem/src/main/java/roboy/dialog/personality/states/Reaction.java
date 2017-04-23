@@ -5,6 +5,11 @@ import java.util.List;
 
 import roboy.linguistics.sentenceanalysis.Interpretation;
 
+/**
+ * The reaction to what the other person said and did, consists of a list of interpretations,
+ * which is an abstraction of an utterance (the verbalizer later formulates the utterance),
+ * and a state into which the state machine moves.
+ */
 public class Reaction {
 
 	private List<Interpretation> reactions;

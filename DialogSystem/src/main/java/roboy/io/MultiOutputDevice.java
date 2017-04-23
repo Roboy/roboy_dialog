@@ -4,6 +4,9 @@ import java.util.List;
 
 import roboy.dialog.action.Action;
 
+/**
+ * Meta class to combine multiple output devices.
+ */
 public class MultiOutputDevice implements OutputDevice{
 	
 	private OutputDevice[] devices;

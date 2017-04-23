@@ -9,11 +9,23 @@ import roboy.dialog.action.SpeechAction;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 
+/**
+ * A test personality that only tries to tell knock knock jokes. This should
+ * later be include in sensible states and used in the normal small talk personality.
+ */
 public class KnockKnockPersonality implements Personality{
 	
 	private enum KnockKnockState {WELCOME, KNOCKKNOCK, WHOSETHERE, PUNCHLINE}
 	private KnockKnockState state = KnockKnockState.WELCOME;
 	private String[] joke;
+	
+	// A knock knock joke always consists of the following dialog:
+	// A: Knock, knock
+	// B: Who is there?
+	// A: <Answer 1>
+	// B: <Answer 1> who?
+	// A: <Answer 2>
+	// The jokes array contains of a list of Answer 1/Answer 2 pairs:
 	private String[][] jokes = new String[][]{
 		new String[]{"Rafa","Exactly! I have no idea. There are so many of them."},
 		new String[]{"Yoda lady", "Good job yodeling!"},
@@ -44,6 +56,13 @@ public class KnockKnockPersonality implements Personality{
 		new String[]{"Kenya","Kenya feel the love tonight?"}
 	};
 	
+	/**
+	 * The personality has four states which it will run through consecutively:
+	 * WELCOME: An intial greeting, starting with a knock, knock
+	 * KNOCKKNOCK: Knock, knock after at least one jokes was told already
+	 * WHOISTHERE: Giving the first, shortened answer
+	 * PUNCHLINE: Giving the punchline of the joke 
+	 */
 	@Override
 	public List<Action> answer(Interpretation input) {
 		List<Action> result = new ArrayList<Action>();

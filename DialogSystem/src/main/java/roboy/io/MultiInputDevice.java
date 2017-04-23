@@ -2,6 +2,9 @@ package roboy.io;
 
 import java.io.IOException;
 
+/**
+ * Meta class to combine multiple input devices.
+ */
 public class MultiInputDevice implements InputDevice{
 
 	private InputDevice mainInput;

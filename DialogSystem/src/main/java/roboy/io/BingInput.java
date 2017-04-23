@@ -7,7 +7,9 @@ import edu.wpi.rail.jrosbridge.services.ServiceRequest;
 import edu.wpi.rail.jrosbridge.services.ServiceResponse;
 import org.json.*;
 
-
+/**
+ * Using Bing to perform speech to text. Requires internet connection.
+ */
 public class BingInput implements InputDevice 
 {
 

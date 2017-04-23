@@ -8,6 +8,9 @@ import roboy.dialog.action.Action;
 import roboy.dialog.action.SpeechAction;
 import roboy.util.Ros;
 
+/**
+ * Uses Bing for text to speech. Requires internet connection.
+ */
 public class BingOutput implements OutputDevice 
 {
 

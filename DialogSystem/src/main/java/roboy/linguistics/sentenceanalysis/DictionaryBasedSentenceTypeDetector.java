@@ -3,6 +3,10 @@ package roboy.linguistics.sentenceanalysis;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Linguistics.SENTENCE_TYPE;
 
+/**
+ * Checks the sentence type by stupidly looking at the first word of the sentence
+ * and hoping that there is a known question word.
+ */
 public class DictionaryBasedSentenceTypeDetector implements Analyzer{
 
 	@Override

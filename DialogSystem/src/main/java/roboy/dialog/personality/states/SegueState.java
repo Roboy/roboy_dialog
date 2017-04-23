@@ -19,6 +19,10 @@ import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.Lists;
 import roboy.util.Maps;
 
+/**
+ * Is checking for words with which it has associated anecdotes. Tells the anecdote if a 
+ * word matches, executes its inner state instead, if not.
+ */
 public class SegueState implements State{
 	
 	private static final Map<SENTENCE_TYPE, Reaction> sentenceTypeAssociations = new HashMap<>();

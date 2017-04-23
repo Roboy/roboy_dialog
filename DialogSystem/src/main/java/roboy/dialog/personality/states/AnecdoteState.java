@@ -8,6 +8,9 @@ import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.Lists;
 import roboy.util.Maps;
 
+/**
+ * Utters the given text and moves to the given state. Used for telling anecdotes.
+ */
 public class AnecdoteState implements State{
 	
 	private State nextState;

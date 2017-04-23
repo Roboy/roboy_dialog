@@ -18,6 +18,11 @@ import roboy.linguistics.Term;
 import roboy.linguistics.Triple;
 import roboy.util.Maps;
 
+/**
+ * Tries to find triples with rather stupid heuristics and stores the results in the
+ * Linguistics.TRIPLE attribute of the interpretation.
+ * 
+ */
 public class SentenceAnalyzer implements Analyzer{
 	
 	private Map<String,String> meanings;

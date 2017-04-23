@@ -3,6 +3,9 @@ package roboy.memory;
 
 import java.util.*;
 
+/**
+ * Helper class.
+ */
 public class Util extends Exception {
 
 	

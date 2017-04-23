@@ -16,6 +16,11 @@ import roboy.linguistics.Linguistics;
 import roboy.linguistics.Linguistics.SEMANTIC_ROLE;
 import roboy.util.Lists;
 
+/**
+ * Performs a sentence analysis using the Open NLP constituency parser, then interprets the
+ * output for predicate argument structures and stores them in the Linguistics.PAS attribute
+ * of the interpretation.
+ */
 public class OpenNLPParser implements Analyzer{
 	
 	private Parser parser;

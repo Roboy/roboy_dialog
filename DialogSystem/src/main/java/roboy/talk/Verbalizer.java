@@ -9,8 +9,21 @@ import roboy.dialog.action.SpeechAction;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 
+/**
+ * Turns interpretations to actual utterances. This should in the future lead to diversify
+ * the ways Roboy is expressing information.
+ */
 public class Verbalizer {
 	
+	/**
+	 * Currently contains utterance diversification for greetings, farewells, segue and 
+	 * introductions to anecdotes. In all other cases the state machine provides a literal
+	 * sentence that is just passed through. In the future, this should be extended to 
+	 * diversify everything Roboy says.
+	 * 
+	 * @param interpretation the abstraction of what Roboy intends to say
+	 * @return the actual action that is performed
+	 */
 	public Action verbalize(Interpretation interpretation){
 		switch(interpretation.getSentenceType()){
 		case GREETING: return greet(interpretation);

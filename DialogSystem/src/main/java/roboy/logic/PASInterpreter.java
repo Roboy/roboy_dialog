@@ -59,6 +59,13 @@ public class PASInterpreter {
 					"where-study","almaMater"
 					);
 	
+	/**
+	 * Transforms a predicate argument structure into a DBpedia relation, that can
+	 * be used to query DBpedia for the answer to the missing elements of the PAS.
+	 * 
+	 * @param pas the predicate argument structure
+	 * @return the DBpedia relation
+	 */
 	public static Relation pas2DBpediaRelation(Map<String,Object> pas){
 
 		Object predicate = pas.get(SEMANTIC_ROLE.PREDICATE);

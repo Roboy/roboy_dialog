@@ -16,6 +16,9 @@ import roboy.util.Lists;
 import roboy.util.Maps;
 import roboy.util.Relation;
 
+/**
+ * Restores information from the DBpedia.
+ */
 public class DBpediaMemory implements Memory<Relation>{
 
 //	static Concept  sub = new Concept("Berlin");
@@ -32,6 +35,10 @@ public class DBpediaMemory implements Memory<Relation>{
 	{
 	}
 
+	/**
+	 * Loading DBpedia takes resources, so only do it once.
+	 * @return
+	 */
 	public static DBpediaMemory getInstance()
 	{
 		if (dbpediaMemory == null)
@@ -70,6 +77,8 @@ public class DBpediaMemory implements Memory<Relation>{
 //			"elevation",
 //			"elevation",
 //			"populationTotal");
+	
+	// mapping from the relation type to the expected entity type
 private static final Map<String, String> supportedRelations = Maps.stringMap(
 	 "areaCode","Place" ,
 	 "birthDate","Person" ,
@@ -109,6 +118,9 @@ private static final Map<String, String> supportedRelations = Maps.stringMap(
 
 	private Map<String,String> forms;
 	
+	/**
+	 * Retrive all matching relations from DBpedia.
+	 */
 	@Override
 	public List<Relation> retrieve(Relation object) throws InterruptedException, IOException {
 		LinkedHashSet<String> queries;

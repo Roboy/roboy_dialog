@@ -5,6 +5,10 @@ import java.util.Map;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Linguistics.SEMANTIC_ROLE;
 
+/**
+ * Checks the predicate argument structures produced by the OpenNLPParser analyzer
+ * and looks for possible answers to questions in them.
+ */
 public class AnswerAnalyzer implements Analyzer{
 	
 	@Override

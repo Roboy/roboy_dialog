@@ -10,7 +10,7 @@
     </organization>
     <name>Dialog System</name>
     <build>
-        <plugins>
+            <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>

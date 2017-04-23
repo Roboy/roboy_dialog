@@ -6,6 +6,11 @@ import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.Lists;
 
+/**
+ * Checks whether it was asked 'Whom do I look like' or something similar and answers
+ * with the most similar celebrity if it was detected by vision. If no trigger sentence
+ * was used, the given inner state is executed instead.
+ */
 public class CelebrityState implements State{
 	
 	private static final List<String> triggerSentences =

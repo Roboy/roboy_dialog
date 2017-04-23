@@ -8,6 +8,9 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * CSV file memory. Can only be used for retrieving and not for storing.
+ */
 public class PersistentKnowledge implements Memory<Triple>{
 
     private static PersistentKnowledge persistentKnowledge;
