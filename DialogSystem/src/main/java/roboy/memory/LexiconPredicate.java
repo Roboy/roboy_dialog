@@ -2,6 +2,9 @@ package roboy.memory;
 
 import java.util.*;
 
+/**
+ * A relation in the lexicon.
+ */
 public class LexiconPredicate implements Comparable<LexiconPredicate>
 {
 

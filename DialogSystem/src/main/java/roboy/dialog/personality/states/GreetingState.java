@@ -9,6 +9,9 @@ import roboy.logic.StatementInterpreter;
 import roboy.talk.Verbalizer;
 import roboy.util.Lists;
 
+/**
+ * Says hello.
+ */
 public class GreetingState extends AbstractBooleanState{
 
 	

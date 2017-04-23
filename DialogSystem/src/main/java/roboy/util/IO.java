@@ -7,6 +7,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Helper class for IO related tasks.
+ */
 public class IO {
 	
 	public static String readFile(String file){

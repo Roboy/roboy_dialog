@@ -1,5 +1,8 @@
 package roboy.linguistics;
 
+/**
+ * Represents a simple who does what to whom relation.
+ */
 public class Triple {
 	
 	public String agens;

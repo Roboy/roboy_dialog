@@ -8,6 +8,9 @@ import com.sun.speech.freetts.VoiceManager;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.SpeechAction;
 
+/**
+ * Free TTS text to speech.
+ */
 public class FreeTTSOutput implements OutputDevice{
 
 	private Voice voice;

@@ -10,6 +10,9 @@ import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonArray;
 
+/**
+ * Protege memory concept
+ */
 public class Concept {
 	
 	private Map<String, Object> attributes;

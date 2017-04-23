@@ -6,10 +6,14 @@ import java.util.Map;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Linguistics.SENTENCE_TYPE;
 
+/**
+ * An interpretation of all inputs to Roboy consists of the sentence type and an
+ * arbitrary map of features. Feature names are listed in the Linguistics class.
+ */
 public class Interpretation {
 
 	private Map<String,Object> features;
-	private SENTENCE_TYPE sentenceType;
+	private SENTENCE_TYPE sentenceType; //TODO: turn this into a feature
 	
 	public Interpretation(String sentence){
 		features = new HashMap<>();

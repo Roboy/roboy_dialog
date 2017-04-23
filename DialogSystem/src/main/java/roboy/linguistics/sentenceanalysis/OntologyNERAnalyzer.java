@@ -16,6 +16,10 @@ import roboy.linguistics.DetectedEntity;
 import roboy.linguistics.Entity;
 import roboy.linguistics.Linguistics;
 
+/**
+ * Checks for keywords from a list and stores them in Linguistics.KEYWORDS attribute
+ * of the interpretation.
+ */
 public class OntologyNERAnalyzer implements Analyzer{
 	
 	private Map<String,Entity> entities;

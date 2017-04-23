@@ -44,7 +44,7 @@ import roboy.talk.Verbalizer;
 import roboy.memory.RoboyMind;
 import edu.wpi.rail.jrosbridge.Ros;
 
-public class TestVision {
+public class TestVision { // TODO: This should go to test/java
 
 	private static Ros start_rosbridge()
 	{

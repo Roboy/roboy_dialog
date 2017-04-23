@@ -10,6 +10,9 @@ import roboy.util.Ros;
 
 import java.util.List;
 
+/**
+ * The generative model talking wildly.
+ */
 public class WildTalkState extends AbstractBooleanState {
 
     private boolean talking = false;

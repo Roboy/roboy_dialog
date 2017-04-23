@@ -6,6 +6,9 @@ import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
 import roboy.dialog.action.SpeechAction;
 
+/**
+ * Uses the command line as output device.
+ */
 public class CommandLineOutput implements OutputDevice{
 
 	private EmotionOutput emotion;

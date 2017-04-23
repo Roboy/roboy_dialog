@@ -5,6 +5,9 @@ import java.util.List;
 
 import roboy.util.Lists;
 
+/**
+ * Collection of attribute names, enumerations, word lists etc. related to linguistics.
+ */
 public class Linguistics {
 
 	public enum SENTENCE_TYPE { 
@@ -23,6 +26,7 @@ public class Linguistics {
 	public static final List<String> tobe = Arrays.asList("am","are","is","was","were","been");
 	public static final List<String> beMod = Lists.stringList("am","are","is","was","were","has been","have been","had been");
 	
+	// feature names
 	public static final String SENTENCE = "sentence";
 	public static final String TRIPLE = "triple";
 	public static final String TOKENS = "tokens";

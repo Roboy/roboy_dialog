@@ -2,6 +2,9 @@ package roboy.util;
 
 import roboy.util.Concept;
 
+/**
+ * DBpedia relation.
+ */
 public class Relation {
 	
 	public Concept subject;

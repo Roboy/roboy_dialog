@@ -17,6 +17,10 @@ import roboy.memory.Memory;
 import roboy.util.Lists;
 import roboy.util.Relation;
 
+/**
+ * State in which Roboy is answering questions based on DBpedia or the knowledge base
+ * from the resources folder.
+ */
 public class QuestionAnsweringState implements State{
 
 	private boolean first = true;
@@ -61,6 +65,10 @@ public class QuestionAnsweringState implements State{
 		return action;
 	}
 
+	/**
+	 * Checks the sentence type and detected triples in the input for determining what is
+	 * asked about. Then checks its knowledge base to come up with an answer.
+	 */
 	@Override
 	public Reaction react(Interpretation input) {
 		Triple triple = (Triple) input.getFeatures().get(Linguistics.TRIPLE);
@@ -119,6 +127,14 @@ public class QuestionAnsweringState implements State{
 		return new Reaction(top,result);
 	}
 	
+	/**
+	 * Checks all its memories (currently only the DBpedia) for an answer to the given
+	 * question.
+	 * 
+	 * @param input The interpretation of all inputs
+	 * @param result The list of answers that is possibly replaced
+	 * @return the reaction to the question
+	 */
 	@SuppressWarnings("unchecked")
 	private Reaction innerReaction(Interpretation input,List<Interpretation> result){
 //		Map<String, Object> pas = (Map<String, Object>) input.getFeature(Linguistics.PAS);

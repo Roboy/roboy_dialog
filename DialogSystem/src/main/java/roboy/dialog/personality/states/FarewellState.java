@@ -6,6 +6,9 @@ import roboy.linguistics.Linguistics.SENTENCE_TYPE;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.Lists;
 
+/**
+ * Says goodbye.
+ */
 public class FarewellState implements State{
 
 	@Override

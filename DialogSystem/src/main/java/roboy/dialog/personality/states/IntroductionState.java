@@ -6,6 +6,10 @@ import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.Lists;
 
+/**
+ * Roboy introduces himself and asks "How are you?". Moves to success state if the answer
+ * is at most 2 words.
+ */
 public class IntroductionState extends AbstractBooleanState{
 
 	@Override

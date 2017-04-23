@@ -8,6 +8,10 @@ import org.apache.jena.base.Sys;
 import roboy.linguistics.Linguistics;
 import roboy.util.Maps;
 
+/**
+ * Detects the word 'Roboy' and stores if it was detected in the Linguistics.ROBOYDETECTED
+ * attribute field of the resulting Input object.
+ */
 public class RoboyNameDetectionInput implements InputDevice{
 
     protected LiveSpeechRecognizer recog_copy;

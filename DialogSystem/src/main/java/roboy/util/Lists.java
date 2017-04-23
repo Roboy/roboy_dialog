@@ -7,6 +7,9 @@ import java.util.List;
 import roboy.dialog.action.Action;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 
+/**
+ * Helper class for list related tasks.
+ */
 public class Lists {
 	
 	public static List<Action> actionList(Action... actions){

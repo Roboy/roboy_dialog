@@ -9,6 +9,9 @@ import roboy.dialog.action.FaceAction;
 import roboy.dialog.action.SpeechAction;
 import roboy.util.Ros;
 
+/**
+ * Cerevoice text to speech + Roboy's facial expressions.
+ */
 public class CerevoiceOutput implements OutputDevice 
 {
 	private EmotionOutput emotion;

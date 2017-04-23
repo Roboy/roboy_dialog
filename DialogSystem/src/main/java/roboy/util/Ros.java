@@ -1,5 +1,8 @@
 package roboy.util;
 
+/**
+ * Communication with ROS.
+ */
 public class Ros {
 
     private static edu.wpi.rail.jrosbridge.Ros ros;

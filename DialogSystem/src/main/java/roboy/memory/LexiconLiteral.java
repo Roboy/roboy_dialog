@@ -3,6 +3,9 @@ package roboy.memory;
 import java.util.*;
 import java.util.Comparator;
 
+/**
+ * An entity in the lexicon.
+ */
 public class LexiconLiteral implements Comparable<LexiconLiteral>
 {
 	

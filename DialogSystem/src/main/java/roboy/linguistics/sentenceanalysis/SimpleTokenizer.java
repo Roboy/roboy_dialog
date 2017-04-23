@@ -2,6 +2,10 @@ package roboy.linguistics.sentenceanalysis;
 
 import roboy.linguistics.Linguistics;
 
+/**
+ * Tokenizes the text by splitting at whitespace and stores the resulting tokens in the
+ * Linguistics.TOKENS attribute of the interpretation.
+ */
 public class SimpleTokenizer implements Analyzer{
 
 	@Override

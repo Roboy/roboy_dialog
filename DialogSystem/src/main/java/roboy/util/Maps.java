@@ -5,6 +5,9 @@ import java.util.Map;
 
 import roboy.dialog.personality.states.Reaction;
 
+/**
+ * Helper class for map related tasks.
+ */
 public class Maps {
 
 	public static Map<String,String> stringMap(String... elements){

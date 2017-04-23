@@ -18,6 +18,9 @@ import roboy.util.Concept;
 import roboy.util.Relation;
 import roboy.util.Ros;
 
+/**
+ * Vision helper class ... I guess.
+ */
 public class Vision 
 {
 

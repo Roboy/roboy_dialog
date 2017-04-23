@@ -21,7 +21,10 @@ import roboy.util.Ros;
 import javax.json.Json;
 import javax.json.JsonObject;
 
-
+/**
+ * Is asking the other person questions about things that we can store in the Protege
+ * memory.
+ */
 public class QuestionAskingState implements State
 {
 
@@ -57,13 +60,17 @@ public class QuestionAskingState implements State
 
 	}
 
+	/**
+	 * Asks first about the name of the other person and if called another time randomly
+	 * about another possible other information.
+	 */
 	@Override
 	public List<Interpretation> act() 
 	{
 		List<Interpretation> action = Lists.interpretationList();
 		if(questionsCount==0)
 		{
-			//fist question is always name
+			//first question is always name
 			if (questions.containsKey("name"))
 			{
 				currentIntent = "name";

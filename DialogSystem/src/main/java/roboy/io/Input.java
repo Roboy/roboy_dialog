@@ -3,6 +3,10 @@ package roboy.io;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The result of an input device consists of a sentence, if it is an audio device, and
+ * an arbitrary map of attributes.
+ */
 public class Input {
 	
 	public String sentence;

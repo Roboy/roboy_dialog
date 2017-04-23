@@ -13,6 +13,9 @@ import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
 import roboy.util.Ros;
 
+/**
+ * Roboy's facial expression output.
+ */
 public class EmotionOutput implements OutputDevice 
 {
 	

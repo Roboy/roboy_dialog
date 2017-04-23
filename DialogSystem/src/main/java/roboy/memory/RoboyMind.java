@@ -20,6 +20,9 @@ import edu.wpi.rail.jrosbridge.services.ServiceResponse;
 import roboy.util.Concept;
 import roboy.util.Ros;
 
+/**
+ * Protege memory.
+ */
 public class RoboyMind implements Memory<Concept>
 {
 	private static RoboyMind roboyMemory;
