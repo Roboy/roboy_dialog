@@ -39,13 +39,6 @@ Contents:
 
   ScopeContext/*
 
-.. _development:
-.. toctree::
-  :maxdepth: 1
-  :glob:
-  :caption: Development
-
-  development/*
 
 .. toctree::
    :maxdepth: 1
