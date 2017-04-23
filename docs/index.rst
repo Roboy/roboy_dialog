@@ -3,26 +3,20 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Software Documentation Template!
+Roboy Dialog System
 ===========================================================
 
+This project aims to implement human-like conversation routines for the humanoid anthropomimetic robot Roboy.
 
-.. todo::
-  Introduce your project and describe what its intended goal and use is.
+Status
+===========================================================
 
-
-.. _background_prerequisits:
-
-Relevant Background Information and Pre-Requisits
---------------------------------------------------
-
-.. todo::
-  Describe what a potential user needs to be familiar with. What should they read and understand beforehand
-
-  Describe what a developer needs to be familiar with to further understand the code.
-
-  Link to relevant documents or create a new page and add them there.
-
+Stable functionality:
+- Roboy introduces himself
+- Roboy answers questions about himself
+- Roboy recognizes once someone says his name
+- Roboy asks questions people he meets
+- Roboy stores information (name, occupation, ect.) about people he meets (not persistant)
 
 .. _requirements_overview:
 
