@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1io_1_1_vision" kind="class" language="Java" prot="public">
+    <compoundname>roboy::io::Vision</compoundname>
+    <innerclass refid="classroboy_1_1io_1_1_vision_1_1_vision_callback" prot="private">roboy::io::Vision::VisionCallback</innerclass>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1io_1_1_vision_1a86b02e515521d495b62ea9ab1a6fe91e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>String</type>
+        <definition>String roboy.io.Vision.recognize</definition>
+        <argsstring>()</argsstring>
+        <name>recognize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/Vision.java" line="53" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/Vision.java" bodystart="53" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1io_1_1_vision_1a44e80a6f9dcabeb1156b449398b9c9a2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>boolean</type>
+        <definition>boolean roboy.io.Vision.findFaces</definition>
+        <argsstring>()</argsstring>
+        <name>findFaces</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/Vision.java" line="67" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/Vision.java" bodystart="67" bodyend="72"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classroboy_1_1io_1_1_vision" kindref="compound">Vision</ref> helper class ... </para>    </briefdescription>
+    <detaileddescription>
+<para>I guess. </para>    </detaileddescription>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/Vision.java" line="25" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/Vision.java" bodystart="24" bodyend="74"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1io_1_1_vision_1a44e80a6f9dcabeb1156b449398b9c9a2" prot="public" virt="non-virtual"><scope>roboy::io::Vision</scope><name>findFaces</name></member>
+      <member refid="classroboy_1_1io_1_1_vision_1a86b02e515521d495b62ea9ab1a6fe91e" prot="public" virt="non-virtual"><scope>roboy::io::Vision</scope><name>recognize</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

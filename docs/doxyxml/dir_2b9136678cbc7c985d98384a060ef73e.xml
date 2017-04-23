@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_2b9136678cbc7c985d98384a060ef73e" kind="dir">
+    <compoundname>/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis</compoundname>
+    <innerfile refid="_analyzer_8java">Analyzer.java</innerfile>
+    <innerfile refid="_answer_analyzer_8java">AnswerAnalyzer.java</innerfile>
+    <innerfile refid="_dictionary_based_sentence_type_detector_8java">DictionaryBasedSentenceTypeDetector.java</innerfile>
+    <innerfile refid="_interpretation_8java">Interpretation.java</innerfile>
+    <innerfile refid="_ontology_n_e_r_analyzer_8java">OntologyNERAnalyzer.java</innerfile>
+    <innerfile refid="_open_n_l_p_parser_8java">OpenNLPParser.java</innerfile>
+    <innerfile refid="_open_n_l_p_p_p_o_s_tagger_8java">OpenNLPPPOSTagger.java</innerfile>
+    <innerfile refid="_sentence_analyzer_8java">SentenceAnalyzer.java</innerfile>
+    <innerfile refid="_simple_tokenizer_8java">SimpleTokenizer.java</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/"/>
+  </compounddef>
+</doxygen>

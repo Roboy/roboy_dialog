@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="interfaceroboy_1_1memory_1_1_memory" kind="interface" language="Java" prot="public">
+    <compoundname>roboy::memory::Memory</compoundname>
+    <templateparamlist>
+      <param>
+        <type>T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interfaceroboy_1_1memory_1_1_memory_1ae1410bbebe3d943cfe06b2de7b8bc1d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>boolean</type>
+        <definition>boolean roboy.memory.Memory&lt; T &gt;.save</definition>
+        <argsstring>(T object)</argsstring>
+        <name>save</name>
+        <param>
+          <type>T</type>
+          <declname>object</declname>
+        </param>
+        <exceptions> throws InterruptedException, IOException</exceptions>
+        <briefdescription>
+<para>Storing the element in the memory. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>object</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the element to be stored </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true, if storing was successful </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>InterruptedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>IOException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/Memory.java" line="22" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interfaceroboy_1_1memory_1_1_memory_1aa89918c7a726c936b05fa027ad34d462" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>List&lt; T &gt;</type>
+        <definition>List&lt;T&gt; roboy.memory.Memory&lt; T &gt;.retrieve</definition>
+        <argsstring>(T object)</argsstring>
+        <name>retrieve</name>
+        <param>
+          <type>T</type>
+          <declname>object</declname>
+        </param>
+        <exceptions> throws InterruptedException, IOException</exceptions>
+        <briefdescription>
+<para>Retrieve an element from memory. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>object</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a version of the object that lacks information (e.g. it only has the ID) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a list of objects that match the query containing all the required information </para></simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>InterruptedException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>IOException</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/Memory.java" line="32" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The <ref refid="interfaceroboy_1_1memory_1_1_memory" kindref="compound">Memory</ref> interface contains of methods to save and retrieve information. </para>    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>&lt;T&gt;</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the type of information stored </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/Memory.java" line="13" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/Memory.java" bodystart="13" bodyend="33"/>
+    <listofallmembers>
+      <member refid="interfaceroboy_1_1memory_1_1_memory_1aa89918c7a726c936b05fa027ad34d462" prot="public" virt="non-virtual"><scope>roboy::memory::Memory</scope><name>retrieve</name></member>
+      <member refid="interfaceroboy_1_1memory_1_1_memory_1ae1410bbebe3d943cfe06b2de7b8bc1d4" prot="public" virt="non-virtual"><scope>roboy::memory::Memory</scope><name>save</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

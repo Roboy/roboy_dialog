@@ -1,0 +1,924 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.11">
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state" kind="class"><name>roboy::dialog::personality::states::AbstractBooleanState</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a916cfc3054b6553c5e3bd081bf95808c" kind="variable"><name>success</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1afd916a053e2e9374d464c7d2bf0f74ad" kind="variable"><name>failure</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a29b9095d9688916a72b4bf846ecfb170" kind="function"><name>getSuccess</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a95b2e8367f1b9b3b05a89e7db1a735e3" kind="function"><name>setSuccess</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1ace03f687b53a4af28192dc622d8e674f" kind="function"><name>getFailure</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1aaef59e5550a47a4df8a28887cc996edb" kind="function"><name>setFailure</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1afe2dcbf032ab3e128f243fcb77259e70" kind="function"><name>setNextState</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a6821153b384889cf1aab894ed2422150" kind="function"><name>react</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a5f613e655de9d0f807ae2dc7bde4c6c2" kind="function"><name>determineSuccess</name></member>
+  </compound>
+  <compound refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kind="interface"><name>roboy::dialog::action::Action</name>
+  </compound>
+  <compound refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer" kind="interface"><name>roboy::linguistics::sentenceanalysis::Analyzer</name>
+    <member refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer_1a815ac125df33bff418d4a21618e5a340" kind="function"><name>analyze</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_anecdote_state" kind="class"><name>roboy::dialog::personality::states::AnecdoteState</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_anecdote_state_1ad6bfb1ea1fbed9b20643c3042f88a646" kind="variable"><name>nextState</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_anecdote_state_1a17795b2899b67295d57d0898919592c2" kind="variable"><name>anecdote</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_anecdote_state_1a526a9b5445e3fe65363415aed87c9532" kind="function"><name>AnecdoteState</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_anecdote_state_1aecea2ddfcadb89b2a97cd926938e0593" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_anecdote_state_1a4d3deb537aa13d2ccc22454df9c3b9b6" kind="function"><name>react</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer" kind="class"><name>roboy::linguistics::sentenceanalysis::AnswerAnalyzer</name>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_1a73f78105762ea57ad85c1a6e849a7eaf" kind="function"><name>analyze</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test" kind="class"><name>roboy::linguistics::sentenceanalysis::AnswerAnalyzerTest</name>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1a01869fd72e0b91c39b81d41e39f830f5" kind="variable"><name>tokenizer</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1a2fe7fd694e347fba8dbca25e031db5fa" kind="variable"><name>pos</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1a29fac3fad083e67ebd2542b340cfb96f" kind="variable"><name>parser</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1a3824dd8a1bfb5f28fdf6601eafde9818" kind="variable"><name>answer</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1a086dd92e84f44ef15a4903b762f45deb" kind="function"><name>testName</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1aee3a036f3cbefc4585040ea8c74aa303" kind="function"><name>testOccupation</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1aa12b58cfd180a7f7d8bc22f46289eaaa" kind="function"><name>testOrigin</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1a1c7eb6536df44ec3930d05f00f176806" kind="function"><name>testHobby</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1a67f6893bd1e09286d990c57d938c7e8a" kind="function"><name>testMovie</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1afa3f1bfdc7aa8ad4826e6aa92df3131f" kind="function"><name>analyze</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1a70e6e3d4b33606509247335d69f972b5" kind="function"><name>analyzePred</name></member>
+  </compound>
+  <compound refid="classroboy_1_1io_1_1_bing_input" kind="class"><name>roboy::io::BingInput</name>
+    <member refid="classroboy_1_1io_1_1_bing_input_1a9863247c643f9a271a228ac2bcebe647" kind="function"><name>listen</name></member>
+  </compound>
+  <compound refid="classroboy_1_1io_1_1_bing_output" kind="class"><name>roboy::io::BingOutput</name>
+    <member refid="classroboy_1_1io_1_1_bing_output_1a7e19c215ad749e2b3eeed94ccae6916a" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1io_1_1_bing_output_1abb386e2c1b15dfc75098978c782dd06d" kind="function"><name>say</name></member>
+  </compound>
+  <compound refid="classroboy_1_1io_1_1_celebrity_similarity_input" kind="class"><name>roboy::io::CelebritySimilarityInput</name>
+    <member refid="classroboy_1_1io_1_1_celebrity_similarity_input_1a1257267e4f15652716fdf6d9844e192a" kind="function"><name>listen</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_celebrity_state" kind="class"><name>roboy::dialog::personality::states::CelebrityState</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_celebrity_state_1a3f9ac84e6b2cea3478f217875617145b" kind="variable"><name>triggerSentences</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_celebrity_state_1a0762c98d466be8bd58b66516bded477a" kind="variable"><name>formulations</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_celebrity_state_1a0bf2c964df01f5b6f1b4d434c41725fe" kind="variable"><name>inner</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_celebrity_state_1afd715f0cc2b897480cd0cd984bc85c5e" kind="variable"><name>top</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_celebrity_state_1aef3f402e1bca31a2c50c8d71133681b1" kind="function"><name>CelebrityState</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_celebrity_state_1ae83ba05574d94e6612058d2956eb7f28" kind="function"><name>setTop</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_celebrity_state_1aa705e03bc1480ba4e9a5af6f4082d114" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_celebrity_state_1aa094954f406536d306fe59031af8a801" kind="function"><name>react</name></member>
+  </compound>
+  <compound refid="classroboy_1_1io_1_1_cerevoice_output" kind="class"><name>roboy::io::CerevoiceOutput</name>
+    <member refid="classroboy_1_1io_1_1_cerevoice_output_1ac23859db1d376cfe9a2e52555c62f5ef" kind="variable"><name>emotion</name></member>
+    <member refid="classroboy_1_1io_1_1_cerevoice_output_1afa4a92f3502be131d089324716e6d3e9" kind="function"><name>CerevoiceOutput</name></member>
+    <member refid="classroboy_1_1io_1_1_cerevoice_output_1afed54c4dabf2c25c91d1db6af93a288b" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1io_1_1_cerevoice_output_1ac7de7a9f412a35d23fdcb4bbabf67174" kind="function"><name>say</name></member>
+  </compound>
+  <compound refid="classroboy_1_1io_1_1_command_line_communication" kind="class"><name>roboy::io::CommandLineCommunication</name>
+    <member refid="classroboy_1_1io_1_1_command_line_communication_1a14b17c8a49f7457f440a41abbf3d963d" kind="variable"><name>personality</name></member>
+    <member refid="classroboy_1_1io_1_1_command_line_communication_1a75f0ab5ac348e25ff15e66bd5106adc6" kind="variable"><name>analyzer</name></member>
+    <member refid="classroboy_1_1io_1_1_command_line_communication_1adcc9d1eeb8d38fd3408dd1c62a8746d0" kind="function"><name>setPersonality</name></member>
+    <member refid="classroboy_1_1io_1_1_command_line_communication_1aad3bdba382786f3f4e7b7e918a6632c3" kind="function"><name>communicate</name></member>
+    <member refid="classroboy_1_1io_1_1_command_line_communication_1a0f8831773b453123850578fc94b793e8" kind="function"><name>talk</name></member>
+  </compound>
+  <compound refid="classroboy_1_1io_1_1_command_line_input" kind="class"><name>roboy::io::CommandLineInput</name>
+    <member refid="classroboy_1_1io_1_1_command_line_input_1a2e81667a8bebe70b683c6bb20f684bd0" kind="variable"><name>sc</name></member>
+    <member refid="classroboy_1_1io_1_1_command_line_input_1a88df660444e5a67add1c1720911a86c3" kind="function"><name>listen</name></member>
+    <member refid="classroboy_1_1io_1_1_command_line_input_1aaadd00a67d1a2b503a08d7f6e7364b59" kind="function"><name>finalize</name></member>
+  </compound>
+  <compound refid="classroboy_1_1io_1_1_command_line_output" kind="class"><name>roboy::io::CommandLineOutput</name>
+    <member refid="classroboy_1_1io_1_1_command_line_output_1a56062c3cc5dc3a1d87c0f23443b2ab2b" kind="variable"><name>emotion</name></member>
+    <member refid="classroboy_1_1io_1_1_command_line_output_1a6bfbf1d2cade1fb9be9f256f5fba23b6" kind="function"><name>CommandLineOutput</name></member>
+    <member refid="classroboy_1_1io_1_1_command_line_output_1a335d0ba4f6ab5edd8cace20080f3f792" kind="function"><name>act</name></member>
+  </compound>
+  <compound refid="interfaceroboy_1_1io_1_1_communication" kind="interface"><name>roboy::io::Communication</name>
+    <member refid="interfaceroboy_1_1io_1_1_communication_1add61ceea080808f1dd70aa8e06447e60" kind="function"><name>setPersonality</name></member>
+    <member refid="interfaceroboy_1_1io_1_1_communication_1ab0afb027eb080087ff7142063298b0fc" kind="function"><name>communicate</name></member>
+  </compound>
+  <compound refid="classroboy_1_1util_1_1_concept" kind="class"><name>roboy::util::Concept</name>
+    <member refid="classroboy_1_1util_1_1_concept_1ab1cbf97d7823cad7ef1c0ce61eb36962" kind="variable"><name>attributes</name></member>
+    <member refid="classroboy_1_1util_1_1_concept_1a5dbd5da494f8e44d0b7120eed7609b29" kind="function"><name>Concept</name></member>
+    <member refid="classroboy_1_1util_1_1_concept_1ab51e6c4504478bdb7d89d294a546e328" kind="function"><name>Concept</name></member>
+    <member refid="classroboy_1_1util_1_1_concept_1a4c1a6e2a69b5f01f2f2b9f69696f374f" kind="function"><name>Concept</name></member>
+    <member refid="classroboy_1_1util_1_1_concept_1a3e400d336a676f6b5ec88bd8c19de33d" kind="function"><name>addAttribute</name></member>
+    <member refid="classroboy_1_1util_1_1_concept_1ad0736aaaf88a3c34af47cfd546e1e185" kind="function"><name>addAttributes</name></member>
+    <member refid="classroboy_1_1util_1_1_concept_1aa1472574b0b8d78e8ed55865cc173c35" kind="function"><name>getAttributes</name></member>
+    <member refid="classroboy_1_1util_1_1_concept_1addc789e61b9e440c6c842100be2b5753" kind="function"><name>getAttribute</name></member>
+    <member refid="classroboy_1_1util_1_1_concept_1a04c3fb472bff86c2a447366de375fca9" kind="function"><name>getProperties</name></member>
+    <member refid="classroboy_1_1util_1_1_concept_1acaefc0210cc92239559987cb53d563f9" kind="function"><name>getValues</name></member>
+    <member refid="classroboy_1_1util_1_1_concept_1a08941c877ceff5480beaf956223eba76" kind="function"><name>hasAttribute</name></member>
+    <member refid="classroboy_1_1util_1_1_concept_1ac0d0f8a668d6d92fcce8f270368e3412" kind="function"><name>retrieve</name></member>
+    <member refid="classroboy_1_1util_1_1_concept_1a6bfd6066fbead581a8ee1e10d2c690a2" kind="function"><name>updateInMemory</name></member>
+    <member refid="classroboy_1_1util_1_1_concept_1a775d25d54c115499da60ddce8d8e3d73" kind="function"><name>getID</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1_concept" kind="class"><name>roboy::linguistics::Concept</name>
+    <member refid="classroboy_1_1linguistics_1_1_concept_1a89399d35a7970a97f23830df295078c3" kind="variable"><name>id</name></member>
+  </compound>
+  <compound refid="enumroboy_1_1dialog_1_1personality_1_1_default_personality_1_1_c_o_n_v_e_r_s_a_t_i_o_n_a_l___s_t_a_t_e" kind="enum"><name>roboy::dialog::personality::DefaultPersonality::CONVERSATIONAL_STATE</name>
+    <member refid="enumroboy_1_1dialog_1_1personality_1_1_default_personality_1_1_c_o_n_v_e_r_s_a_t_i_o_n_a_l___s_t_a_t_e_1a2702f292f349c745010d4de59f441413" kind="variable"><name>GREETING</name></member>
+    <member refid="enumroboy_1_1dialog_1_1personality_1_1_default_personality_1_1_c_o_n_v_e_r_s_a_t_i_o_n_a_l___s_t_a_t_e_1aaae1a273ee9a3b845a52e406b8606ca9" kind="variable"><name>INTRODUCTION</name></member>
+    <member refid="enumroboy_1_1dialog_1_1personality_1_1_default_personality_1_1_c_o_n_v_e_r_s_a_t_i_o_n_a_l___s_t_a_t_e_1a27f04beb6d915314089adeb6861e8f36" kind="variable"><name>SMALL_TALK</name></member>
+    <member refid="enumroboy_1_1dialog_1_1personality_1_1_default_personality_1_1_c_o_n_v_e_r_s_a_t_i_o_n_a_l___s_t_a_t_e_1a8864e37293ef209fc4f875bea5c2e083" kind="variable"><name>FAREWELL</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_converse_state" kind="class"><name>roboy::dialog::personality::states::ConverseState</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_converse_state_1acfc44b7f47f2252e864f121c89687536" kind="variable"><name>inner</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_converse_state_1a61968f62ad06e0ef33988c3bb64eae6b" kind="function"><name>ConverseState</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_converse_state_1acfb99b2d78134f809113bf106e91f639" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_converse_state_1a4e99dea952ae88c93ebf5186f721c85a" kind="function"><name>react</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_converse_state_1a09b443b4a794125a96e4fb991087c62f" kind="function"><name>determineSuccess</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1_curious_personality" kind="class"><name>roboy::dialog::personality::CuriousPersonality</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_curious_personality_1a714f9790f86a3b6eec5416132864c312" kind="variable"><name>memory</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_curious_personality_1acde8c9ed83ad02a62fcafe73e2f04ae5" kind="function"><name>CuriousPersonality</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_curious_personality_1a92d47c082108aeb124242bb7d61f80cc" kind="function"><name>answer</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_curious_personality_1af75adc8f9f07287bc7f0644206145a99" kind="function"><name>remember</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_curious_personality_1a290f5190587936032c85e44b2388d3f8" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="classroboy_1_1memory_1_1_d_bpedia_memory" kind="class"><name>roboy::memory::DBpediaMemory</name>
+    <member refid="classroboy_1_1memory_1_1_d_bpedia_memory_1a222352db1aa5918b32c495ecb15db380" kind="variable"><name>dbpediaMemory</name></member>
+    <member refid="classroboy_1_1memory_1_1_d_bpedia_memory_1aa09ff84542a2d62cd5f6954e31db208c" kind="variable"><name>supportedRelations</name></member>
+    <member refid="classroboy_1_1memory_1_1_d_bpedia_memory_1a60528a359bcd8b5e499d643452728c01" kind="variable"><name>forms</name></member>
+    <member refid="classroboy_1_1memory_1_1_d_bpedia_memory_1ab3c76d7a9c8868218c293a29fa67b2b4" kind="function"><name>DBpediaMemory</name></member>
+    <member refid="classroboy_1_1memory_1_1_d_bpedia_memory_1ae860950c1787caa85fcb1593296af7e8" kind="function"><name>getInstance</name></member>
+    <member refid="classroboy_1_1memory_1_1_d_bpedia_memory_1a0aa5957be90a38e3acebea9958da3ece" kind="function"><name>buildQueries</name></member>
+    <member refid="classroboy_1_1memory_1_1_d_bpedia_memory_1adf343ad724d952dea84355879e9ebd55" kind="function"><name>save</name></member>
+    <member refid="classroboy_1_1memory_1_1_d_bpedia_memory_1a90c86822483101b63d482fd6cf702feb" kind="function"><name>retrieve</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1_default_personality" kind="class"><name>roboy::dialog::personality::DefaultPersonality</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_default_personality_1a2e2fe5614c92af1dd6e150a5a057e8d9" kind="variable"><name>greetings</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_default_personality_1ad19cbacc233dffb23e3d6ba38874919d" kind="variable"><name>farewells</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_default_personality_1abcdc02afc0b5b76efd7df313fe5ed9a8" kind="variable"><name>positive</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_default_personality_1ab34a36ecc20ebc6a50dd39429063f416" kind="variable"><name>agreement</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_default_personality_1acc4a657a09fc4e36479a2ab67163bd11" kind="variable"><name>disagreement</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_default_personality_1a42a83870512b234f7dd95be3c957d7ac" kind="variable"><name>introduction</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_default_personality_1af357f5121ffd3a6e8432022d6e19b7a6" kind="variable"><name>state</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_default_personality_1a5029689eb06232c4881421e1a7314cf3" kind="function"><name>answer</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_default_personality_1a797594f1a20285a39591d4d5180ac6ab" kind="function"><name>stripFromFront</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_default_personality_1aef391b77df68daae8cca67286b655cf9" kind="function"><name>random</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_default_personality_1ab6e1d3a2432c3bf964c69de4ada07d26" kind="function"><name>checkForTerm</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1_detected_entity" kind="class"><name>roboy::linguistics::DetectedEntity</name>
+    <member refid="classroboy_1_1linguistics_1_1_detected_entity_1a98ae17b671c2d0b4280bacec88d716c5" kind="variable"><name>entity</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_detected_entity_1afc5253a2149094bf55c8497bef9bd646" kind="variable"><name>tokenIndex</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_detected_entity_1aebfc4c0d03a3cf21055d2d2462bd2946" kind="function"><name>DetectedEntity</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_detected_entity_1abd635419d7bd4abcda624153e9febfde" kind="function"><name>getEntity</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_detected_entity_1a7056be8f1b2404a36a236afe63bb906e" kind="function"><name>getTokenIndex</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1_dialog_system" kind="class"><name>roboy::dialog::DialogSystem</name>
+    <member refid="classroboy_1_1dialog_1_1_dialog_system_1af467cec6e12b2fcf78fb278e301768b4" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_dictionary_based_sentence_type_detector" kind="class"><name>roboy::linguistics::sentenceanalysis::DictionaryBasedSentenceTypeDetector</name>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_dictionary_based_sentence_type_detector_1a9a7512eecf164928943994f5b13eec00" kind="function"><name>analyze</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_dictionary_based_sentence_type_detector_1a47444eb6225a58f43db6f04768519b59" kind="function"><name>determineSentenceType</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_dictionary_based_sentence_type_detector_test" kind="class"><name>roboy::linguistics::sentenceanalysis::DictionaryBasedSentenceTypeDetectorTest</name>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_dictionary_based_sentence_type_detector_test_1a423a78718c5cdaf13c8630d78262169e" kind="variable"><name>detector</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_dictionary_based_sentence_type_detector_test_1ab4dae77ccf299a0dacd645620bb813d8" kind="function"><name>testWhatIs</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1phonetics_1_1_double_metaphone_encoder" kind="class"><name>roboy::linguistics::phonetics::DoubleMetaphoneEncoder</name>
+    <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_double_metaphone_encoder_1acb9061b3f214aef5730591e1db489787" kind="variable"><name>doubleMetaphone</name></member>
+    <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_double_metaphone_encoder_1a85687761eec72b6f60967fbc2fc6908e" kind="function"><name>DoubleMetaphoneEncoder</name></member>
+    <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_double_metaphone_encoder_1a76d35bc921d7b5cf49ffcb914393857e" kind="function"><name>encode</name></member>
+  </compound>
+  <compound refid="classroboy_1_1io_1_1_emotion_output" kind="class"><name>roboy::io::EmotionOutput</name>
+    <member refid="classroboy_1_1io_1_1_emotion_output_1a51b712bbed6db5f5e5fa19a5ae3e9041" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1io_1_1_emotion_output_1a83b84d0780eaeac69c75e3fdd22fc22f" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1io_1_1_emotion_output_1ab621c6a81cb2197475b5063c21c63a19" kind="function"><name>ChangeFaceState</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1_entity" kind="class"><name>roboy::linguistics::Entity</name>
+    <member refid="classroboy_1_1linguistics_1_1_entity_1ad3a1d2545e2a4b833d1fdba0321d2725" kind="variable"><name>forms</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_entity_1ab3910ce6cf51d727a76adbe99484da18" kind="function"><name>Entity</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_entity_1a5684d465f3cd726941488f9c16eac8ee" kind="function"><name>getForm</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_entity_1a7237e3491e4ba9c62bfc5f1d2695a4fc" kind="function"><name>getForms</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1action_1_1_face_action" kind="class"><name>roboy::dialog::action::FaceAction</name>
+    <member refid="classroboy_1_1dialog_1_1action_1_1_face_action_1ac9214f47867583127046e7c929652df0" kind="variable"><name>state</name></member>
+    <member refid="classroboy_1_1dialog_1_1action_1_1_face_action_1a43391c88c63fe7aee4dce75d97d0408a" kind="variable"><name>duration</name></member>
+    <member refid="classroboy_1_1dialog_1_1action_1_1_face_action_1ab2cb99ab4b6ea0531644e840dfc9b408" kind="function"><name>FaceAction</name></member>
+    <member refid="classroboy_1_1dialog_1_1action_1_1_face_action_1a8f4730591cc6b6de6532020387d4980c" kind="function"><name>FaceAction</name></member>
+    <member refid="classroboy_1_1dialog_1_1action_1_1_face_action_1aecb47bafa771c510baa7cf64056146ec" kind="function"><name>getState</name></member>
+    <member refid="classroboy_1_1dialog_1_1action_1_1_face_action_1a022ff7e39c4dccb0b64aa0010d6f067f" kind="function"><name>getDuration</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_farewell_state" kind="class"><name>roboy::dialog::personality::states::FarewellState</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_farewell_state_1a46331e7eb1bd04a2e60ac612a773d56b" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_farewell_state_1af1ee252f118920618aad35d9ef277e42" kind="function"><name>react</name></member>
+  </compound>
+  <compound refid="classroboy_1_1io_1_1_free_t_t_s_output" kind="class"><name>roboy::io::FreeTTSOutput</name>
+    <member refid="classroboy_1_1io_1_1_free_t_t_s_output_1a61c5905e6eb3ca4f2fabbc090ffcdadc" kind="variable"><name>voice</name></member>
+    <member refid="classroboy_1_1io_1_1_free_t_t_s_output_1ab055412d776decb0991ec571463c87a6" kind="function"><name>FreeTTSOutput</name></member>
+    <member refid="classroboy_1_1io_1_1_free_t_t_s_output_1ae421fef59dda0665f9f29cb618bd000c" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1io_1_1_free_t_t_s_output_1a410387b10daf80f86ca268cd08761212" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_generative_communication_state" kind="class"><name>roboy::dialog::personality::states::GenerativeCommunicationState</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_generative_communication_state_1a5a6f204d98b3b937e651c3826b563920" kind="variable"><name>first</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_generative_communication_state_1a121364ed98684344911c675f4b44d20b" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_generative_communication_state_1af6c1ee2040ab50c5ec1ed201dfff9a63" kind="function"><name>determineSuccess</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_greeting_state" kind="class"><name>roboy::dialog::personality::states::GreetingState</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_greeting_state_1ad91255a590b3b9e77d97ce320f499a58" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_greeting_state_1adc2e2ce4d1530cf047d2f38d0fdcf26a" kind="function"><name>react</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_greeting_state_1a84e618f6885b609eec75ffa8dcc21322" kind="function"><name>determineSuccess</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_idle_state" kind="class"><name>roboy::dialog::personality::states::IdleState</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_idle_state_1adbb53c81fff691c90e572b4343b78c36" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_idle_state_1a3107dc9c6133e1180cfe1b0f7ef4c92a" kind="function"><name>determineSuccess</name></member>
+  </compound>
+  <compound refid="classroboy_1_1io_1_1_input" kind="class"><name>roboy::io::Input</name>
+    <member refid="classroboy_1_1io_1_1_input_1ade15802da1a138098430a8a5c3a34b0c" kind="variable"><name>sentence</name></member>
+    <member refid="classroboy_1_1io_1_1_input_1a1ec6b25856f1f8d3d43b2325db7b0f80" kind="variable"><name>attributes</name></member>
+    <member refid="classroboy_1_1io_1_1_input_1aee562a5b5f53e094761b0385c42a5d79" kind="function"><name>Input</name></member>
+    <member refid="classroboy_1_1io_1_1_input_1a00cb304d886be6a49ccfdd6e57e9daec" kind="function"><name>Input</name></member>
+  </compound>
+  <compound refid="interfaceroboy_1_1io_1_1_input_device" kind="interface"><name>roboy::io::InputDevice</name>
+    <member refid="interfaceroboy_1_1io_1_1_input_device_1aa9b02ed06118c2fd1ec2a82cfd9115d8" kind="function"><name>listen</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_inquiry_state" kind="class"><name>roboy::dialog::personality::states::InquiryState</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_inquiry_state_1a2b17247c54bb9f5929843e9c445e1ffd" kind="variable"><name>inquiry</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_inquiry_state_1a55dc1830cb36ecff6dc6e16367d9f423" kind="variable"><name>successTerms</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_inquiry_state_1a8232c1c4e00f053cb2263f866c3d5d7b" kind="variable"><name>failureText</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_inquiry_state_1a6aecec4e66bf14ea5f7e0116d3bb0a37" kind="function"><name>InquiryState</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_inquiry_state_1a199aa5988c0b22b2ae93cd3c453a1d07" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_inquiry_state_1a3683f43c8ee68222f6faeb727cb52a6f" kind="function"><name>determineSuccess</name></member>
+  </compound>
+  <compound refid="interfaceroboy_1_1logic_1_1_intention" kind="interface"><name>roboy::logic::Intention</name>
+  </compound>
+  <compound refid="classroboy_1_1logic_1_1_intention_classifier" kind="class"><name>roboy::logic::IntentionClassifier</name>
+    <member refid="classroboy_1_1logic_1_1_intention_classifier_1ae1464de04522c1986424745fc505fc4f" kind="variable"><name>ros</name></member>
+    <member refid="classroboy_1_1logic_1_1_intention_classifier_1a71254cd92193d726879713e0867a053c" kind="function"><name>IntentionClassifier</name></member>
+    <member refid="classroboy_1_1logic_1_1_intention_classifier_1afaa54acc31c386c5fc571dd4181c951c" kind="function"><name>classify</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kind="class"><name>roboy::linguistics::sentenceanalysis::Interpretation</name>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a0def4ce955a8281b2afd7437ee4a0945" kind="variable"><name>features</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a1e05743700d282c1cf44332807bdb5b0" kind="variable"><name>sentenceType</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a992032e77a6210f5c8413729de5dbd85" kind="function"><name>Interpretation</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a9e0642dd4e973311f9a385fd2d487da2" kind="function"><name>Interpretation</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1aaaa7164a283151b8e5a34027262e06ea" kind="function"><name>Interpretation</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a941f9fd2864349ad83121558a2d93e63" kind="function"><name>Interpretation</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a92841e14bb92059bb3b0937f6e2ae93d" kind="function"><name>getFeatures</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a7c72cb39fb1faa5effd74f31a343a936" kind="function"><name>getFeature</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a94dbc7e4a3c7e75412084608d64b968f" kind="function"><name>setFeatures</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a5735e5ff1f85a385267c8bd49b27ffbe" kind="function"><name>getSentenceType</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a39397bc5cf03b9f9b9f2784fe1628095" kind="function"><name>setSentenceType</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a118d7ed8466ba3e00e4b0d04959e47f6" kind="function"><name>toString</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state" kind="class"><name>roboy::dialog::personality::states::IntroductionState</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state_1a552bc4e0cae583082920e5cdba112ea9" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state_1af23d1b6994b2c3c883b8ff5829033386" kind="function"><name>determineSuccess</name></member>
+  </compound>
+  <compound refid="classroboy_1_1util_1_1_i_o" kind="class"><name>roboy::util::IO</name>
+    <member refid="classroboy_1_1util_1_1_i_o_1a19e4600747f1e4c4cae1de0feb05eeb8" kind="function"><name>readFile</name></member>
+    <member refid="classroboy_1_1util_1_1_i_o_1a1a07f4094ceab934fef6c1fe8d21dc40" kind="function"><name>readFile</name></member>
+    <member refid="classroboy_1_1util_1_1_i_o_1a10cfc30772d35efae48dcfdc4beb4c95" kind="function"><name>readLines</name></member>
+    <member refid="classroboy_1_1util_1_1_i_o_1acad77f5b050acb0fc76d1cd2c4a3c7b4" kind="function"><name>readLines</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1_knock_knock_personality" kind="class"><name>roboy::dialog::personality::KnockKnockPersonality</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_knock_knock_personality_1a0c3a0ff6041eae42c1071d40e4686477" kind="variable"><name>state</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_knock_knock_personality_1aba0180f184a2f0a68e87d069371ff901" kind="variable"><name>joke</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_knock_knock_personality_1a74c049d362b1b4dc1d5393f605d0aa80" kind="variable"><name>jokes</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_knock_knock_personality_1aa6cccc25cd74e57dd65cca457ee5f375" kind="function"><name>answer</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_knock_knock_personality_1ae0e59a852924f6dadfdb77d2b4cda24a" kind="function"><name>pickJoke</name></member>
+  </compound>
+  <compound refid="enumroboy_1_1dialog_1_1personality_1_1_knock_knock_personality_1_1_knock_knock_state" kind="enum"><name>roboy::dialog::personality::KnockKnockPersonality::KnockKnockState</name>
+    <member refid="enumroboy_1_1dialog_1_1personality_1_1_knock_knock_personality_1_1_knock_knock_state_1a3ad706ea659e9c40f20f70b3217dfa92" kind="variable"><name>WELCOME</name></member>
+    <member refid="enumroboy_1_1dialog_1_1personality_1_1_knock_knock_personality_1_1_knock_knock_state_1a3761afb6b88c5475cd2193adcac258f1" kind="variable"><name>KNOCKKNOCK</name></member>
+    <member refid="enumroboy_1_1dialog_1_1personality_1_1_knock_knock_personality_1_1_knock_knock_state_1aa419fed5566facae13b57603528e1842" kind="variable"><name>WHOSETHERE</name></member>
+    <member refid="enumroboy_1_1dialog_1_1personality_1_1_knock_knock_personality_1_1_knock_knock_state_1a319a13cb129b386a3e625e96fde34fba" kind="variable"><name>PUNCHLINE</name></member>
+  </compound>
+  <compound refid="classroboy_1_1memory_1_1_lexicon" kind="class"><name>roboy::memory::Lexicon</name>
+    <member refid="classroboy_1_1memory_1_1_lexicon_1a5cb317c85a4e0a33caaac5576b7ad777" kind="variable"><name>predicateList</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_1ab28a0fb64d9772a937b6234944dc769c" kind="variable"><name>literalList</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_1aba57bd50629bcdd5d9624ada5bba2b78" kind="variable"><name>predicateFilled</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_1a4699e4ae964b9093be0afc42eb12c173" kind="variable"><name>literalFilled</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_1af07bf1da4ab0cf5236571c5279f1055d" kind="variable"><name>permutationList</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_1a6cc1c674bd3f07f2999a002412e369c8" kind="function"><name>Lexicon</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_1a83152d6a8de1fea12771ac517b421bef" kind="function"><name>getLiterals</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_1a55b0950b0fc1bec5847c57a341d3a733" kind="function"><name>scoreThesePredicates</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_1ab698f49ea96661834b738ca4fbe83d56" kind="function"><name>addTypeOfOwner</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_1a32e329bfeb98d64b7d90bbc46b0b1019" kind="function"><name>scoreLiterals</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_1a52c03fdafff47e733bb27b245cb8d355" kind="function"><name>getPermutations</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_1a60e10880875de78d81ea5c43e52179c1" kind="function"><name>addDomainAndRange</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_1a84eb6eb299f44056fdef2865a3191257" kind="function"><name>bestLabelOf</name></member>
+  </compound>
+  <compound refid="classroboy_1_1memory_1_1_lexicon_literal" kind="class"><name>roboy::memory::LexiconLiteral</name>
+    <member refid="classroboy_1_1memory_1_1_lexicon_literal_1af7cefd313426627472cd9c5309966f53" kind="variable"><name>typeOfOwner</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_literal_1a36f7490a79ae80963947596c454fa2d4" kind="variable"><name>URI</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_literal_1acef8d659fadd022748792a5b5ad173ea" kind="variable"><name>label</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_literal_1abe875ccdd71d062c539188010bbc9a2a" kind="variable"><name>QuestionMatch</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_literal_1aae7d26e03a36dbdadf64d557a1567f1a" kind="variable"><name>score</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_literal_1a7bec82c8b281c77346de1421f4b9c770" kind="variable"><name>scoreComparator</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_literal_1aed56f53670884c5ff86e428abab5e929" kind="function"><name>LexiconLiteral</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_literal_1a8dab204688aeec9c9835124b3bf039d6" kind="function"><name>LexiconLiteral</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_literal_1aff1c67382ca2f358fd4537a11a9c2d26" kind="function"><name>LexiconLiteral</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_literal_1abda2e79e3bd5a6c95c7320a99d0966e3" kind="function"><name>compareTo</name></member>
+  </compound>
+  <compound refid="classroboy_1_1memory_1_1_lexicon_predicate" kind="class"><name>roboy::memory::LexiconPredicate</name>
+    <member refid="classroboy_1_1memory_1_1_lexicon_predicate_1ae400780326d8c0971220e86af9211b12" kind="variable"><name>domains</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_predicate_1a21610b855c0c8ff279e90ef625cd14bf" kind="variable"><name>ranges</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_predicate_1a7827cd7fee21e9aab16139ac9d07b45e" kind="variable"><name>type</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_predicate_1af8acfac3269a5c920a645953314bfbd4" kind="variable"><name>URI</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_predicate_1a430d71e13eb2e0ad9185ed8a37a835eb" kind="variable"><name>label</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_predicate_1a0ba94e7b757055103344085e0c145b20" kind="variable"><name>QuestionMatch</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_predicate_1adf56a521782fe4a7e075ac837c8363d6" kind="variable"><name>score</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_predicate_1afb3d0e0ea6f7d4bb84ba64a0cd75566b" kind="variable"><name>scoreComparator</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_predicate_1acb91fc1d74d81839031c287a48167812" kind="function"><name>LexiconPredicate</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_predicate_1a47cba049cbde04ded9d80e9edb011b52" kind="function"><name>LexiconPredicate</name></member>
+    <member refid="classroboy_1_1memory_1_1_lexicon_predicate_1aeea039d25b593f25a866cd4ebeb9e93e" kind="function"><name>compareTo</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1_linguistics" kind="class"><name>roboy::linguistics::Linguistics</name>
+    <member refid="classroboy_1_1linguistics_1_1_linguistics_1a68f40b7c87ec5fd6ee97275f81bec0aa" kind="variable"><name>tobe</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_linguistics_1a01c8ef9fc982cac7eca3ce18db0adc59" kind="variable"><name>beMod</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_linguistics_1a20cc187660a43ff97783ab440cf905ab" kind="variable"><name>SENTENCE</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_linguistics_1a1659b8d6a0e5fb01c78446b27f37b2bd" kind="variable"><name>TRIPLE</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_linguistics_1a39882a2997837092879b845699c30a45" kind="variable"><name>TOKENS</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_linguistics_1a670831be458b376b147090559f1e11f6" kind="variable"><name>POSTAGS</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_linguistics_1ae3946aa0957f099a139aad5539aac1ef" kind="variable"><name>KEYWORDS</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_linguistics_1aa55ac4495182f1c9681ba5646c6f9d5b" kind="variable"><name>ASSOCIATION</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_linguistics_1a997bdb1b4095abe1a89214d93cedc6ec" kind="variable"><name>PAS</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_linguistics_1a8f6210e582e16c59a1e80d10e4b3422b" kind="variable"><name>NAME</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_linguistics_1acc3f25f22b6c0efd5c8263889d395ce1" kind="variable"><name>CELEBRITY</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_linguistics_1abc2dcf7a32e22e408d6afa224502f4b3" kind="variable"><name>ROBOYDETECTED</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_linguistics_1a2398c1301599c3b5f79ab6d3c167376d" kind="variable"><name>OBJ_ANSWER</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_linguistics_1a3c881e6e18d76bcf9a0959a4e30aed24" kind="variable"><name>PRED_ANSWER</name></member>
+  </compound>
+  <compound refid="classroboy_1_1util_1_1_lists" kind="class"><name>roboy::util::Lists</name>
+    <member refid="classroboy_1_1util_1_1_lists_1aec44da633141ef78856cc537ac97f360" kind="function"><name>actionList</name></member>
+    <member refid="classroboy_1_1util_1_1_lists_1a27c5bfbc0d1b7597c9db6b36084ae8bb" kind="function"><name>interpretationList</name></member>
+    <member refid="classroboy_1_1util_1_1_lists_1ad1beee24e659fa777852b859e695c93d" kind="function"><name>stringList</name></member>
+  </compound>
+  <compound refid="classroboy_1_1util_1_1_maps" kind="class"><name>roboy::util::Maps</name>
+    <member refid="classroboy_1_1util_1_1_maps_1af532b75c67e5e46d4457b5b18f0be87f" kind="function"><name>stringMap</name></member>
+    <member refid="classroboy_1_1util_1_1_maps_1a2fa447918cdccf78c5218871820b0ffc" kind="function"><name>stringObjectMap</name></member>
+    <member refid="classroboy_1_1util_1_1_maps_1ae25476f18a0a36bcac82bc20b8100036" kind="function"><name>stringReactionMap</name></member>
+  </compound>
+  <compound refid="interfaceroboy_1_1memory_1_1_memory" kind="interface"><name>roboy::memory::Memory</name>
+    <member refid="interfaceroboy_1_1memory_1_1_memory_1ae1410bbebe3d943cfe06b2de7b8bc1d4" kind="function"><name>save</name></member>
+    <member refid="interfaceroboy_1_1memory_1_1_memory_1aa89918c7a726c936b05fa027ad34d462" kind="function"><name>retrieve</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1phonetics_1_1_metaphone_encoder" kind="class"><name>roboy::linguistics::phonetics::MetaphoneEncoder</name>
+    <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_metaphone_encoder_1a763da63625dfef174851fed7af4ed63e" kind="variable"><name>metaphone</name></member>
+    <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_metaphone_encoder_1aa286c75a1e7de608741db9035559b69c" kind="function"><name>MetaphoneEncoder</name></member>
+    <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_metaphone_encoder_1a8ffe299334c34f5952f2ee2d93e227c6" kind="function"><name>encode</name></member>
+  </compound>
+  <compound refid="classroboy_1_1io_1_1_multi_input_device" kind="class"><name>roboy::io::MultiInputDevice</name>
+    <member refid="classroboy_1_1io_1_1_multi_input_device_1a36ee0aa10eacf49721b3426488f307da" kind="variable"><name>mainInput</name></member>
+    <member refid="classroboy_1_1io_1_1_multi_input_device_1a113a0ddca3ebcc8117d669a808e37111" kind="variable"><name>additionalInputs</name></member>
+    <member refid="classroboy_1_1io_1_1_multi_input_device_1a97f7e89561341dfc48deb065204b6b56" kind="function"><name>MultiInputDevice</name></member>
+    <member refid="classroboy_1_1io_1_1_multi_input_device_1a2015438a08e09832503d4a605cacd5e6" kind="function"><name>listen</name></member>
+  </compound>
+  <compound refid="classroboy_1_1io_1_1_multi_output_device" kind="class"><name>roboy::io::MultiOutputDevice</name>
+    <member refid="classroboy_1_1io_1_1_multi_output_device_1ae822fdcd3d50b13b2cff411d5832382b" kind="variable"><name>devices</name></member>
+    <member refid="classroboy_1_1io_1_1_multi_output_device_1a00cde217eeb516052985479ae3e67bc7" kind="function"><name>MultiOutputDevice</name></member>
+    <member refid="classroboy_1_1io_1_1_multi_output_device_1a724587d7320ce1b39819753936e4c1da" kind="function"><name>act</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_ontology_n_e_r_analyzer" kind="class"><name>roboy::linguistics::sentenceanalysis::OntologyNERAnalyzer</name>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_ontology_n_e_r_analyzer_1a8a9d2c9464e855fb5563c6df6ad24170" kind="variable"><name>entities</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_ontology_n_e_r_analyzer_1a1d41bfc429207823ccccb565ddb289c2" kind="function"><name>OntologyNERAnalyzer</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_ontology_n_e_r_analyzer_1a71f96333126a0bc0ea1bda9505227dec" kind="function"><name>analyze</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser" kind="class"><name>roboy::linguistics::sentenceanalysis::OpenNLPParser</name>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_1a24a212e087ad6be6e3cce9b5fd82c9c3" kind="variable"><name>parser</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_1a453c4500b06947ab113bcf3c2b961820" kind="function"><name>OpenNLPParser</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_1ab0b24b0fbbd71fbe2b5631e8a1fd87e1" kind="function"><name>analyze</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_1a6be5821d48b710e65b40021329e20ae3" kind="function"><name>parseToString</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_1ac0c86cf042e05fb8cadd20b7ebb95d15" kind="function"><name>extractPAS</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_1a63754a1d12e052b7d4cb006594a8720a" kind="function"><name>top</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_1abfda9790337451885637834d55332cec" kind="function"><name>sbar</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_1ab3a259ddd9d2faeb2f3f598b8c7014a5" kind="function"><name>vp</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_1a2e3ad6b90ca804227a4eed06f11cca52" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_test" kind="class"><name>roboy::linguistics::sentenceanalysis::OpenNLPParserTest</name>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_test_1a8202149f2e03cf1e9ae178d4f4b4633f" kind="variable"><name>parser</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_test_1a4f7f55f23d123a3639e58885d28071a0" kind="function"><name>testWhatIs</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_test_1ae9f31a2c6804cfbc5d07a36013e62acc" kind="function"><name>testWhenWas</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_test_1a756860316c0887c5e60e91ab6cd59f30" kind="function"><name>testWhereWas</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_test_1ae2f577528990116be0ffec9f4c3b93de" kind="function"><name>testWhereDid</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_test_1a24b622b8e0b5e916e3332575dc6fd096" kind="function"><name>testWhenDid</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_test_1ab8c28b562e5739834a7a4da0bb442dc2" kind="function"><name>testHowAdjective</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_p_p_o_s_tagger" kind="class"><name>roboy::linguistics::sentenceanalysis::OpenNLPPPOSTagger</name>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_p_p_o_s_tagger_1a600a2da7fb1ea199c2b7ca9f6811ba6d" kind="variable"><name>tagger</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_p_p_o_s_tagger_1a75f38cb740b199fc3273dac6890d5e9e" kind="function"><name>OpenNLPPPOSTagger</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_p_p_o_s_tagger_1a3be329fbe76dfd672eb46ed31d836a6f" kind="function"><name>analyze</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_p_p_o_s_tagger_1a1e94feba931aedc1249ca78fd4a5d082" kind="function"><name>posTag</name></member>
+  </compound>
+  <compound refid="interfaceroboy_1_1io_1_1_output_device" kind="interface"><name>roboy::io::OutputDevice</name>
+    <member refid="interfaceroboy_1_1io_1_1_output_device_1aa47aae2af369116c8b407f7bd2770ce9" kind="function"><name>act</name></member>
+  </compound>
+  <compound refid="classroboy_1_1logic_1_1_p_a_s_interpreter" kind="class"><name>roboy::logic::PASInterpreter</name>
+    <member refid="classroboy_1_1logic_1_1_p_a_s_interpreter_1aa2976fb4dadaf77393faf6dfffc79545" kind="variable"><name>dbpediaRelations</name></member>
+    <member refid="classroboy_1_1logic_1_1_p_a_s_interpreter_1a8da838129e7b1a192f84e3264300891a" kind="function"><name>pas2DBpediaRelation</name></member>
+  </compound>
+  <compound refid="classroboy_1_1logic_1_1_p_a_s_interpreter_test" kind="class"><name>roboy::logic::PASInterpreterTest</name>
+    <member refid="classroboy_1_1logic_1_1_p_a_s_interpreter_test_1a7acaffaf0209b288060cbab7b14bd97b" kind="variable"><name>parser</name></member>
+    <member refid="classroboy_1_1logic_1_1_p_a_s_interpreter_test_1a0706071ee87a8b88ffdc0157505fcfef" kind="function"><name>testWhenWas</name></member>
+    <member refid="classroboy_1_1logic_1_1_p_a_s_interpreter_test_1a7085eb6eedcd261f440c56e4ddd2de28" kind="function"><name>testWhatIs</name></member>
+    <member refid="classroboy_1_1logic_1_1_p_a_s_interpreter_test_1ab4db225b4cc3522f64198008fac172b9" kind="function"><name>testWhereWas</name></member>
+    <member refid="classroboy_1_1logic_1_1_p_a_s_interpreter_test_1a30dce7ec14d5a04aea881a39309788f2" kind="function"><name>testWhereDid</name></member>
+    <member refid="classroboy_1_1logic_1_1_p_a_s_interpreter_test_1a3e3a855bdb4892d52f58373c54c77ecf" kind="function"><name>testWhenDid</name></member>
+    <member refid="classroboy_1_1logic_1_1_p_a_s_interpreter_test_1a2350def5d903dc7c9f1f03afdcb6edf0" kind="function"><name>testHowAdjective</name></member>
+    <member refid="classroboy_1_1logic_1_1_p_a_s_interpreter_test_1a8622714121271d1b9776deb6adf61a6d" kind="function"><name>testWhatIsNewExamples</name></member>
+    <member refid="classroboy_1_1logic_1_1_p_a_s_interpreter_test_1a43ace10883231f8188794e5d2c401242" kind="function"><name>testWhereDidNewExamples</name></member>
+    <member refid="classroboy_1_1logic_1_1_p_a_s_interpreter_test_1aa50f4da9ca0a057aafea4199f8e624d7" kind="function"><name>testWhoIsNewExamples</name></member>
+    <member refid="classroboy_1_1logic_1_1_p_a_s_interpreter_test_1a3c7a01cf2cbe3bed6ea595856bc95e67" kind="function"><name>testWhoLivesNewExamples</name></member>
+  </compound>
+  <compound refid="classroboy_1_1memory_1_1_persistent_knowledge" kind="class"><name>roboy::memory::PersistentKnowledge</name>
+    <member refid="classroboy_1_1memory_1_1_persistent_knowledge_1ae76758015ccbe9fb31889d880109140a" kind="variable"><name>persistentKnowledge</name></member>
+    <member refid="classroboy_1_1memory_1_1_persistent_knowledge_1a2aefc5f9945c7e8daaefa72c2b48152a" kind="variable"><name>memory</name></member>
+    <member refid="classroboy_1_1memory_1_1_persistent_knowledge_1a0dc8f7b497df88ceb1da3232e51875ad" kind="function"><name>PersistentKnowledge</name></member>
+    <member refid="classroboy_1_1memory_1_1_persistent_knowledge_1a89d0b19f0a29fcd084f80bb88d92c8d9" kind="function"><name>getInstance</name></member>
+    <member refid="classroboy_1_1memory_1_1_persistent_knowledge_1a375cb65c72d5c8b5e78fad9fb1080126" kind="function"><name>retrieve</name></member>
+    <member refid="classroboy_1_1memory_1_1_persistent_knowledge_1add1e2ac8d42e54a95c9b92606e10b7ee" kind="function"><name>save</name></member>
+  </compound>
+  <compound refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality" kind="interface"><name>roboy::dialog::personality::Personality</name>
+    <member refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality_1a44ef708481445e23415a56db6df16d7d" kind="function"><name>answer</name></member>
+  </compound>
+  <compound refid="interfaceroboy_1_1linguistics_1_1phonetics_1_1_phonetic_encoder" kind="interface"><name>roboy::linguistics::phonetics::PhoneticEncoder</name>
+    <member refid="interfaceroboy_1_1linguistics_1_1phonetics_1_1_phonetic_encoder_1a4e47b9373bb14ff26d9af51f20e2e7f7" kind="function"><name>encode</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1phonetics_1_1_phonetics" kind="class"><name>roboy::linguistics::phonetics::Phonetics</name>
+    <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_phonetics_1a80ef5e0fbfa7753ad7bcbeaa912bf166" kind="variable"><name>soundex</name></member>
+    <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_phonetics_1a012a52dfe0464867607121e45c58201a" kind="variable"><name>codecToWords</name></member>
+    <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_phonetics_1a94e3dc7e36825ed9ce85cc9d325f4ed0" kind="function"><name>similarWords</name></member>
+    <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_phonetics_1aed5065d762bf7a71990dfce60bae3bf5" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state" kind="class"><name>roboy::dialog::personality::states::QuestionAnsweringState</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1ae32b7c029105bdbf747f81b60aeaecaa" kind="variable"><name>first</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1ad9996353d0fdc5fdddcb07a66fd0a45f" kind="variable"><name>memory</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1a71439a5e84ba77ae18afeb9539da245a" kind="variable"><name>inner</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1ad8132ce4a30eaa422f611460074b2371" kind="variable"><name>top</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1a38175b7a10d2650f6254b243c8ed9bb0" kind="variable"><name>memories</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1ad28b91be054129f8ac00519c62c88294" kind="function"><name>QuestionAnsweringState</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1a29771c4186fe1dff1fe640e986ec3011" kind="function"><name>setTop</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1a1ecd6c40dd5890cc5a7219c55cbf4dc4" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1a04d0bf8ee6aee0c8fbf326263fcb6d60" kind="function"><name>react</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1a04556cbbd9ec2d545c5e768ff81006d9" kind="function"><name>innerReaction</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1ae06d45fb5d7c8ea0963acf44713dd744" kind="function"><name>remember</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state" kind="class"><name>roboy::dialog::personality::states::QuestionAskingState</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a5afa823bd7c48425e0eb8679fc9dfaf4" kind="variable"><name>objectOfFocus</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a28481e5fbd0faa0d8341eb60211b9c6f" kind="variable"><name>currentIntent</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a7010e0f37a2a886c7d5747906b624582" kind="variable"><name>questionsCount</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a5a7ba9707799fe693499a9b449668f2d" kind="variable"><name>questions</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1ae7cea1d32ec1c10067db232fda79edba" kind="variable"><name>generator</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a9387b5de79e20cf705f67b0a9062fc45" kind="variable"><name>children</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a38fa2e7dc23fb02ed142fc11695c1ee9" kind="variable"><name>personality</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a24fc7157c0b147dff6481e1e78b7317b" kind="variable"><name>TOASK</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a4e7ea31c1f347a5a73788bfa9e4d3ffb" kind="variable"><name>tokenizer</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a2964e4a4a39677c8ebc0ee204f4d48da" kind="variable"><name>pos</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a4473e27574275569e0e8ac3725b9d872" kind="variable"><name>parser</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a228778aa59d6b11147ecbb1ce241f08a" kind="variable"><name>answer</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a81d2d57fee290ee697f8c7d3d0d27b62" kind="function"><name>QuestionAskingState</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a35b17cf55628f6264fad93ae98db34bf" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1ac23e4e7e383585c132b4f8fac7b48349" kind="function"><name>react</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a849360ba6e5d199dfbb45c501df10168" kind="function"><name>determineNextState</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a53cee34e5af6296282cf5c9430f0039a" kind="function"><name>checkRoboyMind</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a410a8914bec4c66c8a78dd679dd30569" kind="function"><name>checkDBpedia</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a2fc8b6f4ec0319adc028013cbbbe28ca" kind="function"><name>checkOwnMemory</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a0f859abba852e1f443e639752e254cda" kind="function"><name>analyzeObject</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a7689a4f038a571c1bbcdc27ae2eaa015" kind="function"><name>analyzePredicate</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1aa4cc70d4d58c914d38dcd05df240dfd8" kind="function"><name>recognizeFace</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction" kind="class"><name>roboy::dialog::personality::states::Reaction</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction_1afd4867bbf27cd37f03ef8850a6db61e3" kind="variable"><name>reactions</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction_1a8cf1063f8157fbe41ffbcb8c3a9d4417" kind="variable"><name>state</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction_1a067c80a9f1c59589a10e472e4ab3d6ac" kind="function"><name>Reaction</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction_1a63eadd601c4fff72d25f002a76fc0c50" kind="function"><name>Reaction</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction_1affd8499011266372c5ba79b66173963c" kind="function"><name>getReactions</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction_1a010a557e2c1ab621e241f21244fffc79" kind="function"><name>getState</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction_1afa4966476f1b84fcc0ad9af74b751552" kind="function"><name>setState</name></member>
+  </compound>
+  <compound refid="classroboy_1_1util_1_1_relation" kind="class"><name>roboy::util::Relation</name>
+    <member refid="classroboy_1_1util_1_1_relation_1aecdd500b44a7f933a6652f33fd5dfbd2" kind="variable"><name>subject</name></member>
+    <member refid="classroboy_1_1util_1_1_relation_1a784430b9777deffd343b75fb82de892c" kind="variable"><name>object</name></member>
+    <member refid="classroboy_1_1util_1_1_relation_1ac501b02d1ad74330e45f62204e8f2c89" kind="variable"><name>predicate</name></member>
+    <member refid="classroboy_1_1util_1_1_relation_1a5e94086a5cfc097b7481f3d9a7c3e96e" kind="function"><name>Relation</name></member>
+    <member refid="classroboy_1_1util_1_1_relation_1a0640565a0875b65c32c6884ab4734fd5" kind="function"><name>getSubject</name></member>
+    <member refid="classroboy_1_1util_1_1_relation_1a61ed7a034e934756f391ecc25a1dbf9c" kind="function"><name>getObject</name></member>
+  </compound>
+  <compound refid="classroboy_1_1memory_1_1_roboy_mind" kind="class"><name>roboy::memory::RoboyMind</name>
+    <member refid="classroboy_1_1memory_1_1_roboy_mind_1af5ca6fe74b35757b8608f436b199da34" kind="variable"><name>roboyMemory</name></member>
+    <member refid="classroboy_1_1memory_1_1_roboy_mind_1a27699d645e3b10760a399eb7f3c4f526" kind="variable"><name>object_id</name></member>
+    <member refid="classroboy_1_1memory_1_1_roboy_mind_1aaba5acd8b7aef7f5939bddc833a39cfe" kind="function"><name>RoboyMind</name></member>
+    <member refid="classroboy_1_1memory_1_1_roboy_mind_1a64270324cce9572cd4d152f4036b7345" kind="function"><name>CreateInstance</name></member>
+    <member refid="classroboy_1_1memory_1_1_roboy_mind_1a44b3318cde22a30b200c8d1c08d4b2ce" kind="function"><name>AssertProperty</name></member>
+    <member refid="classroboy_1_1memory_1_1_roboy_mind_1a9a8b10b02f16472f91137d5b8df75f15" kind="function"><name>FindInstances</name></member>
+    <member refid="classroboy_1_1memory_1_1_roboy_mind_1ad1ba571f3efd4857556820e9a0960ee2" kind="function"><name>ListAttributes</name></member>
+    <member refid="classroboy_1_1memory_1_1_roboy_mind_1a766f819ca6c8f3ced8fbc1fa6bc6a248" kind="function"><name>SaveObject</name></member>
+    <member refid="classroboy_1_1memory_1_1_roboy_mind_1a432ac55b1a84b5e855bd9d6e14a245e5" kind="function"><name>GetObject</name></member>
+    <member refid="classroboy_1_1memory_1_1_roboy_mind_1ab9e855248427cbc281c96d71eff9a313" kind="function"><name>ShowInstance</name></member>
+    <member refid="classroboy_1_1memory_1_1_roboy_mind_1a2ff092a83e4fc86bcc90a5cf0032be20" kind="function"><name>getInstance</name></member>
+    <member refid="classroboy_1_1memory_1_1_roboy_mind_1a7808810441563ad7e135b8d4cfa8dcd6" kind="function"><name>save</name></member>
+    <member refid="classroboy_1_1memory_1_1_roboy_mind_1adecbf5d6a4fe50badc5920cb2bd7d7b2" kind="function"><name>retrieve</name></member>
+    <member refid="classroboy_1_1memory_1_1_roboy_mind_1a1cf42df092a9ee5f11e77160b64a823a" kind="function"><name>update</name></member>
+    <member refid="classroboy_1_1memory_1_1_roboy_mind_1a7779d2597f439a3a1e7ff01257b54747" kind="function"><name>match</name></member>
+  </compound>
+  <compound refid="classroboy_1_1io_1_1_roboy_name_detection_input" kind="class"><name>roboy::io::RoboyNameDetectionInput</name>
+    <member refid="classroboy_1_1io_1_1_roboy_name_detection_input_1a1872b884fd325a83c7d85ebe0ab2672c" kind="variable"><name>recog_copy</name></member>
+    <member refid="classroboy_1_1io_1_1_roboy_name_detection_input_1ab8df9bfc456996abd142ba633417b407" kind="function"><name>RoboyNameDetectionInput</name></member>
+    <member refid="classroboy_1_1io_1_1_roboy_name_detection_input_1affd6cd02b0c1149f08c7e85ce516cc50" kind="function"><name>stopListening</name></member>
+    <member refid="classroboy_1_1io_1_1_roboy_name_detection_input_1a2e946745e25aefe609c9b50bbcfe33b0" kind="function"><name>listen</name></member>
+  </compound>
+  <compound refid="classroboy_1_1util_1_1_ros" kind="class"><name>roboy::util::Ros</name>
+    <member refid="classroboy_1_1util_1_1_ros_1aa38595821628ea450d3cf3a269f298bf" kind="variable"><name>ros</name></member>
+    <member refid="classroboy_1_1util_1_1_ros_1a5853c40a9254c3f17fc5dd925a74c324" kind="variable"><name>ROS_URL</name></member>
+    <member refid="classroboy_1_1util_1_1_ros_1a4b511ebc9843e8fe9cbb42301ce3152a" kind="function"><name>Ros</name></member>
+    <member refid="classroboy_1_1util_1_1_ros_1a140ddcd65bdea4262a7632202b699190" kind="function"><name>getInstance</name></member>
+    <member refid="classroboy_1_1util_1_1_ros_1a668af3a4717e8ec8828b95195a181d56" kind="function"><name>close</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state" kind="class"><name>roboy::dialog::personality::states::SegueState</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state_1a5686ed036994d663ab9f056a2a39c88e" kind="variable"><name>sentenceTypeAssociations</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state_1a9a5859fa6b21a1f9e1373e7ec77e625a" kind="variable"><name>inner</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state_1a47bfb7202030f98a0fb5aa308d123beb" kind="variable"><name>top</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state_1af003c7a6c20951c03802d3244fb66f24" kind="variable"><name>redditTIL</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state_1ade4aa5cd080893ea1c8040bb915bf1c4" kind="function"><name>SegueState</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state_1a47686855d505066736c8c81123d55e23" kind="function"><name>setTop</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state_1a6a9f30b2b925cecf981c052b62b72e24" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state_1a641eaa4dfa87dbc0af1c87992e567efe" kind="function"><name>react</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state_1af660605e2277e050dd55a2298fb9d136" kind="function"><name>segway</name></member>
+  </compound>
+  <compound refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e" kind="enum"><name>roboy::linguistics::Linguistics::SEMANTIC_ROLE</name>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e_1a0a2df39b21fa61b88d47ce02755e3d55" kind="variable"><name>PREDICATE</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e_1ab482cd16e9946afa9c126a2f617b7aed" kind="variable"><name>AGENT</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e_1a5eaa90451e5467fbf6a3c0c5d54866ee" kind="variable"><name>PATIENT</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e_1a56d48713fe3f079d675689178071f9ca" kind="variable"><name>TIME</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e_1a9cdc4a326ba6267293b265596edbf95b" kind="variable"><name>LOCATION</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e_1a6e9ed98dd72d3741091e82f705d43998" kind="variable"><name>MANNER</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e_1a86b04ac61d9efa9877dffe73969ddc75" kind="variable"><name>INSTRUMENT</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e_1a3eba444a9f6860626df339759ef2362f" kind="variable"><name>ORIGIN</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e_1a531e6fa4ecd3b92f04040e2b96548df9" kind="variable"><name>DESTINATION</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e_1ae4459d13432c6934dc1e93a023730784" kind="variable"><name>RECIPIENT</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e_1a7d5367f86679cc09a9bcaed34e5efc58" kind="variable"><name>BENEFICIARY</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e_1a26d89aa5a154cce93b31f457f0812ce4" kind="variable"><name>PURPOSE</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e_1af817b3e3c8c2d97f210fc116dc0ec00c" kind="variable"><name>CAUSE</name></member>
+  </compound>
+  <compound refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e" kind="enum"><name>roboy::linguistics::Linguistics::SENTENCE_TYPE</name>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e_1acb60a4f2b04af12088e118049dadef7c" kind="variable"><name>GREETING</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e_1a8b192de097168cf0580bab7e9ae6f90e" kind="variable"><name>FAREWELL</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e_1a0d5c1729360bedab22cec7791097c5dd" kind="variable"><name>SEGUE</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e_1a87a95477097c8451904b554a9491db30" kind="variable"><name>ANECDOTE</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e_1aa0698fa653ed35c93ae7e98971b46028" kind="variable"><name>WHO</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e_1a9e42cb3a08a28a1a3f6f776553985d03" kind="variable"><name>HOW_IS</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e_1ae057fe661679f87427cf0812cc671fdf" kind="variable"><name>HOW_DO</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e_1a15eb66dd419e94f42b5bcfd39c55c7e1" kind="variable"><name>WHY</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e_1aeeec0cc15618478fef727c547f9500f9" kind="variable"><name>WHEN</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e_1a82667250e4c82b6ba3ddaf77506b2012" kind="variable"><name>WHERE</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e_1a6614cb772e2421f38260a1b66c1ba5cc" kind="variable"><name>WHAT</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e_1a03e25d02f548205c25def92eaaee4fed" kind="variable"><name>IS_IT</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e_1a0281cb9af7f6003c4990106c3a5a7b47" kind="variable"><name>DOES_IT</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e_1a972d1c3cdd8f38c3c570194d3fc8bf88" kind="variable"><name>STATEMENT</name></member>
+    <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e_1aea78f025d66632c17dd5bc2f3159ccf8" kind="variable"><name>NONE</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer" kind="class"><name>roboy::linguistics::sentenceanalysis::SentenceAnalyzer</name>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1aa8bc4fdbd9b80a7912b4a25aafbcb124" kind="variable"><name>meanings</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a23f9cf7171a1c6e1b89fa978bb549a11" kind="function"><name>SentenceAnalyzer</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a3b7b6f58b44cb0176928cee3b767de33" kind="function"><name>analyze</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a4d741b02e8fcb51aed9fc286d65a7c45" kind="function"><name>extractPAS</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1aa25826fae985c947e80acad3bd01b5b3" kind="function"><name>analyzeStatement</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1adf5b164eeb7c05fdb61ccb5996d98ff3" kind="function"><name>analyzeIsIt</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a7adda755f129785575340f668d609c87" kind="function"><name>analyzeDoesIt</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a61b43e9f6b6c45c524ecbb66af221d27" kind="function"><name>analyzeWho</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a3adfc785cfc19240ca5589e43f366a89" kind="function"><name>analyzeWhat</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a156ec882cbf75c13a1b5cbb16e1ac90d" kind="function"><name>analyzeHowIs</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1ac307dfc707b307221882c53be7be86c2" kind="function"><name>analyzeHowDo</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1action_1_1_shut_down_action" kind="class"><name>roboy::dialog::action::ShutDownAction</name>
+    <member refid="classroboy_1_1dialog_1_1action_1_1_shut_down_action_1a326e3b37e9f20eb69acd990334a3ad8e" kind="variable"><name>lastwords</name></member>
+    <member refid="classroboy_1_1dialog_1_1action_1_1_shut_down_action_1a25c08d84ff7d3a1a6ecf367a45314c0b" kind="function"><name>ShutDownAction</name></member>
+    <member refid="classroboy_1_1dialog_1_1action_1_1_shut_down_action_1a015eda81c40639f7fa0cb5a140790fa2" kind="function"><name>getLastWords</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_simple_tokenizer" kind="class"><name>roboy::linguistics::sentenceanalysis::SimpleTokenizer</name>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_simple_tokenizer_1ae9f9ce36ed5fd7e160025ab6444127b4" kind="function"><name>analyze</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_simple_tokenizer_1ae28a1479366d9049c22fa502f33c2147" kind="function"><name>tokenize</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality" kind="class"><name>roboy::dialog::personality::SmallTalkPersonality</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality_1a6885b4f426828be61bb3a2aa18d1404b" kind="variable"><name>name</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality_1a4c40458f1646198d3e5a8071314a251b" kind="variable"><name>state</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality_1a6b28cab952c8c2dc17b721196837a558" kind="variable"><name>verbalizer</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality_1a3cfe35fbfcb56fc083f4b8ccf4c98ee0" kind="variable"><name>positive</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality_1a203950858f87507863882138fcb83cf5" kind="function"><name>SmallTalkPersonality</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality_1a60f0825fecec113bc8bee8a57d1a8a34" kind="function"><name>answer</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality_1a394b0e24a901dcb6714d7636f90751c5" kind="function"><name>getName</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality_1af5af09866b02243260d44876096dc0ac" kind="function"><name>setName</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1phonetics_1_1_soundex_encoder" kind="class"><name>roboy::linguistics::phonetics::SoundexEncoder</name>
+    <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_soundex_encoder_1a3722232809ae1502ea5d4d9152ea706b" kind="variable"><name>soundex</name></member>
+    <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_soundex_encoder_1acb3eb2ab65c87fb5033e2880555b489b" kind="function"><name>SoundexEncoder</name></member>
+    <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_soundex_encoder_1ac971c8da55a570afb76dabdc82aaad57" kind="function"><name>encode</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1action_1_1_speech_action" kind="class"><name>roboy::dialog::action::SpeechAction</name>
+    <member refid="classroboy_1_1dialog_1_1action_1_1_speech_action_1aa21eca42867512479d5b77db10e51346" kind="variable"><name>text</name></member>
+    <member refid="classroboy_1_1dialog_1_1action_1_1_speech_action_1a0ee30e6f6a193f68684e56c85f1068a5" kind="function"><name>SpeechAction</name></member>
+    <member refid="classroboy_1_1dialog_1_1action_1_1_speech_action_1a656b4b7d0cced3b52e19c836f3405076" kind="function"><name>getText</name></member>
+  </compound>
+  <compound refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" kind="interface"><name>roboy::dialog::personality::states::State</name>
+    <member refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state_1a56df9f548b4736b775dc9dbf450a6a51" kind="function"><name>act</name></member>
+    <member refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state_1a7f9d1aebfca6aabf313eee279f9a390c" kind="function"><name>react</name></member>
+  </compound>
+  <compound refid="classroboy_1_1talk_1_1_statement_builder" kind="class"><name>roboy::talk::StatementBuilder</name>
+    <member refid="classroboy_1_1talk_1_1_statement_builder_1ae899b0b7c30cf5653b942240b866531a" kind="function"><name>random</name></member>
+  </compound>
+  <compound refid="classroboy_1_1logic_1_1_statement_interpreter" kind="class"><name>roboy::logic::StatementInterpreter</name>
+    <member refid="classroboy_1_1logic_1_1_statement_interpreter_1ad514c7828ba552ca3f7349a387d86c82" kind="function"><name>isFromList</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1_term" kind="class"><name>roboy::linguistics::Term</name>
+    <member refid="classroboy_1_1linguistics_1_1_term_1a5da1cdd2267544a6bd1b7a9d87719036" kind="variable"><name>pos</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_term_1a4c8190605bb94400ccc3f2d80f36454e" kind="variable"><name>prob</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_term_1a2c0475cd97cc2c2993d219f718180421" kind="variable"><name>concept</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_term_1abd0a354ca716890ef54e3aeaab4566f5" kind="function"><name>toString</name></member>
+  </compound>
+  <compound refid="classroboy_1_1io_1_1_test_vision" kind="class"><name>roboy::io::TestVision</name>
+    <member refid="classroboy_1_1io_1_1_test_vision_1aac32931002b07b19f7ca262a8c015951" kind="function"><name>start_rosbridge</name></member>
+    <member refid="classroboy_1_1io_1_1_test_vision_1ad622684a255c8e1c7b2db3116f0ff286" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1_triple" kind="class"><name>roboy::linguistics::Triple</name>
+    <member refid="classroboy_1_1linguistics_1_1_triple_1ad7bec6e7a02a8a76a4831cce3a84bd94" kind="variable"><name>agens</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_triple_1aada23904eaa0e18ac237ff5bb3005a79" kind="variable"><name>predicate</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_triple_1ad631270371bed1955ca108acf5aea3a7" kind="variable"><name>patiens</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_triple_1aa648a9c92007423b2435174a3e963a22" kind="function"><name>Triple</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_triple_1a3da6ef091d5a7af1dba2705623da7d04" kind="function"><name>toString</name></member>
+  </compound>
+  <compound refid="classroboy_1_1memory_1_1_util" kind="class"><name>roboy::memory::Util</name>
+    <member refid="classroboy_1_1memory_1_1_util_1ac99be65a576dab331a9f2c43db7280b7" kind="function"><name>getPartURI</name></member>
+    <member refid="classroboy_1_1memory_1_1_util_1aa9603bbaefcf40cc9116d48c840648f6" kind="function"><name>getQuestionType</name></member>
+    <member refid="classroboy_1_1memory_1_1_util_1a50ad3a4d176e2c5fcefb1e0d5265a6db" kind="function"><name>calculateLevenshteinDistance</name></member>
+    <member refid="classroboy_1_1memory_1_1_util_1a63fa531e6f09abf0b5cf6d6d6ad08a11" kind="function"><name>min</name></member>
+  </compound>
+  <compound refid="classroboy_1_1talk_1_1_verbalizer" kind="class"><name>roboy::talk::Verbalizer</name>
+    <member refid="classroboy_1_1talk_1_1_verbalizer_1a2f1bb105de65022b5ecce0eec5013fae" kind="variable"><name>greetings</name></member>
+    <member refid="classroboy_1_1talk_1_1_verbalizer_1a85cf9039e9b899e91089c69a963bccea" kind="variable"><name>farewells</name></member>
+    <member refid="classroboy_1_1talk_1_1_verbalizer_1afe099f12d76966c522333e5eadabb844" kind="variable"><name>segues</name></member>
+    <member refid="classroboy_1_1talk_1_1_verbalizer_1a4e3a0e4c142b9d75c7988c3ead52900d" kind="variable"><name>preAnecdotes</name></member>
+    <member refid="classroboy_1_1talk_1_1_verbalizer_1ae8744d042d2b22f4ba2dcf40e4fd284b" kind="variable"><name>anecdotes</name></member>
+    <member refid="classroboy_1_1talk_1_1_verbalizer_1a3177f371d13c8c808c76a081187c0770" kind="function"><name>verbalize</name></member>
+    <member refid="classroboy_1_1talk_1_1_verbalizer_1a76f6aa7b9a8298faed949e97151fddce" kind="function"><name>greet</name></member>
+    <member refid="classroboy_1_1talk_1_1_verbalizer_1a779b00d5d100fe54fd45f11d2f2050c8" kind="function"><name>farewell</name></member>
+    <member refid="classroboy_1_1talk_1_1_verbalizer_1aaa966a7f396191a2da567078290dfa7e" kind="function"><name>segue</name></member>
+    <member refid="classroboy_1_1talk_1_1_verbalizer_1ac1163d68a304aac04bab3254618cffc5" kind="function"><name>anecdote</name></member>
+    <member refid="classroboy_1_1talk_1_1_verbalizer_1a45c02e87cbceadba623e1ccdb844aac5" kind="function"><name>literalSentence</name></member>
+  </compound>
+  <compound refid="classroboy_1_1io_1_1_vision" kind="class"><name>roboy::io::Vision</name>
+    <member refid="classroboy_1_1io_1_1_vision_1a86b02e515521d495b62ea9ab1a6fe91e" kind="function"><name>recognize</name></member>
+    <member refid="classroboy_1_1io_1_1_vision_1a44e80a6f9dcabeb1156b449398b9c9a2" kind="function"><name>findFaces</name></member>
+  </compound>
+  <compound refid="classroboy_1_1io_1_1_vision_1_1_vision_callback" kind="class"><name>roboy::io::Vision::VisionCallback</name>
+    <member refid="classroboy_1_1io_1_1_vision_1_1_vision_callback_1ac038995fbf2c227d59d718f738513a64" kind="variable"><name>latest</name></member>
+    <member refid="classroboy_1_1io_1_1_vision_1_1_vision_callback_1a82812eaf286abd55ee2dc1f9b01b9f7f" kind="variable"><name>faceDetected</name></member>
+    <member refid="classroboy_1_1io_1_1_vision_1_1_vision_callback_1a32d7118fcf76892667106bf2723b246d" kind="function"><name>handleMessage</name></member>
+  </compound>
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state" kind="class"><name>roboy::dialog::personality::states::WildTalkState</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state_1a3cfa7b533fbf9058a5f172a1a0e9e691" kind="variable"><name>talking</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state_1a075aa90b0e42c16b90420848c71dbf2f" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state_1a0ddb5ef9fa9b8cfc31afa7dea5a9b090" kind="function"><name>react</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state_1a2cf84496b1d16fdb9aa6e10718d9469e" kind="function"><name>determineSuccess</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state_1a36f6230060969aabc0e1f78f2722897b" kind="function"><name>callGenerativeModel</name></member>
+  </compound>
+  <compound refid="namespacejava_1_1util" kind="namespace"><name>java::util</name>
+  </compound>
+  <compound refid="namespaceorg_1_1apache_1_1jena_1_1query" kind="namespace"><name>org::apache::jena::query</name>
+  </compound>
+  <compound refid="namespaceorg_1_1apache_1_1jena_1_1rdf_1_1model" kind="namespace"><name>org::apache::jena::rdf::model</name>
+  </compound>
+  <compound refid="namespaceorg_1_1apache_1_1jena_1_1sparql" kind="namespace"><name>org::apache::jena::sparql</name>
+  </compound>
+  <compound refid="namespaceorg_1_1json" kind="namespace"><name>org::json</name>
+  </compound>
+  <compound refid="namespaceorg_1_1junit_1_1_assert" kind="namespace"><name>org::junit::Assert</name>
+  </compound>
+  <compound refid="namespaceroboy" kind="namespace"><name>roboy</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1dialog" kind="namespace"><name>roboy::dialog</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1dialog_1_1action" kind="namespace"><name>roboy::dialog::action</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1dialog_1_1personality" kind="namespace"><name>roboy::dialog::personality</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1dialog_1_1personality_1_1states" kind="namespace"><name>roboy::dialog::personality::states</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1io" kind="namespace"><name>roboy::io</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1linguistics" kind="namespace"><name>roboy::linguistics</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1linguistics_1_1phonetics" kind="namespace"><name>roboy::linguistics::phonetics</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1linguistics_1_1sentenceanalysis" kind="namespace"><name>roboy::linguistics::sentenceanalysis</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1logic" kind="namespace"><name>roboy::logic</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1memory" kind="namespace"><name>roboy::memory</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1talk" kind="namespace"><name>roboy::talk</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1util" kind="namespace"><name>roboy::util</name>
+  </compound>
+  <compound refid="_action_8java" kind="file"><name>Action.java</name>
+  </compound>
+  <compound refid="_face_action_8java" kind="file"><name>FaceAction.java</name>
+  </compound>
+  <compound refid="_shut_down_action_8java" kind="file"><name>ShutDownAction.java</name>
+  </compound>
+  <compound refid="_speech_action_8java" kind="file"><name>SpeechAction.java</name>
+  </compound>
+  <compound refid="_dialog_system_8java" kind="file"><name>DialogSystem.java</name>
+  </compound>
+  <compound refid="_curious_personality_8java" kind="file"><name>CuriousPersonality.java</name>
+  </compound>
+  <compound refid="_default_personality_8java" kind="file"><name>DefaultPersonality.java</name>
+  </compound>
+  <compound refid="_knock_knock_personality_8java" kind="file"><name>KnockKnockPersonality.java</name>
+  </compound>
+  <compound refid="_personality_8java" kind="file"><name>Personality.java</name>
+  </compound>
+  <compound refid="_small_talk_personality_8java" kind="file"><name>SmallTalkPersonality.java</name>
+  </compound>
+  <compound refid="_abstract_boolean_state_8java" kind="file"><name>AbstractBooleanState.java</name>
+  </compound>
+  <compound refid="_anecdote_state_8java" kind="file"><name>AnecdoteState.java</name>
+  </compound>
+  <compound refid="_celebrity_state_8java" kind="file"><name>CelebrityState.java</name>
+  </compound>
+  <compound refid="_converse_state_8java" kind="file"><name>ConverseState.java</name>
+  </compound>
+  <compound refid="_farewell_state_8java" kind="file"><name>FarewellState.java</name>
+  </compound>
+  <compound refid="_generative_communication_state_8java" kind="file"><name>GenerativeCommunicationState.java</name>
+  </compound>
+  <compound refid="_greeting_state_8java" kind="file"><name>GreetingState.java</name>
+  </compound>
+  <compound refid="_idle_state_8java" kind="file"><name>IdleState.java</name>
+  </compound>
+  <compound refid="_inquiry_state_8java" kind="file"><name>InquiryState.java</name>
+  </compound>
+  <compound refid="_introduction_state_8java" kind="file"><name>IntroductionState.java</name>
+  </compound>
+  <compound refid="_question_answering_state_8java" kind="file"><name>QuestionAnsweringState.java</name>
+  </compound>
+  <compound refid="_question_asking_state_8java" kind="file"><name>QuestionAskingState.java</name>
+  </compound>
+  <compound refid="_reaction_8java" kind="file"><name>Reaction.java</name>
+  </compound>
+  <compound refid="_segue_state_8java" kind="file"><name>SegueState.java</name>
+  </compound>
+  <compound refid="_state_8java" kind="file"><name>State.java</name>
+  </compound>
+  <compound refid="_wild_talk_state_8java" kind="file"><name>WildTalkState.java</name>
+  </compound>
+  <compound refid="_bing_input_8java" kind="file"><name>BingInput.java</name>
+  </compound>
+  <compound refid="_bing_output_8java" kind="file"><name>BingOutput.java</name>
+  </compound>
+  <compound refid="_celebrity_similarity_input_8java" kind="file"><name>CelebritySimilarityInput.java</name>
+  </compound>
+  <compound refid="_cerevoice_output_8java" kind="file"><name>CerevoiceOutput.java</name>
+  </compound>
+  <compound refid="_command_line_communication_8java" kind="file"><name>CommandLineCommunication.java</name>
+  </compound>
+  <compound refid="_command_line_input_8java" kind="file"><name>CommandLineInput.java</name>
+  </compound>
+  <compound refid="_command_line_output_8java" kind="file"><name>CommandLineOutput.java</name>
+  </compound>
+  <compound refid="_communication_8java" kind="file"><name>Communication.java</name>
+  </compound>
+  <compound refid="_emotion_output_8java" kind="file"><name>EmotionOutput.java</name>
+  </compound>
+  <compound refid="_free_t_t_s_output_8java" kind="file"><name>FreeTTSOutput.java</name>
+  </compound>
+  <compound refid="_input_8java" kind="file"><name>Input.java</name>
+  </compound>
+  <compound refid="_input_device_8java" kind="file"><name>InputDevice.java</name>
+  </compound>
+  <compound refid="_multi_input_device_8java" kind="file"><name>MultiInputDevice.java</name>
+  </compound>
+  <compound refid="_multi_output_device_8java" kind="file"><name>MultiOutputDevice.java</name>
+  </compound>
+  <compound refid="_output_device_8java" kind="file"><name>OutputDevice.java</name>
+  </compound>
+  <compound refid="_roboy_name_detection_input_8java" kind="file"><name>RoboyNameDetectionInput.java</name>
+  </compound>
+  <compound refid="_test_vision_8java" kind="file"><name>TestVision.java</name>
+  </compound>
+  <compound refid="_vision_8java" kind="file"><name>Vision.java</name>
+  </compound>
+  <compound refid="linguistics_2_concept_8java" kind="file"><name>Concept.java</name>
+  </compound>
+  <compound refid="util_2_concept_8java" kind="file"><name>Concept.java</name>
+  </compound>
+  <compound refid="_detected_entity_8java" kind="file"><name>DetectedEntity.java</name>
+  </compound>
+  <compound refid="_entity_8java" kind="file"><name>Entity.java</name>
+  </compound>
+  <compound refid="_linguistics_8java" kind="file"><name>Linguistics.java</name>
+  </compound>
+  <compound refid="_double_metaphone_encoder_8java" kind="file"><name>DoubleMetaphoneEncoder.java</name>
+  </compound>
+  <compound refid="_metaphone_encoder_8java" kind="file"><name>MetaphoneEncoder.java</name>
+  </compound>
+  <compound refid="_phonetic_encoder_8java" kind="file"><name>PhoneticEncoder.java</name>
+  </compound>
+  <compound refid="_phonetics_8java" kind="file"><name>Phonetics.java</name>
+  </compound>
+  <compound refid="_soundex_encoder_8java" kind="file"><name>SoundexEncoder.java</name>
+  </compound>
+  <compound refid="_analyzer_8java" kind="file"><name>Analyzer.java</name>
+  </compound>
+  <compound refid="_answer_analyzer_8java" kind="file"><name>AnswerAnalyzer.java</name>
+  </compound>
+  <compound refid="_dictionary_based_sentence_type_detector_8java" kind="file"><name>DictionaryBasedSentenceTypeDetector.java</name>
+  </compound>
+  <compound refid="_interpretation_8java" kind="file"><name>Interpretation.java</name>
+  </compound>
+  <compound refid="_ontology_n_e_r_analyzer_8java" kind="file"><name>OntologyNERAnalyzer.java</name>
+  </compound>
+  <compound refid="_open_n_l_p_parser_8java" kind="file"><name>OpenNLPParser.java</name>
+  </compound>
+  <compound refid="_open_n_l_p_p_p_o_s_tagger_8java" kind="file"><name>OpenNLPPPOSTagger.java</name>
+  </compound>
+  <compound refid="_sentence_analyzer_8java" kind="file"><name>SentenceAnalyzer.java</name>
+  </compound>
+  <compound refid="_simple_tokenizer_8java" kind="file"><name>SimpleTokenizer.java</name>
+  </compound>
+  <compound refid="_term_8java" kind="file"><name>Term.java</name>
+  </compound>
+  <compound refid="_triple_8java" kind="file"><name>Triple.java</name>
+  </compound>
+  <compound refid="_intention_8java" kind="file"><name>Intention.java</name>
+  </compound>
+  <compound refid="_intention_classifier_8java" kind="file"><name>IntentionClassifier.java</name>
+  </compound>
+  <compound refid="_p_a_s_interpreter_8java" kind="file"><name>PASInterpreter.java</name>
+  </compound>
+  <compound refid="_statement_interpreter_8java" kind="file"><name>StatementInterpreter.java</name>
+  </compound>
+  <compound refid="_d_bpedia_memory_8java" kind="file"><name>DBpediaMemory.java</name>
+  </compound>
+  <compound refid="_lexicon_8java" kind="file"><name>Lexicon.java</name>
+  </compound>
+  <compound refid="_lexicon_literal_8java" kind="file"><name>LexiconLiteral.java</name>
+  </compound>
+  <compound refid="_lexicon_predicate_8java" kind="file"><name>LexiconPredicate.java</name>
+  </compound>
+  <compound refid="_memory_8java" kind="file"><name>Memory.java</name>
+  </compound>
+  <compound refid="_persistent_knowledge_8java" kind="file"><name>PersistentKnowledge.java</name>
+  </compound>
+  <compound refid="_roboy_mind_8java" kind="file"><name>RoboyMind.java</name>
+  </compound>
+  <compound refid="_util_8java" kind="file"><name>Util.java</name>
+  </compound>
+  <compound refid="_statement_builder_8java" kind="file"><name>StatementBuilder.java</name>
+  </compound>
+  <compound refid="_verbalizer_8java" kind="file"><name>Verbalizer.java</name>
+  </compound>
+  <compound refid="_i_o_8java" kind="file"><name>IO.java</name>
+  </compound>
+  <compound refid="_lists_8java" kind="file"><name>Lists.java</name>
+  </compound>
+  <compound refid="_maps_8java" kind="file"><name>Maps.java</name>
+  </compound>
+  <compound refid="_relation_8java" kind="file"><name>Relation.java</name>
+  </compound>
+  <compound refid="_ros_8java" kind="file"><name>Ros.java</name>
+  </compound>
+  <compound refid="_answer_analyzer_test_8java" kind="file"><name>AnswerAnalyzerTest.java</name>
+  </compound>
+  <compound refid="_dictionary_based_sentence_type_detector_test_8java" kind="file"><name>DictionaryBasedSentenceTypeDetectorTest.java</name>
+  </compound>
+  <compound refid="_open_n_l_p_parser_test_8java" kind="file"><name>OpenNLPParserTest.java</name>
+  </compound>
+  <compound refid="_p_a_s_interpreter_test_8java" kind="file"><name>PASInterpreterTest.java</name>
+  </compound>
+  <compound refid="dir_b7748b3f53905c24013e2b431e631225" kind="dir"><name>/home/roboy/DialogSystem/src/main/java/roboy/dialog/action</name>
+  </compound>
+  <compound refid="dir_bedbe0196ed4e3ea490265c56ba398f8" kind="dir"><name>/home/roboy/DialogSystem/src/main/java/roboy/dialog</name>
+  </compound>
+  <compound refid="dir_0f4c97c7389bb8a061b6dec9af63e7cb" kind="dir"><name>/home/roboy/DialogSystem/src/main/java/roboy/io</name>
+  </compound>
+  <compound refid="dir_97debbc39e3b917fca663601bb2b0709" kind="dir"><name>/home/roboy/DialogSystem/src/test/java</name>
+  </compound>
+  <compound refid="dir_fd3f6763802dee1ad875f6c80eac0bda" kind="dir"><name>/home/roboy/DialogSystem/src/main/java</name>
+  </compound>
+  <compound refid="dir_e3b706f0da88f09db6283663af2a234d" kind="dir"><name>/home/roboy/DialogSystem/src/test/java/roboy/linguistics</name>
+  </compound>
+  <compound refid="dir_ed0fca50c3b44d5fff0fa276d178b23b" kind="dir"><name>/home/roboy/DialogSystem/src/main/java/roboy/linguistics</name>
+  </compound>
+  <compound refid="dir_870da1f0b478f7ca881b221c68d88b01" kind="dir"><name>/home/roboy/DialogSystem/src/test/java/roboy/logic</name>
+  </compound>
+  <compound refid="dir_fc501c632ab2a1a6d6d30ee369f70e27" kind="dir"><name>/home/roboy/DialogSystem/src/main/java/roboy/logic</name>
+  </compound>
+  <compound refid="dir_5eb159725f84c66aafd839904a4acdd0" kind="dir"><name>/home/roboy/DialogSystem/src/main</name>
+  </compound>
+  <compound refid="dir_029141a1c7d6ffd5a4e073b2543b9713" kind="dir"><name>/home/roboy/DialogSystem/src/main/java/roboy/memory</name>
+  </compound>
+  <compound refid="dir_4b89141a263e6cbfc376c96d63372b80" kind="dir"><name>/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality</name>
+  </compound>
+  <compound refid="dir_309ae92be9f26a3d782e391154c61beb" kind="dir"><name>/home/roboy/DialogSystem/src/main/java/roboy/linguistics/phonetics</name>
+  </compound>
+  <compound refid="dir_ef15ac377452d427e784ef3ffdafddbf" kind="dir"><name>/home/roboy/DialogSystem/src/test/java/roboy</name>
+  </compound>
+  <compound refid="dir_6d5869451a9be3e6ce21b31fee7870de" kind="dir"><name>/home/roboy/DialogSystem/src/main/java/roboy</name>
+  </compound>
+  <compound refid="dir_f4181fe68facb23b91192854446ad923" kind="dir"><name>/home/roboy/DialogSystem/src/test/java/roboy/linguistics/sentenceanalysis</name>
+  </compound>
+  <compound refid="dir_2b9136678cbc7c985d98384a060ef73e" kind="dir"><name>/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis</name>
+  </compound>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>/home/roboy/DialogSystem/src</name>
+  </compound>
+  <compound refid="dir_6e452d7417803070272de08db6f5594a" kind="dir"><name>/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states</name>
+  </compound>
+  <compound refid="dir_2ee74114d792069c15448944a9bb6a63" kind="dir"><name>/home/roboy/DialogSystem/src/main/java/roboy/talk</name>
+  </compound>
+  <compound refid="dir_120ed4da3e3217b1e7fc0b4f48568e79" kind="dir"><name>/home/roboy/DialogSystem/src/test</name>
+  </compound>
+  <compound refid="dir_99a73bddd3718e5715d839342deccec9" kind="dir"><name>/home/roboy/DialogSystem/src/main/java/roboy/util</name>
+  </compound>
+</doxygenindex>

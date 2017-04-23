@@ -1,0 +1,282 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer" kind="class" language="Java" prot="public">
+    <compoundname>roboy::linguistics::sentenceanalysis::SentenceAnalyzer</compoundname>
+    <basecompoundref refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer" prot="public" virt="non-virtual">roboy.linguistics.sentenceanalysis.Analyzer</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1aa8bc4fdbd9b80a7912b4a25aafbcb124" prot="private" static="no" mutable="no">
+        <type>Map&lt; String, String &gt;</type>
+        <definition>Map&lt;String,String&gt; roboy.linguistics.sentenceanalysis.SentenceAnalyzer.meanings</definition>
+        <argsstring></argsstring>
+        <name>meanings</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="28" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a23f9cf7171a1c6e1b89fa978bb549a11" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.linguistics.sentenceanalysis.SentenceAnalyzer.SentenceAnalyzer</definition>
+        <argsstring>()</argsstring>
+        <name>SentenceAnalyzer</name>
+        <exceptions> throws JsonSyntaxException, JsonIOException, FileNotFoundException</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="30" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="30" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a3b7b6f58b44cb0176928cee3b767de33" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
+        <definition>Interpretation roboy.linguistics.sentenceanalysis.SentenceAnalyzer.analyze</definition>
+        <argsstring>(Interpretation interpretation)</argsstring>
+        <name>analyze</name>
+        <reimplements refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer_1a815ac125df33bff418d4a21618e5a340">analyze</reimplements>
+        <param>
+          <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
+          <declname>interpretation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="49" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="49" bodyend="59"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a4d741b02e8fcb51aed9fc286d65a7c45" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
+        <definition>Interpretation roboy.linguistics.sentenceanalysis.SentenceAnalyzer.extractPAS</definition>
+        <argsstring>(String sentence, String[] tokens, String[] posTags, SENTENCE_TYPE sentenceType)</argsstring>
+        <name>extractPAS</name>
+        <param>
+          <type>String</type>
+          <declname>sentence</declname>
+        </param>
+        <param>
+          <type>String[]</type>
+          <declname>tokens</declname>
+        </param>
+        <param>
+          <type>String[]</type>
+          <declname>posTags</declname>
+        </param>
+        <param>
+          <type><ref refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e" kindref="compound">SENTENCE_TYPE</ref></type>
+          <declname>sentenceType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="62" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="62" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1aa25826fae985c947e80acad3bd01b5b3" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1linguistics_1_1_triple" kindref="compound">Triple</ref></type>
+        <definition>Triple roboy.linguistics.sentenceanalysis.SentenceAnalyzer.analyzeStatement</definition>
+        <argsstring>(String[] tokens, String[] posTags)</argsstring>
+        <name>analyzeStatement</name>
+        <param>
+          <type>String[]</type>
+          <declname>tokens</declname>
+        </param>
+        <param>
+          <type>String[]</type>
+          <declname>posTags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="76" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="76" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1adf5b164eeb7c05fdb61ccb5996d98ff3" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1linguistics_1_1_triple" kindref="compound">Triple</ref></type>
+        <definition>Triple roboy.linguistics.sentenceanalysis.SentenceAnalyzer.analyzeIsIt</definition>
+        <argsstring>(String[] tokens, String[] posTags)</argsstring>
+        <name>analyzeIsIt</name>
+        <param>
+          <type>String[]</type>
+          <declname>tokens</declname>
+        </param>
+        <param>
+          <type>String[]</type>
+          <declname>posTags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="100" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="100" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a7adda755f129785575340f668d609c87" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1linguistics_1_1_triple" kindref="compound">Triple</ref></type>
+        <definition>Triple roboy.linguistics.sentenceanalysis.SentenceAnalyzer.analyzeDoesIt</definition>
+        <argsstring>(String[] tokens, String[] posTags)</argsstring>
+        <name>analyzeDoesIt</name>
+        <param>
+          <type>String[]</type>
+          <declname>tokens</declname>
+        </param>
+        <param>
+          <type>String[]</type>
+          <declname>posTags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="115" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="115" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a61b43e9f6b6c45c524ecbb66af221d27" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1linguistics_1_1_triple" kindref="compound">Triple</ref></type>
+        <definition>Triple roboy.linguistics.sentenceanalysis.SentenceAnalyzer.analyzeWho</definition>
+        <argsstring>(String[] tokens, String[] posTags)</argsstring>
+        <name>analyzeWho</name>
+        <param>
+          <type>String[]</type>
+          <declname>tokens</declname>
+        </param>
+        <param>
+          <type>String[]</type>
+          <declname>posTags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="130" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="130" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a3adfc785cfc19240ca5589e43f366a89" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1linguistics_1_1_triple" kindref="compound">Triple</ref></type>
+        <definition>Triple roboy.linguistics.sentenceanalysis.SentenceAnalyzer.analyzeWhat</definition>
+        <argsstring>(String[] tokens, String[] posTags)</argsstring>
+        <name>analyzeWhat</name>
+        <param>
+          <type>String[]</type>
+          <declname>tokens</declname>
+        </param>
+        <param>
+          <type>String[]</type>
+          <declname>posTags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="145" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="145" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a156ec882cbf75c13a1b5cbb16e1ac90d" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1linguistics_1_1_triple" kindref="compound">Triple</ref></type>
+        <definition>Triple roboy.linguistics.sentenceanalysis.SentenceAnalyzer.analyzeHowIs</definition>
+        <argsstring>(String[] tokens, String[] posTags)</argsstring>
+        <name>analyzeHowIs</name>
+        <param>
+          <type>String[]</type>
+          <declname>tokens</declname>
+        </param>
+        <param>
+          <type>String[]</type>
+          <declname>posTags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="157" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="157" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1ac307dfc707b307221882c53be7be86c2" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1linguistics_1_1_triple" kindref="compound">Triple</ref></type>
+        <definition>Triple roboy.linguistics.sentenceanalysis.SentenceAnalyzer.analyzeHowDo</definition>
+        <argsstring>(String[] tokens, String[] posTags)</argsstring>
+        <name>analyzeHowDo</name>
+        <param>
+          <type>String[]</type>
+          <declname>tokens</declname>
+        </param>
+        <param>
+          <type>String[]</type>
+          <declname>posTags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="172" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="172" bodyend="185"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Tries to find triples with rather stupid heuristics and stores the results in the Linguistics.TRIPLE attribute of the interpretation. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="798">
+        <label>roboy.linguistics.sentenceanalysis.SentenceAnalyzer</label>
+        <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer"/>
+        <childnode refid="799" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="799">
+        <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
+        <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="802">
+        <label>Map&lt; String, String &gt;</label>
+      </node>
+      <node id="800">
+        <label>roboy.linguistics.sentenceanalysis.SentenceAnalyzer</label>
+        <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer"/>
+        <childnode refid="801" relation="public-inheritance">
+        </childnode>
+        <childnode refid="802" relation="usage">
+          <edgelabel>meanings</edgelabel>
+        </childnode>
+      </node>
+      <node id="801">
+        <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
+        <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="26" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="26" bodyend="194"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a3b7b6f58b44cb0176928cee3b767de33" prot="public" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::SentenceAnalyzer</scope><name>analyze</name></member>
+      <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a7adda755f129785575340f668d609c87" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::SentenceAnalyzer</scope><name>analyzeDoesIt</name></member>
+      <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1ac307dfc707b307221882c53be7be86c2" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::SentenceAnalyzer</scope><name>analyzeHowDo</name></member>
+      <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a156ec882cbf75c13a1b5cbb16e1ac90d" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::SentenceAnalyzer</scope><name>analyzeHowIs</name></member>
+      <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1adf5b164eeb7c05fdb61ccb5996d98ff3" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::SentenceAnalyzer</scope><name>analyzeIsIt</name></member>
+      <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1aa25826fae985c947e80acad3bd01b5b3" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::SentenceAnalyzer</scope><name>analyzeStatement</name></member>
+      <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a3adfc785cfc19240ca5589e43f366a89" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::SentenceAnalyzer</scope><name>analyzeWhat</name></member>
+      <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a61b43e9f6b6c45c524ecbb66af221d27" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::SentenceAnalyzer</scope><name>analyzeWho</name></member>
+      <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a4d741b02e8fcb51aed9fc286d65a7c45" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::SentenceAnalyzer</scope><name>extractPAS</name></member>
+      <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1aa8bc4fdbd9b80a7912b4a25aafbcb124" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::SentenceAnalyzer</scope><name>meanings</name></member>
+      <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a23f9cf7171a1c6e1b89fa978bb549a11" prot="public" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::SentenceAnalyzer</scope><name>SentenceAnalyzer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state" kind="class" language="Java" prot="public">
+    <compoundname>roboy::dialog::personality::states::QuestionAnsweringState</compoundname>
+    <basecompoundref refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" prot="public" virt="non-virtual">roboy.dialog.personality.states.State</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1ae32b7c029105bdbf747f81b60aeaecaa" prot="private" static="no" mutable="no">
+        <type>boolean</type>
+        <definition>boolean roboy.dialog.personality.states.QuestionAnsweringState.first</definition>
+        <argsstring></argsstring>
+        <name>first</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" line="26" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1ad9996353d0fdc5fdddcb07a66fd0a45f" prot="private" static="no" mutable="no">
+        <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1_triple" kindref="compound">Triple</ref> &gt;</type>
+        <definition>List&lt;Triple&gt; roboy.dialog.personality.states.QuestionAnsweringState.memory</definition>
+        <argsstring></argsstring>
+        <name>memory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" line="27" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1a71439a5e84ba77ae18afeb9539da245a" prot="private" static="no" mutable="no">
+        <type><ref refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" kindref="compound">State</ref></type>
+        <definition>State roboy.dialog.personality.states.QuestionAnsweringState.inner</definition>
+        <argsstring></argsstring>
+        <name>inner</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" line="28" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1ad8132ce4a30eaa422f611460074b2371" prot="private" static="no" mutable="no">
+        <type><ref refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" kindref="compound">State</ref></type>
+        <definition>State roboy.dialog.personality.states.QuestionAnsweringState.top</definition>
+        <argsstring></argsstring>
+        <name>top</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" line="29" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1a38175b7a10d2650f6254b243c8ed9bb0" prot="private" static="no" mutable="no">
+        <type>List&lt; <ref refid="interfaceroboy_1_1memory_1_1_memory" kindref="compound">Memory</ref>&lt; <ref refid="classroboy_1_1util_1_1_relation" kindref="compound">Relation</ref> &gt; &gt;</type>
+        <definition>List&lt;Memory&lt;Relation&gt; &gt; roboy.dialog.personality.states.QuestionAnsweringState.memories</definition>
+        <argsstring></argsstring>
+        <name>memories</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" line="30" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1ad28b91be054129f8ac00519c62c88294" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.dialog.personality.states.QuestionAnsweringState.QuestionAnsweringState</definition>
+        <argsstring>()</argsstring>
+        <name>QuestionAnsweringState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" line="32" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" bodystart="32" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1a29771c4186fe1dff1fe640e986ec3011" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.dialog.personality.states.QuestionAnsweringState.setTop</definition>
+        <argsstring>(State top)</argsstring>
+        <name>setTop</name>
+        <param>
+          <type><ref refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" kindref="compound">State</ref></type>
+          <declname>top</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" line="55" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" bodystart="55" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1a1ecd6c40dd5890cc5a7219c55cbf4dc4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
+        <definition>List&lt;Interpretation&gt; roboy.dialog.personality.states.QuestionAnsweringState.act</definition>
+        <argsstring>()</argsstring>
+        <name>act</name>
+        <reimplements refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state_1a56df9f548b4736b775dc9dbf450a6a51">act</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" line="60" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" bodystart="60" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1a04d0bf8ee6aee0c8fbf326263fcb6d60" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction" kindref="compound">Reaction</ref></type>
+        <definition>Reaction roboy.dialog.personality.states.QuestionAnsweringState.react</definition>
+        <argsstring>(Interpretation input)</argsstring>
+        <name>react</name>
+        <reimplements refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state_1a7f9d1aebfca6aabf313eee279f9a390c">react</reimplements>
+        <param>
+          <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+<para>Checks the sentence type and detected triples in the input for determining what is asked about. </para>        </briefdescription>
+        <detaileddescription>
+<para>Then checks its knowledge base to come up with an answer. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" line="73" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" bodystart="73" bodyend="128"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1a04556cbbd9ec2d545c5e768ff81006d9" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction" kindref="compound">Reaction</ref></type>
+        <definition>Reaction roboy.dialog.personality.states.QuestionAnsweringState.innerReaction</definition>
+        <argsstring>(Interpretation input, List&lt; Interpretation &gt; result)</argsstring>
+        <name>innerReaction</name>
+        <param>
+          <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+<para>Checks all its memories (currently only the DBpedia) for an answer to the given question. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The interpretation of all inputs </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The list of answers that is possibly replaced </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the reaction to the question </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" line="139" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" bodystart="139" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1ae06d45fb5d7c8ea0963acf44713dd744" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1_triple" kindref="compound">Triple</ref> &gt;</type>
+        <definition>List&lt;Triple&gt; roboy.dialog.personality.states.QuestionAnsweringState.remember</definition>
+        <argsstring>(String predicate, String agens, String patiens)</argsstring>
+        <name>remember</name>
+        <param>
+          <type>String</type>
+          <declname>predicate</declname>
+        </param>
+        <param>
+          <type>String</type>
+          <declname>agens</declname>
+        </param>
+        <param>
+          <type>String</type>
+          <declname>patiens</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" line="162" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" bodystart="162" bodyend="174"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" kindref="compound">State</ref> in which Roboy is answering questions based on DBpedia or the knowledge base from the resources folder. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="744">
+        <label>roboy.dialog.personality.states.QuestionAnsweringState</label>
+        <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state"/>
+        <childnode refid="745" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="745">
+        <label>roboy.dialog.personality.states.State</label>
+        <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="749">
+        <label>List&lt; roboy.linguistics.Triple &gt;</label>
+      </node>
+      <node id="746">
+        <label>roboy.dialog.personality.states.QuestionAnsweringState</label>
+        <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state"/>
+        <childnode refid="747" relation="public-inheritance">
+        </childnode>
+        <childnode refid="748" relation="usage">
+          <edgelabel>memories</edgelabel>
+        </childnode>
+        <childnode refid="747" relation="usage">
+          <edgelabel>top</edgelabel>
+          <edgelabel>inner</edgelabel>
+        </childnode>
+        <childnode refid="749" relation="usage">
+          <edgelabel>memory</edgelabel>
+        </childnode>
+      </node>
+      <node id="747">
+        <label>roboy.dialog.personality.states.State</label>
+        <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
+      </node>
+      <node id="748">
+        <label>List&lt; roboy.memory.Memory&lt; roboy.util.Relation &gt; &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" line="24" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionAnsweringState.java" bodystart="24" bodyend="175"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1a1ecd6c40dd5890cc5a7219c55cbf4dc4" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::QuestionAnsweringState</scope><name>act</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1ae32b7c029105bdbf747f81b60aeaecaa" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::states::QuestionAnsweringState</scope><name>first</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1a71439a5e84ba77ae18afeb9539da245a" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::states::QuestionAnsweringState</scope><name>inner</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1a04556cbbd9ec2d545c5e768ff81006d9" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::states::QuestionAnsweringState</scope><name>innerReaction</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1a38175b7a10d2650f6254b243c8ed9bb0" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::states::QuestionAnsweringState</scope><name>memories</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1ad9996353d0fdc5fdddcb07a66fd0a45f" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::states::QuestionAnsweringState</scope><name>memory</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1ad28b91be054129f8ac00519c62c88294" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::QuestionAnsweringState</scope><name>QuestionAnsweringState</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1a04d0bf8ee6aee0c8fbf326263fcb6d60" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::QuestionAnsweringState</scope><name>react</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1ae06d45fb5d7c8ea0963acf44713dd744" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::states::QuestionAnsweringState</scope><name>remember</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1a29771c4186fe1dff1fe640e986ec3011" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::QuestionAnsweringState</scope><name>setTop</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_1ad8132ce4a30eaa422f611460074b2371" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::states::QuestionAnsweringState</scope><name>top</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

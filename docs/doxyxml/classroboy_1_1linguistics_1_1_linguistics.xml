@@ -1,0 +1,240 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1linguistics_1_1_linguistics" kind="class" language="Java" prot="public">
+    <compoundname>roboy::linguistics::Linguistics</compoundname>
+    <innerclass refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e" prot="public">roboy::linguistics::Linguistics::SEMANTIC_ROLE</innerclass>
+    <innerclass refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e" prot="public">roboy::linguistics::Linguistics::SENTENCE_TYPE</innerclass>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a68f40b7c87ec5fd6ee97275f81bec0aa" prot="public" static="yes" mutable="no">
+        <type>final List&lt; String &gt;</type>
+        <definition>final List&lt;String&gt; roboy.linguistics.Linguistics.tobe</definition>
+        <argsstring></argsstring>
+        <name>tobe</name>
+        <initializer>= Arrays.asList(&quot;am&quot;,&quot;are&quot;,&quot;is&quot;,&quot;was&quot;,&quot;were&quot;,&quot;been&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" line="26" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a01c8ef9fc982cac7eca3ce18db0adc59" prot="public" static="yes" mutable="no">
+        <type>final List&lt; String &gt;</type>
+        <definition>final List&lt;String&gt; roboy.linguistics.Linguistics.beMod</definition>
+        <argsstring></argsstring>
+        <name>beMod</name>
+        <initializer>= Lists.stringList(&quot;am&quot;,&quot;are&quot;,&quot;is&quot;,&quot;was&quot;,&quot;were&quot;,&quot;has been&quot;,&quot;have been&quot;,&quot;had been&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" line="27" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a20cc187660a43ff97783ab440cf905ab" prot="public" static="yes" mutable="no">
+        <type>final String</type>
+        <definition>final String roboy.linguistics.Linguistics.SENTENCE</definition>
+        <argsstring></argsstring>
+        <name>SENTENCE</name>
+        <initializer>= &quot;sentence&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" line="30" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a1659b8d6a0e5fb01c78446b27f37b2bd" prot="public" static="yes" mutable="no">
+        <type>final String</type>
+        <definition>final String roboy.linguistics.Linguistics.TRIPLE</definition>
+        <argsstring></argsstring>
+        <name>TRIPLE</name>
+        <initializer>= &quot;triple&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" line="31" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a39882a2997837092879b845699c30a45" prot="public" static="yes" mutable="no">
+        <type>final String</type>
+        <definition>final String roboy.linguistics.Linguistics.TOKENS</definition>
+        <argsstring></argsstring>
+        <name>TOKENS</name>
+        <initializer>= &quot;tokens&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" line="32" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a670831be458b376b147090559f1e11f6" prot="public" static="yes" mutable="no">
+        <type>final String</type>
+        <definition>final String roboy.linguistics.Linguistics.POSTAGS</definition>
+        <argsstring></argsstring>
+        <name>POSTAGS</name>
+        <initializer>= &quot;postags&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" line="33" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1ae3946aa0957f099a139aad5539aac1ef" prot="public" static="yes" mutable="no">
+        <type>final String</type>
+        <definition>final String roboy.linguistics.Linguistics.KEYWORDS</definition>
+        <argsstring></argsstring>
+        <name>KEYWORDS</name>
+        <initializer>= &quot;keywords&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" line="34" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1aa55ac4495182f1c9681ba5646c6f9d5b" prot="public" static="yes" mutable="no">
+        <type>final String</type>
+        <definition>final String roboy.linguistics.Linguistics.ASSOCIATION</definition>
+        <argsstring></argsstring>
+        <name>ASSOCIATION</name>
+        <initializer>= &quot;association&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" line="35" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a997bdb1b4095abe1a89214d93cedc6ec" prot="public" static="yes" mutable="no">
+        <type>final String</type>
+        <definition>final String roboy.linguistics.Linguistics.PAS</definition>
+        <argsstring></argsstring>
+        <name>PAS</name>
+        <initializer>= &quot;pas&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" line="36" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a8f6210e582e16c59a1e80d10e4b3422b" prot="public" static="yes" mutable="no">
+        <type>final String</type>
+        <definition>final String roboy.linguistics.Linguistics.NAME</definition>
+        <argsstring></argsstring>
+        <name>NAME</name>
+        <initializer>= &quot;name&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" line="37" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1acc3f25f22b6c0efd5c8263889d395ce1" prot="public" static="yes" mutable="no">
+        <type>final String</type>
+        <definition>final String roboy.linguistics.Linguistics.CELEBRITY</definition>
+        <argsstring></argsstring>
+        <name>CELEBRITY</name>
+        <initializer>= &quot;celebrity&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" line="38" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1abc2dcf7a32e22e408d6afa224502f4b3" prot="public" static="yes" mutable="no">
+        <type>final String</type>
+        <definition>final String roboy.linguistics.Linguistics.ROBOYDETECTED</definition>
+        <argsstring></argsstring>
+        <name>ROBOYDETECTED</name>
+        <initializer>= &quot;roboydetected&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" line="39" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a2398c1301599c3b5f79ab6d3c167376d" prot="public" static="yes" mutable="no">
+        <type>final String</type>
+        <definition>final String roboy.linguistics.Linguistics.OBJ_ANSWER</definition>
+        <argsstring></argsstring>
+        <name>OBJ_ANSWER</name>
+        <initializer>= &quot;objanswer&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" line="40" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a3c881e6e18d76bcf9a0959a4e30aed24" prot="public" static="yes" mutable="no">
+        <type>final String</type>
+        <definition>final String roboy.linguistics.Linguistics.PRED_ANSWER</definition>
+        <argsstring></argsstring>
+        <name>PRED_ANSWER</name>
+        <initializer>= &quot;predanswer&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" line="41" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Collection of attribute names, enumerations, word lists etc. </para>    </briefdescription>
+    <detaileddescription>
+<para>related to linguistics. </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="667">
+        <label>roboy.linguistics.Linguistics</label>
+        <link refid="classroboy_1_1linguistics_1_1_linguistics"/>
+        <childnode refid="668" relation="usage">
+          <edgelabel>beMod</edgelabel>
+          <edgelabel>tobe</edgelabel>
+        </childnode>
+      </node>
+      <node id="668">
+        <label>List&lt; String &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" line="11" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/Linguistics.java" bodystart="11" bodyend="43"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1linguistics_1_1_linguistics_1aa55ac4495182f1c9681ba5646c6f9d5b" prot="public" virt="non-virtual"><scope>roboy::linguistics::Linguistics</scope><name>ASSOCIATION</name></member>
+      <member refid="classroboy_1_1linguistics_1_1_linguistics_1a01c8ef9fc982cac7eca3ce18db0adc59" prot="public" virt="non-virtual"><scope>roboy::linguistics::Linguistics</scope><name>beMod</name></member>
+      <member refid="classroboy_1_1linguistics_1_1_linguistics_1acc3f25f22b6c0efd5c8263889d395ce1" prot="public" virt="non-virtual"><scope>roboy::linguistics::Linguistics</scope><name>CELEBRITY</name></member>
+      <member refid="classroboy_1_1linguistics_1_1_linguistics_1ae3946aa0957f099a139aad5539aac1ef" prot="public" virt="non-virtual"><scope>roboy::linguistics::Linguistics</scope><name>KEYWORDS</name></member>
+      <member refid="classroboy_1_1linguistics_1_1_linguistics_1a8f6210e582e16c59a1e80d10e4b3422b" prot="public" virt="non-virtual"><scope>roboy::linguistics::Linguistics</scope><name>NAME</name></member>
+      <member refid="classroboy_1_1linguistics_1_1_linguistics_1a2398c1301599c3b5f79ab6d3c167376d" prot="public" virt="non-virtual"><scope>roboy::linguistics::Linguistics</scope><name>OBJ_ANSWER</name></member>
+      <member refid="classroboy_1_1linguistics_1_1_linguistics_1a997bdb1b4095abe1a89214d93cedc6ec" prot="public" virt="non-virtual"><scope>roboy::linguistics::Linguistics</scope><name>PAS</name></member>
+      <member refid="classroboy_1_1linguistics_1_1_linguistics_1a670831be458b376b147090559f1e11f6" prot="public" virt="non-virtual"><scope>roboy::linguistics::Linguistics</scope><name>POSTAGS</name></member>
+      <member refid="classroboy_1_1linguistics_1_1_linguistics_1a3c881e6e18d76bcf9a0959a4e30aed24" prot="public" virt="non-virtual"><scope>roboy::linguistics::Linguistics</scope><name>PRED_ANSWER</name></member>
+      <member refid="classroboy_1_1linguistics_1_1_linguistics_1abc2dcf7a32e22e408d6afa224502f4b3" prot="public" virt="non-virtual"><scope>roboy::linguistics::Linguistics</scope><name>ROBOYDETECTED</name></member>
+      <member refid="classroboy_1_1linguistics_1_1_linguistics_1a20cc187660a43ff97783ab440cf905ab" prot="public" virt="non-virtual"><scope>roboy::linguistics::Linguistics</scope><name>SENTENCE</name></member>
+      <member refid="classroboy_1_1linguistics_1_1_linguistics_1a68f40b7c87ec5fd6ee97275f81bec0aa" prot="public" virt="non-virtual"><scope>roboy::linguistics::Linguistics</scope><name>tobe</name></member>
+      <member refid="classroboy_1_1linguistics_1_1_linguistics_1a39882a2997837092879b845699c30a45" prot="public" virt="non-virtual"><scope>roboy::linguistics::Linguistics</scope><name>TOKENS</name></member>
+      <member refid="classroboy_1_1linguistics_1_1_linguistics_1a1659b8d6a0e5fb01c78446b27f37b2bd" prot="public" virt="non-virtual"><scope>roboy::linguistics::Linguistics</scope><name>TRIPLE</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

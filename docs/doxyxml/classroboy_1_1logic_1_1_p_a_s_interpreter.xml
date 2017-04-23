@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1logic_1_1_p_a_s_interpreter" kind="class" language="Java" prot="public">
+    <compoundname>roboy::logic::PASInterpreter</compoundname>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classroboy_1_1logic_1_1_p_a_s_interpreter_1aa2976fb4dadaf77393faf6dfffc79545" prot="private" static="yes" mutable="no">
+        <type>final Map&lt; String, String &gt;</type>
+        <definition>final Map&lt;String, String&gt; roboy.logic.PASInterpreter.dbpediaRelations</definition>
+        <argsstring></argsstring>
+        <name>dbpediaRelations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/logic/PASInterpreter.java" line="13" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/logic/PASInterpreter.java" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classroboy_1_1logic_1_1_p_a_s_interpreter_1a8da838129e7b1a192f84e3264300891a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1util_1_1_relation" kindref="compound">Relation</ref></type>
+        <definition>static Relation roboy.logic.PASInterpreter.pas2DBpediaRelation</definition>
+        <argsstring>(Map&lt; String, Object &gt; pas)</argsstring>
+        <name>pas2DBpediaRelation</name>
+        <param>
+          <type>Map&lt; String, Object &gt;</type>
+          <declname>pas</declname>
+        </param>
+        <briefdescription>
+<para>Transforms a predicate argument structure into a DBpedia relation, that can be used to query DBpedia for the answer to the missing elements of the PAS. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pas</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the predicate argument structure </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the DBpedia relation </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/logic/PASInterpreter.java" line="69" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/logic/PASInterpreter.java" bodystart="69" bodyend="151"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="718">
+        <label>Map&lt; String, String &gt;</label>
+      </node>
+      <node id="717">
+        <label>roboy.logic.PASInterpreter</label>
+        <link refid="classroboy_1_1logic_1_1_p_a_s_interpreter"/>
+        <childnode refid="718" relation="usage">
+          <edgelabel>dbpediaRelations</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/logic/PASInterpreter.java" line="11" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/logic/PASInterpreter.java" bodystart="11" bodyend="153"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1logic_1_1_p_a_s_interpreter_1aa2976fb4dadaf77393faf6dfffc79545" prot="private" virt="non-virtual"><scope>roboy::logic::PASInterpreter</scope><name>dbpediaRelations</name></member>
+      <member refid="classroboy_1_1logic_1_1_p_a_s_interpreter_1a8da838129e7b1a192f84e3264300891a" prot="public" virt="non-virtual"><scope>roboy::logic::PASInterpreter</scope><name>pas2DBpediaRelation</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

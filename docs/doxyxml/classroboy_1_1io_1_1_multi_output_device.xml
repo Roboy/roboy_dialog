@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1io_1_1_multi_output_device" kind="class" language="Java" prot="public">
+    <compoundname>roboy::io::MultiOutputDevice</compoundname>
+    <basecompoundref refid="interfaceroboy_1_1io_1_1_output_device" prot="public" virt="non-virtual">roboy.io.OutputDevice</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classroboy_1_1io_1_1_multi_output_device_1ae822fdcd3d50b13b2cff411d5832382b" prot="private" static="no" mutable="no">
+        <type><ref refid="interfaceroboy_1_1io_1_1_output_device" kindref="compound">OutputDevice</ref>[]</type>
+        <definition>OutputDevice [] roboy.io.MultiOutputDevice.devices</definition>
+        <argsstring></argsstring>
+        <name>devices</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/MultiOutputDevice.java" line="12" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/MultiOutputDevice.java" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1io_1_1_multi_output_device_1a00cde217eeb516052985479ae3e67bc7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.io.MultiOutputDevice.MultiOutputDevice</definition>
+        <argsstring>(OutputDevice...devices)</argsstring>
+        <name>MultiOutputDevice</name>
+        <param>
+          <type>OutputDevice...</type>
+          <declname>devices</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/MultiOutputDevice.java" line="14" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/MultiOutputDevice.java" bodystart="14" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1io_1_1_multi_output_device_1a724587d7320ce1b39819753936e4c1da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.io.MultiOutputDevice.act</definition>
+        <argsstring>(List&lt; Action &gt; actions)</argsstring>
+        <name>act</name>
+        <reimplements refid="interfaceroboy_1_1io_1_1_output_device_1aa47aae2af369116c8b407f7bd2770ce9">act</reimplements>
+        <param>
+          <type>List&lt; <ref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kindref="compound">Action</ref> &gt;</type>
+          <declname>actions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/MultiOutputDevice.java" line="19" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/MultiOutputDevice.java" bodystart="19" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Meta class to combine multiple output devices. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="684">
+        <label>roboy.io.MultiOutputDevice</label>
+        <link refid="classroboy_1_1io_1_1_multi_output_device"/>
+        <childnode refid="685" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="685">
+        <label>roboy.io.OutputDevice</label>
+        <link refid="interfaceroboy_1_1io_1_1_output_device"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="686">
+        <label>roboy.io.MultiOutputDevice</label>
+        <link refid="classroboy_1_1io_1_1_multi_output_device"/>
+        <childnode refid="687" relation="public-inheritance">
+        </childnode>
+        <childnode refid="687" relation="usage">
+          <edgelabel>devices</edgelabel>
+        </childnode>
+      </node>
+      <node id="687">
+        <label>roboy.io.OutputDevice</label>
+        <link refid="interfaceroboy_1_1io_1_1_output_device"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/MultiOutputDevice.java" line="10" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/MultiOutputDevice.java" bodystart="10" bodyend="25"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1io_1_1_multi_output_device_1a724587d7320ce1b39819753936e4c1da" prot="public" virt="non-virtual"><scope>roboy::io::MultiOutputDevice</scope><name>act</name></member>
+      <member refid="classroboy_1_1io_1_1_multi_output_device_1ae822fdcd3d50b13b2cff411d5832382b" prot="private" virt="non-virtual"><scope>roboy::io::MultiOutputDevice</scope><name>devices</name></member>
+      <member refid="classroboy_1_1io_1_1_multi_output_device_1a00cde217eeb516052985479ae3e67bc7" prot="public" virt="non-virtual"><scope>roboy::io::MultiOutputDevice</scope><name>MultiOutputDevice</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

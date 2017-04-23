@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="_action_8java" kind="file" language="Java">
+    <compoundname>Action.java</compoundname>
+    <innerclass refid="interfaceroboy_1_1dialog_1_1action_1_1_action" prot="public">roboy::dialog::action::Action</innerclass>
+    <innernamespace refid="namespaceroboy_1_1dialog_1_1action">roboy::dialog::action</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">package<sp/></highlight><highlight class="normal">roboy.dialog.action;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="interfaceroboy_1_1dialog_1_1action_1_1_action" refkind="compound"><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">interface<sp/></highlight><highlight class="normal"><ref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kindref="compound">Action</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/action/Action.java"/>
+  </compounddef>
+</doxygen>

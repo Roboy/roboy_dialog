@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespaceroboy" kind="namespace" language="Java">
+    <compoundname>roboy</compoundname>
+    <innernamespace refid="namespaceroboy_1_1dialog">roboy::dialog</innernamespace>
+    <innernamespace refid="namespaceroboy_1_1io">roboy::io</innernamespace>
+    <innernamespace refid="namespaceroboy_1_1linguistics">roboy::linguistics</innernamespace>
+    <innernamespace refid="namespaceroboy_1_1logic">roboy::logic</innernamespace>
+    <innernamespace refid="namespaceroboy_1_1memory">roboy::memory</innernamespace>
+    <innernamespace refid="namespaceroboy_1_1talk">roboy::talk</innernamespace>
+    <innernamespace refid="namespaceroboy_1_1util">roboy::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="[generated]" line="1" column="1"/>
+  </compounddef>
+</doxygen>

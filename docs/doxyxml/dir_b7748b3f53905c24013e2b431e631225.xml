@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_b7748b3f53905c24013e2b431e631225" kind="dir">
+    <compoundname>/home/roboy/DialogSystem/src/main/java/roboy/dialog/action</compoundname>
+    <innerfile refid="_action_8java">Action.java</innerfile>
+    <innerfile refid="_face_action_8java">FaceAction.java</innerfile>
+    <innerfile refid="_shut_down_action_8java">ShutDownAction.java</innerfile>
+    <innerfile refid="_speech_action_8java">SpeechAction.java</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/action/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1io_1_1_roboy_name_detection_input" kind="class" language="Java" prot="public">
+    <compoundname>roboy::io::RoboyNameDetectionInput</compoundname>
+    <basecompoundref refid="interfaceroboy_1_1io_1_1_input_device" prot="public" virt="non-virtual">roboy.io.InputDevice</basecompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classroboy_1_1io_1_1_roboy_name_detection_input_1a1872b884fd325a83c7d85ebe0ab2672c" prot="protected" static="no" mutable="no">
+        <type>LiveSpeechRecognizer</type>
+        <definition>LiveSpeechRecognizer roboy.io.RoboyNameDetectionInput.recog_copy</definition>
+        <argsstring></argsstring>
+        <name>recog_copy</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/RoboyNameDetectionInput.java" line="17" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/RoboyNameDetectionInput.java" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1io_1_1_roboy_name_detection_input_1ab8df9bfc456996abd142ba633417b407" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.io.RoboyNameDetectionInput.RoboyNameDetectionInput</definition>
+        <argsstring>()</argsstring>
+        <name>RoboyNameDetectionInput</name>
+        <exceptions> throws IOException </exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/RoboyNameDetectionInput.java" line="19" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/RoboyNameDetectionInput.java" bodystart="19" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1io_1_1_roboy_name_detection_input_1affd6cd02b0c1149f08c7e85ce516cc50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.io.RoboyNameDetectionInput.stopListening</definition>
+        <argsstring>()</argsstring>
+        <name>stopListening</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/RoboyNameDetectionInput.java" line="38" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/RoboyNameDetectionInput.java" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1io_1_1_roboy_name_detection_input_1a2e946745e25aefe609c9b50bbcfe33b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1io_1_1_input" kindref="compound">Input</ref></type>
+        <definition>Input roboy.io.RoboyNameDetectionInput.listen</definition>
+        <argsstring>()</argsstring>
+        <name>listen</name>
+        <reimplements refid="interfaceroboy_1_1io_1_1_input_device_1aa9b02ed06118c2fd1ec2a82cfd9115d8">listen</reimplements>
+        <exceptions> throws InterruptedException, IOException </exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/RoboyNameDetectionInput.java" line="44" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/RoboyNameDetectionInput.java" bodystart="44" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Detects the word &apos;Roboy&apos; and stores if it was detected in the Linguistics.ROBOYDETECTED attribute field of the resulting <ref refid="classroboy_1_1io_1_1_input" kindref="compound">Input</ref> object. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="782">
+        <label>roboy.io.InputDevice</label>
+        <link refid="interfaceroboy_1_1io_1_1_input_device"/>
+      </node>
+      <node id="781">
+        <label>roboy.io.RoboyNameDetectionInput</label>
+        <link refid="classroboy_1_1io_1_1_roboy_name_detection_input"/>
+        <childnode refid="782" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="785">
+        <label>LiveSpeechRecognizer</label>
+      </node>
+      <node id="784">
+        <label>roboy.io.InputDevice</label>
+        <link refid="interfaceroboy_1_1io_1_1_input_device"/>
+      </node>
+      <node id="783">
+        <label>roboy.io.RoboyNameDetectionInput</label>
+        <link refid="classroboy_1_1io_1_1_roboy_name_detection_input"/>
+        <childnode refid="784" relation="public-inheritance">
+        </childnode>
+        <childnode refid="785" relation="usage">
+          <edgelabel>recog_copy</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/RoboyNameDetectionInput.java" line="15" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/RoboyNameDetectionInput.java" bodystart="15" bodyend="55"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1io_1_1_roboy_name_detection_input_1a2e946745e25aefe609c9b50bbcfe33b0" prot="public" virt="non-virtual"><scope>roboy::io::RoboyNameDetectionInput</scope><name>listen</name></member>
+      <member refid="classroboy_1_1io_1_1_roboy_name_detection_input_1a1872b884fd325a83c7d85ebe0ab2672c" prot="protected" virt="non-virtual"><scope>roboy::io::RoboyNameDetectionInput</scope><name>recog_copy</name></member>
+      <member refid="classroboy_1_1io_1_1_roboy_name_detection_input_1ab8df9bfc456996abd142ba633417b407" prot="public" virt="non-virtual"><scope>roboy::io::RoboyNameDetectionInput</scope><name>RoboyNameDetectionInput</name></member>
+      <member refid="classroboy_1_1io_1_1_roboy_name_detection_input_1affd6cd02b0c1149f08c7e85ce516cc50" prot="public" virt="non-virtual"><scope>roboy::io::RoboyNameDetectionInput</scope><name>stopListening</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

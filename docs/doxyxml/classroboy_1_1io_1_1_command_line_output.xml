@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1io_1_1_command_line_output" kind="class" language="Java" prot="public">
+    <compoundname>roboy::io::CommandLineOutput</compoundname>
+    <basecompoundref refid="interfaceroboy_1_1io_1_1_output_device" prot="public" virt="non-virtual">roboy.io.OutputDevice</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classroboy_1_1io_1_1_command_line_output_1a56062c3cc5dc3a1d87c0f23443b2ab2b" prot="private" static="no" mutable="no">
+        <type><ref refid="classroboy_1_1io_1_1_emotion_output" kindref="compound">EmotionOutput</ref></type>
+        <definition>EmotionOutput roboy.io.CommandLineOutput.emotion</definition>
+        <argsstring></argsstring>
+        <name>emotion</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/CommandLineOutput.java" line="14" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/CommandLineOutput.java" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1io_1_1_command_line_output_1a6bfbf1d2cade1fb9be9f256f5fba23b6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.io.CommandLineOutput.CommandLineOutput</definition>
+        <argsstring>(EmotionOutput emotion)</argsstring>
+        <name>CommandLineOutput</name>
+        <param>
+          <type><ref refid="classroboy_1_1io_1_1_emotion_output" kindref="compound">EmotionOutput</ref></type>
+          <declname>emotion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/CommandLineOutput.java" line="15" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/CommandLineOutput.java" bodystart="15" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1io_1_1_command_line_output_1a335d0ba4f6ab5edd8cace20080f3f792" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.io.CommandLineOutput.act</definition>
+        <argsstring>(List&lt; Action &gt; actions)</argsstring>
+        <name>act</name>
+        <reimplements refid="interfaceroboy_1_1io_1_1_output_device_1aa47aae2af369116c8b407f7bd2770ce9">act</reimplements>
+        <param>
+          <type>List&lt; <ref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kindref="compound">Action</ref> &gt;</type>
+          <declname>actions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/CommandLineOutput.java" line="20" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/CommandLineOutput.java" bodystart="20" bodyend="28"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Uses the command line as output device. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="514">
+        <label>roboy.io.CommandLineOutput</label>
+        <link refid="classroboy_1_1io_1_1_command_line_output"/>
+        <childnode refid="515" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="515">
+        <label>roboy.io.OutputDevice</label>
+        <link refid="interfaceroboy_1_1io_1_1_output_device"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="518">
+        <label>roboy.io.EmotionOutput</label>
+        <link refid="classroboy_1_1io_1_1_emotion_output"/>
+        <childnode refid="517" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="516">
+        <label>roboy.io.CommandLineOutput</label>
+        <link refid="classroboy_1_1io_1_1_command_line_output"/>
+        <childnode refid="517" relation="public-inheritance">
+        </childnode>
+        <childnode refid="518" relation="usage">
+          <edgelabel>emotion</edgelabel>
+        </childnode>
+      </node>
+      <node id="517">
+        <label>roboy.io.OutputDevice</label>
+        <link refid="interfaceroboy_1_1io_1_1_output_device"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/CommandLineOutput.java" line="12" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/CommandLineOutput.java" bodystart="12" bodyend="30"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1io_1_1_command_line_output_1a335d0ba4f6ab5edd8cace20080f3f792" prot="public" virt="non-virtual"><scope>roboy::io::CommandLineOutput</scope><name>act</name></member>
+      <member refid="classroboy_1_1io_1_1_command_line_output_1a6bfbf1d2cade1fb9be9f256f5fba23b6" prot="public" virt="non-virtual"><scope>roboy::io::CommandLineOutput</scope><name>CommandLineOutput</name></member>
+      <member refid="classroboy_1_1io_1_1_command_line_output_1a56062c3cc5dc3a1d87c0f23443b2ab2b" prot="private" virt="non-virtual"><scope>roboy::io::CommandLineOutput</scope><name>emotion</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
