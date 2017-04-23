@@ -9,6 +9,8 @@ Using command line
 
 ``git clone https://github.com/Roboy/DialogSystem``
 
+``cd DialogSystem``
+
 ``mvn compile``
 
 ``mvn exec:java -Dexec.mainClass="roboy.dialog.DialogSystem"``
