@@ -12,6 +12,7 @@ Status
 ------
 
 Stable functionality:
+
 - Roboy introduces himself
 - Roboy answers questions about himself
 - Roboy recognizes once someone says his name
