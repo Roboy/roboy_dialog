@@ -9,7 +9,7 @@ Roboy Dialog System
 This project aims to implement human-like conversation routines for the humanoid anthropomimetic robot Roboy.
 
 Status
-===========================================================
+------
 
 Stable functionality:
 - Roboy introduces himself
