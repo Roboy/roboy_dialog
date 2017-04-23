@@ -19,12 +19,25 @@ import roboy.util.Relation;
 import roboy.util.Ros;
 
 /**
- * Vision helper class ... I guess.
+ * Vision helper class
  */
 public class Vision 
 {
 
+	private static Vision roboyVision;
 
+	private Vision()
+	{
+	}
+
+	public static Vision getInstance()
+	{
+		if (roboyVision == null)
+		{
+			roboyVision =  new Vision();
+		}
+		return roboyVision;
+	}
 	private class VisionCallback implements TopicCallback {
 
 		public String latest = null;
@@ -49,19 +62,14 @@ public class Vision
 	}
 
 
-
-	public String recognize()
+	public String recognizeFace()
 	{
-		Service Recognize = new Service(Ros.getInstance(), "/roboy_vision/recognize", "/roboy_face/recognize");
-
+		Service RecognizeSrv = new Service(Ros.getInstance(), "/recognize_face", "/recognize_face");
 		JsonObject params = Json.createObjectBuilder()
-	     .add("object_id", 0) //TODO send actual id
-	     .build();
-	    
-	    ServiceRequest request = new ServiceRequest(params);
-	    ServiceResponse response = Recognize.callServiceAndWait(request);
-
-	    return response.toJsonObject().getString("object_name");
+				.add("object_id", 0)
+				.build();
+		ServiceRequest request = new ServiceRequest(params);
+		return RecognizeSrv.callServiceAndWait(request).toJsonObject().getString("object_name");
 	}
 
 	public boolean findFaces()
