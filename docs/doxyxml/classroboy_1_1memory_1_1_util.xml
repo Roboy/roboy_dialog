@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1memory_1_1_util" kind="class" language="Java" prot="public">
+    <compoundname>roboy::memory::Util</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Exception</basecompoundref>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classroboy_1_1memory_1_1_util_1ac99be65a576dab331a9f2c43db7280b7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>String</type>
+        <definition>static String roboy.memory.Util.getPartURI</definition>
+        <argsstring>(String URI)</argsstring>
+        <name>getPartURI</name>
+        <param>
+          <type>String</type>
+          <declname>URI</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/Util.java" line="15" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/Util.java" bodystart="15" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1_util_1aa9603bbaefcf40cc9116d48c840648f6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; String &gt;</type>
+        <definition>static List&lt;String&gt; roboy.memory.Util.getQuestionType</definition>
+        <argsstring>(String question)</argsstring>
+        <name>getQuestionType</name>
+        <param>
+          <type>String</type>
+          <declname>question</declname>
+        </param>
+        <exceptions> throws Exception </exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/Util.java" line="22" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/Util.java" bodystart="22" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1_util_1a50ad3a4d176e2c5fcefb1e0d5265a6db" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int roboy.memory.Util.calculateLevenshteinDistance</definition>
+        <argsstring>(String s, String t)</argsstring>
+        <name>calculateLevenshteinDistance</name>
+        <param>
+          <type>String</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>String</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/Util.java" line="31" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/Util.java" bodystart="31" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1_util_1a63fa531e6f09abf0b5cf6d6d6ad08a11" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int roboy.memory.Util.min</definition>
+        <argsstring>(int a, int b, int c)</argsstring>
+        <name>min</name>
+        <param>
+          <type>int</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/Util.java" line="54" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/Util.java" bodystart="54" bodyend="56"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Helper class. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="856">
+        <label>Exception</label>
+      </node>
+      <node id="855">
+        <label>roboy.memory.Util</label>
+        <link refid="classroboy_1_1memory_1_1_util"/>
+        <childnode refid="856" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="858">
+        <label>Exception</label>
+      </node>
+      <node id="857">
+        <label>roboy.memory.Util</label>
+        <link refid="classroboy_1_1memory_1_1_util"/>
+        <childnode refid="858" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/Util.java" line="9" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/Util.java" bodystart="9" bodyend="57"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1memory_1_1_util_1a50ad3a4d176e2c5fcefb1e0d5265a6db" prot="public" virt="non-virtual"><scope>roboy::memory::Util</scope><name>calculateLevenshteinDistance</name></member>
+      <member refid="classroboy_1_1memory_1_1_util_1ac99be65a576dab331a9f2c43db7280b7" prot="public" virt="non-virtual"><scope>roboy::memory::Util</scope><name>getPartURI</name></member>
+      <member refid="classroboy_1_1memory_1_1_util_1aa9603bbaefcf40cc9116d48c840648f6" prot="public" virt="non-virtual"><scope>roboy::memory::Util</scope><name>getQuestionType</name></member>
+      <member refid="classroboy_1_1memory_1_1_util_1a63fa531e6f09abf0b5cf6d6d6ad08a11" prot="public" virt="non-virtual"><scope>roboy::memory::Util</scope><name>min</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

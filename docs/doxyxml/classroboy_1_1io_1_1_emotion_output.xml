@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1io_1_1_emotion_output" kind="class" language="Java" prot="public">
+    <compoundname>roboy::io::EmotionOutput</compoundname>
+    <basecompoundref refid="interfaceroboy_1_1io_1_1_output_device" prot="public" virt="non-virtual">roboy.io.OutputDevice</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1io_1_1_emotion_output_1a51b712bbed6db5f5e5fa19a5ae3e9041" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.io.EmotionOutput.act</definition>
+        <argsstring>(List&lt; Action &gt; actions)</argsstring>
+        <name>act</name>
+        <reimplements refid="interfaceroboy_1_1io_1_1_output_device_1aa47aae2af369116c8b407f7bd2770ce9">act</reimplements>
+        <param>
+          <type>List&lt; <ref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kindref="compound">Action</ref> &gt;</type>
+          <declname>actions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/EmotionOutput.java" line="23" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/EmotionOutput.java" bodystart="23" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1io_1_1_emotion_output_1a83b84d0780eaeac69c75e3fdd22fc22f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.io.EmotionOutput.act</definition>
+        <argsstring>(Action action)</argsstring>
+        <name>act</name>
+        <param>
+          <type><ref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kindref="compound">Action</ref></type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/EmotionOutput.java" line="31" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/EmotionOutput.java" bodystart="31" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classroboy_1_1io_1_1_emotion_output_1ab621c6a81cb2197475b5063c21c63a19" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.io.EmotionOutput.ChangeFaceState</definition>
+        <argsstring>(FaceAction action)</argsstring>
+        <name>ChangeFaceState</name>
+        <param>
+          <type><ref refid="classroboy_1_1dialog_1_1action_1_1_face_action" kindref="compound">FaceAction</ref></type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/EmotionOutput.java" line="41" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/EmotionOutput.java" bodystart="41" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Roboy&apos;s facial expression output. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="570">
+        <label>roboy.io.EmotionOutput</label>
+        <link refid="classroboy_1_1io_1_1_emotion_output"/>
+        <childnode refid="571" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="571">
+        <label>roboy.io.OutputDevice</label>
+        <link refid="interfaceroboy_1_1io_1_1_output_device"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="572">
+        <label>roboy.io.EmotionOutput</label>
+        <link refid="classroboy_1_1io_1_1_emotion_output"/>
+        <childnode refid="573" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="573">
+        <label>roboy.io.OutputDevice</label>
+        <link refid="interfaceroboy_1_1io_1_1_output_device"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/EmotionOutput.java" line="20" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/EmotionOutput.java" bodystart="19" bodyend="56"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1io_1_1_emotion_output_1a51b712bbed6db5f5e5fa19a5ae3e9041" prot="public" virt="non-virtual"><scope>roboy::io::EmotionOutput</scope><name>act</name></member>
+      <member refid="classroboy_1_1io_1_1_emotion_output_1a83b84d0780eaeac69c75e3fdd22fc22f" prot="public" virt="non-virtual"><scope>roboy::io::EmotionOutput</scope><name>act</name></member>
+      <member refid="classroboy_1_1io_1_1_emotion_output_1ab621c6a81cb2197475b5063c21c63a19" prot="private" virt="non-virtual"><scope>roboy::io::EmotionOutput</scope><name>ChangeFaceState</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

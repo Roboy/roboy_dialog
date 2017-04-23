@@ -1,4 +1,5 @@
 # DialogSystem
+[![Documentation Status](https://readthedocs.org/projects/roboydialog/badge/?version=latest)](http://roboydialog.readthedocs.io/en/latest/?badge=latest)
 
 ## What is it?
 

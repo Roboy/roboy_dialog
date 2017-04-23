@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_ed0fca50c3b44d5fff0fa276d178b23b" kind="dir">
+    <compoundname>/home/roboy/DialogSystem/src/main/java/roboy/linguistics</compoundname>
+    <innerdir refid="dir_309ae92be9f26a3d782e391154c61beb">/home/roboy/DialogSystem/src/main/java/roboy/linguistics/phonetics</innerdir>
+    <innerdir refid="dir_2b9136678cbc7c985d98384a060ef73e">/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis</innerdir>
+    <innerfile refid="linguistics_2_concept_8java">Concept.java</innerfile>
+    <innerfile refid="_detected_entity_8java">DetectedEntity.java</innerfile>
+    <innerfile refid="_entity_8java">Entity.java</innerfile>
+    <innerfile refid="_linguistics_8java">Linguistics.java</innerfile>
+    <innerfile refid="_term_8java">Term.java</innerfile>
+    <innerfile refid="_triple_8java">Triple.java</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/"/>
+  </compounddef>
+</doxygen>

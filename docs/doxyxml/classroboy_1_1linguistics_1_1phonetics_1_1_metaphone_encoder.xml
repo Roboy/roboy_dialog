@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1linguistics_1_1phonetics_1_1_metaphone_encoder" kind="class" language="Java" prot="public">
+    <compoundname>roboy::linguistics::phonetics::MetaphoneEncoder</compoundname>
+    <basecompoundref refid="interfaceroboy_1_1linguistics_1_1phonetics_1_1_phonetic_encoder" prot="public" virt="non-virtual">roboy.linguistics.phonetics.PhoneticEncoder</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1phonetics_1_1_metaphone_encoder_1a763da63625dfef174851fed7af4ed63e" prot="private" static="no" mutable="no">
+        <type>Metaphone</type>
+        <definition>Metaphone roboy.linguistics.phonetics.MetaphoneEncoder.metaphone</definition>
+        <argsstring></argsstring>
+        <name>metaphone</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" line="7" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1linguistics_1_1phonetics_1_1_metaphone_encoder_1aa286c75a1e7de608741db9035559b69c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.linguistics.phonetics.MetaphoneEncoder.MetaphoneEncoder</definition>
+        <argsstring>(Metaphone metaphone)</argsstring>
+        <name>MetaphoneEncoder</name>
+        <param>
+          <type>Metaphone</type>
+          <declname>metaphone</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" line="9" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" bodystart="9" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1linguistics_1_1phonetics_1_1_metaphone_encoder_1a8ffe299334c34f5952f2ee2d93e227c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>String</type>
+        <definition>String roboy.linguistics.phonetics.MetaphoneEncoder.encode</definition>
+        <argsstring>(String input)</argsstring>
+        <name>encode</name>
+        <reimplements refid="interfaceroboy_1_1linguistics_1_1phonetics_1_1_phonetic_encoder_1a4e47b9373bb14ff26d9af51f20e2e7f7">encode</reimplements>
+        <param>
+          <type>String</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" line="14" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" bodystart="14" bodyend="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="675">
+        <label>roboy.linguistics.phonetics.MetaphoneEncoder</label>
+        <link refid="classroboy_1_1linguistics_1_1phonetics_1_1_metaphone_encoder"/>
+        <childnode refid="676" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="676">
+        <label>roboy.linguistics.phonetics.PhoneticEncoder</label>
+        <link refid="interfaceroboy_1_1linguistics_1_1phonetics_1_1_phonetic_encoder"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="677">
+        <label>roboy.linguistics.phonetics.MetaphoneEncoder</label>
+        <link refid="classroboy_1_1linguistics_1_1phonetics_1_1_metaphone_encoder"/>
+        <childnode refid="678" relation="public-inheritance">
+        </childnode>
+        <childnode refid="679" relation="usage">
+          <edgelabel>metaphone</edgelabel>
+        </childnode>
+      </node>
+      <node id="679">
+        <label>Metaphone</label>
+      </node>
+      <node id="678">
+        <label>roboy.linguistics.phonetics.PhoneticEncoder</label>
+        <link refid="interfaceroboy_1_1linguistics_1_1phonetics_1_1_phonetic_encoder"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" line="5" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" bodystart="5" bodyend="18"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_metaphone_encoder_1a8ffe299334c34f5952f2ee2d93e227c6" prot="public" virt="non-virtual"><scope>roboy::linguistics::phonetics::MetaphoneEncoder</scope><name>encode</name></member>
+      <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_metaphone_encoder_1a763da63625dfef174851fed7af4ed63e" prot="private" virt="non-virtual"><scope>roboy::linguistics::phonetics::MetaphoneEncoder</scope><name>metaphone</name></member>
+      <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_metaphone_encoder_1aa286c75a1e7de608741db9035559b69c" prot="public" virt="non-virtual"><scope>roboy::linguistics::phonetics::MetaphoneEncoder</scope><name>MetaphoneEncoder</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

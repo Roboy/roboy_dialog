@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="_celebrity_similarity_input_8java" kind="file" language="Java">
+    <compoundname>CelebritySimilarityInput.java</compoundname>
+    <innerclass refid="classroboy_1_1io_1_1_celebrity_similarity_input" prot="public">roboy::io::CelebritySimilarityInput</innerclass>
+    <innernamespace refid="namespaceroboy_1_1io">roboy::io</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">package<sp/></highlight><highlight class="normal">roboy.io;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>java.io.IOException;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceroboy" kindref="compound">roboy</ref>.<ref refid="namespaceroboy_1_1linguistics" kindref="compound">linguistics</ref>.<ref refid="classroboy_1_1linguistics_1_1_linguistics" kindref="compound">Linguistics</ref>;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceroboy" kindref="compound">roboy</ref>.<ref refid="namespaceroboy_1_1util" kindref="compound">util</ref>.<ref refid="classroboy_1_1util_1_1_maps" kindref="compound">Maps</ref>;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="classroboy_1_1io_1_1_celebrity_similarity_input" refkind="compound"><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classroboy_1_1io_1_1_celebrity_similarity_input" kindref="compound">CelebritySimilarityInput</ref><sp/></highlight><highlight class="keyword">implements</highlight><highlight class="normal"><sp/><ref refid="interfaceroboy_1_1io_1_1_input_device" kindref="compound">InputDevice</ref>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>@Override</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classroboy_1_1io_1_1_input" kindref="compound">Input</ref><sp/>listen()<sp/></highlight><highlight class="keywordflow">throws</highlight><highlight class="normal"><sp/>InterruptedException,<sp/>IOException<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classroboy_1_1io_1_1_input" kindref="compound">Input</ref>(null,<ref refid="classroboy_1_1util_1_1_maps" kindref="compound">Maps</ref>.stringObjectMap(<ref refid="classroboy_1_1linguistics_1_1_linguistics" kindref="compound">Linguistics</ref>.CELEBRITY,</highlight><highlight class="stringliteral">&quot;Sponge<sp/>Bob&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/CelebritySimilarityInput.java"/>
+  </compounddef>
+</doxygen>

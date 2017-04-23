@@ -1,9 +1,0 @@
-var searchData=
-[
-  ['input',['Input',['../classroboy_1_1io_1_1_input.html#aee562a5b5f53e094761b0385c42a5d79',1,'roboy.io.Input.Input(String sentence)'],['../classroboy_1_1io_1_1_input.html#a00cb304d886be6a49ccfdd6e57e9daec',1,'roboy.io.Input.Input(String sentence, Map&lt; String, Object &gt; attributes)']]],
-  ['inquirystate',['InquiryState',['../classroboy_1_1dialog_1_1personality_1_1states_1_1_inquiry_state.html#a6aecec4e66bf14ea5f7e0116d3bb0a37',1,'roboy::dialog::personality::states::InquiryState']]],
-  ['intentionclassifier',['IntentionClassifier',['../classroboy_1_1logic_1_1_intention_classifier.html#a71254cd92193d726879713e0867a053c',1,'roboy::logic::IntentionClassifier']]],
-  ['interpretation',['Interpretation',['../classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation.html#a992032e77a6210f5c8413729de5dbd85',1,'roboy.linguistics.sentenceanalysis.Interpretation.Interpretation(String sentence)'],['../classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation.html#a9e0642dd4e973311f9a385fd2d487da2',1,'roboy.linguistics.sentenceanalysis.Interpretation.Interpretation(String sentence, Map&lt; String, Object &gt; features)'],['../classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation.html#aaaa7164a283151b8e5a34027262e06ea',1,'roboy.linguistics.sentenceanalysis.Interpretation.Interpretation(SENTENCE_TYPE sentenceType)'],['../classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation.html#a941f9fd2864349ad83121558a2d93e63',1,'roboy.linguistics.sentenceanalysis.Interpretation.Interpretation(SENTENCE_TYPE sentenceType, Map&lt; String, Object &gt; features)']]],
-  ['interpretationlist',['interpretationList',['../classroboy_1_1util_1_1_lists.html#ab84601672f87e36b75a37a3e32463bd3',1,'roboy::util::Lists']]],
-  ['isfromlist',['isFromList',['../classroboy_1_1logic_1_1_statement_interpreter.html#ad514c7828ba552ca3f7349a387d86c82',1,'roboy::logic::StatementInterpreter']]]
-];

@@ -1,0 +1,341 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1memory_1_1_roboy_mind" kind="class" language="Java" prot="public">
+    <compoundname>roboy::memory::RoboyMind</compoundname>
+    <basecompoundref refid="interfaceroboy_1_1memory_1_1_memory" prot="public" virt="non-virtual">roboy.memory.Memory&lt; Concept &gt;</basecompoundref>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classroboy_1_1memory_1_1_roboy_mind_1af5ca6fe74b35757b8608f436b199da34" prot="private" static="yes" mutable="no">
+        <type><ref refid="classroboy_1_1memory_1_1_roboy_mind" kindref="compound">RoboyMind</ref></type>
+        <definition>RoboyMind roboy.memory.RoboyMind.roboyMemory</definition>
+        <argsstring></argsstring>
+        <name>roboyMemory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" line="28" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classroboy_1_1memory_1_1_roboy_mind_1a27699d645e3b10760a399eb7f3c4f526" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int roboy.memory.RoboyMind.object_id</definition>
+        <argsstring></argsstring>
+        <name>object_id</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" line="29" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1aaba5acd8b7aef7f5939bddc833a39cfe" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.memory.RoboyMind.RoboyMind</definition>
+        <argsstring>()</argsstring>
+        <name>RoboyMind</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" line="30" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" bodystart="30" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1a64270324cce9572cd4d152f4036b7345" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ServiceResponse</type>
+        <definition>ServiceResponse roboy.memory.RoboyMind.CreateInstance</definition>
+        <argsstring>(String class_name, int object_id)</argsstring>
+        <name>CreateInstance</name>
+        <param>
+          <type>String</type>
+          <declname>class_name</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>object_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" line="42" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" bodystart="42" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1a44b3318cde22a30b200c8d1c08d4b2ce" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>boolean</type>
+        <definition>boolean roboy.memory.RoboyMind.AssertProperty</definition>
+        <argsstring>(String object, String property, String value)</argsstring>
+        <name>AssertProperty</name>
+        <param>
+          <type>String</type>
+          <declname>object</declname>
+        </param>
+        <param>
+          <type>String</type>
+          <declname>property</declname>
+        </param>
+        <param>
+          <type>String</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" line="51" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" bodystart="51" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1a9a8b10b02f16472f91137d5b8df75f15" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; <ref refid="classroboy_1_1util_1_1_concept" kindref="compound">Concept</ref> &gt;</type>
+        <definition>List&lt;Concept&gt; roboy.memory.RoboyMind.FindInstances</definition>
+        <argsstring>(String property, String value)</argsstring>
+        <name>FindInstances</name>
+        <param>
+          <type>String</type>
+          <declname>property</declname>
+        </param>
+        <param>
+          <type>String</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" line="67" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" bodystart="67" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1ad1ba571f3efd4857556820e9a0960ee2" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>JsonObject</type>
+        <definition>JsonObject roboy.memory.RoboyMind.ListAttributes</definition>
+        <argsstring>(String object)</argsstring>
+        <name>ListAttributes</name>
+        <param>
+          <type>String</type>
+          <declname>object</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" line="97" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" bodystart="97" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1a766f819ca6c8f3ced8fbc1fa6bc6a248" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ServiceResponse</type>
+        <definition>ServiceResponse roboy.memory.RoboyMind.SaveObject</definition>
+        <argsstring>(String class_name, String properties, String values, int object_id)</argsstring>
+        <name>SaveObject</name>
+        <param>
+          <type>String</type>
+          <declname>class_name</declname>
+        </param>
+        <param>
+          <type>String</type>
+          <declname>properties</declname>
+        </param>
+        <param>
+          <type>String</type>
+          <declname>values</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>object_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" line="119" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" bodystart="119" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1a432ac55b1a84b5e855bd9d6e14a245e5" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1util_1_1_concept" kindref="compound">Concept</ref></type>
+        <definition>Concept roboy.memory.RoboyMind.GetObject</definition>
+        <argsstring>(String properties, String values)</argsstring>
+        <name>GetObject</name>
+        <param>
+          <type>String</type>
+          <declname>properties</declname>
+        </param>
+        <param>
+          <type>String</type>
+          <declname>values</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" line="136" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" bodystart="136" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1ab9e855248427cbc281c96d71eff9a313" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ServiceResponse</type>
+        <definition>ServiceResponse roboy.memory.RoboyMind.ShowInstance</definition>
+        <argsstring>(String class_name)</argsstring>
+        <name>ShowInstance</name>
+        <param>
+          <type>String</type>
+          <declname>class_name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" line="161" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" bodystart="161" bodyend="168"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1a2ff092a83e4fc86bcc90a5cf0032be20" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1memory_1_1_roboy_mind" kindref="compound">RoboyMind</ref></type>
+        <definition>static RoboyMind roboy.memory.RoboyMind.getInstance</definition>
+        <argsstring>()</argsstring>
+        <name>getInstance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" line="34" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" bodystart="34" bodyend="41"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1a7808810441563ad7e135b8d4cfa8dcd6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>boolean</type>
+        <definition>boolean roboy.memory.RoboyMind.save</definition>
+        <argsstring>(Concept object)</argsstring>
+        <name>save</name>
+        <param>
+          <type><ref refid="classroboy_1_1util_1_1_concept" kindref="compound">Concept</ref></type>
+          <declname>object</declname>
+        </param>
+        <exceptions> throws NullPointerException 	</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" line="172" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" bodystart="172" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1adecbf5d6a4fe50badc5920cb2bd7d7b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; <ref refid="classroboy_1_1util_1_1_concept" kindref="compound">Concept</ref> &gt;</type>
+        <definition>List&lt;Concept&gt; roboy.memory.RoboyMind.retrieve</definition>
+        <argsstring>(Concept object)</argsstring>
+        <name>retrieve</name>
+        <param>
+          <type><ref refid="classroboy_1_1util_1_1_concept" kindref="compound">Concept</ref></type>
+          <declname>object</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" line="197" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" bodystart="197" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1a1cf42df092a9ee5f11e77160b64a823a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>boolean</type>
+        <definition>boolean roboy.memory.RoboyMind.update</definition>
+        <argsstring>(Concept object)</argsstring>
+        <name>update</name>
+        <param>
+          <type><ref refid="classroboy_1_1util_1_1_concept" kindref="compound">Concept</ref></type>
+          <declname>object</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" line="208" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" bodystart="208" bodyend="244"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1a7779d2597f439a3a1e7ff01257b54747" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Map&lt; String, List&lt; <ref refid="classroboy_1_1util_1_1_concept" kindref="compound">Concept</ref> &gt; &gt;</type>
+        <definition>Map&lt;String,List&lt;Concept&gt; &gt; roboy.memory.RoboyMind.match</definition>
+        <argsstring>(Concept object)</argsstring>
+        <name>match</name>
+        <param>
+          <type><ref refid="classroboy_1_1util_1_1_concept" kindref="compound">Concept</ref></type>
+          <declname>object</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" line="246" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" bodystart="246" bodyend="275"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Protege memory. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="777">
+        <label>roboy.memory.RoboyMind</label>
+        <link refid="classroboy_1_1memory_1_1_roboy_mind"/>
+        <childnode refid="778" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="778">
+        <label>roboy.memory.Memory&lt; Concept &gt;</label>
+        <link refid="interfaceroboy_1_1memory_1_1_memory"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="779">
+        <label>roboy.memory.RoboyMind</label>
+        <link refid="classroboy_1_1memory_1_1_roboy_mind"/>
+        <childnode refid="780" relation="public-inheritance">
+        </childnode>
+        <childnode refid="779" relation="usage">
+          <edgelabel>roboyMemory</edgelabel>
+        </childnode>
+      </node>
+      <node id="780">
+        <label>roboy.memory.Memory&lt; Concept &gt;</label>
+        <link refid="interfaceroboy_1_1memory_1_1_memory"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" line="27" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/memory/RoboyMind.java" bodystart="26" bodyend="277"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1memory_1_1_roboy_mind_1a44b3318cde22a30b200c8d1c08d4b2ce" prot="private" virt="non-virtual"><scope>roboy::memory::RoboyMind</scope><name>AssertProperty</name></member>
+      <member refid="classroboy_1_1memory_1_1_roboy_mind_1a64270324cce9572cd4d152f4036b7345" prot="private" virt="non-virtual"><scope>roboy::memory::RoboyMind</scope><name>CreateInstance</name></member>
+      <member refid="classroboy_1_1memory_1_1_roboy_mind_1a9a8b10b02f16472f91137d5b8df75f15" prot="private" virt="non-virtual"><scope>roboy::memory::RoboyMind</scope><name>FindInstances</name></member>
+      <member refid="classroboy_1_1memory_1_1_roboy_mind_1a2ff092a83e4fc86bcc90a5cf0032be20" prot="public" virt="non-virtual"><scope>roboy::memory::RoboyMind</scope><name>getInstance</name></member>
+      <member refid="classroboy_1_1memory_1_1_roboy_mind_1a432ac55b1a84b5e855bd9d6e14a245e5" prot="private" virt="non-virtual"><scope>roboy::memory::RoboyMind</scope><name>GetObject</name></member>
+      <member refid="classroboy_1_1memory_1_1_roboy_mind_1ad1ba571f3efd4857556820e9a0960ee2" prot="private" virt="non-virtual"><scope>roboy::memory::RoboyMind</scope><name>ListAttributes</name></member>
+      <member refid="classroboy_1_1memory_1_1_roboy_mind_1a7779d2597f439a3a1e7ff01257b54747" prot="public" virt="non-virtual"><scope>roboy::memory::RoboyMind</scope><name>match</name></member>
+      <member refid="classroboy_1_1memory_1_1_roboy_mind_1a27699d645e3b10760a399eb7f3c4f526" prot="public" virt="non-virtual"><scope>roboy::memory::RoboyMind</scope><name>object_id</name></member>
+      <member refid="classroboy_1_1memory_1_1_roboy_mind_1adecbf5d6a4fe50badc5920cb2bd7d7b2" prot="public" virt="non-virtual"><scope>roboy::memory::RoboyMind</scope><name>retrieve</name></member>
+      <member refid="interfaceroboy_1_1memory_1_1_memory_1aa89918c7a726c936b05fa027ad34d462" prot="public" virt="non-virtual" ambiguityscope="Memory&lt; Concept &gt;."><scope>roboy::memory::RoboyMind</scope><name>retrieve</name></member>
+      <member refid="classroboy_1_1memory_1_1_roboy_mind_1af5ca6fe74b35757b8608f436b199da34" prot="private" virt="non-virtual"><scope>roboy::memory::RoboyMind</scope><name>roboyMemory</name></member>
+      <member refid="classroboy_1_1memory_1_1_roboy_mind_1aaba5acd8b7aef7f5939bddc833a39cfe" prot="private" virt="non-virtual"><scope>roboy::memory::RoboyMind</scope><name>RoboyMind</name></member>
+      <member refid="classroboy_1_1memory_1_1_roboy_mind_1a7808810441563ad7e135b8d4cfa8dcd6" prot="public" virt="non-virtual"><scope>roboy::memory::RoboyMind</scope><name>save</name></member>
+      <member refid="interfaceroboy_1_1memory_1_1_memory_1ae1410bbebe3d943cfe06b2de7b8bc1d4" prot="public" virt="non-virtual" ambiguityscope="Memory&lt; Concept &gt;."><scope>roboy::memory::RoboyMind</scope><name>save</name></member>
+      <member refid="classroboy_1_1memory_1_1_roboy_mind_1a766f819ca6c8f3ced8fbc1fa6bc6a248" prot="private" virt="non-virtual"><scope>roboy::memory::RoboyMind</scope><name>SaveObject</name></member>
+      <member refid="classroboy_1_1memory_1_1_roboy_mind_1ab9e855248427cbc281c96d71eff9a313" prot="private" virt="non-virtual"><scope>roboy::memory::RoboyMind</scope><name>ShowInstance</name></member>
+      <member refid="classroboy_1_1memory_1_1_roboy_mind_1a1cf42df092a9ee5f11e77160b64a823a" prot="public" virt="non-virtual"><scope>roboy::memory::RoboyMind</scope><name>update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

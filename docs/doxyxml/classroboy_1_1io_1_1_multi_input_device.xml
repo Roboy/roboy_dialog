@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1io_1_1_multi_input_device" kind="class" language="Java" prot="public">
+    <compoundname>roboy::io::MultiInputDevice</compoundname>
+    <basecompoundref refid="interfaceroboy_1_1io_1_1_input_device" prot="public" virt="non-virtual">roboy.io.InputDevice</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classroboy_1_1io_1_1_multi_input_device_1a36ee0aa10eacf49721b3426488f307da" prot="private" static="no" mutable="no">
+        <type><ref refid="interfaceroboy_1_1io_1_1_input_device" kindref="compound">InputDevice</ref></type>
+        <definition>InputDevice roboy.io.MultiInputDevice.mainInput</definition>
+        <argsstring></argsstring>
+        <name>mainInput</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" line="10" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1io_1_1_multi_input_device_1a113a0ddca3ebcc8117d669a808e37111" prot="private" static="no" mutable="no">
+        <type><ref refid="interfaceroboy_1_1io_1_1_input_device" kindref="compound">InputDevice</ref>[]</type>
+        <definition>InputDevice [] roboy.io.MultiInputDevice.additionalInputs</definition>
+        <argsstring></argsstring>
+        <name>additionalInputs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" line="11" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1io_1_1_multi_input_device_1a97f7e89561341dfc48deb065204b6b56" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.io.MultiInputDevice.MultiInputDevice</definition>
+        <argsstring>(InputDevice mainInput, InputDevice...additionalInputs)</argsstring>
+        <name>MultiInputDevice</name>
+        <param>
+          <type><ref refid="interfaceroboy_1_1io_1_1_input_device" kindref="compound">InputDevice</ref></type>
+          <declname>mainInput</declname>
+        </param>
+        <param>
+          <type>InputDevice...</type>
+          <declname>additionalInputs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" line="13" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" bodystart="13" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1io_1_1_multi_input_device_1a2015438a08e09832503d4a605cacd5e6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1io_1_1_input" kindref="compound">Input</ref></type>
+        <definition>Input roboy.io.MultiInputDevice.listen</definition>
+        <argsstring>()</argsstring>
+        <name>listen</name>
+        <reimplements refid="interfaceroboy_1_1io_1_1_input_device_1aa9b02ed06118c2fd1ec2a82cfd9115d8">listen</reimplements>
+        <exceptions> throws InterruptedException, IOException </exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" line="19" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" bodystart="19" bodyend="29"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Meta class to combine multiple input devices. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="681">
+        <label>roboy.io.InputDevice</label>
+        <link refid="interfaceroboy_1_1io_1_1_input_device"/>
+      </node>
+      <node id="680">
+        <label>roboy.io.MultiInputDevice</label>
+        <link refid="classroboy_1_1io_1_1_multi_input_device"/>
+        <childnode refid="681" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="683">
+        <label>roboy.io.InputDevice</label>
+        <link refid="interfaceroboy_1_1io_1_1_input_device"/>
+      </node>
+      <node id="682">
+        <label>roboy.io.MultiInputDevice</label>
+        <link refid="classroboy_1_1io_1_1_multi_input_device"/>
+        <childnode refid="683" relation="public-inheritance">
+        </childnode>
+        <childnode refid="683" relation="usage">
+          <edgelabel>additionalInputs</edgelabel>
+          <edgelabel>mainInput</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" line="8" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" bodystart="8" bodyend="31"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1io_1_1_multi_input_device_1a113a0ddca3ebcc8117d669a808e37111" prot="private" virt="non-virtual"><scope>roboy::io::MultiInputDevice</scope><name>additionalInputs</name></member>
+      <member refid="classroboy_1_1io_1_1_multi_input_device_1a2015438a08e09832503d4a605cacd5e6" prot="public" virt="non-virtual"><scope>roboy::io::MultiInputDevice</scope><name>listen</name></member>
+      <member refid="classroboy_1_1io_1_1_multi_input_device_1a36ee0aa10eacf49721b3426488f307da" prot="private" virt="non-virtual"><scope>roboy::io::MultiInputDevice</scope><name>mainInput</name></member>
+      <member refid="classroboy_1_1io_1_1_multi_input_device_1a97f7e89561341dfc48deb065204b6b56" prot="public" virt="non-virtual"><scope>roboy::io::MultiInputDevice</scope><name>MultiInputDevice</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

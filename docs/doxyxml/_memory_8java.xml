@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="_memory_8java" kind="file" language="Java">
+    <compoundname>Memory.java</compoundname>
+    <innerclass refid="interfaceroboy_1_1memory_1_1_memory" prot="public">roboy::memory::Memory</innerclass>
+    <innernamespace refid="namespaceroboy_1_1memory">roboy::memory</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">package<sp/></highlight><highlight class="normal">roboy.memory;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>java.io.IOException;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>java.util.List;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceroboy" kindref="compound">roboy</ref>.<ref refid="namespaceroboy_1_1util" kindref="compound">util</ref>.<ref refid="classroboy_1_1util_1_1_concept" kindref="compound">Concept</ref>;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceroboy" kindref="compound">roboy</ref>.<ref refid="namespaceroboy_1_1util" kindref="compound">util</ref>.<ref refid="classroboy_1_1util_1_1_relation" kindref="compound">Relation</ref>;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="interfaceroboy_1_1memory_1_1_memory" refkind="compound"><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">interface<sp/></highlight><highlight class="normal"><ref refid="interfaceroboy_1_1memory_1_1_memory" kindref="compound">Memory</ref>&lt;T&gt;<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">boolean</highlight><highlight class="normal"><sp/><ref refid="interfaceroboy_1_1memory_1_1_memory_1ae1410bbebe3d943cfe06b2de7b8bc1d4" kindref="member">save</ref>(T<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">)<sp/></highlight><highlight class="keywordflow">throws</highlight><highlight class="normal"><sp/>InterruptedException,<sp/>IOException;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>List&lt;T&gt;<sp/><ref refid="interfaceroboy_1_1memory_1_1_memory_1aa89918c7a726c936b05fa027ad34d462" kindref="member">retrieve</ref>(T<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">)<sp/></highlight><highlight class="keywordflow">throws</highlight><highlight class="normal"><sp/>InterruptedException,<sp/>IOException;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/Memory.java"/>
+  </compounddef>
+</doxygen>
