@@ -101,7 +101,7 @@ public class DialogSystem {
 		EmotionOutput emotion = new EmotionOutput();
         OutputDevice output = new CommandLineOutput();
 //        OutputDevice output = new CerevoiceOutput(emotion);
-		OutputDevice multiOut = new MultiOutputDevice(output);//,emotion);
+		OutputDevice multiOut = new MultiOutputDevice(output,emotion);
 		
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new SimpleTokenizer());
@@ -111,13 +111,7 @@ public class DialogSystem {
 		analyzers.add(new OpenNLPParser());
 		analyzers.add(new OntologyNERAnalyzer());
 
-        Input raw; //  = input.listen();
-        Interpretation interpretation; // = analyzer.analyze(raw);
-        Personality p = new SmallTalkPersonality(new Verbalizer());
-        List<Action> actions = p.answer(new Interpretation(""));
-
         Ros.getInstance(); // initialize ROS bridge
-
 
         System.out.println("Initialized...");
 
@@ -128,8 +122,13 @@ public class DialogSystem {
 //            }
 //            emotion.act(new FaceAction("neutral"));
 
-//            while (!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)) {
-//            }
+            while (!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)) {
+            }
+
+            Personality p = new SmallTalkPersonality(new Verbalizer());
+            Input raw;
+            Interpretation interpretation;
+            List<Action> actions = p.answer(new Interpretation(""));
 
 
             while (actions.isEmpty() || !(actions.get(0) instanceof ShutDownAction)) {
@@ -143,6 +142,7 @@ public class DialogSystem {
             }
             List<Action> lastwords = ((ShutDownAction) actions.get(0)).getLastWords();
             multiOut.act(lastwords);
+            actions.clear();
         }
 	}
 

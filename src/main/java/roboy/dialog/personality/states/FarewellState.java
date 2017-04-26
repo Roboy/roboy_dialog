@@ -18,7 +18,7 @@ public class FarewellState implements State{
 
 	@Override
 	public Reaction react(Interpretation input) {
-		return new Reaction(this);
+		return new Reaction(new IdleState(), Lists.interpretationList(new Interpretation(SENTENCE_TYPE.FAREWELL)));
 	}
 
 }
