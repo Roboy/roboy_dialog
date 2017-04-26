@@ -67,20 +67,11 @@ public class SmallTalkPersonality implements Personality {
         questions.put("movies", moviesQuestions);
         questions.put("occupation", occupationQuestions);
 
-//        InquiryState inquiry = new InquiryState("How are you?", positive, "That's not good enough. Again: ");
-//		InquiryState inquiry2 = new InquiryState("So, anything else you want to talk about?", Lists.stringList(), "");
-//        GenerativeCommunicationState generative = new GenerativeCommunicationState();
-//        QuestionAnsweringState answer = new QuestionAnsweringState();
-//        SegueState segue = new SegueState(answer);
-//        CelebrityState celeb = new CelebrityState(segue);
-        //TODO detect goodbye from all the states
-        
         // build state machine
         GreetingState greetings = new GreetingState();
         IntroductionState intro = new IntroductionState();
         FarewellState farewell = new FarewellState();
         WildTalkState wild = new WildTalkState();
-        GenerativeCommunicationState generative = new GenerativeCommunicationState();
         IdleState idle = new IdleState();
 
         QuestionAnsweringState answer = new QuestionAnsweringState(wild);
@@ -94,8 +85,6 @@ public class SmallTalkPersonality implements Personality {
         greetings.setNextState(intro);
         intro.setNextState(ask);
         wild.setNextState(answer);
-//        wild.setSuccess(wild);
-//        wild.setFailure(farewell);
 
         state = greetings;
     }

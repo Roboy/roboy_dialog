@@ -129,13 +129,8 @@ public class QuestionAskingState implements State
 		}
 
 		// react to the answer of the person
-
 		List<Interpretation> reply = checkOwnMemory(input); // if the question was about Roboy
 
-//		if (!reply.isEmpty())
-//		{
-//			return new Reaction(determineNextState(input), reply);
-//		}
 
 		reply.add(checkRoboyMind()); // in case Roboy knows a person with same name, hobby, etc.
 		return new Reaction(determineNextState(input), reply);

@@ -128,39 +128,6 @@ public class QuestionAnsweringState implements State{
 		return new Reaction(this, result);
 	}
 
-
-	/**
-	 * Checks all its memories (currently only the DBpedia) for an answer to the given
-	 * question.
-	 * 
-	 * @param input The interpretation of all inputs
-	 * @param result The list of answers that is possibly replaced
-	 * @return the reaction to the question
-	 */
-	@SuppressWarnings("unchecked")
-	private Reaction innerReaction(Interpretation input,List<Interpretation> result){
-//		Map<String, Object> pas = (Map<String, Object>) input.getFeature(Linguistics.PAS);
-//		if(pas!=null && !pas.isEmpty()){
-//			Relation relation = PASInterpreter.pas2DBpediaRelation(pas);
-////			System.out.println("Relation: "+relation);
-//			for(Memory<Relation> mem : memories){
-//				try{
-//					List<Relation> rememberedList = mem.retrieve(relation);
-//					for (Relation remembered: rememberedList)
-//					{
-//						if(remembered!=null&&remembered.object!=null){ // TODO: check for proper role
-//						result.add(new Interpretation((String)remembered.object.getAttribute(Linguistics.NAME)));
-//						return new Reaction(top,result);
-//					}
-//					}
-//
-//				} catch(Exception e){}
-//			}
-//		}
-//		return inner.react(input);
-		return new Reaction(this,Lists.interpretationList(new Interpretation("oh man, no idea what to say")));
-	}
-
 	private List<Triple> remember(String predicate, String agens, String patiens){
 		List<Triple> triples = new ArrayList<>();
 		for(Triple t: memory){

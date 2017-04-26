@@ -31,13 +31,8 @@ public class WildTalkState extends AbstractBooleanState {
 
     @Override
     public Reaction react(Interpretation input) {
-//        String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
-//        if(!sentence.isEmpty()) {
-//            return new Reaction(super.this, Lists.interpretationList(new Interpretation(callGenerativeModel(sentence))));
-//        }
         //get out of the talking mode when leave the state
         talking = false;
-//        return new Reaction(failure,Lists.interpretationList(new Interpretation(callGenerativeModel(sentence))));
         return super.react(input);
     }
 
