@@ -1,5 +1,8 @@
 package roboy.io;
 
+import roboy.linguistics.Linguistics;
+import roboy.util.Maps;
+
 import java.util.Scanner;
 
 /**
@@ -12,6 +15,9 @@ public class CommandLineInput implements InputDevice{
 	@Override
 	public Input listen() {
 		String input = sc.nextLine();
+		if ( input.contains("roboy") ){
+			return new Input(input, Maps.stringObjectMap(Linguistics.ROBOYDETECTED,true));
+		}
 		return new Input(input);
 	}
 

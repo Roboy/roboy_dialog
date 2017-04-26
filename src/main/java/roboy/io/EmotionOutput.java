@@ -50,7 +50,7 @@ public class EmotionOutput implements OutputDevice
 	    System.out.println("Face state: " + action.getState());
 
 		ServiceRequest request = new ServiceRequest(params);
-		FaceState.callServiceAndWait(request);
+//		FaceState.callServiceAndWait(request);
 	}
 	
 }
