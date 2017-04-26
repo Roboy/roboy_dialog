@@ -50,21 +50,8 @@ public abstract class AbstractBooleanState implements State {
     }
 
     @Override
-    public Reaction react(Interpretation input) {
-        String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
-
-        //check for stop key words  TODO: this should go into its own state
-        if (StatementInterpreter.isFromList(sentence, Verbalizer.farewells)) {
-            //if found stop conversation
-            return new Reaction(new FarewellState());
-        }
-
-        //check for profanity words
-        if(sentence.contains("profanity")) { // TODO: this should go into its own state
-            EmotionOutput emotion = new EmotionOutput();
-            emotion.act(new FaceAction("angry"));
-        }
-
+    public Reaction react(Interpretation input)
+    {
         boolean successful = determineSuccess(input);
         if (successful) {
             return new Reaction(success);

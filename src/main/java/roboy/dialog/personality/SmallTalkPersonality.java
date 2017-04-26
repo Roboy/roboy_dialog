@@ -3,9 +3,13 @@ package roboy.dialog.personality;
 import java.util.*;
 
 import roboy.dialog.action.Action;
+import roboy.dialog.action.FaceAction;
 import roboy.dialog.action.SpeechAction;
 import roboy.dialog.personality.states.*;
+import roboy.io.EmotionOutput;
+import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.logic.StatementInterpreter;
 import roboy.talk.Verbalizer;
 import roboy.util.Lists;
 
@@ -80,18 +84,14 @@ public class SmallTalkPersonality implements Personality {
         Map<String,State> children = new HashMap<>();
         children.put("wild", wild);
         children.put("idle", idle);
+        children.put("farewell", farewell);
         QuestionAskingState ask = new QuestionAskingState(questions,children, this);
 
         greetings.setNextState(intro);
         intro.setNextState(ask);
 
         wild.setSuccess(wild);
-        wild.setFailure(idle);
-        idle.setSuccess(wild);
-        idle.setFailure(farewell);
-
-//        generative.setSuccess(farewell);
-//        generative.setFailure(celeb);
+        wild.setFailure(farewell);
 
         state = greetings;
     }
@@ -103,23 +103,39 @@ public class SmallTalkPersonality implements Personality {
      */
     @Override
     public List<Action> answer(Interpretation input) {
+
+        String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
+        List<Action> act = Lists.actionList();
+
+        if (StatementInterpreter.isFromList(sentence, Verbalizer.farewells))
+        {
+            //if found stop conversation
+            state = new FarewellState();
+        }
+
+        //check for profanity words
+        if(sentence.contains("profanity"))
+        { 
+            act.add(0, new FaceAction("angry"));
+        }
+
         Reaction reaction = state.react(input);
-        List<Action> talk = Lists.actionList();
+
         if (name != null && Math.random() < 0.3) { // TODO: this should go in the Verbalizer
             List<String> namePhrases = Arrays.asList("So %s, ", "Hey %s, ", "%s, listen to me, ", "%s, I have a question, ", "%s, ");
             String phrase = String.format(namePhrases.get(new Random().nextInt(4)), name);
-            talk.add(0, new SpeechAction(phrase));
+            act.add(0, new SpeechAction(phrase));
         }
         List<Interpretation> intentions = reaction.getReactions();
         for (Interpretation i : intentions) {
-            talk.add(verbalizer.verbalize(i));
+            act.add(verbalizer.verbalize(i));
         }
         state = reaction.getState();
         intentions = state.act();
         for (Interpretation i : intentions) {
-            talk.add(verbalizer.verbalize(i));
+            act.add(verbalizer.verbalize(i));
         }
-        return talk;
+        return act;
     }
 
     public String getName() {
