@@ -33,10 +33,9 @@ public class QuestionAskingState implements State
 	//is used to change the name
     //smallTalkPersonality.setName();
 //    private SmallTalkPersonality smallTalkPersonality;
-//    private State top;
 	private Concept objectOfFocus;
 	private String currentIntent;
-	private static final int TOASK = 4;
+	private static final int TOASK = 2;
 	private int questionsCount;
 	private Map<String, List<String>> questions;
 	private Random generator;
@@ -138,7 +137,7 @@ public class QuestionAskingState implements State
 //			return new Reaction(determineNextState(input), reply);
 //		}
 
-		reply.add(checkRoboyMind()); // in case Roboy know a person with same name, hobby, etc.
+		reply.add(checkRoboyMind()); // in case Roboy knows a person with same name, hobby, etc.
 		return new Reaction(determineNextState(input), reply);
 
 	}
@@ -149,7 +148,7 @@ public class QuestionAskingState implements State
 
 		if (TOASK==questionsCount)
 		{
-			return children.get("wild");
+			return children.get("answer");
 		}
 		else if (sentence.isEmpty())
 		{

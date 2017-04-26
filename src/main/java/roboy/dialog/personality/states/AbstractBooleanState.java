@@ -1,11 +1,12 @@
 package roboy.dialog.personality.states;
 
-import roboy.dialog.action.FaceAction;
-import roboy.io.EmotionOutput;
+import edu.wpi.rail.jrosbridge.Service;
+import edu.wpi.rail.jrosbridge.services.ServiceRequest;
+import org.json.JSONObject;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.logic.StatementInterpreter;
-import roboy.talk.Verbalizer;
+import roboy.util.Ros;
+import roboy.util.Lists;
 
 /**
  * Abstract super class for states that fork between two possible subsequent states.
@@ -52,11 +53,12 @@ public abstract class AbstractBooleanState implements State {
     @Override
     public Reaction react(Interpretation input)
     {
+        String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
         boolean successful = determineSuccess(input);
         if (successful) {
             return new Reaction(success);
         } else {
-            return new Reaction(failure);
+            return new Reaction(failure, Lists.interpretationList(new Interpretation(callGenerativeModel(sentence))));
         }
     }
 
@@ -69,4 +71,15 @@ public abstract class AbstractBooleanState implements State {
      * @return true or false depending on the examined condition of the method
      */
     abstract protected boolean determineSuccess(Interpretation input);
+
+
+    protected String callGenerativeModel(String sentence) {
+        Service GenerativeModel = new Service(Ros.getInstance(), "/roboy/gnlp_predict", "generative_nlp/seq2seq_predict");
+        ServiceRequest request = new ServiceRequest("{\"text_input\": " + "\"" + sentence + "\"}");
+        String response = GenerativeModel.callServiceAndWait(request).toString();
+
+        JSONObject obj = new JSONObject(response);
+        String text = obj.getString("text_output");
+        return text;
+    }
 }

@@ -29,11 +29,11 @@ public class QuestionAnsweringState implements State{
 	private State top;
 	private List<Memory<Relation>> memories;
 	
-	public QuestionAnsweringState(){
-//		this.inner = inner;
-//		this.top = this;
+	public QuestionAnsweringState(State inner){
+		this.inner = inner;
 		memories = new ArrayList<>();
 		memories.add(DBpediaMemory.getInstance());
+
 	    // fill memory
 	    memory = new ArrayList<>(); //TODO: Refactor all that triples stuff to separate memory class
 		ClassLoader cl = this.getClass().getClassLoader();
@@ -59,8 +59,9 @@ public class QuestionAnsweringState implements State{
 	@Override
 	public List<Interpretation> act() {
 		List<Interpretation> action = first ?
-				Lists.interpretationList(new Interpretation("Do you want to ask me any questions?")) 
-			  : Lists.interpretationList();
+				Lists.interpretationList(new Interpretation("I'm pretty good at answering questions about myself and other stuff. " +
+						"What would you like to know?"))
+			  : Lists.interpretationList(new Interpretation("Anything else?"));
 		first = false;
 		return action;
 	}
@@ -82,7 +83,7 @@ public class QuestionAnsweringState implements State{
 		if(input.getSentenceType() == SENTENCE_TYPE.DOES_IT || input.getSentenceType() == SENTENCE_TYPE.IS_IT){
 			List<Triple> t = remember(triple.predicate, triple.agens, null);
 			if(t.isEmpty()){
-				return innerReaction(input, result);
+				return inner.react(input);
 			} else {
 				result.add(new Interpretation("Yes. "));
 				for(int i=0; i<t.size(); i++){
@@ -93,7 +94,7 @@ public class QuestionAnsweringState implements State{
 		} else if(input.getSentenceType() == SENTENCE_TYPE.WHO){
 			List<Triple> t = remember(triple.predicate, triple.agens, triple.patiens);
 			if(t.isEmpty()){
-				return innerReaction(input, result);
+				return inner.react(input);
 			} else {
 				for(int i=0; i<t.size(); i++){
 					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
@@ -103,7 +104,7 @@ public class QuestionAnsweringState implements State{
 		} else if(input.getSentenceType() == SENTENCE_TYPE.WHAT){
 			List<Triple> t = remember(triple.predicate, triple.agens, triple.patiens);
 			if(t.isEmpty()){
-				return innerReaction(input, result);
+				return inner.react(input);
 			} else {
 				for(int i=0; i<t.size(); i++){
 					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
@@ -113,7 +114,7 @@ public class QuestionAnsweringState implements State{
 		} else if(input.getSentenceType() == SENTENCE_TYPE.HOW_DO){
 			List<Triple> t = remember(triple.predicate, triple.agens, null);
 			if(t.isEmpty()){
-				return innerReaction(input, result);
+				return inner.react(input);
 			} else {
 				for(int i=0; i<t.size(); i++){
 					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
@@ -121,12 +122,13 @@ public class QuestionAnsweringState implements State{
 				}
 			}
 		}
-//		else {
-//			return innerReaction(input,result);
-//		}
-		return new Reaction(top,result);
+		else {
+			return inner.react(input);
+		}
+		return new Reaction(this, result);
 	}
-	
+
+
 	/**
 	 * Checks all its memories (currently only the DBpedia) for an answer to the given
 	 * question.
@@ -156,7 +158,7 @@ public class QuestionAnsweringState implements State{
 //			}
 //		}
 //		return inner.react(input);
-		return new Reaction(top,Lists.interpretationList(new Interpretation("who are you?")));
+		return new Reaction(this,Lists.interpretationList(new Interpretation("oh man, no idea what to say")));
 	}
 
 	private List<Triple> remember(String predicate, String agens, String patiens){

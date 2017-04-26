@@ -24,36 +24,27 @@ public class WildTalkState extends AbstractBooleanState {
             return Lists.interpretationList();
         } else {
             this.talking = true;
-            return Lists.interpretationList(new Interpretation("Oh, man, i don't even know what to say"));
+            return Lists.interpretationList(new Interpretation("Oh, man, some deep stuff you're asking"));
 
         }
     }
 
     @Override
     public Reaction react(Interpretation input) {
-        String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
-        if(!sentence.isEmpty()) {
-            return new Reaction(this, Lists.interpretationList(new Interpretation(callGenerativeModel(sentence))));
-        }
+//        String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
+//        if(!sentence.isEmpty()) {
+//            return new Reaction(super.this, Lists.interpretationList(new Interpretation(callGenerativeModel(sentence))));
+//        }
         //get out of the talking mode when leave the state
         talking = false;
+//        return new Reaction(failure,Lists.interpretationList(new Interpretation(callGenerativeModel(sentence))));
         return super.react(input);
     }
 
     @Override
     protected boolean determineSuccess(Interpretation input) {
         String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
-        return !sentence.isEmpty();
+        return sentence.isEmpty();
     }
 
-
-    protected String callGenerativeModel(String sentence) {
-        Service GenerativeModel = new Service(Ros.getInstance(), "/roboy/gnlp_predict", "generative_nlp/seq2seq_predict");
-        ServiceRequest request = new ServiceRequest("{\"text_input\": " + "\"" + sentence + "\"}");
-        String response = GenerativeModel.callServiceAndWait(request).toString();
-
-        JSONObject obj = new JSONObject(response);
-        String text = obj.getString("text_output");
-        return text;
-    }
 }

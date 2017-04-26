@@ -80,18 +80,22 @@ public class SmallTalkPersonality implements Personality {
         IntroductionState intro = new IntroductionState();
         FarewellState farewell = new FarewellState();
         WildTalkState wild = new WildTalkState();
+        GenerativeCommunicationState generative = new GenerativeCommunicationState();
         IdleState idle = new IdleState();
+
+        QuestionAnsweringState answer = new QuestionAnsweringState(wild);
         Map<String,State> children = new HashMap<>();
         children.put("wild", wild);
         children.put("idle", idle);
         children.put("farewell", farewell);
-        QuestionAskingState ask = new QuestionAskingState(questions,children, this);
+        children.put("answer", answer);
 
+        QuestionAskingState ask = new QuestionAskingState(questions, children, this);
         greetings.setNextState(intro);
         intro.setNextState(ask);
-
-        wild.setSuccess(wild);
-        wild.setFailure(farewell);
+        wild.setNextState(answer);
+//        wild.setSuccess(wild);
+//        wild.setFailure(farewell);
 
         state = greetings;
     }
@@ -115,14 +119,14 @@ public class SmallTalkPersonality implements Personality {
 
         //check for profanity words
         if(sentence.contains("profanity"))
-        { 
+        {
             act.add(0, new FaceAction("angry"));
         }
 
         Reaction reaction = state.react(input);
 
         if (name != null && Math.random() < 0.3) { // TODO: this should go in the Verbalizer
-            List<String> namePhrases = Arrays.asList("So %s, ", "Hey %s, ", "%s, listen to me, ", "%s, I have a question, ", "%s, ");
+            List<String> namePhrases = Arrays.asList("So %s, ", "Hey %s, ", "%s, listen to me, ", "oh well, %s, ", "%s, ");
             String phrase = String.format(namePhrases.get(new Random().nextInt(4)), name);
             act.add(0, new SpeechAction(phrase));
         }
