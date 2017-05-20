@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>DialogSystem</groupId>
     <artifactId>DialogSystem</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1.0</version>
     <packaging>jar</packaging>
     <organization>
         <name>Roboy</name>
@@ -27,31 +27,44 @@
         </resources>
     </build>
     <repositories>
+
         <repository>
-            <id>snapshots-repo</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
+            <id>com.springsource.bundles.release</id>
+            <name>com.springsource.bundles.release</name>
+            <url>http://repository.springsource.com/maven/bundles/release</url>
         </repository>
+
+        <repository>
+            <id>com.springsource.bundles.external</id>
+            <name>com.springsource.bundles.external</name>
+            <url>http://repository.springsource.com/maven/bundles/external</url>
+        </repository>
+
+	    <repository>
+	      <snapshots>
+	        <enabled>true</enabled>
+	      </snapshots>
+	      <id>central</id>
+	      <name>Central Repository</name>
+	      <url>https://repo.maven.apache.org/maven2</url>
+	    </repository>
+
         <!--<repository>-->
-		    <!--<id>jitpack.io</id>-->
-		    <!--<url>https://jitpack.io</url>-->
+            <!--<id>snapshots-repo</id>-->
+            <!--<url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
             <!--<releases>-->
-                <!--<enabled>true</enabled>-->
+                <!--<enabled>false</enabled>-->
             <!--</releases>-->
             <!--<snapshots>-->
                 <!--<enabled>true</enabled>-->
             <!--</snapshots>-->
-		<!--</repository>-->
+        <!--</repository>-->
+
         <repository>
             <id>rosjava</id>
             <url>https://raw.github.com/roboy/rosjava_mvn_repo/master/</url>
-            <!--<url>https://raw.github.com/missxa/rosjava_mvn_repo/speech_synth/</url>-->
         </repository>
+
     </repositories>
     <dependencies>
         <dependency>
@@ -118,6 +131,32 @@
             <groupId>org.ros.rosjava_core</groupId>
             <artifactId>rosjava</artifactId>
             <version>0.3.3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>com.springsource.org.apache.commons.httpclient</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>com.springsource.org.apache.commons.net</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>com.springsource.org.apache.commons.lang</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>com.springsource.org.apache.commons.codec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>com.springsource.org.apache.commons.io</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>com.springsource.org.apache.commons.logging</artifactId>
+                </exclusion>
+            </exclusions>
 		</dependency>
 
         <dependency>
@@ -126,40 +165,10 @@
             <version>0.3.0</version>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>org.apache.commons</groupId>-->
-            <!--<artifactId>com.springsource.org.apache.commons.httpclient</artifactId>-->
-            <!--<version>3.1.0</version>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-            <!--<groupId>org.apache.commons</groupId>-->
-            <!--<artifactId>com.springsource.org.apache.commons.net</artifactId>-->
-            <!--<version>1.4.1</version>-->
-        <!--</dependency>-->
-
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>1.10</version>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>1.4</version>
-        </dependency>
-
-        <!--<dependency>-->
-            <!--<groupId>org.apache.commons</groupId>-->
-            <!--<artifactId>com.springsource.org.apache.commons.logging</artifactId>-->
-            <!--<version>1.1.1</version>-->
-        <!--</dependency>-->
-
         <dependency>
             <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.0</version>
+            <artifactId>com.springsource.org.apache.commons.httpclient</artifactId>
+            <version>3.1.0</version>
         </dependency>
 
         <dependency>
@@ -170,21 +179,15 @@
 
         <dependency>
             <groupId>org.ros.rosjava_messages</groupId>
-            <artifactId>geometry_msgs</artifactId>
-            <version>1.12.5</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.ros.rosjava_messages</groupId>
             <artifactId>speech_synthesis_srvs</artifactId>
             <version>1.0.0</version>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>org.ros.rosjava_messages</groupId>-->
-            <!--<artifactId>speech_synthesis_msgs</artifactId>-->
-            <!--<version>1.0.0</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.ros.rosjava_messages</groupId>
+            <artifactId>generative_nlp</artifactId>
+            <version>0.0.0</version>
+        </dependency>
 
 
 
