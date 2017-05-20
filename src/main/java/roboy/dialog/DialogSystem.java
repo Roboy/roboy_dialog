@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
+import java.net.URI;
+
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 
@@ -35,6 +37,15 @@ import roboy.memory.RoboyMind;
 
 import roboy.util.Concept;
 import roboy.util.Ros;
+
+import org.ros.node.*;
+import org.ros.exception.RemoteException;
+import org.ros.exception.RosRuntimeException;
+import org.ros.exception.ServiceNotFoundException;
+import org.ros.namespace.GraphName;
+import org.ros.node.service.ServiceClient;
+import org.ros.node.service.ServiceResponseListener;
+
 
 /**
  * The dialog manager's main class.
@@ -92,16 +103,17 @@ public class DialogSystem {
 		InputDevice input = new CommandLineInput();
 		// InputDevice input = new BingInput();
 		InputDevice celebInput = new CelebritySimilarityInput();
-		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
+//		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
 		InputDevice multiIn = new MultiInputDevice(input);//, celebInput, roboyDetectInput);
 		
-		//OutputDevice output = new CerevoiceOutput();
+		OutputDevice output1 = new CerevoiceOutput();
+        OutputDevice output2 = new CerevoiceOutput();
 		// OutputDevice output = new BingOutput();
 
 		EmotionOutput emotion = new EmotionOutput();
         OutputDevice output = new CommandLineOutput();
 //        OutputDevice output = new CerevoiceOutput(emotion);
-		OutputDevice multiOut = new MultiOutputDevice(output,emotion);
+		OutputDevice multiOut = new MultiOutputDevice(output,output1,emotion);
 		
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new SimpleTokenizer());
@@ -113,6 +125,20 @@ public class DialogSystem {
 
         Ros.getInstance(); // initialize ROS bridge
 
+        // start ROS nodes
+        String hostName = "10.177.255.161";
+		URI masterURI = URI.create("http://10.177.255.161:11311");
+
+		NodeConfiguration nodeConfiguration = NodeConfiguration.newPublic(hostName);
+		nodeConfiguration.setMasterUri(masterURI);
+
+		// Create and start ROS Node
+		nodeConfiguration.setNodeName("speech_synthesis/client");
+		NodeMainExecutor nodeMainExecutor = DefaultNodeMainExecutor.newDefault();
+		nodeMainExecutor.execute((NodeMain) output1, nodeConfiguration);
+        nodeConfiguration.setNodeName("speech_synthesis/client2");
+        nodeMainExecutor.execute((NodeMain) output2, nodeConfiguration);
+
         System.out.println("Initialized...");
 
         while(true) {
@@ -122,8 +148,8 @@ public class DialogSystem {
 //            }
 //            emotion.act(new FaceAction("neutral"));
 
-            while (!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)) {
-            }
+//            while (!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)) {
+//            }
 
             Personality p = new SmallTalkPersonality(new Verbalizer());
             Input raw;
