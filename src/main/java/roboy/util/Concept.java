@@ -88,10 +88,10 @@ public class Concept {
 
 		for (Map.Entry<String, Object> attribute : this.getAttributes().entrySet())
 		{
-//		    if (attribute.getKey() != "class" && attribute.getKey() != "id")
-//		    {
+		    if (attribute.getKey() != "class" && attribute.getKey() != "id")
+		    {
 		    	values +=  attribute.getValue().toString() + ",";
-//		    }
+		    }
 		    
 		}
 
