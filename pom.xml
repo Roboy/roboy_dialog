@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>DialogSystem</groupId>
-    <artifactId>DialogSystem</artifactId>
+    <groupId>roboy-dialog</groupId>
+    <artifactId>roboy-dialog</artifactId>
     <version>2.0.0</version>
     <packaging>jar</packaging>
     <organization>
@@ -49,7 +49,7 @@
 		      </executions>
 		    </plugin> 
 
-		    <plugin>
+		    <!-- <plugin>
 		        <groupId>net.sf.debian-maven</groupId>
 		        <artifactId>debian-maven-plugin</artifactId>
 		        <version>1.0.6</version>
@@ -64,6 +64,71 @@
 		          <maintainerEmail>unicorn@roboy.org</maintainerEmail>
 
 		        </configuration>
+		      </plugin> -->
+
+		     <plugin>
+		        <artifactId>maven-assembly-plugin</artifactId>
+		        <executions>
+		          <execution>
+		            <phase>package</phase>
+		            <goals>
+		              <goal>single</goal>
+		            </goals>
+		          </execution>
+		        </executions>
+		        <configuration>
+		          <descriptorRefs>
+		            <descriptorRef>jar-with-dependencies</descriptorRef>
+		          </descriptorRefs>
+		          <archive>
+		          <manifest>
+		            <addClasspath>true</addClasspath>
+		            <classpathPrefix>lib/</classpathPrefix>
+		            <mainClass>roboy.dialog.DialogSystem</mainClass>
+		          </manifest>
+		        </archive>
+		        </configuration>
+		      </plugin>
+
+		    <!--  <plugin>
+		      <groupId>org.apache.maven.plugins</groupId>
+		      <artifactId>maven-jar-plugin</artifactId>
+		      <version>3.0.2</version>
+		      <configuration>
+		        <archive>
+		          <manifest>
+		            <addClasspath>true</addClasspath>
+		            <classpathPrefix>lib/</classpathPrefix>
+		            <mainClass>roboy.dialog.DialogSystem</mainClass>
+		          </manifest>
+		        </archive>
+		      </configuration>
+		    </plugin> -->
+
+		      <plugin>
+		        <artifactId>jdeb</artifactId>
+		        <groupId>org.vafer</groupId>
+		        <version>1.5</version>
+		        <executions>
+		          <execution>
+		            <phase>package</phase>
+		            <goals>
+		              <goal>jdeb</goal>
+		            </goals>
+		            <configuration>
+		              <dataSet>
+		                <data>
+		                  <src>${project.build.directory}/${project.build.finalName}.jar</src>
+		                  <type>file</type>
+		                  <mapper>
+		                    <type>perm</type>
+		                    <prefix>/usr/share/jdeb/lib</prefix>
+		                  </mapper>
+		                </data>
+		              </dataSet>
+		            </configuration>
+		          </execution>
+		        </executions>
 		      </plugin>
 
         </plugins>
