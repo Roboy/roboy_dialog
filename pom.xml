@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>DialogSystem</groupId>
     <artifactId>DialogSystem</artifactId>
-    <version>0.1.0</version>
+    <version>2.0.0</version>
     <packaging>jar</packaging>
     <organization>
         <name>Roboy</name>
@@ -19,6 +19,53 @@
                 </configuration>
                 <version>2.3.2</version>
             </plugin>
+
+            <plugin>
+		      <!--
+		        This plugin's configuration must come *before* the Debian Maven
+		        Plugin.
+		      -->
+		      <artifactId>maven-resources-plugin</artifactId>
+		      <version>2.3</version>
+		      <executions>
+		        <execution>
+		          <id>copy-deb-resources</id>
+		          <phase>process-resources</phase>
+		          <goals><goal>copy-resources</goal></goals>
+		          <configuration>
+		            <overwrite>true</overwrite>
+		            <outputDirectory>${basedir}/target/deb</outputDirectory>
+		            <resources>
+		              <resource>
+		                <directory>resources</directory>
+		                <!-- Uncomment the following line to enable Velocity filtering. -->
+		                <!--
+		                <filtering>true</filtering>
+		                -->
+		              </resource>
+		            </resources>
+		          </configuration>
+		        </execution>
+		      </executions>
+		    </plugin> 
+
+		    <plugin>
+		        <groupId>net.sf.debian-maven</groupId>
+		        <artifactId>debian-maven-plugin</artifactId>
+		        <version>1.0.6</version>
+		        <configuration>
+		          
+		          <packageName>roboy-dialog</packageName>
+		          <packageVersion>2.0.0</packageVersion>
+		          <packageTitle>Roboy Dialog System</packageTitle>
+		          <packageDescription>Roboy Dialog System</packageDescription>
+		          <projectUrl>https://github.com/Roboy/roboy_dialog.git</projectUrl>
+		          <maintainerName>Alona Kharchenko</maintainerName>
+		          <maintainerEmail>unicorn@roboy.org</maintainerEmail>
+
+		        </configuration>
+		      </plugin>
+
         </plugins>
         <resources>
             <resource>
