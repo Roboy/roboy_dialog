@@ -1,6 +1,7 @@
 package roboy.io;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,7 +26,7 @@ public class CommandLineCommunication implements Communication{
 		personality = p;
 		try {
 			analyzer = new SentenceAnalyzer();
-		} catch (JsonSyntaxException | JsonIOException | FileNotFoundException e) {
+		} catch (JsonSyntaxException | JsonIOException | IOException e) {
 			e.printStackTrace();
 		}
 	}
