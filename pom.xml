@@ -8,7 +8,7 @@
     <organization>
         <name>Roboy</name>
     </organization>
-    <name>Dialog System</name>
+    <name>Roboy Dialog System</name>
     <build>
             <plugins>
             <plugin>
@@ -20,11 +20,7 @@
                 <version>2.3.2</version>
             </plugin>
 
-            <plugin>
-		      <!--
-		        This plugin's configuration must come *before* the Debian Maven
-		        Plugin.
-		      -->
+            <!-- <plugin>
 		      <artifactId>maven-resources-plugin</artifactId>
 		      <version>2.3</version>
 		      <executions>
@@ -38,33 +34,12 @@
 		            <resources>
 		              <resource>
 		                <directory>resources</directory>
-		                <!-- Uncomment the following line to enable Velocity filtering. -->
-		                <!--
-		                <filtering>true</filtering>
-		                -->
 		              </resource>
 		            </resources>
 		          </configuration>
 		        </execution>
 		      </executions>
-		    </plugin> 
-
-		    <!-- <plugin>
-		        <groupId>net.sf.debian-maven</groupId>
-		        <artifactId>debian-maven-plugin</artifactId>
-		        <version>1.0.6</version>
-		        <configuration>
-		          
-		          <packageName>roboy-dialog</packageName>
-		          <packageVersion>2.0.0</packageVersion>
-		          <packageTitle>Roboy Dialog System</packageTitle>
-		          <packageDescription>Roboy Dialog System</packageDescription>
-		          <projectUrl>https://github.com/Roboy/roboy_dialog.git</projectUrl>
-		          <maintainerName>Alona Kharchenko</maintainerName>
-		          <maintainerEmail>unicorn@roboy.org</maintainerEmail>
-
-		        </configuration>
-		      </plugin> -->
+		    </plugin>  -->
 
 		     <plugin>
 		        <artifactId>maven-assembly-plugin</artifactId>
@@ -89,21 +64,6 @@
 		        </archive>
 		        </configuration>
 		      </plugin>
-
-		    <!--  <plugin>
-		      <groupId>org.apache.maven.plugins</groupId>
-		      <artifactId>maven-jar-plugin</artifactId>
-		      <version>3.0.2</version>
-		      <configuration>
-		        <archive>
-		          <manifest>
-		            <addClasspath>true</addClasspath>
-		            <classpathPrefix>lib/</classpathPrefix>
-		            <mainClass>roboy.dialog.DialogSystem</mainClass>
-		          </manifest>
-		        </archive>
-		      </configuration>
-		    </plugin> -->
 
 		      <plugin>
 		        <artifactId>jdeb</artifactId>
