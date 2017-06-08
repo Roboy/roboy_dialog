@@ -110,14 +110,16 @@ public class DialogSystem {
 		InputDevice multiIn = new MultiInputDevice(input);//, celebInput, roboyDetectInput);
 		
 		OutputDevice output1 = new CerevoiceOutput();
-        OutputDevice output2 = new CerevoiceOutput();
+        CerevoiceOutput output2 = new CerevoiceOutput();
 		// OutputDevice output = new BingOutput();
 
 		EmotionOutput emotion = new EmotionOutput();
         OutputDevice output = new CommandLineOutput();
 //        OutputDevice output = new CerevoiceOutput(emotion);
 		OutputDevice multiOut = new MultiOutputDevice(output,output1,emotion);
-		
+
+        RosMainNode.getInstance();
+//        output2.say("fuck");
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new SimpleTokenizer());
 		analyzers.add(new OpenNLPPPOSTagger());
@@ -126,7 +128,7 @@ public class DialogSystem {
 		analyzers.add(new OpenNLPParser());
 		analyzers.add(new OntologyNERAnalyzer());
 
-        RosMainNode.getInstance();
+
         System.out.println("Initialized...");
 
         while(true) {
