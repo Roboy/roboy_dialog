@@ -20,9 +20,8 @@ public class RosMainNode extends AbstractNodeMain {
     private ServiceClient<DetectFaceRequest, DetectFaceResponse> faceDetectionClient;
     private ServiceClient<RecognizeObjectRequest, RecognizeObjectResponse> objectRecognitionRequest;
     private ServiceClient<RecognizeSpeechRequest, RecognizeSpeechResponse> sttClient;
-    private CallbackListener mCallbackListener;
 
-    private void RosMainNode()
+    private RosMainNode()
     {
         // start ROS nodes
         String hostName = System.getenv("ROS_HOSTNAME");
@@ -46,6 +45,8 @@ public class RosMainNode extends AbstractNodeMain {
        return node;
     }
 
+
+
     @Override
     public GraphName getDefaultNodeName() {
         return GraphName.of("roboy_dialog");
@@ -56,27 +57,28 @@ public class RosMainNode extends AbstractNodeMain {
 
         try {
             speechSynthesisClient = connectedNode.newServiceClient("/roboy/cognition/speech/synthesis/talk", Talk._TYPE);
-            generativeClient = connectedNode.newServiceClient("/roboy/cognition/gnlp/predict", GenerateAnswer._TYPE);
+//            generativeClient = connectedNode.newServiceClient("/roboy/cognition/gnlp/predict", GenerateAnswer._TYPE);
 //            faceDetectionClient = connectedNode.newServiceClient("/speech_synthesis/talk", DetectFace._TYPE);
 //            objectRecognitionRequest = connectedNode.newServiceClient("/speech_synthesis/talk", RecognizeObject._TYPE);
-            sttClient = connectedNode.newServiceClient("/roboy/cognition/speech/recognition", RecognizeSpeech._TYPE);
+//            sttClient = connectedNode.newServiceClient("/roboy/cognition/speech/recognition", RecognizeSpeech._TYPE);
         } catch (ServiceNotFoundException e) {
             throw new RosRuntimeException(e);
         }
 
     }
-    public interface CallbackListener {
-        void onTalk(boolean success);
-//        void
+    private boolean response;
+    private void getResponse(boolean r)
+    {
+        this.response = r;
     }
     public void SynthesizeSpeech(String text)
     {
-        final TalkRequest request = speechSynthesisClient.newMessage();
+        TalkRequest request = speechSynthesisClient.newMessage();
         request.setText(text);
         ServiceResponseListener<TalkResponse> listener = new ServiceResponseListener<TalkResponse>() {
             @Override
             public void onSuccess(TalkResponse response) {
-                this.r = response;
+                getResponse(response.getSuccess());
                 System.out.println(String.format("ROS call returns ", response.getSuccess()));
             }
 
@@ -87,6 +89,7 @@ public class RosMainNode extends AbstractNodeMain {
 
         };
         speechSynthesisClient.call(request,  listener);
+        System.out.println(response);
     }
 
 }

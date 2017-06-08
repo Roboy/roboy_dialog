@@ -37,8 +37,10 @@ import roboy.memory.RoboyMind;
 
 import roboy.util.Concept;
 import roboy.util.Ros;
+import roboy.util.RosMainNode;
 
 import org.ros.node.*;
+import org.ros.RosRun;
 import org.ros.exception.RemoteException;
 import org.ros.exception.RosRuntimeException;
 import org.ros.exception.ServiceNotFoundException;
@@ -99,8 +101,9 @@ import org.ros.node.service.ServiceResponseListener;
 public class DialogSystem {
 	
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
-		
-		InputDevice input = new CommandLineInput();
+
+
+	    InputDevice input = new CommandLineInput();
 		// InputDevice input = new BingInput();
 		InputDevice celebInput = new CelebritySimilarityInput();
 //		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
@@ -123,22 +126,7 @@ public class DialogSystem {
 		analyzers.add(new OpenNLPParser());
 		analyzers.add(new OntologyNERAnalyzer());
 
-        Ros.getInstance(); // initialize ROS bridge
-
-        // start ROS nodes
-        String hostName = "10.177.255.161";
-		URI masterURI = URI.create("http://10.177.255.161:11311");
-
-		NodeConfiguration nodeConfiguration = NodeConfiguration.newPublic(hostName);
-		nodeConfiguration.setMasterUri(masterURI);
-
-		// Create and start ROS Node
-		nodeConfiguration.setNodeName("speech_synthesis/client");
-		NodeMainExecutor nodeMainExecutor = DefaultNodeMainExecutor.newDefault();
-		nodeMainExecutor.execute((NodeMain) output1, nodeConfiguration);
-        nodeConfiguration.setNodeName("speech_synthesis/client2");
-        nodeMainExecutor.execute((NodeMain) output2, nodeConfiguration);
-
+        RosMainNode.getInstance();
         System.out.println("Initialized...");
 
         while(true) {
