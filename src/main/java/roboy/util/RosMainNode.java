@@ -20,14 +20,20 @@ public class RosMainNode extends AbstractNodeMain {
     private CountDownLatch rosConnectionLatch;
     private ServiceClient<TalkRequest, TalkResponse> speechSynthesisClient;
     private ServiceClient<GenerateAnswerRequest, GenerateAnswerResponse> generativeClient;
-    private ServiceClient<DetectFaceRequest, DetectFaceResponse> faceDetectionClient;
-    private ServiceClient<RecognizeObjectRequest, RecognizeObjectResponse> objectRecognitionRequest;
+//    private ServiceClient<DetectFaceRequest, DetectFaceResponse> faceDetectionClient;
+//    private ServiceClient<RecognizeObjectRequest, RecognizeObjectResponse> objectRecognitionRequest;
     private ServiceClient<RecognizeSpeechRequest, RecognizeSpeechResponse> sttClient;
+    protected Object resp;
 
     private RosMainNode()
     {
         // start ROS nodes
         String hostName = System.getenv("ROS_HOSTNAME");
+        if (hostName.isEmpty())
+        {
+            System.out.println("Could not find ROS hostname. ROS will be unavailable. Set ROS_HOSTNAME environmental variable.");
+        }
+
         URI masterURI = URI.create("http://" + hostName + ":11311");
 
         NodeConfiguration nodeConfiguration = NodeConfiguration.newPublic(hostName);
@@ -60,21 +66,17 @@ public class RosMainNode extends AbstractNodeMain {
 
         try {
             speechSynthesisClient = connectedNode.newServiceClient("/roboy/cognition/speech/synthesis/talk", Talk._TYPE);
-//            generativeClient = connectedNode.newServiceClient("/roboy/cognition/gnlp/predict", GenerateAnswer._TYPE);
+            generativeClient = connectedNode.newServiceClient("/roboy/cognition/gnlp/predict", GenerateAnswer._TYPE);
 //            faceDetectionClient = connectedNode.newServiceClient("/speech_synthesis/talk", DetectFace._TYPE);
 //            objectRecognitionRequest = connectedNode.newServiceClient("/speech_synthesis/talk", RecognizeObject._TYPE);
-//            sttClient = connectedNode.newServiceClient("/roboy/cognition/speech/recognition", RecognizeSpeech._TYPE);
+            sttClient = connectedNode.newServiceClient("/roboy/cognition/speech/recognition", RecognizeSpeech._TYPE);
         } catch (ServiceNotFoundException e) {
             throw new RosRuntimeException(e);
         }
 
     }
-    private boolean response;
-    private void getResponse(boolean r)
-    {
-        this.response = r;
-    }
-    public void SynthesizeSpeech(String text)
+
+    public boolean SynthesizeSpeech(String text)
     {
         rosConnectionLatch = new CountDownLatch(1);
         TalkRequest request = speechSynthesisClient.newMessage();
@@ -83,19 +85,67 @@ public class RosMainNode extends AbstractNodeMain {
             @Override
             public void onSuccess(TalkResponse response) {
                 System.out.println(response.getSuccess());
-                getResponse(response.getSuccess());
+                resp = response.getSuccess();
                 rosConnectionLatch.countDown();
-
             }
 
             @Override
             public void onFailure(RemoteException e) {
+                rosConnectionLatch.countDown();
                 throw new RosRuntimeException(e);
             }
         };
         speechSynthesisClient.call(request,  listener);
         waitForLatchUnlock(rosConnectionLatch, speechSynthesisClient.getName().toString());
-        System.out.println(this.response);
+        return ((boolean) resp);
+    }
+
+    public String RecognizeSpeech()
+    {
+        rosConnectionLatch = new CountDownLatch(1);
+        RecognizeSpeechRequest request = sttClient.newMessage();
+        ServiceResponseListener<RecognizeSpeechResponse> listener = new ServiceResponseListener<RecognizeSpeechResponse>() {
+            @Override
+            public void onSuccess(RecognizeSpeechResponse response) {
+                System.out.println(response.getText());
+                resp = response.getText();
+                rosConnectionLatch.countDown();
+            }
+
+            @Override
+            public void onFailure(RemoteException e) {
+                rosConnectionLatch.countDown();
+                throw new RosRuntimeException(e);
+            }
+        };
+        sttClient.call(request,  listener);
+        waitForLatchUnlock(rosConnectionLatch, sttClient.getName().toString());
+        return ((String) resp);
+
+    }
+
+    public String GenerateAnswer(String question)
+    {
+        rosConnectionLatch = new CountDownLatch(1);
+        GenerateAnswerRequest request = generativeClient.newMessage();
+        request.setTextInput(question);
+        ServiceResponseListener<GenerateAnswerResponse> listener = new ServiceResponseListener<GenerateAnswerResponse>() {
+            @Override
+            public void onSuccess(GenerateAnswerResponse response) {
+                System.out.println(response.getTextOutput());
+                resp = response.getTextOutput();
+                rosConnectionLatch.countDown();
+            }
+
+            @Override
+            public void onFailure(RemoteException e) {
+                rosConnectionLatch.countDown();
+                throw new RosRuntimeException(e);
+            }
+        };
+        generativeClient.call(request,  listener);
+        waitForLatchUnlock(rosConnectionLatch, sttClient.getName().toString());
+        return ((String) resp);
     }
 
     /**
