@@ -1,8 +1,6 @@
 package roboy.dialog.personality.states;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -37,9 +35,9 @@ public class QuestionAnsweringState implements State{
 	    // fill memory
 	    memory = new ArrayList<>(); //TODO: Refactor all that triples stuff to separate memory class
 		ClassLoader cl = this.getClass().getClassLoader();
-	    File f = new File(cl.getResource("knowledgebase/triples.csv").getFile());
+		InputStream inputStream = cl.getResourceAsStream("knowledgebase/triples.csv");
 	    try{
-			BufferedReader br = new BufferedReader(new FileReader(f));
+			BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
 			String line = br.readLine();
 			while(line!=null){
 				String[] parts = line.split(",");
