@@ -14,11 +14,11 @@ public class QuestionAnsweringStateTest {
 	
 	@Test
 	public void test() {
-		Interpretation interpretation = new Interpretation("What is the area code of Germany");
+		Interpretation interpretation = new Interpretation("What is the area code of Washington");
 		interpretation = parser.analyze(interpretation);
 		Reaction reaction = state.react(interpretation);
 		assertEquals(1, reaction.getReactions().size());
-		assertEquals("06241,",reaction.getReactions().get(0).getFeature("sentence"));
+		assertEquals("360",reaction.getReactions().get(0).getFeature("sentence"));
 	}
 	
 	@Test
