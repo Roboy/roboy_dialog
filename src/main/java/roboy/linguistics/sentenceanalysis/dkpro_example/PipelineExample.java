@@ -1,4 +1,4 @@
-package roboy.dialog.dkpro_example;
+package roboy.linguistics.sentenceanalysis.dkpro_example;
 import de.tudarmstadt.ukp.dkpro.core.io.conll.Conll2006Writer;
 import de.tudarmstadt.ukp.dkpro.core.io.text.TextReader;
 import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolLemmatizer;
@@ -35,7 +35,7 @@ public class PipelineExample {
     public static void main(String[] args) throws Exception {
         runPipeline(
                 createReaderDescription(TextReader.class,
-                        TextReader.PARAM_SOURCE_LOCATION, "src/main/java/roboy/dialog/dkpro_example/document.txt",
+                        TextReader.PARAM_SOURCE_LOCATION, "src/main/java/roboy/linguistics/sentenceanalysis/dkpro_example/document.txt",
                         TextReader.PARAM_LANGUAGE, "en"),
                 createEngineDescription(OpenNlpSegmenter.class),
                 createEngineDescription(OpenNlpPosTagger.class),
@@ -44,6 +44,6 @@ public class PipelineExample {
                 //createEngineDescription(ClearNlpSemanticRoleLabeler.class),
                 //createEngineDescription(MateSemanticRoleLabeler.class),
                 createEngineDescription(Conll2006Writer.class,
-                        Conll2006Writer.PARAM_TARGET_LOCATION, "src/main/java/roboy/dialog/dkpro_example/."));
+                        Conll2006Writer.PARAM_TARGET_LOCATION, "src/main/java/roboy/linguistics/sentenceanalysis/dkpro_example/."));
     }
 }
