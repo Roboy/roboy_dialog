@@ -148,6 +148,8 @@ private static final Map<String, String> supportedRelations = Maps.stringMap(
 						String answerStr = ans.toString();
 						RDFNode label = answer.get("label");
 						
+						int uri = answerStr.indexOf("^^");
+						if(uri>=0) answerStr = answerStr.substring(0,uri);
 							
 						if ( ans != null )
 						{

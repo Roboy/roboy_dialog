@@ -27,7 +27,7 @@ public class QuestionAnsweringStateTest {
 		interpretation = parser.analyze(interpretation);
 		Reaction reaction = state.react(interpretation);
 		assertEquals(1, reaction.getReactions().size());
-		assertEquals("1953-03-30^^http://www.w3.org/2001/XMLSchema#date",reaction.getReactions().get(0).getFeature("sentence"));
+		assertEquals("1953-03-30",reaction.getReactions().get(0).getFeature("sentence"));
 	}
 
 	@Test
@@ -54,7 +54,7 @@ public class QuestionAnsweringStateTest {
 		interpretation = parser.analyze(interpretation);
 		Reaction reaction = state.react(interpretation);
 		assertEquals(1, reaction.getReactions().size());
-		assertEquals("1977-08-16^^http://www.w3.org/2001/XMLSchema#date",reaction.getReactions().get(0).getFeature("sentence"));
+		assertEquals("1977-08-16",reaction.getReactions().get(0).getFeature("sentence"));
 	}
 
 	@Test
@@ -63,7 +63,7 @@ public class QuestionAnsweringStateTest {
 		interpretation = parser.analyze(interpretation);
 		Reaction reaction = state.react(interpretation);
 		assertEquals(1, reaction.getReactions().size());
-		assertEquals("8848.0^^http://www.w3.org/2001/XMLSchema#double",reaction.getReactions().get(0).getFeature("sentence"));
+		assertEquals("8848.0",reaction.getReactions().get(0).getFeature("sentence"));
 	}
 
 }
