@@ -104,7 +104,9 @@
         </dependency>
 
         <!-- ########### DKPro dependencies ########## -->
-
+        <!-- DKPro is currently not in use by the dialog manager. Uncomment
+        if you wish to integrate tools from DKPro or run the PipelineExample. -->
+        <!--
         <dependency>
             <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
             <artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-asl</artifactId>
@@ -146,12 +148,13 @@
             <artifactId>de.tudarmstadt.ukp.dkpro.core.matetools-gpl</artifactId>
             <version>1.8.0</version>
         </dependency>
+        -->
 
         <!-- Following dependencies resolved some exceptions thrown by
         DKPro semantic role labelers. In the end, it did not work out
         due to a consistent exception thrown by MateSRL:
         java.lang.ClassNotFoundException: liblinear.InvalidInputDataException
-        If anyone wishes to continue with DKPro SRL, uncomment these. -->
+        If you wish to continue with DKPro SRL, uncomment these. -->
 
         <!--<dependency>
             <groupId>com.carrotsearch</groupId>
