@@ -1,10 +1,6 @@
 package roboy.linguistics.sentenceanalysis;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,19 +23,18 @@ public class OntologyNERAnalyzer implements Analyzer{
 	public OntologyNERAnalyzer() {
 		entities = new HashMap<>();
 		ClassLoader cl = this.getClass().getClassLoader();
-		URL url = cl.getResource("knowledgebase/triviaWords.csv");
-	    File trivia=null;
+		InputStream inputStream = cl.getResourceAsStream("knowledgebase/triviaWords.csv");
 		try {
-			trivia = new File(url.toURI());
-			BufferedReader br = new BufferedReader(new FileReader(trivia));
+			BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
 			String line;
 			while((line=br.readLine())!=null){
 				String[] parts = line.split(";");
 				entities.put(parts[0],new Entity(parts[0]));
 			}
 			br.close();
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
+
+
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

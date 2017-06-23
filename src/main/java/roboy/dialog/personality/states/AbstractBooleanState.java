@@ -7,6 +7,7 @@ import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.Ros;
 import roboy.util.Lists;
+import roboy.util.RosMainNode;
 
 /**
  * Abstract super class for states that fork between two possible subsequent states.
@@ -74,12 +75,7 @@ public abstract class AbstractBooleanState implements State {
 
 
     protected String callGenerativeModel(String sentence) {
-        Service GenerativeModel = new Service(Ros.getInstance(), "/roboy/gnlp_predict", "generative_nlp/seq2seq_predict");
-        ServiceRequest request = new ServiceRequest("{\"text_input\": " + "\"" + sentence + "\"}");
-        String response = GenerativeModel.callServiceAndWait(request).toString();
-
-        JSONObject obj = new JSONObject(response);
-        String text = obj.getString("text_output");
+        String text = RosMainNode.getInstance().GenerateAnswer(sentence);
         return text;
     }
 }
