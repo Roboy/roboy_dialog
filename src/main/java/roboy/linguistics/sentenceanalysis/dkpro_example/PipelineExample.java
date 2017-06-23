@@ -8,6 +8,9 @@ import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
 //import de.tudarmstadt.ukp.dkpro.core.clearnlp.ClearNlpSemanticRoleLabeler;
 //import de.tudarmstadt.ukp.dkpro.core.matetools.MateSemanticRoleLabeler;
 //import com.carrotsearch.hppc.ObjectIntOpenHashMap;
+import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDescription;
+import static org.apache.uima.fit.factory.CollectionReaderFactory.createReaderDescription;
+import static org.apache.uima.fit.pipeline.SimplePipeline.runPipeline;
 
 /**
  * This is a linguistic analysis pipeline example from: https://dkpro.github.io/dkpro-core/pages/java-intro/
@@ -25,10 +28,6 @@ import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
  *
  * @author Laura Lahesoo
  */
-
-import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDescription;
-import static org.apache.uima.fit.factory.CollectionReaderFactory.createReaderDescription;
-import static org.apache.uima.fit.pipeline.SimplePipeline.runPipeline;
 
 public class PipelineExample {
 
