@@ -1,11 +1,11 @@
 package roboy.linguistics.sentenceanalysis;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
@@ -18,6 +18,8 @@ import roboy.linguistics.Term;
 import roboy.linguistics.Triple;
 import roboy.util.Maps;
 
+import static java.lang.System.in;
+
 /**
  * Tries to find triples with rather stupid heuristics and stores the results in the
  * Linguistics.TRIPLE attribute of the interpretation.
@@ -27,22 +29,29 @@ public class SentenceAnalyzer implements Analyzer{
 	
 	private Map<String,String> meanings;
 	
-	public SentenceAnalyzer () throws JsonSyntaxException, JsonIOException, FileNotFoundException{
+	public SentenceAnalyzer () throws IOException, JsonSyntaxException, JsonIOException {
 		// find meaning
 		meanings = new HashMap<>();
 		ClassLoader cl = this.getClass().getClassLoader();
-		URL url = cl.getResource("ontology/terms");
+
+
+		List<String> filenames = new ArrayList<>();
+		String path = "ontology/terms/";
 		Gson gson = new Gson();
-	    File dir=null;
-		try {
-			dir = new File(url.toURI());
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
+
+		try(
+			InputStream inputStream = cl.getResourceAsStream(path);
+			BufferedReader br = new BufferedReader( new InputStreamReader( inputStream ) ) ) {
+			String resource;
+
+			while( (resource = br.readLine()) != null ) {
+				InputStream is2 = cl.getResourceAsStream(path+resource);
+				BufferedReader br2 = new BufferedReader(new InputStreamReader(is2));
+				Term t = gson.fromJson(br2,Term.class);
+				meanings.put(resource,t.concept);
+				filenames.add( resource );
+			}
 		}
-	    for (File nextFile : dir.listFiles()) {
-	    	Term t = gson.fromJson(new FileReader(nextFile), Term.class);
-	    	meanings.put(nextFile.getName().substring(0,nextFile.getName().length()-5), t.concept);
-	    }
 	}
 	
 	@Override

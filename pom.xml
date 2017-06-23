@@ -1,14 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>DialogSystem</groupId>
-    <artifactId>DialogSystem</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <groupId>roboy-dialog</groupId>
+    <artifactId>roboy-dialog</artifactId>
+    <version>2.0.0</version>
     <packaging>jar</packaging>
     <organization>
         <name>Roboy</name>
     </organization>
-    <name>Dialog System</name>
+    <name>Roboy Dialog System</name>
     <build>
             <plugins>
             <plugin>
@@ -19,6 +19,57 @@
                 </configuration>
                 <version>2.3.2</version>
             </plugin>
+
+		     <plugin>
+		        <artifactId>maven-assembly-plugin</artifactId>
+		        <executions>
+		          <execution>
+		            <phase>package</phase>
+		            <goals>
+		              <goal>single</goal>
+		            </goals>
+		          </execution>
+		        </executions>
+		        <configuration>
+		          <descriptorRefs>
+		            <descriptorRef>jar-with-dependencies</descriptorRef>
+		          </descriptorRefs>
+		          <archive>
+		          <manifest>
+		            <addClasspath>true</addClasspath>
+		            <classpathPrefix>lib/</classpathPrefix>
+		            <mainClass>roboy.dialog.DialogSystem</mainClass>
+		          </manifest>
+		        </archive>
+		        </configuration>
+		      </plugin>
+
+		      <plugin>
+		        <artifactId>jdeb</artifactId>
+		        <groupId>org.vafer</groupId>
+		        <version>1.5</version>
+		        <executions>
+		          <execution>
+		            <phase>package</phase>
+		            <goals>
+		              <goal>jdeb</goal>
+		            </goals>
+		            <configuration>
+		              <dataSet>
+		                <data>
+		                  <src>${project.build.directory}/${project.build.finalName}.jar</src>
+		                  <type>file</type>
+		                  <mapper>
+		                    <type>perm</type>
+		                    <prefix>/usr/share/jdeb/lib</prefix>
+		                  </mapper>
+		                </data>
+		              </dataSet>
+		            </configuration>
+		          </execution>
+		        </executions>
+		      </plugin>
+
         </plugins>
         <resources>
             <resource>
@@ -27,6 +78,28 @@
         </resources>
     </build>
     <repositories>
+
+        <repository>
+            <id>com.springsource.bundles.release</id>
+            <name>com.springsource.bundles.release</name>
+            <url>http://repository.springsource.com/maven/bundles/release</url>
+        </repository>
+
+        <repository>
+            <id>com.springsource.bundles.external</id>
+            <name>com.springsource.bundles.external</name>
+            <url>http://repository.springsource.com/maven/bundles/external</url>
+        </repository>
+
+	    <repository>
+	      <snapshots>
+	        <enabled>true</enabled>
+	      </snapshots>
+	      <id>central</id>
+	      <name>Central Repository</name>
+	      <url>https://repo.maven.apache.org/maven2</url>
+	    </repository>
+
         <repository>
             <id>snapshots-repo</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
@@ -40,6 +113,10 @@
         <repository>
             <id>ukp-oss-model-releases</id>
             <url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-model-releases-local</url>
+        </repository>
+        <repository>
+            <id>rosjava</id>
+            <url>https://raw.github.com/roboy/rosjava_mvn_repo/master/</url>
         </repository>
     </repositories>
     <dependencies>
@@ -103,7 +180,7 @@
             <version>5prealpha-SNAPSHOT</version>
         </dependency>
 
-        <!-- ########### DKPro dependencies ########## -->
+    <!-- ########### DKPro dependencies ########## -->
         <!-- DKPro is currently not in use by the dialog manager. Uncomment
         if you wish to integrate tools from DKPro or run the PipelineExample. -->
         <!--
@@ -171,7 +248,60 @@
             <artifactId>netty-transport-native-epoll</artifactId>
             <version>4.1.12.Final</version>
         </dependency>-->
+        <dependency>
+            <groupId>org.ros.rosjava_core</groupId>
+            <artifactId>rosjava</artifactId>
+            <version>0.3.3</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>com.springsource.org.apache.commons.httpclient</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>com.springsource.org.apache.commons.net</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>com.springsource.org.apache.commons.lang</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>com.springsource.org.apache.commons.codec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>com.springsource.org.apache.commons.io</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>com.springsource.org.apache.commons.logging</artifactId>
+                </exclusion>
+            </exclusions>
+	    	</dependency>
+        <dependency>
+            <groupId>org.ros.rosjava_bootstrap</groupId>
+            <artifactId>message_generation</artifactId>
+            <version>0.3.0</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>com.springsource.org.apache.commons.httpclient</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.ros.rosjava_messages</groupId>
+            <artifactId>std_msgs</artifactId>
+            <version>0.5.11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.ros.rosjava_messages</groupId>
+            <artifactId>roboy_communication_cognition</artifactId>
+            <version>0.0.2</version>
+        </dependency>
     </dependencies>
 
 </project>

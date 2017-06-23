@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
+import java.net.URI;
+
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 
@@ -35,6 +37,17 @@ import roboy.memory.RoboyMind;
 
 import roboy.util.Concept;
 import roboy.util.Ros;
+import roboy.util.RosMainNode;
+
+import org.ros.node.*;
+import org.ros.RosRun;
+import org.ros.exception.RemoteException;
+import org.ros.exception.RosRuntimeException;
+import org.ros.exception.ServiceNotFoundException;
+import org.ros.namespace.GraphName;
+import org.ros.node.service.ServiceClient;
+import org.ros.node.service.ServiceResponseListener;
+
 
 /**
  * The dialog manager's main class.
@@ -88,21 +101,25 @@ import roboy.util.Ros;
 public class DialogSystem {
 	
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
-		
-		InputDevice input = new CommandLineInput();
+
+
+	    InputDevice input = new CommandLineInput();
 		// InputDevice input = new BingInput();
 		InputDevice celebInput = new CelebritySimilarityInput();
-		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
+//		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
 		InputDevice multiIn = new MultiInputDevice(input);//, celebInput, roboyDetectInput);
 		
-		//OutputDevice output = new CerevoiceOutput();
+		OutputDevice output1 = new CerevoiceOutput();
+        CerevoiceOutput output2 = new CerevoiceOutput();
 		// OutputDevice output = new BingOutput();
 
 		EmotionOutput emotion = new EmotionOutput();
         OutputDevice output = new CommandLineOutput();
 //        OutputDevice output = new CerevoiceOutput(emotion);
-		OutputDevice multiOut = new MultiOutputDevice(output,emotion);
-		
+		OutputDevice multiOut = new MultiOutputDevice(output,output1,emotion);
+
+        RosMainNode.getInstance();
+//        output2.say("fuck");
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new SimpleTokenizer());
 		analyzers.add(new OpenNLPPPOSTagger());
@@ -111,7 +128,6 @@ public class DialogSystem {
 		analyzers.add(new OpenNLPParser());
 		analyzers.add(new OntologyNERAnalyzer());
 
-        Ros.getInstance(); // initialize ROS bridge
 
         System.out.println("Initialized...");
 
@@ -122,8 +138,8 @@ public class DialogSystem {
 //            }
 //            emotion.act(new FaceAction("neutral"));
 
-            while (!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)) {
-            }
+//            while (!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)) {
+//            }
 
             Personality p = new SmallTalkPersonality(new Verbalizer());
             Input raw;
