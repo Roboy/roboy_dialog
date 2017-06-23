@@ -10,10 +10,7 @@ import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
 //import com.carrotsearch.hppc.ObjectIntOpenHashMap;
 
 /**
- * @author Laura Lahesoo
- *
- * This is a linguistic analysis pipeline example from:
- * https://dkpro.github.io/dkpro-core/pages/java-intro/
+ * This is a linguistic analysis pipeline example from: https://dkpro.github.io/dkpro-core/pages/java-intro/
  *
  * If you wish to test the pipeline:
  * 1) uncomment the DKPro dependencies in pom.xml
@@ -26,6 +23,7 @@ import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
  * ClearNlp SRL does not produce output, and MateSRL throws a
  * ClassNotFoundException - possibly due to some dependency issues.
  *
+ * @author Laura Lahesoo
  */
 
 import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDescription;
