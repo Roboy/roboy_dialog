@@ -37,6 +37,10 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+        <repository>
+            <id>ukp-oss-model-releases</id>
+            <url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-model-releases-local</url>
+        </repository>
     </repositories>
     <dependencies>
         <dependency>
@@ -98,5 +102,76 @@
             <artifactId>sphinx4-data</artifactId>
             <version>5prealpha-SNAPSHOT</version>
         </dependency>
+
+        <!-- ########### DKPro dependencies ########## -->
+        <!-- DKPro is currently not in use by the dialog manager. Uncomment
+        if you wish to integrate tools from DKPro or run the PipelineExample. -->
+        <!--
+        <dependency>
+            <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+            <artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-asl</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+            <artifactId>de.tudarmstadt.ukp.dkpro.core.languagetool-asl</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+            <artifactId>de.tudarmstadt.ukp.dkpro.core.maltparser-asl</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+            <artifactId>de.tudarmstadt.ukp.dkpro.core.io.text-asl</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+            <artifactId>de.tudarmstadt.ukp.dkpro.core.io.conll-asl</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+            <artifactId>de.tudarmstadt.ukp.dkpro.core.clearnlp-asl</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+            <artifactId>de.tudarmstadt.ukp.dkpro.core.matetools-gpl</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+        -->
+
+        <!-- Following dependencies resolved some exceptions thrown by
+        DKPro semantic role labelers. In the end, it did not work out
+        due to a consistent exception thrown by MateSRL:
+        java.lang.ClassNotFoundException: liblinear.InvalidInputDataException
+        If you wish to continue with DKPro SRL, uncomment these. -->
+
+        <!--<dependency>
+            <groupId>com.carrotsearch</groupId>
+            <artifactId>hppc</artifactId>
+            <version>0.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>de.bwaldvogel</groupId>
+            <artifactId>liblinear</artifactId>
+            <version>1.8</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-transport-native-epoll</artifactId>
+            <version>4.1.12.Final</version>
+        </dependency>-->
+
     </dependencies>
+
 </project>

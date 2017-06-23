@@ -124,7 +124,7 @@ private static final Map<String, String> supportedRelations = Maps.stringMap(
 	@Override
 	public List<Relation> retrieve(Relation object) throws InterruptedException, IOException {
 		LinkedHashSet<String> queries;
-		List<Relation> result = new ArrayList();
+		List<Relation> result = new ArrayList<>();
 		if(object == null)
 			return null;
 		List<String> answersFinal = new ArrayList<String>();
