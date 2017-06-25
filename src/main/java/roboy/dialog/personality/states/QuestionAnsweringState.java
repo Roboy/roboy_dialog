@@ -81,7 +81,7 @@ public class QuestionAnsweringState implements State{
 		if(triple!=null && input.getSentenceType() == SENTENCE_TYPE.DOES_IT || input.getSentenceType() == SENTENCE_TYPE.IS_IT){
 			List<Triple> t = remember(triple.predicate, triple.agens, null);
 			if(t.isEmpty()){
-				return inner.react(input);
+				return innerReaction(input,result);
 			} else {
 				result.add(new Interpretation("Yes. "));
 				for(int i=0; i<t.size(); i++){
@@ -92,7 +92,7 @@ public class QuestionAnsweringState implements State{
 		} else if(triple!=null && input.getSentenceType() == SENTENCE_TYPE.WHO){
 			List<Triple> t = remember(triple.predicate, triple.agens, triple.patiens);
 			if(t.isEmpty()){
-				return inner.react(input);
+				return innerReaction(input,result);
 			} else {
 				for(int i=0; i<t.size(); i++){
 					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
@@ -102,7 +102,7 @@ public class QuestionAnsweringState implements State{
 		} else if(triple!=null && input.getSentenceType() == SENTENCE_TYPE.WHAT){
 			List<Triple> t = remember(triple.predicate, triple.agens, triple.patiens);
 			if(t.isEmpty()){
-				return inner.react(input);
+				return innerReaction(input,result);
 			} else {
 				for(int i=0; i<t.size(); i++){
 					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
@@ -112,7 +112,7 @@ public class QuestionAnsweringState implements State{
 		} else if(triple!=null && input.getSentenceType() == SENTENCE_TYPE.HOW_DO){
 			List<Triple> t = remember(triple.predicate, triple.agens, null);
 			if(t.isEmpty()){
-				return inner.react(input);
+				return innerReaction(input,result);
 			} else {
 				for(int i=0; i<t.size(); i++){
 					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
@@ -139,7 +139,7 @@ public class QuestionAnsweringState implements State{
 					{
 						if(remembered!=null&&remembered.object!=null){ // TODO: check for proper role
 						result.add(new Interpretation((String)remembered.object.getAttribute(Linguistics.NAME)));
-						return new Reaction(top,result);
+						return new Reaction(this,result);
 					}
 					}
 					

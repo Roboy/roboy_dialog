@@ -116,10 +116,14 @@ public class DialogSystem {
 		EmotionOutput emotion = new EmotionOutput();
         OutputDevice output = new CommandLineOutput();
 //        OutputDevice output = new CerevoiceOutput(emotion);
-		OutputDevice multiOut = new MultiOutputDevice(output,output1,emotion);
+		OutputDevice multiOut = new MultiOutputDevice(output, emotion);
 
-        RosMainNode.getInstance();
-//        output2.say("fuck");
+        // initialize ROS node
+		RosMainNode.getInstance();
+
+		// connect to ROS bridge
+		Ros.getInstance();
+
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new SimpleTokenizer());
 		analyzers.add(new OpenNLPPPOSTagger());
