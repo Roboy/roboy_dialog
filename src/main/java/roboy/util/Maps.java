@@ -33,4 +33,12 @@ public class Maps {
 		}
 		return result;
 	}
+	
+	public static Map<Integer,String> intStringMap(Object... elements){
+		Map<Integer, String> result = new HashMap<>();
+		for(int i=0; i<elements.length; i+=2){
+			result.put((Integer)elements[i],(String)elements[i+1]);
+		}
+		return result;
+	}
 }

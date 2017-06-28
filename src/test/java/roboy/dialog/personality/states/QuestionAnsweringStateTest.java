@@ -4,8 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import roboy.dialog.action.SpeechAction;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.linguistics.sentenceanalysis.OpenNLPParser;
+import roboy.talk.Verbalizer;
 
 public class QuestionAnsweringStateTest {
 
@@ -28,6 +30,9 @@ public class QuestionAnsweringStateTest {
 		Reaction reaction = state.react(interpretation);
 		assertEquals(1, reaction.getReactions().size());
 		assertEquals("1953-03-30",reaction.getReactions().get(0).getFeature("sentence"));
+		Verbalizer verbalizer = new Verbalizer();
+		SpeechAction action = (SpeechAction) verbalizer.verbalize(reaction.getReactions().get(0));
+		assertEquals("March thirtiest nineteen hundred fifty three",action.getText());
 	}
 
 	@Test
@@ -55,6 +60,9 @@ public class QuestionAnsweringStateTest {
 		Reaction reaction = state.react(interpretation);
 		assertEquals(1, reaction.getReactions().size());
 		assertEquals("1977-08-16",reaction.getReactions().get(0).getFeature("sentence"));
+		Verbalizer verbalizer = new Verbalizer();
+		SpeechAction action = (SpeechAction) verbalizer.verbalize(reaction.getReactions().get(0));
+		assertEquals("August sixteenth nineteen hundred seventy seven",action.getText());
 	}
 
 	@Test
