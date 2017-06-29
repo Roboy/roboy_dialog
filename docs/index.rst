@@ -31,14 +31,6 @@ Contents:
 
   Usage/*
 
-.. _Architecture:
-.. toctree::
-:maxdepth: 1
-      :glob:
-      :caption: Architecture
-
-      Architecture/*
-
 .. _ScopeContext:
 .. toctree::
   :maxdepth: 1
@@ -46,6 +38,14 @@ Contents:
   :caption: Interfaces and Scope
 
   ScopeContext/*
+
+.. _Architecture:
+.. toctree::
+  :maxdepth: 1
+  :glob:
+  :caption: Architecture
+
+  Architecture/*
 
 
 .. toctree::
