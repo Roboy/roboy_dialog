@@ -14,27 +14,27 @@ import static org.apache.uima.fit.pipeline.SimplePipeline.runPipeline;
 
 /**
  * This is a linguistic analysis pipeline example from: https://dkpro.github.io/dkpro-core/pages/java-intro/
+ * It demonstrates a segmenter, POS tagger, lemmatizer and parser. It can be used to test and debug semantic role labeling tools offered by DKPro before integrating them into the Dialog Manager.
  *
  * If you wish to test the pipeline:
  * 1) uncomment the DKPro dependencies in pom.xml
  * 2) write your input into the file document.txt
  * 3) The output will be written in document.txt.conll
  *
- * If you wish to continue integrating SRL tools, you should start by
- * uncommenting the additional dependencies in pom and under imports.
- * At the time of writing, neither of the labelers worked:
- * ClearNlp SRL does not produce output, and MateSRL throws a
- * ClassNotFoundException - possibly due to some dependency issues.
+ * If you wish to continue integrating SRL tools, you should start by uncommenting the additional dependencies in pom and under imports. At the time of writing, neither of the labelers worked: ClearNlp SRL does not produce output, and MateSRL throws a ClassNotFoundException - possibly due to some dependency issues.
  *
  * @author Laura Lahesoo
  */
 
-public class PipelineExample {
+public class DKProExample {
+
+    private static String sourcefile = "src/main/java/roboy/linguistics/sentenceanalysis/dkpro_example/document.txt";
+    private static String destination = "src/main/java/roboy/linguistics/sentenceanalysis/dkpro_example/.";
 
     public static void main(String[] args) throws Exception {
         runPipeline(
                 createReaderDescription(TextReader.class,
-                        TextReader.PARAM_SOURCE_LOCATION, "src/main/java/roboy/linguistics/sentenceanalysis/dkpro_example/document.txt",
+                        TextReader.PARAM_SOURCE_LOCATION, sourcefile,
                         TextReader.PARAM_LANGUAGE, "en"),
                 createEngineDescription(OpenNlpSegmenter.class),
                 createEngineDescription(OpenNlpPosTagger.class),
@@ -43,6 +43,6 @@ public class PipelineExample {
                 //createEngineDescription(ClearNlpSemanticRoleLabeler.class),
                 //createEngineDescription(MateSemanticRoleLabeler.class),
                 createEngineDescription(Conll2006Writer.class,
-                        Conll2006Writer.PARAM_TARGET_LOCATION, "src/main/java/roboy/linguistics/sentenceanalysis/dkpro_example/."));
+                        Conll2006Writer.PARAM_TARGET_LOCATION, destination));
     }
 }
