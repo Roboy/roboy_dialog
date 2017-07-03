@@ -78,6 +78,7 @@ public class Verbalizer {
 	private Interpretation verbalizeDates(Interpretation interpretation){
 		StringBuilder sb = new StringBuilder();
 		String sentence = (String)interpretation.getFeatures().get(Linguistics.SENTENCE);
+		if(sentence == null) return interpretation;
 		Matcher matcher = Pattern.compile( "\\d\\d\\d\\d-\\d\\d-\\d\\d" ).matcher( sentence );
 		int lastEnd = 0;
 		while ( matcher.find() ){

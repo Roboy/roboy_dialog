@@ -29,6 +29,7 @@ public class Interpretation {
 	
 	public Interpretation(SENTENCE_TYPE sentenceType){
 		this.sentenceType = sentenceType;
+		features = new HashMap<>();
 	}
 	
 	public Interpretation(SENTENCE_TYPE sentenceType, Map<String,Object> features){
