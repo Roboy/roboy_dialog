@@ -79,7 +79,7 @@ public class Verbalizer {
 		StringBuilder sb = new StringBuilder();
 		String sentence = (String)interpretation.getFeatures().get(Linguistics.SENTENCE);
 		if(sentence == null) return interpretation;
-		Matcher matcher = Pattern.compile( "\\d\\d\\d\\d-\\d\\d-\\d\\d" ).matcher( sentence );
+		Matcher matcher = Pattern.compile( "\\d\\d\\d\\d-\\d\\d?-\\d\\d" ).matcher( sentence );
 		int lastEnd = 0;
 		while ( matcher.find() ){
 			sb.append(sentence.substring(lastEnd, matcher.start()));
@@ -182,6 +182,15 @@ public class Verbalizer {
 			);
 	
 	private static final Map<String,String> monthNumberMap = Maps.stringMap(
+			"1","January",
+			"2","February",
+			"3","March",
+			"4","April",
+			"5","May",
+			"6","June",
+			"7","July",
+			"8","August",
+			"9","September",
 			"01","January",
 			"02","February",
 			"03","March",

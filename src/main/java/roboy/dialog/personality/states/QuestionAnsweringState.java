@@ -138,9 +138,12 @@ public class QuestionAnsweringState implements State{
 					for (Relation remembered: rememberedList)
 					{
 						if(remembered!=null&&remembered.object!=null){ // TODO: check for proper role
-						result.add(new Interpretation((String)remembered.object.getAttribute(Linguistics.NAME)));
-						return new Reaction(this,result);
-					}
+							String answer = (String)remembered.object.getAttribute(Linguistics.NAME);
+							if(answer.length()>0){
+								result.add(new Interpretation(answer));
+								return new Reaction(this,result);
+							}
+						}
 					}
 					
 				} catch(Exception e){}

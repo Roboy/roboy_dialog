@@ -24,6 +24,15 @@ public class QuestionAnsweringStateTest {
 	}
 	
 	@Test
+	public void testNotAnswerable() {
+		Interpretation interpretation = new Interpretation("My name is Bob");
+		interpretation = parser.analyze(interpretation);
+		Reaction reaction = state.react(interpretation);
+		assertEquals(1, reaction.getReactions().size());
+		assertEquals("",reaction.getReactions().get(0).getFeature("sentence"));
+	}
+	
+	@Test
 	public void testWhenWas() {
 		Interpretation interpretation = new Interpretation("When was Putin born ?");
 		interpretation = parser.analyze(interpretation);
