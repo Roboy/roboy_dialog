@@ -72,13 +72,15 @@ public class SmallTalkPersonality implements Personality {
         IntroductionState intro = new IntroductionState();
         FarewellState farewell = new FarewellState();
         WildTalkState wild = new WildTalkState();
-        QuestionAnsweringState answer = new QuestionAnsweringState(wild);
-        SegueState segue = new SegueState(answer);
+        SegueState segue = new SegueState(wild);
+        QuestionAnsweringState answer = new QuestionAnsweringState(segue);
+        QuestionRandomizerState qa = new QuestionRandomizerState(answer);
 
         greetings.setNextState(intro);
-        answer.setTop(segue);
-        intro.setNextState(segue);
-        wild.setNextState(segue);
+        answer.setTop(qa);
+        qa.setTop(qa);
+        intro.setNextState(qa);
+        wild.setNextState(qa);
 
         state = greetings;
     }

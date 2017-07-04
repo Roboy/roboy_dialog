@@ -29,5 +29,11 @@ public class Lists {
 		result.addAll(Arrays.asList(strings));
 		return result;
 	}
+	
+	public static List<String[]> strArray(String[]... strings){
+		List<String[]> result = new ArrayList<>();
+		result.addAll(Arrays.asList(strings));
+		return result;
+	}
 
 }

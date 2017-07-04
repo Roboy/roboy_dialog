@@ -48,7 +48,7 @@ public class WorkingMemory implements Memory<Triple>{
 	}
 
 	@Override
-	public List<Triple> retrieve(Triple object) throws InterruptedException, IOException {
+	public List<Triple> retrieve(Triple object) {
 		List<Triple> agensTriples = null;
 		List<Triple> patiensTriples = null;
 		List<Triple> predicateTriples = null;
@@ -72,6 +72,8 @@ public class WorkingMemory implements Memory<Triple>{
 						(predicateTriples==null || predicateTriples.contains(t))
 						) results.add(t);
 			}
+		}
+		if(patiensTriples!=null){
 			for(Triple t: patiensTriples){
 				if(		
 						!results.contains(t) &&
@@ -79,6 +81,8 @@ public class WorkingMemory implements Memory<Triple>{
 						(predicateTriples==null || predicateTriples.contains(t))
 						) results.add(t);
 			}
+		}
+		if(predicateTriples!=null){
 			for(Triple t: predicateTriples){
 				if(		
 						!results.contains(t) &&
