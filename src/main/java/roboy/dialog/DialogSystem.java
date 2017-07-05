@@ -23,14 +23,7 @@ import roboy.dialog.personality.SmallTalkPersonality;
 import roboy.io.*;
 
 import roboy.linguistics.Linguistics;
-import roboy.linguistics.sentenceanalysis.Analyzer;
-import roboy.linguistics.sentenceanalysis.DictionaryBasedSentenceTypeDetector;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.linguistics.sentenceanalysis.OntologyNERAnalyzer;
-import roboy.linguistics.sentenceanalysis.OpenNLPPPOSTagger;
-import roboy.linguistics.sentenceanalysis.OpenNLPParser;
-import roboy.linguistics.sentenceanalysis.SentenceAnalyzer;
-import roboy.linguistics.sentenceanalysis.SimpleTokenizer;
+import roboy.linguistics.sentenceanalysis.*;
 import roboy.talk.Verbalizer;
 
 import roboy.memory.RoboyMind;
@@ -104,7 +97,7 @@ public class DialogSystem {
 
 
 	    InputDevice input = new CommandLineInput();
-		// InputDevice input = new BingInput();
+//		 InputDevice input = new BingInput();
 		InputDevice celebInput = new CelebritySimilarityInput();
 //		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
 		InputDevice multiIn = new MultiInputDevice(input);//, celebInput, roboyDetectInput);
@@ -116,7 +109,7 @@ public class DialogSystem {
 		EmotionOutput emotion = new EmotionOutput();
         OutputDevice output = new CommandLineOutput();
 //        OutputDevice output = new CerevoiceOutput(emotion);
-		OutputDevice multiOut = new MultiOutputDevice(output, emotion);
+		OutputDevice multiOut = new MultiOutputDevice(output, output2, emotion);
 
         // initialize ROS node
 		RosMainNode.getInstance();
@@ -125,12 +118,15 @@ public class DialogSystem {
 		Ros.getInstance();
 
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
+		analyzers.add(new Preprocessor());
 		analyzers.add(new SimpleTokenizer());
 		analyzers.add(new OpenNLPPPOSTagger());
 		analyzers.add(new DictionaryBasedSentenceTypeDetector());
 		analyzers.add(new SentenceAnalyzer());
 		analyzers.add(new OpenNLPParser());
 		analyzers.add(new OntologyNERAnalyzer());
+		analyzers.add(new AnswerAnalyzer());
+
 
 
         System.out.println("Initialized...");

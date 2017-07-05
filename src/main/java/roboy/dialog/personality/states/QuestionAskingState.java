@@ -125,7 +125,7 @@ public class QuestionAskingState implements State
 		if (!"".equals(answer))
 		{
 			objectOfFocus.addAttribute(this.currentIntent, answer);
-			objectOfFocus.updateInMemory();
+//			objectOfFocus.updateInMemory();
 		}
 
 		// react to the answer of the person

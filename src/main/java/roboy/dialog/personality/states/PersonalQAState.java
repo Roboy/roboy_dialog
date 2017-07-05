@@ -37,7 +37,12 @@ public class PersonalQAState extends AbstractBooleanState{
 		String answer = null;
 		if(tokens.length==1){
 			answer = tokens[0];
-		} else {
+		}
+		else if(input.getFeatures().containsKey(Linguistics.OBJ_ANSWER))
+		{
+			answer = (String) input.getFeature(Linguistics.OBJ_ANSWER);
+		}
+		else {
 			Map<SEMANTIC_ROLE,Object> pas = (Map<SEMANTIC_ROLE,Object>) input.getFeature(Linguistics.PAS);
 			if(pas==null) return false;
 			String predicate = ((String)pas.get(SEMANTIC_ROLE.PREDICATE)).toLowerCase();

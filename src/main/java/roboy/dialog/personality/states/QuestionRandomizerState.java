@@ -15,18 +15,21 @@ public class QuestionRandomizerState implements State{
 	private static final String MOVIE = "likes the movie";
 	
 	private PersonalQAState[] questionStates;
+	private PersonalQAState locationQuestion;
 	private boolean[] alreadyAsked;
 	private State inner;
 	private State chosenState;
 	
 	public QuestionRandomizerState(State inner) {
 		this.inner = inner;
+		locationQuestion = new PersonalQAState(
+				Lists.stringList("What do you do for a living?"),
+				Lists.stringList("Can you explain what you do there?"),
+				Lists.strArray(new String[]{"You are probably very poor doing ",""}),
+				PROFESSION);
+		locationQuestion.setSuccess();
 		questionStates = new PersonalQAState[]{
-			new PersonalQAState(
-					Lists.stringList("What do you do for a living?"), 
-					Lists.stringList("Can you explain what you do there?"), 
-					Lists.strArray(new String[]{"And do you enjoy ",""}), 
-					PROFESSION),
+			locationQuestion,
 			new PersonalQAState(
 					Lists.stringList("Where are you from?"), 
 					Lists.stringList("Oh, I have never heard of that."), 
@@ -35,7 +38,7 @@ public class QuestionRandomizerState implements State{
 			new PersonalQAState(
 					Lists.stringList("How do you spend your free time?"), 
 					Lists.stringList("Tell me more about that. Is that fun?"), 
-					Lists.strArray(new String[]{""," Do you think a robot can do that as well?"}), 
+					Lists.strArray(new String[]{"Just like me, I love "," too"}),
 					HOBBY),
 			new PersonalQAState(
 					Lists.stringList("What is your favourite movie?"), 
@@ -51,11 +54,11 @@ public class QuestionRandomizerState implements State{
 		WorkingMemory memory = WorkingMemory.getInstance();
 		chosenState = null;
 		List<Triple> nameTriples = memory.retrieve(new Triple("is","name",null));
-		if(nameTriples.isEmpty()) inner.act();
+		if(nameTriples.isEmpty()) return inner.act();
 		String name = nameTriples.get(0).patiens;
 //		List<Triple> infos = memory.retrieve(new Triple(null,name,null));
 //		infos.addAll(memory.retrieve(new Triple(null,null,name)));
-		if(Math.random()<0.2){
+		if(Math.random()<1){
 			int index = (int) (Math.random()*questionStates.length);
 			if(!alreadyAsked[index]){
 				alreadyAsked[index] = true;

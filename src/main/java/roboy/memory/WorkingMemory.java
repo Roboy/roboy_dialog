@@ -42,7 +42,7 @@ public class WorkingMemory implements Memory<Triple>{
 	
 	private void addToMap(Map<String,List<Triple>> list, String s, Triple t){
 		if(!list.containsKey(s)){
-			list.put(s, new ArrayList<>());
+			list.put(s, new ArrayList<Triple>());
 		}
 		list.get(s).add(t);
 	}
