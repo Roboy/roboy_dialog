@@ -65,7 +65,7 @@ public class QuestionRandomizerState implements State{
 		String name = nameTriples.get(0).patiens;
 //		List<Triple> infos = memory.retrieve(new Triple(null,name,null));
 //		infos.addAll(memory.retrieve(new Triple(null,null,name)));
-		if(Math.random()<1){
+		if(Math.random()<0.5){
 			int index = (int) (Math.random()*questionStates.length);
 			if(!alreadyAsked[index]){
 				alreadyAsked[index] = true;

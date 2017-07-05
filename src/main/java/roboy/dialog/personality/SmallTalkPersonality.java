@@ -14,8 +14,10 @@ import roboy.dialog.action.FaceAction;
 import roboy.dialog.action.SpeechAction;
 import roboy.dialog.personality.states.*;
 import roboy.linguistics.Linguistics;
+import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.StatementInterpreter;
+import roboy.memory.WorkingMemory;
 import roboy.talk.Verbalizer;
 import roboy.util.JsonUtils;
 import roboy.util.Lists;
@@ -68,6 +70,12 @@ public class SmallTalkPersonality implements Personality {
     @Override
     public List<Action> answer(Interpretation input) {
 
+        String name = null;
+        List<Triple> names = WorkingMemory.getInstance().retrieve(new Triple("is", "name", null));
+        if (!names.isEmpty())
+        {
+            name = names.get(0).patiens;
+        }
         String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
         List<Action> act = Lists.actionList();
 
