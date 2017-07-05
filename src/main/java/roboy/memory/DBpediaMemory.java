@@ -124,7 +124,7 @@ private static final Map<String, String> supportedRelations = Maps.stringMap(
 	@Override
 	public List<Relation> retrieve(Relation object) throws InterruptedException, IOException {
 		LinkedHashSet<String> queries;
-		List<Relation> result = new ArrayList();
+		List<Relation> result = new ArrayList<>();
 		if(object == null)
 			return null;
 		List<String> answersFinal = new ArrayList<String>();
@@ -148,6 +148,8 @@ private static final Map<String, String> supportedRelations = Maps.stringMap(
 						String answerStr = ans.toString();
 						RDFNode label = answer.get("label");
 						
+						int uri = answerStr.indexOf("^^");
+						if(uri>=0) answerStr = answerStr.substring(0,uri);
 							
 						if ( ans != null )
 						{

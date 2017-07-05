@@ -42,7 +42,7 @@ public class RoboyMind implements Memory<Concept>
 
 	private ServiceResponse CreateInstance(String class_name, int object_id)
 	{
-		Service CreateInstanceSrv = new Service(Ros.getInstance(), "/roboy_mind/create_instance", "/roboy_mind/create_instance");
+		Service CreateInstanceSrv = new Service(Ros.getInstance(), "/roboy/cognition/memory/create_instance", "/roboy/cognition/memory/create_instance");
 		String params = "{\"class_name\": " + "\"" + class_name + "\", \"id\": " +  object_id + "}";
 		ServiceRequest request = new ServiceRequest(params);
 		ServiceResponse response = CreateInstanceSrv.callServiceAndWait(request);
@@ -51,7 +51,7 @@ public class RoboyMind implements Memory<Concept>
 
 	private boolean AssertProperty(String object, String property, String value)
 	{
-		Service AssertPropertySrv = new Service(Ros.getInstance(), "/roboy_mind/assert_property", "/roboy_mind/assert_property");
+		Service AssertPropertySrv = new Service(Ros.getInstance(), "/roboy/cognition/memory/assert_property", "/roboy/cognition/memory/assert_property");
 
 		JsonObject params = Json.createObjectBuilder()
 				.add("object", object.replace("\"", ""))
@@ -67,7 +67,7 @@ public class RoboyMind implements Memory<Concept>
 
 	private List<Concept> FindInstances(String property, String value)
 	{
-		Service FindInstancesSrv = new Service(Ros.getInstance(), "/roboy_mind/find_instances", "/roboy_mind/find_instances");
+		Service FindInstancesSrv = new Service(Ros.getInstance(), "/roboy/cognition/memory/find_instances", "/roboy/cognition/memory/find_instances");
 		
 		JsonObject params = Json.createObjectBuilder()
 	     .add("property", property)
@@ -97,7 +97,7 @@ public class RoboyMind implements Memory<Concept>
 
 	private JsonObject ListAttributes(String object)
 	{
-		Service ShowInstanceSrv = new Service(Ros.getInstance(), "/roboy_mind/show_property", "/roboy_mind/show_property");
+		Service ShowInstanceSrv = new Service(Ros.getInstance(), "/roboy/cognition/memory/show_property", "/roboy/cognition/memory/show_property");
 
 		JsonObject params = Json.createObjectBuilder()
 	     .add("object", object.replace("\"", ""))
@@ -119,7 +119,7 @@ public class RoboyMind implements Memory<Concept>
 
 	private ServiceResponse SaveObject(String class_name, String properties, String values, int object_id)
 	{
-		Service ShowInstanceSrv = new Service(Ros.getInstance(), "/roboy_mind/save_object", "/roboy_mind/save_object");
+		Service ShowInstanceSrv = new Service(Ros.getInstance(), "/roboy/cognition/memory/save_object", "/roboy/cognition/memory/save_object");
 		JsonObject params = Json.createObjectBuilder()
 	     .add("class_name", class_name)
 	     .add("id", object_id)
@@ -136,7 +136,7 @@ public class RoboyMind implements Memory<Concept>
 
 	private Concept GetObject(String properties, String values)
 	{
-		Service ShowInstanceSrv = new Service(Ros.getInstance(), "/roboy_mind/get_object", "/roboy_mind/get_object");
+		Service ShowInstanceSrv = new Service(Ros.getInstance(), "/roboy/cognition/memory/get_object", "/roboy/cognition/memory/get_object");
 
 		JsonObject params = Json.createObjectBuilder()
 	     .add("properties", properties)
@@ -161,7 +161,7 @@ public class RoboyMind implements Memory<Concept>
 
 	private ServiceResponse ShowInstance(String class_name)
 	{
-		Service ShowInstanceSrv = new Service(Ros.getInstance(), "/roboy_mind/show_instances", "/roboy_mind/show_instances");
+		Service ShowInstanceSrv = new Service(Ros.getInstance(), "/roboy/cognition/memory/show_instances", "/roboy/cognition/memory/show_instances");
 		String params = "{\"class_name\": " + "\"" + class_name + "\"}";
 		ServiceRequest request = new ServiceRequest(params);
 		ServiceResponse response = ShowInstanceSrv.callServiceAndWait(request);

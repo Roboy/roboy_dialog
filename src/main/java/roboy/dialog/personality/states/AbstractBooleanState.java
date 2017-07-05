@@ -2,11 +2,15 @@ package roboy.dialog.personality.states;
 
 import edu.wpi.rail.jrosbridge.Service;
 import edu.wpi.rail.jrosbridge.services.ServiceRequest;
+
+import java.util.List;
+
 import org.json.JSONObject;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.Ros;
 import roboy.util.Lists;
+import roboy.util.RosMainNode;
 
 /**
  * Abstract super class for states that fork between two possible subsequent states.
@@ -17,6 +21,9 @@ public abstract class AbstractBooleanState implements State {
 
     protected State success;
     protected State failure;
+    
+    private List<String> successTexts = Lists.stringList("");
+    private List<String> failureTexts = Lists.stringList("");
 
     public State getSuccess() {
         return success;
@@ -49,16 +56,25 @@ public abstract class AbstractBooleanState implements State {
     public void setNextState(State state) {
         this.success = this.failure = state;
     }
+    
+    public void setSuccessTexts(List<String> texts){
+    	successTexts = texts;
+    }
+    
+    public void setFailureTexts(List<String> texts){
+    	failureTexts = texts;
+    }
 
     @Override
     public Reaction react(Interpretation input)
     {
-        String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
         boolean successful = determineSuccess(input);
         if (successful) {
-            return new Reaction(success);
+            return new Reaction(success, Lists.interpretationList(
+            		new Interpretation(successTexts.get((int)(Math.random()*successTexts.size())))));
         } else {
-            return new Reaction(failure, Lists.interpretationList(new Interpretation(callGenerativeModel(sentence))));
+            return new Reaction(failure, Lists.interpretationList(
+            		new Interpretation(failureTexts.get((int)(Math.random()*failureTexts.size())))));
         }
     }
 
@@ -73,13 +89,8 @@ public abstract class AbstractBooleanState implements State {
     abstract protected boolean determineSuccess(Interpretation input);
 
 
-    protected String callGenerativeModel(String sentence) {
-        Service GenerativeModel = new Service(Ros.getInstance(), "/roboy/gnlp_predict", "generative_nlp/seq2seq_predict");
-        ServiceRequest request = new ServiceRequest("{\"text_input\": " + "\"" + sentence + "\"}");
-        String response = GenerativeModel.callServiceAndWait(request).toString();
-
-        JSONObject obj = new JSONObject(response);
-        String text = obj.getString("text_output");
-        return text;
-    }
+//    protected String callGenerativeModel(String sentence) {
+//        String text = RosMainNode.getInstance().GenerateAnswer(sentence);
+//        return text;
+//    }
 }

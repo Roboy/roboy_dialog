@@ -1,13 +1,17 @@
 package roboy.dialog.personality;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.*;
 
+import com.google.gson.Gson;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
 import roboy.dialog.action.SpeechAction;
 import roboy.dialog.personality.states.*;
-import roboy.io.EmotionOutput;
 import roboy.linguistics.Linguistics;
+import roboy.linguistics.Question;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.StatementInterpreter;
 import roboy.talk.Verbalizer;
@@ -35,30 +39,12 @@ public class SmallTalkPersonality implements Personality {
     public SmallTalkPersonality(Verbalizer verbalizer) {
         this.verbalizer = verbalizer;
 
-
-        List<String> nameQuestions = Arrays.asList(
-                "How can I call you?",
-                "What is your name?",
-                "Who are you?");
-        List<String> occupationQuestions = Arrays.asList(
-                "What do you do?",
-                "What is your profession?");
-        List<String> originQuestions = Arrays.asList(
-                "Where are you from?",
-                "Where were you born?",
-                "I have hard time guessing your home country. What is it?",
-                "Which town do you call your home?");
-        List<String> hobbyQuestions = Arrays.asList(
-                "What is your favorive thing to do?",
-                "What is your hobby?",
-                "What do you do in your free time?",
-                "How do you spend your free time?",
-                "What is your favorive pasttime activity?");
-        List<String> moviesQuestions = Arrays.asList(
-                "What is your favourite movie?",
-                "What was the last movie you saw in the cinema?",
-                "What is your favorite TV show?",
-                "Which comedy do you like the most?");
+        String path = "ontology/questions/";
+        List<String> nameQuestions = getQuestionFromJsonFile(path + "nameQuestion.json");
+        List<String> occupationQuestions = getQuestionFromJsonFile(path + "occupationQuestion.json");
+        List<String> originQuestions = getQuestionFromJsonFile(path + "originQuestion.json");
+        List<String> hobbyQuestions = getQuestionFromJsonFile(path + "hobbyQuestion.json");
+        List<String> moviesQuestions = getQuestionFromJsonFile(path + "moviesQuestion.json");
 
         Map<String, List<String>> questions = new HashMap<>();
         questions.put("name", nameQuestions);
@@ -72,19 +58,15 @@ public class SmallTalkPersonality implements Personality {
         IntroductionState intro = new IntroductionState();
         FarewellState farewell = new FarewellState();
         WildTalkState wild = new WildTalkState();
-        IdleState idle = new IdleState();
+        SegueState segue = new SegueState(wild);
+        QuestionAnsweringState answer = new QuestionAnsweringState(segue);
+        QuestionRandomizerState qa = new QuestionRandomizerState(answer);
 
-        QuestionAnsweringState answer = new QuestionAnsweringState(wild);
-        Map<String,State> children = new HashMap<>();
-        children.put("wild", wild);
-        children.put("idle", idle);
-        children.put("farewell", farewell);
-        children.put("answer", answer);
-
-        QuestionAskingState ask = new QuestionAskingState(questions, children, this);
         greetings.setNextState(intro);
-        intro.setNextState(ask);
-        wild.setNextState(answer);
+        answer.setTop(qa);
+        qa.setTop(qa);
+        intro.setNextState(qa);
+        wild.setNextState(qa);
 
         state = greetings;
     }
@@ -137,5 +119,15 @@ public class SmallTalkPersonality implements Personality {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    private List<String> getQuestionFromJsonFile(String file) {
+        ClassLoader cl = this.getClass().getClassLoader();
+        InputStream input = cl.getResourceAsStream(file);
+        BufferedReader br = new BufferedReader( new InputStreamReader(input));
+        Gson gson = new Gson();
+
+        Question q = gson.fromJson(br, Question.class);
+        return q.question;
     }
 }

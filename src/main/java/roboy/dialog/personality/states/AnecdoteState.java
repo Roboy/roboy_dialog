@@ -30,7 +30,8 @@ public class AnecdoteState implements State{
 
 	@Override
 	public Reaction react(Interpretation input) {
-		return new Reaction(nextState);
+		return nextState.react(input);
+//		return new Reaction(nextState);
 	}
 
 }

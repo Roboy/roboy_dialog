@@ -1,8 +1,6 @@
 package roboy.dialog.personality.states;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -37,9 +35,9 @@ public class QuestionAnsweringState implements State{
 	    // fill memory
 	    memory = new ArrayList<>(); //TODO: Refactor all that triples stuff to separate memory class
 		ClassLoader cl = this.getClass().getClassLoader();
-	    File f = new File(cl.getResource("knowledgebase/triples.csv").getFile());
+		InputStream inputStream = cl.getResourceAsStream("knowledgebase/triples.csv");
 	    try{
-			BufferedReader br = new BufferedReader(new FileReader(f));
+			BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
 			String line = br.readLine();
 			while(line!=null){
 				String[] parts = line.split(",");
@@ -75,15 +73,15 @@ public class QuestionAnsweringState implements State{
 		Triple triple = (Triple) input.getFeatures().get(Linguistics.TRIPLE);
 		
 		// reverse you <-> I
-		if(triple.agens!=null && "you".equals(triple.agens.toLowerCase())) triple.agens = "i";
-		if(triple.patiens!=null && "you".equals(triple.patiens.toLowerCase())) triple.patiens = "i";
-		if(triple.predicate!=null && "are".equals(triple.predicate.toLowerCase())) triple.predicate = "am";
+		if(triple!=null && triple.agens!=null && "you".equals(triple.agens.toLowerCase())) triple.agens = "i";
+		if(triple!=null && triple.patiens!=null && "you".equals(triple.patiens.toLowerCase())) triple.patiens = "i";
+		if(triple!=null && triple.predicate!=null && "are".equals(triple.predicate.toLowerCase())) triple.predicate = "am";
 		
 		List<Interpretation> result = new ArrayList<>();
-		if(input.getSentenceType() == SENTENCE_TYPE.DOES_IT || input.getSentenceType() == SENTENCE_TYPE.IS_IT){
+		if(triple!=null && input.getSentenceType() == SENTENCE_TYPE.DOES_IT || input.getSentenceType() == SENTENCE_TYPE.IS_IT){
 			List<Triple> t = remember(triple.predicate, triple.agens, null);
 			if(t.isEmpty()){
-				return inner.react(input);
+				return innerReaction(input,result);
 			} else {
 				result.add(new Interpretation("Yes. "));
 				for(int i=0; i<t.size(); i++){
@@ -91,30 +89,30 @@ public class QuestionAnsweringState implements State{
 					result.add(new Interpretation(prefix+t.get(i).agens+" "+t.get(i).predicate+" "+t.get(i).patiens));
 				}
 			}
-		} else if(input.getSentenceType() == SENTENCE_TYPE.WHO){
+		} else if(triple!=null && input.getSentenceType() == SENTENCE_TYPE.WHO){
 			List<Triple> t = remember(triple.predicate, triple.agens, triple.patiens);
 			if(t.isEmpty()){
-				return inner.react(input);
+				return innerReaction(input,result);
 			} else {
 				for(int i=0; i<t.size(); i++){
 					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
 					result.add(new Interpretation(prefix+t.get(i).agens+" "+t.get(i).predicate+" "+t.get(i).patiens));
 				}
 			}
-		} else if(input.getSentenceType() == SENTENCE_TYPE.WHAT){
+		} else if(triple!=null && input.getSentenceType() == SENTENCE_TYPE.WHAT){
 			List<Triple> t = remember(triple.predicate, triple.agens, triple.patiens);
 			if(t.isEmpty()){
-				return inner.react(input);
+				return innerReaction(input,result);
 			} else {
 				for(int i=0; i<t.size(); i++){
 					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
 					result.add(new Interpretation(prefix+t.get(i).agens+" "+t.get(i).predicate+" "+t.get(i).patiens));
 				}
 			}
-		} else if(input.getSentenceType() == SENTENCE_TYPE.HOW_DO){
+		} else if(triple!=null && input.getSentenceType() == SENTENCE_TYPE.HOW_DO){
 			List<Triple> t = remember(triple.predicate, triple.agens, null);
 			if(t.isEmpty()){
-				return inner.react(input);
+				return innerReaction(input,result);
 			} else {
 				for(int i=0; i<t.size(); i++){
 					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
@@ -123,11 +121,37 @@ public class QuestionAnsweringState implements State{
 			}
 		}
 		else {
-			return inner.react(input);
+			return innerReaction(input,result);
 		}
 		return new Reaction(this, result);
 	}
 
+	@SuppressWarnings("unchecked")
+	private Reaction innerReaction(Interpretation input,List<Interpretation> result){
+		Map<String, Object> pas = (Map<String, Object>) input.getFeature(Linguistics.PAS);
+		if(pas!=null && !pas.isEmpty()){
+			Relation relation = PASInterpreter.pas2DBpediaRelation(pas);
+//			System.out.println("Relation: "+relation);
+			for(Memory<Relation> mem : memories){
+				try{
+					List<Relation> rememberedList = mem.retrieve(relation);
+					for (Relation remembered: rememberedList)
+					{
+						if(remembered!=null&&remembered.object!=null){ // TODO: check for proper role
+							String answer = (String)remembered.object.getAttribute(Linguistics.NAME);
+							if(answer.length()>0){
+								result.add(new Interpretation(answer));
+								return new Reaction(this,result);
+							}
+						}
+					}
+					
+				} catch(Exception e){}
+			}
+		}
+		return inner.react(input);
+	}
+	
 	private List<Triple> remember(String predicate, String agens, String patiens){
 		List<Triple> triples = new ArrayList<>();
 		for(Triple t: memory){
