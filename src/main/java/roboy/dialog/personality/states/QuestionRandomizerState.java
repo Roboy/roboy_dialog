@@ -27,7 +27,9 @@ public class QuestionRandomizerState implements State{
 				Lists.stringList("Can you explain what you do there?"),
 				Lists.strArray(new String[]{"You are probably very poor doing ",""}),
 				PROFESSION);
-		locationQuestion.setSuccess();
+		LocationDBpedia locationDBpedia = new LocationDBpedia();
+		locationDBpedia.setNextState(this);
+		locationQuestion.setSuccess(locationDBpedia);
 		questionStates = new PersonalQAState[]{
 			locationQuestion,
 			new PersonalQAState(
