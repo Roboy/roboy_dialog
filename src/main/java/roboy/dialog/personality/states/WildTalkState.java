@@ -21,11 +21,11 @@ public class WildTalkState implements State{
 
     public WildTalkState() {
     	edu.wpi.rail.jrosbridge.Ros ros = Ros.getInstance();
-    	if(ros.isConnected()){
-        	generativeModel = new Service(Ros.getInstance(), "/roboy/gnlp_predict", "generative_nlp/seq2seq_predict");
-    	} else {
-    		generativeModel = null;
-    	}
+//    	if(ros.isConnected()){
+//        	generativeModel = new Service(Ros.getInstance(), "/roboy/cognition/gnlp/predict", "generative_nlp/seq2seq_predict");
+//    	} else {
+    	generativeModel = null;
+//    	}
 	}
     
     @Override

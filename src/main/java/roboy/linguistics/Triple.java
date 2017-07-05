@@ -18,4 +18,8 @@ public class Triple {
 	public String toString(){
 		return agens+"-"+predicate+"-"+patiens;
 	}
+//	public boolean equals(Triple t)
+//	{
+//		return t.
+//	}
 }

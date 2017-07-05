@@ -17,6 +17,7 @@ public class QuestionRandomizerState implements State{
 	private static final String MOVIE = "likes the movie";
 	
 	private PersonalQAState[] questionStates;
+	private PersonalQAState locationQuestion;
 	private boolean[] alreadyAsked;
 	private State inner;
 	private State chosenState;
@@ -26,26 +27,30 @@ public class QuestionRandomizerState implements State{
 		//Fetch the map: question type ("name", "occupation") -> list of phrasings for the question.
 		String questionsFile = "questions/questions.json";
 		Map<String, List<String>> questions = JsonUtils.getQuestionFromJsonFile(questionsFile);
+		locationQuestion = new PersonalQAState(
+				questions.get("origin"),
+				Lists.stringList("Oh, I have never heard of that."),
+				Lists.strArray(new String[]{"Oh, I should visit ",""}),
+				ORIGIN);
+		LocationDBpedia locationDBpedia = new LocationDBpedia();
+		locationDBpedia.setNextState(this);
+		locationQuestion.setSuccess(locationDBpedia);
 		questionStates = new PersonalQAState[]{
+			locationQuestion,
 			new PersonalQAState(
-					questions.get("occupation"),
-					Lists.stringList("Can you explain what you do there?"), 
-					Lists.strArray(new String[]{"And do you enjoy ",""}), 
-					PROFESSION),
-			new PersonalQAState(
-					questions.get("origin"),
-					Lists.stringList("Oh, I have never heard of that."), 
-					Lists.strArray(new String[]{"Oh, I should visit ",""}), 
-					ORIGIN),
-			new PersonalQAState(
+						questions.get("occupation"),
+						Lists.stringList("Oh well, whatever"),
+						Lists.strArray(new String[]{"You are probably very poor doing ",""}),
+						PROFESSION),
+			 new PersonalQAState(
 					questions.get("hobby"),
-					Lists.stringList("Tell me more about that. Is that fun?"), 
-					Lists.strArray(new String[]{""," Do you think a robot can do that as well?"}), 
+					Lists.stringList("Don't know what that is, but good luck!"),
+					Lists.strArray(new String[]{"Just like me, I love "," too"}),
 					HOBBY),
 			new PersonalQAState(
 					questions.get("movies"),
-					Lists.stringList("Haven't heard of it. Who stars in it?"),
-					Lists.strArray(new String[]{"Oh, I would watch ",". If those vision guys finally fixed my perception."}), 
+					Lists.stringList("Haven't heard of it. Probably it's shit"),
+					Lists.strArray(new String[]{"Oh, I would watch ",". If those vision guys finally fixed my perception."}),
 					MOVIE)
 		};
 		alreadyAsked = new boolean[questionStates.length];
@@ -56,11 +61,11 @@ public class QuestionRandomizerState implements State{
 		WorkingMemory memory = WorkingMemory.getInstance();
 		chosenState = null;
 		List<Triple> nameTriples = memory.retrieve(new Triple("is","name",null));
-		if(nameTriples.isEmpty()) inner.act();
+		if(nameTriples.isEmpty()) return inner.act();
 		String name = nameTriples.get(0).patiens;
 //		List<Triple> infos = memory.retrieve(new Triple(null,name,null));
 //		infos.addAll(memory.retrieve(new Triple(null,null,name)));
-		if(Math.random()<0.2){
+		if(Math.random()<1){
 			int index = (int) (Math.random()*questionStates.length);
 			if(!alreadyAsked[index]){
 				alreadyAsked[index] = true;
@@ -80,7 +85,7 @@ public class QuestionRandomizerState implements State{
 	}
 
 	public void setTop(State top){
-		for(int i=0; i<questionStates.length; i++){
+		for(int i=1; i<questionStates.length; i++){
 			questionStates[i].setNextState(top);
 		}
 	}
