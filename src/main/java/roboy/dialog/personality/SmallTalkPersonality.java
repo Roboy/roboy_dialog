@@ -3,18 +3,21 @@ package roboy.dialog.personality;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.util.*;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
 import roboy.dialog.action.SpeechAction;
 import roboy.dialog.personality.states.*;
 import roboy.linguistics.Linguistics;
-import roboy.linguistics.Question;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.StatementInterpreter;
 import roboy.talk.Verbalizer;
+import roboy.util.JsonUtils;
 import roboy.util.Lists;
 
 /**
@@ -39,19 +42,9 @@ public class SmallTalkPersonality implements Personality {
     public SmallTalkPersonality(Verbalizer verbalizer) {
         this.verbalizer = verbalizer;
 
-        String path = "ontology/questions/";
-        List<String> nameQuestions = getQuestionFromJsonFile(path + "nameQuestion.json");
-        List<String> occupationQuestions = getQuestionFromJsonFile(path + "occupationQuestion.json");
-        List<String> originQuestions = getQuestionFromJsonFile(path + "originQuestion.json");
-        List<String> hobbyQuestions = getQuestionFromJsonFile(path + "hobbyQuestion.json");
-        List<String> moviesQuestions = getQuestionFromJsonFile(path + "moviesQuestion.json");
-
-        Map<String, List<String>> questions = new HashMap<>();
-        questions.put("name", nameQuestions);
-        questions.put("origin", originQuestions);
-        questions.put("hobby", hobbyQuestions);
-        questions.put("movies", moviesQuestions);
-        questions.put("occupation", occupationQuestions);
+        //Fetch the map: question type ("name", "occupation") -> list of phrasings for the question.
+        String questionsFile = "questions/questions.json";
+        Map<String, List<String>> questions = JsonUtils.getQuestionFromJsonFile(questionsFile);
 
         // build state machine
         GreetingState greetings = new GreetingState();
@@ -119,15 +112,5 @@ public class SmallTalkPersonality implements Personality {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    private List<String> getQuestionFromJsonFile(String file) {
-        ClassLoader cl = this.getClass().getClassLoader();
-        InputStream input = cl.getResourceAsStream(file);
-        BufferedReader br = new BufferedReader( new InputStreamReader(input));
-        Gson gson = new Gson();
-
-        Question q = gson.fromJson(br, Question.class);
-        return q.question;
     }
 }

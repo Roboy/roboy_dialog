@@ -119,10 +119,10 @@ public class DialogSystem {
 		OutputDevice multiOut = new MultiOutputDevice(output, emotion);
 
         // initialize ROS node
-		RosMainNode.getInstance();
+		//RosMainNode.getInstance();
 
 		// connect to ROS bridge
-		Ros.getInstance();
+		//Ros.getInstance();
 
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new SimpleTokenizer());
