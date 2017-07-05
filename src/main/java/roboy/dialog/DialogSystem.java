@@ -96,8 +96,8 @@ public class DialogSystem {
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
 
 
-	    InputDevice input = new CommandLineInput();
-//		 InputDevice input = new BingInput();
+//	    InputDevice input = new CommandLineInput();
+		 InputDevice input = new BingInput();
 		InputDevice celebInput = new CelebritySimilarityInput();
 //		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
 		InputDevice multiIn = new MultiInputDevice(input);//, celebInput, roboyDetectInput);
@@ -126,6 +126,7 @@ public class DialogSystem {
 		analyzers.add(new OpenNLPParser());
 		analyzers.add(new OntologyNERAnalyzer());
 		analyzers.add(new AnswerAnalyzer());
+		analyzers.add(new EmotionAnalyzer());
 
 
 

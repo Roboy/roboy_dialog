@@ -39,5 +39,6 @@ public class Linguistics {
 	public static final String ROBOYDETECTED = "roboydetected";
 	public static final String OBJ_ANSWER = "objanswer";
 	public static final String PRED_ANSWER = "predanswer";
+	public static final String EMOTION = "emotion";
 	
 }

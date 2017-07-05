@@ -23,7 +23,8 @@ public class EmotionOutput implements OutputDevice
 	public void act(List<Action> actions) {
 		for (Action a : actions) {
 			if (a instanceof FaceAction) {
-				ChangeFaceState((FaceAction) a);
+				System.out.print(((FaceAction) a).getState());
+//				ChangeFaceState((FaceAction) a);
 			}
 		}
 	}
@@ -32,7 +33,8 @@ public class EmotionOutput implements OutputDevice
 		if (action instanceof FaceAction) {
 			if (((FaceAction) action).getDuration()>0)
 			{
-				ChangeFaceState((FaceAction) action);
+				System.out.print(((FaceAction) action).getState());
+//				ChangeFaceState((FaceAction) action);
 			}
 
 		}

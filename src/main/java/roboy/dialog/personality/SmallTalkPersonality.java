@@ -43,7 +43,82 @@ public class SmallTalkPersonality implements Personality {
 
     public SmallTalkPersonality(Verbalizer verbalizer) {
         this.verbalizer = verbalizer;
+        this.initialize();
 
+    }
+
+    /**
+     * Reacts to inputs based on the corresponding state Roboy is in. Each state
+     * returns a reaction to what was said and then proactively takes an action of
+     * its own. Both are combined to return the list of output actions.
+     */
+    @Override
+    public List<Action> answer(Interpretation input) {
+
+        try {
+
+            if ( Verbalizer.farewells.contains(input.getFeature(Linguistics.SENTENCE)))
+            {
+                this.initialize();
+                return Lists.actionList(new SpeechAction(Verbalizer.farewells.get((int) (Math.random()*Verbalizer.farewells.size()))));
+            }
+
+            String name = null;
+            List<Triple> names = WorkingMemory.getInstance().retrieve(new Triple("is", "name", null));
+            if (!names.isEmpty()) {
+                name = names.get(0).patiens;
+            }
+            String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
+            List<Action> act = Lists.actionList();
+
+            if (StatementInterpreter.isFromList(sentence, Verbalizer.farewells)) {
+                //if found stop conversation
+                state = new FarewellState();
+            }
+
+            //check for profanity words
+            if (sentence.contains("profanity")) {
+                act.add(0, new FaceAction("angry"));
+            }
+
+            Reaction reaction = state.react(input);
+
+            if (name != null && Math.random() < 0.3) { // TODO: this should go in the Verbalizer
+                List<String> namePhrases = Arrays.asList("So %s, ", "Hey %s, ", "%s, listen to me, ", "oh well, %s, ", "%s, ");
+                String phrase = String.format(namePhrases.get(new Random().nextInt(4)), name);
+                act.add(0, new SpeechAction(phrase));
+            }
+            List<Interpretation> intentions = reaction.getReactions();
+            for (Interpretation i : intentions) {
+                act.add(verbalizer.verbalize(i));
+            }
+            state = reaction.getState();
+            intentions = state.act();
+            for (Interpretation i : intentions) {
+                act.add(verbalizer.verbalize(i));
+            }
+            if (input.getFeatures().containsKey(Linguistics.EMOTION)) {
+                act.add(new FaceAction((String) input.getFeatures().get(Linguistics.EMOTION)));
+            }
+            return act;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return Lists.actionList(new FaceAction("shy"), new SpeechAction("Oopsie, got an exception just now. Recovering"));
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private void initialize()
+    {
         // build state machine
         GreetingState greetings = new GreetingState();
         IntroductionState intro = new IntroductionState();
@@ -60,61 +135,5 @@ public class SmallTalkPersonality implements Personality {
         wild.setNextState(qa);
 
         state = greetings;
-    }
-
-    /**
-     * Reacts to inputs based on the corresponding state Roboy is in. Each state
-     * returns a reaction to what was said and then proactively takes an action of
-     * its own. Both are combined to return the list of output actions.
-     */
-    @Override
-    public List<Action> answer(Interpretation input) {
-
-        String name = null;
-        List<Triple> names = WorkingMemory.getInstance().retrieve(new Triple("is", "name", null));
-        if (!names.isEmpty())
-        {
-            name = names.get(0).patiens;
-        }
-        String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
-        List<Action> act = Lists.actionList();
-
-        if (StatementInterpreter.isFromList(sentence, Verbalizer.farewells))
-        {
-            //if found stop conversation
-            state = new FarewellState();
-        }
-
-        //check for profanity words
-        if(sentence.contains("profanity"))
-        {
-            act.add(0, new FaceAction("angry"));
-        }
-
-        Reaction reaction = state.react(input);
-
-        if (name != null && Math.random() < 0.3) { // TODO: this should go in the Verbalizer
-            List<String> namePhrases = Arrays.asList("So %s, ", "Hey %s, ", "%s, listen to me, ", "oh well, %s, ", "%s, ");
-            String phrase = String.format(namePhrases.get(new Random().nextInt(4)), name);
-            act.add(0, new SpeechAction(phrase));
-        }
-        List<Interpretation> intentions = reaction.getReactions();
-        for (Interpretation i : intentions) {
-            act.add(verbalizer.verbalize(i));
-        }
-        state = reaction.getState();
-        intentions = state.act();
-        for (Interpretation i : intentions) {
-            act.add(verbalizer.verbalize(i));
-        }
-        return act;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }
