@@ -1,10 +1,12 @@
 package roboy.dialog.personality.states;
 
 import java.util.List;
+import java.util.Map;
 
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.WorkingMemory;
+import roboy.util.JsonUtils;
 import roboy.util.Lists;
 
 public class QuestionRandomizerState implements State{
@@ -22,8 +24,11 @@ public class QuestionRandomizerState implements State{
 	
 	public QuestionRandomizerState(State inner) {
 		this.inner = inner;
+		//Fetch the map: question type ("name", "occupation") -> list of phrasings for the question.
+		String questionsFile = "questions/questions.json";
+		Map<String, List<String>> questions = JsonUtils.getQuestionFromJsonFile(questionsFile);
 		locationQuestion = new PersonalQAState(
-				Lists.stringList("Where are you from?"),
+				questions.get("origin"),
 				Lists.stringList("Oh, I have never heard of that."),
 				Lists.strArray(new String[]{"Oh, I should visit ",""}),
 				ORIGIN);
@@ -32,19 +37,19 @@ public class QuestionRandomizerState implements State{
 		locationQuestion.setSuccess(locationDBpedia);
 		questionStates = new PersonalQAState[]{
 			locationQuestion,
-				new PersonalQAState(
-						Lists.stringList("What do you do for a living?"),
-						Lists.stringList("Can you explain what you do there?"),
+			new PersonalQAState(
+						questions.get("occupation"),
+						Lists.stringList("Oh well, whatever"),
 						Lists.strArray(new String[]{"You are probably very poor doing ",""}),
 						PROFESSION),
-			new PersonalQAState(
-					Lists.stringList("How do you spend your free time?"),
-					Lists.stringList("Tell me more about that. Is that fun?"),
+			 new PersonalQAState(
+					questions.get("hobby"),
+					Lists.stringList("Don't know what that is, but good luck!"),
 					Lists.strArray(new String[]{"Just like me, I love "," too"}),
 					HOBBY),
 			new PersonalQAState(
-					Lists.stringList("What is your favourite movie?"),
-					Lists.stringList("Haven't heard of it. Who stars in it?"),
+					questions.get("movies"),
+					Lists.stringList("Haven't heard of it. Probably it's shit"),
 					Lists.strArray(new String[]{"Oh, I would watch ",". If those vision guys finally fixed my perception."}),
 					MOVIE)
 		};
