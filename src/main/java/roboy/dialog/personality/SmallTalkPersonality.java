@@ -42,10 +42,6 @@ public class SmallTalkPersonality implements Personality {
     public SmallTalkPersonality(Verbalizer verbalizer) {
         this.verbalizer = verbalizer;
 
-        //Fetch the map: question type ("name", "occupation") -> list of phrasings for the question.
-        String questionsFile = "questions/questions.json";
-        Map<String, List<String>> questions = JsonUtils.getQuestionFromJsonFile(questionsFile);
-
         // build state machine
         GreetingState greetings = new GreetingState();
         IntroductionState intro = new IntroductionState();

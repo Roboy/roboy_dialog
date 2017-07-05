@@ -1,10 +1,12 @@
 package roboy.dialog.personality.states;
 
 import java.util.List;
+import java.util.Map;
 
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.WorkingMemory;
+import roboy.util.JsonUtils;
 import roboy.util.Lists;
 
 public class QuestionRandomizerState implements State{
@@ -21,25 +23,28 @@ public class QuestionRandomizerState implements State{
 	
 	public QuestionRandomizerState(State inner) {
 		this.inner = inner;
+		//Fetch the map: question type ("name", "occupation") -> list of phrasings for the question.
+		String questionsFile = "questions/questions.json";
+		Map<String, List<String>> questions = JsonUtils.getQuestionFromJsonFile(questionsFile);
 		questionStates = new PersonalQAState[]{
 			new PersonalQAState(
-					Lists.stringList("What do you do for a living?"), 
+					questions.get("occupation"),
 					Lists.stringList("Can you explain what you do there?"), 
 					Lists.strArray(new String[]{"And do you enjoy ",""}), 
 					PROFESSION),
 			new PersonalQAState(
-					Lists.stringList("Where are you from?"), 
+					questions.get("origin"),
 					Lists.stringList("Oh, I have never heard of that."), 
 					Lists.strArray(new String[]{"Oh, I should visit ",""}), 
 					ORIGIN),
 			new PersonalQAState(
-					Lists.stringList("How do you spend your free time?"), 
+					questions.get("hobby"),
 					Lists.stringList("Tell me more about that. Is that fun?"), 
 					Lists.strArray(new String[]{""," Do you think a robot can do that as well?"}), 
 					HOBBY),
 			new PersonalQAState(
-					Lists.stringList("What is your favourite movie?"), 
-					Lists.stringList("Haven't heard of it. Who stars in it?"), 
+					questions.get("movies"),
+					Lists.stringList("Haven't heard of it. Who stars in it?"),
 					Lists.strArray(new String[]{"Oh, I would watch ",". If those vision guys finally fixed my perception."}), 
 					MOVIE)
 		};
