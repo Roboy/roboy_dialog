@@ -23,29 +23,29 @@ public class QuestionRandomizerState implements State{
 	public QuestionRandomizerState(State inner) {
 		this.inner = inner;
 		locationQuestion = new PersonalQAState(
-				Lists.stringList("What do you do for a living?"),
-				Lists.stringList("Can you explain what you do there?"),
-				Lists.strArray(new String[]{"You are probably very poor doing ",""}),
-				PROFESSION);
+				Lists.stringList("Where are you from?"),
+				Lists.stringList("Oh, I have never heard of that."),
+				Lists.strArray(new String[]{"Oh, I should visit ",""}),
+				ORIGIN);
 		LocationDBpedia locationDBpedia = new LocationDBpedia();
 		locationDBpedia.setNextState(this);
 		locationQuestion.setSuccess(locationDBpedia);
 		questionStates = new PersonalQAState[]{
 			locationQuestion,
+				new PersonalQAState(
+						Lists.stringList("What do you do for a living?"),
+						Lists.stringList("Can you explain what you do there?"),
+						Lists.strArray(new String[]{"You are probably very poor doing ",""}),
+						PROFESSION),
 			new PersonalQAState(
-					Lists.stringList("Where are you from?"), 
-					Lists.stringList("Oh, I have never heard of that."), 
-					Lists.strArray(new String[]{"Oh, I should visit ",""}), 
-					ORIGIN),
-			new PersonalQAState(
-					Lists.stringList("How do you spend your free time?"), 
-					Lists.stringList("Tell me more about that. Is that fun?"), 
+					Lists.stringList("How do you spend your free time?"),
+					Lists.stringList("Tell me more about that. Is that fun?"),
 					Lists.strArray(new String[]{"Just like me, I love "," too"}),
 					HOBBY),
 			new PersonalQAState(
-					Lists.stringList("What is your favourite movie?"), 
-					Lists.stringList("Haven't heard of it. Who stars in it?"), 
-					Lists.strArray(new String[]{"Oh, I would watch ",". If those vision guys finally fixed my perception."}), 
+					Lists.stringList("What is your favourite movie?"),
+					Lists.stringList("Haven't heard of it. Who stars in it?"),
+					Lists.strArray(new String[]{"Oh, I would watch ",". If those vision guys finally fixed my perception."}),
 					MOVIE)
 		};
 		alreadyAsked = new boolean[questionStates.length];
@@ -80,7 +80,7 @@ public class QuestionRandomizerState implements State{
 	}
 
 	public void setTop(State top){
-		for(int i=0; i<questionStates.length; i++){
+		for(int i=1; i<questionStates.length; i++){
 			questionStates[i].setNextState(top);
 		}
 	}
