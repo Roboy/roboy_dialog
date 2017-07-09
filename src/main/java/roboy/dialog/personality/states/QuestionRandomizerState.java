@@ -33,7 +33,8 @@ public class QuestionRandomizerState implements State{
 				Lists.strArray(new String[]{"Oh, I should visit ",""}),
 				ORIGIN);
 		LocationDBpedia locationDBpedia = new LocationDBpedia();
-		locationDBpedia.setNextState(this);
+		locationDBpedia.setSuccess(this);
+		locationDBpedia.setFailure(this);
 		locationQuestion.setSuccess(locationDBpedia);
 		questionStates = new PersonalQAState[]{
 			locationQuestion,
@@ -45,7 +46,7 @@ public class QuestionRandomizerState implements State{
 			 new PersonalQAState(
 					questions.get("hobby"),
 					Lists.stringList("Don't know what that is, but good luck!"),
-					Lists.strArray(new String[]{"Just like me, I love "," too"}),
+					Lists.strArray(new String[]{"Just like me, I love it "," too"}),
 					HOBBY),
 			new PersonalQAState(
 					questions.get("movies"),
@@ -65,7 +66,7 @@ public class QuestionRandomizerState implements State{
 		String name = nameTriples.get(0).patiens;
 //		List<Triple> infos = memory.retrieve(new Triple(null,name,null));
 //		infos.addAll(memory.retrieve(new Triple(null,null,name)));
-		if(Math.random()<0.5){
+		if(Math.random()<1){
 			int index = (int) (Math.random()*questionStates.length);
 			if(!alreadyAsked[index]){
 				alreadyAsked[index] = true;

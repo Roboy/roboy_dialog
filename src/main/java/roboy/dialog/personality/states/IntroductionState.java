@@ -42,14 +42,14 @@ public class IntroductionState extends AbstractBooleanState{
 			name = tokens[0];
 		} else {
 			Map<SEMANTIC_ROLE,Object> pas = (Map<SEMANTIC_ROLE,Object>) input.getFeature(Linguistics.PAS);
-			if(pas==null || pas.containsKey(SEMANTIC_ROLE.PREDICATE)) return false;
+			if(pas==null || !pas.containsKey(SEMANTIC_ROLE.PREDICATE)) return false;
 			String predicate = ((String)pas.get(SEMANTIC_ROLE.PREDICATE)).toLowerCase();
 			String agent = (String)pas.get(SEMANTIC_ROLE.AGENT);
 			String patient = (String)pas.get(SEMANTIC_ROLE.PATIENT);
-			if(agent==null) return false;
-			if(patient==null) return false;
-			if(!"am".equals(predicate) && !"is".equals(predicate)) return false;
-			if(!agent.toLowerCase().contains("i") && !agent.toLowerCase().contains("my")) return false;
+			if(agent==null) agent = "i";
+			if(patient==null) agent = "laura";
+			//if(!"am".equals(predicate) && !"is".equals(predicate)) return false;
+			//if(!agent.toLowerCase().contains("i") && !agent.toLowerCase().contains("my")) return false;
 			name = patient;
 		}
 		if(name!=null){

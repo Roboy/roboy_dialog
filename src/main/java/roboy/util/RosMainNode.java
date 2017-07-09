@@ -66,7 +66,7 @@ public class RosMainNode extends AbstractNodeMain {
 
         try {
             speechSynthesisClient = connectedNode.newServiceClient("/roboy/cognition/speech/synthesis/talk", Talk._TYPE);
-            generativeClient = connectedNode.newServiceClient("/roboy/cognition/gnlp/predict", GenerateAnswer._TYPE);
+            generativeClient = connectedNode.newServiceClient("/roboy/cognition/generative_nlp/answer", GenerateAnswer._TYPE);
 //            faceDetectionClient = connectedNode.newServiceClient("/speech_synthesis/talk", DetectFace._TYPE);
 //            objectRecognitionRequest = connectedNode.newServiceClient("/speech_synthesis/talk", RecognizeObject._TYPE);
             sttClient = connectedNode.newServiceClient("/roboy/cognition/speech/recognition", RecognizeSpeech._TYPE);
@@ -84,7 +84,7 @@ public class RosMainNode extends AbstractNodeMain {
         ServiceResponseListener<TalkResponse> listener = new ServiceResponseListener<TalkResponse>() {
             @Override
             public void onSuccess(TalkResponse response) {
-                System.out.println(response.getSuccess());
+//                System.out.println(response.getSuccess());
                 resp = response.getSuccess();
                 rosConnectionLatch.countDown();
             }
@@ -107,7 +107,7 @@ public class RosMainNode extends AbstractNodeMain {
         ServiceResponseListener<RecognizeSpeechResponse> listener = new ServiceResponseListener<RecognizeSpeechResponse>() {
             @Override
             public void onSuccess(RecognizeSpeechResponse response) {
-                System.out.println(response.getText());
+//                System.out.println(response.getText());
                 resp = response.getText();
                 rosConnectionLatch.countDown();
             }
@@ -132,7 +132,7 @@ public class RosMainNode extends AbstractNodeMain {
         ServiceResponseListener<GenerateAnswerResponse> listener = new ServiceResponseListener<GenerateAnswerResponse>() {
             @Override
             public void onSuccess(GenerateAnswerResponse response) {
-                System.out.println(response.getTextOutput());
+//                System.out.println(response.getTextOutput());
                 resp = response.getTextOutput();
                 rosConnectionLatch.countDown();
             }

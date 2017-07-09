@@ -11,6 +11,11 @@ import roboy.util.Lists;
  */
 public class FarewellState implements State{
 
+
+	public FarewellState()
+	{
+
+	}
 	@Override
 	public List<Interpretation> act() {
 		return Lists.interpretationList(new Interpretation(SENTENCE_TYPE.FAREWELL));
@@ -18,7 +23,7 @@ public class FarewellState implements State{
 
 	@Override
 	public Reaction react(Interpretation input) {
-		return new Reaction(new IdleState(), Lists.interpretationList(new Interpretation(SENTENCE_TYPE.FAREWELL)));
+		return new Reaction(new GreetingState(), Lists.interpretationList(new Interpretation(SENTENCE_TYPE.FAREWELL)));
 	}
 
 }

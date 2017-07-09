@@ -7,8 +7,10 @@ import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.Lists;
 import roboy.util.Ros;
+import roboy.util.RosMainNode;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * The generative model talking wildly.
@@ -16,17 +18,17 @@ import java.util.List;
 public class WildTalkState implements State{
 
 //    private boolean talking = false;
-    private Service generativeModel;
+//    private Service generativeModel;
     private State next = this;
 
-    public WildTalkState() {
-    	edu.wpi.rail.jrosbridge.Ros ros = Ros.getInstance();
-//    	if(ros.isConnected()){
-//        	generativeModel = new Service(Ros.getInstance(), "/roboy/cognition/gnlp/predict", "generative_nlp/seq2seq_predict");
-//    	} else {
-    	generativeModel = null;
-//    	}
-	}
+//    public WildTalkState() {
+////    	edu.wpi.rail.jrosbridge.Ros ros = Ros.getInstance();
+////    	if(ros.isConnected()){
+////        	generativeModel = new Service(Ros.getInstance(), "/roboy/cognition/gnlp/predict", "generative_nlp/seq2seq_predict");
+////    	} else {
+//    	generativeModel = null;
+////    	}
+//	}
     
     @Override
     public List<Interpretation> act() {
@@ -43,28 +45,29 @@ public class WildTalkState implements State{
 
     @Override
     public Reaction react(Interpretation input) {
+
         String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
         if(!sentence.isEmpty()) {
-            return new Reaction(next, Lists.interpretationList(new Interpretation(callGenerativeModel(sentence))));
+            String reaction = RosMainNode.getInstance().GenerateAnswer(sentence);
+            return new Reaction(next, Lists.interpretationList(new Interpretation(reaction)));
         }
         return new Reaction(next,Lists.interpretationList(new Interpretation("I am out of words.")));
     }
 
-    protected String callGenerativeModel(String sentence) {
-    	if(generativeModel==null){
-    		return "I don't know what to say.";
-    	} else {
-            ServiceRequest request = new ServiceRequest("{\"text_input\": " + "\"" + sentence + "\"}");
-            String response = generativeModel.callServiceAndWait(request).toString();
-
-            JSONObject obj = new JSONObject(response);
-            String text = obj.getString("text_output");
-            return text;
-    	}
-    }
+//    protected String callGenerativeModel(String sentence) {
+//    	if(generativeModel==null){
+//    		return "I don't know what to say.";
+//    	} else {
+//            ServiceRequest request = new ServiceRequest("{\"text_input\": " + "\"" + sentence + "\"}");
+//            String response = generativeModel.callServiceAndWait(request).toString();
+//
+//            JSONObject obj = new JSONObject(response);
+//            String text = obj.getString("text_output");
+//            return text;
+//    	}
+//    }
     
     public void setNextState(State next){
     	this.next = next;
     }
-
 }

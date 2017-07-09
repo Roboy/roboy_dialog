@@ -33,7 +33,7 @@ public class LocationDBpedia extends AbstractBooleanState {
         DBpediaMemory memory = DBpediaMemory.getInstance();
         Map<String, Relation> queries = new HashMap<>();new ArrayList<Relation>();
         queries.put(location + " has population of ", new Relation(new Concept(location), "populationTotal", new Concept()));
-        queries.put("The elevation of " + location + " above sea level in meters is " , new Relation(new Concept(location), "elevation", new Concept()));
+//        queries.put("The elevation of " + location + " above sea level in meters is " , new Relation(new Concept(location), "elevation", new Concept()));
         queries.put("The capital of " + location + " is " , new Relation(new Concept(location), "capital", new Concept()));
         queries.put("Here's the thing I know about " + location, new Relation(new Concept(location), "location", new Concept()));
         String toQuery = queries.keySet().toArray()[generator.nextInt(queries.size())].toString();

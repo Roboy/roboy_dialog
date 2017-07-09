@@ -22,7 +22,7 @@ public class EmotionAnalyzer implements Analyzer {
         else if (tokens.contains("right") )
             sentence.getFeatures().put(Linguistics.EMOTION, "lookright");
         else if (tokens.contains("cat") || tokens.contains("cats") )
-            sentence.getFeatures().put(Linguistics.EMOTION, "cateyes");
+            sentence.getFeatures().put(Linguistics.EMOTION, "catiris");
         if (sentence.getFeatures().containsKey(Linguistics.ROBOYDETECTED))
         {
             sentence.getFeatures().put(Linguistics.EMOTION, "smileblink");

@@ -92,15 +92,24 @@ public class SmallTalkPersonality implements Personality {
             for (Interpretation i : intentions) {
                 act.add(verbalizer.verbalize(i));
             }
-            state = reaction.getState();
-            intentions = state.act();
-            for (Interpretation i : intentions) {
-                act.add(verbalizer.verbalize(i));
+            try{
+                state = reaction.getState();
+                intentions = state.act();
+                for (Interpretation i : intentions) {
+                    act.add(verbalizer.verbalize(i));
+                }
+                if (input.getFeatures().containsKey(Linguistics.EMOTION)) {
+                    act.add(new FaceAction((String) input.getFeatures().get(Linguistics.EMOTION)));
+                }
+                return act;
             }
-            if (input.getFeatures().containsKey(Linguistics.EMOTION)) {
-                act.add(new FaceAction((String) input.getFeatures().get(Linguistics.EMOTION)));
+            catch (NullPointerException e)
+            {
+                this.initialize();
+                return Lists.actionList(new FaceAction("shy"), new SpeechAction("Oopsie, got an exception just now. Recovering"));
             }
-            return act;
+
+
         }
         catch (Exception e)
         {

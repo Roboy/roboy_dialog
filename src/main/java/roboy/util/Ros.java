@@ -10,7 +10,7 @@ public class Ros {
     private static final String ROS_URL = System.getenv("ROS_IP");
 
     private Ros() {
-        ros = new edu.wpi.rail.jrosbridge.Ros(ROS_URL);
+        ros = new edu.wpi.rail.jrosbridge.Ros(ROS_URL, 9092);
         ros.connect();
         System.out.println("ROS bridge is set up");
     }
