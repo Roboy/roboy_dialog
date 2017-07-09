@@ -115,7 +115,7 @@ public class DialogSystem {
 		RosMainNode.getInstance();
 
 		// connect to ROS bridge
-		Ros.getInstance();
+//		Ros.getInstance();
 
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new Preprocessor());

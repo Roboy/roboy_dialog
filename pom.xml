@@ -234,5 +234,11 @@
             <version>0.0.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.ros.rosjava_messages</groupId>
+            <artifactId>roboy_communication_control</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
     </dependencies>
 </project>

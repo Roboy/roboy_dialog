@@ -46,7 +46,7 @@ public class QuestionRandomizerState implements State{
 			 new PersonalQAState(
 					questions.get("hobby"),
 					Lists.stringList("Don't know what that is, but good luck!"),
-					Lists.strArray(new String[]{"Just like me, I love it "," too"}),
+					Lists.strArray(new String[]{"Just like me, I love "," too"}),
 					HOBBY),
 			new PersonalQAState(
 					questions.get("movies"),

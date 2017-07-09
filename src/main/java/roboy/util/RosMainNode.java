@@ -10,6 +10,7 @@ import org.ros.node.service.ServiceClient;
 import org.ros.node.service.ServiceResponseListener;
 
 import roboy_communication_cognition.*;
+import roboy_communication_control.*;
 
 import java.net.URI;
 import java.util.concurrent.CountDownLatch;
@@ -23,6 +24,7 @@ public class RosMainNode extends AbstractNodeMain {
 //    private ServiceClient<DetectFaceRequest, DetectFaceResponse> faceDetectionClient;
 //    private ServiceClient<RecognizeObjectRequest, RecognizeObjectResponse> objectRecognitionRequest;
     private ServiceClient<RecognizeSpeechRequest, RecognizeSpeechResponse> sttClient;
+    private ServiceClient<ShowEmotionRequest, ShowEmotionResponse> emotionClient;
     protected Object resp;
 
     private RosMainNode()
@@ -70,6 +72,7 @@ public class RosMainNode extends AbstractNodeMain {
 //            faceDetectionClient = connectedNode.newServiceClient("/speech_synthesis/talk", DetectFace._TYPE);
 //            objectRecognitionRequest = connectedNode.newServiceClient("/speech_synthesis/talk", RecognizeObject._TYPE);
             sttClient = connectedNode.newServiceClient("/roboy/cognition/speech/recognition", RecognizeSpeech._TYPE);
+            emotionClient = connectedNode.newServiceClient("/roboy/control/face/emotion", ShowEmotion._TYPE);
         } catch (ServiceNotFoundException e) {
             throw new RosRuntimeException(e);
         }
@@ -146,6 +149,30 @@ public class RosMainNode extends AbstractNodeMain {
         generativeClient.call(request,  listener);
         waitForLatchUnlock(rosConnectionLatch, sttClient.getName().toString());
         return ((String) resp);
+    }
+
+    public boolean ShowEmotion(String emotion)
+    {
+        rosConnectionLatch = new CountDownLatch(1);
+        ShowEmotionRequest request = emotionClient.newMessage();
+        request.setEmotion(emotion);
+        ServiceResponseListener<ShowEmotionResponse> listener = new ServiceResponseListener<ShowEmotionResponse>() {
+            @Override
+            public void onSuccess(ShowEmotionResponse response) {
+//                System.out.println(response.getTextOutput());
+                resp = response.getSuccess();
+                rosConnectionLatch.countDown();
+            }
+
+            @Override
+            public void onFailure(RemoteException e) {
+                rosConnectionLatch.countDown();
+                throw new RosRuntimeException(e);
+            }
+        };
+        emotionClient.call(request,  listener);
+        waitForLatchUnlock(rosConnectionLatch, sttClient.getName().toString());
+        return ((boolean) resp);
     }
 
     /**

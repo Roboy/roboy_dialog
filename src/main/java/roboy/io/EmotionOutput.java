@@ -12,6 +12,7 @@ import edu.wpi.rail.jrosbridge.services.ServiceResponse;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
 import roboy.util.Ros;
+import roboy.util.RosMainNode;
 
 /**
  * Roboy's facial expression output.
@@ -24,7 +25,7 @@ public class EmotionOutput implements OutputDevice
 		for (Action a : actions) {
 			if (a instanceof FaceAction) {
 				System.out.print(((FaceAction) a).getState());
-				ChangeFaceState((FaceAction) a);
+				RosMainNode.getInstance().ShowEmotion(((FaceAction) a).getState());
 			}
 		}
 	}
@@ -34,25 +35,10 @@ public class EmotionOutput implements OutputDevice
 			if (((FaceAction) action).getDuration()>0)
 			{
 				System.out.print(((FaceAction) action).getState());
-				ChangeFaceState((FaceAction) action);
+				RosMainNode.getInstance().ShowEmotion(((FaceAction) action).getState());
 			}
 
 		}
 	}
-	
-	private void ChangeFaceState(FaceAction action)
-	{
-	    Service FaceState = new Service(Ros.getInstance(), "/roboy_face/show_emotion", "/roboy_face/show_emotion");
-	    
-	    JsonObject params = Json.createObjectBuilder()
-	     .add("emotion", action.getState())
-//	     .add("duration", 1)
-	     .build();
 
-	    System.out.println("Face state: " + action.getState());
-
-		ServiceRequest request = new ServiceRequest(params);
-		FaceState.callServiceAndWait(request);
-	}
-	
 }
