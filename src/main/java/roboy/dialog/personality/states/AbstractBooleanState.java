@@ -88,9 +88,4 @@ public abstract class AbstractBooleanState implements State {
      */
     abstract protected boolean determineSuccess(Interpretation input);
 
-
-//    protected String callGenerativeModel(String sentence) {
-//        String text = RosMainNode.getInstance().GenerateAnswer(sentence);
-//        return text;
-//    }
 }

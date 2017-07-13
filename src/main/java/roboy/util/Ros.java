@@ -1,5 +1,5 @@
 package roboy.util;
-
+@Deprecated
 /**
  * Communication with ROS.
  */

@@ -14,14 +14,14 @@ public class RosCommunicationTest {
     @Test
     public void TestGenerativeModel()
     {
-        RosMainNode.getInstance();
+        RosMainNode node = new RosMainNode();
         try {
             TimeUnit.SECONDS.sleep(3);
         }catch (Exception e)
         {
             e.printStackTrace();
         }
-        WildTalkState s = new WildTalkState();
+        WildTalkState s = new WildTalkState(node);
         System.out.print(s.react(new Interpretation("wazuup")).getReactions().get(0).toString());
     }
 }

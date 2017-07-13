@@ -19,13 +19,18 @@ import roboy.util.RosMainNode;
  */
 public class EmotionOutput implements OutputDevice 
 {
-	
+	private RosMainNode rosMainNode;
+
+	public EmotionOutput (RosMainNode node){
+		this.rosMainNode = node;
+	}
+
 	@Override
 	public void act(List<Action> actions) {
 		for (Action a : actions) {
 			if (a instanceof FaceAction) {
 				System.out.print(((FaceAction) a).getState());
-				RosMainNode.getInstance().ShowEmotion(((FaceAction) a).getState());
+				rosMainNode.ShowEmotion(((FaceAction) a).getState());
 			}
 		}
 	}
@@ -35,7 +40,7 @@ public class EmotionOutput implements OutputDevice
 			if (((FaceAction) action).getDuration()>0)
 			{
 				System.out.print(((FaceAction) action).getState());
-				RosMainNode.getInstance().ShowEmotion(((FaceAction) action).getState());
+				rosMainNode.ShowEmotion(((FaceAction) action).getState());
 			}
 
 		}

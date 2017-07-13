@@ -17,19 +17,15 @@ import java.util.concurrent.TimeUnit;
  */
 public class WildTalkState implements State{
 
-//    private boolean talking = false;
-//    private Service generativeModel;
-    private State next = this;
 
-//    public WildTalkState() {
-////    	edu.wpi.rail.jrosbridge.Ros ros = Ros.getInstance();
-////    	if(ros.isConnected()){
-////        	generativeModel = new Service(Ros.getInstance(), "/roboy/cognition/gnlp/predict", "generative_nlp/seq2seq_predict");
-////    	} else {
-//    	generativeModel = null;
-////    	}
-//	}
-    
+    private State next = this;
+    private RosMainNode rosMainNode;
+
+    public WildTalkState(RosMainNode node)
+    {
+        this.rosMainNode = node;
+    }
+
     @Override
     public List<Interpretation> act() {
         return Lists.interpretationList();
@@ -48,24 +44,11 @@ public class WildTalkState implements State{
 
         String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
         if(!sentence.isEmpty()) {
-            String reaction = RosMainNode.getInstance().GenerateAnswer(sentence);
+            String reaction = rosMainNode.GenerateAnswer(sentence);
             return new Reaction(next, Lists.interpretationList(new Interpretation(reaction)));
         }
         return new Reaction(next,Lists.interpretationList(new Interpretation("I am out of words.")));
     }
-
-//    protected String callGenerativeModel(String sentence) {
-//    	if(generativeModel==null){
-//    		return "I don't know what to say.";
-//    	} else {
-//            ServiceRequest request = new ServiceRequest("{\"text_input\": " + "\"" + sentence + "\"}");
-//            String response = generativeModel.callServiceAndWait(request).toString();
-//
-//            JSONObject obj = new JSONObject(response);
-//            String text = obj.getString("text_output");
-//            return text;
-//    	}
-//    }
     
     public void setNextState(State next){
     	this.next = next;

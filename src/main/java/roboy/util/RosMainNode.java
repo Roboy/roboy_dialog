@@ -17,7 +17,7 @@ import java.util.concurrent.CountDownLatch;
 
 public class RosMainNode extends AbstractNodeMain {
 
-    private static RosMainNode node;
+//    private static RosMainNode node;
     private CountDownLatch rosConnectionLatch;
     private ServiceClient<TalkRequest, TalkResponse> speechSynthesisClient;
     private ServiceClient<GenerateAnswerRequest, GenerateAnswerResponse> generativeClient;
@@ -27,9 +27,9 @@ public class RosMainNode extends AbstractNodeMain {
     private ServiceClient<ShowEmotionRequest, ShowEmotionResponse> emotionClient;
     protected Object resp;
 
-    private RosMainNode()
+    public RosMainNode()
     {
-        // start ROS nodes
+
         String hostName = System.getenv("ROS_HOSTNAME");
         if (hostName.isEmpty())
         {
@@ -46,15 +46,14 @@ public class RosMainNode extends AbstractNodeMain {
         NodeMainExecutor nodeMainExecutor = DefaultNodeMainExecutor.newDefault();
         nodeMainExecutor.execute(this, nodeConfiguration);
 
-        node = this;
     }
 
-    public static RosMainNode getInstance() {
-       if (node==null) {
-           new RosMainNode();
-       }
-       return node;
-    }
+//    public static RosMainNode getInstance() {
+//       if (node==null) {
+//           new RosMainNode();
+//       }
+//       return node;
+//    }
 
 
 

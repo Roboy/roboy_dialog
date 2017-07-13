@@ -13,11 +13,15 @@ import roboy.util.RosMainNode;
  */
 public class BingInput implements InputDevice 
 {
+	private RosMainNode rosMainNode;
 
+	public BingInput (RosMainNode node){
+		this.rosMainNode = node;
+}
 	@Override
 	public Input listen() throws InterruptedException 
 	{
-		String text = RosMainNode.getInstance().RecognizeSpeech();
+		String text = rosMainNode.RecognizeSpeech();
 	    System.out.println(text);
 		return new Input(text);
 	}

@@ -95,27 +95,23 @@ public class DialogSystem {
 	
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
 
+        // initialize ROS node
+        RosMainNode rosMainNode = new RosMainNode();
 
-//	    InputDevice input = new CommandLineInput();
-		 InputDevice input = new BingInput();
+	    InputDevice input = new CommandLineInput();
+//		 InputDevice input = new BingInput(rosMainNode);
 		InputDevice celebInput = new CelebritySimilarityInput();
 //		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
 		InputDevice multiIn = new MultiInputDevice(input);//, celebInput, roboyDetectInput);
-		
-		OutputDevice output1 = new CerevoiceOutput();
-        CerevoiceOutput output2 = new CerevoiceOutput();
+
+		OutputDevice output1 = new CerevoiceOutput(rosMainNode);
+        CerevoiceOutput output2 = new CerevoiceOutput(rosMainNode);
 		// OutputDevice output = new BingOutput();
 
-		EmotionOutput emotion = new EmotionOutput();
+		EmotionOutput emotion = new EmotionOutput(rosMainNode);
         OutputDevice output = new CommandLineOutput();
 //        OutputDevice output = new CerevoiceOutput(emotion);
 		OutputDevice multiOut = new MultiOutputDevice(output, output2, emotion);
-
-        // initialize ROS node
-		RosMainNode.getInstance();
-
-		// connect to ROS bridge
-//		Ros.getInstance();
 
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new Preprocessor());
@@ -142,7 +138,7 @@ public class DialogSystem {
 //            while (!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)) {
 //            }
 
-            Personality p = new SmallTalkPersonality(new Verbalizer());
+            Personality p = new SmallTalkPersonality(new Verbalizer(), rosMainNode);
             Input raw;
             Interpretation interpretation;
             List<Action> actions = p.answer(new Interpretation(""));

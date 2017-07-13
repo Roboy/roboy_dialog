@@ -21,6 +21,7 @@ import roboy.memory.WorkingMemory;
 import roboy.talk.Verbalizer;
 import roboy.util.JsonUtils;
 import roboy.util.Lists;
+import roboy.util.RosMainNode;
 
 /**
  * Currently Roboys main personality. It tries to engage with people in a general
@@ -40,9 +41,11 @@ public class SmallTalkPersonality implements Personality {
                     "dope", "smashing", "happy", "cheerful", "good", "phantastic");
     private State state;
     private Verbalizer verbalizer;
+    private RosMainNode rosMainNode;
 
-    public SmallTalkPersonality(Verbalizer verbalizer) {
+    public SmallTalkPersonality(Verbalizer verbalizer, RosMainNode node) {
         this.verbalizer = verbalizer;
+        this.rosMainNode = node;
         this.initialize();
 
     }
@@ -132,7 +135,7 @@ public class SmallTalkPersonality implements Personality {
         GreetingState greetings = new GreetingState();
         IntroductionState intro = new IntroductionState();
         FarewellState farewell = new FarewellState();
-        WildTalkState wild = new WildTalkState();
+        WildTalkState wild = new WildTalkState(rosMainNode);
         SegueState segue = new SegueState(wild);
         QuestionAnsweringState answer = new QuestionAnsweringState(segue);
         QuestionRandomizerState qa = new QuestionRandomizerState(answer);

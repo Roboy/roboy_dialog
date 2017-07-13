@@ -56,10 +56,16 @@ public class QuestionAnsweringState implements State{
 
 	@Override
 	public List<Interpretation> act() {
+		List<String> segue = new ArrayList<>();
+		segue.add("Anything else");
+		segue.add("Is that all that comes to your mind?");
+		segue.add("Oh well, I know much more stuff");
+		segue.add("Let me uncover my potential. Ask something really difficult");
+		String toSay = segue.get((int) (Math.random()*segue.size()));
 		List<Interpretation> action = first ?
 				Lists.interpretationList(new Interpretation("I'm pretty good at answering questions about myself and other stuff. " +
 						"What would you like to know?"))
-			  : Lists.interpretationList(new Interpretation("Anything else?"));
+			  : Lists.interpretationList(new Interpretation(toSay));
 		first = false;
 		return action;
 	}

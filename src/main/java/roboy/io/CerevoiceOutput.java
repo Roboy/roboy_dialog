@@ -12,6 +12,12 @@ import roboy.util.RosMainNode;
 public class CerevoiceOutput implements OutputDevice
 {
 
+	private RosMainNode rosMainNode;
+
+	public CerevoiceOutput (RosMainNode node){
+		this.rosMainNode = node;
+	}
+
 	@Override
 	public void act(List<Action> actions) {
 		for(Action a : actions){
@@ -24,7 +30,7 @@ public class CerevoiceOutput implements OutputDevice
 	
 	public void say(String text)
 	{
-		RosMainNode.getInstance().SynthesizeSpeech(text);
+		rosMainNode.SynthesizeSpeech(text);
 	}
 
 }
