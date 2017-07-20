@@ -24,7 +24,7 @@ public class RosMainNode extends AbstractNodeMain {
 //    private ServiceClient<RecognizeObjectRequest, RecognizeObjectResponse> objectRecognitionRequest;
     private ServiceClient<RecognizeSpeechRequest, RecognizeSpeechResponse> sttClient;
     private ServiceClient<ShowEmotionRequest, ShowEmotionResponse> emotionClient;
-    private ServiceClient<CallQueryRequest, CallQueryResponse> memoryClient;
+    private ServiceClient<DataQueryRequest, DataQueryResponse> memoryClient;
     protected Object resp;
 
     public RosMainNode()
@@ -72,7 +72,7 @@ public class RosMainNode extends AbstractNodeMain {
 //            objectRecognitionRequest = connectedNode.newServiceClient("/speech_synthesis/talk", RecognizeObject._TYPE);
             sttClient = connectedNode.newServiceClient("/roboy/cognition/speech/recognition", RecognizeSpeech._TYPE);
             emotionClient = connectedNode.newServiceClient("/roboy/control/face/emotion", ShowEmotion._TYPE);
-            memoryClient = connectedNode.newServiceClient("/roboy/cognition/memory", CallQuery._TYPE);
+            memoryClient = connectedNode.newServiceClient("/roboy/cognition/memory", DataQuery._TYPE);
         } catch (ServiceNotFoundException e) {
             throw new RosRuntimeException(e);
         }
@@ -175,43 +175,17 @@ public class RosMainNode extends AbstractNodeMain {
         return ((boolean) resp);
     }
 
-    // TODO this method should return the result of the query
-    // the return type of Result must be changed first
     public boolean QueryMemory(String query)
     {
         rosConnectionLatch = new CountDownLatch(1);
-        CallQueryRequest request = memoryClient.newMessage();
-        request.setQuery(query);
-        ServiceResponseListener<CallQueryResponse> listener = new ServiceResponseListener<CallQueryResponse>() {
+        DataQueryRequest request = memoryClient.newMessage();
+        // TODO set the header
+        request.setPayload(query);
+        ServiceResponseListener<DataQueryResponse> listener = new ServiceResponseListener<DataQueryResponse>() {
             @Override
-            public void onSuccess(CallQueryResponse response) {
+            public void onSuccess(DataQueryResponse response) {
 //                System.out.println(response.getTextOutput());
-                resp = response.getResult();
-                rosConnectionLatch.countDown();
-            }
-
-            @Override
-            public void onFailure(RemoteException e) {
-                rosConnectionLatch.countDown();
-                throw new RosRuntimeException(e);
-            }
-        };
-        memoryClient.call(request, listener);
-        waitForLatchUnlock(rosConnectionLatch, memoryClient.getName().toString());
-        return ((boolean) resp);
-    }
-
-    // TODO update the request types depending on Memory specifications
-    public boolean SendToMemory(String query)
-    {
-        rosConnectionLatch = new CountDownLatch(1);
-        CallQueryRequest request = memoryClient.newMessage();
-        request.setQuery(query);
-        ServiceResponseListener<CallQueryResponse> listener = new ServiceResponseListener<CallQueryResponse>() {
-            @Override
-            public void onSuccess(CallQueryResponse response) {
-//                System.out.println(response.getTextOutput());
-                resp = response.getResult();
+                resp = response.getAnswer();
                 rosConnectionLatch.countDown();
             }
 

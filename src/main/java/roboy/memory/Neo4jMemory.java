@@ -16,7 +16,7 @@ public class Neo4jMemory implements Memory<String>
     @Override
     public boolean save(String query) throws InterruptedException, IOException
     {
-        return rosMainNode.SendToMemory(query);
+        return rosMainNode.QueryMemory(query);
     }
 
     @Override
