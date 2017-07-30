@@ -1,6 +1,8 @@
 package roboy.dialog;
 
 import java.io.IOException;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -98,16 +100,18 @@ public class DialogSystem {
         // initialize ROS node
         RosMainNode rosMainNode = new RosMainNode();
 
-	    InputDevice input = new CommandLineInput();
+//	    InputDevice input = new CommandLineInput();
 //		 InputDevice input = new BingInput(rosMainNode);
+        DatagramSocket ds = new DatagramSocket(55555);
+        InputDevice input = new UdpInput(ds);
 		InputDevice celebInput = new CelebritySimilarityInput();
 //		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
 		InputDevice multiIn = new MultiInputDevice(input);//, celebInput, roboyDetectInput);
 
 		OutputDevice output1 = new CerevoiceOutput(rosMainNode);
-        CerevoiceOutput output2 = new CerevoiceOutput(rosMainNode);
+//        CerevoiceOutput output2 = new CerevoiceOutput(rosMainNode);
 		// OutputDevice output = new BingOutput();
-
+        OutputDevice output2 = new UdpOutput(ds, "localhost", 55556);
 		EmotionOutput emotion = new EmotionOutput(rosMainNode);
         OutputDevice output = new CommandLineOutput();
 //        OutputDevice output = new CerevoiceOutput(emotion);
