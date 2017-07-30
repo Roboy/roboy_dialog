@@ -73,7 +73,8 @@ public class RosMainNode extends AbstractNodeMain {
             sttClient = connectedNode.newServiceClient("/roboy/cognition/speech/recognition", RecognizeSpeech._TYPE);
             emotionClient = connectedNode.newServiceClient("/roboy/control/face/emotion", ShowEmotion._TYPE);
         } catch (ServiceNotFoundException e) {
-            throw new RosRuntimeException(e);
+            e.printStackTrace();
+//            throw new RosRuntimeException(e);
         }
 
     }
