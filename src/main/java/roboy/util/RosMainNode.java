@@ -24,7 +24,10 @@ public class RosMainNode extends AbstractNodeMain {
 //    private ServiceClient<RecognizeObjectRequest, RecognizeObjectResponse> objectRecognitionRequest;
     private ServiceClient<RecognizeSpeechRequest, RecognizeSpeechResponse> sttClient;
     private ServiceClient<ShowEmotionRequest, ShowEmotionResponse> emotionClient;
-    private ServiceClient<DataQueryRequest, DataQueryResponse> memoryClient;
+    private ServiceClient<DataQueryRequest, DataQueryResponse> createMemoryClient;
+	private ServiceClient<DataQueryRequest, DataQueryResponse> updateMemoryClient;
+	private ServiceClient<DataQueryRequest, DataQueryResponse> getMemoryClient;
+	private ServiceClient<DataQueryRequest, DataQueryResponse> cypherMemoryClient;
     protected Object resp;
 
     public RosMainNode()
@@ -72,11 +75,10 @@ public class RosMainNode extends AbstractNodeMain {
 //            objectRecognitionRequest = connectedNode.newServiceClient("/speech_synthesis/talk", RecognizeObject._TYPE);
             sttClient = connectedNode.newServiceClient("/roboy/cognition/speech/recognition", RecognizeSpeech._TYPE);
             emotionClient = connectedNode.newServiceClient("/roboy/control/face/emotion", ShowEmotion._TYPE);
-            //memoryClient = connectedNode.newServiceClient("/roboy/cognition/memory", DataQuery._TYPE);
-			createMemoryClient = connectedNode.newServiceClient("/roboy/cognition/memory/create", DataQuery._TYPE);
-			updateMemoryClient = connectedNode.newServiceClient("/roboy/cognition/memory/update", DataQuery._TYPE);
-			getMemoryClient = connectedNode.newServiceClient("/roboy/cognition/memory/get", DataQuery._TYPE);
-			cypherMemoryClient = connectedNode.newServiceClient("/roboy/cognition/memory/cypher", DataQuery._TYPE);
+            createMemoryClient = connectedNode.newServiceClient("/roboy/cognition/memory/create", DataQuery._TYPE);
+            updateMemoryClient = connectedNode.newServiceClient("/roboy/cognition/memory/update", DataQuery._TYPE);
+            getMemoryClient = connectedNode.newServiceClient("/roboy/cognition/memory/get", DataQuery._TYPE);
+            cypherMemoryClient = connectedNode.newServiceClient("/roboy/cognition/memory/cypher", DataQuery._TYPE);
         } catch (ServiceNotFoundException e) {
             throw new RosRuntimeException(e);
         }
@@ -179,7 +181,7 @@ public class RosMainNode extends AbstractNodeMain {
         return ((boolean) resp);
     }
 
-    public boolean QueryMemory(String query)
+    public boolean CreateMemoryQuery(String query)
     {
         rosConnectionLatch = new CountDownLatch(1);
         DataQueryRequest createRequest = createMemoryClient.newMessage();
@@ -201,6 +203,81 @@ public class RosMainNode extends AbstractNodeMain {
         };
         createMemoryClient.call(createRequest, listener);
         waitForLatchUnlock(rosConnectionLatch, createMemoryClient.getName().toString());
+        return ((boolean) resp);
+    }
+
+    public boolean UpdateMemoryQuery(String query)
+    {
+        rosConnectionLatch = new CountDownLatch(1);
+        DataQueryRequest updateRequest = updateMemoryClient.newMessage();
+        // TODO set the header
+        updateRequest.setPayload(query);
+        ServiceResponseListener<DataQueryResponse> listener = new ServiceResponseListener<DataQueryResponse>() {
+            @Override
+            public void onSuccess(DataQueryResponse response) {
+//                System.out.println(response.getTextOutput());
+                resp = response.getAnswer();
+                rosConnectionLatch.countDown();
+            }
+
+            @Override
+            public void onFailure(RemoteException e) {
+                rosConnectionLatch.countDown();
+                throw new RosRuntimeException(e);
+            }
+        };
+        updateMemoryClient.call(updateRequest, listener);
+        waitForLatchUnlock(rosConnectionLatch, updateMemoryClient.getName().toString());
+        return ((boolean) resp);
+    }
+
+    public boolean GetMemoryQuery(String query)
+    {
+        rosConnectionLatch = new CountDownLatch(1);
+        DataQueryRequest fetRequest = getMemoryClient.newMessage();
+        // TODO set the header
+        getRequest.setPayload(query);
+        ServiceResponseListener<DataQueryResponse> listener = new ServiceResponseListener<DataQueryResponse>() {
+            @Override
+            public void onSuccess(DataQueryResponse response) {
+//                System.out.println(response.getTextOutput());
+                resp = response.getAnswer();
+                rosConnectionLatch.countDown();
+            }
+
+            @Override
+            public void onFailure(RemoteException e) {
+                rosConnectionLatch.countDown();
+                throw new RosRuntimeException(e);
+            }
+        };
+        getMemoryClient.call(getRequest, listener);
+        waitForLatchUnlock(rosConnectionLatch, getMemoryClient.getName().toString());
+        return ((boolean) resp);
+    }
+
+    public boolean CypherMemoryQuery(String query)
+    {
+        rosConnectionLatch = new CountDownLatch(1);
+        DataQueryRequest cypherRequest = cypherMemoryClient.newMessage();
+        // TODO set the header
+        cypherRequest.setPayload(query);
+        ServiceResponseListener<DataQueryResponse> listener = new ServiceResponseListener<DataQueryResponse>() {
+            @Override
+            public void onSuccess(DataQueryResponse response) {
+//                System.out.println(response.getTextOutput());
+                resp = response.getAnswer();
+                rosConnectionLatch.countDown();
+            }
+
+            @Override
+            public void onFailure(RemoteException e) {
+                rosConnectionLatch.countDown();
+                throw new RosRuntimeException(e);
+            }
+        };
+        cypherMemoryClient.call(cypherRequest, listener);
+        waitForLatchUnlock(rosConnectionLatch, cypherMemoryClient.getName().toString());
         return ((boolean) resp);
     }
 
