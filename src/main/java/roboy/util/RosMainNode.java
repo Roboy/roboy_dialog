@@ -28,6 +28,7 @@ public class RosMainNode extends AbstractNodeMain {
 	private ServiceClient<DataQueryRequest, DataQueryResponse> updateMemoryClient;
 	private ServiceClient<DataQueryRequest, DataQueryResponse> getMemoryClient;
 	private ServiceClient<DataQueryRequest, DataQueryResponse> cypherMemoryClient;
+    private ServiceClient<DetectIntentRequest, DetectIntentResponse> intentClient;
     protected Object resp;
 
     public RosMainNode()
@@ -79,6 +80,7 @@ public class RosMainNode extends AbstractNodeMain {
             updateMemoryClient = connectedNode.newServiceClient("/roboy/cognition/memory/update", DataQuery._TYPE);
             getMemoryClient = connectedNode.newServiceClient("/roboy/cognition/memory/get", DataQuery._TYPE);
             cypherMemoryClient = connectedNode.newServiceClient("/roboy/cognition/memory/cypher", DataQuery._TYPE);
+            intentClient = connectedNode.newServiceClient("/roboy/cognition/detect_intent", DetectIntent._TYPE);
         } catch (ServiceNotFoundException e) {
             e.printStackTrace();
 //            throw new RosRuntimeException(e);
@@ -154,7 +156,7 @@ public class RosMainNode extends AbstractNodeMain {
             }
         };
         generativeClient.call(request,  listener);
-        waitForLatchUnlock(rosConnectionLatch, sttClient.getName().toString());
+        waitForLatchUnlock(rosConnectionLatch, generativeClient.getName().toString());
         return ((String) resp);
     }
 
@@ -178,7 +180,7 @@ public class RosMainNode extends AbstractNodeMain {
             }
         };
         emotionClient.call(request,  listener);
-        waitForLatchUnlock(rosConnectionLatch, sttClient.getName().toString());
+        waitForLatchUnlock(rosConnectionLatch, emotionClient.getName().toString());
         return ((boolean) resp);
     }
 
@@ -280,6 +282,30 @@ public class RosMainNode extends AbstractNodeMain {
         cypherMemoryClient.call(cypherRequest, listener);
         waitForLatchUnlock(rosConnectionLatch, cypherMemoryClient.getName().toString());
         return ((boolean) resp);
+    }
+
+    public Object DetectIntent(String sentence)
+    {
+        rosConnectionLatch = new CountDownLatch(1);
+        DetectIntentRequest request = intentClient.newMessage();
+        request.setSentence(sentence);
+        ServiceResponseListener<DetectIntentResponse> listener = new ServiceResponseListener<DetectIntentResponse>() {
+            @Override
+            public void onSuccess(DetectIntentResponse response) {
+                Object[] intent = {response.getIntent(), response.getDistance()};
+                resp = intent;
+                rosConnectionLatch.countDown();
+            }
+
+            @Override
+            public void onFailure(RemoteException e) {
+                rosConnectionLatch.countDown();
+                throw new RosRuntimeException(e);
+            }
+        };
+        intentClient.call(request,  listener);
+        waitForLatchUnlock(rosConnectionLatch, intentClient.getName().toString());
+        return resp;
     }
 
     /**
