@@ -72,7 +72,11 @@ public class RosMainNode extends AbstractNodeMain {
 //            objectRecognitionRequest = connectedNode.newServiceClient("/speech_synthesis/talk", RecognizeObject._TYPE);
             sttClient = connectedNode.newServiceClient("/roboy/cognition/speech/recognition", RecognizeSpeech._TYPE);
             emotionClient = connectedNode.newServiceClient("/roboy/control/face/emotion", ShowEmotion._TYPE);
-            memoryClient = connectedNode.newServiceClient("/roboy/cognition/memory", DataQuery._TYPE);
+            //memoryClient = connectedNode.newServiceClient("/roboy/cognition/memory", DataQuery._TYPE);
+			createMemoryClient = connectedNode.newServiceClient("/roboy/cognition/memory/create", DataQuery._TYPE);
+			updateMemoryClient = connectedNode.newServiceClient("/roboy/cognition/memory/update", DataQuery._TYPE);
+			getMemoryClient = connectedNode.newServiceClient("/roboy/cognition/memory/get", DataQuery._TYPE);
+			cypherMemoryClient = connectedNode.newServiceClient("/roboy/cognition/memory/cypher", DataQuery._TYPE);
         } catch (ServiceNotFoundException e) {
             e.printStackTrace();
 //            throw new RosRuntimeException(e);
@@ -179,9 +183,9 @@ public class RosMainNode extends AbstractNodeMain {
     public boolean QueryMemory(String query)
     {
         rosConnectionLatch = new CountDownLatch(1);
-        DataQueryRequest request = memoryClient.newMessage();
+        DataQueryRequest createRequest = createMemoryClient.newMessage();
         // TODO set the header
-        request.setPayload(query);
+        createRequest.setPayload(query);
         ServiceResponseListener<DataQueryResponse> listener = new ServiceResponseListener<DataQueryResponse>() {
             @Override
             public void onSuccess(DataQueryResponse response) {
@@ -196,8 +200,8 @@ public class RosMainNode extends AbstractNodeMain {
                 throw new RosRuntimeException(e);
             }
         };
-        memoryClient.call(request, listener);
-        waitForLatchUnlock(rosConnectionLatch, memoryClient.getName().toString());
+        createMemoryClient.call(createRequest, listener);
+        waitForLatchUnlock(rosConnectionLatch, createMemoryClient.getName().toString());
         return ((boolean) resp);
     }
 
