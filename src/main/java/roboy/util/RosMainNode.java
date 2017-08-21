@@ -3,7 +3,6 @@ package roboy.util;
 import org.ros.exception.RemoteException;
 import org.ros.exception.RosRuntimeException;
 import org.ros.exception.ServiceNotFoundException;
-import org.ros.internal.message.RawMessage;
 import org.ros.namespace.GraphName;
 import org.ros.node.*;
 import org.ros.node.service.ServiceClient;
@@ -25,6 +24,7 @@ public class RosMainNode extends AbstractNodeMain {
 //    private ServiceClient<RecognizeObjectRequest, RecognizeObjectResponse> objectRecognitionRequest;
     private ServiceClient<RecognizeSpeechRequest, RecognizeSpeechResponse> sttClient;
     private ServiceClient<ShowEmotionRequest, ShowEmotionResponse> emotionClient;
+    private ServiceClient<DetectIntentRequest, DetectIntentResponse> intentClient;
     protected Object resp;
 
     public RosMainNode()
@@ -72,6 +72,7 @@ public class RosMainNode extends AbstractNodeMain {
 //            objectRecognitionRequest = connectedNode.newServiceClient("/speech_synthesis/talk", RecognizeObject._TYPE);
             sttClient = connectedNode.newServiceClient("/roboy/cognition/speech/recognition", RecognizeSpeech._TYPE);
             emotionClient = connectedNode.newServiceClient("/roboy/control/face/emotion", ShowEmotion._TYPE);
+            intentClient = connectedNode.newServiceClient("/roboy/cognition/detect_intent", DetectIntent._TYPE);
         } catch (ServiceNotFoundException e) {
             e.printStackTrace();
 //            throw new RosRuntimeException(e);
@@ -147,7 +148,7 @@ public class RosMainNode extends AbstractNodeMain {
             }
         };
         generativeClient.call(request,  listener);
-        waitForLatchUnlock(rosConnectionLatch, sttClient.getName().toString());
+        waitForLatchUnlock(rosConnectionLatch, generativeClient.getName().toString());
         return ((String) resp);
     }
 
@@ -171,8 +172,32 @@ public class RosMainNode extends AbstractNodeMain {
             }
         };
         emotionClient.call(request,  listener);
-        waitForLatchUnlock(rosConnectionLatch, sttClient.getName().toString());
+        waitForLatchUnlock(rosConnectionLatch, emotionClient.getName().toString());
         return ((boolean) resp);
+    }
+
+    public Object DetectIntent(String sentence)
+    {
+        rosConnectionLatch = new CountDownLatch(1);
+        DetectIntentRequest request = intentClient.newMessage();
+        request.setSentence(sentence);
+        ServiceResponseListener<DetectIntentResponse> listener = new ServiceResponseListener<DetectIntentResponse>() {
+            @Override
+            public void onSuccess(DetectIntentResponse response) {
+                Object[] intent = {response.getIntent(), response.getDistance()};
+                resp = intent;
+                rosConnectionLatch.countDown();
+            }
+
+            @Override
+            public void onFailure(RemoteException e) {
+                rosConnectionLatch.countDown();
+                throw new RosRuntimeException(e);
+            }
+        };
+        intentClient.call(request,  listener);
+        waitForLatchUnlock(rosConnectionLatch, intentClient.getName().toString());
+        return resp;
     }
 
     /**
