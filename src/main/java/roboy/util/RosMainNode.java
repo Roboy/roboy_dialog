@@ -237,7 +237,7 @@ public class RosMainNode extends AbstractNodeMain {
     public boolean GetMemoryQuery(String query)
     {
         rosConnectionLatch = new CountDownLatch(1);
-        DataQueryRequest fetRequest = getMemoryClient.newMessage();
+        DataQueryRequest getRequest = getMemoryClient.newMessage();
         // TODO set the header
         getRequest.setPayload(query);
         ServiceResponseListener<DataQueryResponse> listener = new ServiceResponseListener<DataQueryResponse>() {
