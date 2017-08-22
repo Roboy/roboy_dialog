@@ -100,10 +100,10 @@ public class DialogSystem {
         // initialize ROS node
         RosMainNode rosMainNode = new RosMainNode();
 
-//	    InputDevice input = new CommandLineInput();
+	    InputDevice input = new CommandLineInput();
 //		 InputDevice input = new BingInput(rosMainNode);
         DatagramSocket ds = new DatagramSocket(55555);
-        InputDevice input = new UdpInput(ds);
+//        InputDevice input = new UdpInput(ds);
 		InputDevice celebInput = new CelebritySimilarityInput();
 //		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
 		InputDevice multiIn = new MultiInputDevice(input);//, celebInput, roboyDetectInput);
@@ -157,7 +157,7 @@ public class DialogSystem {
                     interpretation = a.analyze(interpretation);
                 }
                 if(interpretation.getFeature(Linguistics.INTENT) != null) {
-                    System.out.println("Found intent: ");
+                    System.out.println("Found intent: "+ (String) interpretation.getFeature(Linguistics.INTENT) + " with confidence: "+ (float) interpretation.getFeature(Linguistics.INTENT_DISTANCE));
                 } else {
                     System.out.println("No intent found!");
                 }

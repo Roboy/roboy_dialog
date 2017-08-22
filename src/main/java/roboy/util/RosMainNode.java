@@ -70,8 +70,8 @@ public class RosMainNode extends AbstractNodeMain {
     public void onStart(final ConnectedNode connectedNode) {
 
         try {
-            speechSynthesisClient = connectedNode.newServiceClient("/roboy/cognition/speech/synthesis/talk", Talk._TYPE);
-            generativeClient = connectedNode.newServiceClient("/roboy/cognition/generative_nlp/answer", GenerateAnswer._TYPE);
+//            speechSynthesisClient = connectedNode.newServiceClient("/roboy/cognition/speech/synthesis/talk", Talk._TYPE);
+//            generativeClient = connectedNode.newServiceClient("/roboy/cognition/generative_nlp/answer", GenerateAnswer._TYPE);
 //            faceDetectionClient = connectedNode.newServiceClient("/speech_synthesis/talk", DetectFace._TYPE);
 //            objectRecognitionRequest = connectedNode.newServiceClient("/speech_synthesis/talk", RecognizeObject._TYPE);
             sttClient = connectedNode.newServiceClient("/roboy/cognition/speech/recognition", RecognizeSpeech._TYPE);
@@ -81,14 +81,12 @@ public class RosMainNode extends AbstractNodeMain {
             getMemoryClient = connectedNode.newServiceClient("/roboy/cognition/memory/get", DataQuery._TYPE);
             cypherMemoryClient = connectedNode.newServiceClient("/roboy/cognition/memory/cypher", DataQuery._TYPE);
             intentClient = connectedNode.newServiceClient("/roboy/cognition/detect_intent", DetectIntent._TYPE);
-        } catch (ServiceNotFoundException e) {
-            e.printStackTrace();
-//            throw new RosRuntimeException(e);
-        }
 
-        try {
-            intentClient = connectedNode.newServiceClient("/roboy/cognition/detect_intent", DetectIntent._TYPE);
-            System.out.println("Intent detection set up!");
+            try {
+                Thread.sleep(10000L);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         } catch (ServiceNotFoundException e) {
             e.printStackTrace();
 //            throw new RosRuntimeException(e);
@@ -146,6 +144,9 @@ public class RosMainNode extends AbstractNodeMain {
 
     public String GenerateAnswer(String question)
     {
+        if(1 < 2) {
+            return "Useless stuff";
+        }
         rosConnectionLatch = new CountDownLatch(1);
         GenerateAnswerRequest request = generativeClient.newMessage();
         request.setTextInput(question);
