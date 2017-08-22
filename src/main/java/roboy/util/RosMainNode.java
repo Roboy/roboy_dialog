@@ -35,7 +35,7 @@ public class RosMainNode extends AbstractNodeMain {
     {
 
         String hostName = System.getenv("ROS_HOSTNAME");
-        if (hostName.isEmpty())
+        if (hostName == null || hostName.isEmpty())
         {
             System.out.println("Could not find ROS hostname. ROS will be unavailable. Set ROS_HOSTNAME environmental variable.");
         }
@@ -81,6 +81,14 @@ public class RosMainNode extends AbstractNodeMain {
             getMemoryClient = connectedNode.newServiceClient("/roboy/cognition/memory/get", DataQuery._TYPE);
             cypherMemoryClient = connectedNode.newServiceClient("/roboy/cognition/memory/cypher", DataQuery._TYPE);
             intentClient = connectedNode.newServiceClient("/roboy/cognition/detect_intent", DetectIntent._TYPE);
+        } catch (ServiceNotFoundException e) {
+            e.printStackTrace();
+//            throw new RosRuntimeException(e);
+        }
+
+        try {
+            intentClient = connectedNode.newServiceClient("/roboy/cognition/detect_intent", DetectIntent._TYPE);
+            System.out.println("Intent detection set up!");
         } catch (ServiceNotFoundException e) {
             e.printStackTrace();
 //            throw new RosRuntimeException(e);

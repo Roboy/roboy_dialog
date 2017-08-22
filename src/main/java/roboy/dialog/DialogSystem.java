@@ -115,7 +115,7 @@ public class DialogSystem {
 		EmotionOutput emotion = new EmotionOutput(rosMainNode);
         OutputDevice output = new CommandLineOutput();
 //        OutputDevice output = new CerevoiceOutput(emotion);
-		OutputDevice multiOut = new MultiOutputDevice(output, output2, emotion);
+		OutputDevice multiOut = new MultiOutputDevice(output);//, output2, emotion);
 
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new Preprocessor());
@@ -126,7 +126,8 @@ public class DialogSystem {
 		analyzers.add(new OpenNLPParser());
 		analyzers.add(new OntologyNERAnalyzer());
 		analyzers.add(new AnswerAnalyzer());
-		analyzers.add(new EmotionAnalyzer());
+        analyzers.add(new EmotionAnalyzer());
+        analyzers.add(new IntentAnalyzer(rosMainNode));
 
 
 
@@ -154,6 +155,11 @@ public class DialogSystem {
                 interpretation = new Interpretation(raw.sentence, raw.attributes); //TODO: Input devices should immediately produce Interpretation objects
                 for (Analyzer a : analyzers) {
                     interpretation = a.analyze(interpretation);
+                }
+                if(interpretation.getFeature(Linguistics.INTENT) != null) {
+                    System.out.println("Found intent: ");
+                } else {
+                    System.out.println("No intent found!");
                 }
                 actions = p.answer(interpretation);
             }
