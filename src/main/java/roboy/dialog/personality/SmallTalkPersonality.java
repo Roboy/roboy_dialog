@@ -1,14 +1,7 @@
 package roboy.dialog.personality;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.util.*;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
 import roboy.dialog.action.SpeechAction;
@@ -19,9 +12,8 @@ import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.StatementInterpreter;
 import roboy.memory.WorkingMemory;
 import roboy.talk.Verbalizer;
-import roboy.util.JsonUtils;
 import roboy.util.Lists;
-import roboy.util.RosMainNode;
+import roboy.ros.RosMainNode;
 
 /**
  * Currently Roboys main personality. It tries to engage with people in a general

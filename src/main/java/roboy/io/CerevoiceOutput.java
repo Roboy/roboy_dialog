@@ -4,7 +4,7 @@ import java.util.List;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.SpeechAction;
 
-import roboy.util.RosMainNode;
+import roboy.ros.RosMainNode;
 
 /**
  * Cerevoice text to speech

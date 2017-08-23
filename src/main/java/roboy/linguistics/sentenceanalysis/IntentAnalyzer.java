@@ -1,7 +1,7 @@
 package roboy.linguistics.sentenceanalysis;
 
 import roboy.linguistics.Linguistics;
-import roboy.util.RosMainNode;
+import roboy.ros.RosMainNode;
 
 /**
  * Created by laura on 21.08.17.

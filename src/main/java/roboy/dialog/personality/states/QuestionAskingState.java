@@ -3,9 +3,6 @@ package roboy.dialog.personality.states;
 import java.io.IOException;
 import java.util.*;
 
-import edu.wpi.rail.jrosbridge.Service;
-import edu.wpi.rail.jrosbridge.services.ServiceRequest;
-import roboy.dialog.personality.Personality;
 import roboy.dialog.personality.SmallTalkPersonality;
 import roboy.io.Vision;
 import roboy.linguistics.Linguistics;
@@ -17,10 +14,6 @@ import roboy.memory.RoboyMind;
 import roboy.util.Lists;
 import roboy.util.Concept;
 import roboy.util.Relation;
-import roboy.util.Ros;
-
-import javax.json.Json;
-import javax.json.JsonObject;
 
 /**
  * Is asking the other person questions about things that we can store in the Protege

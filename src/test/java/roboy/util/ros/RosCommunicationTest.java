@@ -3,7 +3,7 @@ package roboy.util.ros;
 import org.junit.Test;
 import roboy.dialog.personality.states.WildTalkState;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.util.RosMainNode;
+import roboy.ros.RosMainNode;
 
 import java.util.concurrent.TimeUnit;
 

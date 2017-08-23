@@ -1,4 +1,4 @@
-package roboy.util;
+package roboy.ros;
 @Deprecated
 /**
  * Communication with ROS.

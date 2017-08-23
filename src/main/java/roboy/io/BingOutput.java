@@ -6,7 +6,7 @@ import edu.wpi.rail.jrosbridge.Service;
 import edu.wpi.rail.jrosbridge.services.ServiceRequest;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.SpeechAction;
-import roboy.util.Ros;
+import roboy.ros.Ros;
 
 /**
  * Uses Bing for text to speech. Requires internet connection.
