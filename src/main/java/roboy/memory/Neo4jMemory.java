@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * Implements the high-level-querying tasks to the Memory module.
+ * Implements the high-level-querying tasks to the Memory services using RosMainNode.
  * It is possible to use either direct querying via JSON or query building methods.
  */
 public class Neo4jMemory implements Memory<JSONObject>
@@ -49,10 +49,14 @@ public class Neo4jMemory implements Memory<JSONObject>
 
     private String getIdOfPersonByName(String name) {
         JSONObject query = new JSONObject();
-        query = query.put("name", name);
+        //"{'label':'Person', relations:{'FRIEND_OF':[15]}, 'properties':{'name':'Laura'}}\""
+        query.put("label","Person");
+        JSONObject props = new JSONObject();
+        props.put("name", name);
+        query.put("properties", props);
         try {
             List<JSONObject> result = retrieve(query);
-            if(isValid(result)) return result.get(0).getString("id");
+            if(isValid(result)) return Integer.toString(result.get(0).getInt("id"));
         } catch (InterruptedException | IOException e) {
             e.printStackTrace();
         }
@@ -61,9 +65,13 @@ public class Neo4jMemory implements Memory<JSONObject>
 
     private String createNewPersonNode(String name) {
         JSONObject query = new JSONObject();
-        query = query.put("name", name);
+        //"{'label':'Person', relations:{'FRIEND_OF':[15]}, 'properties':{'name':'Laura'}}\""
+        query.put("label","Person");
+        JSONObject props = new JSONObject();
+        props.put("name", name);
+        query.put("properties", props);
         try {
-            return (create(query)).get(0).getString("id");
+            return Integer.toString((create(query)).get(0).getInt("id"));
         } catch (InterruptedException | IOException e) {
             e.printStackTrace();
         }

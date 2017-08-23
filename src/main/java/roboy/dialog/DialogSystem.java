@@ -16,6 +16,7 @@ import roboy.io.*;
 
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.*;
+import roboy.memory.Neo4jMemory;
 import roboy.talk.Verbalizer;
 
 import roboy.ros.RosMainNode;
@@ -72,7 +73,7 @@ import roboy.ros.RosMainNode;
  */
 public class DialogSystem {
 
-    public static boolean SHUTDOWN_ON_ROS_FAILURE = true;
+    public static boolean SHUTDOWN_ON_ROS_FAILURE = false;
 	
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
 
@@ -97,16 +98,16 @@ public class DialogSystem {
 		OutputDevice multiOut = new MultiOutputDevice(output);//, output2, emotion);
 
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
-		analyzers.add(new Preprocessor());
-		analyzers.add(new SimpleTokenizer());
-		analyzers.add(new OpenNLPPPOSTagger());
-		analyzers.add(new DictionaryBasedSentenceTypeDetector());
-		analyzers.add(new SentenceAnalyzer());
-		analyzers.add(new OpenNLPParser());
-		analyzers.add(new OntologyNERAnalyzer());
-		analyzers.add(new AnswerAnalyzer());
-        analyzers.add(new EmotionAnalyzer());
-        analyzers.add(new IntentAnalyzer(rosMainNode));
+//		analyzers.add(new Preprocessor());
+//		analyzers.add(new SimpleTokenizer());
+//		analyzers.add(new OpenNLPPPOSTagger());
+//		analyzers.add(new DictionaryBasedSentenceTypeDetector());
+//		analyzers.add(new SentenceAnalyzer());
+//		analyzers.add(new OpenNLPParser());
+//		analyzers.add(new OntologyNERAnalyzer());
+//		analyzers.add(new AnswerAnalyzer());
+//        analyzers.add(new EmotionAnalyzer());
+//        analyzers.add(new IntentAnalyzer(rosMainNode));
 
 
 
@@ -115,6 +116,13 @@ public class DialogSystem {
             throw new RuntimeException("DialogSystem shutdown caused by ROS service initialization failure. " +
                     "Start the required services or set SHUTDOWN_ON_ROS_FAILURE to false.");
         }
+
+
+        Thread.sleep(10000L);
+        Neo4jMemory mem = new Neo4jMemory(rosMainNode);
+        String id = mem.getPersonId("Laura");
+        System.out.println("The id is: "+id);
+
         System.out.println("Initialized...");
 
         while(true) {
