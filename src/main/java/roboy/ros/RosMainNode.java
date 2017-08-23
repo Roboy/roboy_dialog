@@ -262,6 +262,36 @@ public class RosMainNode extends AbstractNodeMain {
         return ((String) resp);
     }
 
+    public String DeleteMemoryQuery(String query) {
+
+        if(clients.notInitialized(RosClients.DELETEMEMORY)) {
+            // FALLBACK RETURN VALUE
+            return null;
+        }
+        ServiceClient<DataQueryRequest, DataQueryResponse> deleteMemoryClient = clients.getServiceClient(RosClients.DELETEMEMORY);
+        rosConnectionLatch = new CountDownLatch(1);
+        DataQueryRequest getRequest = deleteMemoryClient.newMessage();
+        // TODO set the header
+        getRequest.setPayload(query);
+        ServiceResponseListener<DataQueryResponse> listener = new ServiceResponseListener<DataQueryResponse>() {
+            @Override
+            public void onSuccess(DataQueryResponse response) {
+//                System.out.println(response.getTextOutput());
+                resp = response.getAnswer();
+                rosConnectionLatch.countDown();
+            }
+
+            @Override
+            public void onFailure(RemoteException e) {
+                rosConnectionLatch.countDown();
+                throw new RosRuntimeException(e);
+            }
+        };
+        deleteMemoryClient.call(getRequest, listener);
+        waitForLatchUnlock(rosConnectionLatch, deleteMemoryClient.getName().toString());
+        return ((String) resp);
+    }
+
     public String CypherMemoryQuery(String query) {
 
         if(clients.notInitialized(RosClients.CYPHERMEMORY)) {
