@@ -18,7 +18,7 @@ import edu.wpi.rail.jrosbridge.services.ServiceRequest;
 import edu.wpi.rail.jrosbridge.services.ServiceResponse;
 
 import roboy.util.Concept;
-import roboy.util.Ros;
+import roboy.ros.Ros;
 
 /**
  * Protege memory.

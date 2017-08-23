@@ -1,16 +1,11 @@
 package roboy.dialog.personality.states;
 
-import edu.wpi.rail.jrosbridge.Service;
-import edu.wpi.rail.jrosbridge.services.ServiceRequest;
-import org.json.JSONObject;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.Lists;
-import roboy.util.Ros;
-import roboy.util.RosMainNode;
+import roboy.ros.RosMainNode;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * The generative model talking wildly.

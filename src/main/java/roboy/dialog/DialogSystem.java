@@ -2,23 +2,13 @@ package roboy.dialog;
 
 import java.io.IOException;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-
-import java.net.URI;
 
 import com.google.gson.JsonIOException;
-import com.google.gson.JsonSyntaxException;
 
 import roboy.dialog.action.Action;
-import roboy.dialog.action.FaceAction;
 import roboy.dialog.action.ShutDownAction;
-import roboy.dialog.personality.CuriousPersonality;
-import roboy.dialog.personality.DefaultPersonality;
-import roboy.dialog.personality.KnockKnockPersonality;
 import roboy.dialog.personality.Personality;
 import roboy.dialog.personality.SmallTalkPersonality;
 
@@ -28,20 +18,7 @@ import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.*;
 import roboy.talk.Verbalizer;
 
-import roboy.memory.RoboyMind;
-
-import roboy.util.Concept;
-import roboy.util.Ros;
-import roboy.util.RosMainNode;
-
-import org.ros.node.*;
-import org.ros.RosRun;
-import org.ros.exception.RemoteException;
-import org.ros.exception.RosRuntimeException;
-import org.ros.exception.ServiceNotFoundException;
-import org.ros.namespace.GraphName;
-import org.ros.node.service.ServiceClient;
-import org.ros.node.service.ServiceResponseListener;
+import roboy.ros.RosMainNode;
 
 
 /**
@@ -94,16 +71,18 @@ import org.ros.node.service.ServiceResponseListener;
  * stuff, one has to dig deeper into the small talk personality and see how it is used there.
  */
 public class DialogSystem {
+
+    public static boolean SHUTDOWN_ON_ROS_FAILURE = true;
 	
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
 
         // initialize ROS node
         RosMainNode rosMainNode = new RosMainNode();
 
-//	    InputDevice input = new CommandLineInput();
+	    InputDevice input = new CommandLineInput();
 //		 InputDevice input = new BingInput(rosMainNode);
         DatagramSocket ds = new DatagramSocket(55555);
-        InputDevice input = new UdpInput(ds);
+//        InputDevice input = new UdpInput(ds);
 		InputDevice celebInput = new CelebritySimilarityInput();
 //		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
 		InputDevice multiIn = new MultiInputDevice(input);//, celebInput, roboyDetectInput);
@@ -115,7 +94,7 @@ public class DialogSystem {
 		EmotionOutput emotion = new EmotionOutput(rosMainNode);
         OutputDevice output = new CommandLineOutput();
 //        OutputDevice output = new CerevoiceOutput(emotion);
-		OutputDevice multiOut = new MultiOutputDevice(output, output2, emotion);
+		OutputDevice multiOut = new MultiOutputDevice(output);//, output2, emotion);
 
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new Preprocessor());
@@ -126,10 +105,16 @@ public class DialogSystem {
 		analyzers.add(new OpenNLPParser());
 		analyzers.add(new OntologyNERAnalyzer());
 		analyzers.add(new AnswerAnalyzer());
-		analyzers.add(new EmotionAnalyzer());
+        analyzers.add(new EmotionAnalyzer());
+        analyzers.add(new IntentAnalyzer(rosMainNode));
 
 
 
+        // Race between main and rosMainNode threads, but there should be enough time.
+        if (!rosMainNode.STARTUP_SUCCESS && SHUTDOWN_ON_ROS_FAILURE) {
+            throw new RuntimeException("DialogSystem shutdown caused by ROS service initialization failure. " +
+                    "Start the required services or set SHUTDOWN_ON_ROS_FAILURE to false.");
+        }
         System.out.println("Initialized...");
 
         while(true) {
@@ -154,6 +139,11 @@ public class DialogSystem {
                 interpretation = new Interpretation(raw.sentence, raw.attributes); //TODO: Input devices should immediately produce Interpretation objects
                 for (Analyzer a : analyzers) {
                     interpretation = a.analyze(interpretation);
+                }
+                if(interpretation.getFeature(Linguistics.INTENT) != null) {
+                    System.out.println("Found intent: "+ (String) interpretation.getFeature(Linguistics.INTENT) + " with confidence: "+ (float) interpretation.getFeature(Linguistics.INTENT_DISTANCE));
+                } else {
+                    System.out.println("No intent found!");
                 }
                 actions = p.answer(interpretation);
             }

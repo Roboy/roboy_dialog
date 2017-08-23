@@ -1,22 +1,14 @@
 package roboy.io;
 
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-
 import javax.json.Json;
 import javax.json.JsonObject;
 
 import edu.wpi.rail.jrosbridge.Service;
 import edu.wpi.rail.jrosbridge.services.ServiceRequest;
-import edu.wpi.rail.jrosbridge.services.ServiceResponse;
 import edu.wpi.rail.jrosbridge.callback.TopicCallback;
 import edu.wpi.rail.jrosbridge.messages.Message;
-import edu.wpi.rail.jrosbridge.Topic;
 
-import roboy.util.Concept;
-import roboy.util.Relation;
-import roboy.util.Ros;
+import roboy.ros.Ros;
 
 /**
  * Vision helper class

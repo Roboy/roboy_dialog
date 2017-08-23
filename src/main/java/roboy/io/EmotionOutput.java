@@ -2,17 +2,9 @@ package roboy.io;
 
 import java.util.List;
 
-import javax.json.Json;
-import javax.json.JsonObject;
-
-import edu.wpi.rail.jrosbridge.Service;
-import edu.wpi.rail.jrosbridge.services.ServiceRequest;
-import edu.wpi.rail.jrosbridge.services.ServiceResponse;
-
 import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
-import roboy.util.Ros;
-import roboy.util.RosMainNode;
+import roboy.ros.RosMainNode;
 
 /**
  * Roboy's facial expression output.
