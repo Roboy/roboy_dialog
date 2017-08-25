@@ -125,15 +125,15 @@ public class DialogSystem {
         Neo4jMemory mem = new Neo4jMemory(rosMainNode);
 
         System.out.println("What is your name?");
-        System.out.println("-> laura");
+        System.out.println("-> zzzzt");
         //Check if person exists
         MemoryNodeModel nodeForExistenceCheck = new MemoryNodeModel(true);
-        nodeForExistenceCheck.setProperty("name", "laura");
+        nodeForExistenceCheck.setProperty("name", "zzzzt");
         ArrayList<Integer> result = (ArrayList<Integer>) mem.getByQuery(nodeForExistenceCheck);
         if(result == null || result.isEmpty()) {
             // Create person node in memory with name laura.
             MemoryNodeModel createPersonNode = new MemoryNodeModel(true);
-            createPersonNode.setProperty("name", "laura");
+            createPersonNode.setProperty("name", "zzzzt");
             createPersonNode.setLabel("Person");
             int id = mem.create(createPersonNode);
             System.out.println("The id is: " + id);
