@@ -1,117 +1,107 @@
 package roboy.memory;
-import org.json.*;
+import com.google.gson.Gson;
 
-import roboy.linguistics.Triple;
+import com.google.gson.reflect.TypeToken;
+import roboy.memory.nodes.RetrieveQueryTemplate;
+import roboy.memory.nodes.MemoryNodeModel;
 import roboy.ros.RosMainNode;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.*;
 
 /**
  * Implements the high-level-querying tasks to the Memory services using RosMainNode.
- * It is possible to use either direct querying via JSON or query building methods.
  */
-public class Neo4jMemory implements Memory<JSONObject>
+public class Neo4jMemory implements Memory<MemoryNodeModel>
 {
     private RosMainNode rosMainNode;
+    private Gson gson = new Gson();
 
     public Neo4jMemory (RosMainNode node){
         this.rosMainNode = node;
     }
 
+    /**
+     * Updating information in the memory for an EXISTING node with known ID.
+     *
+     * @param node Node with a set ID, and other properties to be set or updated.
+     * @return true for success, false for fail
+     */
     @Override
-    public boolean save(JSONObject query) throws InterruptedException, IOException
+    public boolean save(MemoryNodeModel node) throws InterruptedException, IOException
     {
-        return rosMainNode.UpdateMemoryQuery(query.toString())!=null;
+        String response = rosMainNode.UpdateMemoryQuery(node.toJSON(gson));
+        return(response.contains("OK"));
     }
 
+    /**
+     * This query retrieves a a single node by its ID.
+     *
+     * @param  id the ID of requested
+     * @return Node representation of the result.
+     */
+    public MemoryNodeModel getById(int id) throws InterruptedException, IOException
+    {
+        String result = rosMainNode.GetMemoryQuery("{'id':"+id+"}");
+        return gson.fromJson(result, MemoryNodeModel.class);
+    }
+
+    /**
+     * This is a classical database query which finds all matching nodes.
+     *
+     * @param  query the ID of requested
+     * @return Array of  IDs (all nodes which correspond to the pattern).
+     */
+    public List<Integer> getByQuery(MemoryNodeModel query) throws InterruptedException, IOException
+    {
+        String result = rosMainNode.GetMemoryQuery(query.toJSON(gson));
+        Type type = new TypeToken<List<Integer>>() {}.getType();
+        List<Integer> list = gson.fromJson(result, type);
+        return list;
+    }
+
+    public int create(MemoryNodeModel query) throws InterruptedException, IOException
+    {
+        String result = rosMainNode.CreateMemoryQuery(query.toJSON(gson));
+        Type type = new TypeToken<Map<String,Integer>>() {}.getType();
+        Map<String,Integer> list = gson.fromJson(result, type);
+        return list.get("id");
+    }
+
+    /**
+     * IF ONLY THE ID IS SET, THE NODE IN MEMORY WILL BE DELETED ENTIRELY.
+     * Otherwise, the properties present in the query will be deleted.
+     *
+     * @param query StrippedQuery avoids accidentally deleting other fields than intended.
+     */
+    public boolean remove(MemoryNodeModel query) throws InterruptedException, IOException
+    {
+        //Remove all fields which were not explicitly set, for safety.
+        query.setStripQuery(true);
+        String response = rosMainNode.DeleteMemoryQuery(query.toJSON(gson));
+        return(response.contains("OK"));
+    }
+
+    /**
+     * //TODO Deprecated due to interface incompatibility, use getById or getByMatch
+     *
+     * @param query a GetByIDQuery instance
+     * @return Array with a single node
+     */
     @Override
-    public List<JSONObject> retrieve(JSONObject query) throws InterruptedException, IOException
+    @Deprecated
+    public List<MemoryNodeModel> retrieve(MemoryNodeModel query) throws InterruptedException, IOException
     {
-        List<JSONObject> result = new ArrayList<>();
-        result.add(new JSONObject(rosMainNode.GetMemoryQuery(query.toString())));
+        //TODO just dummy response
+        List<MemoryNodeModel> l = new ArrayList();
+        l.add(gson.fromJson("{'id':96,'relations':{'LIVE_IN':[28,23],'STUDY_AT':[16]}}", MemoryNodeModel.class));
+        if (1<3) return l;
+        List<MemoryNodeModel> result = new ArrayList<>();
+        if (query.getClass().equals(RetrieveQueryTemplate.class)) {
+            result.add(gson.fromJson(rosMainNode.GetMemoryQuery(query.toString()), MemoryNodeModel.class));
+        }
         return result;
-    }
-
-    public List<JSONObject> create(JSONObject query) throws InterruptedException, IOException
-    {
-        List<JSONObject> result = new ArrayList<>();
-        result.add(new JSONObject(rosMainNode.CreateMemoryQuery(query.toString())));
-        return result;
-    }
-
-    public List<JSONObject> remove(JSONObject query) throws InterruptedException, IOException
-    {
-        List<JSONObject> result = new ArrayList<>();
-        result.add(new JSONObject(rosMainNode.DeleteMemoryQuery(query.toString())));
-        return result;
-    }
-
-    private String getIdOfPersonByName(String name) {
-        JSONObject query = new JSONObject();
-        //"{'label':'Person', relations:{'FRIEND_OF':[15]}, 'properties':{'name':'Laura'}}\""
-        query.put("label","Person");
-        JSONObject props = new JSONObject();
-        props.put("name", name);
-        query.put("properties", props);
-        try {
-            List<JSONObject> result = retrieve(query);
-            if(isValid(result)) return Integer.toString(result.get(0).getInt("id"));
-        } catch (InterruptedException | IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    private String createNewPersonNode(String name) {
-        JSONObject query = new JSONObject();
-        //"{'label':'Person', relations:{'FRIEND_OF':[15]}, 'properties':{'name':'Laura'}}\""
-        query.put("label","Person");
-        JSONObject props = new JSONObject();
-        props.put("name", name);
-        query.put("properties", props);
-        try {
-            return Integer.toString((create(query)).get(0).getInt("id"));
-        } catch (InterruptedException | IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public String getPersonId(String name) {
-        String id = getIdOfPersonByName(name);
-        if(id == null) {
-            id = createNewPersonNode(name);
-        }
-        return id;
-    }
-
-    public JSONObject getPersonInformation(String id) {
-        JSONObject query = new JSONObject();
-        query.append("id", id);
-        List<JSONObject> result = null;
-        try {
-            result = retrieve(query);
-        } catch (InterruptedException | IOException e) {
-            e.printStackTrace();
-        }
-        if(isValid(result)) return result.get(0);
-        return null;
-    }
-
-    public boolean addPersonInformation(String property, String value) {
-        JSONObject query = new JSONObject();
-        query.append(property, value);
-        try {
-            return save(query);
-        } catch (InterruptedException | IOException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    private boolean isValid(List<JSONObject> result) {
-        return (!result.isEmpty()) && !(result.get(0) == null);
     }
 
 }

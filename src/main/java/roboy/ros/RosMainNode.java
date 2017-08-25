@@ -24,7 +24,8 @@ public class RosMainNode extends AbstractNodeMain {
     public RosMainNode() {
         clients = new RosManager();
 
-        String hostName = System.getenv("ROS_HOSTNAME");
+        //String hostName = System.getenv("ROS_HOSTNAME");
+        String hostName = "10.183.122.142";
         if (hostName == null || hostName.isEmpty()) {
             System.out.println("Could not find ROS hostname. ROS will be unavailable. Set ROS_HOSTNAME environmental variable.");
         }

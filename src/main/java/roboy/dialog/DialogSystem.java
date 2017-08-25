@@ -17,6 +17,9 @@ import roboy.io.*;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.*;
 import roboy.memory.Neo4jMemory;
+import roboy.memory.nodes.RetrieveQueryTemplate;
+import roboy.memory.nodes.GetQueryTemplate;
+import roboy.memory.nodes.MemoryNodeModel;
 import roboy.talk.Verbalizer;
 
 import roboy.ros.RosMainNode;
@@ -120,8 +123,27 @@ public class DialogSystem {
 
         Thread.sleep(10000L);
         Neo4jMemory mem = new Neo4jMemory(rosMainNode);
-        String id = mem.getPersonId("Laura");
+
+        System.out.println("What is your name?");
+        System.out.println("-> laura");
+        // Create person node in memory with name laura.
+        MemoryNodeModel createPersonNode = new MemoryNodeModel(true);
+        createPersonNode.setProperty("name", "laura");
+        createPersonNode.setLabel("Person");
+        int id = mem.create(createPersonNode);
         System.out.println("The id is: "+id);
+        // Ask for hobby and create node.
+        System.out.println("What is your hobby?");
+        System.out.println("-> football");
+        MemoryNodeModel createHobbyNode = new MemoryNodeModel(true);
+        createHobbyNode.setLabel("Hobby");
+        createHobbyNode.setProperty("name", "football");
+        int hobbyId = mem.create(createHobbyNode);
+        // Set relation HAS_HOBBY from person to hobby
+        MemoryNodeModel getPersonNode = mem.getById(id);
+        getPersonNode.setRelation("HAS_HOBBY", hobbyId);
+        if (mem.save(getPersonNode)) System.out.println("Now I will remember your hobby!");
+        else System.out.println("My memory is failing me.");
 
         System.out.println("Initialized...");
 
