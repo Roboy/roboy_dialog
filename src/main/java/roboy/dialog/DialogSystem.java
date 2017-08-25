@@ -126,24 +126,33 @@ public class DialogSystem {
 
         System.out.println("What is your name?");
         System.out.println("-> laura");
-        // Create person node in memory with name laura.
-        MemoryNodeModel createPersonNode = new MemoryNodeModel(true);
-        createPersonNode.setProperty("name", "laura");
-        createPersonNode.setLabel("Person");
-        int id = mem.create(createPersonNode);
-        System.out.println("The id is: "+id);
-        // Ask for hobby and create node.
-        System.out.println("What is your hobby?");
-        System.out.println("-> football");
-        MemoryNodeModel createHobbyNode = new MemoryNodeModel(true);
-        createHobbyNode.setLabel("Hobby");
-        createHobbyNode.setProperty("name", "football");
-        int hobbyId = mem.create(createHobbyNode);
-        // Set relation HAS_HOBBY from person to hobby
-        MemoryNodeModel getPersonNode = mem.getById(id);
-        getPersonNode.setRelation("HAS_HOBBY", hobbyId);
-        if (mem.save(getPersonNode)) System.out.println("Now I will remember your hobby!");
-        else System.out.println("My memory is failing me.");
+        //Check if person exists
+        MemoryNodeModel nodeForExistenceCheck = new MemoryNodeModel(true);
+        nodeForExistenceCheck.setProperty("name", "laura");
+        ArrayList<Integer> result = (ArrayList<Integer>) mem.getByQuery(nodeForExistenceCheck);
+        if(result == null || result.isEmpty()) {
+            // Create person node in memory with name laura.
+            MemoryNodeModel createPersonNode = new MemoryNodeModel(true);
+            createPersonNode.setProperty("name", "laura");
+            createPersonNode.setLabel("Person");
+            int id = mem.create(createPersonNode);
+            System.out.println("The id is: " + id);
+            // Ask for hobby and create node.
+            System.out.println("What is your hobby?");
+            System.out.println("-> football");
+            MemoryNodeModel createHobbyNode = new MemoryNodeModel(true);
+            createHobbyNode.setLabel("Hobby");
+            createHobbyNode.setProperty("name", "football");
+            int hobbyId = mem.create(createHobbyNode);
+            // Set relation HAS_HOBBY from person to hobby
+            MemoryNodeModel getPersonNode = mem.getById(id);
+            getPersonNode.setRelation("HAS_HOBBY", hobbyId);
+            if (mem.save(getPersonNode)) System.out.println("Now I will remember your hobby!");
+            else System.out.println("My memory is failing me.");
+        } else {
+            MemoryNodeModel getPersonNode = mem.getById(result.get(0));
+            System.out.println("I remember you!");
+        }
 
         System.out.println("Initialized...");
 

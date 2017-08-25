@@ -53,12 +53,12 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
      * @param  query the ID of requested
      * @return Array of  IDs (all nodes which correspond to the pattern).
      */
-    public List<Integer> getByQuery(MemoryNodeModel query) throws InterruptedException, IOException
+    public ArrayList<Integer> getByQuery(MemoryNodeModel query) throws InterruptedException, IOException
     {
         String result = rosMainNode.GetMemoryQuery(query.toJSON(gson));
-        Type type = new TypeToken<List<Integer>>() {}.getType();
-        List<Integer> list = gson.fromJson(result, type);
-        return list;
+        Type type = new TypeToken<HashMap<String, List<Integer>>>() {}.getType();
+        HashMap<String, ArrayList<Integer>> list = gson.fromJson(result, type);
+        return list.get("id");
     }
 
     public int create(MemoryNodeModel query) throws InterruptedException, IOException

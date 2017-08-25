@@ -30,17 +30,17 @@ public class MemoryNodeModel {
     transient boolean stripQuery = false;
 
     public MemoryNodeModel(){
-        this.id = -1;
+        this.id = 0;
     }
 
     public MemoryNodeModel(boolean stripQuery) {
         if(!stripQuery) {
-            id = -1;
+            id = 0;
             labels = new ArrayList<>();
             properties = new HashMap<>();
             relations = new HashMap<>();
         } else {
-            id = -1;
+            id = 0;
             this.stripQuery = true;
         }
     }
@@ -129,8 +129,9 @@ public class MemoryNodeModel {
                     if (((ArrayList<?>) entry.getValue()).size() == 0) {
                         it.remove();
                     }
-                } else if (entry.getValue().getClass().equals(Integer.class)) {
-                    if (((Integer) entry.getValue()) == -1) {
+                    //As ID is parsed into Double inside GSON, usng Double.class
+                } else if (entry.getValue().getClass().equals(Double.class)) {
+                    if (((Double) entry.getValue()) == 0) {
                         it.remove();
                     }
                 } else if (entry.getValue().getClass().equals(HashMap.class)) {
