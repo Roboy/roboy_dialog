@@ -21,7 +21,7 @@ import roboy.ros.RosMainNode;
  * is based on a state machine, where each input is interpreted in the context of the
  * state Roboy is currently in to determine respective answers.
  * 
- * Since this was used for the last demo, quite some refaktoring is needed here to 
+ * Since this was used for the last demo, quite some refactoring is needed here to
  * tidy up the code again.
  */
 public class SmallTalkPersonality implements Personality {

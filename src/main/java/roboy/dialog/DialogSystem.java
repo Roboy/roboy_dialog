@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.DatagramSocket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import com.google.gson.JsonIOException;
 
@@ -124,25 +125,27 @@ public class DialogSystem {
         Thread.sleep(10000L);
         Neo4jMemory mem = new Neo4jMemory(rosMainNode);
 
-        System.out.println("What is your name?");
-        System.out.println("-> zzzzt");
+        Scanner scan = new Scanner(System.in);
+        String in = "";
+        System.out.println("Hi! What is your name?");
+        in = scan.nextLine();
         //Check if person exists
         MemoryNodeModel nodeForExistenceCheck = new MemoryNodeModel(true);
-        nodeForExistenceCheck.setProperty("name", "zzzzt");
+        nodeForExistenceCheck.setProperty("name", in);
         ArrayList<Integer> result = (ArrayList<Integer>) mem.getByQuery(nodeForExistenceCheck);
         if(result == null || result.isEmpty()) {
+            System.out.println("I have not met you before, but will definitely remember you next time!");
             // Create person node in memory with name laura.
             MemoryNodeModel createPersonNode = new MemoryNodeModel(true);
-            createPersonNode.setProperty("name", "zzzzt");
+            createPersonNode.setProperty("name", in);
             createPersonNode.setLabel("Person");
             int id = mem.create(createPersonNode);
-            System.out.println("The id is: " + id);
             // Ask for hobby and create node.
             System.out.println("What is your hobby?");
-            System.out.println("-> football");
+            in = scan.nextLine();
             MemoryNodeModel createHobbyNode = new MemoryNodeModel(true);
             createHobbyNode.setLabel("Hobby");
-            createHobbyNode.setProperty("name", "football");
+            createHobbyNode.setProperty("name", in);
             int hobbyId = mem.create(createHobbyNode);
             // Set relation HAS_HOBBY from person to hobby
             MemoryNodeModel getPersonNode = mem.getById(id);
@@ -152,6 +155,7 @@ public class DialogSystem {
         } else {
             MemoryNodeModel getPersonNode = mem.getById(result.get(0));
             System.out.println("I remember you!");
+
         }
 
         System.out.println("Initialized...");
@@ -180,9 +184,9 @@ public class DialogSystem {
                     interpretation = a.analyze(interpretation);
                 }
                 if(interpretation.getFeature(Linguistics.INTENT) != null) {
-                    System.out.println("Found intent: "+ (String) interpretation.getFeature(Linguistics.INTENT) + " with confidence: "+ (float) interpretation.getFeature(Linguistics.INTENT_DISTANCE));
+                    //System.out.println("Found intent: "+ (String) interpretation.getFeature(Linguistics.INTENT) + " with confidence: "+ (float) interpretation.getFeature(Linguistics.INTENT_DISTANCE));
                 } else {
-                    System.out.println("No intent found!");
+                    //System.out.println("No intent found!");
                 }
                 actions = p.answer(interpretation);
             }
