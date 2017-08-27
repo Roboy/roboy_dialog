@@ -4,18 +4,18 @@
     "What is your name?",
     "Who are you?"
   ],
-  "origin" : [
+  "FROM" : [
     "Where are you from?",
     "Where were you born?",
     "I have hard time guessing your home country. What is it?",
     "Which town do you call your home?"
   ],
-  "hobby" : [
-    "What is your favorive thing to do?",
+  "HAS_HOBBY" : [
+    "What is your favorite thing to do?",
     "What is your hobby?",
     "What do you do in your free time?",
     "How do you spend your free time?",
-    "What is your favorive pasttime activity?"
+    "What is your favorite pastime activity?"
   ],
   "movies" : [
     "What is your favourite movie?",

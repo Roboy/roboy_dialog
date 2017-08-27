@@ -1,0 +1,106 @@
+package roboy.memory.nodes;
+
+import roboy.memory.Neo4jMemory;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+/**
+ * Encapsulates a MemoryNodeModel and enables dialog states to easily store
+ * and retrieve information about its current conversation partner.
+ */
+public class Interlocutor {
+    MemoryNodeModel person;
+    Neo4jMemory memory;
+    public boolean FAMILIAR = false;
+
+    public Interlocutor() {
+        this.person = new MemoryNodeModel(true);
+        Neo4jMemory memory = Neo4jMemory.getInstance();
+    }
+
+    /**
+     * After executing this method, the person field contains a node that
+     * is in sync with memory and represents the interlocutor.
+     *
+     * Unless something goes wrong during querying, which would affect the
+     * following communication severely.
+     */
+    public void addName(String name) {
+        person.setProperty("name", name);
+        ArrayList<Integer> ids = new ArrayList<>();
+
+        // Query memory for matching persons.
+        try {
+            ids = memory.getByQuery(person);
+        } catch (InterruptedException | IOException e) {
+            System.out.println("Exception while querying memory, assuming person unknown.");
+            e.printStackTrace();
+        }
+        // Pick first if matches found.
+        if(ids != null && !ids.isEmpty()) {
+            //TODO Change from using first id to specifying if multiple matches are found.
+            try {
+                this.person = memory.getById(ids.get(0));
+                FAMILIAR = true;
+            } catch (InterruptedException | IOException e) {
+                System.out.println("Unexpected memory error: provided ID not found upon querying.");
+                e.printStackTrace();
+            }
+        }
+        // Create new node if match is not found.
+        else {
+            try {
+                int id = memory.create(person);
+                // Need to retrieve the created node by the id returned by memory
+                person = memory.getById(id);
+            } catch (InterruptedException | IOException e) {
+                System.out.println("Unexpected memory error: provided ID not found upon querying.");
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public String getName() {
+        return (String) person.getProperty("name");
+    }
+
+    /**
+     * Adds a new relation to the person node, updating memory.
+     */
+    public void addInformation(String relation, String name) {
+        ArrayList<Integer> ids = new ArrayList<>();
+        // First check if node with given name exists.
+        MemoryNodeModel relatedNode = new MemoryNodeModel(true);
+        // TODO this reuses the code from addName, might be able to refactor out.
+        try {
+            ids = memory.getByQuery(relatedNode);
+        } catch (InterruptedException | IOException e) {
+            System.out.println("Exception while querying memory by template.");
+            e.printStackTrace();
+        }
+        // Pick first if matches found.
+        if(ids != null && !ids.isEmpty()) {
+            //TODO Change from using first id to specifying if multiple matches are found.
+            person.setRelation(relation, ids.get(0));
+        }
+        // Create new node if match is not found.
+        else {
+            try {
+                int id = memory.create(relatedNode);
+                person.setRelation(relation, id);
+            } catch (InterruptedException | IOException e) {
+                System.out.println("Unexpected memory error: creating node for new relation failed.");
+                e.printStackTrace();
+            }
+        }
+        //Update the person node in memory.
+        try{
+            memory.save(person);
+        } catch (InterruptedException | IOException e) {
+            System.out.println("Unexpected memory error: updating person information failed.");
+            e.printStackTrace();
+        }
+    }
+
+}

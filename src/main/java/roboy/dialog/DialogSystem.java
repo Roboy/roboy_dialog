@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.DatagramSocket;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import com.google.gson.JsonIOException;
 
@@ -86,34 +85,32 @@ public class DialogSystem {
 
 	    InputDevice input = new CommandLineInput();
 //		 InputDevice input = new BingInput(rosMainNode);
-        DatagramSocket ds = new DatagramSocket(55555);
+//        DatagramSocket ds = new DatagramSocket(55555);
 //        InputDevice input = new UdpInput(ds);
 		InputDevice celebInput = new CelebritySimilarityInput();
 //		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
 		InputDevice multiIn = new MultiInputDevice(input);//, celebInput, roboyDetectInput);
 
-		OutputDevice output1 = new CerevoiceOutput(rosMainNode);
+//		OutputDevice output1 = new CerevoiceOutput(rosMainNode);
 //        CerevoiceOutput output2 = new CerevoiceOutput(rosMainNode);
 		// OutputDevice output = new BingOutput();
-        OutputDevice output2 = new UdpOutput(ds, "localhost", 55556);
-		EmotionOutput emotion = new EmotionOutput(rosMainNode);
+//        OutputDevice output2 = new UdpOutput(ds, "localhost", 55556);
+//		EmotionOutput emotion = new EmotionOutput(rosMainNode);
         OutputDevice output = new CommandLineOutput();
 //        OutputDevice output = new CerevoiceOutput(emotion);
 		OutputDevice multiOut = new MultiOutputDevice(output);//, output2, emotion);
 
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
-//		analyzers.add(new Preprocessor());
-//		analyzers.add(new SimpleTokenizer());
-//		analyzers.add(new OpenNLPPPOSTagger());
-//		analyzers.add(new DictionaryBasedSentenceTypeDetector());
-//		analyzers.add(new SentenceAnalyzer());
-//		analyzers.add(new OpenNLPParser());
-//		analyzers.add(new OntologyNERAnalyzer());
-//		analyzers.add(new AnswerAnalyzer());
-//        analyzers.add(new EmotionAnalyzer());
-//        analyzers.add(new IntentAnalyzer(rosMainNode));
-
-
+		analyzers.add(new Preprocessor());
+		analyzers.add(new SimpleTokenizer());
+		analyzers.add(new OpenNLPPPOSTagger());
+		analyzers.add(new DictionaryBasedSentenceTypeDetector());
+		analyzers.add(new SentenceAnalyzer());
+		analyzers.add(new OpenNLPParser());
+		analyzers.add(new OntologyNERAnalyzer());
+		analyzers.add(new AnswerAnalyzer());
+        analyzers.add(new EmotionAnalyzer());
+        analyzers.add(new IntentAnalyzer(rosMainNode));
 
         // Race between main and rosMainNode threads, but there should be enough time.
         if (!rosMainNode.STARTUP_SUCCESS && SHUTDOWN_ON_ROS_FAILURE) {
@@ -121,41 +118,36 @@ public class DialogSystem {
                     "Start the required services or set SHUTDOWN_ON_ROS_FAILURE to false.");
         }
 
+        Neo4jMemory memory = Neo4jMemory.getInstance(rosMainNode);
 
-        Thread.sleep(10000L);
-        Neo4jMemory mem = new Neo4jMemory(rosMainNode);
-
-        Scanner scan = new Scanner(System.in);
-        String in = "";
-        System.out.println("Hi! What is your name?");
-        in = scan.nextLine();
+        System.out.println("What is your name?");
+        System.out.println("-> zzzzt");
         //Check if person exists
         MemoryNodeModel nodeForExistenceCheck = new MemoryNodeModel(true);
-        nodeForExistenceCheck.setProperty("name", in);
-        ArrayList<Integer> result = (ArrayList<Integer>) mem.getByQuery(nodeForExistenceCheck);
+        nodeForExistenceCheck.setProperty("name", "zzzzt");
+        ArrayList<Integer> result = (ArrayList<Integer>) memory.getByQuery(nodeForExistenceCheck);
         if(result == null || result.isEmpty()) {
-            System.out.println("I have not met you before, but will definitely remember you next time!");
-            // Create person node in memory with name laura.
+            // Create person node in memory with name.
             MemoryNodeModel createPersonNode = new MemoryNodeModel(true);
-            createPersonNode.setProperty("name", in);
+            createPersonNode.setProperty("name", "zzzzt");
             createPersonNode.setLabel("Person");
-            int id = mem.create(createPersonNode);
+            int id = memory.create(createPersonNode);
+            System.out.println("The id is: " + id);
             // Ask for hobby and create node.
             System.out.println("What is your hobby?");
-            in = scan.nextLine();
+            System.out.println("-> football");
             MemoryNodeModel createHobbyNode = new MemoryNodeModel(true);
             createHobbyNode.setLabel("Hobby");
-            createHobbyNode.setProperty("name", in);
-            int hobbyId = mem.create(createHobbyNode);
+            createHobbyNode.setProperty("name", "football");
+            int hobbyId = memory.create(createHobbyNode);
             // Set relation HAS_HOBBY from person to hobby
-            MemoryNodeModel getPersonNode = mem.getById(id);
+            MemoryNodeModel getPersonNode = memory.getById(id);
             getPersonNode.setRelation("HAS_HOBBY", hobbyId);
-            if (mem.save(getPersonNode)) System.out.println("Now I will remember your hobby!");
+            if (memory.save(getPersonNode)) System.out.println("Now I will remember your hobby!");
             else System.out.println("My memory is failing me.");
         } else {
-            MemoryNodeModel getPersonNode = mem.getById(result.get(0));
+            MemoryNodeModel getPersonNode = memory.getById(result.get(0));
             System.out.println("I remember you!");
-
         }
 
         System.out.println("Initialized...");
@@ -184,9 +176,9 @@ public class DialogSystem {
                     interpretation = a.analyze(interpretation);
                 }
                 if(interpretation.getFeature(Linguistics.INTENT) != null) {
-                    //System.out.println("Found intent: "+ (String) interpretation.getFeature(Linguistics.INTENT) + " with confidence: "+ (float) interpretation.getFeature(Linguistics.INTENT_DISTANCE));
+                    System.out.println("Found intent: "+ (String) interpretation.getFeature(Linguistics.INTENT) + " with confidence: "+ (float) interpretation.getFeature(Linguistics.INTENT_DISTANCE));
                 } else {
-                    //System.out.println("No intent found!");
+                    System.out.println("No intent found!");
                 }
                 actions = p.answer(interpretation);
             }

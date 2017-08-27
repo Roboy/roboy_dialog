@@ -11,6 +11,7 @@ import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.StatementInterpreter;
 import roboy.memory.WorkingMemory;
+import roboy.memory.nodes.Interlocutor;
 import roboy.talk.Verbalizer;
 import roboy.util.Lists;
 import roboy.ros.RosMainNode;
@@ -35,11 +36,13 @@ public class SmallTalkPersonality implements Personality {
     private Verbalizer verbalizer;
     private RosMainNode rosMainNode;
 
+    // The class saving information about the converation partner.
+    private Interlocutor person;
+
     public SmallTalkPersonality(Verbalizer verbalizer, RosMainNode node) {
         this.verbalizer = verbalizer;
         this.rosMainNode = node;
         this.initialize();
-
     }
 
     /**
@@ -123,14 +126,16 @@ public class SmallTalkPersonality implements Personality {
 
     private void initialize()
     {
+        // initialize new conversation partner
+        person = new Interlocutor();
         // build state machine
         GreetingState greetings = new GreetingState();
-        IntroductionState intro = new IntroductionState();
+        IntroductionState intro = new IntroductionState(person);
         FarewellState farewell = new FarewellState();
         WildTalkState wild = new WildTalkState(rosMainNode);
         SegueState segue = new SegueState(wild);
         QuestionAnsweringState answer = new QuestionAnsweringState(segue);
-        QuestionRandomizerState qa = new QuestionRandomizerState(answer);
+        QuestionRandomizerState qa = new QuestionRandomizerState(answer, person);
 
         greetings.setNextState(intro);
         answer.setTop(qa);

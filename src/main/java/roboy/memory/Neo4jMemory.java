@@ -15,11 +15,35 @@ import java.util.*;
  */
 public class Neo4jMemory implements Memory<MemoryNodeModel>
 {
-    private RosMainNode rosMainNode;
+    private static Neo4jMemory memory;
+    private static RosMainNode rosMainNode;
     private Gson gson = new Gson();
 
-    public Neo4jMemory (RosMainNode node){
+    private Neo4jMemory (RosMainNode node){
         this.rosMainNode = node;
+    }
+
+    public static Neo4jMemory getInstance(RosMainNode node)
+    {
+        if (memory==null) {
+            memory = new Neo4jMemory(node);
+        }
+        return memory;
+
+    }
+
+    public static  Neo4jMemory getInstance()
+    {
+        try{
+            return memory;
+        }
+        catch (NullPointerException e)
+        {
+            e.printStackTrace();
+            System.out.println("Memory wasn't initalized correctly. Use public static Neo4jMemory getInstance(RosMainNode node) instead.");
+            return null;
+        }
+
     }
 
     /**
