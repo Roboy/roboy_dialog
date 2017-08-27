@@ -28,6 +28,7 @@ public class Interlocutor {
      */
     public void addName(String name) {
         person.setProperty("name", name);
+        person.setLabel("Person");
         ArrayList<Integer> ids = new ArrayList<>();
 
         // Query memory for matching persons.

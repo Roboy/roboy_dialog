@@ -2,7 +2,6 @@ package roboy.memory;
 import com.google.gson.Gson;
 
 import com.google.gson.reflect.TypeToken;
-import roboy.memory.nodes.RetrieveQueryTemplate;
 import roboy.memory.nodes.MemoryNodeModel;
 import roboy.ros.RosMainNode;
 
@@ -40,7 +39,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
         catch (NullPointerException e)
         {
             e.printStackTrace();
-            System.out.println("Memory wasn't initalized correctly. Use public static Neo4jMemory getInstance(RosMainNode node) instead.");
+            System.out.println("Memory wasn't initialized correctly. Use public static Neo4jMemory getInstance(RosMainNode node) instead.");
             return null;
         }
 
@@ -117,15 +116,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
     @Deprecated
     public List<MemoryNodeModel> retrieve(MemoryNodeModel query) throws InterruptedException, IOException
     {
-        //TODO just dummy response
-        List<MemoryNodeModel> l = new ArrayList();
-        l.add(gson.fromJson("{'id':96,'relations':{'LIVE_IN':[28,23],'STUDY_AT':[16]}}", MemoryNodeModel.class));
-        if (1<3) return l;
-        List<MemoryNodeModel> result = new ArrayList<>();
-        if (query.getClass().equals(RetrieveQueryTemplate.class)) {
-            result.add(gson.fromJson(rosMainNode.GetMemoryQuery(query.toString()), MemoryNodeModel.class));
-        }
-        return result;
+        return null;
     }
 
 }

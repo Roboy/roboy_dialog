@@ -36,7 +36,7 @@ public class SmallTalkPersonality implements Personality {
     private Verbalizer verbalizer;
     private RosMainNode rosMainNode;
 
-    // The class saving information about the converation partner.
+    // The class saving information about the conversation partner.
     private Interlocutor person;
 
     public SmallTalkPersonality(Verbalizer verbalizer, RosMainNode node) {

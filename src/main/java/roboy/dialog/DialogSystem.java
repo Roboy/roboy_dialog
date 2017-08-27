@@ -1,7 +1,6 @@
 package roboy.dialog;
 
 import java.io.IOException;
-import java.net.DatagramSocket;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +16,6 @@ import roboy.io.*;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.*;
 import roboy.memory.Neo4jMemory;
-import roboy.memory.nodes.RetrieveQueryTemplate;
-import roboy.memory.nodes.GetQueryTemplate;
 import roboy.memory.nodes.MemoryNodeModel;
 import roboy.talk.Verbalizer;
 

@@ -5,35 +5,26 @@ import java.util.Map;
 
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.memory.Neo4jRelations;
 import roboy.memory.WorkingMemory;
 import roboy.memory.nodes.Interlocutor;
 import roboy.util.JsonUtils;
 import roboy.util.Lists;
+
+import static roboy.memory.Neo4jRelations.FROM;
+import static roboy.memory.Neo4jRelations.HAS_HOBBY;
 
 /**
  * Manages the questions that can be asked from a person.
  * Coupled with Neo4j information about the person to prevent duplicates.
  */
 public class QuestionRandomizerState implements State{
-
-	// NOTE: These question predicates match EXACTLY the relation types
-	// found in memory. If the memory specification changes or expands,
-	// these predicates need to be updated.
-	// TODO should move relations into an enum.
-
 	// Profession is currently not represented in memory.
-	// TODO ask memory to add this.
 	//private static final String PROFESSION = "does";
-	private static final String FROM = "FROM";
-	private static final String HOBBY = "HAS_HOBBY";
 	// Favorite movie currently not represented in memory.
 	//private static final String MOVIE = "likes the movie";
-	// TODO These are new predicates from memory, matching questions needed:
-	private static final String LIVE_IN = "LIVE_IN";
-	private static final String STUDY_AT = "STUDY_AT";
-	private static final String WORK_FOR = "WORK_FOR";
-	private static final String FRIEND_OF = "FRIEND_OF";
-	private static final String MEMBER_OF = "MEMBER_OF";
+	// TODO ask memory to add relations.
+	// TODO These are new predicates from memory, matching questions needed.
 	
 	private PersonalQAState[] questionStates;
 	private PersonalQAState locationQuestion;
@@ -49,11 +40,12 @@ public class QuestionRandomizerState implements State{
 		//Fetch the map: question type ("name", "occupation") -> list of phrasings for the question.
 		String questionsFile = "questions/questions.json";
 		Map<String, List<String>> questions = JsonUtils.getQuestionFromJsonFile(questionsFile);
+
 		locationQuestion = new PersonalQAState(
-				questions.get("FROM"),
+				questions.get(FROM.type),
 				Lists.stringList("Oh, I have never heard of that."),
 				Lists.strArray(new String[]{"Oh, I should visit ",""}),
-				FROM, person);
+				FROM.type, person);
 		LocationDBpedia locationDBpedia = new LocationDBpedia();
 		locationDBpedia.setSuccess(this);
 		locationDBpedia.setFailure(this);
@@ -66,10 +58,10 @@ public class QuestionRandomizerState implements State{
 //						Lists.strArray(new String[]{"You are probably very poor doing ",""}),
 //						PROFESSION),
 			 new PersonalQAState(
-					questions.get("hobby"),
+					questions.get(HAS_HOBBY.type),
 					Lists.stringList("Don't know what that is, but good luck!"),
 					Lists.strArray(new String[]{"Just like me, I love "," too"}),
-					HOBBY, person),
+					HAS_HOBBY.type, person),
 //			new PersonalQAState(
 //					questions.get("movies"),
 //					Lists.stringList("Haven't heard of it. Probably it's shit"),
