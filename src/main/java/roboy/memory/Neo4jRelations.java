@@ -10,6 +10,7 @@ public enum Neo4jRelations {
     HAS_HOBBY("HAS_HOBBY"),
     LIVE_IN("LIVE_IN"),
     STUDY_AT("STUDY_AT"),
+    OCCUPATION("OCCUPATION"),
     WORK_FOR("WORK_FOR"),
     FRIEND_OF("FRIEND_OF"),
     MEMBER_OF("MEMBER_OF");

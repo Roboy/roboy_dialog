@@ -3,48 +3,47 @@ package roboy.dialog.personality.states;
 import java.util.List;
 import java.util.Map;
 
-import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jRelations;
-import roboy.memory.WorkingMemory;
 import roboy.memory.nodes.Interlocutor;
 import roboy.util.JsonUtils;
 import roboy.util.Lists;
 
 import static roboy.memory.Neo4jRelations.FROM;
 import static roboy.memory.Neo4jRelations.HAS_HOBBY;
+import static roboy.memory.Neo4jRelations.OCCUPATION;
 
 /**
  * Manages the questions that can be asked from a person.
  * Coupled with Neo4j information about the person to prevent duplicates.
  */
 public class QuestionRandomizerState implements State{
-	// Profession is currently not represented in memory.
-	//private static final String PROFESSION = "does";
 	// Favorite movie currently not represented in memory.
 	//private static final String MOVIE = "likes the movie";
-	// TODO ask memory to add relations.
-	// TODO These are new predicates from memory, matching questions needed.
+	// TODO ask memory to add relation.
+	// TODO There are new predicates from memory, need integrating.
 	
 	private PersonalQAState[] questionStates;
 	private PersonalQAState locationQuestion;
 	private boolean[] alreadyAsked;
 	private State inner;
 	private State chosenState;
-
 	private Interlocutor person;
 	
 	public QuestionRandomizerState(State inner, Interlocutor person) {
 		this.inner = inner;
 		this.person = person;
 		//Fetch the map: question type ("name", "occupation") -> list of phrasings for the question.
-		String questionsFile = "questions/questions.json";
-		Map<String, List<String>> questions = JsonUtils.getQuestionFromJsonFile(questionsFile);
+		String questionsFile = "sentences/questions.json";
+		String successAnswersFile = "sentences/successAnswers.json";
+		String failureAnswersFile = "sentences/failureAnswers.json";
+		Map<String, List<String>> questions = JsonUtils.getSentencesFromJsonFile(questionsFile);
+		Map<String, List<String[]>> successAnswers = JsonUtils.getSentenceArraysFromJsonFile(successAnswersFile);
+		Map<String, List<String>> failureAnswers = JsonUtils.getSentencesFromJsonFile(failureAnswersFile);
 
 		locationQuestion = new PersonalQAState(
 				questions.get(FROM.type),
-				Lists.stringList("Oh, I have never heard of that."),
-				Lists.strArray(new String[]{"Oh, I should visit ",""}),
+				failureAnswers.get(FROM.type),
+				successAnswers.get(FROM.type),
 				FROM.type, person);
 		LocationDBpedia locationDBpedia = new LocationDBpedia();
 		locationDBpedia.setSuccess(this);
@@ -52,16 +51,16 @@ public class QuestionRandomizerState implements State{
 		locationQuestion.setSuccess(locationDBpedia);
 		questionStates = new PersonalQAState[]{
 			locationQuestion,
-//			new PersonalQAState(
-//						questions.get("occupation"),
-//						Lists.stringList("Oh well, whatever"),
-//						Lists.strArray(new String[]{"You are probably very poor doing ",""}),
-//						PROFESSION),
+			new PersonalQAState(
+					questions.get("occupation"),
+					failureAnswers.get(OCCUPATION.type),
+					successAnswers.get(OCCUPATION.type),
+					OCCUPATION.type, person),
 			 new PersonalQAState(
-					questions.get(HAS_HOBBY.type),
-					Lists.stringList("Don't know what that is, but good luck!"),
-					Lists.strArray(new String[]{"Just like me, I love "," too"}),
-					HAS_HOBBY.type, person),
+					 questions.get(HAS_HOBBY.type),
+					 failureAnswers.get(HAS_HOBBY.type),
+					 successAnswers.get(HAS_HOBBY.type),
+					 HAS_HOBBY.type, person),
 //			new PersonalQAState(
 //					questions.get("movies"),
 //					Lists.stringList("Haven't heard of it. Probably it's shit"),

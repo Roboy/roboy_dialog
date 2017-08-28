@@ -1,0 +1,32 @@
+{
+  "name" : [
+    "My ears are failing me today."
+  ],
+  "FROM" : [
+    "Oh, I have never heard of that."
+  ],
+  "HAS_HOBBY" : [
+    "Don't know what that is, but good luck!"
+  ],
+  "LIVE_IN" : [
+    "Oh, I have never heard of that."
+  ],
+  "FRIEND_OF" : [
+    "I don't think I know them."
+  ],
+  "STUDY_AT" : [
+    "Oh well, whatever."
+  ],
+  "MEMBER_OF" : [
+    "Oh well, whatever."
+  ],
+  "wORK_AT" : [
+    "I don't know that one."
+  ],
+  "movies" : [
+    "Haven't heard of it. It's probably shit."
+  ],
+  "OCCUPATION" : [
+    "Oh well, whatever."
+  ]
+}
