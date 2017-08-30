@@ -115,38 +115,6 @@ public class DialogSystem {
                     "Start the required services or set SHUTDOWN_ON_ROS_FAILURE to false.");
         }
 
-        Neo4jMemory memory = Neo4jMemory.getInstance(rosMainNode);
-
-        System.out.println("What is your name?");
-        System.out.println("-> zzzzt");
-        //Check if person exists
-        MemoryNodeModel nodeForExistenceCheck = new MemoryNodeModel(true);
-        nodeForExistenceCheck.setProperty("name", "zzzzt");
-        ArrayList<Integer> result = (ArrayList<Integer>) memory.getByQuery(nodeForExistenceCheck);
-        if(result == null || result.isEmpty()) {
-            // Create person node in memory with name.
-            MemoryNodeModel createPersonNode = new MemoryNodeModel(true);
-            createPersonNode.setProperty("name", "zzzzt");
-            createPersonNode.setLabel("Person");
-            int id = memory.create(createPersonNode);
-            System.out.println("The id is: " + id);
-            // Ask for hobby and create node.
-            System.out.println("What is your hobby?");
-            System.out.println("-> football");
-            MemoryNodeModel createHobbyNode = new MemoryNodeModel(true);
-            createHobbyNode.setLabel("Hobby");
-            createHobbyNode.setProperty("name", "football");
-            int hobbyId = memory.create(createHobbyNode);
-            // Set relation HAS_HOBBY from person to hobby
-            MemoryNodeModel getPersonNode = memory.getById(id);
-            getPersonNode.setRelation("HAS_HOBBY", hobbyId);
-            if (memory.save(getPersonNode)) System.out.println("Now I will remember your hobby!");
-            else System.out.println("My memory is failing me.");
-        } else {
-            MemoryNodeModel getPersonNode = memory.getById(result.get(0));
-            System.out.println("I remember you!");
-        }
-
         System.out.println("Initialized...");
 
         while(true) {
@@ -171,11 +139,6 @@ public class DialogSystem {
                 interpretation = new Interpretation(raw.sentence, raw.attributes); //TODO: Input devices should immediately produce Interpretation objects
                 for (Analyzer a : analyzers) {
                     interpretation = a.analyze(interpretation);
-                }
-                if(interpretation.getFeature(Linguistics.INTENT) != null) {
-                    System.out.println("Found intent: "+ (String) interpretation.getFeature(Linguistics.INTENT) + " with confidence: "+ (float) interpretation.getFeature(Linguistics.INTENT_DISTANCE));
-                } else {
-                    System.out.println("No intent found!");
                 }
                 actions = p.answer(interpretation);
             }
