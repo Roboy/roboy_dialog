@@ -83,20 +83,26 @@ public class SmallTalkPersonality implements Personality {
 
         try {
 
-            if ( Verbalizer.farewells.contains(input.getFeature(Linguistics.SENTENCE)))
-            {
+            if (Verbalizer.farewells.contains(input.getFeature(Linguistics.SENTENCE))) {
                 this.initialize();
                 return Lists.actionList(new SpeechAction(Verbalizer.farewells.get((int) (Math.random()*Verbalizer.farewells.size()))));
             }
 
+            // Name to add into the connecting phrases later.
+            //TODO remove old memory usage when new memory integration done
+//            List<Triple> names = WorkingMemory.getInstance().retrieve(new Triple("is", "name", null));
+//            if (!names.isEmpty()) {
+//                name = names.get(0).patiens;
+//            }
             String name = null;
-            List<Triple> names = WorkingMemory.getInstance().retrieve(new Triple("is", "name", null));
-            if (!names.isEmpty()) {
-                name = names.get(0).patiens;
+            if(person!= null && person.getName() != null) {
+                name = person.getName();
             }
+
             String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
             List<Action> act = Lists.actionList();
 
+            // TODO Is this redundant compared to line 58?
             if (StatementInterpreter.isFromList(sentence, Verbalizer.farewells)) {
                 //if found stop conversation
                 state = new FarewellState();
@@ -107,18 +113,22 @@ public class SmallTalkPersonality implements Personality {
                 act.add(0, new FaceAction("angry"));
             }
 
+            // Get state-dependent reaction.
             Reaction reaction = state.react(input);
-
+            // Add connecting phrases.
             if (name != null && Math.random() < 0.3) { // TODO: this should go in the Verbalizer
                 List<String> namePhrases = Arrays.asList("So %s, ", "Hey %s, ", "%s, listen to me, ", "oh well, %s, ", "%s, ");
                 String phrase = String.format(namePhrases.get(new Random().nextInt(4)), name);
                 act.add(0, new SpeechAction(phrase));
             }
+            // Build list of reactions.
             List<Interpretation> intentions = reaction.getReactions();
             for (Interpretation i : intentions) {
                 act.add(verbalizer.verbalize(i));
             }
-            try{
+
+            try {
+                // Move on to the next state and execute the intentions stage.
                 state = reaction.getState();
                 intentions = state.act();
                 for (Interpretation i : intentions) {
@@ -129,16 +139,13 @@ public class SmallTalkPersonality implements Personality {
                 }
                 return act;
             }
-            catch (NullPointerException e)
-            {
+
+            catch (NullPointerException e) {
                 this.initialize();
                 return Lists.actionList(new FaceAction("shy"), new SpeechAction("Oopsie, got an exception just now. Recovering"));
             }
-
-
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             e.printStackTrace();
             return Lists.actionList(new FaceAction("shy"), new SpeechAction("Oopsie, got an exception just now. Recovering"));
         }
@@ -148,7 +155,7 @@ public class SmallTalkPersonality implements Personality {
         return name;
     }
 
-    public void setName(String name) {
+        public void setName(String name) {
         this.name = name;
     }
 
@@ -166,9 +173,9 @@ public class SmallTalkPersonality implements Personality {
         QuestionRandomizerState qa = new QuestionRandomizerState(answer, person);
 
         greetings.setNextState(intro);
-        answer.setTop(qa);
-        qa.setTop(qa);
         intro.setNextState(qa);
+        qa.setTop(qa);
+        answer.setTop(qa);
         wild.setNextState(qa);
 
         state = greetings;
