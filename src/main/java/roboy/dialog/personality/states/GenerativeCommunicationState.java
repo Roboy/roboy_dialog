@@ -5,6 +5,7 @@ import java.util.List;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.Lists;
 
+@Deprecated
 public class GenerativeCommunicationState extends AbstractBooleanState{
 	
 	private boolean first = true;
