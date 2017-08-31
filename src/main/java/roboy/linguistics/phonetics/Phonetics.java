@@ -7,6 +7,7 @@ import org.apache.commons.codec.language.DoubleMetaphone;
 import org.apache.commons.codec.language.Metaphone;
 import org.apache.commons.codec.language.Soundex;
 
+@Deprecated
 public class Phonetics {
 	
 	private Soundex soundex = new Soundex();

@@ -1,7 +1,7 @@
 package roboy.linguistics;
 
 /**
- * Represents a simple who does what to whom relation.
+ * Represents a simple who(agens) does what(predicate) to whom(patiens) relation.
  */
 public class Triple {
 	
