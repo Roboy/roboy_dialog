@@ -123,6 +123,14 @@ public class SmallTalkPersonality implements Personality {
         }
     }
 
+    public String getName() {
+        return name;
+    }
+
+        public void setName(String name) {
+        this.name = name;
+    }
+
     private void initialize()
     {
         // initialize new conversation partner
