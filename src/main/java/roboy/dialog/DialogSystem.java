@@ -127,10 +127,10 @@ public class DialogSystem {
 //            while (!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)) {
 //            }
 
-            Personality p = new SmallTalkPersonality(new Verbalizer(), rosMainNode);
+            Personality smallTalk = new SmallTalkPersonality(new Verbalizer(), rosMainNode);
             Input raw;
             Interpretation interpretation;
-            List<Action> actions = p.answer(new Interpretation(""));
+            List<Action> actions = smallTalk.answer(new Interpretation(""));
 
 
             while (actions.isEmpty() || !(actions.get(0) instanceof ShutDownAction)) {
@@ -140,7 +140,7 @@ public class DialogSystem {
                 for (Analyzer a : analyzers) {
                     interpretation = a.analyze(interpretation);
                 }
-                actions = p.answer(interpretation);
+                actions = smallTalk.answer(interpretation);
             }
             List<Action> lastwords = ((ShutDownAction) actions.get(0)).getLastWords();
             multiOut.act(lastwords);
