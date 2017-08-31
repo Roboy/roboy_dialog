@@ -8,7 +8,11 @@ import roboy.linguistics.Linguistics.SENTENCE_TYPE;
 
 /**
  * An interpretation of all inputs to Roboy consists of the sentence type and an
- * arbitrary map of features. Feature names are listed in the Linguistics class.
+ * arbitrary map of features. Feature names are listed and documented in the 
+ * class roboy.linguistics.Linguistics.
+ * 
+ * The interpretation class is also used to pass the output information from the
+ * states to the verbalizer class.
  */
 public class Interpretation {
 

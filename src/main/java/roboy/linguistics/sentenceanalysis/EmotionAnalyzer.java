@@ -6,7 +6,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by roboy on 7/5/17.
+ * Checks for a handfull of keywords and stores more or less fitting emotions
+ * in the Linguistics.EMOTION feature that is later read out and fed to the
+ * facial expression output module.
  */
 public class EmotionAnalyzer implements Analyzer {
 

@@ -1,8 +1,6 @@
 package roboy.linguistics.sentenceanalysis;
 
 import java.io.*;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,8 +15,6 @@ import roboy.linguistics.Linguistics.SENTENCE_TYPE;
 import roboy.linguistics.Term;
 import roboy.linguistics.Triple;
 import roboy.util.Maps;
-
-import static java.lang.System.in;
 
 /**
  * Tries to find triples with rather stupid heuristics and stores the results in the

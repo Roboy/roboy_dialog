@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import opennlp.tools.cmdline.parser.ParserTool;
@@ -14,12 +13,11 @@ import opennlp.tools.parser.ParserFactory;
 import opennlp.tools.parser.ParserModel;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Linguistics.SEMANTIC_ROLE;
-import roboy.util.Lists;
 
 /**
  * Performs a sentence analysis using the Open NLP constituency parser, then interprets the
- * output for predicate argument structures and stores them in the Linguistics.PAS attribute
- * of the interpretation.
+ * output for predicate argument structures (who did what to whom?) and stores them in the 
+ * Linguistics.PAS attribute of the interpretation.
  */
 public class OpenNLPParser implements Analyzer{
 	

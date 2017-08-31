@@ -4,7 +4,9 @@ import roboy.linguistics.Linguistics;
 import roboy.ros.RosMainNode;
 
 /**
- * Created by laura on 21.08.17.
+ * Calls a machine learning model to determine if the utterance of the other person represents
+ * one of the learned intents. Stores the highest scoring intent in the Linguistics.INTENT feature
+ * and the score in the Linguistics.INTENT_DISTANCE feature.
  */
 public class IntentAnalyzer implements Analyzer {
     private RosMainNode ros;
