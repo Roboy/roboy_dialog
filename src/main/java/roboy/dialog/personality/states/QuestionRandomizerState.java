@@ -6,7 +6,6 @@ import java.util.Map;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.nodes.Interlocutor;
 import roboy.util.JsonUtils;
-import roboy.util.Lists;
 
 import static roboy.memory.Neo4jRelations.FROM;
 import static roboy.memory.Neo4jRelations.HAS_HOBBY;

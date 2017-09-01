@@ -5,7 +5,8 @@ import roboy.linguistics.Linguistics.SENTENCE_TYPE;
 
 /**
  * Checks the sentence type by stupidly looking at the first word of the sentence
- * and hoping that there is a known question word.
+ * and hoping that there is a known question word. Puts the answer in the sentenceType
+ * variable of the Interpretation object.
  */
 public class DictionaryBasedSentenceTypeDetector implements Analyzer{
 

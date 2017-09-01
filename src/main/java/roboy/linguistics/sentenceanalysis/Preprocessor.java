@@ -3,7 +3,8 @@ package roboy.linguistics.sentenceanalysis;
 import roboy.linguistics.Linguistics;
 
 /**
- * Created by roboy on 7/5/17.
+ * Corrects abbreviated forms like "I'm" to complete forms like "I am"
+ * which are expected by later sentence analyses.
  */
 public class Preprocessor implements Analyzer{
     public Interpretation analyze(Interpretation sentence){

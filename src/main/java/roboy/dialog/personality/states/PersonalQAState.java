@@ -5,11 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import roboy.linguistics.Linguistics;
-import roboy.linguistics.Triple;
 import roboy.linguistics.Linguistics.SEMANTIC_ROLE;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jMemory;
-import roboy.memory.WorkingMemory;
 import roboy.memory.nodes.Interlocutor;
 import roboy.util.Lists;
 

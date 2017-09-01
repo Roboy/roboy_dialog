@@ -7,6 +7,7 @@ import roboy.util.Lists;
 
 import java.util.List;
 
+@Deprecated
 public class ConverseState extends AbstractBooleanState
 {
 

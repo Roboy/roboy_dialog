@@ -8,6 +8,11 @@ import roboy.util.Concept;
 import roboy.util.Maps;
 import roboy.util.Relation;
 
+/**
+ * Turns predicate-argument-structures in the kind of relations required for querying DBpedia.
+ * Maps the predicates to the predicate keys of DBpedia and picks the elements of the relation
+ * from different arguments of the PAS depending on the relation type.
+ */
 public class PASInterpreter {
 	
 	private static final Map<String, String> dbpediaRelations =

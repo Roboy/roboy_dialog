@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 
 import roboy.linguistics.DetectedEntity;
-import roboy.linguistics.Entity;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Linguistics.SENTENCE_TYPE;
 import roboy.linguistics.sentenceanalysis.Interpretation;

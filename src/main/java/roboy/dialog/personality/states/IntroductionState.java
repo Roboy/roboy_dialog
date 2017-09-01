@@ -1,19 +1,12 @@
 package roboy.dialog.personality.states;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Linguistics.SEMANTIC_ROLE;
-import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jMemory;
-import roboy.memory.PersistentKnowledge;
-import roboy.memory.WorkingMemory;
 import roboy.memory.nodes.Interlocutor;
-import roboy.memory.nodes.MemoryNodeModel;
 import roboy.util.Lists;
 
 /**

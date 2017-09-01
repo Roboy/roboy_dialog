@@ -17,13 +17,41 @@ import roboy.util.Lists;
 import roboy.ros.RosMainNode;
 
 /**
- * Currently Roboys main personality. It tries to engage with people in a general
- * small talk, remember what was said and answer questions. The small talk personality
+ * Currently, Roboys main personality. It tries to engage with people in a general
+ * small talk, remembers what was said and answers questions. The small talk personality
  * is based on a state machine, where each input is interpreted in the context of the
  * state Roboy is currently in to determine respective answers.
  * 
- * Since this was used for the last demo, quite some refactoring is needed here to
- * tidy up the code again.
+ * The current state machine looks like this:
+ * 
+ * Greeting state
+ *      |
+ *      V
+ * Introduction state     
+ *      |
+ *      V
+ * Question Randomizer state
+ *  |_Question Answering state
+ *    |_Segue state
+ *      |_Wild talk state
+ *      
+ * The Question Randomizer, Question Answering, Segue and Wilk talk states are stacked. If one
+ * cannot give an appropriate reaction to the given utterance, the utterance is passed on to the
+ * next one. The Wild talk state will always answer.
+ *      
+ * If a farewell is uttered the personality re-initializes to the Greeting state.
+ * 
+ * What the states do:
+ * Greeting: 			Utters a greating
+ * Introduction: 		Introduces himself and asks for the others name. Reacts differently  
+ * 						depending on whether the other person is known.
+ * Question Randomizer: Asks the other one questions about himself and stores the answers
+ * 						in Roboy's memory.
+ * Question Answering:	Answers questions if they are asked and Roboy knows the answer.
+ * Segue:				Tells anecdotes from Today-I-Learneds from Reddit if corresponding
+ * 						keywords are mentioned.
+ * Wild talk:			Talks according to a neural network model trained on chat logs.
+ * 
  */
 public class SmallTalkPersonality implements Personality {
 
