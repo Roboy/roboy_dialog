@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="_json_utils_8java" kind="file" language="Java">
+    <compoundname>JsonUtils.java</compoundname>
+    <innerclass refid="classroboy_1_1util_1_1_json_utils" prot="public">roboy::util::JsonUtils</innerclass>
+    <innernamespace refid="namespaceroboy_1_1util">roboy::util</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">package<sp/></highlight><highlight class="normal">roboy.util;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>com.google.gson.Gson;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>com.google.gson.reflect.TypeToken;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>java.io.BufferedReader;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>java.io.InputStream;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>java.io.InputStreamReader;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>java.lang.reflect.Type;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>java.util.List;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>java.util.Map;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="classroboy_1_1util_1_1_json_utils" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classroboy_1_1util_1_1_json_utils" kindref="compound">JsonUtils</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Map&lt;String,<sp/>List&lt;String&gt;&gt;<sp/><ref refid="classroboy_1_1util_1_1_json_utils_1a5ea0f2f130190e006f3621841a1fbd00" kindref="member">getSentencesFromJsonFile</ref>(String<sp/>file)<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/>t<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>TypeToken&lt;Map&lt;String,<sp/>List&lt;String&gt;&gt;&gt;(){}.getType();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>InputStream<sp/>input<sp/>=<sp/><ref refid="classroboy_1_1util_1_1_json_utils" kindref="compound">JsonUtils</ref>.class.getClassLoader().getResourceAsStream(file);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BufferedReader<sp/>br<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>BufferedReader(<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>InputStreamReader(input));</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Gson<sp/>gson<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Gson();</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Map&lt;String,<sp/>List&lt;String&gt;&gt;<sp/>q<sp/>=<sp/>gson.fromJson(br,<sp/>t);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>q;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Map&lt;String,List&lt;String[]&gt;&gt;<sp/><ref refid="classroboy_1_1util_1_1_json_utils_1aefb38c701dd585e1d6956c416639b113" kindref="member">getSentenceArraysFromJsonFile</ref>(String<sp/>file)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/>t<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>TypeToken&lt;Map&lt;String,<sp/>List&lt;String[]&gt;&gt;&gt;(){}.getType();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>InputStream<sp/>input<sp/>=<sp/><ref refid="classroboy_1_1util_1_1_json_utils" kindref="compound">JsonUtils</ref>.class.getClassLoader().getResourceAsStream(file);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BufferedReader<sp/>br<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>BufferedReader(<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>InputStreamReader(input));</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Gson<sp/>gson<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Gson();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Map&lt;String,<sp/>List&lt;String[]&gt;&gt;<sp/>q<sp/>=<sp/>gson.fromJson(br,<sp/>t);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>q;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/util/JsonUtils.java"/>
+  </compounddef>
+</doxygen>

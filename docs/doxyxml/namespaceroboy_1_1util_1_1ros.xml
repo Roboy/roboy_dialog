@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespaceroboy_1_1util_1_1ros" kind="namespace" language="Java">
+    <compoundname>roboy::util::ros</compoundname>
+    <innerclass refid="classroboy_1_1util_1_1ros_1_1_ros_communication_test" prot="public">roboy::util::ros::RosCommunicationTest</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/test/java/roboy/util/ros/RosCommunicationTest.java" line="1" column="1"/>
+  </compounddef>
+</doxygen>
