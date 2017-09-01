@@ -80,9 +80,9 @@
 <codeline lineno="74"><highlight class="normal"></highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>@Override</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction" kindref="compound">Reaction</ref><sp/>react(<ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref><sp/>input)<sp/>{</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>sentence<sp/>=<sp/>((String)input.getFeature(<ref refid="classroboy_1_1linguistics_1_1_linguistics" kindref="compound">Linguistics</ref>.SENTENCE)).trim().toLowerCase();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>sentence<sp/>=<sp/>((String)input.getFeature(<ref refid="classroboy_1_1linguistics_1_1_linguistics" kindref="compound">Linguistics</ref>.<ref refid="classroboy_1_1linguistics_1_1_linguistics_1a20cc187660a43ff97783ab440cf905ab" kindref="member">SENTENCE</ref>)).trim().toLowerCase();</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(triggerSentences.contains(sentence)){</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Object<sp/>celebrity<sp/>=<sp/>input.getFeature(<ref refid="classroboy_1_1linguistics_1_1_linguistics" kindref="compound">Linguistics</ref>.CELEBRITY);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Object<sp/>celebrity<sp/>=<sp/>input.getFeature(<ref refid="classroboy_1_1linguistics_1_1_linguistics" kindref="compound">Linguistics</ref>.<ref refid="classroboy_1_1linguistics_1_1_linguistics_1acc3f25f22b6c0efd5c8263889d395ce1" kindref="member">CELEBRITY</ref>);</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>System.out.println(input.getFeatures());</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(celebrity==null){</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction" kindref="compound">Reaction</ref>(top,<ref refid="classroboy_1_1util_1_1_lists" kindref="compound">Lists</ref>.interpretationList(</highlight></codeline>
@@ -98,6 +98,6 @@
 <codeline lineno="92"><highlight class="normal"></highlight></codeline>
 <codeline lineno="93"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/CelebrityState.java"/>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/CelebrityState.java"/>
   </compounddef>
 </doxygen>

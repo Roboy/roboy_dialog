@@ -4,7 +4,6 @@
     <compoundname>AnswerAnalyzerTest.java</compoundname>
     <innerclass refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test" prot="public">roboy::linguistics::sentenceanalysis::AnswerAnalyzerTest</innerclass>
     <innernamespace refid="namespaceroboy_1_1linguistics_1_1sentenceanalysis">roboy::linguistics::sentenceanalysis</innernamespace>
-    <innernamespace refid="namespaceorg_1_1junit_1_1_assert">org::junit::Assert</innernamespace>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -89,7 +88,7 @@
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>analyzers.add(answer);</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref><sp/>interpretation<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref>(sentence);</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer" kindref="compound">Analyzer</ref><sp/>a<sp/>:<sp/>analyzers)<sp/>interpretation<sp/>=<sp/>a.analyze(interpretation);</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(String)<sp/>interpretation.getFeature(<ref refid="classroboy_1_1linguistics_1_1_linguistics" kindref="compound">Linguistics</ref>.OBJ_ANSWER);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(String)<sp/>interpretation.getFeature(<ref refid="classroboy_1_1linguistics_1_1_linguistics" kindref="compound">Linguistics</ref>.<ref refid="classroboy_1_1linguistics_1_1_linguistics_1a2398c1301599c3b5f79ab6d3c167376d" kindref="member">OBJ_ANSWER</ref>);</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>String<sp/>analyzePred(String<sp/>sentence){</highlight></codeline>
@@ -100,11 +99,11 @@
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>analyzers.add(answer);</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref><sp/>interpretation<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref>(sentence);</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer" kindref="compound">Analyzer</ref><sp/>a<sp/>:<sp/>analyzers)<sp/>interpretation<sp/>=<sp/>a.analyze(interpretation);</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(String)<sp/>interpretation.getFeature(<ref refid="classroboy_1_1linguistics_1_1_linguistics" kindref="compound">Linguistics</ref>.PRED_ANSWER);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(String)<sp/>interpretation.getFeature(<ref refid="classroboy_1_1linguistics_1_1_linguistics" kindref="compound">Linguistics</ref>.<ref refid="classroboy_1_1linguistics_1_1_linguistics_1a3c881e6e18d76bcf9a0959a4e30aed24" kindref="member">PRED_ANSWER</ref>);</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="94"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/roboy/DialogSystem/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java"/>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java"/>
   </compounddef>
 </doxygen>

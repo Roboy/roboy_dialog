@@ -11,11 +11,11 @@
     <programlisting>
 <codeline lineno="1"><highlight class="keyword">package<sp/></highlight><highlight class="normal">roboy.linguistics.phonetics;</highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
-<codeline lineno="3" refid="interfaceroboy_1_1linguistics_1_1phonetics_1_1_phonetic_encoder" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">interface<sp/></highlight><highlight class="normal"><ref refid="interfaceroboy_1_1linguistics_1_1phonetics_1_1_phonetic_encoder" kindref="compound">PhoneticEncoder</ref><sp/>{</highlight></codeline>
-<codeline lineno="4"><highlight class="normal"></highlight></codeline>
-<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>String<sp/>encode(String<sp/>input);</highlight></codeline>
-<codeline lineno="6"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="11" refid="interfaceroboy_1_1linguistics_1_1phonetics_1_1_phonetic_encoder" refkind="compound"><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">interface<sp/></highlight><highlight class="normal"><ref refid="interfaceroboy_1_1linguistics_1_1phonetics_1_1_phonetic_encoder" kindref="compound">PhoneticEncoder</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>String<sp/>encode(String<sp/>input);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/phonetics/PhoneticEncoder.java"/>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/linguistics/phonetics/PhoneticEncoder.java"/>
   </compounddef>
 </doxygen>

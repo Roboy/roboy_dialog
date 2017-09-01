@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/util/Lists.java" line="15" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/util/Lists.java" bodystart="15" bodyend="19"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/util/Lists.java" line="15" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/util/Lists.java" bodystart="15" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1util_1_1_lists_1a27c5bfbc0d1b7597c9db6b36084ae8bb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/util/Lists.java" line="21" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/util/Lists.java" bodystart="21" bodyend="25"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/util/Lists.java" line="21" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/util/Lists.java" bodystart="21" bodyend="25"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1util_1_1_lists_1ad1beee24e659fa777852b859e695c93d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; String &gt;</type>
@@ -52,17 +52,35 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/util/Lists.java" line="27" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/util/Lists.java" bodystart="27" bodyend="31"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/util/Lists.java" line="27" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/util/Lists.java" bodystart="27" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1util_1_1_lists_1a30d2bb20527bc9dbe61218f82df7c50d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; String[]&gt;</type>
+        <definition>static List&lt;String[]&gt; roboy.util.Lists.strArray</definition>
+        <argsstring>(String[]...strings)</argsstring>
+        <name>strArray</name>
+        <param>
+          <type>String...[]</type>
+          <declname>strings</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/util/Lists.java" line="33" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/util/Lists.java" bodystart="33" bodyend="37"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Helper class for list related tasks. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/DialogSystem/src/main/java/roboy/util/Lists.java" line="13" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/util/Lists.java" bodystart="13" bodyend="33"/>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/util/Lists.java" line="13" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/util/Lists.java" bodystart="13" bodyend="39"/>
     <listofallmembers>
       <member refid="classroboy_1_1util_1_1_lists_1aec44da633141ef78856cc537ac97f360" prot="public" virt="non-virtual"><scope>roboy::util::Lists</scope><name>actionList</name></member>
       <member refid="classroboy_1_1util_1_1_lists_1a27c5bfbc0d1b7597c9db6b36084ae8bb" prot="public" virt="non-virtual"><scope>roboy::util::Lists</scope><name>interpretationList</name></member>
+      <member refid="classroboy_1_1util_1_1_lists_1a30d2bb20527bc9dbe61218f82df7c50d" prot="public" virt="non-virtual"><scope>roboy::util::Lists</scope><name>strArray</name></member>
       <member refid="classroboy_1_1util_1_1_lists_1ad1beee24e659fa777852b859e695c93d" prot="public" virt="non-virtual"><scope>roboy::util::Lists</scope><name>stringList</name></member>
     </listofallmembers>
   </compounddef>

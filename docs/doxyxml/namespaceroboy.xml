@@ -7,6 +7,7 @@
     <innernamespace refid="namespaceroboy_1_1linguistics">roboy::linguistics</innernamespace>
     <innernamespace refid="namespaceroboy_1_1logic">roboy::logic</innernamespace>
     <innernamespace refid="namespaceroboy_1_1memory">roboy::memory</innernamespace>
+    <innernamespace refid="namespaceroboy_1_1ros">roboy::ros</innernamespace>
     <innernamespace refid="namespaceroboy_1_1talk">roboy::talk</innernamespace>
     <innernamespace refid="namespaceroboy_1_1util">roboy::util</innernamespace>
     <briefdescription>

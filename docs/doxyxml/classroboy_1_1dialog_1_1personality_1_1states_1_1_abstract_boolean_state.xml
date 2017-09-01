@@ -9,7 +9,8 @@
     <derivedcompoundref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_idle_state" prot="public" virt="non-virtual">roboy.dialog.personality.states.IdleState</derivedcompoundref>
     <derivedcompoundref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_inquiry_state" prot="public" virt="non-virtual">roboy.dialog.personality.states.InquiryState</derivedcompoundref>
     <derivedcompoundref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state" prot="public" virt="non-virtual">roboy.dialog.personality.states.IntroductionState</derivedcompoundref>
-    <derivedcompoundref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state" prot="public" virt="non-virtual">roboy.dialog.personality.states.WildTalkState</derivedcompoundref>
+    <derivedcompoundref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia" prot="public" virt="non-virtual">roboy.dialog.personality.states.LocationDBpedia</derivedcompoundref>
+    <derivedcompoundref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state" prot="public" virt="non-virtual">roboy.dialog.personality.states.PersonalQAState</derivedcompoundref>
       <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a916cfc3054b6553c5e3bd081bf95808c" prot="protected" static="no" mutable="no">
         <type><ref refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" kindref="compound">State</ref></type>
@@ -22,7 +23,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="17" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="17" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="15" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1afd916a053e2e9374d464c7d2bf0f74ad" prot="protected" static="no" mutable="no">
         <type><ref refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" kindref="compound">State</ref></type>
@@ -35,7 +36,37 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="18" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="18" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="16" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1ae29949b032501ec70a350328bfb53d1e" prot="private" static="no" mutable="no">
+        <type>List&lt; String &gt;</type>
+        <definition>List&lt;String&gt; roboy.dialog.personality.states.AbstractBooleanState.successTexts</definition>
+        <argsstring></argsstring>
+        <name>successTexts</name>
+        <initializer>= Lists.stringList(&quot;&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="18" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a4e5a9779f664a95ec9f8e4bf60a03aca" prot="private" static="no" mutable="no">
+        <type>List&lt; String &gt;</type>
+        <definition>List&lt;String&gt; roboy.dialog.personality.states.AbstractBooleanState.failureTexts</definition>
+        <argsstring></argsstring>
+        <name>failureTexts</name>
+        <initializer>= Lists.stringList(&quot;&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="19" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="19" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -50,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="20" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="20" bodyend="22"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="21" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="21" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a95b2e8367f1b9b3b05a89e7db1a735e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -75,7 +106,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="30" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="30" bodyend="32"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="31" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="31" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1ace03f687b53a4af28192dc622d8e674f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" kindref="compound">State</ref></type>
@@ -88,7 +119,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="34" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="34" bodyend="36"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="35" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="35" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1aaef59e5550a47a4df8a28887cc996edb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -113,7 +144,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="44" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="44" bodyend="46"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="45" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="45" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1afe2dcbf032ab3e128f243fcb77259e70" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -130,7 +161,41 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="48" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="48" bodyend="50"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="49" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="49" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a257d5515337565836ae4bd32b1965d52" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.dialog.personality.states.AbstractBooleanState.setSuccessTexts</definition>
+        <argsstring>(List&lt; String &gt; texts)</argsstring>
+        <name>setSuccessTexts</name>
+        <param>
+          <type>List&lt; String &gt;</type>
+          <declname>texts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="53" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="53" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a0316e2e58c12993cd30b822606dd446f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.dialog.personality.states.AbstractBooleanState.setFailureTexts</definition>
+        <argsstring>(List&lt; String &gt; texts)</argsstring>
+        <name>setFailureTexts</name>
+        <param>
+          <type>List&lt; String &gt;</type>
+          <declname>texts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="57" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="57" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a6821153b384889cf1aab894ed2422150" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction" kindref="compound">Reaction</ref></type>
@@ -148,7 +213,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="53" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="53" bodyend="74"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="62" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="62" bodyend="72"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -176,7 +241,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="84" column="1"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="82" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -184,87 +249,104 @@
     <detaileddescription>
 <para>The determineSuccess method needs to be implemented by subclass to determine if the success or failure state should be moved into next. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="439">
+      <node id="661">
+        <label>roboy.dialog.personality.states.LocationDBpedia</label>
+        <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia"/>
+        <childnode refid="653" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="655">
         <label>roboy.dialog.personality.states.ConverseState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_converse_state"/>
-        <childnode refid="437" relation="public-inheritance">
+        <childnode refid="653" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="442">
+      <node id="658">
         <label>roboy.dialog.personality.states.IdleState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_idle_state"/>
-        <childnode refid="437" relation="public-inheritance">
+        <childnode refid="653" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="443">
+      <node id="659">
         <label>roboy.dialog.personality.states.InquiryState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_inquiry_state"/>
-        <childnode refid="437" relation="public-inheritance">
+        <childnode refid="653" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="440">
+      <node id="656">
         <label>roboy.dialog.personality.states.GenerativeCommunicationState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_generative_communication_state"/>
-        <childnode refid="437" relation="public-inheritance">
+        <childnode refid="653" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="437">
+      <node id="653">
         <label>roboy.dialog.personality.states.AbstractBooleanState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
-        <childnode refid="438" relation="public-inheritance">
+        <childnode refid="654" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="441">
+      <node id="657">
         <label>roboy.dialog.personality.states.GreetingState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_greeting_state"/>
-        <childnode refid="437" relation="public-inheritance">
+        <childnode refid="653" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="438">
+      <node id="654">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
-      <node id="445">
-        <label>roboy.dialog.personality.states.WildTalkState</label>
-        <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state"/>
-        <childnode refid="437" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="444">
+      <node id="660">
         <label>roboy.dialog.personality.states.IntroductionState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state"/>
-        <childnode refid="437" relation="public-inheritance">
+        <childnode refid="653" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="662">
+        <label>roboy.dialog.personality.states.PersonalQAState</label>
+        <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state"/>
+        <childnode refid="653" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="446">
+      <node id="663">
         <label>roboy.dialog.personality.states.AbstractBooleanState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
-        <childnode refid="447" relation="public-inheritance">
+        <childnode refid="664" relation="public-inheritance">
         </childnode>
-        <childnode refid="447" relation="usage">
+        <childnode refid="664" relation="usage">
           <edgelabel>success</edgelabel>
           <edgelabel>failure</edgelabel>
         </childnode>
+        <childnode refid="665" relation="usage">
+          <edgelabel>failureTexts</edgelabel>
+          <edgelabel>successTexts</edgelabel>
+        </childnode>
       </node>
-      <node id="447">
+      <node id="665">
+        <label>List&lt; String &gt;</label>
+      </node>
+      <node id="664">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="15" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="15" bodyend="85"/>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="13" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="13" bodyend="84"/>
     <listofallmembers>
       <member refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state_1a56df9f548b4736b775dc9dbf450a6a51" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::AbstractBooleanState</scope><name>act</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a5f613e655de9d0f807ae2dc7bde4c6c2" prot="protected" virt="non-virtual"><scope>roboy::dialog::personality::states::AbstractBooleanState</scope><name>determineSuccess</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1afd916a053e2e9374d464c7d2bf0f74ad" prot="protected" virt="non-virtual"><scope>roboy::dialog::personality::states::AbstractBooleanState</scope><name>failure</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a4e5a9779f664a95ec9f8e4bf60a03aca" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::states::AbstractBooleanState</scope><name>failureTexts</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1ace03f687b53a4af28192dc622d8e674f" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::AbstractBooleanState</scope><name>getFailure</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a29b9095d9688916a72b4bf846ecfb170" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::AbstractBooleanState</scope><name>getSuccess</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a6821153b384889cf1aab894ed2422150" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::AbstractBooleanState</scope><name>react</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1aaef59e5550a47a4df8a28887cc996edb" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::AbstractBooleanState</scope><name>setFailure</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a0316e2e58c12993cd30b822606dd446f" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::AbstractBooleanState</scope><name>setFailureTexts</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1afe2dcbf032ab3e128f243fcb77259e70" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::AbstractBooleanState</scope><name>setNextState</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a95b2e8367f1b9b3b05a89e7db1a735e3" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::AbstractBooleanState</scope><name>setSuccess</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a257d5515337565836ae4bd32b1965d52" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::AbstractBooleanState</scope><name>setSuccessTexts</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a916cfc3054b6553c5e3bd081bf95808c" prot="protected" virt="non-virtual"><scope>roboy::dialog::personality::states::AbstractBooleanState</scope><name>success</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1ae29949b032501ec70a350328bfb53d1e" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::states::AbstractBooleanState</scope><name>successTexts</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>
