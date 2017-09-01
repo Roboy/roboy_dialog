@@ -38,6 +38,14 @@ Contents:
   :caption: Interfaces and Scope
 
   ScopeContext/*
+  
+.. _Architecture:
+.. toctree::
+   :maxdepth: 1
+   :glob:
+   :caption: Architecture
+   
+   Architecture/*
 
 
 .. toctree::
