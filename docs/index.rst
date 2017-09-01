@@ -8,6 +8,11 @@ Roboy Dialog System
 
 This project aims to implement human-like conversation routines for the humanoid anthropomimetic robot Roboy.
 
+.. figure:: images/overview_diagram.jpg
+    :alt: Overview diagram
+
+The overview diagram shows the external systems which Dialog System interacts with, and the tasks which the system is responsible for.
+
 Status
 ------
 
