@@ -15,9 +15,30 @@ The current primary personality is the SmallTalkPersonality (``de.roboy.dialog.p
 State
 -----
 
-A state's activity can be divided into two stages. When the state is entered, the initial action from the act() method is carried out, which is expected to trigger a response from the person. After Roboy has received and analyzed the response, the react() method completes the current state's actions and Roboy moves on to the next state.
+A state's activity can be divided into two stages. When the state is entered, the initial action from the ``act()`` method is carried out, which is expected to trigger a response from the person. After Roboy has received and analyzed the response, the ``react()`` method completes the current state's actions and Roboy moves on to the next state.
+
+The AbstractBooleanState describes a special case where the state's reaction depends on whether the ``act()`` method resulted in successful interaction. States which implement AbstractBooleanState can respond differently move on into different stages according to their ``determineSuccess()`` method.
+
+For example, the intial action of ``de.roboy.dialog.personality.states.IntroductionState`` is to ask the user's name. Then the response is analyzed externally and when the state's determineSuccess() method is called, it checks whether a name was extracted. If this is the case, then the system outputs predefined sentences with the extracted name embedded into them. Otherwise, fallback sentences are used which do not include a name.
+
+State machine structure
+-----------------------
+
+Every state defines at least one successor state, and more complex hierarchies can be realized - for example as a fallback system for cases when a single state cannot respond in a meaningful manner. The following is an example from the documentation of SmallTalkPersonality:
+
+The current state machine looks like this:
+
+Greeting state
+      |
+      V
+ Introduction state
+      |
+      V
+ Question Randomizer state
+  |_Question Answering state
+    |_Segue state
+      |_Wild talk state
+
+ The Question Randomizer, Question Answering, Segue and Wilk talk states are stacked. If one cannot give an appropriate reaction to the given utterance, the utterance is passed on to the next one. The Wild talk state will always answer.
 
 
-
-State - Action - Reaction
-PersonalQAState - Ask a question about the person - Analzse and save the response
