@@ -23,21 +23,13 @@ Stable functionality:
 Contents:
 ---------
 
-.. _usage:
+.. _Usage:
 .. toctree::
 :maxdepth: 1
       :glob:
       :caption: Usage and Installation
 
       Usage/*
-
-.. _ScopeContext:
-.. toctree::
-:maxdepth: 1
-      :glob:
-      :caption: Interfaces and Scope
-
-      ScopeContext/*
 
 .. _Architecture:
 .. toctree::
