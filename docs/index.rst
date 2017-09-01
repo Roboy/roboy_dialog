@@ -20,7 +20,11 @@ Stable functionality:
 - Roboy answers questions about himself
 - Roboy recognizes once someone says his name
 - Roboy asks questions people he meets
-- Roboy stores information (name, occupation, ect.) about people he meets (not persistant)
+
+In development:
+
+- Roboy stores and recalls information (name, occupation, ect.) about people he meets
+- Roboy recognizes the intent behind an asked questions (age, creator, capabilities etc.)
 
 
 Contents:
