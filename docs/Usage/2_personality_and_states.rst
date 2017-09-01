@@ -3,7 +3,7 @@ Personality and states
 Overview
 --------
 
-To enable a natural way of communication, Roboy's Dialog Module implements a flexible architecture using personality classes, which each manage a number of different states. This enables us to spontaneously react to clues from the conversation partner and dynamically switch between purposes and stages of a dialog, mimicing a natural conversation.
+To enable a natural way of communication, Roboy's Dialog Module implements a flexible architecture using personality classes, which each manage a number of different states. This enables us to dynamically react to clues from the conversation partner and spontaneously switch between purposes and stages of a dialog, mimicing a natural conversation.
 
 Personality
 -----------

@@ -24,8 +24,8 @@ In development:
 - Roboy recognizes the intent behind an asked questions (age, creator, capabilities etc.)
 
 
-Contents
---------
+Contents:
+---------
 
 .. _Usage:
 .. toctree::
@@ -34,6 +34,14 @@ Contents
       :caption: Usage and Installation
 
       Usage/*
+
+.. _ScopeContext:
+.. toctree::
+:maxdepth: 1
+      :glob:
+      :caption: API
+
+      ScopeContext/*
 
 .. _Architecture:
 .. toctree::
