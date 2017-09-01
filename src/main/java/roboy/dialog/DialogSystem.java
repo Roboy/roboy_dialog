@@ -79,6 +79,7 @@ public class DialogSystem {
 
         // initialize ROS node
         RosMainNode rosMainNode = new RosMainNode();
+        Neo4jMemory memory = Neo4jMemory.getInstance(rosMainNode);
 
 	    InputDevice input = new CommandLineInput();
 //		 InputDevice input = new BingInput(rosMainNode);

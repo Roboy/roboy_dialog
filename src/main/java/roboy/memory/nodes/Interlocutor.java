@@ -1,6 +1,7 @@
 package roboy.memory.nodes;
 
 import roboy.memory.Neo4jMemory;
+import roboy.memory.Neo4jRelations;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class Interlocutor {
 
     public Interlocutor() {
         this.person = new MemoryNodeModel(true);
-        Neo4jMemory memory = Neo4jMemory.getInstance();
+        this.memory = Neo4jMemory.getInstance();
     }
 
     /**
@@ -66,6 +67,10 @@ public class Interlocutor {
         return (String) person.getProperty("name");
     }
 
+    public boolean hasRelation(Neo4jRelations type) {
+        return !(person.getRelation(type.type) == null) && (!person.getRelation(type.type).isEmpty());
+    }
+
     /**
      * Adds a new relation to the person node, updating memory.
      */
@@ -73,7 +78,6 @@ public class Interlocutor {
         ArrayList<Integer> ids = new ArrayList<>();
         // First check if node with given name exists.
         MemoryNodeModel relatedNode = new MemoryNodeModel(true);
-        // TODO this reuses the code from addName, might be able to refactor out.
         try {
             ids = memory.getByQuery(relatedNode);
         } catch (InterruptedException | IOException e) {

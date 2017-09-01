@@ -114,6 +114,7 @@ public class SmallTalkPersonality implements Personality {
 
             catch (NullPointerException e) {
                 this.initialize();
+                e.printStackTrace();
                 return Lists.actionList(new FaceAction("shy"), new SpeechAction("Oopsie, got an exception just now. Recovering"));
             }
         }

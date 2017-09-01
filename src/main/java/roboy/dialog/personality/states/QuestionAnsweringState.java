@@ -89,7 +89,7 @@ public class QuestionAnsweringState implements State{
 		boolean useIntent = false;
 		String intentType = "";
 		if(input.getFeature(Linguistics.INTENT_DISTANCE) != null && input.getFeature(Linguistics.INTENT) != null) {
-			if((double) (input.getFeature(Linguistics.INTENT_DISTANCE)) < 0.2) {
+			if((float) (input.getFeature(Linguistics.INTENT_DISTANCE)) < 0.2) {
 				useIntent = true;
 				intentType = (String) input.getFeature(Linguistics.INTENT);
 			}

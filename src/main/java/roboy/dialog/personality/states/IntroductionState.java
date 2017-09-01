@@ -22,6 +22,8 @@ import roboy.util.Lists;
  */
 public class IntroductionState extends AbstractBooleanState{
 
+	Interlocutor person = new Interlocutor();
+
 	private static final List<String> introductions = Lists.stringList(
 			"I am Roboy. Who are you?",
 			"My name is Roboy. What is your name?"
@@ -31,6 +33,7 @@ public class IntroductionState extends AbstractBooleanState{
 		setFailureTexts(Lists.stringList(
 				"It's always nice to meet new people.",
 				"How refreshing to see a new face."));
+		this.person = person;
 	}
 	
 	@Override
@@ -68,7 +71,6 @@ public class IntroductionState extends AbstractBooleanState{
 //			List<Triple> agens = PersistentKnowledge.getInstance().retrieve(new Triple(null,name,null));
 //			List<Triple> patiens = PersistentKnowledge.getInstance().retrieve(new Triple(null,null,name));
 			//TODO Currently assuming no duplicate names in memory. Support for last name addition needed.
-			Interlocutor person = new Interlocutor();
 			person.addName(name);
 			if(!person.FAMILIAR) {
 				return false;
