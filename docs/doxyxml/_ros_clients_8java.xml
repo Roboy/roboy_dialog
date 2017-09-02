@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="_ros_clients_8java" kind="file" language="Java">
+    <compoundname>RosClients.java</compoundname>
+    <innerclass refid="enumroboy_1_1ros_1_1_ros_clients" prot="package">roboy::ros::RosClients</innerclass>
+    <innernamespace refid="namespaceroboy_1_1ros">roboy::ros</innernamespace>
+    <innernamespace refid="namespaceroboy__communication__cognition">roboy_communication_cognition</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">package<sp/></highlight><highlight class="normal">roboy.ros;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceroboy__communication__cognition" kindref="compound">roboy_communication_cognition</ref>.*;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceroboy__communication__control" kindref="compound">roboy_communication_control</ref>.ShowEmotion;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="enumroboy_1_1ros_1_1_ros_clients" refkind="compound"><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="enumroboy_1_1ros_1_1_ros_clients" kindref="compound">RosClients</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>SPEECHSYNTHESIS(</highlight><highlight class="stringliteral">&quot;/roboy/cognition/speech/synthesis/talk&quot;</highlight><highlight class="normal">,<sp/>Talk._TYPE),</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>GENERATIVE(</highlight><highlight class="stringliteral">&quot;/roboy/cognition/generative_nlp/answer&quot;</highlight><highlight class="normal">,<sp/>GenerateAnswer._TYPE),</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>FACEDETECTION(</highlight><highlight class="stringliteral">&quot;/speech_synthesis/talk&quot;</highlight><highlight class="normal">,<sp/>DetectFace._TYPE),</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>OBJECTRECOGNITION(</highlight><highlight class="stringliteral">&quot;/speech_synthesis/talk&quot;</highlight><highlight class="normal">,<sp/>RecognizeObject._TYPE),</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>STT(</highlight><highlight class="stringliteral">&quot;/roboy/cognition/speech/recognition&quot;</highlight><highlight class="normal">,<sp/>RecognizeSpeech._TYPE),</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>EMOTION(</highlight><highlight class="stringliteral">&quot;/roboy/control/face/emotion&quot;</highlight><highlight class="normal">,<sp/>ShowEmotion._TYPE),</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>CREATEMEMORY(</highlight><highlight class="stringliteral">&quot;/roboy/cognition/memory/create&quot;</highlight><highlight class="normal">,<sp/>DataQuery._TYPE),</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>UPDATEMEMORY(</highlight><highlight class="stringliteral">&quot;/roboy/cognition/memory/update&quot;</highlight><highlight class="normal">,<sp/>DataQuery._TYPE),</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>GETMEMORY(</highlight><highlight class="stringliteral">&quot;/roboy/cognition/memory/get&quot;</highlight><highlight class="normal">,<sp/>DataQuery._TYPE),</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>DELETEMEMORY(</highlight><highlight class="stringliteral">&quot;/roboy/cognition/memory/remove&quot;</highlight><highlight class="normal">,<sp/>DataQuery._TYPE),</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>CYPHERMEMORY(</highlight><highlight class="stringliteral">&quot;/roboy/cognition/memory/cypher&quot;</highlight><highlight class="normal">,<sp/>DataQuery._TYPE),</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>INTENT(</highlight><highlight class="stringliteral">&quot;/roboy/cognition/detect_intent&quot;</highlight><highlight class="normal">,<sp/>DetectIntent._TYPE);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/>address;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/>type;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="enumroboy_1_1ros_1_1_ros_clients" kindref="compound">RosClients</ref>(String<sp/>address,<sp/>String<sp/>type)<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this.address=address;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this.type=type;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java"/>
+  </compounddef>
+</doxygen>

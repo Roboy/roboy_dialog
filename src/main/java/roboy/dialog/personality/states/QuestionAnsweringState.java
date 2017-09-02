@@ -82,8 +82,19 @@ public class QuestionAnsweringState implements State{
 		if(triple!=null && triple.agens!=null && "you".equals(triple.agens.toLowerCase())) triple.agens = "i";
 		if(triple!=null && triple.patiens!=null && "you".equals(triple.patiens.toLowerCase())) triple.patiens = "i";
 		if(triple!=null && triple.predicate!=null && "are".equals(triple.predicate.toLowerCase())) triple.predicate = "am";
-		
+
+		//TODO Integrate results from intent analysis into sentence type detection.
 		List<Interpretation> result = new ArrayList<>();
+		//Added intent-parsing information in applicable cases.
+		boolean useIntent = false;
+		String intentType = "";
+		if(input.getFeature(Linguistics.INTENT_DISTANCE) != null && input.getFeature(Linguistics.INTENT) != null) {
+			if((float) (input.getFeature(Linguistics.INTENT_DISTANCE)) < 0.2) {
+				useIntent = true;
+				intentType = (String) input.getFeature(Linguistics.INTENT);
+			}
+		}
+
 		if(triple!=null && input.getSentenceType() == SENTENCE_TYPE.DOES_IT || input.getSentenceType() == SENTENCE_TYPE.IS_IT){
 			List<Triple> t = remember(triple.predicate, triple.agens, null);
 			if(t.isEmpty()){

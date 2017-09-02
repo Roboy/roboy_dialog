@@ -1,0 +1,426 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model" kind="class" language="Java" prot="public">
+    <compoundname>roboy::memory::nodes::MemoryNodeModel</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a7a78b2bb1d959c81f28158390bf2a906" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int roboy.memory.nodes.MemoryNodeModel.id</definition>
+        <argsstring></argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="18" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a4eb8ec5de50d4bb87900318b853887c5" prot="private" static="no" mutable="no">
+        <type>ArrayList&lt; String &gt;</type>
+        <definition>ArrayList&lt;String&gt; roboy.memory.nodes.MemoryNodeModel.labels</definition>
+        <argsstring></argsstring>
+        <name>labels</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="20" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a52df146c59d1d625049c2c3ecb7dd61a" prot="private" static="no" mutable="no">
+        <type>String</type>
+        <definition>String roboy.memory.nodes.MemoryNodeModel.label</definition>
+        <argsstring></argsstring>
+        <name>label</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="23" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a982e8cb032c661dbf942566c4750a18d" prot="private" static="no" mutable="no">
+        <type>HashMap&lt; String, Object &gt;</type>
+        <definition>HashMap&lt;String, Object&gt; roboy.memory.nodes.MemoryNodeModel.properties</definition>
+        <argsstring></argsstring>
+        <name>properties</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="25" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a34f8c80bcce0fd675cc8a8c2a152111e" prot="private" static="no" mutable="no">
+        <type>HashMap&lt; String, ArrayList&lt; Integer &gt; &gt;</type>
+        <definition>HashMap&lt;String, ArrayList&lt;Integer&gt; &gt; roboy.memory.nodes.MemoryNodeModel.relations</definition>
+        <argsstring></argsstring>
+        <name>relations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="27" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="package-attrib">
+      <memberdef kind="variable" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a0dd3371025cec2d370055ceddd5d90bd" prot="package" static="no" mutable="no">
+        <type>transient boolean</type>
+        <definition>transient boolean roboy.memory.nodes.MemoryNodeModel.stripQuery</definition>
+        <argsstring></argsstring>
+        <name>stripQuery</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="30" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a636f76b8805c5ebb756836ec5674ef4f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.memory.nodes.MemoryNodeModel.MemoryNodeModel</definition>
+        <argsstring>()</argsstring>
+        <name>MemoryNodeModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="32" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="32" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1ade02f9836975ebdbefd27a3362dff4c1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.memory.nodes.MemoryNodeModel.MemoryNodeModel</definition>
+        <argsstring>(boolean stripQuery)</argsstring>
+        <name>MemoryNodeModel</name>
+        <param>
+          <type>boolean</type>
+          <declname>stripQuery</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="36" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="36" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1af6b2187701c0d4a50cc540c065e711f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int roboy.memory.nodes.MemoryNodeModel.getId</definition>
+        <argsstring>()</argsstring>
+        <name>getId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="48" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="48" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a61e3ff9355f1ad5c75b038912d6dbf37" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.memory.nodes.MemoryNodeModel.setId</definition>
+        <argsstring>(int id)</argsstring>
+        <name>setId</name>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="51" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="51" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1af65d41b94792aed6ce7324937778fa9d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ArrayList&lt; String &gt;</type>
+        <definition>ArrayList&lt;String&gt; roboy.memory.nodes.MemoryNodeModel.getLabels</definition>
+        <argsstring>()</argsstring>
+        <name>getLabels</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="55" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="55" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a79b7e74c1168979a74dfb8b2c9fb29a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.memory.nodes.MemoryNodeModel.setLabel</definition>
+        <argsstring>(String label)</argsstring>
+        <name>setLabel</name>
+        <param>
+          <type>String</type>
+          <declname>label</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="58" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="58" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a1dc08d2530daaacd07d66e208274aaa7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>HashMap&lt; String, Object &gt;</type>
+        <definition>HashMap&lt;String, Object&gt; roboy.memory.nodes.MemoryNodeModel.getProperties</definition>
+        <argsstring>()</argsstring>
+        <name>getProperties</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="66" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="66" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a6c81048b39178c05e2e61eae22839c16" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Object</type>
+        <definition>Object roboy.memory.nodes.MemoryNodeModel.getProperty</definition>
+        <argsstring>(String key)</argsstring>
+        <name>getProperty</name>
+        <param>
+          <type>String</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="69" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="69" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a7b262317c21d3a976f45931a3a6f1e97" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.memory.nodes.MemoryNodeModel.setProperties</definition>
+        <argsstring>(HashMap&lt; String, Object &gt; properties)</argsstring>
+        <name>setProperties</name>
+        <param>
+          <type>HashMap&lt; String, Object &gt;</type>
+          <declname>properties</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="73" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="73" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1ac46686869bc5eadf01efba47743efca7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.memory.nodes.MemoryNodeModel.setProperty</definition>
+        <argsstring>(String key, Object property)</argsstring>
+        <name>setProperty</name>
+        <param>
+          <type>String</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>Object</type>
+          <declname>property</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="79" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="79" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a5eddb2ddf1a5644a602ce6a1dd15b19a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>HashMap&lt; String, ArrayList&lt; Integer &gt; &gt;</type>
+        <definition>HashMap&lt;String, ArrayList&lt;Integer&gt; &gt; roboy.memory.nodes.MemoryNodeModel.getRelations</definition>
+        <argsstring>()</argsstring>
+        <name>getRelations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="86" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="86" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a7bb90c5e89480fb14010575e96bec55c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ArrayList&lt; Integer &gt;</type>
+        <definition>ArrayList&lt;Integer&gt; roboy.memory.nodes.MemoryNodeModel.getRelation</definition>
+        <argsstring>(String key)</argsstring>
+        <name>getRelation</name>
+        <param>
+          <type>String</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="89" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="89" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a2b1ff3e17f2352158a5e0eaf3ae19d54" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.memory.nodes.MemoryNodeModel.setRelations</definition>
+        <argsstring>(HashMap&lt; String, ArrayList&lt; Integer &gt;&gt; relations)</argsstring>
+        <name>setRelations</name>
+        <param>
+          <type>HashMap&lt; String, ArrayList&lt; Integer &gt;&gt;</type>
+          <declname>relations</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="92" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="92" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a8145ca05a144d824600facf32fd7f3d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.memory.nodes.MemoryNodeModel.setRelation</definition>
+        <argsstring>(String key, Integer id)</argsstring>
+        <name>setRelation</name>
+        <param>
+          <type>String</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>Integer</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="98" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="98" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a827ad661c2973642cdd1058a88c0893c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.memory.nodes.MemoryNodeModel.setStripQuery</definition>
+        <argsstring>(boolean strip)</argsstring>
+        <name>setStripQuery</name>
+        <param>
+          <type>boolean</type>
+          <declname>strip</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="111" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="111" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a1238c30afc316003aa5558ecb1f8f894" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>String</type>
+        <definition>String roboy.memory.nodes.MemoryNodeModel.toJSON</definition>
+        <argsstring>(Gson gson)</argsstring>
+        <name>toJSON</name>
+        <param>
+          <type>Gson</type>
+          <declname>gson</declname>
+        </param>
+        <briefdescription>
+<para>This toString method returns the whole object, including empty variables. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="118" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="118" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a56392fa41d2f91b1b6a1b70a50b45267" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model" kindref="compound">MemoryNodeModel</ref></type>
+        <definition>MemoryNodeModel roboy.memory.nodes.MemoryNodeModel.fromJSON</definition>
+        <argsstring>(String json, Gson gson)</argsstring>
+        <name>fromJSON</name>
+        <param>
+          <type>String</type>
+          <declname>json</declname>
+        </param>
+        <param>
+          <type>Gson</type>
+          <declname>gson</declname>
+        </param>
+        <briefdescription>
+<para>Returns an instance of this class based on the given JSON. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="154" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="154" bodyend="156"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This class represents a full node similarly to its representation in <ref refid="interfaceroboy_1_1memory_1_1_memory" kindref="compound">Memory</ref>. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="968">
+        <label>roboy.memory.nodes.MemoryNodeModel</label>
+        <link refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model"/>
+        <childnode refid="969" relation="usage">
+          <edgelabel>properties</edgelabel>
+        </childnode>
+        <childnode refid="970" relation="usage">
+          <edgelabel>labels</edgelabel>
+        </childnode>
+        <childnode refid="971" relation="usage">
+          <edgelabel>relations</edgelabel>
+        </childnode>
+      </node>
+      <node id="969">
+        <label>HashMap&lt; String, Object &gt;</label>
+      </node>
+      <node id="971">
+        <label>HashMap&lt; String, ArrayList&lt; Integer &gt; &gt;</label>
+      </node>
+      <node id="970">
+        <label>ArrayList&lt; String &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="16" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="16" bodyend="157"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a56392fa41d2f91b1b6a1b70a50b45267" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>fromJSON</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1af6b2187701c0d4a50cc540c065e711f0" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>getId</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1af65d41b94792aed6ce7324937778fa9d" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>getLabels</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a1dc08d2530daaacd07d66e208274aaa7" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>getProperties</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a6c81048b39178c05e2e61eae22839c16" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>getProperty</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a7bb90c5e89480fb14010575e96bec55c" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>getRelation</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a5eddb2ddf1a5644a602ce6a1dd15b19a" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>getRelations</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a7a78b2bb1d959c81f28158390bf2a906" prot="private" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>id</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a52df146c59d1d625049c2c3ecb7dd61a" prot="private" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>label</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a4eb8ec5de50d4bb87900318b853887c5" prot="private" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>labels</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a636f76b8805c5ebb756836ec5674ef4f" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>MemoryNodeModel</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1ade02f9836975ebdbefd27a3362dff4c1" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>MemoryNodeModel</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a982e8cb032c661dbf942566c4750a18d" prot="private" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>properties</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a34f8c80bcce0fd675cc8a8c2a152111e" prot="private" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>relations</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a61e3ff9355f1ad5c75b038912d6dbf37" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>setId</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a79b7e74c1168979a74dfb8b2c9fb29a4" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>setLabel</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a7b262317c21d3a976f45931a3a6f1e97" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>setProperties</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1ac46686869bc5eadf01efba47743efca7" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>setProperty</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a8145ca05a144d824600facf32fd7f3d4" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>setRelation</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a2b1ff3e17f2352158a5e0eaf3ae19d54" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>setRelations</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a827ad661c2973642cdd1058a88c0893c" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>setStripQuery</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a0dd3371025cec2d370055ceddd5d90bd" prot="package" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>stripQuery</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a1238c30afc316003aa5558ecb1f8f894" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>toJSON</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -17,6 +17,7 @@ enum RosClients {
     CREATEMEMORY("/roboy/cognition/memory/create", DataQuery._TYPE),
     UPDATEMEMORY("/roboy/cognition/memory/update", DataQuery._TYPE),
     GETMEMORY("/roboy/cognition/memory/get", DataQuery._TYPE),
+    DELETEMEMORY("/roboy/cognition/memory/remove", DataQuery._TYPE),
     CYPHERMEMORY("/roboy/cognition/memory/cypher", DataQuery._TYPE),
     INTENT("/roboy/cognition/detect_intent", DetectIntent._TYPE);
 

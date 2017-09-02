@@ -1,7 +1,6 @@
 package roboy.dialog;
 
 import java.io.IOException;
-import java.net.DatagramSocket;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +15,8 @@ import roboy.io.*;
 
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.*;
+import roboy.memory.Neo4jMemory;
+import roboy.memory.nodes.MemoryNodeModel;
 import roboy.talk.Verbalizer;
 
 import roboy.ros.RosMainNode;
@@ -72,26 +73,27 @@ import roboy.ros.RosMainNode;
  */
 public class DialogSystem {
 
-    public static boolean SHUTDOWN_ON_ROS_FAILURE = true;
+    public static boolean SHUTDOWN_ON_ROS_FAILURE = false;
 	
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
 
         // initialize ROS node
         RosMainNode rosMainNode = new RosMainNode();
+        Neo4jMemory memory = Neo4jMemory.getInstance(rosMainNode);
 
 	    InputDevice input = new CommandLineInput();
 //		 InputDevice input = new BingInput(rosMainNode);
-        DatagramSocket ds = new DatagramSocket(55555);
+//        DatagramSocket ds = new DatagramSocket(55555);
 //        InputDevice input = new UdpInput(ds);
 		InputDevice celebInput = new CelebritySimilarityInput();
 //		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
 		InputDevice multiIn = new MultiInputDevice(input);//, celebInput, roboyDetectInput);
 
-		OutputDevice output1 = new CerevoiceOutput(rosMainNode);
+//		OutputDevice output1 = new CerevoiceOutput(rosMainNode);
 //        CerevoiceOutput output2 = new CerevoiceOutput(rosMainNode);
 		// OutputDevice output = new BingOutput();
-        OutputDevice output2 = new UdpOutput(ds, "localhost", 55556);
-		EmotionOutput emotion = new EmotionOutput(rosMainNode);
+//        OutputDevice output2 = new UdpOutput(ds, "localhost", 55556);
+//		EmotionOutput emotion = new EmotionOutput(rosMainNode);
         OutputDevice output = new CommandLineOutput();
 //        OutputDevice output = new CerevoiceOutput(emotion);
 		OutputDevice multiOut = new MultiOutputDevice(output);//, output2, emotion);
@@ -108,13 +110,12 @@ public class DialogSystem {
         analyzers.add(new EmotionAnalyzer());
         analyzers.add(new IntentAnalyzer(rosMainNode));
 
-
-
         // Race between main and rosMainNode threads, but there should be enough time.
         if (!rosMainNode.STARTUP_SUCCESS && SHUTDOWN_ON_ROS_FAILURE) {
             throw new RuntimeException("DialogSystem shutdown caused by ROS service initialization failure. " +
                     "Start the required services or set SHUTDOWN_ON_ROS_FAILURE to false.");
         }
+
         System.out.println("Initialized...");
 
         while(true) {
@@ -127,10 +128,10 @@ public class DialogSystem {
 //            while (!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)) {
 //            }
 
-            Personality p = new SmallTalkPersonality(new Verbalizer(), rosMainNode);
+            Personality smallTalk = new SmallTalkPersonality(new Verbalizer(), rosMainNode);
             Input raw;
             Interpretation interpretation;
-            List<Action> actions = p.answer(new Interpretation(""));
+            List<Action> actions = smallTalk.answer(new Interpretation(""));
 
 
             while (actions.isEmpty() || !(actions.get(0) instanceof ShutDownAction)) {
@@ -140,12 +141,7 @@ public class DialogSystem {
                 for (Analyzer a : analyzers) {
                     interpretation = a.analyze(interpretation);
                 }
-                if(interpretation.getFeature(Linguistics.INTENT) != null) {
-                    System.out.println("Found intent: "+ (String) interpretation.getFeature(Linguistics.INTENT) + " with confidence: "+ (float) interpretation.getFeature(Linguistics.INTENT_DISTANCE));
-                } else {
-                    System.out.println("No intent found!");
-                }
-                actions = p.answer(interpretation);
+                actions = smallTalk.answer(interpretation);
             }
             List<Action> lastwords = ((ShutDownAction) actions.get(0)).getLastWords();
             multiOut.act(lastwords);

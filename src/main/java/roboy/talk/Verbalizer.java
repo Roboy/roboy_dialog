@@ -14,7 +14,7 @@ import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.Maps;
 
 /**
- * Turns interpretations to actual utterances. This should in the future lead to diversify
+ * Turns interpretations to actual utterances. This should in the future lead to diversifying
  * the ways Roboy is expressing information.
  */
 public class Verbalizer {

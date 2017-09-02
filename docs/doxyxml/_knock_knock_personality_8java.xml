@@ -67,7 +67,7 @@
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>@Override</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>List&lt;Action&gt;<sp/><ref refid="classroboy_1_1dialog_1_1personality_1_1_knock_knock_personality_1aa6cccc25cd74e57dd65cca457ee5f375" kindref="member">answer</ref>(<ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref><sp/>input)<sp/>{</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>List&lt;Action&gt;<sp/>result<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>ArrayList&lt;Action&gt;();</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>sentence<sp/>=<sp/>(String)<sp/>input.getFeatures().get(<ref refid="classroboy_1_1linguistics_1_1_linguistics" kindref="compound">Linguistics</ref>.SENTENCE);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>sentence<sp/>=<sp/>(String)<sp/>input.getFeatures().get(<ref refid="classroboy_1_1linguistics_1_1_linguistics" kindref="compound">Linguistics</ref>.<ref refid="classroboy_1_1linguistics_1_1_linguistics_1a20cc187660a43ff97783ab440cf905ab" kindref="member">SENTENCE</ref>);</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal">(state){</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>WELCOME:</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>joke<sp/>=<sp/>pickJoke();</highlight></codeline>
@@ -112,6 +112,6 @@
 <codeline lineno="111"><highlight class="normal"></highlight></codeline>
 <codeline lineno="112"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java"/>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java"/>
   </compounddef>
 </doxygen>

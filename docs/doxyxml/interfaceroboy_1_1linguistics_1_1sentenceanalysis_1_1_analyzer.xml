@@ -4,9 +4,12 @@
     <compoundname>roboy::linguistics::sentenceanalysis::Analyzer</compoundname>
     <derivedcompoundref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer" prot="public" virt="non-virtual">roboy.linguistics.sentenceanalysis.AnswerAnalyzer</derivedcompoundref>
     <derivedcompoundref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_dictionary_based_sentence_type_detector" prot="public" virt="non-virtual">roboy.linguistics.sentenceanalysis.DictionaryBasedSentenceTypeDetector</derivedcompoundref>
+    <derivedcompoundref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_emotion_analyzer" prot="public" virt="non-virtual">roboy.linguistics.sentenceanalysis.EmotionAnalyzer</derivedcompoundref>
+    <derivedcompoundref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_intent_analyzer" prot="public" virt="non-virtual">roboy.linguistics.sentenceanalysis.IntentAnalyzer</derivedcompoundref>
     <derivedcompoundref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_ontology_n_e_r_analyzer" prot="public" virt="non-virtual">roboy.linguistics.sentenceanalysis.OntologyNERAnalyzer</derivedcompoundref>
     <derivedcompoundref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser" prot="public" virt="non-virtual">roboy.linguistics.sentenceanalysis.OpenNLPParser</derivedcompoundref>
     <derivedcompoundref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_p_p_o_s_tagger" prot="public" virt="non-virtual">roboy.linguistics.sentenceanalysis.OpenNLPPPOSTagger</derivedcompoundref>
+    <derivedcompoundref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_preprocessor" prot="public" virt="non-virtual">roboy.linguistics.sentenceanalysis.Preprocessor</derivedcompoundref>
     <derivedcompoundref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer" prot="public" virt="non-virtual">roboy.linguistics.sentenceanalysis.SentenceAnalyzer</derivedcompoundref>
     <derivedcompoundref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_simple_tokenizer" prot="public" virt="non-virtual">roboy.linguistics.sentenceanalysis.SimpleTokenizer</derivedcompoundref>
       <sectiondef kind="public-func">
@@ -15,13 +18,16 @@
         <definition>Interpretation roboy.linguistics.sentenceanalysis.Analyzer.analyze</definition>
         <argsstring>(Interpretation sentence)</argsstring>
         <name>analyze</name>
+        <reimplementedby refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_preprocessor_1a1046f420fc1578617c97e24ba8c92013">analyze</reimplementedby>
         <reimplementedby refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_simple_tokenizer_1ae9f9ce36ed5fd7e160025ab6444127b4">analyze</reimplementedby>
         <reimplementedby refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_dictionary_based_sentence_type_detector_1a9a7512eecf164928943994f5b13eec00">analyze</reimplementedby>
+        <reimplementedby refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_emotion_analyzer_1a220585748d297365748bd63ee7013a79">analyze</reimplementedby>
+        <reimplementedby refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_intent_analyzer_1a85e72b39e63cd49d3832876aaa83459f">analyze</reimplementedby>
         <reimplementedby refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_1a73f78105762ea57ad85c1a6e849a7eaf">analyze</reimplementedby>
         <reimplementedby refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_p_p_o_s_tagger_1a3be329fbe76dfd672eb46ed31d836a6f">analyze</reimplementedby>
-        <reimplementedby refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a3b7b6f58b44cb0176928cee3b767de33">analyze</reimplementedby>
-        <reimplementedby refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_1ab0b24b0fbbd71fbe2b5631e8a1fd87e1">analyze</reimplementedby>
         <reimplementedby refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_ontology_n_e_r_analyzer_1a71f96333126a0bc0ea1bda9505227dec">analyze</reimplementedby>
+        <reimplementedby refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_1ab0b24b0fbbd71fbe2b5631e8a1fd87e1">analyze</reimplementedby>
+        <reimplementedby refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a3b7b6f58b44cb0176928cee3b767de33">analyze</reimplementedby>
         <param>
           <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
           <declname>sentence</declname>
@@ -32,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/Analyzer.java" line="10" column="1"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Analyzer.java" line="10" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -40,54 +46,72 @@
     <detaileddescription>
 <para>An analyzer always takes an existing interpretation of a sentence and returns one including its own analysis results (usually an enriched version of the input interpretation). </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="456">
+      <node id="676">
         <label>roboy.linguistics.sentenceanalysis.OntologyNERAnalyzer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_ontology_n_e_r_analyzer"/>
-        <childnode refid="453" relation="public-inheritance">
+        <childnode refid="671" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="454">
+      <node id="672">
         <label>roboy.linguistics.sentenceanalysis.AnswerAnalyzer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer"/>
-        <childnode refid="453" relation="public-inheritance">
+        <childnode refid="671" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="455">
+      <node id="673">
         <label>roboy.linguistics.sentenceanalysis.DictionaryBasedSentenceTypeDetector</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_dictionary_based_sentence_type_detector"/>
-        <childnode refid="453" relation="public-inheritance">
+        <childnode refid="671" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="458">
+      <node id="678">
         <label>roboy.linguistics.sentenceanalysis.OpenNLPPPOSTagger</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_p_p_o_s_tagger"/>
-        <childnode refid="453" relation="public-inheritance">
+        <childnode refid="671" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="459">
+      <node id="675">
+        <label>roboy.linguistics.sentenceanalysis.IntentAnalyzer</label>
+        <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_intent_analyzer"/>
+        <childnode refid="671" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="674">
+        <label>roboy.linguistics.sentenceanalysis.EmotionAnalyzer</label>
+        <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_emotion_analyzer"/>
+        <childnode refid="671" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="680">
         <label>roboy.linguistics.sentenceanalysis.SentenceAnalyzer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer"/>
-        <childnode refid="453" relation="public-inheritance">
+        <childnode refid="671" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="453">
+      <node id="671">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
-      <node id="460">
+      <node id="681">
         <label>roboy.linguistics.sentenceanalysis.SimpleTokenizer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_simple_tokenizer"/>
-        <childnode refid="453" relation="public-inheritance">
+        <childnode refid="671" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="457">
+      <node id="679">
+        <label>roboy.linguistics.sentenceanalysis.Preprocessor</label>
+        <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_preprocessor"/>
+        <childnode refid="671" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="677">
         <label>roboy.linguistics.sentenceanalysis.OpenNLPParser</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser"/>
-        <childnode refid="453" relation="public-inheritance">
+        <childnode refid="671" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/Analyzer.java" line="8" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/Analyzer.java" bodystart="8" bodyend="12"/>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Analyzer.java" line="8" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Analyzer.java" bodystart="8" bodyend="12"/>
     <listofallmembers>
       <member refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer_1a815ac125df33bff418d4a21618e5a340" prot="public" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::Analyzer</scope><name>analyze</name></member>
     </listofallmembers>

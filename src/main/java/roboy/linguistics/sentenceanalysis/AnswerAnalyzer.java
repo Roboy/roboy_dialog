@@ -8,6 +8,12 @@ import roboy.linguistics.Linguistics.SEMANTIC_ROLE;
 /**
  * Checks the predicate argument structures produced by the OpenNLPParser analyzer
  * and looks for possible answers to questions in them.
+ * 
+ * It creates the outputs Linguistics.OBJ_ANSWER for situations where the answer
+ * to the question is in the object of the sentence (e.g. "Frank" in the sentence
+ * "I am Frank" to the question "Who are you?") and Linguistics.PRED_ANSWER
+ * if it is in the predicate or in the predicate and the object combined (e.g. 
+ * "swimming" in the answer "I like swimming" to the question "What is your hobby?").
  */
 public class AnswerAnalyzer implements Analyzer{
 	

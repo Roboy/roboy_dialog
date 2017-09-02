@@ -6,6 +6,7 @@ import roboy.util.Lists;
 
 import java.util.List;
 
+@Deprecated
 public class IdleState extends AbstractBooleanState {
 
 

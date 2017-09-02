@@ -18,12 +18,13 @@
     <innerclass refid="classroboy_1_1io_1_1_multi_output_device" prot="public">roboy::io::MultiOutputDevice</innerclass>
     <innerclass refid="interfaceroboy_1_1io_1_1_output_device" prot="public">roboy::io::OutputDevice</innerclass>
     <innerclass refid="classroboy_1_1io_1_1_roboy_name_detection_input" prot="public">roboy::io::RoboyNameDetectionInput</innerclass>
-    <innerclass refid="classroboy_1_1io_1_1_test_vision" prot="public">roboy::io::TestVision</innerclass>
+    <innerclass refid="classroboy_1_1io_1_1_udp_input" prot="public">roboy::io::UdpInput</innerclass>
+    <innerclass refid="classroboy_1_1io_1_1_udp_output" prot="public">roboy::io::UdpOutput</innerclass>
     <innerclass refid="classroboy_1_1io_1_1_vision" prot="public">roboy::io::Vision</innerclass>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/BingInput.java" line="1" column="1"/>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/BingInput.java" line="1" column="1"/>
   </compounddef>
 </doxygen>

@@ -1,19 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="dir_029141a1c7d6ffd5a4e073b2543b9713" kind="dir">
-    <compoundname>/home/roboy/DialogSystem/src/main/java/roboy/memory</compoundname>
+    <compoundname>/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory</compoundname>
+    <innerdir refid="dir_1165a482e1bd283bdfb030bc1d41c8fb">/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/nodes</innerdir>
     <innerfile refid="_d_bpedia_memory_8java">DBpediaMemory.java</innerfile>
     <innerfile refid="_lexicon_8java">Lexicon.java</innerfile>
     <innerfile refid="_lexicon_literal_8java">LexiconLiteral.java</innerfile>
     <innerfile refid="_lexicon_predicate_8java">LexiconPredicate.java</innerfile>
     <innerfile refid="_memory_8java">Memory.java</innerfile>
+    <innerfile refid="_neo4j_memory_8java">Neo4jMemory.java</innerfile>
+    <innerfile refid="_neo4j_relations_8java">Neo4jRelations.java</innerfile>
     <innerfile refid="_persistent_knowledge_8java">PersistentKnowledge.java</innerfile>
     <innerfile refid="_roboy_mind_8java">RoboyMind.java</innerfile>
     <innerfile refid="_util_8java">Util.java</innerfile>
+    <innerfile refid="_working_memory_8java">WorkingMemory.java</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/DialogSystem/src/main/java/roboy/memory/"/>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/"/>
   </compounddef>
 </doxygen>

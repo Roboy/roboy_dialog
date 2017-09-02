@@ -25,6 +25,7 @@ public class RosMainNode extends AbstractNodeMain {
         clients = new RosManager();
 
         String hostName = System.getenv("ROS_HOSTNAME");
+        //String hostName = "10.183.122.142";
         if (hostName == null || hostName.isEmpty()) {
             System.out.println("Could not find ROS hostname. ROS will be unavailable. Set ROS_HOSTNAME environmental variable.");
         }
@@ -50,6 +51,7 @@ public class RosMainNode extends AbstractNodeMain {
         try {
             clients.initialize(connectedNode);
         } catch (RuntimeException e) {
+            System.out.println("ROS client manager failed to initialize!");
             STARTUP_SUCCESS = false;
         }
     }
@@ -259,6 +261,36 @@ public class RosMainNode extends AbstractNodeMain {
         };
         getMemoryClient.call(getRequest, listener);
         waitForLatchUnlock(rosConnectionLatch, getMemoryClient.getName().toString());
+        return ((String) resp);
+    }
+
+    public String DeleteMemoryQuery(String query) {
+
+        if(clients.notInitialized(RosClients.DELETEMEMORY)) {
+            // FALLBACK RETURN VALUE
+            return null;
+        }
+        ServiceClient<DataQueryRequest, DataQueryResponse> deleteMemoryClient = clients.getServiceClient(RosClients.DELETEMEMORY);
+        rosConnectionLatch = new CountDownLatch(1);
+        DataQueryRequest getRequest = deleteMemoryClient.newMessage();
+        // TODO set the header
+        getRequest.setPayload(query);
+        ServiceResponseListener<DataQueryResponse> listener = new ServiceResponseListener<DataQueryResponse>() {
+            @Override
+            public void onSuccess(DataQueryResponse response) {
+//                System.out.println(response.getTextOutput());
+                resp = response.getAnswer();
+                rosConnectionLatch.countDown();
+            }
+
+            @Override
+            public void onFailure(RemoteException e) {
+                rosConnectionLatch.countDown();
+                throw new RosRuntimeException(e);
+            }
+        };
+        deleteMemoryClient.call(getRequest, listener);
+        waitForLatchUnlock(rosConnectionLatch, deleteMemoryClient.getName().toString());
         return ((String) resp);
     }
 

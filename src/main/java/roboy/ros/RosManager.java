@@ -27,11 +27,12 @@ class RosManager {
         for(RosClients c : RosClients.values()) {
             try {
                 clientMap.put(c, node.newServiceClient(c.address, c.type));
+                System.out.println(c.toString()+" initialization SUCCESS!");
             } catch (Exception e) {
                 if(DialogSystem.SHUTDOWN_ON_ROS_FAILURE) {
                     failed = true;
                 }
-                System.out.println(c.toString()+" initialization failed, could not reach ROS service!");
+                System.out.println(c.toString()+" initialization FAILED, could not reach ROS service!");
             }
         }
         if (failed) {
@@ -44,6 +45,9 @@ class RosManager {
      * a fallback response can be created instead. Important if SHUTDOWN_ON_ROS_FAILURE is false.
      */
     boolean notInitialized(RosClients c) {
+        if(clientMap == null) {
+            System.out.println("ROS clients have not been initialized! Is the ROS host running?");
+        }
         return !clientMap.containsKey(c);
     }
 

@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" line="17" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" bodystart="17" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" line="17" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" bodystart="17" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" line="19" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" bodystart="19" bodyend="40"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" line="19" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" bodystart="19" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_p_p_o_s_tagger_1a3be329fbe76dfd672eb46ed31d836a6f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" line="43" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" bodystart="43" bodyend="48"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" line="43" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" bodystart="43" bodyend="48"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -67,44 +67,44 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" line="50" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" bodystart="50" bodyend="53"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" line="50" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" bodystart="50" bodyend="53"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Perform part-of-speech tagging using the Open NLP POS tagger and stores the results in the Linguistics.POSTAGS attribute of the interpretation. </para>    </briefdescription>
+<para>Perform part-of-speech tagging (detecting nouns, verbs etc.) using the Open NLP POS tagger and stores the results in the <ref refid="classroboy_1_1linguistics_1_1_linguistics_1a670831be458b376b147090559f1e11f6" kindref="member">Linguistics.POSTAGS</ref> attribute of the interpretation. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="703">
+      <node id="1012">
         <label>roboy.linguistics.sentenceanalysis.OpenNLPPPOSTagger</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_p_p_o_s_tagger"/>
-        <childnode refid="704" relation="public-inheritance">
+        <childnode refid="1013" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="704">
+      <node id="1013">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="705">
+      <node id="1014">
         <label>roboy.linguistics.sentenceanalysis.OpenNLPPPOSTagger</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_p_p_o_s_tagger"/>
-        <childnode refid="706" relation="public-inheritance">
+        <childnode refid="1015" relation="public-inheritance">
         </childnode>
-        <childnode refid="707" relation="usage">
+        <childnode refid="1016" relation="usage">
           <edgelabel>tagger</edgelabel>
         </childnode>
       </node>
-      <node id="706">
+      <node id="1015">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
-      <node id="707">
+      <node id="1016">
         <label>POSTaggerME</label>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" line="15" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" bodystart="15" bodyend="54"/>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" line="15" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OpenNLPPPOSTagger.java" bodystart="15" bodyend="54"/>
     <listofallmembers>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_p_p_o_s_tagger_1a3be329fbe76dfd672eb46ed31d836a6f" prot="public" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::OpenNLPPPOSTagger</scope><name>analyze</name></member>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_p_p_o_s_tagger_1a75f38cb740b199fc3273dac6890d5e9e" prot="public" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::OpenNLPPPOSTagger</scope><name>OpenNLPPPOSTagger</name></member>

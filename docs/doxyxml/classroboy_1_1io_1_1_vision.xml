@@ -3,19 +3,64 @@
   <compounddef id="classroboy_1_1io_1_1_vision" kind="class" language="Java" prot="public">
     <compoundname>roboy::io::Vision</compoundname>
     <innerclass refid="classroboy_1_1io_1_1_vision_1_1_vision_callback" prot="private">roboy::io::Vision::VisionCallback</innerclass>
-      <sectiondef kind="public-func">
-      <memberdef kind="function" id="classroboy_1_1io_1_1_vision_1a86b02e515521d495b62ea9ab1a6fe91e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>String</type>
-        <definition>String roboy.io.Vision.recognize</definition>
-        <argsstring>()</argsstring>
-        <name>recognize</name>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classroboy_1_1io_1_1_vision_1a02a22fe1d467853a2953076dfb84e248" prot="private" static="yes" mutable="no">
+        <type><ref refid="classroboy_1_1io_1_1_vision" kindref="compound">Vision</ref></type>
+        <definition>Vision roboy.io.Vision.roboyVision</definition>
+        <argsstring></argsstring>
+        <name>roboyVision</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/Vision.java" line="53" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/Vision.java" bodystart="53" bodyend="65"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/Vision.java" line="19" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/Vision.java" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classroboy_1_1io_1_1_vision_1a20e09e4396a0748431e19ceed8d3a687" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.io.Vision.Vision</definition>
+        <argsstring>()</argsstring>
+        <name>Vision</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/Vision.java" line="21" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/Vision.java" bodystart="21" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classroboy_1_1io_1_1_vision_1a95fb6d49e2e9e9b0142e2908a1f7e036" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1io_1_1_vision" kindref="compound">Vision</ref></type>
+        <definition>static Vision roboy.io.Vision.getInstance</definition>
+        <argsstring>()</argsstring>
+        <name>getInstance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/Vision.java" line="25" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/Vision.java" bodystart="25" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1io_1_1_vision_1a15f4c99db5733f7ad06b919faacf7211" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>String</type>
+        <definition>String roboy.io.Vision.recognizeFace</definition>
+        <argsstring>()</argsstring>
+        <name>recognizeFace</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/Vision.java" line="57" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/Vision.java" bodystart="57" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1io_1_1_vision_1a44e80a6f9dcabeb1156b449398b9c9a2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>boolean</type>
@@ -28,17 +73,29 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/Vision.java" line="67" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/Vision.java" bodystart="67" bodyend="72"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/Vision.java" line="67" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/Vision.java" bodystart="67" bodyend="72"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="classroboy_1_1io_1_1_vision" kindref="compound">Vision</ref> helper class ... </para>    </briefdescription>
+<para><ref refid="classroboy_1_1io_1_1_vision" kindref="compound">Vision</ref> helper class. </para>    </briefdescription>
     <detaileddescription>
-<para>I guess. </para>    </detaileddescription>
-    <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/Vision.java" line="25" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/Vision.java" bodystart="24" bodyend="74"/>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1287">
+        <label>roboy.io.Vision</label>
+        <link refid="classroboy_1_1io_1_1_vision"/>
+        <childnode refid="1287" relation="usage">
+          <edgelabel>roboyVision</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/Vision.java" line="17" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/Vision.java" bodystart="16" bodyend="74"/>
     <listofallmembers>
       <member refid="classroboy_1_1io_1_1_vision_1a44e80a6f9dcabeb1156b449398b9c9a2" prot="public" virt="non-virtual"><scope>roboy::io::Vision</scope><name>findFaces</name></member>
-      <member refid="classroboy_1_1io_1_1_vision_1a86b02e515521d495b62ea9ab1a6fe91e" prot="public" virt="non-virtual"><scope>roboy::io::Vision</scope><name>recognize</name></member>
+      <member refid="classroboy_1_1io_1_1_vision_1a95fb6d49e2e9e9b0142e2908a1f7e036" prot="public" virt="non-virtual"><scope>roboy::io::Vision</scope><name>getInstance</name></member>
+      <member refid="classroboy_1_1io_1_1_vision_1a15f4c99db5733f7ad06b919faacf7211" prot="public" virt="non-virtual"><scope>roboy::io::Vision</scope><name>recognizeFace</name></member>
+      <member refid="classroboy_1_1io_1_1_vision_1a02a22fe1d467853a2953076dfb84e248" prot="private" virt="non-virtual"><scope>roboy::io::Vision</scope><name>roboyVision</name></member>
+      <member refid="classroboy_1_1io_1_1_vision_1a20e09e4396a0748431e19ceed8d3a687" prot="private" virt="non-virtual"><scope>roboy::io::Vision</scope><name>Vision</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

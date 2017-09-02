@@ -3,7 +3,39 @@
   <compounddef id="classroboy_1_1io_1_1_emotion_output" kind="class" language="Java" prot="public">
     <compoundname>roboy::io::EmotionOutput</compoundname>
     <basecompoundref refid="interfaceroboy_1_1io_1_1_output_device" prot="public" virt="non-virtual">roboy.io.OutputDevice</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classroboy_1_1io_1_1_emotion_output_1a70d8bd276ecd59ae84486cdb23c66027" prot="private" static="no" mutable="no">
+        <type><ref refid="classroboy_1_1ros_1_1_ros_main_node" kindref="compound">RosMainNode</ref></type>
+        <definition>RosMainNode roboy.io.EmotionOutput.rosMainNode</definition>
+        <argsstring></argsstring>
+        <name>rosMainNode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/EmotionOutput.java" line="14" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/EmotionOutput.java" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1io_1_1_emotion_output_1a6d33201669ac21c887a4d71ad096bd45" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.io.EmotionOutput.EmotionOutput</definition>
+        <argsstring>(RosMainNode node)</argsstring>
+        <name>EmotionOutput</name>
+        <param>
+          <type><ref refid="classroboy_1_1ros_1_1_ros_main_node" kindref="compound">RosMainNode</ref></type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/EmotionOutput.java" line="16" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/EmotionOutput.java" bodystart="16" bodyend="18"/>
+      </memberdef>
       <memberdef kind="function" id="classroboy_1_1io_1_1_emotion_output_1a51b712bbed6db5f5e5fa19a5ae3e9041" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void roboy.io.EmotionOutput.act</definition>
@@ -20,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/EmotionOutput.java" line="23" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/EmotionOutput.java" bodystart="23" bodyend="29"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/EmotionOutput.java" line="21" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/EmotionOutput.java" bodystart="21" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1io_1_1_emotion_output_1a83b84d0780eaeac69c75e3fdd22fc22f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -37,26 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/EmotionOutput.java" line="31" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/EmotionOutput.java" bodystart="31" bodyend="39"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
-      <memberdef kind="function" id="classroboy_1_1io_1_1_emotion_output_1ab621c6a81cb2197475b5063c21c63a19" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
-        <definition>void roboy.io.EmotionOutput.ChangeFaceState</definition>
-        <argsstring>(FaceAction action)</argsstring>
-        <name>ChangeFaceState</name>
-        <param>
-          <type><ref refid="classroboy_1_1dialog_1_1action_1_1_face_action" kindref="compound">FaceAction</ref></type>
-          <declname>action</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/EmotionOutput.java" line="41" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/EmotionOutput.java" bodystart="41" bodyend="54"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/EmotionOutput.java" line="30" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/EmotionOutput.java" bodystart="30" bodyend="39"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -64,34 +77,66 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="570">
+      <node id="805">
         <label>roboy.io.EmotionOutput</label>
         <link refid="classroboy_1_1io_1_1_emotion_output"/>
-        <childnode refid="571" relation="public-inheritance">
+        <childnode refid="806" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="571">
+      <node id="806">
         <label>roboy.io.OutputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_output_device"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="572">
+      <node id="813">
+        <label>CountDownLatch</label>
+      </node>
+      <node id="807">
         <label>roboy.io.EmotionOutput</label>
         <link refid="classroboy_1_1io_1_1_emotion_output"/>
-        <childnode refid="573" relation="public-inheritance">
+        <childnode refid="808" relation="public-inheritance">
+        </childnode>
+        <childnode refid="809" relation="usage">
+          <edgelabel>rosMainNode</edgelabel>
         </childnode>
       </node>
-      <node id="573">
+      <node id="812">
+        <label>HashMap&lt; roboy.ros.RosClients, ServiceClient &gt;</label>
+      </node>
+      <node id="809">
+        <label>roboy.ros.RosMainNode</label>
+        <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
+        <childnode refid="810" relation="public-inheritance">
+        </childnode>
+        <childnode refid="811" relation="usage">
+          <edgelabel>clients</edgelabel>
+        </childnode>
+        <childnode refid="813" relation="usage">
+          <edgelabel>rosConnectionLatch</edgelabel>
+        </childnode>
+      </node>
+      <node id="811">
+        <label>roboy.ros.RosManager</label>
+        <link refid="classroboy_1_1ros_1_1_ros_manager"/>
+        <childnode refid="812" relation="usage">
+          <edgelabel>clientMap</edgelabel>
+        </childnode>
+      </node>
+      <node id="808">
         <label>roboy.io.OutputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_output_device"/>
       </node>
+      <node id="810">
+        <label>AbstractNodeMain</label>
+      </node>
     </collaborationgraph>
-    <location file="/home/roboy/DialogSystem/src/main/java/roboy/io/EmotionOutput.java" line="20" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/io/EmotionOutput.java" bodystart="19" bodyend="56"/>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/EmotionOutput.java" line="13" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/io/EmotionOutput.java" bodystart="12" bodyend="41"/>
     <listofallmembers>
       <member refid="classroboy_1_1io_1_1_emotion_output_1a51b712bbed6db5f5e5fa19a5ae3e9041" prot="public" virt="non-virtual"><scope>roboy::io::EmotionOutput</scope><name>act</name></member>
       <member refid="classroboy_1_1io_1_1_emotion_output_1a83b84d0780eaeac69c75e3fdd22fc22f" prot="public" virt="non-virtual"><scope>roboy::io::EmotionOutput</scope><name>act</name></member>
-      <member refid="classroboy_1_1io_1_1_emotion_output_1ab621c6a81cb2197475b5063c21c63a19" prot="private" virt="non-virtual"><scope>roboy::io::EmotionOutput</scope><name>ChangeFaceState</name></member>
+      <member refid="classroboy_1_1io_1_1_emotion_output_1a6d33201669ac21c887a4d71ad096bd45" prot="public" virt="non-virtual"><scope>roboy::io::EmotionOutput</scope><name>EmotionOutput</name></member>
+      <member refid="classroboy_1_1io_1_1_emotion_output_1a70d8bd276ecd59ae84486cdb23c66027" prot="private" virt="non-virtual"><scope>roboy::io::EmotionOutput</scope><name>rosMainNode</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

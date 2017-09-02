@@ -2,6 +2,22 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="classroboy_1_1dialog_1_1_dialog_system" kind="class" language="Java" prot="public">
     <compoundname>roboy::dialog::DialogSystem</compoundname>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classroboy_1_1dialog_1_1_dialog_system_1a3f21eeab8864773ce6b387e27a35c89e" prot="public" static="yes" mutable="no">
+        <type>boolean</type>
+        <definition>boolean roboy.dialog.DialogSystem.SHUTDOWN_ON_ROS_FAILURE</definition>
+        <argsstring></argsstring>
+        <name>SHUTDOWN_ON_ROS_FAILURE</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/DialogSystem.java" line="76" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/DialogSystem.java" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="classroboy_1_1dialog_1_1_dialog_system_1af467cec6e12b2fcf78fb278e301768b4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -19,14 +35,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/DialogSystem.java" line="90" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/DialogSystem.java" bodystart="90" bodyend="167"/>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/DialogSystem.java" line="78" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/DialogSystem.java" bodystart="78" bodyend="150"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>The dialog manager&apos;s main class. </para>    </briefdescription>
     <detaileddescription>
 <para>Here, the used components are put together and executed using the main method. In the future, the different combinations of components should probably be transfered to configuration files.</para><para>The workflow in the dialog manager is the following:<orderedlist>
-<listitem><para>Input devices produce an Input object</para></listitem><listitem><para>The Input object is transformed into an Interpretation object containing the input sentence in the Linguistics.SENTENCE attribute and all other attributes of the Input object in the corresponding fields</para></listitem><listitem><para>Linguistic Analyzers are used on the Interpretation object to add additional information</para></listitem><listitem><para>The Personality class takes the Interpretation object and decides how to answer to this input</para></listitem><listitem><para>The list of actions returned by <ref refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality_1a44ef708481445e23415a56db6df16d7d" kindref="member">Personality.answer</ref> is performed by the Output devices</para></listitem><listitem><para>If one of these actions is a ShutDownAction the program terminates</para></listitem><listitem><para>Otherwise repeat</para></listitem></orderedlist>
+<listitem><para>Input devices produce an Input object</para></listitem><listitem><para>The Input object is transformed into an Interpretation object containing the input sentence in the <ref refid="classroboy_1_1linguistics_1_1_linguistics_1a20cc187660a43ff97783ab440cf905ab" kindref="member">Linguistics.SENTENCE</ref> attribute and all other attributes of the Input object in the corresponding fields</para></listitem><listitem><para>Linguistic Analyzers are used on the Interpretation object to add additional information</para></listitem><listitem><para>The Personality class takes the Interpretation object and decides how to answer to this input</para></listitem><listitem><para>The list of actions returned by <ref refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality_1a44ef708481445e23415a56db6df16d7d" kindref="member">Personality.answer</ref> is performed by the Output devices</para></listitem><listitem><para>If one of these actions is a ShutDownAction the program terminates</para></listitem><listitem><para>Otherwise repeat</para></listitem></orderedlist>
 </para><para>Input devices:<itemizedlist>
 <listitem><para>For testing from command line: CommandLineInput</para></listitem><listitem><para>For speech to text: BingInput (requires internet)</para></listitem><listitem><para>For combining multiple inputs: MultiInputDevice</para></listitem><listitem><para>Others for specific tasks</para></listitem></itemizedlist>
 </para><para>Analyzers:<itemizedlist>
@@ -36,9 +52,10 @@
 </para><para>Output devices:<itemizedlist>
 <listitem><para>For testing with command line: CommandLineOutput</para></listitem><listitem><para>For text to speech: BingOutput (requires internet)</para></listitem><listitem><para>For combining multiple outputs: MultiOutputDevice</para></listitem><listitem><para>For text to speech + facial expressions: CerevoiceOutput</para></listitem><listitem><para>For facial expressions: EmotionOutput</para></listitem><listitem><para>For text to speech (worse quality): FreeTTSOutput</para></listitem></itemizedlist>
 </para><para>The easiest way to create ones own Roboy communication application is to pick the input and output devices provided here, use the tokenization, POS tagging and possibly semantic role labeling (though still under development) if needed and write an own personality. If one wants to use the DBpedia, Protege, generative model or state machine stuff, one has to dig deeper into the small talk personality and see how it is used there. </para>    </detaileddescription>
-    <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/DialogSystem.java" line="88" column="1" bodyfile="/home/roboy/DialogSystem/src/main/java/roboy/dialog/DialogSystem.java" bodystart="88" bodyend="169"/>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/DialogSystem.java" line="74" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/DialogSystem.java" bodystart="74" bodyend="152"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1_dialog_system_1af467cec6e12b2fcf78fb278e301768b4" prot="public" virt="non-virtual"><scope>roboy::dialog::DialogSystem</scope><name>main</name></member>
+      <member refid="classroboy_1_1dialog_1_1_dialog_system_1a3f21eeab8864773ce6b387e27a35c89e" prot="public" virt="non-virtual"><scope>roboy::dialog::DialogSystem</scope><name>SHUTDOWN_ON_ROS_FAILURE</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

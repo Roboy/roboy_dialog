@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia" kind="class" language="Java" prot="public">
+    <compoundname>roboy::dialog::personality::states::LocationDBpedia</compoundname>
+    <basecompoundref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state" prot="public" virt="non-virtual">roboy.dialog.personality.states.AbstractBooleanState</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia_1acde5a24d8fc50942713a6af666b8db80" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
+        <definition>List&lt;Interpretation&gt; roboy.dialog.personality.states.LocationDBpedia.act</definition>
+        <argsstring>()</argsstring>
+        <name>act</name>
+        <reimplements refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state_1a56df9f548b4736b775dc9dbf450a6a51">act</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" line="21" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" bodystart="21" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia_1a949c433785269c7853796c3bdc28b178" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>boolean</type>
+        <definition>boolean roboy.dialog.personality.states.LocationDBpedia.determineSuccess</definition>
+        <argsstring>(Interpretation interpretation)</argsstring>
+        <name>determineSuccess</name>
+        <param>
+          <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
+          <declname>interpretation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" line="57" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" bodystart="57" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia_1aaa460379142a5ba644d8050b9f7f00f5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction" kindref="compound">Reaction</ref></type>
+        <definition>Reaction roboy.dialog.personality.states.LocationDBpedia.react</definition>
+        <argsstring>(Interpretation input)</argsstring>
+        <name>react</name>
+        <reimplements refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state_1a7f9d1aebfca6aabf313eee279f9a390c">react</reimplements>
+        <param>
+          <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" line="62" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" bodystart="62" bodyend="64"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Created by roboy on 7/5/17. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="954">
+        <label>roboy.dialog.personality.states.LocationDBpedia</label>
+        <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia"/>
+        <childnode refid="955" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="955">
+        <label>roboy.dialog.personality.states.AbstractBooleanState</label>
+        <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
+        <childnode refid="956" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="956">
+        <label>roboy.dialog.personality.states.State</label>
+        <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="957">
+        <label>roboy.dialog.personality.states.LocationDBpedia</label>
+        <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia"/>
+        <childnode refid="958" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="958">
+        <label>roboy.dialog.personality.states.AbstractBooleanState</label>
+        <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
+        <childnode refid="959" relation="public-inheritance">
+        </childnode>
+        <childnode refid="959" relation="usage">
+          <edgelabel>success</edgelabel>
+          <edgelabel>failure</edgelabel>
+        </childnode>
+        <childnode refid="960" relation="usage">
+          <edgelabel>failureTexts</edgelabel>
+          <edgelabel>successTexts</edgelabel>
+        </childnode>
+      </node>
+      <node id="960">
+        <label>List&lt; String &gt;</label>
+      </node>
+      <node id="959">
+        <label>roboy.dialog.personality.states.State</label>
+        <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" line="17" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" bodystart="17" bodyend="66"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia_1acde5a24d8fc50942713a6af666b8db80" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::LocationDBpedia</scope><name>act</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia_1a949c433785269c7853796c3bdc28b178" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::LocationDBpedia</scope><name>determineSuccess</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1afd916a053e2e9374d464c7d2bf0f74ad" prot="protected" virt="non-virtual"><scope>roboy::dialog::personality::states::LocationDBpedia</scope><name>failure</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1ace03f687b53a4af28192dc622d8e674f" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::LocationDBpedia</scope><name>getFailure</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a29b9095d9688916a72b4bf846ecfb170" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::LocationDBpedia</scope><name>getSuccess</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia_1aaa460379142a5ba644d8050b9f7f00f5" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::LocationDBpedia</scope><name>react</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1aaef59e5550a47a4df8a28887cc996edb" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::LocationDBpedia</scope><name>setFailure</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a0316e2e58c12993cd30b822606dd446f" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::LocationDBpedia</scope><name>setFailureTexts</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1afe2dcbf032ab3e128f243fcb77259e70" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::LocationDBpedia</scope><name>setNextState</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a95b2e8367f1b9b3b05a89e7db1a735e3" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::LocationDBpedia</scope><name>setSuccess</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a257d5515337565836ae4bd32b1965d52" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::LocationDBpedia</scope><name>setSuccessTexts</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a916cfc3054b6553c5e3bd081bf95808c" prot="protected" virt="non-virtual"><scope>roboy::dialog::personality::states::LocationDBpedia</scope><name>success</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

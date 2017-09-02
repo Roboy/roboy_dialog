@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="enumroboy_1_1ros_1_1_ros_clients" kind="enum" language="Java" prot="package">
+    <compoundname>roboy::ros::RosClients</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="enumroboy_1_1ros_1_1_ros_clients_1a73c4d24abbaadca1b4c744106b555e35" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>roboy.ros.RosClients.SPEECHSYNTHESIS</definition>
+        <argsstring></argsstring>
+        <name>SPEECHSYNTHESIS</name>
+        <initializer>=(&quot;/roboy/cognition/speech/synthesis/talk&quot;, Talk._TYPE)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" line="11" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="enumroboy_1_1ros_1_1_ros_clients_1a446e596196397c2fd909c3c3ac5f18f0" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>roboy.ros.RosClients.GENERATIVE</definition>
+        <argsstring></argsstring>
+        <name>GENERATIVE</name>
+        <initializer>=(&quot;/roboy/cognition/generative_nlp/answer&quot;, GenerateAnswer._TYPE)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" line="12" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="enumroboy_1_1ros_1_1_ros_clients_1a96d27d3615a54cb79c7c8ebdbe52063b" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>roboy.ros.RosClients.FACEDETECTION</definition>
+        <argsstring></argsstring>
+        <name>FACEDETECTION</name>
+        <initializer>=(&quot;/speech_synthesis/talk&quot;, DetectFace._TYPE)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" line="13" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="enumroboy_1_1ros_1_1_ros_clients_1a25c726e79271b1c8f252aa7d28d65428" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>roboy.ros.RosClients.OBJECTRECOGNITION</definition>
+        <argsstring></argsstring>
+        <name>OBJECTRECOGNITION</name>
+        <initializer>=(&quot;/speech_synthesis/talk&quot;, RecognizeObject._TYPE)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" line="14" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="enumroboy_1_1ros_1_1_ros_clients_1a25376d58f64f0ba830f23ed1f608ee1c" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>roboy.ros.RosClients.STT</definition>
+        <argsstring></argsstring>
+        <name>STT</name>
+        <initializer>=(&quot;/roboy/cognition/speech/recognition&quot;, RecognizeSpeech._TYPE)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" line="15" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="enumroboy_1_1ros_1_1_ros_clients_1abb6cddb72e2b430b5a3ca15287946a9f" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>roboy.ros.RosClients.EMOTION</definition>
+        <argsstring></argsstring>
+        <name>EMOTION</name>
+        <initializer>=(&quot;/roboy/control/face/emotion&quot;, ShowEmotion._TYPE)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" line="16" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="enumroboy_1_1ros_1_1_ros_clients_1aab8b16b9280237af2cd2509a1b3e2a71" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>roboy.ros.RosClients.CREATEMEMORY</definition>
+        <argsstring></argsstring>
+        <name>CREATEMEMORY</name>
+        <initializer>=(&quot;/roboy/cognition/memory/create&quot;, DataQuery._TYPE)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" line="17" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="enumroboy_1_1ros_1_1_ros_clients_1a91eb62aad86009658f28bf7ada8c746a" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>roboy.ros.RosClients.UPDATEMEMORY</definition>
+        <argsstring></argsstring>
+        <name>UPDATEMEMORY</name>
+        <initializer>=(&quot;/roboy/cognition/memory/update&quot;, DataQuery._TYPE)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" line="18" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="enumroboy_1_1ros_1_1_ros_clients_1aace080d0a7dee964697a2dd38df29f11" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>roboy.ros.RosClients.GETMEMORY</definition>
+        <argsstring></argsstring>
+        <name>GETMEMORY</name>
+        <initializer>=(&quot;/roboy/cognition/memory/get&quot;, DataQuery._TYPE)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" line="19" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="enumroboy_1_1ros_1_1_ros_clients_1a7c091e1368a3d2dc9c3bd76646001266" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>roboy.ros.RosClients.DELETEMEMORY</definition>
+        <argsstring></argsstring>
+        <name>DELETEMEMORY</name>
+        <initializer>=(&quot;/roboy/cognition/memory/remove&quot;, DataQuery._TYPE)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" line="20" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="enumroboy_1_1ros_1_1_ros_clients_1ab57e4da26f97fbf7e932c6f1f8565190" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>roboy.ros.RosClients.CYPHERMEMORY</definition>
+        <argsstring></argsstring>
+        <name>CYPHERMEMORY</name>
+        <initializer>=(&quot;/roboy/cognition/memory/cypher&quot;, DataQuery._TYPE)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" line="21" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="enumroboy_1_1ros_1_1_ros_clients_1a07a520e396dc655bbf42f01beeb5c833" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>roboy.ros.RosClients.INTENT</definition>
+        <argsstring></argsstring>
+        <name>INTENT</name>
+        <initializer>=(&quot;/roboy/cognition/detect_intent&quot;, DetectIntent._TYPE)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" line="22" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="enumroboy_1_1ros_1_1_ros_clients_1a2e2b66badb055d553e6b865f51d83e57" prot="public" static="no" mutable="no">
+        <type>String</type>
+        <definition>String roboy.ros.RosClients.address</definition>
+        <argsstring></argsstring>
+        <name>address</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" line="24" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="enumroboy_1_1ros_1_1_ros_clients_1a0fdd1e507f7364b2bc1978f311d1b6eb" prot="public" static="no" mutable="no">
+        <type>String</type>
+        <definition>String roboy.ros.RosClients.type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" line="25" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="enumroboy_1_1ros_1_1_ros_clients_1a4ce6e57579594e669cdf81583a761b0e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.ros.RosClients.RosClients</definition>
+        <argsstring>(String address, String type)</argsstring>
+        <name>RosClients</name>
+        <param>
+          <type>String</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>String</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" line="27" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" bodystart="27" bodyend="30"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Stores the different client addresses and corresponding ROS message types. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" line="10" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosClients.java" bodystart="10" bodyend="31"/>
+    <listofallmembers>
+      <member refid="enumroboy_1_1ros_1_1_ros_clients_1a2e2b66badb055d553e6b865f51d83e57" prot="public" virt="non-virtual"><scope>roboy::ros::RosClients</scope><name>address</name></member>
+      <member refid="enumroboy_1_1ros_1_1_ros_clients_1aab8b16b9280237af2cd2509a1b3e2a71" prot="public" virt="non-virtual"><scope>roboy::ros::RosClients</scope><name>CREATEMEMORY</name></member>
+      <member refid="enumroboy_1_1ros_1_1_ros_clients_1ab57e4da26f97fbf7e932c6f1f8565190" prot="public" virt="non-virtual"><scope>roboy::ros::RosClients</scope><name>CYPHERMEMORY</name></member>
+      <member refid="enumroboy_1_1ros_1_1_ros_clients_1a7c091e1368a3d2dc9c3bd76646001266" prot="public" virt="non-virtual"><scope>roboy::ros::RosClients</scope><name>DELETEMEMORY</name></member>
+      <member refid="enumroboy_1_1ros_1_1_ros_clients_1abb6cddb72e2b430b5a3ca15287946a9f" prot="public" virt="non-virtual"><scope>roboy::ros::RosClients</scope><name>EMOTION</name></member>
+      <member refid="enumroboy_1_1ros_1_1_ros_clients_1a96d27d3615a54cb79c7c8ebdbe52063b" prot="public" virt="non-virtual"><scope>roboy::ros::RosClients</scope><name>FACEDETECTION</name></member>
+      <member refid="enumroboy_1_1ros_1_1_ros_clients_1a446e596196397c2fd909c3c3ac5f18f0" prot="public" virt="non-virtual"><scope>roboy::ros::RosClients</scope><name>GENERATIVE</name></member>
+      <member refid="enumroboy_1_1ros_1_1_ros_clients_1aace080d0a7dee964697a2dd38df29f11" prot="public" virt="non-virtual"><scope>roboy::ros::RosClients</scope><name>GETMEMORY</name></member>
+      <member refid="enumroboy_1_1ros_1_1_ros_clients_1a07a520e396dc655bbf42f01beeb5c833" prot="public" virt="non-virtual"><scope>roboy::ros::RosClients</scope><name>INTENT</name></member>
+      <member refid="enumroboy_1_1ros_1_1_ros_clients_1a25c726e79271b1c8f252aa7d28d65428" prot="public" virt="non-virtual"><scope>roboy::ros::RosClients</scope><name>OBJECTRECOGNITION</name></member>
+      <member refid="enumroboy_1_1ros_1_1_ros_clients_1a4ce6e57579594e669cdf81583a761b0e" prot="public" virt="non-virtual"><scope>roboy::ros::RosClients</scope><name>RosClients</name></member>
+      <member refid="enumroboy_1_1ros_1_1_ros_clients_1a73c4d24abbaadca1b4c744106b555e35" prot="public" virt="non-virtual"><scope>roboy::ros::RosClients</scope><name>SPEECHSYNTHESIS</name></member>
+      <member refid="enumroboy_1_1ros_1_1_ros_clients_1a25376d58f64f0ba830f23ed1f608ee1c" prot="public" virt="non-virtual"><scope>roboy::ros::RosClients</scope><name>STT</name></member>
+      <member refid="enumroboy_1_1ros_1_1_ros_clients_1a0fdd1e507f7364b2bc1978f311d1b6eb" prot="public" virt="non-virtual"><scope>roboy::ros::RosClients</scope><name>type</name></member>
+      <member refid="enumroboy_1_1ros_1_1_ros_clients_1a91eb62aad86009658f28bf7ada8c746a" prot="public" virt="non-virtual"><scope>roboy::ros::RosClients</scope><name>UPDATEMEMORY</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

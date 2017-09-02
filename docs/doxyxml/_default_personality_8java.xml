@@ -46,7 +46,7 @@
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>@Override</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>List&lt;Action&gt;<sp/><ref refid="classroboy_1_1dialog_1_1personality_1_1_default_personality_1a5029689eb06232c4881421e1a7314cf3" kindref="member">answer</ref>(<ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref><sp/>inputSentence)<sp/>{</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>input<sp/>=<sp/>(String)<sp/>inputSentence.getFeatures().get(<ref refid="classroboy_1_1linguistics_1_1_linguistics" kindref="compound">Linguistics</ref>.SENTENCE);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>input<sp/>=<sp/>(String)<sp/>inputSentence.getFeatures().get(<ref refid="classroboy_1_1linguistics_1_1_linguistics" kindref="compound">Linguistics</ref>.<ref refid="classroboy_1_1linguistics_1_1_linguistics_1a20cc187660a43ff97783ab440cf905ab" kindref="member">SENTENCE</ref>);</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>List&lt;Action&gt;<sp/>result<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>ArrayList&lt;&gt;();</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(state)<sp/>{</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>GREETING:</highlight></codeline>
@@ -113,6 +113,6 @@
 <codeline lineno="101"><highlight class="normal"></highlight></codeline>
 <codeline lineno="102"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/roboy/DialogSystem/src/main/java/roboy/dialog/personality/DefaultPersonality.java"/>
+    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java"/>
   </compounddef>
 </doxygen>

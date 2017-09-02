@@ -5,10 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import roboy.linguistics.Linguistics;
-import roboy.linguistics.Triple;
 import roboy.linguistics.Linguistics.SEMANTIC_ROLE;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.WorkingMemory;
+import roboy.memory.nodes.Interlocutor;
 import roboy.util.Lists;
 
 public class PersonalQAState extends AbstractBooleanState{
@@ -16,20 +15,31 @@ public class PersonalQAState extends AbstractBooleanState{
 	private List<String> questions;
 	private List<String[]> successTexts;
 	private String predicate;
+	private Interlocutor person;
 	
-	public PersonalQAState(List<String> questions, List<String> failureTexts, 
-			List<String[]> successTexts, String predicate) {
+	public PersonalQAState(List<String> questions, List<String> failureTexts,
+						   List<String[]> successTexts, String predicate, Interlocutor person) {
 		this.questions = questions;
 		this.successTexts = successTexts;
 		this.predicate = predicate;
+		this.person = person;
 		setFailureTexts(failureTexts);
 	}
-	
+
+	/**
+	 * Ask the question.
+	 */
 	@Override
 	public List<Interpretation> act() {
 		return Lists.interpretationList(new Interpretation(questions.get((int)Math.random()*questions.size())));
 	}
 
+	/**
+	 * Retrieve the answer and add it to the memory, if needed.
+	 *
+	 * As locations, hobbies, workplaces etc are individual nodes in memory,
+	 * those will be retrieved or created if necessary.
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	protected boolean determineSuccess(Interpretation input) {
@@ -54,11 +64,18 @@ public class PersonalQAState extends AbstractBooleanState{
 			answer = patient;
 		}
 		if(answer!=null){
-			WorkingMemory memory = WorkingMemory.getInstance();
-			List<Triple> nameTriple = memory.retrieve(new Triple("is","name",null));
-			if(nameTriple.isEmpty()) return false;
-			String name = nameTriple.get(0).patiens;
-			WorkingMemory.getInstance().save(new Triple(predicate,name,answer));
+
+			// TODO Remove old code after successfully switching to Neo4j memory
+			//WorkingMemory memory = WorkingMemory.getInstance();
+			// List<Triple> nameTriple = memory.retrieve(new Triple("is","name",null));
+			//if(nameTriple.isEmpty()) return false;
+			//String name = nameTriple.get(0).patiens;
+			//WorkingMemory.getInstance().save(new Triple(predicate,name,answer));
+
+			// Add the new information about the person to the memory.
+			person.addInformation(predicate, answer);
+
+
 			List<String> sTexts = new ArrayList<>();
 			for(String[] s: successTexts){
 				sTexts.add(s[0]+answer+s[1]);

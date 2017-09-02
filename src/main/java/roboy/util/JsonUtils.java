@@ -15,11 +15,8 @@ public class JsonUtils {
     /**
      * Fetches the map of (keyword) -> (lists of corresponding questions) from the
      * specified filename.
-     *
-     * This method was made specifically for the format of questions.json file.
-     * It can be adapted for other formats by changing the Type t definition.
      */
-    public static Map<String, List<String>> getQuestionFromJsonFile(String file) {
+    public static Map<String, List<String>> getSentencesFromJsonFile(String file) {
         Type t = new TypeToken<Map<String, List<String>>>(){}.getType();
 
         InputStream input = JsonUtils.class.getClassLoader().getResourceAsStream(file);
@@ -27,6 +24,21 @@ public class JsonUtils {
         Gson gson = new Gson();
 
         Map<String, List<String>> q = gson.fromJson(br, t);
+        return q;
+    }
+
+    /**
+     * The success responses consist of an array of two strings, which enables reflecting
+     * parsed answers back at the conversation partner.
+     */
+    public static Map<String,List<String[]>> getSentenceArraysFromJsonFile(String file) {
+        Type t = new TypeToken<Map<String, List<String[]>>>(){}.getType();
+
+        InputStream input = JsonUtils.class.getClassLoader().getResourceAsStream(file);
+        BufferedReader br = new BufferedReader( new InputStreamReader(input));
+        Gson gson = new Gson();
+
+        Map<String, List<String[]>> q = gson.fromJson(br, t);
         return q;
     }
 }

@@ -9,8 +9,8 @@ import opennlp.tools.postag.POSModel;
 import opennlp.tools.postag.POSTaggerME;
 
 /**
- * Perform part-of-speech tagging using the Open NLP POS tagger and stores the results in
- * the Linguistics.POSTAGS attribute of the interpretation.
+ * Perform part-of-speech tagging (detecting nouns, verbs etc.) using the Open NLP POS tagger and 
+ * stores the results in the Linguistics.POSTAGS attribute of the interpretation.
  */
 public class OpenNLPPPOSTagger implements Analyzer{
 
