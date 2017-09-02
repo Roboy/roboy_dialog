@@ -50,11 +50,12 @@ public class QuestionRandomizerState implements State{
 		locationQuestion.setSuccess(locationDBpedia);
 		questionStates = new PersonalQAState[]{
 			locationQuestion,
-			new PersonalQAState(
-					questions.get(OCCUPATION.type),
-					failureAnswers.get(OCCUPATION.type),
-					successAnswers.get(OCCUPATION.type),
-					OCCUPATION.type, person),
+// TODO request support for Occupation data in the database.
+//			new PersonalQAState(
+//					questions.get(OCCUPATION.type),
+//					failureAnswers.get(OCCUPATION.type),
+//					successAnswers.get(OCCUPATION.type),
+//					OCCUPATION.type, person),
 			 new PersonalQAState(
 					 questions.get(HAS_HOBBY.type),
 					 failureAnswers.get(HAS_HOBBY.type),
@@ -74,8 +75,7 @@ public class QuestionRandomizerState implements State{
 		// Check if the question has already been answered.
 		// TODO Make parsing independent of the exact definition of questionStates.
 		if(person.hasRelation(FROM)) alreadyAsked[0] = true;
-		if(person.hasRelation(OCCUPATION)) alreadyAsked[1] = true;
-		if(person.hasRelation(HAS_HOBBY)) alreadyAsked[2] = true;
+		if(person.hasRelation(HAS_HOBBY)) alreadyAsked[1] = true;
 		// TODO Remove old code after successfully switching to Neo4j memory
 		//WorkingMemory memory = WorkingMemory.getInstance();
 

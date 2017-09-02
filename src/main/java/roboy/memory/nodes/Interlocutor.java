@@ -76,15 +76,18 @@ public class Interlocutor {
      */
     public void addInformation(String relation, String name) {
         ArrayList<Integer> ids = new ArrayList<>();
-        // First check if node with given name exists.
+        // First check if node with given name exists by a matching query.
         MemoryNodeModel relatedNode = new MemoryNodeModel(true);
+        relatedNode.setProperty("name", name);
+        //This adds a label type to the memory query depending on the relation.
+        relatedNode.setLabel(determineNodeType(relation));
         try {
             ids = memory.getByQuery(relatedNode);
         } catch (InterruptedException | IOException e) {
             System.out.println("Exception while querying memory by template.");
             e.printStackTrace();
         }
-        // Pick first if matches found.
+        // Pick first from list if multiple matches found.
         if(ids != null && !ids.isEmpty()) {
             //TODO Change from using first id to specifying if multiple matches are found.
             person.setRelation(relation, ids.get(0));
@@ -106,6 +109,13 @@ public class Interlocutor {
             System.out.println("Unexpected memory error: updating person information failed.");
             e.printStackTrace();
         }
+    }
+
+    private String determineNodeType(String relation) {
+        // TODO expand list as new Node types are added.
+        if(relation.equals(Neo4jRelations.HAS_HOBBY.type)) return "Hobby";
+        if(relation.equals(Neo4jRelations.FROM.type)) return "Location";
+        else return "";
     }
 
 }
