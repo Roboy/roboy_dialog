@@ -96,7 +96,9 @@ public class Interlocutor {
         else {
             try {
                 int id = memory.create(relatedNode);
-                person.setRelation(relation, id);
+                if(id != 0) { // 0 is default value, returned if Memory response was FAIL.
+                    person.setRelation(relation, id);
+                }
             } catch (InterruptedException | IOException e) {
                 System.out.println("Unexpected memory error: creating node for new relation failed.");
                 e.printStackTrace();
