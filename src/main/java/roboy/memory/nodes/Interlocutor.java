@@ -116,7 +116,7 @@ public class Interlocutor {
     private String determineNodeType(String relation) {
         // TODO expand list as new Node types are added.
         if(relation.equals(Neo4jRelations.HAS_HOBBY.type)) return "Hobby";
-        if(relation.equals(Neo4jRelations.FROM.type)) return "Location";
+        if(relation.equals(Neo4jRelations.FROM.type)) return "Country";
         if(relation.equals(Neo4jRelations.WORK_FOR.type)) return "Organization";
         if(relation.equals(Neo4jRelations.STUDY_AT.type)) return "Organization";
         else return "";
