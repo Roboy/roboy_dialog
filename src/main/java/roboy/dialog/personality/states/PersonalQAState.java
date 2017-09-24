@@ -7,6 +7,7 @@ import java.util.Map;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Linguistics.SEMANTIC_ROLE;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.memory.Neo4jRelations;
 import roboy.memory.nodes.Interlocutor;
 import roboy.util.Lists;
 
@@ -14,11 +15,11 @@ public class PersonalQAState extends AbstractBooleanState{
 
 	private List<String> questions;
 	private List<String[]> successTexts;
-	private String predicate;
+	public Neo4jRelations predicate;
 	private Interlocutor person;
 	
 	public PersonalQAState(List<String> questions, List<String> failureTexts,
-						   List<String[]> successTexts, String predicate, Interlocutor person) {
+						   List<String[]> successTexts, Neo4jRelations predicate, Interlocutor person) {
 		this.questions = questions;
 		this.successTexts = successTexts;
 		this.predicate = predicate;
@@ -73,7 +74,7 @@ public class PersonalQAState extends AbstractBooleanState{
 			//WorkingMemory.getInstance().save(new Triple(predicate,name,answer));
 
 			// Add the new information about the person to the memory.
-			person.addInformation(predicate, answer);
+			person.addInformation(predicate.type, answer);
 
 
 			List<String> sTexts = new ArrayList<>();

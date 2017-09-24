@@ -96,7 +96,9 @@ public class Interlocutor {
         else {
             try {
                 int id = memory.create(relatedNode);
-                person.setRelation(relation, id);
+                if(id != 0) { // 0 is default value, returned if Memory response was FAIL.
+                    person.setRelation(relation, id);
+                }
             } catch (InterruptedException | IOException e) {
                 System.out.println("Unexpected memory error: creating node for new relation failed.");
                 e.printStackTrace();
@@ -114,7 +116,9 @@ public class Interlocutor {
     private String determineNodeType(String relation) {
         // TODO expand list as new Node types are added.
         if(relation.equals(Neo4jRelations.HAS_HOBBY.type)) return "Hobby";
-        if(relation.equals(Neo4jRelations.FROM.type)) return "Location";
+        if(relation.equals(Neo4jRelations.FROM.type)) return "Country";
+        if(relation.equals(Neo4jRelations.WORK_FOR.type)) return "Organization";
+        if(relation.equals(Neo4jRelations.STUDY_AT.type)) return "Organization";
         else return "";
     }
 
