@@ -70,6 +70,6 @@
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
 <codeline lineno="64"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OntologyNERAnalyzer.java"/>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OntologyNERAnalyzer.java"/>
   </compounddef>
 </doxygen>

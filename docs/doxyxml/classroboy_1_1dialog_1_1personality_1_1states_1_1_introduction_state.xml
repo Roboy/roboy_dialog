@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" line="18" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" bodystart="18" bodyend="-1"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" line="18" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" bodystart="18" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-attrib">
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" line="20" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" bodystart="20" bodyend="-1"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" line="20" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" bodystart="20" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" line="25" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" bodystart="25" bodyend="30"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" line="25" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" bodystart="25" bodyend="30"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state_1a552bc4e0cae583082920e5cdba112ea9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" line="33" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" bodystart="33" bodyend="35"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" line="33" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" bodystart="33" bodyend="35"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -87,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" line="42" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" bodystart="42" bodyend="78"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" line="42" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" bodystart="42" bodyend="78"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -95,141 +95,141 @@
     <detaileddescription>
 <para>Moves to success state if the answer is at most 2 words. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="902">
+      <node id="907">
         <label>roboy.dialog.personality.states.AbstractBooleanState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
-        <childnode refid="903" relation="public-inheritance">
+        <childnode refid="908" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="903">
+      <node id="908">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
-      <node id="901">
+      <node id="906">
         <label>roboy.dialog.personality.states.IntroductionState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state"/>
-        <childnode refid="902" relation="public-inheritance">
+        <childnode refid="907" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="920">
+      <node id="925">
         <label>CountDownLatch</label>
       </node>
-      <node id="905">
+      <node id="910">
         <label>roboy.dialog.personality.states.AbstractBooleanState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
-        <childnode refid="906" relation="public-inheritance">
+        <childnode refid="911" relation="public-inheritance">
         </childnode>
-        <childnode refid="906" relation="usage">
+        <childnode refid="911" relation="usage">
           <edgelabel>success</edgelabel>
           <edgelabel>failure</edgelabel>
         </childnode>
-        <childnode refid="907" relation="usage">
+        <childnode refid="912" relation="usage">
           <edgelabel>failureTexts</edgelabel>
           <edgelabel>successTexts</edgelabel>
         </childnode>
       </node>
-      <node id="915">
+      <node id="920">
         <label>Gson</label>
       </node>
-      <node id="907">
+      <node id="912">
         <label>List&lt; String &gt;</label>
       </node>
-      <node id="909">
+      <node id="914">
         <label>roboy.memory.nodes.MemoryNodeModel</label>
         <link refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model"/>
-        <childnode refid="910" relation="usage">
+        <childnode refid="915" relation="usage">
           <edgelabel>properties</edgelabel>
         </childnode>
-        <childnode refid="911" relation="usage">
+        <childnode refid="916" relation="usage">
           <edgelabel>labels</edgelabel>
         </childnode>
-        <childnode refid="912" relation="usage">
+        <childnode refid="917" relation="usage">
           <edgelabel>relations</edgelabel>
         </childnode>
       </node>
-      <node id="914">
+      <node id="919">
         <label>roboy.memory.Memory&lt; MemoryNodeModel &gt;</label>
         <link refid="interfaceroboy_1_1memory_1_1_memory"/>
       </node>
-      <node id="908">
+      <node id="913">
         <label>roboy.memory.nodes.Interlocutor</label>
         <link refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor"/>
-        <childnode refid="909" relation="usage">
+        <childnode refid="914" relation="usage">
           <edgelabel>person</edgelabel>
         </childnode>
-        <childnode refid="913" relation="usage">
+        <childnode refid="918" relation="usage">
           <edgelabel>memory</edgelabel>
         </childnode>
       </node>
-      <node id="919">
+      <node id="924">
         <label>HashMap&lt; roboy.ros.RosClients, ServiceClient &gt;</label>
       </node>
-      <node id="910">
+      <node id="915">
         <label>HashMap&lt; String, Object &gt;</label>
       </node>
-      <node id="906">
+      <node id="911">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
-      <node id="916">
+      <node id="921">
         <label>roboy.ros.RosMainNode</label>
         <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
-        <childnode refid="917" relation="public-inheritance">
+        <childnode refid="922" relation="public-inheritance">
         </childnode>
-        <childnode refid="918" relation="usage">
+        <childnode refid="923" relation="usage">
           <edgelabel>clients</edgelabel>
         </childnode>
-        <childnode refid="920" relation="usage">
+        <childnode refid="925" relation="usage">
           <edgelabel>rosConnectionLatch</edgelabel>
         </childnode>
       </node>
-      <node id="912">
+      <node id="917">
         <label>HashMap&lt; String, ArrayList&lt; Integer &gt; &gt;</label>
       </node>
-      <node id="904">
+      <node id="909">
         <label>roboy.dialog.personality.states.IntroductionState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state"/>
-        <childnode refid="905" relation="public-inheritance">
+        <childnode refid="910" relation="public-inheritance">
         </childnode>
-        <childnode refid="908" relation="usage">
+        <childnode refid="913" relation="usage">
           <edgelabel>person</edgelabel>
         </childnode>
-        <childnode refid="907" relation="usage">
+        <childnode refid="912" relation="usage">
           <edgelabel>introductions</edgelabel>
         </childnode>
       </node>
-      <node id="918">
+      <node id="923">
         <label>roboy.ros.RosManager</label>
         <link refid="classroboy_1_1ros_1_1_ros_manager"/>
-        <childnode refid="919" relation="usage">
+        <childnode refid="924" relation="usage">
           <edgelabel>clientMap</edgelabel>
         </childnode>
       </node>
-      <node id="911">
+      <node id="916">
         <label>ArrayList&lt; String &gt;</label>
       </node>
-      <node id="917">
+      <node id="922">
         <label>AbstractNodeMain</label>
       </node>
-      <node id="913">
+      <node id="918">
         <label>roboy.memory.Neo4jMemory</label>
         <link refid="classroboy_1_1memory_1_1_neo4j_memory"/>
-        <childnode refid="914" relation="public-inheritance">
+        <childnode refid="919" relation="public-inheritance">
         </childnode>
-        <childnode refid="915" relation="usage">
+        <childnode refid="920" relation="usage">
           <edgelabel>gson</edgelabel>
         </childnode>
-        <childnode refid="916" relation="usage">
+        <childnode refid="921" relation="usage">
           <edgelabel>rosMainNode</edgelabel>
         </childnode>
-        <childnode refid="913" relation="usage">
+        <childnode refid="918" relation="usage">
           <edgelabel>memory</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" line="16" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" bodystart="16" bodyend="80"/>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" line="16" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/IntroductionState.java" bodystart="16" bodyend="80"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state_1a552bc4e0cae583082920e5cdba112ea9" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::IntroductionState</scope><name>act</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state_1af23d1b6994b2c3c883b8ff5829033386" prot="protected" virt="non-virtual"><scope>roboy::dialog::personality::states::IntroductionState</scope><name>determineSuccess</name></member>

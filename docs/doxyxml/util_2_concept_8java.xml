@@ -144,6 +144,6 @@
 <codeline lineno="136"><highlight class="normal"></highlight></codeline>
 <codeline lineno="137"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/util/Concept.java"/>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/Concept.java"/>
   </compounddef>
 </doxygen>

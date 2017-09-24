@@ -77,28 +77,30 @@
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>create(<ref refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model" kindref="compound">MemoryNodeModel</ref><sp/>query)<sp/></highlight><highlight class="keywordflow">throws</highlight><highlight class="normal"><sp/>InterruptedException,<sp/>IOException</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>result<sp/>=<sp/>rosMainNode.CreateMemoryQuery(query.<ref refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a1238c30afc316003aa5558ecb1f8f894" kindref="member">toJSON</ref>(gson));</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/>type<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>TypeToken&lt;Map&lt;String,Integer&gt;&gt;()<sp/>{}.getType();</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Map&lt;String,Integer&gt;<sp/>list<sp/>=<sp/>gson.fromJson(result,<sp/>type);</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>list.get(</highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">boolean</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">remove</highlight><highlight class="normal">(<ref refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model" kindref="compound">MemoryNodeModel</ref><sp/>query)<sp/></highlight><highlight class="keywordflow">throws</highlight><highlight class="normal"><sp/>InterruptedException,<sp/>IOException</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Remove<sp/>all<sp/>fields<sp/>which<sp/>were<sp/>not<sp/>explicitly<sp/>set,<sp/>for<sp/>safety.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>query.setStripQuery(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>response<sp/>=<sp/>rosMainNode.DeleteMemoryQuery(query.<ref refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a1238c30afc316003aa5558ecb1f8f894" kindref="member">toJSON</ref>(gson));</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(response.contains(</highlight><highlight class="stringliteral">&quot;OK&quot;</highlight><highlight class="normal">));</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>@Override</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>@Deprecated</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>List&lt;MemoryNodeModel&gt;<sp/><ref refid="classroboy_1_1memory_1_1_neo4j_memory_1a7a8feb27c9ad358f0ce1443bbde85287" kindref="member">retrieve</ref>(<ref refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model" kindref="compound">MemoryNodeModel</ref><sp/>query)<sp/></highlight><highlight class="keywordflow">throws</highlight><highlight class="normal"><sp/>InterruptedException,<sp/>IOException</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>null;</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>possible<sp/>Memory<sp/>error<sp/>message.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(result.contains(</highlight><highlight class="stringliteral">&quot;FAIL&quot;</highlight><highlight class="normal">))<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Type<sp/>type<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>TypeToken&lt;Map&lt;String,Integer&gt;&gt;()<sp/>{}.getType();</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Map&lt;String,Integer&gt;<sp/>list<sp/>=<sp/>gson.fromJson(result,<sp/>type);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>list.get(</highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">boolean</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">remove</highlight><highlight class="normal">(<ref refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model" kindref="compound">MemoryNodeModel</ref><sp/>query)<sp/></highlight><highlight class="keywordflow">throws</highlight><highlight class="normal"><sp/>InterruptedException,<sp/>IOException</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Remove<sp/>all<sp/>fields<sp/>which<sp/>were<sp/>not<sp/>explicitly<sp/>set,<sp/>for<sp/>safety.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>query.setStripQuery(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>response<sp/>=<sp/>rosMainNode.DeleteMemoryQuery(query.<ref refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a1238c30afc316003aa5558ecb1f8f894" kindref="member">toJSON</ref>(gson));</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">(response.contains(</highlight><highlight class="stringliteral">&quot;OK&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>@Override</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>@Deprecated</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>List&lt;MemoryNodeModel&gt;<sp/><ref refid="classroboy_1_1memory_1_1_neo4j_memory_1a7a8feb27c9ad358f0ce1443bbde85287" kindref="member">retrieve</ref>(<ref refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model" kindref="compound">MemoryNodeModel</ref><sp/>query)<sp/></highlight><highlight class="keywordflow">throws</highlight><highlight class="normal"><sp/>InterruptedException,<sp/>IOException</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>null;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/memory/Neo4jMemory.java"/>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jMemory.java"/>
   </compounddef>
 </doxygen>

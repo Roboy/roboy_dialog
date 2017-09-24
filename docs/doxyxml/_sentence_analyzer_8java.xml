@@ -204,6 +204,6 @@
 <codeline lineno="198"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="199"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java"/>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java"/>
   </compounddef>
 </doxygen>

@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" line="16" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" bodystart="16" bodyend="-1"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" line="16" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state_1a81324fe9bdd24d88381617d3b434044c" prot="private" static="no" mutable="no">
         <type><ref refid="classroboy_1_1ros_1_1_ros_main_node" kindref="compound">RosMainNode</ref></type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" line="17" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" bodystart="17" bodyend="-1"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" line="17" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" bodystart="17" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" line="19" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" bodystart="19" bodyend="22"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" line="19" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" bodystart="19" bodyend="22"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state_1a075aa90b0e42c16b90420848c71dbf2f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" line="25" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" bodystart="25" bodyend="35"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" line="25" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" bodystart="25" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state_1a0ddb5ef9fa9b8cfc31afa7dea5a9b090" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction" kindref="compound">Reaction</ref></type>
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" line="38" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" bodystart="38" bodyend="46"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" line="38" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" bodystart="38" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state_1a14d202d475a0c49a5d45aec8c991f1ae" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" line="48" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" bodystart="48" bodyend="50"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" line="48" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" bodystart="48" bodyend="50"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -105,64 +105,64 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1293">
+      <node id="1303">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
-      <node id="1292">
+      <node id="1302">
         <label>roboy.dialog.personality.states.WildTalkState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state"/>
-        <childnode refid="1293" relation="public-inheritance">
+        <childnode refid="1303" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1300">
+      <node id="1310">
         <label>CountDownLatch</label>
       </node>
-      <node id="1299">
+      <node id="1309">
         <label>HashMap&lt; roboy.ros.RosClients, ServiceClient &gt;</label>
       </node>
-      <node id="1295">
+      <node id="1305">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
-      <node id="1296">
+      <node id="1306">
         <label>roboy.ros.RosMainNode</label>
         <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
-        <childnode refid="1297" relation="public-inheritance">
+        <childnode refid="1307" relation="public-inheritance">
         </childnode>
-        <childnode refid="1298" relation="usage">
+        <childnode refid="1308" relation="usage">
           <edgelabel>clients</edgelabel>
         </childnode>
-        <childnode refid="1300" relation="usage">
+        <childnode refid="1310" relation="usage">
           <edgelabel>rosConnectionLatch</edgelabel>
         </childnode>
       </node>
-      <node id="1294">
+      <node id="1304">
         <label>roboy.dialog.personality.states.WildTalkState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state"/>
-        <childnode refid="1295" relation="public-inheritance">
+        <childnode refid="1305" relation="public-inheritance">
         </childnode>
-        <childnode refid="1295" relation="usage">
+        <childnode refid="1305" relation="usage">
           <edgelabel>next</edgelabel>
         </childnode>
-        <childnode refid="1296" relation="usage">
+        <childnode refid="1306" relation="usage">
           <edgelabel>rosMainNode</edgelabel>
         </childnode>
       </node>
-      <node id="1298">
+      <node id="1308">
         <label>roboy.ros.RosManager</label>
         <link refid="classroboy_1_1ros_1_1_ros_manager"/>
-        <childnode refid="1299" relation="usage">
+        <childnode refid="1309" relation="usage">
           <edgelabel>clientMap</edgelabel>
         </childnode>
       </node>
-      <node id="1297">
+      <node id="1307">
         <label>AbstractNodeMain</label>
       </node>
     </collaborationgraph>
-    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" line="13" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" bodystart="13" bodyend="51"/>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" line="13" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/WildTalkState.java" bodystart="13" bodyend="51"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state_1a075aa90b0e42c16b90420848c71dbf2f" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::WildTalkState</scope><name>act</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state_1a902b5770e41f692ef2bceae6147940ba" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::states::WildTalkState</scope><name>next</name></member>

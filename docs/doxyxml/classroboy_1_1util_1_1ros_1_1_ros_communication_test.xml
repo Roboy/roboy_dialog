@@ -14,14 +14,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/test/java/roboy/util/ros/RosCommunicationTest.java" line="15" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/test/java/roboy/util/ros/RosCommunicationTest.java" bodystart="15" bodyend="26"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/util/ros/RosCommunicationTest.java" line="15" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/util/ros/RosCommunicationTest.java" bodystart="15" bodyend="26"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Created by roboy on 7/9/17. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/test/java/roboy/util/ros/RosCommunicationTest.java" line="13" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/test/java/roboy/util/ros/RosCommunicationTest.java" bodystart="13" bodyend="27"/>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/util/ros/RosCommunicationTest.java" line="13" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/util/ros/RosCommunicationTest.java" bodystart="13" bodyend="27"/>
     <listofallmembers>
       <member refid="classroboy_1_1util_1_1ros_1_1_ros_communication_test_1adc6f8339e05199ceac248b59e6ff150b" prot="public" virt="non-virtual"><scope>roboy::util::ros::RosCommunicationTest</scope><name>TestGenerativeModel</name></member>
     </listofallmembers>

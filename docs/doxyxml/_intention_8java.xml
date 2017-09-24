@@ -44,6 +44,6 @@
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reasoning:<sp/>Am<sp/>I<sp/>able<sp/>to<sp/>do<sp/>it?<sp/>Is<sp/>it<sp/>dangerous?<sp/>Immoral?<sp/>Expensive?<sp/>Fun?</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/logic/Intention.java"/>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/logic/Intention.java"/>
   </compounddef>
 </doxygen>

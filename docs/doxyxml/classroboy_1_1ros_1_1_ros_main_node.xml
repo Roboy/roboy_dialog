@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="19" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="19" bodyend="-1"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="19" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="19" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1ros_1_1_ros_main_node_1a225e9130265103eb9bf7ab66a1bfe431" prot="private" static="no" mutable="no">
         <type><ref refid="classroboy_1_1ros_1_1_ros_manager" kindref="compound">RosManager</ref></type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="20" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="20" bodyend="-1"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="20" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="20" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="21" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="21" bodyend="-1"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="21" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="21" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="22" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="22" bodyend="-1"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="22" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="22" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -75,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="24" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="24" bodyend="42"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="24" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="24" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a8d4c5009fb338cdaeeb2e815b7fecb64" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>GraphName</type>
@@ -88,7 +88,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="45" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="45" bodyend="47"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="45" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="45" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a036b817ccae68e74247261844ccd3f6f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -105,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="50" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="50" bodyend="57"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="50" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="50" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a350e1cd4c0f16634933ae443394c7f52" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>boolean</type>
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="59" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="59" bodyend="87"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="59" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="59" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a17f08fc3375fca28f4fcb47499b587c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -135,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="89" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="89" bodyend="117"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="89" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="89" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1ac6963cb627eda6ab9c1a2a0d0171e7ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -152,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="119" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="119" bodyend="146"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="119" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="119" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a78383d041e3e9a0bec0bf1c00540d83d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>boolean</type>
@@ -169,7 +169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="148" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="148" bodyend="175"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="148" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="148" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a8488d63c9439e4de47e6866bebb441ab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -186,7 +186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="177" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="177" bodyend="205"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="177" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="177" bodyend="205"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a1c0e7c1789ed6679693530ceb8382c06" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -203,7 +203,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="207" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="207" bodyend="235"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="207" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="207" bodyend="235"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a83a495d40581045faabee4db11cfa7d6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -220,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="237" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="237" bodyend="265"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="237" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="237" bodyend="265"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a4270c70b76eea8346a2894b17f5f58b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -237,7 +237,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="267" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="267" bodyend="295"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="267" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="267" bodyend="295"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a7b5081c400b90ff97a200358333f0765" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -254,7 +254,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="297" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="297" bodyend="325"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="297" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="297" bodyend="325"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1acd7c70b6e8ad8eca937eed34b8a9fad5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Object</type>
@@ -271,7 +271,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="327" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="327" bodyend="354"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="327" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="327" bodyend="354"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -309,7 +309,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="361" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="361" bodyend="369"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="361" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="361" bodyend="369"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -317,47 +317,47 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1171">
+      <node id="1181">
         <label>roboy.ros.RosMainNode</label>
         <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
-        <childnode refid="1172" relation="public-inheritance">
+        <childnode refid="1182" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1172">
+      <node id="1182">
         <label>AbstractNodeMain</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1177">
+      <node id="1187">
         <label>CountDownLatch</label>
       </node>
-      <node id="1176">
+      <node id="1186">
         <label>HashMap&lt; roboy.ros.RosClients, ServiceClient &gt;</label>
       </node>
-      <node id="1173">
+      <node id="1183">
         <label>roboy.ros.RosMainNode</label>
         <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
-        <childnode refid="1174" relation="public-inheritance">
+        <childnode refid="1184" relation="public-inheritance">
         </childnode>
-        <childnode refid="1175" relation="usage">
+        <childnode refid="1185" relation="usage">
           <edgelabel>clients</edgelabel>
         </childnode>
-        <childnode refid="1177" relation="usage">
+        <childnode refid="1187" relation="usage">
           <edgelabel>rosConnectionLatch</edgelabel>
         </childnode>
       </node>
-      <node id="1175">
+      <node id="1185">
         <label>roboy.ros.RosManager</label>
         <link refid="classroboy_1_1ros_1_1_ros_manager"/>
-        <childnode refid="1176" relation="usage">
+        <childnode refid="1186" relation="usage">
           <edgelabel>clientMap</edgelabel>
         </childnode>
       </node>
-      <node id="1174">
+      <node id="1184">
         <label>AbstractNodeMain</label>
       </node>
     </collaborationgraph>
-    <location file="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="16" column="1" bodyfile="/home/laura/Downloads/Roboy/Hackathon/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="16" bodyend="371"/>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="16" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="16" bodyend="371"/>
     <listofallmembers>
       <member refid="classroboy_1_1ros_1_1_ros_main_node_1a225e9130265103eb9bf7ab66a1bfe431" prot="private" virt="non-virtual"><scope>roboy::ros::RosMainNode</scope><name>clients</name></member>
       <member refid="classroboy_1_1ros_1_1_ros_main_node_1a8488d63c9439e4de47e6866bebb441ab" prot="public" virt="non-virtual"><scope>roboy::ros::RosMainNode</scope><name>CreateMemoryQuery</name></member>
