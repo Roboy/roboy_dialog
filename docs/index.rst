@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Roboy Dialog System
-===========================================================
+===================
 
 This project aims to implement human-like conversation routines for the humanoid anthropomimetic robot Roboy. The overview diagram shows the external systems which Dialog System interacts with, and the tasks for which the system is responsible.
 
@@ -28,7 +28,7 @@ In development:
 
 
 Contents:
-----------
+---------
 
 .. _usage:
 .. toctree::
@@ -53,6 +53,14 @@ Contents:
    :caption: Architecture
    
    Architecture/*
+
+.. _Architecture:
+.. toctree::
+  :maxdepth: 1
+  :glob:
+  :caption: Architecture
+
+  Architecture/*
 
 
 .. toctree::
