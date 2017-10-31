@@ -1,5 +1,8 @@
 package roboy.io;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import roboy.dialog.action.Action;
@@ -9,10 +12,14 @@ import roboy.dialog.action.Action;
  */
 public class MultiOutputDevice implements OutputDevice{
 	
-	private OutputDevice[] devices;
+	private List<OutputDevice> devices;
 
-	public MultiOutputDevice(OutputDevice...devices){
-		this.devices = devices;
+	public MultiOutputDevice(OutputDevice... devices){
+		this.devices = Arrays.asList(devices);
+	}
+
+	public void add(OutputDevice additionalDevice) {
+		devices.add(additionalDevice);
 	}
 	
 	@Override

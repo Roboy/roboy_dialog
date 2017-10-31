@@ -1,5 +1,6 @@
 package roboy.memory.nodes;
 
+import roboy.dialog.Config;
 import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jRelations;
 
@@ -11,9 +12,11 @@ import java.util.ArrayList;
  * and retrieve information about its current conversation partner.
  */
 public class Interlocutor {
-    MemoryNodeModel person;
+    private MemoryNodeModel person;
     Neo4jMemory memory;
     public boolean FAMILIAR = false;
+    // In offline mode, we do not query the Neo4j memory.
+    public boolean OFFLINE = Config.OFFLINE;
 
     public Interlocutor() {
         this.person = new MemoryNodeModel(true);
@@ -30,35 +33,37 @@ public class Interlocutor {
     public void addName(String name) {
         person.setProperty("name", name);
         person.setLabel("Person");
-        ArrayList<Integer> ids = new ArrayList<>();
 
+        if(!OFFLINE) {
+        ArrayList<Integer> ids = new ArrayList<>();
         // Query memory for matching persons.
-        try {
-            ids = memory.getByQuery(person);
-        } catch (InterruptedException | IOException e) {
-            System.out.println("Exception while querying memory, assuming person unknown.");
-            e.printStackTrace();
-        }
-        // Pick first if matches found.
-        if(ids != null && !ids.isEmpty()) {
-            //TODO Change from using first id to specifying if multiple matches are found.
             try {
-                this.person = memory.getById(ids.get(0));
-                FAMILIAR = true;
+                ids = memory.getByQuery(person);
             } catch (InterruptedException | IOException e) {
-                System.out.println("Unexpected memory error: provided ID not found upon querying.");
+                System.out.println("Exception while querying memory, assuming person unknown.");
                 e.printStackTrace();
             }
-        }
-        // Create new node if match is not found.
-        else {
-            try {
-                int id = memory.create(person);
-                // Need to retrieve the created node by the id returned by memory
-                person = memory.getById(id);
-            } catch (InterruptedException | IOException e) {
-                System.out.println("Unexpected memory error: provided ID not found upon querying.");
-                e.printStackTrace();
+            // Pick first if matches found.
+            if (ids != null && !ids.isEmpty()) {
+                //TODO Change from using first id to specifying if multiple matches are found.
+                try {
+                    this.person = memory.getById(ids.get(0));
+                    FAMILIAR = true;
+                } catch (InterruptedException | IOException e) {
+                    System.out.println("Unexpected memory error: provided ID not found upon querying.");
+                    e.printStackTrace();
+                }
+            }
+            // Create new node if match is not found.
+            else {
+                try {
+                    int id = memory.create(person);
+                    // Need to retrieve the created node by the id returned by memory
+                    person = memory.getById(id);
+                } catch (InterruptedException | IOException e) {
+                    System.out.println("Unexpected memory error: provided ID not found upon querying.");
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -75,6 +80,7 @@ public class Interlocutor {
      * Adds a new relation to the person node, updating memory.
      */
     public void addInformation(String relation, String name) {
+        if(OFFLINE) return;
         ArrayList<Integer> ids = new ArrayList<>();
         // First check if node with given name exists by a matching query.
         MemoryNodeModel relatedNode = new MemoryNodeModel(true);

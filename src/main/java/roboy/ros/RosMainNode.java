@@ -20,6 +20,10 @@ public class RosMainNode extends AbstractNodeMain {
     private RosManager clients = new RosManager();
     protected Object resp;
     public boolean STARTUP_SUCCESS = true;
+    String memoryFailure = "{" +
+            "status : \"FAIL\", " +
+            "message : \"DM received no result from memory.\"" +
+            "}";
 
     public RosMainNode() {
         clients = new RosManager();
@@ -178,7 +182,7 @@ public class RosMainNode extends AbstractNodeMain {
 
         if(clients.notInitialized(RosClients.CREATEMEMORY)) {
             // FALLBACK RETURN VALUE
-            return null;
+            return memoryFailure;
         }
         ServiceClient<DataQueryRequest, DataQueryResponse> createMemoryClient = clients.getServiceClient(RosClients.CREATEMEMORY);
         rosConnectionLatch = new CountDownLatch(1);
@@ -208,7 +212,7 @@ public class RosMainNode extends AbstractNodeMain {
 
         if(clients.notInitialized(RosClients.UPDATEMEMORY)) {
             // FALLBACK RETURN VALUE
-            return null;
+            return memoryFailure;
         }
         ServiceClient<DataQueryRequest, DataQueryResponse> updateMemoryClient = clients.getServiceClient(RosClients.UPDATEMEMORY);
         rosConnectionLatch = new CountDownLatch(1);
@@ -238,7 +242,7 @@ public class RosMainNode extends AbstractNodeMain {
 
         if(clients.notInitialized(RosClients.GETMEMORY)) {
             // FALLBACK RETURN VALUE
-            return null;
+            return memoryFailure;
         }
         ServiceClient<DataQueryRequest, DataQueryResponse> getMemoryClient = clients.getServiceClient(RosClients.GETMEMORY);
         rosConnectionLatch = new CountDownLatch(1);
@@ -268,7 +272,7 @@ public class RosMainNode extends AbstractNodeMain {
 
         if(clients.notInitialized(RosClients.DELETEMEMORY)) {
             // FALLBACK RETURN VALUE
-            return null;
+            return memoryFailure;
         }
         ServiceClient<DataQueryRequest, DataQueryResponse> deleteMemoryClient = clients.getServiceClient(RosClients.DELETEMEMORY);
         rosConnectionLatch = new CountDownLatch(1);
@@ -298,7 +302,7 @@ public class RosMainNode extends AbstractNodeMain {
 
         if(clients.notInitialized(RosClients.CYPHERMEMORY)) {
             // FALLBACK RETURN VALUE
-            return null;
+            return memoryFailure;
         }
         ServiceClient<DataQueryRequest, DataQueryResponse> cypherMemoryClient = clients.getServiceClient(RosClients.CYPHERMEMORY);
         rosConnectionLatch = new CountDownLatch(1);

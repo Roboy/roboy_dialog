@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 
+import org.json.JSONObject;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.ShutDownAction;
 import roboy.dialog.personality.Personality;
@@ -17,6 +19,7 @@ import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.*;
 import roboy.memory.Neo4jMemory;
 import roboy.memory.nodes.MemoryNodeModel;
+import roboy.ros.RosMainNodeOffline;
 import roboy.talk.Verbalizer;
 
 import roboy.ros.RosMainNode;
@@ -74,30 +77,45 @@ import roboy.ros.RosMainNode;
 public class DialogSystem {
 
     public static boolean SHUTDOWN_ON_ROS_FAILURE = false;
-	
-	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
 
+	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
+        boolean OFFLINE = Config.OFFLINE;
         // initialize ROS node
-        RosMainNode rosMainNode = new RosMainNode();
+        RosMainNode rosMainNode;
+        if(OFFLINE) {
+            rosMainNode = new RosMainNodeOffline();
+        } else {
+            rosMainNode = new RosMainNode();
+        }
+
         Neo4jMemory memory = Neo4jMemory.getInstance(rosMainNode);
 
-	    // InputDevice input = new CommandLineInput();
-		 InputDevice input = new BingInput(rosMainNode);
-//        DatagramSocket ds = new DatagramSocket(55555);
-//        InputDevice input = new UdpInput(ds);
-		InputDevice celebInput = new CelebritySimilarityInput();
-//		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
-		InputDevice multiIn = new MultiInputDevice(input);//, celebInput, roboyDetectInput);
 
-//		OutputDevice output1 = new CerevoiceOutput(rosMainNode);
-//        CerevoiceOutput output2 = new CerevoiceOutput(rosMainNode);
-		// OutputDevice output = new BingOutput();
-//        OutputDevice output2 = new UdpOutput(ds, "localhost", 55556);
-		// EmotionOutput emotion = new EmotionOutput(rosMainNode);
-        OutputDevice output = new CommandLineOutput();
-       OutputDevice output1 = new CerevoiceOutput(rosMainNode);
-		OutputDevice multiOut = new MultiOutputDevice(output,output1);//, output2, emotion);
+        /*
+         * I/O INITIALIZATION
+         */
+        MultiInputDevice multiIn;
+        MultiOutputDevice multiOut = new MultiOutputDevice(new CommandLineOutput());
+        // By default, all output is also written to the command line.
+        if(OFFLINE) {
+            multiIn = new MultiInputDevice(new CommandLineInput());
+        } else {
+            multiIn = new MultiInputDevice(new BingInput(rosMainNode));
+            multiOut.add(new CerevoiceOutput(rosMainNode));
+        }
+        // OPTIONAL INPUTS
+        // DatagramSocket ds = new DatagramSocket(55555);
+        // multiIn.add(new UdpInput(ds));
+        // multiIn.add(new CelebritySimilarityInput());
+        // multiIn.add(new RoboyNameDetectionInput());
+        // OPTIONAL OUTPUTS
+		// multiOut.add(new BingOutput());
+        // multiOut.add(new UdpOutput(ds, "localhost", 55556));
+		// multiOut.add(new EmotionOutput(rosMainNode));
 
+        /*
+         * ANALYZER INITIALIZATION
+         */
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new Preprocessor());
 		analyzers.add(new SimpleTokenizer());
@@ -116,7 +134,7 @@ public class DialogSystem {
                     "Start the required services or set SHUTDOWN_ON_ROS_FAILURE to false.");
         }
 
-        System.out.println("Initialized...");
+        System.out.println("DM initialized...");
 
         while(true) {
 
@@ -124,7 +142,6 @@ public class DialogSystem {
 //                emotion.act(new FaceAction("angry"));
 //            }
 //            emotion.act(new FaceAction("neutral"));
-
 //            while (!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)) {
 //            }
 
