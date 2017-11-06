@@ -10,10 +10,18 @@ package roboy.dialog;
 public class Config {
     /**
      * List of profile names. The variables are set in the corresponding set<name>Profile() method.
+     * String values make it possible to define the profile in start command with:
+     * -Dprofile=<profileString>
      */
     public enum ConfigurationProfile {
-        DEFAULT,
-        OFFLINE
+        DEFAULT("DEFAULT"),
+        OFFLINE("OFFLINE");
+
+        public String profileName;
+
+        ConfigurationProfile(String profile) {
+            this.profileName=profile;
+        }
     }
 
     /* CONFIGURATION VARIABLES - always static, with a default value. */
@@ -37,6 +45,15 @@ public class Config {
             default:
                 setDefaultProfile();
         }
+    }
+
+    public static ConfigurationProfile getProfileFromEnvironment(String profileString) {
+        for(ConfigurationProfile p : ConfigurationProfile.values()) {
+            if(p.profileName.equals(profileString)){
+                return p;
+            }
+        }
+        return ConfigurationProfile.DEFAULT;
     }
 
     /* PROFILE DEFINITIONS */

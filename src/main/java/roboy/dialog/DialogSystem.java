@@ -82,10 +82,14 @@ public class DialogSystem {
 
         // This sets a configuration profile for the entire run.
         // Profiles can be added in roboy.dialog.Config.ConfigurationProfile
-        new Config(DEFAULT);
+        if(System.getProperty("profile")!=null) {
+            new Config(Config.getProfileFromEnvironment(System.getProperty("profile")));
+        } else {
+            new Config(DEFAULT);
+        }
+
 
         boolean offline = Config.OFFLINE;
-
         // initialize ROS node
         RosMainNode rosMainNode;
 
