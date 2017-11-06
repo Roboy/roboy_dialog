@@ -24,6 +24,8 @@ import roboy.talk.Verbalizer;
 
 import roboy.ros.RosMainNode;
 
+import static roboy.dialog.Config.ConfigurationProfile.*;
+
 
 /**
  * The dialog manager's main class.
@@ -76,20 +78,22 @@ import roboy.ros.RosMainNode;
  */
 public class DialogSystem {
 
-    public static boolean SHUTDOWN_ON_ROS_FAILURE = false;
-
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
-        boolean OFFLINE = Config.OFFLINE;
+
+        // This sets a configuration profile for the entire run.
+        // Profiles can be added in roboy.dialog.Config.ConfigurationProfile
+        new Config(DEFAULT);
+
+        boolean offline = Config.OFFLINE;
+
         // initialize ROS node
         RosMainNode rosMainNode;
-        if(OFFLINE) {
+
+        if(offline) {
             rosMainNode = new RosMainNodeOffline();
         } else {
             rosMainNode = new RosMainNode();
         }
-
-        Neo4jMemory memory = Neo4jMemory.getInstance(rosMainNode);
-
 
         /*
          * I/O INITIALIZATION
@@ -97,7 +101,7 @@ public class DialogSystem {
         MultiInputDevice multiIn;
         MultiOutputDevice multiOut = new MultiOutputDevice(new CommandLineOutput());
         // By default, all output is also written to the command line.
-        if(OFFLINE) {
+        if(offline) {
             multiIn = new MultiInputDevice(new CommandLineInput());
         } else {
             multiIn = new MultiInputDevice(new BingInput(rosMainNode));
@@ -128,10 +132,8 @@ public class DialogSystem {
         analyzers.add(new EmotionAnalyzer());
         // analyzers.add(new IntentAnalyzer(rosMainNode));
 
-        // Race between main and rosMainNode threads, but there should be enough time.
-        if (!rosMainNode.STARTUP_SUCCESS && SHUTDOWN_ON_ROS_FAILURE) {
-            throw new RuntimeException("DialogSystem shutdown caused by ROS service initialization failure. " +
-                    "Start the required services or set SHUTDOWN_ON_ROS_FAILURE to false.");
+        if (!rosMainNode.STARTUP_SUCCESS && Config.SHUTDOWN_ON_ROS_FAILURE) {
+            throw new RuntimeException("DialogSystem shutdown caused by ROS service initialization failure.");
         }
 
         System.out.println("DM initialized...");

@@ -2,6 +2,7 @@ package roboy.ros;
 
 import org.ros.node.ConnectedNode;
 import org.ros.node.service.ServiceClient;
+import roboy.dialog.Config;
 import roboy.dialog.DialogSystem;
 import java.util.HashMap;
 
@@ -29,7 +30,7 @@ class RosManager {
                 clientMap.put(c, node.newServiceClient(c.address, c.type));
                 System.out.println(c.toString()+" initialization SUCCESS!");
             } catch (Exception e) {
-                if(DialogSystem.SHUTDOWN_ON_ROS_FAILURE) {
+                if(Config.SHUTDOWN_ON_ROS_FAILURE) {
                     failed = true;
                 }
                 System.out.println(c.toString()+" initialization FAILED, could not reach ROS service!");
