@@ -25,6 +25,7 @@ public class Config {
     }
 
     /* CONFIGURATION VARIABLES - always static, with a default value. */
+    /* Profiles can overwrite the default values, but don't have to. */
 
     /** If true, Roboy avoids using network-based services such as memory. */
     public static boolean OFFLINE = false;
@@ -47,6 +48,11 @@ public class Config {
         }
     }
 
+    /**
+     *
+     * @param profileString String value of the configuration profile name.
+     * @return ConfigurationProfile instance which matches the profileString.
+     */
     public static ConfigurationProfile getProfileFromEnvironment(String profileString) {
         for(ConfigurationProfile p : ConfigurationProfile.values()) {
             if(p.profileName.equals(profileString)){
@@ -60,6 +66,7 @@ public class Config {
 
     private void setDefaultProfile() {
         OFFLINE = false;
+        SHUTDOWN_ON_ROS_FAILURE = true;
     }
 
     private void setOfflineProfile() {

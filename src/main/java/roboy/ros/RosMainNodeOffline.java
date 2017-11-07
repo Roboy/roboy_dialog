@@ -11,6 +11,7 @@ public class RosMainNodeOffline extends RosMainNode {
 
     public RosMainNodeOffline() {
         System.out.println("Starting in offline mode without ROS connection.");
+        return;
     }
 
     @Override

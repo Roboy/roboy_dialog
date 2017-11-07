@@ -7,6 +7,7 @@ import org.ros.node.*;
 import org.ros.node.service.ServiceClient;
 import org.ros.node.service.ServiceResponseListener;
 
+import roboy.dialog.Config;
 import roboy_communication_cognition.*;
 import roboy_communication_control.*;
 
@@ -26,6 +27,9 @@ public class RosMainNode extends AbstractNodeMain {
             "}";
 
     public RosMainNode() {
+        // Superclass ctor is called but should not be initialized offline.
+        if (Config.OFFLINE) return;
+
         clients = new RosManager();
 
         String hostName = System.getenv("ROS_HOSTNAME");
