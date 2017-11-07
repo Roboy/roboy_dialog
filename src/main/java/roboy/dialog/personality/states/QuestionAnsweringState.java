@@ -77,7 +77,6 @@ public class QuestionAnsweringState implements State{
 	@Override
 	public Reaction react(Interpretation input) {
 		Triple triple = (Triple) input.getFeatures().get(Linguistics.TRIPLE);
-		
 		// reverse you <-> I
 		if(triple!=null && triple.agens!=null && "you".equals(triple.agens.toLowerCase())) triple.agens = "i";
 		if(triple!=null && triple.patiens!=null && "you".equals(triple.patiens.toLowerCase())) triple.patiens = "i";
@@ -109,9 +108,12 @@ public class QuestionAnsweringState implements State{
 		} else if(triple!=null && input.getSentenceType() == SENTENCE_TYPE.WHO){
 			List<Triple> t = remember(triple.predicate, triple.agens, triple.patiens);
 			if(t.isEmpty()){
-				if(triple.agens != null && triple.agens.equals("i") && triple.patiens == null){
-					triple.patiens = "me";
+				if(triple.agens != null && triple.patiens == null){
+					triple.patiens = triple.agens;
 					triple.agens = null;
+					if(triple.patiens.equals("i")) {
+						triple.patiens = "me";
+					}
 					t = remember(triple.predicate, triple.agens, triple.patiens);
 					if(t.isEmpty()) {
 						return innerReaction(input, result);
