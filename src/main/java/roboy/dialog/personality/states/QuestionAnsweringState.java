@@ -109,12 +109,18 @@ public class QuestionAnsweringState implements State{
 		} else if(triple!=null && input.getSentenceType() == SENTENCE_TYPE.WHO){
 			List<Triple> t = remember(triple.predicate, triple.agens, triple.patiens);
 			if(t.isEmpty()){
-				return innerReaction(input,result);
-			} else {
-				for(int i=0; i<t.size(); i++){
-					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
-					result.add(new Interpretation(prefix+t.get(i).agens+" "+t.get(i).predicate+" "+t.get(i).patiens));
+				if(triple.agens != null && triple.agens.equals("i") && triple.patiens == null){
+					triple.patiens = "me";
+					triple.agens = null;
+					t = remember(triple.predicate, triple.agens, triple.patiens);
+					if(t.isEmpty()) {
+						return innerReaction(input, result);
+					}
 				}
+			}
+			for(int i=0; i<t.size(); i++){
+				String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
+				result.add(new Interpretation(prefix+t.get(i).agens+" "+t.get(i).predicate+" "+t.get(i).patiens));
 			}
 		} else if(triple!=null && input.getSentenceType() == SENTENCE_TYPE.WHAT){
 			List<Triple> t = remember(triple.predicate, triple.agens, triple.patiens);
