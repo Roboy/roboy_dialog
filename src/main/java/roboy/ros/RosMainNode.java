@@ -32,10 +32,10 @@ public class RosMainNode extends AbstractNodeMain {
 
         clients = new RosManager();
 
-        String hostName = System.getenv("ROS_HOSTNAME");
-        //String hostName = "10.183.122.142";
+        String hostName = Config.ROS_HOSTNAME;
         if (hostName == null || hostName.isEmpty()) {
             System.out.println("Could not find ROS hostname. ROS will be unavailable. Set ROS_HOSTNAME environmental variable.");
+            STARTUP_SUCCESS = false;
         }
 
         URI masterURI = URI.create("http://" + hostName + ":11311");
@@ -56,10 +56,8 @@ public class RosMainNode extends AbstractNodeMain {
 
     @Override
     public void onStart(final ConnectedNode connectedNode) {
-        try {
-            clients.initialize(connectedNode);
-        } catch (RuntimeException e) {
-            System.out.println("ROS client manager failed to initialize!");
+        boolean initializationSuccess = clients.initialize(connectedNode);
+        if(!initializationSuccess) {
             STARTUP_SUCCESS = false;
         }
     }

@@ -1,5 +1,12 @@
 package roboy.dialog;
 
+import org.apache.commons.configuration2.YAMLConfiguration;
+import org.apache.commons.configuration2.ex.ConfigurationException;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
 /**
  * Save runtime configurations (profiles) for Roboy.
  * 1) Configuration variables define alternating behaviors.
@@ -15,7 +22,8 @@ public class Config {
      */
     public enum ConfigurationProfile {
         DEFAULT("DEFAULT"),
-        OFFLINE("OFFLINE");
+        OFFLINE("OFFLINE"),
+        DEBUG("DEBUG");
 
         public String profileName;
 
@@ -29,19 +37,31 @@ public class Config {
 
     /** If true, Roboy avoids using network-based services such as memory. */
     public static boolean OFFLINE = false;
+    /** If true, Roboy will not continue executing if the ROS main node fails to initialize. */
+    public static boolean SHUTDOWN_ON_ROS_FAILURE = true;
     /** If true, Roboy will not continue executing if any of the ROS services failed to initialize. */
-    public static boolean SHUTDOWN_ON_ROS_FAILURE = false;
+    public static boolean SHUTDOWN_ON_SERVICE_FAILURE = true;
+    /** ROS hostname, will be fetched from the configuration file. */
+    public static String ROS_HOSTNAME = null;
+
+    /** Configuration file to store changing values. */
+    private static String yamlConfigFile = "config.properties";
+    private YAMLConfiguration yamlConfig;
 
     /**
      * Constructor switching to the correct profile.
      */
     public Config(ConfigurationProfile profile) {
+        initializeYAMLConfig();
         switch(profile) {
             case DEFAULT:
                 setDefaultProfile();
                 break;
             case OFFLINE:
                 setOfflineProfile();
+                break;
+            case DEBUG:
+                setDebugProfile();
                 break;
             default:
                 setDefaultProfile();
@@ -66,10 +86,36 @@ public class Config {
 
     private void setDefaultProfile() {
         OFFLINE = false;
-        SHUTDOWN_ON_ROS_FAILURE = true;
+        ROS_HOSTNAME = yamlConfig.getString("ROS_HOSTNAME");
     }
 
     private void setOfflineProfile() {
         OFFLINE = true;
+        SHUTDOWN_ON_ROS_FAILURE = false;
+        SHUTDOWN_ON_SERVICE_FAILURE = false;
+    }
+
+    private void setDebugProfile() {
+        SHUTDOWN_ON_ROS_FAILURE = false;
+        SHUTDOWN_ON_SERVICE_FAILURE = false;
+    }
+
+    private void initializeYAMLConfig() {
+        this.yamlConfig = new YAMLConfiguration();
+        try
+        {
+            File propertiesFile = new File(yamlConfigFile);
+            if(propertiesFile == null) {
+                System.out.println("Could not find "+yamlConfigFile+" file in project path! YAML configurations will be unavailable.");
+                return;
+            }
+            FileReader propertiesReader = new FileReader(propertiesFile);
+            yamlConfig.read(propertiesReader);
+        }
+        catch(ConfigurationException | FileNotFoundException e)
+        {
+            System.out.println("Exception while reading YAML configurations from "+yamlConfigFile);
+            e.printStackTrace();
+        }
     }
 }

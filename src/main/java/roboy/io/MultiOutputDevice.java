@@ -12,10 +12,11 @@ import roboy.dialog.action.Action;
  */
 public class MultiOutputDevice implements OutputDevice{
 	
-	private List<OutputDevice> devices;
+	private ArrayList<OutputDevice> devices;
 
-	public MultiOutputDevice(OutputDevice... devices){
-		this.devices = Arrays.asList(devices);
+	public MultiOutputDevice(OutputDevice device){
+		this.devices = new ArrayList<>();
+		devices.add(device);
 	}
 
 	public void add(OutputDevice additionalDevice) {

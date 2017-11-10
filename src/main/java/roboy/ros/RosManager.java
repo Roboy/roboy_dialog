@@ -3,7 +3,7 @@ package roboy.ros;
 import org.ros.node.ConnectedNode;
 import org.ros.node.service.ServiceClient;
 import roboy.dialog.Config;
-import roboy.dialog.DialogSystem;
+
 import java.util.HashMap;
 
 /**
@@ -18,27 +18,24 @@ class RosManager {
 
     /**
      * Initializes all ServiceClients for Ros.
-     *
-     * @throws RuntimeException if SHUTDOWN_ON_ROS_FAILURE and a service could not be initialized.
      */
-    void initialize(ConnectedNode node) throws RuntimeException {
+    boolean initialize(ConnectedNode node) {
         clientMap = new HashMap<>();
-        boolean failed = false;
+        boolean success = true;
         // Iterate through the RosClients enum, mapping a client for each.
         for(RosClients c : RosClients.values()) {
             try {
                 clientMap.put(c, node.newServiceClient(c.address, c.type));
                 System.out.println(c.toString()+" initialization SUCCESS!");
             } catch (Exception e) {
-                if(Config.SHUTDOWN_ON_ROS_FAILURE) {
-                    failed = true;
-                }
+                success = false;
                 System.out.println(c.toString()+" initialization FAILED, could not reach ROS service!");
             }
         }
-        if (failed) {
-            throw new RuntimeException("Failed to initialize all ROS clients, shutting down.");
+        if(Config.SHUTDOWN_ON_SERVICE_FAILURE && !success) {
+            throw new RuntimeException("DialogSystem shutdown caused by ROS service initialization failure.");
         }
+        return success;
     }
 
     /**
@@ -47,7 +44,11 @@ class RosManager {
      */
     boolean notInitialized(RosClients c) {
         if(clientMap == null) {
+            if(Config.SHUTDOWN_ON_SERVICE_FAILURE) {
+                throw new RuntimeException("ROS clients have not been initialized! Stopping DM execution.");
+            }
             System.out.println("ROS clients have not been initialized! Is the ROS host running?");
+            return true;
         }
         return !clientMap.containsKey(c);
     }

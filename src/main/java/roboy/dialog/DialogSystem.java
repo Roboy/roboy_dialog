@@ -117,9 +117,9 @@ public class DialogSystem {
         // multiIn.add(new CelebritySimilarityInput());
         // multiIn.add(new RoboyNameDetectionInput());
         // OPTIONAL OUTPUTS
-		// multiOut.add(new BingOutput());
+        // multiOut.add(new BingOutput());
         // multiOut.add(new UdpOutput(ds, "localhost", 55556));
-		// multiOut.add(new EmotionOutput(rosMainNode));
+        // multiOut.add(new EmotionOutput(rosMainNode));
 
         /*
          * ANALYZER INITIALIZATION
@@ -137,7 +137,7 @@ public class DialogSystem {
         // analyzers.add(new IntentAnalyzer(rosMainNode));
 
         if (!rosMainNode.STARTUP_SUCCESS && Config.SHUTDOWN_ON_ROS_FAILURE) {
-            throw new RuntimeException("DialogSystem shutdown caused by ROS service initialization failure.");
+            throw new RuntimeException("DialogSystem shutdown caused by ROS main node initialization failure.");
         }
 
         System.out.println("DM initialized...");
@@ -171,5 +171,4 @@ public class DialogSystem {
             actions.clear();
         }
 	}
-
 }
