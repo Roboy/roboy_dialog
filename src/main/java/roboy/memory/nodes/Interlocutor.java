@@ -36,8 +36,8 @@ public class Interlocutor {
         person.setLabel("Person");
 
         if(!offline) {
-        ArrayList<Integer> ids = new ArrayList<>();
-        // Query memory for matching persons.
+            ArrayList<Integer> ids = new ArrayList<>();
+            // Query memory for matching persons.
             try {
                 ids = memory.getByQuery(person);
             } catch (InterruptedException | IOException e) {
