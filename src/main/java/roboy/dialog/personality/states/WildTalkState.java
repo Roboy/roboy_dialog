@@ -1,5 +1,6 @@
 package roboy.dialog.personality.states;
 
+import roboy.dialog.Config;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.Lists;
@@ -36,13 +37,14 @@ public class WildTalkState implements State{
 
     @Override
     public Reaction react(Interpretation input) {
-
         String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
-        if(!sentence.isEmpty()) {
+        if(Config.OFFLINE || sentence.isEmpty()) {
+            return new Reaction(next,Lists.interpretationList(new Interpretation("I am out of words.")));
+        }
+        else {
             String reaction = rosMainNode.GenerateAnswer(sentence);
             return new Reaction(next, Lists.interpretationList(new Interpretation(reaction)));
         }
-        return new Reaction(next,Lists.interpretationList(new Interpretation("I am out of words.")));
     }
     
     public void setNextState(State next){

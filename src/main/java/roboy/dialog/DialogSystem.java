@@ -4,10 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 
-import org.json.JSONObject;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.ShutDownAction;
 import roboy.dialog.personality.Personality;
@@ -15,11 +13,7 @@ import roboy.dialog.personality.SmallTalkPersonality;
 
 import roboy.io.*;
 
-import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.*;
-import roboy.memory.Neo4jMemory;
-import roboy.memory.nodes.MemoryNodeModel;
-import roboy.ros.RosMainNodeOffline;
 import roboy.talk.Verbalizer;
 
 import roboy.ros.RosMainNode;
@@ -91,20 +85,14 @@ public class DialogSystem {
 
         boolean offline = Config.OFFLINE;
         // initialize ROS node
-        RosMainNode rosMainNode;
-
-        if(offline) {
-            rosMainNode = new RosMainNodeOffline();
-        } else {
-            rosMainNode = new RosMainNode();
-        }
+        RosMainNode rosMainNode = new RosMainNode();
 
         /*
          * I/O INITIALIZATION
          */
         MultiInputDevice multiIn;
-        MultiOutputDevice multiOut = new MultiOutputDevice(new CommandLineOutput());
         // By default, all output is also written to the command line.
+        MultiOutputDevice multiOut = new MultiOutputDevice(new CommandLineOutput());
         if(offline) {
             multiIn = new MultiInputDevice(new CommandLineInput());
         } else {
@@ -134,7 +122,9 @@ public class DialogSystem {
 		analyzers.add(new OntologyNERAnalyzer());
 		analyzers.add(new AnswerAnalyzer());
         analyzers.add(new EmotionAnalyzer());
-        // analyzers.add(new IntentAnalyzer(rosMainNode));
+        //if(!offline) {
+        //    analyzers.add(new IntentAnalyzer(rosMainNode));
+        //}
 
         if (!rosMainNode.STARTUP_SUCCESS && Config.SHUTDOWN_ON_ROS_FAILURE) {
             throw new RuntimeException("DialogSystem shutdown caused by ROS main node initialization failure.");
