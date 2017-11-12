@@ -22,7 +22,8 @@ public class Config {
      */
     public enum ConfigurationProfile {
         DEFAULT("DEFAULT"),
-        OFFLINE("OFFLINE"),
+        NOROS("NOROS"),
+        STANDALONE("STANDALONE"),
         DEBUG("DEBUG");
 
         public String profileName;
@@ -35,13 +36,15 @@ public class Config {
     /* CONFIGURATION VARIABLES - always static, with a default value. */
     /* Profiles can overwrite the default values, but don't have to. */
 
-    /** If true, Roboy avoids using network-based services such as memory. */
-    public static boolean OFFLINE = false;
+    /** If true, Roboy avoids using network-based services such as DBpedia as well as ROS. */
+    public static boolean STANDALONE = false;
+    /** If true, Roboy avoids using ROS-based services. */
+    public static boolean NOROS = false;
     /** If true, Roboy will not continue executing if the ROS main node fails to initialize. */
     public static boolean SHUTDOWN_ON_ROS_FAILURE = true;
     /** If true, Roboy will not continue executing if any of the ROS services failed to initialize. */
     public static boolean SHUTDOWN_ON_SERVICE_FAILURE = true;
-    /** ROS hostname, will be fetched from the configuration file. */
+    /** ROS hostname, will be fetched from the configuration file in the DEFAULT profile. */
     public static String ROS_HOSTNAME = null;
 
     /** Configuration file to store changing values. */
@@ -57,8 +60,11 @@ public class Config {
             case DEFAULT:
                 setDefaultProfile();
                 break;
-            case OFFLINE:
-                setOfflineProfile();
+            case NOROS:
+                setNoROSProfile();
+                break;
+            case STANDALONE:
+                setStandaloneProfile();
                 break;
             case DEBUG:
                 setDebugProfile();
@@ -85,12 +91,20 @@ public class Config {
     /* PROFILE DEFINITIONS */
 
     private void setDefaultProfile() {
-        OFFLINE = false;
+        STANDALONE = false;
         ROS_HOSTNAME = yamlConfig.getString("ROS_HOSTNAME");
     }
 
-    private void setOfflineProfile() {
-        OFFLINE = true;
+    private void setNoROSProfile() {
+        NOROS = true;
+        SHUTDOWN_ON_ROS_FAILURE = false;
+        SHUTDOWN_ON_SERVICE_FAILURE = false;
+    }
+
+    private void setStandaloneProfile() {
+        STANDALONE = true;
+        // Also set NOROS, such that ROS-based service callers only need to check for NOROS setting.
+        NOROS = true;
         SHUTDOWN_ON_ROS_FAILURE = false;
         SHUTDOWN_ON_SERVICE_FAILURE = false;
     }

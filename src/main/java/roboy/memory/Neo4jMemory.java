@@ -55,7 +55,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
     @Override
     public boolean save(MemoryNodeModel node) throws InterruptedException, IOException
     {
-        if(Config.OFFLINE) return false;
+        if(Config.NOROS) return false;
         String response = rosMainNode.UpdateMemoryQuery(node.toJSON(gson));
         if(response == null) return false;
         return(response.contains("OK"));
@@ -69,7 +69,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
      */
     public MemoryNodeModel getById(int id) throws InterruptedException, IOException
     {
-        if(Config.OFFLINE) return new MemoryNodeModel();
+        if(Config.NOROS) return new MemoryNodeModel();
         String result = rosMainNode.GetMemoryQuery("{'id':"+id+"}");
         if(result == null || result.contains("FAIL")) return null;
         return gson.fromJson(result, MemoryNodeModel.class);
@@ -83,7 +83,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
      */
     public ArrayList<Integer> getByQuery(MemoryNodeModel query) throws InterruptedException, IOException
     {
-        if(Config.OFFLINE) return new ArrayList<>();
+        if(Config.NOROS) return new ArrayList<>();
         String result = rosMainNode.GetMemoryQuery(query.toJSON(gson));
         if(result == null || result.contains("FAIL")) return null;
         Type type = new TypeToken<HashMap<String, List<Integer>>>() {}.getType();
@@ -93,7 +93,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
 
     public int create(MemoryNodeModel query) throws InterruptedException, IOException
     {
-        if(Config.OFFLINE) return 0;
+        if(Config.NOROS) return 0;
         String result = rosMainNode.CreateMemoryQuery(query.toJSON(gson));
         // Handle possible Memory error message.
         if(result == null || result.contains("FAIL")) return 0;
@@ -110,7 +110,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
      */
     public boolean remove(MemoryNodeModel query) throws InterruptedException, IOException
     {
-        if(Config.OFFLINE) return false;
+        if(Config.NOROS) return false;
         //Remove all fields which were not explicitly set, for safety.
         query.setStripQuery(true);
         String response = rosMainNode.DeleteMemoryQuery(query.toJSON(gson));

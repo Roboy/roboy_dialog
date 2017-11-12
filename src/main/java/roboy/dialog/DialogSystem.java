@@ -82,8 +82,6 @@ public class DialogSystem {
             new Config(DEFAULT);
         }
 
-
-        boolean offline = Config.OFFLINE;
         // initialize ROS node
         RosMainNode rosMainNode = new RosMainNode();
 
@@ -93,7 +91,7 @@ public class DialogSystem {
         MultiInputDevice multiIn;
         // By default, all output is also written to the command line.
         MultiOutputDevice multiOut = new MultiOutputDevice(new CommandLineOutput());
-        if(offline) {
+        if(Config.NOROS) {
             multiIn = new MultiInputDevice(new CommandLineInput());
         } else {
             multiIn = new MultiInputDevice(new BingInput(rosMainNode));
@@ -122,7 +120,7 @@ public class DialogSystem {
 		analyzers.add(new OntologyNERAnalyzer());
 		analyzers.add(new AnswerAnalyzer());
         analyzers.add(new EmotionAnalyzer());
-        //if(!offline) {
+        //if(!Config.NOROS) {
         //    analyzers.add(new IntentAnalyzer(rosMainNode));
         //}
 

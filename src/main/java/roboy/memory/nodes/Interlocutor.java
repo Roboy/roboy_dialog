@@ -1,7 +1,6 @@
 package roboy.memory.nodes;
 
 import roboy.dialog.Config;
-import roboy.dialog.DialogSystem;
 import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jRelations;
 
@@ -16,12 +15,13 @@ public class Interlocutor {
     private MemoryNodeModel person;
     Neo4jMemory memory;
     public boolean FAMILIAR = false;
-    // In offline mode, we do not query the Neo4j memory.
-    public boolean offline = Config.OFFLINE;
+    // Memory is not queried in NOROS mode.
+    private boolean noROS;
 
     public Interlocutor() {
         this.person = new MemoryNodeModel(true);
         this.memory = Neo4jMemory.getInstance();
+        this.noROS = Config.NOROS;
     }
 
     /**
@@ -35,7 +35,7 @@ public class Interlocutor {
         person.setProperty("name", name);
         person.setLabel("Person");
 
-        if(!offline) {
+        if(!noROS) {
             ArrayList<Integer> ids = new ArrayList<>();
             // Query memory for matching persons.
             try {
@@ -81,7 +81,7 @@ public class Interlocutor {
      * Adds a new relation to the person node, updating memory.
      */
     public void addInformation(String relation, String name) {
-        if(offline) return;
+        if(noROS) return;
         ArrayList<Integer> ids = new ArrayList<>();
         // First check if node with given name exists by a matching query.
         MemoryNodeModel relatedNode = new MemoryNodeModel(true);

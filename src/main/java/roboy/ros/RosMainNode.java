@@ -28,7 +28,7 @@ public class RosMainNode extends AbstractNodeMain {
 
     public RosMainNode() {
         // Ctor is called but should not be initialized offline.
-        if (Config.OFFLINE) return;
+        if (Config.NOROS) return;
 
         clients = new RosManager();
 

@@ -10,6 +10,7 @@ import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.*;
 
 import opennlp.tools.util.HashList;
+import roboy.dialog.Config;
 import roboy.memory.LexiconLiteral;
 import roboy.util.Concept;
 import roboy.util.Lists;
@@ -123,6 +124,10 @@ private static final Map<String, String> supportedRelations = Maps.stringMap(
 	 */
 	@Override
 	public List<Relation> retrieve(Relation object) throws InterruptedException, IOException {
+		// No querying in STANDALONE mode
+		if(Config.STANDALONE) {
+			return null;
+		}
 		LinkedHashSet<String> queries;
 		List<Relation> result = new ArrayList<>();
 		if(object == null)

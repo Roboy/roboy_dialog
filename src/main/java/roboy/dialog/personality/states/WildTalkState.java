@@ -38,7 +38,7 @@ public class WildTalkState implements State{
     @Override
     public Reaction react(Interpretation input) {
         String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
-        if(Config.OFFLINE || sentence.isEmpty()) {
+        if(Config.NOROS || sentence.isEmpty()) {
             return new Reaction(next,Lists.interpretationList(new Interpretation("I am out of words.")));
         }
         else {
