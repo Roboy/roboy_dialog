@@ -23,11 +23,11 @@ public class RosMainNode extends AbstractNodeMain {
     public boolean STARTUP_SUCCESS = true;
     String memoryFailure = "{" +
             "status : \"FAIL\", " +
-            "message : \"DM received no result from memory.\"" +
+            "message : \"Memory client not initialized.\"" +
             "}";
 
     public RosMainNode() {
-        // Superclass ctor is called but should not be initialized offline.
+        // Ctor is called but should not be initialized offline.
         if (Config.OFFLINE) return;
 
         clients = new RosManager();
