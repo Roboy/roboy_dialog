@@ -32,7 +32,7 @@ mvn exec:java -Dexec.mainClass="roboy.dialog.DialogSystem"
 
 Pick the corresponding interface, depending on which part of the system you want to extend. If you want to add new devices go for the input or output device interfaces. If you want to extend the linguistic analysis implement the Analyzer interface or extend the SentenceAnalyzer class. If you are happy with input, linguistics and output and just want to create more dialog, implement the Personality interface.
 
-|Create a new ...|By implementing ...    |
+|Create a new ...|By implementing ...   |
 |----------------|-----------------------|
 |Input Device    |de.roboy.io.InputDevice|
 |NLP Analyzer    |de.roboy.linguistics.sentenceanalysis.Analyzer|
