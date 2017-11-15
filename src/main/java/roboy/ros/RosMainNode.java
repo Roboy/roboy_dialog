@@ -7,6 +7,7 @@ import org.ros.node.*;
 import org.ros.node.service.ServiceClient;
 import org.ros.node.service.ServiceResponseListener;
 
+import roboy.dialog.Config;
 import roboy_communication_cognition.*;
 import roboy_communication_control.*;
 
@@ -20,14 +21,21 @@ public class RosMainNode extends AbstractNodeMain {
     private RosManager clients = new RosManager();
     protected Object resp;
     public boolean STARTUP_SUCCESS = true;
+    String memoryFailure = "{" +
+            "status : \"FAIL\", " +
+            "message : \"Memory client not initialized.\"" +
+            "}";
 
     public RosMainNode() {
+        // Ctor is called but should not be initialized offline.
+        if (Config.NOROS) return;
+
         clients = new RosManager();
 
-        String hostName = System.getenv("ROS_HOSTNAME");
-        //String hostName = "10.183.122.142";
+        String hostName = Config.ROS_HOSTNAME;
         if (hostName == null || hostName.isEmpty()) {
             System.out.println("Could not find ROS hostname. ROS will be unavailable. Set ROS_HOSTNAME environmental variable.");
+            STARTUP_SUCCESS = false;
         }
 
         URI masterURI = URI.create("http://" + hostName + ":11311");
@@ -48,10 +56,8 @@ public class RosMainNode extends AbstractNodeMain {
 
     @Override
     public void onStart(final ConnectedNode connectedNode) {
-        try {
-            clients.initialize(connectedNode);
-        } catch (RuntimeException e) {
-            System.out.println("ROS client manager failed to initialize!");
+        boolean initializationSuccess = clients.initialize(connectedNode);
+        if(!initializationSuccess) {
             STARTUP_SUCCESS = false;
         }
     }
@@ -178,7 +184,7 @@ public class RosMainNode extends AbstractNodeMain {
 
         if(clients.notInitialized(RosClients.CREATEMEMORY)) {
             // FALLBACK RETURN VALUE
-            return null;
+            return memoryFailure;
         }
         ServiceClient<DataQueryRequest, DataQueryResponse> createMemoryClient = clients.getServiceClient(RosClients.CREATEMEMORY);
         rosConnectionLatch = new CountDownLatch(1);
@@ -208,7 +214,7 @@ public class RosMainNode extends AbstractNodeMain {
 
         if(clients.notInitialized(RosClients.UPDATEMEMORY)) {
             // FALLBACK RETURN VALUE
-            return null;
+            return memoryFailure;
         }
         ServiceClient<DataQueryRequest, DataQueryResponse> updateMemoryClient = clients.getServiceClient(RosClients.UPDATEMEMORY);
         rosConnectionLatch = new CountDownLatch(1);
@@ -238,7 +244,7 @@ public class RosMainNode extends AbstractNodeMain {
 
         if(clients.notInitialized(RosClients.GETMEMORY)) {
             // FALLBACK RETURN VALUE
-            return null;
+            return memoryFailure;
         }
         ServiceClient<DataQueryRequest, DataQueryResponse> getMemoryClient = clients.getServiceClient(RosClients.GETMEMORY);
         rosConnectionLatch = new CountDownLatch(1);
@@ -268,7 +274,7 @@ public class RosMainNode extends AbstractNodeMain {
 
         if(clients.notInitialized(RosClients.DELETEMEMORY)) {
             // FALLBACK RETURN VALUE
-            return null;
+            return memoryFailure;
         }
         ServiceClient<DataQueryRequest, DataQueryResponse> deleteMemoryClient = clients.getServiceClient(RosClients.DELETEMEMORY);
         rosConnectionLatch = new CountDownLatch(1);
@@ -298,7 +304,7 @@ public class RosMainNode extends AbstractNodeMain {
 
         if(clients.notInitialized(RosClients.CYPHERMEMORY)) {
             // FALLBACK RETURN VALUE
-            return null;
+            return memoryFailure;
         }
         ServiceClient<DataQueryRequest, DataQueryResponse> cypherMemoryClient = clients.getServiceClient(RosClients.CYPHERMEMORY);
         rosConnectionLatch = new CountDownLatch(1);

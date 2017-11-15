@@ -13,13 +13,12 @@ import roboy.dialog.personality.SmallTalkPersonality;
 
 import roboy.io.*;
 
-import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.*;
-import roboy.memory.Neo4jMemory;
-import roboy.memory.nodes.MemoryNodeModel;
 import roboy.talk.Verbalizer;
 
 import roboy.ros.RosMainNode;
+
+import static roboy.dialog.Config.ConfigurationProfile.*;
 
 
 /**
@@ -73,31 +72,44 @@ import roboy.ros.RosMainNode;
  */
 public class DialogSystem {
 
-    public static boolean SHUTDOWN_ON_ROS_FAILURE = false;
-	
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
+
+        // This sets a configuration profile for the entire run.
+        // Profiles can be added in roboy.dialog.Config.ConfigurationProfile
+        if(System.getProperty("profile")!=null) {
+            new Config(Config.getProfileFromEnvironment(System.getProperty("profile")));
+        } else {
+            new Config(DEFAULT);
+        }
 
         // initialize ROS node
         RosMainNode rosMainNode = new RosMainNode();
-        Neo4jMemory memory = Neo4jMemory.getInstance(rosMainNode);
 
-	    // InputDevice input = new CommandLineInput();
-		 InputDevice input = new BingInput(rosMainNode);
-//        DatagramSocket ds = new DatagramSocket(55555);
-//        InputDevice input = new UdpInput(ds);
-		InputDevice celebInput = new CelebritySimilarityInput();
-//		InputDevice roboyDetectInput = new RoboyNameDetectionInput();
-		InputDevice multiIn = new MultiInputDevice(input);//, celebInput, roboyDetectInput);
+        /*
+         * I/O INITIALIZATION
+         */
+        MultiInputDevice multiIn;
+        // By default, all output is also written to the command line.
+        MultiOutputDevice multiOut = new MultiOutputDevice(new CommandLineOutput());
+        if(Config.NOROS) {
+            multiIn = new MultiInputDevice(new CommandLineInput());
+        } else {
+            multiIn = new MultiInputDevice(new BingInput(rosMainNode));
+            multiOut.add(new CerevoiceOutput(rosMainNode));
+        }
+        // OPTIONAL INPUTS
+        // DatagramSocket ds = new DatagramSocket(55555);
+        // multiIn.add(new UdpInput(ds));
+        // multiIn.add(new CelebritySimilarityInput());
+        // multiIn.add(new RoboyNameDetectionInput());
+        // OPTIONAL OUTPUTS
+        // multiOut.add(new BingOutput());
+        // multiOut.add(new UdpOutput(ds, "localhost", 55556));
+        // multiOut.add(new EmotionOutput(rosMainNode));
 
-//		OutputDevice output1 = new CerevoiceOutput(rosMainNode);
-//        CerevoiceOutput output2 = new CerevoiceOutput(rosMainNode);
-		// OutputDevice output = new BingOutput();
-//        OutputDevice output2 = new UdpOutput(ds, "localhost", 55556);
-		// EmotionOutput emotion = new EmotionOutput(rosMainNode);
-        OutputDevice output = new CommandLineOutput();
-       OutputDevice output1 = new CerevoiceOutput(rosMainNode);
-		OutputDevice multiOut = new MultiOutputDevice(output,output1);//, output2, emotion);
-
+        /*
+         * ANALYZER INITIALIZATION
+         */
 		List<Analyzer> analyzers = new ArrayList<Analyzer>();
 		analyzers.add(new Preprocessor());
 		analyzers.add(new SimpleTokenizer());
@@ -108,15 +120,15 @@ public class DialogSystem {
 		analyzers.add(new OntologyNERAnalyzer());
 		analyzers.add(new AnswerAnalyzer());
         analyzers.add(new EmotionAnalyzer());
-        // analyzers.add(new IntentAnalyzer(rosMainNode));
+        //if(!Config.NOROS) {
+        //    analyzers.add(new IntentAnalyzer(rosMainNode));
+        //}
 
-        // Race between main and rosMainNode threads, but there should be enough time.
-        if (!rosMainNode.STARTUP_SUCCESS && SHUTDOWN_ON_ROS_FAILURE) {
-            throw new RuntimeException("DialogSystem shutdown caused by ROS service initialization failure. " +
-                    "Start the required services or set SHUTDOWN_ON_ROS_FAILURE to false.");
+        if (!rosMainNode.STARTUP_SUCCESS && Config.SHUTDOWN_ON_ROS_FAILURE) {
+            throw new RuntimeException("DialogSystem shutdown caused by ROS main node initialization failure.");
         }
 
-        System.out.println("Initialized...");
+        System.out.println("DM initialized...");
 
         while(true) {
 
@@ -124,7 +136,6 @@ public class DialogSystem {
 //                emotion.act(new FaceAction("angry"));
 //            }
 //            emotion.act(new FaceAction("neutral"));
-
 //            while (!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)) {
 //            }
 
@@ -148,5 +159,4 @@ public class DialogSystem {
             actions.clear();
         }
 	}
-
 }

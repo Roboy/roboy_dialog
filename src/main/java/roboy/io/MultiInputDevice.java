@@ -1,6 +1,8 @@
 package roboy.io;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Meta class to combine multiple input devices.
@@ -8,11 +10,14 @@ import java.io.IOException;
 public class MultiInputDevice implements InputDevice{
 
 	private InputDevice mainInput;
-	private InputDevice[] additionalInputs;
+	private ArrayList<InputDevice> additionalInputs;
 	
-	public MultiInputDevice(InputDevice mainInput, InputDevice... additionalInputs) {
+	public MultiInputDevice(InputDevice mainInput) {
 		this.mainInput = mainInput;
-		this.additionalInputs = additionalInputs;
+	}
+
+	public void addInputDevice(InputDevice additionalInput) {
+		additionalInputs.add(additionalInput);
 	}
 	
 	@Override
@@ -24,7 +29,6 @@ public class MultiInputDevice implements InputDevice{
 				result.attributes.putAll(i.attributes);
 			}
 		}
-//		System.out.println(result.attributes);
 		return result;
 	}
 
