@@ -6,10 +6,11 @@
     <innerclass refid="enumroboy_1_1ros_1_1_ros_clients" prot="package">roboy::ros::RosClients</innerclass>
     <innerclass refid="classroboy_1_1ros_1_1_ros_main_node" prot="public">roboy::ros::RosMainNode</innerclass>
     <innerclass refid="classroboy_1_1ros_1_1_ros_manager" prot="package">roboy::ros::RosManager</innerclass>
+    <innerclass refid="classroboy_1_1ros_1_1_ros_node" prot="public">roboy::ros::RosNode</innerclass>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/Ros.java" line="1" column="1"/>
+    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/Ros.java" line="1" column="1"/>
   </compounddef>
 </doxygen>

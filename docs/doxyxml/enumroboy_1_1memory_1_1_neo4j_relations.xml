@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" line="9" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="9" bodyend="-1"/>
+        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" line="9" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="9" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relations_1af4560b839aba6756486353ff27684cfe" prot="public" static="no" mutable="no">
         <type></type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" line="10" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="10" bodyend="-1"/>
+        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" line="10" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="10" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relations_1a145f999ecae6f101900fb59a9e79f4f7" prot="public" static="no" mutable="no">
         <type></type>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" line="11" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="11" bodyend="-1"/>
+        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" line="11" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="11" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relations_1a73e95c854a3dae82f5d54ee6de79f892" prot="public" static="no" mutable="no">
         <type></type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" line="12" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="12" bodyend="-1"/>
+        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" line="12" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="12" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relations_1a2fb07dda2139efb22d0a02fa19289855" prot="public" static="no" mutable="no">
         <type></type>
@@ -71,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" line="13" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="13" bodyend="-1"/>
+        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" line="13" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="13" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relations_1a33121c6d1aae224d5f47e6101faed27d" prot="public" static="no" mutable="no">
         <type></type>
@@ -85,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" line="14" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="14" bodyend="-1"/>
+        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" line="14" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="14" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relations_1aeeabb1d253897cb28da6caa033d7dd86" prot="public" static="no" mutable="no">
         <type></type>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" line="15" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="15" bodyend="-1"/>
+        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" line="15" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relations_1a5305f1dac5e187a0f4027475913697d3" prot="public" static="no" mutable="no">
         <type></type>
@@ -113,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" line="16" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="16" bodyend="-1"/>
+        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" line="16" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relations_1a9f03702549d21afb56d8569c4139c8c6" prot="public" static="no" mutable="no">
         <type>String</type>
@@ -126,7 +126,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" line="18" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="18" bodyend="-1"/>
+        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" line="18" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="18" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -145,14 +145,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" line="20" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="20" bodyend="22"/>
+        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" line="20" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="20" bodyend="22"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Contains the relations available in Neo4j database. </para>    </briefdescription>
     <detaileddescription>
 <para>Respective questions should be added to the questions.json file and used in the QuestionRandomizerState. </para>    </detaileddescription>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" line="8" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="8" bodyend="23"/>
+    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" line="8" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="8" bodyend="23"/>
     <listofallmembers>
       <member refid="enumroboy_1_1memory_1_1_neo4j_relations_1aeeabb1d253897cb28da6caa033d7dd86" prot="public" virt="non-virtual"><scope>roboy::memory::Neo4jRelations</scope><name>FRIEND_OF</name></member>
       <member refid="enumroboy_1_1memory_1_1_neo4j_relations_1a119c74365b3a82a5f0d3be50fbc68c63" prot="public" virt="non-virtual"><scope>roboy::memory::Neo4jRelations</scope><name>FROM</name></member>

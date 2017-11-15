@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" line="15" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" bodystart="15" bodyend="-1"/>
+        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" line="15" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" bodystart="15" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" line="17" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" bodystart="17" bodyend="19"/>
+        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" line="17" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" bodystart="17" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1phonetics_1_1_metaphone_encoder_1a8ffe299334c34f5952f2ee2d93e227c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" line="22" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" bodystart="22" bodyend="24"/>
+        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" line="22" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" bodystart="22" bodyend="24"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -60,36 +60,36 @@
     <detaileddescription>
 <para>This is intended to be used to correct terms that Roboy misunderstood, but currently is not is use. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="977">
+      <node id="994">
         <label>roboy.linguistics.phonetics.MetaphoneEncoder</label>
         <link refid="classroboy_1_1linguistics_1_1phonetics_1_1_metaphone_encoder"/>
-        <childnode refid="978" relation="public-inheritance">
+        <childnode refid="995" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="978">
+      <node id="995">
         <label>roboy.linguistics.phonetics.PhoneticEncoder</label>
         <link refid="interfaceroboy_1_1linguistics_1_1phonetics_1_1_phonetic_encoder"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="979">
+      <node id="996">
         <label>roboy.linguistics.phonetics.MetaphoneEncoder</label>
         <link refid="classroboy_1_1linguistics_1_1phonetics_1_1_metaphone_encoder"/>
-        <childnode refid="980" relation="public-inheritance">
+        <childnode refid="997" relation="public-inheritance">
         </childnode>
-        <childnode refid="981" relation="usage">
+        <childnode refid="998" relation="usage">
           <edgelabel>metaphone</edgelabel>
         </childnode>
       </node>
-      <node id="981">
+      <node id="998">
         <label>Metaphone</label>
       </node>
-      <node id="980">
+      <node id="997">
         <label>roboy.linguistics.phonetics.PhoneticEncoder</label>
         <link refid="interfaceroboy_1_1linguistics_1_1phonetics_1_1_phonetic_encoder"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" line="13" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" bodystart="13" bodyend="26"/>
+    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" line="13" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics/MetaphoneEncoder.java" bodystart="13" bodyend="26"/>
     <listofallmembers>
       <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_metaphone_encoder_1a8ffe299334c34f5952f2ee2d93e227c6" prot="public" virt="non-virtual"><scope>roboy::linguistics::phonetics::MetaphoneEncoder</scope><name>encode</name></member>
       <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_metaphone_encoder_1a763da63625dfef174851fed7af4ed63e" prot="private" virt="non-virtual"><scope>roboy::linguistics::phonetics::MetaphoneEncoder</scope><name>metaphone</name></member>

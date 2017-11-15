@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="dir_d36b90f3756773ad1cfe7d8701cbf226" kind="dir">
-    <compoundname>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/util/ros</compoundname>
+    <compoundname>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/util/ros</compoundname>
     <innerfile refid="_ros_communication_test_8java">RosCommunicationTest.java</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/util/ros/"/>
+    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/util/ros/"/>
   </compounddef>
 </doxygen>

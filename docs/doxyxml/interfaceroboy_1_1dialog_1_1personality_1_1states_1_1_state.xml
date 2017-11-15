@@ -23,8 +23,8 @@
         <reimplementedby refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_farewell_state_1a46331e7eb1bd04a2e60ac612a773d56b">act</reimplementedby>
         <reimplementedby refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia_1acde5a24d8fc50942713a6af666b8db80">act</reimplementedby>
         <reimplementedby refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_converse_state_1acfb99b2d78134f809113bf106e91f639">act</reimplementedby>
-        <reimplementedby refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state_1a075aa90b0e42c16b90420848c71dbf2f">act</reimplementedby>
         <reimplementedby refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_anecdote_state_1aecea2ddfcadb89b2a97cd926938e0593">act</reimplementedby>
+        <reimplementedby refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state_1a075aa90b0e42c16b90420848c71dbf2f">act</reimplementedby>
         <reimplementedby refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state_1a552bc4e0cae583082920e5cdba112ea9">act</reimplementedby>
         <reimplementedby refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1ac4d15984e61765e09fa9e129bd7be8a7">act</reimplementedby>
         <reimplementedby refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_inquiry_state_1a199aa5988c0b22b2ae93cd3c453a1d07">act</reimplementedby>
@@ -39,7 +39,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/State.java" line="14" column="1"/>
+        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/State.java" line="14" column="1"/>
       </memberdef>
       <memberdef kind="function" id="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state_1a7f9d1aebfca6aabf313eee279f9a390c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction" kindref="compound">Reaction</ref></type>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/State.java" line="16" column="1"/>
+        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/State.java" line="16" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -76,114 +76,114 @@
     <detaileddescription>
 <para>A state always acts when its enters and reacts when its left. Both, the reaction of the last and the action of the next state, are combined to give the answer of Roboy. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="1254">
+      <node id="1278">
         <label>roboy.dialog.personality.states.LocationDBpedia</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia"/>
-        <childnode refid="1247" relation="public-inheritance">
+        <childnode refid="1271" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1248">
+      <node id="1272">
         <label>roboy.dialog.personality.states.ConverseState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_converse_state"/>
-        <childnode refid="1247" relation="public-inheritance">
+        <childnode refid="1271" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1261">
+      <node id="1285">
         <label>roboy.dialog.personality.states.QuestionRandomizerState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state"/>
-        <childnode refid="1246" relation="public-inheritance">
+        <childnode refid="1270" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1251">
+      <node id="1275">
         <label>roboy.dialog.personality.states.IdleState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_idle_state"/>
-        <childnode refid="1247" relation="public-inheritance">
+        <childnode refid="1271" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1256">
+      <node id="1280">
         <label>roboy.dialog.personality.states.AnecdoteState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_anecdote_state"/>
-        <childnode refid="1246" relation="public-inheritance">
+        <childnode refid="1270" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1252">
+      <node id="1276">
         <label>roboy.dialog.personality.states.InquiryState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_inquiry_state"/>
-        <childnode refid="1247" relation="public-inheritance">
+        <childnode refid="1271" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1249">
+      <node id="1273">
         <label>roboy.dialog.personality.states.GenerativeCommunicationState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_generative_communication_state"/>
-        <childnode refid="1247" relation="public-inheritance">
+        <childnode refid="1271" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1247">
+      <node id="1271">
         <label>roboy.dialog.personality.states.AbstractBooleanState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
-        <childnode refid="1246" relation="public-inheritance">
+        <childnode refid="1270" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1250">
+      <node id="1274">
         <label>roboy.dialog.personality.states.GreetingState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_greeting_state"/>
-        <childnode refid="1247" relation="public-inheritance">
+        <childnode refid="1271" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1259">
+      <node id="1283">
         <label>roboy.dialog.personality.states.QuestionAnsweringState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state"/>
-        <childnode refid="1246" relation="public-inheritance">
+        <childnode refid="1270" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1258">
+      <node id="1282">
         <label>roboy.dialog.personality.states.FarewellState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_farewell_state"/>
-        <childnode refid="1246" relation="public-inheritance">
+        <childnode refid="1270" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1246">
+      <node id="1270">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
-      <node id="1263">
+      <node id="1287">
         <label>roboy.dialog.personality.states.WildTalkState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state"/>
-        <childnode refid="1246" relation="public-inheritance">
+        <childnode refid="1270" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1262">
+      <node id="1286">
         <label>roboy.dialog.personality.states.SegueState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state"/>
-        <childnode refid="1246" relation="public-inheritance">
+        <childnode refid="1270" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1253">
+      <node id="1277">
         <label>roboy.dialog.personality.states.IntroductionState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state"/>
-        <childnode refid="1247" relation="public-inheritance">
+        <childnode refid="1271" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1257">
+      <node id="1281">
         <label>roboy.dialog.personality.states.CelebrityState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_celebrity_state"/>
-        <childnode refid="1246" relation="public-inheritance">
+        <childnode refid="1270" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1255">
+      <node id="1279">
         <label>roboy.dialog.personality.states.PersonalQAState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state"/>
-        <childnode refid="1247" relation="public-inheritance">
+        <childnode refid="1271" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1260">
+      <node id="1284">
         <label>roboy.dialog.personality.states.QuestionAskingState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state"/>
-        <childnode refid="1246" relation="public-inheritance">
+        <childnode refid="1270" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/State.java" line="12" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/State.java" bodystart="12" bodyend="17"/>
+    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/State.java" line="12" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/State.java" bodystart="12" bodyend="17"/>
     <listofallmembers>
       <member refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state_1a56df9f548b4736b775dc9dbf450a6a51" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::State</scope><name>act</name></member>
       <member refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state_1a7f9d1aebfca6aabf313eee279f9a390c" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::State</scope><name>react</name></member>

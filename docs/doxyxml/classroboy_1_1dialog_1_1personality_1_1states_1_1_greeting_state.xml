@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/GreetingState.java" line="19" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/GreetingState.java" bodystart="19" bodyend="21"/>
+        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/GreetingState.java" line="19" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/GreetingState.java" bodystart="19" bodyend="21"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_greeting_state_1adc2e2ce4d1530cf047d2f38d0fdcf26a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction" kindref="compound">Reaction</ref></type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/GreetingState.java" line="24" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/GreetingState.java" bodystart="24" bodyend="30"/>
+        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/GreetingState.java" line="24" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/GreetingState.java" bodystart="24" bodyend="30"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -53,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/GreetingState.java" line="33" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/GreetingState.java" bodystart="33" bodyend="36"/>
+        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/GreetingState.java" line="33" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/GreetingState.java" bodystart="33" bodyend="36"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -61,53 +61,53 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="843">
+      <node id="860">
         <label>roboy.dialog.personality.states.AbstractBooleanState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
-        <childnode refid="844" relation="public-inheritance">
+        <childnode refid="861" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="842">
+      <node id="859">
         <label>roboy.dialog.personality.states.GreetingState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_greeting_state"/>
-        <childnode refid="843" relation="public-inheritance">
+        <childnode refid="860" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="844">
+      <node id="861">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="846">
+      <node id="863">
         <label>roboy.dialog.personality.states.AbstractBooleanState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
-        <childnode refid="847" relation="public-inheritance">
+        <childnode refid="864" relation="public-inheritance">
         </childnode>
-        <childnode refid="847" relation="usage">
+        <childnode refid="864" relation="usage">
           <edgelabel>success</edgelabel>
           <edgelabel>failure</edgelabel>
         </childnode>
-        <childnode refid="848" relation="usage">
+        <childnode refid="865" relation="usage">
           <edgelabel>failureTexts</edgelabel>
           <edgelabel>successTexts</edgelabel>
         </childnode>
       </node>
-      <node id="848">
+      <node id="865">
         <label>List&lt; String &gt;</label>
       </node>
-      <node id="845">
+      <node id="862">
         <label>roboy.dialog.personality.states.GreetingState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_greeting_state"/>
-        <childnode refid="846" relation="public-inheritance">
+        <childnode refid="863" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="847">
+      <node id="864">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/GreetingState.java" line="15" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states/GreetingState.java" bodystart="15" bodyend="38"/>
+    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/GreetingState.java" line="15" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/GreetingState.java" bodystart="15" bodyend="38"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_greeting_state_1ad91255a590b3b9e77d97ce320f499a58" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::GreetingState</scope><name>act</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_greeting_state_1a84e618f6885b609eec75ffa8dcc21322" prot="protected" virt="non-virtual"><scope>roboy::dialog::personality::states::GreetingState</scope><name>determineSuccess</name></member>
