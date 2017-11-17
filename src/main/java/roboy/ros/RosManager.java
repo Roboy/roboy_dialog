@@ -24,6 +24,12 @@ class RosManager {
         boolean success = true;
         // Iterate through the RosClients enum, mapping a client for each.
         for(RosClients c : RosClients.values()) {
+            // Do not initialize non-memory services if NOROS, but Memory!
+            if(Config.NOROS && Config.MEMORY) {
+                if (!c.address.contains("memory")) {
+                    continue;
+                }
+            }
             try {
                 clientMap.put(c, node.newServiceClient(c.address, c.type));
                 System.out.println(c.toString()+" initialization SUCCESS!");
