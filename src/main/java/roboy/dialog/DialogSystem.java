@@ -14,6 +14,7 @@ import roboy.dialog.personality.SmallTalkPersonality;
 import roboy.io.*;
 
 import roboy.linguistics.sentenceanalysis.*;
+import roboy.memory.Neo4jMemory;
 import roboy.talk.Verbalizer;
 
 import roboy.ros.RosMainNode;
@@ -84,6 +85,8 @@ public class DialogSystem {
 
         // initialize ROS node
         RosMainNode rosMainNode = new RosMainNode();
+        // initialize Memory with ROS
+        Neo4jMemory.getInstance(rosMainNode);
 
         /*
          * I/O INITIALIZATION

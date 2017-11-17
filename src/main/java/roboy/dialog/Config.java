@@ -128,6 +128,7 @@ public class Config {
         SHUTDOWN_ON_ROS_FAILURE = false;
         SHUTDOWN_ON_SERVICE_FAILURE = false;
         MEMORY = true;
+        ROS_HOSTNAME = yamlConfig.getString("ROS_HOSTNAME");
     }
 
     private void initializeYAMLConfig() {
