@@ -16,12 +16,12 @@ public class Interlocutor {
     Neo4jMemory memory;
     public boolean FAMILIAR = false;
     // Memory is not queried in NOROS mode.
-    private boolean noROS;
+    private boolean memoryROS;
 
     public Interlocutor() {
         this.person = new MemoryNodeModel(true);
         this.memory = Neo4jMemory.getInstance();
-        this.noROS = Config.NOROS;
+        this.memoryROS = Config.MEMORY;
     }
 
     /**
@@ -35,7 +35,7 @@ public class Interlocutor {
         person.setProperty("name", name);
         person.setLabel("Person");
 
-        if(!noROS) {
+        if(memoryROS) {
             ArrayList<Integer> ids = new ArrayList<>();
             // Query memory for matching persons.
             try {
@@ -81,7 +81,7 @@ public class Interlocutor {
      * Adds a new relation to the person node, updating memory.
      */
     public void addInformation(String relation, String name) {
-        if(noROS) return;
+        if(!memoryROS) return;
         ArrayList<Integer> ids = new ArrayList<>();
         // First check if node with given name exists by a matching query.
         MemoryNodeModel relatedNode = new MemoryNodeModel(true);
