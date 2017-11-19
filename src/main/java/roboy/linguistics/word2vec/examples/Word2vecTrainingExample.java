@@ -1,4 +1,4 @@
-package roboy.linguistics.word2vec;
+package roboy.linguistics.word2vec.examples;
 
 import org.deeplearning4j.models.word2vec.Word2Vec;
 import org.deeplearning4j.text.sentenceiterator.BasicLineIterator;
@@ -11,7 +11,8 @@ import java.util.Collection;
 
 
 /**
- * Neural net that processes text into wordvectors.
+ * Neural net that processes text into word-vectors.
+ *
  * Adapted from org.deeplearning4j.examples.nlp.word2vec.Word2VecRawTextExample
  */
 public class Word2vecTrainingExample {

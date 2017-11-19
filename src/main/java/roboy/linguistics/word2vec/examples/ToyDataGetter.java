@@ -1,4 +1,4 @@
-package roboy.linguistics.word2vec;
+package roboy.linguistics.word2vec.examples;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -14,6 +14,7 @@ import java.nio.channels.ReadableByteChannel;
 public class ToyDataGetter {
 
     private final boolean verbose;
+    private final String toyDataDirectory = "./resources/word2vec_toy_data_and_model/";
     private final String toyDataFilePath = "./resources/word2vec_toy_data_and_model/raw_sentences.txt";
     private final String toyDataInetURL = "https://raw.githubusercontent.com/deeplearning4j/dl4j-examples/master/dl4j-examples/src/main/resources/raw_sentences.txt";
 
@@ -27,8 +28,10 @@ public class ToyDataGetter {
         return toyDataFilePath;
     }
 
+    /**
+     * Checks if toy data is present on the hard drive. It will be downloaded if necessary.
+     */
     public void ensureToyDataIsPresent() {
-
 
         // check if already downloaded
         if (fileExists(toyDataFilePath)) {
@@ -39,6 +42,11 @@ public class ToyDataGetter {
         // need to download
         try {
             if (verbose) System.out.println("Data file is missing and will be downloaded to " + toyDataFilePath);
+
+            // make sure directory exists
+            File dir = new File(toyDataDirectory);
+            dir.mkdirs();
+
             downloadData(toyDataInetURL, toyDataFilePath);
 
         } catch (IOException e) {
