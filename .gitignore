@@ -15,3 +15,5 @@ local.properties
 
 
 .target
+
+resources/word2vec_toy_data_and_model
