@@ -8,7 +8,7 @@
     <organization>
         <name>Roboy</name>
     </organization>
-    <name>Roboy Dialog System
+    <name>Roboy Dialog System</name>
     <build>
             <plugins>
             <plugin>
