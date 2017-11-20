@@ -24,7 +24,8 @@ public class Config {
         DEFAULT("DEFAULT"),
         NOROS("NOROS"),
         STANDALONE("STANDALONE"),
-        DEBUG("DEBUG");
+        DEBUG("DEBUG"),
+        MEMORY_ONLY("MEMORY-ONLY");
 
         public String profileName;
 
@@ -46,6 +47,9 @@ public class Config {
     public static boolean SHUTDOWN_ON_SERVICE_FAILURE = true;
     /** ROS hostname, will be fetched from the configuration file in the DEFAULT profile. */
     public static String ROS_HOSTNAME = null;
+    /** If true, memory will be queried. Ensure that if NOROS=false, then MEMORY=true.
+     * When NOROS=true, MEMORY can be either true or false. **/
+    public static boolean MEMORY = true;
 
     /** Configuration file to store changing values. */
     private static String yamlConfigFile = "config.properties";
@@ -69,6 +73,9 @@ public class Config {
             case DEBUG:
                 setDebugProfile();
                 break;
+            case MEMORY_ONLY:
+                setMemoryProfile();
+                break;
             default:
                 setDefaultProfile();
         }
@@ -91,7 +98,6 @@ public class Config {
     /* PROFILE DEFINITIONS */
 
     private void setDefaultProfile() {
-        STANDALONE = false;
         ROS_HOSTNAME = yamlConfig.getString("ROS_HOSTNAME");
     }
 
@@ -99,6 +105,7 @@ public class Config {
         NOROS = true;
         SHUTDOWN_ON_ROS_FAILURE = false;
         SHUTDOWN_ON_SERVICE_FAILURE = false;
+        MEMORY = false;
     }
 
     private void setStandaloneProfile() {
@@ -107,11 +114,21 @@ public class Config {
         NOROS = true;
         SHUTDOWN_ON_ROS_FAILURE = false;
         SHUTDOWN_ON_SERVICE_FAILURE = false;
+        MEMORY = false;
     }
 
     private void setDebugProfile() {
         SHUTDOWN_ON_ROS_FAILURE = false;
         SHUTDOWN_ON_SERVICE_FAILURE = false;
+        ROS_HOSTNAME = yamlConfig.getString("ROS_HOSTNAME");
+    }
+
+    private void setMemoryProfile() {
+        NOROS = true;
+        SHUTDOWN_ON_ROS_FAILURE = false;
+        SHUTDOWN_ON_SERVICE_FAILURE = false;
+        MEMORY = true;
+        ROS_HOSTNAME = yamlConfig.getString("ROS_HOSTNAME");
     }
 
     private void initializeYAMLConfig() {

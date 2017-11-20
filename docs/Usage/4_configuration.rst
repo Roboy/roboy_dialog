@@ -30,6 +30,12 @@ Profiles
 |                    | profile includes all restrictions of NOROS and also does not    |
 |                    | call DBPedia.                                                   |
 +--------------------+-----------------------------------------------------------------+
+| MEMORY-ONLY        | To be used during Memory development, when no other ROS services|
+|                    | are running. Only Neo4j-related ROS calls will be made.         |
++--------------------+-----------------------------------------------------------------+
+| DEBUG              | With this setting, DM will run like DEFAULT but not shut down   |
+|                    | when ROS failures are encountered.                              |
++--------------------+-----------------------------------------------------------------+
 
 Extending
 ---------
