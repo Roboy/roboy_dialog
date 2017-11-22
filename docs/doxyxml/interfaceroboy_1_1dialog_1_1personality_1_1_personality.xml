@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="interfaceroboy_1_1dialog_1_1personality_1_1_personality" kind="interface" language="Java" prot="public">
     <compoundname>roboy::dialog::personality::Personality</compoundname>
     <derivedcompoundref refid="classroboy_1_1dialog_1_1personality_1_1_curious_personality" prot="public" virt="non-virtual">roboy.dialog.personality.CuriousPersonality</derivedcompoundref>
@@ -35,7 +35,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/Personality.java" line="28" column="1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/Personality.java" line="28" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -43,36 +43,36 @@
     <detaileddescription>
 <para>A personality is designed to define how Roboy reacts in every given situation. Roboy can always only represent one personality at a time. Different personalities are meant to be used in different situations, like a more formal or loose one depending on the occasion where he is at. In the future, also different languages could be realized by the use of different personalities.</para><para>The currently used personality is the <ref refid="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality" kindref="compound">SmallTalkPersonality</ref> which makes use of a state machine to act and react differently in different situations. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="1063">
+      <node id="393">
         <label>roboy.dialog.personality.Personality</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality"/>
       </node>
-      <node id="1066">
+      <node id="396">
         <label>roboy.dialog.personality.KnockKnockPersonality</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1_knock_knock_personality"/>
-        <childnode refid="1063" relation="public-inheritance">
+        <childnode refid="393" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1064">
+      <node id="394">
         <label>roboy.dialog.personality.CuriousPersonality</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1_curious_personality"/>
-        <childnode refid="1063" relation="public-inheritance">
+        <childnode refid="393" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1067">
+      <node id="397">
         <label>roboy.dialog.personality.SmallTalkPersonality</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality"/>
-        <childnode refid="1063" relation="public-inheritance">
+        <childnode refid="393" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1065">
+      <node id="395">
         <label>roboy.dialog.personality.DefaultPersonality</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1_default_personality"/>
-        <childnode refid="1063" relation="public-inheritance">
+        <childnode refid="393" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/Personality.java" line="18" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/Personality.java" bodystart="18" bodyend="29"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/Personality.java" line="18" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/Personality.java" bodystart="18" bodyend="29"/>
     <listofallmembers>
       <member refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality_1a44ef708481445e23415a56db6df16d7d" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::Personality</scope><name>answer</name></member>
     </listofallmembers>

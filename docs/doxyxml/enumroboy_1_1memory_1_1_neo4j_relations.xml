@@ -5,7 +5,7 @@
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relations_1a119c74365b3a82a5f0d3be50fbc68c63" prot="public" static="no" mutable="no">
         <type></type>
-        <definition>roboy.memory.Neo4jRelations.FROM</definition>
+        <definition>roboy.memory.Neo4jRelationships.FROM</definition>
         <argsstring></argsstring>
         <name>FROM</name>
         <initializer>=(&quot;FROM&quot;)</initializer>
@@ -19,7 +19,7 @@
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relations_1af4560b839aba6756486353ff27684cfe" prot="public" static="no" mutable="no">
         <type></type>
-        <definition>roboy.memory.Neo4jRelations.HAS_HOBBY</definition>
+        <definition>roboy.memory.Neo4jRelationships.HAS_HOBBY</definition>
         <argsstring></argsstring>
         <name>HAS_HOBBY</name>
         <initializer>=(&quot;HAS_HOBBY&quot;)</initializer>
@@ -33,7 +33,7 @@
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relations_1a145f999ecae6f101900fb59a9e79f4f7" prot="public" static="no" mutable="no">
         <type></type>
-        <definition>roboy.memory.Neo4jRelations.LIVE_IN</definition>
+        <definition>roboy.memory.Neo4jRelationships.LIVE_IN</definition>
         <argsstring></argsstring>
         <name>LIVE_IN</name>
         <initializer>=(&quot;LIVE_IN&quot;)</initializer>
@@ -47,7 +47,7 @@
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relations_1a73e95c854a3dae82f5d54ee6de79f892" prot="public" static="no" mutable="no">
         <type></type>
-        <definition>roboy.memory.Neo4jRelations.STUDY_AT</definition>
+        <definition>roboy.memory.Neo4jRelationships.STUDY_AT</definition>
         <argsstring></argsstring>
         <name>STUDY_AT</name>
         <initializer>=(&quot;STUDY_AT&quot;)</initializer>
@@ -61,7 +61,7 @@
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relations_1a2fb07dda2139efb22d0a02fa19289855" prot="public" static="no" mutable="no">
         <type></type>
-        <definition>roboy.memory.Neo4jRelations.OCCUPATION</definition>
+        <definition>roboy.memory.Neo4jRelationships.OCCUPATION</definition>
         <argsstring></argsstring>
         <name>OCCUPATION</name>
         <initializer>=(&quot;OCCUPATION&quot;)</initializer>
@@ -75,7 +75,7 @@
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relations_1a33121c6d1aae224d5f47e6101faed27d" prot="public" static="no" mutable="no">
         <type></type>
-        <definition>roboy.memory.Neo4jRelations.WORK_FOR</definition>
+        <definition>roboy.memory.Neo4jRelationships.WORK_FOR</definition>
         <argsstring></argsstring>
         <name>WORK_FOR</name>
         <initializer>=(&quot;WORK_FOR&quot;)</initializer>
@@ -89,7 +89,7 @@
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relations_1aeeabb1d253897cb28da6caa033d7dd86" prot="public" static="no" mutable="no">
         <type></type>
-        <definition>roboy.memory.Neo4jRelations.FRIEND_OF</definition>
+        <definition>roboy.memory.Neo4jRelationships.FRIEND_OF</definition>
         <argsstring></argsstring>
         <name>FRIEND_OF</name>
         <initializer>=(&quot;FRIEND_OF&quot;)</initializer>
@@ -103,7 +103,7 @@
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relations_1a5305f1dac5e187a0f4027475913697d3" prot="public" static="no" mutable="no">
         <type></type>
-        <definition>roboy.memory.Neo4jRelations.MEMBER_OF</definition>
+        <definition>roboy.memory.Neo4jRelationships.MEMBER_OF</definition>
         <argsstring></argsstring>
         <name>MEMBER_OF</name>
         <initializer>=(&quot;MEMBER_OF&quot;)</initializer>
@@ -117,7 +117,7 @@
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relations_1a9f03702549d21afb56d8569c4139c8c6" prot="public" static="no" mutable="no">
         <type>String</type>
-        <definition>String roboy.memory.Neo4jRelations.type</definition>
+        <definition>String roboy.memory.Neo4jRelationships.type</definition>
         <argsstring></argsstring>
         <name>type</name>
         <briefdescription>
@@ -132,7 +132,7 @@
       <sectiondef kind="public-func">
       <memberdef kind="function" id="enumroboy_1_1memory_1_1_neo4j_relations_1a45aed26296ff12fd8417bd648e6dac27" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
-        <definition>roboy.memory.Neo4jRelations.Neo4jRelations</definition>
+        <definition>Neo4jRelationships</definition>
         <argsstring>(String type)</argsstring>
         <name>Neo4jRelations</name>
         <param>
@@ -149,7 +149,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Contains the relations available in Neo4j database. </para>    </briefdescription>
+<para>Contains the relationships available in Neo4j database. </para>    </briefdescription>
     <detaileddescription>
 <para>Respective questions should be added to the questions.json file and used in the QuestionRandomizerState. </para>    </detaileddescription>
     <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" line="8" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/Neo4jRelations.java" bodystart="8" bodyend="23"/>

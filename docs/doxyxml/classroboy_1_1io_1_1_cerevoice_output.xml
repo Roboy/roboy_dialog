@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1io_1_1_cerevoice_output" kind="class" language="Java" prot="public">
     <compoundname>roboy::io::CerevoiceOutput</compoundname>
     <basecompoundref refid="interfaceroboy_1_1io_1_1_output_device" prot="public" virt="non-virtual">roboy.io.OutputDevice</basecompoundref>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CerevoiceOutput.java" line="15" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="15" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="15" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CerevoiceOutput.java" line="17" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="17" bodyend="19"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="17" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1io_1_1_cerevoice_output_1afed54c4dabf2c25c91d1db6af93a288b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CerevoiceOutput.java" line="22" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="22" bodyend="29"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" line="22" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="22" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1io_1_1_cerevoice_output_1ac7de7a9f412a35d23fdcb4bbabf67174" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -69,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CerevoiceOutput.java" line="31" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="31" bodyend="34"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" line="31" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="31" bodyend="34"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -77,61 +77,61 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="739">
+      <node id="69">
         <label>roboy.io.CerevoiceOutput</label>
         <link refid="classroboy_1_1io_1_1_cerevoice_output"/>
-        <childnode refid="740" relation="public-inheritance">
+        <childnode refid="70" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="740">
+      <node id="70">
         <label>roboy.io.OutputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_output_device"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="747">
+      <node id="77">
         <label>CountDownLatch</label>
       </node>
-      <node id="741">
+      <node id="71">
         <label>roboy.io.CerevoiceOutput</label>
         <link refid="classroboy_1_1io_1_1_cerevoice_output"/>
-        <childnode refid="742" relation="public-inheritance">
+        <childnode refid="72" relation="public-inheritance">
         </childnode>
-        <childnode refid="743" relation="usage">
+        <childnode refid="73" relation="usage">
           <edgelabel>rosMainNode</edgelabel>
         </childnode>
       </node>
-      <node id="746">
+      <node id="76">
         <label>HashMap&lt; roboy.ros.RosClients, ServiceClient &gt;</label>
       </node>
-      <node id="743">
+      <node id="73">
         <label>roboy.ros.RosMainNode</label>
         <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
-        <childnode refid="744" relation="public-inheritance">
+        <childnode refid="74" relation="public-inheritance">
         </childnode>
-        <childnode refid="745" relation="usage">
+        <childnode refid="75" relation="usage">
           <edgelabel>clients</edgelabel>
         </childnode>
-        <childnode refid="747" relation="usage">
+        <childnode refid="77" relation="usage">
           <edgelabel>rosConnectionLatch</edgelabel>
         </childnode>
       </node>
-      <node id="745">
+      <node id="75">
         <label>roboy.ros.RosManager</label>
         <link refid="classroboy_1_1ros_1_1_ros_manager"/>
-        <childnode refid="746" relation="usage">
+        <childnode refid="76" relation="usage">
           <edgelabel>clientMap</edgelabel>
         </childnode>
       </node>
-      <node id="742">
+      <node id="72">
         <label>roboy.io.OutputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_output_device"/>
       </node>
-      <node id="744">
+      <node id="74">
         <label>AbstractNodeMain</label>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CerevoiceOutput.java" line="13" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="12" bodyend="36"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="12" bodyend="36"/>
     <listofallmembers>
       <member refid="classroboy_1_1io_1_1_cerevoice_output_1afed54c4dabf2c25c91d1db6af93a288b" prot="public" virt="non-virtual"><scope>roboy::io::CerevoiceOutput</scope><name>act</name></member>
       <member refid="classroboy_1_1io_1_1_cerevoice_output_1a731b25d29d592eedf501331fc9c73484" prot="public" virt="non-virtual"><scope>roboy::io::CerevoiceOutput</scope><name>CerevoiceOutput</name></member>

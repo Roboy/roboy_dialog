@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1util_1_1_i_o" kind="class" language="Java" prot="public">
     <compoundname>roboy::util::IO</compoundname>
       <sectiondef kind="public-static-func">
@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/IO.java" line="15" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/IO.java" bodystart="15" bodyend="21"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/IO.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/IO.java" bodystart="15" bodyend="21"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1util_1_1_i_o_1a1a07f4094ceab934fef6c1fe8d21dc40" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/IO.java" line="23" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/IO.java" bodystart="23" bodyend="29"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/IO.java" line="23" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/IO.java" bodystart="23" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1util_1_1_i_o_1a10cfc30772d35efae48dcfdc4beb4c95" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; String &gt;</type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/IO.java" line="31" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/IO.java" bodystart="31" bodyend="37"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/IO.java" line="31" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/IO.java" bodystart="31" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1util_1_1_i_o_1acad77f5b050acb0fc76d1cd2c4a3c7b4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; String &gt;</type>
@@ -69,14 +69,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/IO.java" line="39" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/IO.java" bodystart="39" bodyend="45"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/IO.java" line="39" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/IO.java" bodystart="39" bodyend="45"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Helper class for <ref refid="classroboy_1_1util_1_1_i_o" kindref="compound">IO</ref> related tasks. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/IO.java" line="13" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/IO.java" bodystart="13" bodyend="46"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/IO.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/IO.java" bodystart="13" bodyend="46"/>
     <listofallmembers>
       <member refid="classroboy_1_1util_1_1_i_o_1a19e4600747f1e4c4cae1de0feb05eeb8" prot="public" virt="non-virtual"><scope>roboy::util::IO</scope><name>readFile</name></member>
       <member refid="classroboy_1_1util_1_1_i_o_1a1a07f4094ceab934fef6c1fe8d21dc40" prot="public" virt="non-virtual"><scope>roboy::util::IO</scope><name>readFile</name></member>

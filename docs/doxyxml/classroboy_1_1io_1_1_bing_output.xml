@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1io_1_1_bing_output" kind="class" language="Java" prot="public">
     <compoundname>roboy::io::BingOutput</compoundname>
     <basecompoundref refid="interfaceroboy_1_1io_1_1_output_device" prot="public" virt="non-virtual">roboy.io.OutputDevice</basecompoundref>
@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/BingOutput.java" line="18" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/BingOutput.java" bodystart="18" bodyend="24"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/BingOutput.java" line="18" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/BingOutput.java" bodystart="18" bodyend="24"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1io_1_1_bing_output_1abb386e2c1b15dfc75098978c782dd06d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/BingOutput.java" line="26" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/BingOutput.java" bodystart="26" bodyend="31"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/BingOutput.java" line="26" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/BingOutput.java" bodystart="26" bodyend="31"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -45,30 +45,30 @@
     <detaileddescription>
 <para>Requires internet connection. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="726">
+      <node id="56">
         <label>roboy.io.BingOutput</label>
         <link refid="classroboy_1_1io_1_1_bing_output"/>
-        <childnode refid="727" relation="public-inheritance">
+        <childnode refid="57" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="727">
+      <node id="57">
         <label>roboy.io.OutputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_output_device"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="728">
+      <node id="58">
         <label>roboy.io.BingOutput</label>
         <link refid="classroboy_1_1io_1_1_bing_output"/>
-        <childnode refid="729" relation="public-inheritance">
+        <childnode refid="59" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="729">
+      <node id="59">
         <label>roboy.io.OutputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_output_device"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/BingOutput.java" line="15" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/BingOutput.java" bodystart="14" bodyend="33"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/BingOutput.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/BingOutput.java" bodystart="14" bodyend="33"/>
     <listofallmembers>
       <member refid="classroboy_1_1io_1_1_bing_output_1a7e19c215ad749e2b3eeed94ccae6916a" prot="public" virt="non-virtual"><scope>roboy::io::BingOutput</scope><name>act</name></member>
       <member refid="classroboy_1_1io_1_1_bing_output_1abb386e2c1b15dfc75098978c782dd06d" prot="public" virt="non-virtual"><scope>roboy::io::BingOutput</scope><name>say</name></member>

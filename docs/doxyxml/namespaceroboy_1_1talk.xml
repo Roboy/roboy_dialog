@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="namespaceroboy_1_1talk" kind="namespace" language="Java">
     <compoundname>roboy::talk</compoundname>
     <innerclass refid="classroboy_1_1talk_1_1_statement_builder" prot="public">roboy::talk::StatementBuilder</innerclass>
@@ -9,6 +9,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/StatementBuilder.java" line="1" column="1"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/StatementBuilder.java" line="1" column="1"/>
   </compounddef>
 </doxygen>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_dictionary_based_sentence_type_detector" kind="class" language="Java" prot="public">
     <compoundname>roboy::linguistics::sentenceanalysis::DictionaryBasedSentenceTypeDetector</compoundname>
     <basecompoundref refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer" prot="public" virt="non-virtual">roboy.linguistics.sentenceanalysis.Analyzer</basecompoundref>
@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/DictionaryBasedSentenceTypeDetector.java" line="14" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/DictionaryBasedSentenceTypeDetector.java" bodystart="14" bodyend="20"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/DictionaryBasedSentenceTypeDetector.java" line="14" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/DictionaryBasedSentenceTypeDetector.java" bodystart="14" bodyend="20"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -30,11 +30,11 @@
         <argsstring>(String[] tokens, String[] posTags)</argsstring>
         <name>determineSentenceType</name>
         <param>
-          <type>String[]</type>
+          <type>String []</type>
           <declname>tokens</declname>
         </param>
         <param>
-          <type>String[]</type>
+          <type>String []</type>
           <declname>posTags</declname>
         </param>
         <briefdescription>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/DictionaryBasedSentenceTypeDetector.java" line="22" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/DictionaryBasedSentenceTypeDetector.java" bodystart="22" bodyend="47"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/DictionaryBasedSentenceTypeDetector.java" line="22" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/DictionaryBasedSentenceTypeDetector.java" bodystart="22" bodyend="47"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -51,30 +51,30 @@
     <detaileddescription>
 <para>Puts the answer in the sentenceType variable of the <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> object. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="809">
+      <node id="139">
         <label>roboy.linguistics.sentenceanalysis.DictionaryBasedSentenceTypeDetector</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_dictionary_based_sentence_type_detector"/>
-        <childnode refid="810" relation="public-inheritance">
+        <childnode refid="140" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="810">
+      <node id="140">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="811">
+      <node id="141">
         <label>roboy.linguistics.sentenceanalysis.DictionaryBasedSentenceTypeDetector</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_dictionary_based_sentence_type_detector"/>
-        <childnode refid="812" relation="public-inheritance">
+        <childnode refid="142" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="812">
+      <node id="142">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/DictionaryBasedSentenceTypeDetector.java" line="11" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/DictionaryBasedSentenceTypeDetector.java" bodystart="11" bodyend="48"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/DictionaryBasedSentenceTypeDetector.java" line="11" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/DictionaryBasedSentenceTypeDetector.java" bodystart="11" bodyend="48"/>
     <listofallmembers>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_dictionary_based_sentence_type_detector_1a9a7512eecf164928943994f5b13eec00" prot="public" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::DictionaryBasedSentenceTypeDetector</scope><name>analyze</name></member>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_dictionary_based_sentence_type_detector_1a47444eb6225a58f43db6f04768519b59" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::DictionaryBasedSentenceTypeDetector</scope><name>determineSentenceType</name></member>

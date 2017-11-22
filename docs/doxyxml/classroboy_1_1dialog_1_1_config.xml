@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1dialog_1_1_config" kind="class" language="Java" prot="public">
     <compoundname>roboy::dialog::Config</compoundname>
     <innerclass refid="enumroboy_1_1dialog_1_1_config_1_1_configuration_profile" prot="public">roboy::dialog::Config::ConfigurationProfile</innerclass>
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" line="40" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" bodystart="40" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" line="41" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1_config_1ac3c59e8630e25d0889e26639e27fee7e" prot="public" static="yes" mutable="no">
         <type>boolean</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" line="42" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" bodystart="42" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" line="43" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1_config_1aa156e4b3795f425e1b05a9f83a535ba9" prot="public" static="yes" mutable="no">
         <type>boolean</type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" line="44" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" bodystart="44" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" line="45" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1_config_1adfd9d5b4e724eb8ca131edc661d0ba07" prot="public" static="yes" mutable="no">
         <type>boolean</type>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" line="46" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" bodystart="46" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" line="47" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1_config_1a8ee6e97dda133e00b18f5e6fb59ecb7b" prot="public" static="yes" mutable="no">
         <type>String</type>
@@ -72,7 +72,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" line="48" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" bodystart="48" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" line="49" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1dialog_1_1_config_1ace25c70907783d5cdac32e1aac0129c7" prot="public" static="yes" mutable="no">
+        <type>boolean</type>
+        <definition>boolean roboy.dialog.Config.MEMORY</definition>
+        <argsstring></argsstring>
+        <name>MEMORY</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>If true, memory will be queried. </para>        </briefdescription>
+        <detaileddescription>
+<para>Ensure that if NOROS=false, then MEMORY=true. When NOROS=true, MEMORY can be either true or false. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" line="52" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" bodystart="52" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-attrib">
@@ -88,7 +102,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" line="51" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" bodystart="51" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" line="55" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" bodystart="55" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -103,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" line="52" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" bodystart="52" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" line="56" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" bodystart="56" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -122,7 +136,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" line="57" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" bodystart="57" bodyend="75"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" line="61" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" bodystart="61" bodyend="82"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -150,7 +164,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" line="82" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" bodystart="82" bodyend="89"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" line="89" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" bodystart="89" bodyend="96"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -165,7 +179,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" line="93" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" bodystart="93" bodyend="96"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" line="100" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" bodystart="100" bodyend="103"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1_config_1a9d7135b3ba6b7bcb4891e9f731f08f65" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -178,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" line="98" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" bodystart="98" bodyend="102"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" line="105" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" bodystart="105" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1_config_1a2b0d47cfc48f1c382262c7f557587620" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -191,7 +205,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" line="104" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" bodystart="104" bodyend="110"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" line="112" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" bodystart="112" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1_config_1a458b1cb9b8bf1fa8761090ec4f9e05e0" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -204,7 +218,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" line="112" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" bodystart="112" bodyend="115"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" line="121" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" bodystart="121" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1dialog_1_1_config_1a72897ac0cb28b0c614fc0c472b213655" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.dialog.Config.setMemoryProfile</definition>
+        <argsstring>()</argsstring>
+        <name>setMemoryProfile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" line="126" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" bodystart="126" bodyend="132"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1_config_1ab8bb207961420d4e9f81326348d712d9" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -217,7 +244,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" line="117" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" bodystart="117" bodyend="134"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" line="134" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" bodystart="134" bodyend="151"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -225,26 +252,28 @@
     <detaileddescription>
 <para>1) Configuration variables define alternating behaviors. 2) To create a combination of configurations, add a new profile to Configurations and implement its setProfile method. </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="775">
+      <node id="105">
         <label>YAMLConfiguration</label>
       </node>
-      <node id="774">
+      <node id="104">
         <label>roboy.dialog.Config</label>
         <link refid="classroboy_1_1dialog_1_1_config"/>
-        <childnode refid="775" relation="usage">
+        <childnode refid="105" relation="usage">
           <edgelabel>yamlConfig</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" line="17" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/Config.java" bodystart="17" bodyend="135"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/Config.java" bodystart="17" bodyend="152"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1_config_1a7ee54e9007728696d0a9dcf6c92b6007" prot="public" virt="non-virtual"><scope>roboy::dialog::Config</scope><name>Config</name></member>
       <member refid="classroboy_1_1dialog_1_1_config_1a4e248aa5e32769a33d099a3e031320a6" prot="public" virt="non-virtual"><scope>roboy::dialog::Config</scope><name>getProfileFromEnvironment</name></member>
       <member refid="classroboy_1_1dialog_1_1_config_1ab8bb207961420d4e9f81326348d712d9" prot="private" virt="non-virtual"><scope>roboy::dialog::Config</scope><name>initializeYAMLConfig</name></member>
+      <member refid="classroboy_1_1dialog_1_1_config_1ace25c70907783d5cdac32e1aac0129c7" prot="public" virt="non-virtual"><scope>roboy::dialog::Config</scope><name>MEMORY</name></member>
       <member refid="classroboy_1_1dialog_1_1_config_1ac3c59e8630e25d0889e26639e27fee7e" prot="public" virt="non-virtual"><scope>roboy::dialog::Config</scope><name>NOROS</name></member>
       <member refid="classroboy_1_1dialog_1_1_config_1a8ee6e97dda133e00b18f5e6fb59ecb7b" prot="public" virt="non-virtual"><scope>roboy::dialog::Config</scope><name>ROS_HOSTNAME</name></member>
       <member refid="classroboy_1_1dialog_1_1_config_1a458b1cb9b8bf1fa8761090ec4f9e05e0" prot="private" virt="non-virtual"><scope>roboy::dialog::Config</scope><name>setDebugProfile</name></member>
       <member refid="classroboy_1_1dialog_1_1_config_1ae19216d9f00ccd6a4ba7eedb952a39b8" prot="private" virt="non-virtual"><scope>roboy::dialog::Config</scope><name>setDefaultProfile</name></member>
+      <member refid="classroboy_1_1dialog_1_1_config_1a72897ac0cb28b0c614fc0c472b213655" prot="private" virt="non-virtual"><scope>roboy::dialog::Config</scope><name>setMemoryProfile</name></member>
       <member refid="classroboy_1_1dialog_1_1_config_1a9d7135b3ba6b7bcb4891e9f731f08f65" prot="private" virt="non-virtual"><scope>roboy::dialog::Config</scope><name>setNoROSProfile</name></member>
       <member refid="classroboy_1_1dialog_1_1_config_1a2b0d47cfc48f1c382262c7f557587620" prot="private" virt="non-virtual"><scope>roboy::dialog::Config</scope><name>setStandaloneProfile</name></member>
       <member refid="classroboy_1_1dialog_1_1_config_1aa156e4b3795f425e1b05a9f83a535ba9" prot="public" virt="non-virtual"><scope>roboy::dialog::Config</scope><name>SHUTDOWN_ON_ROS_FAILURE</name></member>

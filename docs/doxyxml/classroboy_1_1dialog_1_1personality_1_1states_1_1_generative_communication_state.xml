@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1dialog_1_1personality_1_1states_1_1_generative_communication_state" kind="class" language="Java" prot="public">
     <compoundname>roboy::dialog::personality::states::GenerativeCommunicationState</compoundname>
     <basecompoundref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state" prot="public" virt="non-virtual">roboy.dialog.personality.states.AbstractBooleanState</basecompoundref>
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/GenerativeCommunicationState.java" line="11" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/GenerativeCommunicationState.java" bodystart="11" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/GenerativeCommunicationState.java" line="11" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/GenerativeCommunicationState.java" bodystart="11" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/GenerativeCommunicationState.java" line="14" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/GenerativeCommunicationState.java" bodystart="14" bodyend="20"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/GenerativeCommunicationState.java" line="14" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/GenerativeCommunicationState.java" bodystart="14" bodyend="20"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/GenerativeCommunicationState.java" line="23" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/GenerativeCommunicationState.java" bodystart="23" bodyend="25"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/GenerativeCommunicationState.java" line="23" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/GenerativeCommunicationState.java" bodystart="23" bodyend="25"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -59,53 +59,53 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="852">
+      <node id="182">
         <label>roboy.dialog.personality.states.GenerativeCommunicationState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_generative_communication_state"/>
-        <childnode refid="853" relation="public-inheritance">
+        <childnode refid="183" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="853">
+      <node id="183">
         <label>roboy.dialog.personality.states.AbstractBooleanState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
-        <childnode refid="854" relation="public-inheritance">
+        <childnode refid="184" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="854">
+      <node id="184">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="855">
+      <node id="185">
         <label>roboy.dialog.personality.states.GenerativeCommunicationState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_generative_communication_state"/>
-        <childnode refid="856" relation="public-inheritance">
+        <childnode refid="186" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="856">
+      <node id="186">
         <label>roboy.dialog.personality.states.AbstractBooleanState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
-        <childnode refid="857" relation="public-inheritance">
+        <childnode refid="187" relation="public-inheritance">
         </childnode>
-        <childnode refid="857" relation="usage">
+        <childnode refid="187" relation="usage">
           <edgelabel>success</edgelabel>
           <edgelabel>failure</edgelabel>
         </childnode>
-        <childnode refid="858" relation="usage">
+        <childnode refid="188" relation="usage">
           <edgelabel>failureTexts</edgelabel>
           <edgelabel>successTexts</edgelabel>
         </childnode>
       </node>
-      <node id="858">
+      <node id="188">
         <label>List&lt; String &gt;</label>
       </node>
-      <node id="857">
+      <node id="187">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/GenerativeCommunicationState.java" line="9" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/GenerativeCommunicationState.java" bodystart="9" bodyend="27"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/GenerativeCommunicationState.java" line="9" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/GenerativeCommunicationState.java" bodystart="9" bodyend="27"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_generative_communication_state_1a121364ed98684344911c675f4b44d20b" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::GenerativeCommunicationState</scope><name>act</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_generative_communication_state_1af6c1ee2040ab50c5ec1ed201dfff9a63" prot="protected" virt="non-virtual"><scope>roboy::dialog::personality::states::GenerativeCommunicationState</scope><name>determineSuccess</name></member>

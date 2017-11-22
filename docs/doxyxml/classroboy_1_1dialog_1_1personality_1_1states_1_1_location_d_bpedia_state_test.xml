@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia_state_test" kind="class" language="Java" prot="public">
     <compoundname>roboy::dialog::personality::states::LocationDBpediaStateTest</compoundname>
       <sectiondef kind="public-func">
@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/dialog/personality/states/LocationDBpediaStateTest.java" line="15" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/dialog/personality/states/LocationDBpediaStateTest.java" bodystart="15" bodyend="22"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/LocationDBpediaStateTest.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/LocationDBpediaStateTest.java" bodystart="15" bodyend="22"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia_state_test_1a2b6708a4a00f5ffaeecbebff020282e6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -27,14 +27,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/dialog/personality/states/LocationDBpediaStateTest.java" line="25" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/dialog/personality/states/LocationDBpediaStateTest.java" bodystart="25" bodyend="32"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/LocationDBpediaStateTest.java" line="25" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/LocationDBpediaStateTest.java" bodystart="25" bodyend="32"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Created by roboy on 7/5/17. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/dialog/personality/states/LocationDBpediaStateTest.java" line="13" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/dialog/personality/states/LocationDBpediaStateTest.java" bodystart="13" bodyend="33"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/LocationDBpediaStateTest.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/LocationDBpediaStateTest.java" bodystart="13" bodyend="33"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia_state_test_1a6b21dc6542d43bff4cb5eb9db0b85709" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::LocationDBpediaStateTest</scope><name>testCity</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia_state_test_1a2b6708a4a00f5ffaeecbebff020282e6" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::LocationDBpediaStateTest</scope><name>testCountry</name></member>

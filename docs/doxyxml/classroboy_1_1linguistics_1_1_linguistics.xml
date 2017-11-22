@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1linguistics_1_1_linguistics" kind="class" language="Java" prot="public">
     <compoundname>roboy::linguistics::Linguistics</compoundname>
     <innerclass refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e" prot="public">roboy::linguistics::Linguistics::SEMANTIC_ROLE</innerclass>
@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" line="45" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" bodystart="45" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" line="45" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a01c8ef9fc982cac7eca3ce18db0adc59" prot="public" static="yes" mutable="no">
         <type>final List&lt; String &gt;</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" line="46" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" bodystart="46" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" line="46" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a20cc187660a43ff97783ab440cf905ab" prot="public" static="yes" mutable="no">
         <type>final String</type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" line="53" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" bodystart="53" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" line="53" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" bodystart="53" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a1659b8d6a0e5fb01c78446b27f37b2bd" prot="public" static="yes" mutable="no">
         <type>final String</type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" line="58" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" bodystart="58" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" line="58" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a39882a2997837092879b845699c30a45" prot="public" static="yes" mutable="no">
         <type>final String</type>
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" line="63" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" bodystart="63" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" line="63" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a670831be458b376b147090559f1e11f6" prot="public" static="yes" mutable="no">
         <type>final String</type>
@@ -87,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" line="68" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" bodystart="68" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" line="68" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1ae3946aa0957f099a139aad5539aac1ef" prot="public" static="yes" mutable="no">
         <type>final String</type>
@@ -101,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" line="73" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" bodystart="73" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" line="73" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1aa55ac4495182f1c9681ba5646c6f9d5b" prot="public" static="yes" mutable="no">
         <type>final String</type>
@@ -115,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" line="78" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" bodystart="78" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" line="78" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" bodystart="78" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a997bdb1b4095abe1a89214d93cedc6ec" prot="public" static="yes" mutable="no">
         <type>final String</type>
@@ -129,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" line="83" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" bodystart="83" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" line="83" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a8f6210e582e16c59a1e80d10e4b3422b" prot="public" static="yes" mutable="no">
         <type>final String</type>
@@ -143,7 +143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" line="88" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" bodystart="88" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" line="88" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1acc3f25f22b6c0efd5c8263889d395ce1" prot="public" static="yes" mutable="no">
         <type>final String</type>
@@ -157,7 +157,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" line="93" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" bodystart="93" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" line="93" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" bodystart="93" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1abc2dcf7a32e22e408d6afa224502f4b3" prot="public" static="yes" mutable="no">
         <type>final String</type>
@@ -171,7 +171,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" line="98" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" bodystart="98" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" line="98" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" bodystart="98" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a2398c1301599c3b5f79ab6d3c167376d" prot="public" static="yes" mutable="no">
         <type>final String</type>
@@ -185,7 +185,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" line="104" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" bodystart="104" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" line="104" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a3c881e6e18d76bcf9a0959a4e30aed24" prot="public" static="yes" mutable="no">
         <type>final String</type>
@@ -200,7 +200,7 @@ for a living?&quot;. </para>        </briefdescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" line="111" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" bodystart="111" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" line="111" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1ad40212885a0fe422f69913395aa4b221" prot="public" static="yes" mutable="no">
         <type>final String</type>
@@ -214,7 +214,7 @@ for a living?&quot;. </para>        </briefdescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" line="116" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" bodystart="116" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" line="116" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a8e620c12c5527d34cf689156465cf451" prot="public" static="yes" mutable="no">
         <type>final String</type>
@@ -228,7 +228,7 @@ for a living?&quot;. </para>        </briefdescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" line="121" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" bodystart="121" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" line="121" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_linguistics_1a85c4b3f5cc755b7acc74b5309616db91" prot="public" static="yes" mutable="no">
         <type>final String</type>
@@ -242,7 +242,7 @@ for a living?&quot;. </para>        </briefdescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" line="126" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" bodystart="126" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" line="126" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" bodystart="126" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -250,19 +250,19 @@ for a living?&quot;. </para>        </briefdescription>
     <detaileddescription>
 <para>related to linguistics.</para><para>Most importantly it contains the names of the results of the Analyzer that are stored in an Interpretation object and can be retrieved by the getFeature(String featureName) method. These feature names include: SENTENCE TRIPLE TOKENS POSTAGS KEYWORDS ASSOCIATION PAS NAME CELEBRITY OBJ_ANSWER PRED_ANSWER EMOTION INTENT INTENT_DISTANCE </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="972">
+      <node id="302">
         <label>roboy.linguistics.Linguistics</label>
         <link refid="classroboy_1_1linguistics_1_1_linguistics"/>
-        <childnode refid="973" relation="usage">
+        <childnode refid="303" relation="usage">
           <edgelabel>beMod</edgelabel>
           <edgelabel>tobe</edgelabel>
         </childnode>
       </node>
-      <node id="973">
+      <node id="303">
         <label>List&lt; String &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" line="30" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/Linguistics.java" bodystart="30" bodyend="128"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" line="30" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/Linguistics.java" bodystart="30" bodyend="128"/>
     <listofallmembers>
       <member refid="classroboy_1_1linguistics_1_1_linguistics_1aa55ac4495182f1c9681ba5646c6f9d5b" prot="public" virt="non-virtual"><scope>roboy::linguistics::Linguistics</scope><name>ASSOCIATION</name></member>
       <member refid="classroboy_1_1linguistics_1_1_linguistics_1a01c8ef9fc982cac7eca3ce18db0adc59" prot="public" virt="non-virtual"><scope>roboy::linguistics::Linguistics</scope><name>beMod</name></member>

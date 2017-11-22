@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1logic_1_1_statement_interpreter" kind="class" language="Java" prot="public">
     <compoundname>roboy::logic::StatementInterpreter</compoundname>
       <sectiondef kind="public-static-func">
@@ -38,14 +38,14 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/logic/StatementInterpreter.java" line="14" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/logic/StatementInterpreter.java" bodystart="14" bodyend="19"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/logic/StatementInterpreter.java" line="14" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/logic/StatementInterpreter.java" bodystart="14" bodyend="19"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/logic/StatementInterpreter.java" line="5" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/logic/StatementInterpreter.java" bodystart="5" bodyend="20"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/logic/StatementInterpreter.java" line="5" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/logic/StatementInterpreter.java" bodystart="5" bodyend="20"/>
     <listofallmembers>
       <member refid="classroboy_1_1logic_1_1_statement_interpreter_1ad514c7828ba552ca3f7349a387d86c82" prot="public" virt="non-virtual"><scope>roboy::logic::StatementInterpreter</scope><name>isFromList</name></member>
     </listofallmembers>

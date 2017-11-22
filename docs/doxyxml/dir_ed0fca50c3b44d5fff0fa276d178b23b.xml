@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="dir_ed0fca50c3b44d5fff0fa276d178b23b" kind="dir">
-    <compoundname>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics</compoundname>
-    <innerdir refid="dir_309ae92be9f26a3d782e391154c61beb">/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics</innerdir>
-    <innerdir refid="dir_2b9136678cbc7c985d98384a060ef73e">/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis</innerdir>
+    <compoundname>/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics</compoundname>
+    <innerdir refid="dir_309ae92be9f26a3d782e391154c61beb">/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/phonetics</innerdir>
+    <innerdir refid="dir_2b9136678cbc7c985d98384a060ef73e">/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis</innerdir>
     <innerfile refid="linguistics_2_concept_8java">Concept.java</innerfile>
     <innerfile refid="_detected_entity_8java">DetectedEntity.java</innerfile>
     <innerfile refid="_entity_8java">Entity.java</innerfile>
@@ -14,6 +14,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/"/>
   </compounddef>
 </doxygen>

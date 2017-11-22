@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="interfaceroboy_1_1dialog_1_1action_1_1_action" kind="interface" language="Java" prot="public">
     <compoundname>roboy::dialog::action::Action</compoundname>
     <derivedcompoundref refid="classroboy_1_1dialog_1_1action_1_1_face_action" prot="public" virt="non-virtual">roboy.dialog.action.FaceAction</derivedcompoundref>
@@ -10,30 +10,30 @@
     <detaileddescription>
 <para>The interface is empty, since different output devices will require different informations in an action. The most important action is the <ref refid="classroboy_1_1dialog_1_1action_1_1_speech_action" kindref="compound">SpeechAction</ref> which is used for communication. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="686">
+      <node id="16">
         <label>roboy.dialog.action.SpeechAction</label>
         <link refid="classroboy_1_1dialog_1_1action_1_1_speech_action"/>
-        <childnode refid="683" relation="public-inheritance">
+        <childnode refid="13" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="685">
+      <node id="15">
         <label>roboy.dialog.action.ShutDownAction</label>
         <link refid="classroboy_1_1dialog_1_1action_1_1_shut_down_action"/>
-        <childnode refid="683" relation="public-inheritance">
+        <childnode refid="13" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="684">
+      <node id="14">
         <label>roboy.dialog.action.FaceAction</label>
         <link refid="classroboy_1_1dialog_1_1action_1_1_face_action"/>
-        <childnode refid="683" relation="public-inheritance">
+        <childnode refid="13" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="683">
+      <node id="13">
         <label>roboy.dialog.action.Action</label>
         <link refid="interfaceroboy_1_1dialog_1_1action_1_1_action"/>
       </node>
     </inheritancegraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action/Action.java" line="8" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action/Action.java" bodystart="8" bodyend="10"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/action/Action.java" line="8" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/action/Action.java" bodystart="8" bodyend="10"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1memory_1_1nodes_1_1_interlocutor" kind="class" language="Java" prot="public">
     <compoundname>roboy::memory::nodes::Interlocutor</compoundname>
       <sectiondef kind="private-attrib">
@@ -14,20 +14,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" line="15" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="15" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="15" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1ae57da15fd747469006ebd75c4c355257" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a05be703120a3e7d5c0529041ec10e6a1" prot="private" static="no" mutable="no">
         <type>boolean</type>
-        <definition>boolean roboy.memory.nodes.Interlocutor.noROS</definition>
+        <definition>boolean roboy.memory.nodes.Interlocutor.memoryROS</definition>
         <argsstring></argsstring>
-        <name>noROS</name>
+        <name>memoryROS</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" line="19" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="19" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" line="19" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="19" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="package-attrib">
@@ -42,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" line="16" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="16" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" line="16" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="16" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" line="17" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="17" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="17" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" line="21" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="21" bodyend="25"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="21" bodyend="25"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a884523d4dc76e54718ef124a55ef9fd4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -90,7 +90,7 @@
 <para>Unless something goes wrong during querying, which would affect the following communication severely. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" line="34" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="34" bodyend="70"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" line="34" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="34" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a9c27bd97032c7790c517a2110fbf9689" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -103,15 +103,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" line="72" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="72" bodyend="74"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" line="72" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="72" bodyend="74"/>
       </memberdef>
-      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1ad2dd6dd683a869c0d1f75ea8a6dec585" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1ae3facf1563df72addddb348346b94139" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>boolean</type>
-        <definition>boolean roboy.memory.nodes.Interlocutor.hasRelation</definition>
-        <argsstring>(Neo4jRelations type)</argsstring>
-        <name>hasRelation</name>
+        <definition>boolean roboy.memory.nodes.Interlocutor.hasRelationship</definition>
+        <argsstring>(Neo4jRelationships type)</argsstring>
+        <name>hasRelationship</name>
         <param>
-          <type><ref refid="enumroboy_1_1memory_1_1_neo4j_relations" kindref="compound">Neo4jRelations</ref></type>
+          <type><ref refid="enumroboy_1_1memory_1_1_neo4j_relationships" kindref="compound">Neo4jRelationships</ref></type>
           <declname>type</declname>
         </param>
         <briefdescription>
@@ -120,16 +120,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" line="76" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="76" bodyend="78"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" line="76" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="76" bodyend="78"/>
       </memberdef>
-      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a6d30fb3f6457574c4b9e1e1a28c3486c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a0e59e8acfe71553dfd71c7f025072ac5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void roboy.memory.nodes.Interlocutor.addInformation</definition>
-        <argsstring>(String relation, String name)</argsstring>
+        <argsstring>(String relationship, String name)</argsstring>
         <name>addInformation</name>
         <param>
           <type>String</type>
-          <declname>relation</declname>
+          <declname>relationship</declname>
         </param>
         <param>
           <type>String</type>
@@ -141,18 +141,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" line="83" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="83" bodyend="121"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" line="83" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="83" bodyend="121"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
-      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a8827f7996f774eb675168cd45df82962" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a649d8b8ef691e60aa184991d30993a9d" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
         <definition>String roboy.memory.nodes.Interlocutor.determineNodeType</definition>
-        <argsstring>(String relation)</argsstring>
+        <argsstring>(String relationship)</argsstring>
         <name>determineNodeType</name>
         <param>
           <type>String</type>
-          <declname>relation</declname>
+          <declname>relationship</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -160,7 +160,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" line="123" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="123" bodyend="130"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" line="123" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="123" bodyend="130"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -168,100 +168,100 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="918">
+      <node id="248">
         <label>CountDownLatch</label>
       </node>
-      <node id="913">
+      <node id="243">
         <label>Gson</label>
       </node>
-      <node id="907">
+      <node id="237">
         <label>roboy.memory.nodes.MemoryNodeModel</label>
         <link refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model"/>
-        <childnode refid="908" relation="usage">
+        <childnode refid="238" relation="usage">
           <edgelabel>properties</edgelabel>
         </childnode>
-        <childnode refid="909" relation="usage">
+        <childnode refid="239" relation="usage">
           <edgelabel>labels</edgelabel>
         </childnode>
-        <childnode refid="910" relation="usage">
-          <edgelabel>relations</edgelabel>
+        <childnode refid="240" relation="usage">
+          <edgelabel>relationships</edgelabel>
         </childnode>
       </node>
-      <node id="912">
+      <node id="242">
         <label>roboy.memory.Memory&lt; MemoryNodeModel &gt;</label>
         <link refid="interfaceroboy_1_1memory_1_1_memory"/>
       </node>
-      <node id="906">
+      <node id="236">
         <label>roboy.memory.nodes.Interlocutor</label>
         <link refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor"/>
-        <childnode refid="907" relation="usage">
+        <childnode refid="237" relation="usage">
           <edgelabel>person</edgelabel>
         </childnode>
-        <childnode refid="911" relation="usage">
+        <childnode refid="241" relation="usage">
           <edgelabel>memory</edgelabel>
         </childnode>
       </node>
-      <node id="917">
+      <node id="247">
         <label>HashMap&lt; roboy.ros.RosClients, ServiceClient &gt;</label>
       </node>
-      <node id="908">
+      <node id="238">
         <label>HashMap&lt; String, Object &gt;</label>
       </node>
-      <node id="914">
+      <node id="244">
         <label>roboy.ros.RosMainNode</label>
         <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
-        <childnode refid="915" relation="public-inheritance">
+        <childnode refid="245" relation="public-inheritance">
         </childnode>
-        <childnode refid="916" relation="usage">
+        <childnode refid="246" relation="usage">
           <edgelabel>clients</edgelabel>
         </childnode>
-        <childnode refid="918" relation="usage">
+        <childnode refid="248" relation="usage">
           <edgelabel>rosConnectionLatch</edgelabel>
         </childnode>
       </node>
-      <node id="910">
+      <node id="240">
         <label>HashMap&lt; String, ArrayList&lt; Integer &gt; &gt;</label>
       </node>
-      <node id="916">
+      <node id="246">
         <label>roboy.ros.RosManager</label>
         <link refid="classroboy_1_1ros_1_1_ros_manager"/>
-        <childnode refid="917" relation="usage">
+        <childnode refid="247" relation="usage">
           <edgelabel>clientMap</edgelabel>
         </childnode>
       </node>
-      <node id="909">
+      <node id="239">
         <label>ArrayList&lt; String &gt;</label>
       </node>
-      <node id="915">
+      <node id="245">
         <label>AbstractNodeMain</label>
       </node>
-      <node id="911">
+      <node id="241">
         <label>roboy.memory.Neo4jMemory</label>
         <link refid="classroboy_1_1memory_1_1_neo4j_memory"/>
-        <childnode refid="912" relation="public-inheritance">
+        <childnode refid="242" relation="public-inheritance">
         </childnode>
-        <childnode refid="913" relation="usage">
+        <childnode refid="243" relation="usage">
           <edgelabel>gson</edgelabel>
         </childnode>
-        <childnode refid="914" relation="usage">
+        <childnode refid="244" relation="usage">
           <edgelabel>rosMainNode</edgelabel>
         </childnode>
-        <childnode refid="911" relation="usage">
+        <childnode refid="241" relation="usage">
           <edgelabel>memory</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" line="14" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="14" bodyend="132"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" line="14" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/Interlocutor.java" bodystart="14" bodyend="132"/>
     <listofallmembers>
-      <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a6d30fb3f6457574c4b9e1e1a28c3486c" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::Interlocutor</scope><name>addInformation</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a0e59e8acfe71553dfd71c7f025072ac5" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::Interlocutor</scope><name>addInformation</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a884523d4dc76e54718ef124a55ef9fd4" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::Interlocutor</scope><name>addName</name></member>
-      <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a8827f7996f774eb675168cd45df82962" prot="private" virt="non-virtual"><scope>roboy::memory::nodes::Interlocutor</scope><name>determineNodeType</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a649d8b8ef691e60aa184991d30993a9d" prot="private" virt="non-virtual"><scope>roboy::memory::nodes::Interlocutor</scope><name>determineNodeType</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a63361a188fb1af0b873a29950ecf19c8" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::Interlocutor</scope><name>FAMILIAR</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a9c27bd97032c7790c517a2110fbf9689" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::Interlocutor</scope><name>getName</name></member>
-      <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1ad2dd6dd683a869c0d1f75ea8a6dec585" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::Interlocutor</scope><name>hasRelation</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1ae3facf1563df72addddb348346b94139" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::Interlocutor</scope><name>hasRelationship</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1ab01fb89d3a25267bffa9e3b337fbb48c" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::Interlocutor</scope><name>Interlocutor</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1ac139699448ed7b80ae4e693e727afffc" prot="package" virt="non-virtual"><scope>roboy::memory::nodes::Interlocutor</scope><name>memory</name></member>
-      <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1ae57da15fd747469006ebd75c4c355257" prot="private" virt="non-virtual"><scope>roboy::memory::nodes::Interlocutor</scope><name>noROS</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a05be703120a3e7d5c0529041ec10e6a1" prot="private" virt="non-virtual"><scope>roboy::memory::nodes::Interlocutor</scope><name>memoryROS</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a8e1e9ecf926bfd02d7fe3d0ddf16764d" prot="private" virt="non-virtual"><scope>roboy::memory::nodes::Interlocutor</scope><name>person</name></member>
     </listofallmembers>
   </compounddef>

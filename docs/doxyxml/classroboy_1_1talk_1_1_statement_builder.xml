@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1talk_1_1_statement_builder" kind="class" language="Java" prot="public">
     <compoundname>roboy::talk::StatementBuilder</compoundname>
       <sectiondef kind="public-static-func">
@@ -27,14 +27,14 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/StatementBuilder.java" line="13" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/StatementBuilder.java" bodystart="13" bodyend="15"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/StatementBuilder.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/StatementBuilder.java" bodystart="13" bodyend="15"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/StatementBuilder.java" line="5" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/StatementBuilder.java" bodystart="5" bodyend="16"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/StatementBuilder.java" line="5" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/StatementBuilder.java" bodystart="5" bodyend="16"/>
     <listofallmembers>
       <member refid="classroboy_1_1talk_1_1_statement_builder_1ae899b0b7c30cf5653b942240b866531a" prot="public" virt="non-virtual"><scope>roboy::talk::StatementBuilder</scope><name>random</name></member>
     </listofallmembers>

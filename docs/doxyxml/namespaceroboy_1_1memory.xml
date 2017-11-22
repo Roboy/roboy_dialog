@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="namespaceroboy_1_1memory" kind="namespace" language="Java">
     <compoundname>roboy::memory</compoundname>
     <innerclass refid="classroboy_1_1memory_1_1_d_bpedia_memory" prot="public">roboy::memory::DBpediaMemory</innerclass>
@@ -8,7 +8,7 @@
     <innerclass refid="classroboy_1_1memory_1_1_lexicon_predicate" prot="public">roboy::memory::LexiconPredicate</innerclass>
     <innerclass refid="interfaceroboy_1_1memory_1_1_memory" prot="public">roboy::memory::Memory</innerclass>
     <innerclass refid="classroboy_1_1memory_1_1_neo4j_memory" prot="public">roboy::memory::Neo4jMemory</innerclass>
-    <innerclass refid="enumroboy_1_1memory_1_1_neo4j_relations" prot="public">roboy::memory::Neo4jRelations</innerclass>
+    <innerclass refid="enumroboy_1_1memory_1_1_neo4j_relationships" prot="public">roboy::memory::Neo4jRelationships</innerclass>
     <innerclass refid="classroboy_1_1memory_1_1_persistent_knowledge" prot="public">roboy::memory::PersistentKnowledge</innerclass>
     <innerclass refid="classroboy_1_1memory_1_1_roboy_mind" prot="public">roboy::memory::RoboyMind</innerclass>
     <innerclass refid="classroboy_1_1memory_1_1_util" prot="public">roboy::memory::Util</innerclass>
@@ -18,6 +18,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/DBpediaMemory.java" line="1" column="1"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/DBpediaMemory.java" line="1" column="1"/>
   </compounddef>
 </doxygen>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_ontology_n_e_r_analyzer" kind="class" language="Java" prot="public">
     <compoundname>roboy::linguistics::sentenceanalysis::OntologyNERAnalyzer</compoundname>
     <basecompoundref refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer" prot="public" virt="non-virtual">roboy.linguistics.sentenceanalysis.Analyzer</basecompoundref>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/OntologyNERAnalyzer.java" line="19" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/OntologyNERAnalyzer.java" bodystart="19" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OntologyNERAnalyzer.java" line="19" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OntologyNERAnalyzer.java" bodystart="19" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/OntologyNERAnalyzer.java" line="21" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/OntologyNERAnalyzer.java" bodystart="21" bodyend="41"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OntologyNERAnalyzer.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OntologyNERAnalyzer.java" bodystart="21" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_ontology_n_e_r_analyzer_1a71f96333126a0bc0ea1bda9505227dec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/OntologyNERAnalyzer.java" line="45" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/OntologyNERAnalyzer.java" bodystart="45" bodyend="62"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OntologyNERAnalyzer.java" line="45" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OntologyNERAnalyzer.java" bodystart="45" bodyend="62"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -56,36 +56,36 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1021">
+      <node id="351">
         <label>roboy.linguistics.sentenceanalysis.OntologyNERAnalyzer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_ontology_n_e_r_analyzer"/>
-        <childnode refid="1022" relation="public-inheritance">
+        <childnode refid="352" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1022">
+      <node id="352">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1023">
+      <node id="353">
         <label>roboy.linguistics.sentenceanalysis.OntologyNERAnalyzer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_ontology_n_e_r_analyzer"/>
-        <childnode refid="1024" relation="public-inheritance">
+        <childnode refid="354" relation="public-inheritance">
         </childnode>
-        <childnode refid="1025" relation="usage">
+        <childnode refid="355" relation="usage">
           <edgelabel>entities</edgelabel>
         </childnode>
       </node>
-      <node id="1025">
+      <node id="355">
         <label>Map&lt; String, roboy.linguistics.Entity &gt;</label>
       </node>
-      <node id="1024">
+      <node id="354">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/OntologyNERAnalyzer.java" line="17" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/OntologyNERAnalyzer.java" bodystart="17" bodyend="64"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OntologyNERAnalyzer.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/OntologyNERAnalyzer.java" bodystart="17" bodyend="64"/>
     <listofallmembers>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_ontology_n_e_r_analyzer_1a71f96333126a0bc0ea1bda9505227dec" prot="public" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::OntologyNERAnalyzer</scope><name>analyze</name></member>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_ontology_n_e_r_analyzer_1a8a9d2c9464e855fb5563c6df6ad24170" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::OntologyNERAnalyzer</scope><name>entities</name></member>

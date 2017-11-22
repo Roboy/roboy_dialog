@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1memory_1_1_lexicon_literal" kind="class" language="Java" prot="public">
     <compoundname>roboy::memory::LexiconLiteral</compoundname>
     <basecompoundref prot="public" virt="non-virtual">Comparable&lt; LexiconLiteral &gt;</basecompoundref>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" line="12" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="12" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" line="12" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="12" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1memory_1_1_lexicon_literal_1a36f7490a79ae80963947596c454fa2d4" prot="public" static="no" mutable="no">
         <type>String</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" line="13" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="13" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="13" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1memory_1_1_lexicon_literal_1acef8d659fadd022748792a5b5ad173ea" prot="public" static="no" mutable="no">
         <type>String</type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" line="14" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="14" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" line="14" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="14" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1memory_1_1_lexicon_literal_1abe875ccdd71d062c539188010bbc9a2a" prot="public" static="no" mutable="no">
         <type>String</type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" line="15" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="15" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1memory_1_1_lexicon_literal_1aae7d26e03a36dbdadf64d557a1567f1a" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" line="16" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="16" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" line="16" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="16" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-attrib">
@@ -89,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" line="44" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="44" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" line="44" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="44" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -104,7 +104,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" line="18" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="18" bodyend="21"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" line="18" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="18" bodyend="21"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1_lexicon_literal_1a8dab204688aeec9c9835124b3bf039d6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -133,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" line="23" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="23" bodyend="28"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" line="23" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="23" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1_lexicon_literal_1aff1c67382ca2f358fd4537a11a9c2d26" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -162,7 +162,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" line="30" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="30" bodyend="37"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" line="30" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="30" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1_lexicon_literal_1abda2e79e3bd5a6c95c7320a99d0966e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -179,7 +179,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" line="39" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="39" bodyend="42"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" line="39" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="39" bodyend="42"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -187,40 +187,40 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="959">
+      <node id="289">
         <label>roboy.memory.LexiconLiteral</label>
         <link refid="classroboy_1_1memory_1_1_lexicon_literal"/>
-        <childnode refid="960" relation="public-inheritance">
+        <childnode refid="290" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="960">
+      <node id="290">
         <label>Comparable&lt; LexiconLiteral &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="963">
+      <node id="293">
         <label>List&lt; String &gt;</label>
       </node>
-      <node id="961">
+      <node id="291">
         <label>roboy.memory.LexiconLiteral</label>
         <link refid="classroboy_1_1memory_1_1_lexicon_literal"/>
-        <childnode refid="962" relation="public-inheritance">
+        <childnode refid="292" relation="public-inheritance">
         </childnode>
-        <childnode refid="963" relation="usage">
+        <childnode refid="293" relation="usage">
           <edgelabel>typeOfOwner</edgelabel>
         </childnode>
-        <childnode refid="964" relation="usage">
+        <childnode refid="294" relation="usage">
           <edgelabel>scoreComparator</edgelabel>
         </childnode>
       </node>
-      <node id="964">
+      <node id="294">
         <label>Comparator&lt; roboy.memory.LexiconLiteral &gt;</label>
       </node>
-      <node id="962">
+      <node id="292">
         <label>Comparable&lt; LexiconLiteral &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" line="10" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="9" bodyend="52"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" line="10" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/LexiconLiteral.java" bodystart="9" bodyend="52"/>
     <listofallmembers>
       <member refid="classroboy_1_1memory_1_1_lexicon_literal_1abda2e79e3bd5a6c95c7320a99d0966e3" prot="public" virt="non-virtual"><scope>roboy::memory::LexiconLiteral</scope><name>compareTo</name></member>
       <member refid="classroboy_1_1memory_1_1_lexicon_literal_1acef8d659fadd022748792a5b5ad173ea" prot="public" virt="non-virtual"><scope>roboy::memory::LexiconLiteral</scope><name>label</name></member>

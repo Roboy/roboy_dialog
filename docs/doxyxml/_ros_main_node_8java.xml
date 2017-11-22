@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="_ros_main_node_8java" kind="file" language="Java">
     <compoundname>RosMainNode.java</compoundname>
     <innerclass refid="classroboy_1_1ros_1_1_ros_main_node" prot="public">roboy::ros::RosMainNode</innerclass>
@@ -41,7 +41,7 @@
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classroboy_1_1ros_1_1_ros_main_node" kindref="compound">RosMainNode</ref>()<sp/>{</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Ctor<sp/>is<sp/>called<sp/>but<sp/>should<sp/>not<sp/>be<sp/>initialized<sp/>offline.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classroboy_1_1dialog_1_1_config" kindref="compound">Config</ref>.<ref refid="classroboy_1_1dialog_1_1_config_1ac3c59e8630e25d0889e26639e27fee7e" kindref="member">NOROS</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classroboy_1_1dialog_1_1_config" kindref="compound">Config</ref>.<ref refid="classroboy_1_1dialog_1_1_config_1ac3c59e8630e25d0889e26639e27fee7e" kindref="member">NOROS</ref><sp/>&amp;&amp;<sp/>!<ref refid="classroboy_1_1dialog_1_1_config" kindref="compound">Config</ref>.<ref refid="classroboy_1_1dialog_1_1_config_1ace25c70907783d5cdac32e1aac0129c7" kindref="member">MEMORY</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>clients<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classroboy_1_1ros_1_1_ros_manager" kindref="compound">RosManager</ref>();</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
@@ -385,6 +385,6 @@
 <codeline lineno="377"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="378"><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java"/>
   </compounddef>
 </doxygen>

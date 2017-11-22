@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state" kind="class" language="Java" prot="public">
     <compoundname>roboy::dialog::personality::states::QuestionAskingState</compoundname>
     <basecompoundref refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" prot="public" virt="non-virtual">roboy.dialog.personality.states.State</basecompoundref>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="29" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="29" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="29" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a28481e5fbd0faa0d8341eb60211b9c6f" prot="private" static="no" mutable="no">
         <type>String</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="30" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="30" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="30" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a7010e0f37a2a886c7d5747906b624582" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="32" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="32" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="32" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a5a7ba9707799fe693499a9b449668f2d" prot="private" static="no" mutable="no">
         <type>Map&lt; String, List&lt; String &gt; &gt;</type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="33" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="33" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="33" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1ae7cea1d32ec1c10067db232fda79edba" prot="private" static="no" mutable="no">
         <type>Random</type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="34" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="34" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="34" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a9387b5de79e20cf705f67b0a9062fc45" prot="private" static="no" mutable="no">
         <type>Map&lt; String, <ref refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" kindref="compound">State</ref> &gt;</type>
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="35" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="35" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="35" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a38fa2e7dc23fb02ed142fc11695c1ee9" prot="private" static="no" mutable="no">
         <type><ref refid="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality" kindref="compound">SmallTalkPersonality</ref></type>
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="36" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="36" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="36" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="36" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-attrib">
@@ -109,7 +109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="31" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="31" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="31" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a4e7ea31c1f347a5a73788bfa9e4d3ffb" prot="private" static="yes" mutable="no">
         <type>final <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_simple_tokenizer" kindref="compound">SimpleTokenizer</ref></type>
@@ -123,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="38" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="38" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="38" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a2964e4a4a39677c8ebc0ee204f4d48da" prot="private" static="yes" mutable="no">
         <type>final <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_p_p_o_s_tagger" kindref="compound">OpenNLPPPOSTagger</ref></type>
@@ -137,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="39" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="39" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="39" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a4473e27574275569e0e8ac3725b9d872" prot="private" static="yes" mutable="no">
         <type>final <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser" kindref="compound">OpenNLPParser</ref></type>
@@ -151,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="40" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="40" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="40" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a228778aa59d6b11147ecbb1ce241f08a" prot="private" static="yes" mutable="no">
         <type>final <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer" kindref="compound">AnswerAnalyzer</ref></type>
@@ -165,7 +165,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="41" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="41" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="41" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="41" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -192,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="43" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="43" bodyend="53"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="43" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="43" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a35b17cf55628f6264fad93ae98db34bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
@@ -206,7 +206,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="60" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="60" bodyend="94"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="60" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="60" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1ac23e4e7e383585c132b4f8fac7b48349" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction" kindref="compound">Reaction</ref></type>
@@ -224,7 +224,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="97" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="97" bodyend="131"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="97" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="97" bodyend="131"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -243,7 +243,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="133" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="133" bodyend="147"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="133" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="133" bodyend="147"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -258,7 +258,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="149" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="149" bodyend="159"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="149" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="149" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a410a8914bec4c66c8a78dd679dd30569" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
@@ -272,7 +272,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="161" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="161" bodyend="204"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="161" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="161" bodyend="204"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a2fc8b6f4ec0319adc028013cbbbe28ca" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
@@ -289,7 +289,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="206" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="206" bodyend="254"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="206" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="206" bodyend="254"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a0f859abba852e1f443e639752e254cda" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -306,7 +306,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="256" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="256" bodyend="265"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="256" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="256" bodyend="265"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a7689a4f038a571c1bbcdc27ae2eaa015" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -323,7 +323,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="267" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="267" bodyend="276"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="267" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="267" bodyend="276"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -331,245 +331,245 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1120">
+      <node id="450">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
-      <node id="1119">
+      <node id="449">
         <label>roboy.dialog.personality.states.QuestionAskingState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state"/>
-        <childnode refid="1120" relation="public-inheritance">
+        <childnode refid="450" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1152">
+      <node id="482">
         <label>Map&lt; String, roboy.dialog.personality.states.State &gt;</label>
       </node>
-      <node id="1123">
+      <node id="453">
         <label>roboy.linguistics.sentenceanalysis.AnswerAnalyzer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer"/>
-        <childnode refid="1124" relation="public-inheritance">
+        <childnode refid="454" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1147">
+      <node id="477">
         <label>Map&lt; String, String &gt;</label>
       </node>
-      <node id="1143">
+      <node id="473">
         <label>CountDownLatch</label>
       </node>
-      <node id="1138">
+      <node id="468">
         <label>Gson</label>
       </node>
-      <node id="1127">
+      <node id="457">
         <label>roboy.linguistics.sentenceanalysis.OpenNLPPPOSTagger</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_p_p_o_s_tagger"/>
-        <childnode refid="1124" relation="public-inheritance">
+        <childnode refid="454" relation="public-inheritance">
         </childnode>
-        <childnode refid="1128" relation="usage">
+        <childnode refid="458" relation="usage">
           <edgelabel>tagger</edgelabel>
         </childnode>
       </node>
-      <node id="1130">
+      <node id="460">
         <label>roboy.dialog.personality.Personality</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality"/>
       </node>
-      <node id="1144">
+      <node id="474">
         <label>List&lt; String &gt;</label>
       </node>
-      <node id="1132">
+      <node id="462">
         <label>roboy.memory.nodes.MemoryNodeModel</label>
         <link refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model"/>
-        <childnode refid="1133" relation="usage">
+        <childnode refid="463" relation="usage">
           <edgelabel>properties</edgelabel>
         </childnode>
-        <childnode refid="1134" relation="usage">
+        <childnode refid="464" relation="usage">
           <edgelabel>labels</edgelabel>
         </childnode>
-        <childnode refid="1135" relation="usage">
-          <edgelabel>relations</edgelabel>
+        <childnode refid="465" relation="usage">
+          <edgelabel>relationships</edgelabel>
         </childnode>
       </node>
-      <node id="1137">
+      <node id="467">
         <label>roboy.memory.Memory&lt; MemoryNodeModel &gt;</label>
         <link refid="interfaceroboy_1_1memory_1_1_memory"/>
       </node>
-      <node id="1145">
+      <node id="475">
         <label>roboy.talk.Verbalizer</label>
         <link refid="classroboy_1_1talk_1_1_verbalizer"/>
-        <childnode refid="1144" relation="usage">
+        <childnode refid="474" relation="usage">
           <edgelabel>preAnecdotes</edgelabel>
           <edgelabel>farewells</edgelabel>
           <edgelabel>greetings</edgelabel>
           <edgelabel>anecdotes</edgelabel>
           <edgelabel>segues</edgelabel>
         </childnode>
-        <childnode refid="1146" relation="usage">
+        <childnode refid="476" relation="usage">
           <edgelabel>tenthNumberMap</edgelabel>
           <edgelabel>lowNumberMap</edgelabel>
         </childnode>
-        <childnode refid="1147" relation="usage">
+        <childnode refid="477" relation="usage">
           <edgelabel>dayNumberMap</edgelabel>
           <edgelabel>monthNumberMap</edgelabel>
         </childnode>
       </node>
-      <node id="1131">
+      <node id="461">
         <label>roboy.memory.nodes.Interlocutor</label>
         <link refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor"/>
-        <childnode refid="1132" relation="usage">
+        <childnode refid="462" relation="usage">
           <edgelabel>person</edgelabel>
         </childnode>
-        <childnode refid="1136" relation="usage">
+        <childnode refid="466" relation="usage">
           <edgelabel>memory</edgelabel>
         </childnode>
       </node>
-      <node id="1142">
+      <node id="472">
         <label>HashMap&lt; roboy.ros.RosClients, ServiceClient &gt;</label>
       </node>
-      <node id="1133">
+      <node id="463">
         <label>HashMap&lt; String, Object &gt;</label>
       </node>
-      <node id="1149">
+      <node id="479">
         <label>Map&lt; String, List&lt; String &gt; &gt;</label>
       </node>
-      <node id="1122">
+      <node id="452">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
-      <node id="1124">
+      <node id="454">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
-      <node id="1139">
+      <node id="469">
         <label>roboy.ros.RosMainNode</label>
         <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
-        <childnode refid="1140" relation="public-inheritance">
+        <childnode refid="470" relation="public-inheritance">
         </childnode>
-        <childnode refid="1141" relation="usage">
+        <childnode refid="471" relation="usage">
           <edgelabel>clients</edgelabel>
         </childnode>
-        <childnode refid="1143" relation="usage">
+        <childnode refid="473" relation="usage">
           <edgelabel>rosConnectionLatch</edgelabel>
         </childnode>
       </node>
-      <node id="1129">
+      <node id="459">
         <label>roboy.dialog.personality.SmallTalkPersonality</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality"/>
-        <childnode refid="1130" relation="public-inheritance">
+        <childnode refid="460" relation="public-inheritance">
         </childnode>
-        <childnode refid="1131" relation="usage">
+        <childnode refid="461" relation="usage">
           <edgelabel>person</edgelabel>
         </childnode>
-        <childnode refid="1122" relation="usage">
+        <childnode refid="452" relation="usage">
           <edgelabel>state</edgelabel>
         </childnode>
-        <childnode refid="1144" relation="usage">
+        <childnode refid="474" relation="usage">
           <edgelabel>positive</edgelabel>
         </childnode>
-        <childnode refid="1139" relation="usage">
+        <childnode refid="469" relation="usage">
           <edgelabel>rosMainNode</edgelabel>
         </childnode>
-        <childnode refid="1145" relation="usage">
+        <childnode refid="475" relation="usage">
           <edgelabel>verbalizer</edgelabel>
         </childnode>
       </node>
-      <node id="1146">
+      <node id="476">
         <label>Map&lt; Integer, String &gt;</label>
       </node>
-      <node id="1126">
+      <node id="456">
         <label>Parser</label>
       </node>
-      <node id="1150">
+      <node id="480">
         <label>roboy.util.Concept</label>
         <link refid="classroboy_1_1util_1_1_concept"/>
-        <childnode refid="1151" relation="usage">
+        <childnode refid="481" relation="usage">
           <edgelabel>attributes</edgelabel>
         </childnode>
       </node>
-      <node id="1128">
+      <node id="458">
         <label>POSTaggerME</label>
       </node>
-      <node id="1151">
+      <node id="481">
         <label>Map&lt; String, Object &gt;</label>
       </node>
-      <node id="1148">
+      <node id="478">
         <label>roboy.linguistics.sentenceanalysis.SimpleTokenizer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_simple_tokenizer"/>
-        <childnode refid="1124" relation="public-inheritance">
+        <childnode refid="454" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1135">
+      <node id="465">
         <label>HashMap&lt; String, ArrayList&lt; Integer &gt; &gt;</label>
       </node>
-      <node id="1141">
+      <node id="471">
         <label>roboy.ros.RosManager</label>
         <link refid="classroboy_1_1ros_1_1_ros_manager"/>
-        <childnode refid="1142" relation="usage">
+        <childnode refid="472" relation="usage">
           <edgelabel>clientMap</edgelabel>
         </childnode>
       </node>
-      <node id="1134">
+      <node id="464">
         <label>ArrayList&lt; String &gt;</label>
       </node>
-      <node id="1125">
+      <node id="455">
         <label>roboy.linguistics.sentenceanalysis.OpenNLPParser</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser"/>
-        <childnode refid="1124" relation="public-inheritance">
+        <childnode refid="454" relation="public-inheritance">
         </childnode>
-        <childnode refid="1126" relation="usage">
+        <childnode refid="456" relation="usage">
           <edgelabel>parser</edgelabel>
         </childnode>
       </node>
-      <node id="1140">
+      <node id="470">
         <label>AbstractNodeMain</label>
       </node>
-      <node id="1136">
+      <node id="466">
         <label>roboy.memory.Neo4jMemory</label>
         <link refid="classroboy_1_1memory_1_1_neo4j_memory"/>
-        <childnode refid="1137" relation="public-inheritance">
+        <childnode refid="467" relation="public-inheritance">
         </childnode>
-        <childnode refid="1138" relation="usage">
+        <childnode refid="468" relation="usage">
           <edgelabel>gson</edgelabel>
         </childnode>
-        <childnode refid="1139" relation="usage">
+        <childnode refid="469" relation="usage">
           <edgelabel>rosMainNode</edgelabel>
         </childnode>
-        <childnode refid="1136" relation="usage">
+        <childnode refid="466" relation="usage">
           <edgelabel>memory</edgelabel>
         </childnode>
       </node>
-      <node id="1121">
+      <node id="451">
         <label>roboy.dialog.personality.states.QuestionAskingState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state"/>
-        <childnode refid="1122" relation="public-inheritance">
+        <childnode refid="452" relation="public-inheritance">
         </childnode>
-        <childnode refid="1123" relation="usage">
+        <childnode refid="453" relation="usage">
           <edgelabel>answer</edgelabel>
         </childnode>
-        <childnode refid="1125" relation="usage">
+        <childnode refid="455" relation="usage">
           <edgelabel>parser</edgelabel>
         </childnode>
-        <childnode refid="1127" relation="usage">
+        <childnode refid="457" relation="usage">
           <edgelabel>pos</edgelabel>
         </childnode>
-        <childnode refid="1129" relation="usage">
+        <childnode refid="459" relation="usage">
           <edgelabel>personality</edgelabel>
         </childnode>
-        <childnode refid="1148" relation="usage">
+        <childnode refid="478" relation="usage">
           <edgelabel>tokenizer</edgelabel>
         </childnode>
-        <childnode refid="1149" relation="usage">
+        <childnode refid="479" relation="usage">
           <edgelabel>questions</edgelabel>
         </childnode>
-        <childnode refid="1150" relation="usage">
+        <childnode refid="480" relation="usage">
           <edgelabel>objectOfFocus</edgelabel>
         </childnode>
-        <childnode refid="1152" relation="usage">
+        <childnode refid="482" relation="usage">
           <edgelabel>children</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="23" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="22" bodyend="278"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" line="23" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionAskingState.java" bodystart="22" bodyend="278"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a35b17cf55628f6264fad93ae98db34bf" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::QuestionAskingState</scope><name>act</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_asking_state_1a0f859abba852e1f443e639752e254cda" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::states::QuestionAskingState</scope><name>analyzeObject</name></member>

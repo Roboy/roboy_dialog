@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="dir_3d3a7bb632f3a6251fe99b04aead1544" kind="dir">
-    <compoundname>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/dialog/personality/states</compoundname>
+    <compoundname>/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states</compoundname>
     <innerfile refid="_location_d_bpedia_state_test_8java">LocationDBpediaStateTest.java</innerfile>
     <innerfile refid="_question_answering_state_test_8java">QuestionAnsweringStateTest.java</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/dialog/personality/states/"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/"/>
   </compounddef>
 </doxygen>

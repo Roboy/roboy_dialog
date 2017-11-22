@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="dir_bedbe0196ed4e3ea490265c56ba398f8" kind="dir">
-    <compoundname>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog</compoundname>
-    <innerdir refid="dir_b7748b3f53905c24013e2b431e631225">/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action</innerdir>
-    <innerdir refid="dir_4b89141a263e6cbfc376c96d63372b80">/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality</innerdir>
+    <compoundname>/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog</compoundname>
+    <innerdir refid="dir_b7748b3f53905c24013e2b431e631225">/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/action</innerdir>
+    <innerdir refid="dir_4b89141a263e6cbfc376c96d63372b80">/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality</innerdir>
     <innerfile refid="_config_8java">Config.java</innerfile>
     <innerfile refid="_dialog_system_8java">DialogSystem.java</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/"/>
   </compounddef>
 </doxygen>

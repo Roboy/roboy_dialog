@@ -1,16 +1,15 @@
 package roboy.dialog.personality.states;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jRelations;
+import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
 import roboy.util.JsonUtils;
 
-import static roboy.memory.Neo4jRelations.*;
+import static roboy.memory.Neo4jRelationships.*;
 
 /**
  * Manages the questions that can be asked from a person.
@@ -24,7 +23,7 @@ public class QuestionRandomizerState implements State{
 	
 	private PersonalQAState[] questionStates;
 	private PersonalQAState locationQuestion;
-	private HashMap<Neo4jRelations, Boolean> alreadyAsked;
+	private HashMap<Neo4jRelationships, Boolean> alreadyAsked;
 	private State inner;
 	private State chosenState;
 	private Interlocutor person;
@@ -102,18 +101,18 @@ public class QuestionRandomizerState implements State{
 		}
 	}
 
-	private PersonalQAState initializeQuestion(Neo4jRelations relation) {
-		alreadyAsked.put(relation, false);
+	private PersonalQAState initializeQuestion(Neo4jRelationships relationship) {
+		alreadyAsked.put(relationship, false);
 		return new PersonalQAState(
-				questions.get(relation.type),
-				failureAnswers.get(relation.type),
-				successAnswers.get(relation.type),
-				relation, person);
+				questions.get(relationship.type),
+				failureAnswers.get(relationship.type),
+				successAnswers.get(relationship.type),
+				relationship, person);
 	}
 
 	private void checkForAskedQuestions() {
-		for(Neo4jRelations relation : alreadyAsked.keySet()) {
-			if(person.hasRelation(relation)) alreadyAsked.put(relation, true);
+		for(Neo4jRelationships relationship : alreadyAsked.keySet()) {
+			if(person.hasRelationship(relationship)) alreadyAsked.put(relationship, true);
 		}
 	}
 	

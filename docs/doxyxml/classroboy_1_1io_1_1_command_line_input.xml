@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1io_1_1_command_line_input" kind="class" language="Java" prot="public">
     <compoundname>roboy::io::CommandLineInput</compoundname>
     <basecompoundref refid="interfaceroboy_1_1io_1_1_input_device" prot="public" virt="non-virtual">roboy.io.InputDevice</basecompoundref>
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CommandLineInput.java" line="13" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CommandLineInput.java" bodystart="13" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineInput.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineInput.java" bodystart="13" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CommandLineInput.java" line="16" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CommandLineInput.java" bodystart="16" bodyend="22"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineInput.java" line="16" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineInput.java" bodystart="16" bodyend="22"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CommandLineInput.java" line="25" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CommandLineInput.java" bodystart="25" bodyend="27"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineInput.java" line="25" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineInput.java" bodystart="25" bodyend="27"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -55,36 +55,36 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="756">
+      <node id="86">
         <label>roboy.io.CommandLineInput</label>
         <link refid="classroboy_1_1io_1_1_command_line_input"/>
-        <childnode refid="757" relation="public-inheritance">
+        <childnode refid="87" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="757">
+      <node id="87">
         <label>roboy.io.InputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_input_device"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="760">
+      <node id="90">
         <label>Scanner</label>
       </node>
-      <node id="758">
+      <node id="88">
         <label>roboy.io.CommandLineInput</label>
         <link refid="classroboy_1_1io_1_1_command_line_input"/>
-        <childnode refid="759" relation="public-inheritance">
+        <childnode refid="89" relation="public-inheritance">
         </childnode>
-        <childnode refid="760" relation="usage">
+        <childnode refid="90" relation="usage">
           <edgelabel>sc</edgelabel>
         </childnode>
       </node>
-      <node id="759">
+      <node id="89">
         <label>roboy.io.InputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_input_device"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CommandLineInput.java" line="11" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CommandLineInput.java" bodystart="11" bodyend="28"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineInput.java" line="11" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineInput.java" bodystart="11" bodyend="28"/>
     <listofallmembers>
       <member refid="classroboy_1_1io_1_1_command_line_input_1aaadd00a67d1a2b503a08d7f6e7364b59" prot="protected" virt="non-virtual"><scope>roboy::io::CommandLineInput</scope><name>finalize</name></member>
       <member refid="classroboy_1_1io_1_1_command_line_input_1a88df660444e5a67add1c1720911a86c3" prot="public" virt="non-virtual"><scope>roboy::io::CommandLineInput</scope><name>listen</name></member>
