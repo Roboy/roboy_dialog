@@ -51,7 +51,7 @@ public class Verbalizer {
 					"farewell","bye-bye");
 	
 	private ShutDownAction farewell(Interpretation interpretation){
-		return new ShutDownAction(Arrays.<Action>asList(new SpeechAction(StatementBuilder.random(farewells))));
+		return new ShutDownAction(Arrays.asList(new SpeechAction(StatementBuilder.random(farewells))));
 	}
 	
 	private static final List<String> segues = 
@@ -138,7 +138,7 @@ public class Verbalizer {
 			"09","ninth",
 			"10","tenth",
 			"11","eleventh",
-			"12","twelveth",
+			"12","twelfth",
 			"13","thirteenth",
 			"14","fourteenth",
 			"16","sixteenth",
@@ -155,8 +155,8 @@ public class Verbalizer {
 			"27","twenty seventh",
 			"28","twenty eighth",
 			"29","twenty ninth",
-			"30","thirtiest",
-			"31","thiry first"
+			"30","thirtieth",
+			"31","thirty first"
 			);
 	
 	private static final Map<Integer,String> lowNumberMap = Maps.intStringMap(
@@ -209,7 +209,7 @@ public class Verbalizer {
 			1,"ten",
 			2,"twenty",
 			3,"thirty",
-			4,"fourty",
+			4,"forty",
 			5,"fifty",
 			6,"sixty",
 			7,"seventy",
