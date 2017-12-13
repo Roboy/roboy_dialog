@@ -1,0 +1,45 @@
+{
+  "initialState": "Greetings",
+  "states": [
+    {
+      "stateName" : "Greetings",
+      "implementation" : "roboy.dialog.personality.states.GreetingState",
+      "fallback" : "RandomAnswer",
+      "transitions" : {
+        "next" : "Intro",
+        "rudePerson" : "PersonIsRude"
+      }
+    },
+    {
+      "stateName" : "Intro",
+      "implementation" : "roboy.XXX",
+      "fallback" : "RandomAnswer",
+      "transitions" : {
+        "next" : "Farewell"
+      }
+    },
+    {
+      "stateName" : "Farewell",
+      "implementation" : "roboy.XXX",
+      "fallback" : null,
+      "transitions" : {}
+    },
+    {
+      "stateName" : "PersonIsRude",
+      "implementation" : "roboy.XXX",
+      "fallback" : null,
+      "transitions" : {}
+    },
+    {
+      "stateName" : "RandomAnswer",
+      "implementation" : "roboy.XXX",
+      "fallback" : null,
+      "transitions" : {}
+    }
+
+
+
+  ]
+
+
+}
