@@ -2,44 +2,35 @@
   "initialState": "Greetings",
   "states": [
     {
-      "stateName" : "Greetings",
-      "implementation" : "roboy.dialog.personality.states.GreetingState",
+      "identifier": "Greetings",
+      "implementation" : "roboy.dialog.personality.experimental.toyStates.ToyGreetingsState",
       "fallback" : "RandomAnswer",
       "transitions" : {
         "next" : "Intro",
-        "rudePerson" : "PersonIsRude"
+        "noHello" : "Farewell"
       }
     },
     {
-      "stateName" : "Intro",
-      "implementation" : "roboy.XXX",
-      "fallback" : "RandomAnswer",
+      "identifier": "Intro",
+      "implementation" : "roboy.dialog.personality.experimental.toyStates.ToyIntroState",
+      "fallback" : null,
       "transitions" : {
         "next" : "Farewell"
       }
     },
     {
-      "stateName" : "Farewell",
-      "implementation" : "roboy.XXX",
+      "identifier": "Farewell",
+      "implementation" : "roboy.dialog.personality.experimental.toyStates.ToyFarewellState",
       "fallback" : null,
       "transitions" : {}
     },
     {
-      "stateName" : "PersonIsRude",
-      "implementation" : "roboy.XXX",
+      "identifier": "RandomAnswer",
+      "implementation" : "roboy.dialog.personality.experimental.toyStates.ToyRandomAnswerState",
       "fallback" : null,
-      "transitions" : {}
-    },
-    {
-      "stateName" : "RandomAnswer",
-      "implementation" : "roboy.XXX",
-      "fallback" : null,
-      "transitions" : {}
+      "transitions" : {
+        "next" : "Farewell"
+      }
     }
-
-
-
   ]
-
-
 }

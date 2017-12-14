@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * State machine for the personality.
+ * WORK IN PROGRESS
  *
  */
 public abstract class PersonalityStateMachine {

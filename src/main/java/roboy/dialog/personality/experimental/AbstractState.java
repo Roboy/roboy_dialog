@@ -1,6 +1,5 @@
 package roboy.dialog.personality.experimental;
 
-import roboy.dialog.personality.states.Reaction;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 
 import java.util.*;
@@ -18,8 +17,8 @@ public abstract class AbstractState {
     private HashMap<String, AbstractState> transitions;
 
 
-    public AbstractState() {
-        stateIdentifier = "UndefinedStateIdentifier " + Math.random();
+    public AbstractState(String stateIdentifier) {
+        this.stateIdentifier = stateIdentifier;
         fallback = null;
         transitions = new HashMap<>();
     }
@@ -72,7 +71,29 @@ public abstract class AbstractState {
     //endregion
 
     // Functions that must be implemented in sub classes:
+
     // region to be implemented in subclasses
+
+    /**
+     * A state always acts after the reaction. Both, the reaction of the last and the action of the next state,
+     * are combined to give the answer of Roboy.
+     * @return interpretations
+     */
+    public abstract List<Interpretation> act();
+
+
+    /**
+     * Defines how to react to an input. This is usually the answer to the incoming question or some other statement.
+     * If this state can't react, it can return 'null' to trigger the fallback state for the answer.
+     *
+     * Note: In the new architecture, react() does not define the next state anymore! Reaction and state
+     * transitions are now decoupled. State transitions are defined in getNextState()
+     *
+     * @param input input from the person we talk to
+     * @return reaction to the input OR null (will trigger the fallback state)
+     */
+    public abstract List<Interpretation> react(Interpretation input);
+
 
     /**
      * After this state has reacted, the personality state machine will ask this state to which state to go next.
@@ -83,23 +104,11 @@ public abstract class AbstractState {
      */
     public abstract AbstractState getNextState();
 
-    /**
-     * A state always acts after the reaction. Both, the reaction of the last and the action of the next state,
-     * are combined to give the answer of Roboy.
-     * @return interpretations
-     */
-    public abstract List<Interpretation> act();
-
-    /**
-     * Defines how to react to an input. This is usually the answer to the incoming question or some other statement.
-     * @param input input from the person we talk to
-     * @return reaction to the input
-     */
-    public abstract Reaction react(Interpretation input);
 
     //endregion
 
     // Utility functions: make sure initialization is correct
+
     //region correct initialization checks
 
     /**
@@ -132,6 +141,17 @@ public abstract class AbstractState {
         }
 
         return allGood;
+    }
+
+    /**
+     * Utility function to create and initialize string sets in just one code line.
+     * @param tNames names of the required transitions
+     * @return set initialized with inputs
+     */
+    protected Set<String> newSet(String ... tNames) {
+        HashSet<String> result = new HashSet<>();
+        result.addAll(Arrays.asList(tNames));
+        return result;
     }
 
     //endregion
