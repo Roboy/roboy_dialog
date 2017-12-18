@@ -6,7 +6,7 @@ import java.util.HashMap;
  * I don't know what I am doing yet, but I guess context needs a main class and this would be it.
  */
 public class Context {
-    private static HashMap<SituationObjectIdentifier, SituationObject> situationObjects;
+    private static HashMap<SituationObjectIdentifier, ContextObject> situationObjects;
 
     public enum SituationObjectIdentifier {
         Generic("Generic");
