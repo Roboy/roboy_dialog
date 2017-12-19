@@ -124,5 +124,10 @@ public class Linguistics {
 	 * The confidence score of the machine learning intent classification in the IntentAnalyzer
 	 */
 	public static final String INTENT_DISTANCE = "intentdistance";
+
+	/**
+	 * The confidence score of the machine learning intent classification in the IntentAnalyzer
+	 */
+	public static final String PARSE = "parse";
 	
 }

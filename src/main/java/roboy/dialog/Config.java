@@ -39,13 +39,15 @@ public class Config {
     /** If true, Roboy avoids using network-based services such as DBpedia as well as ROS. */
     public static boolean STANDALONE = false;
     /** If true, Roboy avoids using ROS-based services. */
-    public static boolean NOROS = false;
+    public static boolean NOROS = true;
     /** If true, Roboy will not continue executing if the ROS main node fails to initialize. */
     public static boolean SHUTDOWN_ON_ROS_FAILURE = true;
     /** If true, Roboy will not continue executing if any of the ROS services failed to initialize. */
-    public static boolean SHUTDOWN_ON_SERVICE_FAILURE = true;
+    public static boolean SHUTDOWN_ON_SERVICE_FAILURE = false;
     /** ROS hostname, will be fetched from the configuration file in the DEFAULT profile. */
     public static String ROS_HOSTNAME = null;
+    /** Semantic parser socket port. */
+    public static int PARSER_PORT = -1;
 
     /** Configuration file to store changing values. */
     private static String yamlConfigFile = "config.properties";
@@ -56,6 +58,8 @@ public class Config {
      */
     public Config(ConfigurationProfile profile) {
         initializeYAMLConfig();
+        // Initialize semantic parser socket port
+        PARSER_PORT = yamlConfig.getInt("PARSER_PORT");
         switch(profile) {
             case DEFAULT:
                 setDefaultProfile();
