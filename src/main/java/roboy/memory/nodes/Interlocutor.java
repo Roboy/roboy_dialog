@@ -77,6 +77,10 @@ public class Interlocutor {
         return !(person.getRelationship(type.type) == null) && (!person.getRelationship(type.type).isEmpty());
     }
 
+    public ArrayList<Integer> getRelationships(Neo4jRelationships type) {
+        return person.getRelationship(type.type);
+    }
+
     /**
      * Adds a new relation to the person node, updating memory.
      */
@@ -126,6 +130,8 @@ public class Interlocutor {
         if(relationship.equals(Neo4jRelationships.FROM.type)) return "Country";
         if(relationship.equals(Neo4jRelationships.WORK_FOR.type)) return "Organization";
         if(relationship.equals(Neo4jRelationships.STUDY_AT.type)) return "Organization";
+        if(relationship.equals(Neo4jRelationships.OCCUPIED_AS.type)) return "Occupation";
+        if(relationship.equals(Neo4jRelationships.OTHER.type)) return "Other";
         else return "";
     }
 

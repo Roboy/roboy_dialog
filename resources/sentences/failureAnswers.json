@@ -26,7 +26,10 @@
   "movies" : [
     "Haven't heard of it. It's probably shit."
   ],
-  "OCCUPATION" : [
+  "OCCUPIED_AS" : [
     "Oh well, whatever."
+  ],
+  "OTHER" : [
+    "Other"
   ]
 }

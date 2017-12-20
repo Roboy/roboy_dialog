@@ -10,10 +10,12 @@ public enum Neo4jRelationships {
     HAS_HOBBY("HAS_HOBBY"),
     LIVE_IN("LIVE_IN"),
     STUDY_AT("STUDY_AT"),
-    OCCUPATION("OCCUPATION"),
+    OCCUPIED_AS("OCCUPIED_AS"),
     WORK_FOR("WORK_FOR"),
     FRIEND_OF("FRIEND_OF"),
-    MEMBER_OF("MEMBER_OF");
+    MEMBER_OF("MEMBER_OF"),
+    OTHER("OTHER"),
+    IS("IS");
 
     public String type;
 

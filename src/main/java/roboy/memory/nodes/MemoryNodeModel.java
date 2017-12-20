@@ -86,7 +86,9 @@ public class MemoryNodeModel {
         return relationships;
     }
     public ArrayList<Integer> getRelationship(String key) {
-        return (relationships != null ? relationships.get(key.toLowerCase()) : null);
+        //TODO: Sort this shit out
+        //return (relationships != null ? relationships.get(key.toLowerCase()) : null);
+        return (relationships != null ? relationships.get(key) : null);
     }
     public void setRelationships(HashMap<String, ArrayList<Integer>> relationships) {
         if(this.relationships == null) {

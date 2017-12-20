@@ -1,0 +1,44 @@
+{
+  "name" : [
+    "%s, I will come and get you"
+  ],
+  "FROM" : [
+    "What is the weather in %s?",
+    "What was the last time you visited %s?",
+    "Do I need a visa to go to %s?"
+  ],
+  "HAS_HOBBY" : [
+    "Have you got any new hobby besides %s?",
+    "You still like %s, right?",
+    "Do you think I can do %s? I heard you like it."
+  ],
+  "LIVE_IN" : [
+    "You live in %s, right? I must pay a visit.",
+    "Is not %s a nice place to live?",
+    "How is the accommodation market in %s?"
+  ],
+  "FRIEND_OF" : [
+    "Have you made any new friends, %s?"
+  ],
+  "STUDY_AT" : [
+    "Have you graduated from %s already?",
+    "Do you still study at %s?",
+    "Which degree are you pursuing at %s?"
+  ],
+  "MEMBER_OF" : [
+    "Are you still a member of %s?",
+    "Have you left %s already?",
+    "Is it nice to be a part of %s?"
+  ],
+  "WORK_FOR" : [
+    "Do you still work for %s?",
+    "Is %s a good company?",
+    "How much do they pay you at %s?"
+  ],
+  "movies" : [
+    "MOVIE, MOVIE, MOVIE"
+  ],
+  "OCCUPIED_AS" : [
+    "OCCUPATION, OCCUPATION, OCCUPATION"
+  ]
+}

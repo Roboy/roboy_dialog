@@ -32,18 +32,17 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
 
     }
 
-    public static  Neo4jMemory getInstance()
+    public static Neo4jMemory getInstance()
     {
-        try{
-            return memory;
-        }
-        catch (NullPointerException e)
-        {
-            e.printStackTrace();
-            System.out.println("Memory wasn't initialized correctly. Use public static Neo4jMemory getInstance(RosMainNode node) instead.");
-            return null;
-        }
-
+        //try {
+        return memory;
+        //}
+        //catch (NullPointerException e)
+        //{
+        //    e.printStackTrace();
+        //    System.out.println("Memory wasn't initialized correctly. Use public static Neo4jMemory getInstance(RosMainNode node) instead.");
+        //    return null;
+        //}
     }
 
     /**

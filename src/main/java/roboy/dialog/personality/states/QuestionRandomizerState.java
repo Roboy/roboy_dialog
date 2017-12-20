@@ -23,18 +23,24 @@ public class QuestionRandomizerState implements State{
 	
 	private PersonalQAState[] questionStates;
 	private PersonalQAState locationQuestion;
+	private PersonalFollowUpState[] followUpStates;
 	private HashMap<Neo4jRelationships, Boolean> alreadyAsked;
 	private State inner;
 	private State chosenState;
 	private Interlocutor person;
+	boolean askFollowUp = true;
 
 	// All spoken phrases for asking questions are stored in these JSON files.
 	String questionsFile = "sentences/questions.json";
 	String successAnswersFile = "sentences/successAnswers.json";
 	String failureAnswersFile = "sentences/failureAnswers.json";
+	String followUpFile = "sentences/followUp.json";
+	String answersFollowUpFile = "sentences/answersFollowUp.json";
 	Map<String, List<String>> questions;
 	Map<String, List<String[]>> successAnswers;
 	Map<String, List<String>> failureAnswers;
+	Map<String, List<String>> followUp;
+	Map<String, List<String[]>> answersFollowUp;
 	
 	public QuestionRandomizerState(State inner, Interlocutor person) {
 		this.inner = inner;
@@ -42,6 +48,8 @@ public class QuestionRandomizerState implements State{
 		questions = JsonUtils.getSentencesFromJsonFile(questionsFile);
 		successAnswers = JsonUtils.getSentenceArraysFromJsonFile(successAnswersFile);
 		failureAnswers = JsonUtils.getSentencesFromJsonFile(failureAnswersFile);
+		followUp = JsonUtils.getSentencesFromJsonFile(followUpFile);
+		answersFollowUp = JsonUtils.getSentenceArraysFromJsonFile(answersFollowUpFile);
 		// alreadyAsked is filled automatically by the initializeQuestion method,
 		// then updated to match already existing information with checkForAskedQuestions()
 		alreadyAsked = new HashMap<>();
@@ -53,12 +61,18 @@ public class QuestionRandomizerState implements State{
 		locationQuestion.setSuccess(locationDBpedia);
 		questionStates = new PersonalQAState[]{
 				locationQuestion,
-				initializeQuestion(HAS_HOBBY),
-				initializeQuestion(WORK_FOR),
-				initializeQuestion(STUDY_AT)
-// TODO request support for Occupation and Movie data in the database.
-//			 initializeQuestion(OCCUPATION),
+//				initializeQuestion(HAS_HOBBY),
+//				initializeQuestion(WORK_FOR),
+//				initializeQuestion(STUDY_AT)
+// 		TODO request support for Occupation and Movie data in the database.
+			 initializeQuestion(OTHER),
 //			 initializeQuestion(LIKES_MOVIE),
+		};
+		followUpStates = new PersonalFollowUpState[] {
+				initializeFollowUpQuestion(FROM),
+				initializeFollowUpQuestion(HAS_HOBBY),
+				initializeFollowUpQuestion(WORK_FOR),
+				initializeFollowUpQuestion(STUDY_AT)
 		};
 	}
 
@@ -81,6 +95,11 @@ public class QuestionRandomizerState implements State{
 			if(!alreadyAsked.get(questionStates[index].predicate)){
 				alreadyAsked.put(questionStates[index].predicate, true);
 				chosenState = questionStates[index];
+                return chosenState.act();
+			} else if (askFollowUp) {
+				index = (int) (Math.random() * followUpStates.length);
+				chosenState = followUpStates[index];
+				askFollowUp = false;
 				return chosenState.act();
 			}
 		}
@@ -110,9 +129,19 @@ public class QuestionRandomizerState implements State{
 				relationship, person);
 	}
 
+	private PersonalFollowUpState initializeFollowUpQuestion(Neo4jRelationships relationship) {
+		return new PersonalFollowUpState(
+				followUp.get(relationship.type),
+				failureAnswers.get(relationship.type),
+                answersFollowUp.get(relationship.type),
+				relationship, this, person);
+	}
+
 	private void checkForAskedQuestions() {
-		for(Neo4jRelationships relationship : alreadyAsked.keySet()) {
-			if(person.hasRelationship(relationship)) alreadyAsked.put(relationship, true);
+	for(Neo4jRelationships relationship : alreadyAsked.keySet()) {
+			if(person.hasRelationship(relationship)) {
+				alreadyAsked.put(relationship, true);
+			}
 		}
 	}
 	

@@ -1,12 +1,12 @@
 {
   "name" : [
-    ["Nice to meet you ",""]
+    ["Nice to see that you are still alive ",""]
   ],
   "FROM" : [
-    ["Oh, I should visit ",""]
+    ["You are from a very interesting place",""]
   ],
   "HAS_HOBBY" : [
-    ["You are just like me, I love "," too"]
+    ["Leisure time is the best time",""]
   ],
   "LIVE_IN" : [
     ["I should visit ",""],
@@ -17,21 +17,18 @@
     ["Oh, I have met "," they're nice."]
   ],
   "STUDY_AT" : [
-    [""," must be a cool place to study at."]
+    ["","Whatever. It is not so interesting, you know"]
   ],
   "MEMBER_OF" : [
     ["","? That is cool!"]
   ],
   "WORK_FOR" : [
-    ["I have heard of ",""]
+    ["I think it is good for you",""]
   ],
   "movies" : [
     ["Oh, I would watch ",". If those vision guys finally fixed my perception."]
   ],
   "OCCUPIED_AS" : [
     ["You are probably very poor doing ",""]
-  ],
-  "OTHER" : [
-    ["Other ",""]
   ]
 }

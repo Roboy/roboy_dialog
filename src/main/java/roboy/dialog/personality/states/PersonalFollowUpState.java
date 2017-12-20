@@ -1,38 +1,54 @@
 package roboy.dialog.personality.states;
 
+import roboy.linguistics.Linguistics;
+import roboy.linguistics.Linguistics.SEMANTIC_ROLE;
+import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.memory.Neo4jMemory;
+import roboy.memory.Neo4jRelationships;
+import roboy.memory.nodes.Interlocutor;
+import roboy.memory.nodes.MemoryNodeModel;
+import roboy.util.Lists;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.Linguistics.SEMANTIC_ROLE;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jRelationships;
-import roboy.memory.nodes.Interlocutor;
-import roboy.util.Lists;
-
-public class PersonalQAState extends AbstractBooleanState{
+public class PersonalFollowUpState extends AbstractBooleanState{
 
 	private List<String> questions;
 	private List<String[]> successTexts;
 	public Neo4jRelationships predicate;
 	private Interlocutor person;
-	
-	public PersonalQAState(List<String> questions, List<String> failureTexts,
-						   List<String[]> successTexts, Neo4jRelationships predicate, Interlocutor person) {
+
+	public PersonalFollowUpState(List<String> questions, List<String> failureTexts,
+                                 List<String[]> successTexts, Neo4jRelationships predicate, QuestionRandomizerState nextState, Interlocutor person) {
 		this.questions = questions;
 		this.successTexts = successTexts;
 		this.predicate = predicate;
 		this.person = person;
+		this.setNextState(nextState);
 		setFailureTexts(failureTexts);
 	}
 
 	/**
 	 * Ask the question.
+     * Using Neo4jRelationships predicate
 	 */
 	@Override
 	public List<Interpretation> act() {
-		return Lists.interpretationList(new Interpretation(String.format(questions.get((int)Math.random()*questions.size()))));
+		String retrievedResult = "";
+        ArrayList<Integer> ids = person.getRelationships(predicate);
+        Neo4jMemory memory = Neo4jMemory.getInstance();
+        try {
+            MemoryNodeModel requestedObject = memory.getById(ids.get(0));
+            retrievedResult = requestedObject.getProperties().get("name").toString();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return Lists.interpretationList(new Interpretation(String.format(questions.get((int)Math.random()*questions.size()), retrievedResult)));
 	}
 
 	/**
@@ -74,12 +90,12 @@ public class PersonalQAState extends AbstractBooleanState{
 			//WorkingMemory.getInstance().save(new Triple(predicate,name,answer));
 
 			// Add the new information about the person to the memory.
-			person.addInformation(predicate.type, answer);
+			// person.addInformation(predicate.type, answer);
 
 
 			List<String> sTexts = new ArrayList<>();
 			for(String[] s: successTexts){
-				sTexts.add(s[0]+answer+s[1]);
+				sTexts.add(s[0]+s[1]);
 			}
 			setSuccessTexts(sTexts);
 			return true;
