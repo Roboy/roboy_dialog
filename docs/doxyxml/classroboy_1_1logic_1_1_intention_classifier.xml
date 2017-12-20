@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1logic_1_1_intention_classifier" kind="class" language="Java" prot="public">
     <compoundname>roboy::logic::IntentionClassifier</compoundname>
       <sectiondef kind="private-attrib">
@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/logic/IntentionClassifier.java" line="15" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/logic/IntentionClassifier.java" bodystart="15" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/logic/IntentionClassifier.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/logic/IntentionClassifier.java" bodystart="15" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/logic/IntentionClassifier.java" line="17" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/logic/IntentionClassifier.java" bodystart="17" bodyend="20"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/logic/IntentionClassifier.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/logic/IntentionClassifier.java" bodystart="17" bodyend="20"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1logic_1_1_intention_classifier_1afaa54acc31c386c5fc571dd4181c951c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/logic/IntentionClassifier.java" line="22" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/logic/IntentionClassifier.java" bodystart="22" bodyend="30"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/logic/IntentionClassifier.java" line="22" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/logic/IntentionClassifier.java" bodystart="22" bodyend="30"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -58,18 +58,18 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="903">
+      <node id="233">
         <label>roboy.logic.IntentionClassifier</label>
         <link refid="classroboy_1_1logic_1_1_intention_classifier"/>
-        <childnode refid="904" relation="usage">
+        <childnode refid="234" relation="usage">
           <edgelabel>ros</edgelabel>
         </childnode>
       </node>
-      <node id="904">
+      <node id="234">
         <label>Ros</label>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/logic/IntentionClassifier.java" line="13" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/logic/IntentionClassifier.java" bodystart="12" bodyend="32"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/logic/IntentionClassifier.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/logic/IntentionClassifier.java" bodystart="12" bodyend="32"/>
     <listofallmembers>
       <member refid="classroboy_1_1logic_1_1_intention_classifier_1afaa54acc31c386c5fc571dd4181c951c" prot="public" virt="non-virtual"><scope>roboy::logic::IntentionClassifier</scope><name>classify</name></member>
       <member refid="classroboy_1_1logic_1_1_intention_classifier_1a71254cd92193d726879713e0867a053c" prot="public" virt="non-virtual"><scope>roboy::logic::IntentionClassifier</scope><name>IntentionClassifier</name></member>

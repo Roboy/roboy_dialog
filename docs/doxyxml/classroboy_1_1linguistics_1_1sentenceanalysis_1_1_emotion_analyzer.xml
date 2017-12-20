@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_emotion_analyzer" kind="class" language="Java" prot="public">
     <compoundname>roboy::linguistics::sentenceanalysis::EmotionAnalyzer</compoundname>
     <basecompoundref refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer" prot="public" virt="non-virtual">roboy.linguistics.sentenceanalysis.Analyzer</basecompoundref>
@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/EmotionAnalyzer.java" line="15" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/EmotionAnalyzer.java" bodystart="15" bodyend="33"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/EmotionAnalyzer.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/EmotionAnalyzer.java" bodystart="15" bodyend="33"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -28,30 +28,30 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="823">
+      <node id="153">
         <label>roboy.linguistics.sentenceanalysis.EmotionAnalyzer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_emotion_analyzer"/>
-        <childnode refid="824" relation="public-inheritance">
+        <childnode refid="154" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="824">
+      <node id="154">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="825">
+      <node id="155">
         <label>roboy.linguistics.sentenceanalysis.EmotionAnalyzer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_emotion_analyzer"/>
-        <childnode refid="826" relation="public-inheritance">
+        <childnode refid="156" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="826">
+      <node id="156">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/EmotionAnalyzer.java" line="13" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/EmotionAnalyzer.java" bodystart="13" bodyend="34"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/EmotionAnalyzer.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/EmotionAnalyzer.java" bodystart="13" bodyend="34"/>
     <listofallmembers>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_emotion_analyzer_1a220585748d297365748bd63ee7013a79" prot="public" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::EmotionAnalyzer</scope><name>analyze</name></member>
     </listofallmembers>

@@ -32,7 +32,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
 
     }
 
-    public static  Neo4jMemory getInstance()
+    public static Neo4jMemory getInstance()
     {
         if (memory == null) {
             System.out.println("Memory wasn't initialized correctly. Use public static Neo4jMemory getInstance(RosMainNode node) instead.");

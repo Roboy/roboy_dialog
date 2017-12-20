@@ -1,0 +1,34 @@
+{
+  "name" : [
+    ["Nice to see that you are still alive ",""]
+  ],
+  "FROM" : [
+    ["You are from a very interesting place",""]
+  ],
+  "HAS_HOBBY" : [
+    ["Leisure time is the best time",""]
+  ],
+  "LIVE_IN" : [
+    ["I should visit ",""],
+    ["It is beautiful in ",""],
+    [""," is a beautiful place"]
+  ],
+  "FRIEND_OF" : [
+    ["Oh, I have met "," they're nice."]
+  ],
+  "STUDY_AT" : [
+    ["","Whatever. It is not so interesting, you know"]
+  ],
+  "MEMBER_OF" : [
+    ["","? That is cool!"]
+  ],
+  "WORK_FOR" : [
+    ["I think it is good for you",""]
+  ],
+  "movies" : [
+    ["Oh, I would watch ",". If those vision guys finally fixed my perception."]
+  ],
+  "OCCUPIED_AS" : [
+    ["You are probably very poor doing ",""]
+  ]
+}

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer" kind="class" language="Java" prot="public">
     <compoundname>roboy::linguistics::sentenceanalysis::AnswerAnalyzer</compoundname>
     <basecompoundref refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer" prot="public" virt="non-virtual">roboy.linguistics.sentenceanalysis.Analyzer</basecompoundref>
@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzer.java" line="21" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzer.java" bodystart="21" bodyend="97"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzer.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzer.java" bodystart="21" bodyend="97"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -28,30 +28,30 @@
     <detaileddescription>
 <para>It creates the outputs <ref refid="classroboy_1_1linguistics_1_1_linguistics_1a2398c1301599c3b5f79ab6d3c167376d" kindref="member">Linguistics.OBJ_ANSWER</ref> for situations where the answer to the question is in the object of the sentence (e.g. &quot;Frank&quot; in the sentence &quot;I am Frank&quot; to the question &quot;Who are you?&quot;) and <ref refid="classroboy_1_1linguistics_1_1_linguistics_1a3c881e6e18d76bcf9a0959a4e30aed24" kindref="member">Linguistics.PRED_ANSWER</ref> if it is in the predicate or in the predicate and the object combined (e.g. &quot;swimming&quot; in the answer &quot;I like swimming&quot; to the question &quot;What is your hobby?&quot;). </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="704">
+      <node id="34">
         <label>roboy.linguistics.sentenceanalysis.AnswerAnalyzer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer"/>
-        <childnode refid="705" relation="public-inheritance">
+        <childnode refid="35" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="705">
+      <node id="35">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="706">
+      <node id="36">
         <label>roboy.linguistics.sentenceanalysis.AnswerAnalyzer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer"/>
-        <childnode refid="707" relation="public-inheritance">
+        <childnode refid="37" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="707">
+      <node id="37">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzer.java" line="18" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzer.java" bodystart="18" bodyend="99"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzer.java" line="18" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzer.java" bodystart="18" bodyend="99"/>
     <listofallmembers>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_1a73f78105762ea57ad85c1a6e849a7eaf" prot="public" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::AnswerAnalyzer</scope><name>analyze</name></member>
     </listofallmembers>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1ros_1_1_ros_main_node" kind="class" language="Java" prot="public">
     <compoundname>roboy::ros::RosMainNode</compoundname>
     <basecompoundref prot="public" virt="non-virtual">AbstractNodeMain</basecompoundref>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="20" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="20" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="20" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1ros_1_1_ros_main_node_1a225e9130265103eb9bf7ab66a1bfe431" prot="private" static="no" mutable="no">
         <type><ref refid="classroboy_1_1ros_1_1_ros_manager" kindref="compound">RosManager</ref></type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="21" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="21" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="21" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="22" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="22" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="22" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="22" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="23" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="23" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="23" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="23" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="package-attrib">
@@ -79,7 +79,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="24" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="24" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="24" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="24" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -94,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="29" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="29" bodyend="50"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="29" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="29" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a8d4c5009fb338cdaeeb2e815b7fecb64" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>GraphName</type>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="53" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="53" bodyend="55"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="53" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="53" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a036b817ccae68e74247261844ccd3f6f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -124,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="58" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="58" bodyend="63"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="58" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="58" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a350e1cd4c0f16634933ae443394c7f52" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>boolean</type>
@@ -141,7 +141,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="65" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="65" bodyend="93"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="65" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="65" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a17f08fc3375fca28f4fcb47499b587c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -154,7 +154,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="95" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="95" bodyend="123"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="95" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="95" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1ac6963cb627eda6ab9c1a2a0d0171e7ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -171,7 +171,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="125" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="125" bodyend="152"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="125" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="125" bodyend="152"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a78383d041e3e9a0bec0bf1c00540d83d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>boolean</type>
@@ -188,7 +188,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="154" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="154" bodyend="181"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="154" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="154" bodyend="181"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a8488d63c9439e4de47e6866bebb441ab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -205,7 +205,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="183" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="183" bodyend="211"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="183" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="183" bodyend="211"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a1c0e7c1789ed6679693530ceb8382c06" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -222,7 +222,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="213" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="213" bodyend="241"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="213" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="213" bodyend="241"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a83a495d40581045faabee4db11cfa7d6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -239,7 +239,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="243" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="243" bodyend="271"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="243" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="243" bodyend="271"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a4270c70b76eea8346a2894b17f5f58b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -256,7 +256,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="273" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="273" bodyend="301"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="273" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="273" bodyend="301"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1a7b5081c400b90ff97a200358333f0765" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -273,7 +273,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="303" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="303" bodyend="331"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="303" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="303" bodyend="331"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_main_node_1acd7c70b6e8ad8eca937eed34b8a9fad5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Object</type>
@@ -290,7 +290,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="333" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="333" bodyend="360"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="333" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="333" bodyend="360"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -328,7 +328,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="367" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="367" bodyend="375"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="367" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="367" bodyend="375"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -336,47 +336,47 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1200">
+      <node id="528">
         <label>roboy.ros.RosMainNode</label>
         <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
-        <childnode refid="1201" relation="public-inheritance">
+        <childnode refid="529" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1201">
+      <node id="529">
         <label>AbstractNodeMain</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1206">
+      <node id="534">
         <label>CountDownLatch</label>
       </node>
-      <node id="1205">
+      <node id="533">
         <label>HashMap&lt; roboy.ros.RosClients, ServiceClient &gt;</label>
       </node>
-      <node id="1202">
+      <node id="530">
         <label>roboy.ros.RosMainNode</label>
         <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
-        <childnode refid="1203" relation="public-inheritance">
+        <childnode refid="531" relation="public-inheritance">
         </childnode>
-        <childnode refid="1204" relation="usage">
+        <childnode refid="532" relation="usage">
           <edgelabel>clients</edgelabel>
         </childnode>
-        <childnode refid="1206" relation="usage">
+        <childnode refid="534" relation="usage">
           <edgelabel>rosConnectionLatch</edgelabel>
         </childnode>
       </node>
-      <node id="1204">
+      <node id="532">
         <label>roboy.ros.RosManager</label>
         <link refid="classroboy_1_1ros_1_1_ros_manager"/>
-        <childnode refid="1205" relation="usage">
+        <childnode refid="533" relation="usage">
           <edgelabel>clientMap</edgelabel>
         </childnode>
       </node>
-      <node id="1203">
+      <node id="531">
         <label>AbstractNodeMain</label>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" line="17" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosMainNode.java" bodystart="17" bodyend="377"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosMainNode.java" bodystart="17" bodyend="377"/>
     <listofallmembers>
       <member refid="classroboy_1_1ros_1_1_ros_main_node_1a225e9130265103eb9bf7ab66a1bfe431" prot="private" virt="non-virtual"><scope>roboy::ros::RosMainNode</scope><name>clients</name></member>
       <member refid="classroboy_1_1ros_1_1_ros_main_node_1a8488d63c9439e4de47e6866bebb441ab" prot="public" virt="non-virtual"><scope>roboy::ros::RosMainNode</scope><name>CreateMemoryQuery</name></member>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test" kind="class" language="Java" prot="public">
     <compoundname>roboy::linguistics::sentenceanalysis::AnswerAnalyzerTest</compoundname>
       <sectiondef kind="private-static-attrib">
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="67" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="67" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="67" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1a2fe7fd694e347fba8dbca25e031db5fa" prot="private" static="yes" mutable="no">
         <type>final <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_p_p_o_s_tagger" kindref="compound">OpenNLPPPOSTagger</ref></type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="68" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="68" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="68" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1a29fac3fad083e67ebd2542b340cfb96f" prot="private" static="yes" mutable="no">
         <type>final <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser" kindref="compound">OpenNLPParser</ref></type>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="69" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="69" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="69" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1a3824dd8a1bfb5f28fdf6601eafde9818" prot="private" static="yes" mutable="no">
         <type>final <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer" kindref="compound">AnswerAnalyzer</ref></type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="70" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="70" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="70" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="70" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="15" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="15" bodyend="24"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="15" bodyend="24"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1aee3a036f3cbefc4585040ea8c74aa303" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -85,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="27" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="27" bodyend="33"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="27" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="27" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1aa12b58cfd180a7f7d8bc22f46289eaaa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -98,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="36" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="36" bodyend="43"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="36" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="36" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1a1c7eb6536df44ec3930d05f00f176806" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -111,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="46" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="46" bodyend="55"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="46" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="46" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1a67f6893bd1e09286d990c57d938c7e8a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -124,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="58" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="58" bodyend="65"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="58" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="58" bodyend="65"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -143,7 +143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="72" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="72" bodyend="81"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="72" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="72" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1a70e6e3d4b33606509247335d69f972b5" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -160,7 +160,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="83" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="83" bodyend="92"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="83" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="83" bodyend="92"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -168,64 +168,64 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="710">
+      <node id="40">
         <label>roboy.linguistics.sentenceanalysis.AnswerAnalyzer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer"/>
-        <childnode refid="711" relation="public-inheritance">
+        <childnode refid="41" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="714">
+      <node id="44">
         <label>roboy.linguistics.sentenceanalysis.OpenNLPPPOSTagger</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_p_p_o_s_tagger"/>
-        <childnode refid="711" relation="public-inheritance">
+        <childnode refid="41" relation="public-inheritance">
         </childnode>
-        <childnode refid="715" relation="usage">
+        <childnode refid="45" relation="usage">
           <edgelabel>tagger</edgelabel>
         </childnode>
       </node>
-      <node id="711">
+      <node id="41">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
-      <node id="713">
+      <node id="43">
         <label>Parser</label>
       </node>
-      <node id="715">
+      <node id="45">
         <label>POSTaggerME</label>
       </node>
-      <node id="716">
+      <node id="46">
         <label>roboy.linguistics.sentenceanalysis.SimpleTokenizer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_simple_tokenizer"/>
-        <childnode refid="711" relation="public-inheritance">
+        <childnode refid="41" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="709">
+      <node id="39">
         <label>roboy.linguistics.sentenceanalysis.AnswerAnalyzerTest</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test"/>
-        <childnode refid="710" relation="usage">
+        <childnode refid="40" relation="usage">
           <edgelabel>answer</edgelabel>
         </childnode>
-        <childnode refid="712" relation="usage">
+        <childnode refid="42" relation="usage">
           <edgelabel>parser</edgelabel>
         </childnode>
-        <childnode refid="714" relation="usage">
+        <childnode refid="44" relation="usage">
           <edgelabel>pos</edgelabel>
         </childnode>
-        <childnode refid="716" relation="usage">
+        <childnode refid="46" relation="usage">
           <edgelabel>tokenizer</edgelabel>
         </childnode>
       </node>
-      <node id="712">
+      <node id="42">
         <label>roboy.linguistics.sentenceanalysis.OpenNLPParser</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser"/>
-        <childnode refid="711" relation="public-inheritance">
+        <childnode refid="41" relation="public-inheritance">
         </childnode>
-        <childnode refid="713" relation="usage">
+        <childnode refid="43" relation="usage">
           <edgelabel>parser</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="12" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="12" bodyend="94"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" line="12" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/AnswerAnalyzerTest.java" bodystart="12" bodyend="94"/>
     <listofallmembers>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1afa3f1bfdc7aa8ad4826e6aa92df3131f" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::AnswerAnalyzerTest</scope><name>analyze</name></member>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1a70e6e3d4b33606509247335d69f972b5" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::AnswerAnalyzerTest</scope><name>analyzePred</name></member>

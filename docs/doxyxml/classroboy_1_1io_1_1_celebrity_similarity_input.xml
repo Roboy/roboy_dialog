@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1io_1_1_celebrity_similarity_input" kind="class" language="Java" prot="public">
     <compoundname>roboy::io::CelebritySimilarityInput</compoundname>
     <basecompoundref refid="interfaceroboy_1_1io_1_1_input_device" prot="public" virt="non-virtual">roboy.io.InputDevice</basecompoundref>
@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CelebritySimilarityInput.java" line="14" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CelebritySimilarityInput.java" bodystart="14" bodyend="16"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CelebritySimilarityInput.java" line="14" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CelebritySimilarityInput.java" bodystart="14" bodyend="16"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -25,30 +25,30 @@
     <detaileddescription>
 <para>Isn&apos;t implemented yet. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="730">
+      <node id="60">
         <label>roboy.io.CelebritySimilarityInput</label>
         <link refid="classroboy_1_1io_1_1_celebrity_similarity_input"/>
-        <childnode refid="731" relation="public-inheritance">
+        <childnode refid="61" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="731">
+      <node id="61">
         <label>roboy.io.InputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_input_device"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="732">
+      <node id="62">
         <label>roboy.io.CelebritySimilarityInput</label>
         <link refid="classroboy_1_1io_1_1_celebrity_similarity_input"/>
-        <childnode refid="733" relation="public-inheritance">
+        <childnode refid="63" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="733">
+      <node id="63">
         <label>roboy.io.InputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_input_device"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CelebritySimilarityInput.java" line="11" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/CelebritySimilarityInput.java" bodystart="11" bodyend="18"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CelebritySimilarityInput.java" line="11" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CelebritySimilarityInput.java" bodystart="11" bodyend="18"/>
     <listofallmembers>
       <member refid="classroboy_1_1io_1_1_celebrity_similarity_input_1a1257267e4f15652716fdf6d9844e192a" prot="public" virt="non-virtual"><scope>roboy::io::CelebritySimilarityInput</scope><name>listen</name></member>
     </listofallmembers>

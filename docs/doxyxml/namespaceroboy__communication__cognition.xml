@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="namespaceroboy__communication__cognition" kind="namespace" language="Java">
     <compoundname>roboy_communication_cognition</compoundname>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosClients.java" line="1" column="1"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosClients.java" line="1" column="1"/>
   </compounddef>
 </doxygen>

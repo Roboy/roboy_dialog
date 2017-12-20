@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="dir_870da1f0b478f7ca881b221c68d88b01" kind="dir">
-    <compoundname>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/logic</compoundname>
+    <compoundname>/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/logic</compoundname>
     <innerfile refid="_p_a_s_interpreter_test_8java">PASInterpreterTest.java</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/logic/"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/logic/"/>
   </compounddef>
 </doxygen>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model" kind="class" language="Java" prot="public">
     <compoundname>roboy::memory::nodes::MemoryNodeModel</compoundname>
       <sectiondef kind="private-attrib">
@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="18" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="18" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a4eb8ec5de50d4bb87900318b853887c5" prot="private" static="no" mutable="no">
         <type>ArrayList&lt; String &gt;</type>
@@ -27,7 +27,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="20" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="20" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="19" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="19" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a52df146c59d1d625049c2c3ecb7dd61a" prot="private" static="no" mutable="no">
         <type>String</type>
@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="23" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="23" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="22" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a982e8cb032c661dbf942566c4750a18d" prot="private" static="no" mutable="no">
         <type>HashMap&lt; String, Object &gt;</type>
@@ -53,20 +53,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="25" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="25" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="24" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="24" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a34f8c80bcce0fd675cc8a8c2a152111e" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1af8e17e183f7dec4f2c773f59f0e3eb6b" prot="private" static="no" mutable="no">
         <type>HashMap&lt; String, ArrayList&lt; Integer &gt; &gt;</type>
-        <definition>HashMap&lt;String, ArrayList&lt;Integer&gt; &gt; roboy.memory.nodes.MemoryNodeModel.relations</definition>
+        <definition>HashMap&lt;String, ArrayList&lt;Integer&gt; &gt; roboy.memory.nodes.MemoryNodeModel.relationships</definition>
         <argsstring></argsstring>
-        <name>relations</name>
+        <name>relationships</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="27" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="27" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="26" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="26" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="package-attrib">
@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="30" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="30" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="29" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="29" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="32" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="32" bodyend="34"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="31" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="31" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1ade02f9836975ebdbefd27a3362dff4c1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -114,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="36" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="36" bodyend="46"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="35" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="35" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1af6b2187701c0d4a50cc540c065e711f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -127,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="48" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="48" bodyend="50"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="47" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="47" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a61e3ff9355f1ad5c75b038912d6dbf37" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -144,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="51" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="51" bodyend="53"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="50" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="50" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1af65d41b94792aed6ce7324937778fa9d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>ArrayList&lt; String &gt;</type>
@@ -157,7 +157,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="55" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="55" bodyend="57"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="54" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="54" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a79b7e74c1168979a74dfb8b2c9fb29a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -174,7 +174,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="58" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="58" bodyend="64"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="57" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="57" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a1dc08d2530daaacd07d66e208274aaa7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>HashMap&lt; String, Object &gt;</type>
@@ -187,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="66" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="66" bodyend="68"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="65" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="65" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a6c81048b39178c05e2e61eae22839c16" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Object</type>
@@ -204,7 +204,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="69" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="69" bodyend="71"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="68" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="68" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a7b262317c21d3a976f45931a3a6f1e97" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -221,7 +221,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="73" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="73" bodyend="78"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="72" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="72" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1ac46686869bc5eadf01efba47743efca7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -242,26 +242,26 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="79" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="79" bodyend="84"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="78" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="78" bodyend="83"/>
       </memberdef>
-      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a5eddb2ddf1a5644a602ce6a1dd15b19a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a3b850efe630a3872112aa7aadb32a122" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>HashMap&lt; String, ArrayList&lt; Integer &gt; &gt;</type>
-        <definition>HashMap&lt;String, ArrayList&lt;Integer&gt; &gt; roboy.memory.nodes.MemoryNodeModel.getRelations</definition>
+        <definition>HashMap&lt;String, ArrayList&lt;Integer&gt; &gt; roboy.memory.nodes.MemoryNodeModel.getRelationships</definition>
         <argsstring>()</argsstring>
-        <name>getRelations</name>
+        <name>getRelationships</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="86" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="86" bodyend="88"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="85" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="85" bodyend="87"/>
       </memberdef>
-      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a7bb90c5e89480fb14010575e96bec55c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a6164cac270b34fdf5bb5ebfbde658ddd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>ArrayList&lt; Integer &gt;</type>
-        <definition>ArrayList&lt;Integer&gt; roboy.memory.nodes.MemoryNodeModel.getRelation</definition>
+        <definition>ArrayList&lt;Integer&gt; roboy.memory.nodes.MemoryNodeModel.getRelationship</definition>
         <argsstring>(String key)</argsstring>
-        <name>getRelation</name>
+        <name>getRelationship</name>
         <param>
           <type>String</type>
           <declname>key</declname>
@@ -272,16 +272,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="89" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="89" bodyend="91"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="88" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="88" bodyend="90"/>
       </memberdef>
-      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a2b1ff3e17f2352158a5e0eaf3ae19d54" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a096cfb8bd3267799c2bbf8a556912481" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
-        <definition>void roboy.memory.nodes.MemoryNodeModel.setRelations</definition>
-        <argsstring>(HashMap&lt; String, ArrayList&lt; Integer &gt;&gt; relations)</argsstring>
-        <name>setRelations</name>
+        <definition>void roboy.memory.nodes.MemoryNodeModel.setRelationships</definition>
+        <argsstring>(HashMap&lt; String, ArrayList&lt; Integer &gt;&gt; relationships)</argsstring>
+        <name>setRelationships</name>
         <param>
           <type>HashMap&lt; String, ArrayList&lt; Integer &gt;&gt;</type>
-          <declname>relations</declname>
+          <declname>relationships</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -289,13 +289,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="92" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="92" bodyend="97"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="91" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="91" bodyend="96"/>
       </memberdef>
-      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a8145ca05a144d824600facf32fd7f3d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1ac2ddcca8004795c9f0b50a57edf9fa45" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
-        <definition>void roboy.memory.nodes.MemoryNodeModel.setRelation</definition>
+        <definition>void roboy.memory.nodes.MemoryNodeModel.setRelationship</definition>
         <argsstring>(String key, Integer id)</argsstring>
-        <name>setRelation</name>
+        <name>setRelationship</name>
         <param>
           <type>String</type>
           <declname>key</declname>
@@ -310,7 +310,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="98" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="98" bodyend="109"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="97" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="97" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a827ad661c2973642cdd1058a88c0893c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -327,7 +327,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="111" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="111" bodyend="113"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="110" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="110" bodyend="112"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a1238c30afc316003aa5558ecb1f8f894" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -344,7 +344,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="118" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="118" bodyend="150"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="117" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="117" bodyend="149"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a56392fa41d2f91b1b6a1b70a50b45267" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model" kindref="compound">MemoryNodeModel</ref></type>
@@ -365,7 +365,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="154" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="154" bodyend="156"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="153" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="153" bodyend="155"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -373,51 +373,51 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="990">
+      <node id="320">
         <label>roboy.memory.nodes.MemoryNodeModel</label>
         <link refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model"/>
-        <childnode refid="991" relation="usage">
+        <childnode refid="321" relation="usage">
           <edgelabel>properties</edgelabel>
         </childnode>
-        <childnode refid="992" relation="usage">
+        <childnode refid="322" relation="usage">
           <edgelabel>labels</edgelabel>
         </childnode>
-        <childnode refid="993" relation="usage">
-          <edgelabel>relations</edgelabel>
+        <childnode refid="323" relation="usage">
+          <edgelabel>relationships</edgelabel>
         </childnode>
       </node>
-      <node id="991">
+      <node id="321">
         <label>HashMap&lt; String, Object &gt;</label>
       </node>
-      <node id="993">
+      <node id="323">
         <label>HashMap&lt; String, ArrayList&lt; Integer &gt; &gt;</label>
       </node>
-      <node id="992">
+      <node id="322">
         <label>ArrayList&lt; String &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="16" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="16" bodyend="157"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java" bodystart="15" bodyend="156"/>
     <listofallmembers>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a56392fa41d2f91b1b6a1b70a50b45267" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>fromJSON</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1af6b2187701c0d4a50cc540c065e711f0" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>getId</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1af65d41b94792aed6ce7324937778fa9d" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>getLabels</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a1dc08d2530daaacd07d66e208274aaa7" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>getProperties</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a6c81048b39178c05e2e61eae22839c16" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>getProperty</name></member>
-      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a7bb90c5e89480fb14010575e96bec55c" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>getRelation</name></member>
-      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a5eddb2ddf1a5644a602ce6a1dd15b19a" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>getRelations</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a6164cac270b34fdf5bb5ebfbde658ddd" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>getRelationship</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a3b850efe630a3872112aa7aadb32a122" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>getRelationships</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a7a78b2bb1d959c81f28158390bf2a906" prot="private" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>id</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a52df146c59d1d625049c2c3ecb7dd61a" prot="private" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>label</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a4eb8ec5de50d4bb87900318b853887c5" prot="private" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>labels</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a636f76b8805c5ebb756836ec5674ef4f" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>MemoryNodeModel</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1ade02f9836975ebdbefd27a3362dff4c1" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>MemoryNodeModel</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a982e8cb032c661dbf942566c4750a18d" prot="private" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>properties</name></member>
-      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a34f8c80bcce0fd675cc8a8c2a152111e" prot="private" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>relations</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1af8e17e183f7dec4f2c773f59f0e3eb6b" prot="private" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>relationships</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a61e3ff9355f1ad5c75b038912d6dbf37" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>setId</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a79b7e74c1168979a74dfb8b2c9fb29a4" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>setLabel</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a7b262317c21d3a976f45931a3a6f1e97" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>setProperties</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1ac46686869bc5eadf01efba47743efca7" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>setProperty</name></member>
-      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a8145ca05a144d824600facf32fd7f3d4" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>setRelation</name></member>
-      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a2b1ff3e17f2352158a5e0eaf3ae19d54" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>setRelations</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1ac2ddcca8004795c9f0b50a57edf9fa45" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>setRelationship</name></member>
+      <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a096cfb8bd3267799c2bbf8a556912481" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>setRelationships</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a827ad661c2973642cdd1058a88c0893c" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>setStripQuery</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a0dd3371025cec2d370055ceddd5d90bd" prot="package" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>stripQuery</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a1238c30afc316003aa5558ecb1f8f894" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::MemoryNodeModel</scope><name>toJSON</name></member>

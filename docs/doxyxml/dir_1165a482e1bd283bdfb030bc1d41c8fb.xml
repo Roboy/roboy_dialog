@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="dir_1165a482e1bd283bdfb030bc1d41c8fb" kind="dir">
-    <compoundname>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes</compoundname>
+    <compoundname>/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes</compoundname>
     <innerfile refid="_interlocutor_8java">Interlocutor.java</innerfile>
     <innerfile refid="_memory_node_model_8java">MemoryNodeModel.java</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes/"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/nodes/"/>
   </compounddef>
 </doxygen>

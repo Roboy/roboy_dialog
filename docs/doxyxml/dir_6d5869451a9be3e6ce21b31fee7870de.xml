@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="dir_6d5869451a9be3e6ce21b31fee7870de" kind="dir">
-    <compoundname>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy</compoundname>
-    <innerdir refid="dir_bedbe0196ed4e3ea490265c56ba398f8">/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog</innerdir>
-    <innerdir refid="dir_0f4c97c7389bb8a061b6dec9af63e7cb">/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io</innerdir>
-    <innerdir refid="dir_ed0fca50c3b44d5fff0fa276d178b23b">/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics</innerdir>
-    <innerdir refid="dir_fc501c632ab2a1a6d6d30ee369f70e27">/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/logic</innerdir>
-    <innerdir refid="dir_029141a1c7d6ffd5a4e073b2543b9713">/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory</innerdir>
-    <innerdir refid="dir_8548ac48c61d494e9afd946956351f00">/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros</innerdir>
-    <innerdir refid="dir_2ee74114d792069c15448944a9bb6a63">/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk</innerdir>
-    <innerdir refid="dir_99a73bddd3718e5715d839342deccec9">/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util</innerdir>
+    <compoundname>/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy</compoundname>
+    <innerdir refid="dir_bedbe0196ed4e3ea490265c56ba398f8">/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog</innerdir>
+    <innerdir refid="dir_0f4c97c7389bb8a061b6dec9af63e7cb">/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io</innerdir>
+    <innerdir refid="dir_ed0fca50c3b44d5fff0fa276d178b23b">/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics</innerdir>
+    <innerdir refid="dir_fc501c632ab2a1a6d6d30ee369f70e27">/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/logic</innerdir>
+    <innerdir refid="dir_029141a1c7d6ffd5a4e073b2543b9713">/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory</innerdir>
+    <innerdir refid="dir_8548ac48c61d494e9afd946956351f00">/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros</innerdir>
+    <innerdir refid="dir_2ee74114d792069c15448944a9bb6a63">/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk</innerdir>
+    <innerdir refid="dir_99a73bddd3718e5715d839342deccec9">/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util</innerdir>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/"/>
   </compounddef>
 </doxygen>

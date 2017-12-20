@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="_neo4j_relationships_8java" kind="file" language="Java">
+    <compoundname>Neo4jRelationships.java</compoundname>
+    <innerclass refid="enumroboy_1_1memory_1_1_neo4j_relationships" prot="public">roboy::memory::Neo4jRelationships</innerclass>
+    <innernamespace refid="namespaceroboy_1_1memory">roboy::memory</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">package<sp/></highlight><highlight class="normal">roboy.memory;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="enumroboy_1_1memory_1_1_neo4j_relationships" refkind="compound"><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="enumroboy_1_1memory_1_1_neo4j_relationships" kindref="compound">Neo4jRelationships</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>FROM(</highlight><highlight class="stringliteral">&quot;FROM&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>HAS_HOBBY(</highlight><highlight class="stringliteral">&quot;HAS_HOBBY&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>LIVE_IN(</highlight><highlight class="stringliteral">&quot;LIVE_IN&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>STUDY_AT(</highlight><highlight class="stringliteral">&quot;STUDY_AT&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>OCCUPATION(</highlight><highlight class="stringliteral">&quot;OCCUPATION&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>WORK_FOR(</highlight><highlight class="stringliteral">&quot;WORK_FOR&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>FRIEND_OF(</highlight><highlight class="stringliteral">&quot;FRIEND_OF&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>MEMBER_OF(</highlight><highlight class="stringliteral">&quot;MEMBER_OF&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>String<sp/>type;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="enumroboy_1_1memory_1_1_neo4j_relationships" kindref="compound">Neo4jRelationships</ref>(String<sp/>type)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this.type=type;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java"/>
+  </compounddef>
+</doxygen>

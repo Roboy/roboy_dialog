@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1dialog_1_1personality_1_1_default_personality" kind="class" language="Java" prot="public">
     <compoundname>roboy::dialog::personality::DefaultPersonality</compoundname>
     <basecompoundref refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality" prot="public" virt="non-virtual">roboy.dialog.personality.Personality</basecompoundref>
@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="15" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="15" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1_default_personality_1ad19cbacc233dffb23e3d6ba38874919d" prot="private" static="yes" mutable="no">
         <type>final List&lt; String &gt;</type>
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="18" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="18" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="18" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1_default_personality_1abcdc02afc0b5b76efd7df313fe5ed9a8" prot="private" static="yes" mutable="no">
         <type>final List&lt; String &gt;</type>
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="21" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="21" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="21" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1_default_personality_1ab34a36ecc20ebc6a50dd39429063f416" prot="private" static="yes" mutable="no">
         <type>final List&lt; String &gt;</type>
@@ -66,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="24" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="24" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="24" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1_default_personality_1acc4a657a09fc4e36479a2ab67163bd11" prot="private" static="yes" mutable="no">
         <type>final List&lt; String &gt;</type>
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="26" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="26" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="26" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1_default_personality_1a42a83870512b234f7dd95be3c957d7ac" prot="private" static="yes" mutable="no">
         <type>final List&lt; String &gt;</type>
@@ -96,7 +96,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="28" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="28" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="28" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="28" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -112,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="33" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="33" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="33" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="33" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -141,7 +141,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="36" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="36" bodyend="82"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="36" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="36" bodyend="82"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -164,7 +164,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="84" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="84" bodyend="89"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="84" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="84" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1_default_personality_1aef391b77df68daae8cca67286b655cf9" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -181,7 +181,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="91" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="91" bodyend="93"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="91" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="91" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1_default_personality_1ab6e1d3a2432c3bf964c69de4ada07d26" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>boolean</type>
@@ -202,7 +202,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="95" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="95" bodyend="100"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="95" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="95" bodyend="100"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -210,35 +210,35 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="798">
+      <node id="128">
         <label>roboy.dialog.personality.Personality</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality"/>
       </node>
-      <node id="797">
+      <node id="127">
         <label>roboy.dialog.personality.DefaultPersonality</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1_default_personality"/>
-        <childnode refid="798" relation="public-inheritance">
+        <childnode refid="128" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="800">
+      <node id="130">
         <label>roboy.dialog.personality.Personality</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality"/>
       </node>
-      <node id="801">
+      <node id="131">
         <label>List&lt; String &gt;</label>
       </node>
-      <node id="802">
+      <node id="132">
         <label>roboy.dialog.personality.DefaultPersonality.CONVERSATIONAL_STATE</label>
         <link refid="enumroboy_1_1dialog_1_1personality_1_1_default_personality_1_1_c_o_n_v_e_r_s_a_t_i_o_n_a_l___s_t_a_t_e"/>
       </node>
-      <node id="799">
+      <node id="129">
         <label>roboy.dialog.personality.DefaultPersonality</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1_default_personality"/>
-        <childnode refid="800" relation="public-inheritance">
+        <childnode refid="130" relation="public-inheritance">
         </childnode>
-        <childnode refid="801" relation="usage">
+        <childnode refid="131" relation="usage">
           <edgelabel>introduction</edgelabel>
           <edgelabel>farewells</edgelabel>
           <edgelabel>positive</edgelabel>
@@ -246,12 +246,12 @@
           <edgelabel>greetings</edgelabel>
           <edgelabel>agreement</edgelabel>
         </childnode>
-        <childnode refid="802" relation="usage">
+        <childnode refid="132" relation="usage">
           <edgelabel>state</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="13" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="13" bodyend="102"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/DefaultPersonality.java" bodystart="13" bodyend="102"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1personality_1_1_default_personality_1ab34a36ecc20ebc6a50dd39429063f416" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::DefaultPersonality</scope><name>agreement</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1_default_personality_1a5029689eb06232c4881421e1a7314cf3" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::DefaultPersonality</scope><name>answer</name></member>

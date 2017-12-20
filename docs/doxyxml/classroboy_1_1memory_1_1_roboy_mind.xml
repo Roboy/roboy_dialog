@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1memory_1_1_roboy_mind" kind="class" language="Java" prot="public">
     <compoundname>roboy::memory::RoboyMind</compoundname>
     <basecompoundref refid="interfaceroboy_1_1memory_1_1_memory" prot="public" virt="non-virtual">roboy.memory.Memory&lt; Concept &gt;</basecompoundref>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" line="28" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" bodystart="28" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" line="28" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" bodystart="28" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" line="29" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" bodystart="29" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" line="29" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" bodystart="29" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" line="30" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" bodystart="30" bodyend="32"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" line="30" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" bodystart="30" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1a64270324cce9572cd4d152f4036b7345" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>ServiceResponse</type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" line="43" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" bodystart="43" bodyend="50"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" line="43" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" bodystart="43" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1a44b3318cde22a30b200c8d1c08d4b2ce" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>boolean</type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" line="52" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" bodystart="52" bodyend="66"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" line="52" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" bodystart="52" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1a9a8b10b02f16472f91137d5b8df75f15" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="classroboy_1_1util_1_1_concept" kindref="compound">Concept</ref> &gt;</type>
@@ -113,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" line="68" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" bodystart="68" bodyend="96"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" line="68" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" bodystart="68" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1ad1ba571f3efd4857556820e9a0960ee2" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>JsonObject</type>
@@ -130,7 +130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" line="98" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" bodystart="98" bodyend="118"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" line="98" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" bodystart="98" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1a766f819ca6c8f3ced8fbc1fa6bc6a248" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>ServiceResponse</type>
@@ -159,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" line="120" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" bodystart="120" bodyend="135"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" line="120" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" bodystart="120" bodyend="135"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1a432ac55b1a84b5e855bd9d6e14a245e5" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1util_1_1_concept" kindref="compound">Concept</ref></type>
@@ -180,7 +180,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" line="137" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" bodystart="137" bodyend="160"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" line="137" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" bodystart="137" bodyend="160"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1ab9e855248427cbc281c96d71eff9a313" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>ServiceResponse</type>
@@ -197,7 +197,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" line="162" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" bodystart="162" bodyend="169"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" line="162" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" bodystart="162" bodyend="169"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -212,7 +212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" line="34" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" bodystart="34" bodyend="41"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" line="34" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" bodystart="34" bodyend="41"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -232,7 +232,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" line="173" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" bodystart="173" bodyend="195"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" line="173" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" bodystart="173" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1adecbf5d6a4fe50badc5920cb2bd7d7b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="classroboy_1_1util_1_1_concept" kindref="compound">Concept</ref> &gt;</type>
@@ -249,7 +249,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" line="198" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" bodystart="198" bodyend="207"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" line="198" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" bodystart="198" bodyend="207"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1a1cf42df092a9ee5f11e77160b64a823a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>boolean</type>
@@ -266,7 +266,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" line="209" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" bodystart="209" bodyend="245"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" line="209" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" bodystart="209" bodyend="245"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1_roboy_mind_1a7779d2597f439a3a1e7ff01257b54747" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Map&lt; String, List&lt; <ref refid="classroboy_1_1util_1_1_concept" kindref="compound">Concept</ref> &gt; &gt;</type>
@@ -283,7 +283,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" line="247" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" bodystart="247" bodyend="276"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" line="247" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" bodystart="247" bodyend="276"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -291,33 +291,33 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1186">
+      <node id="516">
         <label>roboy.memory.RoboyMind</label>
         <link refid="classroboy_1_1memory_1_1_roboy_mind"/>
-        <childnode refid="1187" relation="public-inheritance">
+        <childnode refid="517" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1187">
+      <node id="517">
         <label>roboy.memory.Memory&lt; Concept &gt;</label>
         <link refid="interfaceroboy_1_1memory_1_1_memory"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1188">
+      <node id="518">
         <label>roboy.memory.RoboyMind</label>
         <link refid="classroboy_1_1memory_1_1_roboy_mind"/>
-        <childnode refid="1189" relation="public-inheritance">
+        <childnode refid="519" relation="public-inheritance">
         </childnode>
-        <childnode refid="1188" relation="usage">
+        <childnode refid="518" relation="usage">
           <edgelabel>roboyMemory</edgelabel>
         </childnode>
       </node>
-      <node id="1189">
+      <node id="519">
         <label>roboy.memory.Memory&lt; Concept &gt;</label>
         <link refid="interfaceroboy_1_1memory_1_1_memory"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" line="27" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/RoboyMind.java" bodystart="26" bodyend="278"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" line="27" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java" bodystart="26" bodyend="278"/>
     <listofallmembers>
       <member refid="classroboy_1_1memory_1_1_roboy_mind_1a44b3318cde22a30b200c8d1c08d4b2ce" prot="private" virt="non-virtual"><scope>roboy::memory::RoboyMind</scope><name>AssertProperty</name></member>
       <member refid="classroboy_1_1memory_1_1_roboy_mind_1a64270324cce9572cd4d152f4036b7345" prot="private" virt="non-virtual"><scope>roboy::memory::RoboyMind</scope><name>CreateInstance</name></member>

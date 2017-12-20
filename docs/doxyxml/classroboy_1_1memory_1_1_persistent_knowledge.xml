@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1memory_1_1_persistent_knowledge" kind="class" language="Java" prot="public">
     <compoundname>roboy::memory::PersistentKnowledge</compoundname>
     <basecompoundref refid="interfaceroboy_1_1memory_1_1_memory" prot="public" virt="non-virtual">roboy.memory.Memory&lt; Triple &gt;</basecompoundref>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/PersistentKnowledge.java" line="16" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/PersistentKnowledge.java" bodystart="16" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/PersistentKnowledge.java" line="16" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/PersistentKnowledge.java" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1memory_1_1_persistent_knowledge_1a2aefc5f9945c7e8daaefa72c2b48152a" prot="private" static="yes" mutable="no">
         <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1_triple" kindref="compound">Triple</ref> &gt;</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/PersistentKnowledge.java" line="17" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/PersistentKnowledge.java" bodystart="17" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/PersistentKnowledge.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/PersistentKnowledge.java" bodystart="17" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/PersistentKnowledge.java" line="19" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/PersistentKnowledge.java" bodystart="19" bodyend="39"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/PersistentKnowledge.java" line="19" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/PersistentKnowledge.java" bodystart="19" bodyend="39"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/PersistentKnowledge.java" line="41" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/PersistentKnowledge.java" bodystart="41" bodyend="48"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/PersistentKnowledge.java" line="41" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/PersistentKnowledge.java" bodystart="41" bodyend="48"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/PersistentKnowledge.java" line="50" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/PersistentKnowledge.java" bodystart="50" bodyend="63"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/PersistentKnowledge.java" line="50" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/PersistentKnowledge.java" bodystart="50" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1_persistent_knowledge_1add1e2ac8d42e54a95c9b92606e10b7ee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>boolean</type>
@@ -94,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/PersistentKnowledge.java" line="65" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/PersistentKnowledge.java" bodystart="65" bodyend="68"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/PersistentKnowledge.java" line="65" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/PersistentKnowledge.java" bodystart="65" bodyend="68"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -102,39 +102,39 @@
     <detaileddescription>
 <para>Can only be used for retrieving and not for storing. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="1058">
+      <node id="388">
         <label>roboy.memory.PersistentKnowledge</label>
         <link refid="classroboy_1_1memory_1_1_persistent_knowledge"/>
-        <childnode refid="1059" relation="public-inheritance">
+        <childnode refid="389" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1059">
+      <node id="389">
         <label>roboy.memory.Memory&lt; Triple &gt;</label>
         <link refid="interfaceroboy_1_1memory_1_1_memory"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1062">
+      <node id="392">
         <label>List&lt; roboy.linguistics.Triple &gt;</label>
       </node>
-      <node id="1060">
+      <node id="390">
         <label>roboy.memory.PersistentKnowledge</label>
         <link refid="classroboy_1_1memory_1_1_persistent_knowledge"/>
-        <childnode refid="1061" relation="public-inheritance">
+        <childnode refid="391" relation="public-inheritance">
         </childnode>
-        <childnode refid="1060" relation="usage">
+        <childnode refid="390" relation="usage">
           <edgelabel>persistentKnowledge</edgelabel>
         </childnode>
-        <childnode refid="1062" relation="usage">
+        <childnode refid="392" relation="usage">
           <edgelabel>memory</edgelabel>
         </childnode>
       </node>
-      <node id="1061">
+      <node id="391">
         <label>roboy.memory.Memory&lt; Triple &gt;</label>
         <link refid="interfaceroboy_1_1memory_1_1_memory"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/PersistentKnowledge.java" line="14" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/PersistentKnowledge.java" bodystart="14" bodyend="69"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/PersistentKnowledge.java" line="14" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/PersistentKnowledge.java" bodystart="14" bodyend="69"/>
     <listofallmembers>
       <member refid="classroboy_1_1memory_1_1_persistent_knowledge_1a89d0b19f0a29fcd084f80bb88d92c8d9" prot="public" virt="non-virtual"><scope>roboy::memory::PersistentKnowledge</scope><name>getInstance</name></member>
       <member refid="classroboy_1_1memory_1_1_persistent_knowledge_1a2aefc5f9945c7e8daaefa72c2b48152a" prot="private" virt="non-virtual"><scope>roboy::memory::PersistentKnowledge</scope><name>memory</name></member>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1dialog_1_1personality_1_1_knock_knock_personality" kind="class" language="Java" prot="public">
     <compoundname>roboy::dialog::personality::KnockKnockPersonality</compoundname>
     <basecompoundref refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality" prot="public" virt="non-virtual">roboy.dialog.personality.Personality</basecompoundref>
@@ -17,10 +17,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" line="19" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" bodystart="19" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" line="19" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" bodystart="19" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1_knock_knock_personality_1aba0180f184a2f0a68e87d069371ff901" prot="private" static="no" mutable="no">
-        <type>String[]</type>
+        <type>String []</type>
         <definition>String [] roboy.dialog.personality.KnockKnockPersonality.joke</definition>
         <argsstring></argsstring>
         <name>joke</name>
@@ -30,10 +30,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" line="20" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" bodystart="20" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" line="20" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1_knock_knock_personality_1a74c049d362b1b4dc1d5393f605d0aa80" prot="private" static="no" mutable="no">
-        <type>String[][]</type>
+        <type>String [][]</type>
         <definition>String [][] roboy.dialog.personality.KnockKnockPersonality.jokes</definition>
         <argsstring></argsstring>
         <name>jokes</name>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" line="29" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" bodystart="29" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" line="29" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" bodystart="29" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -92,12 +92,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" line="67" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" bodystart="67" bodyend="105"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" line="67" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" bodystart="67" bodyend="105"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1_knock_knock_personality_1ae0e59a852924f6dadfdb77d2b4cda24a" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>String[]</type>
+        <type>String []</type>
         <definition>String [] roboy.dialog.personality.KnockKnockPersonality.pickJoke</definition>
         <argsstring>()</argsstring>
         <name>pickJoke</name>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" line="107" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" bodystart="107" bodyend="110"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" line="107" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" bodystart="107" bodyend="110"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -115,37 +115,37 @@
     <detaileddescription>
 <para>This should later be include in sensible states and used in the normal small talk personality. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="948">
+      <node id="278">
         <label>roboy.dialog.personality.Personality</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality"/>
       </node>
-      <node id="947">
+      <node id="277">
         <label>roboy.dialog.personality.KnockKnockPersonality</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1_knock_knock_personality"/>
-        <childnode refid="948" relation="public-inheritance">
+        <childnode refid="278" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="951">
+      <node id="281">
         <label>roboy.dialog.personality.KnockKnockPersonality.KnockKnockState</label>
         <link refid="enumroboy_1_1dialog_1_1personality_1_1_knock_knock_personality_1_1_knock_knock_state"/>
       </node>
-      <node id="950">
+      <node id="280">
         <label>roboy.dialog.personality.Personality</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality"/>
       </node>
-      <node id="949">
+      <node id="279">
         <label>roboy.dialog.personality.KnockKnockPersonality</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1_knock_knock_personality"/>
-        <childnode refid="950" relation="public-inheritance">
+        <childnode refid="280" relation="public-inheritance">
         </childnode>
-        <childnode refid="951" relation="usage">
+        <childnode refid="281" relation="usage">
           <edgelabel>state</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" line="16" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" bodystart="16" bodyend="112"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" line="16" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/KnockKnockPersonality.java" bodystart="16" bodyend="112"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1personality_1_1_knock_knock_personality_1aa6cccc25cd74e57dd65cca457ee5f375" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::KnockKnockPersonality</scope><name>answer</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1_knock_knock_personality_1aba0180f184a2f0a68e87d069371ff901" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::KnockKnockPersonality</scope><name>joke</name></member>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="interfaceroboy_1_1io_1_1_output_device" kind="interface" language="Java" prot="public">
     <compoundname>roboy::io::OutputDevice</compoundname>
     <derivedcompoundref refid="classroboy_1_1io_1_1_bing_output" prot="public" virt="non-virtual">roboy.io.BingOutput</derivedcompoundref>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/OutputDevice.java" line="11" column="1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/OutputDevice.java" line="11" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -40,54 +40,54 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1046">
+      <node id="376">
         <label>roboy.io.FreeTTSOutput</label>
         <link refid="classroboy_1_1io_1_1_free_t_t_s_output"/>
-        <childnode refid="1041" relation="public-inheritance">
+        <childnode refid="371" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1048">
+      <node id="378">
         <label>roboy.io.UdpOutput</label>
         <link refid="classroboy_1_1io_1_1_udp_output"/>
-        <childnode refid="1041" relation="public-inheritance">
+        <childnode refid="371" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1045">
+      <node id="375">
         <label>roboy.io.EmotionOutput</label>
         <link refid="classroboy_1_1io_1_1_emotion_output"/>
-        <childnode refid="1041" relation="public-inheritance">
+        <childnode refid="371" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1043">
+      <node id="373">
         <label>roboy.io.CerevoiceOutput</label>
         <link refid="classroboy_1_1io_1_1_cerevoice_output"/>
-        <childnode refid="1041" relation="public-inheritance">
+        <childnode refid="371" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1047">
+      <node id="377">
         <label>roboy.io.MultiOutputDevice</label>
         <link refid="classroboy_1_1io_1_1_multi_output_device"/>
-        <childnode refid="1041" relation="public-inheritance">
+        <childnode refid="371" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1044">
+      <node id="374">
         <label>roboy.io.CommandLineOutput</label>
         <link refid="classroboy_1_1io_1_1_command_line_output"/>
-        <childnode refid="1041" relation="public-inheritance">
+        <childnode refid="371" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1042">
+      <node id="372">
         <label>roboy.io.BingOutput</label>
         <link refid="classroboy_1_1io_1_1_bing_output"/>
-        <childnode refid="1041" relation="public-inheritance">
+        <childnode refid="371" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1041">
+      <node id="371">
         <label>roboy.io.OutputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_output_device"/>
       </node>
     </inheritancegraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/OutputDevice.java" line="10" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/OutputDevice.java" bodystart="10" bodyend="12"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/OutputDevice.java" line="10" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/OutputDevice.java" bodystart="10" bodyend="12"/>
     <listofallmembers>
       <member refid="interfaceroboy_1_1io_1_1_output_device_1aa47aae2af369116c8b407f7bd2770ce9" prot="public" virt="non-virtual"><scope>roboy::io::OutputDevice</scope><name>act</name></member>
     </listofallmembers>

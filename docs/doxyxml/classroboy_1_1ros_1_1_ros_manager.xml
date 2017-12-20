@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1ros_1_1_ros_manager" kind="class" language="Java" prot="package">
     <compoundname>roboy::ros::RosManager</compoundname>
       <sectiondef kind="private-attrib">
@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosManager.java" line="17" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosManager.java" bodystart="17" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosManager.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosManager.java" bodystart="17" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="package-func">
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosManager.java" line="22" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosManager.java" bodystart="22" bodyend="39"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosManager.java" line="22" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosManager.java" bodystart="22" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_manager_1af57b1c9c1fd8ac6eedc83115973a3f1b" prot="package" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>boolean</type>
@@ -50,7 +50,7 @@
 <para>Important if SHUTDOWN_ON_ROS_FAILURE is false. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosManager.java" line="45" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosManager.java" bodystart="45" bodyend="54"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosManager.java" line="51" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosManager.java" bodystart="51" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1ros_1_1_ros_manager_1a19b9f7284fa730a1d22fd065f619eef2" prot="package" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>ServiceClient</type>
@@ -67,7 +67,7 @@
 <para>the return might need casting before further use. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosManager.java" line="61" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosManager.java" bodystart="61" bodyend="63"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosManager.java" line="67" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosManager.java" bodystart="67" bodyend="69"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -75,18 +75,18 @@
     <detaileddescription>
 <para>If SHUTDOWN_ON_ROS_FAILURE is set, throws a runtime exception if any of the clients failed to initialize. </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="1209">
+      <node id="537">
         <label>HashMap&lt; roboy.ros.RosClients, ServiceClient &gt;</label>
       </node>
-      <node id="1208">
+      <node id="536">
         <label>roboy.ros.RosManager</label>
         <link refid="classroboy_1_1ros_1_1_ros_manager"/>
-        <childnode refid="1209" relation="usage">
+        <childnode refid="537" relation="usage">
           <edgelabel>clientMap</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosManager.java" line="16" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/RosManager.java" bodystart="16" bodyend="64"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosManager.java" line="16" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/RosManager.java" bodystart="16" bodyend="70"/>
     <listofallmembers>
       <member refid="classroboy_1_1ros_1_1_ros_manager_1a961a7e957cc1235c88330472b2785680" prot="private" virt="non-virtual"><scope>roboy::ros::RosManager</scope><name>clientMap</name></member>
       <member refid="classroboy_1_1ros_1_1_ros_manager_1a19b9f7284fa730a1d22fd065f619eef2" prot="package" virt="non-virtual"><scope>roboy::ros::RosManager</scope><name>getServiceClient</name></member>

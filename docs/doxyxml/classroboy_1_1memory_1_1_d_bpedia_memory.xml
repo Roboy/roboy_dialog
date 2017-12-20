@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1memory_1_1_d_bpedia_memory" kind="class" language="Java" prot="public">
     <compoundname>roboy::memory::DBpediaMemory</compoundname>
     <basecompoundref refid="interfaceroboy_1_1memory_1_1_memory" prot="public" virt="non-virtual">roboy.memory.Memory&lt; Relation &gt;</basecompoundref>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/DBpediaMemory.java" line="34" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/DBpediaMemory.java" bodystart="34" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/DBpediaMemory.java" line="34" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/DBpediaMemory.java" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1memory_1_1_d_bpedia_memory_1aa09ff84542a2d62cd5f6954e31db208c" prot="private" static="yes" mutable="no">
         <type>final Map&lt; String, String &gt;</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/DBpediaMemory.java" line="83" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/DBpediaMemory.java" bodystart="83" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/DBpediaMemory.java" line="83" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/DBpediaMemory.java" bodystart="83" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/DBpediaMemory.java" line="120" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/DBpediaMemory.java" bodystart="120" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/DBpediaMemory.java" line="120" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/DBpediaMemory.java" bodystart="120" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/DBpediaMemory.java" line="35" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/DBpediaMemory.java" bodystart="35" bodyend="37"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/DBpediaMemory.java" line="35" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/DBpediaMemory.java" bodystart="35" bodyend="37"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -74,7 +74,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/DBpediaMemory.java" line="43" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/DBpediaMemory.java" bodystart="43" bodyend="50"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/DBpediaMemory.java" line="43" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/DBpediaMemory.java" bodystart="43" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1_d_bpedia_memory_1a0aa5957be90a38e3acebea9958da3ece" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>LinkedHashSet&lt; String &gt;</type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/DBpediaMemory.java" line="201" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/DBpediaMemory.java" bodystart="201" bodyend="227"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/DBpediaMemory.java" line="201" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/DBpediaMemory.java" bodystart="201" bodyend="227"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -112,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/DBpediaMemory.java" line="53" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/DBpediaMemory.java" bodystart="53" bodyend="55"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/DBpediaMemory.java" line="53" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/DBpediaMemory.java" bodystart="53" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1_d_bpedia_memory_1a90c86822483101b63d482fd6cf702feb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="classroboy_1_1util_1_1_relation" kindref="compound">Relation</ref> &gt;</type>
@@ -130,7 +130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/DBpediaMemory.java" line="126" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/DBpediaMemory.java" bodystart="126" bodyend="198"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/DBpediaMemory.java" line="126" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/DBpediaMemory.java" bodystart="126" bodyend="198"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -138,40 +138,40 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="793">
+      <node id="123">
         <label>roboy.memory.Memory&lt; Relation &gt;</label>
         <link refid="interfaceroboy_1_1memory_1_1_memory"/>
       </node>
-      <node id="792">
+      <node id="122">
         <label>roboy.memory.DBpediaMemory</label>
         <link refid="classroboy_1_1memory_1_1_d_bpedia_memory"/>
-        <childnode refid="793" relation="public-inheritance">
+        <childnode refid="123" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="796">
+      <node id="126">
         <label>Map&lt; String, String &gt;</label>
       </node>
-      <node id="795">
+      <node id="125">
         <label>roboy.memory.Memory&lt; Relation &gt;</label>
         <link refid="interfaceroboy_1_1memory_1_1_memory"/>
       </node>
-      <node id="794">
+      <node id="124">
         <label>roboy.memory.DBpediaMemory</label>
         <link refid="classroboy_1_1memory_1_1_d_bpedia_memory"/>
-        <childnode refid="795" relation="public-inheritance">
+        <childnode refid="125" relation="public-inheritance">
         </childnode>
-        <childnode refid="794" relation="usage">
+        <childnode refid="124" relation="usage">
           <edgelabel>dbpediaMemory</edgelabel>
         </childnode>
-        <childnode refid="796" relation="usage">
+        <childnode refid="126" relation="usage">
           <edgelabel>supportedRelations</edgelabel>
           <edgelabel>forms</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/DBpediaMemory.java" line="23" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/DBpediaMemory.java" bodystart="23" bodyend="229"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/DBpediaMemory.java" line="23" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/DBpediaMemory.java" bodystart="23" bodyend="229"/>
     <listofallmembers>
       <member refid="classroboy_1_1memory_1_1_d_bpedia_memory_1a0aa5957be90a38e3acebea9958da3ece" prot="public" virt="non-virtual"><scope>roboy::memory::DBpediaMemory</scope><name>buildQueries</name></member>
       <member refid="classroboy_1_1memory_1_1_d_bpedia_memory_1a222352db1aa5918b32c495ecb15db380" prot="private" virt="non-virtual"><scope>roboy::memory::DBpediaMemory</scope><name>dbpediaMemory</name></member>

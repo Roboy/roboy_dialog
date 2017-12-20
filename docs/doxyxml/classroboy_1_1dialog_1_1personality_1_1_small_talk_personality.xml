@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality" kind="class" language="Java" prot="public">
     <compoundname>roboy::dialog::personality::SmallTalkPersonality</compoundname>
     <basecompoundref refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality" prot="public" virt="non-virtual">roboy.dialog.personality.Personality</basecompoundref>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="58" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="58" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="58" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality_1a4c40458f1646198d3e5a8071314a251b" prot="private" static="no" mutable="no">
         <type><ref refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" kindref="compound">State</ref></type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="63" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="63" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="63" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality_1a6b28cab952c8c2dc17b721196837a558" prot="private" static="no" mutable="no">
         <type><ref refid="classroboy_1_1talk_1_1_verbalizer" kindref="compound">Verbalizer</ref></type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="64" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="64" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="64" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality_1a377288ff8ac3b8d1a3d1f73a6f4e47ec" prot="private" static="no" mutable="no">
         <type><ref refid="classroboy_1_1ros_1_1_ros_main_node" kindref="compound">RosMainNode</ref></type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="65" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="65" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="65" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality_1a1a007b589af68443e923d1ce782ce9bd" prot="private" static="no" mutable="no">
         <type><ref refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor" kindref="compound">Interlocutor</ref></type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="68" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="68" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="68" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="68" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-attrib">
@@ -85,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="60" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="60" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="60" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="60" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="70" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="70" bodyend="74"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="70" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="70" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality_1a60f0825fecec113bc8bee8a57d1a8a34" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kindref="compound">Action</ref> &gt;</type>
@@ -126,7 +126,7 @@
 <para>Each state returns a reaction to what was said and then proactively takes an action of its own. Both are combined to return the list of output actions. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="82" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="82" bodyend="153"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="82" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="82" bodyend="153"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality_1a394b0e24a901dcb6714d7636f90751c5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -139,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="155" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="155" bodyend="157"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="155" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="155" bodyend="157"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality_1af5af09866b02243260d44876096dc0ac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -156,7 +156,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="159" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="159" bodyend="161"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="159" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="159" bodyend="161"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -171,7 +171,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="163" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="163" bodyend="183"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="163" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="163" bodyend="183"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -179,159 +179,159 @@
     <detaileddescription>
 <para>It tries to engage with people in a general small talk, remembers what was said and answers questions. The small talk personality is based on a state machine, where each input is interpreted in the context of the state Roboy is currently in to determine respective answers.</para><para>The current state machine looks like this:</para><para>Greeting state | V Introduction state | V Question Randomizer state |_Question Answering state |_Segue state |_Wild talk state</para><para>The Question Randomizer, Question Answering, Segue and Wilk talk states are stacked. If one cannot give an appropriate reaction to the given utterance, the utterance is passed on to the next one. The Wild talk state will always answer.</para><para>If a farewell is uttered the personality re-initializes to the Greeting state.</para><para>What the states do: Greeting: Utters a greating Introduction: Introduces himself and asks for the others name. Reacts differently depending on whether the other person is known. Question Randomizer: Asks the other one questions about himself and stores the answers in Roboy&apos;s memory. Question Answering: Answers questions if they are asked and Roboy knows the answer. Segue: Tells anecdotes from Today-I-Learneds from Reddit if corresponding keywords are mentioned. Wild talk: Talks according to a neural network model trained on chat logs. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="1240">
+      <node id="563">
         <label>roboy.dialog.personality.Personality</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality"/>
       </node>
-      <node id="1239">
+      <node id="562">
         <label>roboy.dialog.personality.SmallTalkPersonality</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality"/>
-        <childnode refid="1240" relation="public-inheritance">
+        <childnode refid="563" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1260">
+      <node id="583">
         <label>Map&lt; String, String &gt;</label>
       </node>
-      <node id="1255">
+      <node id="578">
         <label>CountDownLatch</label>
       </node>
-      <node id="1250">
+      <node id="573">
         <label>Gson</label>
       </node>
-      <node id="1242">
+      <node id="565">
         <label>roboy.dialog.personality.Personality</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality"/>
       </node>
-      <node id="1257">
+      <node id="580">
         <label>List&lt; String &gt;</label>
       </node>
-      <node id="1244">
+      <node id="567">
         <label>roboy.memory.nodes.MemoryNodeModel</label>
         <link refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model"/>
-        <childnode refid="1245" relation="usage">
+        <childnode refid="568" relation="usage">
           <edgelabel>properties</edgelabel>
         </childnode>
-        <childnode refid="1246" relation="usage">
+        <childnode refid="569" relation="usage">
           <edgelabel>labels</edgelabel>
         </childnode>
-        <childnode refid="1247" relation="usage">
-          <edgelabel>relations</edgelabel>
+        <childnode refid="570" relation="usage">
+          <edgelabel>relationships</edgelabel>
         </childnode>
       </node>
-      <node id="1249">
+      <node id="572">
         <label>roboy.memory.Memory&lt; MemoryNodeModel &gt;</label>
         <link refid="interfaceroboy_1_1memory_1_1_memory"/>
       </node>
-      <node id="1258">
+      <node id="581">
         <label>roboy.talk.Verbalizer</label>
         <link refid="classroboy_1_1talk_1_1_verbalizer"/>
-        <childnode refid="1257" relation="usage">
+        <childnode refid="580" relation="usage">
           <edgelabel>preAnecdotes</edgelabel>
           <edgelabel>farewells</edgelabel>
           <edgelabel>greetings</edgelabel>
           <edgelabel>anecdotes</edgelabel>
           <edgelabel>segues</edgelabel>
         </childnode>
-        <childnode refid="1259" relation="usage">
+        <childnode refid="582" relation="usage">
           <edgelabel>tenthNumberMap</edgelabel>
           <edgelabel>lowNumberMap</edgelabel>
         </childnode>
-        <childnode refid="1260" relation="usage">
+        <childnode refid="583" relation="usage">
           <edgelabel>dayNumberMap</edgelabel>
           <edgelabel>monthNumberMap</edgelabel>
         </childnode>
       </node>
-      <node id="1243">
+      <node id="566">
         <label>roboy.memory.nodes.Interlocutor</label>
         <link refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor"/>
-        <childnode refid="1244" relation="usage">
+        <childnode refid="567" relation="usage">
           <edgelabel>person</edgelabel>
         </childnode>
-        <childnode refid="1248" relation="usage">
+        <childnode refid="571" relation="usage">
           <edgelabel>memory</edgelabel>
         </childnode>
       </node>
-      <node id="1254">
+      <node id="577">
         <label>HashMap&lt; roboy.ros.RosClients, ServiceClient &gt;</label>
       </node>
-      <node id="1245">
+      <node id="568">
         <label>HashMap&lt; String, Object &gt;</label>
       </node>
-      <node id="1256">
+      <node id="579">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
-      <node id="1251">
+      <node id="574">
         <label>roboy.ros.RosMainNode</label>
         <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
-        <childnode refid="1252" relation="public-inheritance">
+        <childnode refid="575" relation="public-inheritance">
         </childnode>
-        <childnode refid="1253" relation="usage">
+        <childnode refid="576" relation="usage">
           <edgelabel>clients</edgelabel>
         </childnode>
-        <childnode refid="1255" relation="usage">
+        <childnode refid="578" relation="usage">
           <edgelabel>rosConnectionLatch</edgelabel>
         </childnode>
       </node>
-      <node id="1241">
+      <node id="564">
         <label>roboy.dialog.personality.SmallTalkPersonality</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality"/>
-        <childnode refid="1242" relation="public-inheritance">
+        <childnode refid="565" relation="public-inheritance">
         </childnode>
-        <childnode refid="1243" relation="usage">
+        <childnode refid="566" relation="usage">
           <edgelabel>person</edgelabel>
         </childnode>
-        <childnode refid="1256" relation="usage">
+        <childnode refid="579" relation="usage">
           <edgelabel>state</edgelabel>
         </childnode>
-        <childnode refid="1257" relation="usage">
+        <childnode refid="580" relation="usage">
           <edgelabel>positive</edgelabel>
         </childnode>
-        <childnode refid="1251" relation="usage">
+        <childnode refid="574" relation="usage">
           <edgelabel>rosMainNode</edgelabel>
         </childnode>
-        <childnode refid="1258" relation="usage">
+        <childnode refid="581" relation="usage">
           <edgelabel>verbalizer</edgelabel>
         </childnode>
       </node>
-      <node id="1259">
+      <node id="582">
         <label>Map&lt; Integer, String &gt;</label>
       </node>
-      <node id="1247">
+      <node id="570">
         <label>HashMap&lt; String, ArrayList&lt; Integer &gt; &gt;</label>
       </node>
-      <node id="1253">
+      <node id="576">
         <label>roboy.ros.RosManager</label>
         <link refid="classroboy_1_1ros_1_1_ros_manager"/>
-        <childnode refid="1254" relation="usage">
+        <childnode refid="577" relation="usage">
           <edgelabel>clientMap</edgelabel>
         </childnode>
       </node>
-      <node id="1246">
+      <node id="569">
         <label>ArrayList&lt; String &gt;</label>
       </node>
-      <node id="1252">
+      <node id="575">
         <label>AbstractNodeMain</label>
       </node>
-      <node id="1248">
+      <node id="571">
         <label>roboy.memory.Neo4jMemory</label>
         <link refid="classroboy_1_1memory_1_1_neo4j_memory"/>
-        <childnode refid="1249" relation="public-inheritance">
+        <childnode refid="572" relation="public-inheritance">
         </childnode>
-        <childnode refid="1250" relation="usage">
+        <childnode refid="573" relation="usage">
           <edgelabel>gson</edgelabel>
         </childnode>
-        <childnode refid="1251" relation="usage">
+        <childnode refid="574" relation="usage">
           <edgelabel>rosMainNode</edgelabel>
         </childnode>
-        <childnode refid="1248" relation="usage">
+        <childnode refid="571" relation="usage">
           <edgelabel>memory</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="56" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="56" bodyend="184"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" line="56" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/SmallTalkPersonality.java" bodystart="56" bodyend="184"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality_1a60f0825fecec113bc8bee8a57d1a8a34" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::SmallTalkPersonality</scope><name>answer</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1_small_talk_personality_1a394b0e24a901dcb6714d7636f90751c5" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::SmallTalkPersonality</scope><name>getName</name></member>

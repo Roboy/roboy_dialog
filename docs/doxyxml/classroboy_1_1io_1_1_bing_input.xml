@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1io_1_1_bing_input" kind="class" language="Java" prot="public">
     <compoundname>roboy::io::BingInput</compoundname>
     <basecompoundref refid="interfaceroboy_1_1io_1_1_input_device" prot="public" virt="non-virtual">roboy.io.InputDevice</basecompoundref>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/BingInput.java" line="10" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/BingInput.java" bodystart="10" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/BingInput.java" line="10" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/BingInput.java" bodystart="10" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/BingInput.java" line="12" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/BingInput.java" bodystart="12" bodyend="14"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/BingInput.java" line="12" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/BingInput.java" bodystart="12" bodyend="14"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1io_1_1_bing_input_1a9863247c643f9a271a228ac2bcebe647" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1io_1_1_input" kindref="compound">Input</ref></type>
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/BingInput.java" line="16" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/BingInput.java" bodystart="16" bodyend="21"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/BingInput.java" line="16" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/BingInput.java" bodystart="16" bodyend="21"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -57,61 +57,61 @@
     <detaileddescription>
 <para>Requires internet connection. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="717">
+      <node id="47">
         <label>roboy.io.BingInput</label>
         <link refid="classroboy_1_1io_1_1_bing_input"/>
-        <childnode refid="718" relation="public-inheritance">
+        <childnode refid="48" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="718">
+      <node id="48">
         <label>roboy.io.InputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_input_device"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="725">
+      <node id="55">
         <label>CountDownLatch</label>
       </node>
-      <node id="719">
+      <node id="49">
         <label>roboy.io.BingInput</label>
         <link refid="classroboy_1_1io_1_1_bing_input"/>
-        <childnode refid="720" relation="public-inheritance">
+        <childnode refid="50" relation="public-inheritance">
         </childnode>
-        <childnode refid="721" relation="usage">
+        <childnode refid="51" relation="usage">
           <edgelabel>rosMainNode</edgelabel>
         </childnode>
       </node>
-      <node id="720">
+      <node id="50">
         <label>roboy.io.InputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_input_device"/>
       </node>
-      <node id="724">
+      <node id="54">
         <label>HashMap&lt; roboy.ros.RosClients, ServiceClient &gt;</label>
       </node>
-      <node id="721">
+      <node id="51">
         <label>roboy.ros.RosMainNode</label>
         <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
-        <childnode refid="722" relation="public-inheritance">
+        <childnode refid="52" relation="public-inheritance">
         </childnode>
-        <childnode refid="723" relation="usage">
+        <childnode refid="53" relation="usage">
           <edgelabel>clients</edgelabel>
         </childnode>
-        <childnode refid="725" relation="usage">
+        <childnode refid="55" relation="usage">
           <edgelabel>rosConnectionLatch</edgelabel>
         </childnode>
       </node>
-      <node id="723">
+      <node id="53">
         <label>roboy.ros.RosManager</label>
         <link refid="classroboy_1_1ros_1_1_ros_manager"/>
-        <childnode refid="724" relation="usage">
+        <childnode refid="54" relation="usage">
           <edgelabel>clientMap</edgelabel>
         </childnode>
       </node>
-      <node id="722">
+      <node id="52">
         <label>AbstractNodeMain</label>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/BingInput.java" line="9" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/BingInput.java" bodystart="8" bodyend="23"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/BingInput.java" line="9" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/BingInput.java" bodystart="8" bodyend="23"/>
     <listofallmembers>
       <member refid="classroboy_1_1io_1_1_bing_input_1ae757256471aa92e7fb8fd26cc22da7bf" prot="public" virt="non-virtual"><scope>roboy::io::BingInput</scope><name>BingInput</name></member>
       <member refid="classroboy_1_1io_1_1_bing_input_1a9863247c643f9a271a228ac2bcebe647" prot="public" virt="non-virtual"><scope>roboy::io::BingInput</scope><name>listen</name></member>
