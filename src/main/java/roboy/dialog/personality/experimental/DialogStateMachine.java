@@ -4,23 +4,22 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import roboy.dialog.action.Action;
 import roboy.dialog.personality.experimental.helpers.StateFactory;
-import roboy.linguistics.sentenceanalysis.Interpretation;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
- * State machine for the personality.
- * WORK IN PROGRESS
+ * State machine to manage dialog states.
+ * Dialog state machines can be written to files and loaded from them later.
+ *
+ * Personalities can be implemented using a dialog state machine.
  *
  */
-public abstract class PersonalityStateMachine {
+public class DialogStateMachine {
 
     // maps string identifiers to state objects ("Greeting" -> {GreetingState})
     // allows to have multiple instances of the same state class with different identifiers ("Greeting2" -> {GreetingState})
@@ -28,14 +27,42 @@ public abstract class PersonalityStateMachine {
 
     private AbstractState activeState;
 
-    public PersonalityStateMachine() {
+    public DialogStateMachine() {
         identifierToState = new HashMap<>();
         activeState = null;
 
     }
 
+    public AbstractState getActiveState() {
+        return activeState;
+    }
+    public void setActiveState(AbstractState s) {
+        if (s == null) return;
 
-    public final void loadStateMachine(File f) throws FileNotFoundException {
+        if (!identifierToState.containsValue(s)) {
+            addState(s);
+        }
+        activeState = s;
+    }
+    public void setActiveState(String identifier) {
+        AbstractState s = identifierToState.get(identifier);
+        if (s == null) {
+            System.out.println("Unknown identifier: " + identifier);
+        }
+        activeState = s;
+    }
+
+
+
+    public AbstractState getStateByIdentifier(String identifier) {
+        return identifierToState.get(identifier);
+    }
+    public void addState(AbstractState s) {
+        identifierToState.put(s.getIdentifier(), s);
+    }
+
+
+    public void loadStateMachine(File f) throws FileNotFoundException {
 
         identifierToState.clear();
         activeState = null;
@@ -123,17 +150,15 @@ public abstract class PersonalityStateMachine {
 
     }
 
-    public final void saveStateMachine(File f) {
+    public void saveStateMachine(File f) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
-
-    public abstract List<Action> answer(Interpretation input);
 
 
     public String toString() {
         StringBuilder s = new StringBuilder();
         s.append("###################################\n");
-        s.append("Personality State Machine\n");
+        s.append("Dialog State Machine\n");
         s.append("###################################\n");
 
         s.append(">> Current state:\n");
