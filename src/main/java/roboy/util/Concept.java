@@ -19,14 +19,14 @@ public class Concept {
 
 	public Concept()
 	{
-		this.attributes = new HashMap<>();
+		this.attributes = new HashMap<String, Object>();
 		this.attributes.put("class_name", "Person"); //TODO remove hardcoded person constructor
 		this.attributes.put("id", RoboyMind.getInstance().object_id++);
 	}
 
 	public Concept(Map<String, Object> attrs)
 	{
-		this.attributes = new HashMap<>();
+		this.attributes = new HashMap<String, Object>();
 		this.attributes.put("class_name", "Person");
 		this.attributes.put("id", RoboyMind.getInstance().object_id++);
 		for (Map.Entry<String,Object> attr: attrs.entrySet())
@@ -36,7 +36,7 @@ public class Concept {
 	}
 	
 	public Concept(String name){
-		this.attributes = new HashMap<>();
+		this.attributes = new HashMap<String, Object>();
 		attributes.put(Linguistics.NAME, name);
 		this.attributes.put("id", RoboyMind.getInstance().object_id++);
 	}
@@ -62,50 +62,54 @@ public class Concept {
 
 	public String getProperties() 
 	{
-		StringBuilder properties = new StringBuilder();
+		String properties = ""; 
 
 		for (Map.Entry<String, Object> attribute : this.getAttributes().entrySet())
 		{
 //		    if (attribute.getKey() != "class_name" && attribute.getKey() != "id")
 //		    {
-		    	properties.append(attribute.getKey()).append(",");
+		    	properties +=  attribute.getKey() + ",";
 //		    }
 		}
 
 		if (properties.length()>0 && properties.charAt(properties.length()-1)==',')
 		{
-			properties = new StringBuilder(properties.substring(0, properties.length() - 1));
+			properties = properties.substring(0, properties.length()-1);
 		}
 
-		return properties.toString();
+		return properties;
 
 	}
 
 	public String getValues() 
 	{
 		
-		StringBuilder values = new StringBuilder();
+		String values = "";
 
 		for (Map.Entry<String, Object> attribute : this.getAttributes().entrySet())
 		{
-		    if ( ! attribute.getKey().equals("class") && ! attribute.getKey().equals("id") )
+		    if (attribute.getKey() != "class" && attribute.getKey() != "id")
 		    {
-		    	values.append(attribute.getValue().toString()).append(",");
+		    	values +=  attribute.getValue().toString() + ",";
 		    }
 		    
 		}
 
 		if (values.length()>0 && values.charAt(values.length()-1)==',')
 		{
-			values = new StringBuilder(values.substring(0, values.length() - 1));
+			values = values.substring(0, values.length()-1);
 		}
 
-		return values.toString();
+		return values;
 	}
 	
 	public boolean hasAttribute(String property)
 	{
-		return ! this.getProperties().equals("") && this.getProperties().contains(property);
+		if (this.getProperties() != "" && this.getProperties().contains(property))
+		{
+			return true;
+		}
+		return false;
 	}
 
 	public Object retrieve()

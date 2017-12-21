@@ -20,7 +20,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
     private Gson gson = new Gson();
 
     private Neo4jMemory (RosMainNode node){
-        Neo4jMemory.rosMainNode = node;
+        this.rosMainNode = node;
     }
 
     public static Neo4jMemory getInstance(RosMainNode node)
@@ -34,10 +34,16 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
 
     public static Neo4jMemory getInstance()
     {
-        if (memory == null) {
-            System.out.println("Memory wasn't initialized correctly. Use public static Neo4jMemory getInstance(RosMainNode node) instead.");
+        try{
+            return memory;
         }
-        return memory;
+        catch (NullPointerException e)
+        {
+            e.printStackTrace();
+            System.out.println("Memory wasn't initialized correctly. Use public static Neo4jMemory getInstance(RosMainNode node) instead.");
+            return null;
+        }
+
     }
 
     /**
