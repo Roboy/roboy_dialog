@@ -80,7 +80,7 @@ public class DialogSystem {
         if(System.getProperty("profile")!=null) {
             new Config(Config.getProfileFromEnvironment(System.getProperty("profile")));
         } else {
-            new Config(DEFAULT);
+            new Config(DEBUG);
         }
 
         // initialize ROS node
@@ -123,6 +123,10 @@ public class DialogSystem {
 		analyzers.add(new OntologyNERAnalyzer());
 		analyzers.add(new AnswerAnalyzer());
         analyzers.add(new EmotionAnalyzer());
+        // PARSER ADDED
+        if(!Config.STANDALONE) {
+            analyzers.add(new ParserAnalyzer(Config.PARSER_PORT));
+        }
         //if(!Config.NOROS) {
         //    analyzers.add(new IntentAnalyzer(rosMainNode));
         //}
