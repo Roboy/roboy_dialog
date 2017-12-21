@@ -80,7 +80,7 @@ public class DialogSystem {
         if(System.getProperty("profile")!=null) {
             new Config(Config.getProfileFromEnvironment(System.getProperty("profile")));
         } else {
-            new Config(DEBUG);
+            new Config(DEFAULT);
         }
 
         // initialize ROS node
