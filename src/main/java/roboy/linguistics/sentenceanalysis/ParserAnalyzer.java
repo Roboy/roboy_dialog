@@ -57,13 +57,15 @@ public class ParserAnalyzer implements Analyzer{
         this.out.println(interpretation.getFeature("sentence"));
         response = this.in.readLine();
         if (this.debug) {System.out.println("> Full response:" + response);}
-        try {
-          if (this.debug) System.out.println("> Parse:" + response.substring(0, response.indexOf("=>")));
-          if (this.debug) System.out.println("> Answer:" + response.substring(response.indexOf("=>") + 3));
-          interpretation.getFeatures().put(Linguistics.PARSE, response.substring(0, response.indexOf("=>")));
-          interpretation.getFeatures().put(Linguistics.PRED_ANSWER, response.substring(response.indexOf("=>") + 3));
-        } catch (RuntimeException e) {
-          System.err.println("Exception while parsing intent response: " + e.getStackTrace());
+        if (response.contains("=>")) {
+          try {
+            if (this.debug) System.out.println("> Parse:" + response.substring(0, response.indexOf("=>")));
+            if (this.debug) System.out.println("> Answer:" + response.substring(response.indexOf("=>") + 3));
+            interpretation.getFeatures().put(Linguistics.PARSE, response.substring(0, response.indexOf("=>")));
+            interpretation.getFeatures().put(Linguistics.PRED_ANSWER, response.substring(response.indexOf("=>") + 3));
+          } catch (RuntimeException e) {
+            System.err.println("Exception while parsing intent response: " + e.getStackTrace());
+          }
         }
         return interpretation;
       } catch (IOException e) {
