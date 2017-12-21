@@ -1,4 +1,4 @@
-package roboy.dialog.personality.experimental.helpers;
+package roboy.dialog.personality.experimental.toyStates;
 
 
 import roboy.dialog.personality.experimental.AbstractState;
@@ -8,7 +8,7 @@ import roboy.dialog.personality.experimental.AbstractState;
  *
  * May be replaced with something more generic later.
  */
-public class StateFactory {
+public class ToyStateFactory {
 
     public static AbstractState getByClassName(String className, String instanceName) {
         switch (className) {

@@ -8,11 +8,17 @@ import roboy.dialog.personality.experimental.toyStates.ToyRandomAnswerState;
 
 import java.io.File;
 
-public class ExperimentalMain {
+/**
+ * This class provides examples how to load state machines from files
+ * or create them from code directly.
+ */
+public class StateMachineExamples {
 
     public static void main(String[] args) throws Exception {
+        // create all states and set all connections from code directly
         fromCode();
 
+        // load states and connections from file
         fromFile();
     }
 

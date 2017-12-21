@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import roboy.dialog.personality.experimental.helpers.StateFactory;
+import roboy.dialog.personality.experimental.toyStates.ToyStateFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -97,7 +97,7 @@ public class DialogStateMachine {
             String identifier = s.get("identifier").getAsString();
             String implementation = s.get("implementation").getAsString();
 
-            AbstractState object = StateFactory.getByClassName(implementation, identifier);
+            AbstractState object = ToyStateFactory.getByClassName(implementation, identifier);
             if (object != null) {
                 identifierToState.put(identifier, object);
             }

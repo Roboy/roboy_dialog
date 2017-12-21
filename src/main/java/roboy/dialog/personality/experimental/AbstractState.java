@@ -4,6 +4,11 @@ import roboy.linguistics.sentenceanalysis.Interpretation;
 
 import java.util.*;
 
+/**
+ * Central class of the dialog state system. Every dialog state should extend this class.
+ * A state always acts when it is entered and reacts when its left. Both, the reaction of
+ * the last and the action of the next state, are combined to give the answer of Roboy.
+ */
 public abstract class AbstractState {
 
 
@@ -34,7 +39,7 @@ public abstract class AbstractState {
 
     /**
      * If this state can't react to the input, the Personality state machine will ask the fallback state
-     * to reat to the input. This state still remains active.
+     * to react to the input. This state still remains active.
      * @return fallback state
      */
     public final AbstractState getFallback() {
