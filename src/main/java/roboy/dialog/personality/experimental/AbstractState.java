@@ -156,4 +156,23 @@ public abstract class AbstractState {
 
     //endregion
 
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append("State ").append(getIdentifier()).append(" of class ");
+        s.append(this.getClass().getSimpleName()).append(" {\n");
+
+        AbstractState fallback = getFallback();
+        if (fallback != null) {
+            s.append("  ! fallback: ").append(fallback.getIdentifier()).append("\n");
+        }
+        for (Map.Entry<String, AbstractState> transition : getAllTransitions().entrySet()) {
+            s.append("  ").append(transition.getKey()).append(": ");
+            s.append(transition.getValue().getIdentifier()).append("\n");
+        }
+
+        return s.append("}\n").toString();
+
+
+    }
+
 }
