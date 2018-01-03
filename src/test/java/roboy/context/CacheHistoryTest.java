@@ -11,7 +11,6 @@ import static org.junit.Assert.*;
  * Testing cache storage functionality.
  */
 public class CacheHistoryTest {
-    @Test
     public void testCacheForFun() throws IOException, ExecutionException {
         int VALUES = 20;
         int TIMEOUT = 1; //seconds
