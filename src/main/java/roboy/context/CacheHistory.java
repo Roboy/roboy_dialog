@@ -16,12 +16,12 @@ import java.util.stream.Stream;
  * An implementation of the CacheHistory which stores strings in a file as backup.
  * Lessons learned: Instant may offer cool timestamps, but they are not unique. Need UUID or similar.
  */
-public class CacheHistory extends History<String,String> {
+public class CacheHistory implements History<String,String> {
     LoadingCache<String, String> data;
     PrintWriter writer;
     BufferedReader reader;
 
-    CacheHistory(String fileName, int secondsUntilExpire, int maxCacheSize) throws IOException {
+    public CacheHistory(String fileName, int secondsUntilExpire, int maxCacheSize) throws IOException {
         writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName, true)));
         reader = new BufferedReader(new FileReader(fileName));
         data = CacheBuilder.newBuilder()
@@ -47,9 +47,14 @@ public class CacheHistory extends History<String,String> {
 
     @Override
     public String storeValue(String value) {
-        String key = UUID.randomUUID().toString();
+        String key = generateKey();
         saveValue(key, value);
         return key;
+    }
+
+    @Override
+    public String generateKey() {
+        return UUID.randomUUID().toString();
     }
 
     @Override

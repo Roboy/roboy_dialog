@@ -1,19 +1,22 @@
 package roboy.context;
 
+import roboy.context.visionContext.InterlocutorFace;
+
 import java.util.HashMap;
 
 /**
- * I don't know what I am doing yet, but I guess context needs a main class and this would be it.
+ * I don't know what I am doing yet, but if context needs a primary class, this would be it.
  */
 public class Context {
-    private static HashMap<SituationObjectIdentifier, ContextObject> situationObjects;
+    private static HashMap<ContextObjectIdentifier, ContextObject> situationObjects;
 
-    public enum SituationObjectIdentifier {
-        Generic("Generic");
+    public enum ContextObjectIdentifier {
+        GENERIC(ContextObject.class),
+        FACE(InterlocutorFace.class);
 
-        public String objectType;
+        public Class objectType;
 
-        SituationObjectIdentifier(String objectType) {
+        ContextObjectIdentifier(Class objectType) {
             this.objectType=objectType;
         }
     }

@@ -1,12 +1,10 @@
 package roboy.context;
 
-import com.google.common.collect.ClassToInstanceMap;
+import com.google.common.collect.ImmutableClassToInstanceMap;
 
 /**
  * The generic situation object class.
  */
 public abstract class ContextObject {
-
-    ClassToInstanceMap<Attribute> attributes;
-
+    protected ImmutableClassToInstanceMap<Attribute> attributes;
 }
