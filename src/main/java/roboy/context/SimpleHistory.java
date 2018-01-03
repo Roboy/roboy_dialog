@@ -8,7 +8,7 @@ import java.util.HashMap;
 public abstract class SimpleHistory<K, V> implements History<K,V> {
     protected HashMap<K,V> data;
 
-    public SimpleHistory() {
+    protected SimpleHistory() {
         data = new HashMap<K,V>();
     }
 

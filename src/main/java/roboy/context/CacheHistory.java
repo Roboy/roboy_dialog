@@ -40,7 +40,7 @@ public class CacheHistory implements History<String,String> {
     }
 
     private String getValueFromFile(String key) {
-        Stream stream = reader.lines().filter(Predicates.containsPattern(key.toString()));
+        Stream stream = reader.lines().filter(Predicates.containsPattern(key));
         Optional<String> match = stream.findFirst();
         return match.orElse("|");
     }
@@ -70,7 +70,7 @@ public class CacheHistory implements History<String,String> {
     @Override
     public void saveValue(String key, String value) {
         data.put(key, value);
-        writer.println(key.toString() + "\t" + value);
+        writer.println(key + "\t" + value);
         writer.flush();
     }
 }

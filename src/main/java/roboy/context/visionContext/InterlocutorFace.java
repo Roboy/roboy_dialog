@@ -13,14 +13,14 @@ import java.util.ArrayList;
  */
 
 public class InterlocutorFace extends ContextObject {
-    ArrayList updatePolicies;
+    private final ArrayList updatePolicies;
 
     // Enum of all attributes available from InterlocutorFace and their data types.
     public enum FaceAttribute {
         FACE_COORDINATES(FaceCoordinates.class, CoordinateSet.class);
 
-        Class classType;
-        Class returnType;
+        final Class classType;
+        final Class returnType;
 
         FaceAttribute(Class attribute, Class value) {
             this.classType = attribute;

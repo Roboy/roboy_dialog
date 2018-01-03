@@ -14,7 +14,7 @@ public class Context {
         GENERIC(ContextObject.class),
         FACE(InterlocutorFace.class);
 
-        public Class objectType;
+        public final Class objectType;
 
         ContextObjectIdentifier(Class objectType) {
             this.objectType=objectType;

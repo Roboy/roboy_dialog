@@ -14,10 +14,10 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  */
 public class FaceCoordinatesUpdater implements UpdatePolicy {
     // The attribute instance which is updated after each run.
-    private FaceCoordinates target;
+    private final FaceCoordinates target;
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     // Update frequency in seconds.
-    public static int updateFrequency = 1;
+    public static final int updateFrequency = 1;
 
     FaceCoordinatesUpdater(FaceCoordinates target) {
         this.target = target;

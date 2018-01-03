@@ -1,7 +1,5 @@
 package roboy.context;
 
-import java.time.Instant;
-
 /**
  * This enables saving basic History information by the key type T and data/value type V.
  */
