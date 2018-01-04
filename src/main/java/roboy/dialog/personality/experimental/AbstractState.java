@@ -1,5 +1,7 @@
 package roboy.dialog.personality.experimental;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 
 import java.util.*;
@@ -160,6 +162,32 @@ public abstract class AbstractState {
     }
 
     //endregion
+
+    public JsonObject toJsonObject() {
+        JsonObject stateJson = new JsonObject();
+        stateJson.addProperty("identifier", getIdentifier());
+
+        String className = getClass().getCanonicalName();
+        stateJson.addProperty("implementation", className);
+
+        if (fallback != null) {
+            String fallbackID = fallback.getIdentifier();
+            stateJson.addProperty("fallback", fallbackID);
+        }
+
+        // transitions
+        JsonObject transitionsJson = new JsonObject();
+        for (Map.Entry<String, AbstractState> transition : getAllTransitions().entrySet()) {
+            String transName = transition.getKey();
+            String transStateID = transition.getValue().getIdentifier();
+            transitionsJson.addProperty(transName, transStateID);
+        }
+        stateJson.add("transitions", transitionsJson);
+
+
+        return stateJson;
+
+    }
 
     public String toString() {
         StringBuilder s = new StringBuilder();

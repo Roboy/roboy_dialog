@@ -1,10 +1,7 @@
 package roboy.dialog.personality.experimental.helpers;
 
 import roboy.dialog.personality.experimental.DialogStateMachine;
-import roboy.dialog.personality.experimental.toyStates.ToyFarewellState;
-import roboy.dialog.personality.experimental.toyStates.ToyGreetingsState;
-import roboy.dialog.personality.experimental.toyStates.ToyIntroState;
-import roboy.dialog.personality.experimental.toyStates.ToyRandomAnswerState;
+import roboy.dialog.personality.experimental.toyStates.*;
 
 import java.io.File;
 
@@ -26,6 +23,10 @@ public class StateMachineExamples {
 
         System.out.println(file);
 
+        System.out.println("JSON representation:");
+        System.out.println(file.toJsonString());
+
+
         System.out.println("Dialog machine from code, file and string are equal: "
                 + ( code.equals(file)   &&
                     code.equals(string) &&
@@ -35,6 +36,10 @@ public class StateMachineExamples {
                     file.equals(code)
                 )
         );
+
+
+        System.out.println("Saving to resources/personalityFiles/ExamplePersonality2.json");
+        file.saveToFile(new File ("resources/personalityFiles/ExamplePersonality2.json"));
 
     }
 

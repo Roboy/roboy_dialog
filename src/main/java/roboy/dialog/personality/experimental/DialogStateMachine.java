@@ -1,14 +1,12 @@
 package roboy.dialog.personality.experimental;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import roboy.dialog.personality.experimental.toyStates.ToyStateFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -108,7 +106,7 @@ public class DialogStateMachine {
     }
 
 
-    public void loadFromJSON(JsonElement json) {
+    private void loadFromJSON(JsonElement json) {
         identifierToState.clear();
         activeState = null;
 
@@ -125,7 +123,7 @@ public class DialogStateMachine {
             System.out.printf("initial state not defined!");
             return;
         }
-        String initialStateStr = initialStateJson.getAsString();
+        String initialStateIdentifier = initialStateJson.getAsString();
 
 
         JsonElement statesJson = personalityJson.get("states");
@@ -152,7 +150,8 @@ public class DialogStateMachine {
 
         // now all states were converted into objects
         // set initial state
-        activeState = identifierToState.get(initialStateStr);
+        setInitialState(initialStateIdentifier);  // actually also sets the active state in this case
+        setActiveState(initialStateIdentifier);
 
 
         // set fallbacks and transitions (if defined)
@@ -192,27 +191,62 @@ public class DialogStateMachine {
         }
     }
 
-    public void saveToFile(File f) {
-        throw new UnsupportedOperationException("Not implemented yet");
+    public void saveToFile(File f) throws FileNotFoundException {
+
+        String json = toJsonString();
+
+        try( PrintWriter out = new PrintWriter( f ) ){
+            out.println( json );
+        }
+
     }
 
 
 
+    private JsonObject toJsonObject() {
+        JsonObject stateMachineJson = new JsonObject();
+        if (initalState == null) {
+            System.out.println("initial state undefined!");
+        } else {
+            stateMachineJson.addProperty("initialState", initalState.getIdentifier());
+        }
+
+        // all states
+        JsonArray statesJsonArray = new JsonArray();
+        for (AbstractState state : identifierToState.values()) {
+            JsonObject stateJson = state.toJsonObject();
+            statesJsonArray.add(stateJson);
+        }
+        stateMachineJson.add("states", statesJsonArray);
+
+        return stateMachineJson;
+    }
+
+    public String toJsonString() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        JsonObject json = toJsonObject();
+        return gson.toJson(json);
+    }
+
+
     public String toString() {
         StringBuilder s = new StringBuilder();
-        s.append("###################################\n");
+        s.append("###################################################\n");
         s.append("Dialog State Machine\n");
-        s.append("###################################\n");
+        s.append("###################################################\n");
 
         s.append(">> Current state:\n");
         s.append(activeState).append("\n");
+
+        s.append(">> Initial state:\n");
+        s.append(initalState).append("\n");
 
         s.append(">> All states:\n");
         for (AbstractState state : identifierToState.values()) {
             s.append(state);
         }
 
-        s.append("###################################\n");
+        s.append("###################################################\n");
 
         return s.toString();
     }
