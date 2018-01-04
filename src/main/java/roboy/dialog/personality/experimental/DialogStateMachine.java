@@ -62,16 +62,30 @@ public class DialogStateMachine {
     }
 
 
-    public void loadStateMachine(File f) throws FileNotFoundException {
 
+    public void loadFromString(String s) {
+        JsonParser parser = new JsonParser();
+        JsonElement json = parser.parse(s);
+        loadFromJSON(json);
+    }
+
+    public void loadFromFile(File f) throws FileNotFoundException {
+        JsonParser parser = new JsonParser();
+        JsonElement json = parser.parse(new FileReader(f));
+        loadFromJSON(json);
+    }
+
+
+    public void loadFromJSON(JsonElement json) {
         identifierToState.clear();
         activeState = null;
 
-        //System.out.println("Reading from file: " + f);
+        if (!json.isJsonObject()) {
+            System.out.printf("State machine must be a JSON object!");
+            return;
+        }
 
-        JsonParser parser = new JsonParser();
-        JsonObject personalityJson = parser.parse(new FileReader(f)).getAsJsonObject();
-
+        JsonObject personalityJson = json.getAsJsonObject();
         //System.out.println("jsonObject: " + personalityJson);
 
         JsonElement initialStateJson = personalityJson.get("initialState");
@@ -141,13 +155,9 @@ public class DialogStateMachine {
                     if (transitionState != null) {
                         thisState.setTransition(transitionName, transitionState);
                     }
-
                 }
             }
-
         }
-
-
     }
 
     public void saveStateMachine(File f) {
