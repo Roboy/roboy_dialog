@@ -180,4 +180,72 @@ public abstract class AbstractState {
 
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if ( ! (obj instanceof AbstractState)) {
+            return false;
+        }
+        AbstractState other = (AbstractState) obj;
+
+        // different class
+        if (other.getClass() != this.getClass()) {
+            return false;
+        }
+
+        // other has a fallback, this doesn't
+        if (this.fallback == null && other.fallback != null) {
+            return false;
+        }
+
+        // this has a fallback, other doesn't
+        if (other.fallback == null && this.fallback != null) {
+            return false;
+        }
+
+        // both have fallbacks, compare them by IDs
+        if (this.fallback != null) {
+            String thisFallbackID = this.getFallback().getIdentifier();
+            String otherFallbackID = this.getFallback().getIdentifier();
+            // different fallback IDs
+            if (!thisFallbackID.equals(otherFallbackID)) {
+                return false;
+            }
+        }
+
+        // compare transitions: all of this transitions are present in the other
+        boolean otherHasAllOfThis = this.equalsHelper_compareTransitions(other);
+        boolean thisHasAllOfOther = other.equalsHelper_compareTransitions(this);
+
+        return otherHasAllOfThis && thisHasAllOfOther;
+    }
+
+    /**
+     * check if every transition of this is present in the other and points to the same ID
+     * @param other other state to compare transitions
+     * @return true if all transitions of this state are present in the other state
+     */
+    private boolean equalsHelper_compareTransitions(AbstractState other) {
+
+        // for every transition in this state
+        for (Map.Entry<String, AbstractState> transition : getAllTransitions().entrySet()) {
+
+            // transition name
+            String transName = transition.getKey();
+            // id of the state this transition points to
+            String thisTransStateID = transition.getValue().getIdentifier();
+
+            // check if transition in the other state points to the same id
+            AbstractState otherTransState = other.getTransition(transName);
+            if (otherTransState == null)  return false;
+
+            String otherTransStateID = otherTransState.getIdentifier();
+            if (! thisTransStateID.equals(otherTransStateID)) return false;
+
+        }
+        return true;
+
+    }
+
+
 }
+

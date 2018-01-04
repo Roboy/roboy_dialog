@@ -16,13 +16,18 @@ public class StateMachineExamples {
 
     public static void main(String[] args) throws Exception {
         // create all states and set all connections from code directly
-        fromCode();
+        DialogStateMachine code = fromCode();
 
         // load states and connections from file
-        fromFile();
+        DialogStateMachine file = fromFile();
+
+        System.out.println("Dialog machine from code and from file are equal: "
+                + (code.equals(file)   &&  file.equals(code)));
+        System.out.println(file);
+
     }
 
-    private static void fromCode() {
+    private static DialogStateMachine fromCode() {
 
         ToyGreetingsState greetings = new ToyGreetingsState("Greetings");
         ToyIntroState intro = new ToyIntroState("Intro");
@@ -45,16 +50,15 @@ public class StateMachineExamples {
         stateMachine.addState(randomAnswer);
         stateMachine.setActiveState(greetings);
 
-        System.out.println(stateMachine);
-
+        return stateMachine;
 
     }
 
-    private static void fromFile() throws Exception {
+    private static DialogStateMachine fromFile() throws Exception {
 
         DialogStateMachine stateMachine = new DialogStateMachine();
         stateMachine.loadStateMachine(new File("resources/personalityFiles/ExamplePersonality.json"));
-        System.out.println(stateMachine);
+        return stateMachine;
     }
 
 }

@@ -174,4 +174,40 @@ public class DialogStateMachine {
         return s.toString();
     }
 
+
+    @Override
+    public boolean equals(Object obj) {
+        if ( ! (obj instanceof DialogStateMachine) ) {
+            return false;
+        }
+
+        // Two state machines are equal if and only if:
+        // - they contain the same states (same names + classes)
+        // - they states are identically connected (transitions + fallbacks)
+        // The active state is not important
+
+        DialogStateMachine other = (DialogStateMachine) obj;
+
+        // all states + transitions from this machine are present in the other
+        for (AbstractState thisState : identifierToState.values()) {
+            String stateID = thisState.getIdentifier();
+            AbstractState otherState = other.getStateByIdentifier(stateID);
+            if (otherState == null)   return false;
+            if ( ! thisState.equals(otherState))  return false;
+        }
+
+
+        // all states + transitions from the other machine are present in this
+        for (AbstractState otherState : other.identifierToState.values()) {
+            String stateID = otherState.getIdentifier();
+            AbstractState thisState = this.getStateByIdentifier(stateID);
+            if (thisState == null) return false;
+            if ( ! thisState.equals(otherState)) return false;
+        }
+
+
+        return true;
+    }
+
+
 }
