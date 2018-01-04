@@ -26,12 +26,43 @@ public class DialogStateMachine {
     private HashMap<String, AbstractState> identifierToState;
 
     private AbstractState activeState;
+    private AbstractState initalState;
 
     public DialogStateMachine() {
         identifierToState = new HashMap<>();
         activeState = null;
 
     }
+
+    public AbstractState getInitialState() {
+        return initalState;
+    }
+    /**
+     * Set the initial state of this state machine.
+     * The state will be automatically added to the machine.
+     * If active state was null, it will be set to the new initial state.
+     * @param initial initial state
+     */
+    public void setInitialState(AbstractState initial) {
+        if (initial == null) return;
+
+        if (!identifierToState.containsValue(initial)) {
+            addState(initial);
+        }
+        this.initalState = initial;
+        if (activeState == null) {
+            setActiveState(initial);
+        }
+    }
+    public void setInitialState(String identifier) {
+        AbstractState initial = identifierToState.get(identifier);
+        if (initial == null) {
+            System.out.println("Unknown identifier: " + identifier);
+            return;
+        }
+        setInitialState(initial);
+    }
+
 
     public AbstractState getActiveState() {
         return activeState;
@@ -48,6 +79,7 @@ public class DialogStateMachine {
         AbstractState s = identifierToState.get(identifier);
         if (s == null) {
             System.out.println("Unknown identifier: " + identifier);
+            return;
         }
         activeState = s;
     }
@@ -160,9 +192,10 @@ public class DialogStateMachine {
         }
     }
 
-    public void saveStateMachine(File f) {
+    public void saveToFile(File f) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
+
 
 
     public String toString() {

@@ -59,7 +59,7 @@ public class StateMachineExamples {
         stateMachine.addState(intro);
         stateMachine.addState(farewell);
         stateMachine.addState(randomAnswer);
-        stateMachine.setActiveState(greetings);
+        stateMachine.setInitialState(greetings);
 
         return stateMachine;
 
