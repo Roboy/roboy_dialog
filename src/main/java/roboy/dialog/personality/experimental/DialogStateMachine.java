@@ -109,6 +109,7 @@ public class DialogStateMachine {
     private void loadFromJSON(JsonElement json) {
         identifierToState.clear();
         activeState = null;
+        initalState = null;
 
         if (!json.isJsonObject()) {
             System.out.printf("State machine must be a JSON object!");
@@ -260,10 +261,21 @@ public class DialogStateMachine {
 
         // Two state machines are equal if and only if:
         // - they contain the same states (same names + classes)
+        // - the initial state is identical
         // - they states are identically connected (transitions + fallbacks)
-        // The active state is not important
+
+        // The active state is not important for the structure and will be ignored by this check!
 
         DialogStateMachine other = (DialogStateMachine) obj;
+
+        // check initial states
+        if (initalState == null && other.initalState != null) {
+            return false;
+        }
+        if (initalState != null && (!initalState.equals(other.initalState)) ) {
+            return false;
+        }
+
 
         // all states + transitions from this machine are present in the other
         for (AbstractState thisState : identifierToState.values()) {
