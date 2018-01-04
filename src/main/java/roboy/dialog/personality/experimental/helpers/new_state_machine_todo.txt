@@ -1,0 +1,19 @@
+Status          Priority        Task
+----            ----            ----
+
+in progress     high            Implement a Personality based on the DialogStateMachine
+in progress     medium          Create State objects with Java reflection
+
+planned         low             DialogStateMachine: check naming
+planned         low             DialogStateMachine: add more comments
+planned         low             DialogStateMachine: use uniform logging
+planned         low             Tests: test equality after saving to file and then loading from file
+
+planned         medium          Create an overview of current SmallTalkPersonality
+planned         medium          Define new states to achieve the same functionality as with SmallTalkPersonality
+planned         low             Define new states to extend functionality of SmallTalkPersonality
+planned         medium          Implement SmallTalkPersonality using new states only
+
+planned         medium          Create an overview of current existing states
+planned         low             Remove unused old states
+planned         medium          Refactor important old states into the new form

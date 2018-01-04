@@ -38,8 +38,8 @@ public class StateMachineExamples {
         );
 
 
-        System.out.println("Saving to resources/personalityFiles/ExamplePersonality2.json");
-        file.saveToFile(new File ("resources/personalityFiles/ExamplePersonality2.json"));
+        //System.out.println("Saving to resources/personalityFiles/ExamplePersonality2.json");
+        //file.saveToFile(new File ("resources/personalityFiles/ExamplePersonality2.json"));
 
     }
 
