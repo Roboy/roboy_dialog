@@ -1,6 +1,7 @@
 package roboy.context.visionContext;
 
 import org.junit.Test;
+import roboy.context.dataTypes.CoordinateSet;
 
 import static org.junit.Assert.*;
 import static roboy.context.visionContext.InterlocutorFace.FaceAttribute.FACE_COORDINATES;

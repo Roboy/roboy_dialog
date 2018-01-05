@@ -1,6 +1,6 @@
-package roboy.context.visionContext;
+package roboy.context.dataTypes;
 
-import roboy.context.DataType;
+import roboy.context.dataTypes.DataType;
 
 /**
  * A coordinate set data structure for the interlocutor face.

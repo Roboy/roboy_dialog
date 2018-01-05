@@ -1,6 +1,7 @@
 package roboy.context.visionContext;
 
 import roboy.context.SimpleHistory;
+import roboy.context.dataTypes.CoordinateSet;
 
 import java.util.HashMap;
 import java.util.UUID;

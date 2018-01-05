@@ -1,6 +1,7 @@
 package roboy.context.visionContext;
 
 import roboy.context.UpdatePolicy;
+import roboy.context.dataTypes.CoordinateSet;
 
 import java.util.Random;
 import java.util.concurrent.Executors;
@@ -30,7 +31,7 @@ public class FaceCoordinatesUpdater implements UpdatePolicy {
     @Override
     public void update() {
         Random r = new Random();
-        // TODO replace dummy functionality!
+        // TODO replace dummy functionality! (And also update the test accordingly.)
         CoordinateSet set = new CoordinateSet(r.nextDouble(),r.nextDouble(),r.nextDouble());
         target.putValue(set);
     }

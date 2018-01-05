@@ -1,6 +1,7 @@
 package roboy.context.visionContext;
 
 import roboy.context.Attribute;
+import roboy.context.dataTypes.CoordinateSet;
 
 /**
  * xzy-coordinates of a person in the field of vision.

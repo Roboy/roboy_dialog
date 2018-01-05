@@ -9,6 +9,7 @@ import static org.junit.Assert.*;
 
 /**
  * Testing cache storage functionality.
+ * This was an experimental implementation, so the test was not added to standard DM test set.
  */
 public class CacheHistoryTest {
     public void testCacheForFun() throws IOException, ExecutionException {

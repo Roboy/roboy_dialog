@@ -1,4 +1,4 @@
-package roboy.context;
+package roboy.context.dataTypes;
 
 /**
  * Attributes should be able to store data in appropriate data types.

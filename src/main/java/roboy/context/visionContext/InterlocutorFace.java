@@ -1,10 +1,9 @@
 package roboy.context.visionContext;
 
 import com.google.common.collect.ImmutableClassToInstanceMap;
-import roboy.context.Attribute;
-import roboy.context.ContextObject;
-import roboy.context.DataType;
-import roboy.context.UpdatePolicy;
+import roboy.context.*;
+import roboy.context.dataTypes.CoordinateSet;
+import roboy.context.dataTypes.DataType;
 
 import java.util.ArrayList;
 
@@ -12,11 +11,11 @@ import java.util.ArrayList;
  * An example with vision using information about the interlocutor.
  */
 
-public class InterlocutorFace extends ContextObject {
+public class InterlocutorFace extends ContextObject<InterlocutorFace.FaceAttribute> {
     private final ArrayList updatePolicies;
 
     // Enum of all attributes available from InterlocutorFace and their data types.
-    public enum FaceAttribute {
+    public enum FaceAttribute implements ContextObjectAttributeList {
         FACE_COORDINATES(FaceCoordinates.class, CoordinateSet.class);
 
         final Class classType;
@@ -27,6 +26,7 @@ public class InterlocutorFace extends ContextObject {
             this.returnType = value;
         }
     }
+
     /**
      * The default constructor of InterlocutorFace starts up attributes and updaters.
      */
@@ -38,6 +38,7 @@ public class InterlocutorFace extends ContextObject {
                 .build();
 
         // ContextObject also initializes the updaters for its attributes, if these exist.
+        // Here, we have an asynchronous updater for face coordinates.
         updatePolicies = new ArrayList<UpdatePolicy>();
         updatePolicies.add(new FaceCoordinatesUpdater(faceCoordinates));
     }
@@ -46,7 +47,7 @@ public class InterlocutorFace extends ContextObject {
      * Returns the last value of the given attribute.
      * The return type of this method is the same as the returnType of FaceAttribute enum.
      */
-    public <T extends DataType> T getLastAttributeValue(FaceAttribute attribute) {
+    public <T extends DataType> T getLastAttributeValue(InterlocutorFace.FaceAttribute attribute) {
         Class<T> type = attribute.returnType;
         return type.cast(attributes.get(attribute.classType).getLatestValue());
     }

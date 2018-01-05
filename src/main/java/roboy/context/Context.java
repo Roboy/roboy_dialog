@@ -1,23 +1,39 @@
 package roboy.context;
 
+import com.google.common.collect.ImmutableClassToInstanceMap;
 import roboy.context.visionContext.InterlocutorFace;
 
-import java.util.HashMap;
-
 /**
- * I don't know what I am doing yet, but if context needs a primary class, this would be it.
+ * Singleton class to access all context objects. Takes care of initialization.
  */
 public class Context {
-    private static HashMap<ContextObjectIdentifier, ContextObject> situationObjects;
+    private static ImmutableClassToInstanceMap<ContextObject> situationObjects;
+    private static Context context;
 
     public enum ContextObjectIdentifier {
-        GENERIC(ContextObject.class),
         FACE(InterlocutorFace.class);
 
-        public final Class objectType;
+        public final Class className;
 
-        ContextObjectIdentifier(Class objectType) {
-            this.objectType=objectType;
+        ContextObjectIdentifier(Class className) {
+            this.className = className;
         }
+    }
+
+    private Context() {
+        situationObjects = new ImmutableClassToInstanceMap.Builder<ContextObject>()
+                .put(InterlocutorFace.class, new InterlocutorFace())
+                .build();
+    }
+
+    public static Context getInstance() {
+        if(context == null) {
+            context = new Context();
+        }
+        return context;
+    }
+
+    public ContextObject getContextObject(ContextObjectIdentifier identifier) {
+        return situationObjects.get(identifier.className);
     }
 }
