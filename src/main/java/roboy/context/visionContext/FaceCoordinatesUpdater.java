@@ -33,6 +33,6 @@ public class FaceCoordinatesUpdater implements UpdatePolicy {
         Random r = new Random();
         // TODO replace dummy functionality! (And also update the test accordingly.)
         CoordinateSet set = new CoordinateSet(r.nextDouble(),r.nextDouble(),r.nextDouble());
-        target.putValue(set);
+        target.storeValue(set);
     }
 }

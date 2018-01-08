@@ -8,7 +8,7 @@ import roboy.context.dataTypes.DataType;
  */
 public abstract class ContextObject<A extends ContextObjectAttributeList> {
 
-    protected ImmutableClassToInstanceMap<Attribute> attributes;
+    protected ImmutableClassToInstanceMap<History> attributes;
 
     public abstract <T extends DataType> T getLastAttributeValue(A attribute);
 }

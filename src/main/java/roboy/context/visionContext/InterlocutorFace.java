@@ -33,7 +33,7 @@ public class InterlocutorFace extends ContextObject<InterlocutorFace.FaceAttribu
     public InterlocutorFace() {
         // Initialize all attributes centrally.
         FaceCoordinates faceCoordinates = new FaceCoordinates();
-        attributes = new ImmutableClassToInstanceMap.Builder<Attribute>()
+        attributes = new ImmutableClassToInstanceMap.Builder<History>()
                 .put(FaceCoordinates.class, faceCoordinates)
                 .build();
 
@@ -49,6 +49,6 @@ public class InterlocutorFace extends ContextObject<InterlocutorFace.FaceAttribu
      */
     public <T extends DataType> T getLastAttributeValue(InterlocutorFace.FaceAttribute attribute) {
         Class<T> type = attribute.returnType;
-        return type.cast(attributes.get(attribute.classType).getLatestValue());
+        return type.cast(attributes.get(attribute.classType).getLastValue());
     }
 }
