@@ -20,7 +20,7 @@ public class FaceCoordinatesUpdater implements UpdatePolicy {
     // Update frequency in seconds.
     public static final int updateFrequency = 1;
 
-    FaceCoordinatesUpdater(FaceCoordinates target) {
+    public FaceCoordinatesUpdater(FaceCoordinates target) {
         this.target = target;
         final Runnable updater = () -> update();
         final ScheduledFuture<?> updaterHandle = scheduler.scheduleAtFixedRate(updater,
