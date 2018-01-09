@@ -6,7 +6,7 @@ import java.util.HashMap;
 /**
  * Simplistic HashMap history with unique Integer keys.
  */
-public class SimpleHistory<K extends Integer, V extends DataType> implements AttributeHistory<K,V> {
+public class SimpleAttributeHistory<K extends Integer, V extends DataType> implements AttributeHistory<K,V> {
     /**
      * This counter tracks the number of items in the History, indices still start from 0.
      * Reading is allowed without synchronization, modifications only through generateKey().
@@ -14,7 +14,7 @@ public class SimpleHistory<K extends Integer, V extends DataType> implements Att
     protected int counter;
     private HashMap<K,V> data;
 
-    public SimpleHistory() {
+    public SimpleAttributeHistory() {
         data = new HashMap<>();
         counter = 0;
     }

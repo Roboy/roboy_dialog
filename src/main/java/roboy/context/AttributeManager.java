@@ -6,9 +6,9 @@ import roboy.context.dataTypes.DataType;
 import java.util.Map;
 
 /**
- * The generic context object.
+ * The collection of attributes.
  */
-public abstract class ContextObject<A extends ContextObjectAttributeList> {
+public abstract class AttributeManager<A extends AttributeInterface> {
 
     protected ImmutableClassToInstanceMap<AttributeHistory> attributes;
 
