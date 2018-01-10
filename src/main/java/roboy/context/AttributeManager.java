@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * The collection of attributes.
  */
-public abstract class AttributeManager<A extends AttributeInterface> {
+public class AttributeManager<A extends AttributeInterface> {
 
     protected ImmutableClassToInstanceMap<AttributeHistory> attributes;
 
@@ -22,7 +22,7 @@ public abstract class AttributeManager<A extends AttributeInterface> {
         return type.cast(attributes.get(attribute.getClassType()).getValue(key));
     }
 
-    public <T extends DataType> Map<Integer, T> getNLastAttributes(A attribute, int n) {
+    public <T extends DataType> Map<Integer, T> getNLastValues(A attribute, int n) {
         Class<T> type = attribute.getReturnType();
         return (Map<Integer,T>) attributes.get(attribute.getClassType()).getLastNValues(n);
     }
