@@ -22,7 +22,7 @@ public class ToyGreetingsState extends AbstractState {
 
     @Override
     public List<Interpretation> act() {
-        return Lists.interpretationList(new Interpretation(Linguistics.SENTENCE_TYPE.GREETING));
+        return Lists.interpretationList(new Interpretation("Hello! [expecting greeting]"));
     }
 
     @Override
@@ -31,7 +31,7 @@ public class ToyGreetingsState extends AbstractState {
         inputOK = StatementInterpreter.isFromList(sentence, Verbalizer.greetings);
 
         if (inputOK) {
-            return Lists.interpretationList(new Interpretation("I like it when you greet me!"));
+            return Lists.interpretationList(new Interpretation("I like it when you greet me! [greeting detected, next state]"));
 
         } else {
             return null; // -> fallback state will be used

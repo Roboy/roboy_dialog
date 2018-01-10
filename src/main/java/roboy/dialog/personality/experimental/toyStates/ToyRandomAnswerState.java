@@ -19,7 +19,7 @@ public class ToyRandomAnswerState extends AbstractState {
 
     @Override
     public List<Interpretation> react(Interpretation input) {
-        return Lists.interpretationList(new Interpretation("I'm Roboy! I'm awesome!"));
+        return Lists.interpretationList(new Interpretation("I'm Roboy! I'm awesome! [random answer]"));
     }
 
     @Override

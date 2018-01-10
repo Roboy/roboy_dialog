@@ -15,12 +15,12 @@ public class ToyIntroState extends AbstractState {
 
     @Override
     public List<Interpretation> act() {
-        return Lists.interpretationList(new Interpretation("My name is Roboy! Who are you?"));
+        return Lists.interpretationList(new Interpretation("My name is Roboy! Who are you? [say anything]"));
     }
 
     @Override
     public List<Interpretation> react(Interpretation input) {
-        return Lists.interpretationList(new Interpretation("Nice to meet you!"));
+        return Lists.interpretationList(new Interpretation("Nice to meet you! [moving to next state]"));
     }
 
     @Override

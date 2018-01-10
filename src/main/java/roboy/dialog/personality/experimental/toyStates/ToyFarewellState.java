@@ -15,7 +15,7 @@ public class ToyFarewellState extends AbstractState {
 
     @Override
     public List<Interpretation> act() {
-        return Lists.interpretationList(new Interpretation(Linguistics.SENTENCE_TYPE.FAREWELL));
+        return Lists.interpretationList(new Interpretation("Bye bye! [say anything, will end conversation]"));
     }
 
     @Override

@@ -25,6 +25,29 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
         setActiveState(getInitialState());
     }
 
+    public List<Action> startConversation() {
+
+        List<Action> startActions = new ArrayList<>();
+
+        AbstractState activeState = getActiveState();
+        if (activeState == null) {
+            System.out.println("[!!] This personality state machine has not been initialized!");
+            return startActions;
+        }
+
+
+        List<Interpretation> nextAction = activeState.act();
+        if (nextAction != null) {
+            // next state wants to act -> verbalize it
+            for (Interpretation i : nextAction) {
+                startActions.add(verbalizer.verbalize(i));
+            }
+        }
+        return startActions;
+
+    }
+
+
     @Override
     public List<Action> answer(Interpretation input) {
 
@@ -90,6 +113,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
                 answerActions.add(verbalizer.verbalize(i));
             }
         }
+
         return answerActions;
     }
 }
