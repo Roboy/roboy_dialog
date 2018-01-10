@@ -3,7 +3,6 @@ package roboy.dialog.personality.experimental;
 
 import roboy.dialog.Config;
 import roboy.dialog.action.Action;
-import roboy.dialog.action.ShutDownAction;
 import roboy.io.*;
 import roboy.linguistics.sentenceanalysis.*;
 import roboy.talk.Verbalizer;
