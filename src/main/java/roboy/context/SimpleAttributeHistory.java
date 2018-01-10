@@ -57,9 +57,9 @@ public class SimpleAttributeHistory<K extends Integer, V extends DataType> imple
     public HashMap<K, V> getLastNValues(int n) {
         Integer limit = Math.min(n, counter);
         HashMap map = new HashMap();
-        while(limit >= 0) {
+        //Limit is the number of values, so we decrement it before using as index.
+        while(--limit >= 0) {
             map.put(limit, getValue((K) limit));
-            --limit;
         }
         return map;
     }
