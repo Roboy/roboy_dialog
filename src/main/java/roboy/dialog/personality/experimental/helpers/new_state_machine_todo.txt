@@ -1,8 +1,13 @@
 Status          Priority        Task
 ----            ----            ----
 
-in progress     high            Implement a Personality based on the DialogStateMachine
+DONE            high            Implement a Personality based on the DialogStateMachine
 in progress     medium          Create State objects with Java reflection
+
+
+planned         medium          StateBasedPersonality: add all features that are implemented
+                                in SmallTalkPersonality (Exception handling, profanity & farewell checks,
+                                connecting phrases, Interlocutor/Person etc...)
 
 planned         low             DialogStateMachine: check naming
 planned         low             DialogStateMachine: add more comments
