@@ -82,7 +82,7 @@ public class SimpleHistoryAttribute<K extends Integer, V extends DataType> imple
      * @return A key unique to this History instance.
      */
     protected synchronized int generateKey() {
-        return ++counter;
+        return counter++;
     };
 
 }

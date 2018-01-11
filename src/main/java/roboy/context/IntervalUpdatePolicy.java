@@ -1,7 +1,5 @@
 package roboy.context;
 
-import roboy.context.visionContext.FaceCoordinates;
-
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -13,7 +11,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  * The method update() needs to be implemented in the subclass.
  * @param <T> The class of the target object.
  */
-public abstract class IntervalUpdatePolicy<T> extends UpdatePolicy {
+public abstract class IntervalUpdatePolicy<T> extends AsyncUpdatePolicy {
     protected final T target;
     protected final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     public final int updateFrequency;

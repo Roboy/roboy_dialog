@@ -1,8 +1,8 @@
 package roboy.context;
 
-public interface ValueAttribute<K,V> {
+public interface ValueAttribute<V> {
 
     V getValue();
 
-    K storeValue(V key);
+    void updateValue(V key);
 }
