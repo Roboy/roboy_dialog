@@ -6,24 +6,30 @@ import roboy.context.dataTypes.DataType;
 import java.util.Map;
 
 /**
- * The collection of attributes.
+ * The collection of attributes, split into attributes with a history (A) and single-value attributes (B).
  */
-public class AttributeManager<A extends AttributeInterface> {
+public class AttributeManager<A extends AttributeInterface, B extends AttributeInterface> {
 
-    protected ImmutableClassToInstanceMap<AttributeHistory> attributes;
+    protected ImmutableClassToInstanceMap<HistoryAttribute> attributes;
+    protected ImmutableClassToInstanceMap<ValueAttribute> values;
 
-    public <T extends DataType> T getLastAttributeValue(A attribute) {
+    protected <T extends DataType> T getLastAttributeValue(A attribute) {
         Class<T> type = attribute.getReturnType();
         return type.cast(attributes.get(attribute.getClassType()).getLastValue());
     }
 
-    public <T extends DataType> T getAttributeValue(A attribute, Integer key) {
+    protected <T extends DataType> T getAttributeValue(A attribute, Integer key) {
         Class<T> type = attribute.getReturnType();
         return type.cast(attributes.get(attribute.getClassType()).getValue(key));
     }
 
-    public <T extends DataType> Map<Integer, T> getNLastValues(A attribute, int n) {
+    protected <T extends DataType> Map<Integer, T> getNLastValues(A attribute, int n) {
         Class<T> type = attribute.getReturnType();
         return (Map<Integer,T>) attributes.get(attribute.getClassType()).getLastNValues(n);
+    }
+
+    protected <T extends DataType> T getValue(B attribute) {
+        Class<T> type = attribute.getReturnType();
+        return type.cast(values.get(attribute.getClassType()).getValue());
     }
 }

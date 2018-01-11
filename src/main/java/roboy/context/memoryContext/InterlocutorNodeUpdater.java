@@ -9,7 +9,6 @@ public class InterlocutorNodeUpdater extends IntervalUpdatePolicy<InterlocutorNo
 
     @Override
     protected void update() {
-        // Empty for now as the updating functionality needs to be removed from the Interlocutor itself.
-        // TODO Remove memory updating from Interlocutor, instead Context updates it at regular intervals.
+        //Needed only if Memory updating is not handled by the Interlocutor itself.
     }
 }

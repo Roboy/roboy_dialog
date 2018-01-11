@@ -12,15 +12,15 @@ public class ContextTest {
      */
     @Test
     public void getLastAttributeValue() throws Exception {
-        int updateFrequency = 1;
-        int sleeptime = updateFrequency * 1000; // Here in millis. Assuming the update frequency is 1 second!
+        int updateFrequency = 1; //Assuming the updater's frequency is 1 second!
+        int sleeptime = updateFrequency * 1000; // Here in millis.
         Context ct = Context.getInstance();
         Thread.sleep(sleeptime);
         for(int i = 0; i < 5; i++) {
-            Context.Attribute face = Context.Attribute.FACE_COORDINATES;
-            CoordinateSet set = ct.getLastAttributeValue(face);
+            Context.HistoryAttributes face = Context.HistoryAttributes.FACE_COORDINATES;
+            CoordinateSet set = face.getLastValue();
             Thread.sleep(sleeptime);
-            assertNotEquals(ct.getLastAttributeValue(face), set);
+            assertNotEquals(face.getLastValue(), set);
         }
     }
 

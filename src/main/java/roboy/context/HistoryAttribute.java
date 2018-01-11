@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * This enables saving basic History information by the key type T and data/value type V.
  */
-public interface AttributeHistory<K,V> {
+public interface HistoryAttribute<K,V> {
 
     V getLastValue();
 
