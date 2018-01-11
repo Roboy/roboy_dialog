@@ -2,6 +2,8 @@ package roboy.context;
 
 import com.google.common.collect.ImmutableClassToInstanceMap;
 import roboy.context.dataTypes.CoordinateSet;
+import roboy.context.memoryContext.InterlocutorNode;
+import roboy.context.memoryContext.InterlocutorNodeUpdater;
 import roboy.context.visionContext.FaceCoordinates;
 import roboy.context.visionContext.FaceCoordinatesUpdater;
 
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 public class Context extends AttributeManager<Context.Attribute>{
     private static Context context;
     private final ArrayList updatePolicies = new ArrayList<UpdatePolicy>();
+    private InterlocutorNode interlocutor;
 
     private Context() {
         FaceCoordinates faceCoordinates = new FaceCoordinates();
@@ -25,8 +28,12 @@ public class Context extends AttributeManager<Context.Attribute>{
                 .put(FaceCoordinates.class, faceCoordinates)
                 .build();
 
+        // Initialize objects.
+        interlocutor = new InterlocutorNode();
+
         // Also initialize the updaters for attributes.
-        updatePolicies.add(new FaceCoordinatesUpdater(faceCoordinates));
+        updatePolicies.add(new FaceCoordinatesUpdater(faceCoordinates, 1));
+        updatePolicies.add(new InterlocutorNodeUpdater(interlocutor, 10));
     }
 
     public static Context getInstance() {

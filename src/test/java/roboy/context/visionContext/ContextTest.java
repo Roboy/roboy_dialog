@@ -12,7 +12,8 @@ public class ContextTest {
      */
     @Test
     public void getLastAttributeValue() throws Exception {
-        int sleeptime = FaceCoordinatesUpdater.updateFrequency*1000; // Here in millis.
+        int updateFrequency = 1;
+        int sleeptime = updateFrequency * 1000; // Here in millis. Assuming the update frequency is 1 second!
         Context ct = Context.getInstance();
         Thread.sleep(sleeptime);
         for(int i = 0; i < 5; i++) {
