@@ -19,7 +19,7 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
-                <version>2.3.2</version>
+                <version>3.3</version>
             </plugin>
 
             <plugin>
