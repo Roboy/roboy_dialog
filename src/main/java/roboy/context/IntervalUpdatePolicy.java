@@ -26,10 +26,20 @@ public abstract class IntervalUpdatePolicy<T> extends AsyncUpdatePolicy {
      * Starts the updating thread.
      */
     private void start() {
-        final Runnable updater = () -> update();
+        final Runnable updater = new Runnable() {
+            @Override
+            public void run() {
+                IntervalUpdatePolicy.this.update();
+            }
+        };
         final ScheduledFuture<?> updaterHandle = scheduler.scheduleAtFixedRate(
                 updater, updateFrequency, updateFrequency, SECONDS);
-        scheduler.schedule((Runnable) () -> updaterHandle.cancel(true), 60 * 60, SECONDS);
+        scheduler.schedule(new Runnable() {
+            @Override
+            public void run() {
+                updaterHandle.cancel(true);
+            }
+        }, 60 * 60, SECONDS);
     }
 
 }
