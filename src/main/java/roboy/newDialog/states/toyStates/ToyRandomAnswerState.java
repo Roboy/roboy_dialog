@@ -1,12 +1,12 @@
-package roboy.dialog.personality.experimental.toyStates;
+package roboy.newDialog.states.toyStates;
 
-import roboy.dialog.personality.experimental.AbstractState;
+import roboy.newDialog.states.State;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.Lists;
 
 import java.util.List;
 
-public class ToyRandomAnswerState extends AbstractState {
+public class ToyRandomAnswerState extends State {
 
     public ToyRandomAnswerState(String stateIdentifier) {
         super(stateIdentifier);
@@ -23,7 +23,7 @@ public class ToyRandomAnswerState extends AbstractState {
     }
 
     @Override
-    public AbstractState getNextState() {
+    public State getNextState() {
         return null; // this state is only used as fallback, no transitions needed
     }
 }

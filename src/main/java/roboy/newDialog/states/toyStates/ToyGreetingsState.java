@@ -1,6 +1,6 @@
-package roboy.dialog.personality.experimental.toyStates;
+package roboy.newDialog.states.toyStates;
 
-import roboy.dialog.personality.experimental.AbstractState;
+import roboy.newDialog.states.State;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.StatementInterpreter;
@@ -12,7 +12,7 @@ import java.util.*;
 /**
  * Toy greeting state: two outgoing transitions "next" and "noHello" have to be defined.
  */
-public class ToyGreetingsState extends AbstractState {
+public class ToyGreetingsState extends State {
 
     private boolean inputOK = true;
 
@@ -41,7 +41,7 @@ public class ToyGreetingsState extends AbstractState {
 
 
     @Override
-    public AbstractState getNextState() {
+    public State getNextState() {
         if (inputOK) {
             return getTransition("next");
 

@@ -1,10 +1,11 @@
-package roboy.dialog.personality.experimental;
+package roboy.newDialog;
 
 import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
 import roboy.dialog.personality.Personality;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.newDialog.states.State;
 import roboy.talk.Verbalizer;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
      * @return list of actions based on act() of the initial/active state
      */
     public List<Action> startConversation() {
-        AbstractState activeState = getActiveState();
+        State activeState = getActiveState();
         if (activeState == null) {
             System.out.println("[!!] ERROR: This personality state machine has not been initialized!");
             return new ArrayList<>();
@@ -50,7 +51,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
     @Override
     public List<Action> answer(Interpretation input) {
 
-        AbstractState activeState = getActiveState();
+        State activeState = getActiveState();
         if (activeState == null) {
             System.out.println("[!!] ERROR: This personality state machine has not been initialized!");
             return new ArrayList<>();
@@ -72,7 +73,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
 
         // MOVE TO THE NEXT STATE
-        AbstractState next = activeState.getNextState();
+        State next = activeState.getNextState();
         if (next == null) {
             reset(); // go back to initial state
             return answerActions;
@@ -93,7 +94,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
      * @param state state to call ACT on
      * @return list of actions
      */
-    private List<Action> stateAct(AbstractState state) {
+    private List<Action> stateAct(State state) {
         List<Interpretation> stateActIntepretations = state.act();
         return verbalizeInterpretations(stateActIntepretations);
     }
@@ -107,10 +108,10 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
      * @param input input from the person Roboy speaks to
      * @return list of actions
      */
-    private List<Action> stateReact(AbstractState state, Interpretation input) {
+    private List<Action> stateReact(State state, Interpretation input) {
 
         List<Interpretation> reaction = state.react(input);
-        AbstractState fallback = state.getFallback();
+        State fallback = state.getFallback();
 
         // fallbacks
         int fallbackCount = 0, maxFallbackCount = 1000;  // limit to prevent infinite loops

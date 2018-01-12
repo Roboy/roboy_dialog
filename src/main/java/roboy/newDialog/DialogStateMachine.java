@@ -1,7 +1,8 @@
-package roboy.dialog.personality.experimental;
+package roboy.newDialog;
 
 import com.google.gson.*;
-import roboy.dialog.personality.experimental.toyStates.ToyStateFactory;
+import roboy.newDialog.states.State;
+import roboy.newDialog.states.factories.ToyStateFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,10 +22,10 @@ public class DialogStateMachine {
 
     // maps string identifiers to state objects ("Greeting" -> {GreetingState})
     // allows to have multiple instances of the same state class with different identifiers ("Greeting2" -> {GreetingState})
-    private HashMap<String, AbstractState> identifierToState;
+    private HashMap<String, State> identifierToState;
 
-    private AbstractState activeState;
-    private AbstractState initalState;
+    private State activeState;
+    private State initalState;
 
     public DialogStateMachine() {
         identifierToState = new HashMap<>();
@@ -32,7 +33,7 @@ public class DialogStateMachine {
 
     }
 
-    public AbstractState getInitialState() {
+    public State getInitialState() {
         return initalState;
     }
     /**
@@ -41,7 +42,7 @@ public class DialogStateMachine {
      * If active state was null, it will be set to the new initial state.
      * @param initial initial state
      */
-    public void setInitialState(AbstractState initial) {
+    public void setInitialState(State initial) {
         if (initial == null) return;
 
         if (!identifierToState.containsValue(initial)) {
@@ -53,7 +54,7 @@ public class DialogStateMachine {
         }
     }
     public void setInitialState(String identifier) {
-        AbstractState initial = identifierToState.get(identifier);
+        State initial = identifierToState.get(identifier);
         if (initial == null) {
             System.out.println("Unknown identifier: " + identifier);
             return;
@@ -62,10 +63,10 @@ public class DialogStateMachine {
     }
 
 
-    public AbstractState getActiveState() {
+    public State getActiveState() {
         return activeState;
     }
-    public void setActiveState(AbstractState s) {
+    public void setActiveState(State s) {
         if (s == null) return;
 
         if (!identifierToState.containsValue(s)) {
@@ -74,7 +75,7 @@ public class DialogStateMachine {
         activeState = s;
     }
     public void setActiveState(String identifier) {
-        AbstractState s = identifierToState.get(identifier);
+        State s = identifierToState.get(identifier);
         if (s == null) {
             System.out.println("Unknown identifier: " + identifier);
             return;
@@ -84,10 +85,10 @@ public class DialogStateMachine {
 
 
 
-    public AbstractState getStateByIdentifier(String identifier) {
+    public State getStateByIdentifier(String identifier) {
         return identifierToState.get(identifier);
     }
-    public void addState(AbstractState s) {
+    public void addState(State s) {
         identifierToState.put(s.getIdentifier(), s);
     }
 
@@ -142,7 +143,7 @@ public class DialogStateMachine {
             String identifier = s.get("identifier").getAsString();
             String implementation = s.get("implementation").getAsString();
 
-            AbstractState object = ToyStateFactory.getByClassName(implementation, identifier);
+            State object = ToyStateFactory.getByClassName(implementation, identifier);
             if (object != null) {
                 identifierToState.put(identifier, object);
             }
@@ -160,7 +161,11 @@ public class DialogStateMachine {
             JsonObject s = state.getAsJsonObject();
 
             String identifier = s.get("identifier").getAsString();
-            AbstractState thisState = identifierToState.get(identifier);
+            State thisState = identifierToState.get(identifier);
+
+            if (thisState == null) {
+                throw new RuntimeException("State with identifier " + identifier + " is missing!");
+            }
 
 
             // check if fallback is defined
@@ -168,8 +173,12 @@ public class DialogStateMachine {
             if (fallbackEntry != null && !fallbackEntry.isJsonNull()) {
                 String fallbackIdentifier = fallbackEntry.getAsString();
                 if (fallbackIdentifier != null) {
-                    AbstractState fallbackState = identifierToState.get(fallbackIdentifier);
-                    thisState.setFallback(fallbackState);
+                    State fallbackState = identifierToState.get(fallbackIdentifier);
+                    if (fallbackState == null) {
+                        System.out.println("fallback " + fallbackIdentifier + " missing");
+                    } else {
+                        thisState.setFallback(fallbackState);
+                    }
                 }
             }
 
@@ -182,7 +191,7 @@ public class DialogStateMachine {
                     String transitionName = entry.getKey();
                     String transitionTarget = entry.getValue().getAsString();
 
-                    AbstractState transitionState = identifierToState.get(transitionTarget);
+                    State transitionState = identifierToState.get(transitionTarget);
 
                     if (transitionState != null) {
                         thisState.setTransition(transitionName, transitionState);
@@ -214,7 +223,7 @@ public class DialogStateMachine {
 
         // all states
         JsonArray statesJsonArray = new JsonArray();
-        for (AbstractState state : identifierToState.values()) {
+        for (State state : identifierToState.values()) {
             JsonObject stateJson = state.toJsonObject();
             statesJsonArray.add(stateJson);
         }
@@ -243,7 +252,7 @@ public class DialogStateMachine {
         s.append(initalState).append("\n");
 
         s.append(">> All states:\n");
-        for (AbstractState state : identifierToState.values()) {
+        for (State state : identifierToState.values()) {
             s.append(state);
         }
 
@@ -278,18 +287,18 @@ public class DialogStateMachine {
 
 
         // all states + transitions from this machine are present in the other
-        for (AbstractState thisState : identifierToState.values()) {
+        for (State thisState : identifierToState.values()) {
             String stateID = thisState.getIdentifier();
-            AbstractState otherState = other.getStateByIdentifier(stateID);
+            State otherState = other.getStateByIdentifier(stateID);
             if (otherState == null)   return false;
             if ( ! thisState.equals(otherState))  return false;
         }
 
 
         // all states + transitions from the other machine are present in this
-        for (AbstractState otherState : other.identifierToState.values()) {
+        for (State otherState : other.identifierToState.values()) {
             String stateID = otherState.getIdentifier();
-            AbstractState thisState = this.getStateByIdentifier(stateID);
+            State thisState = this.getStateByIdentifier(stateID);
             if (thisState == null) return false;
             if ( ! thisState.equals(otherState)) return false;
         }

@@ -1,7 +1,7 @@
-package roboy.dialog.personality.experimental.helpers;
+package roboy.newDialog.examples;
 
-import roboy.dialog.personality.experimental.DialogStateMachine;
-import roboy.dialog.personality.experimental.toyStates.*;
+import roboy.newDialog.DialogStateMachine;
+import roboy.newDialog.states.toyStates.*;
 
 import java.io.File;
 
@@ -89,7 +89,7 @@ public class StateMachineExamples {
             "  \"states\": [\n" +
             "    {\n" +
             "      \"identifier\": \"Greetings\",\n" +
-            "      \"implementation\" : \"roboy.dialog.personality.experimental.toyStates.ToyGreetingsState\",\n" +
+            "      \"implementation\" : \"roboy.newDialog.states.toyStates.ToyGreetingsState\",\n" +
             "      \"fallback\" : \"RandomAnswer\",\n" +
             "      \"transitions\" : {\n" +
             "        \"next\" : \"Intro\",\n" +
@@ -98,7 +98,7 @@ public class StateMachineExamples {
             "    },\n" +
             "    {\n" +
             "      \"identifier\": \"Intro\",\n" +
-            "      \"implementation\" : \"roboy.dialog.personality.experimental.toyStates.ToyIntroState\",\n" +
+            "      \"implementation\" : \"roboy.newDialog.states.toyStates.ToyIntroState\",\n" +
             "      \"fallback\" : null,\n" +
             "      \"transitions\" : {\n" +
             "        \"next\" : \"Farewell\"\n" +
@@ -106,13 +106,13 @@ public class StateMachineExamples {
             "    },\n" +
             "    {\n" +
             "      \"identifier\": \"Farewell\",\n" +
-            "      \"implementation\" : \"roboy.dialog.personality.experimental.toyStates.ToyFarewellState\",\n" +
+            "      \"implementation\" : \"roboy.newDialog.states.toyStates.ToyFarewellState\",\n" +
             "      \"fallback\" : null,\n" +
             "      \"transitions\" : {}\n" +
             "    },\n" +
             "    {\n" +
             "      \"identifier\": \"RandomAnswer\",\n" +
-            "      \"implementation\" : \"roboy.dialog.personality.experimental.toyStates.ToyRandomAnswerState\",\n" +
+            "      \"implementation\" : \"roboy.newDialog.states.toyStates.ToyRandomAnswerState\",\n" +
             "      \"fallback\" : null,\n" +
             "      \"transitions\" : {\n" +
             "        \"next\" : \"Farewell\"\n" +

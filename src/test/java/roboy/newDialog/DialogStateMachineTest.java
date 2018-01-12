@@ -1,11 +1,13 @@
-package roboy.dialog.personality.experimental;
+package roboy.newDialog;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
-import roboy.dialog.personality.experimental.toyStates.ToyFarewellState;
-import roboy.dialog.personality.experimental.toyStates.ToyGreetingsState;
+import roboy.newDialog.states.State;
+import roboy.newDialog.DialogStateMachine;
+import roboy.newDialog.states.toyStates.ToyFarewellState;
+import roboy.newDialog.states.toyStates.ToyGreetingsState;
 
 public class DialogStateMachineTest {
 
@@ -16,12 +18,12 @@ public class DialogStateMachineTest {
             "  \"states\": [\n" +
             "    {\n" +
             "      \"identifier\": \"Farewell\",\n" +
-            "      \"implementation\": \"roboy.dialog.personality.experimental.toyStates.ToyFarewellState\",\n" +
+            "      \"implementation\": \"roboy.newDialog.states.toyStates.ToyFarewellState\",\n" +
             "      \"transitions\": {}\n" +
             "    },\n" +
             "    {\n" +
             "      \"identifier\": \"Greetings\",\n" +
-            "      \"implementation\": \"roboy.dialog.personality.experimental.toyStates.ToyGreetingsState\",\n" +
+            "      \"implementation\": \"roboy.newDialog.states.toyStates.ToyGreetingsState\",\n" +
             "      \"fallback\": \"Farewell\",\n" +
             "      \"transitions\": {\n" +
             "        \"next\": \"Farewell\",\n" +
@@ -106,7 +108,7 @@ public class DialogStateMachineTest {
 
         DialogStateMachine fromCode = fromCode();
         // changeTransitions
-        AbstractState greetingsCode = fromCode.getStateByIdentifier("Greetings");
+        State greetingsCode = fromCode.getStateByIdentifier("Greetings");
         greetingsCode.setTransition("evilLoopback", greetingsCode);
 
         assertFalse(fromString.equals(fromCode));
@@ -138,8 +140,8 @@ public class DialogStateMachineTest {
     public void transitionsAreOK() {
         DialogStateMachine machine = new DialogStateMachine();
         machine.loadFromString(MINI_STATE_MACHINE);
-        AbstractState greetings = machine.getStateByIdentifier("Greetings");
-        AbstractState farewell = machine.getStateByIdentifier("Farewell");
+        State greetings = machine.getStateByIdentifier("Greetings");
+        State farewell = machine.getStateByIdentifier("Farewell");
 
         assertTrue( greetings.getTransition("noHello") == farewell);
         assertTrue( greetings.getTransition("next") == farewell );
@@ -150,8 +152,8 @@ public class DialogStateMachineTest {
     public void fallbackIsOK() {
         DialogStateMachine machine = new DialogStateMachine();
         machine.loadFromString(MINI_STATE_MACHINE);
-        AbstractState greetings = machine.getStateByIdentifier("Greetings");
-        AbstractState farewell = machine.getStateByIdentifier("Farewell");
+        State greetings = machine.getStateByIdentifier("Greetings");
+        State farewell = machine.getStateByIdentifier("Farewell");
 
         assertTrue( greetings.getFallback() == farewell);
     }

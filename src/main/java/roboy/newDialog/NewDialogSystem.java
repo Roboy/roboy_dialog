@@ -1,4 +1,4 @@
-package roboy.dialog.personality.experimental;
+package roboy.newDialog;
 
 
 import roboy.dialog.Config;
@@ -27,7 +27,7 @@ public class NewDialogSystem {
         new Config(NOROS);
 
 
-        MultiInputDevice multiIn =new MultiInputDevice(new CommandLineInput());
+        MultiInputDevice multiIn = new MultiInputDevice(new CommandLineInput());
         MultiOutputDevice multiOut = new MultiOutputDevice(new CommandLineOutput());
         List<Analyzer> analyzers = new ArrayList<>();
         analyzers.add(new Preprocessor());

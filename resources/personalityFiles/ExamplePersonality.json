@@ -3,7 +3,7 @@
   "states": [
     {
       "identifier": "Greetings",
-      "implementation" : "roboy.dialog.personality.experimental.toyStates.ToyGreetingsState",
+      "implementation" : "roboy.newDialog.states.toyStates.ToyGreetingsState",
       "fallback" : "RandomAnswer",
       "transitions" : {
         "next" : "Intro",
@@ -12,22 +12,19 @@
     },
     {
       "identifier": "Intro",
-      "implementation" : "roboy.dialog.personality.experimental.toyStates.ToyIntroState",
-      "fallback" : null,
+      "implementation" : "roboy.newDialog.states.toyStates.ToyIntroState",
       "transitions" : {
         "next" : "Farewell"
       }
     },
     {
       "identifier": "Farewell",
-      "implementation" : "roboy.dialog.personality.experimental.toyStates.ToyFarewellState",
-      "fallback" : null,
+      "implementation" : "roboy.newDialog.states.toyStates.ToyFarewellState",
       "transitions" : {}
     },
     {
       "identifier": "RandomAnswer",
-      "implementation" : "roboy.dialog.personality.experimental.toyStates.ToyRandomAnswerState",
-      "fallback" : null,
+      "implementation" : "roboy.newDialog.states.toyStates.ToyRandomAnswerState",
       "transitions" : {
         "next" : "Farewell"
       }

@@ -1,6 +1,5 @@
-package roboy.dialog.personality.experimental;
+package roboy.newDialog.states;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 
@@ -11,20 +10,20 @@ import java.util.*;
  * A state always acts when it is entered and reacts when its left. Both, the reaction of
  * the last and the action of the next state, are combined to give the answer of Roboy.
  */
-public abstract class AbstractState {
+public abstract class State {
 
 
     // State name/identifier
     private String stateIdentifier;
 
     // If this state can't react to the input, the Personality state machine will ask the fallback state
-    private AbstractState fallback;
+    private State fallback;
 
     // Possible transitions to other states. The next state is selected based on some conditions in getNextState();
-    private HashMap<String, AbstractState> transitions;
+    private HashMap<String, State> transitions;
 
 
-    public AbstractState(String stateIdentifier) {
+    public State(String stateIdentifier) {
         this.stateIdentifier = stateIdentifier;
         fallback = null;
         transitions = new HashMap<>();
@@ -44,7 +43,7 @@ public abstract class AbstractState {
      * to react to the input. This state still remains active.
      * @return fallback state
      */
-    public final AbstractState getFallback() {
+    public final State getFallback() {
         return fallback;
     }
 
@@ -52,7 +51,7 @@ public abstract class AbstractState {
      * Set the fallback state. The Personality state machine will ask the fallback state if this one has no answer.
      * @param fallback fallback state
      */
-    public final void setFallback(AbstractState fallback) {
+    public final void setFallback(State fallback) {
         this.fallback = fallback;
     }
 
@@ -65,13 +64,13 @@ public abstract class AbstractState {
      * @param name  name of the transition
      * @param goToState  state to transit to
      */
-    public final void setTransition(String name, AbstractState goToState) {
+    public final void setTransition(String name, State goToState) {
         transitions.put(name, goToState);
     }
-    public final AbstractState getTransition(String name) {
+    public final State getTransition(String name) {
         return transitions.get(name);
     }
-    public final HashMap<String, AbstractState> getAllTransitions() {
+    public final HashMap<String, State> getAllTransitions() {
         return transitions;
     }
 
@@ -109,7 +108,7 @@ public abstract class AbstractState {
      *
      * @return next actie state after this one has reacted
      */
-    public abstract AbstractState getNextState();
+    public abstract State getNextState();
 
 
     //endregion
@@ -177,7 +176,7 @@ public abstract class AbstractState {
 
         // transitions
         JsonObject transitionsJson = new JsonObject();
-        for (Map.Entry<String, AbstractState> transition : getAllTransitions().entrySet()) {
+        for (Map.Entry<String, State> transition : getAllTransitions().entrySet()) {
             String transName = transition.getKey();
             String transStateID = transition.getValue().getIdentifier();
             transitionsJson.addProperty(transName, transStateID);
@@ -194,11 +193,11 @@ public abstract class AbstractState {
         s.append("State ").append(getIdentifier()).append(" of class ");
         s.append(this.getClass().getSimpleName()).append(" {\n");
 
-        AbstractState fallback = getFallback();
+        State fallback = getFallback();
         if (fallback != null) {
             s.append("  ! fallback: ").append(fallback.getIdentifier()).append("\n");
         }
-        for (Map.Entry<String, AbstractState> transition : getAllTransitions().entrySet()) {
+        for (Map.Entry<String, State> transition : getAllTransitions().entrySet()) {
             s.append("  ").append(transition.getKey()).append(": ");
             s.append(transition.getValue().getIdentifier()).append("\n");
         }
@@ -210,10 +209,10 @@ public abstract class AbstractState {
 
     @Override
     public boolean equals(Object obj) {
-        if ( ! (obj instanceof AbstractState)) {
+        if ( ! (obj instanceof State)) {
             return false;
         }
-        AbstractState other = (AbstractState) obj;
+        State other = (State) obj;
 
         // different class
         if (other.getClass() != this.getClass()) {
@@ -252,10 +251,10 @@ public abstract class AbstractState {
      * @param other other state to compare transitions
      * @return true if all transitions of this state are present in the other state
      */
-    private boolean equalsHelper_compareTransitions(AbstractState other) {
+    private boolean equalsHelper_compareTransitions(State other) {
 
         // for every transition in this state
-        for (Map.Entry<String, AbstractState> transition : getAllTransitions().entrySet()) {
+        for (Map.Entry<String, State> transition : getAllTransitions().entrySet()) {
 
             // transition name
             String transName = transition.getKey();
@@ -263,7 +262,7 @@ public abstract class AbstractState {
             String thisTransStateID = transition.getValue().getIdentifier();
 
             // check if transition in the other state points to the same id
-            AbstractState otherTransState = other.getTransition(transName);
+            State otherTransState = other.getTransition(transName);
             if (otherTransState == null)  return false;
 
             String otherTransStateID = otherTransState.getIdentifier();
