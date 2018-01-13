@@ -19,14 +19,14 @@ public class Concept {
 
 	public Concept()
 	{
-		this.attributes = new HashMap<String, Object>();
+		this.attributes = new HashMap<>();
 		this.attributes.put("class_name", "Person"); //TODO remove hardcoded person constructor
 		this.attributes.put("id", RoboyMind.getInstance().object_id++);
 	}
 
 	public Concept(Map<String, Object> attrs)
 	{
-		this.attributes = new HashMap<String, Object>();
+		this.attributes = new HashMap<>();
 		this.attributes.put("class_name", "Person");
 		this.attributes.put("id", RoboyMind.getInstance().object_id++);
 		for (Map.Entry<String,Object> attr: attrs.entrySet())
@@ -36,7 +36,7 @@ public class Concept {
 	}
 	
 	public Concept(String name){
-		this.attributes = new HashMap<String, Object>();
+		this.attributes = new HashMap<>();
 		attributes.put(Linguistics.NAME, name);
 		this.attributes.put("id", RoboyMind.getInstance().object_id++);
 	}
@@ -62,54 +62,50 @@ public class Concept {
 
 	public String getProperties() 
 	{
-		String properties = ""; 
+		StringBuilder properties = new StringBuilder();
 
 		for (Map.Entry<String, Object> attribute : this.getAttributes().entrySet())
 		{
 //		    if (attribute.getKey() != "class_name" && attribute.getKey() != "id")
 //		    {
-		    	properties +=  attribute.getKey() + ",";
+		    	properties.append(attribute.getKey()).append(",");
 //		    }
 		}
 
-		if (properties.length()>0 && properties.charAt(properties.length()-1)==',')
+		if (properties.length() > 0 && properties.charAt(properties.length()-1) == ',')
 		{
-			properties = properties.substring(0, properties.length()-1);
+			properties = new StringBuilder(properties.substring(0, properties.length() - 1));
 		}
 
-		return properties;
+		return properties.toString();
 
 	}
 
 	public String getValues() 
 	{
 		
-		String values = "";
+		StringBuilder values = new StringBuilder();
 
 		for (Map.Entry<String, Object> attribute : this.getAttributes().entrySet())
 		{
-		    if (attribute.getKey() != "class" && attribute.getKey() != "id")
+		    if ( ! attribute.getKey().equals("class") && ! attribute.getKey().equals("id"))
 		    {
-		    	values +=  attribute.getValue().toString() + ",";
+		    	values.append(attribute.getValue().toString()).append(",");
 		    }
 		    
 		}
 
 		if (values.length()>0 && values.charAt(values.length()-1)==',')
 		{
-			values = values.substring(0, values.length()-1);
+			values = new StringBuilder(values.substring(0, values.length() - 1));
 		}
 
-		return values;
+		return values.toString();
 	}
 	
 	public boolean hasAttribute(String property)
 	{
-		if (this.getProperties() != "" && this.getProperties().contains(property))
-		{
-			return true;
-		}
-		return false;
+		return ! this.getProperties().equals("") && this.getProperties().contains(property);
 	}
 
 	public Object retrieve()

@@ -20,7 +20,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
     private Gson gson = new Gson();
 
     private Neo4jMemory (RosMainNode node){
-        this.rosMainNode = node;
+        Neo4jMemory.rosMainNode = node;
     }
 
     public static Neo4jMemory getInstance(RosMainNode node)
@@ -34,16 +34,10 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
 
     public static Neo4jMemory getInstance()
     {
-        try{
-            return memory;
-        }
-        catch (NullPointerException e)
-        {
-            e.printStackTrace();
+        if (memory == null) {
             System.out.println("Memory wasn't initialized correctly. Use public static Neo4jMemory getInstance(RosMainNode node) instead.");
-            return null;
         }
-
+        return memory;
     }
 
     /**
@@ -57,8 +51,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
     {
         if(!Config.MEMORY) return false;
         String response = rosMainNode.UpdateMemoryQuery(node.toJSON(gson));
-        if(response == null) return false;
-        return(response.contains("OK"));
+        return response != null && (response.contains("OK"));
     }
 
     /**
@@ -114,7 +107,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
         //Remove all fields which were not explicitly set, for safety.
         query.setStripQuery(true);
         String response = rosMainNode.DeleteMemoryQuery(query.toJSON(gson));
-        return response == null ? false : response.contains("OK");
+        return response != null && response.contains("OK");
     }
 
     /**
