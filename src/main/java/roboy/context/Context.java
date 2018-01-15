@@ -21,6 +21,8 @@ import java.util.Map;
  *
  * Simple attributes (which implement the AttributeHistory interface) are
  * handled through the inherited AttributeManager methods.
+ *
+ * For usage examples, check out ContextTest.java
  */
 public class Context extends AttributeManager<Context.HistoryAttributes, Context.ValueAttributes>{
     private static Context context;
@@ -60,7 +62,7 @@ public class Context extends AttributeManager<Context.HistoryAttributes, Context
     }
 
     /**
-     *  Enum of all available attributes.
+     *  A listing of available attributes with a history of values.
      *  AttributeManager methods take an Attribute as parameter.
      */
     public enum HistoryAttributes implements AttributeInterface {
@@ -95,6 +97,9 @@ public class Context extends AttributeManager<Context.HistoryAttributes, Context
         }
     }
 
+    /**
+     * A listing of available single-value attributes.
+     */
     public enum ValueAttributes implements AttributeInterface {
         FACE_COORDINATES(FaceCoordinates.class, CoordinateSet.class);
 
@@ -119,6 +124,9 @@ public class Context extends AttributeManager<Context.HistoryAttributes, Context
         }
     }
 
+    /**
+     * A listing of available updaters, with their target class specified under classType.
+     */
     public enum Updaters {
         DIALOG_TOPICS_UPDATER(DialogTopics.class);
         final Class classType;
@@ -128,6 +136,11 @@ public class Context extends AttributeManager<Context.HistoryAttributes, Context
         }
     }
 
+    /**
+     * Get the updater to directly add values to an attribute.
+     * @param updater The name of the updater.
+     * @return An updatePolicy offering the putValue() method.
+     */
     public DirectUpdatePolicy getUpdater(Updaters updater) {
         return (DirectUpdatePolicy) directUpdatePolicies.get(updater.classType);
     }

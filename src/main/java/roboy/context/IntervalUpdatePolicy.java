@@ -16,6 +16,11 @@ public abstract class IntervalUpdatePolicy<T> extends AsyncUpdatePolicy {
     protected final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     public final int updateFrequency;
 
+    /**
+     * Create a new updater service, executing the update() method at regular time intervals.
+     * @param target The target attribute of the update() method.
+     * @param updateFrequencySeconds Delay between calls to the update() method.
+     */
     public IntervalUpdatePolicy(T target, int updateFrequencySeconds) {
         this.target = target;
         updateFrequency = updateFrequencySeconds;
@@ -23,13 +28,15 @@ public abstract class IntervalUpdatePolicy<T> extends AsyncUpdatePolicy {
     }
 
     /**
-     * Starts the updating thread.
+     * Starts the ScheduledExecutorService of the updating thread.
      */
     private void start() {
         final Runnable updater = () -> update();
+        // Schedules regular updates, starting 1 second after initialization.
         final ScheduledFuture<?> updaterHandle = scheduler.scheduleAtFixedRate(
-                updater, updateFrequency, updateFrequency, SECONDS);
-        scheduler.schedule((Runnable) () -> updaterHandle.cancel(true), 60 * 60, SECONDS);
+                updater, 1, updateFrequency, SECONDS);
+        // Cancel each scheduled task after 30 seconds of runtime - prevent excessive threads if the goal is down.
+        scheduler.schedule((Runnable) () -> updaterHandle.cancel(true), 30, SECONDS);
     }
 
 }
