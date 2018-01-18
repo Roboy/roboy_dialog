@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="interfaceroboy_1_1context_1_1_history_attribute" kind="interface" language="Java" prot="public">
     <compoundname>roboy::context::HistoryAttribute</compoundname>
     <derivedcompoundref refid="classroboy_1_1context_1_1_simple_history_attribute" prot="public" virt="non-virtual">roboy.context.SimpleHistoryAttribute&lt; K extends Integer, V extends DataType &gt;</derivedcompoundref>
@@ -24,7 +24,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/HistoryAttribute.java" line="10" column="1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/HistoryAttribute.java" line="10" column="1"/>
       </memberdef>
       <memberdef kind="function" id="interfaceroboy_1_1context_1_1_history_attribute_1a2e8c12270a0ce6f8764220aa3ee1d578" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>V</type>
@@ -42,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/HistoryAttribute.java" line="12" column="1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/HistoryAttribute.java" line="12" column="1"/>
       </memberdef>
       <memberdef kind="function" id="interfaceroboy_1_1context_1_1_history_attribute_1a26d4c887c7f52ee8a4f03979e9eb4044" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Map&lt; K, V &gt;</type>
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/HistoryAttribute.java" line="14" column="1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/HistoryAttribute.java" line="14" column="1"/>
       </memberdef>
       <memberdef kind="function" id="interfaceroboy_1_1context_1_1_history_attribute_1adfb1e6cff29ae2ce75129db6588491c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>K</type>
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/HistoryAttribute.java" line="16" column="1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/HistoryAttribute.java" line="16" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -86,24 +86,24 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1172">
+      <node id="279">
         <label>roboy.context.HistoryAttribute&lt; K, V &gt;</label>
         <link refid="interfaceroboy_1_1context_1_1_history_attribute"/>
       </node>
-      <node id="1174">
+      <node id="281">
         <label>roboy::context::dialogContext::DialogTopics&lt; Integer, Topic &gt;</label>
         <link refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics"/>
-        <childnode refid="1173" relation="public-inheritance">
+        <childnode refid="280" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1173">
+      <node id="280">
         <label>roboy::context::SimpleHistoryAttribute&lt; K, V &gt;</label>
         <link refid="classroboy_1_1context_1_1_simple_history_attribute"/>
-        <childnode refid="1172" relation="public-inheritance">
+        <childnode refid="279" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/HistoryAttribute.java" line="8" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/HistoryAttribute.java" bodystart="8" bodyend="17"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/HistoryAttribute.java" line="8" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/HistoryAttribute.java" bodystart="8" bodyend="17"/>
     <listofallmembers>
       <member refid="interfaceroboy_1_1context_1_1_history_attribute_1a26d4c887c7f52ee8a4f03979e9eb4044" prot="public" virt="non-virtual"><scope>roboy::context::HistoryAttribute</scope><name>getLastNValues</name></member>
       <member refid="interfaceroboy_1_1context_1_1_history_attribute_1ab149add058dc2c808414f9d9e01e5b72" prot="public" virt="non-virtual"><scope>roboy::context::HistoryAttribute</scope><name>getLastValue</name></member>

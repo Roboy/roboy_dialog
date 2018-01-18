@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="interfaceroboy_1_1context_1_1_value_attribute" kind="interface" language="Java" prot="public">
     <compoundname>roboy::context::ValueAttribute</compoundname>
     <derivedcompoundref refid="classroboy_1_1context_1_1_simple_value_attribute" prot="public" virt="non-virtual">roboy.context.SimpleValueAttribute&lt; V extends DataType &gt;</derivedcompoundref>
@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/ValueAttribute.java" line="5" column="1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/ValueAttribute.java" line="5" column="1"/>
       </memberdef>
       <memberdef kind="function" id="interfaceroboy_1_1context_1_1_value_attribute_1a1b683a0bdba3d1744942a556366715c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -39,7 +39,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/ValueAttribute.java" line="7" column="1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/ValueAttribute.java" line="7" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -47,24 +47,24 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1749">
+      <node id="870">
         <label>roboy::context::visionContext::FaceCoordinates&lt; CoordinateSet &gt;</label>
         <link refid="classroboy_1_1context_1_1vision_context_1_1_face_coordinates"/>
-        <childnode refid="1748" relation="public-inheritance">
+        <childnode refid="869" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1747">
+      <node id="868">
         <label>roboy.context.ValueAttribute&lt; V &gt;</label>
         <link refid="interfaceroboy_1_1context_1_1_value_attribute"/>
       </node>
-      <node id="1748">
+      <node id="869">
         <label>roboy::context::SimpleValueAttribute&lt; V &gt;</label>
         <link refid="classroboy_1_1context_1_1_simple_value_attribute"/>
-        <childnode refid="1747" relation="public-inheritance">
+        <childnode refid="868" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/ValueAttribute.java" line="3" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/ValueAttribute.java" bodystart="3" bodyend="8"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/ValueAttribute.java" line="3" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/ValueAttribute.java" bodystart="3" bodyend="8"/>
     <listofallmembers>
       <member refid="interfaceroboy_1_1context_1_1_value_attribute_1a0f865bd03355930c5180b78449488d5d" prot="public" virt="non-virtual"><scope>roboy::context::ValueAttribute</scope><name>getValue</name></member>
       <member refid="interfaceroboy_1_1context_1_1_value_attribute_1a1b683a0bdba3d1744942a556366715c5" prot="public" virt="non-virtual"><scope>roboy::context::ValueAttribute</scope><name>updateValue</name></member>

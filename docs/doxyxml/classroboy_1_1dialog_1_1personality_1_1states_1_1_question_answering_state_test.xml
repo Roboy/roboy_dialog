@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_test" kind="class" language="Java" prot="public">
     <compoundname>roboy::dialog::personality::states::QuestionAnsweringStateTest</compoundname>
       <sectiondef kind="private-static-attrib">
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="15" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="15" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_test_1a948deecc296d41d9b370c3083a9bf162" prot="private" static="yes" mutable="no">
         <type>final <ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state" kindref="compound">QuestionAnsweringState</ref></type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="16" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="16" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="16" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="16" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="19" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="19" bodyend="25"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="19" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="19" bodyend="25"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_test_1aeb215f695231886a975a71e5f33ac2d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="28" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="28" bodyend="34"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="28" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="28" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_test_1a06227b8fdd6f7a37d6b0e2bf26c9c7ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -70,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="37" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="37" bodyend="46"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="37" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="37" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_test_1a18c8a49654c486128a9ceadd36cd1143" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="49" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="49" bodyend="55"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="49" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="49" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_test_1ae846ad00328530cd6e7c96507d728285" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -96,7 +96,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="59" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="59" bodyend="65"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="59" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="59" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_test_1a8de60ef6015b8aff3a87058490bb67e5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -109,7 +109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="69" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="69" bodyend="78"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="69" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="69" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_test_1a55cbe246e69cc5a8d93db0b4c798eba3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="82" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="82" bodyend="88"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="82" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="82" bodyend="88"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -130,60 +130,60 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="1494">
+      <node id="601">
         <label>List&lt; roboy.linguistics.Triple &gt;</label>
       </node>
-      <node id="1491">
+      <node id="598">
         <label>roboy.dialog.personality.states.QuestionAnsweringState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state"/>
-        <childnode refid="1492" relation="public-inheritance">
+        <childnode refid="599" relation="public-inheritance">
         </childnode>
-        <childnode refid="1493" relation="usage">
+        <childnode refid="600" relation="usage">
           <edgelabel>memories</edgelabel>
         </childnode>
-        <childnode refid="1492" relation="usage">
+        <childnode refid="599" relation="usage">
           <edgelabel>top</edgelabel>
           <edgelabel>inner</edgelabel>
         </childnode>
-        <childnode refid="1494" relation="usage">
+        <childnode refid="601" relation="usage">
           <edgelabel>memory</edgelabel>
         </childnode>
       </node>
-      <node id="1487">
+      <node id="594">
         <label>roboy.dialog.personality.states.QuestionAnsweringStateTest</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_test"/>
-        <childnode refid="1488" relation="usage">
+        <childnode refid="595" relation="usage">
           <edgelabel>parser</edgelabel>
         </childnode>
-        <childnode refid="1491" relation="usage">
+        <childnode refid="598" relation="usage">
           <edgelabel>state</edgelabel>
         </childnode>
       </node>
-      <node id="1492">
+      <node id="599">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
-      <node id="1493">
+      <node id="600">
         <label>List&lt; roboy.memory.Memory&lt; roboy.util.Relation &gt; &gt;</label>
       </node>
-      <node id="1489">
+      <node id="596">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
-      <node id="1490">
+      <node id="597">
         <label>Parser</label>
       </node>
-      <node id="1488">
+      <node id="595">
         <label>roboy.linguistics.sentenceanalysis.OpenNLPParser</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser"/>
-        <childnode refid="1489" relation="public-inheritance">
+        <childnode refid="596" relation="public-inheritance">
         </childnode>
-        <childnode refid="1490" relation="usage">
+        <childnode refid="597" relation="usage">
           <edgelabel>parser</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="13" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="13" bodyend="90"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/dialog/personality/states/QuestionAnsweringStateTest.java" bodystart="13" bodyend="90"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_test_1a5b47cab04d2a0fcca4aaa5b632cdff6d" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::states::QuestionAnsweringStateTest</scope><name>parser</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_answering_state_test_1a948deecc296d41d9b370c3083a9bf162" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::states::QuestionAnsweringStateTest</scope><name>state</name></member>

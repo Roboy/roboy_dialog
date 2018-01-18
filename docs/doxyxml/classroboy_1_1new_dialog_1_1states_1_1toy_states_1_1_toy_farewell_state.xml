@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_farewell_state" kind="class" language="Java" prot="public">
     <compoundname>roboy::newDialog::states::toyStates::ToyFarewellState</compoundname>
     <basecompoundref refid="classroboy_1_1new_dialog_1_1states_1_1_state" prot="public" virt="non-virtual">roboy.newDialog.states.State</basecompoundref>
@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" line="19" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" bodystart="19" bodyend="21"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" line="19" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" bodystart="19" bodyend="21"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_farewell_state_1a20639a2ad3a288715de6e2cb4276f284" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" line="24" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" bodystart="24" bodyend="26"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" line="24" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" bodystart="24" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_farewell_state_1ae6aa237e810913add161a6fbb3fc775b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" line="29" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" bodystart="29" bodyend="31"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" line="29" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" bodystart="29" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_farewell_state_1ae67a40d8441b12ff4de5cc610b2c8ecf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" line="34" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" bodystart="34" bodyend="36"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" line="34" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" bodystart="34" bodyend="36"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -70,39 +70,39 @@
     <detaileddescription>
 <para>The Interlocutor answer is ignored and there is no reaction. This ends the conversation.</para><para>Fallback is not required. This state has no outgoing transitions. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="1707">
+      <node id="828">
         <label>roboy.newDialog.states.State</label>
         <link refid="classroboy_1_1new_dialog_1_1states_1_1_state"/>
       </node>
-      <node id="1706">
+      <node id="827">
         <label>roboy.newDialog.states.toyStates.ToyFarewellState</label>
         <link refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_farewell_state"/>
-        <childnode refid="1707" relation="public-inheritance">
+        <childnode refid="828" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1709">
+      <node id="830">
         <label>roboy.newDialog.states.State</label>
         <link refid="classroboy_1_1new_dialog_1_1states_1_1_state"/>
-        <childnode refid="1710" relation="usage">
+        <childnode refid="831" relation="usage">
           <edgelabel>transitions</edgelabel>
         </childnode>
-        <childnode refid="1709" relation="usage">
+        <childnode refid="830" relation="usage">
           <edgelabel>fallback</edgelabel>
         </childnode>
       </node>
-      <node id="1710">
+      <node id="831">
         <label>HashMap&lt; String, roboy.newDialog.states.State &gt;</label>
       </node>
-      <node id="1708">
+      <node id="829">
         <label>roboy.newDialog.states.toyStates.ToyFarewellState</label>
         <link refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_farewell_state"/>
-        <childnode refid="1709" relation="public-inheritance">
+        <childnode refid="830" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" line="17" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" bodystart="17" bodyend="38"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" bodystart="17" bodyend="38"/>
     <listofallmembers>
       <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_farewell_state_1a20639a2ad3a288715de6e2cb4276f284" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyFarewellState</scope><name>act</name></member>
       <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a610c6a1337f401e4e53806d3bdcb5335" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyFarewellState</scope><name>allRequiredTransitionsAreInitialized</name></member>
@@ -113,7 +113,7 @@
       <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_farewell_state_1ae67a40d8441b12ff4de5cc610b2c8ecf" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyFarewellState</scope><name>getNextState</name></member>
       <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1aa48dfb2715179c2d095370e6aaef0cf0" prot="protected" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyFarewellState</scope><name>getRequiredTransitionNames</name></member>
       <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a61e3afbfa155d7fc6d0c353d71a70279" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyFarewellState</scope><name>getTransition</name></member>
-      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a74598144b82ca28dcc5e4abfce7739d1" prot="protected" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyFarewellState</scope><name>newSet</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1ac210fbdf5b34ece06c3f6473d5d55c4c" prot="protected" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyFarewellState</scope><name>newSet</name></member>
       <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_farewell_state_1ae6aa237e810913add161a6fbb3fc775b" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyFarewellState</scope><name>react</name></member>
       <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a3d2292e61f395f378b7db49790c67828" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyFarewellState</scope><name>setFallback</name></member>
       <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1aacca21bec3b5ca0f0f7435f3678b6087" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyFarewellState</scope><name>setIdentifier</name></member>

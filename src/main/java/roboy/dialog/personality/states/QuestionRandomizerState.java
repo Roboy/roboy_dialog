@@ -61,11 +61,11 @@ public class QuestionRandomizerState implements State{
 		locationQuestion.setSuccess(locationDBpedia);
 		questionStates = new PersonalQAState[]{
 				locationQuestion,
-//				initializeQuestion(HAS_HOBBY),
-//				initializeQuestion(WORK_FOR),
-//				initializeQuestion(STUDY_AT)
+				initializeQuestion(HAS_HOBBY),
+				initializeQuestion(WORK_FOR),
+				initializeQuestion(STUDY_AT)
 // 		TODO request support for Occupation and Movie data in the database.
-			 initializeQuestion(OTHER),
+//			 initializeQuestion(OTHER),
 //			 initializeQuestion(LIKES_MOVIE),
 		};
 		followUpStates = new PersonalFollowUpState[] {
@@ -97,7 +97,8 @@ public class QuestionRandomizerState implements State{
 				chosenState = questionStates[index];
                 return chosenState.act();
 			} else if (askFollowUp) {
-				index = (int) (Math.random() * followUpStates.length);
+				// TODO Probably to think about better fix then equal amount of the questions
+				//index = (int) (Math.random() * followUpStates.length);
 				chosenState = followUpStates[index];
 				askFollowUp = false;
 				return chosenState.act();

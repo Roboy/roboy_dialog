@@ -71,34 +71,35 @@ public class IntroductionState extends AbstractBooleanState{
 //			List<Triple> agens = PersistentKnowledge.getInstance().retrieve(new Triple(null,name,null));
 //			List<Triple> patiens = PersistentKnowledge.getInstance().retrieve(new Triple(null,null,name));
 			//TODO Currently assuming no duplicate names in memory. Support for last name addition needed.
-			person.addName(name);
-			if(!person.FAMILIAR) {
-				return false;
-			}
             String retrievedResult = "";
-            ArrayList<Integer> ids = person.getRelationships(predicate);
-            if (!ids.isEmpty()) {
-                memory = Neo4jMemory.getInstance();
-                try {
-                    for (int i = 0; i < ids.size() && i < 3; i++) {
-                        MemoryNodeModel requestedObject = memory.getById(ids.get(i));
-                        retrievedResult += requestedObject.getProperties().get("name").toString();
-                        retrievedResult += " and ";
+            person.addName(name);
+            if(!person.FAMILIAR) {
+                return false;
+            } else {
+                ArrayList<Integer> ids = person.getRelationships(predicate);
+                if (ids != null && !ids.isEmpty()) {
+                    memory = Neo4jMemory.getInstance();
+                    try {
+                        for (int i = 0; i < ids.size() && i < 3; i++) {
+                            MemoryNodeModel requestedObject = memory.getById(ids.get(i));
+                            retrievedResult += requestedObject.getProperties().get("name").toString();
+                            retrievedResult += " and ";
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                }
+                if (!retrievedResult.equals("")) {
+                    retrievedResult = "By the way I know you are friends with " + retrievedResult.substring(0, retrievedResult.length() - 5);
                 }
             }
-			if (!retrievedResult.equals("")) {
-                retrievedResult = "By the way I know you are friends with " + retrievedResult.substring(0,retrievedResult.length()-5);
-            }
-			setSuccessTexts(Lists.stringList(
-					"Oh hi, "+name+". Sorry, I didn't recognize you at first. But you know how the vision guys are. " + retrievedResult,
-					"Hi "+name+" nice to see you again. " + retrievedResult
-					));
-			return true;
+            setSuccessTexts(Lists.stringList(
+                    "Oh hi, " + name + ". Sorry, I didn't recognize you at first. But you know how the vision guys are. " + retrievedResult,
+                    "Hi " + name + " nice to see you again. " + retrievedResult
+            ));
+            return true;
 		}
 		return false;
 	}

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="_roboy_name_detection_input_8java" kind="file" language="Java">
     <compoundname>RoboyNameDetectionInput.java</compoundname>
     <innerclass refid="classroboy_1_1io_1_1_roboy_name_detection_input" prot="public">roboy::io::RoboyNameDetectionInput</innerclass>
@@ -63,17 +63,17 @@
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//start<sp/>listening</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>recognizer.startRecognition(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//create<sp/>external<sp/>&apos;link&apos;<sp/>to<sp/>the<sp/>object<sp/>of<sp/>recognizer<sp/>to<sp/>be<sp/>able<sp/>to<sp/>stop<sp/>it<sp/>correctly<sp/>before<sp/>deletion<sp/>of<sp/>the<sp/>RoboyNameDetectorInput<sp/>object</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>recog_copy<sp/>=<sp/>recognizer;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classroboy_1_1io_1_1_roboy_name_detection_input_1a1872b884fd325a83c7d85ebe0ab2672c" kindref="member">recog_copy</ref><sp/>=<sp/>recognizer;</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classroboy_1_1io_1_1_roboy_name_detection_input_1affd6cd02b0c1149f08c7e85ce516cc50" kindref="member">stopListening</ref>(){</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>recog_copy.stopRecognition();</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>recog_copy<sp/>=<sp/>null;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classroboy_1_1io_1_1_roboy_name_detection_input_1a1872b884fd325a83c7d85ebe0ab2672c" kindref="member">recog_copy</ref>.stopRecognition();</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classroboy_1_1io_1_1_roboy_name_detection_input_1a1872b884fd325a83c7d85ebe0ab2672c" kindref="member">recog_copy</ref><sp/>=<sp/>null;</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>@Override<sp/></highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classroboy_1_1io_1_1_input" kindref="compound">Input</ref><sp/><ref refid="classroboy_1_1io_1_1_roboy_name_detection_input_1a2e946745e25aefe609c9b50bbcfe33b0" kindref="member">listen</ref>()<sp/></highlight><highlight class="keywordflow">throws</highlight><highlight class="normal"><sp/>InterruptedException,<sp/>IOException<sp/>{</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//get<sp/>a<sp/>string<sp/>that<sp/>was<sp/>recognized</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>utterance<sp/>=<sp/>recog_copy.getResult().getHypothesis();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>utterance<sp/>=<sp/><ref refid="classroboy_1_1io_1_1_roboy_name_detection_input_1a1872b884fd325a83c7d85ebe0ab2672c" kindref="member">recog_copy</ref>.getResult().getHypothesis();</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>utterance.contains(</highlight><highlight class="stringliteral">&quot;ROBOY&quot;</highlight><highlight class="normal">)<sp/>){</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classroboy_1_1io_1_1_input" kindref="compound">Input</ref>(null,<sp/><ref refid="classroboy_1_1util_1_1_maps" kindref="compound">Maps</ref>.stringObjectMap(<ref refid="classroboy_1_1linguistics_1_1_linguistics" kindref="compound">Linguistics</ref>.<ref refid="classroboy_1_1linguistics_1_1_linguistics_1abc2dcf7a32e22e408d6afa224502f4b3" kindref="member">ROBOYDETECTED</ref>,</highlight><highlight class="keyword">true</highlight><highlight class="normal">));</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -83,6 +83,6 @@
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="93"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/io/RoboyNameDetectionInput.java"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/RoboyNameDetectionInput.java"/>
   </compounddef>
 </doxygen>

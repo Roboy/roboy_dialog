@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="interfaceroboy_1_1context_1_1data_types_1_1_data_type" kind="interface" language="Java" prot="public">
     <compoundname>roboy::context::dataTypes::DataType</compoundname>
     <derivedcompoundref refid="classroboy_1_1context_1_1data_types_1_1_coordinate_set" prot="public" virt="non-virtual">roboy.context.dataTypes.CoordinateSet</derivedcompoundref>
@@ -9,24 +9,24 @@
     <detaileddescription>
 <para>Example: coordinates for location data from Vision or Audio.</para><para>If we want to store data beyond runtime, we could add serialization. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="1058">
+      <node id="165">
         <label>roboy.context.dataTypes.Topic</label>
         <link refid="classroboy_1_1context_1_1data_types_1_1_topic"/>
-        <childnode refid="1056" relation="public-inheritance">
+        <childnode refid="163" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1057">
+      <node id="164">
         <label>roboy.context.dataTypes.CoordinateSet</label>
         <link refid="classroboy_1_1context_1_1data_types_1_1_coordinate_set"/>
-        <childnode refid="1056" relation="public-inheritance">
+        <childnode refid="163" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1056">
+      <node id="163">
         <label>roboy.context.dataTypes.DataType</label>
         <link refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type"/>
       </node>
     </inheritancegraph>
-    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dataTypes/DataType.java" line="9" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dataTypes/DataType.java" bodystart="9" bodyend="10"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dataTypes/DataType.java" line="9" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dataTypes/DataType.java" bodystart="9" bodyend="10"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

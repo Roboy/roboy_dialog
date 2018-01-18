@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="_bing_output_8java" kind="file" language="Java">
     <compoundname>BingOutput.java</compoundname>
     <innerclass refid="classroboy_1_1io_1_1_bing_output" prot="public">roboy::io::BingOutput</innerclass>
@@ -26,7 +26,7 @@
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>act(List&lt;Action&gt;<sp/>actions)<sp/>{</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(<ref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kindref="compound">Action</ref><sp/>a<sp/>:<sp/>actions){</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(a<sp/>instanceof<sp/><ref refid="classroboy_1_1dialog_1_1action_1_1_speech_action" kindref="compound">SpeechAction</ref>){</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>say(((SpeechAction)<sp/>a).getText());</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>say(((<ref refid="classroboy_1_1dialog_1_1action_1_1_speech_action" kindref="compound">SpeechAction</ref>)<sp/>a).getText());</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -40,6 +40,6 @@
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="33"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/io/BingOutput.java"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/BingOutput.java"/>
   </compounddef>
 </doxygen>
