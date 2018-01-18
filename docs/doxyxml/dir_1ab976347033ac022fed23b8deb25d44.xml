@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_1ab976347033ac022fed23b8deb25d44" kind="dir">
+    <compoundname>/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/examples</compoundname>
+    <innerfile refid="_state_machine_examples_8java">StateMachineExamples.java</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/examples/"/>
+  </compounddef>
+</doxygen>

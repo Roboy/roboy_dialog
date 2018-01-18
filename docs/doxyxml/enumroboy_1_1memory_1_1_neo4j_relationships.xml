@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="enumroboy_1_1memory_1_1_neo4j_relationships" kind="enum" language="Java" prot="public">
     <compoundname>roboy::memory::Neo4jRelationships</compoundname>
       <sectiondef kind="public-attrib">
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="9" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="9" bodyend="-1"/>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="9" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="9" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relationships_1a81d3e6007d1f97035b456ff2920ccc8d" prot="public" static="no" mutable="no">
         <type></type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="10" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="10" bodyend="-1"/>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="10" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="10" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relationships_1ae9e83e5b4d8d0d8c321c2ec8f01570d9" prot="public" static="no" mutable="no">
         <type></type>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="11" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="11" bodyend="-1"/>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="11" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="11" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relationships_1a1d2898c360cd84edbbe34e1ec8460a75" prot="public" static="no" mutable="no">
         <type></type>
@@ -57,21 +57,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="12" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="12" bodyend="-1"/>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="12" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="12" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relationships_1a8c0fa096e56da2ad75fcf6a1f454f381" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relationships_1a352af1eb4633728acc4487447717d014" prot="public" static="no" mutable="no">
         <type></type>
-        <definition>roboy.memory.Neo4jRelationships.OCCUPATION</definition>
+        <definition>roboy.memory.Neo4jRelationships.OCCUPIED_AS</definition>
         <argsstring></argsstring>
-        <name>OCCUPATION</name>
-        <initializer>=(&quot;OCCUPATION&quot;)</initializer>
+        <name>OCCUPIED_AS</name>
+        <initializer>=(&quot;OCCUPIED_AS&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="13" bodyend="-1"/>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="13" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="13" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relationships_1a85859baff2d7ba661e9bbe1fc2148ee0" prot="public" static="no" mutable="no">
         <type></type>
@@ -85,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="14" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="14" bodyend="-1"/>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="14" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="14" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relationships_1a3ee47001882057c607131701e907685f" prot="public" static="no" mutable="no">
         <type></type>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="15" bodyend="-1"/>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="15" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relationships_1a1e3a13fed6f4c2f4cc1d36365120aacf" prot="public" static="no" mutable="no">
         <type></type>
@@ -113,7 +113,35 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="16" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="16" bodyend="-1"/>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="16" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relationships_1a96e569efba37e94470780a2c930913f5" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>roboy.memory.Neo4jRelationships.OTHER</definition>
+        <argsstring></argsstring>
+        <name>OTHER</name>
+        <initializer>=(&quot;OTHER&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="17" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relationships_1a89f467de499250d41c5783aa56719e4e" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>roboy.memory.Neo4jRelationships.IS</definition>
+        <argsstring></argsstring>
+        <name>IS</name>
+        <initializer>=(&quot;IS&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="18" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1memory_1_1_neo4j_relationships_1a95b366738cbf572339596ac09a442a37" prot="public" static="no" mutable="no">
         <type>String</type>
@@ -126,7 +154,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="18" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="18" bodyend="-1"/>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="20" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="20" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -145,22 +173,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="20" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="20" bodyend="22"/>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="22" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="22" bodyend="24"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Contains the relations available in Neo4j database. </para>    </briefdescription>
     <detaileddescription>
 <para>Respective questions should be added to the questions.json file and used in the QuestionRandomizerState. </para>    </detaileddescription>
-    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="8" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="8" bodyend="23"/>
+    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" line="8" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/memory/Neo4jRelationships.java" bodystart="8" bodyend="25"/>
     <listofallmembers>
       <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a3ee47001882057c607131701e907685f" prot="public" virt="non-virtual"><scope>roboy::memory::Neo4jRelationships</scope><name>FRIEND_OF</name></member>
       <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1aef759612281adf93a17240bb2b513b84" prot="public" virt="non-virtual"><scope>roboy::memory::Neo4jRelationships</scope><name>FROM</name></member>
       <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a81d3e6007d1f97035b456ff2920ccc8d" prot="public" virt="non-virtual"><scope>roboy::memory::Neo4jRelationships</scope><name>HAS_HOBBY</name></member>
+      <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a89f467de499250d41c5783aa56719e4e" prot="public" virt="non-virtual"><scope>roboy::memory::Neo4jRelationships</scope><name>IS</name></member>
       <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1ae9e83e5b4d8d0d8c321c2ec8f01570d9" prot="public" virt="non-virtual"><scope>roboy::memory::Neo4jRelationships</scope><name>LIVE_IN</name></member>
       <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a1e3a13fed6f4c2f4cc1d36365120aacf" prot="public" virt="non-virtual"><scope>roboy::memory::Neo4jRelationships</scope><name>MEMBER_OF</name></member>
       <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a683840f20066c4c2ee502a05ff706373" prot="public" virt="non-virtual"><scope>roboy::memory::Neo4jRelationships</scope><name>Neo4jRelationships</name></member>
-      <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a8c0fa096e56da2ad75fcf6a1f454f381" prot="public" virt="non-virtual"><scope>roboy::memory::Neo4jRelationships</scope><name>OCCUPATION</name></member>
+      <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a352af1eb4633728acc4487447717d014" prot="public" virt="non-virtual"><scope>roboy::memory::Neo4jRelationships</scope><name>OCCUPIED_AS</name></member>
+      <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a96e569efba37e94470780a2c930913f5" prot="public" virt="non-virtual"><scope>roboy::memory::Neo4jRelationships</scope><name>OTHER</name></member>
       <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a1d2898c360cd84edbbe34e1ec8460a75" prot="public" virt="non-virtual"><scope>roboy::memory::Neo4jRelationships</scope><name>STUDY_AT</name></member>
       <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a95b366738cbf572339596ac09a442a37" prot="public" virt="non-virtual"><scope>roboy::memory::Neo4jRelationships</scope><name>type</name></member>
       <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a85859baff2d7ba661e9bbe1fc2148ee0" prot="public" virt="non-virtual"><scope>roboy::memory::Neo4jRelationships</scope><name>WORK_FOR</name></member>

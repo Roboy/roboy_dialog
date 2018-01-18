@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="interfaceroboy_1_1context_1_1_history_attribute" kind="interface" language="Java" prot="public">
+    <compoundname>roboy::context::HistoryAttribute</compoundname>
+    <derivedcompoundref refid="classroboy_1_1context_1_1_simple_history_attribute" prot="public" virt="non-virtual">roboy.context.SimpleHistoryAttribute&lt; K extends Integer, V extends DataType &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>K</type>
+      </param>
+      <param>
+        <type>V</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interfaceroboy_1_1context_1_1_history_attribute_1ab149add058dc2c808414f9d9e01e5b72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>V</type>
+        <definition>V roboy.context.HistoryAttribute&lt; K, V &gt;.getLastValue</definition>
+        <argsstring>()</argsstring>
+        <name>getLastValue</name>
+        <reimplementedby refid="classroboy_1_1context_1_1_simple_history_attribute_1a03c06f7d8d597b56cb6389f95114a0c4">getLastValue</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/HistoryAttribute.java" line="10" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interfaceroboy_1_1context_1_1_history_attribute_1a2e8c12270a0ce6f8764220aa3ee1d578" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>V</type>
+        <definition>V roboy.context.HistoryAttribute&lt; K, V &gt;.getValue</definition>
+        <argsstring>(K key)</argsstring>
+        <name>getValue</name>
+        <reimplementedby refid="classroboy_1_1context_1_1_simple_history_attribute_1a08d30c04fc4585014c2ce0e7158a8997">getValue</reimplementedby>
+        <param>
+          <type>K</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/HistoryAttribute.java" line="12" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interfaceroboy_1_1context_1_1_history_attribute_1a26d4c887c7f52ee8a4f03979e9eb4044" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Map&lt; K, V &gt;</type>
+        <definition>Map&lt;K, V&gt; roboy.context.HistoryAttribute&lt; K, V &gt;.getLastNValues</definition>
+        <argsstring>(int n)</argsstring>
+        <name>getLastNValues</name>
+        <reimplementedby refid="classroboy_1_1context_1_1_simple_history_attribute_1a7a9f6e0a5aec1fc3bf1237b187efd093">getLastNValues</reimplementedby>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/HistoryAttribute.java" line="14" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interfaceroboy_1_1context_1_1_history_attribute_1adfb1e6cff29ae2ce75129db6588491c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>K</type>
+        <definition>K roboy.context.HistoryAttribute&lt; K, V &gt;.storeValue</definition>
+        <argsstring>(V key)</argsstring>
+        <name>storeValue</name>
+        <reimplementedby refid="classroboy_1_1context_1_1_simple_history_attribute_1a908f75b5d746759e45ed7189a2850114">storeValue</reimplementedby>
+        <param>
+          <type>V</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/HistoryAttribute.java" line="16" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This enables saving basic History information by the key type T and data/value type V. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1172">
+        <label>roboy.context.HistoryAttribute&lt; K, V &gt;</label>
+        <link refid="interfaceroboy_1_1context_1_1_history_attribute"/>
+      </node>
+      <node id="1174">
+        <label>roboy::context::dialogContext::DialogTopics&lt; Integer, Topic &gt;</label>
+        <link refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics"/>
+        <childnode refid="1173" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1173">
+        <label>roboy::context::SimpleHistoryAttribute&lt; K, V &gt;</label>
+        <link refid="classroboy_1_1context_1_1_simple_history_attribute"/>
+        <childnode refid="1172" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/HistoryAttribute.java" line="8" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/HistoryAttribute.java" bodystart="8" bodyend="17"/>
+    <listofallmembers>
+      <member refid="interfaceroboy_1_1context_1_1_history_attribute_1a26d4c887c7f52ee8a4f03979e9eb4044" prot="public" virt="non-virtual"><scope>roboy::context::HistoryAttribute</scope><name>getLastNValues</name></member>
+      <member refid="interfaceroboy_1_1context_1_1_history_attribute_1ab149add058dc2c808414f9d9e01e5b72" prot="public" virt="non-virtual"><scope>roboy::context::HistoryAttribute</scope><name>getLastValue</name></member>
+      <member refid="interfaceroboy_1_1context_1_1_history_attribute_1a2e8c12270a0ce6f8764220aa3ee1d578" prot="public" virt="non-virtual"><scope>roboy::context::HistoryAttribute</scope><name>getValue</name></member>
+      <member refid="interfaceroboy_1_1context_1_1_history_attribute_1adfb1e6cff29ae2ce75129db6588491c9" prot="public" virt="non-virtual"><scope>roboy::context::HistoryAttribute</scope><name>storeValue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

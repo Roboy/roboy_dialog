@@ -50,6 +50,8 @@ public class Config {
     /** If true, memory will be queried. Ensure that if NOROS=false, then MEMORY=true.
      * When NOROS=true, MEMORY can be either true or false. **/
     public static boolean MEMORY = true;
+    /** Semantic parser socket port. */
+    public static int PARSER_PORT = -1;
 
     /** Configuration file to store changing values. */
     private static String yamlConfigFile = "config.properties";
@@ -60,6 +62,8 @@ public class Config {
      */
     public Config(ConfigurationProfile profile) {
         initializeYAMLConfig();
+        // Initialize semantic parser socket port
+        PARSER_PORT = yamlConfig.getInt("PARSER_PORT");
         switch(profile) {
             case DEFAULT:
                 setDefaultProfile();

@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="dir_a3da221ea67796dde15c58826f020edb" kind="dir">
-    <compoundname>/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/talk</compoundname>
+    <compoundname>/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/talk</compoundname>
     <innerfile refid="_verbalizer_test_8java">VerbalizerTest.java</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/talk/"/>
+    <location file="/home/nikita/Desktop/roboy_dialog/src/test/java/roboy/talk/"/>
   </compounddef>
 </doxygen>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="dir_0f4c97c7389bb8a061b6dec9af63e7cb" kind="dir">
-    <compoundname>/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io</compoundname>
+    <compoundname>/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/io</compoundname>
     <innerfile refid="_bing_input_8java">BingInput.java</innerfile>
     <innerfile refid="_bing_output_8java">BingOutput.java</innerfile>
     <innerfile refid="_celebrity_similarity_input_8java">CelebritySimilarityInput.java</innerfile>
@@ -25,6 +25,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/"/>
+    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/io/"/>
   </compounddef>
 </doxygen>

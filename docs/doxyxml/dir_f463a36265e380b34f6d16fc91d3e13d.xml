@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_f463a36265e380b34f6d16fc91d3e13d" kind="dir">
+    <compoundname>/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dialogContext</compoundname>
+    <innerfile refid="_dialog_topics_8java">DialogTopics.java</innerfile>
+    <innerfile refid="_dialog_topics_updater_8java">DialogTopicsUpdater.java</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dialogContext/"/>
+  </compounddef>
+</doxygen>
