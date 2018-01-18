@@ -1,0 +1,424 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1new_dialog_1_1_dialog_state_machine" kind="class" language="Java" prot="public">
+    <compoundname>roboy::newDialog::DialogStateMachine</compoundname>
+    <derivedcompoundref refid="classroboy_1_1new_dialog_1_1_state_based_personality" prot="public" virt="non-virtual">roboy.newDialog.StateBasedPersonality</derivedcompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1ada3f0cfecbe443e4c6bdffb7ef1185be" prot="private" static="no" mutable="no">
+        <type>HashMap&lt; String, <ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref> &gt;</type>
+        <definition>HashMap&lt;String, State&gt; roboy.newDialog.DialogStateMachine.identifierToState</definition>
+        <argsstring></argsstring>
+        <name>identifierToState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="24" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a3dd33b03548f2bb5646651e961292ff7" prot="private" static="no" mutable="no">
+        <type><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
+        <definition>State roboy.newDialog.DialogStateMachine.activeState</definition>
+        <argsstring></argsstring>
+        <name>activeState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="26" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a5e95e07eb40e7c43fccdfe3610ac8dc7" prot="private" static="no" mutable="no">
+        <type><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
+        <definition>State roboy.newDialog.DialogStateMachine.initalState</definition>
+        <argsstring></argsstring>
+        <name>initalState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="27" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a391cdb07e02d251f3553e09f484378e0" prot="private" static="no" mutable="no">
+        <type>boolean</type>
+        <definition>boolean roboy.newDialog.DialogStateMachine.enableDebug</definition>
+        <argsstring></argsstring>
+        <name>enableDebug</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="28" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a158530aaa956c0bffdca5cf2d04a6b9d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.newDialog.DialogStateMachine.DialogStateMachine</definition>
+        <argsstring>()</argsstring>
+        <name>DialogStateMachine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="30" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="30" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a2d9f427ac03b98c087a2020190bbe7f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.newDialog.DialogStateMachine.DialogStateMachine</definition>
+        <argsstring>(boolean enableDebug)</argsstring>
+        <name>DialogStateMachine</name>
+        <param>
+          <type>boolean</type>
+          <declname>enableDebug</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="34" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="34" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1af13aba077a625d7f094a4dcc94ff1409" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
+        <definition>State roboy.newDialog.DialogStateMachine.getInitialState</definition>
+        <argsstring>()</argsstring>
+        <name>getInitialState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="40" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="40" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1af176f70f08cb4afab4d5a71c77bb356c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.newDialog.DialogStateMachine.setInitialState</definition>
+        <argsstring>(State initial)</argsstring>
+        <name>setInitialState</name>
+        <param>
+          <type><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
+          <declname>initial</declname>
+        </param>
+        <briefdescription>
+<para>Set the initial state of this state machine. </para>        </briefdescription>
+        <detaileddescription>
+<para>The state will be automatically added to the machine. If active state was null, it will be set to the new initial state. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>initial</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>initial state </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="49" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="49" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a2ec302da36e75eb05a5fb7e2f853b295" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.newDialog.DialogStateMachine.setInitialState</definition>
+        <argsstring>(String identifier)</argsstring>
+        <name>setInitialState</name>
+        <param>
+          <type>String</type>
+          <declname>identifier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="60" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="60" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1aa221588d07e52c03e89ced2415a63659" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
+        <definition>State roboy.newDialog.DialogStateMachine.getActiveState</definition>
+        <argsstring>()</argsstring>
+        <name>getActiveState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="72" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="72" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a98ca54d9173f3d569f9f673c71fdf4de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.newDialog.DialogStateMachine.setActiveState</definition>
+        <argsstring>(State s)</argsstring>
+        <name>setActiveState</name>
+        <param>
+          <type><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="75" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="75" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1ab71b73bd5a16dec56eaf4019e6d579e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.newDialog.DialogStateMachine.setActiveState</definition>
+        <argsstring>(String identifier)</argsstring>
+        <name>setActiveState</name>
+        <param>
+          <type>String</type>
+          <declname>identifier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="83" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="83" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1acd6530283584ee95fd63f6ce50477d55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
+        <definition>State roboy.newDialog.DialogStateMachine.getStateByIdentifier</definition>
+        <argsstring>(String identifier)</argsstring>
+        <name>getStateByIdentifier</name>
+        <param>
+          <type>String</type>
+          <declname>identifier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="96" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="96" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a4af8cf2d893d7ede5173ae65cadf9c5b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.newDialog.DialogStateMachine.addState</definition>
+        <argsstring>(State s)</argsstring>
+        <name>addState</name>
+        <param>
+          <type><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="99" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="99" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a08b057a9d79014cd4600d72c5c28dc51" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.newDialog.DialogStateMachine.loadFromString</definition>
+        <argsstring>(String s)</argsstring>
+        <name>loadFromString</name>
+        <param>
+          <type>String</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="105" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="105" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a3d487dea8cb1f4181cda456689ee22c9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.newDialog.DialogStateMachine.loadFromFile</definition>
+        <argsstring>(File f)</argsstring>
+        <name>loadFromFile</name>
+        <param>
+          <type>File</type>
+          <declname>f</declname>
+        </param>
+        <exceptions> throws FileNotFoundException </exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="111" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="111" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1ac2a422b53e902f2c2708fded989c4009" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.newDialog.DialogStateMachine.saveToFile</definition>
+        <argsstring>(File f)</argsstring>
+        <name>saveToFile</name>
+        <param>
+          <type>File</type>
+          <declname>f</declname>
+        </param>
+        <exceptions> throws FileNotFoundException </exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="233" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="233" bodyend="241"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a90fcddad197b881545b987d8426db046" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>String</type>
+        <definition>String roboy.newDialog.DialogStateMachine.toJsonString</definition>
+        <argsstring>()</argsstring>
+        <name>toJsonString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="266" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="266" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a079e1b88eea31e813b1b2d72aaf340ab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>String</type>
+        <definition>String roboy.newDialog.DialogStateMachine.toString</definition>
+        <argsstring>()</argsstring>
+        <name>toString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="273" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="273" bodyend="293"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a9bcc9b8be58bfdd2da70c24505d145e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>boolean</type>
+        <definition>boolean roboy.newDialog.DialogStateMachine.equals</definition>
+        <argsstring>(Object obj)</argsstring>
+        <name>equals</name>
+        <param>
+          <type>Object</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="297" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="297" bodyend="339"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1af9c7543a3b39db2c2119847086ccdbc9" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.newDialog.DialogStateMachine.loadFromJSON</definition>
+        <argsstring>(JsonElement json)</argsstring>
+        <name>loadFromJSON</name>
+        <param>
+          <type>JsonElement</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="118" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="118" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_1aeaf1e6596bdb3b2cb0374baec003196f" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>JsonObject</type>
+        <definition>JsonObject roboy.newDialog.DialogStateMachine.toJsonObject</definition>
+        <argsstring>()</argsstring>
+        <name>toJsonObject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="245" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="245" bodyend="264"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>State machine to manage dialog states. </para>    </briefdescription>
+    <detaileddescription>
+<para>Dialog state machines can be written to files and loaded from them later.</para><para>Personalities can be implemented using a dialog state machine. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="1076">
+        <label>roboy.newDialog.StateBasedPersonality</label>
+        <link refid="classroboy_1_1new_dialog_1_1_state_based_personality"/>
+        <childnode refid="1075" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1075">
+        <label>roboy.newDialog.DialogStateMachine</label>
+        <link refid="classroboy_1_1new_dialog_1_1_dialog_state_machine"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1079">
+        <label>roboy.newDialog.states.State</label>
+        <link refid="classroboy_1_1new_dialog_1_1states_1_1_state"/>
+        <childnode refid="1078" relation="usage">
+          <edgelabel>transitions</edgelabel>
+        </childnode>
+        <childnode refid="1079" relation="usage">
+          <edgelabel>fallback</edgelabel>
+        </childnode>
+      </node>
+      <node id="1078">
+        <label>HashMap&lt; String, roboy.newDialog.states.State &gt;</label>
+      </node>
+      <node id="1077">
+        <label>roboy.newDialog.DialogStateMachine</label>
+        <link refid="classroboy_1_1new_dialog_1_1_dialog_state_machine"/>
+        <childnode refid="1078" relation="usage">
+          <edgelabel>identifierToState</edgelabel>
+        </childnode>
+        <childnode refid="1079" relation="usage">
+          <edgelabel>initalState</edgelabel>
+          <edgelabel>activeState</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" line="20" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java" bodystart="20" bodyend="342"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a3dd33b03548f2bb5646651e961292ff7" prot="private" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>activeState</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a4af8cf2d893d7ede5173ae65cadf9c5b" prot="public" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>addState</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a158530aaa956c0bffdca5cf2d04a6b9d" prot="public" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>DialogStateMachine</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a2d9f427ac03b98c087a2020190bbe7f1" prot="public" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>DialogStateMachine</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a391cdb07e02d251f3553e09f484378e0" prot="private" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>enableDebug</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a9bcc9b8be58bfdd2da70c24505d145e3" prot="public" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>equals</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1aa221588d07e52c03e89ced2415a63659" prot="public" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>getActiveState</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1af13aba077a625d7f094a4dcc94ff1409" prot="public" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>getInitialState</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1acd6530283584ee95fd63f6ce50477d55" prot="public" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>getStateByIdentifier</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1ada3f0cfecbe443e4c6bdffb7ef1185be" prot="private" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>identifierToState</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a5e95e07eb40e7c43fccdfe3610ac8dc7" prot="private" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>initalState</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a3d487dea8cb1f4181cda456689ee22c9" prot="public" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>loadFromFile</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1af9c7543a3b39db2c2119847086ccdbc9" prot="private" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>loadFromJSON</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a08b057a9d79014cd4600d72c5c28dc51" prot="public" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>loadFromString</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1ac2a422b53e902f2c2708fded989c4009" prot="public" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>saveToFile</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a98ca54d9173f3d569f9f673c71fdf4de" prot="public" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>setActiveState</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1ab71b73bd5a16dec56eaf4019e6d579e9" prot="public" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>setActiveState</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1af176f70f08cb4afab4d5a71c77bb356c" prot="public" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>setInitialState</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a2ec302da36e75eb05a5fb7e2f853b295" prot="public" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>setInitialState</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1aeaf1e6596bdb3b2cb0374baec003196f" prot="private" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>toJsonObject</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a90fcddad197b881545b987d8426db046" prot="public" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>toJsonString</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a079e1b88eea31e813b1b2d72aaf340ab" prot="public" virt="non-virtual"><scope>roboy::newDialog::DialogStateMachine</scope><name>toString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

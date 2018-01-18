@@ -1,12 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="namespaceroboy" kind="namespace" language="Java">
     <compoundname>roboy</compoundname>
+    <innernamespace refid="namespaceroboy_1_1context">roboy::context</innernamespace>
     <innernamespace refid="namespaceroboy_1_1dialog">roboy::dialog</innernamespace>
     <innernamespace refid="namespaceroboy_1_1io">roboy::io</innernamespace>
     <innernamespace refid="namespaceroboy_1_1linguistics">roboy::linguistics</innernamespace>
     <innernamespace refid="namespaceroboy_1_1logic">roboy::logic</innernamespace>
     <innernamespace refid="namespaceroboy_1_1memory">roboy::memory</innernamespace>
+    <innernamespace refid="namespaceroboy_1_1new_dialog">roboy::newDialog</innernamespace>
     <innernamespace refid="namespaceroboy_1_1ros">roboy::ros</innernamespace>
     <innernamespace refid="namespaceroboy_1_1talk">roboy::talk</innernamespace>
     <innernamespace refid="namespaceroboy_1_1util">roboy::util</innernamespace>

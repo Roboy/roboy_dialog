@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="_dialog_topics_8java" kind="file" language="Java">
+    <compoundname>DialogTopics.java</compoundname>
+    <innerclass refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics" prot="public">roboy::context::dialogContext::DialogTopics</innerclass>
+    <innernamespace refid="namespaceroboy_1_1context_1_1dialog_context">roboy::context::dialogContext</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">package<sp/></highlight><highlight class="normal">roboy.context.dialogContext;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceroboy" kindref="compound">roboy</ref>.<ref refid="namespaceroboy_1_1context" kindref="compound">context</ref>.<ref refid="classroboy_1_1context_1_1_simple_history_attribute" kindref="compound">SimpleHistoryAttribute</ref>;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceroboy" kindref="compound">roboy</ref>.<ref refid="namespaceroboy_1_1context" kindref="compound">context</ref>.<ref refid="namespaceroboy_1_1context_1_1data_types" kindref="compound">dataTypes</ref>.<ref refid="classroboy_1_1context_1_1data_types_1_1_topic" kindref="compound">Topic</ref>;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics" kindref="compound">DialogTopics</ref><sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/><ref refid="classroboy_1_1context_1_1_simple_history_attribute" kindref="compound">SimpleHistoryAttribute</ref>&lt;Integer,<sp/>Topic&gt;<sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dialogContext/DialogTopics.java"/>
+  </compounddef>
+</doxygen>

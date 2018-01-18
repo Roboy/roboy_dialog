@@ -1,0 +1,459 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1new_dialog_1_1states_1_1_state" kind="class" language="Java" prot="public" abstract="yes">
+    <compoundname>roboy::newDialog::states::State</compoundname>
+    <derivedcompoundref refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_farewell_state" prot="public" virt="non-virtual">roboy.newDialog.states.toyStates.ToyFarewellState</derivedcompoundref>
+    <derivedcompoundref refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_greetings_state" prot="public" virt="non-virtual">roboy.newDialog.states.toyStates.ToyGreetingsState</derivedcompoundref>
+    <derivedcompoundref refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state" prot="public" virt="non-virtual">roboy.newDialog.states.toyStates.ToyIntroState</derivedcompoundref>
+    <derivedcompoundref refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_random_answer_state" prot="public" virt="non-virtual">roboy.newDialog.states.toyStates.ToyRandomAnswerState</derivedcompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a7b92d0cd6c2c9cba5410e55d86d78abf" prot="private" static="no" mutable="no">
+        <type>String</type>
+        <definition>String roboy.newDialog.states.State.stateIdentifier</definition>
+        <argsstring></argsstring>
+        <name>stateIdentifier</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="27" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a776c41cdd95ed0421130406f0e819727" prot="private" static="no" mutable="no">
+        <type><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
+        <definition>State roboy.newDialog.states.State.fallback</definition>
+        <argsstring></argsstring>
+        <name>fallback</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="30" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a399f0e0d9700500f9dbdf865ac7e64d5" prot="private" static="no" mutable="no">
+        <type>HashMap&lt; String, <ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref> &gt;</type>
+        <definition>HashMap&lt;String, State&gt; roboy.newDialog.states.State.transitions</definition>
+        <argsstring></argsstring>
+        <name>transitions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="33" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1afbe86835ccfa18ca7ae5958d84e89b8f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.newDialog.states.State.State</definition>
+        <argsstring>(String stateIdentifier)</argsstring>
+        <name>State</name>
+        <param>
+          <type>String</type>
+          <declname>stateIdentifier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="36" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="36" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1ab9773eeecc877cc77b087492faa53591" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>String</type>
+        <definition>String roboy.newDialog.states.State.getIdentifier</definition>
+        <argsstring>()</argsstring>
+        <name>getIdentifier</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="44" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="44" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1aacca21bec3b5ca0f0f7435f3678b6087" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.newDialog.states.State.setIdentifier</definition>
+        <argsstring>(String stateIdentifier)</argsstring>
+        <name>setIdentifier</name>
+        <param>
+          <type>String</type>
+          <declname>stateIdentifier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="47" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="47" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a8fac90b18cd30aa46f10eeb35d9e0138" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>final <ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
+        <definition>final State roboy.newDialog.states.State.getFallback</definition>
+        <argsstring>()</argsstring>
+        <name>getFallback</name>
+        <briefdescription>
+<para>If this state can&apos;t react to the input, the Personality state machine will ask the fallback state to react to the input. </para>        </briefdescription>
+        <detaileddescription>
+<para>This state still remains active. <simplesect kind="return"><para>fallback state </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="56" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="56" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a3d2292e61f395f378b7db49790c67828" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>final void</type>
+        <definition>final void roboy.newDialog.states.State.setFallback</definition>
+        <argsstring>(State fallback)</argsstring>
+        <name>setFallback</name>
+        <param>
+          <type><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
+          <declname>fallback</declname>
+        </param>
+        <briefdescription>
+<para>Set the fallback state. </para>        </briefdescription>
+        <detaileddescription>
+<para>The Personality state machine will ask the fallback state if this one has no answer. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fallback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>fallback state </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="64" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="64" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a3f6668c5631712be3cdd8a71186bffb8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>final void</type>
+        <definition>final void roboy.newDialog.states.State.setTransition</definition>
+        <argsstring>(String name, State goToState)</argsstring>
+        <name>setTransition</name>
+        <param>
+          <type>String</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
+          <declname>goToState</declname>
+        </param>
+        <briefdescription>
+<para>Define a possible transition from this state to another. </para>        </briefdescription>
+        <detaileddescription>
+<para>Something like: &quot;next&quot; -&gt; {GreetingState} &quot;rudeInput&quot; -&gt; {EvilState} The next active state will be selected in <ref refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a152e0d4c4f7862aa90fc0f8856df624a" kindref="member">getNextState()</ref> based on internal conditions.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>name of the transition </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>goToState</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>state to transit to </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="77" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="77" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a61e3afbfa155d7fc6d0c353d71a70279" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>final <ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
+        <definition>final State roboy.newDialog.states.State.getTransition</definition>
+        <argsstring>(String name)</argsstring>
+        <name>getTransition</name>
+        <param>
+          <type>String</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="80" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="80" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a5b199b5cfa336e2b5a81b6fc889a4bca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>final HashMap&lt; String, <ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref> &gt;</type>
+        <definition>final HashMap&lt;String, State&gt; roboy.newDialog.states.State.getAllTransitions</definition>
+        <argsstring>()</argsstring>
+        <name>getAllTransitions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="83" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="83" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a66f11de734295eb35dccee9d3b423a9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>abstract List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
+        <definition>abstract List&lt;Interpretation&gt; roboy.newDialog.states.State.act</definition>
+        <argsstring>()</argsstring>
+        <name>act</name>
+        <briefdescription>
+<para>A state always acts after the reaction. </para>        </briefdescription>
+        <detaileddescription>
+<para>Both, the reaction of the last and the action of the next state, are combined to give the answer of Roboy. <simplesect kind="return"><para>interpretations </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="98" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1af27e5bca378b302d190172f17603f81c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>abstract List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
+        <definition>abstract List&lt;Interpretation&gt; roboy.newDialog.states.State.react</definition>
+        <argsstring>(Interpretation input)</argsstring>
+        <name>react</name>
+        <param>
+          <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+<para>Defines how to react to an input. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is usually the answer to the incoming question or some other statement. If this state can&apos;t react, it can return &apos;null&apos; to trigger the fallback state for the answer.</para><para>Note: In the new architecture, <ref refid="classroboy_1_1new_dialog_1_1states_1_1_state_1af27e5bca378b302d190172f17603f81c" kindref="member">react()</ref> does not define the next state anymore! Reaction and state transitions are now decoupled. <ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref> transitions are defined in <ref refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a152e0d4c4f7862aa90fc0f8856df624a" kindref="member">getNextState()</ref></para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>input from the person we talk to </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>reaction to the input OR null (will trigger the fallback state) </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="111" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a152e0d4c4f7862aa90fc0f8856df624a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>abstract <ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
+        <definition>abstract State roboy.newDialog.states.State.getNextState</definition>
+        <argsstring>()</argsstring>
+        <name>getNextState</name>
+        <briefdescription>
+<para>After this state has reacted, the personality state machine will ask this state to which state to go next. </para>        </briefdescription>
+        <detaileddescription>
+<para>If this state is not ready, it will return itself. Otherwise, depending on internal conditions, this state will select one of the states defined in transitions to be the next one.</para><para><simplesect kind="return"><para>next actie state after this one has reacted </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="121" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a610c6a1337f401e4e53806d3bdcb5335" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>final boolean</type>
+        <definition>final boolean roboy.newDialog.states.State.allRequiredTransitionsAreInitialized</definition>
+        <argsstring>()</argsstring>
+        <name>allRequiredTransitionsAreInitialized</name>
+        <briefdescription>
+<para>Checks if all required transitions were initialized correctly. </para>        </briefdescription>
+        <detaileddescription>
+<para>Required transitions are defined in <ref refid="classroboy_1_1new_dialog_1_1states_1_1_state_1aa48dfb2715179c2d095370e6aaef0cf0" kindref="member">getRequiredTransitionNames()</ref>.</para><para><simplesect kind="return"><para>true if this state was initialized correctly </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="149" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="149" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a9fce6961e78d2cb2a755fdf8e6e02c77" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>JsonObject</type>
+        <definition>JsonObject roboy.newDialog.states.State.toJsonObject</definition>
+        <argsstring>()</argsstring>
+        <name>toJsonObject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="175" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="175" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1aad317d16e61717bb1d5d80b7dfcf89af" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>String</type>
+        <definition>String roboy.newDialog.states.State.toString</definition>
+        <argsstring>()</argsstring>
+        <name>toString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="201" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="201" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a0f0b76c82e1229c8f7d83374ceefb8ab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>boolean</type>
+        <definition>boolean roboy.newDialog.states.State.equals</definition>
+        <argsstring>(Object obj)</argsstring>
+        <name>equals</name>
+        <param>
+          <type>Object</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="221" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="221" bodyend="257"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1aa48dfb2715179c2d095370e6aaef0cf0" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Set&lt; String &gt;</type>
+        <definition>Set&lt;String&gt; roboy.newDialog.states.State.getRequiredTransitionNames</definition>
+        <argsstring>()</argsstring>
+        <name>getRequiredTransitionNames</name>
+        <briefdescription>
+<para>Defines the names of all transition that HAVE to be defined for this state. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function is used by <ref refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a610c6a1337f401e4e53806d3bdcb5335" kindref="member">allRequiredTransitionsAreInitialized()</ref> to make sure this state was initialized correctly. Default implementation requires no transitions to be defined.</para><para>Override this function in sub classes. <simplesect kind="return"><para>a set of transition names that have to be defined </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="138" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="138" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a74598144b82ca28dcc5e4abfce7739d1" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Set&lt; String &gt;</type>
+        <definition>Set&lt;String&gt; roboy.newDialog.states.State.newSet</definition>
+        <argsstring>(String...tNames)</argsstring>
+        <name>newSet</name>
+        <param>
+          <type>String...</type>
+          <declname>tNames</declname>
+        </param>
+        <briefdescription>
+<para>Utility function to create and initialize string sets in just one code line. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tNames</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>names of the required transitions </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>set initialized with inputs </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="167" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="167" bodyend="171"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a42b1a18831867185ef13dddbd24cc6b3" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>boolean</type>
+        <definition>boolean roboy.newDialog.states.State.equalsHelper_compareTransitions</definition>
+        <argsstring>(State other)</argsstring>
+        <name>equalsHelper_compareTransitions</name>
+        <param>
+          <type><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>check if every transition of this is present in the other and points to the same ID </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>other state to compare transitions </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if all transitions of this state are present in the other state </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="264" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="264" bodyend="284"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Central class of the dialog state system. </para>    </briefdescription>
+    <detaileddescription>
+<para>Every dialog state should extend this class. A state always acts when it is entered and reacts when its left. Both, the reaction of the last and the action of the next state, are combined to give the answer of Roboy.</para><para>A state can have any number of transitions to other states. Every transition has a name (like &quot;next&quot; or &quot;errorState&quot;). When designing a new state, only the transition names are known. At run time the transitions will point to other states. You can get the attached state by the transition name using getTransition(transitionName).</para><para>A fallback can be attached to a state. In the case this state doesn&apos;t know how to react to an utterance, it can return null from the <ref refid="classroboy_1_1new_dialog_1_1states_1_1_state_1af27e5bca378b302d190172f17603f81c" kindref="member">react()</ref> function. The state machine will query the fallback in this case. More details on the fallback concept can be found in the description of the <ref refid="classroboy_1_1new_dialog_1_1_state_based_personality" kindref="compound">StateBasedPersonality</ref> and in comments below. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="1656">
+        <label>roboy.newDialog.states.toyStates.ToyRandomAnswerState</label>
+        <link refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_random_answer_state"/>
+        <childnode refid="1652" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1652">
+        <label>roboy.newDialog.states.State</label>
+        <link refid="classroboy_1_1new_dialog_1_1states_1_1_state"/>
+      </node>
+      <node id="1654">
+        <label>roboy.newDialog.states.toyStates.ToyGreetingsState</label>
+        <link refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_greetings_state"/>
+        <childnode refid="1652" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1653">
+        <label>roboy.newDialog.states.toyStates.ToyFarewellState</label>
+        <link refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_farewell_state"/>
+        <childnode refid="1652" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1655">
+        <label>roboy.newDialog.states.toyStates.ToyIntroState</label>
+        <link refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state"/>
+        <childnode refid="1652" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1657">
+        <label>roboy.newDialog.states.State</label>
+        <link refid="classroboy_1_1new_dialog_1_1states_1_1_state"/>
+        <childnode refid="1658" relation="usage">
+          <edgelabel>transitions</edgelabel>
+        </childnode>
+        <childnode refid="1657" relation="usage">
+          <edgelabel>fallback</edgelabel>
+        </childnode>
+      </node>
+      <node id="1658">
+        <label>HashMap&lt; String, roboy.newDialog.states.State &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="23" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="23" bodyend="287"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a66f11de734295eb35dccee9d3b423a9d" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>act</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a610c6a1337f401e4e53806d3bdcb5335" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>allRequiredTransitionsAreInitialized</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a0f0b76c82e1229c8f7d83374ceefb8ab" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>equals</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a42b1a18831867185ef13dddbd24cc6b3" prot="private" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>equalsHelper_compareTransitions</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a776c41cdd95ed0421130406f0e819727" prot="private" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>fallback</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a5b199b5cfa336e2b5a81b6fc889a4bca" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>getAllTransitions</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a8fac90b18cd30aa46f10eeb35d9e0138" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>getFallback</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1ab9773eeecc877cc77b087492faa53591" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>getIdentifier</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a152e0d4c4f7862aa90fc0f8856df624a" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>getNextState</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1aa48dfb2715179c2d095370e6aaef0cf0" prot="protected" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>getRequiredTransitionNames</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a61e3afbfa155d7fc6d0c353d71a70279" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>getTransition</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a74598144b82ca28dcc5e4abfce7739d1" prot="protected" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>newSet</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1af27e5bca378b302d190172f17603f81c" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>react</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a3d2292e61f395f378b7db49790c67828" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>setFallback</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1aacca21bec3b5ca0f0f7435f3678b6087" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>setIdentifier</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a3f6668c5631712be3cdd8a71186bffb8" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>setTransition</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1afbe86835ccfa18ca7ae5958d84e89b8f" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>State</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a7b92d0cd6c2c9cba5410e55d86d78abf" prot="private" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>stateIdentifier</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a9fce6961e78d2cb2a755fdf8e6e02c77" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>toJsonObject</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1aad317d16e61717bb1d5d80b7dfcf89af" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>toString</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a399f0e0d9700500f9dbdf865ac7e64d5" prot="private" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>transitions</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

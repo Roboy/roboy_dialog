@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="enumroboy_1_1context_1_1_context_1_1_updaters" kind="enum" language="Java" prot="public">
+    <compoundname>roboy::context::Context::Updaters</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="enumroboy_1_1context_1_1_context_1_1_updaters_1a0ddfd01da6340079c2bc9664b4828f7e" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>roboy.context.Context.Updaters.DIALOG_TOPICS_UPDATER</definition>
+        <argsstring></argsstring>
+        <name>DIALOG_TOPICS_UPDATER</name>
+        <initializer>=(DialogTopics.class)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="131" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="enumroboy_1_1context_1_1_context_1_1_updaters_1a1d7a7fb683aea42e120f9608e31a9973" prot="public" static="no" mutable="no">
+        <type>final Class</type>
+        <definition>final Class roboy.context.Context.Updaters.classType</definition>
+        <argsstring></argsstring>
+        <name>classType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="132" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_updaters_1a08ce5c097f9dacc54d632cf62f0622f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.context.Context.Updaters.Updaters</definition>
+        <argsstring>(Class attribute)</argsstring>
+        <name>Updaters</name>
+        <param>
+          <type>Class</type>
+          <declname>attribute</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="134" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="134" bodyend="136"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A listing of available updaters, with their target class specified under classType. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="130" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="130" bodyend="137"/>
+    <listofallmembers>
+      <member refid="enumroboy_1_1context_1_1_context_1_1_updaters_1a1d7a7fb683aea42e120f9608e31a9973" prot="public" virt="non-virtual"><scope>roboy::context::Context::Updaters</scope><name>classType</name></member>
+      <member refid="enumroboy_1_1context_1_1_context_1_1_updaters_1a0ddfd01da6340079c2bc9664b4828f7e" prot="public" virt="non-virtual"><scope>roboy::context::Context::Updaters</scope><name>DIALOG_TOPICS_UPDATER</name></member>
+      <member refid="enumroboy_1_1context_1_1_context_1_1_updaters_1a08ce5c097f9dacc54d632cf62f0622f0" prot="public" virt="non-virtual"><scope>roboy::context::Context::Updaters</scope><name>Updaters</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
