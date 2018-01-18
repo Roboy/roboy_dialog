@@ -16,7 +16,6 @@ import java.util.Map;
  * Dialog state machines can be written to files and loaded from them later.
  *
  * Personalities can be implemented using a dialog state machine.
- *
  */
 public class DialogStateMachine {
 
@@ -26,11 +25,16 @@ public class DialogStateMachine {
 
     private State activeState;
     private State initalState;
+    private boolean enableDebug;
 
     public DialogStateMachine() {
+        this(true);
+    }
+
+    public DialogStateMachine(boolean enableDebug) {
+        this.enableDebug = enableDebug;
         identifierToState = new HashMap<>();
         activeState = null;
-
     }
 
     public State getInitialState() {
@@ -56,7 +60,9 @@ public class DialogStateMachine {
     public void setInitialState(String identifier) {
         State initial = identifierToState.get(identifier);
         if (initial == null) {
-            System.out.println("Unknown identifier: " + identifier);
+            if (enableDebug) {
+                System.out.println("[!!] setInitialState: Unknown identifier: " + identifier);
+            }
             return;
         }
         setInitialState(initial);
@@ -77,7 +83,9 @@ public class DialogStateMachine {
     public void setActiveState(String identifier) {
         State s = identifierToState.get(identifier);
         if (s == null) {
-            System.out.println("Unknown identifier: " + identifier);
+            if (enableDebug) {
+                System.out.println("[!!] setInitialState: Unknown identifier: " + identifier);
+            }
             return;
         }
         activeState = s;
@@ -113,7 +121,9 @@ public class DialogStateMachine {
         initalState = null;
 
         if (!json.isJsonObject()) {
-            System.out.printf("State machine must be a JSON object!");
+            if (enableDebug) {
+                System.out.println("[!!] loadFromJSON: State machine must be a JSON object!");
+            }
             return;
         }
 
@@ -122,7 +132,9 @@ public class DialogStateMachine {
 
         JsonElement initialStateJson = personalityJson.get("initialState");
         if (initialStateJson == null) {
-            System.out.printf("initial state not defined!");
+            if (enableDebug) {
+                System.out.println("[!!] loadFromJSON: Initial state not defined!");
+            }
             return;
         }
         String initialStateIdentifier = initialStateJson.getAsString();
@@ -130,7 +142,9 @@ public class DialogStateMachine {
 
         JsonElement statesJson = personalityJson.get("states");
         if (statesJson == null) {
-            System.out.printf("states not defined!");
+            if (enableDebug) {
+                System.out.println("[!!] loadFromJSON: states not defined!");
+            }
             return;
         }
         JsonArray states = statesJson.getAsJsonArray();
@@ -175,7 +189,9 @@ public class DialogStateMachine {
                 if (fallbackIdentifier != null) {
                     State fallbackState = identifierToState.get(fallbackIdentifier);
                     if (fallbackState == null) {
-                        System.out.println("fallback " + fallbackIdentifier + " missing");
+                        if (enableDebug) {
+                            System.out.println("[!!] loadFromJSON: fallback " + fallbackIdentifier + " missing");
+                        }
                     } else {
                         thisState.setFallback(fallbackState);
                     }
@@ -199,6 +215,19 @@ public class DialogStateMachine {
                 }
             }
         }
+
+
+        if (enableDebug) {
+            // check if all states have all required transitions initialized correctly
+            for (State s : identifierToState.values()) {
+                if (!s.allRequiredTransitionsAreInitialized()) {
+                    System.out.println("[!!] loadFromJSON: Some required transitions are missing in the " +
+                            "state with identifier " + s.getIdentifier());
+                }
+            }
+        }
+
+
     }
 
     public void saveToFile(File f) throws FileNotFoundException {
@@ -216,7 +245,9 @@ public class DialogStateMachine {
     private JsonObject toJsonObject() {
         JsonObject stateMachineJson = new JsonObject();
         if (initalState == null) {
-            System.out.println("initial state undefined!");
+            if (enableDebug) {
+                System.out.println("[!!] toJsonObject: initial state undefined!");
+            }
         } else {
             stateMachineJson.addProperty("initialState", initalState.getIdentifier());
         }

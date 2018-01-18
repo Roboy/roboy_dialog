@@ -6,6 +6,14 @@ import roboy.util.Lists;
 
 import java.util.List;
 
+/**
+ * ToyRandomAnswerState is meant to be used as a fallback state.
+ * It only implements the react() function returning a hardcoded random answer.
+ * This state should never become active (meaning that no transition should point to it.)
+ *
+ * Fallback is not required (this state should be the fallback).
+ * This state has no outgoing transitions.
+ */
 public class ToyRandomAnswerState extends State {
 
     public ToyRandomAnswerState(String stateIdentifier) {

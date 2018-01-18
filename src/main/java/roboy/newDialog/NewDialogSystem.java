@@ -16,10 +16,9 @@ import static roboy.dialog.Config.ConfigurationProfile.NOROS;
 
 /**
  * Temporary class to test new state based personality.
- *
+ * Will be be extended and might replace the old DialogSystem in the future.
  */
 public class NewDialogSystem {
-
 
 
     public static void main(String[] args) throws IOException, InterruptedException {

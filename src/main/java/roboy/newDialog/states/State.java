@@ -9,6 +9,16 @@ import java.util.*;
  * Central class of the dialog state system. Every dialog state should extend this class.
  * A state always acts when it is entered and reacts when its left. Both, the reaction of
  * the last and the action of the next state, are combined to give the answer of Roboy.
+ *
+ * A state can have any number of transitions to other states. Every transition has a name
+ * (like "next" or "errorState"). When designing a new state, only the transition names
+ * are known. At run time the transitions will point to other states. You can get the
+ * attached state by the transition name using getTransition(transitionName).
+ *
+ * A fallback can be attached to a state. In the case this state doesn't know how to react
+ * to an utterance, it can return null from the react() function. The state machine will query
+ * the fallback in this case. More details on the fallback concept can be found in the
+ * description of the StateBasedPersonality and in comments below.
  */
 public abstract class State {
 

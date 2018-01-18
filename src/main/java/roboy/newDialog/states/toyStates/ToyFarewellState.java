@@ -6,6 +6,14 @@ import roboy.util.Lists;
 
 import java.util.List;
 
+/**
+ * ToyFarewellState always acts with "Bye bye".
+ * The Interlocutor answer is ignored and there is no reaction.
+ * This ends the conversation.
+ *
+ * Fallback is not required.
+ * This state has no outgoing transitions.
+ */
 public class ToyFarewellState extends State {
 
     public ToyFarewellState(String stateIdentifier) {

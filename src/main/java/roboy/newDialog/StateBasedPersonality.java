@@ -11,6 +11,21 @@ import roboy.talk.Verbalizer;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation of Personality based on a DialogStateMachine.
+ *
+ * In contrast to previous Personality implementations, this one is more generic
+ * as it loads the dialog from a file. Additionally, it is still possible to
+ * define the dialog structure directly from code (as it was done in previous
+ * implementations).
+ *
+ * Instead of using nested states that will pass an utterance to each other if a state
+ * cannot give an appropriate reaction, we use a fallback concept.
+ * If a state doesn't know how to react, it simply doesn't react at all. If a fallback
+ * (with is another state) is attached to it, the personality will pass the utterance
+ * to the fallback automatically.
+ * This concept helps to decouple the states and reduce the dependencies between them.
+ */
 public class StateBasedPersonality extends DialogStateMachine implements Personality {
 
 

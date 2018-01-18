@@ -6,6 +6,15 @@ import roboy.util.Lists;
 
 import java.util.*;
 
+/**
+ * ToyIntroState demonstrates a simple introduction.
+ * Roboy will tell the Interlocutor his name and ask for the Interlocutor's name.
+ * The reply is ignored.
+ *
+ * Fallback is not required.
+ * Outgoing transitions that have to be defined:
+ * - next:    following state
+ */
 public class ToyIntroState extends State {
 
 

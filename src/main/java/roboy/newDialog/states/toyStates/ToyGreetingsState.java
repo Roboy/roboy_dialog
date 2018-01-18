@@ -10,7 +10,16 @@ import roboy.util.Lists;
 import java.util.*;
 
 /**
- * Toy greeting state: two outgoing transitions "next" and "noHello" have to be defined.
+ * ToyGreetingsState can be used as the initial state.
+ * Roboy will greet the Interlocutor with "Hello".
+ *
+ * If the response is a greeting, the "next" transition is taken.
+ * Otherwise the fallback will be triggered and the "noHello" transition is taken.
+ *
+ * Fallback is required.
+ * Outgoing transitions that have to be defined:
+ * - next:    following state if there was a greeting
+ * - noHello: following state if there was NO greeting
  */
 public class ToyGreetingsState extends State {
 
