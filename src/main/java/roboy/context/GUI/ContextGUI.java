@@ -1,11 +1,15 @@
 package roboy.context.GUI;
 
+import roboy.context.Context;
+import roboy.context.ValueAttribute;
+
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple GUI with the goal of showing the attribute values and histories in the Context.
@@ -14,9 +18,13 @@ import java.awt.event.WindowEvent;
 public class ContextGUI {
     private JFrame mainFrame;
 
+    String[][] historyAttributeData;
+
     private JLabel headerLabel = new JLabel("test1",JLabel.CENTER);
     private JLabel statusLabel = new JLabel("test2",JLabel.CENTER);
     private JPanel controlPanel;
+    private JLabel valueHeader;
+    private JPanel valuePanel;
     private JLabel msgLabel = new JLabel("Welcome to TutorialsPoint SWING Tutorial.", JLabel.CENTER);
 
     public static void main(String[] args) {
@@ -29,9 +37,34 @@ public class ContextGUI {
     }
 
     private void prepareGUI() {
+        // Window initialization.
         mainFrame = new JFrame("Context GUI (alpha)");
-        mainFrame.setSize(300, 400);
-        mainFrame.setLayout(new GridLayout(3,2));
+        mainFrame.setSize(400, 200);
+        mainFrame.setLayout(new BoxLayout(mainFrame.getContentPane(), BoxLayout.Y_AXIS));
+
+        // Attribute part initialization.
+        valueHeader = new JLabel("Context values", JLabel.CENTER);
+        valueHeader.setBorder(new LineBorder(Color.BLUE));
+        mainFrame.add(valueHeader);
+
+        valuePanel = new JPanel();
+        valuePanel.setLayout(new GridLayout(0,2));
+        Map<Context.ValueAttributes, JLabel[]> values = new HashMap<>();
+        for(Context.ValueAttributes v : Context.ValueAttributes.values()) {
+            Object val = v.getLastValue();
+            if (val == null) {
+                val = "<not initialized>";
+            }
+            JLabel[] pair = {
+                    new JLabel(v.toString(), JLabel.CENTER),
+                    new JLabel(val.toString(),JLabel.CENTER)};
+            values.put(v, pair);
+            valuePanel.add(pair[0]);
+            valuePanel.add(pair[1]);
+
+        }
+
+        mainFrame.add(valuePanel);
 
         mainFrame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent windowEvent){
@@ -41,11 +74,11 @@ public class ContextGUI {
 
         controlPanel = new JPanel();
         controlPanel.setLayout(new FlowLayout());
-        //statusLabel.setSize(350,100);
+        statusLabel.setSize(100,100);
 
         mainFrame.add(headerLabel);
         mainFrame.add(controlPanel);
-//        mainFrame.add(statusLabel);
+        mainFrame.add(statusLabel);
         mainFrame.setVisible(true);
     }
 
@@ -65,8 +98,8 @@ public class ContextGUI {
         JButton okButton = new JButton("Open a Frame");
         okButton.addActionListener(e -> {
                 headerLabel.setText("Changing text");
-//              statusLabel.setText("A Frame shown to the user.");
-//              frame.setVisible(true);
+                statusLabel.setText("A Frame shown to the user.");
+                frame.setVisible(true);
             }
         );
         controlPanel.add(okButton);
