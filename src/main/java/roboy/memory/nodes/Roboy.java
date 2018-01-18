@@ -32,8 +32,9 @@ public class Roboy {
      * is in sync with memory and represents the Roboy itself.
      *
      * If something  goes wrong during querying, Roboy stays empty
-     * and soulless, and has to fallsback
+     * and soulless, and has to fallback
      */
+    // TODO consider a fallback for the amnesia mode
     private void InitializeRoboy(String name) {
         roboy.setProperty("name", name);
         roboy.setLabel("Robot");
