@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="dir_4b89141a263e6cbfc376c96d63372b80" kind="dir">
-    <compoundname>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality</compoundname>
-    <innerdir refid="dir_6e452d7417803070272de08db6f5594a">/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states</innerdir>
+    <compoundname>/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality</compoundname>
+    <innerdir refid="dir_6e452d7417803070272de08db6f5594a">/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states</innerdir>
     <innerfile refid="_curious_personality_8java">CuriousPersonality.java</innerfile>
     <innerfile refid="_default_personality_8java">DefaultPersonality.java</innerfile>
     <innerfile refid="_knock_knock_personality_8java">KnockKnockPersonality.java</innerfile>
@@ -12,6 +12,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/"/>
   </compounddef>
 </doxygen>

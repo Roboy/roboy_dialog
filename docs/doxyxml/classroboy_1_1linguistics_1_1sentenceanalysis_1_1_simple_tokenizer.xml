@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_simple_tokenizer" kind="class" language="Java" prot="public">
     <compoundname>roboy::linguistics::sentenceanalysis::SimpleTokenizer</compoundname>
     <basecompoundref refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer" prot="public" virt="non-virtual">roboy.linguistics.sentenceanalysis.Analyzer</basecompoundref>
@@ -20,12 +20,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/SimpleTokenizer.java" line="12" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/SimpleTokenizer.java" bodystart="12" bodyend="17"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SimpleTokenizer.java" line="12" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SimpleTokenizer.java" bodystart="12" bodyend="17"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_simple_tokenizer_1ae28a1479366d9049c22fa502f33c2147" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>String[]</type>
+        <type>String []</type>
         <definition>String [] roboy.linguistics.sentenceanalysis.SimpleTokenizer.tokenize</definition>
         <argsstring>(String sentence)</argsstring>
         <name>tokenize</name>
@@ -39,7 +39,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/SimpleTokenizer.java" line="19" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/SimpleTokenizer.java" bodystart="19" bodyend="21"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SimpleTokenizer.java" line="19" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SimpleTokenizer.java" bodystart="19" bodyend="21"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -47,30 +47,30 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1236">
+      <node id="559">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
-      <node id="1235">
+      <node id="558">
         <label>roboy.linguistics.sentenceanalysis.SimpleTokenizer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_simple_tokenizer"/>
-        <childnode refid="1236" relation="public-inheritance">
+        <childnode refid="559" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1238">
+      <node id="561">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
-      <node id="1237">
+      <node id="560">
         <label>roboy.linguistics.sentenceanalysis.SimpleTokenizer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_simple_tokenizer"/>
-        <childnode refid="1238" relation="public-inheritance">
+        <childnode refid="561" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/SimpleTokenizer.java" line="9" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/SimpleTokenizer.java" bodystart="9" bodyend="22"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SimpleTokenizer.java" line="9" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SimpleTokenizer.java" bodystart="9" bodyend="22"/>
     <listofallmembers>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_simple_tokenizer_1ae9f9ce36ed5fd7e160025ab6444127b4" prot="public" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::SimpleTokenizer</scope><name>analyze</name></member>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_simple_tokenizer_1ae28a1479366d9049c22fa502f33c2147" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::SimpleTokenizer</scope><name>tokenize</name></member>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="dir_f4181fe68facb23b91192854446ad923" kind="dir">
-    <compoundname>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis</compoundname>
+    <compoundname>/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis</compoundname>
     <innerfile refid="_answer_analyzer_test_8java">AnswerAnalyzerTest.java</innerfile>
     <innerfile refid="_dictionary_based_sentence_type_detector_test_8java">DictionaryBasedSentenceTypeDetectorTest.java</innerfile>
     <innerfile refid="_open_n_l_p_parser_test_8java">OpenNLPParserTest.java</innerfile>
@@ -9,6 +9,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis/"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis/"/>
   </compounddef>
 </doxygen>

@@ -2,7 +2,6 @@ package roboy.memory.nodes;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class MemoryNodeModel {
     //name, birthdate
     private HashMap<String, Object> properties;
     //Relation: <name as String, ArrayList of IDs (nodes related to this node over this relation)>
-    private HashMap<String, ArrayList<Integer>> relations;
+    private HashMap<String, ArrayList<Integer>> relationships;
     //If true, then fields with default values will be removed from JSON format.
     // Transient as stripping information is not a part of the node and not included in query.
     transient boolean stripQuery = false;
@@ -38,7 +37,7 @@ public class MemoryNodeModel {
             id = 0;
             labels = new ArrayList<>();
             properties = new HashMap<>();
-            relations = new HashMap<>();
+            relationships = new HashMap<>();
         } else {
             id = 0;
             this.stripQuery = true;
@@ -83,28 +82,30 @@ public class MemoryNodeModel {
         properties.put(key, property);
     }
 
-    public HashMap<String, ArrayList<Integer>> getRelations() {
-        return relations;
+    public HashMap<String, ArrayList<Integer>> getRelationships() {
+        return relationships;
     }
-    public ArrayList<Integer> getRelation(String key) {
-        return (relations != null ? relations.get(key.toLowerCase()) : null);
+    public ArrayList<Integer> getRelationship(String key) {
+        //TODO: Sort this shit out
+        //return (relationships != null ? relationships.get(key.toLowerCase()) : null);
+        return (relationships != null ? relationships.get(key) : null);
     }
-    public void setRelations(HashMap<String, ArrayList<Integer>> relations) {
-        if(this.relations == null) {
-            this.relations = new HashMap<>();
+    public void setRelationships(HashMap<String, ArrayList<Integer>> relationships) {
+        if(this.relationships == null) {
+            this.relationships = new HashMap<>();
         }
-        this.relations.putAll(relations);
+        this.relationships.putAll(relationships);
     }
-    public void setRelation(String key, Integer id) {
-        if(this.relations == null) {
-            this.relations = new HashMap<>();
+    public void setRelationship(String key, Integer id) {
+        if(this.relationships == null) {
+            this.relationships = new HashMap<>();
         }
-        if(relations.containsKey(key)) {
-            relations.get(key).add(id);
+        if(relationships.containsKey(key)) {
+            relationships.get(key).add(id);
         } else {
             ArrayList idList = new ArrayList();
             idList.add(id);
-            relations.put(key, idList);
+            relationships.put(key, idList);
         }
     }
 

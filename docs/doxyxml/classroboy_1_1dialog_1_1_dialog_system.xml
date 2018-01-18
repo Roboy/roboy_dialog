@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1dialog_1_1_dialog_system" kind="class" language="Java" prot="public">
     <compoundname>roboy::dialog::DialogSystem</compoundname>
       <sectiondef kind="public-static-func">
@@ -9,7 +9,7 @@
         <argsstring>(String[] args)</argsstring>
         <name>main</name>
         <param>
-          <type>String[]</type>
+          <type>String []</type>
           <declname>args</declname>
         </param>
         <exceptions> throws JsonIOException, IOException, InterruptedException </exceptions>
@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/DialogSystem.java" line="75" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/DialogSystem.java" bodystart="75" bodyend="161"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/DialogSystem.java" line="76" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/DialogSystem.java" bodystart="76" bodyend="164"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -36,7 +36,7 @@
 </para><para>Output devices:<itemizedlist>
 <listitem><para>For testing with command line: CommandLineOutput</para></listitem><listitem><para>For text to speech: BingOutput (requires internet)</para></listitem><listitem><para>For combining multiple outputs: MultiOutputDevice</para></listitem><listitem><para>For text to speech + facial expressions: CerevoiceOutput</para></listitem><listitem><para>For facial expressions: EmotionOutput</para></listitem><listitem><para>For text to speech (worse quality): FreeTTSOutput</para></listitem></itemizedlist>
 </para><para>The easiest way to create ones own Roboy communication application is to pick the input and output devices provided here, use the tokenization, POS tagging and possibly semantic role labeling (though still under development) if needed and write an own personality. If one wants to use the DBpedia, Protege, generative model or state machine stuff, one has to dig deeper into the small talk personality and see how it is used there. </para>    </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/DialogSystem.java" line="73" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/DialogSystem.java" bodystart="73" bodyend="162"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/DialogSystem.java" line="74" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/DialogSystem.java" bodystart="74" bodyend="165"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1_dialog_system_1af467cec6e12b2fcf78fb278e301768b4" prot="public" virt="non-virtual"><scope>roboy::dialog::DialogSystem</scope><name>main</name></member>
     </listofallmembers>

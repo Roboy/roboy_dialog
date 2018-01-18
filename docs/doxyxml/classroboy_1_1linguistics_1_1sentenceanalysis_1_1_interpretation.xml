@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kind="class" language="Java" prot="public">
     <compoundname>roboy::linguistics::sentenceanalysis::Interpretation</compoundname>
       <sectiondef kind="private-attrib">
@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="19" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="19" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="19" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="19" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a1e05743700d282c1cf44332807bdb5b0" prot="private" static="no" mutable="no">
         <type><ref refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e" kindref="compound">SENTENCE_TYPE</ref></type>
@@ -27,7 +27,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="20" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="20" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="20" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="20" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="22" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="22" bodyend="26"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="22" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="22" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a9e0642dd4e973311f9a385fd2d487da2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="28" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="28" bodyend="32"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="28" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="28" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1aaaa7164a283151b8e5a34027262e06ea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -84,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="34" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="34" bodyend="37"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="34" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="34" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a941f9fd2864349ad83121558a2d93e63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -105,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="39" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="39" bodyend="42"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="39" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="39" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a92841e14bb92059bb3b0937f6e2ae93d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Map&lt; String, Object &gt;</type>
@@ -118,7 +118,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="44" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="44" bodyend="46"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="44" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="44" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a7c72cb39fb1faa5effd74f31a343a936" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Object</type>
@@ -135,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="48" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="48" bodyend="50"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="48" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="48" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a94dbc7e4a3c7e75412084608d64b968f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -152,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="52" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="52" bodyend="54"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="52" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="52" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a5735e5ff1f85a385267c8bd49b27ffbe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e" kindref="compound">SENTENCE_TYPE</ref></type>
@@ -165,7 +165,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="56" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="56" bodyend="58"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="56" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="56" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a39397bc5cf03b9f9b9f2784fe1628095" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -182,7 +182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="60" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="60" bodyend="62"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="60" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="60" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a118d7ed8466ba3e00e4b0d04959e47f6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -195,7 +195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="65" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="65" bodyend="67"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="65" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="65" bodyend="67"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -203,25 +203,25 @@
     <detaileddescription>
 <para>Feature names are listed and documented in the class <ref refid="classroboy_1_1linguistics_1_1_linguistics" kindref="compound">roboy.linguistics.Linguistics</ref>.</para><para>The interpretation class is also used to pass the output information from the states to the verbalizer class. </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="920">
+      <node id="250">
         <label>roboy.linguistics.sentenceanalysis.Interpretation</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation"/>
-        <childnode refid="921" relation="usage">
+        <childnode refid="251" relation="usage">
           <edgelabel>sentenceType</edgelabel>
         </childnode>
-        <childnode refid="922" relation="usage">
+        <childnode refid="252" relation="usage">
           <edgelabel>features</edgelabel>
         </childnode>
       </node>
-      <node id="921">
+      <node id="251">
         <label>roboy.linguistics.Linguistics.SENTENCE_TYPE</label>
         <link refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e"/>
       </node>
-      <node id="922">
+      <node id="252">
         <label>Map&lt; String, Object &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="17" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="17" bodyend="68"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Interpretation.java" bodystart="17" bodyend="68"/>
     <listofallmembers>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a0def4ce955a8281b2afd7437ee4a0945" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::Interpretation</scope><name>features</name></member>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a7c72cb39fb1faa5effd74f31a343a936" prot="public" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::Interpretation</scope><name>getFeature</name></member>

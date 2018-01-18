@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="_personal_q_a_state_8java" kind="file" language="Java">
     <compoundname>PersonalQAState.java</compoundname>
     <innerclass refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state" prot="public">roboy::dialog::personality::states::PersonalQAState</innerclass>
@@ -18,7 +18,7 @@
 <codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceroboy" kindref="compound">roboy</ref>.<ref refid="namespaceroboy_1_1linguistics" kindref="compound">linguistics</ref>.<ref refid="classroboy_1_1linguistics_1_1_linguistics" kindref="compound">Linguistics</ref>;</highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceroboy" kindref="compound">roboy</ref>.<ref refid="namespaceroboy_1_1linguistics" kindref="compound">linguistics</ref>.<ref refid="classroboy_1_1linguistics_1_1_linguistics" kindref="compound">Linguistics</ref>.<ref refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e" kindref="compound">SEMANTIC_ROLE</ref>;</highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceroboy" kindref="compound">roboy</ref>.<ref refid="namespaceroboy_1_1linguistics" kindref="compound">linguistics</ref>.<ref refid="namespaceroboy_1_1linguistics_1_1sentenceanalysis" kindref="compound">sentenceanalysis</ref>.<ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref>;</highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceroboy" kindref="compound">roboy</ref>.<ref refid="namespaceroboy_1_1memory" kindref="compound">memory</ref>.<ref refid="enumroboy_1_1memory_1_1_neo4j_relations" kindref="compound">Neo4jRelations</ref>;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceroboy" kindref="compound">roboy</ref>.<ref refid="namespaceroboy_1_1memory" kindref="compound">memory</ref>.<ref refid="enumroboy_1_1memory_1_1_neo4j_relationships" kindref="compound">Neo4jRelationships</ref>;</highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceroboy" kindref="compound">roboy</ref>.<ref refid="namespaceroboy_1_1memory" kindref="compound">memory</ref>.<ref refid="namespaceroboy_1_1memory_1_1nodes" kindref="compound">nodes</ref>.<ref refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor" kindref="compound">Interlocutor</ref>;</highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceroboy" kindref="compound">roboy</ref>.<ref refid="namespaceroboy_1_1util" kindref="compound">util</ref>.<ref refid="classroboy_1_1util_1_1_lists" kindref="compound">Lists</ref>;</highlight></codeline>
 <codeline lineno="13"><highlight class="normal"></highlight></codeline>
@@ -26,11 +26,11 @@
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>List&lt;String&gt;<sp/>questions;</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>List&lt;String[]&gt;<sp/>successTexts;</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="enumroboy_1_1memory_1_1_neo4j_relations" kindref="compound">Neo4jRelations</ref><sp/>predicate;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="enumroboy_1_1memory_1_1_neo4j_relationships" kindref="compound">Neo4jRelationships</ref><sp/>predicate;</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/><ref refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor" kindref="compound">Interlocutor</ref><sp/>person;</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state" kindref="compound">PersonalQAState</ref>(List&lt;String&gt;<sp/>questions,<sp/>List&lt;String&gt;<sp/>failureTexts,</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>List&lt;String[]&gt;<sp/>successTexts,<sp/><ref refid="enumroboy_1_1memory_1_1_neo4j_relations" kindref="compound">Neo4jRelations</ref><sp/>predicate,<sp/><ref refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor" kindref="compound">Interlocutor</ref><sp/>person)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>List&lt;String[]&gt;<sp/>successTexts,<sp/><ref refid="enumroboy_1_1memory_1_1_neo4j_relationships" kindref="compound">Neo4jRelationships</ref><sp/>predicate,<sp/><ref refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor" kindref="compound">Interlocutor</ref><sp/>person)<sp/>{</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this.questions<sp/>=<sp/>questions;</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this.successTexts<sp/>=<sp/>successTexts;</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this.predicate<sp/>=<sp/>predicate;</highlight></codeline>
@@ -76,7 +76,7 @@
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//WorkingMemory.getInstance().save(new<sp/>Triple(predicate,name,answer));</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>the<sp/>new<sp/>information<sp/>about<sp/>the<sp/>person<sp/>to<sp/>the<sp/>memory.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>person.<ref refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a6d30fb3f6457574c4b9e1e1a28c3486c" kindref="member">addInformation</ref>(predicate.type,<sp/>answer);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>person.<ref refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a0e59e8acfe71553dfd71c7f025072ac5" kindref="member">addInformation</ref>(predicate.type,<sp/>answer);</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>List&lt;String&gt;<sp/>sTexts<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>ArrayList&lt;&gt;();</highlight></codeline>
@@ -91,6 +91,6 @@
 <codeline lineno="89"><highlight class="normal"></highlight></codeline>
 <codeline lineno="90"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/PersonalQAState.java"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalQAState.java"/>
   </compounddef>
 </doxygen>

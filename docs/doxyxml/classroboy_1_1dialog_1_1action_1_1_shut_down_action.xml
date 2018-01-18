@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1dialog_1_1action_1_1_shut_down_action" kind="class" language="Java" prot="public">
     <compoundname>roboy::dialog::action::ShutDownAction</compoundname>
     <basecompoundref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" prot="public" virt="non-virtual">roboy.dialog.action.Action</basecompoundref>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action/ShutDownAction.java" line="12" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action/ShutDownAction.java" bodystart="12" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/action/ShutDownAction.java" line="12" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/action/ShutDownAction.java" bodystart="12" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -42,7 +42,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action/ShutDownAction.java" line="19" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action/ShutDownAction.java" bodystart="19" bodyend="21"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/action/ShutDownAction.java" line="19" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/action/ShutDownAction.java" bodystart="19" bodyend="21"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1action_1_1_shut_down_action_1a015eda81c40639f7fa0cb5a140790fa2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kindref="compound">Action</ref> &gt;</type>
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action/ShutDownAction.java" line="23" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action/ShutDownAction.java" bodystart="23" bodyend="25"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/action/ShutDownAction.java" line="23" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/action/ShutDownAction.java" bodystart="23" bodyend="25"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -63,36 +63,36 @@
     <detaileddescription>
 <para>Sending a <ref refid="classroboy_1_1dialog_1_1action_1_1_shut_down_action" kindref="compound">ShutDownAction</ref> leads the dialog manager to leave the communication loop in the DialogManager class and quit the program after uttering the given last words. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="1230">
+      <node id="553">
         <label>roboy.dialog.action.ShutDownAction</label>
         <link refid="classroboy_1_1dialog_1_1action_1_1_shut_down_action"/>
-        <childnode refid="1231" relation="public-inheritance">
+        <childnode refid="554" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1231">
+      <node id="554">
         <label>roboy.dialog.action.Action</label>
         <link refid="interfaceroboy_1_1dialog_1_1action_1_1_action"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1234">
+      <node id="557">
         <label>List&lt; roboy.dialog.action.Action &gt;</label>
       </node>
-      <node id="1232">
+      <node id="555">
         <label>roboy.dialog.action.ShutDownAction</label>
         <link refid="classroboy_1_1dialog_1_1action_1_1_shut_down_action"/>
-        <childnode refid="1233" relation="public-inheritance">
+        <childnode refid="556" relation="public-inheritance">
         </childnode>
-        <childnode refid="1234" relation="usage">
+        <childnode refid="557" relation="usage">
           <edgelabel>lastwords</edgelabel>
         </childnode>
       </node>
-      <node id="1233">
+      <node id="556">
         <label>roboy.dialog.action.Action</label>
         <link refid="interfaceroboy_1_1dialog_1_1action_1_1_action"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action/ShutDownAction.java" line="10" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action/ShutDownAction.java" bodystart="10" bodyend="27"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/action/ShutDownAction.java" line="10" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/action/ShutDownAction.java" bodystart="10" bodyend="27"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1action_1_1_shut_down_action_1a015eda81c40639f7fa0cb5a140790fa2" prot="public" virt="non-virtual"><scope>roboy::dialog::action::ShutDownAction</scope><name>getLastWords</name></member>
       <member refid="classroboy_1_1dialog_1_1action_1_1_shut_down_action_1a326e3b37e9f20eb69acd990334a3ad8e" prot="private" virt="non-virtual"><scope>roboy::dialog::action::ShutDownAction</scope><name>lastwords</name></member>

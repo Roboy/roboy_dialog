@@ -72,7 +72,7 @@ public class Concept {
 //		    }
 		}
 
-		if (properties.length()>0 && properties.charAt(properties.length()-1)==',')
+		if (properties.length() > 0 && properties.charAt(properties.length()-1) == ',')
 		{
 			properties = new StringBuilder(properties.substring(0, properties.length() - 1));
 		}
@@ -88,7 +88,7 @@ public class Concept {
 
 		for (Map.Entry<String, Object> attribute : this.getAttributes().entrySet())
 		{
-		    if ( ! attribute.getKey().equals("class") && ! attribute.getKey().equals("id") )
+		    if ( ! attribute.getKey().equals("class") && ! attribute.getKey().equals("id"))
 		    {
 		    	values.append(attribute.getValue().toString()).append(",");
 		    }

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state" kind="class" language="Java" prot="public">
     <compoundname>roboy::dialog::personality::states::SegueState</compoundname>
     <basecompoundref refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" prot="public" virt="non-virtual">roboy.dialog.personality.states.State</basecompoundref>
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" line="27" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="27" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" line="27" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="27" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" line="29" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="29" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" line="29" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state_1a47bfb7202030f98a0fb5aa308d123beb" prot="private" static="no" mutable="no">
         <type><ref refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" kindref="compound">State</ref></type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" line="30" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="30" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" line="30" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state_1af003c7a6c20951c03802d3244fb66f24" prot="private" static="no" mutable="no">
         <type>Map&lt; String, String &gt;</type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" line="32" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="32" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" line="32" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="32" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" line="34" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="34" bodyend="58"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" line="34" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="34" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state_1a47686855d505066736c8c81123d55e23" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" line="60" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="60" bodyend="62"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" line="60" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="60" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state_1a6a9f30b2b925cecf981c052b62b72e24" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" line="65" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="65" bodyend="67"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" line="65" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="65" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state_1a641eaa4dfa87dbc0af1c87992e567efe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction" kindref="compound">Reaction</ref></type>
@@ -125,7 +125,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" line="70" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="70" bodyend="73"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" line="70" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="70" bodyend="73"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -148,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" line="76" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="76" bodyend="100"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" line="76" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="76" bodyend="100"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -156,46 +156,46 @@
     <detaileddescription>
 <para>Tells the anecdote if a word matches, executes its inner state instead, if not. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="1216">
+      <node id="539">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
-      <node id="1215">
+      <node id="538">
         <label>roboy.dialog.personality.states.SegueState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state"/>
-        <childnode refid="1216" relation="public-inheritance">
+        <childnode refid="539" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1219">
+      <node id="542">
         <label>Map&lt; String, String &gt;</label>
       </node>
-      <node id="1220">
+      <node id="543">
         <label>Map&lt; roboy.linguistics.Linguistics.SENTENCE_TYPE, roboy.dialog.personality.states.Reaction &gt;</label>
       </node>
-      <node id="1218">
+      <node id="541">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
-      <node id="1217">
+      <node id="540">
         <label>roboy.dialog.personality.states.SegueState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state"/>
-        <childnode refid="1218" relation="public-inheritance">
+        <childnode refid="541" relation="public-inheritance">
         </childnode>
-        <childnode refid="1218" relation="usage">
+        <childnode refid="541" relation="usage">
           <edgelabel>top</edgelabel>
           <edgelabel>inner</edgelabel>
         </childnode>
-        <childnode refid="1219" relation="usage">
+        <childnode refid="542" relation="usage">
           <edgelabel>redditTIL</edgelabel>
         </childnode>
-        <childnode refid="1220" relation="usage">
+        <childnode refid="543" relation="usage">
           <edgelabel>sentenceTypeAssociations</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" line="25" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="25" bodyend="102"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" line="25" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/SegueState.java" bodystart="25" bodyend="102"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state_1a6a9f30b2b925cecf981c052b62b72e24" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::SegueState</scope><name>act</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state_1a9a5859fa6b21a1f9e1373e7ec77e625a" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::states::SegueState</scope><name>inner</name></member>

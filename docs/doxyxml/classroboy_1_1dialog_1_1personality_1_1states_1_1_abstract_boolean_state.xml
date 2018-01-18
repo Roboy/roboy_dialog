@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state" kind="class" language="Java" prot="public" abstract="yes">
     <compoundname>roboy::dialog::personality::states::AbstractBooleanState</compoundname>
     <basecompoundref refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" prot="public" virt="non-virtual">roboy.dialog.personality.states.State</basecompoundref>
@@ -23,7 +23,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="15" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="15" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1afd916a053e2e9374d464c7d2bf0f74ad" prot="protected" static="no" mutable="no">
         <type><ref refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" kindref="compound">State</ref></type>
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="16" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="16" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="16" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="16" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="18" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="18" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="18" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a4e5a9779f664a95ec9f8e4bf60a03aca" prot="private" static="no" mutable="no">
         <type>List&lt; String &gt;</type>
@@ -66,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="19" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="19" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="19" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="19" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="21" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="21" bodyend="23"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="21" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a95b2e8367f1b9b3b05a89e7db1a735e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -106,7 +106,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="31" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="31" bodyend="33"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="31" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="31" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1ace03f687b53a4af28192dc622d8e674f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" kindref="compound">State</ref></type>
@@ -119,7 +119,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="35" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="35" bodyend="37"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="35" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="35" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1aaef59e5550a47a4df8a28887cc996edb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -144,7 +144,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="45" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="45" bodyend="47"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="45" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="45" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1afe2dcbf032ab3e128f243fcb77259e70" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -161,7 +161,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="49" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="49" bodyend="51"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="49" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="49" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a257d5515337565836ae4bd32b1965d52" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -178,7 +178,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="53" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="53" bodyend="55"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="53" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="53" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a0316e2e58c12993cd30b822606dd446f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -195,7 +195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="57" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="57" bodyend="59"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="57" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="57" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a6821153b384889cf1aab894ed2422150" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction" kindref="compound">Reaction</ref></type>
@@ -213,7 +213,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="62" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="62" bodyend="72"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="62" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="62" bodyend="72"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -241,7 +241,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="82" column="1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="82" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -249,89 +249,89 @@
     <detaileddescription>
 <para>The determineSuccess method needs to be implemented by subclass to determine if the success or failure state should be moved into next. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="678">
+      <node id="8">
         <label>roboy.dialog.personality.states.LocationDBpedia</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia"/>
-        <childnode refid="670" relation="public-inheritance">
+        <childnode refid="0" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="672">
+      <node id="2">
         <label>roboy.dialog.personality.states.ConverseState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_converse_state"/>
-        <childnode refid="670" relation="public-inheritance">
+        <childnode refid="0" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="675">
+      <node id="5">
         <label>roboy.dialog.personality.states.IdleState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_idle_state"/>
-        <childnode refid="670" relation="public-inheritance">
+        <childnode refid="0" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="676">
+      <node id="6">
         <label>roboy.dialog.personality.states.InquiryState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_inquiry_state"/>
-        <childnode refid="670" relation="public-inheritance">
+        <childnode refid="0" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="673">
+      <node id="3">
         <label>roboy.dialog.personality.states.GenerativeCommunicationState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_generative_communication_state"/>
-        <childnode refid="670" relation="public-inheritance">
+        <childnode refid="0" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="670">
+      <node id="0">
         <label>roboy.dialog.personality.states.AbstractBooleanState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
-        <childnode refid="671" relation="public-inheritance">
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="674">
+      <node id="4">
         <label>roboy.dialog.personality.states.GreetingState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_greeting_state"/>
-        <childnode refid="670" relation="public-inheritance">
+        <childnode refid="0" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="671">
+      <node id="1">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
-      <node id="677">
+      <node id="7">
         <label>roboy.dialog.personality.states.IntroductionState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state"/>
-        <childnode refid="670" relation="public-inheritance">
+        <childnode refid="0" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="679">
+      <node id="9">
         <label>roboy.dialog.personality.states.PersonalQAState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state"/>
-        <childnode refid="670" relation="public-inheritance">
+        <childnode refid="0" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="680">
+      <node id="10">
         <label>roboy.dialog.personality.states.AbstractBooleanState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
-        <childnode refid="681" relation="public-inheritance">
+        <childnode refid="11" relation="public-inheritance">
         </childnode>
-        <childnode refid="681" relation="usage">
+        <childnode refid="11" relation="usage">
           <edgelabel>success</edgelabel>
           <edgelabel>failure</edgelabel>
         </childnode>
-        <childnode refid="682" relation="usage">
+        <childnode refid="12" relation="usage">
           <edgelabel>failureTexts</edgelabel>
           <edgelabel>successTexts</edgelabel>
         </childnode>
       </node>
-      <node id="682">
+      <node id="12">
         <label>List&lt; String &gt;</label>
       </node>
-      <node id="681">
+      <node id="11">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="13" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="13" bodyend="84"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/AbstractBooleanState.java" bodystart="13" bodyend="84"/>
     <listofallmembers>
       <member refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state_1a56df9f548b4736b775dc9dbf450a6a51" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::AbstractBooleanState</scope><name>act</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a5f613e655de9d0f807ae2dc7bde4c6c2" prot="protected" virt="non-virtual"><scope>roboy::dialog::personality::states::AbstractBooleanState</scope><name>determineSuccess</name></member>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="_verbalizer_test_8java" kind="file" language="Java">
     <compoundname>VerbalizerTest.java</compoundname>
     <innerclass refid="classroboy_1_1talk_1_1_verbalizer_test" prot="public">roboy::talk::VerbalizerTest</innerclass>
@@ -37,6 +37,6 @@
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/talk/VerbalizerTest.java"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/test/java/roboy/talk/VerbalizerTest.java"/>
   </compounddef>
 </doxygen>

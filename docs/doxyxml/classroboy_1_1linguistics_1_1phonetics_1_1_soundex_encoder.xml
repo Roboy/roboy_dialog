@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1linguistics_1_1phonetics_1_1_soundex_encoder" kind="class" language="Java" prot="public">
     <compoundname>roboy::linguistics::phonetics::SoundexEncoder</compoundname>
     <basecompoundref refid="interfaceroboy_1_1linguistics_1_1phonetics_1_1_phonetic_encoder" prot="public" virt="non-virtual">roboy.linguistics.phonetics.PhoneticEncoder</basecompoundref>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics/SoundexEncoder.java" line="15" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics/SoundexEncoder.java" bodystart="15" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/phonetics/SoundexEncoder.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/phonetics/SoundexEncoder.java" bodystart="15" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics/SoundexEncoder.java" line="17" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics/SoundexEncoder.java" bodystart="17" bodyend="19"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/phonetics/SoundexEncoder.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/phonetics/SoundexEncoder.java" bodystart="17" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1phonetics_1_1_soundex_encoder_1ac971c8da55a570afb76dabdc82aaad57" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics/SoundexEncoder.java" line="22" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics/SoundexEncoder.java" bodystart="22" bodyend="24"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/phonetics/SoundexEncoder.java" line="22" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/phonetics/SoundexEncoder.java" bodystart="22" bodyend="24"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -60,36 +60,36 @@
     <detaileddescription>
 <para>This is intended to be used to correct terms that Roboy misunderstood, but currently is not is use. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="1261">
+      <node id="584">
         <label>roboy.linguistics.phonetics.SoundexEncoder</label>
         <link refid="classroboy_1_1linguistics_1_1phonetics_1_1_soundex_encoder"/>
-        <childnode refid="1262" relation="public-inheritance">
+        <childnode refid="585" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1262">
+      <node id="585">
         <label>roboy.linguistics.phonetics.PhoneticEncoder</label>
         <link refid="interfaceroboy_1_1linguistics_1_1phonetics_1_1_phonetic_encoder"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1265">
+      <node id="588">
         <label>Soundex</label>
       </node>
-      <node id="1263">
+      <node id="586">
         <label>roboy.linguistics.phonetics.SoundexEncoder</label>
         <link refid="classroboy_1_1linguistics_1_1phonetics_1_1_soundex_encoder"/>
-        <childnode refid="1264" relation="public-inheritance">
+        <childnode refid="587" relation="public-inheritance">
         </childnode>
-        <childnode refid="1265" relation="usage">
+        <childnode refid="588" relation="usage">
           <edgelabel>soundex</edgelabel>
         </childnode>
       </node>
-      <node id="1264">
+      <node id="587">
         <label>roboy.linguistics.phonetics.PhoneticEncoder</label>
         <link refid="interfaceroboy_1_1linguistics_1_1phonetics_1_1_phonetic_encoder"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics/SoundexEncoder.java" line="13" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics/SoundexEncoder.java" bodystart="13" bodyend="27"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/phonetics/SoundexEncoder.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/phonetics/SoundexEncoder.java" bodystart="13" bodyend="27"/>
     <listofallmembers>
       <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_soundex_encoder_1ac971c8da55a570afb76dabdc82aaad57" prot="public" virt="non-virtual"><scope>roboy::linguistics::phonetics::SoundexEncoder</scope><name>encode</name></member>
       <member refid="classroboy_1_1linguistics_1_1phonetics_1_1_soundex_encoder_1a3722232809ae1502ea5d4d9152ea706b" prot="private" virt="non-virtual"><scope>roboy::linguistics::phonetics::SoundexEncoder</scope><name>soundex</name></member>

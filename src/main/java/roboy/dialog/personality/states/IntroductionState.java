@@ -1,12 +1,17 @@
 package roboy.dialog.personality.states;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Linguistics.SEMANTIC_ROLE;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.memory.Neo4jMemory;
+import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
+import roboy.memory.nodes.MemoryNodeModel;
 import roboy.util.Lists;
 
 /**
@@ -16,6 +21,8 @@ import roboy.util.Lists;
 public class IntroductionState extends AbstractBooleanState{
 
 	Interlocutor person = new Interlocutor();
+    Neo4jMemory memory;
+    public Neo4jRelationships predicate = Neo4jRelationships.FRIEND_OF;
 
 	private static final List<String> introductions = Lists.stringList(
 			"I am Roboy. Who are you?",
@@ -68,9 +75,28 @@ public class IntroductionState extends AbstractBooleanState{
 			if(!person.FAMILIAR) {
 				return false;
 			}
+            String retrievedResult = "";
+            ArrayList<Integer> ids = person.getRelationships(predicate);
+            if (!ids.isEmpty()) {
+                memory = Neo4jMemory.getInstance();
+                try {
+                    for (int i = 0; i < ids.size() && i < 3; i++) {
+                        MemoryNodeModel requestedObject = memory.getById(ids.get(i));
+                        retrievedResult += requestedObject.getProperties().get("name").toString();
+                        retrievedResult += " and ";
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+			if (!retrievedResult.equals("")) {
+                retrievedResult = "By the way I know you are friends with " + retrievedResult.substring(0,retrievedResult.length()-5);
+            }
 			setSuccessTexts(Lists.stringList(
-					"Oh hi, "+name+". Sorry, I didn't recognize you at first. But you know how the vision guys are.",
-					"Hi "+name+" nice to see you again."
+					"Oh hi, "+name+". Sorry, I didn't recognize you at first. But you know how the vision guys are. " + retrievedResult,
+					"Hi "+name+" nice to see you again. " + retrievedResult
 					));
 			return true;
 		}

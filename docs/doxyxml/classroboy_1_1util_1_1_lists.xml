@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1util_1_1_lists" kind="class" language="Java" prot="public">
     <compoundname>roboy::util::Lists</compoundname>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classroboy_1_1util_1_1_lists_1aec44da633141ef78856cc537ac97f360" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classroboy_1_1util_1_1_lists_1a77635b5fc245ad51950f3dbc3fda6dfd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kindref="compound">Action</ref> &gt;</type>
         <definition>static List&lt;Action&gt; roboy.util.Lists.actionList</definition>
-        <argsstring>(Action...actions)</argsstring>
+        <argsstring>(Action... actions)</argsstring>
         <name>actionList</name>
         <param>
           <type>Action...</type>
@@ -18,12 +18,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/Lists.java" line="15" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/Lists.java" bodystart="15" bodyend="19"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/Lists.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/Lists.java" bodystart="15" bodyend="19"/>
       </memberdef>
-      <memberdef kind="function" id="classroboy_1_1util_1_1_lists_1a27c5bfbc0d1b7597c9db6b36084ae8bb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classroboy_1_1util_1_1_lists_1ab84601672f87e36b75a37a3e32463bd3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
         <definition>static List&lt;Interpretation&gt; roboy.util.Lists.interpretationList</definition>
-        <argsstring>(Interpretation...interpretations)</argsstring>
+        <argsstring>(Interpretation... interpretations)</argsstring>
         <name>interpretationList</name>
         <param>
           <type>Interpretation...</type>
@@ -35,12 +35,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/Lists.java" line="21" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/Lists.java" bodystart="21" bodyend="25"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/Lists.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/Lists.java" bodystart="21" bodyend="25"/>
       </memberdef>
-      <memberdef kind="function" id="classroboy_1_1util_1_1_lists_1ad1beee24e659fa777852b859e695c93d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classroboy_1_1util_1_1_lists_1a3ecd3a223fe70054767fa936cc58b68d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; String &gt;</type>
         <definition>static List&lt;String&gt; roboy.util.Lists.stringList</definition>
-        <argsstring>(String...strings)</argsstring>
+        <argsstring>(String... strings)</argsstring>
         <name>stringList</name>
         <param>
           <type>String...</type>
@@ -52,15 +52,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/Lists.java" line="27" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/Lists.java" bodystart="27" bodyend="31"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/Lists.java" line="27" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/Lists.java" bodystart="27" bodyend="31"/>
       </memberdef>
-      <memberdef kind="function" id="classroboy_1_1util_1_1_lists_1a30d2bb20527bc9dbe61218f82df7c50d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classroboy_1_1util_1_1_lists_1a8d8113a7fcf1b335bac19d7e675da9f2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; String[]&gt;</type>
         <definition>static List&lt;String[]&gt; roboy.util.Lists.strArray</definition>
-        <argsstring>(String[]...strings)</argsstring>
+        <argsstring>(String[]... strings)</argsstring>
         <name>strArray</name>
         <param>
-          <type>String...[]</type>
+          <type>String... []</type>
           <declname>strings</declname>
         </param>
         <briefdescription>
@@ -69,19 +69,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/Lists.java" line="33" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/Lists.java" bodystart="33" bodyend="37"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/Lists.java" line="33" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/Lists.java" bodystart="33" bodyend="37"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Helper class for list related tasks. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/Lists.java" line="13" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util/Lists.java" bodystart="13" bodyend="39"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/Lists.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/util/Lists.java" bodystart="13" bodyend="39"/>
     <listofallmembers>
-      <member refid="classroboy_1_1util_1_1_lists_1aec44da633141ef78856cc537ac97f360" prot="public" virt="non-virtual"><scope>roboy::util::Lists</scope><name>actionList</name></member>
-      <member refid="classroboy_1_1util_1_1_lists_1a27c5bfbc0d1b7597c9db6b36084ae8bb" prot="public" virt="non-virtual"><scope>roboy::util::Lists</scope><name>interpretationList</name></member>
-      <member refid="classroboy_1_1util_1_1_lists_1a30d2bb20527bc9dbe61218f82df7c50d" prot="public" virt="non-virtual"><scope>roboy::util::Lists</scope><name>strArray</name></member>
-      <member refid="classroboy_1_1util_1_1_lists_1ad1beee24e659fa777852b859e695c93d" prot="public" virt="non-virtual"><scope>roboy::util::Lists</scope><name>stringList</name></member>
+      <member refid="classroboy_1_1util_1_1_lists_1a77635b5fc245ad51950f3dbc3fda6dfd" prot="public" virt="non-virtual"><scope>roboy::util::Lists</scope><name>actionList</name></member>
+      <member refid="classroboy_1_1util_1_1_lists_1ab84601672f87e36b75a37a3e32463bd3" prot="public" virt="non-virtual"><scope>roboy::util::Lists</scope><name>interpretationList</name></member>
+      <member refid="classroboy_1_1util_1_1_lists_1a8d8113a7fcf1b335bac19d7e675da9f2" prot="public" virt="non-virtual"><scope>roboy::util::Lists</scope><name>strArray</name></member>
+      <member refid="classroboy_1_1util_1_1_lists_1a3ecd3a223fe70054767fa936cc58b68d" prot="public" virt="non-virtual"><scope>roboy::util::Lists</scope><name>stringList</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

@@ -1,16 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="dir_8548ac48c61d494e9afd946956351f00" kind="dir">
-    <compoundname>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros</compoundname>
+    <compoundname>/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros</compoundname>
     <innerfile refid="_ros_8java">Ros.java</innerfile>
     <innerfile refid="_ros_clients_8java">RosClients.java</innerfile>
     <innerfile refid="_ros_main_node_8java">RosMainNode.java</innerfile>
     <innerfile refid="_ros_manager_8java">RosManager.java</innerfile>
-    <innerfile refid="_ros_node_8java">RosNode.java</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros/"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/ros/"/>
   </compounddef>
 </doxygen>

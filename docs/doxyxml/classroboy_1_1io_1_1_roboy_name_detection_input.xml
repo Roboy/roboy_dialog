@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1io_1_1_roboy_name_detection_input" kind="class" language="Java" prot="public">
     <compoundname>roboy::io::RoboyNameDetectionInput</compoundname>
     <basecompoundref refid="interfaceroboy_1_1io_1_1_input_device" prot="public" virt="non-virtual">roboy.io.InputDevice</basecompoundref>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/RoboyNameDetectionInput.java" line="30" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/RoboyNameDetectionInput.java" bodystart="30" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/RoboyNameDetectionInput.java" line="30" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/RoboyNameDetectionInput.java" bodystart="30" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/RoboyNameDetectionInput.java" line="34" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/RoboyNameDetectionInput.java" bodystart="34" bodyend="69"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/RoboyNameDetectionInput.java" line="34" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/RoboyNameDetectionInput.java" bodystart="34" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1io_1_1_roboy_name_detection_input_1affd6cd02b0c1149f08c7e85ce516cc50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/RoboyNameDetectionInput.java" line="73" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/RoboyNameDetectionInput.java" bodystart="73" bodyend="76"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/RoboyNameDetectionInput.java" line="73" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/RoboyNameDetectionInput.java" bodystart="73" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1io_1_1_roboy_name_detection_input_1a2e946745e25aefe609c9b50bbcfe33b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1io_1_1_input" kindref="compound">Input</ref></type>
@@ -60,7 +60,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/RoboyNameDetectionInput.java" line="83" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/RoboyNameDetectionInput.java" bodystart="83" bodyend="92"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/RoboyNameDetectionInput.java" line="83" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/RoboyNameDetectionInput.java" bodystart="83" bodyend="92"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -71,30 +71,30 @@
 <simplesect kind="date"><para>21.04.2017</para></simplesect>
 Initiates native sphinx function of live speech analysis and checks the stream </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="1191">
+      <node id="521">
         <label>roboy.io.InputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_input_device"/>
       </node>
-      <node id="1190">
+      <node id="520">
         <label>roboy.io.RoboyNameDetectionInput</label>
         <link refid="classroboy_1_1io_1_1_roboy_name_detection_input"/>
-        <childnode refid="1191" relation="public-inheritance">
+        <childnode refid="521" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1193">
+      <node id="523">
         <label>roboy.io.InputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_input_device"/>
       </node>
-      <node id="1192">
+      <node id="522">
         <label>roboy.io.RoboyNameDetectionInput</label>
         <link refid="classroboy_1_1io_1_1_roboy_name_detection_input"/>
-        <childnode refid="1193" relation="public-inheritance">
+        <childnode refid="523" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/RoboyNameDetectionInput.java" line="25" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io/RoboyNameDetectionInput.java" bodystart="25" bodyend="93"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/RoboyNameDetectionInput.java" line="25" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/RoboyNameDetectionInput.java" bodystart="25" bodyend="93"/>
     <listofallmembers>
       <member refid="classroboy_1_1io_1_1_roboy_name_detection_input_1a2e946745e25aefe609c9b50bbcfe33b0" prot="public" virt="non-virtual"><scope>roboy::io::RoboyNameDetectionInput</scope><name>listen</name></member>
       <member refid="classroboy_1_1io_1_1_roboy_name_detection_input_1a1872b884fd325a83c7d85ebe0ab2672c" prot="protected" virt="non-virtual"><scope>roboy::io::RoboyNameDetectionInput</scope><name>recog_copy</name></member>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1dialog_1_1action_1_1_speech_action" kind="class" language="Java" prot="public">
     <compoundname>roboy::dialog::action::SpeechAction</compoundname>
     <basecompoundref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" prot="public" virt="non-virtual">roboy.dialog.action.Action</basecompoundref>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action/SpeechAction.java" line="8" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action/SpeechAction.java" bodystart="8" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/action/SpeechAction.java" line="8" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/action/SpeechAction.java" bodystart="8" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -42,7 +42,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action/SpeechAction.java" line="15" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action/SpeechAction.java" bodystart="15" bodyend="17"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/action/SpeechAction.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/action/SpeechAction.java" bodystart="15" bodyend="17"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1action_1_1_speech_action_1a656b4b7d0cced3b52e19c836f3405076" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action/SpeechAction.java" line="19" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action/SpeechAction.java" bodystart="19" bodyend="21"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/action/SpeechAction.java" line="19" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/action/SpeechAction.java" bodystart="19" bodyend="21"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -63,30 +63,30 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1266">
+      <node id="589">
         <label>roboy.dialog.action.SpeechAction</label>
         <link refid="classroboy_1_1dialog_1_1action_1_1_speech_action"/>
-        <childnode refid="1267" relation="public-inheritance">
+        <childnode refid="590" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1267">
+      <node id="590">
         <label>roboy.dialog.action.Action</label>
         <link refid="interfaceroboy_1_1dialog_1_1action_1_1_action"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1268">
+      <node id="591">
         <label>roboy.dialog.action.SpeechAction</label>
         <link refid="classroboy_1_1dialog_1_1action_1_1_speech_action"/>
-        <childnode refid="1269" relation="public-inheritance">
+        <childnode refid="592" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1269">
+      <node id="592">
         <label>roboy.dialog.action.Action</label>
         <link refid="interfaceroboy_1_1dialog_1_1action_1_1_action"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action/SpeechAction.java" line="6" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action/SpeechAction.java" bodystart="6" bodyend="22"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/action/SpeechAction.java" line="6" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/action/SpeechAction.java" bodystart="6" bodyend="22"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1action_1_1_speech_action_1a656b4b7d0cced3b52e19c836f3405076" prot="public" virt="non-virtual"><scope>roboy::dialog::action::SpeechAction</scope><name>getText</name></member>
       <member refid="classroboy_1_1dialog_1_1action_1_1_speech_action_1a0ee30e6f6a193f68684e56c85f1068a5" prot="public" virt="non-virtual"><scope>roboy::dialog::action::SpeechAction</scope><name>SpeechAction</name></member>

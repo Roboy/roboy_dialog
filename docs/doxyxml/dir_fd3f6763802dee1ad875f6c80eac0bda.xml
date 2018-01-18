@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="dir_fd3f6763802dee1ad875f6c80eac0bda" kind="dir">
-    <compoundname>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java</compoundname>
-    <innerdir refid="dir_6d5869451a9be3e6ce21b31fee7870de">/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy</innerdir>
+    <compoundname>/Users/wagram/Roboy/roboy_dialog/src/main/java</compoundname>
+    <innerdir refid="dir_6d5869451a9be3e6ce21b31fee7870de">/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy</innerdir>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/"/>
   </compounddef>
 </doxygen>

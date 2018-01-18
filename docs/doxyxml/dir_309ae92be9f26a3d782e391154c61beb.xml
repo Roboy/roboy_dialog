@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="dir_309ae92be9f26a3d782e391154c61beb" kind="dir">
-    <compoundname>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics</compoundname>
+    <compoundname>/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/phonetics</compoundname>
     <innerfile refid="_double_metaphone_encoder_8java">DoubleMetaphoneEncoder.java</innerfile>
     <innerfile refid="_metaphone_encoder_8java">MetaphoneEncoder.java</innerfile>
     <innerfile refid="_phonetic_encoder_8java">PhoneticEncoder.java</innerfile>
@@ -11,6 +11,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics/"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/phonetics/"/>
   </compounddef>
 </doxygen>

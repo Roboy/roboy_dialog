@@ -28,7 +28,10 @@
   "movies" : [
     ["Oh, I would watch ",". If those vision guys finally fixed my perception."]
   ],
-  "OCCUPATION" : [
+  "OCCUPIED_AS" : [
     ["You are probably very poor doing ",""]
+  ],
+  "OTHER" : [
+    ["Other ",""]
   ]
 }

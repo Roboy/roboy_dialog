@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1talk_1_1_verbalizer" kind="class" language="Java" prot="public">
     <compoundname>roboy::talk::Verbalizer</compoundname>
       <sectiondef kind="public-static-attrib">
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" line="42" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" bodystart="42" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" line="42" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1talk_1_1_verbalizer_1a85cf9039e9b899e91089c69a963bccea" prot="public" static="yes" mutable="no">
         <type>final List&lt; String &gt;</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" line="49" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" bodystart="49" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" line="49" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" bodystart="49" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-attrib">
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" line="57" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" bodystart="57" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" line="57" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1talk_1_1_verbalizer_1a4e3a0e4c142b9d75c7988c3ead52900d" prot="private" static="yes" mutable="no">
         <type>final List&lt; String &gt;</type>
@@ -64,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" line="66" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" bodystart="66" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" line="66" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1talk_1_1_verbalizer_1ae8744d042d2b22f4ba2dcf40e4fd284b" prot="private" static="yes" mutable="no">
         <type>final List&lt; String &gt;</type>
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" line="68" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" bodystart="68" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" line="68" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" bodystart="68" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1talk_1_1_verbalizer_1ac57b0d41606c7626ef89ccaaaac18ba4" prot="private" static="yes" mutable="no">
         <type>final Map&lt; String, String &gt;</type>
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" line="129" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" bodystart="129" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" line="129" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" bodystart="129" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1talk_1_1_verbalizer_1a4b698e84557f1e338daebb989fe42be9" prot="private" static="yes" mutable="no">
         <type>final Map&lt; Integer, String &gt;</type>
@@ -127,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" line="162" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" bodystart="162" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" line="162" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" bodystart="162" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1talk_1_1_verbalizer_1a16e20e0785d3796366a54146b39d1260" prot="private" static="yes" mutable="no">
         <type>final Map&lt; String, String &gt;</type>
@@ -163,7 +163,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" line="184" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" bodystart="184" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" line="184" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" bodystart="184" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1talk_1_1_verbalizer_1af93ab091146719f32eb433c834dc4995" prot="private" static="yes" mutable="no">
         <type>final Map&lt; Integer, String &gt;</type>
@@ -187,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" line="208" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" bodystart="208" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" line="208" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" bodystart="208" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -215,7 +215,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" line="31" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" bodystart="31" bodyend="40"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" line="31" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" bodystart="31" bodyend="40"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -234,7 +234,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" line="45" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" bodystart="45" bodyend="47"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" line="45" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" bodystart="45" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1talk_1_1_verbalizer_1a779b00d5d100fe54fd45f11d2f2050c8" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1dialog_1_1action_1_1_shut_down_action" kindref="compound">ShutDownAction</ref></type>
@@ -251,7 +251,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" line="53" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" bodystart="53" bodyend="55"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" line="53" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" bodystart="53" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1talk_1_1_verbalizer_1aaa966a7f396191a2da567078290dfa7e" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1dialog_1_1action_1_1_speech_action" kindref="compound">SpeechAction</ref></type>
@@ -268,7 +268,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" line="60" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" bodystart="60" bodyend="63"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" line="60" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" bodystart="60" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1talk_1_1_verbalizer_1ac1163d68a304aac04bab3254618cffc5" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1dialog_1_1action_1_1_speech_action" kindref="compound">SpeechAction</ref></type>
@@ -285,7 +285,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" line="72" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" bodystart="72" bodyend="76"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" line="72" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" bodystart="72" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1talk_1_1_verbalizer_1a1709e949ae55350addec486a7e8ff510" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
@@ -302,7 +302,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" line="78" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" bodystart="78" bodyend="94"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" line="78" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" bodystart="78" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1talk_1_1_verbalizer_1ad1bbafb49f81e8e55a6828a66d4eac03" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -319,7 +319,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" line="96" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" bodystart="96" bodyend="127"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" line="96" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" bodystart="96" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1talk_1_1_verbalizer_1a45c02e87cbceadba623e1ccdb844aac5" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1dialog_1_1action_1_1_speech_action" kindref="compound">SpeechAction</ref></type>
@@ -336,7 +336,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" line="220" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" bodystart="220" bodyend="222"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" line="220" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" bodystart="220" bodyend="222"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -344,36 +344,36 @@
     <detaileddescription>
 <para>This should in the future lead to diversifying the ways Roboy is expressing information. </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="1317">
+      <node id="640">
         <label>Map&lt; String, String &gt;</label>
       </node>
-      <node id="1315">
+      <node id="638">
         <label>List&lt; String &gt;</label>
       </node>
-      <node id="1314">
+      <node id="637">
         <label>roboy.talk.Verbalizer</label>
         <link refid="classroboy_1_1talk_1_1_verbalizer"/>
-        <childnode refid="1315" relation="usage">
+        <childnode refid="638" relation="usage">
           <edgelabel>preAnecdotes</edgelabel>
           <edgelabel>farewells</edgelabel>
           <edgelabel>greetings</edgelabel>
           <edgelabel>anecdotes</edgelabel>
           <edgelabel>segues</edgelabel>
         </childnode>
-        <childnode refid="1316" relation="usage">
+        <childnode refid="639" relation="usage">
           <edgelabel>tenthNumberMap</edgelabel>
           <edgelabel>lowNumberMap</edgelabel>
         </childnode>
-        <childnode refid="1317" relation="usage">
+        <childnode refid="640" relation="usage">
           <edgelabel>dayNumberMap</edgelabel>
           <edgelabel>monthNumberMap</edgelabel>
         </childnode>
       </node>
-      <node id="1316">
+      <node id="639">
         <label>Map&lt; Integer, String &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" line="20" column="1" bodyfile="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk/Verbalizer.java" bodystart="20" bodyend="224"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" line="20" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/talk/Verbalizer.java" bodystart="20" bodyend="224"/>
     <listofallmembers>
       <member refid="classroboy_1_1talk_1_1_verbalizer_1ac1163d68a304aac04bab3254618cffc5" prot="private" virt="non-virtual"><scope>roboy::talk::Verbalizer</scope><name>anecdote</name></member>
       <member refid="classroboy_1_1talk_1_1_verbalizer_1ae8744d042d2b22f4ba2dcf40e4fd284b" prot="private" virt="non-virtual"><scope>roboy::talk::Verbalizer</scope><name>anecdotes</name></member>

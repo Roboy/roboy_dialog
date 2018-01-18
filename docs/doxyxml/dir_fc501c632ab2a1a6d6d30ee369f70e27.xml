@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="dir_fc501c632ab2a1a6d6d30ee369f70e27" kind="dir">
-    <compoundname>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/logic</compoundname>
+    <compoundname>/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/logic</compoundname>
     <innerfile refid="_intention_8java">Intention.java</innerfile>
     <innerfile refid="_intention_classifier_8java">IntentionClassifier.java</innerfile>
     <innerfile refid="_p_a_s_interpreter_8java">PASInterpreter.java</innerfile>
@@ -10,6 +10,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/logic/"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/logic/"/>
   </compounddef>
 </doxygen>

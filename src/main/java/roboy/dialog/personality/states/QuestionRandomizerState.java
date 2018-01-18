@@ -1,16 +1,15 @@
 package roboy.dialog.personality.states;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jRelations;
+import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
 import roboy.util.JsonUtils;
 
-import static roboy.memory.Neo4jRelations.*;
+import static roboy.memory.Neo4jRelationships.*;
 
 /**
  * Manages the questions that can be asked from a person.
@@ -24,18 +23,24 @@ public class QuestionRandomizerState implements State{
 	
 	private PersonalQAState[] questionStates;
 	private PersonalQAState locationQuestion;
-	private HashMap<Neo4jRelations, Boolean> alreadyAsked;
+	private PersonalFollowUpState[] followUpStates;
+	private HashMap<Neo4jRelationships, Boolean> alreadyAsked;
 	private State inner;
 	private State chosenState;
 	private Interlocutor person;
+	boolean askFollowUp = true;
 
 	// All spoken phrases for asking questions are stored in these JSON files.
 	String questionsFile = "sentences/questions.json";
 	String successAnswersFile = "sentences/successAnswers.json";
 	String failureAnswersFile = "sentences/failureAnswers.json";
+	String followUpFile = "sentences/followUp.json";
+	String answersFollowUpFile = "sentences/answersFollowUp.json";
 	Map<String, List<String>> questions;
 	Map<String, List<String[]>> successAnswers;
 	Map<String, List<String>> failureAnswers;
+	Map<String, List<String>> followUp;
+	Map<String, List<String[]>> answersFollowUp;
 	
 	public QuestionRandomizerState(State inner, Interlocutor person) {
 		this.inner = inner;
@@ -43,6 +48,8 @@ public class QuestionRandomizerState implements State{
 		questions = JsonUtils.getSentencesFromJsonFile(questionsFile);
 		successAnswers = JsonUtils.getSentenceArraysFromJsonFile(successAnswersFile);
 		failureAnswers = JsonUtils.getSentencesFromJsonFile(failureAnswersFile);
+		followUp = JsonUtils.getSentencesFromJsonFile(followUpFile);
+		answersFollowUp = JsonUtils.getSentenceArraysFromJsonFile(answersFollowUpFile);
 		// alreadyAsked is filled automatically by the initializeQuestion method,
 		// then updated to match already existing information with checkForAskedQuestions()
 		alreadyAsked = new HashMap<>();
@@ -54,12 +61,18 @@ public class QuestionRandomizerState implements State{
 		locationQuestion.setSuccess(locationDBpedia);
 		questionStates = new PersonalQAState[]{
 				locationQuestion,
-				initializeQuestion(HAS_HOBBY),
-				initializeQuestion(WORK_FOR),
-				initializeQuestion(STUDY_AT)
-// TODO request support for Occupation and Movie data in the database.
-//			 initializeQuestion(OCCUPATION),
+//				initializeQuestion(HAS_HOBBY),
+//				initializeQuestion(WORK_FOR),
+//				initializeQuestion(STUDY_AT)
+// 		TODO request support for Occupation and Movie data in the database.
+			 initializeQuestion(OTHER),
 //			 initializeQuestion(LIKES_MOVIE),
+		};
+		followUpStates = new PersonalFollowUpState[] {
+				initializeFollowUpQuestion(FROM),
+				initializeFollowUpQuestion(HAS_HOBBY),
+				initializeFollowUpQuestion(WORK_FOR),
+				initializeFollowUpQuestion(STUDY_AT)
 		};
 	}
 
@@ -82,6 +95,11 @@ public class QuestionRandomizerState implements State{
 			if(!alreadyAsked.get(questionStates[index].predicate)){
 				alreadyAsked.put(questionStates[index].predicate, true);
 				chosenState = questionStates[index];
+                return chosenState.act();
+			} else if (askFollowUp) {
+				index = (int) (Math.random() * followUpStates.length);
+				chosenState = followUpStates[index];
+				askFollowUp = false;
 				return chosenState.act();
 			}
 		}
@@ -102,18 +120,28 @@ public class QuestionRandomizerState implements State{
 		}
 	}
 
-	private PersonalQAState initializeQuestion(Neo4jRelations relation) {
-		alreadyAsked.put(relation, false);
+	private PersonalQAState initializeQuestion(Neo4jRelationships relationship) {
+		alreadyAsked.put(relationship, false);
 		return new PersonalQAState(
-				questions.get(relation.type),
-				failureAnswers.get(relation.type),
-				successAnswers.get(relation.type),
-				relation, person);
+				questions.get(relationship.type),
+				failureAnswers.get(relationship.type),
+				successAnswers.get(relationship.type),
+				relationship, person);
+	}
+
+	private PersonalFollowUpState initializeFollowUpQuestion(Neo4jRelationships relationship) {
+		return new PersonalFollowUpState(
+				followUp.get(relationship.type),
+				failureAnswers.get(relationship.type),
+                answersFollowUp.get(relationship.type),
+				relationship, this, person);
 	}
 
 	private void checkForAskedQuestions() {
-		for(Neo4jRelations relation : alreadyAsked.keySet()) {
-			if(person.hasRelation(relation)) alreadyAsked.put(relation, true);
+	for(Neo4jRelationships relationship : alreadyAsked.keySet()) {
+			if(person.hasRelationship(relationship)) {
+				alreadyAsked.put(relationship, true);
+			}
 		}
 	}
 	
