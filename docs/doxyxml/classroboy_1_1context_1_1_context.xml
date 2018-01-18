@@ -1,0 +1,279 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1context_1_1_context" kind="class" language="Java" prot="public">
+    <compoundname>roboy::context::Context</compoundname>
+    <basecompoundref refid="classroboy_1_1context_1_1_attribute_manager" prot="public" virt="non-virtual">roboy.context.AttributeManager&lt; Context.HistoryAttributes, Context.ValueAttributes &gt;</basecompoundref>
+    <innerclass refid="enumroboy_1_1context_1_1_context_1_1_history_attributes" prot="public">roboy::context::Context::HistoryAttributes</innerclass>
+    <innerclass refid="enumroboy_1_1context_1_1_context_1_1_updaters" prot="public">roboy::context::Context::Updaters</innerclass>
+    <innerclass refid="enumroboy_1_1context_1_1_context_1_1_value_attributes" prot="public">roboy::context::Context::ValueAttributes</innerclass>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classroboy_1_1context_1_1_context_1ab09552eb09b1389bb9b9601172db62e0" prot="private" static="yes" mutable="no">
+        <type><ref refid="classroboy_1_1context_1_1_context" kindref="compound">Context</ref></type>
+        <definition>Context roboy.context.Context.context</definition>
+        <argsstring></argsstring>
+        <name>context</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="28" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classroboy_1_1context_1_1_context_1a1742c9ea6c6a72dca45b775d3cd10253" prot="private" static="no" mutable="no">
+        <type>final ArrayList</type>
+        <definition>final ArrayList roboy.context.Context.asyncUpdatePolicies</definition>
+        <argsstring></argsstring>
+        <name>asyncUpdatePolicies</name>
+        <initializer>= new ArrayList&lt;<ref refid="classroboy_1_1context_1_1_async_update_policy" kindref="compound">AsyncUpdatePolicy</ref>&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="29" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1context_1_1_context_1ac261d13a241551db71b50cd7e0311050" prot="private" static="no" mutable="no">
+        <type><ref refid="classroboy_1_1context_1_1memory_context_1_1_interlocutor_node" kindref="compound">InterlocutorNode</ref></type>
+        <definition>InterlocutorNode roboy.context.Context.interlocutor</definition>
+        <argsstring></argsstring>
+        <name>interlocutor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="31" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classroboy_1_1context_1_1_context_1a65fcea29674c59852b11563b67a928cf" prot="public" static="no" mutable="no">
+        <type>final HashMap</type>
+        <definition>final HashMap roboy.context.Context.directUpdatePolicies</definition>
+        <argsstring></argsstring>
+        <name>directUpdatePolicies</name>
+        <initializer>= new HashMap&lt;Class, <ref refid="interfaceroboy_1_1context_1_1_direct_update_policy" kindref="compound">DirectUpdatePolicy</ref>&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="30" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classroboy_1_1context_1_1_context_1a48d7952e927feda43995bd70c9380d03" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.context.Context.Context</definition>
+        <argsstring>()</argsstring>
+        <name>Context</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="33" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="33" bodyend="55"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classroboy_1_1context_1_1_context_1ac5c4640865efbc6a129b3641b7a6f69c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1context_1_1_context" kindref="compound">Context</ref></type>
+        <definition>static Context roboy.context.Context.getInstance</definition>
+        <argsstring>()</argsstring>
+        <name>getInstance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="57" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="57" bodyend="62"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1context_1_1_context_1aa168decba73636647333d0324788644d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="interfaceroboy_1_1context_1_1_direct_update_policy" kindref="compound">DirectUpdatePolicy</ref></type>
+        <definition>DirectUpdatePolicy roboy.context.Context.getUpdater</definition>
+        <argsstring>(Updaters updater)</argsstring>
+        <name>getUpdater</name>
+        <param>
+          <type><ref refid="enumroboy_1_1context_1_1_context_1_1_updaters" kindref="compound">Updaters</ref></type>
+          <declname>updater</declname>
+        </param>
+        <briefdescription>
+<para>Get the updater to directly add values to an attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>updater</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the updater. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An updatePolicy offering the putValue() method. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="144" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="144" bodyend="146"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Singleton class serving as an interface to access all context objects. </para>    </briefdescription>
+    <detaileddescription>
+<para>Takes care of correct initialization of attribute histories and updaters.</para><para>Simple attributes (which implement the AttributeHistory interface) are handled through the inherited <ref refid="classroboy_1_1context_1_1_attribute_manager" kindref="compound">AttributeManager</ref> methods.</para><para>For usage examples, check out ContextTest.java </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="1017">
+        <label>roboy.context.AttributeManager&lt; Context.HistoryAttributes, Context.ValueAttributes &gt;</label>
+        <link refid="classroboy_1_1context_1_1_attribute_manager"/>
+      </node>
+      <node id="1016">
+        <label>roboy.context.Context</label>
+        <link refid="classroboy_1_1context_1_1_context"/>
+        <childnode refid="1017" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1035">
+        <label>HashMap</label>
+      </node>
+      <node id="1020">
+        <label>ArrayList</label>
+      </node>
+      <node id="1034">
+        <label>CountDownLatch</label>
+      </node>
+      <node id="1029">
+        <label>Gson</label>
+      </node>
+      <node id="1023">
+        <label>roboy.memory.nodes.MemoryNodeModel</label>
+        <link refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model"/>
+        <childnode refid="1024" relation="usage">
+          <edgelabel>properties</edgelabel>
+        </childnode>
+        <childnode refid="1025" relation="usage">
+          <edgelabel>labels</edgelabel>
+        </childnode>
+        <childnode refid="1026" relation="usage">
+          <edgelabel>relationships</edgelabel>
+        </childnode>
+      </node>
+      <node id="1028">
+        <label>roboy.memory.Memory&lt; MemoryNodeModel &gt;</label>
+        <link refid="interfaceroboy_1_1memory_1_1_memory"/>
+      </node>
+      <node id="1019">
+        <label>roboy.context.AttributeManager&lt; Context.HistoryAttributes, Context.ValueAttributes &gt;</label>
+        <link refid="classroboy_1_1context_1_1_attribute_manager"/>
+      </node>
+      <node id="1022">
+        <label>roboy.memory.nodes.Interlocutor</label>
+        <link refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor"/>
+        <childnode refid="1023" relation="usage">
+          <edgelabel>person</edgelabel>
+        </childnode>
+        <childnode refid="1027" relation="usage">
+          <edgelabel>memory</edgelabel>
+        </childnode>
+      </node>
+      <node id="1021">
+        <label>roboy.context.memoryContext.InterlocutorNode</label>
+        <link refid="classroboy_1_1context_1_1memory_context_1_1_interlocutor_node"/>
+        <childnode refid="1022" relation="usage">
+          <edgelabel>interlocutor</edgelabel>
+        </childnode>
+      </node>
+      <node id="1033">
+        <label>HashMap&lt; roboy.ros.RosClients, ServiceClient &gt;</label>
+      </node>
+      <node id="1024">
+        <label>HashMap&lt; String, Object &gt;</label>
+      </node>
+      <node id="1030">
+        <label>roboy.ros.RosMainNode</label>
+        <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
+        <childnode refid="1031" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1032" relation="usage">
+          <edgelabel>clients</edgelabel>
+        </childnode>
+        <childnode refid="1034" relation="usage">
+          <edgelabel>rosConnectionLatch</edgelabel>
+        </childnode>
+      </node>
+      <node id="1026">
+        <label>HashMap&lt; String, ArrayList&lt; Integer &gt; &gt;</label>
+      </node>
+      <node id="1018">
+        <label>roboy.context.Context</label>
+        <link refid="classroboy_1_1context_1_1_context"/>
+        <childnode refid="1019" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1020" relation="usage">
+          <edgelabel>asyncUpdatePolicies</edgelabel>
+        </childnode>
+        <childnode refid="1021" relation="usage">
+          <edgelabel>interlocutor</edgelabel>
+        </childnode>
+        <childnode refid="1035" relation="usage">
+          <edgelabel>directUpdatePolicies</edgelabel>
+        </childnode>
+        <childnode refid="1018" relation="usage">
+          <edgelabel>context</edgelabel>
+        </childnode>
+      </node>
+      <node id="1032">
+        <label>roboy.ros.RosManager</label>
+        <link refid="classroboy_1_1ros_1_1_ros_manager"/>
+        <childnode refid="1033" relation="usage">
+          <edgelabel>clientMap</edgelabel>
+        </childnode>
+      </node>
+      <node id="1025">
+        <label>ArrayList&lt; String &gt;</label>
+      </node>
+      <node id="1031">
+        <label>AbstractNodeMain</label>
+      </node>
+      <node id="1027">
+        <label>roboy.memory.Neo4jMemory</label>
+        <link refid="classroboy_1_1memory_1_1_neo4j_memory"/>
+        <childnode refid="1028" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1029" relation="usage">
+          <edgelabel>gson</edgelabel>
+        </childnode>
+        <childnode refid="1030" relation="usage">
+          <edgelabel>rosMainNode</edgelabel>
+        </childnode>
+        <childnode refid="1027" relation="usage">
+          <edgelabel>memory</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="27" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="27" bodyend="147"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1context_1_1_context_1a1742c9ea6c6a72dca45b775d3cd10253" prot="private" virt="non-virtual"><scope>roboy::context::Context</scope><name>asyncUpdatePolicies</name></member>
+      <member refid="classroboy_1_1context_1_1_attribute_manager_1a4a2bee43f0dcdd4ba4997030f807f4ff" prot="protected" virt="non-virtual"><scope>roboy::context::Context</scope><name>attributes</name></member>
+      <member refid="classroboy_1_1context_1_1_context_1ab09552eb09b1389bb9b9601172db62e0" prot="private" virt="non-virtual"><scope>roboy::context::Context</scope><name>context</name></member>
+      <member refid="classroboy_1_1context_1_1_context_1a48d7952e927feda43995bd70c9380d03" prot="private" virt="non-virtual"><scope>roboy::context::Context</scope><name>Context</name></member>
+      <member refid="classroboy_1_1context_1_1_context_1a65fcea29674c59852b11563b67a928cf" prot="public" virt="non-virtual"><scope>roboy::context::Context</scope><name>directUpdatePolicies</name></member>
+      <member refid="classroboy_1_1context_1_1_attribute_manager_1a61189531613631c833a2cf48c7d98c58" prot="package" virt="non-virtual"><scope>roboy::context::Context</scope><name>getAttributeValue</name></member>
+      <member refid="classroboy_1_1context_1_1_context_1ac5c4640865efbc6a129b3641b7a6f69c" prot="public" virt="non-virtual"><scope>roboy::context::Context</scope><name>getInstance</name></member>
+      <member refid="classroboy_1_1context_1_1_attribute_manager_1a9b48119a5ca52e1d6c3b3d06b55a76b9" prot="package" virt="non-virtual"><scope>roboy::context::Context</scope><name>getLastAttributeValue</name></member>
+      <member refid="classroboy_1_1context_1_1_attribute_manager_1a988cdf9b696baf0e1e6fc65535a05ec9" prot="package" virt="non-virtual"><scope>roboy::context::Context</scope><name>getNLastValues</name></member>
+      <member refid="classroboy_1_1context_1_1_context_1aa168decba73636647333d0324788644d" prot="public" virt="non-virtual"><scope>roboy::context::Context</scope><name>getUpdater</name></member>
+      <member refid="classroboy_1_1context_1_1_attribute_manager_1af1a9cdda6498cc832911e6b0cb9251e9" prot="package" virt="non-virtual"><scope>roboy::context::Context</scope><name>getValue</name></member>
+      <member refid="classroboy_1_1context_1_1_context_1ac261d13a241551db71b50cd7e0311050" prot="private" virt="non-virtual"><scope>roboy::context::Context</scope><name>interlocutor</name></member>
+      <member refid="classroboy_1_1context_1_1_attribute_manager_1ac5027d6862070a36fc4658f38e133927" prot="protected" virt="non-virtual"><scope>roboy::context::Context</scope><name>values</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

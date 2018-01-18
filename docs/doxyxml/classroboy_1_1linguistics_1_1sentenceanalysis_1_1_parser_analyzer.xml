@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer" kind="class" language="Java" prot="public">
+    <compoundname>roboy::linguistics::sentenceanalysis::ParserAnalyzer</compoundname>
+    <basecompoundref refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer" prot="public" virt="non-virtual">roboy.linguistics.sentenceanalysis.Analyzer</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer_1a163f5010e5eaf7f1ff044dde936bddec" prot="private" static="no" mutable="no">
+        <type>Socket</type>
+        <definition>Socket roboy.linguistics.sentenceanalysis.ParserAnalyzer.clientSocket</definition>
+        <argsstring></argsstring>
+        <name>clientSocket</name>
+        <briefdescription>
+<para>Client socket for the parser. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/ParserAnalyzer.java" line="19" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/ParserAnalyzer.java" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer_1a583526f4ff29d10ad190696c6cd8d123" prot="private" static="no" mutable="no">
+        <type>PrintWriter</type>
+        <definition>PrintWriter roboy.linguistics.sentenceanalysis.ParserAnalyzer.out</definition>
+        <argsstring></argsstring>
+        <name>out</name>
+        <briefdescription>
+<para>Output stream for the parser. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/ParserAnalyzer.java" line="20" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/ParserAnalyzer.java" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer_1a69f85917fe3c333d81ea44342f4e4f39" prot="private" static="no" mutable="no">
+        <type>BufferedReader</type>
+        <definition>BufferedReader roboy.linguistics.sentenceanalysis.ParserAnalyzer.in</definition>
+        <argsstring></argsstring>
+        <name>in</name>
+        <briefdescription>
+<para>Input stream from the parser. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/ParserAnalyzer.java" line="21" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/ParserAnalyzer.java" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer_1a354fdd60bbc5d8d777b187d9a9c9a390" prot="private" static="no" mutable="no">
+        <type>boolean</type>
+        <definition>boolean roboy.linguistics.sentenceanalysis.ParserAnalyzer.debug</definition>
+        <argsstring></argsstring>
+        <name>debug</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>Boolean variable for debugging purpose. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/ParserAnalyzer.java" line="22" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/ParserAnalyzer.java" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer_1ac6b4c0d374e9eb2a352a5f607b91a5a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.linguistics.sentenceanalysis.ParserAnalyzer.ParserAnalyzer</definition>
+        <argsstring>(int portNumber)</argsstring>
+        <name>ParserAnalyzer</name>
+        <param>
+          <type>int</type>
+          <declname>portNumber</declname>
+        </param>
+        <briefdescription>
+<para>A constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para>Creates <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer" kindref="compound">ParserAnalyzer</ref> class and connects the parser to DM using a socket. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/ParserAnalyzer.java" line="28" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/ParserAnalyzer.java" bodystart="28" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer_1a94b4c5e642c45a272c422543a122234c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
+        <definition>Interpretation roboy.linguistics.sentenceanalysis.ParserAnalyzer.analyze</definition>
+        <argsstring>(Interpretation interpretation)</argsstring>
+        <name>analyze</name>
+        <reimplements refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer_1a815ac125df33bff418d4a21618e5a340">analyze</reimplements>
+        <param>
+          <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
+          <declname>interpretation</declname>
+        </param>
+        <briefdescription>
+<para>An analyzer function. </para>        </briefdescription>
+        <detaileddescription>
+<para>Sends input sentence to the parser and saves its response in output interpretation.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>interpretation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input interpretation with currently processed sentence and results from previous analysis. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Input interpretation with semantic parser result. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/ParserAnalyzer.java" line="52" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/ParserAnalyzer.java" bodystart="52" bodyend="78"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Semantic parser class. </para>    </briefdescription>
+    <detaileddescription>
+<para>Connects DM to Roboy parser and adds its result to interpretation class. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="1396">
+        <label>roboy.linguistics.sentenceanalysis.ParserAnalyzer</label>
+        <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer"/>
+        <childnode refid="1397" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1397">
+        <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
+        <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1402">
+        <label>PrintWriter</label>
+      </node>
+      <node id="1400">
+        <label>BufferedReader</label>
+      </node>
+      <node id="1398">
+        <label>roboy.linguistics.sentenceanalysis.ParserAnalyzer</label>
+        <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer"/>
+        <childnode refid="1399" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1400" relation="usage">
+          <edgelabel>in</edgelabel>
+        </childnode>
+        <childnode refid="1401" relation="usage">
+          <edgelabel>clientSocket</edgelabel>
+        </childnode>
+        <childnode refid="1402" relation="usage">
+          <edgelabel>out</edgelabel>
+        </childnode>
+      </node>
+      <node id="1399">
+        <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
+        <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
+      </node>
+      <node id="1401">
+        <label>Socket</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/ParserAnalyzer.java" line="17" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/ParserAnalyzer.java" bodystart="17" bodyend="80"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer_1a94b4c5e642c45a272c422543a122234c" prot="public" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::ParserAnalyzer</scope><name>analyze</name></member>
+      <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer_1a163f5010e5eaf7f1ff044dde936bddec" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::ParserAnalyzer</scope><name>clientSocket</name></member>
+      <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer_1a354fdd60bbc5d8d777b187d9a9c9a390" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::ParserAnalyzer</scope><name>debug</name></member>
+      <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer_1a69f85917fe3c333d81ea44342f4e4f39" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::ParserAnalyzer</scope><name>in</name></member>
+      <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer_1a583526f4ff29d10ad190696c6cd8d123" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::ParserAnalyzer</scope><name>out</name></member>
+      <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer_1ac6b4c0d374e9eb2a352a5f607b91a5a7" prot="public" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::ParserAnalyzer</scope><name>ParserAnalyzer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

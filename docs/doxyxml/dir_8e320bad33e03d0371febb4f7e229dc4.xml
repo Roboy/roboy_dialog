@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_8e320bad33e03d0371febb4f7e229dc4" kind="dir">
+    <compoundname>/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context</compoundname>
+    <innerdir refid="dir_5056205ae6881344b3d426f1b5089dae">/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dataTypes</innerdir>
+    <innerdir refid="dir_f463a36265e380b34f6d16fc91d3e13d">/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dialogContext</innerdir>
+    <innerdir refid="dir_21f74d8a5ca33ec014bca3d1e7f834db">/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/memoryContext</innerdir>
+    <innerdir refid="dir_aff77cbfcfec117c44351fba403c7d81">/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/visionContext</innerdir>
+    <innerfile refid="_async_update_policy_8java">AsyncUpdatePolicy.java</innerfile>
+    <innerfile refid="_attribute_interface_8java">AttributeInterface.java</innerfile>
+    <innerfile refid="_attribute_manager_8java">AttributeManager.java</innerfile>
+    <innerfile refid="_context_8java">Context.java</innerfile>
+    <innerfile refid="_direct_update_policy_8java">DirectUpdatePolicy.java</innerfile>
+    <innerfile refid="_history_attribute_8java">HistoryAttribute.java</innerfile>
+    <innerfile refid="_interval_update_policy_8java">IntervalUpdatePolicy.java</innerfile>
+    <innerfile refid="_simple_history_attribute_8java">SimpleHistoryAttribute.java</innerfile>
+    <innerfile refid="_simple_value_attribute_8java">SimpleValueAttribute.java</innerfile>
+    <innerfile refid="_value_attribute_8java">ValueAttribute.java</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/"/>
+  </compounddef>
+</doxygen>

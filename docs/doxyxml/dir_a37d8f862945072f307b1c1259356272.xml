@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_a37d8f862945072f307b1c1259356272" kind="dir">
+    <compoundname>/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states</compoundname>
+    <innerdir refid="dir_b28721f10b488d8d23b9ce8585fe312f">/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/factories</innerdir>
+    <innerdir refid="dir_41a6017a7c28145a6e1c56d312c40a75">/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates</innerdir>
+    <innerfile refid="new_dialog_2states_2_state_8java">State.java</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/newDialog/states/"/>
+  </compounddef>
+</doxygen>

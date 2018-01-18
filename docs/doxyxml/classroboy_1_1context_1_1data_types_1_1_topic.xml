@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1context_1_1data_types_1_1_topic" kind="class" language="Java" prot="public">
+    <compoundname>roboy::context::dataTypes::Topic</compoundname>
+    <basecompoundref refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type" prot="public" virt="non-virtual">roboy.context.dataTypes.DataType</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classroboy_1_1context_1_1data_types_1_1_topic_1a02fbb769a1fdea2d5b1e7ff68eb91851" prot="public" static="no" mutable="no">
+        <type>final String</type>
+        <definition>final String roboy.context.dataTypes.Topic.topic</definition>
+        <argsstring></argsstring>
+        <name>topic</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dataTypes/Topic.java" line="4" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dataTypes/Topic.java" bodystart="4" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1context_1_1data_types_1_1_topic_1a3102eced92adfe9d66a3a76d5ba180c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.context.dataTypes.Topic.Topic</definition>
+        <argsstring>(String topic)</argsstring>
+        <name>Topic</name>
+        <param>
+          <type>String</type>
+          <declname>topic</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dataTypes/Topic.java" line="6" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dataTypes/Topic.java" bodystart="6" bodyend="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1700">
+        <label>roboy.context.dataTypes.Topic</label>
+        <link refid="classroboy_1_1context_1_1data_types_1_1_topic"/>
+        <childnode refid="1701" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1701">
+        <label>roboy.context.dataTypes.DataType</label>
+        <link refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1702">
+        <label>roboy.context.dataTypes.Topic</label>
+        <link refid="classroboy_1_1context_1_1data_types_1_1_topic"/>
+        <childnode refid="1703" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1703">
+        <label>roboy.context.dataTypes.DataType</label>
+        <link refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dataTypes/Topic.java" line="3" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dataTypes/Topic.java" bodystart="3" bodyend="9"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1context_1_1data_types_1_1_topic_1a02fbb769a1fdea2d5b1e7ff68eb91851" prot="public" virt="non-virtual"><scope>roboy::context::dataTypes::Topic</scope><name>topic</name></member>
+      <member refid="classroboy_1_1context_1_1data_types_1_1_topic_1a3102eced92adfe9d66a3a76d5ba180c8" prot="public" virt="non-virtual"><scope>roboy::context::dataTypes::Topic</scope><name>Topic</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
