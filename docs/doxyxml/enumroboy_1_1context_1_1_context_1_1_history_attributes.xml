@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="enumroboy_1_1context_1_1_context_1_1_history_attributes" kind="enum" language="Java" prot="public">
     <compoundname>roboy::context::Context::HistoryAttributes</compoundname>
     <basecompoundref refid="interfaceroboy_1_1context_1_1_attribute_interface" prot="public" virt="non-virtual">roboy.context.AttributeInterface</basecompoundref>
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="69" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="69" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" line="69" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1context_1_1_context_1_1_history_attributes_1a902b4c16916c412c052942bfbde9de28" prot="public" static="no" mutable="no">
         <type>final Class</type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="71" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="71" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" line="71" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1context_1_1_context_1_1_history_attributes_1aebcb96644800dea25edd3fc3ae744391" prot="public" static="no" mutable="no">
         <type>final Class</type>
@@ -42,17 +42,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="72" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="72" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" line="72" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="72" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_history_attributes_1ad89a60454c7c6513e7d0255412373710" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_history_attributes_1a7062e386fe923b7e1128000f5d8c225c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>roboy.context.Context.HistoryAttributes.HistoryAttributes</definition>
-        <argsstring>(Class&lt;?extends HistoryAttribute &gt; attribute, Class&lt;?extends DataType &gt; value)</argsstring>
+        <argsstring>(Class&lt;? extends HistoryAttribute &gt; attribute, Class&lt;?extends DataType &gt; value)</argsstring>
         <name>HistoryAttributes</name>
         <param>
-          <type>Class&lt;?extends <ref refid="interfaceroboy_1_1context_1_1_history_attribute" kindref="compound">HistoryAttribute</ref> &gt;</type>
+          <type>Class&lt;? extends <ref refid="interfaceroboy_1_1context_1_1_history_attribute" kindref="compound">HistoryAttribute</ref> &gt;</type>
           <declname>attribute</declname>
         </param>
         <param>
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="74" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="74" bodyend="77"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" line="74" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="74" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_history_attributes_1aad0b3486e28e9f5c6a7c2294bbfaf6a9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Class</type>
@@ -79,7 +79,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="79" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="79" bodyend="81"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" line="79" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="79" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_history_attributes_1aba3ab2b4b198d5c0e587946b2cf6ff84" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Class</type>
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="83" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="83" bodyend="85"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" line="83" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="83" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_history_attributes_1a51b38c0aafed09ac067e46af0397dfac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>public&lt; T extends <ref refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type" kindref="compound">DataType</ref> &gt; T</type>
@@ -106,7 +106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="87" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="87" bodyend="89"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" line="87" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="87" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_history_attributes_1a03e740e5eb48e0bb93ccfccfbbe9949b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>public&lt; T extends <ref refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type" kindref="compound">DataType</ref> &gt; Map&lt; Integer, T &gt;</type>
@@ -123,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="91" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="91" bodyend="93"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" line="91" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="91" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_history_attributes_1a438857aca0a5222b1b5d4116b3798c3c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>public&lt; T extends <ref refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type" kindref="compound">DataType</ref> &gt; T</type>
@@ -140,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="95" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="95" bodyend="97"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" line="95" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="95" bodyend="97"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -148,30 +148,30 @@
     <detaileddescription>
 <para><ref refid="classroboy_1_1context_1_1_attribute_manager" kindref="compound">AttributeManager</ref> methods take an Attribute as parameter. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="1176">
+      <node id="283">
         <label>roboy.context.Context.HistoryAttributes</label>
         <link refid="enumroboy_1_1context_1_1_context_1_1_history_attributes"/>
-        <childnode refid="1177" relation="public-inheritance">
+        <childnode refid="284" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1177">
+      <node id="284">
         <label>roboy.context.AttributeInterface</label>
         <link refid="interfaceroboy_1_1context_1_1_attribute_interface"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1178">
+      <node id="285">
         <label>roboy.context.Context.HistoryAttributes</label>
         <link refid="enumroboy_1_1context_1_1_context_1_1_history_attributes"/>
-        <childnode refid="1179" relation="public-inheritance">
+        <childnode refid="286" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1179">
+      <node id="286">
         <label>roboy.context.AttributeInterface</label>
         <link refid="interfaceroboy_1_1context_1_1_attribute_interface"/>
       </node>
     </collaborationgraph>
-    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" line="68" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="68" bodyend="98"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" line="68" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="68" bodyend="98"/>
     <listofallmembers>
       <member refid="enumroboy_1_1context_1_1_context_1_1_history_attributes_1a902b4c16916c412c052942bfbde9de28" prot="public" virt="non-virtual"><scope>roboy::context::Context::HistoryAttributes</scope><name>classType</name></member>
       <member refid="enumroboy_1_1context_1_1_context_1_1_history_attributes_1acb0d330c558ade049f299c9ed6b90e2d" prot="public" virt="non-virtual"><scope>roboy::context::Context::HistoryAttributes</scope><name>DIALOG_TOPICS</name></member>
@@ -180,7 +180,7 @@
       <member refid="enumroboy_1_1context_1_1_context_1_1_history_attributes_1a03e740e5eb48e0bb93ccfccfbbe9949b" prot="public" virt="non-virtual"><scope>roboy::context::Context::HistoryAttributes</scope><name>getNLastValues</name></member>
       <member refid="enumroboy_1_1context_1_1_context_1_1_history_attributes_1aba3ab2b4b198d5c0e587946b2cf6ff84" prot="public" virt="non-virtual"><scope>roboy::context::Context::HistoryAttributes</scope><name>getReturnType</name></member>
       <member refid="enumroboy_1_1context_1_1_context_1_1_history_attributes_1a438857aca0a5222b1b5d4116b3798c3c" prot="public" virt="non-virtual"><scope>roboy::context::Context::HistoryAttributes</scope><name>getValue</name></member>
-      <member refid="enumroboy_1_1context_1_1_context_1_1_history_attributes_1ad89a60454c7c6513e7d0255412373710" prot="public" virt="non-virtual"><scope>roboy::context::Context::HistoryAttributes</scope><name>HistoryAttributes</name></member>
+      <member refid="enumroboy_1_1context_1_1_context_1_1_history_attributes_1a7062e386fe923b7e1128000f5d8c225c" prot="public" virt="non-virtual"><scope>roboy::context::Context::HistoryAttributes</scope><name>HistoryAttributes</name></member>
       <member refid="enumroboy_1_1context_1_1_context_1_1_history_attributes_1aebcb96644800dea25edd3fc3ae744391" prot="public" virt="non-virtual"><scope>roboy::context::Context::HistoryAttributes</scope><name>returnType</name></member>
     </listofallmembers>
   </compounddef>

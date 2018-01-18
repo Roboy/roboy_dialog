@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics" kind="class" language="Java" prot="public">
     <compoundname>roboy::context::dialogContext::DialogTopics</compoundname>
     <basecompoundref refid="classroboy_1_1context_1_1_simple_history_attribute" prot="public" virt="non-virtual">roboy::context::SimpleHistoryAttribute&lt; Integer, Topic &gt;</basecompoundref>
@@ -8,48 +8,48 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1085">
+      <node id="192">
         <label>roboy::context::SimpleHistoryAttribute&lt; Integer, Topic &gt;</label>
         <link refid="classroboy_1_1context_1_1_simple_history_attribute"/>
-        <childnode refid="1086" relation="public-inheritance">
+        <childnode refid="193" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1084">
+      <node id="191">
         <label>roboy.context.dialogContext.DialogTopics</label>
         <link refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics"/>
-        <childnode refid="1085" relation="public-inheritance">
+        <childnode refid="192" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1086">
+      <node id="193">
         <label>roboy::context::HistoryAttribute&lt; K, V &gt;</label>
         <link refid="interfaceroboy_1_1context_1_1_history_attribute"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1088">
+      <node id="195">
         <label>roboy::context::SimpleHistoryAttribute&lt; Integer, Topic &gt;</label>
         <link refid="classroboy_1_1context_1_1_simple_history_attribute"/>
-        <childnode refid="1089" relation="public-inheritance">
+        <childnode refid="196" relation="public-inheritance">
         </childnode>
-        <childnode refid="1090" relation="usage">
+        <childnode refid="197" relation="usage">
           <edgelabel>data</edgelabel>
         </childnode>
       </node>
-      <node id="1090">
+      <node id="197">
         <label>HashMap&lt; K, V &gt;</label>
       </node>
-      <node id="1087">
+      <node id="194">
         <label>roboy.context.dialogContext.DialogTopics</label>
         <link refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics"/>
-        <childnode refid="1088" relation="public-inheritance">
+        <childnode refid="195" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1089">
+      <node id="196">
         <label>roboy::context::HistoryAttribute&lt; K, V &gt;</label>
         <link refid="interfaceroboy_1_1context_1_1_history_attribute"/>
       </node>
     </collaborationgraph>
-    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dialogContext/DialogTopics.java" line="6" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dialogContext/DialogTopics.java" bodystart="6" bodyend="7"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dialogContext/DialogTopics.java" line="6" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dialogContext/DialogTopics.java" bodystart="6" bodyend="7"/>
     <listofallmembers>
       <member refid="classroboy_1_1context_1_1_simple_history_attribute_1a25331a89c362ea6634fd3b925c6ede98" prot="protected" virt="non-virtual"><scope>roboy::context::dialogContext::DialogTopics</scope><name>counter</name></member>
       <member refid="classroboy_1_1context_1_1_simple_history_attribute_1a12567c636cd325c3804aab4fe4a1e12b" prot="protected" virt="non-virtual"><scope>roboy::context::dialogContext::DialogTopics</scope><name>generateKey</name></member>

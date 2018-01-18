@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state" kind="class" language="Java" prot="public">
     <compoundname>roboy::dialog::personality::states::PersonalFollowUpState</compoundname>
     <basecompoundref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state" prot="public" virt="non-virtual">roboy.dialog.personality.states.AbstractBooleanState</basecompoundref>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="19" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="19" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="19" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="19" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a8bba389fcd368e88fc7435110807b211" prot="private" static="no" mutable="no">
         <type>List&lt; String[]&gt;</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="20" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="20" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="20" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a664e2567f324575d873abd1e41f83715" prot="private" static="no" mutable="no">
         <type><ref refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor" kindref="compound">Interlocutor</ref></type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="22" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="22" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="22" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="22" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="21" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="21" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="21" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -95,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="24" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="24" bodyend="32"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="24" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="24" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a2be55474f93370832751ad620c747a7a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
@@ -109,7 +109,7 @@
 <para>Using Neo4jRelationships predicate </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="39" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="39" bodyend="52"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="39" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="39" bodyend="52"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -128,7 +128,7 @@
 <para>As locations, hobbies, workplaces etc are individual nodes in memory, those will be retrieved or created if necessary. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="62" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="62" bodyend="104"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="62" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="62" bodyend="104"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -136,154 +136,154 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1416">
+      <node id="523">
         <label>roboy.dialog.personality.states.PersonalFollowUpState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state"/>
-        <childnode refid="1417" relation="public-inheritance">
+        <childnode refid="524" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1417">
+      <node id="524">
         <label>roboy.dialog.personality.states.AbstractBooleanState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
-        <childnode refid="1418" relation="public-inheritance">
+        <childnode refid="525" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1418">
+      <node id="525">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1436">
+      <node id="543">
         <label>List&lt; String[]&gt;</label>
       </node>
-      <node id="1437">
+      <node id="544">
         <label>roboy.memory.Neo4jRelationships</label>
         <link refid="enumroboy_1_1memory_1_1_neo4j_relationships"/>
       </node>
-      <node id="1419">
+      <node id="526">
         <label>roboy.dialog.personality.states.PersonalFollowUpState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state"/>
-        <childnode refid="1420" relation="public-inheritance">
+        <childnode refid="527" relation="public-inheritance">
         </childnode>
-        <childnode refid="1423" relation="usage">
+        <childnode refid="530" relation="usage">
           <edgelabel>person</edgelabel>
         </childnode>
-        <childnode refid="1436" relation="usage">
+        <childnode refid="543" relation="usage">
           <edgelabel>successTexts</edgelabel>
         </childnode>
-        <childnode refid="1422" relation="usage">
+        <childnode refid="529" relation="usage">
           <edgelabel>questions</edgelabel>
         </childnode>
-        <childnode refid="1437" relation="usage">
+        <childnode refid="544" relation="usage">
           <edgelabel>predicate</edgelabel>
         </childnode>
       </node>
-      <node id="1435">
+      <node id="542">
         <label>CountDownLatch</label>
       </node>
-      <node id="1420">
+      <node id="527">
         <label>roboy.dialog.personality.states.AbstractBooleanState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
-        <childnode refid="1421" relation="public-inheritance">
+        <childnode refid="528" relation="public-inheritance">
         </childnode>
-        <childnode refid="1421" relation="usage">
+        <childnode refid="528" relation="usage">
           <edgelabel>success</edgelabel>
           <edgelabel>failure</edgelabel>
         </childnode>
-        <childnode refid="1422" relation="usage">
+        <childnode refid="529" relation="usage">
           <edgelabel>failureTexts</edgelabel>
           <edgelabel>successTexts</edgelabel>
         </childnode>
       </node>
-      <node id="1430">
+      <node id="537">
         <label>Gson</label>
       </node>
-      <node id="1422">
+      <node id="529">
         <label>List&lt; String &gt;</label>
       </node>
-      <node id="1424">
+      <node id="531">
         <label>roboy.memory.nodes.MemoryNodeModel</label>
         <link refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model"/>
-        <childnode refid="1425" relation="usage">
+        <childnode refid="532" relation="usage">
           <edgelabel>properties</edgelabel>
         </childnode>
-        <childnode refid="1426" relation="usage">
+        <childnode refid="533" relation="usage">
           <edgelabel>labels</edgelabel>
         </childnode>
-        <childnode refid="1427" relation="usage">
+        <childnode refid="534" relation="usage">
           <edgelabel>relationships</edgelabel>
         </childnode>
       </node>
-      <node id="1429">
+      <node id="536">
         <label>roboy.memory.Memory&lt; MemoryNodeModel &gt;</label>
         <link refid="interfaceroboy_1_1memory_1_1_memory"/>
       </node>
-      <node id="1423">
+      <node id="530">
         <label>roboy.memory.nodes.Interlocutor</label>
         <link refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor"/>
-        <childnode refid="1424" relation="usage">
+        <childnode refid="531" relation="usage">
           <edgelabel>person</edgelabel>
         </childnode>
-        <childnode refid="1428" relation="usage">
+        <childnode refid="535" relation="usage">
           <edgelabel>memory</edgelabel>
         </childnode>
       </node>
-      <node id="1434">
+      <node id="541">
         <label>HashMap&lt; roboy.ros.RosClients, ServiceClient &gt;</label>
       </node>
-      <node id="1425">
+      <node id="532">
         <label>HashMap&lt; String, Object &gt;</label>
       </node>
-      <node id="1421">
+      <node id="528">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
-      <node id="1431">
+      <node id="538">
         <label>roboy.ros.RosMainNode</label>
         <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
-        <childnode refid="1432" relation="public-inheritance">
+        <childnode refid="539" relation="public-inheritance">
         </childnode>
-        <childnode refid="1433" relation="usage">
+        <childnode refid="540" relation="usage">
           <edgelabel>clients</edgelabel>
         </childnode>
-        <childnode refid="1435" relation="usage">
+        <childnode refid="542" relation="usage">
           <edgelabel>rosConnectionLatch</edgelabel>
         </childnode>
       </node>
-      <node id="1427">
+      <node id="534">
         <label>HashMap&lt; String, ArrayList&lt; Integer &gt; &gt;</label>
       </node>
-      <node id="1433">
+      <node id="540">
         <label>roboy.ros.RosManager</label>
         <link refid="classroboy_1_1ros_1_1_ros_manager"/>
-        <childnode refid="1434" relation="usage">
+        <childnode refid="541" relation="usage">
           <edgelabel>clientMap</edgelabel>
         </childnode>
       </node>
-      <node id="1426">
+      <node id="533">
         <label>ArrayList&lt; String &gt;</label>
       </node>
-      <node id="1432">
+      <node id="539">
         <label>AbstractNodeMain</label>
       </node>
-      <node id="1428">
+      <node id="535">
         <label>roboy.memory.Neo4jMemory</label>
         <link refid="classroboy_1_1memory_1_1_neo4j_memory"/>
-        <childnode refid="1429" relation="public-inheritance">
+        <childnode refid="536" relation="public-inheritance">
         </childnode>
-        <childnode refid="1430" relation="usage">
+        <childnode refid="537" relation="usage">
           <edgelabel>gson</edgelabel>
         </childnode>
-        <childnode refid="1431" relation="usage">
+        <childnode refid="538" relation="usage">
           <edgelabel>rosMainNode</edgelabel>
         </childnode>
-        <childnode refid="1428" relation="usage">
+        <childnode refid="535" relation="usage">
           <edgelabel>memory</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="17" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="17" bodyend="106"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="17" bodyend="106"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a2be55474f93370832751ad620c747a7a" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::PersonalFollowUpState</scope><name>act</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a3e05c608ae2c72f697c49f9dccef5ca4" prot="protected" virt="non-virtual"><scope>roboy::dialog::personality::states::PersonalFollowUpState</scope><name>determineSuccess</name></member>

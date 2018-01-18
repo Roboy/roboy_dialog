@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1context_1_1data_types_1_1_coordinate_set" kind="class" language="Java" prot="public">
     <compoundname>roboy::context::dataTypes::CoordinateSet</compoundname>
     <basecompoundref refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type" prot="public" virt="non-virtual">roboy.context.dataTypes.DataType</basecompoundref>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" line="9" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" bodystart="9" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" line="9" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" bodystart="9" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1data_types_1_1_coordinate_set_1ab0c125fcc3276902d249c607a40d4662" prot="package" static="no" mutable="no">
         <type>final double</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" line="10" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" bodystart="10" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" line="10" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" bodystart="10" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1data_types_1_1_coordinate_set_1a678ecdf301405de4671c8b1737f1502d" prot="package" static="no" mutable="no">
         <type>final double</type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" line="11" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" bodystart="11" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" line="11" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" bodystart="11" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" line="13" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" bodystart="13" bodyend="17"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" bodystart="13" bodyend="17"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -76,30 +76,30 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1047">
+      <node id="154">
         <label>roboy.context.dataTypes.CoordinateSet</label>
         <link refid="classroboy_1_1context_1_1data_types_1_1_coordinate_set"/>
-        <childnode refid="1048" relation="public-inheritance">
+        <childnode refid="155" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1048">
+      <node id="155">
         <label>roboy.context.dataTypes.DataType</label>
         <link refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1049">
+      <node id="156">
         <label>roboy.context.dataTypes.CoordinateSet</label>
         <link refid="classroboy_1_1context_1_1data_types_1_1_coordinate_set"/>
-        <childnode refid="1050" relation="public-inheritance">
+        <childnode refid="157" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1050">
+      <node id="157">
         <label>roboy.context.dataTypes.DataType</label>
         <link refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type"/>
       </node>
     </collaborationgraph>
-    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" line="8" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" bodystart="8" bodyend="18"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" line="8" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dataTypes/CoordinateSet.java" bodystart="8" bodyend="18"/>
     <listofallmembers>
       <member refid="classroboy_1_1context_1_1data_types_1_1_coordinate_set_1a2cdc360fa306e6de94048b19106ea8e8" prot="public" virt="non-virtual"><scope>roboy::context::dataTypes::CoordinateSet</scope><name>CoordinateSet</name></member>
       <member refid="classroboy_1_1context_1_1data_types_1_1_coordinate_set_1ab863736fa1045e0f55af79785b5e6aa8" prot="package" virt="non-virtual"><scope>roboy::context::dataTypes::CoordinateSet</scope><name>x</name></member>

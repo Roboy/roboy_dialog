@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="interfaceroboy_1_1context_1_1_direct_update_policy" kind="interface" language="Java" prot="public">
     <compoundname>roboy::context::DirectUpdatePolicy</compoundname>
     <derivedcompoundref refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics_updater" prot="public" virt="non-virtual">roboy.context.dialogContext.DialogTopicsUpdater</derivedcompoundref>
@@ -25,7 +25,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/DirectUpdatePolicy.java" line="6" column="1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/DirectUpdatePolicy.java" line="6" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -33,18 +33,18 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1108">
+      <node id="215">
         <label>roboy.context.DirectUpdatePolicy&lt; V extends DataType &gt;</label>
         <link refid="interfaceroboy_1_1context_1_1_direct_update_policy"/>
       </node>
-      <node id="1109">
+      <node id="216">
         <label>roboy::context::dialogContext::DialogTopicsUpdater&lt; Topic &gt;</label>
         <link refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics_updater"/>
-        <childnode refid="1108" relation="public-inheritance">
+        <childnode refid="215" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/DirectUpdatePolicy.java" line="5" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/DirectUpdatePolicy.java" bodystart="5" bodyend="7"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/DirectUpdatePolicy.java" line="5" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/DirectUpdatePolicy.java" bodystart="5" bodyend="7"/>
     <listofallmembers>
       <member refid="interfaceroboy_1_1context_1_1_direct_update_policy_1ade0ba9f7aa452363fa306519250c2eaf" prot="public" virt="non-virtual"><scope>roboy::context::DirectUpdatePolicy</scope><name>putValue</name></member>
     </listofallmembers>

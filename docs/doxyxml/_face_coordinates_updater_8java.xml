@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="_face_coordinates_updater_8java" kind="file" language="Java">
     <compoundname>FaceCoordinatesUpdater.java</compoundname>
     <innerclass refid="classroboy_1_1context_1_1vision_context_1_1_face_coordinates_updater" prot="public">roboy::context::visionContext::FaceCoordinatesUpdater</innerclass>
@@ -30,6 +30,6 @@
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="23"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/visionContext/FaceCoordinatesUpdater.java"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/visionContext/FaceCoordinatesUpdater.java"/>
   </compounddef>
 </doxygen>

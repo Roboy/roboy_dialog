@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1io_1_1_command_line_communication" kind="class" language="Java" prot="public">
     <compoundname>roboy::io::CommandLineCommunication</compoundname>
     <basecompoundref refid="interfaceroboy_1_1io_1_1_communication" prot="public" virt="non-virtual">roboy.io.Communication</basecompoundref>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" line="21" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="21" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="21" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1io_1_1_command_line_communication_1a75f0ab5ac348e25ff15e66bd5106adc6" prot="private" static="no" mutable="no">
         <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer" kindref="compound">SentenceAnalyzer</ref></type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" line="22" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="22" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" line="22" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="22" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" line="25" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="25" bodyend="32"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" line="25" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="25" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1io_1_1_command_line_communication_1aad3bdba382786f3f4e7b7e918a6632c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" line="35" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="35" bodyend="49"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" line="35" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="35" bodyend="49"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" line="51" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="51" bodyend="57"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" line="51" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="51" bodyend="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -89,56 +89,56 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="986">
+      <node id="93">
         <label>roboy.io.CommandLineCommunication</label>
         <link refid="classroboy_1_1io_1_1_command_line_communication"/>
-        <childnode refid="987" relation="public-inheritance">
+        <childnode refid="94" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="987">
+      <node id="94">
         <label>roboy.io.Communication</label>
         <link refid="interfaceroboy_1_1io_1_1_communication"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="993">
+      <node id="100">
         <label>Map&lt; String, String &gt;</label>
       </node>
-      <node id="990">
+      <node id="97">
         <label>roboy.dialog.personality.Personality</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality"/>
       </node>
-      <node id="988">
+      <node id="95">
         <label>roboy.io.CommandLineCommunication</label>
         <link refid="classroboy_1_1io_1_1_command_line_communication"/>
-        <childnode refid="989" relation="public-inheritance">
+        <childnode refid="96" relation="public-inheritance">
         </childnode>
-        <childnode refid="990" relation="usage">
+        <childnode refid="97" relation="usage">
           <edgelabel>personality</edgelabel>
         </childnode>
-        <childnode refid="991" relation="usage">
+        <childnode refid="98" relation="usage">
           <edgelabel>analyzer</edgelabel>
         </childnode>
       </node>
-      <node id="991">
+      <node id="98">
         <label>roboy.linguistics.sentenceanalysis.SentenceAnalyzer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer"/>
-        <childnode refid="992" relation="public-inheritance">
+        <childnode refid="99" relation="public-inheritance">
         </childnode>
-        <childnode refid="993" relation="usage">
+        <childnode refid="100" relation="usage">
           <edgelabel>meanings</edgelabel>
         </childnode>
       </node>
-      <node id="992">
+      <node id="99">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
-      <node id="989">
+      <node id="96">
         <label>roboy.io.Communication</label>
         <link refid="interfaceroboy_1_1io_1_1_communication"/>
       </node>
     </collaborationgraph>
-    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" line="19" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="19" bodyend="59"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" line="19" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="19" bodyend="59"/>
     <listofallmembers>
       <member refid="classroboy_1_1io_1_1_command_line_communication_1a75f0ab5ac348e25ff15e66bd5106adc6" prot="private" virt="non-virtual"><scope>roboy::io::CommandLineCommunication</scope><name>analyzer</name></member>
       <member refid="classroboy_1_1io_1_1_command_line_communication_1aad3bdba382786f3f4e7b7e918a6632c3" prot="public" virt="non-virtual"><scope>roboy::io::CommandLineCommunication</scope><name>communicate</name></member>

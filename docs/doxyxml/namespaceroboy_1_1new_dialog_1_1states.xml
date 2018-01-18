@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="namespaceroboy_1_1new_dialog_1_1states" kind="namespace" language="Java">
     <compoundname>roboy::newDialog::states</compoundname>
     <innerclass refid="classroboy_1_1new_dialog_1_1states_1_1_state" prot="public">roboy::newDialog::states::State</innerclass>

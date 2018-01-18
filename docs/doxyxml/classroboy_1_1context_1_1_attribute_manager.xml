@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1context_1_1_attribute_manager" kind="class" language="Java" prot="public">
     <compoundname>roboy::context::AttributeManager</compoundname>
     <templateparamlist>
@@ -24,7 +24,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="13" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="13" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="13" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1_attribute_manager_1ac5027d6862070a36fc4658f38e133927" prot="protected" static="no" mutable="no">
         <type>ImmutableClassToInstanceMap&lt; <ref refid="interfaceroboy_1_1context_1_1_value_attribute" kindref="compound">ValueAttribute</ref> &gt;</type>
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="14" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="14" bodyend="-1"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="14" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="14" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="package-func">
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="16" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="16" bodyend="19"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="16" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="16" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1context_1_1_attribute_manager_1a61189531613631c833a2cf48c7d98c58" prot="package" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>protected&lt; T extends <ref refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type" kindref="compound">DataType</ref> &gt; T</type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="21" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="21" bodyend="24"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="21" bodyend="24"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1context_1_1_attribute_manager_1a988cdf9b696baf0e1e6fc65535a05ec9" prot="package" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>protected&lt; T extends <ref refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type" kindref="compound">DataType</ref> &gt; Map&lt; Integer, T &gt;</type>
@@ -98,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="26" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="26" bodyend="29"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="26" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="26" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1context_1_1_attribute_manager_1af1a9cdda6498cc832911e6b0cb9251e9" prot="package" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>protected&lt; T extends <ref refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type" kindref="compound">DataType</ref> &gt; T</type>
@@ -115,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="31" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="31" bodyend="34"/>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="31" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="31" bodyend="34"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -123,24 +123,24 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="952">
+      <node id="59">
         <label>roboy.context.AttributeManager&lt; A extends AttributeInterface, B extends AttributeInterface &gt;</label>
         <link refid="classroboy_1_1context_1_1_attribute_manager"/>
-        <childnode refid="953" relation="usage">
+        <childnode refid="60" relation="usage">
           <edgelabel>values</edgelabel>
         </childnode>
-        <childnode refid="954" relation="usage">
+        <childnode refid="61" relation="usage">
           <edgelabel>attributes</edgelabel>
         </childnode>
       </node>
-      <node id="954">
+      <node id="61">
         <label>ImmutableClassToInstanceMap&lt; roboy.context.HistoryAttribute &gt;</label>
       </node>
-      <node id="953">
+      <node id="60">
         <label>ImmutableClassToInstanceMap&lt; roboy.context.ValueAttribute &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="11" column="1" bodyfile="/home/nikita/Desktop/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="11" bodyend="35"/>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="11" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="11" bodyend="35"/>
     <listofallmembers>
       <member refid="classroboy_1_1context_1_1_attribute_manager_1a4a2bee43f0dcdd4ba4997030f807f4ff" prot="protected" virt="non-virtual"><scope>roboy::context::AttributeManager</scope><name>attributes</name></member>
       <member refid="classroboy_1_1context_1_1_attribute_manager_1a61189531613631c833a2cf48c7d98c58" prot="package" virt="non-virtual"><scope>roboy::context::AttributeManager</scope><name>getAttributeValue</name></member>
