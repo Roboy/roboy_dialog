@@ -55,11 +55,10 @@ public class SimpleHistoryAttribute<K extends Integer, V extends DataType> imple
      */
     @Override
     public HashMap<K, V> getLastNValues(int n) {
-        Integer limit = Math.min(n, counter);
         HashMap map = new HashMap();
-        //Limit is the number of values, so we decrement it before using as index.
-        while(--limit >= 0) {
-            map.put(limit, getValue((K) limit));
+        Integer lastToRetrieve = counter - Math.min(n, counter);
+        for(Integer i = counter-1; i >= lastToRetrieve; i--) {
+            map.put(i-lastToRetrieve, getValue((K) i));
         }
         return map;
     }
@@ -83,6 +82,6 @@ public class SimpleHistoryAttribute<K extends Integer, V extends DataType> imple
      */
     protected synchronized int generateKey() {
         return counter++;
-    };
+    }
 
 }
