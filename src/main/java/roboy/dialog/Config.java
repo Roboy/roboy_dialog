@@ -52,6 +52,8 @@ public class Config {
     public static boolean MEMORY = true;
     /** Semantic parser socket port. */
     public static int PARSER_PORT = -1;
+    /** Context GUI demo trigger. Set manually, if wanted. **/
+    public static boolean DEMO_GUI = false;
 
     /** Configuration file to store changing values. */
     private static String yamlConfigFile = "config.properties";

@@ -1,6 +1,7 @@
 package roboy.context.GUI;
 
 import roboy.context.Context;
+import roboy.context.dataTypes.DataType;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -20,6 +21,8 @@ public class ContextGUI {
     private TitledBorder valueBorder;
     private JPanel valuePanel;
     private Map<Context.ValueAttributes, JLabel> valueDisplays;
+    private Map<Context.HistoryAttributes, JScrollPane> historyDisplays;
+    private static int MAX_HISTORY_VALUES = 10;
 
     // Panel displaying historyAttributes.
     private TitledBorder historyBorder;
@@ -29,7 +32,7 @@ public class ContextGUI {
     private JPanel controlPanel;
 
     private static int FULL_WIDTH = 400;
-    private static int FULL_HEIGHT = 400;
+    private static int FULL_HEIGHT = 300;
     private static int ATTR_WIDTH = 390;
     private static int ATTR_HEIGHT = 50;
     private static int HISTORY_HEIGHT = 100;
@@ -51,7 +54,6 @@ public class ContextGUI {
         mainFrame.setSize(FULL_WIDTH, FULL_HEIGHT);
         mainFrame.setLayout(new FlowLayout());
         JPanel mainPanel = new JPanel();
-        //mainPanel.setBorder(BorderFactory.createEmptyBorder(2,2,2,2));
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
 
         mainFrame.add(mainPanel);
@@ -85,20 +87,22 @@ public class ContextGUI {
         historyBorder.setTitleJustification(TitledBorder.CENTER);
         historyPanel.setBorder(historyBorder);
 
-        Map<Context.HistoryAttributes, JList> history = new HashMap<>();
-        for(Context.HistoryAttributes v : Context.HistoryAttributes.values()) {
-            Object[] vals = v.getNLastValues(Integer.MAX_VALUE).entrySet().toArray();
-            if (vals.length == 0) {
-                vals = new Object[]{"<not initialized>", "<not initialized>", "<not initialized>", "<not initialized>", "<not initialized>", "<not initialized>",
-                        "<not initialized>", "<not initialized>", "<not initialized>", "<not initialized>", "<not initialized>", "<not initialized>",
-                        "<not initialized>", "<not initialized>", "<not initialized>", "<not initialized>", "<not initialized>", "<not initialized>",
-                        "<not initialized>"};
+        historyDisplays = new HashMap<>();
+        for(Context.HistoryAttributes attribute : Context.HistoryAttributes.values()) {
+            historyPanel.add(new JLabel(attribute.toString() + ":", JLabel.CENTER));
+            HashMap vals = (HashMap<Integer, DataType>) attribute.getNLastValues(MAX_HISTORY_VALUES);
+            DefaultListModel<String> sorted = new DefaultListModel<>();
+            if (vals.size() == 0) {
+                sorted.add(0, NO_VALUE);
+            } else {
+                for (Integer i = 0; i < vals.size(); i++) {
+                    sorted.add(i, vals.get(vals.size() - i - 1).toString());
+                }
             }
-            JList historyList = new JList(vals);
-
+            JList historyList = new JList(sorted);
             JScrollPane scrollPane = new JScrollPane();
             scrollPane.setViewportView(historyList);
-            historyPanel.add(new JLabel(v.toString() + ":", JLabel.CENTER));
+            historyDisplays.put(attribute, scrollPane);
             historyPanel.add(scrollPane);
         }
         mainPanel.add(historyPanel);
@@ -120,6 +124,7 @@ public class ContextGUI {
         JButton updateButton = new JButton("Update");
         updateButton.addActionListener(e -> {
                 updateValues();
+                updateHistories();
             }
         );
         controlPanel.add(updateButton);
@@ -130,10 +135,27 @@ public class ContextGUI {
         for(Context.ValueAttributes attribute : Context.ValueAttributes.values()) {
             Object val = attribute.getLastValue();
             if (val == null) {
-                val = NO_VALUE;
+                continue;
             }
             valueDisplays.get(attribute).setText(val.toString());
         }
         valuePanel.updateUI();
+    }
+
+    private void updateHistories() {
+        for(Context.HistoryAttributes attribute : Context.HistoryAttributes.values()) {
+            HashMap vals = (HashMap<Integer, DataType>) attribute.getNLastValues(MAX_HISTORY_VALUES);
+            if (vals.size() == 0) {
+                continue;
+            }
+            DefaultListModel<String> sorted = new DefaultListModel<>();
+            for(Integer i = 0; i < vals.size(); i++) {
+                sorted.add(i, vals.get(vals.size()-i-1).toString());
+            }
+            JList historyList = new JList(sorted);
+            JScrollPane pane = historyDisplays.get(attribute);
+            pane.setViewportView(historyList);
+        }
+        historyPanel.updateUI();
     }
 }

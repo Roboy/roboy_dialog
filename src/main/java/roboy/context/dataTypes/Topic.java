@@ -6,4 +6,9 @@ public class Topic implements DataType {
     public Topic(String topic) {
         this.topic = topic;
     }
+
+    @Override
+    public String toString() {
+        return topic;
+    }
 }
