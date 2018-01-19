@@ -1,38 +1,44 @@
 package roboy.context.GUI;
 
-import org.apache.commons.lang3.tuple.Pair;
 import roboy.context.Context;
-import roboy.context.ValueAttribute;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * A simple GUI with the goal of showing the attribute values and histories in the Context.
- * Based on a template from https://www.tutorialspoint.com/swing/swing_jframe.htm
  */
 public class ContextGUI {
     private JFrame mainFrame;
 
-    private JPanel controlPanel;
+    // Panel displaying valueAttributes.
     private TitledBorder valueBorder;
     private JPanel valuePanel;
+    private Map<Context.ValueAttributes, JLabel> valueDisplays;
+
+    // Panel displaying historyAttributes.
     private TitledBorder historyBorder;
     private JPanel historyPanel;
 
+    // Update button panel.
+    private JPanel controlPanel;
+
     private static int FULL_WIDTH = 400;
     private static int FULL_HEIGHT = 400;
+    private static int ATTR_WIDTH = 390;
+    private static int ATTR_HEIGHT = 50;
+    private static int HISTORY_HEIGHT = 100;
 
-    public static void main(String[] args) {
+    private static String NO_VALUE = "<not initialized>";
+
+    public static void run() {
         ContextGUI gui = new ContextGUI();
-        gui.showJFrameDemo();
+        gui.startFrame();
     }
 
     private ContextGUI() {
@@ -41,11 +47,11 @@ public class ContextGUI {
 
     private void prepareGUI() {
         // Window initialization.
-        mainFrame = new JFrame("Context GUI (alpha)");
+        mainFrame = new JFrame("Context GUI");
         mainFrame.setSize(FULL_WIDTH, FULL_HEIGHT);
         mainFrame.setLayout(new FlowLayout());
         JPanel mainPanel = new JPanel();
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(2,2,2,2));
+        //mainPanel.setBorder(BorderFactory.createEmptyBorder(2,2,2,2));
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
 
         mainFrame.add(mainPanel);
@@ -53,27 +59,28 @@ public class ContextGUI {
         // Attribute part initialization.
         valuePanel = new JPanel();
         valuePanel.setLayout(new GridLayout(0,2));
+        valuePanel.setPreferredSize(new Dimension(ATTR_WIDTH, ATTR_HEIGHT));
         valueBorder = BorderFactory.createTitledBorder("Context values");
         valueBorder.setTitleJustification(TitledBorder.CENTER);
         valuePanel.setBorder(valueBorder);
 
-        Map<Context.ValueAttributes, JLabel[]> values = new HashMap<>();
-        for(Context.ValueAttributes v : Context.ValueAttributes.values()) {
-            Object val = v.getLastValue();
+        valueDisplays = new HashMap<>();
+        for(Context.ValueAttributes attribute : Context.ValueAttributes.values()) {
+            valuePanel.add(new JLabel(attribute.toString()+ ":", JLabel.CENTER));
+            Object val = attribute.getLastValue();
             if (val == null) {
-                val = "<not initialized>";
+                val = NO_VALUE;
             }
-            JLabel[] pair = {
-                    new JLabel(v.toString()+ ":", JLabel.CENTER),
-                    new JLabel(val.toString(),JLabel.CENTER)};
-            values.put(v, pair);
-            valuePanel.add(pair[0]);
-            valuePanel.add(pair[1]);
+            JLabel valueLabel = new JLabel(val.toString(), JLabel.CENTER);
+            valueDisplays.put(attribute, valueLabel);
+            valuePanel.add(valueLabel);
         }
         mainPanel.add(valuePanel);
 
+        // History part initialization.
         historyPanel = new JPanel();
         historyPanel.setLayout(new GridLayout(0,2));
+        historyPanel.setPreferredSize(new Dimension(ATTR_WIDTH, HISTORY_HEIGHT));
         historyBorder = BorderFactory.createTitledBorder("Histories");
         historyBorder.setTitleJustification(TitledBorder.CENTER);
         historyPanel.setBorder(historyBorder);
@@ -98,7 +105,7 @@ public class ContextGUI {
 
         mainFrame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent windowEvent){
-                System.exit(0);
+                mainFrame.dispose();
             }
         });
 
@@ -109,15 +116,24 @@ public class ContextGUI {
         mainPanel.setVisible(true);
     }
 
-    private void showJFrameDemo() {
+    private void startFrame() {
         JButton updateButton = new JButton("Update");
         updateButton.addActionListener(e -> {
-                valueBorder.setTitle("Updated in the future");
-                valuePanel.setBorder(valueBorder);
-                valuePanel.updateUI();
+                updateValues();
             }
         );
         controlPanel.add(updateButton);
         mainFrame.setVisible(true);
+    }
+
+    private void updateValues() {
+        for(Context.ValueAttributes attribute : Context.ValueAttributes.values()) {
+            Object val = attribute.getLastValue();
+            if (val == null) {
+                val = NO_VALUE;
+            }
+            valueDisplays.get(attribute).setText(val.toString());
+        }
+        valuePanel.updateUI();
     }
 }
