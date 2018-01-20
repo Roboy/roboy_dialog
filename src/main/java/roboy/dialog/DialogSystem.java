@@ -133,10 +133,7 @@ public class DialogSystem {
 		analyzers.add(new OntologyNERAnalyzer());
 		analyzers.add(new AnswerAnalyzer());
         analyzers.add(new EmotionAnalyzer());
-        // PARSER ADDED
-        if(!Config.STANDALONE) {
-            analyzers.add(new SemanticParserAnalyzer(Config.PARSER_PORT));
-        }
+        analyzers.add(new SemanticParserAnalyzer(Config.PARSER_PORT));
         //if(!Config.NOROS) {
         //    analyzers.add(new IntentAnalyzer(rosMainNode));
         //}
