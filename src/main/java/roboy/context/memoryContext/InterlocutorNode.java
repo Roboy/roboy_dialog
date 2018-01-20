@@ -4,7 +4,7 @@ import roboy.memory.nodes.Interlocutor;
 
 /**
  * Stores the Memory node of Interlocutor.
- * Do not store a reference to the instance for reuse over multiple actions.
+ * Do not store a reference to the instance for reuse over multiple actions, in cas Interlocutor is switched.
  */
 public class InterlocutorNode {
     private Interlocutor interlocutor;

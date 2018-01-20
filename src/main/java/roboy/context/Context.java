@@ -11,6 +11,8 @@ import roboy.context.memoryContext.InterlocutorNodeUpdater;
 import roboy.context.visionContext.FaceCoordinates;
 import roboy.context.visionContext.FaceCoordinatesUpdater;
 
+import roboy_communication_cognition.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;

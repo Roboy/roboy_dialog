@@ -19,7 +19,7 @@ public abstract class IntervalUpdatePolicy<T> extends AsyncUpdatePolicy {
     /**
      * Create a new updater service, executing the update() method at regular time intervals.
      * @param target The target attribute of the update() method.
-     * @param updateFrequencySeconds Delay between calls to the update() method.
+     * @param updateFrequencySeconds Delay in seconds between calls to the update() method.
      */
     public IntervalUpdatePolicy(T target, int updateFrequencySeconds) {
         this.target = target;

@@ -66,6 +66,7 @@ public class Config {
         initializeYAMLConfig();
         // Initialize semantic parser socket port
         PARSER_PORT = yamlConfig.getInt("PARSER_PORT");
+        DEMO_GUI = yamlConfig.getBoolean("DEMO_GUI");
         switch(profile) {
             case DEFAULT:
                 setDefaultProfile();

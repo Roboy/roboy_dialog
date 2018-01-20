@@ -6,10 +6,7 @@ import java.util.List;
 
 import com.google.gson.JsonIOException;
 
-import roboy.context.Context;
-import roboy.context.DirectUpdatePolicy;
 import roboy.context.GUI.ContextGUI;
-import roboy.context.dataTypes.Topic;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.ShutDownAction;
 import roboy.dialog.personality.Personality;
