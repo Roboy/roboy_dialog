@@ -135,7 +135,7 @@ public class DialogSystem {
         analyzers.add(new EmotionAnalyzer());
         // PARSER ADDED
         if(!Config.STANDALONE) {
-            analyzers.add(new ParserAnalyzer(Config.PARSER_PORT));
+            analyzers.add(new SemanticParserAnalyzer(Config.PARSER_PORT));
         }
         //if(!Config.NOROS) {
         //    analyzers.add(new IntentAnalyzer(rosMainNode));
