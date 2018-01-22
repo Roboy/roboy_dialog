@@ -91,7 +91,7 @@ public class Interlocutor {
         MemoryNodeModel relatedNode = new MemoryNodeModel(true);
         relatedNode.setProperty("name", name);
         //This adds a label type to the memory query depending on the relation.
-        relatedNode.setLabel(determineNodeType(relationship));
+        relatedNode.setLabel(memory.determineNodeType(relationship));
         try {
             ids = memory.getByQuery(relatedNode);
         } catch (InterruptedException | IOException e) {
@@ -123,16 +123,4 @@ public class Interlocutor {
             e.printStackTrace();
         }
     }
-
-    private String determineNodeType(String relationship) {
-        // TODO expand list as new Node types are added.
-        if(relationship.equals(Neo4jRelationships.HAS_HOBBY.type)) return "Hobby";
-        if(relationship.equals(Neo4jRelationships.FROM.type)) return "Country";
-        if(relationship.equals(Neo4jRelationships.WORK_FOR.type)) return "Organization";
-        if(relationship.equals(Neo4jRelationships.STUDY_AT.type)) return "Organization";
-        if(relationship.equals(Neo4jRelationships.OCCUPIED_AS.type)) return "Occupation";
-        if(relationship.equals(Neo4jRelationships.OTHER.type)) return "Other";
-        else return "";
-    }
-
 }
