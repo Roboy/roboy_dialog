@@ -7,6 +7,7 @@ import java.util.Map;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
+import roboy.util.JsonQAValues;
 import roboy.util.JsonUtils;
 
 import static roboy.memory.Neo4jRelationships.*;
@@ -28,28 +29,40 @@ public class QuestionRandomizerState implements State{
 	private State inner;
 	private State chosenState;
 	private Interlocutor person;
+	private JsonQAValues questionsAndAnswers;
 	boolean askFollowUp = true;
 
 	// All spoken phrases for asking questions are stored in these JSON files.
-	String questionsFile = "sentences/questions.json";
-	String successAnswersFile = "sentences/successAnswers.json";
-	String failureAnswersFile = "sentences/failureAnswers.json";
-	String followUpFile = "sentences/followUp.json";
-	String answersFollowUpFile = "sentences/answersFollowUp.json";
+//	String questionsFile = "sentences/questions.json";
+//	String successAnswersFile = "sentences/successAnswers.json";
+//	String failureAnswersFile = "sentences/failureAnswers.json";
+//	String followUpFile = "sentences/followUp.json";
+//	String answersFollowUpFile = "sentences/answersFollowUp.json";
+
+	String QAfile = "sentences/QAList.json";
+
 	Map<String, List<String>> questions;
-	Map<String, List<String[]>> successAnswers;
+	Map<String, List<String>> successAnswers;
 	Map<String, List<String>> failureAnswers;
 	Map<String, List<String>> followUp;
-	Map<String, List<String[]>> answersFollowUp;
+	Map<String, List<String>> answersFollowUp;
 	
 	public QuestionRandomizerState(State inner, Interlocutor person) {
 		this.inner = inner;
 		this.person = person;
-		questions = JsonUtils.getSentencesFromJsonFile(questionsFile);
-		successAnswers = JsonUtils.getSentenceArraysFromJsonFile(successAnswersFile);
-		failureAnswers = JsonUtils.getSentencesFromJsonFile(failureAnswersFile);
-		followUp = JsonUtils.getSentencesFromJsonFile(followUpFile);
-		answersFollowUp = JsonUtils.getSentenceArraysFromJsonFile(answersFollowUpFile);
+//		questions = JsonUtils.getSentencesFromJsonFile(questionsFile);
+//		successAnswers = JsonUtils.getSentenceArraysFromJsonFile(successAnswersFile);
+//		failureAnswers = JsonUtils.getSentencesFromJsonFile(failureAnswersFile);
+//		followUp = JsonUtils.getSentencesFromJsonFile(followUpFile);
+//		answersFollowUp = JsonUtils.getSentenceArraysFromJsonFile(answersFollowUpFile);
+        questionsAndAnswers = JsonUtils.getQuestionsAndAnswersFromJson(QAfile);
+
+        questions = questionsAndAnswers.getQuestions();
+        successAnswers = questionsAndAnswers.getSuccessAnswers();
+        failureAnswers = questionsAndAnswers.getFailureAnswers();
+        followUp = questionsAndAnswers.getFollowUpQuestions();
+        answersFollowUp = questionsAndAnswers.getFollowUpAnswers();
+
 		// alreadyAsked is filled automatically by the initializeQuestion method,
 		// then updated to match already existing information with checkForAskedQuestions()
 		alreadyAsked = new HashMap<>();

@@ -17,12 +17,12 @@ import java.util.Map;
 public class PersonalFollowUpState extends AbstractBooleanState{
 
 	private List<String> questions;
-	private List<String[]> successTexts;
+	private List<String> successTexts;
 	public Neo4jRelationships predicate;
 	private Interlocutor person;
 
 	public PersonalFollowUpState(List<String> questions, List<String> failureTexts,
-                                 List<String[]> successTexts, Neo4jRelationships predicate, QuestionRandomizerState nextState, Interlocutor person) {
+                                 List<String> successTexts, Neo4jRelationships predicate, QuestionRandomizerState nextState, Interlocutor person) {
 		this.questions = questions;
 		this.successTexts = successTexts;
 		this.predicate = predicate;
@@ -94,8 +94,8 @@ public class PersonalFollowUpState extends AbstractBooleanState{
 
 
 			List<String> sTexts = new ArrayList<>();
-			for(String[] s: successTexts){
-				sTexts.add(s[0]+s[1]);
+			for(String s: successTexts){
+				sTexts.add(String.format(s, ""));
 			}
 			setSuccessTexts(sTexts);
 			return true;
