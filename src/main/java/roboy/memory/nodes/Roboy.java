@@ -20,11 +20,11 @@ public class Roboy {
     /**
      * Initializer for the Roboy node
      */
-    public Roboy() {
+    public Roboy(String name) {
         this.roboy = new MemoryNodeModel(true);
         this.memory = Neo4jMemory.getInstance();
         this.memoryROS = Config.MEMORY;
-        this.InitializeRoboy("roboy"); // May be "roboy junior"
+        this.InitializeRoboy(name); // May be eg "roboy junior"
     }
 
     /**
@@ -39,6 +39,7 @@ public class Roboy {
         roboy.setProperty("name", name);
         roboy.setLabel("Robot");
 
+        //
         if(memoryROS) {
             ArrayList<Integer> ids = new ArrayList<>();
             try {
@@ -118,6 +119,7 @@ public class Roboy {
         }
     }
 
+    // Method to check
     private String determineNodeType(String relationship) {
         // TODO expand list as new Node types are added.
         if(relationship.equals(Neo4jRelationships.HAS_HOBBY.type)) return "Hobby";
