@@ -1,9 +1,10 @@
 package roboy.context;
 
-import roboy.context.dataTypes.DataType;
-
-public class SimpleValueAttribute<V extends DataType> implements ValueAttribute<V> {
-    V value = null;
+/**
+ * Stores a single value of type V.
+ */
+public class Value<V> implements ValueInterface<V> {
+    volatile V value = null;
 
     @Override
     public V getValue() {

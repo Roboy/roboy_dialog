@@ -1,26 +1,24 @@
 package roboy.context;
 
-import roboy.context.dataTypes.DataType;
-
 import java.util.HashMap;
 /**
- * Simplistic HashMap history with unique Integer keys.
+ * HashMap implementation of a value list with unique Integer keys.
  */
-public class SimpleHistoryAttribute<K extends Integer, V extends DataType> implements HistoryAttribute<K,V> {
+public class ValueList<K extends Integer,V> implements ValueListInterface<K,V> {
     /**
-     * This counter tracks the number of items in the History, indices still start from 0.
+     * This counter tracks the number of values, indices still start from 0.
      * Reading is allowed without synchronization, modifications only through generateKey().
      */
-    protected int counter;
+    protected volatile int counter;
     private HashMap<K,V> data;
 
-    public SimpleHistoryAttribute() {
+    public ValueList() {
         data = new HashMap<>();
         counter = 0;
     }
 
     /**
-     * @return The last element added to this History.
+     * @return The last element added to this list.
      */
     @Override
     public V getLastValue() {
@@ -32,10 +30,10 @@ public class SimpleHistoryAttribute<K extends Integer, V extends DataType> imple
     }
 
     /**
-     * In a History, only getValue() and storeValue() directly access the HashMap data.
+     * In a ValueList, only getValue() and storeValue() directly access the HashMap data.
      * Setting these methods to be synchronous avoids concurrency issues.
-     * @param key The Integer-valued key of the object in history.
-     * @return  A DataType object corresponding to the key, or <code>null</code> if not found.
+     * @param key The key of the value.
+     * @return  The value, or <code>null</code> if not found.
      */
     @Override
     public synchronized V getValue(K key) {
@@ -47,11 +45,11 @@ public class SimpleHistoryAttribute<K extends Integer, V extends DataType> imple
     }
 
     /**
-     * Get a copy of the last n entries added to the History.
-     * Less values may be added if there are not enough values in this History.
+     * Get a copy of the last n entries added to the list.
+     * Less values may be returned if there are not enough values in this list.
      * In case of no values, an empty array is returned.
      * @param n The number of instances to retrieve.
-     * @return A hashmap of n last values added to the History.
+     * @return A hashmap of n last values added to the list.
      */
     @Override
     public HashMap<K, V> getLastNValues(int n) {
@@ -64,8 +62,8 @@ public class SimpleHistoryAttribute<K extends Integer, V extends DataType> imple
     }
 
     /**
-     * Puts a value into History and returns the Integer key assigned to it.
-     * @param value The DataType value to be added.
+     * Puts a value into the list and returns the key assigned to it.
+     * @param value The value to be added.
      * @return The key of the newly added value.
      */
     @Override
@@ -76,9 +74,8 @@ public class SimpleHistoryAttribute<K extends Integer, V extends DataType> imple
     }
 
     /**
-     * Generates a key that is unique to the history through incrementing an internal counter.
-     * (Note: the uniqueness constraint is only satisfied if access is synchronous.)
-     * @return A key unique to this History instance.
+     * Generates a key that is unique through incrementing an internal counter.
+     * @return A key which is unique in this list instance.
      */
     protected synchronized int generateKey() {
         return counter++;

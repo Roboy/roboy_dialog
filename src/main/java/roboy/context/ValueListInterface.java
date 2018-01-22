@@ -3,9 +3,9 @@ package roboy.context;
 import java.util.Map;
 
 /**
- * This enables saving basic History information by the key type T and data/value type V.
+ * Keeps a list of all values that have been stored in it.
  */
-public interface HistoryAttribute<K,V> {
+public interface ValueListInterface<K,V> {
 
     V getLastValue();
 

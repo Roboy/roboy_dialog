@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="classroboy_1_1context_1_1_interval_update_policy" kind="class" language="Java" prot="public" abstract="yes">
     <compoundname>roboy::context::IntervalUpdatePolicy</compoundname>
-    <basecompoundref refid="classroboy_1_1context_1_1_async_update_policy" prot="public" virt="non-virtual">roboy.context.AsyncUpdatePolicy</basecompoundref>
+    <basecompoundref refid="classroboy_1_1context_1_1_async_update_policy" prot="public" virt="non-virtual">roboy.context.ExternalUpdater</basecompoundref>
     <derivedcompoundref refid="classroboy_1_1context_1_1memory_context_1_1_interlocutor_node_updater" prot="public" virt="non-virtual">roboy.context.memoryContext.InterlocutorNodeUpdater</derivedcompoundref>
     <derivedcompoundref refid="classroboy_1_1context_1_1vision_context_1_1_face_coordinates_updater" prot="public" virt="non-virtual">roboy.context.visionContext.FaceCoordinatesUpdater</derivedcompoundref>
     <templateparamlist>
@@ -127,7 +127,7 @@
         </childnode>
       </node>
       <node id="367">
-        <label>roboy.context.AsyncUpdatePolicy</label>
+        <label>roboy.context.ExternalUpdater</label>
         <link refid="classroboy_1_1context_1_1_async_update_policy"/>
       </node>
       <node id="369">
@@ -145,7 +145,7 @@
     </inheritancegraph>
     <collaborationgraph>
       <node id="371">
-        <label>roboy.context.AsyncUpdatePolicy</label>
+        <label>roboy.context.ExternalUpdater</label>
         <link refid="classroboy_1_1context_1_1_async_update_policy"/>
       </node>
       <node id="370">

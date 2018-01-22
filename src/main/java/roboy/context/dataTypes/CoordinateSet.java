@@ -1,11 +1,9 @@
 package roboy.context.dataTypes;
 
-import roboy.context.dataTypes.DataType;
-
 /**
  * A coordinate set data structure for the interlocutor face.
  */
-public class CoordinateSet implements DataType {
+public class CoordinateSet {
     final double x;
     final double y;
     final double z;

@@ -1,7 +1,6 @@
 package roboy.context.GUI;
 
 import roboy.context.Context;
-import roboy.context.dataTypes.DataType;
 
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -20,8 +19,8 @@ public class ContextGUI {
     // Panel displaying valueAttributes.
     private TitledBorder valueBorder;
     private JPanel valuePanel;
-    private Map<Context.ValueAttributes, JLabel> valueDisplays;
-    private Map<Context.HistoryAttributes, JScrollPane> historyDisplays;
+    private Map<Context.Values, JLabel> valueDisplays;
+    private Map<Context.ValueLists, JScrollPane> historyDisplays;
     private static int MAX_HISTORY_VALUES = 10;
 
     // Panel displaying historyAttributes.
@@ -67,7 +66,7 @@ public class ContextGUI {
         valuePanel.setBorder(valueBorder);
 
         valueDisplays = new HashMap<>();
-        for(Context.ValueAttributes attribute : Context.ValueAttributes.values()) {
+        for(Context.Values attribute : Context.Values.values()) {
             valuePanel.add(new JLabel(attribute.toString()+ ":", JLabel.CENTER));
             Object val = attribute.getLastValue();
             if (val == null) {
@@ -88,9 +87,9 @@ public class ContextGUI {
         historyPanel.setBorder(historyBorder);
 
         historyDisplays = new HashMap<>();
-        for(Context.HistoryAttributes attribute : Context.HistoryAttributes.values()) {
+        for(Context.ValueLists attribute : Context.ValueLists.values()) {
             historyPanel.add(new JLabel(attribute.toString() + ":", JLabel.CENTER));
-            HashMap vals = (HashMap<Integer, DataType>) attribute.getNLastValues(MAX_HISTORY_VALUES);
+            Map<Integer, Object> vals = attribute.getNLastValues(MAX_HISTORY_VALUES);
             DefaultListModel<String> sorted = new DefaultListModel<>();
             if (vals.size() == 0) {
                 sorted.add(0, NO_VALUE);
@@ -132,7 +131,7 @@ public class ContextGUI {
     }
 
     private void updateValues() {
-        for(Context.ValueAttributes attribute : Context.ValueAttributes.values()) {
+        for(Context.Values attribute : Context.Values.values()) {
             Object val = attribute.getLastValue();
             if (val == null) {
                 continue;
@@ -143,8 +142,8 @@ public class ContextGUI {
     }
 
     private void updateHistories() {
-        for(Context.HistoryAttributes attribute : Context.HistoryAttributes.values()) {
-            HashMap vals = (HashMap<Integer, DataType>) attribute.getNLastValues(MAX_HISTORY_VALUES);
+        for(Context.ValueLists attribute : Context.ValueLists.values()) {
+            Map<Integer, Object> vals = attribute.getNLastValues(MAX_HISTORY_VALUES);
             if (vals.size() == 0) {
                 continue;
             }

@@ -134,10 +134,10 @@
         </childnode>
       </node>
       <node id="61">
-        <label>ImmutableClassToInstanceMap&lt; roboy.context.HistoryAttribute &gt;</label>
+        <label>ImmutableClassToInstanceMap&lt; roboy.context.ValueListInterface &gt;</label>
       </node>
       <node id="60">
-        <label>ImmutableClassToInstanceMap&lt; roboy.context.ValueAttribute &gt;</label>
+        <label>ImmutableClassToInstanceMap&lt; roboy.context.ValueInterface &gt;</label>
       </node>
     </collaborationgraph>
     <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="11" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="11" bodyend="35"/>

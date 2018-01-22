@@ -2,14 +2,9 @@ package roboy.context.visionContext;
 
 import org.junit.Test;
 import roboy.context.Context;
-import roboy.context.DirectUpdatePolicy;
-import roboy.context.HistoryAttribute;
+import roboy.context.InternalListUpdater;
 import roboy.context.dataTypes.CoordinateSet;
-import roboy.context.dataTypes.DataType;
-import roboy.context.dataTypes.Topic;
-import roboy.context.dialogContext.DialogTopics;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
@@ -22,10 +17,9 @@ public class ContextTest {
     @Test
     public void getLastAttributeValue() throws Exception {
         int updateFrequency = 1; //Assuming the updater's frequency is 1 second!
-        int sleeptime = updateFrequency * 1000; // Here in millis.
-        Thread.sleep(sleeptime);
-        Context.ValueAttributes face = Context.ValueAttributes.FACE_COORDINATES;
-        for(int i = 0; i < 5; i++) {
+        int sleeptime = updateFrequency * 1000 * 2; // Here in millis and double the actual update time.
+        Context.Values face = Context.Values.FACE_COORDINATES;
+        for(int i = 0; i < 3; i++) {
             CoordinateSet set = face.getLastValue();
             Thread.sleep(sleeptime);
             assertNotEquals(face.getLastValue(), set);
@@ -35,14 +29,14 @@ public class ContextTest {
     @Test
     public void setAndGetDialogTopics() {
         Context ct = Context.getInstance();
-        DirectUpdatePolicy updater = ct.getUpdater(Context.Updaters.DIALOG_TOPICS_UPDATER);
-        Context.HistoryAttributes topics = Context.HistoryAttributes.DIALOG_TOPICS;
+        InternalListUpdater updater = ct.getUpdater(Context.ListUpdaters.DIALOG_TOPICS_UPDATER);
+        Context.ValueLists topics = Context.ValueLists.DIALOG_TOPICS;
 
-        updater.putValue(new Topic("test1"));
-        assertEquals("test1", ((Topic) topics.getLastValue()).topic);
-        updater.putValue(new Topic("test2"));
-        Map<Integer, Topic> values = topics.getNLastValues(2);
-        assertEquals("test1", values.get(0).topic);
-        assertEquals("test2", values.get(1).topic);
+        updater.putValue("test1");
+        assertEquals("test1", ( topics.getLastValue()));
+        updater.putValue("test2");
+        Map<Integer, String> values = topics.getNLastValues(2);
+        assertEquals("test1", values.get(0));
+        assertEquals("test2", values.get(1));
     }
 }

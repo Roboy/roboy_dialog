@@ -2,16 +2,10 @@ package roboy.context;
 
 import com.google.common.collect.ImmutableClassToInstanceMap;
 import roboy.context.dataTypes.CoordinateSet;
-import roboy.context.dataTypes.DataType;
-import roboy.context.dataTypes.Topic;
 import roboy.context.dialogContext.DialogTopics;
 import roboy.context.dialogContext.DialogTopicsUpdater;
-import roboy.context.memoryContext.InterlocutorNode;
-import roboy.context.memoryContext.InterlocutorNodeUpdater;
 import roboy.context.visionContext.FaceCoordinates;
 import roboy.context.visionContext.FaceCoordinatesUpdater;
-
-import roboy_communication_cognition.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,39 +15,34 @@ import java.util.Map;
  * Singleton class serving as an interface to access all context objects.
  * Takes care of correct initialization of attribute histories and updaters.
  *
- * Simple attributes (which implement the AttributeHistory interface) are
- * handled through the inherited AttributeManager methods.
+ * Queries to values are handled through the inherited AttributeManager methods.
  *
  * For usage examples, check out ContextTest.java
  */
-public class Context extends AttributeManager<Context.HistoryAttributes, Context.ValueAttributes>{
+public class Context extends AttributeManager<Context.ValueLists, Context.Values>{
     private static Context context;
-    private final ArrayList asyncUpdatePolicies = new ArrayList<AsyncUpdatePolicy>();
-    public final HashMap directUpdatePolicies = new HashMap<Class, DirectUpdatePolicy>();
-    private InterlocutorNode interlocutor;
+    private final ArrayList externalUpdaters = new ArrayList<ExternalUpdater>();
+    public final HashMap internalValueUpdaters = new HashMap<Class, InternalValueUpdater>();
+    public final HashMap internalListUpdaters = new HashMap<Class, InternalListUpdater>();
 
     private Context() {
         FaceCoordinates faceCoordinates = new FaceCoordinates();
         DialogTopics dialogTopics = new DialogTopics();
 
-        values = new ImmutableClassToInstanceMap.Builder<ValueAttribute>()
-                // Initialize all ValueAttributes centrally right here.
+        values = new ImmutableClassToInstanceMap.Builder<ValueInterface>()
+                // Collect all Values centrally right here.
                 .put(FaceCoordinates.class, faceCoordinates)
                 .build();
 
-        attributes = new ImmutableClassToInstanceMap.Builder<HistoryAttribute>()
-                // Initialize all ValueAttributes centrally right here.
+        lists = new ImmutableClassToInstanceMap.Builder<ValueListInterface>()
+                // Collect all ValueLists centrally right here.
                 .put(DialogTopics.class, dialogTopics)
                 .build();
 
-        // Initialize objects.
-        interlocutor = new InterlocutorNode();
+        // Also initialize the updaters for lists.
+        externalUpdaters.add(new FaceCoordinatesUpdater(faceCoordinates, 1));
 
-        // Also initialize the updaters for attributes.
-        asyncUpdatePolicies.add(new FaceCoordinatesUpdater(faceCoordinates, 1));
-        asyncUpdatePolicies.add(new InterlocutorNodeUpdater(interlocutor, 10));
-
-        directUpdatePolicies.put(DialogTopics.class, new DialogTopicsUpdater(dialogTopics));
+        internalListUpdaters.put(DialogTopicsUpdater.class, new DialogTopicsUpdater(dialogTopics));
     }
 
     public static Context getInstance() {
@@ -64,18 +53,17 @@ public class Context extends AttributeManager<Context.HistoryAttributes, Context
     }
 
     /**
-     *  A listing of available attributes with a history of values.
-     *  AttributeManager methods take an Attribute as parameter.
+     *  All available lists of values.
      */
-    public enum HistoryAttributes implements AttributeInterface {
-        DIALOG_TOPICS(DialogTopics.class, Topic.class);
+    public enum ValueLists implements AttributeInterface {
+        DIALOG_TOPICS(DialogTopics.class, String.class);
 
         final Class classType;
         final Class returnType;
 
-        HistoryAttributes(Class<? extends HistoryAttribute> attribute, Class<?extends DataType> value) {
+        ValueLists(Class<? extends ValueListInterface> attribute, Class dataType) {
             this.classType = attribute;
-            this.returnType = value;
+            this.returnType = dataType;
         }
 
         public Class getClassType() {
@@ -86,29 +74,29 @@ public class Context extends AttributeManager<Context.HistoryAttributes, Context
             return this.returnType;
         }
 
-        public <T extends DataType> T getLastValue() {
-            return Context.getInstance().getLastAttributeValue(this);
+        public <T> T getLastValue() {
+            return Context.getInstance().getLastValue(this);
         }
 
-        public <T extends DataType> Map<Integer, T> getNLastValues(int n) {
+        public <K, T> Map<K, T> getNLastValues(int n) {
             return Context.getInstance().getNLastValues(this, n);
         }
 
-        public <T extends DataType> T getValue(int key) {
-            return Context.getInstance().getAttributeValue(this, key);
+        public <T> T getValue(int key) {
+            return Context.getInstance().getValue(this, key);
         }
     }
 
     /**
-     * A listing of available single-value attributes.
+     * All available values.
      */
-    public enum ValueAttributes implements AttributeInterface {
+    public enum Values implements AttributeInterface {
         FACE_COORDINATES(FaceCoordinates.class, CoordinateSet.class);
 
         final Class classType;
         final Class returnType;
 
-        ValueAttributes(Class<? extends ValueAttribute> attribute, Class<?extends DataType> value) {
+        Values(Class<? extends ValueInterface> attribute, Class value) {
             this.classType = attribute;
             this.returnType = value;
         }
@@ -121,19 +109,19 @@ public class Context extends AttributeManager<Context.HistoryAttributes, Context
             return this.returnType;
         }
 
-        public <T extends DataType> T getLastValue() {
+        public <T> T getLastValue() {
             return Context.getInstance().getValue(this);
         }
     }
 
     /**
-     * A listing of available updaters, with their target class specified under classType.
+     * All available updaters, with their target class specified under classType.
      */
-    public enum Updaters {
-        DIALOG_TOPICS_UPDATER(DialogTopics.class);
+    public enum ListUpdaters {
+        DIALOG_TOPICS_UPDATER(DialogTopicsUpdater.class);
         final Class classType;
 
-        Updaters(Class attribute) {
+        ListUpdaters(Class attribute) {
             this.classType = attribute;
         }
     }
@@ -143,7 +131,7 @@ public class Context extends AttributeManager<Context.HistoryAttributes, Context
      * @param updater The name of the updater.
      * @return An updatePolicy offering the putValue() method.
      */
-    public DirectUpdatePolicy getUpdater(Updaters updater) {
-        return (DirectUpdatePolicy) directUpdatePolicies.get(updater.classType);
+    public InternalListUpdater getUpdater(ListUpdaters updater) {
+        return (InternalListUpdater) internalListUpdaters.get(updater.classType);
     }
 }

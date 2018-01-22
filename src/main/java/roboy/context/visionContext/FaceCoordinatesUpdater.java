@@ -1,6 +1,6 @@
 package roboy.context.visionContext;
 
-import roboy.context.IntervalUpdatePolicy;
+import roboy.context.IntervalUpdater;
 import roboy.context.dataTypes.CoordinateSet;
 
 import java.util.Random;
@@ -8,7 +8,7 @@ import java.util.Random;
 /**
  * Asynchronously triggers ROS queries for face coordinates (in the future).
  */
-public class FaceCoordinatesUpdater extends IntervalUpdatePolicy<FaceCoordinates> {
+public class FaceCoordinatesUpdater extends IntervalUpdater<FaceCoordinates> {
     public FaceCoordinatesUpdater(FaceCoordinates target, int updateFrequencySeconds) {
         super(target, updateFrequencySeconds);
     }

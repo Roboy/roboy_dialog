@@ -79,7 +79,7 @@ public class RoboyMind implements Memory<Concept>
 
 		List<Concept> result = new ArrayList();
 
-		// get these objects' attributes
+		// get these objects' lists
 		for (JsonValue i: response)
 		{
 			JsonObject attributes = ListAttributes(i.toString());
@@ -197,7 +197,7 @@ public class RoboyMind implements Memory<Concept>
 	@Override
 	public List<Concept> retrieve(Concept object)
 	{
-		// get objects matching the requested attributes
+		// get objects matching the requested lists
 		String properties = "id";
 		String values = object.getAttribute("id").toString();
 
@@ -206,7 +206,7 @@ public class RoboyMind implements Memory<Concept>
 		return result;
 	}
 
-	public boolean update(Concept object) // requires having attributes id and class_name
+	public boolean update(Concept object) // requires having lists id and class_name
 	{
 		String object_name = object.getAttribute("class_name").toString() + "_" + object.getAttribute("id");
 		List<Concept> saved_objects = RoboyMind.getInstance().retrieve(object);

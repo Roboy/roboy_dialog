@@ -33,7 +33,7 @@ import static roboy.dialog.Config.ConfigurationProfile.*;
  * 1. Input devices produce an Input object
  * 2. The Input object is transformed into an Interpretation object containing
  *    the input sentence in the Linguistics.SENTENCE attribute and all other
- *    attributes of the Input object in the corresponding fields
+ *    lists of the Input object in the corresponding fields
  * 3. Linguistic Analyzers are used on the Interpretation object to add additional information
  * 4. The Personality class takes the Interpretation object and decides how to answer
  *    to this input
@@ -150,7 +150,7 @@ public class DialogSystem {
 //                emotion.act(new FaceAction("angry"));
 //            }
 //            emotion.act(new FaceAction("neutral"));
-//            while (!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)) {
+//            while (!multiIn.listen().lists.containsKey(Linguistics.ROBOYDETECTED)) {
 //            }
 
             Personality smallTalk = new SmallTalkPersonality(new Verbalizer(), rosMainNode);

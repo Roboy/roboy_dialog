@@ -6,7 +6,7 @@
       <sectiondef kind="protected-func">
       <memberdef kind="function" id="classroboy_1_1context_1_1_async_update_policy_1ad8681944566855f5f4d7fd1c38391d31" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>abstract void</type>
-        <definition>abstract void roboy.context.AsyncUpdatePolicy.update</definition>
+        <definition>abstract void roboy.context.ExternalUpdater.update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
         <briefdescription>
@@ -30,7 +30,7 @@
         </childnode>
       </node>
       <node id="49">
-        <label>roboy.context.AsyncUpdatePolicy</label>
+        <label>roboy.context.ExternalUpdater</label>
         <link refid="classroboy_1_1context_1_1_async_update_policy"/>
       </node>
       <node id="52">

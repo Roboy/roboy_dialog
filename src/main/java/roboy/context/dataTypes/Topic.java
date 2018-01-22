@@ -1,6 +1,6 @@
 package roboy.context.dataTypes;
 
-public class Topic implements DataType {
+public class Topic {
     public final String topic;
 
     public Topic(String topic) {
