@@ -1,7 +1,7 @@
 # DialogSystem
 [![Documentation Status](https://readthedocs.org/projects/roboydialog/badge/?version=master)](http://roboydialog.readthedocs.io/en/master/?badge=master)
 
-## What is it
+## What is it 
 
 This repository contains a dialog system developed for the humanoid robot Roboy (roboy.org). 
 
