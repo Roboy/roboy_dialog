@@ -7,7 +7,8 @@ The goal of Context is to collect information about Roboy's environment and stat
 Architecture
 ============
 
-Graph to be added.
+.. figure:: images/overview_diagram.jpg
+    :alt: Overview diagram
 
 The Context supports storing data as a ``Value`` or ``ValueHistory``. A ``Value`` only stores the latest data object that was pushed to it. A ``ValueHistory`` stores every value it receives and assigns each a unique key, thus the values can be ordered by their adding time.
 
