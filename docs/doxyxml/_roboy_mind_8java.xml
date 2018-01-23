@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="_roboy_mind_8java" kind="file" language="Java">
     <compoundname>RoboyMind.java</compoundname>
     <innerclass refid="classroboy_1_1memory_1_1_roboy_mind" prot="public">roboy::memory::RoboyMind</innerclass>
@@ -87,7 +87,7 @@
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>List&lt;Concept&gt;<sp/>result<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>ArrayList();</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>these<sp/>objects&apos;<sp/>attributes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>these<sp/>objects&apos;<sp/>lists</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(JsonValue<sp/>i:<sp/>response)</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>JsonObject<sp/>attributes<sp/>=<sp/>ListAttributes(i.toString());</highlight></codeline>
@@ -205,7 +205,7 @@
 <codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>@Override</highlight></codeline>
 <codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>List&lt;Concept&gt;<sp/>retrieve(<ref refid="classroboy_1_1util_1_1_concept" kindref="compound">Concept</ref><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>objects<sp/>matching<sp/>the<sp/>requested<sp/>attributes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>objects<sp/>matching<sp/>the<sp/>requested<sp/>lists</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>properties<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>values<sp/>=<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">.getAttribute(</highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">).toString();</highlight></codeline>
 <codeline lineno="203"><highlight class="normal"></highlight></codeline>
@@ -214,7 +214,7 @@
 <codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
 <codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="208"><highlight class="normal"></highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">boolean</highlight><highlight class="normal"><sp/>update(<ref refid="classroboy_1_1util_1_1_concept" kindref="compound">Concept</ref><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">)<sp/></highlight><highlight class="comment">//<sp/>requires<sp/>having<sp/>attributes<sp/>id<sp/>and<sp/>class_name</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">boolean</highlight><highlight class="normal"><sp/>update(<ref refid="classroboy_1_1util_1_1_concept" kindref="compound">Concept</ref><sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">)<sp/></highlight><highlight class="comment">//<sp/>requires<sp/>having<sp/>lists<sp/>id<sp/>and<sp/>class_name</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>String<sp/>object_name<sp/>=<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">.getAttribute(</highlight><highlight class="stringliteral">&quot;class_name&quot;</highlight><highlight class="normal">).toString()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;_&quot;</highlight><highlight class="normal"><sp/>+<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal">.getAttribute(</highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>List&lt;Concept&gt;<sp/>saved_objects<sp/>=<sp/><ref refid="classroboy_1_1memory_1_1_roboy_mind" kindref="compound">RoboyMind</ref>.getInstance().retrieve(</highlight><highlight class="keywordtype">object</highlight><highlight class="normal">);</highlight></codeline>
@@ -285,6 +285,6 @@
 <codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="278"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/memory/RoboyMind.java"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/RoboyMind.java"/>
   </compounddef>
 </doxygen>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="_command_line_output_8java" kind="file" language="Java">
     <compoundname>CommandLineOutput.java</compoundname>
     <innerclass refid="classroboy_1_1io_1_1_command_line_output" prot="public">roboy::io::CommandLineOutput</innerclass>
@@ -30,13 +30,13 @@
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(a<sp/>instanceof<sp/><ref refid="classroboy_1_1dialog_1_1action_1_1_speech_action" kindref="compound">SpeechAction</ref>){</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>duration<sp/>=<sp/>((SpeechAction)<sp/>a).getText().length()==0<sp/>?<sp/>0<sp/>:<sp/>1<sp/>+<sp/>((SpeechAction)<sp/>a).getText().length()/8;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>emotion.act(new<sp/>FaceAction(&quot;speak&quot;,<sp/>duration));</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>System.out.println(((<ref refid="classroboy_1_1dialog_1_1action_1_1_speech_action" kindref="compound">SpeechAction</ref>)<sp/>a).getText());</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>System.out.println(((SpeechAction)<sp/>a).getText());</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/io/CommandLineOutput.java"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineOutput.java"/>
   </compounddef>
 </doxygen>

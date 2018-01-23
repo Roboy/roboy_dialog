@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="enumroboy_1_1context_1_1_context_1_1_updaters" kind="enum" language="Java" prot="public">
     <compoundname>roboy::context::Context::Updaters</compoundname>
       <sectiondef kind="public-attrib">
@@ -8,14 +8,14 @@
         <definition>roboy.context.Context.Updaters.DIALOG_TOPICS_UPDATER</definition>
         <argsstring></argsstring>
         <name>DIALOG_TOPICS_UPDATER</name>
-        <initializer>=(DialogTopics.class)</initializer>
+        <initializer>=(DialogTopicsUpdater.class, String.class)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" line="131" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="131" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="113" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="113" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1context_1_1_context_1_1_updaters_1a1d7a7fb683aea42e120f9608e31a9973" prot="public" static="no" mutable="no">
         <type>final Class</type>
@@ -28,18 +28,35 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" line="132" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="132" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="115" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="enumroboy_1_1context_1_1_context_1_1_updaters_1a0dc3516441fe6412fa9422e90be862e7" prot="public" static="no" mutable="no">
+        <type>final Class</type>
+        <definition>final Class roboy.context.Context.Updaters.targetValueType</definition>
+        <argsstring></argsstring>
+        <name>targetValueType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="116" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="116" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_updaters_1a08ce5c097f9dacc54d632cf62f0622f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_updaters_1ae3de0e0b7f6b0ffac055df7daf5f72b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>roboy.context.Context.Updaters.Updaters</definition>
-        <argsstring>(Class attribute)</argsstring>
+        <argsstring>(Class attribute, Class valueType)</argsstring>
         <name>Updaters</name>
         <param>
           <type>Class</type>
           <declname>attribute</declname>
+        </param>
+        <param>
+          <type>Class</type>
+          <declname>valueType</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -47,18 +64,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" line="134" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="134" bodyend="136"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="118" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="118" bodyend="121"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>A listing of available updaters, with their target class specified under classType. </para>    </briefdescription>
+<para>All available updaters by their class and their target&apos;s value type. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" line="130" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="130" bodyend="137"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="112" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="112" bodyend="122"/>
     <listofallmembers>
       <member refid="enumroboy_1_1context_1_1_context_1_1_updaters_1a1d7a7fb683aea42e120f9608e31a9973" prot="public" virt="non-virtual"><scope>roboy::context::Context::Updaters</scope><name>classType</name></member>
       <member refid="enumroboy_1_1context_1_1_context_1_1_updaters_1a0ddfd01da6340079c2bc9664b4828f7e" prot="public" virt="non-virtual"><scope>roboy::context::Context::Updaters</scope><name>DIALOG_TOPICS_UPDATER</name></member>
-      <member refid="enumroboy_1_1context_1_1_context_1_1_updaters_1a08ce5c097f9dacc54d632cf62f0622f0" prot="public" virt="non-virtual"><scope>roboy::context::Context::Updaters</scope><name>Updaters</name></member>
+      <member refid="enumroboy_1_1context_1_1_context_1_1_updaters_1a0dc3516441fe6412fa9422e90be862e7" prot="public" virt="non-virtual"><scope>roboy::context::Context::Updaters</scope><name>targetValueType</name></member>
+      <member refid="enumroboy_1_1context_1_1_context_1_1_updaters_1ae3de0e0b7f6b0ffac055df7daf5f72b0" prot="public" virt="non-virtual"><scope>roboy::context::Context::Updaters</scope><name>Updaters</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

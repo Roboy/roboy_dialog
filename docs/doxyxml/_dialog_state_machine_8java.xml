@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="_dialog_state_machine_8java" kind="file" language="Java">
     <compoundname>DialogStateMachine.java</compoundname>
     <innerclass refid="classroboy_1_1new_dialog_1_1_dialog_state_machine" prot="public">roboy::newDialog::DialogStateMachine</innerclass>
@@ -306,7 +306,7 @@
 <codeline lineno="306"><highlight class="normal"></highlight></codeline>
 <codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>active<sp/>state<sp/>is<sp/>not<sp/>important<sp/>for<sp/>the<sp/>structure<sp/>and<sp/>will<sp/>be<sp/>ignored<sp/>by<sp/>this<sp/>check!</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="308"><highlight class="normal"></highlight></codeline>
-<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classroboy_1_1new_dialog_1_1_dialog_state_machine" kindref="compound">DialogStateMachine</ref><sp/>other<sp/>=<sp/>(<ref refid="classroboy_1_1new_dialog_1_1_dialog_state_machine" kindref="compound">DialogStateMachine</ref>)<sp/>obj;</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DialogStateMachine<sp/>other<sp/>=<sp/>(DialogStateMachine)<sp/>obj;</highlight></codeline>
 <codeline lineno="310"><highlight class="normal"></highlight></codeline>
 <codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>initial<sp/>states</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(initalState<sp/>==<sp/>null<sp/>&amp;&amp;<sp/>other.initalState<sp/>!=<sp/>null)<sp/>{</highlight></codeline>
@@ -341,6 +341,6 @@
 <codeline lineno="341"><highlight class="normal"></highlight></codeline>
 <codeline lineno="342"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/DialogStateMachine.java"/>
   </compounddef>
 </doxygen>

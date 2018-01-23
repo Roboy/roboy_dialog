@@ -1,34 +1,34 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="classroboy_1_1context_1_1_attribute_manager" kind="class" language="Java" prot="public">
     <compoundname>roboy::context::AttributeManager</compoundname>
     <templateparamlist>
       <param>
-        <type>A</type>
-        <typeconstraint><ref refid="interfaceroboy_1_1context_1_1_attribute_interface" kindref="compound">AttributeInterface</ref></typeconstraint>
+        <type>H</type>
+        <typeconstraint><ref refid="interfaceroboy_1_1context_1_1_external_context_interface" kindref="compound">ExternalContextInterface</ref></typeconstraint>
       </param>
       <param>
-        <type>B</type>
-        <typeconstraint><ref refid="interfaceroboy_1_1context_1_1_attribute_interface" kindref="compound">AttributeInterface</ref></typeconstraint>
+        <type>V</type>
+        <typeconstraint><ref refid="interfaceroboy_1_1context_1_1_external_context_interface" kindref="compound">ExternalContextInterface</ref></typeconstraint>
       </param>
     </templateparamlist>
       <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="classroboy_1_1context_1_1_attribute_manager_1a4a2bee43f0dcdd4ba4997030f807f4ff" prot="protected" static="no" mutable="no">
-        <type>ImmutableClassToInstanceMap&lt; <ref refid="interfaceroboy_1_1context_1_1_history_attribute" kindref="compound">HistoryAttribute</ref> &gt;</type>
-        <definition>ImmutableClassToInstanceMap&lt;HistoryAttribute&gt; roboy.context.AttributeManager&lt; A extends AttributeInterface, B extends AttributeInterface &gt;.attributes</definition>
+      <memberdef kind="variable" id="classroboy_1_1context_1_1_attribute_manager_1a5be9a684234b35d5b9d43c5cd58b9b80" prot="protected" static="no" mutable="no">
+        <type>ImmutableClassToInstanceMap&lt; <ref refid="interfaceroboy_1_1context_1_1_abstract_value_history" kindref="compound">AbstractValueHistory</ref> &gt;</type>
+        <definition>ImmutableClassToInstanceMap&lt;AbstractValueHistory&gt; roboy.context.AttributeManager&lt; H extends ExternalContextInterface, V extends ExternalContextInterface &gt;.valueHistories</definition>
         <argsstring></argsstring>
-        <name>attributes</name>
+        <name>valueHistories</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="13" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="13" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/AttributeManager.java" line="12" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/AttributeManager.java" bodystart="12" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classroboy_1_1context_1_1_attribute_manager_1ac5027d6862070a36fc4658f38e133927" prot="protected" static="no" mutable="no">
-        <type>ImmutableClassToInstanceMap&lt; <ref refid="interfaceroboy_1_1context_1_1_value_attribute" kindref="compound">ValueAttribute</ref> &gt;</type>
-        <definition>ImmutableClassToInstanceMap&lt;ValueAttribute&gt; roboy.context.AttributeManager&lt; A extends AttributeInterface, B extends AttributeInterface &gt;.values</definition>
+      <memberdef kind="variable" id="classroboy_1_1context_1_1_attribute_manager_1aa80bebfb0b32b719083b9ecea12f51a2" prot="protected" static="no" mutable="no">
+        <type>ImmutableClassToInstanceMap&lt; <ref refid="interfaceroboy_1_1context_1_1_abstract_value" kindref="compound">AbstractValue</ref> &gt;</type>
+        <definition>ImmutableClassToInstanceMap&lt;AbstractValue&gt; roboy.context.AttributeManager&lt; H extends ExternalContextInterface, V extends ExternalContextInterface &gt;.values</definition>
         <argsstring></argsstring>
         <name>values</name>
         <briefdescription>
@@ -37,17 +37,17 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="14" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="14" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/AttributeManager.java" line="13" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/AttributeManager.java" bodystart="13" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="package-func">
-      <memberdef kind="function" id="classroboy_1_1context_1_1_attribute_manager_1a9b48119a5ca52e1d6c3b3d06b55a76b9" prot="package" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>protected&lt; T extends <ref refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type" kindref="compound">DataType</ref> &gt; T</type>
-        <definition>protected&lt;T extends DataType&gt; T roboy.context.AttributeManager&lt; A extends AttributeInterface, B extends AttributeInterface &gt;.getLastAttributeValue</definition>
-        <argsstring>(A attribute)</argsstring>
-        <name>getLastAttributeValue</name>
+      <memberdef kind="function" id="classroboy_1_1context_1_1_attribute_manager_1ab578d331f5b9ed3e4422c389a1ee73f0" prot="package" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>protected&lt; T &gt; T</type>
+        <definition>protected&lt;T&gt; T roboy.context.AttributeManager&lt; H extends ExternalContextInterface, V extends ExternalContextInterface &gt;.getLastValue</definition>
+        <argsstring>(ExternalContextInterface attribute)</argsstring>
+        <name>getLastValue</name>
         <param>
-          <type>A</type>
+          <type><ref refid="interfaceroboy_1_1context_1_1_external_context_interface" kindref="compound">ExternalContextInterface</ref></type>
           <declname>attribute</declname>
         </param>
         <briefdescription>
@@ -56,36 +56,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="16" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="16" bodyend="19"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/AttributeManager.java" line="15" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/AttributeManager.java" bodystart="15" bodyend="18"/>
       </memberdef>
-      <memberdef kind="function" id="classroboy_1_1context_1_1_attribute_manager_1a61189531613631c833a2cf48c7d98c58" prot="package" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>protected&lt; T extends <ref refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type" kindref="compound">DataType</ref> &gt; T</type>
-        <definition>protected&lt;T extends DataType&gt; T roboy.context.AttributeManager&lt; A extends AttributeInterface, B extends AttributeInterface &gt;.getAttributeValue</definition>
-        <argsstring>(A attribute, Integer key)</argsstring>
-        <name>getAttributeValue</name>
-        <param>
-          <type>A</type>
-          <declname>attribute</declname>
-        </param>
-        <param>
-          <type>Integer</type>
-          <declname>key</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="21" bodyend="24"/>
-      </memberdef>
-      <memberdef kind="function" id="classroboy_1_1context_1_1_attribute_manager_1a988cdf9b696baf0e1e6fc65535a05ec9" prot="package" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>protected&lt; T extends <ref refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type" kindref="compound">DataType</ref> &gt; Map&lt; Integer, T &gt;</type>
-        <definition>protected&lt;T extends DataType&gt; Map&lt;Integer, T&gt; roboy.context.AttributeManager&lt; A extends AttributeInterface, B extends AttributeInterface &gt;.getNLastValues</definition>
-        <argsstring>(A attribute, int n)</argsstring>
+      <memberdef kind="function" id="classroboy_1_1context_1_1_attribute_manager_1aa2b1bec09e5088db3f13757be1b5803b" prot="package" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>protected&lt; K, T &gt; Map&lt; K, T &gt;</type>
+        <definition>protected&lt;K, T&gt; Map&lt;K, T&gt; roboy.context.AttributeManager&lt; H extends ExternalContextInterface, V extends ExternalContextInterface &gt;.getNLastValues</definition>
+        <argsstring>(H attribute, int n)</argsstring>
         <name>getNLastValues</name>
         <param>
-          <type>A</type>
+          <type>H</type>
           <declname>attribute</declname>
         </param>
         <param>
@@ -98,15 +77,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="26" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="26" bodyend="29"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/AttributeManager.java" line="20" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/AttributeManager.java" bodystart="20" bodyend="22"/>
       </memberdef>
-      <memberdef kind="function" id="classroboy_1_1context_1_1_attribute_manager_1af1a9cdda6498cc832911e6b0cb9251e9" prot="package" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>protected&lt; T extends <ref refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type" kindref="compound">DataType</ref> &gt; T</type>
-        <definition>protected&lt;T extends DataType&gt; T roboy.context.AttributeManager&lt; A extends AttributeInterface, B extends AttributeInterface &gt;.getValue</definition>
-        <argsstring>(B attribute)</argsstring>
+      <memberdef kind="function" id="classroboy_1_1context_1_1_attribute_manager_1a6aaa68eeb8b9a44ec604e7c5c879774f" prot="package" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>protected&lt; T &gt; T</type>
+        <definition>protected&lt;T&gt; T roboy.context.AttributeManager&lt; H extends ExternalContextInterface, V extends ExternalContextInterface &gt;.getValue</definition>
+        <argsstring>(V attribute)</argsstring>
         <name>getValue</name>
         <param>
-          <type>B</type>
+          <type>V</type>
           <declname>attribute</declname>
         </param>
         <briefdescription>
@@ -115,39 +94,38 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="31" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="31" bodyend="34"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/AttributeManager.java" line="24" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/AttributeManager.java" bodystart="24" bodyend="27"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>The collection of attributes, split into attributes with a history (A) and single-value attributes (B). </para>    </briefdescription>
+<para>The collection of values, split into valueHistories (H) and single values (V). </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="59">
-        <label>roboy.context.AttributeManager&lt; A extends AttributeInterface, B extends AttributeInterface &gt;</label>
+      <node id="922">
+        <label>ImmutableClassToInstanceMap&lt; roboy.context.AbstractValue &gt;</label>
+      </node>
+      <node id="921">
+        <label>ImmutableClassToInstanceMap&lt; roboy.context.AbstractValueHistory &gt;</label>
+      </node>
+      <node id="920">
+        <label>roboy.context.AttributeManager&lt; H extends ExternalContextInterface, V extends ExternalContextInterface &gt;</label>
         <link refid="classroboy_1_1context_1_1_attribute_manager"/>
-        <childnode refid="60" relation="usage">
+        <childnode refid="921" relation="usage">
+          <edgelabel>valueHistories</edgelabel>
+        </childnode>
+        <childnode refid="922" relation="usage">
           <edgelabel>values</edgelabel>
         </childnode>
-        <childnode refid="61" relation="usage">
-          <edgelabel>attributes</edgelabel>
-        </childnode>
-      </node>
-      <node id="61">
-        <label>ImmutableClassToInstanceMap&lt; roboy.context.ValueListInterface &gt;</label>
-      </node>
-      <node id="60">
-        <label>ImmutableClassToInstanceMap&lt; roboy.context.ValueInterface &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="11" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="11" bodyend="35"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/AttributeManager.java" line="10" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/AttributeManager.java" bodystart="10" bodyend="28"/>
     <listofallmembers>
-      <member refid="classroboy_1_1context_1_1_attribute_manager_1a4a2bee43f0dcdd4ba4997030f807f4ff" prot="protected" virt="non-virtual"><scope>roboy::context::AttributeManager</scope><name>attributes</name></member>
-      <member refid="classroboy_1_1context_1_1_attribute_manager_1a61189531613631c833a2cf48c7d98c58" prot="package" virt="non-virtual"><scope>roboy::context::AttributeManager</scope><name>getAttributeValue</name></member>
-      <member refid="classroboy_1_1context_1_1_attribute_manager_1a9b48119a5ca52e1d6c3b3d06b55a76b9" prot="package" virt="non-virtual"><scope>roboy::context::AttributeManager</scope><name>getLastAttributeValue</name></member>
-      <member refid="classroboy_1_1context_1_1_attribute_manager_1a988cdf9b696baf0e1e6fc65535a05ec9" prot="package" virt="non-virtual"><scope>roboy::context::AttributeManager</scope><name>getNLastValues</name></member>
-      <member refid="classroboy_1_1context_1_1_attribute_manager_1af1a9cdda6498cc832911e6b0cb9251e9" prot="package" virt="non-virtual"><scope>roboy::context::AttributeManager</scope><name>getValue</name></member>
-      <member refid="classroboy_1_1context_1_1_attribute_manager_1ac5027d6862070a36fc4658f38e133927" prot="protected" virt="non-virtual"><scope>roboy::context::AttributeManager</scope><name>values</name></member>
+      <member refid="classroboy_1_1context_1_1_attribute_manager_1ab578d331f5b9ed3e4422c389a1ee73f0" prot="package" virt="non-virtual"><scope>roboy::context::AttributeManager</scope><name>getLastValue</name></member>
+      <member refid="classroboy_1_1context_1_1_attribute_manager_1aa2b1bec09e5088db3f13757be1b5803b" prot="package" virt="non-virtual"><scope>roboy::context::AttributeManager</scope><name>getNLastValues</name></member>
+      <member refid="classroboy_1_1context_1_1_attribute_manager_1a6aaa68eeb8b9a44ec604e7c5c879774f" prot="package" virt="non-virtual"><scope>roboy::context::AttributeManager</scope><name>getValue</name></member>
+      <member refid="classroboy_1_1context_1_1_attribute_manager_1a5be9a684234b35d5b9d43c5cd58b9b80" prot="protected" virt="non-virtual"><scope>roboy::context::AttributeManager</scope><name>valueHistories</name></member>
+      <member refid="classroboy_1_1context_1_1_attribute_manager_1aa80bebfb0b32b719083b9ecea12f51a2" prot="protected" virt="non-virtual"><scope>roboy::context::AttributeManager</scope><name>values</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

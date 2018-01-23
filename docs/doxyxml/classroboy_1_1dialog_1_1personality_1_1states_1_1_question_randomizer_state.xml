@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state" kind="class" language="Java" prot="public">
     <compoundname>roboy::dialog::personality::states::QuestionRandomizerState</compoundname>
     <basecompoundref refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" prot="public" virt="non-virtual">roboy.dialog.personality.states.State</basecompoundref>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a3386fb0d5be77d0c60b9f3aedfc29419" prot="private" static="no" mutable="no">
-        <type><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state" kindref="compound">PersonalQAState</ref> []</type>
+        <type><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state" kindref="compound">PersonalQAState</ref>[]</type>
         <definition>PersonalQAState [] roboy.dialog.personality.states.QuestionRandomizerState.questionStates</definition>
         <argsstring></argsstring>
         <name>questionStates</name>
@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="24" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="24" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="24" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1ae1a9cf736cd1b1e43d7dc8065f21b4c7" prot="private" static="no" mutable="no">
         <type><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state" kindref="compound">PersonalQAState</ref></type>
@@ -28,10 +28,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="25" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="25" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="25" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1acbf9232fe6879cd126bc1218d7d71b3f" prot="private" static="no" mutable="no">
-        <type><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state" kindref="compound">PersonalFollowUpState</ref> []</type>
+        <type><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state" kindref="compound">PersonalFollowUpState</ref>[]</type>
         <definition>PersonalFollowUpState [] roboy.dialog.personality.states.QuestionRandomizerState.followUpStates</definition>
         <argsstring></argsstring>
         <name>followUpStates</name>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="26" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="26" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="26" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a61947f719889a94587aea7282edd8679" prot="private" static="no" mutable="no">
         <type>HashMap&lt; <ref refid="enumroboy_1_1memory_1_1_neo4j_relationships" kindref="compound">Neo4jRelationships</ref>, Boolean &gt;</type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="27" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="27" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="27" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a9b53c08c74c9d75bf76f1bd078a19b36" prot="private" static="no" mutable="no">
         <type><ref refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" kindref="compound">State</ref></type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="28" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="28" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="28" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a6045afc0a5c8fba38796ced7b1399d86" prot="private" static="no" mutable="no">
         <type><ref refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state" kindref="compound">State</ref></type>
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="29" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="29" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="29" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="29" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1ab9f31a6162c1a6af4f31e3f37fcdf798" prot="private" static="no" mutable="no">
         <type><ref refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor" kindref="compound">Interlocutor</ref></type>
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="30" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="30" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="30" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="30" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="package-attrib">
@@ -109,7 +109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="31" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="31" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="31" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1afbb8ab111f8840696036af2b4cde587d" prot="package" static="no" mutable="no">
         <type>String</type>
@@ -123,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="34" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="34" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="34" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a40c5e16ce450ce1fc46bfb8f5db264ea" prot="package" static="no" mutable="no">
         <type>String</type>
@@ -137,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="35" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="35" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="35" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a42c8cf8b93a4f963d0c891a0e1a02160" prot="package" static="no" mutable="no">
         <type>String</type>
@@ -151,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="36" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="36" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="36" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1aa68c40ae2cb80f8ef6e416274c7d59e7" prot="package" static="no" mutable="no">
         <type>String</type>
@@ -165,7 +165,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="37" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="37" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="37" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a1fb0da74566ddb059737f0b17c3a591d" prot="package" static="no" mutable="no">
         <type>String</type>
@@ -179,7 +179,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="38" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="38" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="38" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1ac079c56ee234c0fd4221ef6d673f7b39" prot="package" static="no" mutable="no">
         <type>Map&lt; String, List&lt; String &gt; &gt;</type>
@@ -192,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="39" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="39" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="39" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1ae332ed928c13eb88e5ec9d21ae0bf71a" prot="package" static="no" mutable="no">
         <type>Map&lt; String, List&lt; String[]&gt; &gt;</type>
@@ -205,7 +205,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="40" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="40" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="40" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a8f2ce69703ee3af10133e5bff67cbcd6" prot="package" static="no" mutable="no">
         <type>Map&lt; String, List&lt; String &gt; &gt;</type>
@@ -218,7 +218,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="41" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="41" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="41" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a9913ee356287893f06bf2d4dcd71aa48" prot="package" static="no" mutable="no">
         <type>Map&lt; String, List&lt; String &gt; &gt;</type>
@@ -231,7 +231,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="42" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="42" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="42" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a1c09d80edc2be64a8691a5c7762b6f95" prot="package" static="no" mutable="no">
         <type>Map&lt; String, List&lt; String[]&gt; &gt;</type>
@@ -244,7 +244,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="43" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="43" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="43" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -267,7 +267,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="45" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="45" bodyend="77"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="45" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="45" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a8cca5622a1c2f0c882809a38e7cde343" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
@@ -281,7 +281,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="80" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="80" bodyend="108"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="80" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="80" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a112de960346813aa29c07dff35d94691" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction" kindref="compound">Reaction</ref></type>
@@ -299,7 +299,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="111" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="111" bodyend="116"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="111" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="111" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a71c4bbe217d3478a16f036fe079f9fef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -316,7 +316,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="118" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="118" bodyend="122"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="118" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="118" bodyend="122"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -335,7 +335,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="124" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="124" bodyend="131"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="124" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="124" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a9ba07cc2ea71989c8b2c209d00cfac85" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state" kindref="compound">PersonalFollowUpState</ref></type>
@@ -352,7 +352,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="133" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="133" bodyend="139"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="133" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="133" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1af265efc392f41078d44ce2b735afce62" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -365,7 +365,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="141" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="141" bodyend="147"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="141" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="141" bodyend="147"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -373,207 +373,207 @@
     <detaileddescription>
 <para>Coupled with Neo4j information about the person to prevent duplicates. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="637">
+      <node id="1456">
         <label>roboy.dialog.personality.states.QuestionRandomizerState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state"/>
-        <childnode refid="638" relation="public-inheritance">
+        <childnode refid="1457" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="638">
+      <node id="1457">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="639">
+      <node id="1458">
         <label>roboy.dialog.personality.states.QuestionRandomizerState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state"/>
-        <childnode refid="640" relation="public-inheritance">
+        <childnode refid="1459" relation="public-inheritance">
         </childnode>
-        <childnode refid="641" relation="usage">
+        <childnode refid="1460" relation="usage">
           <edgelabel>person</edgelabel>
         </childnode>
-        <childnode refid="640" relation="usage">
+        <childnode refid="1459" relation="usage">
           <edgelabel>chosenState</edgelabel>
           <edgelabel>inner</edgelabel>
         </childnode>
-        <childnode refid="654" relation="usage">
+        <childnode refid="1473" relation="usage">
           <edgelabel>questionStates</edgelabel>
           <edgelabel>locationQuestion</edgelabel>
         </childnode>
-        <childnode refid="659" relation="usage">
+        <childnode refid="1478" relation="usage">
           <edgelabel>answersFollowUp</edgelabel>
           <edgelabel>successAnswers</edgelabel>
         </childnode>
-        <childnode refid="660" relation="usage">
+        <childnode refid="1479" relation="usage">
           <edgelabel>questions</edgelabel>
           <edgelabel>followUp</edgelabel>
           <edgelabel>failureAnswers</edgelabel>
         </childnode>
-        <childnode refid="661" relation="usage">
+        <childnode refid="1480" relation="usage">
           <edgelabel>alreadyAsked</edgelabel>
         </childnode>
-        <childnode refid="662" relation="usage">
+        <childnode refid="1481" relation="usage">
           <edgelabel>followUpStates</edgelabel>
         </childnode>
       </node>
-      <node id="657">
+      <node id="1476">
         <label>List&lt; String[]&gt;</label>
       </node>
-      <node id="658">
+      <node id="1477">
         <label>roboy.memory.Neo4jRelationships</label>
         <link refid="enumroboy_1_1memory_1_1_neo4j_relationships"/>
       </node>
-      <node id="662">
+      <node id="1481">
         <label>roboy.dialog.personality.states.PersonalFollowUpState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state"/>
-        <childnode refid="655" relation="public-inheritance">
+        <childnode refid="1474" relation="public-inheritance">
         </childnode>
-        <childnode refid="641" relation="usage">
+        <childnode refid="1460" relation="usage">
           <edgelabel>person</edgelabel>
         </childnode>
-        <childnode refid="657" relation="usage">
+        <childnode refid="1476" relation="usage">
           <edgelabel>successTexts</edgelabel>
         </childnode>
-        <childnode refid="656" relation="usage">
+        <childnode refid="1475" relation="usage">
           <edgelabel>questions</edgelabel>
         </childnode>
-        <childnode refid="658" relation="usage">
+        <childnode refid="1477" relation="usage">
           <edgelabel>predicate</edgelabel>
         </childnode>
       </node>
-      <node id="653">
+      <node id="1472">
         <label>CountDownLatch</label>
       </node>
-      <node id="655">
+      <node id="1474">
         <label>roboy.dialog.personality.states.AbstractBooleanState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
-        <childnode refid="640" relation="public-inheritance">
+        <childnode refid="1459" relation="public-inheritance">
         </childnode>
-        <childnode refid="640" relation="usage">
+        <childnode refid="1459" relation="usage">
           <edgelabel>success</edgelabel>
           <edgelabel>failure</edgelabel>
         </childnode>
-        <childnode refid="656" relation="usage">
+        <childnode refid="1475" relation="usage">
           <edgelabel>failureTexts</edgelabel>
           <edgelabel>successTexts</edgelabel>
         </childnode>
       </node>
-      <node id="648">
+      <node id="1467">
         <label>Gson</label>
       </node>
-      <node id="656">
+      <node id="1475">
         <label>List&lt; String &gt;</label>
       </node>
-      <node id="642">
+      <node id="1461">
         <label>roboy.memory.nodes.MemoryNodeModel</label>
         <link refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model"/>
-        <childnode refid="643" relation="usage">
+        <childnode refid="1462" relation="usage">
           <edgelabel>properties</edgelabel>
         </childnode>
-        <childnode refid="644" relation="usage">
+        <childnode refid="1463" relation="usage">
           <edgelabel>labels</edgelabel>
         </childnode>
-        <childnode refid="645" relation="usage">
+        <childnode refid="1464" relation="usage">
           <edgelabel>relationships</edgelabel>
         </childnode>
       </node>
-      <node id="659">
+      <node id="1478">
         <label>Map&lt; String, List&lt; String[]&gt; &gt;</label>
       </node>
-      <node id="647">
+      <node id="1466">
         <label>roboy.memory.Memory&lt; MemoryNodeModel &gt;</label>
         <link refid="interfaceroboy_1_1memory_1_1_memory"/>
       </node>
-      <node id="641">
+      <node id="1460">
         <label>roboy.memory.nodes.Interlocutor</label>
         <link refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor"/>
-        <childnode refid="642" relation="usage">
+        <childnode refid="1461" relation="usage">
           <edgelabel>person</edgelabel>
         </childnode>
-        <childnode refid="646" relation="usage">
+        <childnode refid="1465" relation="usage">
           <edgelabel>memory</edgelabel>
         </childnode>
       </node>
-      <node id="652">
+      <node id="1471">
         <label>HashMap&lt; roboy.ros.RosClients, ServiceClient &gt;</label>
       </node>
-      <node id="643">
+      <node id="1462">
         <label>HashMap&lt; String, Object &gt;</label>
       </node>
-      <node id="660">
+      <node id="1479">
         <label>Map&lt; String, List&lt; String &gt; &gt;</label>
       </node>
-      <node id="640">
+      <node id="1459">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
-      <node id="649">
+      <node id="1468">
         <label>roboy.ros.RosMainNode</label>
         <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
-        <childnode refid="650" relation="public-inheritance">
+        <childnode refid="1469" relation="public-inheritance">
         </childnode>
-        <childnode refid="651" relation="usage">
+        <childnode refid="1470" relation="usage">
           <edgelabel>clients</edgelabel>
         </childnode>
-        <childnode refid="653" relation="usage">
+        <childnode refid="1472" relation="usage">
           <edgelabel>rosConnectionLatch</edgelabel>
         </childnode>
       </node>
-      <node id="661">
+      <node id="1480">
         <label>HashMap&lt; roboy.memory.Neo4jRelationships, Boolean &gt;</label>
       </node>
-      <node id="645">
+      <node id="1464">
         <label>HashMap&lt; String, ArrayList&lt; Integer &gt; &gt;</label>
       </node>
-      <node id="654">
+      <node id="1473">
         <label>roboy.dialog.personality.states.PersonalQAState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state"/>
-        <childnode refid="655" relation="public-inheritance">
+        <childnode refid="1474" relation="public-inheritance">
         </childnode>
-        <childnode refid="641" relation="usage">
+        <childnode refid="1460" relation="usage">
           <edgelabel>person</edgelabel>
         </childnode>
-        <childnode refid="657" relation="usage">
+        <childnode refid="1476" relation="usage">
           <edgelabel>successTexts</edgelabel>
         </childnode>
-        <childnode refid="656" relation="usage">
+        <childnode refid="1475" relation="usage">
           <edgelabel>questions</edgelabel>
         </childnode>
-        <childnode refid="658" relation="usage">
+        <childnode refid="1477" relation="usage">
           <edgelabel>predicate</edgelabel>
         </childnode>
       </node>
-      <node id="651">
+      <node id="1470">
         <label>roboy.ros.RosManager</label>
         <link refid="classroboy_1_1ros_1_1_ros_manager"/>
-        <childnode refid="652" relation="usage">
+        <childnode refid="1471" relation="usage">
           <edgelabel>clientMap</edgelabel>
         </childnode>
       </node>
-      <node id="644">
+      <node id="1463">
         <label>ArrayList&lt; String &gt;</label>
       </node>
-      <node id="650">
+      <node id="1469">
         <label>AbstractNodeMain</label>
       </node>
-      <node id="646">
+      <node id="1465">
         <label>roboy.memory.Neo4jMemory</label>
         <link refid="classroboy_1_1memory_1_1_neo4j_memory"/>
-        <childnode refid="647" relation="public-inheritance">
+        <childnode refid="1466" relation="public-inheritance">
         </childnode>
-        <childnode refid="648" relation="usage">
+        <childnode refid="1467" relation="usage">
           <edgelabel>gson</edgelabel>
         </childnode>
-        <childnode refid="649" relation="usage">
+        <childnode refid="1468" relation="usage">
           <edgelabel>rosMainNode</edgelabel>
         </childnode>
-        <childnode refid="646" relation="usage">
+        <childnode refid="1465" relation="usage">
           <edgelabel>memory</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="18" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="18" bodyend="149"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" line="18" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/QuestionRandomizerState.java" bodystart="18" bodyend="149"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a8cca5622a1c2f0c882809a38e7cde343" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::QuestionRandomizerState</scope><name>act</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a61947f719889a94587aea7282edd8679" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::states::QuestionRandomizerState</scope><name>alreadyAsked</name></member>

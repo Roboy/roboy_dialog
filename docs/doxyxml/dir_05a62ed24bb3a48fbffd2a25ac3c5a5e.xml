@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="dir_05a62ed24bb3a48fbffd2a25ac3c5a5e" kind="dir">
-    <compoundname>/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/word2vec</compoundname>
-    <innerdir refid="dir_bebef46689f592554f5a6861599272c3">/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples</innerdir>
+    <compoundname>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/word2vec</compoundname>
+    <innerdir refid="dir_bebef46689f592554f5a6861599272c3">/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/word2vec/examples</innerdir>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/linguistics/word2vec/"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/word2vec/"/>
   </compounddef>
 </doxygen>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="new_dialog_2states_2_state_8java" kind="file" language="Java">
     <compoundname>State.java</compoundname>
     <innerclass refid="classroboy_1_1new_dialog_1_1states_1_1_state" prot="public">roboy::newDialog::states::State</innerclass>
@@ -101,7 +101,7 @@
 <codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>allGood;</highlight></codeline>
 <codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="161"><highlight class="normal"></highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/>Set&lt;String&gt;<sp/><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state_1ac210fbdf5b34ece06c3f6473d5d55c4c" kindref="member">newSet</ref>(String<sp/>...<sp/>tNames)<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/>Set&lt;String&gt;<sp/><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a74598144b82ca28dcc5e4abfce7739d1" kindref="member">newSet</ref>(String<sp/>...<sp/>tNames)<sp/>{</highlight></codeline>
 <codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HashSet&lt;String&gt;<sp/>result<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>HashSet&lt;&gt;();</highlight></codeline>
 <codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.addAll(Arrays.asList(tNames));</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
@@ -159,7 +159,7 @@
 <codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<sp/>!<sp/>(obj<sp/>instanceof<sp/><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref>))<sp/>{</highlight></codeline>
 <codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref><sp/>other<sp/>=<sp/>(<ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref>)<sp/>obj;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>State<sp/>other<sp/>=<sp/>(State)<sp/>obj;</highlight></codeline>
 <codeline lineno="226"><highlight class="normal"></highlight></codeline>
 <codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>different<sp/>class</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(other.getClass()<sp/>!=<sp/>this.getClass())<sp/>{</highlight></codeline>
@@ -219,6 +219,6 @@
 <codeline lineno="287"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="288"><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/State.java"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java"/>
   </compounddef>
 </doxygen>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="classroboy_1_1dialog_1_1personality_1_1states_1_1_idle_state" kind="class" language="Java" prot="public">
     <compoundname>roboy::dialog::personality::states::IdleState</compoundname>
     <basecompoundref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state" prot="public" virt="non-virtual">roboy.dialog.personality.states.AbstractBooleanState</basecompoundref>
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/IdleState.java" line="14" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/IdleState.java" bodystart="14" bodyend="16"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/IdleState.java" line="14" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/IdleState.java" bodystart="14" bodyend="16"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/IdleState.java" line="20" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/IdleState.java" bodystart="20" bodyend="23"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/IdleState.java" line="20" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/IdleState.java" bodystart="20" bodyend="23"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -43,53 +43,53 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="287">
+      <node id="1126">
         <label>roboy.dialog.personality.states.IdleState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_idle_state"/>
-        <childnode refid="288" relation="public-inheritance">
+        <childnode refid="1127" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="288">
+      <node id="1127">
         <label>roboy.dialog.personality.states.AbstractBooleanState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
-        <childnode refid="289" relation="public-inheritance">
+        <childnode refid="1128" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="289">
+      <node id="1128">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="290">
+      <node id="1129">
         <label>roboy.dialog.personality.states.IdleState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_idle_state"/>
-        <childnode refid="291" relation="public-inheritance">
+        <childnode refid="1130" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="291">
+      <node id="1130">
         <label>roboy.dialog.personality.states.AbstractBooleanState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
-        <childnode refid="292" relation="public-inheritance">
+        <childnode refid="1131" relation="public-inheritance">
         </childnode>
-        <childnode refid="292" relation="usage">
+        <childnode refid="1131" relation="usage">
           <edgelabel>success</edgelabel>
           <edgelabel>failure</edgelabel>
         </childnode>
-        <childnode refid="293" relation="usage">
+        <childnode refid="1132" relation="usage">
           <edgelabel>failureTexts</edgelabel>
           <edgelabel>successTexts</edgelabel>
         </childnode>
       </node>
-      <node id="293">
+      <node id="1132">
         <label>List&lt; String &gt;</label>
       </node>
-      <node id="292">
+      <node id="1131">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
     </collaborationgraph>
-    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/IdleState.java" line="10" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/IdleState.java" bodystart="10" bodyend="24"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/IdleState.java" line="10" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/IdleState.java" bodystart="10" bodyend="24"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_idle_state_1adbb53c81fff691c90e572b4343b78c36" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::IdleState</scope><name>act</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_idle_state_1a3107dc9c6133e1180cfe1b0f7ef4c92a" prot="protected" virt="non-virtual"><scope>roboy::dialog::personality::states::IdleState</scope><name>determineSuccess</name></member>

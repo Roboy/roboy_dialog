@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
   <compounddef id="enumroboy_1_1context_1_1_context_1_1_value_attributes" kind="enum" language="Java" prot="public">
     <compoundname>roboy::context::Context::ValueAttributes</compoundname>
-    <basecompoundref refid="interfaceroboy_1_1context_1_1_attribute_interface" prot="public" virt="non-virtual">roboy.context.AttributeInterface</basecompoundref>
+    <basecompoundref refid="interfaceroboy_1_1context_1_1_attribute_interface" prot="public" virt="non-virtual">roboy.context.ExternalContextInterface</basecompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="enumroboy_1_1context_1_1_context_1_1_value_attributes_1a901f0c0c09f8dbe863238a019ba1dc58" prot="public" static="no" mutable="no">
         <type></type>
@@ -121,7 +121,7 @@
         </childnode>
       </node>
       <node id="873">
-        <label>roboy.context.AttributeInterface</label>
+        <label>roboy.context.ExternalContextInterface</label>
         <link refid="interfaceroboy_1_1context_1_1_attribute_interface"/>
       </node>
     </inheritancegraph>
@@ -133,7 +133,7 @@
         </childnode>
       </node>
       <node id="875">
-        <label>roboy.context.AttributeInterface</label>
+        <label>roboy.context.ExternalContextInterface</label>
         <link refid="interfaceroboy_1_1context_1_1_attribute_interface"/>
       </node>
     </collaborationgraph>

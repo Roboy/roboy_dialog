@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state" kind="class" language="Java" prot="public">
     <compoundname>roboy::newDialog::states::toyStates::ToyIntroState</compoundname>
     <basecompoundref refid="classroboy_1_1new_dialog_1_1states_1_1_state" prot="public" virt="non-virtual">roboy.newDialog.states.State</basecompoundref>
@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" bodystart="21" bodyend="23"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" line="21" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" bodystart="21" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state_1a0bc835504115d772fe9920adb29ff659" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" line="26" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" bodystart="26" bodyend="28"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" line="26" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" bodystart="26" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state_1a9230da5bbdbd22751eef35a180c39419" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" line="31" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" bodystart="31" bodyend="33"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" line="31" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" bodystart="31" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state_1a8bcb7f3d4402a2af38f293e53743ae9a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" line="36" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" bodystart="36" bodyend="38"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" line="36" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" bodystart="36" bodyend="38"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" line="41" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" bodystart="41" bodyend="44"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" line="41" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" bodystart="41" bodyend="44"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -87,39 +87,39 @@
 <listitem><para>next: following state </para></listitem></itemizedlist>
 </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="838">
+      <node id="1642">
         <label>roboy.newDialog.states.State</label>
         <link refid="classroboy_1_1new_dialog_1_1states_1_1_state"/>
       </node>
-      <node id="837">
+      <node id="1641">
         <label>roboy.newDialog.states.toyStates.ToyIntroState</label>
         <link refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state"/>
-        <childnode refid="838" relation="public-inheritance">
+        <childnode refid="1642" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="840">
+      <node id="1644">
         <label>roboy.newDialog.states.State</label>
         <link refid="classroboy_1_1new_dialog_1_1states_1_1_state"/>
-        <childnode refid="841" relation="usage">
+        <childnode refid="1645" relation="usage">
           <edgelabel>transitions</edgelabel>
         </childnode>
-        <childnode refid="840" relation="usage">
+        <childnode refid="1644" relation="usage">
           <edgelabel>fallback</edgelabel>
         </childnode>
       </node>
-      <node id="841">
+      <node id="1645">
         <label>HashMap&lt; String, roboy.newDialog.states.State &gt;</label>
       </node>
-      <node id="839">
+      <node id="1643">
         <label>roboy.newDialog.states.toyStates.ToyIntroState</label>
         <link refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state"/>
-        <childnode refid="840" relation="public-inheritance">
+        <childnode refid="1644" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" line="18" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" bodystart="18" bodyend="46"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" line="18" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyIntroState.java" bodystart="18" bodyend="46"/>
     <listofallmembers>
       <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state_1a0bc835504115d772fe9920adb29ff659" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyIntroState</scope><name>act</name></member>
       <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a610c6a1337f401e4e53806d3bdcb5335" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyIntroState</scope><name>allRequiredTransitionsAreInitialized</name></member>
@@ -130,7 +130,7 @@
       <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state_1a8bcb7f3d4402a2af38f293e53743ae9a" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyIntroState</scope><name>getNextState</name></member>
       <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state_1a43d2af35e0898b13789163e66ac275b6" prot="protected" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyIntroState</scope><name>getRequiredTransitionNames</name></member>
       <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a61e3afbfa155d7fc6d0c353d71a70279" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyIntroState</scope><name>getTransition</name></member>
-      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1ac210fbdf5b34ece06c3f6473d5d55c4c" prot="protected" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyIntroState</scope><name>newSet</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a74598144b82ca28dcc5e4abfce7739d1" prot="protected" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyIntroState</scope><name>newSet</name></member>
       <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state_1a9230da5bbdbd22751eef35a180c39419" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyIntroState</scope><name>react</name></member>
       <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a3d2292e61f395f378b7db49790c67828" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyIntroState</scope><name>setFallback</name></member>
       <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1aacca21bec3b5ca0f0f7435f3678b6087" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyIntroState</scope><name>setIdentifier</name></member>

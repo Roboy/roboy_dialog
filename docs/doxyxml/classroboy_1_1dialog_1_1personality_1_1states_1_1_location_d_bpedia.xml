@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia" kind="class" language="Java" prot="public">
     <compoundname>roboy::dialog::personality::states::LocationDBpedia</compoundname>
     <basecompoundref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state" prot="public" virt="non-virtual">roboy.dialog.personality.states.AbstractBooleanState</basecompoundref>
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" bodystart="21" bodyend="54"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" line="21" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" bodystart="21" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia_1a949c433785269c7853796c3bdc28b178" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>boolean</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" line="57" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" bodystart="57" bodyend="59"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" line="57" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" bodystart="57" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia_1aaa460379142a5ba644d8050b9f7f00f5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction" kindref="compound">Reaction</ref></type>
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" line="62" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" bodystart="62" bodyend="64"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" line="62" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" bodystart="62" bodyend="64"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -59,53 +59,53 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="427">
+      <node id="1246">
         <label>roboy.dialog.personality.states.LocationDBpedia</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia"/>
-        <childnode refid="428" relation="public-inheritance">
+        <childnode refid="1247" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="428">
+      <node id="1247">
         <label>roboy.dialog.personality.states.AbstractBooleanState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
-        <childnode refid="429" relation="public-inheritance">
+        <childnode refid="1248" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="429">
+      <node id="1248">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="430">
+      <node id="1249">
         <label>roboy.dialog.personality.states.LocationDBpedia</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia"/>
-        <childnode refid="431" relation="public-inheritance">
+        <childnode refid="1250" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="431">
+      <node id="1250">
         <label>roboy.dialog.personality.states.AbstractBooleanState</label>
         <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
-        <childnode refid="432" relation="public-inheritance">
+        <childnode refid="1251" relation="public-inheritance">
         </childnode>
-        <childnode refid="432" relation="usage">
+        <childnode refid="1251" relation="usage">
           <edgelabel>success</edgelabel>
           <edgelabel>failure</edgelabel>
         </childnode>
-        <childnode refid="433" relation="usage">
+        <childnode refid="1252" relation="usage">
           <edgelabel>failureTexts</edgelabel>
           <edgelabel>successTexts</edgelabel>
         </childnode>
       </node>
-      <node id="433">
+      <node id="1252">
         <label>List&lt; String &gt;</label>
       </node>
-      <node id="432">
+      <node id="1251">
         <label>roboy.dialog.personality.states.State</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
       </node>
     </collaborationgraph>
-    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" bodystart="17" bodyend="66"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" line="17" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/LocationDBpedia.java" bodystart="17" bodyend="66"/>
     <listofallmembers>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia_1acde5a24d8fc50942713a6af666b8db80" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::LocationDBpedia</scope><name>act</name></member>
       <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_location_d_bpedia_1a949c433785269c7853796c3bdc28b178" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::LocationDBpedia</scope><name>determineSuccess</name></member>

@@ -2,7 +2,6 @@ package roboy.context.visionContext;
 
 import org.junit.Test;
 import roboy.context.Context;
-import roboy.context.InternalUpdater;
 import roboy.context.contextObjects.CoordinateSet;
 
 import java.util.Map;
@@ -30,7 +29,7 @@ public class ContextTest {
     public void setAndGetDialogTopics() {
         Context ct = Context.getInstance();
         Context.Updaters updater = Context.Updaters.DIALOG_TOPICS_UPDATER;
-        Context.ValueLists topics = Context.ValueLists.DIALOG_TOPICS;
+        Context.ValueHistories topics = Context.ValueHistories.DIALOG_TOPICS;
 
         ct.updateValue(updater, "test1");
         assertEquals("test1", ( topics.getLastValue()));

@@ -15,7 +15,7 @@
         </childnode>
       </node>
       <node id="243">
-        <label>roboy.context.visionContext.FaceCoordinates</label>
+        <label>roboy.context.contextObjects.FaceCoordinates</label>
         <link refid="classroboy_1_1context_1_1vision_context_1_1_face_coordinates"/>
         <childnode refid="244" relation="public-inheritance">
         </childnode>
@@ -33,7 +33,7 @@
         </childnode>
       </node>
       <node id="246">
-        <label>roboy.context.visionContext.FaceCoordinates</label>
+        <label>roboy.context.contextObjects.FaceCoordinates</label>
         <link refid="classroboy_1_1context_1_1vision_context_1_1_face_coordinates"/>
         <childnode refid="247" relation="public-inheritance">
         </childnode>

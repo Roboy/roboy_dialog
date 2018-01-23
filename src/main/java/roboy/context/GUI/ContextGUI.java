@@ -20,7 +20,7 @@ public class ContextGUI {
     private TitledBorder valueBorder;
     private JPanel valuePanel;
     private Map<Context.Values, JLabel> valueDisplays;
-    private Map<Context.ValueLists, JScrollPane> historyDisplays;
+    private Map<Context.ValueHistories, JScrollPane> historyDisplays;
     private static int MAX_HISTORY_VALUES = 10;
 
     // Panel displaying historyAttributes.
@@ -87,7 +87,7 @@ public class ContextGUI {
         historyPanel.setBorder(historyBorder);
 
         historyDisplays = new HashMap<>();
-        for (Context.ValueLists attribute : Context.ValueLists.values()) {
+        for (Context.ValueHistories attribute : Context.ValueHistories.values()) {
             historyPanel.add(new JLabel(attribute.toString() + ":", JLabel.CENTER));
             Map<Integer, Object> vals = attribute.getNLastValues(MAX_HISTORY_VALUES);
             DefaultListModel<String> sorted = new DefaultListModel<>();
@@ -142,7 +142,7 @@ public class ContextGUI {
     }
 
     private void updateHistories() {
-        for (Context.ValueLists attribute : Context.ValueLists.values()) {
+        for (Context.ValueHistories attribute : Context.ValueHistories.values()) {
             Map<Integer, Object> vals = attribute.getNLastValues(MAX_HISTORY_VALUES);
             if (vals.size() == 0) {
                 continue;

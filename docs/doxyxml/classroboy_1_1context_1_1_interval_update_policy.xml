@@ -4,7 +4,7 @@
     <compoundname>roboy::context::IntervalUpdatePolicy</compoundname>
     <basecompoundref refid="classroboy_1_1context_1_1_async_update_policy" prot="public" virt="non-virtual">roboy.context.ExternalUpdater</basecompoundref>
     <derivedcompoundref refid="classroboy_1_1context_1_1memory_context_1_1_interlocutor_node_updater" prot="public" virt="non-virtual">roboy.context.memoryContext.InterlocutorNodeUpdater</derivedcompoundref>
-    <derivedcompoundref refid="classroboy_1_1context_1_1vision_context_1_1_face_coordinates_updater" prot="public" virt="non-virtual">roboy.context.visionContext.FaceCoordinatesUpdater</derivedcompoundref>
+    <derivedcompoundref refid="classroboy_1_1context_1_1vision_context_1_1_face_coordinates_updater" prot="public" virt="non-virtual">roboy.context.contextObjects.FaceCoordinatesUpdater</derivedcompoundref>
     <templateparamlist>
       <param>
         <type>T</type>

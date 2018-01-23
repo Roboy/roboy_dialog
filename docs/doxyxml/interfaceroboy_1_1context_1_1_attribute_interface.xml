@@ -7,7 +7,7 @@
       <sectiondef kind="public-func">
       <memberdef kind="function" id="interfaceroboy_1_1context_1_1_attribute_interface_1a942bec6d3205c95ec9cae539e2ccc058" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Class</type>
-        <definition>Class roboy.context.AttributeInterface.getClassType</definition>
+        <definition>Class roboy.context.ExternalContextInterface.getClassType</definition>
         <argsstring>()</argsstring>
         <name>getClassType</name>
         <reimplementedby refid="enumroboy_1_1context_1_1_context_1_1_history_attributes_1aad0b3486e28e9f5c6a7c2294bbfaf6a9">getClassType</reimplementedby>
@@ -22,7 +22,7 @@
       </memberdef>
       <memberdef kind="function" id="interfaceroboy_1_1context_1_1_attribute_interface_1a696a7573f2490298fea250674c5b56c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Class</type>
-        <definition>Class roboy.context.AttributeInterface.getReturnType</definition>
+        <definition>Class roboy.context.ExternalContextInterface.getReturnType</definition>
         <argsstring>()</argsstring>
         <name>getReturnType</name>
         <reimplementedby refid="enumroboy_1_1context_1_1_context_1_1_history_attributes_1aba3ab2b4b198d5c0e587946b2cf6ff84">getReturnType</reimplementedby>
@@ -54,7 +54,7 @@
         </childnode>
       </node>
       <node id="54">
-        <label>roboy.context.AttributeInterface</label>
+        <label>roboy.context.ExternalContextInterface</label>
         <link refid="interfaceroboy_1_1context_1_1_attribute_interface"/>
       </node>
     </inheritancegraph>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="classroboy_1_1new_dialog_1_1_new_dialog_system" kind="class" language="Java" prot="public">
     <compoundname>roboy::newDialog::NewDialogSystem</compoundname>
       <sectiondef kind="public-static-func">
@@ -9,7 +9,7 @@
         <argsstring>(String[] args)</argsstring>
         <name>main</name>
         <param>
-          <type>String []</type>
+          <type>String[]</type>
           <declname>args</declname>
         </param>
         <exceptions> throws IOException, InterruptedException </exceptions>
@@ -19,14 +19,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/NewDialogSystem.java" line="24" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/NewDialogSystem.java" bodystart="24" bodyend="59"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/NewDialogSystem.java" line="24" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/NewDialogSystem.java" bodystart="24" bodyend="59"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Temporary class to test new state based personality. </para>    </briefdescription>
     <detaileddescription>
 <para>Will be be extended and might replace the old DialogSystem in the future. </para>    </detaileddescription>
-    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/NewDialogSystem.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/NewDialogSystem.java" bodystart="21" bodyend="63"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/NewDialogSystem.java" line="21" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/NewDialogSystem.java" bodystart="21" bodyend="63"/>
     <listofallmembers>
       <member refid="classroboy_1_1new_dialog_1_1_new_dialog_system_1a8471b0ca965dc56b665bcc075dccc419" prot="public" virt="non-virtual"><scope>roboy::newDialog::NewDialogSystem</scope><name>main</name></member>
     </listofallmembers>

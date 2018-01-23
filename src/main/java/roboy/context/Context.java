@@ -15,7 +15,7 @@ import java.util.Map;
  * <p>
  * For usage examples, check out ContextTest.java
  */
-public class Context extends AttributeManager<Context.ValueLists, Context.Values> {
+public class Context extends AttributeManager<Context.ValueHistories, Context.Values> {
     private static Context context;
 
     private final ArrayList<ExternalUpdater> externalUpdaters = new ArrayList<>();
@@ -49,15 +49,15 @@ public class Context extends AttributeManager<Context.ValueLists, Context.Values
     }
 
     /**
-     * All available valueHistories of values.
+     * All available valueHistories.
      */
-    public enum ValueLists implements ExternalContextInterface {
+    public enum ValueHistories implements ExternalContextInterface {
         DIALOG_TOPICS(DialogTopics.class, String.class);
 
         final Class classType;
         final Class returnType;
 
-        ValueLists(Class<? extends AbstractValueHistory> attribute, Class dataType) {
+        ValueHistories(Class<? extends AbstractValueHistory> attribute, Class dataType) {
             this.classType = attribute;
             this.returnType = dataType;
         }

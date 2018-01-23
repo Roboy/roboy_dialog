@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="classroboy_1_1new_dialog_1_1_state_based_personality" kind="class" language="Java" prot="public">
     <compoundname>roboy::newDialog::StateBasedPersonality</compoundname>
     <basecompoundref refid="classroboy_1_1new_dialog_1_1_dialog_state_machine" prot="public" virt="non-virtual">roboy.newDialog.DialogStateMachine</basecompoundref>
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="32" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="32" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="32" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="32" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="35" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="35" bodyend="38"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="35" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="35" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_state_based_personality_1aa64bfd48607301f0752f6f06d8a15e39" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kindref="compound">Action</ref> &gt;</type>
@@ -49,7 +49,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="50" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="50" bodyend="63"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="50" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="50" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_state_based_personality_1a887364f1eb47cb8b45a0e621ac6c68cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kindref="compound">Action</ref> &gt;</type>
@@ -76,7 +76,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="67" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="67" bodyend="104"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="67" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="67" bodyend="104"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="41" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="41" bodyend="44"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="41" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="41" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_state_based_personality_1a170c754f0e7a10491929293dd109552d" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kindref="compound">Action</ref> &gt;</type>
@@ -117,7 +117,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="112" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="112" bodyend="115"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="112" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="112" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_state_based_personality_1a173b730ecec7fa923936b29fbfc93b0b" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kindref="compound">Action</ref> &gt;</type>
@@ -154,7 +154,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="126" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="126" bodyend="147"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="126" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="126" bodyend="147"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_state_based_personality_1add6aad1c0e8680a90a98ab09dc94ccab" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kindref="compound">Action</ref> &gt;</type>
@@ -180,7 +180,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="155" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="155" bodyend="164"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="155" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="155" bodyend="164"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -188,93 +188,93 @@
     <detaileddescription>
 <para>In contrast to previous Personality implementations, this one is more generic as it loads the dialog from a file. Additionally, it is still possible to define the dialog structure directly from code (as it was done in previous implementations).</para><para>Instead of using nested states that will pass an utterance to each other if a state cannot give an appropriate reaction, we use a fallback concept. If a state doesn&apos;t know how to react, it simply doesn&apos;t react at all. If a fallback (with is another state) is attached to it, the personality will pass the utterance to the fallback automatically. This concept helps to decouple the states and reduce the dependencies between them. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="800">
+      <node id="1608">
         <label>roboy.newDialog.StateBasedPersonality</label>
         <link refid="classroboy_1_1new_dialog_1_1_state_based_personality"/>
-        <childnode refid="801" relation="public-inheritance">
+        <childnode refid="1609" relation="public-inheritance">
         </childnode>
-        <childnode refid="802" relation="public-inheritance">
+        <childnode refid="1610" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="802">
+      <node id="1610">
         <label>roboy.dialog.personality.Personality</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality"/>
       </node>
-      <node id="801">
+      <node id="1609">
         <label>roboy.newDialog.DialogStateMachine</label>
         <link refid="classroboy_1_1new_dialog_1_1_dialog_state_machine"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="811">
+      <node id="1619">
         <label>Map&lt; String, String &gt;</label>
       </node>
-      <node id="806">
+      <node id="1614">
         <label>roboy.newDialog.states.State</label>
         <link refid="classroboy_1_1new_dialog_1_1states_1_1_state"/>
-        <childnode refid="805" relation="usage">
+        <childnode refid="1613" relation="usage">
           <edgelabel>transitions</edgelabel>
         </childnode>
-        <childnode refid="806" relation="usage">
+        <childnode refid="1614" relation="usage">
           <edgelabel>fallback</edgelabel>
         </childnode>
       </node>
-      <node id="803">
+      <node id="1611">
         <label>roboy.newDialog.StateBasedPersonality</label>
         <link refid="classroboy_1_1new_dialog_1_1_state_based_personality"/>
-        <childnode refid="804" relation="public-inheritance">
+        <childnode refid="1612" relation="public-inheritance">
         </childnode>
-        <childnode refid="807" relation="public-inheritance">
+        <childnode refid="1615" relation="public-inheritance">
         </childnode>
-        <childnode refid="808" relation="usage">
+        <childnode refid="1616" relation="usage">
           <edgelabel>verbalizer</edgelabel>
         </childnode>
       </node>
-      <node id="807">
+      <node id="1615">
         <label>roboy.dialog.personality.Personality</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality"/>
       </node>
-      <node id="809">
+      <node id="1617">
         <label>List&lt; String &gt;</label>
       </node>
-      <node id="805">
+      <node id="1613">
         <label>HashMap&lt; String, roboy.newDialog.states.State &gt;</label>
       </node>
-      <node id="808">
+      <node id="1616">
         <label>roboy.talk.Verbalizer</label>
         <link refid="classroboy_1_1talk_1_1_verbalizer"/>
-        <childnode refid="809" relation="usage">
+        <childnode refid="1617" relation="usage">
           <edgelabel>preAnecdotes</edgelabel>
           <edgelabel>farewells</edgelabel>
           <edgelabel>greetings</edgelabel>
           <edgelabel>anecdotes</edgelabel>
           <edgelabel>segues</edgelabel>
         </childnode>
-        <childnode refid="810" relation="usage">
+        <childnode refid="1618" relation="usage">
           <edgelabel>tenthNumberMap</edgelabel>
           <edgelabel>lowNumberMap</edgelabel>
         </childnode>
-        <childnode refid="811" relation="usage">
+        <childnode refid="1619" relation="usage">
           <edgelabel>dayNumberMap</edgelabel>
           <edgelabel>monthNumberMap</edgelabel>
         </childnode>
       </node>
-      <node id="804">
+      <node id="1612">
         <label>roboy.newDialog.DialogStateMachine</label>
         <link refid="classroboy_1_1new_dialog_1_1_dialog_state_machine"/>
-        <childnode refid="805" relation="usage">
+        <childnode refid="1613" relation="usage">
           <edgelabel>identifierToState</edgelabel>
         </childnode>
-        <childnode refid="806" relation="usage">
+        <childnode refid="1614" relation="usage">
           <edgelabel>initalState</edgelabel>
           <edgelabel>activeState</edgelabel>
         </childnode>
       </node>
-      <node id="810">
+      <node id="1618">
         <label>Map&lt; Integer, String &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="29" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="29" bodyend="167"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="29" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="29" bodyend="167"/>
     <listofallmembers>
       <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a4af8cf2d893d7ede5173ae65cadf9c5b" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>addState</name></member>
       <member refid="classroboy_1_1new_dialog_1_1_state_based_personality_1a887364f1eb47cb8b45a0e621ac6c68cf" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>answer</name></member>

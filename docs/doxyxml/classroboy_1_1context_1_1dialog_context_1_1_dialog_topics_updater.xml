@@ -6,7 +6,7 @@
       <sectiondef kind="package-attrib">
       <memberdef kind="variable" id="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics_updater_1adb947fce0e0d5d30031ab06cbeaa82aa" prot="package" static="no" mutable="no">
         <type><ref refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics" kindref="compound">DialogTopics</ref></type>
-        <definition>DialogTopics roboy.context.dialogContext.DialogTopicsUpdater.target</definition>
+        <definition>DialogTopics roboy.context.contextObjects.DialogTopicsUpdater.target</definition>
         <argsstring></argsstring>
         <name>target</name>
         <briefdescription>
@@ -21,7 +21,7 @@
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics_updater_1a56f2ed0e9c222fd909f6e95a1a35d38e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
-        <definition>roboy.context.dialogContext.DialogTopicsUpdater.DialogTopicsUpdater</definition>
+        <definition>roboy.context.contextObjects.DialogTopicsUpdater.DialogTopicsUpdater</definition>
         <argsstring>(DialogTopics target)</argsstring>
         <name>DialogTopicsUpdater</name>
         <param>
@@ -38,7 +38,7 @@
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics_updater_1af226466449fe3ccc6b4c62b84f7fb977" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
-        <definition>void roboy.context.dialogContext.DialogTopicsUpdater.putValue</definition>
+        <definition>void roboy.context.contextObjects.DialogTopicsUpdater.putValue</definition>
         <argsstring>(Topic value)</argsstring>
         <name>putValue</name>
         <param>
@@ -72,7 +72,7 @@
         <link refid="interfaceroboy_1_1context_1_1_direct_update_policy"/>
       </node>
       <node id="198">
-        <label>roboy.context.dialogContext.DialogTopicsUpdater</label>
+        <label>roboy.context.contextObjects.DialogTopicsUpdater</label>
         <link refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics_updater"/>
         <childnode refid="199" relation="public-inheritance">
         </childnode>
@@ -96,7 +96,7 @@
         <label>HashMap&lt; K, V &gt;</label>
       </node>
       <node id="200">
-        <label>roboy.context.dialogContext.DialogTopicsUpdater</label>
+        <label>roboy.context.contextObjects.DialogTopicsUpdater</label>
         <link refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics_updater"/>
         <childnode refid="201" relation="public-inheritance">
         </childnode>
@@ -105,7 +105,7 @@
         </childnode>
       </node>
       <node id="202">
-        <label>roboy.context.dialogContext.DialogTopics</label>
+        <label>roboy.context.contextObjects.DialogTopics</label>
         <link refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics"/>
         <childnode refid="203" relation="public-inheritance">
         </childnode>
