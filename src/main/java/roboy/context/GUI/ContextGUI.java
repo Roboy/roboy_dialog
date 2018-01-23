@@ -59,15 +59,15 @@ public class ContextGUI {
 
         // Attribute part initialization.
         valuePanel = new JPanel();
-        valuePanel.setLayout(new GridLayout(0,2));
+        valuePanel.setLayout(new GridLayout(0, 2));
         valuePanel.setPreferredSize(new Dimension(ATTR_WIDTH, ATTR_HEIGHT));
         valueBorder = BorderFactory.createTitledBorder("Context values");
         valueBorder.setTitleJustification(TitledBorder.CENTER);
         valuePanel.setBorder(valueBorder);
 
         valueDisplays = new HashMap<>();
-        for(Context.Values attribute : Context.Values.values()) {
-            valuePanel.add(new JLabel(attribute.toString()+ ":", JLabel.CENTER));
+        for (Context.Values attribute : Context.Values.values()) {
+            valuePanel.add(new JLabel(attribute.toString() + ":", JLabel.CENTER));
             Object val = attribute.getLastValue();
             if (val == null) {
                 val = NO_VALUE;
@@ -80,14 +80,14 @@ public class ContextGUI {
 
         // History part initialization.
         historyPanel = new JPanel();
-        historyPanel.setLayout(new GridLayout(0,2));
+        historyPanel.setLayout(new GridLayout(0, 2));
         historyPanel.setPreferredSize(new Dimension(ATTR_WIDTH, HISTORY_HEIGHT));
         historyBorder = BorderFactory.createTitledBorder("Histories");
         historyBorder.setTitleJustification(TitledBorder.CENTER);
         historyPanel.setBorder(historyBorder);
 
         historyDisplays = new HashMap<>();
-        for(Context.ValueLists attribute : Context.ValueLists.values()) {
+        for (Context.ValueLists attribute : Context.ValueLists.values()) {
             historyPanel.add(new JLabel(attribute.toString() + ":", JLabel.CENTER));
             Map<Integer, Object> vals = attribute.getNLastValues(MAX_HISTORY_VALUES);
             DefaultListModel<String> sorted = new DefaultListModel<>();
@@ -107,7 +107,7 @@ public class ContextGUI {
         mainPanel.add(historyPanel);
 
         mainFrame.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent windowEvent){
+            public void windowClosing(WindowEvent windowEvent) {
                 mainFrame.dispose();
             }
         });
@@ -122,16 +122,16 @@ public class ContextGUI {
     private void startFrame() {
         JButton updateButton = new JButton("Update");
         updateButton.addActionListener(e -> {
-                updateValues();
-                updateHistories();
-            }
+                    updateValues();
+                    updateHistories();
+                }
         );
         controlPanel.add(updateButton);
         mainFrame.setVisible(true);
     }
 
     private void updateValues() {
-        for(Context.Values attribute : Context.Values.values()) {
+        for (Context.Values attribute : Context.Values.values()) {
             Object val = attribute.getLastValue();
             if (val == null) {
                 continue;
@@ -142,14 +142,14 @@ public class ContextGUI {
     }
 
     private void updateHistories() {
-        for(Context.ValueLists attribute : Context.ValueLists.values()) {
+        for (Context.ValueLists attribute : Context.ValueLists.values()) {
             Map<Integer, Object> vals = attribute.getNLastValues(MAX_HISTORY_VALUES);
             if (vals.size() == 0) {
                 continue;
             }
             DefaultListModel<String> sorted = new DefaultListModel<>();
-            for(Integer i = 0; i < vals.size(); i++) {
-                sorted.add(i, vals.get(vals.size()-i-1).toString());
+            for (Integer i = 0; i < vals.size(); i++) {
+                sorted.add(i, vals.get(vals.size() - i - 1).toString());
             }
             JList historyList = new JList(sorted);
             JScrollPane pane = historyDisplays.get(attribute);

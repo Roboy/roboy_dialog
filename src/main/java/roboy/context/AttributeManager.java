@@ -5,26 +5,20 @@ import com.google.common.collect.ImmutableClassToInstanceMap;
 import java.util.Map;
 
 /**
- * The collection of values, split into lists (L) and single values (V).
+ * The collection of values, split into valueHistories (H) and single values (V).
  */
-public class AttributeManager<L extends AttributeInterface, V extends AttributeInterface> {
+public class AttributeManager<H extends ExternalContextInterface, V extends ExternalContextInterface> {
 
-    protected ImmutableClassToInstanceMap<ValueListInterface> lists;
-    protected ImmutableClassToInstanceMap<ValueInterface> values;
+    protected ImmutableClassToInstanceMap<AbstractValueHistory> valueHistories;
+    protected ImmutableClassToInstanceMap<AbstractValue> values;
 
-    protected <T> T getLastValue(L attribute) {
+    protected <T> T getLastValue(ExternalContextInterface attribute) {
         Class<T> type = attribute.getReturnType();
-        return type.cast(lists.get(attribute.getClassType()).getLastValue());
+        return type.cast(valueHistories.get(attribute.getClassType()).getValue());
     }
 
-    protected <T> T getValue(L attribute, Integer key) {
-        Class<T> type = attribute.getReturnType();
-        return type.cast(lists.get(attribute.getClassType()).getValue(key));
-    }
-
-    protected <K, T> Map<K, T> getNLastValues(L attribute, int n) {
-        Class<T> type = attribute.getReturnType();
-        return (Map<K,T>) lists.get(attribute.getClassType()).getLastNValues(n);
+    protected <K, T> Map<K, T> getNLastValues(H attribute, int n) {
+        return (Map<K, T>) valueHistories.get(attribute.getClassType()).getLastNValues(n);
     }
 
     protected <T> T getValue(V attribute) {

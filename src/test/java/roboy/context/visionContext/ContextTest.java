@@ -2,8 +2,8 @@ package roboy.context.visionContext;
 
 import org.junit.Test;
 import roboy.context.Context;
-import roboy.context.InternalListUpdater;
-import roboy.context.dataTypes.CoordinateSet;
+import roboy.context.InternalUpdater;
+import roboy.context.contextObjects.CoordinateSet;
 
 import java.util.Map;
 
@@ -29,12 +29,12 @@ public class ContextTest {
     @Test
     public void setAndGetDialogTopics() {
         Context ct = Context.getInstance();
-        InternalListUpdater updater = ct.getUpdater(Context.ListUpdaters.DIALOG_TOPICS_UPDATER);
+        Context.Updaters updater = Context.Updaters.DIALOG_TOPICS_UPDATER;
         Context.ValueLists topics = Context.ValueLists.DIALOG_TOPICS;
 
-        updater.putValue("test1");
+        ct.updateValue(updater, "test1");
         assertEquals("test1", ( topics.getLastValue()));
-        updater.putValue("test2");
+        ct.updateValue(updater, "test2");
         Map<Integer, String> values = topics.getNLastValues(2);
         assertEquals("test1", values.get(0));
         assertEquals("test2", values.get(1));

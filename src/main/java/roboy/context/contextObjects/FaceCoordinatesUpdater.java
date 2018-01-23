@@ -1,7 +1,6 @@
-package roboy.context.visionContext;
+package roboy.context.contextObjects;
 
 import roboy.context.IntervalUpdater;
-import roboy.context.dataTypes.CoordinateSet;
 
 import java.util.Random;
 
@@ -17,7 +16,7 @@ public class FaceCoordinatesUpdater extends IntervalUpdater<FaceCoordinates> {
     protected void update() {
         Random r = new Random();
         // TODO replace dummy functionality! (And also update the test accordingly.)
-        CoordinateSet set = new CoordinateSet(r.nextDouble(),r.nextDouble(),r.nextDouble());
+        CoordinateSet set = new CoordinateSet(r.nextDouble(), r.nextDouble(), r.nextDouble());
         target.updateValue(set);
     }
 }
