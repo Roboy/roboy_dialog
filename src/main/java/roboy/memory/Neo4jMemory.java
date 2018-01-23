@@ -123,4 +123,14 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
         return null;
     }
 
+    public String determineNodeType(String relationship) {
+        // TODO expand list as new Node types are added.
+        if(relationship.equals(Neo4jRelationships.HAS_HOBBY.type)) return "Hobby";
+        if(relationship.equals(Neo4jRelationships.FROM.type)) return "Country";
+        if(relationship.equals(Neo4jRelationships.WORK_FOR.type)) return "Organization";
+        if(relationship.equals(Neo4jRelationships.STUDY_AT.type)) return "Organization";
+        if(relationship.equals(Neo4jRelationships.OCCUPIED_AS.type)) return "Occupation";
+        if(relationship.equals(Neo4jRelationships.OTHER.type)) return "Other";
+        else return "";
+    }
 }

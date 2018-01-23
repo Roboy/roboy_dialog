@@ -9,12 +9,13 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 import java.net.Socket;
+import java.net.ConnectException;
 
 
 /**
  * Semantic parser class. Connects DM to Roboy parser and adds its result to interpretation class.
  */
-public class ParserAnalyzer implements Analyzer{
+public class SemanticParserAnalyzer implements Analyzer{
 
   private Socket clientSocket;  /**< Client socket for the parser */
   private PrintWriter out;      /**< Output stream for the parser */
@@ -25,7 +26,7 @@ public class ParserAnalyzer implements Analyzer{
    * A constructor.
    * Creates ParserAnalyzer class and connects the parser to DM using a socket.
    */
-  public ParserAnalyzer(int portNumber) {
+  public SemanticParserAnalyzer(int portNumber) {
     this.debug = true;
     try {
       // Create string-string socket
@@ -56,19 +57,27 @@ public class ParserAnalyzer implements Analyzer{
         if (this.debug) {System.out.println("SEMANTIC PARSER:" + interpretation.getFeature("sentence")); }
         this.out.println(interpretation.getFeature("sentence"));
         response = this.in.readLine();
-        if (this.debug) {System.out.println("> Full response:" + response);}
+        if (this.debug) {
+          System.out.println("> Full response:" + response);
+        }
         if (response!=null && response.contains("=>")) {
           try {
-            if (this.debug) System.out.println("> Parse:" + response.substring(0, response.indexOf("=>")));
-            if (this.debug) System.out.println("> Answer:" + response.substring(response.indexOf("=>") + 3));
+            if (this.debug) {
+              System.out.println("> Parse:" + response.substring(0, response.indexOf("=>")));
+            }
+            if (this.debug) {
+              System.out.println("> Answer:" + response.substring(response.indexOf("=>") + 3));
+            }
             interpretation.getFeatures().put(Linguistics.PARSE, response.substring(0, response.indexOf("=>")));
             interpretation.getFeatures().put(Linguistics.PRED_ANSWER, response.substring(response.indexOf("=>") + 3));
-          } catch (RuntimeException e) {
+          }
+          catch (Exception e) {
             System.err.println("Exception while parsing intent response: " + e.getStackTrace());
           }
         }
         return interpretation;
-      } catch (IOException e) {
+      }
+      catch (IOException e) {
         e.printStackTrace();
         return interpretation;
       }

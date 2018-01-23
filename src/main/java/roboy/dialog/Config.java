@@ -143,7 +143,7 @@ public class Config {
         try
         {
             File propertiesFile = new File(yamlConfigFile);
-            if(propertiesFile == null) {
+            if(! propertiesFile.exists()) { // propertiesFile == null doesn't work!
                 System.out.println("Could not find "+yamlConfigFile+" file in project path! YAML configurations will be unavailable.");
                 return;
             }
