@@ -2,7 +2,7 @@ package roboy.memory.nodes;
 
 import roboy.dialog.Config;
 import roboy.memory.Neo4jMemory;
-import roboy.memory.Neo4jRelations;
+import roboy.memory.Neo4jRelationships;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,12 +16,12 @@ public class Interlocutor {
     Neo4jMemory memory;
     public boolean FAMILIAR = false;
     // Memory is not queried in NOROS mode.
-    private boolean noROS;
+    private boolean memoryROS;
 
     public Interlocutor() {
         this.person = new MemoryNodeModel(true);
         this.memory = Neo4jMemory.getInstance();
-        this.noROS = Config.NOROS;
+        this.memoryROS = Config.MEMORY;
     }
 
     /**
@@ -35,7 +35,7 @@ public class Interlocutor {
         person.setProperty("name", name);
         person.setLabel("Person");
 
-        if(!noROS) {
+        if(memoryROS) {
             ArrayList<Integer> ids = new ArrayList<>();
             // Query memory for matching persons.
             try {
@@ -73,21 +73,25 @@ public class Interlocutor {
         return (String) person.getProperty("name");
     }
 
-    public boolean hasRelation(Neo4jRelations type) {
-        return !(person.getRelation(type.type) == null) && (!person.getRelation(type.type).isEmpty());
+    public boolean hasRelationship(Neo4jRelationships type) {
+        return !(person.getRelationship(type.type) == null) && (!person.getRelationship(type.type).isEmpty());
+    }
+
+    public ArrayList<Integer> getRelationships(Neo4jRelationships type) {
+        return person.getRelationship(type.type);
     }
 
     /**
      * Adds a new relation to the person node, updating memory.
      */
-    public void addInformation(String relation, String name) {
-        if(noROS) return;
+    public void addInformation(String relationship, String name) {
+        if(!memoryROS) return;
         ArrayList<Integer> ids = new ArrayList<>();
         // First check if node with given name exists by a matching query.
         MemoryNodeModel relatedNode = new MemoryNodeModel(true);
         relatedNode.setProperty("name", name);
         //This adds a label type to the memory query depending on the relation.
-        relatedNode.setLabel(determineNodeType(relation));
+        relatedNode.setLabel(memory.determineNodeType(relationship));
         try {
             ids = memory.getByQuery(relatedNode);
         } catch (InterruptedException | IOException e) {
@@ -97,14 +101,14 @@ public class Interlocutor {
         // Pick first from list if multiple matches found.
         if(ids != null && !ids.isEmpty()) {
             //TODO Change from using first id to specifying if multiple matches are found.
-            person.setRelation(relation, ids.get(0));
+            person.setRelationship(relationship, ids.get(0));
         }
         // Create new node if match is not found.
         else {
             try {
                 int id = memory.create(relatedNode);
                 if(id != 0) { // 0 is default value, returned if Memory response was FAIL.
-                    person.setRelation(relation, id);
+                    person.setRelationship(relationship, id);
                 }
             } catch (InterruptedException | IOException e) {
                 System.out.println("Unexpected memory error: creating node for new relation failed.");
@@ -119,14 +123,4 @@ public class Interlocutor {
             e.printStackTrace();
         }
     }
-
-    private String determineNodeType(String relation) {
-        // TODO expand list as new Node types are added.
-        if(relation.equals(Neo4jRelations.HAS_HOBBY.type)) return "Hobby";
-        if(relation.equals(Neo4jRelations.FROM.type)) return "Country";
-        if(relation.equals(Neo4jRelations.WORK_FOR.type)) return "Organization";
-        if(relation.equals(Neo4jRelations.STUDY_AT.type)) return "Organization";
-        else return "";
-    }
-
 }

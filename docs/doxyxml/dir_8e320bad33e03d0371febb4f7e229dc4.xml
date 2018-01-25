@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_8e320bad33e03d0371febb4f7e229dc4" kind="dir">
+    <compoundname>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context</compoundname>
+    <innerdir refid="dir_bd3690cddefd3747010feed6ae64d650">/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects</innerdir>
+    <innerdir refid="dir_780de310a3259b561df66063ee52af20">/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI</innerdir>
+    <innerfile refid="_abstract_value_8java">AbstractValue.java</innerfile>
+    <innerfile refid="_abstract_value_history_8java">AbstractValueHistory.java</innerfile>
+    <innerfile refid="_attribute_manager_8java">AttributeManager.java</innerfile>
+    <innerfile refid="_context_8java">Context.java</innerfile>
+    <innerfile refid="_external_context_interface_8java">ExternalContextInterface.java</innerfile>
+    <innerfile refid="_external_updater_8java">ExternalUpdater.java</innerfile>
+    <innerfile refid="_internal_updater_8java">InternalUpdater.java</innerfile>
+    <innerfile refid="_interval_updater_8java">IntervalUpdater.java</innerfile>
+    <innerfile refid="_value_8java">Value.java</innerfile>
+    <innerfile refid="_value_history_8java">ValueHistory.java</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/"/>
+  </compounddef>
+</doxygen>

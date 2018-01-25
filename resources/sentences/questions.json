@@ -52,10 +52,13 @@
     "What is your favorite TV show?",
     "Which comedy do you like the most?"
   ],
-  "OCCUPATION" : [
+  "OCCUPIED_AS" : [
     "What do you do?",
     "What is your profession?",
     "What do you work as?",
     "What is your field of expertise?"
+  ],
+  "OTHER" : [
+    "Other"
   ]
 }

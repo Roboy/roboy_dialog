@@ -24,7 +24,8 @@ public class Config {
         DEFAULT("DEFAULT"),
         NOROS("NOROS"),
         STANDALONE("STANDALONE"),
-        DEBUG("DEBUG");
+        DEBUG("DEBUG"),
+        MEMORY("MEMORY");
 
         public String profileName;
 
@@ -46,6 +47,13 @@ public class Config {
     public static boolean SHUTDOWN_ON_SERVICE_FAILURE = true;
     /** ROS hostname, will be fetched from the configuration file in the DEFAULT profile. */
     public static String ROS_HOSTNAME = null;
+    /** If true, memory will be queried. Ensure that if NOROS=false, then MEMORY=true.
+     * When NOROS=true, MEMORY can be either true or false. **/
+    public static boolean MEMORY = true;
+    /** Semantic parser socket port. */
+    public static int PARSER_PORT = -1;
+    /** Context GUI demo trigger. Set manually, if wanted. **/
+    public static boolean DEMO_GUI = false;
 
     /** Configuration file to store changing values. */
     private static String yamlConfigFile = "config.properties";
@@ -56,6 +64,9 @@ public class Config {
      */
     public Config(ConfigurationProfile profile) {
         initializeYAMLConfig();
+        // Initialize semantic parser socket port
+        PARSER_PORT = yamlConfig.getInt("PARSER_PORT");
+        DEMO_GUI = yamlConfig.getBoolean("DEMO_GUI");
         switch(profile) {
             case DEFAULT:
                 setDefaultProfile();
@@ -68,6 +79,9 @@ public class Config {
                 break;
             case DEBUG:
                 setDebugProfile();
+                break;
+            case MEMORY:
+                setMemoryProfile();
                 break;
             default:
                 setDefaultProfile();
@@ -99,6 +113,7 @@ public class Config {
         NOROS = true;
         SHUTDOWN_ON_ROS_FAILURE = false;
         SHUTDOWN_ON_SERVICE_FAILURE = false;
+        MEMORY = false;
     }
 
     private void setStandaloneProfile() {
@@ -107,6 +122,7 @@ public class Config {
         NOROS = true;
         SHUTDOWN_ON_ROS_FAILURE = false;
         SHUTDOWN_ON_SERVICE_FAILURE = false;
+        MEMORY = false;
     }
 
     private void setDebugProfile() {
@@ -114,12 +130,20 @@ public class Config {
         SHUTDOWN_ON_SERVICE_FAILURE = false;
     }
 
+    private void setMemoryProfile() {
+        NOROS = true;
+        SHUTDOWN_ON_ROS_FAILURE = false;
+        SHUTDOWN_ON_SERVICE_FAILURE = false;
+        MEMORY = true;
+        ROS_HOSTNAME = yamlConfig.getString("ROS_HOSTNAME");
+    }
+
     private void initializeYAMLConfig() {
         this.yamlConfig = new YAMLConfiguration();
         try
         {
             File propertiesFile = new File(yamlConfigFile);
-            if(propertiesFile == null) {
+            if(! propertiesFile.exists()) { // propertiesFile == null doesn't work!
                 System.out.println("Could not find "+yamlConfigFile+" file in project path! YAML configurations will be unavailable.");
                 return;
             }

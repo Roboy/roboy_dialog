@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1context_1_1context_objects_1_1_face_coordinates_updater" kind="class" language="Java" prot="public">
+    <compoundname>roboy::context::contextObjects::FaceCoordinatesUpdater</compoundname>
+    <basecompoundref refid="classroboy_1_1context_1_1_interval_updater" prot="public" virt="non-virtual">roboy::context::IntervalUpdater&lt; FaceCoordinates &gt;</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1context_1_1context_objects_1_1_face_coordinates_updater_1af0ef8f7822cf15886faf1066aeff4caa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.context.contextObjects.FaceCoordinatesUpdater.FaceCoordinatesUpdater</definition>
+        <argsstring>(FaceCoordinates target, int updateFrequencySeconds)</argsstring>
+        <name>FaceCoordinatesUpdater</name>
+        <param>
+          <type><ref refid="classroboy_1_1context_1_1context_objects_1_1_face_coordinates" kindref="compound">FaceCoordinates</ref></type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>updateFrequencySeconds</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects/FaceCoordinatesUpdater.java" line="11" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects/FaceCoordinatesUpdater.java" bodystart="11" bodyend="13"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classroboy_1_1context_1_1context_objects_1_1_face_coordinates_updater_1abef3aaebde956c700f09e073da45a14c" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.context.contextObjects.FaceCoordinatesUpdater.update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects/FaceCoordinatesUpdater.java" line="16" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects/FaceCoordinatesUpdater.java" bodystart="16" bodyend="21"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Asynchronously triggers ROS queries for face coordinates (in the future). </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1106">
+        <label>roboy::context::IntervalUpdater&lt; FaceCoordinates &gt;</label>
+        <link refid="classroboy_1_1context_1_1_interval_updater"/>
+        <childnode refid="1107" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1105">
+        <label>roboy.context.contextObjects.FaceCoordinatesUpdater</label>
+        <link refid="classroboy_1_1context_1_1context_objects_1_1_face_coordinates_updater"/>
+        <childnode refid="1106" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1107">
+        <label>roboy.context.ExternalUpdater</label>
+        <link refid="classroboy_1_1context_1_1_external_updater"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1109">
+        <label>roboy::context::IntervalUpdater&lt; FaceCoordinates &gt;</label>
+        <link refid="classroboy_1_1context_1_1_interval_updater"/>
+        <childnode refid="1110" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1111" relation="usage">
+          <edgelabel>scheduler</edgelabel>
+        </childnode>
+      </node>
+      <node id="1111">
+        <label>ScheduledExecutorService</label>
+      </node>
+      <node id="1108">
+        <label>roboy.context.contextObjects.FaceCoordinatesUpdater</label>
+        <link refid="classroboy_1_1context_1_1context_objects_1_1_face_coordinates_updater"/>
+        <childnode refid="1109" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1110">
+        <label>roboy.context.ExternalUpdater</label>
+        <link refid="classroboy_1_1context_1_1_external_updater"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects/FaceCoordinatesUpdater.java" line="10" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects/FaceCoordinatesUpdater.java" bodystart="10" bodyend="22"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1context_1_1context_objects_1_1_face_coordinates_updater_1af0ef8f7822cf15886faf1066aeff4caa" prot="public" virt="non-virtual"><scope>roboy::context::contextObjects::FaceCoordinatesUpdater</scope><name>FaceCoordinatesUpdater</name></member>
+      <member refid="classroboy_1_1context_1_1_interval_updater_1a48784f5d8c6dd8c2df60147f9f781367" prot="public" virt="non-virtual"><scope>roboy::context::contextObjects::FaceCoordinatesUpdater</scope><name>IntervalUpdater</name></member>
+      <member refid="classroboy_1_1context_1_1_interval_updater_1acff488249ccdae34d5acca10113c45e5" prot="protected" virt="non-virtual"><scope>roboy::context::contextObjects::FaceCoordinatesUpdater</scope><name>scheduler</name></member>
+      <member refid="classroboy_1_1context_1_1_interval_updater_1a542d30441a2953b1a42065b0b879c8b1" prot="protected" virt="non-virtual"><scope>roboy::context::contextObjects::FaceCoordinatesUpdater</scope><name>target</name></member>
+      <member refid="classroboy_1_1context_1_1context_objects_1_1_face_coordinates_updater_1abef3aaebde956c700f09e073da45a14c" prot="protected" virt="non-virtual"><scope>roboy::context::contextObjects::FaceCoordinatesUpdater</scope><name>update</name></member>
+      <member refid="classroboy_1_1context_1_1_interval_updater_1ac269246ba040046095b57248a1c62507" prot="public" virt="non-virtual"><scope>roboy::context::contextObjects::FaceCoordinatesUpdater</scope><name>updateFrequency</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

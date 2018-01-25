@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics" kind="class" language="Java" prot="public">
+    <compoundname>roboy::context::dialogContext::DialogTopics</compoundname>
+    <basecompoundref refid="classroboy_1_1context_1_1_simple_history_attribute" prot="public" virt="non-virtual">roboy::context::SimpleHistoryAttribute&lt; Integer, Topic &gt;</basecompoundref>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="192">
+        <label>roboy::context::SimpleHistoryAttribute&lt; Integer, Topic &gt;</label>
+        <link refid="classroboy_1_1context_1_1_simple_history_attribute"/>
+        <childnode refid="193" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="191">
+        <label>roboy.context.contextObjects.DialogTopics</label>
+        <link refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics"/>
+        <childnode refid="192" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="193">
+        <label>roboy::context::HistoryAttribute&lt; K, V &gt;</label>
+        <link refid="interfaceroboy_1_1context_1_1_history_attribute"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="195">
+        <label>roboy::context::SimpleHistoryAttribute&lt; Integer, Topic &gt;</label>
+        <link refid="classroboy_1_1context_1_1_simple_history_attribute"/>
+        <childnode refid="196" relation="public-inheritance">
+        </childnode>
+        <childnode refid="197" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+      </node>
+      <node id="197">
+        <label>HashMap&lt; K, V &gt;</label>
+      </node>
+      <node id="194">
+        <label>roboy.context.contextObjects.DialogTopics</label>
+        <link refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics"/>
+        <childnode refid="195" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="196">
+        <label>roboy::context::HistoryAttribute&lt; K, V &gt;</label>
+        <link refid="interfaceroboy_1_1context_1_1_history_attribute"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dialogContext/DialogTopics.java" line="6" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dialogContext/DialogTopics.java" bodystart="6" bodyend="7"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1context_1_1_simple_history_attribute_1a25331a89c362ea6634fd3b925c6ede98" prot="protected" virt="non-virtual"><scope>roboy::context::dialogContext::DialogTopics</scope><name>counter</name></member>
+      <member refid="classroboy_1_1context_1_1_simple_history_attribute_1a12567c636cd325c3804aab4fe4a1e12b" prot="protected" virt="non-virtual"><scope>roboy::context::dialogContext::DialogTopics</scope><name>generateKey</name></member>
+      <member refid="classroboy_1_1context_1_1_simple_history_attribute_1a7a9f6e0a5aec1fc3bf1237b187efd093" prot="public" virt="non-virtual"><scope>roboy::context::dialogContext::DialogTopics</scope><name>getLastNValues</name></member>
+      <member refid="classroboy_1_1context_1_1_simple_history_attribute_1a03c06f7d8d597b56cb6389f95114a0c4" prot="public" virt="non-virtual"><scope>roboy::context::dialogContext::DialogTopics</scope><name>getLastValue</name></member>
+      <member refid="classroboy_1_1context_1_1_simple_history_attribute_1a08d30c04fc4585014c2ce0e7158a8997" prot="public" virt="non-virtual"><scope>roboy::context::dialogContext::DialogTopics</scope><name>getValue</name></member>
+      <member refid="classroboy_1_1context_1_1_simple_history_attribute_1aa6ecde47814291131dbe95f5976d00d0" prot="public" virt="non-virtual"><scope>roboy::context::dialogContext::DialogTopics</scope><name>SimpleHistoryAttribute</name></member>
+      <member refid="classroboy_1_1context_1_1_simple_history_attribute_1a908f75b5d746759e45ed7189a2850114" prot="public" virt="non-virtual"><scope>roboy::context::dialogContext::DialogTopics</scope><name>storeValue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

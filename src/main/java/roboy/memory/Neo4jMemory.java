@@ -20,7 +20,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
     private Gson gson = new Gson();
 
     private Neo4jMemory (RosMainNode node){
-        this.rosMainNode = node;
+        Neo4jMemory.rosMainNode = node;
     }
 
     public static Neo4jMemory getInstance(RosMainNode node)
@@ -32,18 +32,12 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
 
     }
 
-    public static  Neo4jMemory getInstance()
+    public static Neo4jMemory getInstance()
     {
-        try{
-            return memory;
-        }
-        catch (NullPointerException e)
-        {
-            e.printStackTrace();
+        if (memory == null) {
             System.out.println("Memory wasn't initialized correctly. Use public static Neo4jMemory getInstance(RosMainNode node) instead.");
-            return null;
         }
-
+        return memory;
     }
 
     /**
@@ -55,10 +49,9 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
     @Override
     public boolean save(MemoryNodeModel node) throws InterruptedException, IOException
     {
-        if(Config.NOROS) return false;
+        if(!Config.MEMORY) return false;
         String response = rosMainNode.UpdateMemoryQuery(node.toJSON(gson));
-        if(response == null) return false;
-        return(response.contains("OK"));
+        return response != null && (response.contains("OK"));
     }
 
     /**
@@ -69,7 +62,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
      */
     public MemoryNodeModel getById(int id) throws InterruptedException, IOException
     {
-        if(Config.NOROS) return new MemoryNodeModel();
+        if(!Config.MEMORY) return new MemoryNodeModel();
         String result = rosMainNode.GetMemoryQuery("{'id':"+id+"}");
         if(result == null || result.contains("FAIL")) return null;
         return gson.fromJson(result, MemoryNodeModel.class);
@@ -83,7 +76,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
      */
     public ArrayList<Integer> getByQuery(MemoryNodeModel query) throws InterruptedException, IOException
     {
-        if(Config.NOROS) return new ArrayList<>();
+        if(!Config.MEMORY) return new ArrayList<>();
         String result = rosMainNode.GetMemoryQuery(query.toJSON(gson));
         if(result == null || result.contains("FAIL")) return null;
         Type type = new TypeToken<HashMap<String, List<Integer>>>() {}.getType();
@@ -93,7 +86,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
 
     public int create(MemoryNodeModel query) throws InterruptedException, IOException
     {
-        if(Config.NOROS) return 0;
+        if(!Config.MEMORY) return 0;
         String result = rosMainNode.CreateMemoryQuery(query.toJSON(gson));
         // Handle possible Memory error message.
         if(result == null || result.contains("FAIL")) return 0;
@@ -110,11 +103,11 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
      */
     public boolean remove(MemoryNodeModel query) throws InterruptedException, IOException
     {
-        if(Config.NOROS) return false;
+        if(!Config.MEMORY) return false;
         //Remove all fields which were not explicitly set, for safety.
         query.setStripQuery(true);
         String response = rosMainNode.DeleteMemoryQuery(query.toJSON(gson));
-        return response == null ? false : response.contains("OK");
+        return response != null && response.contains("OK");
     }
 
     /**
@@ -130,4 +123,14 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
         return null;
     }
 
+    public String determineNodeType(String relationship) {
+        // TODO expand list as new Node types are added.
+        if(relationship.equals(Neo4jRelationships.HAS_HOBBY.type)) return "Hobby";
+        if(relationship.equals(Neo4jRelationships.FROM.type)) return "Country";
+        if(relationship.equals(Neo4jRelationships.WORK_FOR.type)) return "Organization";
+        if(relationship.equals(Neo4jRelationships.STUDY_AT.type)) return "Organization";
+        if(relationship.equals(Neo4jRelationships.OCCUPIED_AS.type)) return "Occupation";
+        if(relationship.equals(Neo4jRelationships.OTHER.type)) return "Other";
+        else return "";
+    }
 }

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="interfaceroboy_1_1context_1_1_attribute_interface" kind="interface" language="Java" prot="public">
+    <compoundname>roboy::context::AttributeInterface</compoundname>
+    <derivedcompoundref refid="enumroboy_1_1context_1_1_context_1_1_history_attributes" prot="public" virt="non-virtual">roboy.context.Context.HistoryAttributes</derivedcompoundref>
+    <derivedcompoundref refid="enumroboy_1_1context_1_1_context_1_1_value_attributes" prot="public" virt="non-virtual">roboy.context.Context.ValueAttributes</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interfaceroboy_1_1context_1_1_attribute_interface_1a942bec6d3205c95ec9cae539e2ccc058" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Class</type>
+        <definition>Class roboy.context.ExternalContextInterface.getClassType</definition>
+        <argsstring>()</argsstring>
+        <name>getClassType</name>
+        <reimplementedby refid="enumroboy_1_1context_1_1_context_1_1_history_attributes_1aad0b3486e28e9f5c6a7c2294bbfaf6a9">getClassType</reimplementedby>
+        <reimplementedby refid="enumroboy_1_1context_1_1_context_1_1_value_attributes_1aed1bba8cc57fc07224ac0d7906e09c22">getClassType</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeInterface.java" line="9" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="interfaceroboy_1_1context_1_1_attribute_interface_1a696a7573f2490298fea250674c5b56c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Class</type>
+        <definition>Class roboy.context.ExternalContextInterface.getReturnType</definition>
+        <argsstring>()</argsstring>
+        <name>getReturnType</name>
+        <reimplementedby refid="enumroboy_1_1context_1_1_context_1_1_history_attributes_1aba3ab2b4b198d5c0e587946b2cf6ff84">getReturnType</reimplementedby>
+        <reimplementedby refid="enumroboy_1_1context_1_1_context_1_1_value_attributes_1a149ed5db8a02a5266ed3bfb5d30fd969">getReturnType</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeInterface.java" line="11" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Interface for an enum describing all attributes belonging to the <ref refid="classroboy_1_1context_1_1_context" kindref="compound">Context</ref>. </para>    </briefdescription>
+    <detaileddescription>
+<para>Defining the class and the return types enable retrieving values over generic methods with <ref refid="classroboy_1_1context_1_1_attribute_manager" kindref="compound">AttributeManager</ref>. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="56">
+        <label>roboy.context.Context.ValueAttributes</label>
+        <link refid="enumroboy_1_1context_1_1_context_1_1_value_attributes"/>
+        <childnode refid="54" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>roboy.context.Context.HistoryAttributes</label>
+        <link refid="enumroboy_1_1context_1_1_context_1_1_history_attributes"/>
+        <childnode refid="54" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>roboy.context.ExternalContextInterface</label>
+        <link refid="interfaceroboy_1_1context_1_1_attribute_interface"/>
+      </node>
+    </inheritancegraph>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeInterface.java" line="7" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AttributeInterface.java" bodystart="7" bodyend="13"/>
+    <listofallmembers>
+      <member refid="interfaceroboy_1_1context_1_1_attribute_interface_1a942bec6d3205c95ec9cae539e2ccc058" prot="public" virt="non-virtual"><scope>roboy::context::AttributeInterface</scope><name>getClassType</name></member>
+      <member refid="interfaceroboy_1_1context_1_1_attribute_interface_1a696a7573f2490298fea250674c5b56c7" prot="public" virt="non-virtual"><scope>roboy::context::AttributeInterface</scope><name>getReturnType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

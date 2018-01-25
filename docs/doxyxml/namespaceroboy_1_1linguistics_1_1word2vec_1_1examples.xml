@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespaceroboy_1_1linguistics_1_1word2vec_1_1examples" kind="namespace" language="Java">
+    <compoundname>roboy::linguistics::word2vec::examples</compoundname>
+    <innerclass refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter" prot="public">roboy::linguistics::word2vec::examples::ToyDataGetter</innerclass>
+    <innerclass refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_word2vec_training_example" prot="public">roboy::linguistics::word2vec::examples::Word2vecTrainingExample</innerclass>
+    <innerclass refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_word2vec_uptraining_example" prot="public">roboy::linguistics::word2vec::examples::Word2vecUptrainingExample</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" line="1" column="1"/>
+  </compounddef>
+</doxygen>

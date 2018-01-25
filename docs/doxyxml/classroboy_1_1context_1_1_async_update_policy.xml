@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="classroboy_1_1context_1_1_async_update_policy" kind="class" language="Java" prot="public" abstract="yes">
+    <compoundname>roboy::context::AsyncUpdatePolicy</compoundname>
+    <derivedcompoundref refid="classroboy_1_1context_1_1_interval_update_policy" prot="public" virt="non-virtual">roboy.context.IntervalUpdatePolicy&lt; T &gt;</derivedcompoundref>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classroboy_1_1context_1_1_async_update_policy_1ad8681944566855f5f4d7fd1c38391d31" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>abstract void</type>
+        <definition>abstract void roboy.context.ExternalUpdater.update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AsyncUpdatePolicy.java" line="8" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>For Attributes and Objects which should be updated on-the-fly (or at regular intervals), this class should take care of fetching and passing the values. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="51">
+        <label>roboy::context::memoryContext::InterlocutorNodeUpdater&lt; InterlocutorNode &gt;</label>
+        <link refid="classroboy_1_1context_1_1memory_context_1_1_interlocutor_node_updater"/>
+        <childnode refid="50" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>roboy.context.ExternalUpdater</label>
+        <link refid="classroboy_1_1context_1_1_async_update_policy"/>
+      </node>
+      <node id="52">
+        <label>roboy::context::visionContext::FaceCoordinatesUpdater&lt; FaceCoordinates &gt;</label>
+        <link refid="classroboy_1_1context_1_1vision_context_1_1_face_coordinates_updater"/>
+        <childnode refid="50" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>roboy.context.IntervalUpdatePolicy&lt; T &gt;</label>
+        <link refid="classroboy_1_1context_1_1_interval_update_policy"/>
+        <childnode refid="49" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AsyncUpdatePolicy.java" line="7" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/AsyncUpdatePolicy.java" bodystart="7" bodyend="9"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1context_1_1_async_update_policy_1ad8681944566855f5f4d7fd1c38391d31" prot="protected" virt="non-virtual"><scope>roboy::context::AsyncUpdatePolicy</scope><name>update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

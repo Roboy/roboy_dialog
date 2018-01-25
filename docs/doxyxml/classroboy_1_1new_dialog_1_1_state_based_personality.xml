@@ -1,0 +1,305 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1new_dialog_1_1_state_based_personality" kind="class" language="Java" prot="public">
+    <compoundname>roboy::newDialog::StateBasedPersonality</compoundname>
+    <basecompoundref refid="classroboy_1_1new_dialog_1_1_dialog_state_machine" prot="public" virt="non-virtual">roboy.newDialog.DialogStateMachine</basecompoundref>
+    <basecompoundref refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality" prot="public" virt="non-virtual">roboy.dialog.personality.Personality</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classroboy_1_1new_dialog_1_1_state_based_personality_1a9e3c916d9b981331814c416cb6f518f8" prot="private" static="no" mutable="no">
+        <type>final <ref refid="classroboy_1_1talk_1_1_verbalizer" kindref="compound">Verbalizer</ref></type>
+        <definition>final Verbalizer roboy.newDialog.StateBasedPersonality.verbalizer</definition>
+        <argsstring></argsstring>
+        <name>verbalizer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="32" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_state_based_personality_1a131b2c22aa0d5ba005ee93bed3b98d00" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.newDialog.StateBasedPersonality.StateBasedPersonality</definition>
+        <argsstring>(Verbalizer verb)</argsstring>
+        <name>StateBasedPersonality</name>
+        <param>
+          <type><ref refid="classroboy_1_1talk_1_1_verbalizer" kindref="compound">Verbalizer</ref></type>
+          <declname>verb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="35" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="35" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_state_based_personality_1aa64bfd48607301f0752f6f06d8a15e39" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; <ref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kindref="compound">Action</ref> &gt;</type>
+        <definition>List&lt;Action&gt; roboy.newDialog.StateBasedPersonality.startConversation</definition>
+        <argsstring>()</argsstring>
+        <name>startConversation</name>
+        <briefdescription>
+<para>Always called once by the (new) DialogSystem at the beginning of every new conversation. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>list of actions based on act() of the initial/active state </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="50" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="50" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_state_based_personality_1a887364f1eb47cb8b45a0e621ac6c68cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; <ref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kindref="compound">Action</ref> &gt;</type>
+        <definition>List&lt;Action&gt; roboy.newDialog.StateBasedPersonality.answer</definition>
+        <argsstring>(Interpretation input)</argsstring>
+        <name>answer</name>
+        <reimplements refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality_1a44ef708481445e23415a56db6df16d7d">answer</reimplements>
+        <param>
+          <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+<para>The central method of a personality. </para>        </briefdescription>
+        <detaileddescription>
+<para>Given an interpretation of all inputs (audio, visual, ...) to Roboy, this method decides which actions to perform in response.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The interpretation of the inputs </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A list of actions to perform in response </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="67" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="67" bodyend="104"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_state_based_personality_1a68f2fca34b2193984ad1898548dcb5cc" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.newDialog.StateBasedPersonality.reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="41" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="41" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_state_based_personality_1a170c754f0e7a10491929293dd109552d" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; <ref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kindref="compound">Action</ref> &gt;</type>
+        <definition>List&lt;Action&gt; roboy.newDialog.StateBasedPersonality.stateAct</definition>
+        <argsstring>(State state)</argsstring>
+        <name>stateAct</name>
+        <param>
+          <type><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Call the act function of the state and verbalize all interpretations into actions. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>state to call ACT on </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>list of actions </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="112" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="112" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_state_based_personality_1a173b730ecec7fa923936b29fbfc93b0b" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; <ref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kindref="compound">Action</ref> &gt;</type>
+        <definition>List&lt;Action&gt; roboy.newDialog.StateBasedPersonality.stateReact</definition>
+        <argsstring>(State state, Interpretation input)</argsstring>
+        <name>stateReact</name>
+        <param>
+          <type><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+<para>Call the react function of the state. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the state can&apos;t react, recursively ask fallbacks. Verbalize the resulting reaction interpretation into actions.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>state to call REact on </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>input from the person Roboy speaks to </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>list of actions </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="126" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="126" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_state_based_personality_1add6aad1c0e8680a90a98ab09dc94ccab" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; <ref refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kindref="compound">Action</ref> &gt;</type>
+        <definition>List&lt;Action&gt; roboy.newDialog.StateBasedPersonality.verbalizeInterpretations</definition>
+        <argsstring>(List&lt; Interpretation &gt; interpretations)</argsstring>
+        <name>verbalizeInterpretations</name>
+        <param>
+          <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
+          <declname>interpretations</declname>
+        </param>
+        <briefdescription>
+<para>Verbalizes all interpretations into actions using the verbalizer. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>interpretations</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>list of interpretations. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>list of actions </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="155" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="155" bodyend="164"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Implementation of Personality based on a <ref refid="classroboy_1_1new_dialog_1_1_dialog_state_machine" kindref="compound">DialogStateMachine</ref>. </para>    </briefdescription>
+    <detaileddescription>
+<para>In contrast to previous Personality implementations, this one is more generic as it loads the dialog from a file. Additionally, it is still possible to define the dialog structure directly from code (as it was done in previous implementations).</para><para>Instead of using nested states that will pass an utterance to each other if a state cannot give an appropriate reaction, we use a fallback concept. If a state doesn&apos;t know how to react, it simply doesn&apos;t react at all. If a fallback (with is another state) is attached to it, the personality will pass the utterance to the fallback automatically. This concept helps to decouple the states and reduce the dependencies between them. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="1626">
+        <label>roboy.newDialog.StateBasedPersonality</label>
+        <link refid="classroboy_1_1new_dialog_1_1_state_based_personality"/>
+        <childnode refid="1627" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1628" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1628">
+        <label>roboy.dialog.personality.Personality</label>
+        <link refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality"/>
+      </node>
+      <node id="1627">
+        <label>roboy.newDialog.DialogStateMachine</label>
+        <link refid="classroboy_1_1new_dialog_1_1_dialog_state_machine"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1637">
+        <label>Map&lt; String, String &gt;</label>
+      </node>
+      <node id="1632">
+        <label>roboy.newDialog.states.State</label>
+        <link refid="classroboy_1_1new_dialog_1_1states_1_1_state"/>
+        <childnode refid="1631" relation="usage">
+          <edgelabel>transitions</edgelabel>
+        </childnode>
+        <childnode refid="1632" relation="usage">
+          <edgelabel>fallback</edgelabel>
+        </childnode>
+      </node>
+      <node id="1629">
+        <label>roboy.newDialog.StateBasedPersonality</label>
+        <link refid="classroboy_1_1new_dialog_1_1_state_based_personality"/>
+        <childnode refid="1630" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1633" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1634" relation="usage">
+          <edgelabel>verbalizer</edgelabel>
+        </childnode>
+      </node>
+      <node id="1633">
+        <label>roboy.dialog.personality.Personality</label>
+        <link refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality"/>
+      </node>
+      <node id="1635">
+        <label>List&lt; String &gt;</label>
+      </node>
+      <node id="1631">
+        <label>HashMap&lt; String, roboy.newDialog.states.State &gt;</label>
+      </node>
+      <node id="1634">
+        <label>roboy.talk.Verbalizer</label>
+        <link refid="classroboy_1_1talk_1_1_verbalizer"/>
+        <childnode refid="1635" relation="usage">
+          <edgelabel>preAnecdotes</edgelabel>
+          <edgelabel>farewells</edgelabel>
+          <edgelabel>greetings</edgelabel>
+          <edgelabel>anecdotes</edgelabel>
+          <edgelabel>segues</edgelabel>
+        </childnode>
+        <childnode refid="1636" relation="usage">
+          <edgelabel>tenthNumberMap</edgelabel>
+          <edgelabel>lowNumberMap</edgelabel>
+        </childnode>
+        <childnode refid="1637" relation="usage">
+          <edgelabel>dayNumberMap</edgelabel>
+          <edgelabel>monthNumberMap</edgelabel>
+        </childnode>
+      </node>
+      <node id="1630">
+        <label>roboy.newDialog.DialogStateMachine</label>
+        <link refid="classroboy_1_1new_dialog_1_1_dialog_state_machine"/>
+        <childnode refid="1631" relation="usage">
+          <edgelabel>identifierToState</edgelabel>
+        </childnode>
+        <childnode refid="1632" relation="usage">
+          <edgelabel>initalState</edgelabel>
+          <edgelabel>activeState</edgelabel>
+        </childnode>
+      </node>
+      <node id="1636">
+        <label>Map&lt; Integer, String &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" line="29" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/StateBasedPersonality.java" bodystart="29" bodyend="167"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a4af8cf2d893d7ede5173ae65cadf9c5b" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>addState</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_state_based_personality_1a887364f1eb47cb8b45a0e621ac6c68cf" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>answer</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a158530aaa956c0bffdca5cf2d04a6b9d" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>DialogStateMachine</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a2d9f427ac03b98c087a2020190bbe7f1" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>DialogStateMachine</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a9bcc9b8be58bfdd2da70c24505d145e3" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>equals</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1aa221588d07e52c03e89ced2415a63659" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>getActiveState</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1af13aba077a625d7f094a4dcc94ff1409" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>getInitialState</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1acd6530283584ee95fd63f6ce50477d55" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>getStateByIdentifier</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a3d487dea8cb1f4181cda456689ee22c9" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>loadFromFile</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a08b057a9d79014cd4600d72c5c28dc51" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>loadFromString</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_state_based_personality_1a68f2fca34b2193984ad1898548dcb5cc" prot="private" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>reset</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1ac2a422b53e902f2c2708fded989c4009" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>saveToFile</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a98ca54d9173f3d569f9f673c71fdf4de" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>setActiveState</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1ab71b73bd5a16dec56eaf4019e6d579e9" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>setActiveState</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1af176f70f08cb4afab4d5a71c77bb356c" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>setInitialState</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a2ec302da36e75eb05a5fb7e2f853b295" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>setInitialState</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_state_based_personality_1aa64bfd48607301f0752f6f06d8a15e39" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>startConversation</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_state_based_personality_1a170c754f0e7a10491929293dd109552d" prot="private" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>stateAct</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_state_based_personality_1a131b2c22aa0d5ba005ee93bed3b98d00" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>StateBasedPersonality</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_state_based_personality_1a173b730ecec7fa923936b29fbfc93b0b" prot="private" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>stateReact</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a90fcddad197b881545b987d8426db046" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>toJsonString</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a079e1b88eea31e813b1b2d72aaf340ab" prot="public" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>toString</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_state_based_personality_1add6aad1c0e8680a90a98ab09dc94ccab" prot="private" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>verbalizeInterpretations</name></member>
+      <member refid="classroboy_1_1new_dialog_1_1_state_based_personality_1a9e3c916d9b981331814c416cb6f518f8" prot="private" virt="non-virtual"><scope>roboy::newDialog::StateBasedPersonality</scope><name>verbalizer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

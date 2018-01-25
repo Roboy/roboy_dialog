@@ -1,0 +1,226 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="classroboy_1_1context_1_1_simple_history_attribute" kind="class" language="Java" prot="public">
+    <compoundname>roboy::context::SimpleHistoryAttribute</compoundname>
+    <basecompoundref refid="interfaceroboy_1_1context_1_1_history_attribute" prot="public" virt="non-virtual">roboy::context::HistoryAttribute&lt; K, V &gt;</basecompoundref>
+    <derivedcompoundref refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics" prot="public" virt="non-virtual">roboy.context.contextObjects.DialogTopics</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>K</type>
+        <typeconstraint>Integer</typeconstraint>
+      </param>
+      <param>
+        <type>V</type>
+        <typeconstraint><ref refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type" kindref="compound">DataType</ref></typeconstraint>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classroboy_1_1context_1_1_simple_history_attribute_1a25331a89c362ea6634fd3b925c6ede98" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int roboy.context.SimpleHistoryAttribute&lt; K extends Integer, V extends DataType &gt;.counter</definition>
+        <argsstring></argsstring>
+        <name>counter</name>
+        <briefdescription>
+<para>This counter tracks the number of items in the History, indices still start from 0. </para>        </briefdescription>
+        <detaileddescription>
+<para>Reading is allowed without synchronization, modifications only through <ref refid="classroboy_1_1context_1_1_simple_history_attribute_1a12567c636cd325c3804aab4fe4a1e12b" kindref="member">generateKey()</ref>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/SimpleHistoryAttribute.java" line="14" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/SimpleHistoryAttribute.java" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classroboy_1_1context_1_1_simple_history_attribute_1ade2553f15150c90f19f19d7655b5f22e" prot="private" static="no" mutable="no">
+        <type>HashMap&lt; K, V &gt;</type>
+        <definition>HashMap&lt;K,V&gt; roboy.context.SimpleHistoryAttribute&lt; K extends Integer, V extends DataType &gt;.data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/SimpleHistoryAttribute.java" line="15" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/SimpleHistoryAttribute.java" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1context_1_1_simple_history_attribute_1aa6ecde47814291131dbe95f5976d00d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.context.SimpleHistoryAttribute&lt; K extends Integer, V extends DataType &gt;.SimpleHistoryAttribute</definition>
+        <argsstring>()</argsstring>
+        <name>SimpleHistoryAttribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/SimpleHistoryAttribute.java" line="17" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/SimpleHistoryAttribute.java" bodystart="17" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1context_1_1_simple_history_attribute_1a03c06f7d8d597b56cb6389f95114a0c4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>V</type>
+        <definition>V roboy.context.SimpleHistoryAttribute&lt; K extends Integer, V extends DataType &gt;.getLastValue</definition>
+        <argsstring>()</argsstring>
+        <name>getLastValue</name>
+        <reimplements refid="interfaceroboy_1_1context_1_1_history_attribute_1ab149add058dc2c808414f9d9e01e5b72">getLastValue</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The last element added to this History. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/SimpleHistoryAttribute.java" line="26" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/SimpleHistoryAttribute.java" bodystart="26" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1context_1_1_simple_history_attribute_1a08d30c04fc4585014c2ce0e7158a8997" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>synchronized V</type>
+        <definition>synchronized V roboy.context.SimpleHistoryAttribute&lt; K extends Integer, V extends DataType &gt;.getValue</definition>
+        <argsstring>(K key)</argsstring>
+        <name>getValue</name>
+        <reimplements refid="interfaceroboy_1_1context_1_1_history_attribute_1a2e8c12270a0ce6f8764220aa3ee1d578">getValue</reimplements>
+        <param>
+          <type>K</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>In a History, only <ref refid="classroboy_1_1context_1_1_simple_history_attribute_1a08d30c04fc4585014c2ce0e7158a8997" kindref="member">getValue()</ref> and <ref refid="classroboy_1_1context_1_1_simple_history_attribute_1a908f75b5d746759e45ed7189a2850114" kindref="member">storeValue()</ref> directly access the HashMap data. </para>        </briefdescription>
+        <detaileddescription>
+<para>Setting these methods to be synchronous avoids concurrency issues. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Integer-valued key of the object in history. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A DataType object corresponding to the key, or <computeroutput>null</computeroutput> if not found. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/SimpleHistoryAttribute.java" line="41" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/SimpleHistoryAttribute.java" bodystart="41" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1context_1_1_simple_history_attribute_1a7a9f6e0a5aec1fc3bf1237b187efd093" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>HashMap&lt; K, V &gt;</type>
+        <definition>HashMap&lt;K, V&gt; roboy.context.SimpleHistoryAttribute&lt; K extends Integer, V extends DataType &gt;.getLastNValues</definition>
+        <argsstring>(int n)</argsstring>
+        <name>getLastNValues</name>
+        <reimplements refid="interfaceroboy_1_1context_1_1_history_attribute_1a26d4c887c7f52ee8a4f03979e9eb4044">getLastNValues</reimplements>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+<para>Get a copy of the last n entries added to the History. </para>        </briefdescription>
+        <detaileddescription>
+<para>Less values may be added if there are not enough values in this History. In case of no values, an empty array is returned. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of instances to retrieve. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A hashmap of n last values added to the History. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/SimpleHistoryAttribute.java" line="57" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/SimpleHistoryAttribute.java" bodystart="57" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1context_1_1_simple_history_attribute_1a908f75b5d746759e45ed7189a2850114" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>synchronized K</type>
+        <definition>synchronized K roboy.context.SimpleHistoryAttribute&lt; K extends Integer, V extends DataType &gt;.storeValue</definition>
+        <argsstring>(V value)</argsstring>
+        <name>storeValue</name>
+        <reimplements refid="interfaceroboy_1_1context_1_1_history_attribute_1adfb1e6cff29ae2ce75129db6588491c9">storeValue</reimplements>
+        <param>
+          <type>V</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Puts a value into History and returns the Integer key assigned to it. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The DataType value to be added. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The key of the newly added value. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/SimpleHistoryAttribute.java" line="73" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/SimpleHistoryAttribute.java" bodystart="73" bodyend="77"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classroboy_1_1context_1_1_simple_history_attribute_1a12567c636cd325c3804aab4fe4a1e12b" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>synchronized int</type>
+        <definition>synchronized int roboy.context.SimpleHistoryAttribute&lt; K extends Integer, V extends DataType &gt;.generateKey</definition>
+        <argsstring>()</argsstring>
+        <name>generateKey</name>
+        <briefdescription>
+<para>Generates a key that is unique to the history through incrementing an internal counter. </para>        </briefdescription>
+        <detaileddescription>
+<para>(Note: the uniqueness constraint is only satisfied if access is synchronous.) <simplesect kind="return"><para>A key unique to this History instance. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/SimpleHistoryAttribute.java" line="84" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/SimpleHistoryAttribute.java" bodystart="84" bodyend="86"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Simplistic HashMap history with unique Integer keys. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="729">
+        <label>roboy::context::dialogContext::DialogTopics&lt; Integer, Topic &gt;</label>
+        <link refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics"/>
+        <childnode refid="727" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="727">
+        <label>roboy.context.SimpleHistoryAttribute&lt; K extends Integer, V extends DataType &gt;</label>
+        <link refid="classroboy_1_1context_1_1_simple_history_attribute"/>
+        <childnode refid="728" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="728">
+        <label>roboy::context::HistoryAttribute&lt; K, V &gt;</label>
+        <link refid="interfaceroboy_1_1context_1_1_history_attribute"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="732">
+        <label>HashMap&lt; K, V &gt;</label>
+      </node>
+      <node id="730">
+        <label>roboy.context.SimpleHistoryAttribute&lt; K extends Integer, V extends DataType &gt;</label>
+        <link refid="classroboy_1_1context_1_1_simple_history_attribute"/>
+        <childnode refid="731" relation="public-inheritance">
+        </childnode>
+        <childnode refid="732" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+      </node>
+      <node id="731">
+        <label>roboy::context::HistoryAttribute&lt; K, V &gt;</label>
+        <link refid="interfaceroboy_1_1context_1_1_history_attribute"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/SimpleHistoryAttribute.java" line="9" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/SimpleHistoryAttribute.java" bodystart="9" bodyend="88"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1context_1_1_simple_history_attribute_1a25331a89c362ea6634fd3b925c6ede98" prot="protected" virt="non-virtual"><scope>roboy::context::SimpleHistoryAttribute</scope><name>counter</name></member>
+      <member refid="classroboy_1_1context_1_1_simple_history_attribute_1ade2553f15150c90f19f19d7655b5f22e" prot="private" virt="non-virtual"><scope>roboy::context::SimpleHistoryAttribute</scope><name>data</name></member>
+      <member refid="classroboy_1_1context_1_1_simple_history_attribute_1a12567c636cd325c3804aab4fe4a1e12b" prot="protected" virt="non-virtual"><scope>roboy::context::SimpleHistoryAttribute</scope><name>generateKey</name></member>
+      <member refid="classroboy_1_1context_1_1_simple_history_attribute_1a7a9f6e0a5aec1fc3bf1237b187efd093" prot="public" virt="non-virtual"><scope>roboy::context::SimpleHistoryAttribute</scope><name>getLastNValues</name></member>
+      <member refid="classroboy_1_1context_1_1_simple_history_attribute_1a03c06f7d8d597b56cb6389f95114a0c4" prot="public" virt="non-virtual"><scope>roboy::context::SimpleHistoryAttribute</scope><name>getLastValue</name></member>
+      <member refid="classroboy_1_1context_1_1_simple_history_attribute_1a08d30c04fc4585014c2ce0e7158a8997" prot="public" virt="non-virtual"><scope>roboy::context::SimpleHistoryAttribute</scope><name>getValue</name></member>
+      <member refid="classroboy_1_1context_1_1_simple_history_attribute_1aa6ecde47814291131dbe95f5976d00d0" prot="public" virt="non-virtual"><scope>roboy::context::SimpleHistoryAttribute</scope><name>SimpleHistoryAttribute</name></member>
+      <member refid="classroboy_1_1context_1_1_simple_history_attribute_1a908f75b5d746759e45ed7189a2850114" prot="public" virt="non-virtual"><scope>roboy::context::SimpleHistoryAttribute</scope><name>storeValue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

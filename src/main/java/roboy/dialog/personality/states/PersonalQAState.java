@@ -7,19 +7,19 @@ import java.util.Map;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Linguistics.SEMANTIC_ROLE;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jRelations;
+import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
 import roboy.util.Lists;
 
 public class PersonalQAState extends AbstractBooleanState{
 
 	private List<String> questions;
-	private List<String[]> successTexts;
-	public Neo4jRelations predicate;
+	private List<String> successTexts;
+	public Neo4jRelationships predicate;
 	private Interlocutor person;
 	
 	public PersonalQAState(List<String> questions, List<String> failureTexts,
-						   List<String[]> successTexts, Neo4jRelations predicate, Interlocutor person) {
+						   List<String> successTexts, Neo4jRelationships predicate, Interlocutor person) {
 		this.questions = questions;
 		this.successTexts = successTexts;
 		this.predicate = predicate;
@@ -32,7 +32,7 @@ public class PersonalQAState extends AbstractBooleanState{
 	 */
 	@Override
 	public List<Interpretation> act() {
-		return Lists.interpretationList(new Interpretation(questions.get((int)Math.random()*questions.size())));
+		return Lists.interpretationList(new Interpretation(String.format(questions.get((int)Math.random()*questions.size()))));
 	}
 
 	/**
@@ -78,8 +78,8 @@ public class PersonalQAState extends AbstractBooleanState{
 
 
 			List<String> sTexts = new ArrayList<>();
-			for(String[] s: successTexts){
-				sTexts.add(s[0]+answer+s[1]);
+			for(String s: successTexts){
+				sTexts.add(String.format(s, answer));
 			}
 			setSuccessTexts(sTexts);
 			return true;

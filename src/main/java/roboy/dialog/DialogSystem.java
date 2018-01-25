@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.google.gson.JsonIOException;
 
+import roboy.context.GUI.ContextGUI;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.ShutDownAction;
 import roboy.dialog.personality.Personality;
@@ -14,6 +15,7 @@ import roboy.dialog.personality.SmallTalkPersonality;
 import roboy.io.*;
 
 import roboy.linguistics.sentenceanalysis.*;
+import roboy.memory.Neo4jMemory;
 import roboy.talk.Verbalizer;
 
 import roboy.ros.RosMainNode;
@@ -31,7 +33,7 @@ import static roboy.dialog.Config.ConfigurationProfile.*;
  * 1. Input devices produce an Input object
  * 2. The Input object is transformed into an Interpretation object containing
  *    the input sentence in the Linguistics.SENTENCE attribute and all other
- *    attributes of the Input object in the corresponding fields
+ *    lists of the Input object in the corresponding fields
  * 3. Linguistic Analyzers are used on the Interpretation object to add additional information
  * 4. The Personality class takes the Interpretation object and decides how to answer
  *    to this input
@@ -82,8 +84,16 @@ public class DialogSystem {
             new Config(DEFAULT);
         }
 
+        if(Config.DEMO_GUI) {
+            final Runnable gui = () -> ContextGUI.run();
+            Thread t = new Thread(gui);
+            t.start();
+        }
+
         // initialize ROS node
         RosMainNode rosMainNode = new RosMainNode();
+        // initialize Memory with ROS
+        Neo4jMemory.getInstance(rosMainNode);
 
         /*
          * I/O INITIALIZATION
@@ -120,6 +130,7 @@ public class DialogSystem {
 		analyzers.add(new OntologyNERAnalyzer());
 		analyzers.add(new AnswerAnalyzer());
         analyzers.add(new EmotionAnalyzer());
+        analyzers.add(new SemanticParserAnalyzer(Config.PARSER_PORT));
         //if(!Config.NOROS) {
         //    analyzers.add(new IntentAnalyzer(rosMainNode));
         //}
@@ -136,7 +147,7 @@ public class DialogSystem {
 //                emotion.act(new FaceAction("angry"));
 //            }
 //            emotion.act(new FaceAction("neutral"));
-//            while (!multiIn.listen().attributes.containsKey(Linguistics.ROBOYDETECTED)) {
+//            while (!multiIn.listen().lists.containsKey(Linguistics.ROBOYDETECTED)) {
 //            }
 
             Personality smallTalk = new SmallTalkPersonality(new Verbalizer(), rosMainNode);

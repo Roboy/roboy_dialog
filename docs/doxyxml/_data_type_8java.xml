@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="_data_type_8java" kind="file" language="Java">
+    <compoundname>DataType.java</compoundname>
+    <innerclass refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type" prot="public">roboy::context::dataTypes::DataType</innerclass>
+    <innernamespace refid="namespaceroboy_1_1context_1_1data_types">roboy::context::dataTypes</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">package<sp/></highlight><highlight class="normal">roboy.context.dataTypes;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type" refkind="compound"><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">interface<sp/></highlight><highlight class="normal"><ref refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type" kindref="compound">DataType</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dataTypes/DataType.java"/>
+  </compounddef>
+</doxygen>

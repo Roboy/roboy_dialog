@@ -15,6 +15,13 @@
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a6821153b384889cf1aab894ed2422150" kind="function"><name>react</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a5f613e655de9d0f807ae2dc7bde4c6c2" kind="function"><name>determineSuccess</name></member>
   </compound>
+  <compound refid="interfaceroboy_1_1context_1_1_abstract_value" kind="interface"><name>roboy::context::AbstractValue</name>
+    <member refid="interfaceroboy_1_1context_1_1_abstract_value_1ac939f9d2d4f77d9a24d3027f88ece63d" kind="function"><name>getValue</name></member>
+    <member refid="interfaceroboy_1_1context_1_1_abstract_value_1a253ab4f7ed95b23ad8c9b529b3642f4b" kind="function"><name>updateValue</name></member>
+  </compound>
+  <compound refid="interfaceroboy_1_1context_1_1_abstract_value_history" kind="interface"><name>roboy::context::AbstractValueHistory</name>
+    <member refid="interfaceroboy_1_1context_1_1_abstract_value_history_1a76229d868a8d76d206d2798bd3058c59" kind="function"><name>getLastNValues</name></member>
+  </compound>
   <compound refid="interfaceroboy_1_1dialog_1_1action_1_1_action" kind="interface"><name>roboy::dialog::action::Action</name>
   </compound>
   <compound refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer" kind="interface"><name>roboy::linguistics::sentenceanalysis::Analyzer</name>
@@ -42,6 +49,13 @@
     <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1a67f6893bd1e09286d990c57d938c7e8a" kind="function"><name>testMovie</name></member>
     <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1afa3f1bfdc7aa8ad4826e6aa92df3131f" kind="function"><name>analyze</name></member>
     <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_answer_analyzer_test_1a70e6e3d4b33606509247335d69f972b5" kind="function"><name>analyzePred</name></member>
+  </compound>
+  <compound refid="classroboy_1_1context_1_1_attribute_manager" kind="class"><name>roboy::context::AttributeManager</name>
+    <member refid="classroboy_1_1context_1_1_attribute_manager_1a5be9a684234b35d5b9d43c5cd58b9b80" kind="variable"><name>valueHistories</name></member>
+    <member refid="classroboy_1_1context_1_1_attribute_manager_1aa80bebfb0b32b719083b9ecea12f51a2" kind="variable"><name>values</name></member>
+    <member refid="classroboy_1_1context_1_1_attribute_manager_1ab578d331f5b9ed3e4422c389a1ee73f0" kind="function"><name>getLastValue</name></member>
+    <member refid="classroboy_1_1context_1_1_attribute_manager_1aa2b1bec09e5088db3f13757be1b5803b" kind="function"><name>getNLastValues</name></member>
+    <member refid="classroboy_1_1context_1_1_attribute_manager_1a6aaa68eeb8b9a44ec604e7c5c879774f" kind="function"><name>getValue</name></member>
   </compound>
   <compound refid="classroboy_1_1io_1_1_bing_input" kind="class"><name>roboy::io::BingInput</name>
     <member refid="classroboy_1_1io_1_1_bing_input_1abd93db2f5c7b6d8bd1beddde15d96581" kind="variable"><name>rosMainNode</name></member>
@@ -115,6 +129,9 @@
     <member refid="classroboy_1_1dialog_1_1_config_1aa156e4b3795f425e1b05a9f83a535ba9" kind="variable"><name>SHUTDOWN_ON_ROS_FAILURE</name></member>
     <member refid="classroboy_1_1dialog_1_1_config_1adfd9d5b4e724eb8ca131edc661d0ba07" kind="variable"><name>SHUTDOWN_ON_SERVICE_FAILURE</name></member>
     <member refid="classroboy_1_1dialog_1_1_config_1a8ee6e97dda133e00b18f5e6fb59ecb7b" kind="variable"><name>ROS_HOSTNAME</name></member>
+    <member refid="classroboy_1_1dialog_1_1_config_1ace25c70907783d5cdac32e1aac0129c7" kind="variable"><name>MEMORY</name></member>
+    <member refid="classroboy_1_1dialog_1_1_config_1aedd0705551353de2c6e5035f0198dbca" kind="variable"><name>PARSER_PORT</name></member>
+    <member refid="classroboy_1_1dialog_1_1_config_1abde9fc3545510ac6cca989abae62ff9a" kind="variable"><name>DEMO_GUI</name></member>
     <member refid="classroboy_1_1dialog_1_1_config_1af0be6e183e8f6b5bda362593b2491db6" kind="variable"><name>yamlConfigFile</name></member>
     <member refid="classroboy_1_1dialog_1_1_config_1a4efc7499a9f139a9ef1a55a4d6e6ac3d" kind="variable"><name>yamlConfig</name></member>
     <member refid="classroboy_1_1dialog_1_1_config_1a7ee54e9007728696d0a9dcf6c92b6007" kind="function"><name>Config</name></member>
@@ -123,6 +140,7 @@
     <member refid="classroboy_1_1dialog_1_1_config_1a9d7135b3ba6b7bcb4891e9f731f08f65" kind="function"><name>setNoROSProfile</name></member>
     <member refid="classroboy_1_1dialog_1_1_config_1a2b0d47cfc48f1c382262c7f557587620" kind="function"><name>setStandaloneProfile</name></member>
     <member refid="classroboy_1_1dialog_1_1_config_1a458b1cb9b8bf1fa8761090ec4f9e05e0" kind="function"><name>setDebugProfile</name></member>
+    <member refid="classroboy_1_1dialog_1_1_config_1a72897ac0cb28b0c614fc0c472b213655" kind="function"><name>setMemoryProfile</name></member>
     <member refid="classroboy_1_1dialog_1_1_config_1ab8bb207961420d4e9f81326348d712d9" kind="function"><name>initializeYAMLConfig</name></member>
   </compound>
   <compound refid="enumroboy_1_1dialog_1_1_config_1_1_configuration_profile" kind="enum"><name>roboy::dialog::Config::ConfigurationProfile</name>
@@ -130,8 +148,44 @@
     <member refid="enumroboy_1_1dialog_1_1_config_1_1_configuration_profile_1a547e28a5755b53594e1684e506cc50da" kind="variable"><name>NOROS</name></member>
     <member refid="enumroboy_1_1dialog_1_1_config_1_1_configuration_profile_1a323a41263085e3724b5e36c73aabfeb4" kind="variable"><name>STANDALONE</name></member>
     <member refid="enumroboy_1_1dialog_1_1_config_1_1_configuration_profile_1a2d7f8e4a5e876673d557fbda505d2144" kind="variable"><name>DEBUG</name></member>
+    <member refid="enumroboy_1_1dialog_1_1_config_1_1_configuration_profile_1a1a05d64125823b6c6ee80c08dc21af16" kind="variable"><name>MEMORY</name></member>
     <member refid="enumroboy_1_1dialog_1_1_config_1_1_configuration_profile_1ae8f88de18416ca3dc9b893a457cf984d" kind="variable"><name>profileName</name></member>
     <member refid="enumroboy_1_1dialog_1_1_config_1_1_configuration_profile_1ac677f6be9db791a9da9a2cd563d569b5" kind="function"><name>ConfigurationProfile</name></member>
+  </compound>
+  <compound refid="classroboy_1_1context_1_1_context" kind="class"><name>roboy::context::Context</name>
+    <member refid="classroboy_1_1context_1_1_context_1ab09552eb09b1389bb9b9601172db62e0" kind="variable"><name>context</name></member>
+    <member refid="classroboy_1_1context_1_1_context_1a6dab771b3c5084cf5a413d3afeab433a" kind="variable"><name>externalUpdaters</name></member>
+    <member refid="classroboy_1_1context_1_1_context_1a51838bb7b4a5f11cbc27109c976b14aa" kind="variable"><name>internalUpdaters</name></member>
+    <member refid="classroboy_1_1context_1_1_context_1a48d7952e927feda43995bd70c9380d03" kind="function"><name>Context</name></member>
+    <member refid="classroboy_1_1context_1_1_context_1ac5c4640865efbc6a129b3641b7a6f69c" kind="function"><name>getInstance</name></member>
+    <member refid="classroboy_1_1context_1_1_context_1ae180a039734715e7d98fbdd5e35b60ad" kind="function"><name>updateValue</name></member>
+  </compound>
+  <compound refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i" kind="class"><name>roboy::context::GUI::ContextGUI</name>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a642a5f0618f8883a19658247b557ab77" kind="variable"><name>mainFrame</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1af918fa9f871da1ad5949d2d270f0a3d1" kind="variable"><name>valueBorder</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1aba10b0caf1179f00fcd6a91ffb60bda6" kind="variable"><name>valuePanel</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a75a14ede7a703cada37a60dad59eacc9" kind="variable"><name>valueDisplays</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a9f4ae61c9c2308f0ade5ba7f5c425723" kind="variable"><name>historyDisplays</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a3814fea8e1e37be77b29bd347ca8dc05" kind="variable"><name>historyBorder</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a6cde0b159790e173b6374fd5c01bbf53" kind="variable"><name>historyPanel</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1aa8566089498913ae783a802576bd5548" kind="variable"><name>controlPanel</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a681ec70822647a57b119551c050a8d16" kind="variable"><name>MAX_HISTORY_VALUES</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1ad5dd4a537e4493bd9b10f2e422d45bb3" kind="variable"><name>FULL_WIDTH</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1ac722d7c38b92bb6750eb6bc3e369f063" kind="variable"><name>FULL_HEIGHT</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a294362dfa1420dead7ef8c80ff8024d9" kind="variable"><name>ATTR_WIDTH</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a708ff148e6256cff86fab983404f5424" kind="variable"><name>ATTR_HEIGHT</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a66d7e65727b22516dd9f579784e0b4cc" kind="variable"><name>HISTORY_HEIGHT</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1af833f5bda4717a2c568142f43da0fe7f" kind="variable"><name>NO_VALUE</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a5368c6a87b2a35d7c7f78c1bfe4fad7d" kind="function"><name>run</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1aca5c00a6f1246fe5a4383e26b05f292d" kind="function"><name>ContextGUI</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a0a24d042b988b8528c8b3e7450aca5df" kind="function"><name>prepareGUI</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a498c82a6f80906f8a90182721eb3d0d4" kind="function"><name>startFrame</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a5cb7152a8ee4a38bc6e75454e8f4680b" kind="function"><name>updateValues</name></member>
+    <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a3607bd5edf8c84659fa9aec3c411de32" kind="function"><name>updateHistories</name></member>
+  </compound>
+  <compound refid="classroboy_1_1context_1_1vision_context_1_1_context_test" kind="class"><name>roboy::context::visionContext::ContextTest</name>
+    <member refid="classroboy_1_1context_1_1vision_context_1_1_context_test_1ac8cad491c4aa15a5ca5c540438e2f4cb" kind="function"><name>getLastAttributeValue</name></member>
+    <member refid="classroboy_1_1context_1_1vision_context_1_1_context_test_1a747cd35329fe3f46cc6fb379950995e4" kind="function"><name>setAndGetDialogTopics</name></member>
   </compound>
   <compound refid="enumroboy_1_1dialog_1_1personality_1_1_default_personality_1_1_c_o_n_v_e_r_s_a_t_i_o_n_a_l___s_t_a_t_e" kind="enum"><name>roboy::dialog::personality::DefaultPersonality::CONVERSATIONAL_STATE</name>
     <member refid="enumroboy_1_1dialog_1_1personality_1_1_default_personality_1_1_c_o_n_v_e_r_s_a_t_i_o_n_a_l___s_t_a_t_e_1a2702f292f349c745010d4de59f441413" kind="variable"><name>GREETING</name></member>
@@ -145,6 +199,12 @@
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_converse_state_1acfb99b2d78134f809113bf106e91f639" kind="function"><name>act</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_converse_state_1a4e99dea952ae88c93ebf5186f721c85a" kind="function"><name>react</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_converse_state_1a09b443b4a794125a96e4fb991087c62f" kind="function"><name>determineSuccess</name></member>
+  </compound>
+  <compound refid="classroboy_1_1context_1_1context_objects_1_1_coordinate_set" kind="class"><name>roboy::context::contextObjects::CoordinateSet</name>
+    <member refid="classroboy_1_1context_1_1context_objects_1_1_coordinate_set_1a98e631ae540b8a3236811dbaa85e612f" kind="variable"><name>x</name></member>
+    <member refid="classroboy_1_1context_1_1context_objects_1_1_coordinate_set_1a05feb4e05eface8440be59b4bc1ad936" kind="variable"><name>y</name></member>
+    <member refid="classroboy_1_1context_1_1context_objects_1_1_coordinate_set_1a3f8711a873157ae34850b11b71a64046" kind="variable"><name>z</name></member>
+    <member refid="classroboy_1_1context_1_1context_objects_1_1_coordinate_set_1a4baf8e7346eae8240453183dd785bfde" kind="function"><name>CoordinateSet</name></member>
   </compound>
   <compound refid="classroboy_1_1dialog_1_1personality_1_1_curious_personality" kind="class"><name>roboy::dialog::personality::CuriousPersonality</name>
     <member refid="classroboy_1_1dialog_1_1personality_1_1_curious_personality_1a714f9790f86a3b6eec5416132864c312" kind="variable"><name>memory</name></member>
@@ -183,8 +243,50 @@
     <member refid="classroboy_1_1linguistics_1_1_detected_entity_1abd635419d7bd4abcda624153e9febfde" kind="function"><name>getEntity</name></member>
     <member refid="classroboy_1_1linguistics_1_1_detected_entity_1a7056be8f1b2404a36a236afe63bb906e" kind="function"><name>getTokenIndex</name></member>
   </compound>
+  <compound refid="classroboy_1_1new_dialog_1_1_dialog_state_machine" kind="class"><name>roboy::newDialog::DialogStateMachine</name>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1ada3f0cfecbe443e4c6bdffb7ef1185be" kind="variable"><name>identifierToState</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a3dd33b03548f2bb5646651e961292ff7" kind="variable"><name>activeState</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a5e95e07eb40e7c43fccdfe3610ac8dc7" kind="variable"><name>initalState</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a391cdb07e02d251f3553e09f484378e0" kind="variable"><name>enableDebug</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a158530aaa956c0bffdca5cf2d04a6b9d" kind="function"><name>DialogStateMachine</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a2d9f427ac03b98c087a2020190bbe7f1" kind="function"><name>DialogStateMachine</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1af13aba077a625d7f094a4dcc94ff1409" kind="function"><name>getInitialState</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1af176f70f08cb4afab4d5a71c77bb356c" kind="function"><name>setInitialState</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a2ec302da36e75eb05a5fb7e2f853b295" kind="function"><name>setInitialState</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1aa221588d07e52c03e89ced2415a63659" kind="function"><name>getActiveState</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a98ca54d9173f3d569f9f673c71fdf4de" kind="function"><name>setActiveState</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1ab71b73bd5a16dec56eaf4019e6d579e9" kind="function"><name>setActiveState</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1acd6530283584ee95fd63f6ce50477d55" kind="function"><name>getStateByIdentifier</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a4af8cf2d893d7ede5173ae65cadf9c5b" kind="function"><name>addState</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a08b057a9d79014cd4600d72c5c28dc51" kind="function"><name>loadFromString</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a3d487dea8cb1f4181cda456689ee22c9" kind="function"><name>loadFromFile</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1ac2a422b53e902f2c2708fded989c4009" kind="function"><name>saveToFile</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a90fcddad197b881545b987d8426db046" kind="function"><name>toJsonString</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a079e1b88eea31e813b1b2d72aaf340ab" kind="function"><name>toString</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1a9bcc9b8be58bfdd2da70c24505d145e3" kind="function"><name>equals</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1af9c7543a3b39db2c2119847086ccdbc9" kind="function"><name>loadFromJSON</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_1aeaf1e6596bdb3b2cb0374baec003196f" kind="function"><name>toJsonObject</name></member>
+  </compound>
+  <compound refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_test" kind="class"><name>roboy::newDialog::DialogStateMachineTest</name>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1a5122ea27d9f9c8984a6717b04e4f0bac" kind="variable"><name>MINI_STATE_MACHINE</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1ac7cfd22b4120c2143d319425ac3c5a1a" kind="function"><name>fromCode</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1a68df45949ca435f9e0525a2f82784168" kind="function"><name>machineEqualsItself</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1a774e56596ffaf8609eb83acb20bc773f" kind="function"><name>stringEqualsCode</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1aef3d0d925c47a8396ecea9b66e574eb4" kind="function"><name>notEqualsNoInitialState</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1a23bcfe1082d704638ca9ab69363e7b63" kind="function"><name>notEqualsDifferentStates</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1a3e341b453a1fbe805b15dd6886c4ea58" kind="function"><name>notEqualsDifferentTransitions</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1add893724f9d4b274f3baa9da772b501f" kind="function"><name>activeStateIsSetToInitialState</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1a53d03fe1f5edffafac8635448036b1f9" kind="function"><name>machineContainsAllStates</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1ad681b48f8b984387319a032489b3ab75" kind="function"><name>transitionsAreOK</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1ae42655bec401574859db197962485ed6" kind="function"><name>fallbackIsOK</name></member>
+  </compound>
   <compound refid="classroboy_1_1dialog_1_1_dialog_system" kind="class"><name>roboy::dialog::DialogSystem</name>
     <member refid="classroboy_1_1dialog_1_1_dialog_system_1af467cec6e12b2fcf78fb278e301768b4" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="classroboy_1_1context_1_1context_objects_1_1_dialog_topics" kind="class"><name>roboy::context::contextObjects::DialogTopics</name>
+  </compound>
+  <compound refid="classroboy_1_1context_1_1context_objects_1_1_dialog_topics_updater" kind="class"><name>roboy::context::contextObjects::DialogTopicsUpdater</name>
+    <member refid="classroboy_1_1context_1_1context_objects_1_1_dialog_topics_updater_1a23ab34bd968b20e09a81d989a9571e79" kind="function"><name>DialogTopicsUpdater</name></member>
   </compound>
   <compound refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_dictionary_based_sentence_type_detector" kind="class"><name>roboy::linguistics::sentenceanalysis::DictionaryBasedSentenceTypeDetector</name>
     <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_dictionary_based_sentence_type_detector_1a9a7512eecf164928943994f5b13eec00" kind="function"><name>analyze</name></member>
@@ -215,6 +317,13 @@
     <member refid="classroboy_1_1linguistics_1_1_entity_1a5684d465f3cd726941488f9c16eac8ee" kind="function"><name>getForm</name></member>
     <member refid="classroboy_1_1linguistics_1_1_entity_1a7237e3491e4ba9c62bfc5f1d2695a4fc" kind="function"><name>getForms</name></member>
   </compound>
+  <compound refid="interfaceroboy_1_1context_1_1_external_context_interface" kind="interface"><name>roboy::context::ExternalContextInterface</name>
+    <member refid="interfaceroboy_1_1context_1_1_external_context_interface_1a4158bb1b491ce2e36cc6dde2b914cad1" kind="function"><name>getClassType</name></member>
+    <member refid="interfaceroboy_1_1context_1_1_external_context_interface_1abd00eb9c70c62b36f86f3456edb7ddb6" kind="function"><name>getReturnType</name></member>
+  </compound>
+  <compound refid="classroboy_1_1context_1_1_external_updater" kind="class"><name>roboy::context::ExternalUpdater</name>
+    <member refid="classroboy_1_1context_1_1_external_updater_1ae50d8843fb627e0107de8420016ad233" kind="function"><name>update</name></member>
+  </compound>
   <compound refid="classroboy_1_1dialog_1_1action_1_1_face_action" kind="class"><name>roboy::dialog::action::FaceAction</name>
     <member refid="classroboy_1_1dialog_1_1action_1_1_face_action_1ac9214f47867583127046e7c929652df0" kind="variable"><name>state</name></member>
     <member refid="classroboy_1_1dialog_1_1action_1_1_face_action_1a43391c88c63fe7aee4dce75d97d0408a" kind="variable"><name>duration</name></member>
@@ -222,6 +331,12 @@
     <member refid="classroboy_1_1dialog_1_1action_1_1_face_action_1a8f4730591cc6b6de6532020387d4980c" kind="function"><name>FaceAction</name></member>
     <member refid="classroboy_1_1dialog_1_1action_1_1_face_action_1aecb47bafa771c510baa7cf64056146ec" kind="function"><name>getState</name></member>
     <member refid="classroboy_1_1dialog_1_1action_1_1_face_action_1a022ff7e39c4dccb0b64aa0010d6f067f" kind="function"><name>getDuration</name></member>
+  </compound>
+  <compound refid="classroboy_1_1context_1_1context_objects_1_1_face_coordinates" kind="class"><name>roboy::context::contextObjects::FaceCoordinates</name>
+  </compound>
+  <compound refid="classroboy_1_1context_1_1context_objects_1_1_face_coordinates_updater" kind="class"><name>roboy::context::contextObjects::FaceCoordinatesUpdater</name>
+    <member refid="classroboy_1_1context_1_1context_objects_1_1_face_coordinates_updater_1af0ef8f7822cf15886faf1066aeff4caa" kind="function"><name>FaceCoordinatesUpdater</name></member>
+    <member refid="classroboy_1_1context_1_1context_objects_1_1_face_coordinates_updater_1abef3aaebde956c700f09e073da45a14c" kind="function"><name>update</name></member>
   </compound>
   <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_farewell_state" kind="class"><name>roboy::dialog::personality::states::FarewellState</name>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_farewell_state_1a0d62e2cd1e3679b34af13db53b9124b8" kind="function"><name>FarewellState</name></member>
@@ -279,15 +394,20 @@
   </compound>
   <compound refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor" kind="class"><name>roboy::memory::nodes::Interlocutor</name>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a8e1e9ecf926bfd02d7fe3d0ddf16764d" kind="variable"><name>person</name></member>
-    <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1ae57da15fd747469006ebd75c4c355257" kind="variable"><name>noROS</name></member>
+    <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a05be703120a3e7d5c0529041ec10e6a1" kind="variable"><name>memoryROS</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1ac139699448ed7b80ae4e693e727afffc" kind="variable"><name>memory</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a63361a188fb1af0b873a29950ecf19c8" kind="variable"><name>FAMILIAR</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1ab01fb89d3a25267bffa9e3b337fbb48c" kind="function"><name>Interlocutor</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a884523d4dc76e54718ef124a55ef9fd4" kind="function"><name>addName</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a9c27bd97032c7790c517a2110fbf9689" kind="function"><name>getName</name></member>
-    <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1ad2dd6dd683a869c0d1f75ea8a6dec585" kind="function"><name>hasRelation</name></member>
-    <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a6d30fb3f6457574c4b9e1e1a28c3486c" kind="function"><name>addInformation</name></member>
-    <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a8827f7996f774eb675168cd45df82962" kind="function"><name>determineNodeType</name></member>
+    <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1ae3facf1563df72addddb348346b94139" kind="function"><name>hasRelationship</name></member>
+    <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a41c8edb8c0af788cd30dcf1aaac95285" kind="function"><name>getRelationships</name></member>
+    <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a0e59e8acfe71553dfd71c7f025072ac5" kind="function"><name>addInformation</name></member>
+  </compound>
+  <compound refid="classroboy_1_1context_1_1_internal_updater" kind="class"><name>roboy::context::InternalUpdater</name>
+    <member refid="classroboy_1_1context_1_1_internal_updater_1a3e39a66c2d4e06436e5f02a3c9ff80af" kind="variable"><name>target</name></member>
+    <member refid="classroboy_1_1context_1_1_internal_updater_1aa1a80fddfae17679e40e28644353ee96" kind="function"><name>InternalUpdater</name></member>
+    <member refid="classroboy_1_1context_1_1_internal_updater_1a1625c11a554c12e90fd3847aeb33ecc3" kind="function"><name>putValue</name></member>
   </compound>
   <compound refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kind="class"><name>roboy::linguistics::sentenceanalysis::Interpretation</name>
     <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a0def4ce955a8281b2afd7437ee4a0945" kind="variable"><name>features</name></member>
@@ -303,8 +423,17 @@
     <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a39397bc5cf03b9f9b9f2784fe1628095" kind="function"><name>setSentenceType</name></member>
     <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation_1a118d7ed8466ba3e00e4b0d04959e47f6" kind="function"><name>toString</name></member>
   </compound>
+  <compound refid="classroboy_1_1context_1_1_interval_updater" kind="class"><name>roboy::context::IntervalUpdater</name>
+    <member refid="classroboy_1_1context_1_1_interval_updater_1a542d30441a2953b1a42065b0b879c8b1" kind="variable"><name>target</name></member>
+    <member refid="classroboy_1_1context_1_1_interval_updater_1acff488249ccdae34d5acca10113c45e5" kind="variable"><name>scheduler</name></member>
+    <member refid="classroboy_1_1context_1_1_interval_updater_1ac269246ba040046095b57248a1c62507" kind="variable"><name>updateFrequency</name></member>
+    <member refid="classroboy_1_1context_1_1_interval_updater_1a48784f5d8c6dd8c2df60147f9f781367" kind="function"><name>IntervalUpdater</name></member>
+    <member refid="classroboy_1_1context_1_1_interval_updater_1ad4c4dc5b8e5191647ec8ec2c3210957f" kind="function"><name>start</name></member>
+  </compound>
   <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state" kind="class"><name>roboy::dialog::personality::states::IntroductionState</name>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state_1a2c31a98bf89f136b8698ef8219cf760e" kind="variable"><name>person</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state_1aec3add55f82435ff5d2affffcc9f3361" kind="variable"><name>memory</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state_1a9d309af934c52e3a63323879847ba15f" kind="variable"><name>predicate</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state_1a29b5dc53e643913f0fdf8caf387701e5" kind="variable"><name>introductions</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state_1a3223b89b1e3ab52f5407f8c0d7db2416" kind="function"><name>IntroductionState</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_introduction_state_1a552bc4e0cae583082920e5cdba112ea9" kind="function"><name>act</name></member>
@@ -316,7 +445,37 @@
     <member refid="classroboy_1_1util_1_1_i_o_1a10cfc30772d35efae48dcfdc4beb4c95" kind="function"><name>readLines</name></member>
     <member refid="classroboy_1_1util_1_1_i_o_1acad77f5b050acb0fc76d1cd2c4a3c7b4" kind="function"><name>readLines</name></member>
   </compound>
+  <compound refid="classroboy_1_1util_1_1_json_entry_model" kind="class"><name>roboy::util::JsonEntryModel</name>
+    <member refid="classroboy_1_1util_1_1_json_entry_model_1a1b73b2e1abbe8f71cbf30e224905e334" kind="variable"><name>Q</name></member>
+    <member refid="classroboy_1_1util_1_1_json_entry_model_1a5905416e13fc0dfad406432e01591dc5" kind="variable"><name>A</name></member>
+    <member refid="classroboy_1_1util_1_1_json_entry_model_1acc1978177fb7531681927e0f7708b8fb" kind="variable"><name>FUP</name></member>
+  </compound>
+  <compound refid="classroboy_1_1util_1_1_json_model" kind="class"><name>roboy::util::JsonModel</name>
+    <member refid="classroboy_1_1util_1_1_json_model_1a70ca07db00326ad798d23f41bc7e093b" kind="variable"><name>name</name></member>
+    <member refid="classroboy_1_1util_1_1_json_model_1ab23ac9abd7a7c1b8ff624492d5dc987b" kind="variable"><name>FROM</name></member>
+    <member refid="classroboy_1_1util_1_1_json_model_1a8c47989bb4ac0d60f4b8bd184401cc9a" kind="variable"><name>HAS_HOBBY</name></member>
+    <member refid="classroboy_1_1util_1_1_json_model_1a33b8e119fa7fd3736268c24f25a10c12" kind="variable"><name>LIVE_IN</name></member>
+    <member refid="classroboy_1_1util_1_1_json_model_1aaf8da2c7f73eadfbc14673df886890d3" kind="variable"><name>FRIEND_OF</name></member>
+    <member refid="classroboy_1_1util_1_1_json_model_1a75a3e28f5c84483b7c65674de272ac67" kind="variable"><name>STUDY_AT</name></member>
+    <member refid="classroboy_1_1util_1_1_json_model_1a26dfcb57f52dce621f2d3b69256964d5" kind="variable"><name>MEMBER_OF</name></member>
+    <member refid="classroboy_1_1util_1_1_json_model_1acd4c59eaca4067b2fe7653c822876182" kind="variable"><name>WORK_FOR</name></member>
+    <member refid="classroboy_1_1util_1_1_json_model_1a85e7aa392f24965df5e32c2df911524f" kind="variable"><name>OCCUPIED_AS</name></member>
+  </compound>
+  <compound refid="classroboy_1_1util_1_1_json_q_a_values" kind="class"><name>roboy::util::JsonQAValues</name>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1ae9c10b654e8df63e605bca12f83e4a50" kind="variable"><name>questions</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1a86931450797a6b314ab81f1efc78dced" kind="variable"><name>successAnswers</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1a575bc7e6333d15db217adcded764d063" kind="variable"><name>failureAnswers</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1a810a742b82ca2bb984f7af5a561dc0ed" kind="variable"><name>followUp</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1aa7f92111c3f23df439449306e9d63fdf" kind="variable"><name>answersFollowUp</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1aae7ea99620cf013b978e991ad4c81471" kind="function"><name>JsonQAValues</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1a749d4be7805acec9efbc9d0e3cff4ce4" kind="function"><name>getQuestions</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1abae73e2aeef0ee947dcf09c2131abf1b" kind="function"><name>getSuccessAnswers</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1a42dbe215d5716d02e0b01b55d61de9c3" kind="function"><name>getFailureAnswers</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1ac7aa5703536e5560240cc5c1514c496d" kind="function"><name>getFollowUpQuestions</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1a4ce5d7eb808c5951c70d07a29c00c9b7" kind="function"><name>getFollowUpAnswers</name></member>
+  </compound>
   <compound refid="classroboy_1_1util_1_1_json_utils" kind="class"><name>roboy::util::JsonUtils</name>
+    <member refid="classroboy_1_1util_1_1_json_utils_1a7276b39c488b26288377eb7c7517464f" kind="function"><name>getQuestionsAndAnswersFromJson</name></member>
     <member refid="classroboy_1_1util_1_1_json_utils_1a5ea0f2f130190e006f3621841a1fbd00" kind="function"><name>getSentencesFromJsonFile</name></member>
     <member refid="classroboy_1_1util_1_1_json_utils_1aefb38c701dd585e1d6956c416639b113" kind="function"><name>getSentenceArraysFromJsonFile</name></member>
   </compound>
@@ -391,6 +550,7 @@
     <member refid="classroboy_1_1linguistics_1_1_linguistics_1ad40212885a0fe422f69913395aa4b221" kind="variable"><name>EMOTION</name></member>
     <member refid="classroboy_1_1linguistics_1_1_linguistics_1a8e620c12c5527d34cf689156465cf451" kind="variable"><name>INTENT</name></member>
     <member refid="classroboy_1_1linguistics_1_1_linguistics_1a85c4b3f5cc755b7acc74b5309616db91" kind="variable"><name>INTENT_DISTANCE</name></member>
+    <member refid="classroboy_1_1linguistics_1_1_linguistics_1aa26dcd17e0ee2995d5d54fb0268f9c35" kind="variable"><name>PARSE</name></member>
   </compound>
   <compound refid="classroboy_1_1util_1_1_lists" kind="class"><name>roboy::util::Lists</name>
     <member refid="classroboy_1_1util_1_1_lists_1aec44da633141ef78856cc537ac97f360" kind="function"><name>actionList</name></member>
@@ -422,7 +582,7 @@
     <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a4eb8ec5de50d4bb87900318b853887c5" kind="variable"><name>labels</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a52df146c59d1d625049c2c3ecb7dd61a" kind="variable"><name>label</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a982e8cb032c661dbf942566c4750a18d" kind="variable"><name>properties</name></member>
-    <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a34f8c80bcce0fd675cc8a8c2a152111e" kind="variable"><name>relations</name></member>
+    <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1af8e17e183f7dec4f2c773f59f0e3eb6b" kind="variable"><name>relationships</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a0dd3371025cec2d370055ceddd5d90bd" kind="variable"><name>stripQuery</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a636f76b8805c5ebb756836ec5674ef4f" kind="function"><name>MemoryNodeModel</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1ade02f9836975ebdbefd27a3362dff4c1" kind="function"><name>MemoryNodeModel</name></member>
@@ -434,10 +594,10 @@
     <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a6c81048b39178c05e2e61eae22839c16" kind="function"><name>getProperty</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a7b262317c21d3a976f45931a3a6f1e97" kind="function"><name>setProperties</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1ac46686869bc5eadf01efba47743efca7" kind="function"><name>setProperty</name></member>
-    <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a5eddb2ddf1a5644a602ce6a1dd15b19a" kind="function"><name>getRelations</name></member>
-    <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a7bb90c5e89480fb14010575e96bec55c" kind="function"><name>getRelation</name></member>
-    <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a2b1ff3e17f2352158a5e0eaf3ae19d54" kind="function"><name>setRelations</name></member>
-    <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a8145ca05a144d824600facf32fd7f3d4" kind="function"><name>setRelation</name></member>
+    <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a3b850efe630a3872112aa7aadb32a122" kind="function"><name>getRelationships</name></member>
+    <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a6164cac270b34fdf5bb5ebfbde658ddd" kind="function"><name>getRelationship</name></member>
+    <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a096cfb8bd3267799c2bbf8a556912481" kind="function"><name>setRelationships</name></member>
+    <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1ac2ddcca8004795c9f0b50a57edf9fa45" kind="function"><name>setRelationship</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a827ad661c2973642cdd1058a88c0893c" kind="function"><name>setStripQuery</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a1238c30afc316003aa5558ecb1f8f894" kind="function"><name>toJSON</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model_1a56392fa41d2f91b1b6a1b70a50b45267" kind="function"><name>fromJSON</name></member>
@@ -473,18 +633,25 @@
     <member refid="classroboy_1_1memory_1_1_neo4j_memory_1af298e652387278897ef75855a6ce14e4" kind="function"><name>create</name></member>
     <member refid="classroboy_1_1memory_1_1_neo4j_memory_1a56d14ae8c44a6a4a0bf9a0daef19cc0b" kind="function"><name>remove</name></member>
     <member refid="classroboy_1_1memory_1_1_neo4j_memory_1a7a8feb27c9ad358f0ce1443bbde85287" kind="function"><name>retrieve</name></member>
+    <member refid="classroboy_1_1memory_1_1_neo4j_memory_1a4354f62392b35dffd1084b448d4af86c" kind="function"><name>determineNodeType</name></member>
   </compound>
-  <compound refid="enumroboy_1_1memory_1_1_neo4j_relations" kind="enum"><name>roboy::memory::Neo4jRelations</name>
-    <member refid="enumroboy_1_1memory_1_1_neo4j_relations_1a119c74365b3a82a5f0d3be50fbc68c63" kind="variable"><name>FROM</name></member>
-    <member refid="enumroboy_1_1memory_1_1_neo4j_relations_1af4560b839aba6756486353ff27684cfe" kind="variable"><name>HAS_HOBBY</name></member>
-    <member refid="enumroboy_1_1memory_1_1_neo4j_relations_1a145f999ecae6f101900fb59a9e79f4f7" kind="variable"><name>LIVE_IN</name></member>
-    <member refid="enumroboy_1_1memory_1_1_neo4j_relations_1a73e95c854a3dae82f5d54ee6de79f892" kind="variable"><name>STUDY_AT</name></member>
-    <member refid="enumroboy_1_1memory_1_1_neo4j_relations_1a2fb07dda2139efb22d0a02fa19289855" kind="variable"><name>OCCUPATION</name></member>
-    <member refid="enumroboy_1_1memory_1_1_neo4j_relations_1a33121c6d1aae224d5f47e6101faed27d" kind="variable"><name>WORK_FOR</name></member>
-    <member refid="enumroboy_1_1memory_1_1_neo4j_relations_1aeeabb1d253897cb28da6caa033d7dd86" kind="variable"><name>FRIEND_OF</name></member>
-    <member refid="enumroboy_1_1memory_1_1_neo4j_relations_1a5305f1dac5e187a0f4027475913697d3" kind="variable"><name>MEMBER_OF</name></member>
-    <member refid="enumroboy_1_1memory_1_1_neo4j_relations_1a9f03702549d21afb56d8569c4139c8c6" kind="variable"><name>type</name></member>
-    <member refid="enumroboy_1_1memory_1_1_neo4j_relations_1a45aed26296ff12fd8417bd648e6dac27" kind="function"><name>Neo4jRelations</name></member>
+  <compound refid="enumroboy_1_1memory_1_1_neo4j_relationships" kind="enum"><name>roboy::memory::Neo4jRelationships</name>
+    <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1aef759612281adf93a17240bb2b513b84" kind="variable"><name>FROM</name></member>
+    <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a81d3e6007d1f97035b456ff2920ccc8d" kind="variable"><name>HAS_HOBBY</name></member>
+    <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1ae9e83e5b4d8d0d8c321c2ec8f01570d9" kind="variable"><name>LIVE_IN</name></member>
+    <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a1d2898c360cd84edbbe34e1ec8460a75" kind="variable"><name>STUDY_AT</name></member>
+    <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a352af1eb4633728acc4487447717d014" kind="variable"><name>OCCUPIED_AS</name></member>
+    <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a85859baff2d7ba661e9bbe1fc2148ee0" kind="variable"><name>WORK_FOR</name></member>
+    <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a3ee47001882057c607131701e907685f" kind="variable"><name>FRIEND_OF</name></member>
+    <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a1e3a13fed6f4c2f4cc1d36365120aacf" kind="variable"><name>MEMBER_OF</name></member>
+    <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a96e569efba37e94470780a2c930913f5" kind="variable"><name>OTHER</name></member>
+    <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a89f467de499250d41c5783aa56719e4e" kind="variable"><name>IS</name></member>
+    <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a95b366738cbf572339596ac09a442a37" kind="variable"><name>type</name></member>
+    <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a683840f20066c4c2ee502a05ff706373" kind="function"><name>Neo4jRelationships</name></member>
+  </compound>
+  <compound refid="classroboy_1_1new_dialog_1_1_new_dialog_system" kind="class"><name>roboy::newDialog::NewDialogSystem</name>
+    <member refid="classroboy_1_1new_dialog_1_1_new_dialog_system_1a36bbfa71003ccd5da69ccde8c5ed62e6" kind="function"><name>getPersonalityFilePathFromConfig</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_new_dialog_system_1a8471b0ca965dc56b665bcc075dccc419" kind="function"><name>main</name></member>
   </compound>
   <compound refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_ontology_n_e_r_analyzer" kind="class"><name>roboy::linguistics::sentenceanalysis::OntologyNERAnalyzer</name>
     <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_ontology_n_e_r_analyzer_1a8a9d2c9464e855fb5563c6df6ad24170" kind="variable"><name>entities</name></member>
@@ -545,15 +712,24 @@
     <member refid="classroboy_1_1memory_1_1_persistent_knowledge_1a375cb65c72d5c8b5e78fad9fb1080126" kind="function"><name>retrieve</name></member>
     <member refid="classroboy_1_1memory_1_1_persistent_knowledge_1add1e2ac8d42e54a95c9b92606e10b7ee" kind="function"><name>save</name></member>
   </compound>
+  <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state" kind="class"><name>roboy::dialog::personality::states::PersonalFollowUpState</name>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1ad99ddb831afd95644e32e1707b328f82" kind="variable"><name>questions</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1aed3a8de284769626b5e9e56dff7c25e3" kind="variable"><name>successTexts</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a664e2567f324575d873abd1e41f83715" kind="variable"><name>person</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a7eccec3cc7e8e124576f9a90079a36d9" kind="variable"><name>predicate</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1aae0e62e6fdf530e2f015afaf2e8e195a" kind="function"><name>PersonalFollowUpState</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a2be55474f93370832751ad620c747a7a" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a3e05c608ae2c72f697c49f9dccef5ca4" kind="function"><name>determineSuccess</name></member>
+  </compound>
   <compound refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality" kind="interface"><name>roboy::dialog::personality::Personality</name>
     <member refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality_1a44ef708481445e23415a56db6df16d7d" kind="function"><name>answer</name></member>
   </compound>
   <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state" kind="class"><name>roboy::dialog::personality::states::PersonalQAState</name>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1a8548a5827f57d78ca1550fd14a282593" kind="variable"><name>questions</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1af657216622c0076e3b584ce5372dc0c5" kind="variable"><name>successTexts</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1a909c98f7f7706a6af55f4de4143bb656" kind="variable"><name>successTexts</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1ab0484093bb0bc1a3500b3c4a9bca3e29" kind="variable"><name>person</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1a5131d231208a8aa4c4009c728eb71115" kind="variable"><name>predicate</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1a0624ff69f063624bc9fd80986f708c53" kind="function"><name>PersonalQAState</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1aa96077d090c1ad6196cf36f128afba53" kind="variable"><name>predicate</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1ab422e7d301db8fbafddd95a88a78ed52" kind="function"><name>PersonalQAState</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1ac4d15984e61765e09fa9e129bd7be8a7" kind="function"><name>act</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1a3bea8ab8f43045b1b0c48851d8ae2238" kind="function"><name>determineSuccess</name></member>
   </compound>
@@ -619,21 +795,25 @@
   <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state" kind="class"><name>roboy::dialog::personality::states::QuestionRandomizerState</name>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a3386fb0d5be77d0c60b9f3aedfc29419" kind="variable"><name>questionStates</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1ae1a9cf736cd1b1e43d7dc8065f21b4c7" kind="variable"><name>locationQuestion</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a92a285b445764537da1c0769fc0308bb" kind="variable"><name>alreadyAsked</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1acbf9232fe6879cd126bc1218d7d71b3f" kind="variable"><name>followUpStates</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a61947f719889a94587aea7282edd8679" kind="variable"><name>alreadyAsked</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a9b53c08c74c9d75bf76f1bd078a19b36" kind="variable"><name>inner</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a6045afc0a5c8fba38796ced7b1399d86" kind="variable"><name>chosenState</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1ab9f31a6162c1a6af4f31e3f37fcdf798" kind="variable"><name>person</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1afbb8ab111f8840696036af2b4cde587d" kind="variable"><name>questionsFile</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a40c5e16ce450ce1fc46bfb8f5db264ea" kind="variable"><name>successAnswersFile</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a42c8cf8b93a4f963d0c891a0e1a02160" kind="variable"><name>failureAnswersFile</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a8eb68a4b749a71c7a6c601383bef8141" kind="variable"><name>questionsAndAnswers</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a8fb372f58926984b2343779227d3900f" kind="variable"><name>askFollowUp</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a168ea2025fe7a3a30dfef1400984281a" kind="variable"><name>QAfile</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1ac079c56ee234c0fd4221ef6d673f7b39" kind="variable"><name>questions</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1ae332ed928c13eb88e5ec9d21ae0bf71a" kind="variable"><name>successAnswers</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a7262bead19f6791abf18e9d140458720" kind="variable"><name>successAnswers</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a8f2ce69703ee3af10133e5bff67cbcd6" kind="variable"><name>failureAnswers</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a9913ee356287893f06bf2d4dcd71aa48" kind="variable"><name>followUp</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a41b67a3e7a7a4ba9f546b0f3843aaa97" kind="variable"><name>answersFollowUp</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a8a05db3015d4a1c0a78cbe12577ee4fc" kind="function"><name>QuestionRandomizerState</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a8cca5622a1c2f0c882809a38e7cde343" kind="function"><name>act</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a112de960346813aa29c07dff35d94691" kind="function"><name>react</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a71c4bbe217d3478a16f036fe079f9fef" kind="function"><name>setTop</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1aa4669f9b6c1abc463c1ce932a39b66e7" kind="function"><name>initializeQuestion</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a7cb96c7512929d2105f4dbeaf898c7fd" kind="function"><name>initializeQuestion</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a9ba07cc2ea71989c8b2c209d00cfac85" kind="function"><name>initializeFollowUpQuestion</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1af265efc392f41078d44ce2b735afce62" kind="function"><name>checkForAskedQuestions</name></member>
   </compound>
   <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_reaction" kind="class"><name>roboy::dialog::personality::states::Reaction</name>
@@ -652,6 +832,16 @@
     <member refid="classroboy_1_1util_1_1_relation_1a5e94086a5cfc097b7481f3d9a7c3e96e" kind="function"><name>Relation</name></member>
     <member refid="classroboy_1_1util_1_1_relation_1a0640565a0875b65c32c6884ab4734fd5" kind="function"><name>getSubject</name></member>
     <member refid="classroboy_1_1util_1_1_relation_1a61ed7a034e934756f391ecc25a1dbf9c" kind="function"><name>getObject</name></member>
+  </compound>
+  <compound refid="classroboy_1_1memory_1_1nodes_1_1_roboy" kind="class"><name>roboy::memory::nodes::Roboy</name>
+    <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1ade8f09b1807c1236ae77f888e63b9dc8" kind="variable"><name>roboy</name></member>
+    <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1aa2dbcdf157c087aed2783283642e0113" kind="variable"><name>memoryROS</name></member>
+    <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1ad7460d91aae23ff9bd7336cce88677ba" kind="variable"><name>memory</name></member>
+    <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1a2db06e72a495021c66d83cfd37b8b92a" kind="function"><name>Roboy</name></member>
+    <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1ad62b3b626edc5f77ac696b70c30cab53" kind="function"><name>getName</name></member>
+    <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1a14b3e556fe15ce03893be9474887e01d" kind="function"><name>getRelationships</name></member>
+    <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1a633475848e60b2bc6c966b531cd99c8d" kind="function"><name>addInformation</name></member>
+    <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1a3c05f4c279205cdcb732e10fa84e52f0" kind="function"><name>InitializeRoboy</name></member>
   </compound>
   <compound refid="classroboy_1_1memory_1_1_roboy_mind" kind="class"><name>roboy::memory::RoboyMind</name>
     <member refid="classroboy_1_1memory_1_1_roboy_mind_1af5ca6fe74b35757b8608f436b199da34" kind="variable"><name>roboyMemory</name></member>
@@ -700,9 +890,6 @@
     <member refid="enumroboy_1_1ros_1_1_ros_clients_1a0fdd1e507f7364b2bc1978f311d1b6eb" kind="variable"><name>type</name></member>
     <member refid="enumroboy_1_1ros_1_1_ros_clients_1a4ce6e57579594e669cdf81583a761b0e" kind="function"><name>RosClients</name></member>
   </compound>
-  <compound refid="classroboy_1_1util_1_1ros_1_1_ros_communication_test" kind="class"><name>roboy::util::ros::RosCommunicationTest</name>
-    <member refid="classroboy_1_1util_1_1ros_1_1_ros_communication_test_1adc6f8339e05199ceac248b59e6ff150b" kind="function"><name>TestGenerativeModel</name></member>
-  </compound>
   <compound refid="classroboy_1_1ros_1_1_ros_main_node" kind="class"><name>roboy::ros::RosMainNode</name>
     <member refid="classroboy_1_1ros_1_1_ros_main_node_1a4db27c9777410de36a74cb2436b52590" kind="variable"><name>rosConnectionLatch</name></member>
     <member refid="classroboy_1_1ros_1_1_ros_main_node_1a225e9130265103eb9bf7ab66a1bfe431" kind="variable"><name>clients</name></member>
@@ -730,11 +917,6 @@
     <member refid="classroboy_1_1ros_1_1_ros_manager_1af57b1c9c1fd8ac6eedc83115973a3f1b" kind="function"><name>notInitialized</name></member>
     <member refid="classroboy_1_1ros_1_1_ros_manager_1a19b9f7284fa730a1d22fd065f619eef2" kind="function"><name>getServiceClient</name></member>
   </compound>
-  <compound refid="classroboy_1_1ros_1_1_ros_node" kind="class"><name>roboy::ros::RosNode</name>
-    <member refid="classroboy_1_1ros_1_1_ros_node_1af12650d217ef70e6853d08159ce98fc0" kind="variable"><name>cerevoiceServiceClient</name></member>
-    <member refid="classroboy_1_1ros_1_1_ros_node_1a8a91d6bfeb06763065868169c4358683" kind="function"><name>getDefaultNodeName</name></member>
-    <member refid="classroboy_1_1ros_1_1_ros_node_1a7b2a10eb8ac0f15a854e5a9829db7b6d" kind="function"><name>onStart</name></member>
-  </compound>
   <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state" kind="class"><name>roboy::dialog::personality::states::SegueState</name>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state_1a5686ed036994d663ab9f056a2a39c88e" kind="variable"><name>sentenceTypeAssociations</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_segue_state_1a9a5859fa6b21a1f9e1373e7ec77e625a" kind="variable"><name>inner</name></member>
@@ -760,6 +942,14 @@
     <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e_1a7d5367f86679cc09a9bcaed34e5efc58" kind="variable"><name>BENEFICIARY</name></member>
     <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e_1a26d89aa5a154cce93b31f457f0812ce4" kind="variable"><name>PURPOSE</name></member>
     <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e_1af817b3e3c8c2d97f210fc116dc0ec00c" kind="variable"><name>CAUSE</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer" kind="class"><name>roboy::linguistics::sentenceanalysis::SemanticParserAnalyzer</name>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer_1a3a22ede0bd79a6478adec62d30cb09e7" kind="variable"><name>clientSocket</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer_1a9f4f60d44a9701e8132c08cc25ba5842" kind="variable"><name>out</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer_1ac9d814c727b035c4c0b7d135cbcbf04c" kind="variable"><name>in</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer_1a019c22a94b2a0eac0defc9a67e15292f" kind="variable"><name>debug</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer_1a56698e4c6bfd11d763c20e4f86a25e72" kind="function"><name>SemanticParserAnalyzer</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer_1ab3bdd822a68101cba8c5a1ed660866e3" kind="function"><name>analyze</name></member>
   </compound>
   <compound refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e" kind="enum"><name>roboy::linguistics::Linguistics::SENTENCE_TYPE</name>
     <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e_1acb60a4f2b04af12088e118049dadef7c" kind="variable"><name>GREETING</name></member>
@@ -827,6 +1017,46 @@
     <member refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state_1a56df9f548b4736b775dc9dbf450a6a51" kind="function"><name>act</name></member>
     <member refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state_1a7f9d1aebfca6aabf313eee279f9a390c" kind="function"><name>react</name></member>
   </compound>
+  <compound refid="classroboy_1_1new_dialog_1_1states_1_1_state" kind="class"><name>roboy::newDialog::states::State</name>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a7b92d0cd6c2c9cba5410e55d86d78abf" kind="variable"><name>stateIdentifier</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a776c41cdd95ed0421130406f0e819727" kind="variable"><name>fallback</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a399f0e0d9700500f9dbdf865ac7e64d5" kind="variable"><name>transitions</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1afbe86835ccfa18ca7ae5958d84e89b8f" kind="function"><name>State</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1ab9773eeecc877cc77b087492faa53591" kind="function"><name>getIdentifier</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1aacca21bec3b5ca0f0f7435f3678b6087" kind="function"><name>setIdentifier</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a8fac90b18cd30aa46f10eeb35d9e0138" kind="function"><name>getFallback</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a3d2292e61f395f378b7db49790c67828" kind="function"><name>setFallback</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a3f6668c5631712be3cdd8a71186bffb8" kind="function"><name>setTransition</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a61e3afbfa155d7fc6d0c353d71a70279" kind="function"><name>getTransition</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a5b199b5cfa336e2b5a81b6fc889a4bca" kind="function"><name>getAllTransitions</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a66f11de734295eb35dccee9d3b423a9d" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1af27e5bca378b302d190172f17603f81c" kind="function"><name>react</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a152e0d4c4f7862aa90fc0f8856df624a" kind="function"><name>getNextState</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a610c6a1337f401e4e53806d3bdcb5335" kind="function"><name>allRequiredTransitionsAreInitialized</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a9fce6961e78d2cb2a755fdf8e6e02c77" kind="function"><name>toJsonObject</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1aad317d16e61717bb1d5d80b7dfcf89af" kind="function"><name>toString</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a0f0b76c82e1229c8f7d83374ceefb8ab" kind="function"><name>equals</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1aa48dfb2715179c2d095370e6aaef0cf0" kind="function"><name>getRequiredTransitionNames</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a74598144b82ca28dcc5e4abfce7739d1" kind="function"><name>newSet</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a42b1a18831867185ef13dddbd24cc6b3" kind="function"><name>equalsHelper_compareTransitions</name></member>
+  </compound>
+  <compound refid="classroboy_1_1new_dialog_1_1_state_based_personality" kind="class"><name>roboy::newDialog::StateBasedPersonality</name>
+    <member refid="classroboy_1_1new_dialog_1_1_state_based_personality_1a9e3c916d9b981331814c416cb6f518f8" kind="variable"><name>verbalizer</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_state_based_personality_1a131b2c22aa0d5ba005ee93bed3b98d00" kind="function"><name>StateBasedPersonality</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_state_based_personality_1aa64bfd48607301f0752f6f06d8a15e39" kind="function"><name>startConversation</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_state_based_personality_1a887364f1eb47cb8b45a0e621ac6c68cf" kind="function"><name>answer</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_state_based_personality_1a68f2fca34b2193984ad1898548dcb5cc" kind="function"><name>reset</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_state_based_personality_1a170c754f0e7a10491929293dd109552d" kind="function"><name>stateAct</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_state_based_personality_1a173b730ecec7fa923936b29fbfc93b0b" kind="function"><name>stateReact</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1_state_based_personality_1add6aad1c0e8680a90a98ab09dc94ccab" kind="function"><name>verbalizeInterpretations</name></member>
+  </compound>
+  <compound refid="classroboy_1_1new_dialog_1_1examples_1_1_state_machine_examples" kind="class"><name>roboy::newDialog::examples::StateMachineExamples</name>
+    <member refid="classroboy_1_1new_dialog_1_1examples_1_1_state_machine_examples_1acfaf2648bc8c15eb571eeab8f208cbb0" kind="variable"><name>toyPersonality</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1examples_1_1_state_machine_examples_1a57e206793262a6d396b3700d57914f1a" kind="function"><name>main</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1examples_1_1_state_machine_examples_1a73d08e4e55926a426640a56dff265908" kind="function"><name>fromCode</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1examples_1_1_state_machine_examples_1ad57695011ba4ea07c01d4afc944e8a91" kind="function"><name>fromFile</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1examples_1_1_state_machine_examples_1ab1ab3c119e4ecf000367be5941479146" kind="function"><name>fromString</name></member>
+  </compound>
   <compound refid="classroboy_1_1talk_1_1_statement_builder" kind="class"><name>roboy::talk::StatementBuilder</name>
     <member refid="classroboy_1_1talk_1_1_statement_builder_1ae899b0b7c30cf5653b942240b866531a" kind="function"><name>random</name></member>
   </compound>
@@ -838,6 +1068,47 @@
     <member refid="classroboy_1_1linguistics_1_1_term_1a4c8190605bb94400ccc3f2d80f36454e" kind="variable"><name>prob</name></member>
     <member refid="classroboy_1_1linguistics_1_1_term_1a2c0475cd97cc2c2993d219f718180421" kind="variable"><name>concept</name></member>
     <member refid="classroboy_1_1linguistics_1_1_term_1abd0a354ca716890ef54e3aeaab4566f5" kind="function"><name>toString</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter" kind="class"><name>roboy::linguistics::word2vec::examples::ToyDataGetter</name>
+    <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1ab50bc524e12c1a50f89351ef84e2cafe" kind="variable"><name>verbose</name></member>
+    <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1a224bc0600420f741806d564dc5005a40" kind="variable"><name>toyDataDirectory</name></member>
+    <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1ad0b8852d1f4b437b6da578cd96978631" kind="variable"><name>toyDataFilePath</name></member>
+    <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1a855dea2daceacf7a53a5ffa5dcd369f9" kind="variable"><name>toyDataInetURL</name></member>
+    <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1ad20130ed58e1eddfa900621ef0334ebf" kind="function"><name>ToyDataGetter</name></member>
+    <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1a97f63c134ae61393b0ea4f09a1277830" kind="function"><name>getToyDataFilePath</name></member>
+    <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1aefa1346413c445e41bb6d1c1c0319a02" kind="function"><name>ensureToyDataIsPresent</name></member>
+    <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1ac444ad544cd0c18906263fee4fc33ced" kind="function"><name>downloadData</name></member>
+    <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1abbf60d62689a454bb996824aa36087b6" kind="function"><name>fileExists</name></member>
+  </compound>
+  <compound refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_farewell_state" kind="class"><name>roboy::newDialog::states::toyStates::ToyFarewellState</name>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_farewell_state_1a4ddb5969cebccc33db7c2d21a368f896" kind="function"><name>ToyFarewellState</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_farewell_state_1a20639a2ad3a288715de6e2cb4276f284" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_farewell_state_1ae6aa237e810913add161a6fbb3fc775b" kind="function"><name>react</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_farewell_state_1ae67a40d8441b12ff4de5cc610b2c8ecf" kind="function"><name>getNextState</name></member>
+  </compound>
+  <compound refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_greetings_state" kind="class"><name>roboy::newDialog::states::toyStates::ToyGreetingsState</name>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_greetings_state_1ab138a03b70521151fc1ba8cef7589187" kind="variable"><name>inputOK</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_greetings_state_1a626e06966aea8205ee700b70022d8920" kind="function"><name>ToyGreetingsState</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_greetings_state_1a4a967b4d803cf3ad735effb672eaed1d" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_greetings_state_1a7a5e43fb25c037b147cedf2340d7a57c" kind="function"><name>react</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_greetings_state_1ae59c9052af14eee8584b383fa2b4e281" kind="function"><name>getNextState</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_greetings_state_1a42f37d93fa1ddd0943df53891f04ebc1" kind="function"><name>getRequiredTransitionNames</name></member>
+  </compound>
+  <compound refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state" kind="class"><name>roboy::newDialog::states::toyStates::ToyIntroState</name>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state_1ad70099d8d4138b67e082541308e85221" kind="function"><name>ToyIntroState</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state_1a0bc835504115d772fe9920adb29ff659" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state_1a9230da5bbdbd22751eef35a180c39419" kind="function"><name>react</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state_1a8bcb7f3d4402a2af38f293e53743ae9a" kind="function"><name>getNextState</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state_1a43d2af35e0898b13789163e66ac275b6" kind="function"><name>getRequiredTransitionNames</name></member>
+  </compound>
+  <compound refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_random_answer_state" kind="class"><name>roboy::newDialog::states::toyStates::ToyRandomAnswerState</name>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_random_answer_state_1a6c5789a0c20a3c03e93fc261dbc28731" kind="function"><name>ToyRandomAnswerState</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_random_answer_state_1a8b562d0f4a356ac6d697bb70669dd987" kind="function"><name>act</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_random_answer_state_1a675d01fa8eb1674086cfda6a9daeca9b" kind="function"><name>react</name></member>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_random_answer_state_1adb0d34d99c764b2eb7dae53c787077d2" kind="function"><name>getNextState</name></member>
+  </compound>
+  <compound refid="classroboy_1_1new_dialog_1_1states_1_1factories_1_1_toy_state_factory" kind="class"><name>roboy::newDialog::states::factories::ToyStateFactory</name>
+    <member refid="classroboy_1_1new_dialog_1_1states_1_1factories_1_1_toy_state_factory_1aa1131a0324f64c9241ec2e10ca37ef2e" kind="function"><name>getByClassName</name></member>
   </compound>
   <compound refid="classroboy_1_1linguistics_1_1_triple" kind="class"><name>roboy::linguistics::Triple</name>
     <member refid="classroboy_1_1linguistics_1_1_triple_1ad7bec6e7a02a8a76a4831cce3a84bd94" kind="variable"><name>agens</name></member>
@@ -858,11 +1129,51 @@
     <member refid="classroboy_1_1io_1_1_udp_output_1ad2357addbc8deb07038f6e5c88ca1f05" kind="function"><name>UdpOutput</name></member>
     <member refid="classroboy_1_1io_1_1_udp_output_1a7cc044b4e5ff69046ada6405683b73c3" kind="function"><name>act</name></member>
   </compound>
+  <compound refid="enumroboy_1_1context_1_1_context_1_1_updaters" kind="enum"><name>roboy::context::Context::Updaters</name>
+    <member refid="enumroboy_1_1context_1_1_context_1_1_updaters_1a0ddfd01da6340079c2bc9664b4828f7e" kind="variable"><name>DIALOG_TOPICS_UPDATER</name></member>
+    <member refid="enumroboy_1_1context_1_1_context_1_1_updaters_1a1d7a7fb683aea42e120f9608e31a9973" kind="variable"><name>classType</name></member>
+    <member refid="enumroboy_1_1context_1_1_context_1_1_updaters_1a0dc3516441fe6412fa9422e90be862e7" kind="variable"><name>targetValueType</name></member>
+    <member refid="enumroboy_1_1context_1_1_context_1_1_updaters_1ae3de0e0b7f6b0ffac055df7daf5f72b0" kind="function"><name>Updaters</name></member>
+  </compound>
   <compound refid="classroboy_1_1memory_1_1_util" kind="class"><name>roboy::memory::Util</name>
     <member refid="classroboy_1_1memory_1_1_util_1ac99be65a576dab331a9f2c43db7280b7" kind="function"><name>getPartURI</name></member>
     <member refid="classroboy_1_1memory_1_1_util_1aa9603bbaefcf40cc9116d48c840648f6" kind="function"><name>getQuestionType</name></member>
     <member refid="classroboy_1_1memory_1_1_util_1a50ad3a4d176e2c5fcefb1e0d5265a6db" kind="function"><name>calculateLevenshteinDistance</name></member>
     <member refid="classroboy_1_1memory_1_1_util_1a63fa531e6f09abf0b5cf6d6d6ad08a11" kind="function"><name>min</name></member>
+  </compound>
+  <compound refid="classroboy_1_1context_1_1_value" kind="class"><name>roboy::context::Value</name>
+    <member refid="classroboy_1_1context_1_1_value_1a09b669731df832e9d085434054f11af2" kind="variable"><name>value</name></member>
+    <member refid="classroboy_1_1context_1_1_value_1aa9e4905eed3fc22226479a6f442f78c9" kind="function"><name>getValue</name></member>
+    <member refid="classroboy_1_1context_1_1_value_1a39697e33e847409424bc64ffd4552de7" kind="function"><name>updateValue</name></member>
+  </compound>
+  <compound refid="enumroboy_1_1context_1_1_context_1_1_value_histories" kind="enum"><name>roboy::context::Context::ValueHistories</name>
+    <member refid="enumroboy_1_1context_1_1_context_1_1_value_histories_1a82d18f5a8ab05314d2af400617b8de61" kind="variable"><name>DIALOG_TOPICS</name></member>
+    <member refid="enumroboy_1_1context_1_1_context_1_1_value_histories_1a2b486cf1d0e9ac6a5117d07009f451dd" kind="variable"><name>classType</name></member>
+    <member refid="enumroboy_1_1context_1_1_context_1_1_value_histories_1ab7d6f141d093fa9bfd4f09e33212dbe6" kind="variable"><name>returnType</name></member>
+    <member refid="enumroboy_1_1context_1_1_context_1_1_value_histories_1a7486335c234fda9a95624b7039199b26" kind="function"><name>ValueHistories</name></member>
+    <member refid="enumroboy_1_1context_1_1_context_1_1_value_histories_1aaae5dd95f9473193476f3a427d32f556" kind="function"><name>getClassType</name></member>
+    <member refid="enumroboy_1_1context_1_1_context_1_1_value_histories_1ae6b081e4c0cd0ffe3e0e93dcc07ff73f" kind="function"><name>getReturnType</name></member>
+    <member refid="enumroboy_1_1context_1_1_context_1_1_value_histories_1a5f3ce261246056e99868acc5644d98be" kind="function"><name>getLastValue</name></member>
+    <member refid="enumroboy_1_1context_1_1_context_1_1_value_histories_1a1445f1264f4d08ea417da1440d81fff9" kind="function"><name>getNLastValues</name></member>
+  </compound>
+  <compound refid="classroboy_1_1context_1_1_value_history" kind="class"><name>roboy::context::ValueHistory</name>
+    <member refid="classroboy_1_1context_1_1_value_history_1a73f67e9efab0dd2cfc505aa03f250f28" kind="variable"><name>counter</name></member>
+    <member refid="classroboy_1_1context_1_1_value_history_1a7bda0995b4416fa2235dfa1e5b6a6f0c" kind="variable"><name>data</name></member>
+    <member refid="classroboy_1_1context_1_1_value_history_1ad5aed0bc61a79546a184091d0a48cf95" kind="function"><name>ValueHistory</name></member>
+    <member refid="classroboy_1_1context_1_1_value_history_1a147a847a6e56e5fc74ba4030e713d021" kind="function"><name>getValue</name></member>
+    <member refid="classroboy_1_1context_1_1_value_history_1a11489dd1721ef67092438fac57f7c704" kind="function"><name>getLastNValues</name></member>
+    <member refid="classroboy_1_1context_1_1_value_history_1a67238865dd812331d8105845df220239" kind="function"><name>updateValue</name></member>
+    <member refid="classroboy_1_1context_1_1_value_history_1acf190d44e3aee3b260cc9cd5bd2ee848" kind="function"><name>generateKey</name></member>
+    <member refid="classroboy_1_1context_1_1_value_history_1a2bd1e610d2773d14011cd6dceff6f368" kind="function"><name>getValue</name></member>
+  </compound>
+  <compound refid="enumroboy_1_1context_1_1_context_1_1_values" kind="enum"><name>roboy::context::Context::Values</name>
+    <member refid="enumroboy_1_1context_1_1_context_1_1_values_1a13f564156c840974f454e18ded2c9d74" kind="variable"><name>FACE_COORDINATES</name></member>
+    <member refid="enumroboy_1_1context_1_1_context_1_1_values_1ac2df2a06c056c118e462f3ca7e17f159" kind="variable"><name>classType</name></member>
+    <member refid="enumroboy_1_1context_1_1_context_1_1_values_1a7ee7d5d66a0c82fe9650f6eba552fcd3" kind="variable"><name>returnType</name></member>
+    <member refid="enumroboy_1_1context_1_1_context_1_1_values_1a8d16c886c0c8fe2de96013851e41de46" kind="function"><name>Values</name></member>
+    <member refid="enumroboy_1_1context_1_1_context_1_1_values_1a57974ff119b9e2376e5ca3513c554c01" kind="function"><name>getClassType</name></member>
+    <member refid="enumroboy_1_1context_1_1_context_1_1_values_1a2b2075ae2cd09210b71d08ee5bd58ed8" kind="function"><name>getReturnType</name></member>
+    <member refid="enumroboy_1_1context_1_1_context_1_1_values_1a0db6819b08926b6083e429b31e8cb068" kind="function"><name>getLastValue</name></member>
   </compound>
   <compound refid="classroboy_1_1talk_1_1_verbalizer" kind="class"><name>roboy::talk::Verbalizer</name>
     <member refid="classroboy_1_1talk_1_1_verbalizer_1a2f1bb105de65022b5ecce0eec5013fae" kind="variable"><name>greetings</name></member>
@@ -906,6 +1217,12 @@
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state_1a0ddb5ef9fa9b8cfc31afa7dea5a9b090" kind="function"><name>react</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_wild_talk_state_1a14d202d475a0c49a5d45aec8c991f1ae" kind="function"><name>setNextState</name></member>
   </compound>
+  <compound refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_word2vec_training_example" kind="class"><name>roboy::linguistics::word2vec::examples::Word2vecTrainingExample</name>
+    <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_word2vec_training_example_1a061f3e49b462de95644c4840334c2006" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_word2vec_uptraining_example" kind="class"><name>roboy::linguistics::word2vec::examples::Word2vecUptrainingExample</name>
+    <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_word2vec_uptraining_example_1aa9e2049c4c360e1f19496411f37c1bd5" kind="function"><name>main</name></member>
+  </compound>
   <compound refid="classroboy_1_1memory_1_1_working_memory" kind="class"><name>roboy::memory::WorkingMemory</name>
     <member refid="classroboy_1_1memory_1_1_working_memory_1a8e495bca301027349b227f7f2347adde" kind="variable"><name>memory</name></member>
     <member refid="classroboy_1_1memory_1_1_working_memory_1a595cfd9c0ff0757ccd936e28dee81e25" kind="variable"><name>agensTripleMap</name></member>
@@ -918,13 +1235,19 @@
     <member refid="classroboy_1_1memory_1_1_working_memory_1a777ee01f343924f4cb9d0e168a96ec91" kind="function"><name>toString</name></member>
     <member refid="classroboy_1_1memory_1_1_working_memory_1a216daea75f947b6a0e3acc5c43f48129" kind="function"><name>retrieve</name></member>
   </compound>
+  <compound refid="namespacecom_1_1google_1_1gson" kind="namespace"><name>com::google::gson</name>
+  </compound>
   <compound refid="namespaceedu_1_1cmu_1_1sphinx_1_1api" kind="namespace"><name>edu::cmu::sphinx::api</name>
+  </compound>
+  <compound refid="namespacejava_1_1awt" kind="namespace"><name>java::awt</name>
   </compound>
   <compound refid="namespacejava_1_1io" kind="namespace"><name>java::io</name>
   </compound>
   <compound refid="namespacejava_1_1net" kind="namespace"><name>java::net</name>
   </compound>
   <compound refid="namespacejava_1_1util" kind="namespace"><name>java::util</name>
+  </compound>
+  <compound refid="namespacejavax_1_1swing" kind="namespace"><name>javax::swing</name>
   </compound>
   <compound refid="namespaceorg_1_1apache_1_1jena_1_1query" kind="namespace"><name>org::apache::jena::query</name>
   </compound>
@@ -937,6 +1260,14 @@
   <compound refid="namespaceorg_1_1ros_1_1node" kind="namespace"><name>org::ros::node</name>
   </compound>
   <compound refid="namespaceroboy" kind="namespace"><name>roboy</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1context" kind="namespace"><name>roboy::context</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1context_1_1context_objects" kind="namespace"><name>roboy::context::contextObjects</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1context_1_1_g_u_i" kind="namespace"><name>roboy::context::GUI</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1context_1_1vision_context" kind="namespace"><name>roboy::context::visionContext</name>
   </compound>
   <compound refid="namespaceroboy_1_1dialog" kind="namespace"><name>roboy::dialog</name>
   </compound>
@@ -956,13 +1287,27 @@
   </compound>
   <compound refid="namespaceroboy_1_1linguistics_1_1sentenceanalysis" kind="namespace"><name>roboy::linguistics::sentenceanalysis</name>
   </compound>
+  <compound refid="namespaceroboy_1_1linguistics_1_1word2vec" kind="namespace"><name>roboy::linguistics::word2vec</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1linguistics_1_1word2vec_1_1examples" kind="namespace"><name>roboy::linguistics::word2vec::examples</name>
+  </compound>
   <compound refid="namespaceroboy_1_1logic" kind="namespace"><name>roboy::logic</name>
   </compound>
   <compound refid="namespaceroboy_1_1memory" kind="namespace"><name>roboy::memory</name>
   </compound>
-  <compound refid="namespaceroboy_1_1memory_1_1_neo4j_relations" kind="namespace"><name>roboy::memory::Neo4jRelations</name>
+  <compound refid="namespaceroboy_1_1memory_1_1_neo4j_relationships" kind="namespace"><name>roboy::memory::Neo4jRelationships</name>
   </compound>
   <compound refid="namespaceroboy_1_1memory_1_1nodes" kind="namespace"><name>roboy::memory::nodes</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1new_dialog" kind="namespace"><name>roboy::newDialog</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1new_dialog_1_1examples" kind="namespace"><name>roboy::newDialog::examples</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1new_dialog_1_1states" kind="namespace"><name>roboy::newDialog::states</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1new_dialog_1_1states_1_1factories" kind="namespace"><name>roboy::newDialog::states::factories</name>
+  </compound>
+  <compound refid="namespaceroboy_1_1new_dialog_1_1states_1_1toy_states" kind="namespace"><name>roboy::newDialog::states::toyStates</name>
   </compound>
   <compound refid="namespaceroboy_1_1ros" kind="namespace"><name>roboy::ros</name>
   </compound>
@@ -970,11 +1315,41 @@
   </compound>
   <compound refid="namespaceroboy_1_1util" kind="namespace"><name>roboy::util</name>
   </compound>
-  <compound refid="namespaceroboy_1_1util_1_1ros" kind="namespace"><name>roboy::util::ros</name>
-  </compound>
   <compound refid="namespaceroboy__communication__cognition" kind="namespace"><name>roboy_communication_cognition</name>
   </compound>
   <compound refid="namespaceroboy__communication__control" kind="namespace"><name>roboy_communication_control</name>
+  </compound>
+  <compound refid="_abstract_value_8java" kind="file"><name>AbstractValue.java</name>
+  </compound>
+  <compound refid="_abstract_value_history_8java" kind="file"><name>AbstractValueHistory.java</name>
+  </compound>
+  <compound refid="_attribute_manager_8java" kind="file"><name>AttributeManager.java</name>
+  </compound>
+  <compound refid="_context_8java" kind="file"><name>Context.java</name>
+  </compound>
+  <compound refid="_coordinate_set_8java" kind="file"><name>CoordinateSet.java</name>
+  </compound>
+  <compound refid="_dialog_topics_8java" kind="file"><name>DialogTopics.java</name>
+  </compound>
+  <compound refid="_dialog_topics_updater_8java" kind="file"><name>DialogTopicsUpdater.java</name>
+  </compound>
+  <compound refid="_face_coordinates_8java" kind="file"><name>FaceCoordinates.java</name>
+  </compound>
+  <compound refid="_face_coordinates_updater_8java" kind="file"><name>FaceCoordinatesUpdater.java</name>
+  </compound>
+  <compound refid="_external_context_interface_8java" kind="file"><name>ExternalContextInterface.java</name>
+  </compound>
+  <compound refid="_external_updater_8java" kind="file"><name>ExternalUpdater.java</name>
+  </compound>
+  <compound refid="_context_g_u_i_8java" kind="file"><name>ContextGUI.java</name>
+  </compound>
+  <compound refid="_internal_updater_8java" kind="file"><name>InternalUpdater.java</name>
+  </compound>
+  <compound refid="_interval_updater_8java" kind="file"><name>IntervalUpdater.java</name>
+  </compound>
+  <compound refid="_value_8java" kind="file"><name>Value.java</name>
+  </compound>
+  <compound refid="_value_history_8java" kind="file"><name>ValueHistory.java</name>
   </compound>
   <compound refid="_action_8java" kind="file"><name>Action.java</name>
   </compound>
@@ -1020,6 +1395,8 @@
   </compound>
   <compound refid="_location_d_bpedia_8java" kind="file"><name>LocationDBpedia.java</name>
   </compound>
+  <compound refid="_personal_follow_up_state_8java" kind="file"><name>PersonalFollowUpState.java</name>
+  </compound>
   <compound refid="_personal_q_a_state_8java" kind="file"><name>PersonalQAState.java</name>
   </compound>
   <compound refid="_question_answering_state_8java" kind="file"><name>QuestionAnsweringState.java</name>
@@ -1032,7 +1409,9 @@
   </compound>
   <compound refid="_segue_state_8java" kind="file"><name>SegueState.java</name>
   </compound>
-  <compound refid="_state_8java" kind="file"><name>State.java</name>
+  <compound refid="dialog_2personality_2states_2_state_8java" kind="file"><name>State.java</name>
+  </compound>
+  <compound refid="new_dialog_2states_2_state_8java" kind="file"><name>State.java</name>
   </compound>
   <compound refid="_wild_talk_state_8java" kind="file"><name>WildTalkState.java</name>
   </compound>
@@ -1114,6 +1493,8 @@
   </compound>
   <compound refid="_preprocessor_8java" kind="file"><name>Preprocessor.java</name>
   </compound>
+  <compound refid="_semantic_parser_analyzer_8java" kind="file"><name>SemanticParserAnalyzer.java</name>
+  </compound>
   <compound refid="_sentence_analyzer_8java" kind="file"><name>SentenceAnalyzer.java</name>
   </compound>
   <compound refid="_simple_tokenizer_8java" kind="file"><name>SimpleTokenizer.java</name>
@@ -1121,6 +1502,12 @@
   <compound refid="_term_8java" kind="file"><name>Term.java</name>
   </compound>
   <compound refid="_triple_8java" kind="file"><name>Triple.java</name>
+  </compound>
+  <compound refid="_toy_data_getter_8java" kind="file"><name>ToyDataGetter.java</name>
+  </compound>
+  <compound refid="_word2vec_training_example_8java" kind="file"><name>Word2vecTrainingExample.java</name>
+  </compound>
+  <compound refid="_word2vec_uptraining_example_8java" kind="file"><name>Word2vecUptrainingExample.java</name>
   </compound>
   <compound refid="_intention_8java" kind="file"><name>Intention.java</name>
   </compound>
@@ -1142,11 +1529,13 @@
   </compound>
   <compound refid="_neo4j_memory_8java" kind="file"><name>Neo4jMemory.java</name>
   </compound>
-  <compound refid="_neo4j_relations_8java" kind="file"><name>Neo4jRelations.java</name>
+  <compound refid="_neo4j_relationships_8java" kind="file"><name>Neo4jRelationships.java</name>
   </compound>
   <compound refid="_interlocutor_8java" kind="file"><name>Interlocutor.java</name>
   </compound>
   <compound refid="_memory_node_model_8java" kind="file"><name>MemoryNodeModel.java</name>
+  </compound>
+  <compound refid="_roboy_8java" kind="file"><name>Roboy.java</name>
   </compound>
   <compound refid="_persistent_knowledge_8java" kind="file"><name>PersistentKnowledge.java</name>
   </compound>
@@ -1156,6 +1545,24 @@
   </compound>
   <compound refid="_working_memory_8java" kind="file"><name>WorkingMemory.java</name>
   </compound>
+  <compound refid="_dialog_state_machine_8java" kind="file"><name>DialogStateMachine.java</name>
+  </compound>
+  <compound refid="_state_machine_examples_8java" kind="file"><name>StateMachineExamples.java</name>
+  </compound>
+  <compound refid="_new_dialog_system_8java" kind="file"><name>NewDialogSystem.java</name>
+  </compound>
+  <compound refid="_state_based_personality_8java" kind="file"><name>StateBasedPersonality.java</name>
+  </compound>
+  <compound refid="_toy_state_factory_8java" kind="file"><name>ToyStateFactory.java</name>
+  </compound>
+  <compound refid="_toy_farewell_state_8java" kind="file"><name>ToyFarewellState.java</name>
+  </compound>
+  <compound refid="_toy_greetings_state_8java" kind="file"><name>ToyGreetingsState.java</name>
+  </compound>
+  <compound refid="_toy_intro_state_8java" kind="file"><name>ToyIntroState.java</name>
+  </compound>
+  <compound refid="_toy_random_answer_state_8java" kind="file"><name>ToyRandomAnswerState.java</name>
+  </compound>
   <compound refid="_ros_8java" kind="file"><name>Ros.java</name>
   </compound>
   <compound refid="_ros_clients_8java" kind="file"><name>RosClients.java</name>
@@ -1164,13 +1571,13 @@
   </compound>
   <compound refid="_ros_manager_8java" kind="file"><name>RosManager.java</name>
   </compound>
-  <compound refid="_ros_node_8java" kind="file"><name>RosNode.java</name>
-  </compound>
   <compound refid="_statement_builder_8java" kind="file"><name>StatementBuilder.java</name>
   </compound>
   <compound refid="_verbalizer_8java" kind="file"><name>Verbalizer.java</name>
   </compound>
   <compound refid="_i_o_8java" kind="file"><name>IO.java</name>
+  </compound>
+  <compound refid="_json_q_a_values_8java" kind="file"><name>JsonQAValues.java</name>
   </compound>
   <compound refid="_json_utils_8java" kind="file"><name>JsonUtils.java</name>
   </compound>
@@ -1179,6 +1586,8 @@
   <compound refid="_maps_8java" kind="file"><name>Maps.java</name>
   </compound>
   <compound refid="_relation_8java" kind="file"><name>Relation.java</name>
+  </compound>
+  <compound refid="_context_test_8java" kind="file"><name>ContextTest.java</name>
   </compound>
   <compound refid="_location_d_bpedia_state_test_8java" kind="file"><name>LocationDBpediaStateTest.java</name>
   </compound>
@@ -1192,68 +1601,90 @@
   </compound>
   <compound refid="_p_a_s_interpreter_test_8java" kind="file"><name>PASInterpreterTest.java</name>
   </compound>
+  <compound refid="_dialog_state_machine_test_8java" kind="file"><name>DialogStateMachineTest.java</name>
+  </compound>
   <compound refid="_verbalizer_test_8java" kind="file"><name>VerbalizerTest.java</name>
   </compound>
-  <compound refid="_ros_communication_test_8java" kind="file"><name>RosCommunicationTest.java</name>
+  <compound refid="dir_b7748b3f53905c24013e2b431e631225" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/action</name>
   </compound>
-  <compound refid="dir_b7748b3f53905c24013e2b431e631225" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/action</name>
+  <compound refid="dir_367c5385ebc5b1806d01f0d86a421678" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java/roboy/context</name>
   </compound>
-  <compound refid="dir_09caee689121350b0881c362a3662a4d" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/dialog</name>
+  <compound refid="dir_8e320bad33e03d0371febb4f7e229dc4" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context</name>
   </compound>
-  <compound refid="dir_bedbe0196ed4e3ea490265c56ba398f8" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog</name>
+  <compound refid="dir_bd3690cddefd3747010feed6ae64d650" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects</name>
   </compound>
-  <compound refid="dir_0f4c97c7389bb8a061b6dec9af63e7cb" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/io</name>
+  <compound refid="dir_09caee689121350b0881c362a3662a4d" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java/roboy/dialog</name>
   </compound>
-  <compound refid="dir_97debbc39e3b917fca663601bb2b0709" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java</name>
+  <compound refid="dir_bedbe0196ed4e3ea490265c56ba398f8" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog</name>
   </compound>
-  <compound refid="dir_fd3f6763802dee1ad875f6c80eac0bda" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java</name>
+  <compound refid="dir_1ab976347033ac022fed23b8deb25d44" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/examples</name>
   </compound>
-  <compound refid="dir_e3b706f0da88f09db6283663af2a234d" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics</name>
+  <compound refid="dir_bebef46689f592554f5a6861599272c3" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples</name>
   </compound>
-  <compound refid="dir_ed0fca50c3b44d5fff0fa276d178b23b" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics</name>
+  <compound refid="dir_b28721f10b488d8d23b9ce8585fe312f" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/states/factories</name>
   </compound>
-  <compound refid="dir_870da1f0b478f7ca881b221c68d88b01" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/logic</name>
+  <compound refid="dir_780de310a3259b561df66063ee52af20" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI</name>
   </compound>
-  <compound refid="dir_fc501c632ab2a1a6d6d30ee369f70e27" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/logic</name>
+  <compound refid="dir_0f4c97c7389bb8a061b6dec9af63e7cb" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/io</name>
   </compound>
-  <compound refid="dir_5eb159725f84c66aafd839904a4acdd0" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main</name>
+  <compound refid="dir_97debbc39e3b917fca663601bb2b0709" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java</name>
   </compound>
-  <compound refid="dir_029141a1c7d6ffd5a4e073b2543b9713" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory</name>
+  <compound refid="dir_fd3f6763802dee1ad875f6c80eac0bda" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java</name>
   </compound>
-  <compound refid="dir_1165a482e1bd283bdfb030bc1d41c8fb" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/memory/nodes</name>
+  <compound refid="dir_e3b706f0da88f09db6283663af2a234d" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java/roboy/linguistics</name>
   </compound>
-  <compound refid="dir_51b61a932f360ff8dfb5e9ed4f901118" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/dialog/personality</name>
+  <compound refid="dir_ed0fca50c3b44d5fff0fa276d178b23b" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics</name>
   </compound>
-  <compound refid="dir_4b89141a263e6cbfc376c96d63372b80" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality</name>
+  <compound refid="dir_870da1f0b478f7ca881b221c68d88b01" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java/roboy/logic</name>
   </compound>
-  <compound refid="dir_309ae92be9f26a3d782e391154c61beb" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/phonetics</name>
+  <compound refid="dir_fc501c632ab2a1a6d6d30ee369f70e27" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/logic</name>
   </compound>
-  <compound refid="dir_ef15ac377452d427e784ef3ffdafddbf" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy</name>
+  <compound refid="dir_5eb159725f84c66aafd839904a4acdd0" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main</name>
   </compound>
-  <compound refid="dir_6d5869451a9be3e6ce21b31fee7870de" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy</name>
+  <compound refid="dir_029141a1c7d6ffd5a4e073b2543b9713" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory</name>
   </compound>
-  <compound refid="dir_d36b90f3756773ad1cfe7d8701cbf226" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/util/ros</name>
+  <compound refid="dir_5e840a829dcbeed20ff665424891ad0f" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java/roboy/newDialog</name>
   </compound>
-  <compound refid="dir_8548ac48c61d494e9afd946956351f00" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/ros</name>
+  <compound refid="dir_e66165e7b281758ce9f1532451fea886" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog</name>
   </compound>
-  <compound refid="dir_f4181fe68facb23b91192854446ad923" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/linguistics/sentenceanalysis</name>
+  <compound refid="dir_1165a482e1bd283bdfb030bc1d41c8fb" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes</name>
   </compound>
-  <compound refid="dir_2b9136678cbc7c985d98384a060ef73e" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis</name>
+  <compound refid="dir_51b61a932f360ff8dfb5e9ed4f901118" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java/roboy/dialog/personality</name>
   </compound>
-  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src</name>
+  <compound refid="dir_4b89141a263e6cbfc376c96d63372b80" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality</name>
   </compound>
-  <compound refid="dir_3d3a7bb632f3a6251fe99b04aead1544" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/dialog/personality/states</name>
+  <compound refid="dir_309ae92be9f26a3d782e391154c61beb" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/phonetics</name>
   </compound>
-  <compound refid="dir_6e452d7417803070272de08db6f5594a" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states</name>
+  <compound refid="dir_ef15ac377452d427e784ef3ffdafddbf" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java/roboy</name>
   </compound>
-  <compound refid="dir_a3da221ea67796dde15c58826f020edb" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/talk</name>
+  <compound refid="dir_6d5869451a9be3e6ce21b31fee7870de" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy</name>
   </compound>
-  <compound refid="dir_2ee74114d792069c15448944a9bb6a63" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/talk</name>
+  <compound refid="dir_8548ac48c61d494e9afd946956351f00" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/ros</name>
   </compound>
-  <compound refid="dir_120ed4da3e3217b1e7fc0b4f48568e79" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test</name>
+  <compound refid="dir_f4181fe68facb23b91192854446ad923" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis</name>
   </compound>
-  <compound refid="dir_aa33eed7840580a6cabd7b23373e97f6" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/test/java/roboy/util</name>
+  <compound refid="dir_2b9136678cbc7c985d98384a060ef73e" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis</name>
   </compound>
-  <compound refid="dir_99a73bddd3718e5715d839342deccec9" kind="dir"><name>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/util</name>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src</name>
+  </compound>
+  <compound refid="dir_3d3a7bb632f3a6251fe99b04aead1544" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java/roboy/dialog/personality/states</name>
+  </compound>
+  <compound refid="dir_a37d8f862945072f307b1c1259356272" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/states</name>
+  </compound>
+  <compound refid="dir_6e452d7417803070272de08db6f5594a" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states</name>
+  </compound>
+  <compound refid="dir_a3da221ea67796dde15c58826f020edb" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java/roboy/talk</name>
+  </compound>
+  <compound refid="dir_2ee74114d792069c15448944a9bb6a63" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/talk</name>
+  </compound>
+  <compound refid="dir_120ed4da3e3217b1e7fc0b4f48568e79" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test</name>
+  </compound>
+  <compound refid="dir_41a6017a7c28145a6e1c56d312c40a75" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates</name>
+  </compound>
+  <compound refid="dir_99a73bddd3718e5715d839342deccec9" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/util</name>
+  </compound>
+  <compound refid="dir_ce0225499bce8c86db7a47ed5138c18d" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java/roboy/context/visionContext</name>
+  </compound>
+  <compound refid="dir_05a62ed24bb3a48fbffd2a25ac3c5a5e" kind="dir"><name>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec</name>
   </compound>
 </doxygenindex>

@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics_updater" kind="class" language="Java" prot="public">
+    <compoundname>roboy::context::dialogContext::DialogTopicsUpdater</compoundname>
+    <basecompoundref refid="interfaceroboy_1_1context_1_1_direct_update_policy" prot="public" virt="non-virtual">roboy::context::DirectUpdatePolicy&lt; Topic &gt;</basecompoundref>
+      <sectiondef kind="package-attrib">
+      <memberdef kind="variable" id="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics_updater_1adb947fce0e0d5d30031ab06cbeaa82aa" prot="package" static="no" mutable="no">
+        <type><ref refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics" kindref="compound">DialogTopics</ref></type>
+        <definition>DialogTopics roboy.context.contextObjects.DialogTopicsUpdater.target</definition>
+        <argsstring></argsstring>
+        <name>target</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dialogContext/DialogTopicsUpdater.java" line="10" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dialogContext/DialogTopicsUpdater.java" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics_updater_1a56f2ed0e9c222fd909f6e95a1a35d38e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.context.contextObjects.DialogTopicsUpdater.DialogTopicsUpdater</definition>
+        <argsstring>(DialogTopics target)</argsstring>
+        <name>DialogTopicsUpdater</name>
+        <param>
+          <type><ref refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics" kindref="compound">DialogTopics</ref></type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dialogContext/DialogTopicsUpdater.java" line="12" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dialogContext/DialogTopicsUpdater.java" bodystart="12" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics_updater_1af226466449fe3ccc6b4c62b84f7fb977" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.context.contextObjects.DialogTopicsUpdater.putValue</definition>
+        <argsstring>(Topic value)</argsstring>
+        <name>putValue</name>
+        <param>
+          <type><ref refid="classroboy_1_1context_1_1data_types_1_1_topic" kindref="compound">Topic</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Put a new Topic value to the <ref refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics" kindref="compound">DialogTopics</ref> history. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The topic object to add. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dialogContext/DialogTopicsUpdater.java" line="21" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dialogContext/DialogTopicsUpdater.java" bodystart="21" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Updater available to all DM for adding new values to the <ref refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics" kindref="compound">DialogTopics</ref> attribute. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="199">
+        <label>roboy::context::DirectUpdatePolicy&lt; Topic &gt;</label>
+        <link refid="interfaceroboy_1_1context_1_1_direct_update_policy"/>
+      </node>
+      <node id="198">
+        <label>roboy.context.contextObjects.DialogTopicsUpdater</label>
+        <link refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics_updater"/>
+        <childnode refid="199" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="201">
+        <label>roboy::context::DirectUpdatePolicy&lt; Topic &gt;</label>
+        <link refid="interfaceroboy_1_1context_1_1_direct_update_policy"/>
+      </node>
+      <node id="203">
+        <label>roboy::context::SimpleHistoryAttribute&lt; Integer, Topic &gt;</label>
+        <link refid="classroboy_1_1context_1_1_simple_history_attribute"/>
+        <childnode refid="204" relation="public-inheritance">
+        </childnode>
+        <childnode refid="205" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+      </node>
+      <node id="205">
+        <label>HashMap&lt; K, V &gt;</label>
+      </node>
+      <node id="200">
+        <label>roboy.context.contextObjects.DialogTopicsUpdater</label>
+        <link refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics_updater"/>
+        <childnode refid="201" relation="public-inheritance">
+        </childnode>
+        <childnode refid="202" relation="usage">
+          <edgelabel>target</edgelabel>
+        </childnode>
+      </node>
+      <node id="202">
+        <label>roboy.context.contextObjects.DialogTopics</label>
+        <link refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics"/>
+        <childnode refid="203" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="204">
+        <label>roboy::context::HistoryAttribute&lt; K, V &gt;</label>
+        <link refid="interfaceroboy_1_1context_1_1_history_attribute"/>
+      </node>
+    </collaborationgraph>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dialogContext/DialogTopicsUpdater.java" line="9" column="1" bodyfile="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/dialogContext/DialogTopicsUpdater.java" bodystart="9" bodyend="24"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics_updater_1a56f2ed0e9c222fd909f6e95a1a35d38e" prot="public" virt="non-virtual"><scope>roboy::context::dialogContext::DialogTopicsUpdater</scope><name>DialogTopicsUpdater</name></member>
+      <member refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics_updater_1af226466449fe3ccc6b4c62b84f7fb977" prot="public" virt="non-virtual"><scope>roboy::context::dialogContext::DialogTopicsUpdater</scope><name>putValue</name></member>
+      <member refid="interfaceroboy_1_1context_1_1_direct_update_policy_1ade0ba9f7aa452363fa306519250c2eaf" prot="public" virt="non-virtual" ambiguityscope="roboy::context::DirectUpdatePolicy."><scope>roboy::context::dialogContext::DialogTopicsUpdater</scope><name>putValue</name></member>
+      <member refid="classroboy_1_1context_1_1dialog_context_1_1_dialog_topics_updater_1adb947fce0e0d5d30031ab06cbeaa82aa" prot="package" virt="non-virtual"><scope>roboy::context::dialogContext::DialogTopicsUpdater</scope><name>target</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

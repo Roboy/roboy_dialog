@@ -15,12 +15,13 @@
     <innerclass refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_parser_test" prot="public">roboy::linguistics::sentenceanalysis::OpenNLPParserTest</innerclass>
     <innerclass refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_open_n_l_p_p_p_o_s_tagger" prot="public">roboy::linguistics::sentenceanalysis::OpenNLPPPOSTagger</innerclass>
     <innerclass refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_preprocessor" prot="public">roboy::linguistics::sentenceanalysis::Preprocessor</innerclass>
+    <innerclass refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer" prot="public">roboy::linguistics::sentenceanalysis::SemanticParserAnalyzer</innerclass>
     <innerclass refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer" prot="public">roboy::linguistics::sentenceanalysis::SentenceAnalyzer</innerclass>
     <innerclass refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_simple_tokenizer" prot="public">roboy::linguistics::sentenceanalysis::SimpleTokenizer</innerclass>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/linguistics/sentenceanalysis/Analyzer.java" line="1" column="1"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Analyzer.java" line="1" column="1"/>
   </compounddef>
 </doxygen>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespaceroboy_1_1context_1_1_g_u_i" kind="namespace" language="Java">
+    <compoundname>roboy::context::GUI</compoundname>
+    <innerclass refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i" prot="public">roboy::context::GUI::ContextGUI</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="1" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter" kind="class" language="Java" prot="public">
+    <compoundname>roboy::linguistics::word2vec::examples::ToyDataGetter</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1ab50bc524e12c1a50f89351ef84e2cafe" prot="private" static="no" mutable="no">
+        <type>final boolean</type>
+        <definition>final boolean roboy.linguistics.word2vec.examples.ToyDataGetter.verbose</definition>
+        <argsstring></argsstring>
+        <name>verbose</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" line="16" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1a224bc0600420f741806d564dc5005a40" prot="private" static="no" mutable="no">
+        <type>final String</type>
+        <definition>final String roboy.linguistics.word2vec.examples.ToyDataGetter.toyDataDirectory</definition>
+        <argsstring></argsstring>
+        <name>toyDataDirectory</name>
+        <initializer>= &quot;./resources/word2vec_toy_data_and_model/&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" line="17" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1ad0b8852d1f4b437b6da578cd96978631" prot="private" static="no" mutable="no">
+        <type>final String</type>
+        <definition>final String roboy.linguistics.word2vec.examples.ToyDataGetter.toyDataFilePath</definition>
+        <argsstring></argsstring>
+        <name>toyDataFilePath</name>
+        <initializer>= &quot;./resources/word2vec_toy_data_and_model/raw_sentences.txt&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" line="18" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1a855dea2daceacf7a53a5ffa5dcd369f9" prot="private" static="no" mutable="no">
+        <type>final String</type>
+        <definition>final String roboy.linguistics.word2vec.examples.ToyDataGetter.toyDataInetURL</definition>
+        <argsstring></argsstring>
+        <name>toyDataInetURL</name>
+        <initializer>= &quot;https://raw.githubusercontent.com/deeplearning4j/dl4j-examples/master/dl4j-examples/src/main/resources/raw_sentences.txt&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" line="19" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1ad20130ed58e1eddfa900621ef0334ebf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.linguistics.word2vec.examples.ToyDataGetter.ToyDataGetter</definition>
+        <argsstring>(boolean verbose)</argsstring>
+        <name>ToyDataGetter</name>
+        <param>
+          <type>boolean</type>
+          <declname>verbose</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" line="22" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1a97f63c134ae61393b0ea4f09a1277830" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>String</type>
+        <definition>String roboy.linguistics.word2vec.examples.ToyDataGetter.getToyDataFilePath</definition>
+        <argsstring>()</argsstring>
+        <name>getToyDataFilePath</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" line="27" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" bodystart="27" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1aefa1346413c445e41bb6d1c1c0319a02" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.linguistics.word2vec.examples.ToyDataGetter.ensureToyDataIsPresent</definition>
+        <argsstring>()</argsstring>
+        <name>ensureToyDataIsPresent</name>
+        <briefdescription>
+<para>Checks if toy data is present on the hard drive. </para>        </briefdescription>
+        <detaileddescription>
+<para>It will be downloaded if necessary. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" line="34" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" bodystart="34" bodyend="59"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1ac444ad544cd0c18906263fee4fc33ced" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.linguistics.word2vec.examples.ToyDataGetter.downloadData</definition>
+        <argsstring>(String fromURL, String toFilePath)</argsstring>
+        <name>downloadData</name>
+        <param>
+          <type>String</type>
+          <declname>fromURL</declname>
+        </param>
+        <param>
+          <type>String</type>
+          <declname>toFilePath</declname>
+        </param>
+        <exceptions> throws IOException </exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" line="62" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" bodystart="62" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1abbf60d62689a454bb996824aa36087b6" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>boolean</type>
+        <definition>boolean roboy.linguistics.word2vec.examples.ToyDataGetter.fileExists</definition>
+        <argsstring>(String filePath)</argsstring>
+        <name>fileExists</name>
+        <param>
+          <type>String</type>
+          <declname>filePath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" line="74" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" bodystart="74" bodyend="77"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Utility class to load toy data from the internet if necessary. </para>    </briefdescription>
+    <detaileddescription>
+<para>May be refactored into something bigger and more useful later. </para>    </detaileddescription>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" line="14" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/ToyDataGetter.java" bodystart="14" bodyend="79"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1ac444ad544cd0c18906263fee4fc33ced" prot="private" virt="non-virtual"><scope>roboy::linguistics::word2vec::examples::ToyDataGetter</scope><name>downloadData</name></member>
+      <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1aefa1346413c445e41bb6d1c1c0319a02" prot="public" virt="non-virtual"><scope>roboy::linguistics::word2vec::examples::ToyDataGetter</scope><name>ensureToyDataIsPresent</name></member>
+      <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1abbf60d62689a454bb996824aa36087b6" prot="private" virt="non-virtual"><scope>roboy::linguistics::word2vec::examples::ToyDataGetter</scope><name>fileExists</name></member>
+      <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1a97f63c134ae61393b0ea4f09a1277830" prot="public" virt="non-virtual"><scope>roboy::linguistics::word2vec::examples::ToyDataGetter</scope><name>getToyDataFilePath</name></member>
+      <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1a224bc0600420f741806d564dc5005a40" prot="private" virt="non-virtual"><scope>roboy::linguistics::word2vec::examples::ToyDataGetter</scope><name>toyDataDirectory</name></member>
+      <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1ad0b8852d1f4b437b6da578cd96978631" prot="private" virt="non-virtual"><scope>roboy::linguistics::word2vec::examples::ToyDataGetter</scope><name>toyDataFilePath</name></member>
+      <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1ad20130ed58e1eddfa900621ef0334ebf" prot="public" virt="non-virtual"><scope>roboy::linguistics::word2vec::examples::ToyDataGetter</scope><name>ToyDataGetter</name></member>
+      <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1a855dea2daceacf7a53a5ffa5dcd369f9" prot="private" virt="non-virtual"><scope>roboy::linguistics::word2vec::examples::ToyDataGetter</scope><name>toyDataInetURL</name></member>
+      <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_toy_data_getter_1ab50bc524e12c1a50f89351ef84e2cafe" prot="private" virt="non-virtual"><scope>roboy::linguistics::word2vec::examples::ToyDataGetter</scope><name>verbose</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="namespaceroboy_1_1new_dialog_1_1states_1_1toy_states" kind="namespace" language="Java">
+    <compoundname>roboy::newDialog::states::toyStates</compoundname>
+    <innerclass refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_farewell_state" prot="public">roboy::newDialog::states::toyStates::ToyFarewellState</innerclass>
+    <innerclass refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_greetings_state" prot="public">roboy::newDialog::states::toyStates::ToyGreetingsState</innerclass>
+    <innerclass refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state" prot="public">roboy::newDialog::states::toyStates::ToyIntroState</innerclass>
+    <innerclass refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_random_answer_state" prot="public">roboy::newDialog::states::toyStates::ToyRandomAnswerState</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyFarewellState.java" line="1" column="1"/>
+  </compounddef>
+</doxygen>

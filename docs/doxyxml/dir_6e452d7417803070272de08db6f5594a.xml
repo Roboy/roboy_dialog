@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="dir_6e452d7417803070272de08db6f5594a" kind="dir">
-    <compoundname>/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states</compoundname>
+    <compoundname>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states</compoundname>
     <innerfile refid="_abstract_boolean_state_8java">AbstractBooleanState.java</innerfile>
     <innerfile refid="_anecdote_state_8java">AnecdoteState.java</innerfile>
     <innerfile refid="_celebrity_state_8java">CelebrityState.java</innerfile>
@@ -13,18 +13,19 @@
     <innerfile refid="_inquiry_state_8java">InquiryState.java</innerfile>
     <innerfile refid="_introduction_state_8java">IntroductionState.java</innerfile>
     <innerfile refid="_location_d_bpedia_8java">LocationDBpedia.java</innerfile>
+    <innerfile refid="_personal_follow_up_state_8java">PersonalFollowUpState.java</innerfile>
     <innerfile refid="_personal_q_a_state_8java">PersonalQAState.java</innerfile>
     <innerfile refid="_question_answering_state_8java">QuestionAnsweringState.java</innerfile>
     <innerfile refid="_question_asking_state_8java">QuestionAskingState.java</innerfile>
     <innerfile refid="_question_randomizer_state_8java">QuestionRandomizerState.java</innerfile>
     <innerfile refid="_reaction_8java">Reaction.java</innerfile>
     <innerfile refid="_segue_state_8java">SegueState.java</innerfile>
-    <innerfile refid="_state_8java">State.java</innerfile>
+    <innerfile refid="dialog_2personality_2states_2_state_8java">State.java</innerfile>
     <innerfile refid="_wild_talk_state_8java">WildTalkState.java</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/workspace/Roboy/src/roboy_dialog_system/src/main/java/roboy/dialog/personality/states/"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states/"/>
   </compounddef>
 </doxygen>

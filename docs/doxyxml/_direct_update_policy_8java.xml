@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="_direct_update_policy_8java" kind="file" language="Java">
+    <compoundname>DirectUpdatePolicy.java</compoundname>
+    <innerclass refid="interfaceroboy_1_1context_1_1_direct_update_policy" prot="public">roboy::context::DirectUpdatePolicy</innerclass>
+    <innernamespace refid="namespaceroboy_1_1context">roboy::context</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">package<sp/></highlight><highlight class="normal">roboy.context;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/><ref refid="namespaceroboy" kindref="compound">roboy</ref>.<ref refid="namespaceroboy_1_1context" kindref="compound">context</ref>.<ref refid="namespaceroboy_1_1context_1_1data_types" kindref="compound">dataTypes</ref>.<ref refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type" kindref="compound">DataType</ref>;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="interfaceroboy_1_1context_1_1_direct_update_policy" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">interface<sp/></highlight><highlight class="normal"><ref refid="interfaceroboy_1_1context_1_1_direct_update_policy" kindref="compound">DirectUpdatePolicy</ref>&lt;V<sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/><ref refid="interfaceroboy_1_1context_1_1data_types_1_1_data_type" kindref="compound">DataType</ref>&gt;<sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>putValue(V<sp/>value);</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/Users/wagram/Roboy/roboy_dialog/src/main/java/roboy/context/DirectUpdatePolicy.java"/>
+  </compounddef>
+</doxygen>

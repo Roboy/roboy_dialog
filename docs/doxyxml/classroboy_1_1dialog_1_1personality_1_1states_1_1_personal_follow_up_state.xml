@@ -1,0 +1,302 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state" kind="class" language="Java" prot="public">
+    <compoundname>roboy::dialog::personality::states::PersonalFollowUpState</compoundname>
+    <basecompoundref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state" prot="public" virt="non-virtual">roboy.dialog.personality.states.AbstractBooleanState</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1ad99ddb831afd95644e32e1707b328f82" prot="private" static="no" mutable="no">
+        <type>List&lt; String &gt;</type>
+        <definition>List&lt;String&gt; roboy.dialog.personality.states.PersonalFollowUpState.questions</definition>
+        <argsstring></argsstring>
+        <name>questions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="19" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1aed3a8de284769626b5e9e56dff7c25e3" prot="private" static="no" mutable="no">
+        <type>List&lt; String &gt;</type>
+        <definition>List&lt;String&gt; roboy.dialog.personality.states.PersonalFollowUpState.successTexts</definition>
+        <argsstring></argsstring>
+        <name>successTexts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="20" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a664e2567f324575d873abd1e41f83715" prot="private" static="no" mutable="no">
+        <type><ref refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor" kindref="compound">Interlocutor</ref></type>
+        <definition>Interlocutor roboy.dialog.personality.states.PersonalFollowUpState.person</definition>
+        <argsstring></argsstring>
+        <name>person</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="22" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a7eccec3cc7e8e124576f9a90079a36d9" prot="public" static="no" mutable="no">
+        <type><ref refid="enumroboy_1_1memory_1_1_neo4j_relationships" kindref="compound">Neo4jRelationships</ref></type>
+        <definition>Neo4jRelationships roboy.dialog.personality.states.PersonalFollowUpState.predicate</definition>
+        <argsstring></argsstring>
+        <name>predicate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="21" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1aae0e62e6fdf530e2f015afaf2e8e195a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.dialog.personality.states.PersonalFollowUpState.PersonalFollowUpState</definition>
+        <argsstring>(List&lt; String &gt; questions, List&lt; String &gt; failureTexts, List&lt; String &gt; successTexts, Neo4jRelationships predicate, QuestionRandomizerState nextState, Interlocutor person)</argsstring>
+        <name>PersonalFollowUpState</name>
+        <param>
+          <type>List&lt; String &gt;</type>
+          <declname>questions</declname>
+        </param>
+        <param>
+          <type>List&lt; String &gt;</type>
+          <declname>failureTexts</declname>
+        </param>
+        <param>
+          <type>List&lt; String &gt;</type>
+          <declname>successTexts</declname>
+        </param>
+        <param>
+          <type><ref refid="enumroboy_1_1memory_1_1_neo4j_relationships" kindref="compound">Neo4jRelationships</ref></type>
+          <declname>predicate</declname>
+        </param>
+        <param>
+          <type><ref refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state" kindref="compound">QuestionRandomizerState</ref></type>
+          <declname>nextState</declname>
+        </param>
+        <param>
+          <type><ref refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor" kindref="compound">Interlocutor</ref></type>
+          <declname>person</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="24" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="24" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a2be55474f93370832751ad620c747a7a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
+        <definition>List&lt;Interpretation&gt; roboy.dialog.personality.states.PersonalFollowUpState.act</definition>
+        <argsstring>()</argsstring>
+        <name>act</name>
+        <reimplements refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state_1a56df9f548b4736b775dc9dbf450a6a51">act</reimplements>
+        <briefdescription>
+<para>Ask the question. </para>        </briefdescription>
+        <detaileddescription>
+<para>Using Neo4jRelationships predicate </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="39" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="39" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a3e05c608ae2c72f697c49f9dccef5ca4" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>boolean</type>
+        <definition>boolean roboy.dialog.personality.states.PersonalFollowUpState.determineSuccess</definition>
+        <argsstring>(Interpretation input)</argsstring>
+        <name>determineSuccess</name>
+        <param>
+          <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+<para>Retrieve the answer and add it to the memory, if needed. </para>        </briefdescription>
+        <detaileddescription>
+<para>As locations, hobbies, workplaces etc are individual nodes in memory, those will be retrieved or created if necessary. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="62" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="62" bodyend="104"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1356">
+        <label>roboy.dialog.personality.states.PersonalFollowUpState</label>
+        <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state"/>
+        <childnode refid="1357" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1357">
+        <label>roboy.dialog.personality.states.AbstractBooleanState</label>
+        <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
+        <childnode refid="1358" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1358">
+        <label>roboy.dialog.personality.states.State</label>
+        <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1376">
+        <label>roboy.memory.Neo4jRelationships</label>
+        <link refid="enumroboy_1_1memory_1_1_neo4j_relationships"/>
+      </node>
+      <node id="1359">
+        <label>roboy.dialog.personality.states.PersonalFollowUpState</label>
+        <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state"/>
+        <childnode refid="1360" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1363" relation="usage">
+          <edgelabel>person</edgelabel>
+        </childnode>
+        <childnode refid="1362" relation="usage">
+          <edgelabel>questions</edgelabel>
+          <edgelabel>successTexts</edgelabel>
+        </childnode>
+        <childnode refid="1376" relation="usage">
+          <edgelabel>predicate</edgelabel>
+        </childnode>
+      </node>
+      <node id="1375">
+        <label>CountDownLatch</label>
+      </node>
+      <node id="1360">
+        <label>roboy.dialog.personality.states.AbstractBooleanState</label>
+        <link refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state"/>
+        <childnode refid="1361" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1361" relation="usage">
+          <edgelabel>success</edgelabel>
+          <edgelabel>failure</edgelabel>
+        </childnode>
+        <childnode refid="1362" relation="usage">
+          <edgelabel>failureTexts</edgelabel>
+          <edgelabel>successTexts</edgelabel>
+        </childnode>
+      </node>
+      <node id="1370">
+        <label>Gson</label>
+      </node>
+      <node id="1362">
+        <label>List&lt; String &gt;</label>
+      </node>
+      <node id="1364">
+        <label>roboy.memory.nodes.MemoryNodeModel</label>
+        <link refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model"/>
+        <childnode refid="1365" relation="usage">
+          <edgelabel>properties</edgelabel>
+        </childnode>
+        <childnode refid="1366" relation="usage">
+          <edgelabel>labels</edgelabel>
+        </childnode>
+        <childnode refid="1367" relation="usage">
+          <edgelabel>relationships</edgelabel>
+        </childnode>
+      </node>
+      <node id="1369">
+        <label>roboy.memory.Memory&lt; MemoryNodeModel &gt;</label>
+        <link refid="interfaceroboy_1_1memory_1_1_memory"/>
+      </node>
+      <node id="1363">
+        <label>roboy.memory.nodes.Interlocutor</label>
+        <link refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor"/>
+        <childnode refid="1364" relation="usage">
+          <edgelabel>person</edgelabel>
+        </childnode>
+        <childnode refid="1368" relation="usage">
+          <edgelabel>memory</edgelabel>
+        </childnode>
+      </node>
+      <node id="1374">
+        <label>HashMap&lt; roboy.ros.RosClients, ServiceClient &gt;</label>
+      </node>
+      <node id="1365">
+        <label>HashMap&lt; String, Object &gt;</label>
+      </node>
+      <node id="1361">
+        <label>roboy.dialog.personality.states.State</label>
+        <link refid="interfaceroboy_1_1dialog_1_1personality_1_1states_1_1_state"/>
+      </node>
+      <node id="1371">
+        <label>roboy.ros.RosMainNode</label>
+        <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
+        <childnode refid="1372" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1373" relation="usage">
+          <edgelabel>clients</edgelabel>
+        </childnode>
+        <childnode refid="1375" relation="usage">
+          <edgelabel>rosConnectionLatch</edgelabel>
+        </childnode>
+      </node>
+      <node id="1367">
+        <label>HashMap&lt; String, ArrayList&lt; Integer &gt; &gt;</label>
+      </node>
+      <node id="1373">
+        <label>roboy.ros.RosManager</label>
+        <link refid="classroboy_1_1ros_1_1_ros_manager"/>
+        <childnode refid="1374" relation="usage">
+          <edgelabel>clientMap</edgelabel>
+        </childnode>
+      </node>
+      <node id="1366">
+        <label>ArrayList&lt; String &gt;</label>
+      </node>
+      <node id="1372">
+        <label>AbstractNodeMain</label>
+      </node>
+      <node id="1368">
+        <label>roboy.memory.Neo4jMemory</label>
+        <link refid="classroboy_1_1memory_1_1_neo4j_memory"/>
+        <childnode refid="1369" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1370" relation="usage">
+          <edgelabel>gson</edgelabel>
+        </childnode>
+        <childnode refid="1371" relation="usage">
+          <edgelabel>rosMainNode</edgelabel>
+        </childnode>
+        <childnode refid="1368" relation="usage">
+          <edgelabel>memory</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" line="17" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java" bodystart="17" bodyend="106"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a2be55474f93370832751ad620c747a7a" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::PersonalFollowUpState</scope><name>act</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a3e05c608ae2c72f697c49f9dccef5ca4" prot="protected" virt="non-virtual"><scope>roboy::dialog::personality::states::PersonalFollowUpState</scope><name>determineSuccess</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1afd916a053e2e9374d464c7d2bf0f74ad" prot="protected" virt="non-virtual"><scope>roboy::dialog::personality::states::PersonalFollowUpState</scope><name>failure</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1ace03f687b53a4af28192dc622d8e674f" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::PersonalFollowUpState</scope><name>getFailure</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a29b9095d9688916a72b4bf846ecfb170" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::PersonalFollowUpState</scope><name>getSuccess</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a664e2567f324575d873abd1e41f83715" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::states::PersonalFollowUpState</scope><name>person</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1aae0e62e6fdf530e2f015afaf2e8e195a" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::PersonalFollowUpState</scope><name>PersonalFollowUpState</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a7eccec3cc7e8e124576f9a90079a36d9" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::PersonalFollowUpState</scope><name>predicate</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1ad99ddb831afd95644e32e1707b328f82" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::states::PersonalFollowUpState</scope><name>questions</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a6821153b384889cf1aab894ed2422150" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::PersonalFollowUpState</scope><name>react</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1aaef59e5550a47a4df8a28887cc996edb" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::PersonalFollowUpState</scope><name>setFailure</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a0316e2e58c12993cd30b822606dd446f" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::PersonalFollowUpState</scope><name>setFailureTexts</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1afe2dcbf032ab3e128f243fcb77259e70" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::PersonalFollowUpState</scope><name>setNextState</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a95b2e8367f1b9b3b05a89e7db1a735e3" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::PersonalFollowUpState</scope><name>setSuccess</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a257d5515337565836ae4bd32b1965d52" prot="public" virt="non-virtual"><scope>roboy::dialog::personality::states::PersonalFollowUpState</scope><name>setSuccessTexts</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_abstract_boolean_state_1a916cfc3054b6553c5e3bd081bf95808c" prot="protected" virt="non-virtual"><scope>roboy::dialog::personality::states::PersonalFollowUpState</scope><name>success</name></member>
+      <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1aed3a8de284769626b5e9e56dff7c25e3" prot="private" virt="non-virtual"><scope>roboy::dialog::personality::states::PersonalFollowUpState</scope><name>successTexts</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

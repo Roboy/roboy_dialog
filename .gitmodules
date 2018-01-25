@@ -1,0 +1,3 @@
+[submodule "roboy_parser"]
+	path = roboy_parser
+	url = git://github.com/Roboy/roboy_parser.git
