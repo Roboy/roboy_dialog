@@ -21,13 +21,13 @@ public class ToyRandomAnswerState extends State {
     }
 
     @Override
-    public List<Interpretation> act() {
+    public Interpretation act() {
         return null; // this state is only used as fallback, no act needed
     }
 
     @Override
-    public List<Interpretation> react(Interpretation input) {
-        return Lists.interpretationList(new Interpretation("I'm Roboy! I'm awesome! [random answer]"));
+    public Interpretation react(Interpretation input) {
+        return new Interpretation("I'm Roboy! I'm awesome! [random answer]");
     }
 
     @Override

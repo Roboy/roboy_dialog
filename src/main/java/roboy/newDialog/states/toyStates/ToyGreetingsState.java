@@ -30,21 +30,20 @@ public class ToyGreetingsState extends State {
     }
 
     @Override
-    public List<Interpretation> act() {
-        return Lists.interpretationList(new Interpretation("Hello! [expecting greeting]"));
+    public Interpretation act() {
+        return new Interpretation("Hello! [expecting greeting]");
     }
 
     @Override
-    public List<Interpretation> react(Interpretation input) {
+    public Interpretation react(Interpretation input) {
         String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
         inputOK = StatementInterpreter.isFromList(sentence, Verbalizer.greetings);
 
         if (inputOK) {
-            return Lists.interpretationList(new Interpretation("I like it when you greet me! [greeting detected, next state]"));
+            return new Interpretation("I like it when you greet me! [greeting detected, next state]");
 
         } else {
             return null; // -> fallback state will be used
-            // alternatively: return Lists.interpretationList(new Interpretation("Got no greeting :("));
         }
     }
 

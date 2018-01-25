@@ -95,7 +95,7 @@ public abstract class State {
      * are combined to give the answer of Roboy.
      * @return interpretations
      */
-    public abstract List<Interpretation> act();
+    public abstract Interpretation act();
 
 
     /**
@@ -108,7 +108,7 @@ public abstract class State {
      * @param input input from the person we talk to
      * @return reaction to the input OR null (will trigger the fallback state)
      */
-    public abstract List<Interpretation> react(Interpretation input);
+    public abstract Interpretation react(Interpretation input);
 
 
     /**

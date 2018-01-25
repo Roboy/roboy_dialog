@@ -105,19 +105,19 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
 
     /**
-     * Call the act function of the state and verbalize all interpretations into actions.
+     * Call the act function of the state and verbalize the interpretation into a list of one action.
      * @param state state to call ACT on
      * @return list of actions
      */
     private List<Action> stateAct(State state) {
-        List<Interpretation> stateActIntepretations = state.act();
-        return verbalizeInterpretations(stateActIntepretations);
+        Interpretation actInterpretation = state.act();
+        return verbalizeInterpretations(actInterpretation);
     }
 
 
     /**
      * Call the react function of the state. If the state can't react, recursively ask fallbacks.
-     * Verbalize the resulting reaction interpretation into actions.
+     * Verbalize the resulting reaction interpretation into  actions.
      *
      * @param state state to call REact on
      * @param input input from the person Roboy speaks to
@@ -125,7 +125,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
      */
     private List<Action> stateReact(State state, Interpretation input) {
 
-        List<Interpretation> reaction = state.react(input);
+        Interpretation reaction = state.react(input);
         State fallback = state.getFallback();
 
         // fallbacks
@@ -148,20 +148,32 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
 
     /**
-     * Verbalizes all interpretations into actions using the verbalizer.
-     * @param interpretations list of interpretations.
+     * Verbalizes an interpretation into a list of one action using the verbalizer.
+     * Interpretations with sentence type NONE are ignored.
+     * More actions can be added to the list later.
+     * @param interpretation  interpretations
      * @return list of actions
      */
-    private List<Action> verbalizeInterpretations(List<Interpretation> interpretations) {
+    private List<Action> verbalizeInterpretations(Interpretation interpretation) {
+        Linguistics.SENTENCE_TYPE typeNone = Linguistics.SENTENCE_TYPE.NONE;
+
         List<Action> listOfActions = new ArrayList<>();
-        if (interpretations != null) {
-            // verbalize all act interpretations
-            for (Interpretation i : interpretations) {
-                listOfActions.add(verbalizer.verbalize(i));
-            }
+        if (interpretation != null && interpretation.getSentenceType() != typeNone) {
+            listOfActions.add(verbalizer.verbalize(interpretation));
+
         }
         return listOfActions;
     }
 
+
+    // TODO: think about this
+    private Action verbalizeInterpretation(Interpretation interpretation) {
+        Linguistics.SENTENCE_TYPE typeNone = Linguistics.SENTENCE_TYPE.NONE;
+
+        if (interpretation != null && interpretation.getSentenceType() != typeNone) {
+            return verbalizer.verbalize(interpretation);
+        }
+        return null;
+    }
 
 }
