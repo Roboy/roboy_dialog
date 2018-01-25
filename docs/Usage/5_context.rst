@@ -32,6 +32,7 @@ How to add ValueHistories?
 ValueHistories extend the functionality of Values by storing all data objects sent to them. Over the ``getNLastValues(int n)`` method, a map with several most recent data objects can be retrieved, including their ordering.
 
 Adding a ``ValueHistory`` is very much alike to adding a ``Value``, just make sure to:
+
 1. extend ``ValueHistory<>`` instead of ``Value<>``,
 
 2. in ``Context.java``, add the new object to the enum ``ValueHistories`` instead of ``Values``.
