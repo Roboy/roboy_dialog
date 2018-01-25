@@ -4,6 +4,9 @@
     <compoundname>roboy::util</compoundname>
     <innerclass refid="classroboy_1_1util_1_1_concept" prot="public">roboy::util::Concept</innerclass>
     <innerclass refid="classroboy_1_1util_1_1_i_o" prot="public">roboy::util::IO</innerclass>
+    <innerclass refid="classroboy_1_1util_1_1_json_entry_model" prot="package">roboy::util::JsonEntryModel</innerclass>
+    <innerclass refid="classroboy_1_1util_1_1_json_model" prot="package">roboy::util::JsonModel</innerclass>
+    <innerclass refid="classroboy_1_1util_1_1_json_q_a_values" prot="public">roboy::util::JsonQAValues</innerclass>
     <innerclass refid="classroboy_1_1util_1_1_json_utils" prot="public">roboy::util::JsonUtils</innerclass>
     <innerclass refid="classroboy_1_1util_1_1_lists" prot="public">roboy::util::Lists</innerclass>
     <innerclass refid="classroboy_1_1util_1_1_maps" prot="public">roboy::util::Maps</innerclass>
@@ -12,6 +15,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/util/Concept.java" line="1" column="1"/>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/Concept.java" line="1" column="1"/>
   </compounddef>
 </doxygen>

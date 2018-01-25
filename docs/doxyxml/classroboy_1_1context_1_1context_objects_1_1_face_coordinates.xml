@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1context_1_1context_objects_1_1_face_coordinates" kind="class" language="Java" prot="public">
+    <compoundname>roboy::context::contextObjects::FaceCoordinates</compoundname>
+    <basecompoundref refid="classroboy_1_1context_1_1_value" prot="public" virt="non-virtual">roboy::context::Value&lt; CoordinateSet &gt;</basecompoundref>
+    <briefdescription>
+<para>xzy-coordinates of a person in the field of vision. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1101">
+        <label>roboy::context::AbstractValue&lt; V &gt;</label>
+        <link refid="interfaceroboy_1_1context_1_1_abstract_value"/>
+      </node>
+      <node id="1100">
+        <label>roboy::context::Value&lt; CoordinateSet &gt;</label>
+        <link refid="classroboy_1_1context_1_1_value"/>
+        <childnode refid="1101" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1099">
+        <label>roboy.context.contextObjects.FaceCoordinates</label>
+        <link refid="classroboy_1_1context_1_1context_objects_1_1_face_coordinates"/>
+        <childnode refid="1100" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1104">
+        <label>roboy::context::AbstractValue&lt; V &gt;</label>
+        <link refid="interfaceroboy_1_1context_1_1_abstract_value"/>
+      </node>
+      <node id="1103">
+        <label>roboy::context::Value&lt; CoordinateSet &gt;</label>
+        <link refid="classroboy_1_1context_1_1_value"/>
+        <childnode refid="1104" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1102">
+        <label>roboy.context.contextObjects.FaceCoordinates</label>
+        <link refid="classroboy_1_1context_1_1context_objects_1_1_face_coordinates"/>
+        <childnode refid="1103" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/contextObjects/FaceCoordinates.java" line="8" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/contextObjects/FaceCoordinates.java" bodystart="8" bodyend="10"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1context_1_1_value_1aa9e4905eed3fc22226479a6f442f78c9" prot="public" virt="non-virtual"><scope>roboy::context::contextObjects::FaceCoordinates</scope><name>getValue</name></member>
+      <member refid="classroboy_1_1context_1_1_value_1a39697e33e847409424bc64ffd4552de7" prot="public" virt="non-virtual"><scope>roboy::context::contextObjects::FaceCoordinates</scope><name>updateValue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

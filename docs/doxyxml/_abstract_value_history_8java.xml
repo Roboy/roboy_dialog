@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="_abstract_value_history_8java" kind="file" language="Java">
+    <compoundname>AbstractValueHistory.java</compoundname>
+    <innerclass refid="interfaceroboy_1_1context_1_1_abstract_value_history" prot="public">roboy::context::AbstractValueHistory</innerclass>
+    <innernamespace refid="namespaceroboy_1_1context">roboy::context</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">package<sp/></highlight><highlight class="normal">roboy.context;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>java.util.Map;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="interfaceroboy_1_1context_1_1_abstract_value_history" refkind="compound"><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">interface<sp/></highlight><highlight class="normal"><ref refid="interfaceroboy_1_1context_1_1_abstract_value_history" kindref="compound">AbstractValueHistory</ref>&lt;K,<sp/>V&gt;<sp/></highlight><highlight class="keyword">extends</highlight><highlight class="normal"><sp/><ref refid="interfaceroboy_1_1context_1_1_abstract_value" kindref="compound">AbstractValue</ref>&lt;V&gt;<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>Map&lt;K,<sp/>V&gt;<sp/>getLastNValues(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/AbstractValueHistory.java"/>
+  </compounddef>
+</doxygen>

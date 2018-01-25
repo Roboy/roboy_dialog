@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1context_1_1_value_history" kind="class" language="Java" prot="public">
+    <compoundname>roboy::context::ValueHistory</compoundname>
+    <basecompoundref refid="interfaceroboy_1_1context_1_1_abstract_value_history" prot="public" virt="non-virtual">roboy.context.AbstractValueHistory&lt; Integer, V &gt;</basecompoundref>
+    <derivedcompoundref refid="classroboy_1_1context_1_1context_objects_1_1_dialog_topics" prot="public" virt="non-virtual">roboy.context.contextObjects.DialogTopics</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>V</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classroboy_1_1context_1_1_value_history_1a73f67e9efab0dd2cfc505aa03f250f28" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>volatile int roboy.context.ValueHistory&lt; V &gt;.counter</definition>
+        <argsstring></argsstring>
+        <name>counter</name>
+        <briefdescription>
+<para>This counter tracks the number of values, indices still start from 0. </para>        </briefdescription>
+        <detaileddescription>
+<para>Reading is allowed without synchronization, modifications only through <ref refid="classroboy_1_1context_1_1_value_history_1acf190d44e3aee3b260cc9cd5bd2ee848" kindref="member">generateKey()</ref>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/ValueHistory.java" line="13" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/ValueHistory.java" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1context_1_1_value_history_1a7bda0995b4416fa2235dfa1e5b6a6f0c" prot="private" static="no" mutable="no">
+        <type>HashMap&lt; Integer, V &gt;</type>
+        <definition>HashMap&lt;Integer, V&gt; roboy.context.ValueHistory&lt; V &gt;.data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/ValueHistory.java" line="14" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/ValueHistory.java" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1context_1_1_value_history_1ad5aed0bc61a79546a184091d0a48cf95" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.context.ValueHistory&lt; V &gt;.ValueHistory</definition>
+        <argsstring>()</argsstring>
+        <name>ValueHistory</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/ValueHistory.java" line="16" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/ValueHistory.java" bodystart="16" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1context_1_1_value_history_1a147a847a6e56e5fc74ba4030e713d021" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>V</type>
+        <definition>V roboy.context.ValueHistory&lt; V &gt;.getValue</definition>
+        <argsstring>()</argsstring>
+        <name>getValue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The last element added to this list. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/ValueHistory.java" line="25" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/ValueHistory.java" bodystart="25" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1context_1_1_value_history_1a11489dd1721ef67092438fac57f7c704" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>HashMap&lt; Integer, V &gt;</type>
+        <definition>HashMap&lt;Integer, V&gt; roboy.context.ValueHistory&lt; V &gt;.getLastNValues</definition>
+        <argsstring>(int n)</argsstring>
+        <name>getLastNValues</name>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+<para>Get a copy of the last n entries added to the list. </para>        </briefdescription>
+        <detaileddescription>
+<para>Less values may be returned if there are not enough values in this list. In case of no values, an empty array is returned.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of instances to retrieve. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A hashmap of n last values added to the list. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/ValueHistory.java" line="42" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/ValueHistory.java" bodystart="42" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1context_1_1_value_history_1a67238865dd812331d8105845df220239" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>synchronized void</type>
+        <definition>synchronized void roboy.context.ValueHistory&lt; V &gt;.updateValue</definition>
+        <argsstring>(V value)</argsstring>
+        <name>updateValue</name>
+        <param>
+          <type>V</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Puts a value into the list in the last place. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to be added. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/ValueHistory.java" line="57" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/ValueHistory.java" bodystart="57" bodyend="60"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classroboy_1_1context_1_1_value_history_1acf190d44e3aee3b260cc9cd5bd2ee848" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>synchronized int</type>
+        <definition>synchronized int roboy.context.ValueHistory&lt; V &gt;.generateKey</definition>
+        <argsstring>()</argsstring>
+        <name>generateKey</name>
+        <briefdescription>
+<para>Generates a key that is unique through incrementing an internal counter. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A key which is unique in this list instance. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/ValueHistory.java" line="67" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/ValueHistory.java" bodystart="67" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1context_1_1_value_history_1a2bd1e610d2773d14011cd6dceff6f368" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>synchronized V</type>
+        <definition>synchronized V roboy.context.ValueHistory&lt; V &gt;.getValue</definition>
+        <argsstring>(int key)</argsstring>
+        <name>getValue</name>
+        <param>
+          <type>int</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>In a ValueList, only <ref refid="classroboy_1_1context_1_1_value_history_1a147a847a6e56e5fc74ba4030e713d021" kindref="member">getValue()</ref> and <ref refid="classroboy_1_1context_1_1_value_history_1a67238865dd812331d8105845df220239" kindref="member">updateValue()</ref> directly access the HashMap data. </para>        </briefdescription>
+        <detaileddescription>
+<para>Setting these methods to be synchronous avoids concurrency issues.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The key of the value. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The value, or <computeroutput>null</computeroutput> if not found. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/ValueHistory.java" line="78" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/ValueHistory.java" bodystart="78" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>HashMap implementation of a value history with unique Integer keys. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1700">
+        <label>roboy.context.AbstractValueHistory&lt; Integer, V &gt;</label>
+        <link refid="interfaceroboy_1_1context_1_1_abstract_value_history"/>
+      </node>
+      <node id="1701">
+        <label>roboy::context::contextObjects::DialogTopics&lt; String &gt;</label>
+        <link refid="classroboy_1_1context_1_1context_objects_1_1_dialog_topics"/>
+        <childnode refid="1699" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1699">
+        <label>roboy.context.ValueHistory&lt; V &gt;</label>
+        <link refid="classroboy_1_1context_1_1_value_history"/>
+        <childnode refid="1700" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1703">
+        <label>roboy.context.AbstractValueHistory&lt; Integer, V &gt;</label>
+        <link refid="interfaceroboy_1_1context_1_1_abstract_value_history"/>
+      </node>
+      <node id="1704">
+        <label>HashMap&lt; Integer, V &gt;</label>
+      </node>
+      <node id="1702">
+        <label>roboy.context.ValueHistory&lt; V &gt;</label>
+        <link refid="classroboy_1_1context_1_1_value_history"/>
+        <childnode refid="1703" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1704" relation="usage">
+          <edgelabel>data</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/ValueHistory.java" line="8" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/ValueHistory.java" bodystart="8" bodyend="82"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1context_1_1_value_history_1a73f67e9efab0dd2cfc505aa03f250f28" prot="private" virt="non-virtual"><scope>roboy::context::ValueHistory</scope><name>counter</name></member>
+      <member refid="classroboy_1_1context_1_1_value_history_1a7bda0995b4416fa2235dfa1e5b6a6f0c" prot="private" virt="non-virtual"><scope>roboy::context::ValueHistory</scope><name>data</name></member>
+      <member refid="classroboy_1_1context_1_1_value_history_1acf190d44e3aee3b260cc9cd5bd2ee848" prot="private" virt="non-virtual"><scope>roboy::context::ValueHistory</scope><name>generateKey</name></member>
+      <member refid="classroboy_1_1context_1_1_value_history_1a11489dd1721ef67092438fac57f7c704" prot="public" virt="non-virtual"><scope>roboy::context::ValueHistory</scope><name>getLastNValues</name></member>
+      <member refid="classroboy_1_1context_1_1_value_history_1a147a847a6e56e5fc74ba4030e713d021" prot="public" virt="non-virtual"><scope>roboy::context::ValueHistory</scope><name>getValue</name></member>
+      <member refid="classroboy_1_1context_1_1_value_history_1a2bd1e610d2773d14011cd6dceff6f368" prot="private" virt="non-virtual"><scope>roboy::context::ValueHistory</scope><name>getValue</name></member>
+      <member refid="classroboy_1_1context_1_1_value_history_1a67238865dd812331d8105845df220239" prot="public" virt="non-virtual"><scope>roboy::context::ValueHistory</scope><name>updateValue</name></member>
+      <member refid="classroboy_1_1context_1_1_value_history_1ad5aed0bc61a79546a184091d0a48cf95" prot="public" virt="non-virtual"><scope>roboy::context::ValueHistory</scope><name>ValueHistory</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

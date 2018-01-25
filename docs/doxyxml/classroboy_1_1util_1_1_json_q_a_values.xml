@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1util_1_1_json_q_a_values" kind="class" language="Java" prot="public">
+    <compoundname>roboy::util::JsonQAValues</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classroboy_1_1util_1_1_json_q_a_values_1ae9c10b654e8df63e605bca12f83e4a50" prot="private" static="no" mutable="no">
+        <type>Map&lt; String, List&lt; String &gt; &gt;</type>
+        <definition>Map&lt;String, List&lt;String&gt; &gt; roboy.util.JsonQAValues.questions</definition>
+        <argsstring></argsstring>
+        <name>questions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" line="7" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1util_1_1_json_q_a_values_1a86931450797a6b314ab81f1efc78dced" prot="private" static="no" mutable="no">
+        <type>Map&lt; String, List&lt; String &gt; &gt;</type>
+        <definition>Map&lt;String, List&lt;String&gt; &gt; roboy.util.JsonQAValues.successAnswers</definition>
+        <argsstring></argsstring>
+        <name>successAnswers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" line="8" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1util_1_1_json_q_a_values_1a575bc7e6333d15db217adcded764d063" prot="private" static="no" mutable="no">
+        <type>Map&lt; String, List&lt; String &gt; &gt;</type>
+        <definition>Map&lt;String, List&lt;String&gt; &gt; roboy.util.JsonQAValues.failureAnswers</definition>
+        <argsstring></argsstring>
+        <name>failureAnswers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" line="9" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1util_1_1_json_q_a_values_1a810a742b82ca2bb984f7af5a561dc0ed" prot="private" static="no" mutable="no">
+        <type>Map&lt; String, List&lt; String &gt; &gt;</type>
+        <definition>Map&lt;String, List&lt;String&gt; &gt; roboy.util.JsonQAValues.followUp</definition>
+        <argsstring></argsstring>
+        <name>followUp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" line="10" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1util_1_1_json_q_a_values_1aa7f92111c3f23df439449306e9d63fdf" prot="private" static="no" mutable="no">
+        <type>Map&lt; String, List&lt; String &gt; &gt;</type>
+        <definition>Map&lt;String, List&lt;String&gt; &gt; roboy.util.JsonQAValues.answersFollowUp</definition>
+        <argsstring></argsstring>
+        <name>answersFollowUp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" line="11" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1util_1_1_json_q_a_values_1aae7ea99620cf013b978e991ad4c81471" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.util.JsonQAValues.JsonQAValues</definition>
+        <argsstring>(Map&lt; String, List&lt; String &gt;&gt; questions, Map&lt; String, List&lt; String &gt;&gt; successAnswers, Map&lt; String, List&lt; String &gt;&gt; failureAnswers, Map&lt; String, List&lt; String &gt;&gt; followUp, Map&lt; String, List&lt; String &gt;&gt; answersFollowUp)</argsstring>
+        <name>JsonQAValues</name>
+        <param>
+          <type>Map&lt; String, List&lt; String &gt;&gt;</type>
+          <declname>questions</declname>
+        </param>
+        <param>
+          <type>Map&lt; String, List&lt; String &gt;&gt;</type>
+          <declname>successAnswers</declname>
+        </param>
+        <param>
+          <type>Map&lt; String, List&lt; String &gt;&gt;</type>
+          <declname>failureAnswers</declname>
+        </param>
+        <param>
+          <type>Map&lt; String, List&lt; String &gt;&gt;</type>
+          <declname>followUp</declname>
+        </param>
+        <param>
+          <type>Map&lt; String, List&lt; String &gt;&gt;</type>
+          <declname>answersFollowUp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" line="13" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" bodystart="13" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1util_1_1_json_q_a_values_1a749d4be7805acec9efbc9d0e3cff4ce4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Map&lt; String, List&lt; String &gt; &gt;</type>
+        <definition>Map&lt;String, List&lt;String&gt; &gt; roboy.util.JsonQAValues.getQuestions</definition>
+        <argsstring>()</argsstring>
+        <name>getQuestions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" line="23" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" bodystart="23" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1util_1_1_json_q_a_values_1abae73e2aeef0ee947dcf09c2131abf1b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Map&lt; String, List&lt; String &gt; &gt;</type>
+        <definition>Map&lt;String, List&lt;String&gt; &gt; roboy.util.JsonQAValues.getSuccessAnswers</definition>
+        <argsstring>()</argsstring>
+        <name>getSuccessAnswers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" line="26" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" bodystart="26" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1util_1_1_json_q_a_values_1a42dbe215d5716d02e0b01b55d61de9c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Map&lt; String, List&lt; String &gt; &gt;</type>
+        <definition>Map&lt;String, List&lt;String&gt; &gt; roboy.util.JsonQAValues.getFailureAnswers</definition>
+        <argsstring>()</argsstring>
+        <name>getFailureAnswers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" line="29" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" bodystart="29" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1util_1_1_json_q_a_values_1ac7aa5703536e5560240cc5c1514c496d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Map&lt; String, List&lt; String &gt; &gt;</type>
+        <definition>Map&lt;String, List&lt;String&gt; &gt; roboy.util.JsonQAValues.getFollowUpQuestions</definition>
+        <argsstring>()</argsstring>
+        <name>getFollowUpQuestions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" line="32" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" bodystart="32" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classroboy_1_1util_1_1_json_q_a_values_1a4ce5d7eb808c5951c70d07a29c00c9b7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Map&lt; String, List&lt; String &gt; &gt;</type>
+        <definition>Map&lt;String, List&lt;String&gt; &gt; roboy.util.JsonQAValues.getFollowUpAnswers</definition>
+        <argsstring>()</argsstring>
+        <name>getFollowUpAnswers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" line="35" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" bodystart="35" bodyend="37"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1235">
+        <label>Map&lt; String, List&lt; String &gt; &gt;</label>
+      </node>
+      <node id="1234">
+        <label>roboy.util.JsonQAValues</label>
+        <link refid="classroboy_1_1util_1_1_json_q_a_values"/>
+        <childnode refid="1235" relation="usage">
+          <edgelabel>answersFollowUp</edgelabel>
+          <edgelabel>successAnswers</edgelabel>
+          <edgelabel>questions</edgelabel>
+          <edgelabel>followUp</edgelabel>
+          <edgelabel>failureAnswers</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" line="6" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util/JsonQAValues.java" bodystart="6" bodyend="38"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1util_1_1_json_q_a_values_1aa7f92111c3f23df439449306e9d63fdf" prot="private" virt="non-virtual"><scope>roboy::util::JsonQAValues</scope><name>answersFollowUp</name></member>
+      <member refid="classroboy_1_1util_1_1_json_q_a_values_1a575bc7e6333d15db217adcded764d063" prot="private" virt="non-virtual"><scope>roboy::util::JsonQAValues</scope><name>failureAnswers</name></member>
+      <member refid="classroboy_1_1util_1_1_json_q_a_values_1a810a742b82ca2bb984f7af5a561dc0ed" prot="private" virt="non-virtual"><scope>roboy::util::JsonQAValues</scope><name>followUp</name></member>
+      <member refid="classroboy_1_1util_1_1_json_q_a_values_1a42dbe215d5716d02e0b01b55d61de9c3" prot="public" virt="non-virtual"><scope>roboy::util::JsonQAValues</scope><name>getFailureAnswers</name></member>
+      <member refid="classroboy_1_1util_1_1_json_q_a_values_1a4ce5d7eb808c5951c70d07a29c00c9b7" prot="public" virt="non-virtual"><scope>roboy::util::JsonQAValues</scope><name>getFollowUpAnswers</name></member>
+      <member refid="classroboy_1_1util_1_1_json_q_a_values_1ac7aa5703536e5560240cc5c1514c496d" prot="public" virt="non-virtual"><scope>roboy::util::JsonQAValues</scope><name>getFollowUpQuestions</name></member>
+      <member refid="classroboy_1_1util_1_1_json_q_a_values_1a749d4be7805acec9efbc9d0e3cff4ce4" prot="public" virt="non-virtual"><scope>roboy::util::JsonQAValues</scope><name>getQuestions</name></member>
+      <member refid="classroboy_1_1util_1_1_json_q_a_values_1abae73e2aeef0ee947dcf09c2131abf1b" prot="public" virt="non-virtual"><scope>roboy::util::JsonQAValues</scope><name>getSuccessAnswers</name></member>
+      <member refid="classroboy_1_1util_1_1_json_q_a_values_1aae7ea99620cf013b978e991ad4c81471" prot="public" virt="non-virtual"><scope>roboy::util::JsonQAValues</scope><name>JsonQAValues</name></member>
+      <member refid="classroboy_1_1util_1_1_json_q_a_values_1ae9c10b654e8df63e605bca12f83e4a50" prot="private" virt="non-virtual"><scope>roboy::util::JsonQAValues</scope><name>questions</name></member>
+      <member refid="classroboy_1_1util_1_1_json_q_a_values_1a86931450797a6b314ab81f1efc78dced" prot="private" virt="non-virtual"><scope>roboy::util::JsonQAValues</scope><name>successAnswers</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -125,7 +125,7 @@
 <codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>File<sp/>propertiesFile<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>File(yamlConfigFile);</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(propertiesFile<sp/>==<sp/>null)<sp/>{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!<sp/>propertiesFile.exists())<sp/>{<sp/></highlight><highlight class="comment">//<sp/>propertiesFile<sp/>==<sp/>null<sp/>doesn&apos;t<sp/>work!</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>System.out.println(</highlight><highlight class="stringliteral">&quot;Could<sp/>not<sp/>find<sp/>&quot;</highlight><highlight class="normal">+yamlConfigFile+</highlight><highlight class="stringliteral">&quot;<sp/>file<sp/>in<sp/>project<sp/>path!<sp/>YAML<sp/>configurations<sp/>will<sp/>be<sp/>unavailable.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -140,6 +140,6 @@
 <codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="159"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/Config.java"/>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/Config.java"/>
   </compounddef>
 </doxygen>

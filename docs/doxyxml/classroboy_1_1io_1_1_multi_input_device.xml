@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" line="12" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" bodystart="12" bodyend="-1"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/MultiInputDevice.java" line="12" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/MultiInputDevice.java" bodystart="12" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1io_1_1_multi_input_device_1a91770e6bbab229481e01559bce44e9fb" prot="private" static="no" mutable="no">
         <type>ArrayList&lt; <ref refid="interfaceroboy_1_1io_1_1_input_device" kindref="compound">InputDevice</ref> &gt;</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" line="13" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" bodystart="13" bodyend="-1"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/MultiInputDevice.java" line="13" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/MultiInputDevice.java" bodystart="13" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" line="15" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" bodystart="15" bodyend="17"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/MultiInputDevice.java" line="15" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/MultiInputDevice.java" bodystart="15" bodyend="17"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1io_1_1_multi_input_device_1aa496598d3c5cfbe3002f12b4a32affc9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -64,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" line="19" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" bodystart="19" bodyend="21"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/MultiInputDevice.java" line="19" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/MultiInputDevice.java" bodystart="19" bodyend="21"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1io_1_1_multi_input_device_1a2015438a08e09832503d4a605cacd5e6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1io_1_1_input" kindref="compound">Input</ref></type>
@@ -79,7 +79,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" line="24" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" bodystart="24" bodyend="33"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/MultiInputDevice.java" line="24" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/MultiInputDevice.java" bodystart="24" bodyend="33"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -87,39 +87,39 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1270">
+      <node id="1291">
         <label>roboy.io.InputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_input_device"/>
       </node>
-      <node id="1269">
+      <node id="1290">
         <label>roboy.io.MultiInputDevice</label>
         <link refid="classroboy_1_1io_1_1_multi_input_device"/>
-        <childnode refid="1270" relation="public-inheritance">
+        <childnode refid="1291" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1273">
+      <node id="1294">
         <label>ArrayList&lt; roboy.io.InputDevice &gt;</label>
       </node>
-      <node id="1272">
+      <node id="1293">
         <label>roboy.io.InputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_input_device"/>
       </node>
-      <node id="1271">
+      <node id="1292">
         <label>roboy.io.MultiInputDevice</label>
         <link refid="classroboy_1_1io_1_1_multi_input_device"/>
-        <childnode refid="1272" relation="public-inheritance">
+        <childnode refid="1293" relation="public-inheritance">
         </childnode>
-        <childnode refid="1273" relation="usage">
+        <childnode refid="1294" relation="usage">
           <edgelabel>additionalInputs</edgelabel>
         </childnode>
-        <childnode refid="1272" relation="usage">
+        <childnode refid="1293" relation="usage">
           <edgelabel>mainInput</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" line="10" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/MultiInputDevice.java" bodystart="10" bodyend="35"/>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/MultiInputDevice.java" line="10" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/MultiInputDevice.java" bodystart="10" bodyend="35"/>
     <listofallmembers>
       <member refid="classroboy_1_1io_1_1_multi_input_device_1aa496598d3c5cfbe3002f12b4a32affc9" prot="public" virt="non-virtual"><scope>roboy::io::MultiInputDevice</scope><name>addInputDevice</name></member>
       <member refid="classroboy_1_1io_1_1_multi_input_device_1a91770e6bbab229481e01559bce44e9fb" prot="private" virt="non-virtual"><scope>roboy::io::MultiInputDevice</scope><name>additionalInputs</name></member>

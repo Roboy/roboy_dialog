@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineInput.java" line="13" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineInput.java" bodystart="13" bodyend="-1"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineInput.java" line="13" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineInput.java" bodystart="13" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineInput.java" line="16" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineInput.java" bodystart="16" bodyend="22"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineInput.java" line="16" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineInput.java" bodystart="16" bodyend="22"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineInput.java" line="25" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineInput.java" bodystart="25" bodyend="27"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineInput.java" line="25" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineInput.java" bodystart="25" bodyend="27"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -55,36 +55,36 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="962">
+      <node id="971">
         <label>roboy.io.CommandLineInput</label>
         <link refid="classroboy_1_1io_1_1_command_line_input"/>
-        <childnode refid="963" relation="public-inheritance">
+        <childnode refid="972" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="963">
+      <node id="972">
         <label>roboy.io.InputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_input_device"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="966">
+      <node id="975">
         <label>Scanner</label>
       </node>
-      <node id="964">
+      <node id="973">
         <label>roboy.io.CommandLineInput</label>
         <link refid="classroboy_1_1io_1_1_command_line_input"/>
-        <childnode refid="965" relation="public-inheritance">
+        <childnode refid="974" relation="public-inheritance">
         </childnode>
-        <childnode refid="966" relation="usage">
+        <childnode refid="975" relation="usage">
           <edgelabel>sc</edgelabel>
         </childnode>
       </node>
-      <node id="965">
+      <node id="974">
         <label>roboy.io.InputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_input_device"/>
       </node>
     </collaborationgraph>
-    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineInput.java" line="11" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineInput.java" bodystart="11" bodyend="28"/>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineInput.java" line="11" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineInput.java" bodystart="11" bodyend="28"/>
     <listofallmembers>
       <member refid="classroboy_1_1io_1_1_command_line_input_1aaadd00a67d1a2b503a08d7f6e7364b59" prot="protected" virt="non-virtual"><scope>roboy::io::CommandLineInput</scope><name>finalize</name></member>
       <member refid="classroboy_1_1io_1_1_command_line_input_1a88df660444e5a67add1c1720911a86c3" prot="public" virt="non-virtual"><scope>roboy::io::CommandLineInput</scope><name>listen</name></member>

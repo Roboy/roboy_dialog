@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="dir_029141a1c7d6ffd5a4e073b2543b9713" kind="dir">
-    <compoundname>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory</compoundname>
-    <innerdir refid="dir_1165a482e1bd283bdfb030bc1d41c8fb">/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes</innerdir>
+    <compoundname>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory</compoundname>
+    <innerdir refid="dir_1165a482e1bd283bdfb030bc1d41c8fb">/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/nodes</innerdir>
     <innerfile refid="_d_bpedia_memory_8java">DBpediaMemory.java</innerfile>
     <innerfile refid="_lexicon_8java">Lexicon.java</innerfile>
     <innerfile refid="_lexicon_literal_8java">LexiconLiteral.java</innerfile>
@@ -18,6 +18,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/"/>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/"/>
   </compounddef>
 </doxygen>

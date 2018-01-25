@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CerevoiceOutput.java" line="15" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="15" bodyend="-1"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" line="15" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="15" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CerevoiceOutput.java" line="17" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="17" bodyend="19"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" line="17" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="17" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1io_1_1_cerevoice_output_1afed54c4dabf2c25c91d1db6af93a288b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CerevoiceOutput.java" line="22" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="22" bodyend="29"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" line="22" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="22" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1io_1_1_cerevoice_output_1ac7de7a9f412a35d23fdcb4bbabf67174" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -69,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CerevoiceOutput.java" line="31" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="31" bodyend="34"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" line="31" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="31" bodyend="34"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -77,61 +77,61 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="945">
+      <node id="954">
         <label>roboy.io.CerevoiceOutput</label>
         <link refid="classroboy_1_1io_1_1_cerevoice_output"/>
-        <childnode refid="946" relation="public-inheritance">
+        <childnode refid="955" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="946">
+      <node id="955">
         <label>roboy.io.OutputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_output_device"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="953">
+      <node id="962">
         <label>CountDownLatch</label>
       </node>
-      <node id="947">
+      <node id="956">
         <label>roboy.io.CerevoiceOutput</label>
         <link refid="classroboy_1_1io_1_1_cerevoice_output"/>
-        <childnode refid="948" relation="public-inheritance">
+        <childnode refid="957" relation="public-inheritance">
         </childnode>
-        <childnode refid="949" relation="usage">
+        <childnode refid="958" relation="usage">
           <edgelabel>rosMainNode</edgelabel>
         </childnode>
       </node>
-      <node id="952">
+      <node id="961">
         <label>HashMap&lt; roboy.ros.RosClients, ServiceClient &gt;</label>
       </node>
-      <node id="949">
+      <node id="958">
         <label>roboy.ros.RosMainNode</label>
         <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
-        <childnode refid="950" relation="public-inheritance">
+        <childnode refid="959" relation="public-inheritance">
         </childnode>
-        <childnode refid="951" relation="usage">
+        <childnode refid="960" relation="usage">
           <edgelabel>clients</edgelabel>
         </childnode>
-        <childnode refid="953" relation="usage">
+        <childnode refid="962" relation="usage">
           <edgelabel>rosConnectionLatch</edgelabel>
         </childnode>
       </node>
-      <node id="951">
+      <node id="960">
         <label>roboy.ros.RosManager</label>
         <link refid="classroboy_1_1ros_1_1_ros_manager"/>
-        <childnode refid="952" relation="usage">
+        <childnode refid="961" relation="usage">
           <edgelabel>clientMap</edgelabel>
         </childnode>
       </node>
-      <node id="948">
+      <node id="957">
         <label>roboy.io.OutputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_output_device"/>
       </node>
-      <node id="950">
+      <node id="959">
         <label>AbstractNodeMain</label>
       </node>
     </collaborationgraph>
-    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CerevoiceOutput.java" line="13" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="12" bodyend="36"/>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" line="13" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CerevoiceOutput.java" bodystart="12" bodyend="36"/>
     <listofallmembers>
       <member refid="classroboy_1_1io_1_1_cerevoice_output_1afed54c4dabf2c25c91d1db6af93a288b" prot="public" virt="non-virtual"><scope>roboy::io::CerevoiceOutput</scope><name>act</name></member>
       <member refid="classroboy_1_1io_1_1_cerevoice_output_1a731b25d29d592eedf501331fc9c73484" prot="public" virt="non-virtual"><scope>roboy::io::CerevoiceOutput</scope><name>CerevoiceOutput</name></member>

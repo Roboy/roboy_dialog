@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="dir_bd3690cddefd3747010feed6ae64d650" kind="dir">
+    <compoundname>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/contextObjects</compoundname>
+    <innerfile refid="_coordinate_set_8java">CoordinateSet.java</innerfile>
+    <innerfile refid="_dialog_topics_8java">DialogTopics.java</innerfile>
+    <innerfile refid="_dialog_topics_updater_8java">DialogTopicsUpdater.java</innerfile>
+    <innerfile refid="_face_coordinates_8java">FaceCoordinates.java</innerfile>
+    <innerfile refid="_face_coordinates_updater_8java">FaceCoordinatesUpdater.java</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/contextObjects/"/>
+  </compounddef>
+</doxygen>

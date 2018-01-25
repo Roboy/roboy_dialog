@@ -403,7 +403,6 @@
     <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1ae3facf1563df72addddb348346b94139" kind="function"><name>hasRelationship</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a41c8edb8c0af788cd30dcf1aaac95285" kind="function"><name>getRelationships</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a0e59e8acfe71553dfd71c7f025072ac5" kind="function"><name>addInformation</name></member>
-    <member refid="classroboy_1_1memory_1_1nodes_1_1_interlocutor_1a649d8b8ef691e60aa184991d30993a9d" kind="function"><name>determineNodeType</name></member>
   </compound>
   <compound refid="classroboy_1_1context_1_1_internal_updater" kind="class"><name>roboy::context::InternalUpdater</name>
     <member refid="classroboy_1_1context_1_1_internal_updater_1a3e39a66c2d4e06436e5f02a3c9ff80af" kind="variable"><name>target</name></member>
@@ -446,7 +445,37 @@
     <member refid="classroboy_1_1util_1_1_i_o_1a10cfc30772d35efae48dcfdc4beb4c95" kind="function"><name>readLines</name></member>
     <member refid="classroboy_1_1util_1_1_i_o_1acad77f5b050acb0fc76d1cd2c4a3c7b4" kind="function"><name>readLines</name></member>
   </compound>
+  <compound refid="classroboy_1_1util_1_1_json_entry_model" kind="class"><name>roboy::util::JsonEntryModel</name>
+    <member refid="classroboy_1_1util_1_1_json_entry_model_1a1b73b2e1abbe8f71cbf30e224905e334" kind="variable"><name>Q</name></member>
+    <member refid="classroboy_1_1util_1_1_json_entry_model_1a5905416e13fc0dfad406432e01591dc5" kind="variable"><name>A</name></member>
+    <member refid="classroboy_1_1util_1_1_json_entry_model_1acc1978177fb7531681927e0f7708b8fb" kind="variable"><name>FUP</name></member>
+  </compound>
+  <compound refid="classroboy_1_1util_1_1_json_model" kind="class"><name>roboy::util::JsonModel</name>
+    <member refid="classroboy_1_1util_1_1_json_model_1a70ca07db00326ad798d23f41bc7e093b" kind="variable"><name>name</name></member>
+    <member refid="classroboy_1_1util_1_1_json_model_1ab23ac9abd7a7c1b8ff624492d5dc987b" kind="variable"><name>FROM</name></member>
+    <member refid="classroboy_1_1util_1_1_json_model_1a8c47989bb4ac0d60f4b8bd184401cc9a" kind="variable"><name>HAS_HOBBY</name></member>
+    <member refid="classroboy_1_1util_1_1_json_model_1a33b8e119fa7fd3736268c24f25a10c12" kind="variable"><name>LIVE_IN</name></member>
+    <member refid="classroboy_1_1util_1_1_json_model_1aaf8da2c7f73eadfbc14673df886890d3" kind="variable"><name>FRIEND_OF</name></member>
+    <member refid="classroboy_1_1util_1_1_json_model_1a75a3e28f5c84483b7c65674de272ac67" kind="variable"><name>STUDY_AT</name></member>
+    <member refid="classroboy_1_1util_1_1_json_model_1a26dfcb57f52dce621f2d3b69256964d5" kind="variable"><name>MEMBER_OF</name></member>
+    <member refid="classroboy_1_1util_1_1_json_model_1acd4c59eaca4067b2fe7653c822876182" kind="variable"><name>WORK_FOR</name></member>
+    <member refid="classroboy_1_1util_1_1_json_model_1a85e7aa392f24965df5e32c2df911524f" kind="variable"><name>OCCUPIED_AS</name></member>
+  </compound>
+  <compound refid="classroboy_1_1util_1_1_json_q_a_values" kind="class"><name>roboy::util::JsonQAValues</name>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1ae9c10b654e8df63e605bca12f83e4a50" kind="variable"><name>questions</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1a86931450797a6b314ab81f1efc78dced" kind="variable"><name>successAnswers</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1a575bc7e6333d15db217adcded764d063" kind="variable"><name>failureAnswers</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1a810a742b82ca2bb984f7af5a561dc0ed" kind="variable"><name>followUp</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1aa7f92111c3f23df439449306e9d63fdf" kind="variable"><name>answersFollowUp</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1aae7ea99620cf013b978e991ad4c81471" kind="function"><name>JsonQAValues</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1a749d4be7805acec9efbc9d0e3cff4ce4" kind="function"><name>getQuestions</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1abae73e2aeef0ee947dcf09c2131abf1b" kind="function"><name>getSuccessAnswers</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1a42dbe215d5716d02e0b01b55d61de9c3" kind="function"><name>getFailureAnswers</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1ac7aa5703536e5560240cc5c1514c496d" kind="function"><name>getFollowUpQuestions</name></member>
+    <member refid="classroboy_1_1util_1_1_json_q_a_values_1a4ce5d7eb808c5951c70d07a29c00c9b7" kind="function"><name>getFollowUpAnswers</name></member>
+  </compound>
   <compound refid="classroboy_1_1util_1_1_json_utils" kind="class"><name>roboy::util::JsonUtils</name>
+    <member refid="classroboy_1_1util_1_1_json_utils_1a7276b39c488b26288377eb7c7517464f" kind="function"><name>getQuestionsAndAnswersFromJson</name></member>
     <member refid="classroboy_1_1util_1_1_json_utils_1a5ea0f2f130190e006f3621841a1fbd00" kind="function"><name>getSentencesFromJsonFile</name></member>
     <member refid="classroboy_1_1util_1_1_json_utils_1aefb38c701dd585e1d6956c416639b113" kind="function"><name>getSentenceArraysFromJsonFile</name></member>
   </compound>
@@ -604,6 +633,7 @@
     <member refid="classroboy_1_1memory_1_1_neo4j_memory_1af298e652387278897ef75855a6ce14e4" kind="function"><name>create</name></member>
     <member refid="classroboy_1_1memory_1_1_neo4j_memory_1a56d14ae8c44a6a4a0bf9a0daef19cc0b" kind="function"><name>remove</name></member>
     <member refid="classroboy_1_1memory_1_1_neo4j_memory_1a7a8feb27c9ad358f0ce1443bbde85287" kind="function"><name>retrieve</name></member>
+    <member refid="classroboy_1_1memory_1_1_neo4j_memory_1a4354f62392b35dffd1084b448d4af86c" kind="function"><name>determineNodeType</name></member>
   </compound>
   <compound refid="enumroboy_1_1memory_1_1_neo4j_relationships" kind="enum"><name>roboy::memory::Neo4jRelationships</name>
     <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1aef759612281adf93a17240bb2b513b84" kind="variable"><name>FROM</name></member>
@@ -620,6 +650,7 @@
     <member refid="enumroboy_1_1memory_1_1_neo4j_relationships_1a683840f20066c4c2ee502a05ff706373" kind="function"><name>Neo4jRelationships</name></member>
   </compound>
   <compound refid="classroboy_1_1new_dialog_1_1_new_dialog_system" kind="class"><name>roboy::newDialog::NewDialogSystem</name>
+    <member refid="classroboy_1_1new_dialog_1_1_new_dialog_system_1a36bbfa71003ccd5da69ccde8c5ed62e6" kind="function"><name>getPersonalityFilePathFromConfig</name></member>
     <member refid="classroboy_1_1new_dialog_1_1_new_dialog_system_1a8471b0ca965dc56b665bcc075dccc419" kind="function"><name>main</name></member>
   </compound>
   <compound refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_ontology_n_e_r_analyzer" kind="class"><name>roboy::linguistics::sentenceanalysis::OntologyNERAnalyzer</name>
@@ -656,14 +687,6 @@
   <compound refid="interfaceroboy_1_1io_1_1_output_device" kind="interface"><name>roboy::io::OutputDevice</name>
     <member refid="interfaceroboy_1_1io_1_1_output_device_1aa47aae2af369116c8b407f7bd2770ce9" kind="function"><name>act</name></member>
   </compound>
-  <compound refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer" kind="class"><name>roboy::linguistics::sentenceanalysis::ParserAnalyzer</name>
-    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer_1a163f5010e5eaf7f1ff044dde936bddec" kind="variable"><name>clientSocket</name></member>
-    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer_1a583526f4ff29d10ad190696c6cd8d123" kind="variable"><name>out</name></member>
-    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer_1a69f85917fe3c333d81ea44342f4e4f39" kind="variable"><name>in</name></member>
-    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer_1a354fdd60bbc5d8d777b187d9a9c9a390" kind="variable"><name>debug</name></member>
-    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer_1ac6b4c0d374e9eb2a352a5f607b91a5a7" kind="function"><name>ParserAnalyzer</name></member>
-    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_parser_analyzer_1a94b4c5e642c45a272c422543a122234c" kind="function"><name>analyze</name></member>
-  </compound>
   <compound refid="classroboy_1_1logic_1_1_p_a_s_interpreter" kind="class"><name>roboy::logic::PASInterpreter</name>
     <member refid="classroboy_1_1logic_1_1_p_a_s_interpreter_1aa2976fb4dadaf77393faf6dfffc79545" kind="variable"><name>dbpediaRelations</name></member>
     <member refid="classroboy_1_1logic_1_1_p_a_s_interpreter_1a8da838129e7b1a192f84e3264300891a" kind="function"><name>pas2DBpediaRelation</name></member>
@@ -691,10 +714,10 @@
   </compound>
   <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state" kind="class"><name>roboy::dialog::personality::states::PersonalFollowUpState</name>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1ad99ddb831afd95644e32e1707b328f82" kind="variable"><name>questions</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a8bba389fcd368e88fc7435110807b211" kind="variable"><name>successTexts</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1aed3a8de284769626b5e9e56dff7c25e3" kind="variable"><name>successTexts</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a664e2567f324575d873abd1e41f83715" kind="variable"><name>person</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a7eccec3cc7e8e124576f9a90079a36d9" kind="variable"><name>predicate</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a52ef2894906ba691c42ec72596e0986c" kind="function"><name>PersonalFollowUpState</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1aae0e62e6fdf530e2f015afaf2e8e195a" kind="function"><name>PersonalFollowUpState</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a2be55474f93370832751ad620c747a7a" kind="function"><name>act</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_follow_up_state_1a3e05c608ae2c72f697c49f9dccef5ca4" kind="function"><name>determineSuccess</name></member>
   </compound>
@@ -703,10 +726,10 @@
   </compound>
   <compound refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state" kind="class"><name>roboy::dialog::personality::states::PersonalQAState</name>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1a8548a5827f57d78ca1550fd14a282593" kind="variable"><name>questions</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1af657216622c0076e3b584ce5372dc0c5" kind="variable"><name>successTexts</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1a909c98f7f7706a6af55f4de4143bb656" kind="variable"><name>successTexts</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1ab0484093bb0bc1a3500b3c4a9bca3e29" kind="variable"><name>person</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1aa96077d090c1ad6196cf36f128afba53" kind="variable"><name>predicate</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1a557d2a0d3ee5008d6049ca4ec7e8142d" kind="function"><name>PersonalQAState</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1ab422e7d301db8fbafddd95a88a78ed52" kind="function"><name>PersonalQAState</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1ac4d15984e61765e09fa9e129bd7be8a7" kind="function"><name>act</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_personal_q_a_state_1a3bea8ab8f43045b1b0c48851d8ae2238" kind="function"><name>determineSuccess</name></member>
   </compound>
@@ -777,17 +800,14 @@
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a9b53c08c74c9d75bf76f1bd078a19b36" kind="variable"><name>inner</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a6045afc0a5c8fba38796ced7b1399d86" kind="variable"><name>chosenState</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1ab9f31a6162c1a6af4f31e3f37fcdf798" kind="variable"><name>person</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a8eb68a4b749a71c7a6c601383bef8141" kind="variable"><name>questionsAndAnswers</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a8fb372f58926984b2343779227d3900f" kind="variable"><name>askFollowUp</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1afbb8ab111f8840696036af2b4cde587d" kind="variable"><name>questionsFile</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a40c5e16ce450ce1fc46bfb8f5db264ea" kind="variable"><name>successAnswersFile</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a42c8cf8b93a4f963d0c891a0e1a02160" kind="variable"><name>failureAnswersFile</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1aa68c40ae2cb80f8ef6e416274c7d59e7" kind="variable"><name>followUpFile</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a1fb0da74566ddb059737f0b17c3a591d" kind="variable"><name>answersFollowUpFile</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a168ea2025fe7a3a30dfef1400984281a" kind="variable"><name>QAfile</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1ac079c56ee234c0fd4221ef6d673f7b39" kind="variable"><name>questions</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1ae332ed928c13eb88e5ec9d21ae0bf71a" kind="variable"><name>successAnswers</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a7262bead19f6791abf18e9d140458720" kind="variable"><name>successAnswers</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a8f2ce69703ee3af10133e5bff67cbcd6" kind="variable"><name>failureAnswers</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a9913ee356287893f06bf2d4dcd71aa48" kind="variable"><name>followUp</name></member>
-    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a1c09d80edc2be64a8691a5c7762b6f95" kind="variable"><name>answersFollowUp</name></member>
+    <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a41b67a3e7a7a4ba9f546b0f3843aaa97" kind="variable"><name>answersFollowUp</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a8a05db3015d4a1c0a78cbe12577ee4fc" kind="function"><name>QuestionRandomizerState</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a8cca5622a1c2f0c882809a38e7cde343" kind="function"><name>act</name></member>
     <member refid="classroboy_1_1dialog_1_1personality_1_1states_1_1_question_randomizer_state_1a112de960346813aa29c07dff35d94691" kind="function"><name>react</name></member>
@@ -817,12 +837,11 @@
     <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1ade8f09b1807c1236ae77f888e63b9dc8" kind="variable"><name>roboy</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1aa2dbcdf157c087aed2783283642e0113" kind="variable"><name>memoryROS</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1ad7460d91aae23ff9bd7336cce88677ba" kind="variable"><name>memory</name></member>
-    <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1a2d27a85f3a11bdc29b8992e1d868f576" kind="function"><name>Roboy</name></member>
+    <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1a2db06e72a495021c66d83cfd37b8b92a" kind="function"><name>Roboy</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1ad62b3b626edc5f77ac696b70c30cab53" kind="function"><name>getName</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1a14b3e556fe15ce03893be9474887e01d" kind="function"><name>getRelationships</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1a633475848e60b2bc6c966b531cd99c8d" kind="function"><name>addInformation</name></member>
     <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1a3c05f4c279205cdcb732e10fa84e52f0" kind="function"><name>InitializeRoboy</name></member>
-    <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1aaf08b7e205380e05d13aaf2c6fce436b" kind="function"><name>determineNodeType</name></member>
   </compound>
   <compound refid="classroboy_1_1memory_1_1_roboy_mind" kind="class"><name>roboy::memory::RoboyMind</name>
     <member refid="classroboy_1_1memory_1_1_roboy_mind_1af5ca6fe74b35757b8608f436b199da34" kind="variable"><name>roboyMemory</name></member>
@@ -923,6 +942,14 @@
     <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e_1a7d5367f86679cc09a9bcaed34e5efc58" kind="variable"><name>BENEFICIARY</name></member>
     <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e_1a26d89aa5a154cce93b31f457f0812ce4" kind="variable"><name>PURPOSE</name></member>
     <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_m_a_n_t_i_c___r_o_l_e_1af817b3e3c8c2d97f210fc116dc0ec00c" kind="variable"><name>CAUSE</name></member>
+  </compound>
+  <compound refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer" kind="class"><name>roboy::linguistics::sentenceanalysis::SemanticParserAnalyzer</name>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer_1a3a22ede0bd79a6478adec62d30cb09e7" kind="variable"><name>clientSocket</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer_1a9f4f60d44a9701e8132c08cc25ba5842" kind="variable"><name>out</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer_1ac9d814c727b035c4c0b7d135cbcbf04c" kind="variable"><name>in</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer_1a019c22a94b2a0eac0defc9a67e15292f" kind="variable"><name>debug</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer_1a56698e4c6bfd11d763c20e4f86a25e72" kind="function"><name>SemanticParserAnalyzer</name></member>
+    <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer_1ab3bdd822a68101cba8c5a1ed660866e3" kind="function"><name>analyze</name></member>
   </compound>
   <compound refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e" kind="enum"><name>roboy::linguistics::Linguistics::SENTENCE_TYPE</name>
     <member refid="enumroboy_1_1linguistics_1_1_linguistics_1_1_s_e_n_t_e_n_c_e___t_y_p_e_1acb60a4f2b04af12088e118049dadef7c" kind="variable"><name>GREETING</name></member>
@@ -1464,9 +1491,9 @@
   </compound>
   <compound refid="_open_n_l_p_p_p_o_s_tagger_8java" kind="file"><name>OpenNLPPPOSTagger.java</name>
   </compound>
-  <compound refid="_parser_analyzer_8java" kind="file"><name>ParserAnalyzer.java</name>
-  </compound>
   <compound refid="_preprocessor_8java" kind="file"><name>Preprocessor.java</name>
+  </compound>
+  <compound refid="_semantic_parser_analyzer_8java" kind="file"><name>SemanticParserAnalyzer.java</name>
   </compound>
   <compound refid="_sentence_analyzer_8java" kind="file"><name>SentenceAnalyzer.java</name>
   </compound>
@@ -1550,6 +1577,8 @@
   </compound>
   <compound refid="_i_o_8java" kind="file"><name>IO.java</name>
   </compound>
+  <compound refid="_json_q_a_values_8java" kind="file"><name>JsonQAValues.java</name>
+  </compound>
   <compound refid="_json_utils_8java" kind="file"><name>JsonUtils.java</name>
   </compound>
   <compound refid="_lists_8java" kind="file"><name>Lists.java</name>
@@ -1576,86 +1605,86 @@
   </compound>
   <compound refid="_verbalizer_test_8java" kind="file"><name>VerbalizerTest.java</name>
   </compound>
-  <compound refid="dir_b7748b3f53905c24013e2b431e631225" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/action</name>
+  <compound refid="dir_b7748b3f53905c24013e2b431e631225" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/action</name>
   </compound>
-  <compound refid="dir_367c5385ebc5b1806d01f0d86a421678" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/context</name>
+  <compound refid="dir_367c5385ebc5b1806d01f0d86a421678" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/context</name>
   </compound>
-  <compound refid="dir_8e320bad33e03d0371febb4f7e229dc4" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context</name>
+  <compound refid="dir_8e320bad33e03d0371febb4f7e229dc4" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context</name>
   </compound>
-  <compound refid="dir_bd3690cddefd3747010feed6ae64d650" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/contextObjects</name>
+  <compound refid="dir_bd3690cddefd3747010feed6ae64d650" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/contextObjects</name>
   </compound>
-  <compound refid="dir_09caee689121350b0881c362a3662a4d" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/dialog</name>
+  <compound refid="dir_09caee689121350b0881c362a3662a4d" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/dialog</name>
   </compound>
-  <compound refid="dir_bedbe0196ed4e3ea490265c56ba398f8" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog</name>
+  <compound refid="dir_bedbe0196ed4e3ea490265c56ba398f8" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog</name>
   </compound>
-  <compound refid="dir_1ab976347033ac022fed23b8deb25d44" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/examples</name>
+  <compound refid="dir_1ab976347033ac022fed23b8deb25d44" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/examples</name>
   </compound>
-  <compound refid="dir_bebef46689f592554f5a6861599272c3" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/word2vec/examples</name>
+  <compound refid="dir_bebef46689f592554f5a6861599272c3" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples</name>
   </compound>
-  <compound refid="dir_b28721f10b488d8d23b9ce8585fe312f" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/factories</name>
+  <compound refid="dir_b28721f10b488d8d23b9ce8585fe312f" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/factories</name>
   </compound>
-  <compound refid="dir_780de310a3259b561df66063ee52af20" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI</name>
+  <compound refid="dir_780de310a3259b561df66063ee52af20" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/GUI</name>
   </compound>
-  <compound refid="dir_0f4c97c7389bb8a061b6dec9af63e7cb" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io</name>
+  <compound refid="dir_0f4c97c7389bb8a061b6dec9af63e7cb" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io</name>
   </compound>
-  <compound refid="dir_97debbc39e3b917fca663601bb2b0709" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java</name>
+  <compound refid="dir_97debbc39e3b917fca663601bb2b0709" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java</name>
   </compound>
-  <compound refid="dir_fd3f6763802dee1ad875f6c80eac0bda" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java</name>
+  <compound refid="dir_fd3f6763802dee1ad875f6c80eac0bda" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java</name>
   </compound>
-  <compound refid="dir_e3b706f0da88f09db6283663af2a234d" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/linguistics</name>
+  <compound refid="dir_e3b706f0da88f09db6283663af2a234d" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/linguistics</name>
   </compound>
-  <compound refid="dir_ed0fca50c3b44d5fff0fa276d178b23b" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics</name>
+  <compound refid="dir_ed0fca50c3b44d5fff0fa276d178b23b" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics</name>
   </compound>
-  <compound refid="dir_870da1f0b478f7ca881b221c68d88b01" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/logic</name>
+  <compound refid="dir_870da1f0b478f7ca881b221c68d88b01" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/logic</name>
   </compound>
-  <compound refid="dir_fc501c632ab2a1a6d6d30ee369f70e27" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/logic</name>
+  <compound refid="dir_fc501c632ab2a1a6d6d30ee369f70e27" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/logic</name>
   </compound>
-  <compound refid="dir_5eb159725f84c66aafd839904a4acdd0" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main</name>
+  <compound refid="dir_5eb159725f84c66aafd839904a4acdd0" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main</name>
   </compound>
-  <compound refid="dir_029141a1c7d6ffd5a4e073b2543b9713" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory</name>
+  <compound refid="dir_029141a1c7d6ffd5a4e073b2543b9713" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory</name>
   </compound>
-  <compound refid="dir_5e840a829dcbeed20ff665424891ad0f" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/newDialog</name>
+  <compound refid="dir_5e840a829dcbeed20ff665424891ad0f" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/newDialog</name>
   </compound>
-  <compound refid="dir_e66165e7b281758ce9f1532451fea886" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog</name>
+  <compound refid="dir_e66165e7b281758ce9f1532451fea886" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog</name>
   </compound>
-  <compound refid="dir_1165a482e1bd283bdfb030bc1d41c8fb" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes</name>
+  <compound refid="dir_1165a482e1bd283bdfb030bc1d41c8fb" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/nodes</name>
   </compound>
-  <compound refid="dir_51b61a932f360ff8dfb5e9ed4f901118" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/dialog/personality</name>
+  <compound refid="dir_51b61a932f360ff8dfb5e9ed4f901118" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/dialog/personality</name>
   </compound>
-  <compound refid="dir_4b89141a263e6cbfc376c96d63372b80" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality</name>
+  <compound refid="dir_4b89141a263e6cbfc376c96d63372b80" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality</name>
   </compound>
-  <compound refid="dir_309ae92be9f26a3d782e391154c61beb" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/phonetics</name>
+  <compound refid="dir_309ae92be9f26a3d782e391154c61beb" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/phonetics</name>
   </compound>
-  <compound refid="dir_ef15ac377452d427e784ef3ffdafddbf" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy</name>
+  <compound refid="dir_ef15ac377452d427e784ef3ffdafddbf" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy</name>
   </compound>
-  <compound refid="dir_6d5869451a9be3e6ce21b31fee7870de" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy</name>
+  <compound refid="dir_6d5869451a9be3e6ce21b31fee7870de" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy</name>
   </compound>
-  <compound refid="dir_8548ac48c61d494e9afd946956351f00" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/ros</name>
+  <compound refid="dir_8548ac48c61d494e9afd946956351f00" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros</name>
   </compound>
-  <compound refid="dir_f4181fe68facb23b91192854446ad923" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/linguistics/sentenceanalysis</name>
+  <compound refid="dir_f4181fe68facb23b91192854446ad923" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/linguistics/sentenceanalysis</name>
   </compound>
-  <compound refid="dir_2b9136678cbc7c985d98384a060ef73e" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis</name>
+  <compound refid="dir_2b9136678cbc7c985d98384a060ef73e" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis</name>
   </compound>
-  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src</name>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src</name>
   </compound>
-  <compound refid="dir_3d3a7bb632f3a6251fe99b04aead1544" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/dialog/personality/states</name>
+  <compound refid="dir_3d3a7bb632f3a6251fe99b04aead1544" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/dialog/personality/states</name>
   </compound>
-  <compound refid="dir_a37d8f862945072f307b1c1259356272" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states</name>
+  <compound refid="dir_a37d8f862945072f307b1c1259356272" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states</name>
   </compound>
-  <compound refid="dir_6e452d7417803070272de08db6f5594a" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states</name>
+  <compound refid="dir_6e452d7417803070272de08db6f5594a" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/personality/states</name>
   </compound>
-  <compound refid="dir_a3da221ea67796dde15c58826f020edb" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/talk</name>
+  <compound refid="dir_a3da221ea67796dde15c58826f020edb" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/talk</name>
   </compound>
-  <compound refid="dir_2ee74114d792069c15448944a9bb6a63" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/talk</name>
+  <compound refid="dir_2ee74114d792069c15448944a9bb6a63" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/talk</name>
   </compound>
-  <compound refid="dir_120ed4da3e3217b1e7fc0b4f48568e79" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test</name>
+  <compound refid="dir_120ed4da3e3217b1e7fc0b4f48568e79" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test</name>
   </compound>
-  <compound refid="dir_41a6017a7c28145a6e1c56d312c40a75" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates</name>
+  <compound refid="dir_41a6017a7c28145a6e1c56d312c40a75" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates</name>
   </compound>
-  <compound refid="dir_99a73bddd3718e5715d839342deccec9" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/util</name>
+  <compound refid="dir_99a73bddd3718e5715d839342deccec9" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/util</name>
   </compound>
-  <compound refid="dir_ce0225499bce8c86db7a47ed5138c18d" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/context/visionContext</name>
+  <compound refid="dir_ce0225499bce8c86db7a47ed5138c18d" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/context/visionContext</name>
   </compound>
-  <compound refid="dir_05a62ed24bb3a48fbffd2a25ac3c5a5e" kind="dir"><name>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/word2vec</name>
+  <compound refid="dir_05a62ed24bb3a48fbffd2a25ac3c5a5e" kind="dir"><name>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/word2vec</name>
   </compound>
 </doxygenindex>

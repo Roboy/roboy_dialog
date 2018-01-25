@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" line="19" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" bodystart="19" bodyend="21"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" line="19" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" bodystart="19" bodyend="21"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_random_answer_state_1a8b562d0f4a356ac6d697bb70669dd987" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" line="24" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" bodystart="24" bodyend="26"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" line="24" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" bodystart="24" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_random_answer_state_1a675d01fa8eb1674086cfda6a9daeca9b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" line="29" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" bodystart="29" bodyend="31"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" line="29" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" bodystart="29" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_random_answer_state_1adb0d34d99c764b2eb7dae53c787077d2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" line="34" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" bodystart="34" bodyend="36"/>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" line="34" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" bodystart="34" bodyend="36"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -70,39 +70,39 @@
     <detaileddescription>
 <para>It only implements the react() function returning a hardcoded random answer. This state should never become active (meaning that no transition should point to it.)</para><para>Fallback is not required (this state should be the fallback). This state has no outgoing transitions. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="1646">
+      <node id="1664">
         <label>roboy.newDialog.states.toyStates.ToyRandomAnswerState</label>
         <link refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_random_answer_state"/>
-        <childnode refid="1647" relation="public-inheritance">
+        <childnode refid="1665" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1647">
+      <node id="1665">
         <label>roboy.newDialog.states.State</label>
         <link refid="classroboy_1_1new_dialog_1_1states_1_1_state"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1648">
+      <node id="1666">
         <label>roboy.newDialog.states.toyStates.ToyRandomAnswerState</label>
         <link refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_random_answer_state"/>
-        <childnode refid="1649" relation="public-inheritance">
+        <childnode refid="1667" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1649">
+      <node id="1667">
         <label>roboy.newDialog.states.State</label>
         <link refid="classroboy_1_1new_dialog_1_1states_1_1_state"/>
-        <childnode refid="1650" relation="usage">
+        <childnode refid="1668" relation="usage">
           <edgelabel>transitions</edgelabel>
         </childnode>
-        <childnode refid="1649" relation="usage">
+        <childnode refid="1667" relation="usage">
           <edgelabel>fallback</edgelabel>
         </childnode>
       </node>
-      <node id="1650">
+      <node id="1668">
         <label>HashMap&lt; String, roboy.newDialog.states.State &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" line="17" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" bodystart="17" bodyend="37"/>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" line="17" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/toyStates/ToyRandomAnswerState.java" bodystart="17" bodyend="37"/>
     <listofallmembers>
       <member refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_random_answer_state_1a8b562d0f4a356ac6d697bb70669dd987" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyRandomAnswerState</scope><name>act</name></member>
       <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a610c6a1337f401e4e53806d3bdcb5335" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::toyStates::ToyRandomAnswerState</scope><name>allRequiredTransitionsAreInitialized</name></member>

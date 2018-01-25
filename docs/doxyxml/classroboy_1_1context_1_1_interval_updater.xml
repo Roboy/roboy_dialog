@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
+  <compounddef id="classroboy_1_1context_1_1_interval_updater" kind="class" language="Java" prot="public" abstract="yes">
+    <compoundname>roboy::context::IntervalUpdater</compoundname>
+    <basecompoundref refid="classroboy_1_1context_1_1_external_updater" prot="public" virt="non-virtual">roboy.context.ExternalUpdater</basecompoundref>
+    <derivedcompoundref refid="classroboy_1_1context_1_1context_objects_1_1_face_coordinates_updater" prot="public" virt="non-virtual">roboy.context.contextObjects.FaceCoordinatesUpdater</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classroboy_1_1context_1_1_interval_updater_1a542d30441a2953b1a42065b0b879c8b1" prot="protected" static="no" mutable="no">
+        <type>final T</type>
+        <definition>final T roboy.context.IntervalUpdater&lt; T &gt;.target</definition>
+        <argsstring></argsstring>
+        <name>target</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" line="16" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classroboy_1_1context_1_1_interval_updater_1acff488249ccdae34d5acca10113c45e5" prot="protected" static="no" mutable="no">
+        <type>final ScheduledExecutorService</type>
+        <definition>final ScheduledExecutorService roboy.context.IntervalUpdater&lt; T &gt;.scheduler</definition>
+        <argsstring></argsstring>
+        <name>scheduler</name>
+        <initializer>= Executors.newScheduledThreadPool(1)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" line="17" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classroboy_1_1context_1_1_interval_updater_1ac269246ba040046095b57248a1c62507" prot="public" static="no" mutable="no">
+        <type>final int</type>
+        <definition>final int roboy.context.IntervalUpdater&lt; T &gt;.updateFrequency</definition>
+        <argsstring></argsstring>
+        <name>updateFrequency</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" line="18" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classroboy_1_1context_1_1_interval_updater_1a48784f5d8c6dd8c2df60147f9f781367" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>roboy.context.IntervalUpdater&lt; T &gt;.IntervalUpdater</definition>
+        <argsstring>(T target, int updateFrequencySeconds)</argsstring>
+        <name>IntervalUpdater</name>
+        <param>
+          <type>T</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>updateFrequencySeconds</declname>
+        </param>
+        <briefdescription>
+<para>Create a new updater service, executing the update() method at regular time intervals. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The target attribute of the update() method. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>updateFrequencySeconds</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Delay in seconds between calls to the update() method. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" line="26" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" bodystart="26" bodyend="30"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classroboy_1_1context_1_1_interval_updater_1ad4c4dc5b8e5191647ec8ec2c3210957f" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void roboy.context.IntervalUpdater&lt; T &gt;.start</definition>
+        <argsstring>()</argsstring>
+        <name>start</name>
+        <briefdescription>
+<para>Starts the ScheduledExecutorService of the updating thread. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" line="35" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" bodystart="35" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An implementation of the UpdatePolicy which performs regular updates on a target object. </para>    </briefdescription>
+    <detaileddescription>
+<para>The method update() needs to be implemented in the subclass.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>&lt;T&gt;</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The class of the target object. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="1197">
+        <label>roboy::context::contextObjects::FaceCoordinatesUpdater&lt; FaceCoordinates &gt;</label>
+        <link refid="classroboy_1_1context_1_1context_objects_1_1_face_coordinates_updater"/>
+        <childnode refid="1195" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1196">
+        <label>roboy.context.ExternalUpdater</label>
+        <link refid="classroboy_1_1context_1_1_external_updater"/>
+      </node>
+      <node id="1195">
+        <label>roboy.context.IntervalUpdater&lt; T &gt;</label>
+        <link refid="classroboy_1_1context_1_1_interval_updater"/>
+        <childnode refid="1196" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1200">
+        <label>ScheduledExecutorService</label>
+      </node>
+      <node id="1199">
+        <label>roboy.context.ExternalUpdater</label>
+        <link refid="classroboy_1_1context_1_1_external_updater"/>
+      </node>
+      <node id="1198">
+        <label>roboy.context.IntervalUpdater&lt; T &gt;</label>
+        <link refid="classroboy_1_1context_1_1_interval_updater"/>
+        <childnode refid="1199" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1200" relation="usage">
+          <edgelabel>scheduler</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" line="15" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" bodystart="15" bodyend="44"/>
+    <listofallmembers>
+      <member refid="classroboy_1_1context_1_1_interval_updater_1a48784f5d8c6dd8c2df60147f9f781367" prot="public" virt="non-virtual"><scope>roboy::context::IntervalUpdater</scope><name>IntervalUpdater</name></member>
+      <member refid="classroboy_1_1context_1_1_interval_updater_1acff488249ccdae34d5acca10113c45e5" prot="protected" virt="non-virtual"><scope>roboy::context::IntervalUpdater</scope><name>scheduler</name></member>
+      <member refid="classroboy_1_1context_1_1_interval_updater_1ad4c4dc5b8e5191647ec8ec2c3210957f" prot="private" virt="non-virtual"><scope>roboy::context::IntervalUpdater</scope><name>start</name></member>
+      <member refid="classroboy_1_1context_1_1_interval_updater_1a542d30441a2953b1a42065b0b879c8b1" prot="protected" virt="non-virtual"><scope>roboy::context::IntervalUpdater</scope><name>target</name></member>
+      <member refid="classroboy_1_1context_1_1_external_updater_1ae50d8843fb627e0107de8420016ad233" prot="protected" virt="non-virtual"><scope>roboy::context::IntervalUpdater</scope><name>update</name></member>
+      <member refid="classroboy_1_1context_1_1_interval_updater_1ac269246ba040046095b57248a1c62507" prot="public" virt="non-virtual"><scope>roboy::context::IntervalUpdater</scope><name>updateFrequency</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
