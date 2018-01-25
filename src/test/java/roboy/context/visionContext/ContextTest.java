@@ -27,13 +27,12 @@ public class ContextTest {
 
     @Test
     public void setAndGetDialogTopics() {
-        Context ct = Context.getInstance();
-        Context.Updaters updater = Context.Updaters.DIALOG_TOPICS_UPDATER;
+        Context.InternalUpdaters updater = Context.InternalUpdaters.DIALOG_TOPICS_UPDATER;
         Context.ValueHistories topics = Context.ValueHistories.DIALOG_TOPICS;
 
-        ct.updateValue(updater, "test1");
+        updater.updateValue("test1");
         assertEquals("test1", ( topics.getLastValue()));
-        ct.updateValue(updater, "test2");
+        updater.updateValue("test2");
         Map<Integer, String> values = topics.getNLastValues(2);
         assertEquals("test1", values.get(0));
         assertEquals("test2", values.get(1));

@@ -7,12 +7,12 @@ import java.util.Map;
 /**
  * The collection of values, split into valueHistories (H) and single values (V).
  */
-public class AttributeManager<H extends ExternalContextInterface, V extends ExternalContextInterface> {
+public class ValueAccessManager<H extends ContextValueInterface, V extends ContextValueInterface> {
 
     protected ImmutableClassToInstanceMap<AbstractValueHistory> valueHistories;
     protected ImmutableClassToInstanceMap<AbstractValue> values;
 
-    protected <T> T getLastValue(ExternalContextInterface attribute) {
+    protected <T> T getLastValue(ContextValueInterface attribute) {
         Class<T> type = attribute.getReturnType();
         return type.cast(valueHistories.get(attribute.getClassType()).getValue());
     }
