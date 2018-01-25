@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="dir_e66165e7b281758ce9f1532451fea886" kind="dir">
-    <compoundname>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog</compoundname>
-    <innerdir refid="dir_1ab976347033ac022fed23b8deb25d44">/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/examples</innerdir>
-    <innerdir refid="dir_a37d8f862945072f307b1c1259356272">/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/states</innerdir>
+    <compoundname>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog</compoundname>
+    <innerdir refid="dir_1ab976347033ac022fed23b8deb25d44">/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/examples</innerdir>
+    <innerdir refid="dir_a37d8f862945072f307b1c1259356272">/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states</innerdir>
     <innerfile refid="_dialog_state_machine_8java">DialogStateMachine.java</innerfile>
     <innerfile refid="_new_dialog_system_8java">NewDialogSystem.java</innerfile>
     <innerfile refid="_state_based_personality_8java">StateBasedPersonality.java</innerfile>
@@ -11,6 +11,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/"/>
   </compounddef>
 </doxygen>

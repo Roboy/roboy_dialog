@@ -106,6 +106,6 @@
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
 <codeline lineno="106"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/dialog/personality/states/PersonalFollowUpState.java"/>
   </compounddef>
 </doxygen>

@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="17" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="17" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="17" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1af918fa9f871da1ad5949d2d270f0a3d1" prot="private" static="no" mutable="no">
         <type>TitledBorder</type>
@@ -27,7 +27,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="20" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="20" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="20" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1aba10b0caf1179f00fcd6a91ffb60bda6" prot="private" static="no" mutable="no">
         <type>JPanel</type>
@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="21" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="21" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="21" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="21" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a75a14ede7a703cada37a60dad59eacc9" prot="private" static="no" mutable="no">
         <type>Map&lt; Context.Values, JLabel &gt;</type>
@@ -53,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="22" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="22" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="22" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a9f4ae61c9c2308f0ade5ba7f5c425723" prot="private" static="no" mutable="no">
         <type>Map&lt; Context.ValueHistories, JScrollPane &gt;</type>
@@ -66,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="23" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="23" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="23" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="23" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a3814fea8e1e37be77b29bd347ca8dc05" prot="private" static="no" mutable="no">
         <type>TitledBorder</type>
@@ -79,7 +79,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="27" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="27" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="27" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a6cde0b159790e173b6374fd5c01bbf53" prot="private" static="no" mutable="no">
         <type>JPanel</type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="28" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="28" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="28" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="28" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1aa8566089498913ae783a802576bd5548" prot="private" static="no" mutable="no">
         <type>JPanel</type>
@@ -105,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="31" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="31" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="31" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="31" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-static-attrib">
@@ -121,7 +121,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="24" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="24" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="24" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="24" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1ad5dd4a537e4493bd9b10f2e422d45bb3" prot="private" static="yes" mutable="no">
         <type>int</type>
@@ -135,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="33" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="33" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="33" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="33" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1ac722d7c38b92bb6750eb6bc3e369f063" prot="private" static="yes" mutable="no">
         <type>int</type>
@@ -149,7 +149,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="34" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="34" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="34" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a294362dfa1420dead7ef8c80ff8024d9" prot="private" static="yes" mutable="no">
         <type>int</type>
@@ -163,7 +163,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="35" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="35" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="35" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a708ff148e6256cff86fab983404f5424" prot="private" static="yes" mutable="no">
         <type>int</type>
@@ -177,7 +177,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="36" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="36" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="36" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a66d7e65727b22516dd9f579784e0b4cc" prot="private" static="yes" mutable="no">
         <type>int</type>
@@ -191,7 +191,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="37" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="37" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="37" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1af833f5bda4717a2c568142f43da0fe7f" prot="private" static="yes" mutable="no">
         <type>String</type>
@@ -205,7 +205,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="39" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="39" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="39" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="39" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -220,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="41" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="41" bodyend="44"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="41" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="41" bodyend="44"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -235,7 +235,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="46" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="46" bodyend="48"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="46" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="46" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a0a24d042b988b8528c8b3e7450aca5df" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -248,7 +248,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="50" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="50" bodyend="120"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="50" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="50" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a498c82a6f80906f8a90182721eb3d0d4" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -261,7 +261,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="122" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="122" bodyend="131"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="122" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="122" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a5cb7152a8ee4a38bc6e75454e8f4680b" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -274,7 +274,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="133" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="133" bodyend="142"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="133" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="133" bodyend="142"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a3607bd5edf8c84659fa9aec3c411de32" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -287,7 +287,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="144" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="144" bodyend="159"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="144" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="144" bodyend="159"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -295,31 +295,31 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="1000">
+      <node id="1015">
         <label>roboy.context.GUI.ContextGUI</label>
         <link refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i"/>
-        <childnode refid="1001" relation="usage">
+        <childnode refid="1016" relation="usage">
           <edgelabel>valueDisplays</edgelabel>
         </childnode>
-        <childnode refid="1002" relation="usage">
+        <childnode refid="1017" relation="usage">
           <edgelabel>historyDisplays</edgelabel>
         </childnode>
-        <childnode refid="1003" relation="usage">
+        <childnode refid="1018" relation="usage">
           <edgelabel>valueBorder</edgelabel>
           <edgelabel>historyBorder</edgelabel>
         </childnode>
       </node>
-      <node id="1003">
+      <node id="1018">
         <label>TitledBorder</label>
       </node>
-      <node id="1002">
+      <node id="1017">
         <label>Map&lt; roboy.context.Context.ValueHistories, JScrollPane &gt;</label>
       </node>
-      <node id="1001">
+      <node id="1016">
         <label>Map&lt; roboy.context.Context.Values, JLabel &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" line="16" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="16" bodyend="160"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" line="16" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/GUI/ContextGUI.java" bodystart="16" bodyend="160"/>
     <listofallmembers>
       <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a708ff148e6256cff86fab983404f5424" prot="private" virt="non-virtual"><scope>roboy::context::GUI::ContextGUI</scope><name>ATTR_HEIGHT</name></member>
       <member refid="classroboy_1_1context_1_1_g_u_i_1_1_context_g_u_i_1a294362dfa1420dead7ef8c80ff8024d9" prot="private" virt="non-virtual"><scope>roboy::context::GUI::ContextGUI</scope><name>ATTR_WIDTH</name></member>

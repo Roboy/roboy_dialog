@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="26" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="26" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="26" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="26" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="28" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="28" bodyend="51"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="28" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="28" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a3b7b6f58b44cb0176928cee3b767de33" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="54" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="54" bodyend="64"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="54" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="54" bodyend="64"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="67" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="67" bodyend="79"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="67" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="67" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1aa25826fae985c947e80acad3bd01b5b3" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1linguistics_1_1_triple" kindref="compound">Triple</ref></type>
@@ -101,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="81" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="81" bodyend="103"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="81" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="81" bodyend="103"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1adf5b164eeb7c05fdb61ccb5996d98ff3" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1linguistics_1_1_triple" kindref="compound">Triple</ref></type>
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="105" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="105" bodyend="118"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="105" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="105" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a7adda755f129785575340f668d609c87" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1linguistics_1_1_triple" kindref="compound">Triple</ref></type>
@@ -143,7 +143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="120" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="120" bodyend="133"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="120" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="120" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a61b43e9f6b6c45c524ecbb66af221d27" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1linguistics_1_1_triple" kindref="compound">Triple</ref></type>
@@ -164,7 +164,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="135" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="135" bodyend="148"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="135" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="135" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a3adfc785cfc19240ca5589e43f366a89" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1linguistics_1_1_triple" kindref="compound">Triple</ref></type>
@@ -185,7 +185,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="150" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="150" bodyend="160"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="150" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="150" bodyend="160"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a156ec882cbf75c13a1b5cbb16e1ac90d" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1linguistics_1_1_triple" kindref="compound">Triple</ref></type>
@@ -206,7 +206,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="162" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="162" bodyend="175"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="162" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="162" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1ac307dfc707b307221882c53be7be86c2" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1linguistics_1_1_triple" kindref="compound">Triple</ref></type>
@@ -227,7 +227,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="177" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="177" bodyend="190"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="177" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="177" bodyend="190"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -235,36 +235,36 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1554">
+      <node id="1590">
         <label>roboy.linguistics.sentenceanalysis.SentenceAnalyzer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer"/>
-        <childnode refid="1555" relation="public-inheritance">
+        <childnode refid="1591" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1555">
+      <node id="1591">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1558">
+      <node id="1594">
         <label>Map&lt; String, String &gt;</label>
       </node>
-      <node id="1556">
+      <node id="1592">
         <label>roboy.linguistics.sentenceanalysis.SentenceAnalyzer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer"/>
-        <childnode refid="1557" relation="public-inheritance">
+        <childnode refid="1593" relation="public-inheritance">
         </childnode>
-        <childnode refid="1558" relation="usage">
+        <childnode refid="1594" relation="usage">
           <edgelabel>meanings</edgelabel>
         </childnode>
       </node>
-      <node id="1557">
+      <node id="1593">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
     </collaborationgraph>
-    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="24" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="24" bodyend="199"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" line="24" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SentenceAnalyzer.java" bodystart="24" bodyend="199"/>
     <listofallmembers>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a3b7b6f58b44cb0176928cee3b767de33" prot="public" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::SentenceAnalyzer</scope><name>analyze</name></member>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer_1a7adda755f129785575340f668d609c87" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::SentenceAnalyzer</scope><name>analyzeDoesIt</name></member>

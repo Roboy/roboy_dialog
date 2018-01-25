@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="dir_bd3690cddefd3747010feed6ae64d650" kind="dir">
-    <compoundname>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects</compoundname>
+    <compoundname>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/contextObjects</compoundname>
     <innerfile refid="_coordinate_set_8java">CoordinateSet.java</innerfile>
     <innerfile refid="_dialog_topics_8java">DialogTopics.java</innerfile>
     <innerfile refid="_dialog_topics_updater_8java">DialogTopicsUpdater.java</innerfile>
@@ -11,6 +11,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects/"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/contextObjects/"/>
   </compounddef>
 </doxygen>
