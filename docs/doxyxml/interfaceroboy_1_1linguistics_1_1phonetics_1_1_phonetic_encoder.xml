@@ -24,7 +24,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/phonetics/PhoneticEncoder.java" line="13" column="1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/phonetics/PhoneticEncoder.java" line="13" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -55,7 +55,7 @@
         <link refid="interfaceroboy_1_1linguistics_1_1phonetics_1_1_phonetic_encoder"/>
       </node>
     </inheritancegraph>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/phonetics/PhoneticEncoder.java" line="11" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/phonetics/PhoneticEncoder.java" bodystart="11" bodyend="14"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/phonetics/PhoneticEncoder.java" line="11" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/phonetics/PhoneticEncoder.java" bodystart="11" bodyend="14"/>
     <listofallmembers>
       <member refid="interfaceroboy_1_1linguistics_1_1phonetics_1_1_phonetic_encoder_1a4e47b9373bb14ff26d9af51f20e2e7f7" prot="public" virt="non-virtual"><scope>roboy::linguistics::phonetics::PhoneticEncoder</scope><name>encode</name></member>
     </listofallmembers>

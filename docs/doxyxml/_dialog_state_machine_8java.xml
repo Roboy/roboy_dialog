@@ -341,6 +341,6 @@
 <codeline lineno="341"><highlight class="normal"></highlight></codeline>
 <codeline lineno="342"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/newDialog/DialogStateMachine.java"/>
   </compounddef>
 </doxygen>

@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/Communication.java" line="8" column="1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/io/Communication.java" line="8" column="1"/>
       </memberdef>
       <memberdef kind="function" id="interfaceroboy_1_1io_1_1_communication_1ab0afb027eb080087ff7142063298b0fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/Communication.java" line="10" column="1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/io/Communication.java" line="10" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -53,7 +53,7 @@
         <link refid="interfaceroboy_1_1io_1_1_communication"/>
       </node>
     </inheritancegraph>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/Communication.java" line="6" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/Communication.java" bodystart="6" bodyend="11"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/io/Communication.java" line="6" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/io/Communication.java" bodystart="6" bodyend="11"/>
     <listofallmembers>
       <member refid="interfaceroboy_1_1io_1_1_communication_1ab0afb027eb080087ff7142063298b0fc" prot="public" virt="non-virtual"><scope>roboy::io::Communication</scope><name>communicate</name></member>
       <member refid="interfaceroboy_1_1io_1_1_communication_1add61ceea080808f1dd70aa8e06447e60" prot="public" virt="non-virtual"><scope>roboy::io::Communication</scope><name>setPersonality</name></member>

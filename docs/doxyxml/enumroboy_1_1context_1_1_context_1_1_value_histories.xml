@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" line="55" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="55" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" line="55" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1context_1_1_context_1_1_value_histories_1a2b486cf1d0e9ac6a5117d07009f451dd" prot="public" static="no" mutable="no">
         <type>final Class</type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" line="57" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="57" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" line="57" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1context_1_1_context_1_1_value_histories_1ab7d6f141d093fa9bfd4f09e33212dbe6" prot="public" static="no" mutable="no">
         <type>final Class</type>
@@ -42,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" line="58" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="58" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" line="58" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="58" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" line="60" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="60" bodyend="63"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" line="60" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="60" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_value_histories_1aaae5dd95f9473193476f3a427d32f556" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Class</type>
@@ -79,7 +79,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" line="65" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="65" bodyend="67"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" line="65" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="65" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_value_histories_1ae6b081e4c0cd0ffe3e0e93dcc07ff73f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Class</type>
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" line="69" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="69" bodyend="71"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" line="69" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="69" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_value_histories_1a5f3ce261246056e99868acc5644d98be" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>public&lt; T &gt; T</type>
@@ -106,7 +106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" line="73" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="73" bodyend="75"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" line="73" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="73" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_value_histories_1a1445f1264f4d08ea417da1440d81fff9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>public&lt; K, T &gt; Map&lt; K, T &gt;</type>
@@ -123,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" line="77" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="77" bodyend="79"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" line="77" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="77" bodyend="79"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -154,7 +154,7 @@
         <link refid="interfaceroboy_1_1context_1_1_external_context_interface"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" line="54" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="54" bodyend="80"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" line="54" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="54" bodyend="80"/>
     <listofallmembers>
       <member refid="enumroboy_1_1context_1_1_context_1_1_value_histories_1a2b486cf1d0e9ac6a5117d07009f451dd" prot="public" virt="non-virtual"><scope>roboy::context::Context::ValueHistories</scope><name>classType</name></member>
       <member refid="enumroboy_1_1context_1_1_context_1_1_value_histories_1a82d18f5a8ab05314d2af400617b8de61" prot="public" virt="non-virtual"><scope>roboy::context::Context::ValueHistories</scope><name>DIALOG_TOPICS</name></member>

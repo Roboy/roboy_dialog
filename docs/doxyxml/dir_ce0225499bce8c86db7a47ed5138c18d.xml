@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="dir_ce0225499bce8c86db7a47ed5138c18d" kind="dir">
-    <compoundname>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/context/visionContext</compoundname>
+    <compoundname>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java/roboy/context/visionContext</compoundname>
     <innerfile refid="_context_test_8java">ContextTest.java</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/context/visionContext/"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java/roboy/context/visionContext/"/>
   </compounddef>
 </doxygen>

@@ -27,7 +27,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/AbstractValueHistory.java" line="10" column="1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/AbstractValueHistory.java" line="10" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -58,7 +58,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/AbstractValueHistory.java" line="9" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/AbstractValueHistory.java" bodystart="9" bodyend="11"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/AbstractValueHistory.java" line="9" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/AbstractValueHistory.java" bodystart="9" bodyend="11"/>
     <listofallmembers>
       <member refid="interfaceroboy_1_1context_1_1_abstract_value_history_1a76229d868a8d76d206d2798bd3058c59" prot="public" virt="non-virtual"><scope>roboy::context::AbstractValueHistory</scope><name>getLastNValues</name></member>
       <member refid="interfaceroboy_1_1context_1_1_abstract_value_1ac939f9d2d4f77d9a24d3027f88ece63d" prot="public" virt="non-virtual"><scope>roboy::context::AbstractValueHistory</scope><name>getValue</name></member>

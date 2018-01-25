@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Analyzer.java" line="10" column="1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Analyzer.java" line="10" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -119,7 +119,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Analyzer.java" line="8" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Analyzer.java" bodystart="8" bodyend="12"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Analyzer.java" line="8" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/Analyzer.java" bodystart="8" bodyend="12"/>
     <listofallmembers>
       <member refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer_1a815ac125df33bff418d4a21618e5a340" prot="public" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::Analyzer</scope><name>analyze</name></member>
     </listofallmembers>

@@ -27,7 +27,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/InputDevice.java" line="9" column="1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/io/InputDevice.java" line="9" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -76,7 +76,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/InputDevice.java" line="8" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/InputDevice.java" bodystart="8" bodyend="10"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/io/InputDevice.java" line="8" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/io/InputDevice.java" bodystart="8" bodyend="10"/>
     <listofallmembers>
       <member refid="interfaceroboy_1_1io_1_1_input_device_1aa9b02ed06118c2fd1ec2a82cfd9115d8" prot="public" virt="non-virtual"><scope>roboy::io::InputDevice</scope><name>listen</name></member>
     </listofallmembers>

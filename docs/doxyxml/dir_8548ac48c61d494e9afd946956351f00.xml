@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="dir_8548ac48c61d494e9afd946956351f00" kind="dir">
-    <compoundname>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros</compoundname>
+    <compoundname>/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/ros</compoundname>
     <innerfile refid="_ros_8java">Ros.java</innerfile>
     <innerfile refid="_ros_clients_8java">RosClients.java</innerfile>
     <innerfile refid="_ros_main_node_8java">RosMainNode.java</innerfile>
@@ -10,6 +10,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/ros/"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/ros/"/>
   </compounddef>
 </doxygen>

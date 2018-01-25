@@ -33,7 +33,7 @@
         <link refid="interfaceroboy_1_1dialog_1_1action_1_1_action"/>
       </node>
     </inheritancegraph>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/action/Action.java" line="8" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/dialog/action/Action.java" bodystart="8" bodyend="10"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/action/Action.java" line="8" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/dialog/action/Action.java" bodystart="8" bodyend="10"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

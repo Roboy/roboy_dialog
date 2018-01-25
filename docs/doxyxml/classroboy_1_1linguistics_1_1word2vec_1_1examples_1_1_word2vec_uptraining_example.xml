@@ -19,14 +19,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/Word2vecUptrainingExample.java" line="27" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/Word2vecUptrainingExample.java" bodystart="27" bodyend="107"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/Word2vecUptrainingExample.java" line="27" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/Word2vecUptrainingExample.java" bodystart="27" bodyend="107"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Neural net that processes text into word-vectors. </para>    </briefdescription>
     <detaileddescription>
 <para>This example shows how to save/load and train the model.</para><para>Adapted from org.deeplearning4j.examples.nlp.word2vec.Word2VecUptrainingExample </para>    </detaileddescription>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/Word2vecUptrainingExample.java" line="25" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/Word2vecUptrainingExample.java" bodystart="25" bodyend="108"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/Word2vecUptrainingExample.java" line="25" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/word2vec/examples/Word2vecUptrainingExample.java" bodystart="25" bodyend="108"/>
     <listofallmembers>
       <member refid="classroboy_1_1linguistics_1_1word2vec_1_1examples_1_1_word2vec_uptraining_example_1aa9e2049c4c360e1f19496411f37c1bd5" prot="public" virt="non-virtual"><scope>roboy::linguistics::word2vec::examples::Word2vecUptrainingExample</scope><name>main</name></member>
     </listofallmembers>

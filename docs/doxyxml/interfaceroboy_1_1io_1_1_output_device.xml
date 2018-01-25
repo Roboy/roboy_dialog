@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/OutputDevice.java" line="11" column="1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/io/OutputDevice.java" line="11" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -87,7 +87,7 @@
         <link refid="interfaceroboy_1_1io_1_1_output_device"/>
       </node>
     </inheritancegraph>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/OutputDevice.java" line="10" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/OutputDevice.java" bodystart="10" bodyend="12"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/io/OutputDevice.java" line="10" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/io/OutputDevice.java" bodystart="10" bodyend="12"/>
     <listofallmembers>
       <member refid="interfaceroboy_1_1io_1_1_output_device_1aa47aae2af369116c8b407f7bd2770ce9" prot="public" virt="non-virtual"><scope>roboy::io::OutputDevice</scope><name>act</name></member>
     </listofallmembers>

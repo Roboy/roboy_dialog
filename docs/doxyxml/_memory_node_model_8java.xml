@@ -159,6 +159,6 @@
 <codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="158"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes/MemoryNodeModel.java"/>
   </compounddef>
 </doxygen>
