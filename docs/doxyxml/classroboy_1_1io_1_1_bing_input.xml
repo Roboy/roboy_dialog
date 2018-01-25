@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/BingInput.java" line="10" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/BingInput.java" bodystart="10" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/io/BingInput.java" line="10" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/io/BingInput.java" bodystart="10" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/BingInput.java" line="12" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/BingInput.java" bodystart="12" bodyend="14"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/io/BingInput.java" line="12" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/io/BingInput.java" bodystart="12" bodyend="14"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1io_1_1_bing_input_1a9863247c643f9a271a228ac2bcebe647" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1io_1_1_input" kindref="compound">Input</ref></type>
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/BingInput.java" line="16" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/BingInput.java" bodystart="16" bodyend="21"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/io/BingInput.java" line="16" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/io/BingInput.java" bodystart="16" bodyend="21"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -57,61 +57,61 @@
     <detaileddescription>
 <para>Requires internet connection. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="947">
+      <node id="932">
         <label>roboy.io.BingInput</label>
         <link refid="classroboy_1_1io_1_1_bing_input"/>
-        <childnode refid="948" relation="public-inheritance">
+        <childnode refid="933" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="948">
+      <node id="933">
         <label>roboy.io.InputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_input_device"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="955">
+      <node id="940">
         <label>CountDownLatch</label>
       </node>
-      <node id="949">
+      <node id="934">
         <label>roboy.io.BingInput</label>
         <link refid="classroboy_1_1io_1_1_bing_input"/>
-        <childnode refid="950" relation="public-inheritance">
+        <childnode refid="935" relation="public-inheritance">
         </childnode>
-        <childnode refid="951" relation="usage">
+        <childnode refid="936" relation="usage">
           <edgelabel>rosMainNode</edgelabel>
         </childnode>
       </node>
-      <node id="950">
+      <node id="935">
         <label>roboy.io.InputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_input_device"/>
       </node>
-      <node id="954">
+      <node id="939">
         <label>HashMap&lt; roboy.ros.RosClients, ServiceClient &gt;</label>
       </node>
-      <node id="951">
+      <node id="936">
         <label>roboy.ros.RosMainNode</label>
         <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
-        <childnode refid="952" relation="public-inheritance">
+        <childnode refid="937" relation="public-inheritance">
         </childnode>
-        <childnode refid="953" relation="usage">
+        <childnode refid="938" relation="usage">
           <edgelabel>clients</edgelabel>
         </childnode>
-        <childnode refid="955" relation="usage">
+        <childnode refid="940" relation="usage">
           <edgelabel>rosConnectionLatch</edgelabel>
         </childnode>
       </node>
-      <node id="953">
+      <node id="938">
         <label>roboy.ros.RosManager</label>
         <link refid="classroboy_1_1ros_1_1_ros_manager"/>
-        <childnode refid="954" relation="usage">
+        <childnode refid="939" relation="usage">
           <edgelabel>clientMap</edgelabel>
         </childnode>
       </node>
-      <node id="952">
+      <node id="937">
         <label>AbstractNodeMain</label>
       </node>
     </collaborationgraph>
-    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/BingInput.java" line="9" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/BingInput.java" bodystart="8" bodyend="23"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/io/BingInput.java" line="9" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/io/BingInput.java" bodystart="8" bodyend="23"/>
     <listofallmembers>
       <member refid="classroboy_1_1io_1_1_bing_input_1ae757256471aa92e7fb8fd26cc22da7bf" prot="public" virt="non-virtual"><scope>roboy::io::BingInput</scope><name>BingInput</name></member>
       <member refid="classroboy_1_1io_1_1_bing_input_1a9863247c643f9a271a228ac2bcebe647" prot="public" virt="non-virtual"><scope>roboy::io::BingInput</scope><name>listen</name></member>

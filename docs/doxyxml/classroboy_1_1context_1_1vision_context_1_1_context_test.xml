@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/context/visionContext/ContextTest.java" line="17" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/context/visionContext/ContextTest.java" bodystart="17" bodyend="26"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java/roboy/context/visionContext/ContextTest.java" line="17" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java/roboy/context/visionContext/ContextTest.java" bodystart="17" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1context_1_1vision_context_1_1_context_test_1a747cd35329fe3f46cc6fb379950995e4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -28,14 +28,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/context/visionContext/ContextTest.java" line="29" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/context/visionContext/ContextTest.java" bodystart="29" bodyend="39"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java/roboy/context/visionContext/ContextTest.java" line="29" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java/roboy/context/visionContext/ContextTest.java" bodystart="29" bodyend="40"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/context/visionContext/ContextTest.java" line="12" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/context/visionContext/ContextTest.java" bodystart="12" bodyend="40"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java/roboy/context/visionContext/ContextTest.java" line="12" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/test/java/roboy/context/visionContext/ContextTest.java" bodystart="12" bodyend="41"/>
     <listofallmembers>
       <member refid="classroboy_1_1context_1_1vision_context_1_1_context_test_1ac8cad491c4aa15a5ca5c540438e2f4cb" prot="public" virt="non-virtual"><scope>roboy::context::visionContext::ContextTest</scope><name>getLastAttributeValue</name></member>
       <member refid="classroboy_1_1context_1_1vision_context_1_1_context_test_1a747cd35329fe3f46cc6fb379950995e4" prot="public" virt="non-virtual"><scope>roboy::context::visionContext::ContextTest</scope><name>setAndGetDialogTopics</name></member>

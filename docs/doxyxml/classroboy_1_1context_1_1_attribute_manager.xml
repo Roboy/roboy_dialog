@@ -24,7 +24,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="12" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="12" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="12" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="12" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1_attribute_manager_1aa80bebfb0b32b719083b9ecea12f51a2" prot="protected" static="no" mutable="no">
         <type>ImmutableClassToInstanceMap&lt; <ref refid="interfaceroboy_1_1context_1_1_abstract_value" kindref="compound">AbstractValue</ref> &gt;</type>
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="13" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="13" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="13" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="13" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="package-func">
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="15" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="15" bodyend="18"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="15" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="15" bodyend="18"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1context_1_1_attribute_manager_1aa2b1bec09e5088db3f13757be1b5803b" prot="package" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>protected&lt; K, T &gt; Map&lt; K, T &gt;</type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="20" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="20" bodyend="22"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="20" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="20" bodyend="22"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1context_1_1_attribute_manager_1a6aaa68eeb8b9a44ec604e7c5c879774f" prot="package" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>protected&lt; T &gt; T</type>
@@ -94,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="24" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="24" bodyend="27"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="24" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="24" bodyend="27"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -119,7 +119,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="10" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="10" bodyend="28"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" line="10" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/AttributeManager.java" bodystart="10" bodyend="28"/>
     <listofallmembers>
       <member refid="classroboy_1_1context_1_1_attribute_manager_1ab578d331f5b9ed3e4422c389a1ee73f0" prot="package" virt="non-virtual"><scope>roboy::context::AttributeManager</scope><name>getLastValue</name></member>
       <member refid="classroboy_1_1context_1_1_attribute_manager_1aa2b1bec09e5088db3f13757be1b5803b" prot="package" virt="non-virtual"><scope>roboy::context::AttributeManager</scope><name>getNLastValues</name></member>

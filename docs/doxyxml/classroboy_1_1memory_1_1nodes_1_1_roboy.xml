@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes/Roboy.java" line="15" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes/Roboy.java" bodystart="15" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes/Roboy.java" line="15" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes/Roboy.java" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1memory_1_1nodes_1_1_roboy_1aa2dbcdf157c087aed2783283642e0113" prot="private" static="no" mutable="no">
         <type>boolean</type>
@@ -27,7 +27,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes/Roboy.java" line="18" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes/Roboy.java" bodystart="18" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes/Roboy.java" line="18" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes/Roboy.java" bodystart="18" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="package-attrib">
@@ -42,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes/Roboy.java" line="16" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes/Roboy.java" bodystart="16" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes/Roboy.java" line="16" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes/Roboy.java" bodystart="16" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -61,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes/Roboy.java" line="23" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes/Roboy.java" bodystart="23" bodyend="28"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes/Roboy.java" line="23" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes/Roboy.java" bodystart="23" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_roboy_1ad62b3b626edc5f77ac696b70c30cab53" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -75,7 +75,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes/Roboy.java" line="67" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes/Roboy.java" bodystart="67" bodyend="69"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes/Roboy.java" line="67" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes/Roboy.java" bodystart="67" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_roboy_1a14b3e556fe15ce03893be9474887e01d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>ArrayList&lt; Integer &gt;</type>
@@ -93,7 +93,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes/Roboy.java" line="76" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes/Roboy.java" bodystart="76" bodyend="78"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes/Roboy.java" line="76" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes/Roboy.java" bodystart="76" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1memory_1_1nodes_1_1_roboy_1a633475848e60b2bc6c966b531cd99c8d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -114,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes/Roboy.java" line="83" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes/Roboy.java" bodystart="83" bodyend="120"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes/Roboy.java" line="83" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes/Roboy.java" bodystart="83" bodyend="120"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -133,7 +133,7 @@
 <para>If something goes wrong during querying, <ref refid="classroboy_1_1memory_1_1nodes_1_1_roboy" kindref="compound">Roboy</ref> stays empty and soulless, and has to fallback </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes/Roboy.java" line="38" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes/Roboy.java" bodystart="38" bodyend="61"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes/Roboy.java" line="38" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes/Roboy.java" bodystart="38" bodyend="61"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -141,90 +141,90 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="1550">
+      <node id="1514">
         <label>CountDownLatch</label>
       </node>
-      <node id="1545">
+      <node id="1509">
         <label>Gson</label>
       </node>
-      <node id="1539">
+      <node id="1503">
         <label>roboy.memory.nodes.MemoryNodeModel</label>
         <link refid="classroboy_1_1memory_1_1nodes_1_1_memory_node_model"/>
-        <childnode refid="1540" relation="usage">
+        <childnode refid="1504" relation="usage">
           <edgelabel>properties</edgelabel>
         </childnode>
-        <childnode refid="1541" relation="usage">
+        <childnode refid="1505" relation="usage">
           <edgelabel>labels</edgelabel>
         </childnode>
-        <childnode refid="1542" relation="usage">
+        <childnode refid="1506" relation="usage">
           <edgelabel>relationships</edgelabel>
         </childnode>
       </node>
-      <node id="1538">
+      <node id="1502">
         <label>roboy.memory.nodes.Roboy</label>
         <link refid="classroboy_1_1memory_1_1nodes_1_1_roboy"/>
-        <childnode refid="1539" relation="usage">
+        <childnode refid="1503" relation="usage">
           <edgelabel>roboy</edgelabel>
         </childnode>
-        <childnode refid="1543" relation="usage">
+        <childnode refid="1507" relation="usage">
           <edgelabel>memory</edgelabel>
         </childnode>
       </node>
-      <node id="1544">
+      <node id="1508">
         <label>roboy.memory.Memory&lt; MemoryNodeModel &gt;</label>
         <link refid="interfaceroboy_1_1memory_1_1_memory"/>
       </node>
-      <node id="1549">
+      <node id="1513">
         <label>HashMap&lt; roboy.ros.RosClients, ServiceClient &gt;</label>
       </node>
-      <node id="1540">
+      <node id="1504">
         <label>HashMap&lt; String, Object &gt;</label>
       </node>
-      <node id="1546">
+      <node id="1510">
         <label>roboy.ros.RosMainNode</label>
         <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
-        <childnode refid="1547" relation="public-inheritance">
+        <childnode refid="1511" relation="public-inheritance">
         </childnode>
-        <childnode refid="1548" relation="usage">
+        <childnode refid="1512" relation="usage">
           <edgelabel>clients</edgelabel>
         </childnode>
-        <childnode refid="1550" relation="usage">
+        <childnode refid="1514" relation="usage">
           <edgelabel>rosConnectionLatch</edgelabel>
         </childnode>
       </node>
-      <node id="1542">
+      <node id="1506">
         <label>HashMap&lt; String, ArrayList&lt; Integer &gt; &gt;</label>
       </node>
-      <node id="1548">
+      <node id="1512">
         <label>roboy.ros.RosManager</label>
         <link refid="classroboy_1_1ros_1_1_ros_manager"/>
-        <childnode refid="1549" relation="usage">
+        <childnode refid="1513" relation="usage">
           <edgelabel>clientMap</edgelabel>
         </childnode>
       </node>
-      <node id="1541">
+      <node id="1505">
         <label>ArrayList&lt; String &gt;</label>
       </node>
-      <node id="1547">
+      <node id="1511">
         <label>AbstractNodeMain</label>
       </node>
-      <node id="1543">
+      <node id="1507">
         <label>roboy.memory.Neo4jMemory</label>
         <link refid="classroboy_1_1memory_1_1_neo4j_memory"/>
-        <childnode refid="1544" relation="public-inheritance">
+        <childnode refid="1508" relation="public-inheritance">
         </childnode>
-        <childnode refid="1545" relation="usage">
+        <childnode refid="1509" relation="usage">
           <edgelabel>gson</edgelabel>
         </childnode>
-        <childnode refid="1546" relation="usage">
+        <childnode refid="1510" relation="usage">
           <edgelabel>rosMainNode</edgelabel>
         </childnode>
-        <childnode refid="1543" relation="usage">
+        <childnode refid="1507" relation="usage">
           <edgelabel>memory</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes/Roboy.java" line="14" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/memory/nodes/Roboy.java" bodystart="14" bodyend="121"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes/Roboy.java" line="14" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/memory/nodes/Roboy.java" bodystart="14" bodyend="121"/>
     <listofallmembers>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1a633475848e60b2bc6c966b531cd99c8d" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::Roboy</scope><name>addInformation</name></member>
       <member refid="classroboy_1_1memory_1_1nodes_1_1_roboy_1ad62b3b626edc5f77ac696b70c30cab53" prot="public" virt="non-virtual"><scope>roboy::memory::nodes::Roboy</scope><name>getName</name></member>

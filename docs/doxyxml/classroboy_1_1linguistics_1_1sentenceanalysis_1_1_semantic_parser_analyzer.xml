@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" line="20" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" bodystart="20" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" line="20" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer_1a9f4f60d44a9701e8132c08cc25ba5842" prot="private" static="no" mutable="no">
         <type>PrintWriter</type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" line="21" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" bodystart="21" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" line="21" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" bodystart="21" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer_1ac9d814c727b035c4c0b7d135cbcbf04c" prot="private" static="no" mutable="no">
         <type>BufferedReader</type>
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" line="22" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" bodystart="22" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" line="22" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer_1a019c22a94b2a0eac0defc9a67e15292f" prot="private" static="no" mutable="no">
         <type>boolean</type>
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" line="23" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" bodystart="23" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" line="23" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" bodystart="23" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -74,7 +74,7 @@
 <para>Creates ParserAnalyzer class and connects the parser to DM using a socket. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" line="29" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" bodystart="29" bodyend="42"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" line="29" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" bodystart="29" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer_1ab3bdd822a68101cba8c5a1ed660866e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
@@ -101,7 +101,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" line="53" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" bodystart="53" bodyend="87"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" line="53" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" bodystart="53" bodyend="87"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -109,48 +109,48 @@
     <detaileddescription>
 <para>Connects DM to Roboy parser and adds its result to interpretation class. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="1582">
+      <node id="1546">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
-      <node id="1581">
+      <node id="1545">
         <label>roboy.linguistics.sentenceanalysis.SemanticParserAnalyzer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer"/>
-        <childnode refid="1582" relation="public-inheritance">
+        <childnode refid="1546" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1587">
+      <node id="1551">
         <label>PrintWriter</label>
       </node>
-      <node id="1585">
+      <node id="1549">
         <label>BufferedReader</label>
       </node>
-      <node id="1584">
+      <node id="1548">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
-      <node id="1583">
+      <node id="1547">
         <label>roboy.linguistics.sentenceanalysis.SemanticParserAnalyzer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer"/>
-        <childnode refid="1584" relation="public-inheritance">
+        <childnode refid="1548" relation="public-inheritance">
         </childnode>
-        <childnode refid="1585" relation="usage">
+        <childnode refid="1549" relation="usage">
           <edgelabel>in</edgelabel>
         </childnode>
-        <childnode refid="1586" relation="usage">
+        <childnode refid="1550" relation="usage">
           <edgelabel>clientSocket</edgelabel>
         </childnode>
-        <childnode refid="1587" relation="usage">
+        <childnode refid="1551" relation="usage">
           <edgelabel>out</edgelabel>
         </childnode>
       </node>
-      <node id="1586">
+      <node id="1550">
         <label>Socket</label>
       </node>
     </collaborationgraph>
-    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" line="18" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" bodystart="18" bodyend="89"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" line="18" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/SemanticParserAnalyzer.java" bodystart="18" bodyend="89"/>
     <listofallmembers>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer_1ab3bdd822a68101cba8c5a1ed660866e3" prot="public" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::SemanticParserAnalyzer</scope><name>analyze</name></member>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_semantic_parser_analyzer_1a3a22ede0bd79a6478adec62d30cb09e7" prot="private" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::SemanticParserAnalyzer</scope><name>clientSocket</name></member>

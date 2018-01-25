@@ -14,7 +14,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/contextObjects/CoordinateSet.java" line="7" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/contextObjects/CoordinateSet.java" bodystart="7" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects/CoordinateSet.java" line="7" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects/CoordinateSet.java" bodystart="7" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1context_objects_1_1_coordinate_set_1a05feb4e05eface8440be59b4bc1ad936" prot="package" static="no" mutable="no">
         <type>final double</type>
@@ -27,7 +27,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/contextObjects/CoordinateSet.java" line="8" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/contextObjects/CoordinateSet.java" bodystart="8" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects/CoordinateSet.java" line="8" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects/CoordinateSet.java" bodystart="8" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1context_objects_1_1_coordinate_set_1a3f8711a873157ae34850b11b71a64046" prot="package" static="no" mutable="no">
         <type>final double</type>
@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/contextObjects/CoordinateSet.java" line="9" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/contextObjects/CoordinateSet.java" bodystart="9" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects/CoordinateSet.java" line="9" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects/CoordinateSet.java" bodystart="9" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -67,30 +67,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/contextObjects/CoordinateSet.java" line="11" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/contextObjects/CoordinateSet.java" bodystart="11" bodyend="15"/>
-      </memberdef>
-      <memberdef kind="function" id="classroboy_1_1context_1_1context_objects_1_1_coordinate_set_1a3be63dc88a48fcefac2b91a949d885fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>String</type>
-        <definition>String roboy.context.contextObjects.CoordinateSet.toString</definition>
-        <argsstring>()</argsstring>
-        <name>toString</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/contextObjects/CoordinateSet.java" line="18" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/contextObjects/CoordinateSet.java" bodystart="18" bodyend="21"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects/CoordinateSet.java" line="11" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects/CoordinateSet.java" bodystart="11" bodyend="15"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>A coordinate set data structure for the interlocutor face. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/contextObjects/CoordinateSet.java" line="6" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/contextObjects/CoordinateSet.java" bodystart="6" bodyend="22"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects/CoordinateSet.java" line="6" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/contextObjects/CoordinateSet.java" bodystart="6" bodyend="16"/>
     <listofallmembers>
       <member refid="classroboy_1_1context_1_1context_objects_1_1_coordinate_set_1a4baf8e7346eae8240453183dd785bfde" prot="public" virt="non-virtual"><scope>roboy::context::contextObjects::CoordinateSet</scope><name>CoordinateSet</name></member>
-      <member refid="classroboy_1_1context_1_1context_objects_1_1_coordinate_set_1a3be63dc88a48fcefac2b91a949d885fd" prot="public" virt="non-virtual"><scope>roboy::context::contextObjects::CoordinateSet</scope><name>toString</name></member>
       <member refid="classroboy_1_1context_1_1context_objects_1_1_coordinate_set_1a98e631ae540b8a3236811dbaa85e612f" prot="package" virt="non-virtual"><scope>roboy::context::contextObjects::CoordinateSet</scope><name>x</name></member>
       <member refid="classroboy_1_1context_1_1context_objects_1_1_coordinate_set_1a05feb4e05eface8440be59b4bc1ad936" prot="package" virt="non-virtual"><scope>roboy::context::contextObjects::CoordinateSet</scope><name>y</name></member>
       <member refid="classroboy_1_1context_1_1context_objects_1_1_coordinate_set_1a3f8711a873157ae34850b11b71a64046" prot="package" virt="non-virtual"><scope>roboy::context::contextObjects::CoordinateSet</scope><name>z</name></member>

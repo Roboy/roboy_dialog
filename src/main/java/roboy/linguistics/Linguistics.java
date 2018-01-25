@@ -126,7 +126,7 @@ public class Linguistics {
 	public static final String INTENT_DISTANCE = "intentdistance";
 
 	/**
-	 * The confidence score of the machine learning intent classification in the IntentAnalyzer
+	 * The result of SemanticParserAnalyzer, formal language representation
 	 */
 	public static final String PARSE = "parse";
 	

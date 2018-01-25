@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/IntervalUpdater.java" line="16" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/IntervalUpdater.java" bodystart="16" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" line="16" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1context_1_1_interval_updater_1acff488249ccdae34d5acca10113c45e5" prot="protected" static="no" mutable="no">
         <type>final ScheduledExecutorService</type>
@@ -35,23 +35,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/IntervalUpdater.java" line="17" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/IntervalUpdater.java" bodystart="17" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" line="17" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" bodystart="17" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="classroboy_1_1context_1_1_interval_updater_1ad65c8b94e29d524c95d8a499a530c739" prot="public" static="no" mutable="no">
-        <type>int</type>
-        <definition>int roboy.context.IntervalUpdater&lt; T &gt;.updateFrequencySeconds</definition>
+      <memberdef kind="variable" id="classroboy_1_1context_1_1_interval_updater_1ac269246ba040046095b57248a1c62507" prot="public" static="no" mutable="no">
+        <type>final int</type>
+        <definition>final int roboy.context.IntervalUpdater&lt; T &gt;.updateFrequency</definition>
         <argsstring></argsstring>
-        <name>updateFrequencySeconds</name>
-        <initializer>= 1</initializer>
+        <name>updateFrequency</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/IntervalUpdater.java" line="18" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/IntervalUpdater.java" bodystart="18" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" line="18" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" bodystart="18" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -89,32 +88,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/IntervalUpdater.java" line="26" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/IntervalUpdater.java" bodystart="26" bodyend="30"/>
-      </memberdef>
-      <memberdef kind="function" id="classroboy_1_1context_1_1_interval_updater_1a9eb4030ed6ba12e8c6b430f0f8aac5b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type></type>
-        <definition>roboy.context.IntervalUpdater&lt; T &gt;.IntervalUpdater</definition>
-        <argsstring>(T target)</argsstring>
-        <name>IntervalUpdater</name>
-        <param>
-          <type>T</type>
-          <declname>target</declname>
-        </param>
-        <briefdescription>
-<para>Create a new updater service, executing the update() method at regular time intervals. </para>        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>target</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The target attribute of the update() method. </para></parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/IntervalUpdater.java" line="37" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/IntervalUpdater.java" bodystart="37" bodyend="40"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" line="26" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" bodystart="26" bodyend="30"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -129,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/IntervalUpdater.java" line="45" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/IntervalUpdater.java" bodystart="45" bodyend="52"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" line="35" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" bodystart="35" bodyend="42"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -145,50 +119,49 @@
 </parameterlist>
 </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="1233">
+      <node id="1197">
         <label>roboy::context::contextObjects::FaceCoordinatesUpdater&lt; FaceCoordinates &gt;</label>
         <link refid="classroboy_1_1context_1_1context_objects_1_1_face_coordinates_updater"/>
-        <childnode refid="1231" relation="public-inheritance">
+        <childnode refid="1195" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1232">
+      <node id="1196">
         <label>roboy.context.ExternalUpdater</label>
         <link refid="classroboy_1_1context_1_1_external_updater"/>
       </node>
-      <node id="1231">
+      <node id="1195">
         <label>roboy.context.IntervalUpdater&lt; T &gt;</label>
         <link refid="classroboy_1_1context_1_1_interval_updater"/>
-        <childnode refid="1232" relation="public-inheritance">
+        <childnode refid="1196" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1236">
+      <node id="1200">
         <label>ScheduledExecutorService</label>
       </node>
-      <node id="1235">
+      <node id="1199">
         <label>roboy.context.ExternalUpdater</label>
         <link refid="classroboy_1_1context_1_1_external_updater"/>
       </node>
-      <node id="1234">
+      <node id="1198">
         <label>roboy.context.IntervalUpdater&lt; T &gt;</label>
         <link refid="classroboy_1_1context_1_1_interval_updater"/>
-        <childnode refid="1235" relation="public-inheritance">
+        <childnode refid="1199" relation="public-inheritance">
         </childnode>
-        <childnode refid="1236" relation="usage">
+        <childnode refid="1200" relation="usage">
           <edgelabel>scheduler</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/IntervalUpdater.java" line="15" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/IntervalUpdater.java" bodystart="15" bodyend="54"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" line="15" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/IntervalUpdater.java" bodystart="15" bodyend="44"/>
     <listofallmembers>
       <member refid="classroboy_1_1context_1_1_interval_updater_1a48784f5d8c6dd8c2df60147f9f781367" prot="public" virt="non-virtual"><scope>roboy::context::IntervalUpdater</scope><name>IntervalUpdater</name></member>
-      <member refid="classroboy_1_1context_1_1_interval_updater_1a9eb4030ed6ba12e8c6b430f0f8aac5b2" prot="public" virt="non-virtual"><scope>roboy::context::IntervalUpdater</scope><name>IntervalUpdater</name></member>
       <member refid="classroboy_1_1context_1_1_interval_updater_1acff488249ccdae34d5acca10113c45e5" prot="protected" virt="non-virtual"><scope>roboy::context::IntervalUpdater</scope><name>scheduler</name></member>
       <member refid="classroboy_1_1context_1_1_interval_updater_1ad4c4dc5b8e5191647ec8ec2c3210957f" prot="private" virt="non-virtual"><scope>roboy::context::IntervalUpdater</scope><name>start</name></member>
       <member refid="classroboy_1_1context_1_1_interval_updater_1a542d30441a2953b1a42065b0b879c8b1" prot="protected" virt="non-virtual"><scope>roboy::context::IntervalUpdater</scope><name>target</name></member>
       <member refid="classroboy_1_1context_1_1_external_updater_1ae50d8843fb627e0107de8420016ad233" prot="protected" virt="non-virtual"><scope>roboy::context::IntervalUpdater</scope><name>update</name></member>
-      <member refid="classroboy_1_1context_1_1_interval_updater_1ad65c8b94e29d524c95d8a499a530c739" prot="public" virt="non-virtual"><scope>roboy::context::IntervalUpdater</scope><name>updateFrequencySeconds</name></member>
+      <member refid="classroboy_1_1context_1_1_interval_updater_1ac269246ba040046095b57248a1c62507" prot="public" virt="non-virtual"><scope>roboy::context::IntervalUpdater</scope><name>updateFrequency</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

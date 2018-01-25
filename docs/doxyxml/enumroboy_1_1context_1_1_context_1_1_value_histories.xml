@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="enumroboy_1_1context_1_1_context_1_1_value_histories" kind="enum" language="Java" prot="public">
     <compoundname>roboy::context::Context::ValueHistories</compoundname>
-    <basecompoundref refid="interfaceroboy_1_1context_1_1_context_value_interface" prot="public" virt="non-virtual">roboy.context.ContextValueInterface</basecompoundref>
+    <basecompoundref refid="interfaceroboy_1_1context_1_1_external_context_interface" prot="public" virt="non-virtual">roboy.context.ExternalContextInterface</basecompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="enumroboy_1_1context_1_1_context_1_1_value_histories_1a82d18f5a8ab05314d2af400617b8de61" prot="public" static="no" mutable="no">
         <type></type>
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="58" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="58" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" line="55" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1context_1_1_context_1_1_value_histories_1a2b486cf1d0e9ac6a5117d07009f451dd" prot="public" static="no" mutable="no">
         <type>final Class</type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="60" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="60" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" line="57" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1context_1_1_context_1_1_value_histories_1ab7d6f141d093fa9bfd4f09e33212dbe6" prot="public" static="no" mutable="no">
         <type>final Class</type>
@@ -42,65 +42,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="61" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="61" bodyend="-1"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" line="58" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="58" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_value_histories_1adba0bc82cd6ed2b1443e003ae0fcb43b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>public&lt; T &gt; Map&lt; Integer, T &gt;</type>
-        <definition>public&lt;T&gt; Map&lt;Integer, T&gt; roboy.context.Context.ValueHistories.getNLastValues</definition>
-        <argsstring>(int n)</argsstring>
-        <name>getNLastValues</name>
-        <param>
-          <type>int</type>
-          <declname>n</declname>
-        </param>
-        <briefdescription>
-<para>Get a map of elements most recently added to the history. </para>        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>n</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Amount of values to retrieve. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>&lt;T&gt;</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Return type of the history. </para></parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>Map of n most recent values, ordered through Integer keys going upwards from 0 (smaller = older). </para></simplesect>
-</para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="69" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="69" bodyend="71"/>
-      </memberdef>
-      <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_value_histories_1a5f3ce261246056e99868acc5644d98be" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>public&lt; T &gt; T</type>
-        <definition>public&lt;T&gt; T roboy.context.Context.ValueHistories.getLastValue</definition>
-        <argsstring>()</argsstring>
-        <name>getLastValue</name>
-        <briefdescription>
-<para>Get the last element added to the corresponding <ref refid="classroboy_1_1context_1_1_value" kindref="compound">Value</ref> instance. </para>        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>&lt;T&gt;</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The return type of the <ref refid="classroboy_1_1context_1_1_value" kindref="compound">Value</ref>. </para></parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para></para></simplesect>
-</para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="78" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="78" bodyend="80"/>
-      </memberdef>
       <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_value_histories_1a7486335c234fda9a95624b7039199b26" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>roboy.context.Context.ValueHistories.ValueHistories</definition>
@@ -115,77 +60,107 @@
           <declname>dataType</declname>
         </param>
         <briefdescription>
-<para><ref refid="classroboy_1_1context_1_1_value_history" kindref="compound">ValueHistory</ref> enum utility methods. </para>        </briefdescription>
+        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="83" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="83" bodyend="86"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" line="60" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="60" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_value_histories_1aaae5dd95f9473193476f3a427d32f556" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Class</type>
         <definition>Class roboy.context.Context.ValueHistories.getClassType</definition>
         <argsstring>()</argsstring>
         <name>getClassType</name>
-        <reimplements refid="interfaceroboy_1_1context_1_1_context_value_interface_1a54ef934e10a374d2e1dadbd9e2e9c04d">getClassType</reimplements>
+        <reimplements refid="interfaceroboy_1_1context_1_1_external_context_interface_1a4158bb1b491ce2e36cc6dde2b914cad1">getClassType</reimplements>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="87" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="87" bodyend="89"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" line="65" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="65" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_value_histories_1ae6b081e4c0cd0ffe3e0e93dcc07ff73f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Class</type>
         <definition>Class roboy.context.Context.ValueHistories.getReturnType</definition>
         <argsstring>()</argsstring>
         <name>getReturnType</name>
-        <reimplements refid="interfaceroboy_1_1context_1_1_context_value_interface_1a0cc2b5af1c0c7ef51f3f4cff7f3ef3e2">getReturnType</reimplements>
+        <reimplements refid="interfaceroboy_1_1context_1_1_external_context_interface_1abd00eb9c70c62b36f86f3456edb7ddb6">getReturnType</reimplements>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="90" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="90" bodyend="92"/>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" line="69" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="69" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_value_histories_1a5f3ce261246056e99868acc5644d98be" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>public&lt; T &gt; T</type>
+        <definition>public&lt;T&gt; T roboy.context.Context.ValueHistories.getLastValue</definition>
+        <argsstring>()</argsstring>
+        <name>getLastValue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" line="73" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="73" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_value_histories_1a1445f1264f4d08ea417da1440d81fff9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>public&lt; K, T &gt; Map&lt; K, T &gt;</type>
+        <definition>public&lt;K, T&gt; Map&lt;K, T&gt; roboy.context.Context.ValueHistories.getNLastValues</definition>
+        <argsstring>(int n)</argsstring>
+        <name>getNLastValues</name>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" line="77" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="77" bodyend="79"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>ADD NEW VALUE HISTORIES HERE. </para>    </briefdescription>
+<para>All available valueHistories. </para>    </briefdescription>
     <detaileddescription>
-<para>This is the interface over which <ref refid="classroboy_1_1context_1_1_context" kindref="compound">Context</ref> value histories can be queried. Add your <ref refid="classroboy_1_1context_1_1_value_history" kindref="compound">ValueHistory</ref> implementation class and its return type below. <ref refid="classroboy_1_1context_1_1_context" kindref="compound">Context</ref> will take care of initialization. Query values over the enum name. </para>    </detaileddescription>
+    </detaileddescription>
     <inheritancegraph>
-      <node id="1733">
+      <node id="1695">
         <label>roboy.context.Context.ValueHistories</label>
         <link refid="enumroboy_1_1context_1_1_context_1_1_value_histories"/>
-        <childnode refid="1734" relation="public-inheritance">
+        <childnode refid="1696" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1734">
-        <label>roboy.context.ContextValueInterface</label>
-        <link refid="interfaceroboy_1_1context_1_1_context_value_interface"/>
+      <node id="1696">
+        <label>roboy.context.ExternalContextInterface</label>
+        <link refid="interfaceroboy_1_1context_1_1_external_context_interface"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1735">
+      <node id="1697">
         <label>roboy.context.Context.ValueHistories</label>
         <link refid="enumroboy_1_1context_1_1_context_1_1_value_histories"/>
-        <childnode refid="1736" relation="public-inheritance">
+        <childnode refid="1698" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1736">
-        <label>roboy.context.ContextValueInterface</label>
-        <link refid="interfaceroboy_1_1context_1_1_context_value_interface"/>
+      <node id="1698">
+        <label>roboy.context.ExternalContextInterface</label>
+        <link refid="interfaceroboy_1_1context_1_1_external_context_interface"/>
       </node>
     </collaborationgraph>
-    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="56" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="56" bodyend="93"/>
+    <location file="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" line="54" column="1" bodyfile="/home/emilka/ros/Roboy/src/roboy_dialog_system/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="54" bodyend="80"/>
     <listofallmembers>
       <member refid="enumroboy_1_1context_1_1_context_1_1_value_histories_1a2b486cf1d0e9ac6a5117d07009f451dd" prot="public" virt="non-virtual"><scope>roboy::context::Context::ValueHistories</scope><name>classType</name></member>
       <member refid="enumroboy_1_1context_1_1_context_1_1_value_histories_1a82d18f5a8ab05314d2af400617b8de61" prot="public" virt="non-virtual"><scope>roboy::context::Context::ValueHistories</scope><name>DIALOG_TOPICS</name></member>
       <member refid="enumroboy_1_1context_1_1_context_1_1_value_histories_1aaae5dd95f9473193476f3a427d32f556" prot="public" virt="non-virtual"><scope>roboy::context::Context::ValueHistories</scope><name>getClassType</name></member>
       <member refid="enumroboy_1_1context_1_1_context_1_1_value_histories_1a5f3ce261246056e99868acc5644d98be" prot="public" virt="non-virtual"><scope>roboy::context::Context::ValueHistories</scope><name>getLastValue</name></member>
-      <member refid="enumroboy_1_1context_1_1_context_1_1_value_histories_1adba0bc82cd6ed2b1443e003ae0fcb43b" prot="public" virt="non-virtual"><scope>roboy::context::Context::ValueHistories</scope><name>getNLastValues</name></member>
+      <member refid="enumroboy_1_1context_1_1_context_1_1_value_histories_1a1445f1264f4d08ea417da1440d81fff9" prot="public" virt="non-virtual"><scope>roboy::context::Context::ValueHistories</scope><name>getNLastValues</name></member>
       <member refid="enumroboy_1_1context_1_1_context_1_1_value_histories_1ae6b081e4c0cd0ffe3e0e93dcc07ff73f" prot="public" virt="non-virtual"><scope>roboy::context::Context::ValueHistories</scope><name>getReturnType</name></member>
       <member refid="enumroboy_1_1context_1_1_context_1_1_value_histories_1ab7d6f141d093fa9bfd4f09e33212dbe6" prot="public" virt="non-virtual"><scope>roboy::context::Context::ValueHistories</scope><name>returnType</name></member>
       <member refid="enumroboy_1_1context_1_1_context_1_1_value_histories_1a7486335c234fda9a95624b7039199b26" prot="public" virt="non-virtual"><scope>roboy::context::Context::ValueHistories</scope><name>ValueHistories</name></member>
