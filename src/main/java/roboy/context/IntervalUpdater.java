@@ -15,7 +15,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 public abstract class IntervalUpdater<T> extends ExternalUpdater {
     protected final T target;
     protected final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-    public final int updateFrequency;
+    public int updateFrequencySeconds = 1;
 
     /**
      * Create a new updater service, executing the update() method at regular time intervals.
@@ -25,7 +25,17 @@ public abstract class IntervalUpdater<T> extends ExternalUpdater {
      */
     public IntervalUpdater(T target, int updateFrequencySeconds) {
         this.target = target;
-        updateFrequency = updateFrequencySeconds;
+        this.updateFrequencySeconds = updateFrequencySeconds;
+        start();
+    }
+
+    /**
+     * Create a new updater service, executing the update() method at regular time intervals.
+     *
+     * @param target                 The target attribute of the update() method.
+     */
+    public IntervalUpdater(T target) {
+        this.target = target;
         start();
     }
 
@@ -36,7 +46,7 @@ public abstract class IntervalUpdater<T> extends ExternalUpdater {
         final Runnable updater = () -> update();
         // Schedules regular updates, starting 1 second after initialization.
         final ScheduledFuture<?> updaterHandle = scheduler.scheduleAtFixedRate(
-                updater, 1, updateFrequency, SECONDS);
+                updater, 1, updateFrequencySeconds, SECONDS);
         // Cancel each scheduled task after 30 seconds of runtime - prevent excessive threads if the goal is down.
         scheduler.schedule((Runnable) () -> updaterHandle.cancel(true), 30, SECONDS);
     }

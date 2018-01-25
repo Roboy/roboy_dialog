@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="dir_ef15ac377452d427e784ef3ffdafddbf" kind="dir">
-    <compoundname>/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy</compoundname>
-    <innerdir refid="dir_367c5385ebc5b1806d01f0d86a421678">/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/context</innerdir>
-    <innerdir refid="dir_09caee689121350b0881c362a3662a4d">/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/dialog</innerdir>
-    <innerdir refid="dir_e3b706f0da88f09db6283663af2a234d">/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/linguistics</innerdir>
-    <innerdir refid="dir_870da1f0b478f7ca881b221c68d88b01">/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/logic</innerdir>
-    <innerdir refid="dir_5e840a829dcbeed20ff665424891ad0f">/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/newDialog</innerdir>
-    <innerdir refid="dir_a3da221ea67796dde15c58826f020edb">/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/talk</innerdir>
+    <compoundname>/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy</compoundname>
+    <innerdir refid="dir_367c5385ebc5b1806d01f0d86a421678">/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/context</innerdir>
+    <innerdir refid="dir_09caee689121350b0881c362a3662a4d">/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/dialog</innerdir>
+    <innerdir refid="dir_e3b706f0da88f09db6283663af2a234d">/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/linguistics</innerdir>
+    <innerdir refid="dir_870da1f0b478f7ca881b221c68d88b01">/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/logic</innerdir>
+    <innerdir refid="dir_5e840a829dcbeed20ff665424891ad0f">/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/newDialog</innerdir>
+    <innerdir refid="dir_a3da221ea67796dde15c58826f020edb">/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/talk</innerdir>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/test/java/roboy/"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/test/java/roboy/"/>
   </compounddef>
 </doxygen>

@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/BingOutput.java" line="18" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/BingOutput.java" bodystart="18" bodyend="24"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/BingOutput.java" line="18" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/BingOutput.java" bodystart="18" bodyend="24"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1io_1_1_bing_output_1abb386e2c1b15dfc75098978c782dd06d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/BingOutput.java" line="26" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/BingOutput.java" bodystart="26" bodyend="31"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/BingOutput.java" line="26" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/BingOutput.java" bodystart="26" bodyend="31"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -45,30 +45,30 @@
     <detaileddescription>
 <para>Requires internet connection. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="941">
+      <node id="956">
         <label>roboy.io.BingOutput</label>
         <link refid="classroboy_1_1io_1_1_bing_output"/>
-        <childnode refid="942" relation="public-inheritance">
+        <childnode refid="957" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="942">
+      <node id="957">
         <label>roboy.io.OutputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_output_device"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="943">
+      <node id="958">
         <label>roboy.io.BingOutput</label>
         <link refid="classroboy_1_1io_1_1_bing_output"/>
-        <childnode refid="944" relation="public-inheritance">
+        <childnode refid="959" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="944">
+      <node id="959">
         <label>roboy.io.OutputDevice</label>
         <link refid="interfaceroboy_1_1io_1_1_output_device"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/BingOutput.java" line="15" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/BingOutput.java" bodystart="14" bodyend="33"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/BingOutput.java" line="15" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/BingOutput.java" bodystart="14" bodyend="33"/>
     <listofallmembers>
       <member refid="classroboy_1_1io_1_1_bing_output_1a7e19c215ad749e2b3eeed94ccae6916a" prot="public" virt="non-virtual"><scope>roboy::io::BingOutput</scope><name>act</name></member>
       <member refid="classroboy_1_1io_1_1_bing_output_1abb386e2c1b15dfc75098978c782dd06d" prot="public" virt="non-virtual"><scope>roboy::io::BingOutput</scope><name>say</name></member>

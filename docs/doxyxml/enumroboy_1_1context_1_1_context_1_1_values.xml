@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.11">
   <compounddef id="enumroboy_1_1context_1_1_context_1_1_values" kind="enum" language="Java" prot="public">
     <compoundname>roboy::context::Context::Values</compoundname>
-    <basecompoundref refid="interfaceroboy_1_1context_1_1_external_context_interface" prot="public" virt="non-virtual">roboy.context.ExternalContextInterface</basecompoundref>
+    <basecompoundref refid="interfaceroboy_1_1context_1_1_context_value_interface" prot="public" virt="non-virtual">roboy.context.ContextValueInterface</basecompoundref>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="enumroboy_1_1context_1_1_context_1_1_values_1a13f564156c840974f454e18ded2c9d74" prot="public" static="no" mutable="no">
         <type></type>
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" line="86" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="86" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="104" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1context_1_1_context_1_1_values_1ac2df2a06c056c118e462f3ca7e17f159" prot="public" static="no" mutable="no">
         <type>final Class</type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" line="88" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="88" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="106" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="106" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="enumroboy_1_1context_1_1_context_1_1_values_1a7ee7d5d66a0c82fe9650f6eba552fcd3" prot="public" static="no" mutable="no">
         <type>final Class</type>
@@ -42,17 +42,39 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" line="89" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="89" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="107" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="107" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_values_1a8d16c886c0c8fe2de96013851e41de46" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_values_1a0db6819b08926b6083e429b31e8cb068" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>public&lt; T &gt; T</type>
+        <definition>public&lt;T&gt; T roboy.context.Context.Values.getLastValue</definition>
+        <argsstring>()</argsstring>
+        <name>getLastValue</name>
+        <briefdescription>
+<para>Get the last element added to the corresponding <ref refid="classroboy_1_1context_1_1_value" kindref="compound">Value</ref> instance. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>&lt;T&gt;</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The return type of the <ref refid="classroboy_1_1context_1_1_value" kindref="compound">Value</ref>. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="114" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="114" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_values_1ae91dff0676f54fd30c9ed7542604260e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>roboy.context.Context.Values.Values</definition>
-        <argsstring>(Class&lt;?extends AbstractValue &gt; attribute, Class value)</argsstring>
+        <argsstring>(Class attribute, Class value)</argsstring>
         <name>Values</name>
         <param>
-          <type>Class&lt;?extends <ref refid="interfaceroboy_1_1context_1_1_abstract_value" kindref="compound">AbstractValue</ref> &gt;</type>
+          <type>Class</type>
           <declname>attribute</declname>
         </param>
         <param>
@@ -65,79 +87,66 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" line="91" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="91" bodyend="94"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="119" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="119" bodyend="122"/>
       </memberdef>
       <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_values_1a57974ff119b9e2376e5ca3513c554c01" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Class</type>
         <definition>Class roboy.context.Context.Values.getClassType</definition>
         <argsstring>()</argsstring>
         <name>getClassType</name>
-        <reimplements refid="interfaceroboy_1_1context_1_1_external_context_interface_1a4158bb1b491ce2e36cc6dde2b914cad1">getClassType</reimplements>
+        <reimplements refid="interfaceroboy_1_1context_1_1_context_value_interface_1a54ef934e10a374d2e1dadbd9e2e9c04d">getClassType</reimplements>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" line="96" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="96" bodyend="98"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="123" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="123" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_values_1a2b2075ae2cd09210b71d08ee5bd58ed8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Class</type>
         <definition>Class roboy.context.Context.Values.getReturnType</definition>
         <argsstring>()</argsstring>
         <name>getReturnType</name>
-        <reimplements refid="interfaceroboy_1_1context_1_1_external_context_interface_1abd00eb9c70c62b36f86f3456edb7ddb6">getReturnType</reimplements>
+        <reimplements refid="interfaceroboy_1_1context_1_1_context_value_interface_1a0cc2b5af1c0c7ef51f3f4cff7f3ef3e2">getReturnType</reimplements>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" line="100" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="100" bodyend="102"/>
-      </memberdef>
-      <memberdef kind="function" id="enumroboy_1_1context_1_1_context_1_1_values_1a0db6819b08926b6083e429b31e8cb068" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>public&lt; T &gt; T</type>
-        <definition>public&lt;T&gt; T roboy.context.Context.Values.getLastValue</definition>
-        <argsstring>()</argsstring>
-        <name>getLastValue</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" line="104" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="104" bodyend="106"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="126" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="126" bodyend="128"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>All available values. </para>    </briefdescription>
+<para>ADD NEW VALUES HERE. </para>    </briefdescription>
     <detaileddescription>
-    </detaileddescription>
+<para>This is the interface over which <ref refid="classroboy_1_1context_1_1_context" kindref="compound">Context</ref> values can be queried. Add your <ref refid="classroboy_1_1context_1_1_value" kindref="compound">Value</ref> implementation class and its return type below. <ref refid="classroboy_1_1context_1_1_context" kindref="compound">Context</ref> will take care of initialization. Query values over the enum name. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="1705">
+      <node id="1743">
         <label>roboy.context.Context.Values</label>
         <link refid="enumroboy_1_1context_1_1_context_1_1_values"/>
-        <childnode refid="1706" relation="public-inheritance">
+        <childnode refid="1744" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1706">
-        <label>roboy.context.ExternalContextInterface</label>
-        <link refid="interfaceroboy_1_1context_1_1_external_context_interface"/>
+      <node id="1744">
+        <label>roboy.context.ContextValueInterface</label>
+        <link refid="interfaceroboy_1_1context_1_1_context_value_interface"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1707">
+      <node id="1745">
         <label>roboy.context.Context.Values</label>
         <link refid="enumroboy_1_1context_1_1_context_1_1_values"/>
-        <childnode refid="1708" relation="public-inheritance">
+        <childnode refid="1746" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1708">
-        <label>roboy.context.ExternalContextInterface</label>
-        <link refid="interfaceroboy_1_1context_1_1_external_context_interface"/>
+      <node id="1746">
+        <label>roboy.context.ContextValueInterface</label>
+        <link refid="interfaceroboy_1_1context_1_1_context_value_interface"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" line="85" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/Context.java" bodystart="85" bodyend="107"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" line="102" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/Context.java" bodystart="102" bodyend="129"/>
     <listofallmembers>
       <member refid="enumroboy_1_1context_1_1_context_1_1_values_1ac2df2a06c056c118e462f3ca7e17f159" prot="public" virt="non-virtual"><scope>roboy::context::Context::Values</scope><name>classType</name></member>
       <member refid="enumroboy_1_1context_1_1_context_1_1_values_1a13f564156c840974f454e18ded2c9d74" prot="public" virt="non-virtual"><scope>roboy::context::Context::Values</scope><name>FACE_COORDINATES</name></member>
@@ -145,7 +154,7 @@
       <member refid="enumroboy_1_1context_1_1_context_1_1_values_1a0db6819b08926b6083e429b31e8cb068" prot="public" virt="non-virtual"><scope>roboy::context::Context::Values</scope><name>getLastValue</name></member>
       <member refid="enumroboy_1_1context_1_1_context_1_1_values_1a2b2075ae2cd09210b71d08ee5bd58ed8" prot="public" virt="non-virtual"><scope>roboy::context::Context::Values</scope><name>getReturnType</name></member>
       <member refid="enumroboy_1_1context_1_1_context_1_1_values_1a7ee7d5d66a0c82fe9650f6eba552fcd3" prot="public" virt="non-virtual"><scope>roboy::context::Context::Values</scope><name>returnType</name></member>
-      <member refid="enumroboy_1_1context_1_1_context_1_1_values_1a8d16c886c0c8fe2de96013851e41de46" prot="public" virt="non-virtual"><scope>roboy::context::Context::Values</scope><name>Values</name></member>
+      <member refid="enumroboy_1_1context_1_1_context_1_1_values_1ae91dff0676f54fd30c9ed7542604260e" prot="public" virt="non-virtual"><scope>roboy::context::Context::Values</scope><name>Values</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

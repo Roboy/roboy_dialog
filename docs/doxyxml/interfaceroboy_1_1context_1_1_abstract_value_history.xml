@@ -27,7 +27,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/AbstractValueHistory.java" line="10" column="1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/AbstractValueHistory.java" line="10" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -35,30 +35,30 @@
     <detaileddescription>
 <para>These values are accessible over the getLastNValues method. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="890">
+      <node id="909">
         <label>roboy::context::AbstractValue&lt; V &gt;</label>
         <link refid="interfaceroboy_1_1context_1_1_abstract_value"/>
       </node>
-      <node id="889">
+      <node id="908">
         <label>roboy.context.AbstractValueHistory&lt; K, V &gt;</label>
         <link refid="interfaceroboy_1_1context_1_1_abstract_value_history"/>
-        <childnode refid="890" relation="public-inheritance">
+        <childnode refid="909" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="892">
+      <node id="911">
         <label>roboy::context::AbstractValue&lt; V &gt;</label>
         <link refid="interfaceroboy_1_1context_1_1_abstract_value"/>
       </node>
-      <node id="891">
+      <node id="910">
         <label>roboy.context.AbstractValueHistory&lt; K, V &gt;</label>
         <link refid="interfaceroboy_1_1context_1_1_abstract_value_history"/>
-        <childnode refid="892" relation="public-inheritance">
+        <childnode refid="911" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/AbstractValueHistory.java" line="9" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/AbstractValueHistory.java" bodystart="9" bodyend="11"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/AbstractValueHistory.java" line="9" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/AbstractValueHistory.java" bodystart="9" bodyend="11"/>
     <listofallmembers>
       <member refid="interfaceroboy_1_1context_1_1_abstract_value_history_1a76229d868a8d76d206d2798bd3058c59" prot="public" virt="non-virtual"><scope>roboy::context::AbstractValueHistory</scope><name>getLastNValues</name></member>
       <member refid="interfaceroboy_1_1context_1_1_abstract_value_1ac939f9d2d4f77d9a24d3027f88ece63d" prot="public" virt="non-virtual"><scope>roboy::context::AbstractValueHistory</scope><name>getValue</name></member>

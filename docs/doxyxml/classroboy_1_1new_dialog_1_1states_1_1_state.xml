@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="27" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="27" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="27" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a776c41cdd95ed0421130406f0e819727" prot="private" static="no" mutable="no">
         <type><ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="30" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="30" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="30" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a399f0e0d9700500f9dbdf865ac7e64d5" prot="private" static="no" mutable="no">
         <type>HashMap&lt; String, <ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref> &gt;</type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="33" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="33" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="33" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" bodystart="33" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -63,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="36" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="36" bodyend="40"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="36" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" bodystart="36" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1ab9773eeecc877cc77b087492faa53591" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="44" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="44" bodyend="46"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="44" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" bodystart="44" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1aacca21bec3b5ca0f0f7435f3678b6087" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="47" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="47" bodyend="49"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="47" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" bodystart="47" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a8fac90b18cd30aa46f10eeb35d9e0138" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>final <ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
@@ -107,7 +107,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="56" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="56" bodyend="58"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="56" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" bodystart="56" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a3d2292e61f395f378b7db49790c67828" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>final void</type>
@@ -132,7 +132,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="64" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="64" bodyend="66"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="64" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" bodystart="64" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a3f6668c5631712be3cdd8a71186bffb8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>final void</type>
@@ -168,7 +168,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="77" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="77" bodyend="79"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="77" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" bodystart="77" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a61e3afbfa155d7fc6d0c353d71a70279" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>final <ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
@@ -185,7 +185,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="80" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="80" bodyend="82"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="80" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" bodystart="80" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a5b199b5cfa336e2b5a81b6fc889a4bca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>final HashMap&lt; String, <ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref> &gt;</type>
@@ -198,7 +198,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="83" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="83" bodyend="85"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="83" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" bodystart="83" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a66f11de734295eb35dccee9d3b423a9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>abstract List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
@@ -212,7 +212,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="98" column="1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="98" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1af27e5bca378b302d190172f17603f81c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>abstract List&lt; <ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref> &gt;</type>
@@ -238,7 +238,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="111" column="1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="111" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a152e0d4c4f7862aa90fc0f8856df624a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>abstract <ref refid="classroboy_1_1new_dialog_1_1states_1_1_state" kindref="compound">State</ref></type>
@@ -252,7 +252,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="121" column="1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="121" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a610c6a1337f401e4e53806d3bdcb5335" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>final boolean</type>
@@ -266,7 +266,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="149" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="149" bodyend="160"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="149" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" bodystart="149" bodyend="160"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a9fce6961e78d2cb2a755fdf8e6e02c77" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>JsonObject</type>
@@ -279,7 +279,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="175" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="175" bodyend="199"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="175" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" bodystart="175" bodyend="199"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1aad317d16e61717bb1d5d80b7dfcf89af" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>String</type>
@@ -292,7 +292,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="201" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="201" bodyend="218"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="201" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" bodystart="201" bodyend="218"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a0f0b76c82e1229c8f7d83374ceefb8ab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>boolean</type>
@@ -309,7 +309,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="221" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="221" bodyend="257"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="221" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" bodystart="221" bodyend="257"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-func">
@@ -325,7 +325,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="138" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="138" bodyend="141"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="138" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" bodystart="138" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1states_1_1_state_1a74598144b82ca28dcc5e4abfce7739d1" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>Set&lt; String &gt;</type>
@@ -351,7 +351,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="167" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="167" bodyend="171"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="167" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" bodystart="167" bodyend="171"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -379,7 +379,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="264" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="264" bodyend="284"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="264" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" bodystart="264" bodyend="284"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -387,51 +387,51 @@
     <detaileddescription>
 <para>Every dialog state should extend this class. A state always acts when it is entered and reacts when its left. Both, the reaction of the last and the action of the next state, are combined to give the answer of Roboy.</para><para>A state can have any number of transitions to other states. Every transition has a name (like &quot;next&quot; or &quot;errorState&quot;). When designing a new state, only the transition names are known. At run time the transitions will point to other states. You can get the attached state by the transition name using getTransition(transitionName).</para><para>A fallback can be attached to a state. In the case this state doesn&apos;t know how to react to an utterance, it can return null from the <ref refid="classroboy_1_1new_dialog_1_1states_1_1_state_1af27e5bca378b302d190172f17603f81c" kindref="member">react()</ref> function. The state machine will query the fallback in this case. More details on the fallback concept can be found in the description of the <ref refid="classroboy_1_1new_dialog_1_1_state_based_personality" kindref="compound">StateBasedPersonality</ref> and in comments below. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="1623">
+      <node id="1639">
         <label>roboy.newDialog.states.toyStates.ToyRandomAnswerState</label>
         <link refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_random_answer_state"/>
-        <childnode refid="1619" relation="public-inheritance">
+        <childnode refid="1635" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1619">
+      <node id="1635">
         <label>roboy.newDialog.states.State</label>
         <link refid="classroboy_1_1new_dialog_1_1states_1_1_state"/>
       </node>
-      <node id="1621">
+      <node id="1637">
         <label>roboy.newDialog.states.toyStates.ToyGreetingsState</label>
         <link refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_greetings_state"/>
-        <childnode refid="1619" relation="public-inheritance">
+        <childnode refid="1635" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1620">
+      <node id="1636">
         <label>roboy.newDialog.states.toyStates.ToyFarewellState</label>
         <link refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_farewell_state"/>
-        <childnode refid="1619" relation="public-inheritance">
+        <childnode refid="1635" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1622">
+      <node id="1638">
         <label>roboy.newDialog.states.toyStates.ToyIntroState</label>
         <link refid="classroboy_1_1new_dialog_1_1states_1_1toy_states_1_1_toy_intro_state"/>
-        <childnode refid="1619" relation="public-inheritance">
+        <childnode refid="1635" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1624">
+      <node id="1640">
         <label>roboy.newDialog.states.State</label>
         <link refid="classroboy_1_1new_dialog_1_1states_1_1_state"/>
-        <childnode refid="1625" relation="usage">
+        <childnode refid="1641" relation="usage">
           <edgelabel>transitions</edgelabel>
         </childnode>
-        <childnode refid="1624" relation="usage">
+        <childnode refid="1640" relation="usage">
           <edgelabel>fallback</edgelabel>
         </childnode>
       </node>
-      <node id="1625">
+      <node id="1641">
         <label>HashMap&lt; String, roboy.newDialog.states.State &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" line="23" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/states/State.java" bodystart="23" bodyend="287"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" line="23" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/states/State.java" bodystart="23" bodyend="287"/>
     <listofallmembers>
       <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a66f11de734295eb35dccee9d3b423a9d" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>act</name></member>
       <member refid="classroboy_1_1new_dialog_1_1states_1_1_state_1a610c6a1337f401e4e53806d3bdcb5335" prot="public" virt="non-virtual"><scope>roboy::newDialog::states::State</scope><name>allRequiredTransitionsAreInitialized</name></member>
