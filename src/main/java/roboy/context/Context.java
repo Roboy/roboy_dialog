@@ -17,9 +17,10 @@ import java.util.Map;
  */
 public class Context extends AttributeManager<Context.ValueHistories, Context.Values> {
     private static Context context;
+    private static final Object initializationLock = new Object();
 
     private final ArrayList<ExternalUpdater> externalUpdaters = new ArrayList<>();
-    public final HashMap<Class, InternalUpdater> internalUpdaters = new HashMap<>();
+    private final HashMap<Class, InternalUpdater> internalUpdaters = new HashMap<>();
 
     private Context() {
         FaceCoordinates faceCoordinates = new FaceCoordinates();
@@ -41,9 +42,19 @@ public class Context extends AttributeManager<Context.ValueHistories, Context.Va
         internalUpdaters.put(DialogTopicsUpdater.class, new DialogTopicsUpdater(dialogTopics));
     }
 
+    /**
+     * The access point to Context, including thread-safe Singleton initialization.
+     */
     public static Context getInstance() {
         if (context == null) {
-            context = new Context();
+            // Extra block instead of synchronizing over entire getInstance method.
+            // This way, we do not sync when context was initialized earlier -> better performance.
+            synchronized (initializationLock) {
+                // Need to check for null again in case some other thread got here before.
+                if(context == null) {
+                    context = new Context();
+                }
+            }
         }
         return context;
     }
