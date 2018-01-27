@@ -199,12 +199,18 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
         }
     }
 
-
+    /**
+     * Used to initialize the Values and ValueHistories, returning a ClassToInstance map.
+     * For each element in a ContextValueInterface enum, generates an instance of its classType.
+     * Then returns the generated instances in a ClassToInstance map.
+     */
     private <T extends ContextValueInterface> ImmutableClassToInstanceMap buildValueInstanceMap(T[] enumValueList) {
         ImmutableClassToInstanceMap.Builder valueMapBuilder = new ImmutableClassToInstanceMap.Builder<>();
         for(T v : enumValueList) {
             try {
+                // Get the class which defines the Value/ValueHistory.
                 Class c = v.getClassType();
+                // Create an instance and add {(class) -> (instance)} to the map.
                 valueMapBuilder = valueMapBuilder.put(c, c.getConstructor().newInstance());
             } catch (IllegalAccessException | NoSuchMethodException | InstantiationException |InvocationTargetException e) {
                 // Just don't mess around when defining the classes and enums.
@@ -214,14 +220,21 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
         return valueMapBuilder.build();
     }
 
-
+    /**
+     * Used to initialize Updaters (external and internal), returning a ClassToInstance map.
+     * For each element in a ContextUpdaterInterface enum:
+     *  1. Seeks out the instance of its targetType (a Value or ValueHistory class).
+     *  2. Generates an instance of the updater's classType, with a reference to the target.
+     * Finally, returns the generated Updater instances in a ClassToInstance map.
+     */
     private <T extends ContextUpdaterInterface> ImmutableClassToInstanceMap buildUpdaterInstanceMap(T[] enumValueList) {
         ImmutableClassToInstanceMap.Builder updaterMapBuilder = new ImmutableClassToInstanceMap.Builder<>();
+        // Go over all Updaters defined in the enum.
         for(T updater : enumValueList) {
             Class targetClass = updater.getTargetType();
-            // Check value list for target.
+            // Check the Value list in the Context for a target.
             AbstractValue targetInstance = values.get(targetClass);
-            // If not there, check histories.
+            // If not there, check ValueHistories.
             if (targetInstance == null) {
                 targetInstance = valueHistories.get(targetClass);
             }
@@ -230,10 +243,12 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
                 throw new IllegalArgumentException("The target class "+ targetClass.getName() +" was not initialized!");
             }
             try {
+                // Get the Updater class.
                 Class updaterType = updater.getClassType();
+                // Create an instance of the Updater class, with the target as its constructor parameter.
                 updaterMapBuilder.put(updaterType, updaterType.getConstructor(targetClass).newInstance(targetInstance));
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-                // And don't mess around defining Updaters, either.
+                // Don't mess around defining Updaters (change constructor access or signature, for example).
                 e.printStackTrace();
             }
         }
