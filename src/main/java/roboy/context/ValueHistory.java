@@ -40,12 +40,12 @@ public class ValueHistory<V> implements AbstractValueHistory<Integer, V> {
      */
     @Override
     public HashMap<Integer, V> getLastNValues(int n) {
-        HashMap<Integer, V> reponse = new HashMap<>();
+        HashMap<Integer, V> response = new HashMap<>();
         int lastToRetrieve = counter - Math.min(n, counter);
         for (int i = counter - 1; i >= lastToRetrieve; i--) {
-            reponse.put(i - lastToRetrieve, getValue(i));
+            response.put(i - lastToRetrieve, getValue(i));
         }
-        return reponse;
+        return response;
     }
 
     /**
