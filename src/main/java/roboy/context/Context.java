@@ -71,9 +71,8 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
         }
 
         /**
-         * Get the last element added to the corresponding Value instance.
-         * @param <T> The return type of the Value.
-         * @return
+         * Get the last element added to the corresponding ValueHistory instance.
+         * @param <T> The return type of the ValueHistory.
          */
         public <T> T getLastValue() {
             return Context.getInstance().getLastValue(this);
