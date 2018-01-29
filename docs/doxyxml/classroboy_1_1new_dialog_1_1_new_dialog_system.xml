@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/NewDialogSystem.java" line="27" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/NewDialogSystem.java" bodystart="27" bodyend="31"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/NewDialogSystem.java" line="27" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/NewDialogSystem.java" bodystart="27" bodyend="31"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -35,14 +35,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/NewDialogSystem.java" line="33" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/NewDialogSystem.java" bodystart="33" bodyend="70"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/NewDialogSystem.java" line="33" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/NewDialogSystem.java" bodystart="33" bodyend="70"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Temporary class to test new state based personality. </para>    </briefdescription>
     <detaileddescription>
 <para>Will be be extended and might replace the old DialogSystem in the future. </para>    </detaileddescription>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/NewDialogSystem.java" line="25" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/newDialog/NewDialogSystem.java" bodystart="25" bodyend="74"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/NewDialogSystem.java" line="25" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/newDialog/NewDialogSystem.java" bodystart="25" bodyend="74"/>
     <listofallmembers>
       <member refid="classroboy_1_1new_dialog_1_1_new_dialog_system_1a36bbfa71003ccd5da69ccde8c5ed62e6" prot="private" virt="non-virtual"><scope>roboy::newDialog::NewDialogSystem</scope><name>getPersonalityFilePathFromConfig</name></member>
       <member refid="classroboy_1_1new_dialog_1_1_new_dialog_system_1a8471b0ca965dc56b665bcc075dccc419" prot="public" virt="non-virtual"><scope>roboy::newDialog::NewDialogSystem</scope><name>main</name></member>

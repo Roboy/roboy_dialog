@@ -53,7 +53,7 @@ public class Config {
     /** Semantic parser socket port. */
     public static int PARSER_PORT = -1;
     /** Context GUI demo trigger. Set manually, if wanted. **/
-    public static boolean DEMO_GUI = false;
+    public static boolean CONTEXT_DEMO = false;
 
     /** Configuration file to store changing values. */
     private static String yamlConfigFile = "config.properties";
@@ -66,7 +66,7 @@ public class Config {
         initializeYAMLConfig();
         // Initialize semantic parser socket port
         PARSER_PORT = yamlConfig.getInt("PARSER_PORT");
-        DEMO_GUI = yamlConfig.getBoolean("DEMO_GUI");
+        CONTEXT_DEMO = yamlConfig.getBoolean("CONTEXT_DEMO");
         switch(profile) {
             case DEFAULT:
                 setDefaultProfile();

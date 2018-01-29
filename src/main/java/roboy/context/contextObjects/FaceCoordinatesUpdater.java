@@ -8,8 +8,8 @@ import java.util.Random;
  * Asynchronously triggers ROS queries for face coordinates (in the future).
  */
 public class FaceCoordinatesUpdater extends IntervalUpdater<FaceCoordinates> {
-    public FaceCoordinatesUpdater(FaceCoordinates target, int updateFrequencySeconds) {
-        super(target, updateFrequencySeconds);
+    public FaceCoordinatesUpdater(FaceCoordinates target) {
+        super(target);
     }
 
     @Override

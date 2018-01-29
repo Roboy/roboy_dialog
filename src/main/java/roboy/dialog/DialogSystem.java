@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.google.gson.JsonIOException;
 
+import roboy.context.Context;
 import roboy.context.GUI.ContextGUI;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.ShutDownAction;
@@ -84,10 +85,12 @@ public class DialogSystem {
             new Config(DEFAULT);
         }
 
-        if(Config.DEMO_GUI) {
+        if(Config.CONTEXT_DEMO) {
             final Runnable gui = () -> ContextGUI.run();
             Thread t = new Thread(gui);
             t.start();
+            Context.InternalUpdaters.DIALOG_TOPICS_UPDATER.updateValue("first test");
+            Context.InternalUpdaters.DIALOG_TOPICS_UPDATER.updateValue("second test");
         }
 
         // initialize ROS node

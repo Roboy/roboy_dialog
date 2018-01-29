@@ -3,16 +3,17 @@ package roboy.context;
 import com.google.common.collect.ImmutableClassToInstanceMap;
 
 import java.util.Map;
+import java.util.Observer;
 
 /**
  * The collection of values, split into valueHistories (H) and single values (V).
  */
-public class AttributeManager<H extends ExternalContextInterface, V extends ExternalContextInterface> {
+public class ValueAccessManager<H extends ContextValueInterface, V extends ContextValueInterface> {
 
     protected ImmutableClassToInstanceMap<AbstractValueHistory> valueHistories;
     protected ImmutableClassToInstanceMap<AbstractValue> values;
 
-    protected <T> T getLastValue(ExternalContextInterface attribute) {
+    protected <T> T getLastValue(ContextValueInterface attribute) {
         Class<T> type = attribute.getReturnType();
         return type.cast(valueHistories.get(attribute.getClassType()).getValue());
     }
@@ -24,5 +25,13 @@ public class AttributeManager<H extends ExternalContextInterface, V extends Exte
     protected <T> T getValue(V attribute) {
         Class<T> type = attribute.getReturnType();
         return type.cast(values.get(attribute.getClassType()).getValue());
+    }
+
+    protected void addObserver(V attribute, Observer observer) {
+        // TODO The differentiation between values and valueHistories is kinda ugly. Discuss how to fix.
+        AbstractValue value = values.get(attribute.getClassType());
+        if(value instanceof ObservableValue || value instanceof  ObservableValueHistory) {
+            ((ObservableValue) value).addObserver(observer);
+        }
     }
 }

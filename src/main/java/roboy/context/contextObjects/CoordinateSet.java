@@ -13,4 +13,10 @@ public class CoordinateSet {
         this.y = y;
         this.z = z;
     }
+
+    @Override
+    public String toString() {
+        //TODO for demo purposes, rewrite once Vision integrated.
+        return ("x:"+Math.round(x*100)+" y:"+Math.round(y*100)+" z:"+Math.round(z*100));
+    }
 }

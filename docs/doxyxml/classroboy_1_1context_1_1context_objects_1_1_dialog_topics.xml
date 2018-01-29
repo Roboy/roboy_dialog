@@ -8,48 +8,48 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1048">
+      <node id="1076">
         <label>roboy.context.AbstractValueHistory&lt; Integer, V &gt;</label>
         <link refid="interfaceroboy_1_1context_1_1_abstract_value_history"/>
       </node>
-      <node id="1046">
+      <node id="1074">
         <label>roboy.context.contextObjects.DialogTopics</label>
         <link refid="classroboy_1_1context_1_1context_objects_1_1_dialog_topics"/>
-        <childnode refid="1047" relation="public-inheritance">
+        <childnode refid="1075" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1047">
+      <node id="1075">
         <label>roboy::context::ValueHistory&lt; String &gt;</label>
         <link refid="classroboy_1_1context_1_1_value_history"/>
-        <childnode refid="1048" relation="public-inheritance">
+        <childnode refid="1076" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1051">
+      <node id="1079">
         <label>roboy.context.AbstractValueHistory&lt; Integer, V &gt;</label>
         <link refid="interfaceroboy_1_1context_1_1_abstract_value_history"/>
       </node>
-      <node id="1049">
+      <node id="1077">
         <label>roboy.context.contextObjects.DialogTopics</label>
         <link refid="classroboy_1_1context_1_1context_objects_1_1_dialog_topics"/>
-        <childnode refid="1050" relation="public-inheritance">
+        <childnode refid="1078" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1052">
+      <node id="1080">
         <label>HashMap&lt; Integer, V &gt;</label>
       </node>
-      <node id="1050">
+      <node id="1078">
         <label>roboy::context::ValueHistory&lt; String &gt;</label>
         <link refid="classroboy_1_1context_1_1_value_history"/>
-        <childnode refid="1051" relation="public-inheritance">
+        <childnode refid="1079" relation="public-inheritance">
         </childnode>
-        <childnode refid="1052" relation="usage">
+        <childnode refid="1080" relation="usage">
           <edgelabel>data</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/contextObjects/DialogTopics.java" line="5" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/context/contextObjects/DialogTopics.java" bodystart="5" bodyend="6"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/contextObjects/DialogTopics.java" line="5" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/context/contextObjects/DialogTopics.java" bodystart="5" bodyend="6"/>
     <listofallmembers>
       <member refid="classroboy_1_1context_1_1_value_history_1a11489dd1721ef67092438fac57f7c704" prot="public" virt="non-virtual"><scope>roboy::context::contextObjects::DialogTopics</scope><name>getLastNValues</name></member>
       <member refid="classroboy_1_1context_1_1_value_history_1a147a847a6e56e5fc74ba4030e713d021" prot="public" virt="non-virtual"><scope>roboy::context::contextObjects::DialogTopics</scope><name>getValue</name></member>

@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" line="21" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="21" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineCommunication.java" line="21" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="21" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1io_1_1_command_line_communication_1a75f0ab5ac348e25ff15e66bd5106adc6" prot="private" static="no" mutable="no">
         <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer" kindref="compound">SentenceAnalyzer</ref></type>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" line="22" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="22" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineCommunication.java" line="22" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="22" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" line="25" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="25" bodyend="32"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineCommunication.java" line="25" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="25" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1io_1_1_command_line_communication_1aad3bdba382786f3f4e7b7e918a6632c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" line="35" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="35" bodyend="49"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineCommunication.java" line="35" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="35" bodyend="49"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" line="51" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="51" bodyend="57"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineCommunication.java" line="51" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="51" bodyend="57"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -89,56 +89,56 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="963">
+      <node id="978">
         <label>roboy.io.CommandLineCommunication</label>
         <link refid="classroboy_1_1io_1_1_command_line_communication"/>
-        <childnode refid="964" relation="public-inheritance">
+        <childnode refid="979" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="964">
+      <node id="979">
         <label>roboy.io.Communication</label>
         <link refid="interfaceroboy_1_1io_1_1_communication"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="970">
+      <node id="985">
         <label>Map&lt; String, String &gt;</label>
       </node>
-      <node id="967">
+      <node id="982">
         <label>roboy.dialog.personality.Personality</label>
         <link refid="interfaceroboy_1_1dialog_1_1personality_1_1_personality"/>
       </node>
-      <node id="965">
+      <node id="980">
         <label>roboy.io.CommandLineCommunication</label>
         <link refid="classroboy_1_1io_1_1_command_line_communication"/>
-        <childnode refid="966" relation="public-inheritance">
+        <childnode refid="981" relation="public-inheritance">
         </childnode>
-        <childnode refid="967" relation="usage">
+        <childnode refid="982" relation="usage">
           <edgelabel>personality</edgelabel>
         </childnode>
-        <childnode refid="968" relation="usage">
+        <childnode refid="983" relation="usage">
           <edgelabel>analyzer</edgelabel>
         </childnode>
       </node>
-      <node id="968">
+      <node id="983">
         <label>roboy.linguistics.sentenceanalysis.SentenceAnalyzer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_sentence_analyzer"/>
-        <childnode refid="969" relation="public-inheritance">
+        <childnode refid="984" relation="public-inheritance">
         </childnode>
-        <childnode refid="970" relation="usage">
+        <childnode refid="985" relation="usage">
           <edgelabel>meanings</edgelabel>
         </childnode>
       </node>
-      <node id="969">
+      <node id="984">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
-      <node id="966">
+      <node id="981">
         <label>roboy.io.Communication</label>
         <link refid="interfaceroboy_1_1io_1_1_communication"/>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" line="19" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="19" bodyend="59"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineCommunication.java" line="19" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/io/CommandLineCommunication.java" bodystart="19" bodyend="59"/>
     <listofallmembers>
       <member refid="classroboy_1_1io_1_1_command_line_communication_1a75f0ab5ac348e25ff15e66bd5106adc6" prot="private" virt="non-virtual"><scope>roboy::io::CommandLineCommunication</scope><name>analyzer</name></member>
       <member refid="classroboy_1_1io_1_1_command_line_communication_1aad3bdba382786f3f4e7b7e918a6632c3" prot="public" virt="non-virtual"><scope>roboy::io::CommandLineCommunication</scope><name>communicate</name></member>

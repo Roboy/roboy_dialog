@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/IntentAnalyzer.java" line="12" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/IntentAnalyzer.java" bodystart="12" bodyend="-1"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/IntentAnalyzer.java" line="12" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/IntentAnalyzer.java" bodystart="12" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/IntentAnalyzer.java" line="14" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/IntentAnalyzer.java" bodystart="14" bodyend="16"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/IntentAnalyzer.java" line="14" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/IntentAnalyzer.java" bodystart="14" bodyend="16"/>
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_intent_analyzer_1a85e72b39e63cd49d3832876aaa83459f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_interpretation" kindref="compound">Interpretation</ref></type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/IntentAnalyzer.java" line="19" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/IntentAnalyzer.java" bodystart="19" bodyend="30"/>
+        <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/IntentAnalyzer.java" line="19" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/IntentAnalyzer.java" bodystart="19" bodyend="30"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -60,61 +60,61 @@
     <detaileddescription>
 <para>Stores the highest scoring intent in the <ref refid="classroboy_1_1linguistics_1_1_linguistics_1a8e620c12c5527d34cf689156465cf451" kindref="member">Linguistics.INTENT</ref> feature and the score in the <ref refid="classroboy_1_1linguistics_1_1_linguistics_1a85c4b3f5cc755b7acc74b5309616db91" kindref="member">Linguistics.INTENT_DISTANCE</ref> feature. </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="1160">
+      <node id="1190">
         <label>roboy.linguistics.sentenceanalysis.IntentAnalyzer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_intent_analyzer"/>
-        <childnode refid="1161" relation="public-inheritance">
+        <childnode refid="1191" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="1161">
+      <node id="1191">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="1168">
+      <node id="1198">
         <label>CountDownLatch</label>
       </node>
-      <node id="1162">
+      <node id="1192">
         <label>roboy.linguistics.sentenceanalysis.IntentAnalyzer</label>
         <link refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_intent_analyzer"/>
-        <childnode refid="1163" relation="public-inheritance">
+        <childnode refid="1193" relation="public-inheritance">
         </childnode>
-        <childnode refid="1164" relation="usage">
+        <childnode refid="1194" relation="usage">
           <edgelabel>ros</edgelabel>
         </childnode>
       </node>
-      <node id="1167">
+      <node id="1197">
         <label>HashMap&lt; roboy.ros.RosClients, ServiceClient &gt;</label>
       </node>
-      <node id="1163">
+      <node id="1193">
         <label>roboy.linguistics.sentenceanalysis.Analyzer</label>
         <link refid="interfaceroboy_1_1linguistics_1_1sentenceanalysis_1_1_analyzer"/>
       </node>
-      <node id="1164">
+      <node id="1194">
         <label>roboy.ros.RosMainNode</label>
         <link refid="classroboy_1_1ros_1_1_ros_main_node"/>
-        <childnode refid="1165" relation="public-inheritance">
+        <childnode refid="1195" relation="public-inheritance">
         </childnode>
-        <childnode refid="1166" relation="usage">
+        <childnode refid="1196" relation="usage">
           <edgelabel>clients</edgelabel>
         </childnode>
-        <childnode refid="1168" relation="usage">
+        <childnode refid="1198" relation="usage">
           <edgelabel>rosConnectionLatch</edgelabel>
         </childnode>
       </node>
-      <node id="1166">
+      <node id="1196">
         <label>roboy.ros.RosManager</label>
         <link refid="classroboy_1_1ros_1_1_ros_manager"/>
-        <childnode refid="1167" relation="usage">
+        <childnode refid="1197" relation="usage">
           <edgelabel>clientMap</edgelabel>
         </childnode>
       </node>
-      <node id="1165">
+      <node id="1195">
         <label>AbstractNodeMain</label>
       </node>
     </collaborationgraph>
-    <location file="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/IntentAnalyzer.java" line="11" column="1" bodyfile="/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/src/main/java/roboy/linguistics/sentenceanalysis/IntentAnalyzer.java" bodystart="11" bodyend="31"/>
+    <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/IntentAnalyzer.java" line="11" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/sentenceanalysis/IntentAnalyzer.java" bodystart="11" bodyend="31"/>
     <listofallmembers>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_intent_analyzer_1a85e72b39e63cd49d3832876aaa83459f" prot="public" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::IntentAnalyzer</scope><name>analyze</name></member>
       <member refid="classroboy_1_1linguistics_1_1sentenceanalysis_1_1_intent_analyzer_1a4ec107142c362a7a49a5862cc73eb537" prot="public" virt="non-virtual"><scope>roboy::linguistics::sentenceanalysis::IntentAnalyzer</scope><name>IntentAnalyzer</name></member>
