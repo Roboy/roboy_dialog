@@ -16,9 +16,9 @@ import java.util.*;
  * attached state by the transition name using getTransition(transitionName).
  *
  * A fallback can be attached to a state. In the case this state doesn't know how to react
- * to an utterance, it can return null from the react() function. The state machine will query
- * the fallback in this case. More details on the fallback concept can be found in the
- * description of the StateBasedPersonality and in comments below.
+ * to an utterance, it can return ReAct.useFallback() from the react() function. The state
+ * machine will query the fallback in this case. More details on the fallback concept can
+ * be found in the description of the StateBasedPersonality and in comments below.
  */
 public abstract class State {
 
