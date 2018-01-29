@@ -3,6 +3,7 @@ package roboy.newDialog.states.toyStates;
 import roboy.linguistics.Linguistics;
 import roboy.newDialog.states.State;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.newDialog.states.StateParameters;
 import roboy.util.Lists;
 
 import java.util.List;
@@ -17,19 +18,19 @@ import java.util.List;
  */
 public class ToyFarewellState extends State {
 
-    public ToyFarewellState(String stateIdentifier) {
-        super(stateIdentifier);
+    public ToyFarewellState(String stateIdentifier, StateParameters params) {
+        super(stateIdentifier, params);
     }
 
     @Override
-    public Interpretation act() {
-        return new Interpretation("Bye bye! [say anything, will end conversation]");
+    public ReAct act() {
+        return ReAct.say( new Interpretation("Bye bye! [say anything, will end conversation]") );
     }
 
     @Override
-    public Interpretation react(Interpretation input) {
+    public ReAct react(Interpretation input) {
         // no reaction, we are done
-        return new Interpretation(Linguistics.SENTENCE_TYPE.NONE);
+        return ReAct.sayNothing();
     }
 
     @Override

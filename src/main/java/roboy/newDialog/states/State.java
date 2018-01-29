@@ -78,7 +78,7 @@ public abstract class State {
             return type == ReActType.INTERPRETATION; // interpretation != null
         }
 
-        public boolean requiredFallback() {
+        public boolean requiresFallback() {
             return type == ReActType.USE_FALLBACK;
         }
 
@@ -99,6 +99,9 @@ public abstract class State {
     // State name/identifier
     private String stateIdentifier;
 
+
+    private StateParameters parameters;
+
     // If this state can't react to the input, the Personality state machine will ask the fallback state
     private State fallback;
 
@@ -106,8 +109,9 @@ public abstract class State {
     private HashMap<String, State> transitions;
 
 
-    public State(String stateIdentifier) {
+    public State(String stateIdentifier, StateParameters parms) {
         this.stateIdentifier = stateIdentifier;
+        parameters = parms;
         fallback = null;
         transitions = new HashMap<>();
     }
@@ -168,7 +172,7 @@ public abstract class State {
      * are combined to give the answer of Roboy.
      * @return interpretations
      */
-    public abstract Interpretation act();
+    public abstract ReAct act();
 
 
     /**
@@ -179,9 +183,9 @@ public abstract class State {
      * transitions are now decoupled. State transitions are defined in getNextState()
      *
      * @param input input from the person we talk to
-     * @return reaction to the input OR null (will trigger the fallback state)
+     * @return reaction to the input (should not be null)
      */
-    public abstract Interpretation react(Interpretation input);
+    public abstract ReAct react(Interpretation input);
 
 
     /**

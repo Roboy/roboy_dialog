@@ -2,6 +2,7 @@ package roboy.newDialog;
 
 import com.google.gson.*;
 import roboy.newDialog.states.State;
+import roboy.newDialog.states.StateParameters;
 import roboy.newDialog.states.factories.ToyStateFactory;
 
 import java.io.File;
@@ -149,6 +150,8 @@ public class DialogStateMachine {
         }
         JsonArray states = statesJson.getAsJsonArray();
 
+        StateParameters params = new StateParameters();
+
         // for each state: create an object of the correct type
         // and add it to the hash map
         for (JsonElement state : states) {
@@ -157,7 +160,7 @@ public class DialogStateMachine {
             String identifier = s.get("identifier").getAsString();
             String implementation = s.get("implementation").getAsString();
 
-            State object = ToyStateFactory.getByClassName(implementation, identifier);
+            State object = ToyStateFactory.getByClassName(implementation, identifier, params);
             if (object != null) {
                 identifierToState.put(identifier, object);
             }

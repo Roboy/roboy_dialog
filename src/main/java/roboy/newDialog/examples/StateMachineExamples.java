@@ -1,6 +1,7 @@
 package roboy.newDialog.examples;
 
 import roboy.newDialog.DialogStateMachine;
+import roboy.newDialog.states.StateParameters;
 import roboy.newDialog.states.toyStates.*;
 
 import java.io.File;
@@ -45,11 +46,16 @@ public class StateMachineExamples {
 
     private static DialogStateMachine fromCode() {
 
+        // initialize global state parameters
+        // right now this is just an empty object, but later it will contain
+        // references to the ros main node etc.
+        StateParameters params = new StateParameters();
+
         // create states
-        ToyGreetingsState greetings = new ToyGreetingsState("Greetings");
-        ToyIntroState intro = new ToyIntroState("Intro");
-        ToyFarewellState farewell = new ToyFarewellState("Farewell");
-        ToyRandomAnswerState randomAnswer = new ToyRandomAnswerState("RandomAnswer");
+        ToyGreetingsState greetings = new ToyGreetingsState("Greetings", params);
+        ToyIntroState intro = new ToyIntroState("Intro", params);
+        ToyFarewellState farewell = new ToyFarewellState("Farewell", params);
+        ToyRandomAnswerState randomAnswer = new ToyRandomAnswerState("RandomAnswer", params);
 
         // set fallbacks and transitions
         greetings.setFallback(randomAnswer);
