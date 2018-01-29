@@ -22,6 +22,79 @@ import java.util.*;
  */
 public abstract class State {
 
+    // region ReAct static inner class
+
+    /**
+     *  ReAct static inner class represents the return values of act() and react() methods.
+     *  There are three possible scenarios:
+     *   - the state wants to say something -> a single interpretation is returned
+     *   - the state does not say anything -> no interpretation
+     *   - the state does not know how to react -> fallback state is required to fix this
+     *
+     *   To create an instance of this class inside the act() or react() method use following:
+     *   - ReAct.say( new Interpretation(...) )  - to return an interpretation
+     *   - ReAct.sayNothing()                    - to make clear that you don't want to say something
+     *   - ReAct.useFallback()                   - to indicate that you can't react and want to use the fallback
+     */
+    public static class ReAct {
+
+        public enum ReActType {
+            INTERPRETATION, SAY_NOTHING, USE_FALLBACK
+        }
+
+        private final ReActType type;
+        private final Interpretation interpretation;
+
+        /**
+         * Private constructor, used only inside static methods.
+         * @param type type of this react object
+         * @param interpretation optional interpretation object (or null)
+         */
+        private ReAct(ReActType type, Interpretation interpretation) {
+            this.type = type;
+            this.interpretation = interpretation;
+        }
+
+        //  Static creators
+
+        public static ReAct say(Interpretation i) {
+            if (i == null) {
+                return sayNothing();
+            }
+            return new ReAct(ReActType.INTERPRETATION, i);
+        }
+
+        public static ReAct sayNothing() {
+            return new ReAct(ReActType.SAY_NOTHING, null);
+        }
+
+        public static ReAct useFallback() {
+            return new ReAct(ReActType.USE_FALLBACK, null);
+        }
+
+        // Non-static methods
+
+        public boolean hasInterpretation() {
+            return type == ReActType.INTERPRETATION; // interpretation != null
+        }
+
+        public boolean requiredFallback() {
+            return type == ReActType.USE_FALLBACK;
+        }
+
+        public boolean isEmpty() {
+            return type == ReActType.SAY_NOTHING;
+        }
+
+        public Interpretation getInterpretation() {
+            return interpretation;
+        }
+
+    }
+
+    //endregion
+
+    // START OF STATE IMPLEMENTATION
 
     // State name/identifier
     private String stateIdentifier;
@@ -138,6 +211,16 @@ public abstract class State {
     protected Set<String> getRequiredTransitionNames() {
         // default implementation: no required transitions
         return new HashSet<>();
+    }
+
+
+    /**
+     * This function can be overridden to sub classes to indicate that this state can require a fallback.
+     * If this is the case, but no fallback was defined, you will be warned.
+     * @return true if this state requires a fallback and false otherwise
+     */
+    public boolean isFallbackRequired() {
+        return false;
     }
 
     /**

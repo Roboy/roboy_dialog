@@ -224,6 +224,11 @@ public class DialogStateMachine {
                     System.out.println("[!!] loadFromJSON: Some required transitions are missing in the " +
                             "state with identifier " + s.getIdentifier());
                 }
+                if (s.isFallbackRequired() && s.getFallback() == null) {
+                    System.out.println("[!!] loadFromJSON: Fallback is required but missing in the " +
+                            "state with identifier " + s.getIdentifier());
+                }
+
             }
         }
 
