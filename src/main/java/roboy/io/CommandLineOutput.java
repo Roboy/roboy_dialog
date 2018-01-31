@@ -22,7 +22,7 @@ public class CommandLineOutput implements OutputDevice{
 			if(a instanceof SpeechAction){
 //				int duration = ((SpeechAction) a).getText().length()==0 ? 0 : 1 + ((SpeechAction) a).getText().length()/8;
 //				emotion.act(new FaceAction("speak", duration));
-				System.out.println(((SpeechAction) a).getText());
+				System.out.println("[Roboy]: " + ((SpeechAction) a).getText());
 			}
 		}
 	}

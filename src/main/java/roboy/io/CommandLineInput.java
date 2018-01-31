@@ -14,6 +14,7 @@ public class CommandLineInput implements InputDevice{
 
 	@Override
 	public Input listen() {
+		System.out.print("[You]:   ");
 		String input = sc.nextLine();
 		if ( input.contains("roboy") ){
 			return new Input(input, Maps.stringObjectMap(Linguistics.ROBOYDETECTED,true));
