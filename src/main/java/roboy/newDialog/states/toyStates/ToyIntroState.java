@@ -25,7 +25,7 @@ public class ToyIntroState extends State {
 
     @Override
     public ReAct act() {
-        String introSentenceFromParams = getParameters().get("introductionSentence");
+        String introSentenceFromParams = getParameters().getParameter("introductionSentence");
         return ReAct.say(new Interpretation( introSentenceFromParams +" Who are you? [say anything]"));
     }
 

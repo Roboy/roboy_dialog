@@ -1,7 +1,10 @@
 package roboy.newDialog.states;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.newDialog.DialogStateMachine;
 
 import java.util.*;
 
@@ -109,20 +112,36 @@ public abstract class State {
     private HashMap<String, State> transitions;
 
 
+    /**
+     * Create a state object with given identifier (state name) and parameters.
+     * The parameters should contain a reference to a state machine. The state will be automatically added to it.
+     * @param stateIdentifier  identifier (name) of this state
+     * @param params parameters for this state, should contain a reference to a state machine
+     */
     public State(String stateIdentifier, StateParameters params) {
         this.stateIdentifier = stateIdentifier;
         fallback = null;
         transitions = new HashMap<>();
 
         if (params == null) {
-            parameters = new StateParameters();
+            System.err.println("[!!] A reference to the state parameters is missing. " +
+                    "This state is not connected to a state machine!");
+            parameters = new StateParameters(null);
         } else {
             parameters = params;
+
+            DialogStateMachine sm = params.getStateMachine();
+            if (sm == null) {
+                System.err.println("[!!] State parameters do not have a reference to the state machine. " +
+                        "This state is not connected to a state machine!");
+            } else {
+                sm.addState(this);
+            }
         }
 
     }
 
-    //region identifier, fallback & transitions
+    //region identifier, parameters, fallback & transitions
 
     public String getIdentifier() {
         return stateIdentifier;
@@ -268,7 +287,7 @@ public abstract class State {
     public final boolean allRequiredParametersAreInitialized() {
         boolean allGood = true;
         for (String paramName : getRequiredParameterNames()) {
-            if (parameters.get(paramName) == null) {
+            if (parameters.getParameter(paramName) == null) {
                 System.err.println("[!!] State " + getIdentifier() + ": parameter " + paramName
                         + " is required but is not defined!");
                 allGood = false;
@@ -300,7 +319,10 @@ public abstract class State {
         if (fallback != null) {
             String fallbackID = fallback.getIdentifier();
             stateJson.addProperty("fallback", fallbackID);
+        } else {
+            stateJson.add("fallback", JsonNull.INSTANCE);
         }
+
 
         // transitions
         JsonObject transitionsJson = new JsonObject();
@@ -311,6 +333,17 @@ public abstract class State {
         }
         stateJson.add("transitions", transitionsJson);
 
+        // parameters
+        if (getParameters() == null) return stateJson;
+
+
+        JsonObject parametersJson = new JsonObject();
+        for (Map.Entry<String, String> parameter : getParameters().getAllParameters().entrySet()) {
+            String paramName = parameter.getKey();
+            String paramValue = parameter.getValue();
+            parametersJson.addProperty(paramName, paramValue);
+        }
+        stateJson.add("parameters", parametersJson);
 
         return stateJson;
 

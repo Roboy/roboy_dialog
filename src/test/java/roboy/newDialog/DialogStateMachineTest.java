@@ -37,9 +37,9 @@ public class DialogStateMachineTest {
     // helper, creates equivalent state machine from code
     private static DialogStateMachine fromCode() {
 
-        StateParameters params = new StateParameters();
-
         DialogStateMachine machine = new DialogStateMachine();
+        StateParameters params = new StateParameters(machine);
+
         ToyGreetingsState greeting = new ToyGreetingsState("Greetings", params);
         ToyFarewellState farewell = new ToyFarewellState("Farewell", params);
         greeting.setTransition("next", farewell);
@@ -97,7 +97,7 @@ public class DialogStateMachineTest {
 
         DialogStateMachine fromCode = fromCode();
         // add one more state
-        fromCode.addState(new ToyGreetingsState("NewEvilState", new StateParameters()));
+        fromCode.addState(new ToyGreetingsState("NewEvilState", new StateParameters(fromString)));
 
         assertFalse(fromString.equals(fromCode));
         assertFalse(fromCode.equals(fromString));

@@ -37,6 +37,8 @@ public class ToyGreetingsState extends State {
 
     @Override
     public ReAct react(Interpretation input) {
+        // react to input
+
         String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
         inputOK = StatementInterpreter.isFromList(sentence, Verbalizer.greetings);
 
@@ -65,5 +67,11 @@ public class ToyGreetingsState extends State {
     protected Set<String> getRequiredTransitionNames() {
         // optional: define all required transitions here:
         return newSet("next", "noHello");
+    }
+
+    @Override
+    public boolean isFallbackRequired() {
+        // optional: indicate that this state requires fallback in some cases
+        return true;
     }
 }

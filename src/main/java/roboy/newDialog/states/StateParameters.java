@@ -1,5 +1,7 @@
 package roboy.newDialog.states;
 
+import roboy.newDialog.DialogStateMachine;
+
 import java.util.HashMap;
 
 /**
@@ -7,21 +9,36 @@ import java.util.HashMap;
  */
 public class StateParameters {
 
-    // TODO: references to context, ros node, state machine, ...
+    // TODO: references to context, ros node, ...
 
     private HashMap<String, String> paramNameToValue;
+    private DialogStateMachine stateMachine;
 
-    public StateParameters() {
+    public StateParameters(DialogStateMachine stateMachine) {
         paramNameToValue = new HashMap<>();
+        this.stateMachine = stateMachine;
+
+        if (stateMachine == null) {
+            System.err.println("[!!] StateParameters require a reference to the state machine");
+        }
+
     }
 
-    public StateParameters set(String parameterName, String value) {
+    public StateParameters setParameter(String parameterName, String value) {
         paramNameToValue.put(parameterName, value);
         return this;
     }
 
-    public String get(String parameterName) {
+    public String getParameter(String parameterName) {
         return paramNameToValue.get(parameterName);
+    }
+
+    public HashMap<String, String> getAllParameters() {
+        return paramNameToValue;
+    }
+
+    public DialogStateMachine getStateMachine() {
+        return stateMachine;
     }
 
 

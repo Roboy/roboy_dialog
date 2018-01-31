@@ -46,31 +46,34 @@ public class StateMachineExamples {
 
     private static DialogStateMachine fromCode() {
 
-        // initialize global state parameters
-        // right now this is just an empty object, but later it will contain
-        // references to the ros main node etc.
-        StateParameters params = new StateParameters();
 
-        // create states
-        ToyGreetingsState greetings = new ToyGreetingsState("Greetings", params);
-        ToyIntroState intro = new ToyIntroState("Intro", params);
-        ToyFarewellState farewell = new ToyFarewellState("Farewell", params);
-        ToyRandomAnswerState randomAnswer = new ToyRandomAnswerState("RandomAnswer", params);
+        // 1. create the dialog machine
+        DialogStateMachine stateMachine = new DialogStateMachine();
 
-        // set fallbacks and transitions
+
+        // 2. create states (they will add themselves to the state machine automatically)
+
+        // states with no specific parameters -> one StateParameters object that is shared by all states
+        StateParameters emptyParams = new StateParameters(stateMachine);
+        ToyGreetingsState greetings = new ToyGreetingsState("Greetings", emptyParams);
+        ToyFarewellState farewell = new ToyFarewellState("Farewell", emptyParams);
+        ToyRandomAnswerState randomAnswer = new ToyRandomAnswerState("RandomAnswer", emptyParams);
+
+        // states that require specific parameters -> one new StateParameters object for every state
+        StateParameters introParams = new StateParameters(stateMachine);
+        introParams.setParameter("introductionSentence", "This dialog was created from code");
+        ToyIntroState intro = new ToyIntroState("Intro", introParams);
+
+        // 3. set fallbacks and transitions
         greetings.setFallback(randomAnswer);
         greetings.setTransition("next", intro);
         greetings.setTransition("noHello", farewell);
         intro.setTransition("next", farewell);
         randomAnswer.setTransition("next", farewell);
 
-        // create the dialog machine an register states
-        DialogStateMachine stateMachine = new DialogStateMachine();
-        stateMachine.addState(greetings);
-        stateMachine.addState(intro);
-        stateMachine.addState(farewell);
-        stateMachine.addState(randomAnswer);
-        stateMachine.setInitialState(greetings);
+        // 4. done
+        // no need to call "stateMachine.addState(someState)"
+        // this happens automatically when the state objects are created
 
         return stateMachine;
 
@@ -108,6 +111,9 @@ public class StateMachineExamples {
             "      \"fallback\" : null,\n" +
             "      \"transitions\" : {\n" +
             "        \"next\" : \"Farewell\"\n" +
+            "      },\n" +
+            "      \"parameters\" : {\n" +
+            "        \"introductionSentence\" : \"My name is Roboy!\"\n" +
             "      }\n" +
             "    },\n" +
             "    {\n" +

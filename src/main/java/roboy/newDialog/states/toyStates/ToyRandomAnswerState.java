@@ -33,6 +33,6 @@ public class ToyRandomAnswerState extends State {
 
     @Override
     public State getNextState() {
-        return null; // this state is only used as fallback, no transitions needed
+        return null; // this state is only used as fallback, no next state
     }
 }

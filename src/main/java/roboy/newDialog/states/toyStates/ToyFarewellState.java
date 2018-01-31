@@ -10,8 +10,8 @@ import java.util.List;
 
 /**
  * ToyFarewellState always acts with "Bye bye".
- * The Interlocutor answer is ignored and there is no reaction (empty interpretation).
- * This ends the conversation.
+ * The Interlocutor's answer is ignored and there is no reaction (ReAct.sayNothing()).
+ * This ends the conversation (returning null in getNextState()).
  *
  * Fallback is not required.
  * This state has no outgoing transitions.

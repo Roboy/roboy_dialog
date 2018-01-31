@@ -132,7 +132,7 @@ public class DialogStateMachine {
         JsonArray statesJsA = statesJson.getAsJsonArray();
 
         // for each state: create an object of the correct type and add it to the hash map
-        parseAndCreateStates(statesJsA, identifierToState);
+        parseAndCreateStates(statesJsA);
 
         // now all states were converted into objects
         // set initial state
@@ -152,7 +152,7 @@ public class DialogStateMachine {
      * @return StateParameters instance with all parameters defined in json object
      */
     private StateParameters parseStateParameters(JsonObject stateJsO) {
-        StateParameters params = new StateParameters();
+        StateParameters params = new StateParameters(this);
 
         // set the transitions
         JsonObject paramsJsO = stateJsO.getAsJsonObject("parameters");
@@ -161,7 +161,7 @@ public class DialogStateMachine {
             for (Map.Entry<String,JsonElement> entry : paramsJsO.entrySet()) {
                 String paramName = entry.getKey();
                 String paramValue = entry.getValue().getAsString();
-                params.set(paramName, paramValue);
+                params.setParameter(paramName, paramValue);
             }
         }
 
@@ -172,9 +172,8 @@ public class DialogStateMachine {
      * Parses every element of the json array and creates a state java object.
      * State parameters are parsed before the object is created.
      * @param statesJsA json array containing states
-     * @param idToState hash map to store the new state objects
      */
-    private void parseAndCreateStates(JsonArray statesJsA, HashMap<String, State> idToState) {
+    private void parseAndCreateStates(JsonArray statesJsA) {
         for (JsonElement stateJsE : statesJsA) {
             JsonObject stateJsO = stateJsE.getAsJsonObject();
             StateParameters params = parseStateParameters(stateJsO);
@@ -183,9 +182,14 @@ public class DialogStateMachine {
             String implClassName = stateJsO.get("implementation").getAsString();
 
             State state = ToyStateFactory.getByClassName(implClassName, identifier, params);
-            if (state != null) {
-                idToState.put(identifier, state);
+
+            if (state == null) {
+                System.err.println("[!!] parseAndCreateStates: state "
+                        + identifier + " was not created!");
             }
+
+            // no need to call addState(state)
+            // states add themselves to the state machine automatically in the constructor
         }
     }
 
@@ -296,7 +300,7 @@ public class DialogStateMachine {
     }
 
     public String toJsonString() {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
         JsonObject json = toJsonObject();
         return gson.toJson(json);
     }
