@@ -1,10 +1,8 @@
 package roboy.newDialog.states;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.newDialog.DialogStateMachine;
 
 import java.util.*;
 
@@ -122,23 +120,7 @@ public abstract class State {
         this.stateIdentifier = stateIdentifier;
         fallback = null;
         transitions = new HashMap<>();
-
-        if (params == null) {
-            System.err.println("[!!] A reference to the state parameters is missing. " +
-                    "This state is not connected to a state machine!");
-            parameters = new StateParameters(null);
-        } else {
-            parameters = params;
-
-            DialogStateMachine sm = params.getStateMachine();
-            if (sm == null) {
-                System.err.println("[!!] State parameters do not have a reference to the state machine. " +
-                        "This state is not connected to a state machine!");
-            } else {
-                sm.addState(this);
-            }
-        }
-
+        parameters = params;
     }
 
     //region identifier, parameters, fallback & transitions
@@ -285,6 +267,15 @@ public abstract class State {
      * @return true if all required parameters of this state were initialized correctly
      */
     public final boolean allRequiredParametersAreInitialized() {
+        if (parameters == null) {
+            System.err.println("[!!] State " + getIdentifier() + ": parameters are missing completely!");
+            return false;
+        }
+        if (parameters.getStateMachine() == null) {
+            System.err.println("[!!] State " + getIdentifier() + ": reference to the state machine is missing in the parameters!");
+            return false;
+        }
+
         boolean allGood = true;
         for (String paramName : getRequiredParameterNames()) {
             if (parameters.getParameter(paramName) == null) {
@@ -356,11 +347,17 @@ public abstract class State {
 
         State fallback = getFallback();
         if (fallback != null) {
-            s.append("  ! fallback: ").append(fallback.getIdentifier()).append("\n");
+            s.append("  [Fallback]   state: ").append(fallback.getIdentifier()).append("\n");
         }
         for (Map.Entry<String, State> transition : getAllTransitions().entrySet()) {
-            s.append("  ").append(transition.getKey()).append(": ");
+            s.append("  [Transition] ").append(transition.getKey()).append(": ");
             s.append(transition.getValue().getIdentifier()).append("\n");
+        }
+        if (getParameters() != null) {
+            for (Map.Entry<String, String> parameter : getParameters().getAllParameters().entrySet()) {
+                s.append("  [Parameter]  ").append(parameter.getKey()).append(": ");
+                s.append(parameter.getValue()).append("\n");
+            }
         }
 
         return s.append("}\n").toString();

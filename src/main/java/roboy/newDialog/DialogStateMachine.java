@@ -186,10 +186,9 @@ public class DialogStateMachine {
             if (state == null) {
                 System.err.println("[!!] parseAndCreateStates: state "
                         + identifier + " was not created!");
+            } else {
+                addState(state);
             }
-
-            // no need to call addState(state)
-            // states add themselves to the state machine automatically in the constructor
         }
     }
 
@@ -264,6 +263,7 @@ public class DialogStateMachine {
                 System.err.println("[!!] checkSuccessfulInitialization: Fallback is required but missing in the " +
                         "state with identifier " + s.getIdentifier());
             }
+
         }
     }
 

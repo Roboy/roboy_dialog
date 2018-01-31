@@ -27,17 +27,22 @@ public class StateMachineExamples {
         System.out.println("JSON representation:");
         System.out.println(file.toJsonString());
 
+        boolean allEqual =  code.equals(file)   &&
+                            code.equals(string) &&
+                            string.equals(code) &&
+                            string.equals(file) &&
+                            file.equals(string) &&
+                            file.equals(code);
 
-        System.out.println("Dialog machine from code, file and string are equal: "
-                + ( code.equals(file)   &&
-                    code.equals(string) &&
-                    string.equals(code) &&
-                    string.equals(file) &&
-                    file.equals(string) &&
-                    file.equals(code)
-                )
-        );
-
+        System.out.println("Dialog machine from code, file and string are equal: " + allEqual);
+        if (! allEqual) {
+            System.out.println("code.equals(file):   " + code.equals(file)   );
+            System.out.println("code.equals(string): " + code.equals(string) );
+            System.out.println("string.equals(code): " + string.equals(code) );
+            System.out.println("string.equals(file): " + string.equals(file) );
+            System.out.println("file.equals(string): " + file.equals(string) );
+            System.out.println("file.equals(code):   " + file.equals(code)   );
+        }
 
         //System.out.println("Saving to resources/personalityFiles/ExamplePersonality2.json");
         //file.saveToFile(new File ("resources/personalityFiles/ExamplePersonality2.json"));
@@ -50,8 +55,7 @@ public class StateMachineExamples {
         // 1. create the dialog machine
         DialogStateMachine stateMachine = new DialogStateMachine();
 
-
-        // 2. create states (they will add themselves to the state machine automatically)
+        // 2. create states
 
         // states with no specific parameters -> one StateParameters object that is shared by all states
         StateParameters emptyParams = new StateParameters(stateMachine);
@@ -71,9 +75,15 @@ public class StateMachineExamples {
         intro.setTransition("next", farewell);
         randomAnswer.setTransition("next", farewell);
 
-        // 4. done
-        // no need to call "stateMachine.addState(someState)"
-        // this happens automatically when the state objects are created
+        // 4. register states in in the state machine: this doesn't happen automatically!
+        stateMachine.addState(greetings);
+        stateMachine.addState(intro);
+        stateMachine.addState(randomAnswer);
+        stateMachine.addState(farewell);
+
+        // 5. define initial state
+        stateMachine.setInitialState(greetings);
+
 
         return stateMachine;
 
