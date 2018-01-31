@@ -99,7 +99,7 @@ public abstract class State {
     // State name/identifier
     private String stateIdentifier;
 
-
+    // State parameters: contain references to important
     private StateParameters parameters;
 
     // If this state can't react to the input, the Personality state machine will ask the fallback state
@@ -109,11 +109,17 @@ public abstract class State {
     private HashMap<String, State> transitions;
 
 
-    public State(String stateIdentifier, StateParameters parms) {
+    public State(String stateIdentifier, StateParameters params) {
         this.stateIdentifier = stateIdentifier;
-        parameters = parms;
         fallback = null;
         transitions = new HashMap<>();
+
+        if (params == null) {
+            parameters = new StateParameters();
+        } else {
+            parameters = params;
+        }
+
     }
 
     //region identifier, fallback & transitions
@@ -123,6 +129,10 @@ public abstract class State {
     }
     public void setIdentifier(String stateIdentifier) {
         this.stateIdentifier = stateIdentifier;
+    }
+
+    public StateParameters getParameters() {
+        return parameters;
     }
 
     /**
@@ -217,6 +227,10 @@ public abstract class State {
         return new HashSet<>();
     }
 
+    protected Set<String> getRequiredParameterNames() {
+        return new HashSet<>();
+    }
+
 
     /**
      * This function can be overridden to sub classes to indicate that this state can require a fallback.
@@ -231,18 +245,35 @@ public abstract class State {
      * Checks if all required transitions were initialized correctly.
      * Required transitions are defined in getRequiredTransitionNames().
      *
-     * @return true if this state was initialized correctly
+     * @return true if all required transitions of this state were initialized correctly
      */
     public final boolean allRequiredTransitionsAreInitialized() {
         boolean allGood = true;
-
         for (String tName : getRequiredTransitionNames()) {
             if (!transitions.containsKey(tName)) {
-                System.err.println("Transition " + tName + " is required but is not defined!");
+                System.err.println("[!!] State " + getIdentifier() + ": transition " + tName
+                        + " is required but is not defined!");
                 allGood = false;
             }
         }
+        return allGood;
+    }
 
+    /**
+     * Checks if all required parameters were initialized correctly.
+     * Required parameters are defined in getRequiredParameterNames().
+     *
+     * @return true if all required parameters of this state were initialized correctly
+     */
+    public final boolean allRequiredParametersAreInitialized() {
+        boolean allGood = true;
+        for (String paramName : getRequiredParameterNames()) {
+            if (parameters.get(paramName) == null) {
+                System.err.println("[!!] State " + getIdentifier() + ": parameter " + paramName
+                        + " is required but is not defined!");
+                allGood = false;
+            }
+        }
         return allGood;
     }
 

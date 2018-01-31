@@ -8,7 +8,7 @@ import roboy.util.Lists;
 import java.util.*;
 
 /**
- * ToyIntroState demonstrates a simple introduction.
+ * ToyIntroState demonstrates a simple introduction. A single parameter is used.
  * Roboy will tell the Interlocutor his name and ask for the Interlocutor's name.
  * The reply is ignored.
  *
@@ -25,7 +25,8 @@ public class ToyIntroState extends State {
 
     @Override
     public ReAct act() {
-        return ReAct.say(new Interpretation("My name is Roboy! Who are you? [say anything]"));
+        String introSentenceFromParams = getParameters().get("introductionSentence");
+        return ReAct.say(new Interpretation( introSentenceFromParams +" Who are you? [say anything]"));
     }
 
     @Override
@@ -44,4 +45,8 @@ public class ToyIntroState extends State {
         return newSet("next");
     }
 
+    @Override
+    protected Set<String> getRequiredParameterNames() {
+        return newSet("introductionSentence");
+    }
 }
