@@ -6,6 +6,7 @@ import roboy.memory.nodes.Interlocutor;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
+import java.util.Observer;
 
 /**
  * Singleton class serving as an interface to access all context objects.
@@ -15,28 +16,31 @@ import java.util.Map;
  * <p>
  * For usage examples, check out ContextTest.java
  */
-public class Context extends ValueAccessManager<Context.ValueHistory, Context.Value> {
+public class Context extends ValueAccessManager<Context.ValueHistories, Context.Values> {
     private static Context context;
     private static final Object initializationLock = new Object();
 
-    private ImmutableClassToInstanceMap<roboy.context.InternalUpdater> internalUpdaters;
-    private ImmutableClassToInstanceMap<roboy.context.ExternalUpdater> externalUpdaters;
+    protected ImmutableClassToInstanceMap<InternalUpdater> internalUpdaters;
+    protected ImmutableClassToInstanceMap<ExternalUpdater> externalUpdaters;
+    protected ImmutableClassToInstanceMap<Observer> observers;
 
+    /**
+     * Builds the class to instance maps.
+     */
     private Context() {
-        // Build the class to instance map of Values.
-        values = buildValueInstanceMap(Value.values());
-        valueHistories = buildValueInstanceMap(ValueHistory.values());
-        externalUpdaters = buildUpdaterInstanceMap(ExternalUpdater.values());
-        internalUpdaters = buildUpdaterInstanceMap(InternalUpdater.values());
-
-        // No fancy observer initialization at the moment.
-        addObserver(Value.FACE_COORDINATES, new FaceCoordinatesObserver());
+        values = buildValueInstanceMap(Values.values());
+        valueHistories = buildValueInstanceMap(ValueHistories.values());
+        // Updaters need a target, therefore different initialization.
+        externalUpdaters = buildUpdaterInstanceMap(ExternalUpdaters.values());
+        internalUpdaters = buildUpdaterInstanceMap(InternalUpdaters.values());
+        // Observers need to be added to the Observable instance, therefore different initialization.
+        observers = buildObserverInstanceMap(Observers.values());
     }
 
     /**
      * The access point to Context, including thread-safe Singleton initialization.
      */
-    private static Context getInstance() {
+    protected static Context getInstance() {
         if (context == null) {
             // Extra block instead of synchronizing over entire getInstance method.
             // This way, we do not sync when context was initialized earlier -> better performance.
@@ -51,13 +55,51 @@ public class Context extends ValueAccessManager<Context.ValueHistory, Context.Va
     }
 
     /**
+     * ADD NEW VALUES HERE.
+     * This is the interface over which Context values can be queried.
+     * Add your Value implementation class and its return type below.
+     * Context will take care of initialization.
+     * Query values over the enum name.
+     */
+    public enum Values implements ContextValueInterface {
+        // NEW DEFINITIONS GO HERE.
+        FACE_COORDINATES(FaceCoordinates.class, CoordinateSet.class),
+        ACTIVE_INTERLOCUTOR(ActiveInterlocutor.class, Interlocutor.class);
+
+
+        final Class classType;
+        final Class returnType;
+
+        /**
+         * Get the last element added to the corresponding Value instance.
+         * @param <T> The return type of the Value.
+         * @return
+         */
+        public <T> T getValue() {
+            return Context.getInstance().getValue(this);
+        }
+
+        /* Utility methods. */
+        Values(Class attribute, Class value) {
+            this.classType = attribute;
+            this.returnType = value;
+        }
+        public Class getClassType() {
+            return this.classType;
+        }
+        public Class getReturnType() {
+            return this.returnType;
+        }
+    }
+
+    /**
      * ADD NEW VALUE HISTORIES HERE.
      * This is the interface over which Context value histories can be queried.
      * Add your ValueHistory implementation class and its return type below.
      * Context will take care of initialization.
      * Query values over the enum name.
      */
-    public enum ValueHistory implements ContextValueInterface {
+    public enum ValueHistories implements ContextValueInterface {
         // NEW DEFINITIONS GO HERE.
         DIALOG_TOPICS(DialogTopics.class, String.class);
 
@@ -83,47 +125,9 @@ public class Context extends ValueAccessManager<Context.ValueHistory, Context.Va
         }
 
         /** ValueHistory enum utility methods. */
-        ValueHistory(Class<? extends AbstractValueHistory> attribute, Class dataType) {
+        ValueHistories(Class<? extends AbstractValueHistory> attribute, Class dataType) {
             this.classType = attribute;
             this.returnType = dataType;
-        }
-        public Class getClassType() {
-            return this.classType;
-        }
-        public Class getReturnType() {
-            return this.returnType;
-        }
-    }
-
-    /**
-     * ADD NEW VALUES HERE.
-     * This is the interface over which Context values can be queried.
-     * Add your Value implementation class and its return type below.
-     * Context will take care of initialization.
-     * Query values over the enum name.
-     */
-    public enum Value implements ContextValueInterface {
-        // NEW DEFINITIONS GO HERE.
-        FACE_COORDINATES(FaceCoordinates.class, CoordinateSet.class),
-        ACTIVE_INTERLOCUTOR(ActiveInterlocutor.class, Interlocutor.class);
-
-
-        final Class classType;
-        final Class returnType;
-
-        /**
-         * Get the last element added to the corresponding Value instance.
-         * @param <T> The return type of the Value.
-         * @return
-         */
-        public <T> T getValue() {
-            return Context.getInstance().getValue(this);
-        }
-
-        /* Utility methods. */
-        Value(Class attribute, Class value) {
-            this.classType = attribute;
-            this.returnType = value;
         }
         public Class getClassType() {
             return this.classType;
@@ -140,7 +144,7 @@ public class Context extends ValueAccessManager<Context.ValueHistory, Context.Va
      * Context will take care of initialization.
      * Add values over <enum name>.updateValue().
      */
-    public enum InternalUpdater implements ContextUpdaterInterface {
+    public enum InternalUpdaters implements ContextUpdaterInterface {
         // NEW DEFINITIONS GO HERE.
         DIALOG_TOPICS_UPDATER(DialogTopicsUpdater.class, DialogTopics.class, String.class),
         ACTIVE_INTERLOCUTOR_UPDATER(ActiveInterlocutorUpdater.class, ActiveInterlocutor.class, Interlocutor.class);
@@ -159,7 +163,7 @@ public class Context extends ValueAccessManager<Context.ValueHistory, Context.Va
         }
 
         /* Utility methods. */
-        InternalUpdater(Class attribute, Class targetType, Class targetValueType) {
+        InternalUpdaters(Class attribute, Class targetType, Class targetValueType) {
             this.classType = attribute;
             this.targetType = targetType;
             this.targetValueType = targetValueType;
@@ -180,7 +184,7 @@ public class Context extends ValueAccessManager<Context.ValueHistory, Context.Va
      * These updaters will be initialized and left to run independently.
      * Add your ExternalUpdater implementation class, the target class, and its data type below.
      */
-    private enum ExternalUpdater implements ContextUpdaterInterface {
+    public enum ExternalUpdaters implements ContextUpdaterInterface {
         // NEW DEFINITIONS GO HERE.
         FACE_COORDINATES_UPDATER(FaceCoordinatesUpdater.class, FaceCoordinates.class, CoordinateSet.class);
 
@@ -189,7 +193,7 @@ public class Context extends ValueAccessManager<Context.ValueHistory, Context.Va
         final Class targetValueType;
 
         /* Utility methods. */
-        ExternalUpdater(Class attribute, Class targetType, Class targetValueType) {
+        ExternalUpdaters(Class attribute, Class targetType, Class targetValueType) {
             this.classType = attribute;
             this.targetType = targetType;
             this.targetValueType = targetValueType;
@@ -202,6 +206,25 @@ public class Context extends ValueAccessManager<Context.ValueHistory, Context.Va
         }
         public Class<? extends AbstractValue> getReturnType() {
             return this.targetValueType;
+        }
+    }
+
+    public enum Observers implements ContextObserverInterface {
+        FACE_COORDINATES_OBSERVER(FaceCoordinatesObserver.class, FaceCoordinates.class);
+
+        final Class classType;
+        final Class targetType;
+
+        Observers(Class classType, Class targetType) {
+            this.classType = classType;
+            this.targetType = targetType;
+        }
+
+        public Class<? extends AbstractValue> getClassType() {
+            return this.classType;
+        }
+        public Class<? extends AbstractValue> getTargetType() {
+            return this.targetType;
         }
     }
 
@@ -259,6 +282,39 @@ public class Context extends ValueAccessManager<Context.ValueHistory, Context.Va
             }
         }
         return updaterMapBuilder.build();
+    }
+
+    private <T extends ContextObserverInterface> ImmutableClassToInstanceMap buildObserverInstanceMap(T[] enumValueList) {
+        ImmutableClassToInstanceMap.Builder observerMapBuilder = new ImmutableClassToInstanceMap.Builder<>();
+        // Go over all Observers defined in the enum.
+        for (T updater : enumValueList) {
+            try {
+                // Get the Observer class.
+                Class updaterType = updater.getClassType();
+                // Create an instance of the Observer class.
+                Observer observer = (Observer) updaterType.getConstructor().newInstance();
+
+                Class targetClass = updater.getTargetType();
+                // Check the Value list in the Context for a target.
+                AbstractValue targetInstance = values.get(targetClass);
+                // If not there, check ValueHistories.
+                if (targetInstance != null) {
+                    ((ObservableValue) targetInstance).addObserver(observer);
+                } else {
+                    targetInstance = valueHistories.get(targetClass);
+                    if (targetInstance != null) {
+                        ((ObservableValueHistory) targetInstance).addObserver(observer);
+                    } else {
+                        // Not found? Observer must have been defined wrongly.
+                        throw new IllegalArgumentException("The target class " + targetClass.getName() + " was not initialized!");
+                    }
+                }
+                observerMapBuilder.put(updaterType, observer);
+            } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+                e.printStackTrace();
+            }
+        }
+        return observerMapBuilder.build();
     }
 
 }

@@ -19,8 +19,8 @@ public class ContextGUI {
     // Panel displaying valueAttributes.
     private TitledBorder valueBorder;
     private JPanel valuePanel;
-    private Map<Context.Value, JLabel> valueDisplays;
-    private Map<Context.ValueHistory, JScrollPane> historyDisplays;
+    private Map<Context.Values, JLabel> valueDisplays;
+    private Map<Context.ValueHistories, JScrollPane> historyDisplays;
     private static int MAX_HISTORY_VALUES = 10;
 
     // Panel displaying historyAttributes.
@@ -66,7 +66,7 @@ public class ContextGUI {
         valuePanel.setBorder(valueBorder);
 
         valueDisplays = new HashMap<>();
-        for (Context.Value attribute : Context.Value.values()) {
+        for (Context.Values attribute : Context.Values.values()) {
             valuePanel.add(new JLabel(attribute.toString() + ":", JLabel.CENTER));
             Object val = attribute.getValue();
             if (val == null) {
@@ -87,7 +87,7 @@ public class ContextGUI {
         historyPanel.setBorder(historyBorder);
 
         historyDisplays = new HashMap<>();
-        for (Context.ValueHistory attribute : Context.ValueHistory.values()) {
+        for (Context.ValueHistories attribute : Context.ValueHistories.values()) {
             historyPanel.add(new JLabel(attribute.toString() + ":", JLabel.CENTER));
             Map<Integer, Object> vals = attribute.getNLastValues(MAX_HISTORY_VALUES);
             DefaultListModel<String> sorted = new DefaultListModel<>();
@@ -131,7 +131,7 @@ public class ContextGUI {
     }
 
     private void updateValues() {
-        for (Context.Value attribute : Context.Value.values()) {
+        for (Context.Values attribute : Context.Values.values()) {
             Object val = attribute.getValue();
             if (val == null) {
                 continue;
@@ -142,7 +142,7 @@ public class ContextGUI {
     }
 
     private void updateHistories() {
-        for (Context.ValueHistory attribute : Context.ValueHistory.values()) {
+        for (Context.ValueHistories attribute : Context.ValueHistories.values()) {
             Map<Integer, Object> vals = attribute.getNLastValues(MAX_HISTORY_VALUES);
             if (vals.size() == 0) {
                 continue;

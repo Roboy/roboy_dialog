@@ -5,7 +5,7 @@
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classroboy_1_1context_1_1vision_context_1_1_context_test_1ac8cad491c4aa15a5ca5c540438e2f4cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
-        <definition>void roboy.context.visionContext.ContextTest.getLastAttributeValue</definition>
+        <definition>void roboy.context.ContextTest.getLastAttributeValue</definition>
         <argsstring>()</argsstring>
         <name>getLastAttributeValue</name>
         <exceptions> throws Exception </exceptions>
@@ -19,7 +19,7 @@
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1context_1_1vision_context_1_1_context_test_1a747cd35329fe3f46cc6fb379950995e4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
-        <definition>void roboy.context.visionContext.ContextTest.setAndGetDialogTopics</definition>
+        <definition>void roboy.context.ContextTest.setAndGetDialogTopics</definition>
         <argsstring>()</argsstring>
         <name>setAndGetDialogTopics</name>
         <briefdescription>

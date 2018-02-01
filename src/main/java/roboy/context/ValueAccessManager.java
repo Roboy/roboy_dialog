@@ -26,12 +26,4 @@ public class ValueAccessManager<H extends ContextValueInterface, V extends Conte
         Class<T> type = attribute.getReturnType();
         return type.cast(values.get(attribute.getClassType()).getValue());
     }
-
-    protected void addObserver(V attribute, Observer observer) {
-        // TODO The differentiation between values and valueHistories is kinda ugly. Discuss how to fix.
-        AbstractValue value = values.get(attribute.getClassType());
-        if(value instanceof ObservableValue || value instanceof  ObservableValueHistory) {
-            ((ObservableValue) value).addObserver(observer);
-        }
-    }
 }
