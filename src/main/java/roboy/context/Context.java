@@ -33,7 +33,7 @@ public class Context extends ValueAccessManager<Context.ValueHistory, Context.Va
     /**
      * The access point to Context, including thread-safe Singleton initialization.
      */
-    public static Context getInstance() {
+    private static Context getInstance() {
         if (context == null) {
             // Extra block instead of synchronizing over entire getInstance method.
             // This way, we do not sync when context was initialized earlier -> better performance.
