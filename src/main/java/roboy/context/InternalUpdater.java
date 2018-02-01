@@ -9,7 +9,7 @@ package roboy.context;
 public class InternalUpdater<T extends AbstractValue<V>, V> {
     AbstractValue<V> target;
 
-    protected InternalUpdater(T target) {
+    public InternalUpdater(T target) {
         this.target = target;
     }
 

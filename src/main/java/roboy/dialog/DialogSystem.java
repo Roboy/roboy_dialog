@@ -89,8 +89,8 @@ public class DialogSystem {
             final Runnable gui = () -> ContextGUI.run();
             Thread t = new Thread(gui);
             t.start();
-            Context.InternalUpdaters.DIALOG_TOPICS_UPDATER.updateValue("first test");
-            Context.InternalUpdaters.DIALOG_TOPICS_UPDATER.updateValue("second test");
+            Context.InternalUpdater.DIALOG_TOPICS_UPDATER.updateValue("first test");
+            Context.InternalUpdater.DIALOG_TOPICS_UPDATER.updateValue("second test");
         }
 
         // initialize ROS node
