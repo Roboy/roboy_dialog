@@ -6,6 +6,7 @@ import static org.junit.Assert.assertFalse;
 import org.junit.Test;
 import roboy.newDialog.states.State;
 import roboy.newDialog.DialogStateMachine;
+import roboy.newDialog.states.StateParameters;
 import roboy.newDialog.states.toyStates.ToyFarewellState;
 import roboy.newDialog.states.toyStates.ToyGreetingsState;
 
@@ -37,8 +38,10 @@ public class DialogStateMachineTest {
     private static DialogStateMachine fromCode() {
 
         DialogStateMachine machine = new DialogStateMachine();
-        ToyGreetingsState greeting = new ToyGreetingsState("Greetings");
-        ToyFarewellState farewell = new ToyFarewellState("Farewell");
+        StateParameters params = new StateParameters(machine);
+
+        ToyGreetingsState greeting = new ToyGreetingsState("Greetings", params);
+        ToyFarewellState farewell = new ToyFarewellState("Farewell", params);
         greeting.setTransition("next", farewell);
         greeting.setTransition("noHello", farewell);
         greeting.setFallback(farewell);
@@ -94,7 +97,7 @@ public class DialogStateMachineTest {
 
         DialogStateMachine fromCode = fromCode();
         // add one more state
-        fromCode.addState(new ToyGreetingsState("NewEvilState"));
+        fromCode.addState(new ToyGreetingsState("NewEvilState", new StateParameters(fromString)));
 
         assertFalse(fromString.equals(fromCode));
         assertFalse(fromCode.equals(fromString));

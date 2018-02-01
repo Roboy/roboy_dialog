@@ -28,6 +28,9 @@ public class Context extends ValueAccessManager<Context.ValueHistory, Context.Va
         valueHistories = buildValueInstanceMap(ValueHistory.values());
         externalUpdaters = buildUpdaterInstanceMap(ExternalUpdater.values());
         internalUpdaters = buildUpdaterInstanceMap(InternalUpdater.values());
+
+        // No fancy observer initialization at the moment.
+        addObserver(Value.FACE_COORDINATES, new FaceCoordinatesObserver());
     }
 
     /**

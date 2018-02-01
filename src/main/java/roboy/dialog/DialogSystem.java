@@ -85,7 +85,7 @@ public class DialogSystem {
             new Config(DEFAULT);
         }
 
-        if(Config.DEMO_GUI) {
+        if(Config.CONTEXT_DEMO) {
             final Runnable gui = () -> ContextGUI.run();
             Thread t = new Thread(gui);
             t.start();

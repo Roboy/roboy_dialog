@@ -36,7 +36,7 @@ A state can have any number of transitions to other states. Every transition has
  
 When designing a new state, only the transition names are defined. The following states are defined in the personality file later. At run time the state machine loads the file and initializes the transitions to point it correct states. The destination state can be retrieved by the transition name using ``getTransition(transitionName)``.
 
-A fallback can be attached to a state. In the case this state doesn't know how to react to an utterance, it can return ``null`` from the ``react()`` function. The state machine will query the fallback in this case. This concept helps to decouple the states and reduce the dependencies between them. When implementing the ``react()`` function of a new state, it is sufficient to detect unknown input and return ``null``. 
+A fallback can be attached to a state. In the case this state doesn't know how to react to an utterance, it can return ``ReAct.useFallback()`` from the ``react()`` function. The state machine will query the fallback in this case. This concept helps to decouple the states and reduce the dependencies between them. When implementing the ``react()`` function of a new state, it is sufficient to detect unknown input and return ``ReAct.useFallback()``.
 
 
 

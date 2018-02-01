@@ -44,7 +44,6 @@ public class NewDialogSystem {
 
         StateBasedPersonality personality = new StateBasedPersonality(new Verbalizer());
         String personalityFilePath = getPersonalityFilePathFromConfig();
-        personality.loadFromFile(new File(personalityFilePath));
 
 
         Input raw;
@@ -54,6 +53,9 @@ public class NewDialogSystem {
         for (int numConversations = 0; numConversations < 2; numConversations++) {
 
             System.out.println("-------------- new conversation --------------");
+            // important: reset personality completely before every conversation
+            // otherwise some states (with possibly bad implementation) will keep the old internal variables
+            personality.loadFromFile(new File(personalityFilePath));
             List<Action> actions = personality.startConversation();
 
             while ( ! actions.isEmpty() ) {

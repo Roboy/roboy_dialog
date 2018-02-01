@@ -58,8 +58,10 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
                     "at the beginning of conversation!");
         }
 
+        List<Action> initialActions = new ArrayList<>();
+        initialActions = stateAct(activeState, initialActions);
 
-        return stateAct(activeState);
+        return initialActions;
     }
 
 
@@ -83,8 +85,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
 
         // ACTIVE STATE REACTS TO INPUT
-        List<Action> react = stateReact(activeState, input);
-        answerActions.addAll(react);
+        answerActions = stateReact(activeState, input, answerActions);
 
 
         // MOVE TO THE NEXT STATE
@@ -97,71 +98,125 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
 
         // NEXT STATE ACTS
-        List<Action> act = stateAct(next);
-        answerActions.addAll(act);
+        answerActions = stateAct(next, answerActions);
 
         return answerActions;
     }
 
 
     /**
-     * Call the act function of the state and verbalize all interpretations into actions.
+     * Call the act function of the state, verbalize the interpretation (if any) and add it to the list of actions.
      * @param state state to call ACT on
-     * @return list of actions
+     * @param previousActions list of previous action to append the verbalized result
+     * @return updated list of actions
      */
-    private List<Action> stateAct(State state) {
-        List<Interpretation> stateActIntepretations = state.act();
-        return verbalizeInterpretations(stateActIntepretations);
+    private List<Action> stateAct(State state, List<Action> previousActions) {
+        State.ReAct act;
+        try {
+            act = state.act();
+        } catch (Exception e) {
+            return exceptionHandler(state, e, previousActions, true);
+        }
+
+        if (act == null) {
+            System.out.println("[!!] WARNING: state acted with null. This should not happen! " +
+                    "Return ReAct.sayNothing() instead!");
+            return previousActions;  // say nothing, just return the list of previous actions
+
+        }
+
+        if (act.hasInterpretation()) {
+            Interpretation inter = act.getInterpretation();
+            previousActions.add(verbalizer.verbalize(inter));
+        } else if (act.requiresFallback()) {
+            System.out.println("[!!] WARNING: act() required fallback! Fallbacks are currently only allowed in react().");
+        }
+        // else: act.isEmpty()
+
+        return previousActions;
     }
 
 
     /**
      * Call the react function of the state. If the state can't react, recursively ask fallbacks.
-     * Verbalize the resulting reaction interpretation into actions.
+     * Verbalize the resulting reaction and add it to the list of actions.
      *
      * @param state state to call REact on
      * @param input input from the person Roboy speaks to
-     * @return list of actions
+     * @param previousActions list of previous action to append the verbalized result
+     * @return updated list of actions
      */
-    private List<Action> stateReact(State state, Interpretation input) {
+    private List<Action> stateReact(State state, Interpretation input, List<Action> previousActions) {
 
-        List<Interpretation> reaction = state.react(input);
-        State fallback = state.getFallback();
-
-        // fallbacks
-        int fallbackCount = 0, maxFallbackCount = 1000;  // limit to prevent infinite loops
-        while (reaction == null && fallback != null && fallbackCount < maxFallbackCount) {
-            // active state doesn't know how to react
-            // ask fallbacks recursively until
-            // - there is a reaction
-            // - there is no fallback
-            reaction = fallback.react(input);
-            fallback = fallback.getFallback();
-
-            // prevent infinite loops
-            fallbackCount++;
+        State.ReAct react;
+        try {
+            react = state.react(input);
+        } catch (Exception e) {
+            return exceptionHandler(state, e, previousActions, false);
         }
-        if (fallbackCount >= maxFallbackCount)  System.out.println("[!!] WARNING: possibly infinite fallback loop");
-
-        return verbalizeInterpretations(reaction);
-    }
 
 
-    /**
-     * Verbalizes all interpretations into actions using the verbalizer.
-     * @param interpretations list of interpretations.
-     * @return list of actions
-     */
-    private List<Action> verbalizeInterpretations(List<Interpretation> interpretations) {
-        List<Action> listOfActions = new ArrayList<>();
-        if (interpretations != null) {
-            // verbalize all act interpretations
-            for (Interpretation i : interpretations) {
-                listOfActions.add(verbalizer.verbalize(i));
+        if (react == null) {
+            System.out.println("[!!] WARNING: state reacted with null. This should not happen! " +
+                    "It is not clear whether it wants to say nothing or ask the fallback.");
+            return previousActions;  // say nothing, just return the list of previous actions
+        }
+
+
+        // first, resolve fallbacks if needed
+        State fallback = state.getFallback();
+        int fallbackCount = 0, maxFallbackCount = 1000;  // limit to prevent infinite loops
+
+        while (react.requiresFallback()) {
+            // limit fallback depth
+            fallbackCount++;
+            if (fallbackCount >= maxFallbackCount) {
+                System.out.println("[!!] WARNING: possibly infinite fallback loop, stopping after " +
+                        maxFallbackCount + " iterations");
+                return previousActions;  // say nothing, just return the list of previous actions
+            }
+
+            if (fallback == null) {
+                System.out.println("[!!] WARNING: state with identifier " + state.getIdentifier()
+                        + " required fallback but none was attached, saying nothing");
+                return previousActions;  // say nothing, just return the list of previous actions
+            }
+
+            // fallback exists
+            state = fallback;
+            fallback = state.getFallback();
+            try {
+                react = state.react(input);
+            } catch (Exception e) {
+                return exceptionHandler(state, e, previousActions, false);
+            }
+
+            if (react == null) {
+                System.out.println("[!!] WARNING: state with identifier " + state.getIdentifier() +
+                        " reacted with null. This should not happen!" +
+                        " It is not clear whether it wants to say nothing or ask the fallback.");
+                return previousActions;  // say nothing, just return the list of previous actions
             }
         }
-        return listOfActions;
+
+        // verbalize only if there is a reply
+        if (react.hasInterpretation()) {
+            Interpretation inter = react.getInterpretation();
+            previousActions.add(verbalizer.verbalize(inter));
+        }
+
+        // else: react.isEmpty()
+
+        return previousActions;
     }
 
+    private List<Action> exceptionHandler(State state, Exception e, List<Action> previousActions, boolean comesFromAct) {
+        String actOrReact = comesFromAct ? "act" : "react";
+        System.out.println("[!!] ERROR: Exception in " + actOrReact + "() of state with identifier "
+                + state.getIdentifier() + ":\n" + e.getMessage());
+        previousActions.add(verbalizer.verbalize(
+                new Interpretation("Well, looks like some states are not implemented correctly...")));
+        return previousActions;
+    }
 
 }

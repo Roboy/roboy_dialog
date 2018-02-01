@@ -15,6 +15,9 @@
       "implementation" : "roboy.newDialog.states.toyStates.ToyIntroState",
       "transitions" : {
         "next" : "Farewell"
+      },
+      "parameters" : {
+        "introductionSentence" : "My name is Roboy!"
       }
     },
     {

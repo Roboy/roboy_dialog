@@ -1,6 +1,7 @@
 package roboy.newDialog.examples;
 
 import roboy.newDialog.DialogStateMachine;
+import roboy.newDialog.states.StateParameters;
 import roboy.newDialog.states.toyStates.*;
 
 import java.io.File;
@@ -26,17 +27,22 @@ public class StateMachineExamples {
         System.out.println("JSON representation:");
         System.out.println(file.toJsonString());
 
+        boolean allEqual =  code.equals(file)   &&
+                            code.equals(string) &&
+                            string.equals(code) &&
+                            string.equals(file) &&
+                            file.equals(string) &&
+                            file.equals(code);
 
-        System.out.println("Dialog machine from code, file and string are equal: "
-                + ( code.equals(file)   &&
-                    code.equals(string) &&
-                    string.equals(code) &&
-                    string.equals(file) &&
-                    file.equals(string) &&
-                    file.equals(code)
-                )
-        );
-
+        System.out.println("Dialog machine from code, file and string are equal: " + allEqual);
+        if (! allEqual) {
+            System.out.println("code.equals(file):   " + code.equals(file)   );
+            System.out.println("code.equals(string): " + code.equals(string) );
+            System.out.println("string.equals(code): " + string.equals(code) );
+            System.out.println("string.equals(file): " + string.equals(file) );
+            System.out.println("file.equals(string): " + file.equals(string) );
+            System.out.println("file.equals(code):   " + file.equals(code)   );
+        }
 
         //System.out.println("Saving to resources/personalityFiles/ExamplePersonality2.json");
         //file.saveToFile(new File ("resources/personalityFiles/ExamplePersonality2.json"));
@@ -45,26 +51,39 @@ public class StateMachineExamples {
 
     private static DialogStateMachine fromCode() {
 
-        // create states
-        ToyGreetingsState greetings = new ToyGreetingsState("Greetings");
-        ToyIntroState intro = new ToyIntroState("Intro");
-        ToyFarewellState farewell = new ToyFarewellState("Farewell");
-        ToyRandomAnswerState randomAnswer = new ToyRandomAnswerState("RandomAnswer");
 
-        // set fallbacks and transitions
+        // 1. create the dialog machine
+        DialogStateMachine stateMachine = new DialogStateMachine();
+
+        // 2. create states
+
+        // states with no specific parameters -> one StateParameters object that is shared by all states
+        StateParameters emptyParams = new StateParameters(stateMachine);
+        ToyGreetingsState greetings = new ToyGreetingsState("Greetings", emptyParams);
+        ToyFarewellState farewell = new ToyFarewellState("Farewell", emptyParams);
+        ToyRandomAnswerState randomAnswer = new ToyRandomAnswerState("RandomAnswer", emptyParams);
+
+        // states that require specific parameters -> one new StateParameters object for every state
+        StateParameters introParams = new StateParameters(stateMachine);
+        introParams.setParameter("introductionSentence", "This dialog was created from code");
+        ToyIntroState intro = new ToyIntroState("Intro", introParams);
+
+        // 3. set fallbacks and transitions
         greetings.setFallback(randomAnswer);
         greetings.setTransition("next", intro);
         greetings.setTransition("noHello", farewell);
         intro.setTransition("next", farewell);
         randomAnswer.setTransition("next", farewell);
 
-        // create the dialog machine an register states
-        DialogStateMachine stateMachine = new DialogStateMachine();
+        // 4. register states in in the state machine: this doesn't happen automatically!
         stateMachine.addState(greetings);
         stateMachine.addState(intro);
-        stateMachine.addState(farewell);
         stateMachine.addState(randomAnswer);
+        stateMachine.addState(farewell);
+
+        // 5. define initial state
         stateMachine.setInitialState(greetings);
+
 
         return stateMachine;
 
@@ -102,6 +121,9 @@ public class StateMachineExamples {
             "      \"fallback\" : null,\n" +
             "      \"transitions\" : {\n" +
             "        \"next\" : \"Farewell\"\n" +
+            "      },\n" +
+            "      \"parameters\" : {\n" +
+            "        \"introductionSentence\" : \"My name is Roboy!\"\n" +
             "      }\n" +
             "    },\n" +
             "    {\n" +

@@ -47,8 +47,10 @@ public abstract class IntervalUpdater<T> extends ExternalUpdater {
         // Schedules regular updates, starting 1 second after initialization.
         final ScheduledFuture<?> updaterHandle = scheduler.scheduleAtFixedRate(
                 updater, 1, updateFrequencySeconds, SECONDS);
-        // Cancel each scheduled task after 30 seconds of runtime - prevent excessive threads if the goal is down.
-        scheduler.schedule((Runnable) () -> updaterHandle.cancel(true), 30, SECONDS);
+        // UPDATE: cancel() KILLS THE UPDATER AFTER 30 SECONDS.
+        // Updaters should run for the entire DM runtime, so do not kill them.
+        // Leaving for reference.
+        // scheduler.schedule((Runnable) () -> updaterHandle.cancel(true), 30, SECONDS);
     }
 
 }

@@ -1,5 +1,6 @@
 package roboy.newDialog.states;
 
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 
@@ -16,15 +17,91 @@ import java.util.*;
  * attached state by the transition name using getTransition(transitionName).
  *
  * A fallback can be attached to a state. In the case this state doesn't know how to react
- * to an utterance, it can return null from the react() function. The state machine will query
- * the fallback in this case. More details on the fallback concept can be found in the
- * description of the StateBasedPersonality and in comments below.
+ * to an utterance, it can return ReAct.useFallback() from the react() function. The state
+ * machine will query the fallback in this case. More details on the fallback concept can
+ * be found in the description of the StateBasedPersonality and in comments below.
  */
 public abstract class State {
 
+    // region ReAct static inner class
+
+    /**
+     *  ReAct static inner class represents the return values of act() and react() methods.
+     *  There are three possible scenarios:
+     *   - the state wants to say something -> a single interpretation is returned
+     *   - the state does not say anything -> no interpretation
+     *   - the state does not know how to react -> fallback state is required to fix this
+     *
+     *   To create an instance of this class inside the act() or react() method use following:
+     *   - ReAct.say( new Interpretation(...) )  - to return an interpretation
+     *   - ReAct.sayNothing()                    - to make clear that you don't want to say something
+     *   - ReAct.useFallback()                   - to indicate that you can't react and want to use the fallback
+     */
+    public static class ReAct {
+
+        public enum ReActType {
+            INTERPRETATION, SAY_NOTHING, USE_FALLBACK
+        }
+
+        private final ReActType type;
+        private final Interpretation interpretation;
+
+        /**
+         * Private constructor, used only inside static methods.
+         * @param type type of this react object
+         * @param interpretation optional interpretation object (or null)
+         */
+        private ReAct(ReActType type, Interpretation interpretation) {
+            this.type = type;
+            this.interpretation = interpretation;
+        }
+
+        //  Static creators
+
+        public static ReAct say(Interpretation i) {
+            if (i == null) {
+                return sayNothing();
+            }
+            return new ReAct(ReActType.INTERPRETATION, i);
+        }
+
+        public static ReAct sayNothing() {
+            return new ReAct(ReActType.SAY_NOTHING, null);
+        }
+
+        public static ReAct useFallback() {
+            return new ReAct(ReActType.USE_FALLBACK, null);
+        }
+
+        // Non-static methods
+
+        public boolean hasInterpretation() {
+            return type == ReActType.INTERPRETATION; // interpretation != null
+        }
+
+        public boolean requiresFallback() {
+            return type == ReActType.USE_FALLBACK;
+        }
+
+        public boolean isEmpty() {
+            return type == ReActType.SAY_NOTHING;
+        }
+
+        public Interpretation getInterpretation() {
+            return interpretation;
+        }
+
+    }
+
+    //endregion
+
+    // START OF STATE IMPLEMENTATION
 
     // State name/identifier
     private String stateIdentifier;
+
+    // State parameters: contain references to important
+    private StateParameters parameters;
 
     // If this state can't react to the input, the Personality state machine will ask the fallback state
     private State fallback;
@@ -33,19 +110,30 @@ public abstract class State {
     private HashMap<String, State> transitions;
 
 
-    public State(String stateIdentifier) {
+    /**
+     * Create a state object with given identifier (state name) and parameters.
+     * The parameters should contain a reference to a state machine. The state will be automatically added to it.
+     * @param stateIdentifier  identifier (name) of this state
+     * @param params parameters for this state, should contain a reference to a state machine
+     */
+    public State(String stateIdentifier, StateParameters params) {
         this.stateIdentifier = stateIdentifier;
         fallback = null;
         transitions = new HashMap<>();
+        parameters = params;
     }
 
-    //region identifier, fallback & transitions
+    //region identifier, parameters, fallback & transitions
 
     public String getIdentifier() {
         return stateIdentifier;
     }
     public void setIdentifier(String stateIdentifier) {
         this.stateIdentifier = stateIdentifier;
+    }
+
+    public StateParameters getParameters() {
+        return parameters;
     }
 
     /**
@@ -95,7 +183,7 @@ public abstract class State {
      * are combined to give the answer of Roboy.
      * @return interpretations
      */
-    public abstract List<Interpretation> act();
+    public abstract ReAct act();
 
 
     /**
@@ -106,9 +194,9 @@ public abstract class State {
      * transitions are now decoupled. State transitions are defined in getNextState()
      *
      * @param input input from the person we talk to
-     * @return reaction to the input OR null (will trigger the fallback state)
+     * @return reaction to the input (should not be null)
      */
-    public abstract List<Interpretation> react(Interpretation input);
+    public abstract ReAct react(Interpretation input);
 
 
     /**
@@ -140,22 +228,62 @@ public abstract class State {
         return new HashSet<>();
     }
 
+    protected Set<String> getRequiredParameterNames() {
+        return new HashSet<>();
+    }
+
+
+    /**
+     * This function can be overridden to sub classes to indicate that this state can require a fallback.
+     * If this is the case, but no fallback was defined, you will be warned.
+     * @return true if this state requires a fallback and false otherwise
+     */
+    public boolean isFallbackRequired() {
+        return false;
+    }
+
     /**
      * Checks if all required transitions were initialized correctly.
      * Required transitions are defined in getRequiredTransitionNames().
      *
-     * @return true if this state was initialized correctly
+     * @return true if all required transitions of this state were initialized correctly
      */
     public final boolean allRequiredTransitionsAreInitialized() {
         boolean allGood = true;
-
         for (String tName : getRequiredTransitionNames()) {
             if (!transitions.containsKey(tName)) {
-                System.err.println("Transition " + tName + " is required but is not defined!");
+                System.err.println("[!!] State " + getIdentifier() + ": transition " + tName
+                        + " is required but is not defined!");
                 allGood = false;
             }
         }
+        return allGood;
+    }
 
+    /**
+     * Checks if all required parameters were initialized correctly.
+     * Required parameters are defined in getRequiredParameterNames().
+     *
+     * @return true if all required parameters of this state were initialized correctly
+     */
+    public final boolean allRequiredParametersAreInitialized() {
+        if (parameters == null) {
+            System.err.println("[!!] State " + getIdentifier() + ": parameters are missing completely!");
+            return false;
+        }
+        if (parameters.getStateMachine() == null) {
+            System.err.println("[!!] State " + getIdentifier() + ": reference to the state machine is missing in the parameters!");
+            return false;
+        }
+
+        boolean allGood = true;
+        for (String paramName : getRequiredParameterNames()) {
+            if (parameters.getParameter(paramName) == null) {
+                System.err.println("[!!] State " + getIdentifier() + ": parameter " + paramName
+                        + " is required but is not defined!");
+                allGood = false;
+            }
+        }
         return allGood;
     }
 
@@ -182,7 +310,10 @@ public abstract class State {
         if (fallback != null) {
             String fallbackID = fallback.getIdentifier();
             stateJson.addProperty("fallback", fallbackID);
+        } else {
+            stateJson.add("fallback", JsonNull.INSTANCE);
         }
+
 
         // transitions
         JsonObject transitionsJson = new JsonObject();
@@ -193,6 +324,17 @@ public abstract class State {
         }
         stateJson.add("transitions", transitionsJson);
 
+        // parameters
+        if (getParameters() == null) return stateJson;
+
+
+        JsonObject parametersJson = new JsonObject();
+        for (Map.Entry<String, String> parameter : getParameters().getAllParameters().entrySet()) {
+            String paramName = parameter.getKey();
+            String paramValue = parameter.getValue();
+            parametersJson.addProperty(paramName, paramValue);
+        }
+        stateJson.add("parameters", parametersJson);
 
         return stateJson;
 
@@ -205,11 +347,17 @@ public abstract class State {
 
         State fallback = getFallback();
         if (fallback != null) {
-            s.append("  ! fallback: ").append(fallback.getIdentifier()).append("\n");
+            s.append("  [Fallback]   state: ").append(fallback.getIdentifier()).append("\n");
         }
         for (Map.Entry<String, State> transition : getAllTransitions().entrySet()) {
-            s.append("  ").append(transition.getKey()).append(": ");
+            s.append("  [Transition] ").append(transition.getKey()).append(": ");
             s.append(transition.getValue().getIdentifier()).append("\n");
+        }
+        if (getParameters() != null) {
+            for (Map.Entry<String, String> parameter : getParameters().getAllParameters().entrySet()) {
+                s.append("  [Parameter]  ").append(parameter.getKey()).append(": ");
+                s.append(parameter.getValue()).append("\n");
+            }
         }
 
         return s.append("}\n").toString();

@@ -2,6 +2,7 @@ package roboy.newDialog.states.toyStates;
 
 import roboy.newDialog.states.State;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.newDialog.states.StateParameters;
 import roboy.util.Lists;
 
 import java.util.List;
@@ -16,22 +17,22 @@ import java.util.List;
  */
 public class ToyRandomAnswerState extends State {
 
-    public ToyRandomAnswerState(String stateIdentifier) {
-        super(stateIdentifier);
+    public ToyRandomAnswerState(String stateIdentifier, StateParameters params) {
+        super(stateIdentifier, params);
     }
 
     @Override
-    public List<Interpretation> act() {
-        return null; // this state is only used as fallback, no act needed
+    public ReAct act() {
+        return ReAct.sayNothing(); // this state is only used as fallback, no act needed
     }
 
     @Override
-    public List<Interpretation> react(Interpretation input) {
-        return Lists.interpretationList(new Interpretation("I'm Roboy! I'm awesome! [random answer]"));
+    public ReAct react(Interpretation input) {
+        return ReAct.say( new Interpretation("I'm Roboy! I'm awesome! [random answer]") );
     }
 
     @Override
     public State getNextState() {
-        return null; // this state is only used as fallback, no transitions needed
+        return null; // this state is only used as fallback, no next state
     }
 }
