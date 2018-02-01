@@ -6,7 +6,6 @@ import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.StatementInterpreter;
 import roboy.newDialog.states.StateParameters;
 import roboy.talk.Verbalizer;
-import roboy.util.Lists;
 
 import java.util.*;
 
@@ -31,21 +30,21 @@ public class ToyGreetingsState extends State {
     }
 
     @Override
-    public ReAct act() {
-        return ReAct.say(new Interpretation("Hello! [expecting greeting]"));
+    public Output act() {
+        return Output.say(new Interpretation("Hello! [expecting greeting]"));
     }
 
     @Override
-    public ReAct react(Interpretation input) {
+    public Output react(Interpretation input) {
         // react to input
 
         String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
         inputOK = StatementInterpreter.isFromList(sentence, Verbalizer.greetings);
 
         if (inputOK) {
-            return ReAct.say( new Interpretation("I like it when you greet me! [greeting detected, next state]") );
+            return Output.say( new Interpretation("I like it when you greet me! [greeting detected, next state]") );
         } else {
-            return ReAct.useFallback(); // -> fallback state will be used
+            return Output.useFallback(); // -> fallback state will be used
         }
     }
 

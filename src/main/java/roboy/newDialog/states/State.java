@@ -17,27 +17,27 @@ import java.util.*;
  * attached state by the transition name using getTransition(transitionName).
  *
  * A fallback can be attached to a state. In the case this state doesn't know how to react
- * to an utterance, it can return ReAct.useFallback() from the react() function. The state
+ * to an utterance, it can return Output.useFallback() from the react() function. The state
  * machine will query the fallback in this case. More details on the fallback concept can
  * be found in the description of the StateBasedPersonality and in comments below.
  */
 public abstract class State {
 
-    // region ReAct static inner class
+    // region Output static inner class
 
     /**
-     *  ReAct static inner class represents the return values of act() and react() methods.
+     *  Output static inner class represents the return values of act() and react() methods.
      *  There are three possible scenarios:
      *   - the state wants to say something -> a single interpretation is returned
      *   - the state does not say anything -> no interpretation
      *   - the state does not know how to react -> fallback state is required to fix this
      *
      *   To create an instance of this class inside the act() or react() method use following:
-     *   - ReAct.say( new Interpretation(...) )  - to return an interpretation
-     *   - ReAct.sayNothing()                    - to make clear that you don't want to say something
-     *   - ReAct.useFallback()                   - to indicate that you can't react and want to use the fallback
+     *   - Output.say( new Interpretation(...) )  - to return an interpretation
+     *   - Output.sayNothing()                    - to make clear that you don't want to say something
+     *   - Output.useFallback()                   - to indicate that you can't react and want to use the fallback
      */
-    public static class ReAct {
+    public static class Output {
 
         public enum ReActType {
             INTERPRETATION, SAY_NOTHING, USE_FALLBACK
@@ -51,26 +51,26 @@ public abstract class State {
          * @param type type of this react object
          * @param interpretation optional interpretation object (or null)
          */
-        private ReAct(ReActType type, Interpretation interpretation) {
+        private Output(ReActType type, Interpretation interpretation) {
             this.type = type;
             this.interpretation = interpretation;
         }
 
         //  Static creators
 
-        public static ReAct say(Interpretation i) {
+        public static Output say(Interpretation i) {
             if (i == null) {
                 return sayNothing();
             }
-            return new ReAct(ReActType.INTERPRETATION, i);
+            return new Output(ReActType.INTERPRETATION, i);
         }
 
-        public static ReAct sayNothing() {
-            return new ReAct(ReActType.SAY_NOTHING, null);
+        public static Output sayNothing() {
+            return new Output(ReActType.SAY_NOTHING, null);
         }
 
-        public static ReAct useFallback() {
-            return new ReAct(ReActType.USE_FALLBACK, null);
+        public static Output useFallback() {
+            return new Output(ReActType.USE_FALLBACK, null);
         }
 
         // Non-static methods
@@ -183,7 +183,7 @@ public abstract class State {
      * are combined to give the answer of Roboy.
      * @return interpretations
      */
-    public abstract ReAct act();
+    public abstract Output act();
 
 
     /**
@@ -196,7 +196,7 @@ public abstract class State {
      * @param input input from the person we talk to
      * @return reaction to the input (should not be null)
      */
-    public abstract ReAct react(Interpretation input);
+    public abstract Output react(Interpretation input);
 
 
     /**

@@ -3,7 +3,6 @@ package roboy.newDialog.states.toyStates;
 import roboy.newDialog.states.State;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.newDialog.states.StateParameters;
-import roboy.util.Lists;
 
 import java.util.*;
 
@@ -24,14 +23,14 @@ public class ToyIntroState extends State {
     }
 
     @Override
-    public ReAct act() {
+    public Output act() {
         String introSentenceFromParams = getParameters().getParameter("introductionSentence");
-        return ReAct.say(new Interpretation( introSentenceFromParams +" (<--- defined as parameter) Who are you? [say anything]"));
+        return Output.say(new Interpretation( introSentenceFromParams +" (<--- defined as parameter) Who are you? [say anything]"));
     }
 
     @Override
-    public ReAct react(Interpretation input) {
-        return ReAct.say(new Interpretation("Nice to meet you! [moving to next state]"));
+    public Output react(Interpretation input) {
+        return Output.say(new Interpretation("Nice to meet you! [moving to next state]"));
     }
 
     @Override

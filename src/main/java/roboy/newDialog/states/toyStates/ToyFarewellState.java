@@ -1,16 +1,12 @@
 package roboy.newDialog.states.toyStates;
 
-import roboy.linguistics.Linguistics;
 import roboy.newDialog.states.State;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.newDialog.states.StateParameters;
-import roboy.util.Lists;
-
-import java.util.List;
 
 /**
  * ToyFarewellState always acts with "Bye bye".
- * The Interlocutor's answer is ignored and there is no reaction (ReAct.sayNothing()).
+ * The Interlocutor's answer is ignored and there is no reaction (Output.sayNothing()).
  * This ends the conversation (returning null in getNextState()).
  *
  * Fallback is not required.
@@ -23,14 +19,14 @@ public class ToyFarewellState extends State {
     }
 
     @Override
-    public ReAct act() {
-        return ReAct.say( new Interpretation("Bye bye! [say anything, will end conversation]") );
+    public Output act() {
+        return Output.say( new Interpretation("Bye bye! [say anything, will end conversation]") );
     }
 
     @Override
-    public ReAct react(Interpretation input) {
+    public Output react(Interpretation input) {
         // no reaction, we are done
-        return ReAct.sayNothing();
+        return Output.sayNothing();
     }
 
     @Override

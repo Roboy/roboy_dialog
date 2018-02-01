@@ -3,9 +3,6 @@ package roboy.newDialog.states.toyStates;
 import roboy.newDialog.states.State;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.newDialog.states.StateParameters;
-import roboy.util.Lists;
-
-import java.util.List;
 
 /**
  * ToyRandomAnswerState is meant to be used as a fallback state.
@@ -22,13 +19,13 @@ public class ToyRandomAnswerState extends State {
     }
 
     @Override
-    public ReAct act() {
-        return ReAct.sayNothing(); // this state is only used as fallback, no act needed
+    public Output act() {
+        return Output.sayNothing(); // this state is only used as fallback, no act needed
     }
 
     @Override
-    public ReAct react(Interpretation input) {
-        return ReAct.say( new Interpretation("I'm Roboy! I'm awesome! [random answer]") );
+    public Output react(Interpretation input) {
+        return Output.say( new Interpretation("I'm Roboy! I'm awesome! [random answer]") );
     }
 
     @Override

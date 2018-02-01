@@ -111,7 +111,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
      * @return updated list of actions
      */
     private List<Action> stateAct(State state, List<Action> previousActions) {
-        State.ReAct act;
+        State.Output act;
         try {
             act = state.act();
         } catch (Exception e) {
@@ -120,7 +120,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
         if (act == null) {
             System.out.println("[!!] WARNING: state acted with null. This should not happen! " +
-                    "Return ReAct.sayNothing() instead!");
+                    "Return Output.sayNothing() instead!");
             return previousActions;  // say nothing, just return the list of previous actions
 
         }
@@ -148,7 +148,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
      */
     private List<Action> stateReact(State state, Interpretation input, List<Action> previousActions) {
 
-        State.ReAct react;
+        State.Output react;
         try {
             react = state.react(input);
         } catch (Exception e) {
