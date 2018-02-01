@@ -20,13 +20,13 @@ public class Context extends ValueAccessManager<Context.ValueHistory, Context.Va
     private static final Object initializationLock = new Object();
 
     private ImmutableClassToInstanceMap<roboy.context.InternalUpdater> internalUpdaters;
-    private ImmutableClassToInstanceMap<ExternalUpdater> externalUpdaters;
+    private ImmutableClassToInstanceMap<roboy.context.ExternalUpdater> externalUpdaters;
 
     private Context() {
         // Build the class to instance map of Values.
         values = buildValueInstanceMap(Value.values());
         valueHistories = buildValueInstanceMap(ValueHistory.values());
-        externalUpdaters = buildUpdaterInstanceMap(ExternalUpdaters.values());
+        externalUpdaters = buildUpdaterInstanceMap(ExternalUpdater.values());
         internalUpdaters = buildUpdaterInstanceMap(InternalUpdater.values());
     }
 
@@ -177,7 +177,7 @@ public class Context extends ValueAccessManager<Context.ValueHistory, Context.Va
      * These updaters will be initialized and left to run independently.
      * Add your ExternalUpdater implementation class, the target class, and its data type below.
      */
-    private enum ExternalUpdaters implements ContextUpdaterInterface {
+    private enum ExternalUpdater implements ContextUpdaterInterface {
         // NEW DEFINITIONS GO HERE.
         FACE_COORDINATES_UPDATER(FaceCoordinatesUpdater.class, FaceCoordinates.class, CoordinateSet.class);
 
@@ -186,7 +186,7 @@ public class Context extends ValueAccessManager<Context.ValueHistory, Context.Va
         final Class targetValueType;
 
         /* Utility methods. */
-        ExternalUpdaters(Class attribute, Class targetType, Class targetValueType) {
+        ExternalUpdater(Class attribute, Class targetType, Class targetValueType) {
             this.classType = attribute;
             this.targetType = targetType;
             this.targetValueType = targetValueType;
