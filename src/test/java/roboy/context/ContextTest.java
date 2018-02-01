@@ -66,4 +66,51 @@ public class ContextTest {
                 value, Context.Values.FACE_COORDINATES.getValue());
         Mockito.verify(observer, atLeast(1)).update(any(), any());
     }
+
+    @Test
+    public void checkInternalUpdaterIntegrity() {
+        // Check that internal updaters match target Value or ValueHistory.
+        for (Context.InternalUpdaters updater : Context.InternalUpdaters.values()) {
+            // Get the target class entry from Values or HistoryValues.
+            for (Context.Values value : Context.Values.values()) {
+                if (value.classType.equals(updater.targetType)) {
+                    assertEquals(updater.targetValueType, value.returnType);
+                    break;
+                }
+            }
+            for (Context.ValueHistories history : Context.ValueHistories.values()) {
+                if (history.classType.equals(updater.targetType)) {
+                    assertEquals(updater.targetValueType, history.returnType);
+                    break;
+                }
+            }
+        }
+    }
+
+    @Test
+    public void checkExternalUpdaterIntegrity() {
+        // Check that internal updaters match target Value or ValueHistory.
+        for(Context.ExternalUpdaters updater : Context.ExternalUpdaters.values()) {
+            // Get the target class entry from Values or HistoryValues.
+            for(Context.Values value : Context.Values.values()) {
+                if(value.classType.equals(updater.targetType)) {
+                    assertEquals(updater.targetValueType, value.returnType);
+                    break;
+                }
+            }
+            for(Context.ValueHistories history : Context.ValueHistories.values()) {
+                if(history.classType.equals(updater.targetType)) {
+                    assertEquals(updater.targetValueType, history.returnType);
+                    break;
+                }
+            }
+        }
+    }
+
+    @Test
+    public void checkObserverIntegrity() {
+        for(Context.Observers observer : Context.Observers.values()) {
+            assertTrue(observer.targetType.getClass().isInstance(ObservableValue.class));
+        }
+    }
 }
