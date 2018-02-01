@@ -4,6 +4,8 @@ import roboy.dialog.Config;
 
 import java.util.Observable;
 import java.util.Observer;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Currently dummy functionality.
@@ -20,7 +22,13 @@ public class FaceCoordinatesObserver implements Observer {
     static double TRIGGER_DIFFERENCE = 0.5;
     static long UPDATE_INTERVAL_MILLIS = 10000;
 
+    // An ExecutorService is used for the turnHead method.
+    // This way, update() returns without having to wait for return from ROS call to turn head.
+    // With ExecutorService, avoid the overhead of creating new Thread for each turn.
+    ExecutorService executor;
+
     public FaceCoordinatesObserver() {
+        executor = Executors.newSingleThreadExecutor();
         nextUpdateTime = System.currentTimeMillis();
     }
 
@@ -32,7 +40,7 @@ public class FaceCoordinatesObserver implements Observer {
                     (Math.abs(lastUpdatedX - newValue.x) > TRIGGER_DIFFERENCE
                     || Math.abs(lastUpdatedY - newValue.y) > TRIGGER_DIFFERENCE
                     || Math.abs(lastUpdatedZ - newValue.z) > TRIGGER_DIFFERENCE)) {
-                turnHead(newValue.x, newValue.y, newValue.z);
+                executor.submit(() -> turnHead(newValue.x, newValue.y, newValue.z));
             }
         }
     }
