@@ -66,6 +66,11 @@ public class Linguistics {
 	 * The part-of-speech tags (noun, verb, adjective etc.) corresponding to the tokens
 	 */
 	public static final String POSTAGS = "postags";
+
+	/**
+	 * The lemmatized tokens
+	 */
+	public static final String LEMMAS = "lemmas";
 	
 	/**
 	 * If keywords for the segue state from the resource knowledgebase/triviaWords.csv are detected, they are passed with this name
@@ -129,5 +134,10 @@ public class Linguistics {
 	 * The result of SemanticParserAnalyzer, formal language representation
 	 */
 	public static final String PARSE = "parse";
+
+	/**
+	 * The result of SemanticParserAnalyzer, answer for the query
+	 */
+	public static final String PARSE_ANSWER = "parse_ans";
 	
 }
