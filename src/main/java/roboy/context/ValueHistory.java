@@ -19,7 +19,7 @@ public class ValueHistory<V> implements AbstractValueHistory<Integer, V> {
     }
 
     /**
-     * @return The last element added to this list.
+     * @return The last element added to this hitory.
      */
     @Override
     public V getValue() {
@@ -31,12 +31,12 @@ public class ValueHistory<V> implements AbstractValueHistory<Integer, V> {
     }
 
     /**
-     * Get a copy of the last n entries added to the list.
-     * Less values may be returned if there are not enough values in this list.
+     * Get a copy of the last n entries added to the history.
+     * Less values may be returned if there are not enough values in this history.
      * In case of no values, an empty array is returned.
      *
      * @param n The number of instances to retrieve.
-     * @return A hashmap of n last values added to the list.
+     * @return A hashmap of n last values added to the history.
      */
     @Override
     public HashMap<Integer, V> getLastNValues(int n) {
@@ -49,7 +49,7 @@ public class ValueHistory<V> implements AbstractValueHistory<Integer, V> {
     }
 
     /**
-     * Puts a value into the list in the last place.
+     * Puts a value into the history in the last place.
      *
      * @param value The value to be added.
      */

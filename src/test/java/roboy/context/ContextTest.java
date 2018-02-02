@@ -7,7 +7,9 @@ import roboy.context.contextObjects.FaceCoordinates;
 import roboy.context.contextObjects.FaceCoordinatesObserver;
 import roboy.memory.nodes.Interlocutor;
 
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
@@ -112,5 +114,24 @@ public class ContextTest {
         for(Context.Observers observer : Context.Observers.values()) {
             assertTrue(observer.targetType.getClass().isInstance(ObservableValue.class));
         }
+    }
+
+    @Test
+    public void timestampedHistoryTest() {
+        TimestampedValueHistory<String> testHistory = new TimestampedValueHistory<>();
+        testHistory.updateValue("test1");
+        Map<Long, String> values = testHistory.getLastNValues(2);
+        assertEquals(1, values.size());
+        assertEquals("test1", values.entrySet().iterator().next().getValue());
+
+        testHistory.updateValue("test2");
+        values = testHistory.getLastNValues(2);
+        assertEquals(2, values.size());
+
+        Iterator<Map.Entry<Long, String>> entries = values.entrySet().iterator();
+        Map.Entry<Long, String> one = entries.next();
+        Map.Entry<Long, String> two = entries.next();
+        assertTrue(one.getValue().equals("test1") ||
+            one.getKey() > two.getKey());
     }
 }
