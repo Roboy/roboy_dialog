@@ -1,8 +1,10 @@
 package roboy.context;
 
 import com.google.common.collect.ImmutableClassToInstanceMap;
+import org.apache.commons.math3.util.Pair;
 import roboy.context.contextObjects.*;
 import roboy.memory.nodes.Interlocutor;
+import roboy.ros.msg.DirVec;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
@@ -64,7 +66,8 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
     public enum Values implements ContextValueInterface {
         // NEW DEFINITIONS GO HERE.
         FACE_COORDINATES(FaceCoordinates.class, CoordinateSet.class),
-        ACTIVE_INTERLOCUTOR(ActiveInterlocutor.class, Interlocutor.class);
+        ACTIVE_INTERLOCUTOR(ActiveInterlocutor.class, Interlocutor.class),
+        AUDIO_ANGLES(AudioAngles.class, DirVec.class);
 
 
         final Class classType;
