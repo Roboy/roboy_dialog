@@ -119,6 +119,8 @@ public class ContextTest {
     @Test
     public void timestampedHistoryTest() {
         TimestampedValueHistory<String> testHistory = new TimestampedValueHistory<>();
+        assertNull(testHistory.getValue());
+
         testHistory.updateValue("test1");
         Map<Long, String> values = testHistory.getLastNValues(2);
         assertEquals(1, values.size());
