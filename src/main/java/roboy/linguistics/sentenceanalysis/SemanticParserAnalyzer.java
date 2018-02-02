@@ -7,9 +7,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.lang.reflect.Type;
+import java.util.Map;
 
 import java.net.Socket;
 import java.net.ConnectException;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 
 /**
@@ -60,19 +65,34 @@ public class SemanticParserAnalyzer implements Analyzer{
         if (this.debug) {
           System.out.println("> Full response:" + response);
         }
-        if (response!=null && response.contains("=>")) {
+        if (response!=null) {
+          // Convert JSON string back to Map.
+          Gson gson = new Gson();
+          Type type = new TypeToken<Map<String, Object>>(){}.getType();
+          Map<String, Object> full_response = gson.fromJson(response, type);
           try {
             if (this.debug) {
-              System.out.println("> Parse:" + response.substring(0, response.indexOf("=>")));
+              System.out.println("> Parse:" + full_response.get("parse"));
             }
             if (this.debug) {
-              System.out.println("> Answer:" + response.substring(response.indexOf("=>") + 3));
+              System.out.println("> Answer:"+ full_response.get("answer"));
             }
-            interpretation.getFeatures().put(Linguistics.PARSE, response.substring(0, response.indexOf("=>")));
-            interpretation.getFeatures().put(Linguistics.PRED_ANSWER, response.substring(response.indexOf("=>") + 3));
+            if (full_response.containsKey("parse")){
+              interpretation.getFeatures().put(Linguistics.PARSE_ANSWER, full_response.get("answer").toString());
+              interpretation.getFeatures().put(Linguistics.PARSE, full_response.get("parse").toString());
+            }
+            if (full_response.containsKey("tokens")) {
+                interpretation.getFeatures().put(Linguistics.TOKENS, full_response.get("tokens").toString().split(","));
+            }
+            if (full_response.containsKey("postags")) {
+                interpretation.getFeatures().put(Linguistics.POSTAGS, full_response.get("postags").toString().split(","));
+            }
+            if (full_response.containsKey("lemma_tokens")) {
+                interpretation.getFeatures().put(Linguistics.LEMMAS, full_response.get("lemma_tokens").toString().split(","));
+            }
           }
           catch (Exception e) {
-            System.err.println("Exception while parsing intent response: " + e.getStackTrace());
+            System.err.println("Exception while parsing semantic response: " + e.getStackTrace());
           }
         }
         return interpretation;
