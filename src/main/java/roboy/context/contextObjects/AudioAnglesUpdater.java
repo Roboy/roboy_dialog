@@ -2,6 +2,7 @@ package roboy.context.contextObjects;
 
 import org.ros.message.MessageListener;
 import roboy.context.ExternalUpdater;
+import roboy.ros.RosMainNode;
 import roboy.ros.msg.DirVec;
 import roboy_communication_cognition.SpeechSynthesis;
 
@@ -20,6 +21,8 @@ public class AudioAnglesUpdater extends ExternalUpdater {
                 update();
             }
         };
+        RosMainNode node = new RosMainNode();
+        node.addDummyListener(listener);
     }
 
     @Override

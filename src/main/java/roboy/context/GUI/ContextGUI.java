@@ -33,7 +33,7 @@ public class ContextGUI {
     private static int FULL_WIDTH = 400;
     private static int FULL_HEIGHT = 300;
     private static int ATTR_WIDTH = 390;
-    private static int ATTR_HEIGHT = 50;
+    private static int ATTR_HEIGHT = 80;
     private static int HISTORY_HEIGHT = 100;
 
     private static String NO_VALUE = "<not initialized>";
