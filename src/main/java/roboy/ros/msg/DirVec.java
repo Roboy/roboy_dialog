@@ -12,13 +12,4 @@ public class DirVec {
     public void setAzimutal_angle(float azimutal_angle) {
         this.azimutal_angle = azimutal_angle;
     }
-
-    public float getPolar_angle() {
-        return polar_angle;
-    }
-
-    public void setPolar_angle(float polar_angle) {
-        this.polar_angle = polar_angle;
-    }
-
 }
