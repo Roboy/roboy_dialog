@@ -8,24 +8,27 @@ import roboy_communication_control.ShowEmotion;
  */
 
 enum RosClients {
-    SPEECHSYNTHESIS("/roboy/cognition/speech/synthesis/talk", Talk._TYPE),
-    GENERATIVE("/roboy/cognition/generative_nlp/answer", GenerateAnswer._TYPE),
-    FACEDETECTION("/speech_synthesis/talk", DetectFace._TYPE),
-    OBJECTRECOGNITION("/speech_synthesis/talk", RecognizeObject._TYPE),
-    STT("/roboy/cognition/speech/recognition", RecognizeSpeech._TYPE),
-    EMOTION("/roboy/control/face/emotion", ShowEmotion._TYPE),
-    CREATEMEMORY("/roboy/cognition/memory/create", DataQuery._TYPE),
-    UPDATEMEMORY("/roboy/cognition/memory/update", DataQuery._TYPE),
-    GETMEMORY("/roboy/cognition/memory/get", DataQuery._TYPE),
-    DELETEMEMORY("/roboy/cognition/memory/remove", DataQuery._TYPE),
-    CYPHERMEMORY("/roboy/cognition/memory/cypher", DataQuery._TYPE),
-    INTENT("/roboy/cognition/detect_intent", DetectIntent._TYPE);
+    SPEECHSYNTHESIS("/roboy/cognition/speech/synthesis/talk", Talk._TYPE, true),
+    GENERATIVE("/roboy/cognition/generative_nlp/answer", GenerateAnswer._TYPE, true),
+    FACEDETECTION("/speech_synthesis/talk", DetectFace._TYPE, true),
+    OBJECTRECOGNITION("/speech_synthesis/talk", RecognizeObject._TYPE, true),
+    STT("/roboy/cognition/speech/recognition", RecognizeSpeech._TYPE, true),
+    EMOTION("/roboy/control/face/emotion", ShowEmotion._TYPE, true),
+    CREATEMEMORY("/roboy/cognition/memory/create", DataQuery._TYPE, true),
+    UPDATEMEMORY("/roboy/cognition/memory/update", DataQuery._TYPE, true),
+    GETMEMORY("/roboy/cognition/memory/get", DataQuery._TYPE, true),
+    DELETEMEMORY("/roboy/cognition/memory/remove", DataQuery._TYPE, true),
+    CYPHERMEMORY("/roboy/cognition/memory/cypher", DataQuery._TYPE, true),
+    INTENT("/roboy/cognition/detect_intent", DetectIntent._TYPE, true),
+    DUMMY_SPEECH_SYNTH("dummy/address", SpeechSynthesis._TYPE, false);
 
     String address;
     String type;
+    boolean isService;
 
-    RosClients(String address, String type) {
+    RosClients(String address, String type, boolean isService) {
         this.address=address;
         this.type=type;
+        this.isService = isService;
     }
 }

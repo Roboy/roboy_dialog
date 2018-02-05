@@ -2,11 +2,13 @@ package roboy.ros;
 
 import org.ros.exception.RemoteException;
 import org.ros.exception.RosRuntimeException;
+import org.ros.message.MessageListener;
 import org.ros.namespace.GraphName;
 import org.ros.node.*;
 import org.ros.node.service.ServiceClient;
 import org.ros.node.service.ServiceResponseListener;
 
+import org.ros.node.topic.Subscriber;
 import roboy.dialog.Config;
 import roboy_communication_cognition.*;
 import roboy_communication_control.*;
@@ -357,6 +359,14 @@ public class RosMainNode extends AbstractNodeMain {
         intentClient.call(request,  listener);
         waitForLatchUnlock(rosConnectionLatch, intentClient.getName().toString());
         return resp;
+    }
+
+    public void addDummyListener(MessageListener<SpeechSynthesis> listener) {
+        if(clients.notInitialized(RosClients.DUMMY_SPEECH_SYNTH)) {
+            return;
+        }
+        Subscriber<SpeechSynthesis> subscriber = clients.getSubscriber(RosClients.DUMMY_SPEECH_SYNTH);
+        subscriber.addMessageListener(listener);
     }
 
     /**

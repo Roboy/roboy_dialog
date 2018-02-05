@@ -2,6 +2,7 @@ package roboy.ros;
 
 import org.ros.node.ConnectedNode;
 import org.ros.node.service.ServiceClient;
+import org.ros.node.topic.Subscriber;
 import roboy.dialog.Config;
 
 import java.util.HashMap;
@@ -15,6 +16,7 @@ import java.util.HashMap;
 
 class RosManager {
     private HashMap<RosClients, ServiceClient> clientMap;
+    private HashMap<RosClients, Subscriber> subscriberMap;
 
     /**
      * Initializes all ServiceClients for Ros.
@@ -31,12 +33,16 @@ class RosManager {
                 }
             }
             try {
-                clientMap.put(c, node.newServiceClient(c.address, c.type));
-                System.out.println(c.toString()+" initialization SUCCESS!");
-            } catch (Exception e) {
-                success = false;
-                System.out.println(c.toString()+" initialization FAILED, could not reach ROS service!");
-            }
+                if(c.isService) {
+                    clientMap.put(c, node.newServiceClient(c.address, c.type));
+                } else {
+                    subscriberMap.put(c, node.newSubscriber(c.address, c.type));
+                }
+                System.out.println(c.toString() + " initialization SUCCESS!");
+                } catch (Exception e) {
+                    success = false;
+                    System.out.println(c.toString() + " initialization FAILED, could not reach ROS service!");
+                }
         }
         if(Config.SHUTDOWN_ON_SERVICE_FAILURE && !success) {
             throw new RuntimeException("DialogSystem shutdown caused by ROS service initialization failure.");
@@ -66,5 +72,9 @@ class RosManager {
      */
     ServiceClient getServiceClient(RosClients c) {
         return clientMap.get(c);
+    }
+
+    Subscriber getSubscriber(RosClients c) {
+        return subscriberMap.get(c);
     }
 }
