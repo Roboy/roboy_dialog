@@ -207,7 +207,8 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
      */
     public enum ExternalUpdaters implements ContextUpdaterInterface {
         // NEW DEFINITIONS GO HERE.
-        FACE_COORDINATES_UPDATER(FaceCoordinatesUpdater.class, FaceCoordinates.class, CoordinateSet.class);
+        FACE_COORDINATES_UPDATER(FaceCoordinatesUpdater.class, FaceCoordinates.class, CoordinateSet.class),
+        AUDIO_ANGLES_UPDATER(AudioAnglesUpdater.class, AudioAngles.class, DirVec.class);
 
         final Class classType;
         final Class targetType;
