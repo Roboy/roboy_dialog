@@ -4,8 +4,10 @@ import com.google.common.collect.ImmutableClassToInstanceMap;
 import org.apache.commons.math3.util.Pair;
 import roboy.context.contextObjects.*;
 import roboy.memory.nodes.Interlocutor;
+import roboy.ros.RosMainNode;
 import roboy.ros.msg.DirVec;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 import java.util.Observer;
@@ -26,6 +28,8 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
     protected ImmutableClassToInstanceMap<ExternalUpdater> externalUpdaters;
     protected ImmutableClassToInstanceMap<Observer> observers;
 
+    private RosMainNode node;
+
     /**
      * Builds the class to instance maps.
      */
@@ -33,7 +37,6 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
         values = buildValueInstanceMap(Values.values());
         valueHistories = buildValueInstanceMap(ValueHistories.values());
         // Updaters need a target, therefore different initialization.
-        externalUpdaters = buildUpdaterInstanceMap(ExternalUpdaters.values());
         internalUpdaters = buildUpdaterInstanceMap(InternalUpdaters.values());
         // Observers need to be added to the Observable instance, therefore different initialization.
         observers = buildObserverInstanceMap(Observers.values());
@@ -54,6 +57,21 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
             }
         }
         return context;
+    }
+
+    /**
+     * Starts up the external updaters (which need a ROS main node).
+     * @param ros
+     */
+    public static void initializeROS(RosMainNode ros) {
+        Context ctx = Context.getInstance();
+        synchronized (initializationLock) {
+            // Initialize if needed.
+            if(ctx.externalUpdaters == null && ros != null) {
+                ctx.node = ros;
+                ctx.externalUpdaters = ctx.buildUpdaterInstanceMap(ExternalUpdaters.values());
+            }
+        }
     }
 
     /**
@@ -278,9 +296,16 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
                 // Get the Updater class.
                 Class updaterType = updater.getClassType();
                 // Create an instance of the Updater class, with the target as its constructor parameter.
-                updaterMapBuilder.put(updaterType, updaterType.getConstructor(targetClass).newInstance(targetInstance));
+                // Check first if ROS is needed as well -> Updater provides constructor with RosMainNode.
+                try {
+                    Constructor ROSConstructor = updaterType.getConstructor(targetClass, RosMainNode.class);
+                    updaterMapBuilder.put(updaterType, ROSConstructor.newInstance(targetInstance, node));
+                } catch (NoSuchMethodException e) {
+                    updaterMapBuilder.put(updaterType, updaterType.getConstructor(targetClass).newInstance(targetInstance));
+                }
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
                 // Don't mess around defining Updaters (change constructor access or signature, for example).
+                // There are only two allowed constructors, (target, ROSMainNode) or (target).
                 e.printStackTrace();
             }
         }

@@ -85,6 +85,12 @@ public class DialogSystem {
             new Config(DEFAULT);
         }
 
+        // initialize ROS node
+        RosMainNode rosMainNode = new RosMainNode();
+        // initialize Memory with ROS
+        Neo4jMemory.getInstance(rosMainNode);
+
+        Context.initializeROS(rosMainNode);
         if(Config.CONTEXT_DEMO) {
             final Runnable gui = () -> ContextGUI.run();
             Thread t = new Thread(gui);
@@ -92,12 +98,6 @@ public class DialogSystem {
             Context.InternalUpdaters.DIALOG_TOPICS_UPDATER.updateValue("first test");
             Context.InternalUpdaters.DIALOG_TOPICS_UPDATER.updateValue("second test");
         }
-
-        // initialize ROS node
-        RosMainNode rosMainNode = new RosMainNode();
-        // initialize Memory with ROS
-        Neo4jMemory.getInstance(rosMainNode);
-
         /*
          * I/O INITIALIZATION
          */

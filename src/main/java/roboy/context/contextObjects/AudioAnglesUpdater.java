@@ -12,7 +12,7 @@ public class AudioAnglesUpdater extends ExternalUpdater {
     static SpeechSynthesis message;
     AudioAngles target;
 
-    AudioAnglesUpdater(AudioAngles target) {
+    AudioAnglesUpdater(AudioAngles target, RosMainNode node) {
         this.target = target;
         MessageListener<SpeechSynthesis> listener = new MessageListener<SpeechSynthesis>() {
             @Override
@@ -21,7 +21,6 @@ public class AudioAnglesUpdater extends ExternalUpdater {
                 update();
             }
         };
-        RosMainNode node = new RosMainNode();
         node.addDummyListener(listener);
     }
 

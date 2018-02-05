@@ -15,19 +15,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 public abstract class IntervalUpdater<T> extends ExternalUpdater {
     protected final T target;
     protected final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-    public int updateFrequencySeconds = 1;
-
-    /**
-     * Create a new updater service, executing the update() method at regular time intervals.
-     *
-     * @param target                 The target attribute of the update() method.
-     * @param updateFrequencySeconds Delay in seconds between calls to the update() method.
-     */
-    public IntervalUpdater(T target, int updateFrequencySeconds) {
-        this.target = target;
-        this.updateFrequencySeconds = updateFrequencySeconds;
-        start();
-    }
+    public static int updateFrequencySeconds = 1;
 
     /**
      * Create a new updater service, executing the update() method at regular time intervals.
