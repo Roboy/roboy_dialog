@@ -23,6 +23,7 @@ class RosManager {
      */
     boolean initialize(ConnectedNode node) {
         clientMap = new HashMap<>();
+        subscriberMap = new HashMap<>();
         boolean success = true;
         // Iterate through the RosClients enum, mapping a client for each.
         for(RosClients c : RosClients.values()) {
@@ -55,14 +56,14 @@ class RosManager {
      * a fallback response can be created instead. Important if SHUTDOWN_ON_ROS_FAILURE is false.
      */
     boolean notInitialized(RosClients c) {
-        if(clientMap == null) {
+        if(clientMap == null && subscriberMap == null) {
             if(Config.SHUTDOWN_ON_SERVICE_FAILURE) {
                 throw new RuntimeException("ROS clients have not been initialized! Stopping DM execution.");
             }
             System.out.println("ROS clients have not been initialized! Is the ROS host running?");
             return true;
         }
-        return !clientMap.containsKey(c);
+        return !(clientMap.containsKey(c) || subscriberMap.containsKey(c));
     }
 
     /**

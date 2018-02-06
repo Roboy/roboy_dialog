@@ -19,7 +19,7 @@ public class ValueHistory<V> implements AbstractValueHistory<Integer, V> {
     }
 
     /**
-     * @return The last element added to this hitory.
+     * @return The last element added to this history.
      */
     @Override
     public V getValue() {
@@ -79,4 +79,8 @@ public class ValueHistory<V> implements AbstractValueHistory<Integer, V> {
         return data.getOrDefault(key, null);
     }
 
+    @Override
+    public int getValueCount() {
+        return counter;
+    }
 }

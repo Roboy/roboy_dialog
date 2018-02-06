@@ -1,7 +1,8 @@
 package roboy.ros;
 
 import roboy_communication_cognition.*;
-import roboy_communication_control.ShowEmotion;
+import roboy_communication_control.*;
+import std_msgs.String;
 
 /**
  * Stores the different client addresses and corresponding ROS message types.
@@ -20,13 +21,14 @@ enum RosClients {
     DELETEMEMORY("/roboy/cognition/memory/remove", DataQuery._TYPE, true),
     CYPHERMEMORY("/roboy/cognition/memory/cypher", DataQuery._TYPE, true),
     INTENT("/roboy/cognition/detect_intent", DetectIntent._TYPE, true),
-    DUMMY_SPEECH_SYNTH("dummy/address", SpeechSynthesis._TYPE, false);
+    DUMMY_SPEECH_SYNTH("dummy/address", SpeechSynthesis._TYPE, false),
+    TEST_TOPIC("/roboy", String._TYPE, false);
 
-    String address;
-    String type;
+    java.lang.String address;
+    java.lang.String type;
     boolean isService;
 
-    RosClients(String address, String type, boolean isService) {
+    RosClients(java.lang.String address, java.lang.String type, boolean isService) {
         this.address=address;
         this.type=type;
         this.isService = isService;

@@ -49,6 +49,8 @@ public class RosMainNode extends AbstractNodeMain {
         nodeConfiguration.setNodeName("roboy_dialog");
         NodeMainExecutor nodeMainExecutor = DefaultNodeMainExecutor.newDefault();
         nodeMainExecutor.execute(this, nodeConfiguration);
+        rosConnectionLatch = new CountDownLatch(1);
+        waitForLatchUnlock(rosConnectionLatch, "startup");
     }
 
     @Override
@@ -62,6 +64,7 @@ public class RosMainNode extends AbstractNodeMain {
         if(!initializationSuccess) {
             STARTUP_SUCCESS = false;
         }
+        rosConnectionLatch.countDown();
     }
 
     public boolean SynthesizeSpeech(String text) {
@@ -361,11 +364,11 @@ public class RosMainNode extends AbstractNodeMain {
         return resp;
     }
 
-    public void addDummyListener(MessageListener<SpeechSynthesis> listener) {
-        if(clients.notInitialized(RosClients.DUMMY_SPEECH_SYNTH)) {
+    public void addDummyListener(MessageListener<std_msgs.String> listener) {
+        if(clients.notInitialized(RosClients.TEST_TOPIC)) {
             return;
         }
-        Subscriber<SpeechSynthesis> subscriber = clients.getSubscriber(RosClients.DUMMY_SPEECH_SYNTH);
+        Subscriber<std_msgs.String> subscriber = clients.getSubscriber(RosClients.TEST_TOPIC);
         subscriber.addMessageListener(listener);
     }
 

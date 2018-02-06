@@ -8,20 +8,15 @@ import roboy_communication_cognition.SpeechSynthesis;
 
 import java.util.Random;
 
-public class AudioAnglesUpdater extends ROSTopicUpdater<SpeechSynthesis, AudioAngles> {
+public class ROSTestUpdater extends ROSTopicUpdater<std_msgs.String, ROSTest> {
 
-    public AudioAnglesUpdater(AudioAngles target, RosMainNode node) {
+    public ROSTestUpdater(ROSTest target, RosMainNode node) {
         super(target, node);
     }
 
     @Override
     protected synchronized void update() {
-        // TODO Parse the real message.
-        DirVec value = new DirVec();
-        Random random = new Random();
-        value.azimutal_angle = random.nextFloat();
-        value.polar_angle = random.nextFloat();
-        target.updateValue(value);
+        target.updateValue(message.getData());
     }
 
     @Override

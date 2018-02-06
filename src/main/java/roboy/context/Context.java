@@ -1,13 +1,11 @@
 package roboy.context;
 
 import com.google.common.collect.ImmutableClassToInstanceMap;
-import org.apache.commons.math3.util.Pair;
 import roboy.context.contextObjects.*;
 import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
 import roboy.ros.msg.DirVec;
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 import java.util.Observer;
@@ -122,7 +120,8 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
      */
     public enum ValueHistories implements ContextValueInterface {
         // NEW DEFINITIONS GO HERE.
-        DIALOG_TOPICS(DialogTopics.class, String.class);
+        DIALOG_TOPICS(DialogTopics.class, String.class),
+        ROS_TEST(ROSTest.class, String.class);
 
         final Class classType;
         final Class returnType;
@@ -143,6 +142,10 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
          */
         public <T> T getLastValue() {
             return Context.getInstance().getLastValue(this);
+        }
+
+        public int getValueCount() {
+            return Context.getInstance().getValueCount(this);
         }
 
         /** ValueHistory enum utility methods. */
@@ -208,7 +211,8 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
     public enum ExternalUpdaters implements ContextUpdaterInterface {
         // NEW DEFINITIONS GO HERE.
         FACE_COORDINATES_UPDATER(FaceCoordinatesUpdater.class, FaceCoordinates.class, CoordinateSet.class),
-        AUDIO_ANGLES_UPDATER(AudioAnglesUpdater.class, AudioAngles.class, DirVec.class);
+        //AUDIO_ANGLES_UPDATER(AudioAnglesUpdater.class, AudioAngles.class, DirVec.class);
+        ROS_TEST_UPDATER(ROSTestUpdater.class, ROSTest.class, String.class);
 
         final Class classType;
         final Class targetType;

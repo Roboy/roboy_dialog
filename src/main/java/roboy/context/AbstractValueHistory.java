@@ -8,4 +8,5 @@ import java.util.Map;
  */
 public interface AbstractValueHistory<K, V> extends AbstractValue<V> {
     Map<K, V> getLastNValues(int n);
+    int getValueCount();
 }

@@ -26,4 +26,8 @@ public class ValueAccessManager<H extends ContextValueInterface, V extends Conte
         Class<T> type = attribute.getReturnType();
         return type.cast(values.get(attribute.getClassType()).getValue());
     }
+
+    protected int getValueCount(H attribute) {
+        return valueHistories.get(attribute.getClassType()).getValueCount();
+    }
 }
