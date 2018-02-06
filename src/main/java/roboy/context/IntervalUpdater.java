@@ -10,10 +10,10 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  * An implementation of the UpdatePolicy which performs regular updates on a target object.
  * The method update() needs to be implemented in the subclass.
  *
- * @param <T> The class of the target object.
+ * @param <Target> The class of the target object.
  */
-public abstract class IntervalUpdater<T> extends ExternalUpdater {
-    protected final T target;
+public abstract class IntervalUpdater<Target> extends ExternalUpdater {
+    protected final Target target;
     protected final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     public static int updateFrequencySeconds = 1;
 
@@ -22,7 +22,7 @@ public abstract class IntervalUpdater<T> extends ExternalUpdater {
      *
      * @param target                 The target attribute of the update() method.
      */
-    public IntervalUpdater(T target) {
+    public IntervalUpdater(Target target) {
         this.target = target;
         start();
     }

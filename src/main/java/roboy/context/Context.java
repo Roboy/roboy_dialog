@@ -297,15 +297,16 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
                 // Get the Updater class.
                 Class updaterType = updater.getClassType();
                 // Create an instance of the Updater class, with the target as its constructor parameter.
-                // Check first if ROS is needed as well -> Updater provides constructor with RosMainNode.
-                try {
-                    Constructor ROSConstructor = updaterType.getConstructor(targetClass, RosMainNode.class);
-                    updaterMapBuilder.put(updaterType, ROSConstructor.newInstance(targetInstance, node));
-                } catch (NoSuchMethodException e) {
+                // If it is a ROS-based Updater, add RosMainNode as second parameter.
+                if(ROSTopicUpdater.class.isAssignableFrom(updaterType)) {
+                    updaterMapBuilder.put(updaterType,
+                            updaterType.getConstructor(targetClass, RosMainNode.class).newInstance(targetInstance, node));
+                } else {
+                    // Otherwise use the common constructor type.
                     updaterMapBuilder.put(updaterType, updaterType.getConstructor(targetClass).newInstance(targetInstance));
                 }
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-                // Don't mess around defining Updaters (change constructor access or signature, for example).
+                // Don't mess around defining Updaters (constructor access must be public, for example).
                 // There are only two allowed constructors, (target, ROSMainNode) or (target).
                 e.printStackTrace();
             }
