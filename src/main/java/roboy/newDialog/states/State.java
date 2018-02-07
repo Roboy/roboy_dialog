@@ -67,6 +67,13 @@ public abstract class State {
             return new Output(OutputType.INTERPRETATION, i);
         }
 
+        public static Output say(String s) {
+            if (s == null || s.equals("")) {
+                return sayNothing();
+            }
+            return say(new Interpretation(s));
+        }
+
         public static Output sayNothing() {
             return new Output(OutputType.SAY_NOTHING, null);
         }

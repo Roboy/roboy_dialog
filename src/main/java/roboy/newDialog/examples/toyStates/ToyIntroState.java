@@ -8,12 +8,15 @@ import java.util.*;
 
 /**
  * ToyIntroState demonstrates a simple introduction. A single parameter is used.
- * Roboy will tell the Interlocutor his name and ask for the Interlocutor's name.
- * The reply is ignored.
+ * Roboy will tell the interlocutor his name and ask for the Interlocutor's name.
+ * The reply is ignored to keep this example simple.
  *
- * Fallback is not required.
- * Outgoing transitions that have to be defined:
- * - next:    following state
+ * ToyIntroState interface:
+ * 1) Fallback is not required.
+ * 2) Outgoing transitions that have to be defined:
+ *    - next:    following state
+ * 3) Names of the parameters that have to be passed to the constructor:
+ *    - introductionSentence:    A sentence that should be used as introduction
  */
 public class ToyIntroState extends State {
 
@@ -25,12 +28,12 @@ public class ToyIntroState extends State {
     @Override
     public Output act() {
         String introSentenceFromParams = getParameters().getParameter("introductionSentence");
-        return Output.say(new Interpretation( introSentenceFromParams +" (<--- defined as parameter) Who are you? [say anything]"));
+        return Output.say( introSentenceFromParams +" (<--- defined as parameter) Who are you? [say anything]");
     }
 
     @Override
     public Output react(Interpretation input) {
-        return Output.say(new Interpretation("Nice to meet you! [moving to next state]"));
+        return Output.say("Nice to meet you! [moving to next state]");
     }
 
     @Override
