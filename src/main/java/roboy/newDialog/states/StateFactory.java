@@ -46,6 +46,11 @@ public class StateFactory {
      */
     public static State createStateByClassName(String className, String stateIdentifier, StateParameters parameters) {
 
+        if (className == null) {
+            logger.error("null was passed as className! This is not going to work");
+            return null;
+        }
+
         // get class by name
         Class<?> cls;
         try {

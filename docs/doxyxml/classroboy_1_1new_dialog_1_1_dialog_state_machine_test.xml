@@ -5,7 +5,7 @@
       <sectiondef kind="private-static-attrib">
       <memberdef kind="variable" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1a5122ea27d9f9c8984a6717b04e4f0bac" prot="private" static="yes" mutable="no">
         <type>String</type>
-        <definition>String roboy.newDialog.DialogStateMachineTest.MINI_STATE_MACHINE</definition>
+        <definition>String roboy.newDialog.StateMachineInitializationTest.MINI_STATE_MACHINE</definition>
         <argsstring></argsstring>
         <name>MINI_STATE_MACHINE</name>
         <initializer>= &quot;{\n&quot; +
@@ -39,7 +39,7 @@
       <sectiondef kind="private-static-func">
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1ac7cfd22b4120c2143d319425ac3c5a1a" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classroboy_1_1new_dialog_1_1_dialog_state_machine" kindref="compound">DialogStateMachine</ref></type>
-        <definition>static DialogStateMachine roboy.newDialog.DialogStateMachineTest.fromCode</definition>
+        <definition>static DialogStateMachine roboy.newDialog.StateMachineInitializationTest.fromCode</definition>
         <argsstring>()</argsstring>
         <name>fromCode</name>
         <briefdescription>
@@ -54,7 +54,7 @@
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1a68df45949ca435f9e0525a2f82784168" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
-        <definition>void roboy.newDialog.DialogStateMachineTest.machineEqualsItself</definition>
+        <definition>void roboy.newDialog.StateMachineInitializationTest.machineEqualsItself</definition>
         <argsstring>()</argsstring>
         <name>machineEqualsItself</name>
         <briefdescription>
@@ -67,7 +67,7 @@
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1a774e56596ffaf8609eb83acb20bc773f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
-        <definition>void roboy.newDialog.DialogStateMachineTest.stringEqualsCode</definition>
+        <definition>void roboy.newDialog.StateMachineInitializationTest.stringEqualsCode</definition>
         <argsstring>()</argsstring>
         <name>stringEqualsCode</name>
         <briefdescription>
@@ -80,7 +80,7 @@
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1aef3d0d925c47a8396ecea9b66e574eb4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
-        <definition>void roboy.newDialog.DialogStateMachineTest.notEqualsNoInitialState</definition>
+        <definition>void roboy.newDialog.StateMachineInitializationTest.notEqualsNoInitialState</definition>
         <argsstring>()</argsstring>
         <name>notEqualsNoInitialState</name>
         <briefdescription>
@@ -93,7 +93,7 @@
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1a23bcfe1082d704638ca9ab69363e7b63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
-        <definition>void roboy.newDialog.DialogStateMachineTest.notEqualsDifferentStates</definition>
+        <definition>void roboy.newDialog.StateMachineInitializationTest.notEqualsDifferentStates</definition>
         <argsstring>()</argsstring>
         <name>notEqualsDifferentStates</name>
         <briefdescription>
@@ -106,7 +106,7 @@
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1a3e341b453a1fbe805b15dd6886c4ea58" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
-        <definition>void roboy.newDialog.DialogStateMachineTest.notEqualsDifferentTransitions</definition>
+        <definition>void roboy.newDialog.StateMachineInitializationTest.notEqualsDifferentTransitions</definition>
         <argsstring>()</argsstring>
         <name>notEqualsDifferentTransitions</name>
         <briefdescription>
@@ -119,7 +119,7 @@
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1add893724f9d4b274f3baa9da772b501f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
-        <definition>void roboy.newDialog.DialogStateMachineTest.activeStateIsSetToInitialState</definition>
+        <definition>void roboy.newDialog.StateMachineInitializationTest.activeStateIsSetToInitialState</definition>
         <argsstring>()</argsstring>
         <name>activeStateIsSetToInitialState</name>
         <briefdescription>
@@ -132,7 +132,7 @@
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1a53d03fe1f5edffafac8635448036b1f9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
-        <definition>void roboy.newDialog.DialogStateMachineTest.machineContainsAllStates</definition>
+        <definition>void roboy.newDialog.StateMachineInitializationTest.machineContainsAllStates</definition>
         <argsstring>()</argsstring>
         <name>machineContainsAllStates</name>
         <briefdescription>
@@ -145,7 +145,7 @@
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1ad681b48f8b984387319a032489b3ab75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
-        <definition>void roboy.newDialog.DialogStateMachineTest.transitionsAreOK</definition>
+        <definition>void roboy.newDialog.StateMachineInitializationTest.transitionsAreOK</definition>
         <argsstring>()</argsstring>
         <name>transitionsAreOK</name>
         <briefdescription>
@@ -158,7 +158,7 @@
       </memberdef>
       <memberdef kind="function" id="classroboy_1_1new_dialog_1_1_dialog_state_machine_test_1ae42655bec401574859db197962485ed6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
-        <definition>void roboy.newDialog.DialogStateMachineTest.fallbackIsOK</definition>
+        <definition>void roboy.newDialog.StateMachineInitializationTest.fallbackIsOK</definition>
         <argsstring>()</argsstring>
         <name>fallbackIsOK</name>
         <briefdescription>
