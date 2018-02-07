@@ -2,7 +2,7 @@ package roboy.newDialog.examples;
 
 import roboy.newDialog.DialogStateMachine;
 import roboy.newDialog.states.StateParameters;
-import roboy.newDialog.states.toyStates.*;
+import roboy.newDialog.examples.toyStates.*;
 
 import java.io.File;
 
@@ -108,7 +108,7 @@ public class StateMachineExamples {
             "  \"states\": [\n" +
             "    {\n" +
             "      \"identifier\": \"Greetings\",\n" +
-            "      \"implementation\" : \"roboy.newDialog.states.toyStates.ToyGreetingsState\",\n" +
+            "      \"implementation\" : \"roboy.newDialog.examples.toyStates.ToyGreetingsState\",\n" +
             "      \"fallback\" : \"RandomAnswer\",\n" +
             "      \"transitions\" : {\n" +
             "        \"next\" : \"Intro\",\n" +
@@ -117,7 +117,7 @@ public class StateMachineExamples {
             "    },\n" +
             "    {\n" +
             "      \"identifier\": \"Intro\",\n" +
-            "      \"implementation\" : \"roboy.newDialog.states.toyStates.ToyIntroState\",\n" +
+            "      \"implementation\" : \"roboy.newDialog.examples.toyStates.ToyIntroState\",\n" +
             "      \"fallback\" : null,\n" +
             "      \"transitions\" : {\n" +
             "        \"next\" : \"Farewell\"\n" +
@@ -128,13 +128,13 @@ public class StateMachineExamples {
             "    },\n" +
             "    {\n" +
             "      \"identifier\": \"Farewell\",\n" +
-            "      \"implementation\" : \"roboy.newDialog.states.toyStates.ToyFarewellState\",\n" +
+            "      \"implementation\" : \"roboy.newDialog.examples.toyStates.ToyFarewellState\",\n" +
             "      \"fallback\" : null,\n" +
             "      \"transitions\" : {}\n" +
             "    },\n" +
             "    {\n" +
             "      \"identifier\": \"RandomAnswer\",\n" +
-            "      \"implementation\" : \"roboy.newDialog.states.toyStates.ToyRandomAnswerState\",\n" +
+            "      \"implementation\" : \"roboy.newDialog.examples.toyStates.ToyRandomAnswerState\",\n" +
             "      \"fallback\" : null,\n" +
             "      \"transitions\" : {\n" +
             "        \"next\" : \"Farewell\"\n" +

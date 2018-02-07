@@ -1,6 +1,8 @@
 package roboy.newDialog.states.factories;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import roboy.newDialog.states.State;
 import roboy.newDialog.states.StateParameters;
 
@@ -11,18 +13,20 @@ import roboy.newDialog.states.StateParameters;
  */
 public class ToyStateFactory {
 
+    private final static Logger logger = LoggerFactory.getLogger(ToyStateFactory.class);
+
     public static State getByClassName(String className, String instanceName, StateParameters parameters) {
         switch (className) {
-            case "roboy.newDialog.states.toyStates.ToyFarewellState":
-                return new roboy.newDialog.states.toyStates.ToyFarewellState(instanceName, parameters);
-            case "roboy.newDialog.states.toyStates.ToyGreetingsState":
-                return new roboy.newDialog.states.toyStates.ToyGreetingsState(instanceName, parameters);
-            case "roboy.newDialog.states.toyStates.ToyIntroState":
-                return new roboy.newDialog.states.toyStates.ToyIntroState(instanceName, parameters);
-            case "roboy.newDialog.states.toyStates.ToyRandomAnswerState":
-                return new roboy.newDialog.states.toyStates.ToyRandomAnswerState(instanceName, parameters);
+            case "roboy.newDialog.examples.toyStates.ToyFarewellState":
+                return new roboy.newDialog.examples.toyStates.ToyFarewellState(instanceName, parameters);
+            case "roboy.newDialog.examples.toyStates.ToyGreetingsState":
+                return new roboy.newDialog.examples.toyStates.ToyGreetingsState(instanceName, parameters);
+            case "roboy.newDialog.examples.toyStates.ToyIntroState":
+                return new roboy.newDialog.examples.toyStates.ToyIntroState(instanceName, parameters);
+            case "roboy.newDialog.examples.toyStates.ToyRandomAnswerState":
+                return new roboy.newDialog.examples.toyStates.ToyRandomAnswerState(instanceName, parameters);
             default:
-                System.out.println("Unknown class name: " + className);
+                logger.warn("Unknown class name: " + className);
                 return null;
         }
     }

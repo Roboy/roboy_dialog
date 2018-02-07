@@ -308,10 +308,10 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <!-- use this dependency to ENable logging in some libraries -->
-            <!-- <artifactId>slf4j-simple</artifactId> -->
+            <artifactId>slf4j-simple</artifactId>
 
             <!-- use this dependency to DISable logging in some libraries -->
-            <artifactId>slf4j-nop</artifactId>
+            <!-- <artifactId>slf4j-nop</artifactId> -->
             <version>1.7.7</version>
         </dependency>
 

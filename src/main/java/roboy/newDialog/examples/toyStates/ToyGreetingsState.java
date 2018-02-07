@@ -1,4 +1,4 @@
-package roboy.newDialog.states.toyStates;
+package roboy.newDialog.examples.toyStates;
 
 import roboy.newDialog.states.State;
 import roboy.linguistics.Linguistics;

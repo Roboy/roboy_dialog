@@ -5,10 +5,9 @@ import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 import roboy.newDialog.states.State;
-import roboy.newDialog.DialogStateMachine;
 import roboy.newDialog.states.StateParameters;
-import roboy.newDialog.states.toyStates.ToyFarewellState;
-import roboy.newDialog.states.toyStates.ToyGreetingsState;
+import roboy.newDialog.examples.toyStates.ToyFarewellState;
+import roboy.newDialog.examples.toyStates.ToyGreetingsState;
 
 public class DialogStateMachineTest {
 
@@ -19,12 +18,12 @@ public class DialogStateMachineTest {
             "  \"states\": [\n" +
             "    {\n" +
             "      \"identifier\": \"Farewell\",\n" +
-            "      \"implementation\": \"roboy.newDialog.states.toyStates.ToyFarewellState\",\n" +
+            "      \"implementation\": \"roboy.newDialog.examples.toyStates.ToyFarewellState\",\n" +
             "      \"transitions\": {}\n" +
             "    },\n" +
             "    {\n" +
             "      \"identifier\": \"Greetings\",\n" +
-            "      \"implementation\": \"roboy.newDialog.states.toyStates.ToyGreetingsState\",\n" +
+            "      \"implementation\": \"roboy.newDialog.examples.toyStates.ToyGreetingsState\",\n" +
             "      \"fallback\": \"Farewell\",\n" +
             "      \"transitions\": {\n" +
             "        \"next\": \"Farewell\",\n" +
