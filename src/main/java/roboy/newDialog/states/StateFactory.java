@@ -31,6 +31,19 @@ public class StateFactory {
     private final static Logger logger = LoggerFactory.getLogger(StateFactory.class);
 
 
+    /**
+     * Create a Java State object based on the provided class name
+     *
+     * Full class name must be used: 'my.package.asdf.StateName' instead of 'StateName'.
+     * The class must be a sub-class of State.
+     *
+     * This function doesn't throw Exceptions and will return null if something goes wrong.
+     *
+     * @param className  class name of the State object to be created
+     * @param stateIdentifier state identifier/name (this is NOT the class name!)
+     * @param parameters state parameters
+     * @return a new instance of a State object of specified class OR null if something goes wrong
+     */
     public static State createStateByClassName(String className, String stateIdentifier, StateParameters parameters) {
 
         // get class by name
@@ -38,8 +51,9 @@ public class StateFactory {
         try {
             cls = Class.forName(className);
         } catch (ClassNotFoundException e) {
-            logger.error("ClassNotFoundException for " + className + "!");
-            logger.error("Exception message:" + e.getMessage());
+            logger.error("ClassNotFoundException for " + className + "!\n" +
+                    "\tMake sure that you use full class name like " +
+                    "'my.package.asdf.StateName' instead of simple name like 'StateName'!");
             return null;
         }
 
@@ -56,7 +70,7 @@ public class StateFactory {
         } catch (NoSuchMethodException e) {
             logger.error("NoSuchMethodException for " + className + "! Make sure that the class has a constructor " +
                     "that takes exactly two parameters: ClassName(String id, StateParameters params).");
-            logger.error("Exception message:" + e.getMessage());
+            logger.error("Exception message: " + e.getMessage());
             return null;
         }
 
@@ -66,7 +80,7 @@ public class StateFactory {
             stateObj = ctor.newInstance(stateIdentifier, parameters);
         } catch (InstantiationException | InvocationTargetException | IllegalAccessException e) {
             logger.error("Could not create an instance of " + className);
-            logger.error("Exception message:" + e.getMessage());
+            logger.error("Exception message: " + e.getMessage());
             return null;
         }
 
