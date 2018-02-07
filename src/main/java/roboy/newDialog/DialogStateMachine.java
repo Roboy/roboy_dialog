@@ -4,8 +4,8 @@ import com.google.gson.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import roboy.newDialog.states.State;
+import roboy.newDialog.states.StateFactory;
 import roboy.newDialog.states.StateParameters;
-import roboy.newDialog.states.factories.ToyStateFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -185,7 +185,7 @@ public class DialogStateMachine {
             String identifier = stateJsO.get("identifier").getAsString();
             String implClassName = stateJsO.get("implementation").getAsString();
 
-            State state = ToyStateFactory.getByClassName(implClassName, identifier, params);
+            State state = StateFactory.createStateByClassName(implClassName, identifier, params);
 
             if (state == null) {
                 logger.error("parseAndCreateStates(): state " + identifier + " was not created!");
