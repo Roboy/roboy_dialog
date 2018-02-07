@@ -1,6 +1,8 @@
 package roboy.newDialog;
 
 import com.google.gson.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import roboy.newDialog.states.State;
 import roboy.newDialog.states.StateParameters;
 import roboy.newDialog.states.factories.ToyStateFactory;
@@ -19,6 +21,8 @@ import java.util.Map;
  * Personalities can be implemented using a dialog state machine.
  */
 public class DialogStateMachine {
+
+    private final Logger logger = LoggerFactory.getLogger(DialogStateMachine.class);
 
     // maps string identifiers to state objects ("Greeting" -> {GreetingState})
     // allows to have multiple instances of the same state class with different identifiers ("Greeting2" -> {GreetingState})
@@ -55,7 +59,7 @@ public class DialogStateMachine {
     public void setInitialState(String identifier) {
         State initial = identifierToState.get(identifier);
         if (initial == null) {
-            System.err.println("[!!] setInitialState: Unknown identifier: " + identifier);
+            logger.error("setInitialState(" + identifier + "): Unknown identifier!");
             return;
         }
         setInitialState(initial);
@@ -76,7 +80,7 @@ public class DialogStateMachine {
     public void setActiveState(String identifier) {
         State s = identifierToState.get(identifier);
         if (s == null) {
-            System.err.println("[!!] setInitialState: Unknown identifier: " + identifier);
+            logger.error("setActiveState(" + identifier + "): Unknown identifier!");
             return;
         }
         activeState = s;
@@ -112,21 +116,21 @@ public class DialogStateMachine {
         initialState = null;
 
         if (!json.isJsonObject()) {
-            System.err.println("[!!] loadFromJSON: State machine must be a JSON object!");
+            logger.error("loadFromJSON(): State machine must be a JSON object!");
             return;
         }
         JsonObject personalityJson = json.getAsJsonObject();
 
         JsonElement initialStateJson = personalityJson.get("initialState");
         if (initialStateJson == null) {
-            System.err.println("[!!] loadFromJSON: Initial state not defined!");
+            logger.error("loadFromJSON(): Initial state not defined!");
             return;
         }
         String initialStateIdentifier = initialStateJson.getAsString();
 
         JsonElement statesJson = personalityJson.get("states");
         if (statesJson == null) {
-            System.err.println("[!!] loadFromJSON: states not defined!");
+            logger.error("loadFromJSON(): states not defined!");
             return;
         }
         JsonArray statesJsA = statesJson.getAsJsonArray();
@@ -184,8 +188,7 @@ public class DialogStateMachine {
             State state = ToyStateFactory.getByClassName(implClassName, identifier, params);
 
             if (state == null) {
-                System.err.println("[!!] parseAndCreateStates: state "
-                        + identifier + " was not created!");
+                logger.error("parseAndCreateStates(): state " + identifier + " was not created!");
             } else {
                 addState(state);
             }
@@ -216,7 +219,7 @@ public class DialogStateMachine {
                 if (fallbackIdentifier != null) {
                     State fallbackState = idToState.get(fallbackIdentifier);
                     if (fallbackState == null) {
-                        System.err.println("[!!] parseAndSetTransitionsAndFallbacks: fallback "
+                        logger.error("parseAndSetTransitionsAndFallbacks(): fallback "
                                 + fallbackIdentifier + " missing!");
                     } else {
                         thisState.setFallback(fallbackState);
@@ -234,8 +237,9 @@ public class DialogStateMachine {
                     String transTargetID = entry.getValue().getAsString();
                     State transTargetState = idToState.get(transTargetID);
                     if (transTargetState == null) {
-                        System.err.println("[!!] parseAndSetTransitionsAndFallbacks: transition with name "
+                        logger.error("parseAndSetTransitionsAndFallbacks(): transition with name "
                                 + transTargetID + " has no target!");
+
                     } else {
                         thisState.setTransition(tranName, transTargetState);
                     }
@@ -252,15 +256,15 @@ public class DialogStateMachine {
 
         for (State s : idToState.values()) {
             if (!s.allRequiredTransitionsAreInitialized()) {
-                System.err.println("[!!] checkSuccessfulInitialization: Some required transitions are missing in the " +
+                logger.error("checkSuccessfulInitialization(): Some required transitions are missing in the " +
                         "state with identifier " + s.getIdentifier());
             }
             if (!s.allRequiredParametersAreInitialized()) {
-                System.err.println("[!!] checkSuccessfulInitialization: Some required parameters are missing in the " +
+                logger.error("checkSuccessfulInitialization(): Some required parameters are missing in the " +
                         "state with identifier " + s.getIdentifier());
             }
             if (s.isFallbackRequired() && s.getFallback() == null) {
-                System.err.println("[!!] checkSuccessfulInitialization: Fallback is required but missing in the " +
+                logger.error("checkSuccessfulInitialization(): Fallback is required but missing in the " +
                         "state with identifier " + s.getIdentifier());
             }
 
@@ -283,7 +287,7 @@ public class DialogStateMachine {
     private JsonObject toJsonObject() {
         JsonObject stateMachineJson = new JsonObject();
         if (initialState == null) {
-            System.err.println("[!!] toJsonObject: initial state undefined!");
+            logger.error("toJsonObject(): initial state undefined!");
         } else {
             stateMachineJson.addProperty("initialState", initialState.getIdentifier());
         }

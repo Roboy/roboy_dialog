@@ -1,5 +1,7 @@
 package roboy.newDialog;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
 import roboy.dialog.personality.Personality;
@@ -28,6 +30,8 @@ import java.util.List;
  */
 public class StateBasedPersonality extends DialogStateMachine implements Personality {
 
+    private final Logger logger = LoggerFactory.getLogger(StateBasedPersonality.class);
+
 
     private final Verbalizer verbalizer;
 
@@ -50,11 +54,11 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
     public List<Action> startConversation() {
         State activeState = getActiveState();
         if (activeState == null) {
-            System.out.println("[!!] ERROR: This personality state machine has not been initialized!");
+            logger.error("This personality state machine has not been initialized!");
             return new ArrayList<>();
         }
         if ( ! activeState.equals(getInitialState())) {
-            System.out.println("[!!] WARNING: The active state is different from the initial state " +
+            logger.warn("The active state is different from the initial state " +
                     "at the beginning of conversation!");
         }
 
@@ -70,7 +74,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
         State activeState = getActiveState();
         if (activeState == null) {
-            System.out.println("[!!] ERROR: This personality state machine has not been initialized!");
+            logger.error("This personality state machine has not been initialized!");
             return new ArrayList<>();
         }
         List<Action> answerActions = new ArrayList<>();
@@ -119,7 +123,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
         }
 
         if (act == null) {
-            System.out.println("[!!] WARNING: state acted with null. This should not happen! " +
+            logger.warn("state acted with null. This should not happen! " +
                     "Return Output.sayNothing() instead!");
             return previousActions;  // say nothing, just return the list of previous actions
 
@@ -129,7 +133,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
             Interpretation inter = act.getInterpretation();
             previousActions.add(verbalizer.verbalize(inter));
         } else if (act.requiresFallback()) {
-            System.out.println("[!!] WARNING: act() required fallback! Fallbacks are currently only allowed in react().");
+           logger.warn("act() required fallback! Fallbacks are currently only allowed in react().");
         }
         // else: act.isEmpty()
 
@@ -157,7 +161,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
 
         if (react == null) {
-            System.out.println("[!!] WARNING: state reacted with null. This should not happen! " +
+            logger.warn("state reacted with null. This should not happen! " +
                     "It is not clear whether it wants to say nothing or ask the fallback.");
             return previousActions;  // say nothing, just return the list of previous actions
         }
@@ -171,20 +175,20 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
             // limit fallback depth
             fallbackCount++;
             if (fallbackCount >= maxFallbackCount) {
-                System.out.println("[!!] WARNING: possibly infinite fallback loop, stopping after " +
+                logger.warn("possibly infinite fallback loop, stopping after " +
                         maxFallbackCount + " iterations");
                 return previousActions;  // say nothing, just return the list of previous actions
             }
 
             if (fallback == null) {
-                System.out.println("[!!] WARNING: state with identifier " + state.getIdentifier()
+                logger.warn("state with identifier " + state.getIdentifier()
                         + " required fallback but none was attached, saying nothing");
                 return previousActions;  // say nothing, just return the list of previous actions
             }
 
             // fallback exists
             state = fallback;
-            fallback = state.getFallback();
+            fallback = state.getFallback(); // fallback of the previous fallback
             try {
                 react = state.react(input);
             } catch (Exception e) {
@@ -192,7 +196,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
             }
 
             if (react == null) {
-                System.out.println("[!!] WARNING: state with identifier " + state.getIdentifier() +
+                logger.warn("state with identifier " + state.getIdentifier() +
                         " reacted with null. This should not happen!" +
                         " It is not clear whether it wants to say nothing or ask the fallback.");
                 return previousActions;  // say nothing, just return the list of previous actions
@@ -212,7 +216,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
     private List<Action> exceptionHandler(State state, Exception e, List<Action> previousActions, boolean comesFromAct) {
         String actOrReact = comesFromAct ? "act" : "react";
-        System.out.println("[!!] ERROR: Exception in " + actOrReact + "() of state with identifier "
+        logger.error("Exception in " + actOrReact + "() of state with identifier "
                 + state.getIdentifier() + ":\n" + e.getMessage());
         previousActions.add(verbalizer.verbalize(
                 new Interpretation("Well, looks like some states are not implemented correctly...")));

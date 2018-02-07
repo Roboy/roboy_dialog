@@ -1,5 +1,7 @@
 package roboy.newDialog.states;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import roboy.newDialog.DialogStateMachine;
 
 import java.util.HashMap;
@@ -8,6 +10,8 @@ import java.util.HashMap;
  * An object containing all parameters that can be interesting for an arbitrary State object.
  */
 public class StateParameters {
+
+    private final Logger logger = LoggerFactory.getLogger(StateParameters.class);
 
     // TODO: references to context, ros node, ...
 
@@ -19,7 +23,7 @@ public class StateParameters {
         this.stateMachine = stateMachine;
 
         if (stateMachine == null) {
-            System.err.println("[!!] StateParameters require a reference to the state machine");
+            logger.error("StateParameters require a reference to the state machine");
         }
 
     }

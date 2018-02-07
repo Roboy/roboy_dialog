@@ -2,6 +2,8 @@ package roboy.newDialog.states;
 
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 
 import java.util.*;
@@ -96,6 +98,8 @@ public abstract class State {
     //endregion
 
     // START OF STATE IMPLEMENTATION
+
+    private final Logger logger = LoggerFactory.getLogger(State.class);
 
     // State name/identifier
     private String stateIdentifier;
@@ -252,7 +256,7 @@ public abstract class State {
         boolean allGood = true;
         for (String tName : getRequiredTransitionNames()) {
             if (!transitions.containsKey(tName)) {
-                System.err.println("[!!] State " + getIdentifier() + ": transition " + tName
+                logger.error("State " + getIdentifier() + ": transition " + tName
                         + " is required but is not defined!");
                 allGood = false;
             }
@@ -268,18 +272,18 @@ public abstract class State {
      */
     public final boolean allRequiredParametersAreInitialized() {
         if (parameters == null) {
-            System.err.println("[!!] State " + getIdentifier() + ": parameters are missing completely!");
+            logger.error("State " + getIdentifier() + ": parameters are missing completely!");
             return false;
         }
         if (parameters.getStateMachine() == null) {
-            System.err.println("[!!] State " + getIdentifier() + ": reference to the state machine is missing in the parameters!");
+            logger.error("State " + getIdentifier() + ": reference to the state machine is missing in the parameters!");
             return false;
         }
 
         boolean allGood = true;
         for (String paramName : getRequiredParameterNames()) {
             if (parameters.getParameter(paramName) == null) {
-                System.err.println("[!!] State " + getIdentifier() + ": parameter " + paramName
+                logger.error("State " + getIdentifier() + ": parameter " + paramName
                         + " is required but is not defined!");
                 allGood = false;
             }
