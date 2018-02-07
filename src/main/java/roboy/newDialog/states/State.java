@@ -28,22 +28,22 @@ public abstract class State {
     /**
      *  Output static inner class represents the return values of act() and react() methods.
      *  There are three possible scenarios:
-     *   - the state wants to say something -> a single interpretation is returned
-     *   - the state does not say anything -> no interpretation
+     *   - the state wants to say something     -> a single interpretation is returned
+     *   - the state does not say anything      -> no interpretation
      *   - the state does not know how to react -> fallback state is required to fix this
      *
      *   To create an instance of this class inside the act() or react() method use following:
      *   - Output.say( new Interpretation(...) )  - to return an interpretation
-     *   - Output.sayNothing()                    - to make clear that you don't want to say something
+     *   - Output.sayNothing()                    - to make clear that you don't want to say anything
      *   - Output.useFallback()                   - to indicate that you can't react and want to use the fallback
      */
     public static class Output {
 
-        public enum ReActType {
+        public enum OutputType {
             INTERPRETATION, SAY_NOTHING, USE_FALLBACK
         }
 
-        private final ReActType type;
+        private final OutputType type;
         private final Interpretation interpretation;
 
         /**
@@ -51,7 +51,7 @@ public abstract class State {
          * @param type type of this react object
          * @param interpretation optional interpretation object (or null)
          */
-        private Output(ReActType type, Interpretation interpretation) {
+        private Output(OutputType type, Interpretation interpretation) {
             this.type = type;
             this.interpretation = interpretation;
         }
@@ -62,29 +62,29 @@ public abstract class State {
             if (i == null) {
                 return sayNothing();
             }
-            return new Output(ReActType.INTERPRETATION, i);
+            return new Output(OutputType.INTERPRETATION, i);
         }
 
         public static Output sayNothing() {
-            return new Output(ReActType.SAY_NOTHING, null);
+            return new Output(OutputType.SAY_NOTHING, null);
         }
 
         public static Output useFallback() {
-            return new Output(ReActType.USE_FALLBACK, null);
+            return new Output(OutputType.USE_FALLBACK, null);
         }
 
         // Non-static methods
 
         public boolean hasInterpretation() {
-            return type == ReActType.INTERPRETATION; // interpretation != null
+            return type == OutputType.INTERPRETATION; // interpretation != null
         }
 
         public boolean requiresFallback() {
-            return type == ReActType.USE_FALLBACK;
+            return type == OutputType.USE_FALLBACK;
         }
 
         public boolean isEmpty() {
-            return type == ReActType.SAY_NOTHING;
+            return type == OutputType.SAY_NOTHING;
         }
 
         public Interpretation getInterpretation() {

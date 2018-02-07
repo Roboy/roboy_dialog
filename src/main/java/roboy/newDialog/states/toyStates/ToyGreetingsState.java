@@ -56,7 +56,7 @@ public class ToyGreetingsState extends State {
 
         } else {
             return getTransition("noHello");
-            // alternatively: return this to repeat
+            // alternatively: return `this` to repeat
         }
     }
 
@@ -71,6 +71,7 @@ public class ToyGreetingsState extends State {
     @Override
     public boolean isFallbackRequired() {
         // optional: indicate that this state requires fallback in some cases
+        // for this state this happens if no greeting was detected
         return true;
     }
 }
