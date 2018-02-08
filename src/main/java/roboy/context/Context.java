@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableClassToInstanceMap;
 import roboy.context.contextObjects.*;
 import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
-import roboy.ros.msg.DirectionVector;
+import roboy_communication_cognition.DirectionVector;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;

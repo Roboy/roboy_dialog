@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 
 import roboy.context.Context;
@@ -18,7 +17,6 @@ import roboy.io.*;
 
 import roboy.linguistics.sentenceanalysis.*;
 import roboy.memory.Neo4jMemory;
-import roboy.ros.msg.DirectionVector;
 import roboy.talk.Verbalizer;
 
 import roboy.ros.RosMainNode;
@@ -95,10 +93,6 @@ public class DialogSystem {
             final Runnable gui = () -> ContextGUI.run();
             Thread t = new Thread(gui);
             t.start();
-            for(int i = 0; i < 1000; i++) {
-                Context.InternalUpdaters.DIALOG_TOPICS_UPDATER.updateValue("test no." + i);
-                Thread.sleep(200);
-            }
         }
         /*
          * I/O INITIALIZATION

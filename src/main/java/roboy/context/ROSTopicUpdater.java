@@ -25,12 +25,9 @@ public abstract class ROSTopicUpdater<Message,Target> extends ExternalUpdater {
      * Starts a new MessageListener.
      */
     private void start(RosMainNode ros) {
-        MessageListener<Message> listener = new MessageListener<Message>() {
-            @Override
-            public void onNewMessage(Message m) {
-                message = m;
-                update();
-            }
+        MessageListener<Message> listener = m -> {
+            message = m;
+            update();
         };
         addListener(listener, ros);
     }
