@@ -144,8 +144,8 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
             return Context.getInstance().getLastValue(this);
         }
 
-        public int getValueCount() {
-            return Context.getInstance().getValueCount(this);
+        public int valuesAddedSinceStart() {
+            return Context.getInstance().valuesAddedSinceStart(this);
         }
 
         /** ValueHistory enum utility methods. */

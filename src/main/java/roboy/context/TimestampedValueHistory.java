@@ -74,7 +74,7 @@ public class TimestampedValueHistory<V> implements AbstractValueHistory<Long, V>
     }
 
     @Override
-    public synchronized int getValueCount() {
+    public synchronized int valuesAddedSinceStart() {
         return data.size();
     }
 }

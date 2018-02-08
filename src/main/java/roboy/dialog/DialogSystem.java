@@ -93,8 +93,10 @@ public class DialogSystem {
             final Runnable gui = () -> ContextGUI.run();
             Thread t = new Thread(gui);
             t.start();
-            Context.InternalUpdaters.DIALOG_TOPICS_UPDATER.updateValue("first test");
-            Context.InternalUpdaters.DIALOG_TOPICS_UPDATER.updateValue("second test");
+            for(int i = 0; i < 1000; i++) {
+                Context.InternalUpdaters.DIALOG_TOPICS_UPDATER.updateValue("test no." + i);
+                Thread.sleep(200);
+            }
         }
         /*
          * I/O INITIALIZATION

@@ -61,7 +61,7 @@ public class ObservableValueHistory<V> extends Observable implements AbstractVal
     }
 
     @Override
-    public int getValueCount() {
+    public int valuesAddedSinceStart() {
         return counter;
     }
 }

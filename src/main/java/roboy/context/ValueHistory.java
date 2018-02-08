@@ -1,5 +1,8 @@
 package roboy.context;
 
+import com.sun.org.apache.regexp.internal.RE;
+import org.junit.Assert;
+
 import java.util.HashMap;
 
 /**
@@ -11,11 +14,18 @@ public class ValueHistory<V> implements AbstractValueHistory<Integer, V> {
      * Reading is allowed without synchronization, modifications only through generateKey().
      */
     private volatile int counter;
+    private volatile int valuesInMap;
     private HashMap<Integer, V> data;
+    /* When value count reaches MAX_LIMIT, it is reduced to REDUCE_BY. */
+    private final int MAX_LIMIT = 50;
+    private final int REDUCE_BY = 20;
+
 
     public ValueHistory() {
         data = new HashMap<>();
         counter = 0;
+        valuesInMap = 0;
+        Assert.assertTrue(REDUCE_BY < MAX_LIMIT);
     }
 
     /**
@@ -39,12 +49,15 @@ public class ValueHistory<V> implements AbstractValueHistory<Integer, V> {
      * @return A hashmap of n last values added to the history.
      */
     @Override
-    public HashMap<Integer, V> getLastNValues(int n) {
+    public synchronized HashMap<Integer, V> getLastNValues(int n) {
         HashMap<Integer, V> response = new HashMap<>();
-        int lastToRetrieve = counter - Math.min(n, counter);
+        int responseCounter = Math.min(n, valuesInMap);
+        int lastToRetrieve = counter - responseCounter;
         for (int i = counter - 1; i >= lastToRetrieve; i--) {
-            response.put(i - lastToRetrieve, getValue(i));
+            responseCounter--;
+            response.put(responseCounter, getValue(i));
         }
+        Assert.assertEquals(0, responseCounter);
         return response;
     }
 
@@ -55,8 +68,23 @@ public class ValueHistory<V> implements AbstractValueHistory<Integer, V> {
      */
     @Override
     public synchronized void updateValue(V value) {
+        reduce();
         Integer key = generateKey();
         data.put(key, value);
+        valuesInMap++;
+    }
+
+    private synchronized void reduce() {
+        if(valuesInMap < MAX_LIMIT) {
+            return;
+        }
+        // Remove the oldest values.
+        int oldestToRemove = counter - valuesInMap - 1;
+        int newestToRemove = oldestToRemove + REDUCE_BY;
+        for (int i = oldestToRemove; i <= newestToRemove; i++) {
+            data.remove(i);
+            valuesInMap--;
+        }
     }
 
     /**
@@ -80,7 +108,7 @@ public class ValueHistory<V> implements AbstractValueHistory<Integer, V> {
     }
 
     @Override
-    public int getValueCount() {
+    public int valuesAddedSinceStart() {
         return counter;
     }
 }
