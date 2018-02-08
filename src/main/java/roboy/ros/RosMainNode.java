@@ -9,6 +9,7 @@ import org.ros.node.service.ServiceClient;
 import org.ros.node.service.ServiceResponseListener;
 
 import org.ros.node.topic.Subscriber;
+import roboy.context.Context;
 import roboy.dialog.Config;
 import roboy_communication_cognition.*;
 import roboy_communication_control.*;
@@ -51,6 +52,8 @@ public class RosMainNode extends AbstractNodeMain {
         nodeMainExecutor.execute(this, nodeConfiguration);
         rosConnectionLatch = new CountDownLatch(1);
         waitForLatchUnlock(rosConnectionLatch, "startup");
+
+        Context.initializeROS(this);
     }
 
     @Override
