@@ -19,7 +19,7 @@
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1ros_1_1_ros_main_node_1a225e9130265103eb9bf7ab66a1bfe431" prot="private" static="no" mutable="no">
         <type><ref refid="classroboy_1_1ros_1_1_ros_manager" kindref="compound">RosManager</ref></type>
-        <definition>RosManager roboy.ros.RosMainNode.clients</definition>
+        <definition>RosManager services</definition>
         <argsstring></argsstring>
         <name>clients</name>
         <initializer>= new <ref refid="classroboy_1_1ros_1_1_ros_manager" kindref="compound">RosManager</ref>()</initializer>

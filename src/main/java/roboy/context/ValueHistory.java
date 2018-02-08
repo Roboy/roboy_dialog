@@ -1,6 +1,5 @@
 package roboy.context;
 
-import com.sun.org.apache.regexp.internal.RE;
 import org.junit.Assert;
 
 import java.util.HashMap;

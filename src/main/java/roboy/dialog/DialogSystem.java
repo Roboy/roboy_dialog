@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 
 import roboy.context.Context;
@@ -17,6 +18,7 @@ import roboy.io.*;
 
 import roboy.linguistics.sentenceanalysis.*;
 import roboy.memory.Neo4jMemory;
+import roboy.ros.msg.DirectionVector;
 import roboy.talk.Verbalizer;
 
 import roboy.ros.RosMainNode;

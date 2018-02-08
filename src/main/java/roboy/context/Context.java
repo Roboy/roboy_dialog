@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableClassToInstanceMap;
 import roboy.context.contextObjects.*;
 import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
-import roboy.ros.msg.DirVec;
+import roboy.ros.msg.DirectionVector;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
@@ -82,8 +82,7 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
     public enum Values implements ContextValueInterface {
         // NEW DEFINITIONS GO HERE.
         FACE_COORDINATES(FaceCoordinates.class, CoordinateSet.class),
-        ACTIVE_INTERLOCUTOR(ActiveInterlocutor.class, Interlocutor.class),
-        AUDIO_ANGLES(AudioAngles.class, DirVec.class);
+        ACTIVE_INTERLOCUTOR(ActiveInterlocutor.class, Interlocutor.class);
 
 
         final Class classType;
@@ -121,6 +120,7 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
     public enum ValueHistories implements ContextValueInterface {
         // NEW DEFINITIONS GO HERE.
         DIALOG_TOPICS(DialogTopics.class, String.class),
+        AUDIO_ANGLES(AudioDirection.class, DirectionVector.class),
         ROS_TEST(ROSTest.class, String.class);
 
         final Class classType;
@@ -211,7 +211,7 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
     public enum ExternalUpdaters implements ContextUpdaterInterface {
         // NEW DEFINITIONS GO HERE.
         FACE_COORDINATES_UPDATER(FaceCoordinatesUpdater.class, FaceCoordinates.class, CoordinateSet.class),
-        //AUDIO_ANGLES_UPDATER(AudioAnglesUpdater.class, AudioAngles.class, DirVec.class);
+        AUDIO_ANGLES_UPDATER(AudioDirectionUpdater.class, AudioDirection.class, DirectionVector.class),
         ROS_TEST_UPDATER(ROSTestUpdater.class, ROSTest.class, String.class);
 
         final Class classType;
