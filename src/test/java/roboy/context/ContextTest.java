@@ -143,12 +143,14 @@ public class ContextTest {
 
 
     @Test
-    public void audioAnglesTest() throws IOException {
+    public void audioDirectionsTest() {
+        // Get the subscriber for AudioDirection.
         RosMainNode node = Mockito.mock(RosMainNode.class);
         ArgumentCaptor<MessageListener> argument = ArgumentCaptor.forClass(MessageListener.class);
         AudioDirection direction = new AudioDirection();
         AudioDirectionUpdater updater = new AudioDirectionUpdater(direction, node);
         Mockito.verify(node).addListener(argument.capture(), Mockito.any());
+        // Send value to subscriber and check that it was stored in the ValueHistory.
         Gson gson = new Gson();
         DirectionVector vector = gson.fromJson("{\"azimutal_angle\":0.5,\"polar_angle\":0.4}", DirVec.class);
         argument.getValue().onNewMessage(vector);
