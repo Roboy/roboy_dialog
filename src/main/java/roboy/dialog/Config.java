@@ -2,6 +2,8 @@ package roboy.dialog;
 
 import org.apache.commons.configuration2.YAMLConfiguration;
 import org.apache.commons.configuration2.ex.ConfigurationException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -59,6 +61,9 @@ public class Config {
     private static String yamlConfigFile = "config.properties";
     private YAMLConfiguration yamlConfig;
 
+
+    private static final Logger LOGGER = LogManager.getLogger(Config.class);
+
     /**
      * Constructor switching to the correct profile.
      */
@@ -86,6 +91,7 @@ public class Config {
             default:
                 setDefaultProfile();
         }
+        LOGGER.info("Dialog System profile {}", profile.profileName);
     }
 
     /**

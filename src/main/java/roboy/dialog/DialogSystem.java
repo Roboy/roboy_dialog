@@ -6,9 +6,8 @@ import java.util.List;
 
 import com.google.gson.JsonIOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import roboy.context.Context;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import roboy.context.GUI.ContextGUI;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.ShutDownAction;
@@ -79,9 +78,6 @@ public class DialogSystem {
 
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
 
-	    Log log = LogFactory.getLog(org.ros.internal.node.client.Registrar.class);
-	    log.info("logging test");
-
         // This sets a configuration profile for the entire run.
         // Profiles can be added in roboy.dialog.Config.ConfigurationProfile
         if(System.getProperty("profile")!=null) {
@@ -93,6 +89,7 @@ public class DialogSystem {
         // initialize ROS node
         RosMainNode rosMainNode = new RosMainNode();
         // initialize Memory with ROS
+
         Neo4jMemory.getInstance(rosMainNode);
         if(Config.CONTEXT_DEMO) {
             final Runnable gui = () -> ContextGUI.run();

@@ -53,7 +53,7 @@ public class RosMainNode extends AbstractNodeMain {
         rosConnectionLatch = new CountDownLatch(1);
         waitForLatchUnlock(rosConnectionLatch, "startup");
 
-        Context.initializeROS(this);
+        Context.getInstance().initializeROS(this);
     }
 
     @Override
