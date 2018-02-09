@@ -48,7 +48,7 @@ public class ValueHistory<V> implements AbstractValueHistory<Integer, V> {
      * @return A hashmap of n last values added to the history.
      */
     @Override
-    public synchronized HashMap<Integer, V> getLastNValues(int n) {
+    public HashMap<Integer, V> getLastNValues(int n) {
         HashMap<Integer, V> response = new HashMap<>();
         int responseCounter = Math.min(n, valuesInMap);
         int lastToRetrieve = counter - responseCounter;
