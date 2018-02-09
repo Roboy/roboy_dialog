@@ -126,6 +126,7 @@ public class Config {
     }
 
     private void setDebugProfile() {
+        ROS_HOSTNAME = yamlConfig.getString("ROS_HOSTNAME");
         SHUTDOWN_ON_ROS_FAILURE = false;
         SHUTDOWN_ON_SERVICE_FAILURE = false;
     }

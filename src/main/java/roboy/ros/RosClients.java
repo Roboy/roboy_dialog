@@ -1,7 +1,7 @@
 package roboy.ros;
 
 import roboy_communication_cognition.*;
-import roboy_communication_control.ShowEmotion;
+import roboy_communication_control.*;
 
 /**
  * Stores the different client addresses and corresponding ROS message types.

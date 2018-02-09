@@ -3,6 +3,8 @@ package roboy.context;
 import com.google.common.collect.ImmutableClassToInstanceMap;
 import roboy.context.contextObjects.*;
 import roboy.memory.nodes.Interlocutor;
+import roboy.ros.RosMainNode;
+import roboy_communication_cognition.DirectionVector;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
@@ -24,6 +26,8 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
     protected ImmutableClassToInstanceMap<ExternalUpdater> externalUpdaters;
     protected ImmutableClassToInstanceMap<Observer> observers;
 
+    private RosMainNode node;
+
     /**
      * Builds the class to instance maps.
      */
@@ -31,7 +35,6 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
         values = buildValueInstanceMap(Values.values());
         valueHistories = buildValueInstanceMap(ValueHistories.values());
         // Updaters need a target, therefore different initialization.
-        externalUpdaters = buildUpdaterInstanceMap(ExternalUpdaters.values());
         internalUpdaters = buildUpdaterInstanceMap(InternalUpdaters.values());
         // Observers need to be added to the Observable instance, therefore different initialization.
         observers = buildObserverInstanceMap(Observers.values());
@@ -52,6 +55,21 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
             }
         }
         return context;
+    }
+
+    /**
+     * Starts up the external updaters (which need a ROS main node).
+     * @param ros
+     */
+    public static void initializeROS(RosMainNode ros) {
+        Context ctx = Context.getInstance();
+        synchronized (initializationLock) {
+            // Initialize if needed.
+            if(ctx.externalUpdaters == null && ros != null) {
+                ctx.node = ros;
+                ctx.externalUpdaters = ctx.buildUpdaterInstanceMap(ExternalUpdaters.values());
+            }
+        }
     }
 
     /**
@@ -101,7 +119,9 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
      */
     public enum ValueHistories implements ContextValueInterface {
         // NEW DEFINITIONS GO HERE.
-        DIALOG_TOPICS(DialogTopics.class, String.class);
+        DIALOG_TOPICS(DialogTopics.class, String.class),
+        AUDIO_ANGLES(AudioDirection.class, DirectionVector.class),
+        ROS_TEST(ROSTest.class, String.class);
 
         final Class classType;
         final Class returnType;
@@ -122,6 +142,10 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
          */
         public <T> T getLastValue() {
             return Context.getInstance().getLastValue(this);
+        }
+
+        public int valuesAddedSinceStart() {
+            return Context.getInstance().valuesAddedSinceStart(this);
         }
 
         /** ValueHistory enum utility methods. */
@@ -186,7 +210,9 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
      */
     public enum ExternalUpdaters implements ContextUpdaterInterface {
         // NEW DEFINITIONS GO HERE.
-        FACE_COORDINATES_UPDATER(FaceCoordinatesUpdater.class, FaceCoordinates.class, CoordinateSet.class);
+        FACE_COORDINATES_UPDATER(FaceCoordinatesUpdater.class, FaceCoordinates.class, CoordinateSet.class),
+        AUDIO_ANGLES_UPDATER(AudioDirectionUpdater.class, AudioDirection.class, DirectionVector.class),
+        ROS_TEST_UPDATER(ROSTestUpdater.class, ROSTest.class, String.class);
 
         final Class classType;
         final Class targetType;
@@ -275,9 +301,17 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
                 // Get the Updater class.
                 Class updaterType = updater.getClassType();
                 // Create an instance of the Updater class, with the target as its constructor parameter.
-                updaterMapBuilder.put(updaterType, updaterType.getConstructor(targetClass).newInstance(targetInstance));
+                // If it is a ROS-based Updater, add RosMainNode as second parameter.
+                if(ROSTopicUpdater.class.isAssignableFrom(updaterType)) {
+                    updaterMapBuilder.put(updaterType,
+                            updaterType.getConstructor(targetClass, RosMainNode.class).newInstance(targetInstance, node));
+                } else {
+                    // Otherwise use the common constructor type.
+                    updaterMapBuilder.put(updaterType, updaterType.getConstructor(targetClass).newInstance(targetInstance));
+                }
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-                // Don't mess around defining Updaters (change constructor access or signature, for example).
+                // Don't mess around defining Updaters (constructor access must be public, for example).
+                // There are only two allowed constructors, (target, ROSMainNode) or (target).
                 e.printStackTrace();
             }
         }

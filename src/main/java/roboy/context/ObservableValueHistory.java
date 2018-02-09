@@ -59,4 +59,9 @@ public class ObservableValueHistory<V> extends Observable implements AbstractVal
     private synchronized int generateKey() {
         return counter++;
     }
+
+    @Override
+    public int valuesAddedSinceStart() {
+        return counter;
+    }
 }

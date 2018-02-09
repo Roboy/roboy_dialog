@@ -21,7 +21,7 @@ public class ContextGUI {
     private JPanel valuePanel;
     private Map<Context.Values, JLabel> valueDisplays;
     private Map<Context.ValueHistories, JScrollPane> historyDisplays;
-    private static int MAX_HISTORY_VALUES = 10;
+    private static int MAX_HISTORY_VALUES = 50;
 
     // Panel displaying historyAttributes.
     private TitledBorder historyBorder;
@@ -30,11 +30,11 @@ public class ContextGUI {
     // Update button panel.
     private JPanel controlPanel;
 
-    private static int FULL_WIDTH = 400;
-    private static int FULL_HEIGHT = 300;
-    private static int ATTR_WIDTH = 390;
-    private static int ATTR_HEIGHT = 50;
-    private static int HISTORY_HEIGHT = 100;
+    private static int FULL_WIDTH = 600;
+    private static int FULL_HEIGHT = 600;
+    private static int ATTR_WIDTH = 590;
+    private static int ATTR_HEIGHT = 80;
+    private static int HISTORY_HEIGHT = 300;
 
     private static String NO_VALUE = "<not initialized>";
 
@@ -90,12 +90,13 @@ public class ContextGUI {
         for (Context.ValueHistories attribute : Context.ValueHistories.values()) {
             historyPanel.add(new JLabel(attribute.toString() + ":", JLabel.CENTER));
             Map<Integer, Object> vals = attribute.getNLastValues(MAX_HISTORY_VALUES);
+            int elements = attribute.valuesAddedSinceStart();
             DefaultListModel<String> sorted = new DefaultListModel<>();
             if (vals.size() == 0) {
                 sorted.add(0, NO_VALUE);
             } else {
                 for (Integer i = 0; i < vals.size(); i++) {
-                    sorted.add(i, vals.get(vals.size() - i - 1).toString());
+                    sorted.add(i, "[" + (elements-i) + "] " + vals.get(vals.size() - i - 1).toString());
                 }
             }
             JList historyList = new JList(sorted);
@@ -144,12 +145,13 @@ public class ContextGUI {
     private void updateHistories() {
         for (Context.ValueHistories attribute : Context.ValueHistories.values()) {
             Map<Integer, Object> vals = attribute.getNLastValues(MAX_HISTORY_VALUES);
+            int elements = attribute.valuesAddedSinceStart();
             if (vals.size() == 0) {
                 continue;
             }
             DefaultListModel<String> sorted = new DefaultListModel<>();
             for (Integer i = 0; i < vals.size(); i++) {
-                sorted.add(i, vals.get(vals.size() - i - 1).toString());
+                sorted.add(i, "[" + (elements-i-1) + "] " + vals.get(vals.size()-i-1).toString());
             }
             JList historyList = new JList(sorted);
             JScrollPane pane = historyDisplays.get(attribute);

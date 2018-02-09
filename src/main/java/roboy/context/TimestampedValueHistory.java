@@ -72,4 +72,9 @@ public class TimestampedValueHistory<V> implements AbstractValueHistory<Long, V>
         }
         return lastTime;
     }
+
+    @Override
+    public synchronized int valuesAddedSinceStart() {
+        return data.size();
+    }
 }
