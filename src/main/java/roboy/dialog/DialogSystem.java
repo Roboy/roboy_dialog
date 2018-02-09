@@ -6,6 +6,8 @@ import java.util.List;
 
 import com.google.gson.JsonIOException;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import roboy.context.Context;
 import roboy.context.GUI.ContextGUI;
 import roboy.dialog.action.Action;
@@ -76,6 +78,9 @@ import static roboy.dialog.Config.ConfigurationProfile.*;
 public class DialogSystem {
 
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
+
+	    Log log = LogFactory.getLog(org.ros.internal.node.client.Registrar.class);
+	    log.info("logging test");
 
         // This sets a configuration profile for the entire run.
         // Profiles can be added in roboy.dialog.Config.ConfigurationProfile
