@@ -61,8 +61,7 @@ public class Config {
     private static String yamlConfigFile = "config.properties";
     private YAMLConfiguration yamlConfig;
 
-
-    private static final Logger LOGGER = LogManager.getLogger(Config.class);
+    final Logger LOGGER = LogManager.getLogger();
 
     /**
      * Constructor switching to the correct profile.
@@ -91,7 +90,7 @@ public class Config {
             default:
                 setDefaultProfile();
         }
-        LOGGER.info("Dialog System profile {}", profile.profileName);
+        LOGGER.info("Set Dialog System profile to {}", profile.profileName);
     }
 
     /**
@@ -151,7 +150,7 @@ public class Config {
         {
             File propertiesFile = new File(yamlConfigFile);
             if(! propertiesFile.exists()) { // propertiesFile == null doesn't work!
-                System.out.println("Could not find "+yamlConfigFile+" file in project path! YAML configurations will be unavailable.");
+                LOGGER.error("Could not find "+yamlConfigFile+" file in project path! YAML configurations will be unavailable.");
                 return;
             }
             FileReader propertiesReader = new FileReader(propertiesFile);
@@ -159,7 +158,7 @@ public class Config {
         }
         catch(ConfigurationException | FileNotFoundException e)
         {
-            System.out.println("Exception while reading YAML configurations from "+yamlConfigFile);
+            LOGGER.error("Exception while reading YAML configurations from "+yamlConfigFile);
             e.printStackTrace();
         }
     }

@@ -1,5 +1,7 @@
 package roboy.ros;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.ros.exception.RemoteException;
 import org.ros.exception.RosRuntimeException;
 import org.ros.message.MessageListener;
@@ -29,6 +31,9 @@ public class RosMainNode extends AbstractNodeMain {
             "message : \"Memory client not initialized.\"" +
             "}";
 
+
+    final Logger LOGGER = LogManager.getLogger();
+
     public RosMainNode() {
         // Ctor is called but should not be initialized offline.
         if (Config.NOROS && !Config.MEMORY) return;
@@ -37,7 +42,7 @@ public class RosMainNode extends AbstractNodeMain {
 
         String hostName = Config.ROS_HOSTNAME;
         if (hostName == null || hostName.isEmpty()) {
-            System.out.println("Could not find ROS hostname. ROS will be unavailable. Set ROS_HOSTNAME environmental variable.");
+            LOGGER.warn("Could not find ROS hostname. ROS will be unavailable. Set ROS_HOSTNAME environmental variable.");
             STARTUP_SUCCESS = false;
         }
 

@@ -1,5 +1,7 @@
 package roboy.memory.nodes;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import roboy.dialog.Config;
 import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jRelationships;
@@ -17,6 +19,8 @@ public class Interlocutor {
     public boolean FAMILIAR = false;
     // Memory is not queried in NOROS mode.
     private boolean memoryROS;
+
+    final Logger LOGGER = LogManager.getLogger();
 
     public Interlocutor() {
         this.person = new MemoryNodeModel(true);
@@ -41,7 +45,7 @@ public class Interlocutor {
             try {
                 ids = memory.getByQuery(person);
             } catch (InterruptedException | IOException e) {
-                System.out.println("Exception while querying memory, assuming person unknown.");
+                LOGGER.info("Exception while querying memory, assuming person unknown.");
                 e.printStackTrace();
             }
             // Pick first if matches found.
@@ -51,7 +55,7 @@ public class Interlocutor {
                     this.person = memory.getById(ids.get(0));
                     FAMILIAR = true;
                 } catch (InterruptedException | IOException e) {
-                    System.out.println("Unexpected memory error: provided ID not found upon querying.");
+                    LOGGER.warn("Unexpected memory error: provided ID not found upon querying.");
                     e.printStackTrace();
                 }
             }
@@ -62,7 +66,7 @@ public class Interlocutor {
                     // Need to retrieve the created node by the id returned by memory
                     person = memory.getById(id);
                 } catch (InterruptedException | IOException e) {
-                    System.out.println("Unexpected memory error: provided ID not found upon querying.");
+                    LOGGER.warn("Unexpected memory error: provided ID not found upon querying.");
                     e.printStackTrace();
                 }
             }
@@ -95,7 +99,7 @@ public class Interlocutor {
         try {
             ids = memory.getByQuery(relatedNode);
         } catch (InterruptedException | IOException e) {
-            System.out.println("Exception while querying memory by template.");
+            LOGGER.error("Exception while querying memory by template.");
             e.printStackTrace();
         }
         // Pick first from list if multiple matches found.
@@ -111,7 +115,7 @@ public class Interlocutor {
                     person.setRelationship(relationship, id);
                 }
             } catch (InterruptedException | IOException e) {
-                System.out.println("Unexpected memory error: creating node for new relation failed.");
+                LOGGER.error("Unexpected memory error: creating node for new relation failed.");
                 e.printStackTrace();
             }
         }
@@ -119,7 +123,7 @@ public class Interlocutor {
         try{
             memory.save(person);
         } catch (InterruptedException | IOException e) {
-            System.out.println("Unexpected memory error: updating person information failed.");
+            LOGGER.error("Unexpected memory error: updating person information failed.");
             e.printStackTrace();
         }
     }

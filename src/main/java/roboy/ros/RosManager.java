@@ -1,5 +1,7 @@
 package roboy.ros;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.ros.node.ConnectedNode;
 import org.ros.node.service.ServiceClient;
 import org.ros.node.topic.Subscriber;
@@ -18,6 +20,8 @@ class RosManager {
     private HashMap<RosClients, ServiceClient> clientMap;
     private HashMap<RosSubscribers, Subscriber> subscriberMap;
 
+    final Logger LOGGER = LogManager.getLogger();
+
     /**
      * Initializes all ServiceClients for Ros.
      */
@@ -35,19 +39,19 @@ class RosManager {
             }
             try {
                 clientMap.put(c, node.newServiceClient(c.address, c.type));
-                System.out.println(c.toString() + " client initialization SUCCESS!");
+                LOGGER.info("{} client initialization SUCCESS!", c.toString());
             } catch (Exception e) {
                 success = false;
-                System.out.println(c.toString() + " client initialization FAILED, could not reach ROS service!");
+                LOGGER.warn("{} client initialization FAILED!", c.toString());
             }
         }
         for(RosSubscribers s : RosSubscribers.values()) {
             try {
                 subscriberMap.put(s, node.newSubscriber(s.address, s.type));
-                System.out.println(s.toString() + " subscriber initialization SUCCESS!");
+                LOGGER.info("{} subscriber initialization SUCCESS!", s.toString());
             } catch (Exception e) {
                 success = false;
-                System.out.println(s.toString() + " subscriber initialization FAILED, could not reach ROS service!");
+                LOGGER.warn("{} subscriber initialization FAILED!", s.toString());
             }
         }
 
@@ -66,7 +70,7 @@ class RosManager {
             if(Config.SHUTDOWN_ON_SERVICE_FAILURE) {
                 throw new RuntimeException("ROS clients have not been initialized! Stopping DM execution.");
             }
-            System.out.println("ROS clients have not been initialized! Is the ROS host running?");
+            LOGGER.warn("ROS clients have not been initialized! Is the ROS host running?");
             return true;
         }
         return !(clientMap.containsKey(c));
@@ -77,7 +81,7 @@ class RosManager {
             if(Config.SHUTDOWN_ON_SERVICE_FAILURE) {
                 throw new RuntimeException("ROS subscribers have not been initialized! Stopping DM execution.");
             }
-            System.out.println("ROS subscribers have not been initialized! Is the ROS host running?");
+            LOGGER.warn("ROS subscribers have not been initialized! Is the ROS host running?");
             return true;
         }
         return !(subscriberMap.containsKey(s));
