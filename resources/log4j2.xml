@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN">
+<Configuration>
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="[%level] %m --- %logger{36} (%d{HH:mm:ss})%n"/>
         </Console>
     </Appenders>
     <Loggers>
-        <Root level="INFO">
+        <Root level="WARN">
             <AppenderRef ref="Console"/>
         </Root>
+        <Logger name="roboy.dialog" level="INFO">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="roboy.context" level="INFO">
+            <AppenderRef ref="Console"/>
+        </Logger>
     </Loggers>
 </Configuration>

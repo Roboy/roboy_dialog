@@ -7,4 +7,5 @@ public interface ContextUpdaterInterface {
     Class getClassType();
     Class getTargetType();
     Class getTargetValueType();
+    String name();
 }

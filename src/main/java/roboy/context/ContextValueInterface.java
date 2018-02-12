@@ -7,4 +7,5 @@ package roboy.context;
 public interface ContextValueInterface<ContextObjectType extends AbstractValue> {
     Class getClassType();
     Class getReturnType();
+    String name();
 }

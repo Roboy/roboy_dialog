@@ -1,6 +1,8 @@
 package roboy.context;
 
 import com.google.common.collect.ImmutableClassToInstanceMap;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 
@@ -13,21 +15,29 @@ class ValueAccessManager<H extends ContextValueInterface<AbstractValueHistory>,
     protected ImmutableClassToInstanceMap<AbstractValueHistory> valueHistories;
     protected ImmutableClassToInstanceMap<AbstractValue> values;
 
+    final Logger LOGGER = LogManager.getLogger();
+
     ValueAccessManager(V[] valueSignatures, H[] historySignatures) {
         ImmutableClassToInstanceMap.Builder<AbstractValue> valueMapBuilder = new ImmutableClassToInstanceMap.Builder<>();
         for(V value : valueSignatures) {
             AbstractValue instance = ContextObjectFactory.createValue(value);
             if (instance != null) {
                 valueMapBuilder.put(value.getClassType(), instance);
+                LOGGER.info("Initialized context value for {}", value.name());
+            } else {
+                LOGGER.error("Could not initialize context value for {}", value.name());
             }
         }
         this.values = valueMapBuilder.build();
 
         ImmutableClassToInstanceMap.Builder<AbstractValueHistory> historyMapBuilder = new ImmutableClassToInstanceMap.Builder<>();
         for(H history : historySignatures) {
-            AbstractValue instance = ContextObjectFactory.createHistory(history);
+            AbstractValueHistory instance = ContextObjectFactory.createHistory(history);
             if (instance != null) {
-                valueMapBuilder.put(history.getClassType(), instance);
+                historyMapBuilder.put(history.getClassType(), instance);
+                LOGGER.info("Initialized context value history for {}", history.name());
+            } else {
+                LOGGER.error("Could not initialize context value history for {}", history.name());
             }
         }
         this.valueHistories = historyMapBuilder.build();
