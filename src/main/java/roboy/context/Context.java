@@ -6,7 +6,6 @@ import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
 import roboy_communication_cognition.DirectionVector;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 import java.util.Observer;
 
@@ -18,7 +17,7 @@ import java.util.Observer;
  * <p>
  * For usage examples, check out ContextTest.java
  */
-public class Context extends ValueAccessManager<Context.ValueHistories, Context.Values> {
+public class Context extends AccessManager<Context.ValueHistories, Context.Values> {
     private static Context context;
     private static final Object initializationLock = new Object();
 
@@ -32,8 +31,7 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
      * Builds the class to instance maps.
      */
     private Context() {
-        values = ContextObjectFactory.buildValueInstanceMap(Values.values());
-        valueHistories = ContextObjectFactory.buildValueInstanceMap(ValueHistories.values());
+        super(Values.values(), ValueHistories.values());
         // Updaters need a target, therefore different initialization.
         internalUpdaters = ContextObjectFactory.buildUpdaterInstanceMap
                 (InternalUpdaters.values(), values, valueHistories, node);
@@ -81,7 +79,7 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
      * Context will take care of initialization.
      * Query values over the enum name.
      */
-    public enum Values implements ContextValueInterface {
+    public enum Values implements ContextValueInterface<AbstractValue> {
         // NEW DEFINITIONS GO HERE.
         FACE_COORDINATES(FaceCoordinates.class, CoordinateSet.class),
         ACTIVE_INTERLOCUTOR(ActiveInterlocutor.class, Interlocutor.class);
@@ -119,7 +117,7 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
      * Context will take care of initialization.
      * Query values over the enum name.
      */
-    public enum ValueHistories implements ContextValueInterface {
+    public enum ValueHistories implements ContextValueInterface<AbstractValueHistory> {
         // NEW DEFINITIONS GO HERE.
         DIALOG_TOPICS(DialogTopics.class, String.class),
         AUDIO_ANGLES(AudioDirection.class, DirectionVector.class),
@@ -131,10 +129,11 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
         /**
          * Get a map of elements most recently added to the history.
          * @param n Amount of values to retrieve.
+         * @param <K> Key type of the history.
          * @param <T> Return type of the history.
          * @return Map of n most recent values, ordered through Integer keys going upwards from 0 (smaller = older).
          */
-        public <T> Map<Integer, T> getNLastValues(int n) {
+        public <K extends Number, T> Map<K, T> getNLastValues(int n) {
             return Context.getInstance().getNLastValues(this, n);
         }
 

@@ -29,6 +29,17 @@ public class ContextObjectFactory {
         return valueMapBuilder.build();
     }
 
+    protected static <V extends ContextValueInterface<AbstractValue>> AbstractValue createValue(V signature) {
+        Class c = signature.getClassType();
+        try {
+            return (AbstractValue) c.getConstructor().newInstance();
+        } catch (IllegalAccessException | NoSuchMethodException | InstantiationException |InvocationTargetException e) {
+            // Just don't mess around when defining the classes and enums.
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     /**
      * Used to initialize Updaters (external and internal), returning a ClassToInstance map.
      * For each element in a ContextUpdaterInterface enum:
