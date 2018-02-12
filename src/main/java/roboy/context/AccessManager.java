@@ -13,9 +13,24 @@ class AccessManager<H extends ContextValueInterface<AbstractValueHistory>,
     protected ImmutableClassToInstanceMap<AbstractValueHistory> valueHistories;
     protected ImmutableClassToInstanceMap<AbstractValue> values;
 
-    AccessManager(V[] values, H[] valueHistories) {
-        this.values = ContextObjectFactory.buildValueInstanceMap(values);
-        this.valueHistories = ContextObjectFactory.buildValueInstanceMap(valueHistories);
+    AccessManager(V[] valueSignatures, H[] valueHistorySignatures) {
+        ImmutableClassToInstanceMap.Builder<AbstractValue> valueMapBuilder = new ImmutableClassToInstanceMap.Builder<>();
+        for(V value : valueSignatures) {
+            AbstractValue instance = ContextObjectFactory.createValue(value);
+            if (instance != null) {
+                valueMapBuilder.put(value.getClassType(), instance);
+            }
+        }
+        this.values = valueMapBuilder.build();
+
+        ImmutableClassToInstanceMap.Builder<AbstractValueHistory> historyMapBuilder = new ImmutableClassToInstanceMap.Builder<>();
+        for(H history : valueHistorySignatures) {
+            AbstractValue instance = ContextObjectFactory.createHistory(history);
+            if (instance != null) {
+                valueMapBuilder.put(history.getClassType(), instance);
+            }
+        }
+        this.valueHistories = historyMapBuilder.build();
     }
 
     <T> T getValue(V attribute) {

@@ -9,30 +9,28 @@ import java.util.Observer;
 public class ContextObjectFactory {
 
     /**
-     * Used to initialize the Values and ValueHistories, returning a ClassToInstance map.
-     * For each element in a ContextValueInterface enum, generates an instance of its classType.
-     * Then returns the generated instances in a ClassToInstance map.
+     * Used to initialize the Values.
+     * For a ContextValueInterface<AbstractValue> enum element, generates an instance of its classType.
      */
-    protected static <T extends ContextValueInterface> ImmutableClassToInstanceMap buildValueInstanceMap(T[] enumValueList) {
-        ImmutableClassToInstanceMap.Builder valueMapBuilder = new ImmutableClassToInstanceMap.Builder<>();
-        for(T v : enumValueList) {
-            try {
-                // Get the class which defines the Value/ValueHistory.
-                Class c = v.getClassType();
-                // Create an instance and add {(class) -> (instance)} to the map.
-                valueMapBuilder = valueMapBuilder.put(c, c.getConstructor().newInstance());
-            } catch (IllegalAccessException | NoSuchMethodException | InstantiationException |InvocationTargetException e) {
-                // Just don't mess around when defining the classes and enums.
-                e.printStackTrace();
-            }
-        }
-        return valueMapBuilder.build();
-    }
-
     protected static <V extends ContextValueInterface<AbstractValue>> AbstractValue createValue(V signature) {
         Class c = signature.getClassType();
         try {
             return (AbstractValue) c.getConstructor().newInstance();
+        } catch (IllegalAccessException | NoSuchMethodException | InstantiationException |InvocationTargetException e) {
+            // Just don't mess around when defining the classes and enums.
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * Used to initialize the ValueHistories.
+     * For a ContextValueInterface<AbstractValueHistory> enum element, generates an instance of its classType.
+     */
+    public static <H extends ContextValueInterface<AbstractValueHistory>> AbstractValueHistory createHistory(H signature) {
+        Class c = signature.getClassType();
+        try {
+            return (AbstractValueHistory) c.getConstructor().newInstance();
         } catch (IllegalAccessException | NoSuchMethodException | InstantiationException |InvocationTargetException e) {
             // Just don't mess around when defining the classes and enums.
             e.printStackTrace();
@@ -122,5 +120,4 @@ public class ContextObjectFactory {
         }
         return observerMapBuilder.build();
     }
-
 }
