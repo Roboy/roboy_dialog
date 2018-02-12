@@ -199,7 +199,7 @@ public class Context extends AccessManager<Context.ValueHistories, Context.Value
         public Class<? extends AbstractValue> getClassType() {
             return this.classType;
         }
-        public Class<? extends AbstractValue> getReturnType() {
+        public Class<? extends AbstractValue> getTargetValueType() {
             return this.targetValueType;
         }
 
@@ -231,7 +231,7 @@ public class Context extends AccessManager<Context.ValueHistories, Context.Value
         public Class<? extends AbstractValue> getTargetType() {
             return this.targetType;
         }
-        public Class<? extends AbstractValue> getReturnType() {
+        public Class<? extends AbstractValue> getTargetValueType() {
             return this.targetValueType;
         }
     }
