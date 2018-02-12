@@ -17,7 +17,7 @@ import java.util.Observer;
  * <p>
  * For usage examples, check out ContextTest.java
  */
-public class Context extends AccessManager<Context.ValueHistories, Context.Values> {
+public class Context extends ValueAccessManager<Context.ValueHistories, Context.Values> {
     private static Context context;
     private static final Object initializationLock = new Object();
 

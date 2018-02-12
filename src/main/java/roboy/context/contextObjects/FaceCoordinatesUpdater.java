@@ -1,13 +1,13 @@
 package roboy.context.contextObjects;
 
-import roboy.context.IntervalUpdater;
+import roboy.context.PeriodicUpdater;
 
 import java.util.Random;
 
 /**
  * Asynchronously triggers ROS queries for face coordinates (in the future).
  */
-public class FaceCoordinatesUpdater extends IntervalUpdater<FaceCoordinates> {
+public class FaceCoordinatesUpdater extends PeriodicUpdater<FaceCoordinates> {
     public FaceCoordinatesUpdater(FaceCoordinates target) {
         super(target);
     }

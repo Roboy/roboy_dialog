@@ -12,7 +12,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  *
  * @param <Target> The class of the target object.
  */
-public abstract class IntervalUpdater<Target> extends ExternalUpdater {
+public abstract class PeriodicUpdater<Target> extends ExternalUpdater {
     protected final Target target;
     protected final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     public static int updateFrequencySeconds = 1;
@@ -22,7 +22,7 @@ public abstract class IntervalUpdater<Target> extends ExternalUpdater {
      *
      * @param target                 The target attribute of the update() method.
      */
-    public IntervalUpdater(Target target) {
+    public PeriodicUpdater(Target target) {
         this.target = target;
         start();
     }

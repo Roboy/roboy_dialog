@@ -7,13 +7,13 @@ import java.util.Map;
 /**
  * The collection of values, split into valueHistories (H) and single values (V).
  */
-class AccessManager<H extends ContextValueInterface<AbstractValueHistory>,
+class ValueAccessManager<H extends ContextValueInterface<AbstractValueHistory>,
         V extends ContextValueInterface<AbstractValue>> {
 
     protected ImmutableClassToInstanceMap<AbstractValueHistory> valueHistories;
     protected ImmutableClassToInstanceMap<AbstractValue> values;
 
-    AccessManager(V[] valueSignatures, H[] valueHistorySignatures) {
+    ValueAccessManager(V[] valueSignatures, H[] historySignatures) {
         ImmutableClassToInstanceMap.Builder<AbstractValue> valueMapBuilder = new ImmutableClassToInstanceMap.Builder<>();
         for(V value : valueSignatures) {
             AbstractValue instance = ContextObjectFactory.createValue(value);
@@ -24,7 +24,7 @@ class AccessManager<H extends ContextValueInterface<AbstractValueHistory>,
         this.values = valueMapBuilder.build();
 
         ImmutableClassToInstanceMap.Builder<AbstractValueHistory> historyMapBuilder = new ImmutableClassToInstanceMap.Builder<>();
-        for(H history : valueHistorySignatures) {
+        for(H history : historySignatures) {
             AbstractValue instance = ContextObjectFactory.createHistory(history);
             if (instance != null) {
                 valueMapBuilder.put(history.getClassType(), instance);
