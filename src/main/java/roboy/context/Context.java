@@ -6,12 +6,13 @@ import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
 import roboy_communication_cognition.DirectionVector;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Observer;
 
 /**
  * Singleton class serving as an interface to access all context objects.
- * Takes care of correct initialization of attribute histories and updaters.
+ * Takes care of correct initialization.
  * <p>
  * Queries to values are handled through the inherited ValueAccessManager methods.
  * <p>
@@ -26,6 +27,15 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
     protected ImmutableClassToInstanceMap<Observer> observers;
 
     private RosMainNode node;
+
+    // EXTERNAL ACCESS TO VALUES
+    public static final ValueInterface<CoordinateSet> FACE_COORDINATES = new ValueInterface<>(FaceCoordinates.class);
+    public static final ValueInterface<Interlocutor> ACTIVE_INTERLOCUTOR = new ValueInterface<>(ActiveInterlocutor.class);
+
+    // EXTERNAL ACCESS TO VALUE HISTORIES
+    public static final HistoryInterface<Integer, String> DIALOG_TOPICS = new HistoryInterface<>(DialogTopics.class);
+    public static final HistoryInterface<Integer, DirectionVector> AUDIO_ANGLES = new HistoryInterface<>(AudioDirection.class);
+    public static final HistoryInterface<Integer, String> ROS_TEST = new HistoryInterface<>(ROSTest.class);
 
     /**
      * Builds the class to instance maps.
@@ -256,6 +266,54 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
         }
         public Class<? extends AbstractValue> getTargetType() {
             return this.targetType;
+        }
+    }
+
+    public static class ValueInterface<V> {
+        // Keeping track of all the values instantiated over the ValueInterface class.
+        protected static ArrayList<AbstractValue> allValues = new ArrayList<>();
+
+        private AbstractValue<V> value;
+        final Class classType;
+
+        protected ValueInterface(Class classType) {
+            this.classType = classType;
+            this.value = ContextObjectFactory.createValue(classType);
+            allValues.add(value);
+        }
+
+        public V getValue() {
+            return value.getValue();
+        }
+    }
+
+    public static class HistoryInterface<K, V> {
+        // Keeping track of all the histories instantiated over the HistoryInterface class.
+        protected static ArrayList<AbstractValueHistory> allHistories = new ArrayList<>();
+
+        private AbstractValueHistory<K, V> valueHistory;
+        final Class classType;
+
+        protected HistoryInterface (Class classType) {
+            this.classType = classType;
+            this.valueHistory = ContextObjectFactory.createHistory(classType);
+            allHistories.add(valueHistory);
+        }
+
+        protected AbstractValueHistory<K, V> getContextObject() {
+            return valueHistory;
+        }
+
+        public Map<K, V> getNLastValues(int n) {
+            return this.getNLastValues(n);
+        }
+
+        public V getLastValue() {
+            return this.getLastValue();
+        }
+
+        public int valuesAddedSinceStart() {
+            return this.valuesAddedSinceStart();
         }
     }
 }

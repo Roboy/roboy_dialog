@@ -23,12 +23,33 @@ public class ContextObjectFactory {
         return null;
     }
 
+    protected static AbstractValue createValue(Class c) {
+        try {
+            return (AbstractValue) c.getConstructor().newInstance();
+        } catch (IllegalAccessException | NoSuchMethodException | InstantiationException |InvocationTargetException e) {
+            // Just don't mess around when defining the classes and enums.
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     /**
      * Used to initialize the ValueHistories.
      * For a ContextValueInterface<AbstractValueHistory> enum element, generates an instance of its classType.
      */
     public static <H extends ContextValueInterface<AbstractValueHistory>> AbstractValueHistory createHistory(H signature) {
         Class c = signature.getClassType();
+        try {
+            return (AbstractValueHistory) c.getConstructor().newInstance();
+        } catch (IllegalAccessException | NoSuchMethodException | InstantiationException |InvocationTargetException e) {
+            // Just don't mess around when defining the classes and enums.
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    public static AbstractValueHistory createHistory(Class c) {
         try {
             return (AbstractValueHistory) c.getConstructor().newInstance();
         } catch (IllegalAccessException | NoSuchMethodException | InstantiationException |InvocationTargetException e) {

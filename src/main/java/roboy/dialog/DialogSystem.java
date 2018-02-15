@@ -8,7 +8,9 @@ import com.google.gson.JsonIOException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.context.Context;
 import roboy.context.GUI.ContextGUI;
+import roboy.context.contextObjects.CoordinateSet;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.ShutDownAction;
 import roboy.dialog.personality.Personality;
@@ -18,6 +20,7 @@ import roboy.io.*;
 
 import roboy.linguistics.sentenceanalysis.*;
 import roboy.memory.Neo4jMemory;
+import roboy.memory.nodes.Interlocutor;
 import roboy.talk.Verbalizer;
 
 import roboy.ros.RosMainNode;
@@ -90,12 +93,23 @@ public class DialogSystem {
         RosMainNode rosMainNode = new RosMainNode();
         // initialize Memory with ROS
 
+        Context.getInstance();
+
         Neo4jMemory.getInstance(rosMainNode);
         if(Config.CONTEXT_DEMO) {
             final Runnable gui = () -> ContextGUI.run();
             Thread t = new Thread(gui);
             t.start();
         }
+
+        Thread.sleep(2000);
+
+        CoordinateSet test = Context.FACE_COORDINATES.getValue();
+        CoordinateSet test1 = Context.Values.FACE_COORDINATES.getValue();
+
+        //String test2 = Context.FACE_COORDINATES.getValue();
+        //String test3 = Context.Values.FACE_COORDINATES.getValue();
+
         /*
          * I/O INITIALIZATION
          */
