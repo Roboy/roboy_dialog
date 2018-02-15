@@ -1,7 +1,7 @@
 package roboy.newDialog;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
 import roboy.dialog.personality.Personality;
@@ -30,7 +30,7 @@ import java.util.List;
  */
 public class StateBasedPersonality extends DialogStateMachine implements Personality {
 
-    private final Logger logger = LoggerFactory.getLogger(StateBasedPersonality.class);
+    private final Logger logger = LogManager.getLogger();
 
 
     private final Verbalizer verbalizer;

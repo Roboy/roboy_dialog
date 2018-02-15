@@ -1,8 +1,8 @@
 package roboy.newDialog;
 
 import com.google.gson.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import roboy.newDialog.states.State;
 import roboy.newDialog.states.StateFactory;
 import roboy.newDialog.states.StateParameters;
@@ -22,7 +22,7 @@ import java.util.Map;
  */
 public class DialogStateMachine {
 
-    private final Logger logger = LoggerFactory.getLogger(DialogStateMachine.class);
+    private final static Logger logger = LogManager.getLogger();
 
     // maps string identifiers to state objects ("Greeting" -> {GreetingState})
     // allows to have multiple instances of the same state class with different identifiers ("Greeting2" -> {GreetingState})

@@ -1,7 +1,7 @@
 package roboy.newDialog.states;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -28,7 +28,7 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class StateFactory {
 
-    private final static Logger logger = LoggerFactory.getLogger(StateFactory.class);
+    private final static Logger logger = LogManager.getLogger();
 
 
     /**

@@ -1,7 +1,7 @@
 package roboy.newDialog.states;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import roboy.newDialog.DialogStateMachine;
 
 import java.util.HashMap;
@@ -11,7 +11,7 @@ import java.util.HashMap;
  */
 public class StateParameters {
 
-    private final Logger logger = LoggerFactory.getLogger(StateParameters.class);
+    private final Logger logger = LogManager.getLogger();
 
     // TODO: references to context, ros node, ...
 

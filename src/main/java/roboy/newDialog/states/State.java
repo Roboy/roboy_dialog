@@ -2,8 +2,8 @@ package roboy.newDialog.states;
 
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 
 import java.util.*;
@@ -106,7 +106,7 @@ public abstract class State {
 
     // START OF STATE IMPLEMENTATION
 
-    private final Logger logger = LoggerFactory.getLogger(State.class);
+    private final Logger logger = LogManager.getLogger();
 
     // State name/identifier
     private String stateIdentifier;
