@@ -123,7 +123,10 @@ public abstract class State {
 
     /**
      * Create a state object with given identifier (state name) and parameters.
-     * The parameters should contain a reference to a state machine. The state will be automatically added to it.
+     *
+     * The parameters should contain a reference to a state machine for later use.
+     * The state will not automatically add itself to the state machine.
+     *
      * @param stateIdentifier  identifier (name) of this state
      * @param params parameters for this state, should contain a reference to a state machine
      */
