@@ -29,8 +29,12 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
     private RosMainNode node;
 
     // EXTERNAL ACCESS TO VALUES
-    public static final ValueInterface<CoordinateSet> FACE_COORDINATES = new ValueInterface<>(FaceCoordinates.class);
-    public static final ValueInterface<Interlocutor> ACTIVE_INTERLOCUTOR = new ValueInterface<>(ActiveInterlocutor.class);
+    public static final ValueInterface<FaceCoordinates, CoordinateSet> FACE_COORDINATES =
+            new ValueInterface<>(new FaceCoordinates());
+    public static final ValueInterface<ObservableValue<CoordinateSet>, CoordinateSet> FACE_COORDINATES_GENERIC =
+            new ValueInterface<>(new ObservableValue<CoordinateSet>());
+    public static final ValueInterface<ActiveInterlocutor, Interlocutor> ACTIVE_INTERLOCUTOR =
+            new ValueInterface<>(new ActiveInterlocutor());
 
     // EXTERNAL ACCESS TO VALUE HISTORIES
     public static final HistoryInterface<Integer, String> DIALOG_TOPICS = new HistoryInterface<>(DialogTopics.class);
@@ -269,19 +273,25 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
         }
     }
 
-    public static class ValueInterface<V> {
+    public static class ValueInterface<I extends AbstractValue<V>, V> {
         // Keeping track of all the values instantiated over the ValueInterface class.
         protected static ArrayList<AbstractValue> allValues = new ArrayList<>();
 
-        private AbstractValue<V> value;
-        final Class classType;
+        private I value;
 
-        protected ValueInterface(Class classType) {
-            this.classType = classType;
-            this.value = ContextObjectFactory.createValue(classType);
+        protected ValueInterface(I value) {
+            this.value = value;
             allValues.add(value);
         }
 
+        protected I getContextObject() {
+            return value;
+        }
+
+
+        /**
+         * Get the last element saved into the corresponding Value instance.
+         */
         public V getValue() {
             return value.getValue();
         }
@@ -304,16 +314,16 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
             return valueHistory;
         }
 
-        public Map<K, V> getNLastValues(int n) {
-            return this.getNLastValues(n);
+        public Map<K, V> getLastNValues(int n) {
+            return valueHistory.getLastNValues(n);
         }
 
         public V getLastValue() {
-            return this.getLastValue();
+            return valueHistory.getValue();
         }
 
         public int valuesAddedSinceStart() {
-            return this.valuesAddedSinceStart();
+            return valueHistory.valuesAddedSinceStart();
         }
     }
 }

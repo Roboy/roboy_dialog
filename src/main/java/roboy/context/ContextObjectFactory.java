@@ -23,9 +23,9 @@ public class ContextObjectFactory {
         return null;
     }
 
-    protected static AbstractValue createValue(Class c) {
+    protected static <I extends AbstractValue<V>, V> AbstractValue<V> createValue(Class<I> c) {
         try {
-            return (AbstractValue) c.getConstructor().newInstance();
+            return c.getConstructor().newInstance();
         } catch (IllegalAccessException | NoSuchMethodException | InstantiationException |InvocationTargetException e) {
             // Just don't mess around when defining the classes and enums.
             e.printStackTrace();
@@ -57,6 +57,11 @@ public class ContextObjectFactory {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static <K,V> InternalUpdater<AbstractValueHistory<K,V>, V> createInternalUpdater(Context.HistoryInterface<K,V> target) {
+        AbstractValueHistory targetValue = target.getContextObject();
+        return new InternalUpdater(targetValue);
     }
 
     /**
