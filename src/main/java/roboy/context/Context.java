@@ -11,9 +11,6 @@ import java.util.Map;
 /**
  * Singleton class serving as an interface to access all context objects.
  * Takes care of correct initialization.
- * <p>
- * Queries to values are handled through the inherited ValueAccessManager methods.
- * <p>
  * For usage examples, check out ContextTest.java
  */
 public class Context {
@@ -23,7 +20,7 @@ public class Context {
     public static final ValueInterface<FaceCoordinates, CoordinateSet> FACE_COORDINATES =
             new ValueInterface<>(new FaceCoordinates());
 
-    // An example of defining a Value without previously defining a new class. Works like FACE_COORDINATES.
+    // Possible now: defining a Value without previously defining a new class. Works like FACE_COORDINATES.
     //public static final ValueInterface<ObservableValue<CoordinateSet>, CoordinateSet> FACE_COORDINATES_GENERIC =
     //        new ValueInterface<>(new ObservableValue<CoordinateSet>());
 

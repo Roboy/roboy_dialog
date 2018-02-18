@@ -97,10 +97,8 @@ public class DialogSystem {
             final Runnable gui = () -> ContextGUI.run();
             Thread t = new Thread(gui);
             t.start();
-            Context.getInstance().DIALOG_TOPICS_UPDATER.updateValue("test1");
         }
 
-        Context.getInstance().DIALOG_TOPICS_UPDATER.updateValue("test2");
         Thread.sleep(2000);
 
         /*
