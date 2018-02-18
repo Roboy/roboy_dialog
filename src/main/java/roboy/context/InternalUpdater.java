@@ -13,7 +13,7 @@ public class InternalUpdater<T extends AbstractValue<V>, V> {
         this.target = target;
     }
 
-    public synchronized void putValue(V value) {
+    public synchronized void updateValue(V value) {
         target.updateValue(value);
     }
 }
