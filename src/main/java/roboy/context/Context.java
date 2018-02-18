@@ -1,6 +1,5 @@
 package roboy.context;
 
-import com.google.common.collect.ImmutableClassToInstanceMap;
 import roboy.context.contextObjects.*;
 import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
@@ -8,7 +7,6 @@ import roboy_communication_cognition.DirectionVector;
 
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.Observer;
 
 /**
  * Singleton class serving as an interface to access all context objects.
@@ -18,39 +16,77 @@ import java.util.Observer;
  * <p>
  * For usage examples, check out ContextTest.java
  */
-public class Context extends ValueAccessManager<Context.ValueHistories, Context.Values> {
-    private static Context context;
+public class Context {
     private static final Object initializationLock = new Object();
 
-    protected ImmutableClassToInstanceMap<InternalUpdater> internalUpdaters;
-    protected ImmutableClassToInstanceMap<ExternalUpdater> externalUpdaters;
-    protected ImmutableClassToInstanceMap<Observer> observers;
-
-    private RosMainNode node;
-
-    // EXTERNAL ACCESS TO VALUES
+    /* VALUES INITIALIZED HERE */
     public static final ValueInterface<FaceCoordinates, CoordinateSet> FACE_COORDINATES =
             new ValueInterface<>(new FaceCoordinates());
-    public static final ValueInterface<ObservableValue<CoordinateSet>, CoordinateSet> FACE_COORDINATES_GENERIC =
-            new ValueInterface<>(new ObservableValue<CoordinateSet>());
+
+    // An example of defining a Value without previously defining a new class. Works like FACE_COORDINATES.
+    //public static final ValueInterface<ObservableValue<CoordinateSet>, CoordinateSet> FACE_COORDINATES_GENERIC =
+    //        new ValueInterface<>(new ObservableValue<CoordinateSet>());
+
     public static final ValueInterface<ActiveInterlocutor, Interlocutor> ACTIVE_INTERLOCUTOR =
             new ValueInterface<>(new ActiveInterlocutor());
 
-    // EXTERNAL ACCESS TO VALUE HISTORIES
-    public static final HistoryInterface<Integer, String> DIALOG_TOPICS = new HistoryInterface<>(DialogTopics.class);
-    public static final HistoryInterface<Integer, DirectionVector> AUDIO_ANGLES = new HistoryInterface<>(AudioDirection.class);
-    public static final HistoryInterface<Integer, String> ROS_TEST = new HistoryInterface<>(ROSTest.class);
+    /* VALUE HISTORIES INITIALIZED HERE */
+    public static final HistoryInterface<DialogTopics, Integer, String> DIALOG_TOPICS =
+            new HistoryInterface<>(new DialogTopics());
+
+    public static final HistoryInterface<AudioDirection, Integer, DirectionVector> AUDIO_ANGLES =
+            new HistoryInterface<>(new AudioDirection());
+
+    public static final HistoryInterface<ROSTest, Integer, String> ROS_TEST =
+            new HistoryInterface<>(new ROSTest());
+
+    /* INTERNAL UPDATERS DEFINED HERE */
+    public final DialogTopicsUpdater DIALOG_TOPICS_UPDATER;
+    public final ActiveInterlocutorUpdater ACTIVE_INTERLOCUTOR_UPDATER;
+
+    /* EXTERNAL UPDATERS DEFINED HERE */
+    private volatile boolean rosInitialized = false;
+    private AudioDirectionUpdater AUDIO_ANGLES_UPDATER;
+    private ROSTestUpdater ROS_TEST_UPDATER;
+
+    /* OBSERVERS DEFINED HERE */
+    private final FaceCoordinatesObserver FACE_COORDINATES_OBSERVER;
+
+    private RosMainNode node;
+
+    // By calling getInstance, Context initializes its updaters and observers.
+    private static Context context = Context.getInstance();
 
     /**
      * Builds the class to instance maps.
      */
     private Context() {
-        super(Values.values(), ValueHistories.values());
-        // Updaters need a target, therefore different initialization.
-        internalUpdaters = ContextObjectFactory.buildUpdaterInstanceMap
-                (InternalUpdaters.values(), values, valueHistories, node);
-        // Observers need to be added to the Observable instance, therefore different initialization.
-        observers = ContextObjectFactory.buildObserverInstanceMap(Observers.values(), values, valueHistories);
+        /* INTERNAL UPDATERS INITIALIZED HERE */
+        DIALOG_TOPICS_UPDATER = new DialogTopicsUpdater(DIALOG_TOPICS.valueHistory);
+        ACTIVE_INTERLOCUTOR_UPDATER = new ActiveInterlocutorUpdater(ACTIVE_INTERLOCUTOR.value);
+
+        /* OBSERVERS INITIALIZED AND ADDED HERE */
+        FACE_COORDINATES_OBSERVER = new FaceCoordinatesObserver();
+        FACE_COORDINATES.value.addObserver(FACE_COORDINATES_OBSERVER);
+    }
+
+    /**
+     * Starts up the external updaters (which need a ROS main node).
+     * @param ros
+     */
+    public void initializeROS(RosMainNode ros) {
+        Context ctx = Context.getInstance();
+        synchronized (initializationLock) {
+            // Initialize only if not already done.
+            if(!rosInitialized) {
+
+                /* EXTERNAL UPDATERS INITIALIZED HERE */
+                AUDIO_ANGLES_UPDATER = new AudioDirectionUpdater(AUDIO_ANGLES.valueHistory, ros);
+                ROS_TEST_UPDATER = new ROSTestUpdater(ROS_TEST.valueHistory, ros);
+
+                rosInitialized = true;
+            }
+        }
     }
 
     /**
@@ -71,211 +107,18 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
     }
 
     /**
-     * Starts up the external updaters (which need a ROS main node).
-     * @param ros
-     */
-    public void initializeROS(RosMainNode ros) {
-        Context ctx = Context.getInstance();
-        synchronized (initializationLock) {
-            // Initialize if needed.
-            if(ctx.externalUpdaters == null && ros != null) {
-                ctx.node = ros;
-                ctx.externalUpdaters = ContextObjectFactory.buildUpdaterInstanceMap(ExternalUpdaters.values(),
-                        values, valueHistories, node);
-            }
-        }
-    }
-
-    /**
-     * ADD NEW VALUES HERE.
      * This is the interface over which Context values can be queried.
-     * Add your Value implementation class and its return type below.
-     * Context will take care of initialization.
-     * Query values over the enum name.
+     * Initialize as static field of the Context class above.
+     * Add your Value implementation class and its return type as generic parameters.
+     *
+     * For Context-internal usage, the class keeps track of the initialized values with a static list.
+     *
+     * @param <I> An implementation of AbstractValue, such as the standard Value, ROS or Observable.
+     * @param <V> The type of data stored within the Value instance.
      */
-    public enum Values implements ContextValueInterface<AbstractValue> {
-        // NEW DEFINITIONS GO HERE.
-        FACE_COORDINATES(FaceCoordinates.class, CoordinateSet.class),
-        ACTIVE_INTERLOCUTOR(ActiveInterlocutor.class, Interlocutor.class);
-
-
-        final Class classType;
-        final Class returnType;
-
-        /**
-         * Get the last element added to the corresponding Value instance.
-         * @param <T> The return type of the Value.
-         * @return
-         */
-        public <T> T getValue() {
-            return Context.getInstance().getValue(this);
-        }
-
-        /* Utility methods. */
-        Values(Class attribute, Class value) {
-            this.classType = attribute;
-            this.returnType = value;
-        }
-        public Class getClassType() {
-            return this.classType;
-        }
-        public Class getReturnType() {
-            return this.returnType;
-        }
-    }
-
-    /**
-     * ADD NEW VALUE HISTORIES HERE.
-     * This is the interface over which Context value histories can be queried.
-     * Add your ValueHistory implementation class and its return type below.
-     * Context will take care of initialization.
-     * Query values over the enum name.
-     */
-    public enum ValueHistories implements ContextValueInterface<AbstractValueHistory> {
-        // NEW DEFINITIONS GO HERE.
-        DIALOG_TOPICS(DialogTopics.class, String.class),
-        AUDIO_ANGLES(AudioDirection.class, DirectionVector.class),
-        ROS_TEST(ROSTest.class, String.class);
-
-        final Class classType;
-        final Class returnType;
-
-        /**
-         * Get a map of elements most recently added to the history.
-         * @param n Amount of values to retrieve.
-         * @param <K> Key type of the history.
-         * @param <T> Return type of the history.
-         * @return Map of n most recent values, ordered through Integer keys going upwards from 0 (smaller = older).
-         */
-        public <K extends Number, T> Map<K, T> getNLastValues(int n) {
-            return Context.getInstance().getNLastValues(this, n);
-        }
-
-        /**
-         * Get the last element added to the corresponding ValueHistory instance.
-         * @param <T> The return type of the ValueHistory.
-         */
-        public <T> T getLastValue() {
-            return Context.getInstance().getLastValue(this);
-        }
-
-        public int valuesAddedSinceStart() {
-            return Context.getInstance().valuesAddedSinceStart(this);
-        }
-
-        /** ValueHistory enum utility methods. */
-        ValueHistories(Class<? extends AbstractValueHistory> attribute, Class dataType) {
-            this.classType = attribute;
-            this.returnType = dataType;
-        }
-        public Class getClassType() {
-            return this.classType;
-        }
-        public Class getReturnType() {
-            return this.returnType;
-        }
-    }
-
-    /**
-     * ADD NEW INTERNAL UPDATERS HERE.
-     * These updaters can be called from DM to add new elements to values or histories.
-     * Add your InternalUpdater implementation class, the target class, and its data type below.
-     * Context will take care of initialization.
-     * Add values over <enum name>.updateValue().
-     */
-    public enum InternalUpdaters implements ContextUpdaterInterface {
-        // NEW DEFINITIONS GO HERE.
-        DIALOG_TOPICS_UPDATER(DialogTopicsUpdater.class, DialogTopics.class, String.class),
-        ACTIVE_INTERLOCUTOR_UPDATER(ActiveInterlocutorUpdater.class, ActiveInterlocutor.class, Interlocutor.class);
-
-        final Class classType;
-        final Class targetType;
-        final Class targetValueType;
-
-        /**
-         * Directly update an attribute.
-         * @param value   Data to put into the Value or ValueHistory object.
-         */
-        public <V> void updateValue(V value) {
-            Class type = this.targetValueType;
-            Context.getInstance().internalUpdaters.get(this.getClassType()).putValue(type.cast(value));
-        }
-
-        /* Utility methods. */
-        InternalUpdaters(Class attribute, Class targetType, Class targetValueType) {
-            this.classType = attribute;
-            this.targetType = targetType;
-            this.targetValueType = targetValueType;
-        }
-        public Class<? extends AbstractValue> getTargetType() {
-            return this.targetType;
-        }
-        public Class<? extends AbstractValue> getClassType() {
-            return this.classType;
-        }
-        public Class<? extends AbstractValue> getTargetValueType() {
-            return this.targetValueType;
-        }
-
-    }
-    /**
-     * ADD NEW EXTERNAL UPDATERS HERE.
-     * These updaters will be initialized and left to run independently.
-     * Add your ExternalUpdater implementation class, the target class, and its data type below.
-     */
-    public enum ExternalUpdaters implements ContextUpdaterInterface {
-        // NEW DEFINITIONS GO HERE.
-        FACE_COORDINATES_UPDATER(FaceCoordinatesUpdater.class, FaceCoordinates.class, CoordinateSet.class),
-        AUDIO_ANGLES_UPDATER(AudioDirectionUpdater.class, AudioDirection.class, DirectionVector.class),
-        ROS_TEST_UPDATER(ROSTestUpdater.class, ROSTest.class, String.class);
-
-        final Class classType;
-        final Class targetType;
-        final Class targetValueType;
-
-        /* Utility methods. */
-        ExternalUpdaters(Class attribute, Class targetType, Class targetValueType) {
-            this.classType = attribute;
-            this.targetType = targetType;
-            this.targetValueType = targetValueType;
-        }
-        public Class<? extends AbstractValue> getClassType() {
-            return this.classType;
-        }
-        public Class<? extends AbstractValue> getTargetType() {
-            return this.targetType;
-        }
-        public Class<? extends AbstractValue> getTargetValueType() {
-            return this.targetValueType;
-        }
-    }
-
-    /**
-     * ADD NEW OBSERVERS FOR CONTEXT OBJECTS HERE.
-     * These observers will be initialized and left to run independently.
-     */
-    public enum Observers implements ContextObserverInterface {
-        FACE_COORDINATES_OBSERVER(FaceCoordinatesObserver.class, FaceCoordinates.class);
-
-        final Class classType;
-        final Class targetType;
-
-        Observers(Class classType, Class targetType) {
-            this.classType = classType;
-            this.targetType = targetType;
-        }
-
-        public Class<? extends AbstractValue> getClassType() {
-            return this.classType;
-        }
-        public Class<? extends AbstractValue> getTargetType() {
-            return this.targetType;
-        }
-    }
-
-    public static class ValueInterface<I extends AbstractValue<V>, V> {
+    static class ValueInterface<I extends AbstractValue<V>, V> {
         // Keeping track of all the values instantiated over the ValueInterface class.
-        protected static ArrayList<AbstractValue> allValues = new ArrayList<>();
+        static ArrayList<AbstractValue> allValues = new ArrayList<>();
 
         private I value;
 
@@ -284,10 +127,9 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
             allValues.add(value);
         }
 
-        protected I getContextObject() {
+        I getContextObject() {
             return value;
         }
-
 
         /**
          * Get the last element saved into the corresponding Value instance.
@@ -297,31 +139,50 @@ public class Context extends ValueAccessManager<Context.ValueHistories, Context.
         }
     }
 
-    public static class HistoryInterface<K, V> {
+    /**
+     * This is the interface over which Context value histories can be queried.
+     * Initialize as static field of the Context class above.
+     * Add your ValueHistory implementation class, its key and return types as generic parameters.
+     *
+     * For Context-internal usage, the class keeps track of the initialized histories with a static list.
+     *
+     * @param <I> An implementation of AbstractValueHistory.
+     * @param <K> The keys used within the History instance.
+     * @param <V> The type of data stored within the History instance.
+     */
+    static class HistoryInterface<I extends AbstractValueHistory<K, V>, K, V> {
         // Keeping track of all the histories instantiated over the HistoryInterface class.
-        protected static ArrayList<AbstractValueHistory> allHistories = new ArrayList<>();
+        static ArrayList<AbstractValueHistory> allHistories = new ArrayList<>();
 
-        private AbstractValueHistory<K, V> valueHistory;
-        final Class classType;
+        private I valueHistory;
 
-        protected HistoryInterface (Class classType) {
-            this.classType = classType;
-            this.valueHistory = ContextObjectFactory.createHistory(classType);
+        protected HistoryInterface (I valueHistory) {
+            this.valueHistory = valueHistory;
             allHistories.add(valueHistory);
         }
 
-        protected AbstractValueHistory<K, V> getContextObject() {
+        I getContextObject() {
             return valueHistory;
         }
 
+        /**
+         * Get n elements saved into the corresponding ValueHistory instance (or all elements, if all < n).
+         */
         public Map<K, V> getLastNValues(int n) {
             return valueHistory.getLastNValues(n);
         }
 
+        /**
+         * Get the last element saved into the corresponding ValueHistory instance.
+         */
         public V getLastValue() {
             return valueHistory.getValue();
         }
 
+        /**
+         * Get the total nr of times a new value was saved into the corresponding ValueHistory instance.
+         * Note: as histories can be limited in size, less elements might be actually stored than the total.
+         */
         public int valuesAddedSinceStart() {
             return valueHistory.valuesAddedSinceStart();
         }
