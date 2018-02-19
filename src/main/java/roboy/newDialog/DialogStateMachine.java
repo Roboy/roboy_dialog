@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import roboy.newDialog.states.State;
 import roboy.newDialog.states.StateFactory;
 import roboy.newDialog.states.StateParameters;
+import roboy.ros.RosMainNode;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,11 +31,23 @@ public class DialogStateMachine {
 
     private State activeState;
     private State initialState;
+    private final RosMainNode rosMainNode;
 
-    public DialogStateMachine() {
+
+    public DialogStateMachine(RosMainNode rmn) {
         identifierToState = new HashMap<>();
         activeState = null;
+        rosMainNode = rmn;
+
+        if (rosMainNode == null) {
+            logger.info("Using offline DialogStateMachine (no RosMainNode was passed)");
+        }
     }
+
+    public DialogStateMachine() {
+        this(null);
+    }
+
 
     public State getInitialState() {
         return initialState;
@@ -156,7 +169,7 @@ public class DialogStateMachine {
      * @return StateParameters instance with all parameters defined in json object
      */
     private StateParameters parseStateParameters(JsonObject stateJsO) {
-        StateParameters params = new StateParameters(this);
+        StateParameters params = new StateParameters(this, rosMainNode);
 
         // set the transitions
         JsonObject paramsJsO = stateJsO.getAsJsonObject("parameters");

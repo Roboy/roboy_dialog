@@ -1,6 +1,8 @@
 package roboy.newDialog.states;
 
+import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.ros.RosMainNode;
 
 import java.util.Set;
 
@@ -17,7 +19,16 @@ public class WildTalkFallbackState extends State {
 
     @Override
     public Output react(Interpretation input) {
-        return null;
+
+        String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
+        RosMainNode rmn = getParameters().getRosMainNode();
+        String reaction = rmn.GenerateAnswer(sentence);
+
+        if (reaction == null) {
+            return Output.say("I am out of words.");
+        } else {
+            return Output.say(reaction);
+        }
     }
 
     @Override

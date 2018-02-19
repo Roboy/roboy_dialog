@@ -3,6 +3,7 @@ package roboy.newDialog.states;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.newDialog.DialogStateMachine;
+import roboy.ros.RosMainNode;
 
 import java.util.HashMap;
 
@@ -15,17 +16,26 @@ public class StateParameters {
 
     // TODO: references to context, ros node, ...
 
-    private HashMap<String, String> paramNameToValue;
-    private DialogStateMachine stateMachine;
+    private final HashMap<String, String> paramNameToValue;
+    private final DialogStateMachine stateMachine;
+    private final RosMainNode rosMainNode;
 
-    public StateParameters(DialogStateMachine stateMachine) {
+    public StateParameters(DialogStateMachine stateMachine, RosMainNode rmn) {
         paramNameToValue = new HashMap<>();
         this.stateMachine = stateMachine;
+        this.rosMainNode = rmn;
 
         if (stateMachine == null) {
-            logger.error("StateParameters require a reference to the state machine");
+            logger.warn("StateParameters should have a reference to the state machine");
         }
 
+        if (rosMainNode == null) {
+            logger.info("Using offline StateParameters (no RosMainNode passed)");
+        }
+    }
+
+    public StateParameters(DialogStateMachine stateMachine) {
+        this(stateMachine, null);
     }
 
     public StateParameters setParameter(String parameterName, String value) {
@@ -45,6 +55,7 @@ public class StateParameters {
         return stateMachine;
     }
 
-
-
+    public RosMainNode getRosMainNode() {
+        return rosMainNode;
+    }
 }

@@ -67,7 +67,7 @@ public class NewDialogSystem {
         analyzers.add(new SimpleTokenizer());
         // TODO: Emilka's parser
 
-        StateBasedPersonality personality = new StateBasedPersonality(new Verbalizer());
+        StateBasedPersonality personality = new StateBasedPersonality(rosMainNode, new Verbalizer());
         String personalityFilePath = getPersonalityFilePathFromConfig();
         File personalityFile = new File(personalityFilePath);
 

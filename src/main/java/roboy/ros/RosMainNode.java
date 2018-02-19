@@ -137,7 +137,7 @@ public class RosMainNode extends AbstractNodeMain {
 
     public String GenerateAnswer(String question) {
 
-        if (Config.NOROS) {
+        if (Config.NOROS || question == null || question.isEmpty()) {
             return null;
         }
 
