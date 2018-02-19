@@ -5,6 +5,8 @@ import com.google.gson.JsonObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.newDialog.DialogStateMachine;
+import roboy.ros.RosMainNode;
 
 import java.util.*;
 
@@ -24,6 +26,11 @@ import java.util.*;
  * be found in the description of the StateBasedPersonality and in comments below.
  */
 public abstract class State {
+
+
+    // #####################################################
+    // #             Output static inner class             #
+    // #####################################################
 
     // region Output static inner class
 
@@ -104,7 +111,13 @@ public abstract class State {
 
     //endregion
 
-    // START OF STATE IMPLEMENTATION
+
+
+    // #####################################################
+    // #            start of state implementation          #
+    // #####################################################
+
+    //region variables & constructor
 
     private final Logger logger = LogManager.getLogger();
 
@@ -135,9 +148,15 @@ public abstract class State {
         fallback = null;
         transitions = new HashMap<>();
         parameters = params;
+
+        if (parameters == null) {
+            logger.warn("StateParameters missing in the State constructor!");
+        }
     }
 
-    //region identifier, parameters, fallback & transitions
+    //endregion
+
+    //region getter & setter for identifier, parameters, fallback & transitions
 
     public String getIdentifier() {
         return stateIdentifier;
@@ -188,7 +207,11 @@ public abstract class State {
 
     //endregion
 
-    // Functions that must be implemented in sub classes:
+
+
+    // #####################################################
+    // # functions that MUST be implemented in sub classes #
+    // #####################################################
 
     // region to be implemented in subclasses
 
@@ -225,7 +248,11 @@ public abstract class State {
 
     //endregion
 
-    // Utility functions: make sure initialization is correct
+
+
+    // #####################################################
+    // #                  utility functions                #
+    // #####################################################
 
     //region correct initialization checks
 
@@ -301,6 +328,9 @@ public abstract class State {
         return allGood;
     }
 
+    //endregion
+
+    //region shortcuts to create new string sets and access state machine & ros main node
     /**
      * Utility function to create and initialize string sets in just one code line.
      * @param tNames names of the required transitions
@@ -312,7 +342,25 @@ public abstract class State {
         return result;
     }
 
+    protected DialogStateMachine getStateMachine() {
+        if (getParameters() == null) return null;
+        return getParameters().getStateMachine();
+    }
+
+    protected RosMainNode getRosMainNode() {
+        if (getParameters() == null) return null;
+        return getParameters().getRosMainNode();
+    }
+
     //endregion
+
+
+
+    // #####################################################
+    // #            to string, to json, equals             #
+    // #####################################################
+
+    //region to string & to json
 
     public JsonObject toJsonObject() {
         JsonObject stateJson = new JsonObject();
@@ -378,6 +426,10 @@ public abstract class State {
 
 
     }
+
+    //endregion
+
+    //region equals
 
     @Override
     public boolean equals(Object obj) {
@@ -445,6 +497,6 @@ public abstract class State {
 
     }
 
+    //endregion
 
 }
-

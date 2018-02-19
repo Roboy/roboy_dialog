@@ -9,6 +9,9 @@ import java.util.HashMap;
 
 /**
  * An object containing all parameters that can be interesting for an arbitrary State object.
+ *
+ * String parameters are defined in the personality file.
+ * Other important parameters are references to the DialogStateMachine and the RosMainNode.
  */
 public class StateParameters {
 

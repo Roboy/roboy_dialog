@@ -21,7 +21,7 @@ public class WildTalkFallbackState extends State {
     public Output react(Interpretation input) {
 
         String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
-        RosMainNode rmn = getParameters().getRosMainNode();
+        RosMainNode rmn = getRosMainNode();
         String reaction = rmn.GenerateAnswer(sentence);
 
         if (reaction == null) {
