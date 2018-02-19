@@ -137,6 +137,11 @@ public class RosMainNode extends AbstractNodeMain {
 
     public String GenerateAnswer(String question) {
 
+        if (Config.NOROS) {
+            return null;
+        }
+
+
         if(services.notInitialized(RosClients.GENERATIVE)) {
             // FALLBACK RETURN VALUE
             return null;
