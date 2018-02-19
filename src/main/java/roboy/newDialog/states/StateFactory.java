@@ -47,7 +47,7 @@ public class StateFactory {
     public static State createStateByClassName(String className, String stateIdentifier, StateParameters parameters) {
 
         if (className == null) {
-            logger.error("null was passed as className! This is not going to work");
+            logger.warn("null was passed as className! This is not going to work");
             return null;
         }
 
@@ -56,7 +56,7 @@ public class StateFactory {
         try {
             cls = Class.forName(className);
         } catch (ClassNotFoundException e) {
-            logger.error("ClassNotFoundException for " + className + "!\n" +
+            logger.warn("ClassNotFoundException for " + className + "!\n" +
                     "\tMake sure that you use full class name like " +
                     "'my.package.asdf.StateName' instead of simple name like 'StateName'!");
             return null;
@@ -64,7 +64,7 @@ public class StateFactory {
 
         // check if it is a subclass of State
         if ( ! State.class.isAssignableFrom(cls)) {
-            logger.error("Provided class (" + className + ") is not a subclass of State!");
+            logger.warn("Provided class (" + className + ") is not a subclass of State!");
             return null;
         }
 
@@ -73,9 +73,9 @@ public class StateFactory {
         try {
             ctor = cls.getConstructor(String.class, StateParameters.class);
         } catch (NoSuchMethodException e) {
-            logger.error("NoSuchMethodException for " + className + "! Make sure that the class has a constructor " +
+            logger.warn("NoSuchMethodException for " + className + "! Make sure that the class has a constructor " +
                     "that takes exactly two parameters: ClassName(String id, StateParameters params).");
-            logger.error("Exception message: " + e.getMessage());
+            logger.warn("Exception message: " + e.getMessage());
             return null;
         }
 
@@ -84,15 +84,15 @@ public class StateFactory {
         try {
             stateObj = ctor.newInstance(stateIdentifier, parameters);
         } catch (InstantiationException | InvocationTargetException | IllegalAccessException e) {
-            logger.error("Could not create an instance of " + className);
-            logger.error("Exception message: " + e.getMessage());
+            logger.warn("Could not create an instance of " + className);
+            logger.warn("Exception message: " + e.getMessage());
             return null;
         }
 
         // additional check if the created instance is really a subclass of State
         // this should be always the case
         if ( ! (stateObj instanceof State)) {
-            logger.error("Created instance of class " + className + " is not a sub class of State! Weird!");
+            logger.warn("Created instance of class " + className + " is not a sub class of State! Weird!");
             return null;
         }
 
