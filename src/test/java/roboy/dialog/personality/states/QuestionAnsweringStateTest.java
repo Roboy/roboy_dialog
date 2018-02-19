@@ -42,7 +42,7 @@ public class QuestionAnsweringStateTest {
 		assertEquals("1953-3-30",reaction.getReactions().get(0).getFeature("sentence"));
 		Verbalizer verbalizer = new Verbalizer();
 		SpeechAction action = (SpeechAction) verbalizer.verbalize(reaction.getReactions().get(0));
-		assertEquals("March thirtiest nineteen hundred fifty three",action.getText());
+		assertEquals("March thirtieth nineteen hundred fifty three",action.getText());
 	}
 
 	@Test
