@@ -5,6 +5,9 @@ import roboy.context.ROSTopicUpdater;
 import roboy.ros.RosMainNode;
 import roboy.ros.RosSubscribers;
 
+/**
+ * For testing a ROS topic connection which sends simple String messages.
+ */
 public class ROSTestUpdater extends ROSTopicUpdater<std_msgs.String, ROSTest> {
 
     @Override
