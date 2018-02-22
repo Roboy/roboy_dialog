@@ -22,19 +22,6 @@ import static org.mockito.internal.verification.VerificationModeFactory.atLeast;
 
 public class ContextTest {
 
-    //@Test - does not work when external updaters are not initialized.
-    public void getLastAttributeValue() throws Exception {
-        int updateFrequency = 1; //Assuming the updater's frequency is 1 second!
-        int sleeptime = updateFrequency * 1000 * 2; // Here in millis and double the actual update time.
-        for(int i = 0; i < 3; i++) {
-            Context.getInstance();
-            CoordinateSet set = Context.FACE_COORDINATES.getValue();
-            Thread.sleep(sleeptime);
-            assertNotEquals("New face coordinates should have been added during idle time!",
-                    Context.FACE_COORDINATES.getValue(), set);
-        }
-    }
-
     @Test
     public void setAndGetDialogTopics() {
         DialogTopicsUpdater updater = Context.getInstance().DIALOG_TOPICS_UPDATER;
@@ -56,22 +43,6 @@ public class ContextTest {
         Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(in2);
         in = Context.ACTIVE_INTERLOCUTOR.getValue();
         assertEquals("Should return the last added Interlocutor instance!", in, in2);
-    }
-
-    //@Test - fails when external updaters are not initialized.
-    public void testObserver() throws Exception {
-        int updateFrequency = 1; //Assuming the updater's frequency is 1 second!
-        int sleeptime = updateFrequency * 1000 * 2; // Here in millis and double the actual update time.
-
-        FaceCoordinatesObserver observer = Mockito.spy(new FaceCoordinatesObserver());
-        Context.FACE_COORDINATES.getContextObject().addObserver(observer);
-
-        CoordinateSet value = Context.FACE_COORDINATES.getValue();
-        Thread.sleep(sleeptime);
-        // Check that the value in FaceCoordinates was updated -> should trigger the observer.
-        assertNotEquals("Face coordinates value should have been updated!",
-                value, Context.FACE_COORDINATES.getValue());
-        Mockito.verify(observer, atLeast(1)).update(any(), any());
     }
 
     @Test
