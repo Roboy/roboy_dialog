@@ -13,6 +13,8 @@ import roboy_communication_cognition.DirectionVector;
 
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
@@ -28,7 +30,8 @@ public class ContextTest {
             Context.getInstance();
             CoordinateSet set = Context.FACE_COORDINATES.getValue();
             Thread.sleep(sleeptime);
-            assertNotEquals(Context.FACE_COORDINATES.getValue(), set);
+            assertNotEquals("New face coordinates should have been added during idle time!",
+                    Context.FACE_COORDINATES.getValue(), set);
         }
     }
 
@@ -52,7 +55,7 @@ public class ContextTest {
         Interlocutor in2 = new Interlocutor();
         Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(in2);
         in = Context.ACTIVE_INTERLOCUTOR.getValue();
-        assertEquals(in, in2);
+        assertEquals("Should return the last added Interlocutor instance!", in, in2);
     }
 
     //@Test - fails when external updaters are not initialized.
@@ -77,19 +80,18 @@ public class ContextTest {
         assertNull(testHistory.getValue());
 
         testHistory.updateValue("test1");
-        Map<Long, String> values = testHistory.getLastNValues(2);
+        TreeMap<Long, String> values = testHistory.getLastNValues(2);
         assertEquals(1, values.size());
         assertEquals("test1", values.entrySet().iterator().next().getValue());
 
         testHistory.updateValue("test2");
         values = testHistory.getLastNValues(2);
         assertEquals(2, values.size());
-
-        Iterator<Map.Entry<Long, String>> entries = values.entrySet().iterator();
-        Map.Entry<Long, String> one = entries.next();
-        Map.Entry<Long, String> two = entries.next();
-        assertTrue(one.getValue().equals("test1") ||
-            one.getKey() > two.getKey());
+        Iterator<Long> returnedKeys = values.keySet().iterator();
+        Long key1 = returnedKeys.next();
+        Long key2 = returnedKeys.next();
+        assertTrue("Keys of the timestamped history were in reverse order!", key1 < key2);
+        assertTrue("Second added value should have a higher key!", values.get(key2).equals("test2"));
     }
 
 
@@ -105,7 +107,7 @@ public class ContextTest {
         Gson gson = new Gson();
         DirectionVector vector = gson.fromJson("{\"azimutal_angle\":0.5,\"polar_angle\":0.4}", DirVec.class);
         argument.getValue().onNewMessage(vector);
-        assertNotNull(direction.getValue());
+        assertNotNull("Audio directions were not added to the value history!", direction.getValue());
     }
 
     private class DirVec implements DirectionVector {
