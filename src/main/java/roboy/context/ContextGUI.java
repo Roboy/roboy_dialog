@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * A simple GUI with the goal of showing the attribute values and histories in the Context.
+ * A simple GUI showing the values and histories in the Context with their content.
  */
 public class ContextGUI {
     private JFrame mainFrame;
