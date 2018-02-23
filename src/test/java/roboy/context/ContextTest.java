@@ -13,19 +13,17 @@ import roboy_communication_cognition.DirectionVector;
 
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
-import static org.mockito.internal.verification.VerificationModeFactory.atLeast;
 
 public class ContextTest {
 
     @Test
     public void setAndGetDialogTopics() {
         DialogTopicsUpdater updater = Context.getInstance().DIALOG_TOPICS_UPDATER;
-        Context.HistoryInterface<DialogTopics, Integer, String> topics = Context.DIALOG_TOPICS;
+        Context.HistoryInterface<DialogTopics, Integer, String> topics = Context.getInstance().DIALOG_TOPICS;
 
         updater.updateValue("test1");
         assertEquals("test1", (topics.getLastValue()));
@@ -37,11 +35,11 @@ public class ContextTest {
 
     @Test
     public void testInterlocutor() {
-        Interlocutor in = Context.ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor in = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
         assertNull(in);
         Interlocutor in2 = new Interlocutor();
         Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(in2);
-        in = Context.ACTIVE_INTERLOCUTOR.getValue();
+        in = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
         assertEquals("Should return the last added Interlocutor instance!", in, in2);
     }
 
@@ -70,8 +68,8 @@ public class ContextTest {
         int updateFrequency = 1; //Assuming the updater's frequency is 1 second!
         int sleeptime = updateFrequency * 1000 * 2; // Here in millis and double the actual update time.
         FaceCoordinatesObserver observer = Mockito.spy(new FaceCoordinatesObserver());
-        Context.FACE_COORDINATES.getContextObject().addObserver(observer);
-        Context.FACE_COORDINATES.getContextObject().updateValue(new CoordinateSet(0,0,0));
+        Context.getInstance().FACE_COORDINATES.getContextObject().addObserver(observer);
+        Context.getInstance().FACE_COORDINATES.getContextObject().updateValue(new CoordinateSet(0,0,0));
         Thread.sleep(sleeptime);
         // Check that the value in FaceCoordinates was updated -> should trigger the observer.
         Mockito.verify(observer, Mockito.atLeast(1)).update(any(), any());

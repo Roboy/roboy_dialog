@@ -17,24 +17,20 @@ public class Context {
     private static final Object initializationLock = new Object();
 
     /* VALUES INITIALIZED HERE */
-    public static final ValueInterface<FaceCoordinates, CoordinateSet> FACE_COORDINATES =
+    public final ValueInterface<FaceCoordinates, CoordinateSet> FACE_COORDINATES =
             new ValueInterface<>(new FaceCoordinates());
 
-    // Possible now: defining a Value without previously defining a new class. Works like FACE_COORDINATES.
-    //public static final ValueInterface<ObservableValue<CoordinateSet>, CoordinateSet> FACE_COORDINATES_GENERIC =
-    //        new ValueInterface<>(new ObservableValue<CoordinateSet>());
-
-    public static final ValueInterface<ActiveInterlocutor, Interlocutor> ACTIVE_INTERLOCUTOR =
+    public final ValueInterface<ActiveInterlocutor, Interlocutor> ACTIVE_INTERLOCUTOR =
             new ValueInterface<>(new ActiveInterlocutor());
 
     /* VALUE HISTORIES INITIALIZED HERE */
-    public static final HistoryInterface<DialogTopics, Integer, String> DIALOG_TOPICS =
+    public final HistoryInterface<DialogTopics, Integer, String> DIALOG_TOPICS =
             new HistoryInterface<>(new DialogTopics());
 
-    public static final HistoryInterface<AudioDirection, Integer, DirectionVector> AUDIO_ANGLES =
+    public final HistoryInterface<AudioDirection, Integer, DirectionVector> AUDIO_ANGLES =
             new HistoryInterface<>(new AudioDirection());
 
-    public static final HistoryInterface<ROSTest, Integer, String> ROS_TEST =
+    public final HistoryInterface<ROSTest, Integer, String> ROS_TEST =
             new HistoryInterface<>(new ROSTest());
 
     /* INTERNAL UPDATERS DEFINED HERE */
