@@ -15,16 +15,21 @@ public class ValueHistory<V> implements AbstractValueHistory<Integer, V> {
     private volatile int counter;
     private volatile int valuesInMap;
     private HashMap<Integer, V> data;
-    /* When value count reaches MAX_LIMIT, it is reduced to REDUCE_BY. */
-    private final int MAX_LIMIT = 50;
-    private final int REDUCE_BY = 20;
 
+    /* When value count reaches maxLimit, the oldest <reduceBy> values are deleted. Override to change values. */
+    public int getReduceBy() {
+        return 20;
+    }
+
+    public int getMaxLimit() {
+        return 50;
+    }
 
     public ValueHistory() {
         data = new HashMap<>();
         counter = 0;
         valuesInMap = 0;
-        Assert.assertTrue(REDUCE_BY < MAX_LIMIT);
+        Assert.assertTrue(getReduceBy() < getMaxLimit());
     }
 
     /**
@@ -74,12 +79,12 @@ public class ValueHistory<V> implements AbstractValueHistory<Integer, V> {
     }
 
     private synchronized void reduce() {
-        if(valuesInMap < MAX_LIMIT) {
+        if(valuesInMap < getMaxLimit()) {
             return;
         }
         // Remove the oldest values.
         int oldestToRemove = counter - valuesInMap - 1;
-        int newestToRemove = oldestToRemove + REDUCE_BY;
+        int newestToRemove = oldestToRemove + getReduceBy();
         for (int i = oldestToRemove; i <= newestToRemove; i++) {
             data.remove(i);
             valuesInMap--;
