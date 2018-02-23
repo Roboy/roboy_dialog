@@ -4,6 +4,7 @@ package roboy.newDialog;
 import org.apache.commons.configuration2.YAMLConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.context.Context;
 import roboy.dialog.Config;
 import roboy.dialog.action.Action;
 import roboy.io.*;
@@ -17,6 +18,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import static roboy.dialog.Config.ConfigurationProfile.DEFAULT;
 import static roboy.dialog.Config.ConfigurationProfile.NOROS;
 
 /**
@@ -61,11 +63,21 @@ public class NewDialogSystem {
 
 
         MultiInputDevice multiIn = new MultiInputDevice(new CommandLineInput());
-        MultiOutputDevice multiOut = new MultiOutputDevice(new CommandLineOutput());
+        MultiOutputDevice multiOut = new MultiOutputDevice(new CerevoiceOutput(rosMainNode));
+        multiOut.add(new CommandLineOutput());
         List<Analyzer> analyzers = new ArrayList<>();
         analyzers.add(new Preprocessor());
         analyzers.add(new SimpleTokenizer());
-        // TODO: Emilka's parser
+        analyzers.add(new SemanticParserAnalyzer(Config.PARSER_PORT));
+
+        analyzers.add(new OpenNLPPPOSTagger());
+        analyzers.add(new DictionaryBasedSentenceTypeDetector());
+//        analyzers.add(new SentenceAnalyzer());
+        analyzers.add(new OpenNLPParser());
+        analyzers.add(new OntologyNERAnalyzer());
+        analyzers.add(new AnswerAnalyzer());
+
+
 
         StateBasedPersonality personality = new StateBasedPersonality(rosMainNode, new Verbalizer());
         String personalityFilePath = getPersonalityFilePathFromConfig();

@@ -40,7 +40,7 @@ public class Verbalizer {
 	}
 	
 	public static final List<String> greetings = 
-			Arrays.asList("hello","hi","greetings","good morning","howdy","good day","hey");
+			Arrays.asList("hello","hi","greetings","good morning","howdy","good day","hey", "good evening");
 	
 	private SpeechAction greet(Interpretation interpretation){
 		return new SpeechAction(StatementBuilder.random(greetings));

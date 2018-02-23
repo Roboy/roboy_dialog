@@ -5,9 +5,11 @@ import org.apache.logging.log4j.Logger;
 import roboy.dialog.Config;
 import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jRelationships;
+import roboy.util.UzupisIntents;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Encapsulates a MemoryNodeModel and enables dialog states to easily store
@@ -19,6 +21,7 @@ public class Interlocutor {
     public boolean FAMILIAR = false;
     // Memory is not queried in NOROS mode.
     private boolean memoryROS;
+    private HashMap<UzupisIntents,String> uzupisInfo;
 
     final Logger LOGGER = LogManager.getLogger();
 
@@ -26,6 +29,7 @@ public class Interlocutor {
         this.person = new MemoryNodeModel(true);
         this.memory = Neo4jMemory.getInstance();
         this.memoryROS = Config.MEMORY;
+        this.uzupisInfo = new HashMap<>();
     }
 
     /**
@@ -83,6 +87,15 @@ public class Interlocutor {
 
     public ArrayList<Integer> getRelationships(Neo4jRelationships type) {
         return person.getRelationship(type.type);
+    }
+
+
+    public void saveUzupisProperty(UzupisIntents intent, String value) {
+        uzupisInfo.put(intent, value);
+    }
+
+    public HashMap<UzupisIntents, String> getUzupisInfo() {
+        return uzupisInfo;
     }
 
     /**
