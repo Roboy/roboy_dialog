@@ -65,6 +65,17 @@ public class ContextTest {
         assertTrue("Second added value should have a higher key!", values.get(key2).equals("test2"));
     }
 
+    @Test
+    public void testObserver() throws Exception {
+        int updateFrequency = 1; //Assuming the updater's frequency is 1 second!
+        int sleeptime = updateFrequency * 1000 * 2; // Here in millis and double the actual update time.
+        FaceCoordinatesObserver observer = Mockito.spy(new FaceCoordinatesObserver());
+        Context.FACE_COORDINATES.getContextObject().addObserver(observer);
+        Context.FACE_COORDINATES.getContextObject().updateValue(new CoordinateSet(0,0,0));
+        Thread.sleep(sleeptime);
+        // Check that the value in FaceCoordinates was updated -> should trigger the observer.
+        Mockito.verify(observer, Mockito.atLeast(1)).update(any(), any());
+    }
 
     @Test
     public void audioDirectionsTest() {
