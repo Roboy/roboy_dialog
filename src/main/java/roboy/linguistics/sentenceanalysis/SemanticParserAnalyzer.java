@@ -65,12 +65,13 @@ public class SemanticParserAnalyzer implements Analyzer{
         if (this.debug) {
           System.out.println("> Full response:" + response);
         }
-        if (response!=null) {
+        if (response!=null && !response.contains("no answer")) {
           // Convert JSON string back to Map.
           Gson gson = new Gson();
           Type type = new TypeToken<Map<String, Object>>(){}.getType();
-          Map<String, Object> full_response = gson.fromJson(response, type);
+
           try {
+            Map<String, Object> full_response = gson.fromJson(response, type);
             if (this.debug) {
               System.out.println("> Parse:" + full_response.get("parse"));
             }

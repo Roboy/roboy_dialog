@@ -1,6 +1,6 @@
 package roboy.context.contextObjects;
 
-import roboy.dialog.Config;
+import roboy.util.ConfigManager;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -50,7 +50,7 @@ public class FaceCoordinatesObserver implements Observer {
         lastUpdatedY = y;
         lastUpdatedZ = z;
         nextUpdateTime = System.currentTimeMillis() + UPDATE_INTERVAL_MILLIS;
-        if (Config.CONTEXT_DEMO) {
+        if (ConfigManager.DEMO_GUI) {
             System.out.println("[FaceCoordinatesObserver] Triggering head turning.");
         }
     }

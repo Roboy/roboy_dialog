@@ -38,9 +38,20 @@ public class Verbalizer {
 		default:       return literalSentence(interpretation);
 		}
 	}
-	
-	public static final List<String> greetings = 
-			Arrays.asList("hello","hi","greetings","good morning","howdy","good day","hey", "good evening");
+
+	// possible names for Roboy as parsed by Bing speech recognition
+	public static final List<String> roboyNames =
+			Arrays.asList("roboi", "robot", "boy", "roboboy", "robot", "roboy");
+
+	// triggers that will start the conversation
+	public static final List<String> triggers =
+			Arrays.asList("talk", "fun", "conversation", "new", "chat");
+
+	public static final List<String> greetings =
+			Arrays.asList("hello","hi","greetings", "good morning", "howdy", "good day", "hey", "good evening",
+					"what's up", "greeting to everyone here","hi there people",
+					"hello world","gruse gott","wazup wazup wazup","howdy humans",
+					"good day ladies and gentlemen","hey hey hey you there");
 	
 	private SpeechAction greet(Interpretation interpretation){
 		return new SpeechAction(StatementBuilder.random(greetings));

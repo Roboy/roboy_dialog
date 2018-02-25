@@ -1,6 +1,5 @@
 package roboy.memory.nodes;
 
-import roboy.dialog.Config;
 import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jRelationships;
 
@@ -15,7 +14,7 @@ public class Roboy {
     private MemoryNodeModel roboy;
     Neo4jMemory memory;
     // Memory is not queried in NOROS mode.
-    private boolean memoryROS;
+//    private boolean memoryROS;
 
     /**
      * Initializer for the Roboy node
@@ -23,7 +22,7 @@ public class Roboy {
     public Roboy(String name) {
         this.roboy = new MemoryNodeModel(true);
         this.memory = Neo4jMemory.getInstance();
-        this.memoryROS = Config.MEMORY;
+//        this.memoryROS = Config.MEMORY;
         this.InitializeRoboy(name); // May be eg "roboy junior"
     }
 
@@ -40,7 +39,6 @@ public class Roboy {
         roboy.setLabel("Robot");
 
         //
-        if(memoryROS) {
             ArrayList<Integer> ids = new ArrayList<>();
             try {
                 ids = memory.getByQuery(roboy);
@@ -58,7 +56,7 @@ public class Roboy {
                 }
             }
         }
-    }
+
 
     /**
      * Method to obtain the name of the Roboy node
@@ -81,7 +79,7 @@ public class Roboy {
      * Adds a new relation to the Roboy node, updating memory.
      */
     public void addInformation(String relationship, String name) {
-        if(!memoryROS) return;
+
         ArrayList<Integer> ids = new ArrayList<>();
         // First check if node with given name exists by a matching query.
         MemoryNodeModel relatedNode = new MemoryNodeModel(true);

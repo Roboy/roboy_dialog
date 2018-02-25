@@ -5,7 +5,6 @@ import org.apache.commons.configuration2.YAMLConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
-import roboy.dialog.Config;
 import roboy.dialog.action.Action;
 import roboy.io.*;
 import roboy.linguistics.sentenceanalysis.*;
@@ -18,8 +17,6 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import static roboy.dialog.Config.ConfigurationProfile.DEFAULT;
-import static roboy.dialog.Config.ConfigurationProfile.NOROS;
 
 /**
  * Temporary class to test new state based personality.
@@ -30,7 +27,9 @@ public class NewDialogSystem {
     private final static Logger logger = LogManager.getLogger();
 
 
+    // TODO move to utils or elsewhere since shared between all possible dialog systems
     private static String getPersonalityFilePathFromConfig() {
+
         String personalityPath = null;
 
         try {
@@ -49,18 +48,11 @@ public class NewDialogSystem {
 
     public static void main(String[] args) {
 
-        new Config(NOROS);
-
-
         // initialize ROS node
-        // TODO: refactor RosMainNode, Thread.sleep() after initialization is not nice at all
-        RosMainNode rosMainNode = new RosMainNode();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            logger.error("InterruptedException after ROS initialization!");
-        }
 
+        RosMainNode rosMainNode = new RosMainNode();
+
+        Context.getInstance().initializeROS(rosMainNode);
 
         MultiInputDevice multiIn = new MultiInputDevice(new CommandLineInput());
         MultiOutputDevice multiOut = new MultiOutputDevice(new CerevoiceOutput(rosMainNode));
@@ -68,7 +60,7 @@ public class NewDialogSystem {
         List<Analyzer> analyzers = new ArrayList<>();
         analyzers.add(new Preprocessor());
         analyzers.add(new SimpleTokenizer());
-        analyzers.add(new SemanticParserAnalyzer(Config.PARSER_PORT));
+//        analyzers.add(new SemanticParserAnalyzer(ConfigManager.PARSER_PORT));
 
         analyzers.add(new OpenNLPPPOSTagger());
         analyzers.add(new DictionaryBasedSentenceTypeDetector());
@@ -99,7 +91,8 @@ public class NewDialogSystem {
 
             List<Action> actions = personality.startConversation();
 
-            while ( ! actions.isEmpty() ) {
+            while (!actions.isEmpty()) {
+
                 multiOut.act(actions);
 
                 Input raw;

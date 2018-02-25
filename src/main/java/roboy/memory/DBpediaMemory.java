@@ -9,13 +9,7 @@ import java.util.Map;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.*;
 
-import opennlp.tools.util.HashList;
-import roboy.dialog.Config;
-import roboy.memory.LexiconLiteral;
-import roboy.util.Concept;
-import roboy.util.Lists;
-import roboy.util.Maps;
-import roboy.util.Relation;
+import roboy.util.*;
 
 /**
  * Restores information from the DBpedia.
@@ -125,7 +119,7 @@ private static final Map<String, String> supportedRelations = Maps.stringMap(
 	@Override
 	public List<Relation> retrieve(Relation object) throws InterruptedException, IOException {
 		// No querying in STANDALONE mode
-		if(Config.STANDALONE) {
+		if(ConfigManager.ROS_ENABLED) {
 			return null;
 		}
 		LinkedHashSet<String> queries;

@@ -2,7 +2,6 @@ package roboy.memory.nodes;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import roboy.dialog.Config;
 import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jRelationships;
 import roboy.util.UzupisIntents;
@@ -20,7 +19,7 @@ public class Interlocutor {
     Neo4jMemory memory;
     public boolean FAMILIAR = false;
     // Memory is not queried in NOROS mode.
-    private boolean memoryROS;
+//    private boolean memoryROS;
     private HashMap<UzupisIntents,String> uzupisInfo;
 
     final Logger LOGGER = LogManager.getLogger();
@@ -28,7 +27,7 @@ public class Interlocutor {
     public Interlocutor() {
         this.person = new MemoryNodeModel(true);
         this.memory = Neo4jMemory.getInstance();
-        this.memoryROS = Config.MEMORY;
+//        this.memoryROS = Config.MEMORY;
         this.uzupisInfo = new HashMap<>();
     }
 
@@ -43,7 +42,6 @@ public class Interlocutor {
         person.setProperty("name", name);
         person.setLabel("Person");
 
-        if(memoryROS) {
             ArrayList<Integer> ids = new ArrayList<>();
             // Query memory for matching persons.
             try {
@@ -75,7 +73,7 @@ public class Interlocutor {
                 }
             }
         }
-    }
+
 
     public String getName() {
         return (String) person.getProperty("name");
@@ -102,7 +100,6 @@ public class Interlocutor {
      * Adds a new relation to the person node, updating memory.
      */
     public void addInformation(String relationship, String name) {
-        if(!memoryROS) return;
         ArrayList<Integer> ids = new ArrayList<>();
         // First check if node with given name exists by a matching query.
         MemoryNodeModel relatedNode = new MemoryNodeModel(true);

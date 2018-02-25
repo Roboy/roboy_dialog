@@ -1,6 +1,5 @@
 package roboy.dialog.personality.states;
 
-import roboy.dialog.Config;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.Lists;
@@ -38,7 +37,7 @@ public class WildTalkState implements State{
     @Override
     public Reaction react(Interpretation input) {
         String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
-        if(Config.NOROS || sentence.isEmpty()) {
+        if(sentence.isEmpty()) {
             return new Reaction(next,Lists.interpretationList(new Interpretation("I am out of words.")));
         }
         else {

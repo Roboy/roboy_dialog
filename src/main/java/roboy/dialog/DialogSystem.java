@@ -21,8 +21,7 @@ import roboy.memory.Neo4jMemory;
 import roboy.talk.Verbalizer;
 
 import roboy.ros.RosMainNode;
-
-import static roboy.dialog.Config.ConfigurationProfile.*;
+import roboy.util.ConfigManager;
 
 
 /**
@@ -79,12 +78,8 @@ public class DialogSystem {
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
 
         // This sets a configuration profile for the entire run.
-        // Profiles can be added in roboy.dialog.Config.ConfigurationProfile
-        if(System.getProperty("profile")!=null) {
-            new Config(Config.getProfileFromEnvironment(System.getProperty("profile")));
-        } else {
-            new Config(DEFAULT);
-        }
+        // Profiles can be added in roboy.dialog.ConfigManager.ConfigurationProfile
+
 
         // initialize ROS node
         RosMainNode rosMainNode = new RosMainNode();
@@ -93,7 +88,7 @@ public class DialogSystem {
         Context.getInstance();
 
         Neo4jMemory.getInstance(rosMainNode);
-        if(Config.CONTEXT_DEMO) {
+        if(ConfigManager.DEMO_GUI) {
             final Runnable gui = () -> ContextGUI.run();
             Thread t = new Thread(gui);
             t.start();
@@ -107,11 +102,13 @@ public class DialogSystem {
         MultiInputDevice multiIn;
         // By default, all output is also written to the command line.
         MultiOutputDevice multiOut = new MultiOutputDevice(new CommandLineOutput());
-        if(Config.NOROS) {
+        multiIn = new MultiInputDevice(new CommandLineInput());
+
+        if(!ConfigManager.ROS_ENABLED) {
             multiIn = new MultiInputDevice(new CommandLineInput());
         } else {
-            multiIn = new MultiInputDevice(new BingInput(rosMainNode));
-            multiOut.add(new CerevoiceOutput(rosMainNode));
+//            multiIn = new MultiInputDevice(new BingInput(rosMainNode));
+//            multiOut.add(new CerevoiceOutput(rosMainNode));
         }
         // OPTIONAL INPUTS
         // DatagramSocket ds = new DatagramSocket(55555);
@@ -136,14 +133,12 @@ public class DialogSystem {
 		analyzers.add(new OntologyNERAnalyzer());
 		analyzers.add(new AnswerAnalyzer());
         analyzers.add(new EmotionAnalyzer());
-        analyzers.add(new SemanticParserAnalyzer(Config.PARSER_PORT));
-        //if(!Config.NOROS) {
+        analyzers.add(new SemanticParserAnalyzer(ConfigManager.PARSER_PORT));
+        //if(!ConfigManager.NOROS) {
         //    analyzers.add(new IntentAnalyzer(rosMainNode));
         //}
 
-        if (!rosMainNode.STARTUP_SUCCESS && Config.SHUTDOWN_ON_ROS_FAILURE) {
-            throw new RuntimeException("DialogSystem shutdown caused by ROS main node initialization failure.");
-        }
+
 
         System.out.println("DM initialized...");
 

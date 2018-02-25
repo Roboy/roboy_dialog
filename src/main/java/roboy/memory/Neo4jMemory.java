@@ -2,7 +2,6 @@ package roboy.memory;
 import com.google.gson.Gson;
 
 import com.google.gson.reflect.TypeToken;
-import roboy.dialog.Config;
 import roboy.memory.nodes.MemoryNodeModel;
 import roboy.ros.RosMainNode;
 
@@ -49,7 +48,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
     @Override
     public boolean save(MemoryNodeModel node) throws InterruptedException, IOException
     {
-        if(!Config.MEMORY) return false;
+//        if(!Config.MEMORY) return false;
         String response = rosMainNode.UpdateMemoryQuery(node.toJSON(gson));
         return response != null && (response.contains("OK"));
     }
@@ -62,7 +61,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
      */
     public MemoryNodeModel getById(int id) throws InterruptedException, IOException
     {
-        if(!Config.MEMORY) return new MemoryNodeModel();
+//        if(!Config.MEMORY) return new MemoryNodeModel();
         String result = rosMainNode.GetMemoryQuery("{'id':"+id+"}");
         if(result == null || result.contains("FAIL")) return null;
         return gson.fromJson(result, MemoryNodeModel.class);
@@ -76,7 +75,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
      */
     public ArrayList<Integer> getByQuery(MemoryNodeModel query) throws InterruptedException, IOException
     {
-        if(!Config.MEMORY) return new ArrayList<>();
+//        if(!Config.MEMORY) return new ArrayList<>();
         String result = rosMainNode.GetMemoryQuery(query.toJSON(gson));
         if(result == null || result.contains("FAIL")) return null;
         Type type = new TypeToken<HashMap<String, List<Integer>>>() {}.getType();
@@ -86,7 +85,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
 
     public int create(MemoryNodeModel query) throws InterruptedException, IOException
     {
-        if(!Config.MEMORY) return 0;
+//        if(!Config.MEMORY) return 0;
         String result = rosMainNode.CreateMemoryQuery(query.toJSON(gson));
         // Handle possible Memory error message.
         if(result == null || result.contains("FAIL")) return 0;
@@ -103,7 +102,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
      */
     public boolean remove(MemoryNodeModel query) throws InterruptedException, IOException
     {
-        if(!Config.MEMORY) return false;
+
         //Remove all fields which were not explicitly set, for safety.
         query.setStripQuery(true);
         String response = rosMainNode.DeleteMemoryQuery(query.toJSON(gson));
