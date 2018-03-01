@@ -111,7 +111,7 @@ public class Context {
      * @param <I> An implementation of AbstractValue, such as the standard Value, ROS or Observable.
      * @param <V> The type of data stored within the Value instance.
      */
-    static class ValueInterface<I extends AbstractValue<V>, V> {
+    public static class ValueInterface<I extends AbstractValue<V>, V> {
         // Keeping track of all the values instantiated over the ValueInterface class.
         static ArrayList<AbstractValue> allValues = new ArrayList<>();
 
@@ -145,7 +145,7 @@ public class Context {
      * @param <K> The keys used within the History instance.
      * @param <V> The type of data stored within the History instance.
      */
-    static class HistoryInterface<I extends AbstractValueHistory<K, V>, K, V> {
+    public static class HistoryInterface<I extends AbstractValueHistory<K, V>, K, V> {
         // Keeping track of all the histories instantiated over the HistoryInterface class.
         static ArrayList<AbstractValueHistory> allHistories = new ArrayList<>();
 
