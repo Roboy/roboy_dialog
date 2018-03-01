@@ -124,7 +124,7 @@ public abstract class State {
     // State name/identifier
     private String stateIdentifier;
 
-    // State parameters: contain references to important
+    // State parameters: contain parameters & references to important objects (RosMainNode, DialogStateMachine)
     private StateParameters parameters;
 
     // If this state can't react to the input, the Personality state machine will ask the fallback state
@@ -132,6 +132,11 @@ public abstract class State {
 
     // Possible transitions to other states. The next state is selected based on some conditions in getNextState();
     private HashMap<String, State> transitions;
+
+    // Personality file additional information: everything like state comment goes here.
+    // [!!] Do not use it in your state code! This info is only stored to make sure we don't
+    //      lose the comment etc. when saving this state to file.
+    private HashMap<String, String> optionalPersFileInfo;
 
 
     /**
@@ -147,6 +152,7 @@ public abstract class State {
         this.stateIdentifier = stateIdentifier;
         fallback = null;
         transitions = new HashMap<>();
+        optionalPersFileInfo = new HashMap<>();
         parameters = params;
 
         if (parameters == null) {
@@ -203,6 +209,13 @@ public abstract class State {
     }
     public final HashMap<String, State> getAllTransitions() {
         return transitions;
+    }
+
+    public final void setOptionalPersFileInfo(String key, String value) {
+        optionalPersFileInfo.put(key, value);
+    }
+    public final String getOptionalPersFileInfo(String key) {
+        return optionalPersFileInfo.get(key);
     }
 
     //endregion
@@ -397,6 +410,13 @@ public abstract class State {
             parametersJson.addProperty(paramName, paramValue);
         }
         stateJson.add("parameters", parametersJson);
+
+        // optional personality file info: state comment
+        String stateComment = getOptionalPersFileInfo("comment");
+        if (stateComment != null) {
+            stateJson.addProperty("comment", stateComment);
+        }
+
 
         return stateJson;
 

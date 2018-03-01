@@ -13,29 +13,17 @@ import roboy_communication_cognition.DirectionVector;
 
 import java.util.Iterator;
 import java.util.Map;
+import java.util.TreeMap;
 
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
-import static org.mockito.internal.verification.VerificationModeFactory.atLeast;
 
 public class ContextTest {
-
-    //@Test - does not work when external updaters are not initialized.
-    public void getLastAttributeValue() throws Exception {
-        int updateFrequency = 1; //Assuming the updater's frequency is 1 second!
-        int sleeptime = updateFrequency * 1000 * 2; // Here in millis and double the actual update time.
-        for(int i = 0; i < 3; i++) {
-            Context.getInstance();
-            CoordinateSet set = Context.FACE_COORDINATES.getValue();
-            Thread.sleep(sleeptime);
-            assertNotEquals(Context.FACE_COORDINATES.getValue(), set);
-        }
-    }
 
     @Test
     public void setAndGetDialogTopics() {
         DialogTopicsUpdater updater = Context.getInstance().DIALOG_TOPICS_UPDATER;
-        Context.HistoryInterface<DialogTopics, Integer, String> topics = Context.DIALOG_TOPICS;
+        Context.HistoryInterface<DialogTopics, Integer, String> topics = Context.getInstance().DIALOG_TOPICS;
 
         updater.updateValue("test1");
         assertEquals("test1", (topics.getLastValue()));
@@ -47,28 +35,12 @@ public class ContextTest {
 
     @Test
     public void testInterlocutor() {
-        Interlocutor in = Context.ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor in = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
         assertNull(in);
         Interlocutor in2 = new Interlocutor();
         Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(in2);
-        in = Context.ACTIVE_INTERLOCUTOR.getValue();
-        assertEquals(in, in2);
-    }
-
-    //@Test - fails when external updaters are not initialized.
-    public void testObserver() throws Exception {
-        int updateFrequency = 1; //Assuming the updater's frequency is 1 second!
-        int sleeptime = updateFrequency * 1000 * 2; // Here in millis and double the actual update time.
-
-        FaceCoordinatesObserver observer = Mockito.spy(new FaceCoordinatesObserver());
-        Context.FACE_COORDINATES.getContextObject().addObserver(observer);
-
-        CoordinateSet value = Context.FACE_COORDINATES.getValue();
-        Thread.sleep(sleeptime);
-        // Check that the value in FaceCoordinates was updated -> should trigger the observer.
-        assertNotEquals("Face coordinates value should have been updated!",
-                value, Context.FACE_COORDINATES.getValue());
-        Mockito.verify(observer, atLeast(1)).update(any(), any());
+        in = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        assertEquals("Should return the last added Interlocutor instance!", in, in2);
     }
 
     @Test
@@ -77,21 +49,31 @@ public class ContextTest {
         assertNull(testHistory.getValue());
 
         testHistory.updateValue("test1");
-        Map<Long, String> values = testHistory.getLastNValues(2);
+        TreeMap<Long, String> values = testHistory.getLastNValues(2);
         assertEquals(1, values.size());
         assertEquals("test1", values.entrySet().iterator().next().getValue());
 
         testHistory.updateValue("test2");
         values = testHistory.getLastNValues(2);
         assertEquals(2, values.size());
-
-        Iterator<Map.Entry<Long, String>> entries = values.entrySet().iterator();
-        Map.Entry<Long, String> one = entries.next();
-        Map.Entry<Long, String> two = entries.next();
-        assertTrue(one.getValue().equals("test1") ||
-            one.getKey() > two.getKey());
+        Iterator<Long> returnedKeys = values.keySet().iterator();
+        Long key1 = returnedKeys.next();
+        Long key2 = returnedKeys.next();
+        assertTrue("Keys of the timestamped history were in reverse order!", key1 < key2);
+        assertTrue("Second added value should have a higher key!", values.get(key2).equals("test2"));
     }
 
+    @Test
+    public void testObserver() throws Exception {
+        int updateFrequency = 1; //Assuming the updater's frequency is 1 second!
+        int sleeptime = updateFrequency * 1000 * 2; // Here in millis and double the actual update time.
+        FaceCoordinatesObserver observer = Mockito.spy(new FaceCoordinatesObserver());
+        Context.getInstance().FACE_COORDINATES.getContextObject().addObserver(observer);
+        Context.getInstance().FACE_COORDINATES.getContextObject().updateValue(new CoordinateSet(0,0,0));
+        Thread.sleep(sleeptime);
+        // Check that the value in FaceCoordinates was updated -> should trigger the observer.
+        Mockito.verify(observer, Mockito.atLeast(1)).update(any(), any());
+    }
 
     @Test
     public void audioDirectionsTest() {
@@ -105,7 +87,7 @@ public class ContextTest {
         Gson gson = new Gson();
         DirectionVector vector = gson.fromJson("{\"azimutal_angle\":0.5,\"polar_angle\":0.4}", DirVec.class);
         argument.getValue().onNewMessage(vector);
-        assertNotNull(direction.getValue());
+        assertNotNull("Audio directions were not added to the value history!", direction.getValue());
     }
 
     private class DirVec implements DirectionVector {

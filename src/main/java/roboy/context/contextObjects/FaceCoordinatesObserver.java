@@ -11,6 +11,8 @@ import java.util.concurrent.Executors;
  * Currently dummy functionality.
  * In the future, could trigger the rotation of the head towards the speaker.
  * Observes the last location head was turned towards, and calls action if difference passes a threshold.
+ *
+ * TODO: To implement head turning, change the dummy functionality in turnHead() method.
  */
 
 public class FaceCoordinatesObserver implements Observer {

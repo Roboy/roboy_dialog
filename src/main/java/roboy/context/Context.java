@@ -17,24 +17,20 @@ public class Context {
     private static final Object initializationLock = new Object();
 
     /* VALUES INITIALIZED HERE */
-    public static final ValueInterface<FaceCoordinates, CoordinateSet> FACE_COORDINATES =
+    public final ValueInterface<FaceCoordinates, CoordinateSet> FACE_COORDINATES =
             new ValueInterface<>(new FaceCoordinates());
 
-    // Possible now: defining a Value without previously defining a new class. Works like FACE_COORDINATES.
-    //public static final ValueInterface<ObservableValue<CoordinateSet>, CoordinateSet> FACE_COORDINATES_GENERIC =
-    //        new ValueInterface<>(new ObservableValue<CoordinateSet>());
-
-    public static final ValueInterface<ActiveInterlocutor, Interlocutor> ACTIVE_INTERLOCUTOR =
+    public final ValueInterface<ActiveInterlocutor, Interlocutor> ACTIVE_INTERLOCUTOR =
             new ValueInterface<>(new ActiveInterlocutor());
 
     /* VALUE HISTORIES INITIALIZED HERE */
-    public static final HistoryInterface<DialogTopics, Integer, String> DIALOG_TOPICS =
+    public final HistoryInterface<DialogTopics, Integer, String> DIALOG_TOPICS =
             new HistoryInterface<>(new DialogTopics());
 
-    public static final HistoryInterface<AudioDirection, Integer, DirectionVector> AUDIO_ANGLES =
+    public final HistoryInterface<AudioDirection, Integer, DirectionVector> AUDIO_ANGLES =
             new HistoryInterface<>(new AudioDirection());
 
-    public static final HistoryInterface<ROSTest, Integer, String> ROS_TEST =
+    public final HistoryInterface<ROSTest, Integer, String> ROS_TEST =
             new HistoryInterface<>(new ROSTest());
 
     /* INTERNAL UPDATERS DEFINED HERE */
@@ -80,6 +76,8 @@ public class Context {
                 /* EXTERNAL UPDATERS INITIALIZED HERE */
                 AUDIO_ANGLES_UPDATER = new AudioDirectionUpdater(AUDIO_ANGLES.valueHistory, ros);
                 ROS_TEST_UPDATER = new ROSTestUpdater(ROS_TEST.valueHistory, ros);
+                // TODO Add a FACE_COORDINATE_UPDATER.
+                // Edit the data type and integration tests, once the real data type is used.
 
                 rosInitialized = true;
             }
@@ -113,7 +111,7 @@ public class Context {
      * @param <I> An implementation of AbstractValue, such as the standard Value, ROS or Observable.
      * @param <V> The type of data stored within the Value instance.
      */
-    static class ValueInterface<I extends AbstractValue<V>, V> {
+    public static class ValueInterface<I extends AbstractValue<V>, V> {
         // Keeping track of all the values instantiated over the ValueInterface class.
         static ArrayList<AbstractValue> allValues = new ArrayList<>();
 
@@ -147,7 +145,7 @@ public class Context {
      * @param <K> The keys used within the History instance.
      * @param <V> The type of data stored within the History instance.
      */
-    static class HistoryInterface<I extends AbstractValueHistory<K, V>, K, V> {
+    public static class HistoryInterface<I extends AbstractValueHistory<K, V>, K, V> {
         // Keeping track of all the histories instantiated over the HistoryInterface class.
         static ArrayList<AbstractValueHistory> allHistories = new ArrayList<>();
 
