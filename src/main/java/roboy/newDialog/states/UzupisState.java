@@ -47,7 +47,7 @@ public class UzupisState extends State {
         alreadyAsked = new ArrayList<>();
 
         // TODO proper Interlocutor handling via Context
-        person = new Interlocutor();
+        person = Context.ACTIVE_INTERLOCUTOR.getValue();
     }
 
     @Override

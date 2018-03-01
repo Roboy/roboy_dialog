@@ -3,14 +3,10 @@
   "states": [
     {
       "identifier": "Greetings",
-      "implementation" : "roboy.newDialog.examples.toyStates.ToyGreetingsState",
+      "implementation" : "roboy.newDialog.states.GreetingsState",
       "fallback" : "RandomAnswer",
       "transitions" : {
-        "next" : "Uzupis",
-        "noHello" : "Farewell"
-      },
-      "parameters" : {
-        "introductionSentence" : "My name is Roboy!"
+        "greetingDetected" : "Uzupis"
       }
     },
     {
