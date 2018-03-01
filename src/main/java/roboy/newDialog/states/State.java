@@ -211,13 +211,13 @@ public abstract class State {
         return transitions;
     }
 
-
     public final void setOptionalPersFileInfo(String key, String value) {
         optionalPersFileInfo.put(key, value);
     }
     public final String getOptionalPersFileInfo(String key) {
         return optionalPersFileInfo.get(key);
     }
+
     //endregion
 
 
@@ -410,6 +410,13 @@ public abstract class State {
             parametersJson.addProperty(paramName, paramValue);
         }
         stateJson.add("parameters", parametersJson);
+
+        // optional personality file info: state comment
+        String stateComment = getOptionalPersFileInfo("comment");
+        if (stateComment != null) {
+            stateJson.addProperty("comment", stateComment);
+        }
+
 
         return stateJson;
 

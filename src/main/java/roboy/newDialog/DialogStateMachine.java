@@ -33,11 +33,17 @@ public class DialogStateMachine {
     private State initialState;
     private final RosMainNode rosMainNode;
 
+    // Personality file additional information: everything like comment goes here.
+    // [!!] Do not use it in your state code! This info is only stored to make sure we don't
+    //      lose the comment etc. when saving this dialog state machine to file.
+    private HashMap<String, String> optionalPersFileInfo;
+
 
     public DialogStateMachine(RosMainNode rmn) {
         identifierToState = new HashMap<>();
         activeState = null;
         rosMainNode = rmn;
+        optionalPersFileInfo = new HashMap<>();
 
         if (rosMainNode == null) {
             logger.info("Using offline DialogStateMachine (no RosMainNode was passed)");
@@ -125,6 +131,7 @@ public class DialogStateMachine {
 
     private void loadFromJSON(JsonElement json) {
         identifierToState.clear();
+        optionalPersFileInfo.clear();
         activeState = null;
         initialState = null;
 
@@ -133,6 +140,11 @@ public class DialogStateMachine {
             return;
         }
         JsonObject personalityJson = json.getAsJsonObject();
+
+        JsonElement commentJson = personalityJson.get("comment");
+        if (commentJson != null) {
+            optionalPersFileInfo.put("comment", commentJson.getAsString());
+        }
 
         JsonElement initialStateJson = personalityJson.get("initialState");
         if (initialStateJson == null) {
@@ -198,13 +210,21 @@ public class DialogStateMachine {
             String identifier = stateJsO.get("identifier").getAsString();
             String implClassName = stateJsO.get("implementation").getAsString();
 
+            // create state object by class name with java reflection
             State state = StateFactory.createStateByClassName(implClassName, identifier, params);
-
             if (state == null) {
                 logger.error("parseAndCreateStates(): state " + identifier + " was not created!");
-            } else {
-                addState(state);
+                continue;
             }
+
+            // set optional values
+            JsonElement commentJson = stateJsO.get("comment");
+            if (commentJson != null) {
+                state.setOptionalPersFileInfo("comment", commentJson.getAsString());
+            }
+
+            addState(state);
+
         }
     }
 
@@ -299,6 +319,11 @@ public class DialogStateMachine {
 
     private JsonObject toJsonObject() {
         JsonObject stateMachineJson = new JsonObject();
+
+        if (optionalPersFileInfo.containsKey("comment")) {
+            stateMachineJson.addProperty("comment", optionalPersFileInfo.get("comment"));
+        }
+
         if (initialState == null) {
             logger.error("toJsonObject(): initial state undefined!");
         } else {
