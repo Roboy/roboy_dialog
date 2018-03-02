@@ -8,12 +8,20 @@ import roboy.context.Context;
 import roboy.dialog.action.Action;
 import roboy.io.*;
 import roboy.linguistics.sentenceanalysis.*;
+import roboy.memory.DummyMemory;
+import roboy.memory.Neo4jMemory;
+import roboy.memory.Neo4jMemoryInterface;
+import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
+import roboy.util.ConfigManager;
+import roboy.util.IO;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,17 +54,23 @@ public class NewDialogSystem {
         return personalityPath;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SocketException, UnknownHostException {
 
         // initialize ROS node
-
         RosMainNode rosMainNode = new RosMainNode();
 
-        Context.getInstance().initializeROS(rosMainNode);
+        MultiInputDevice multiIn = IO.getInputs(rosMainNode);
+        MultiOutputDevice multiOut = IO.getOutputs(rosMainNode);
 
-        MultiInputDevice multiIn = new MultiInputDevice(new CommandLineInput());
-        MultiOutputDevice multiOut = new MultiOutputDevice(new CerevoiceOutput(rosMainNode));
-        multiOut.add(new CommandLineOutput());
+        // TODO deal with memory
+        Neo4jMemoryInterface memory;
+        if (ConfigManager.ROS_ENABLED && ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_memory")) {
+            memory = new Neo4jMemory(rosMainNode);
+        }
+        else {
+            memory = new DummyMemory();
+        }
+
         List<Analyzer> analyzers = new ArrayList<>();
         analyzers.add(new Preprocessor());
         analyzers.add(new SimpleTokenizer());
@@ -69,11 +83,11 @@ public class NewDialogSystem {
         analyzers.add(new OntologyNERAnalyzer());
         analyzers.add(new AnswerAnalyzer());
 
-
-
         StateBasedPersonality personality = new StateBasedPersonality(rosMainNode, new Verbalizer());
         String personalityFilePath = getPersonalityFilePathFromConfig();
         File personalityFile = new File(personalityFilePath);
+
+
 
         // Repeat conversation a few times
         for (int numConversations = 0; numConversations < 2; numConversations++) {
@@ -81,6 +95,10 @@ public class NewDialogSystem {
             logger.info("-------------- New Conversation --------------");
             // important: reset personality completely before every conversation
             // otherwise some states (with possibly bad implementation) will keep the old internal variables
+
+            // flush the interlocutor
+            Interlocutor person = new Interlocutor(memory);
+            Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
 
             try {
                 personality.loadFromFile(personalityFile);

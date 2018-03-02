@@ -23,7 +23,7 @@ public class GreetingsState extends State {
     @Override
     public Output act() {
 
-        return Output.sayNothing();
+        return Output.say("standby");
     }
 
     @Override

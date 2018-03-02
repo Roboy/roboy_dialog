@@ -4,10 +4,14 @@ import org.apache.commons.configuration2.YAMLConfiguration;
 import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.bytedeco.javacv.ImageTransformer;
+import roboy.io.CommandLineInput;
+import roboy.io.MultiInputDevice;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.net.DatagramSocket;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +26,14 @@ public class ConfigManager {
 
     public static boolean DEBUG = true;
 
-    public static List<String> INPUTS = new ArrayList<>();
+    public static String INPUT = "cmdline";
     public static List<String> OUTPUTS = new ArrayList<>();
+
+    public static String UDP_HOST_ADDRESS = "127.0.0.1";
+    public static int UDP_IN_SOCKET = 55555;
+    public static int UDP_OUT_SOCKET = 55556;
+    public static DatagramSocket DATAGRAM_SOCKET;
+
 
     public static int PARSER_PORT = -1;
 
@@ -55,8 +65,19 @@ public class ConfigManager {
 
             DEBUG = yamlConfig.getBoolean("DEBUG");
 
-            INPUTS = yamlConfig.getList(String.class, "INPUTS");
+            INPUT = yamlConfig.getString( "INPUT");
             OUTPUTS = yamlConfig.getList(String.class, "OUTPUTS");
+
+            UDP_HOST_ADDRESS = yamlConfig.getString("UDP_HOST_ADDRESS");
+            UDP_IN_SOCKET = yamlConfig.getInt("UDP_IN_SOCKET");
+            UDP_OUT_SOCKET = yamlConfig.getInt("UDP_OUT_SOCKET");
+
+            try {
+                DATAGRAM_SOCKET = new DatagramSocket(UDP_IN_SOCKET);
+            }
+            catch (Exception e) {
+                LOGGER.error(e.getMessage());
+            }
 
             PARSER_PORT = yamlConfig.getInt("PARSER_PORT");
 
@@ -72,40 +93,4 @@ public class ConfigManager {
         }
     }
 
-//
-//    public static boolean isDebug() {
-//        return DEBUG;
-//    }
-//
-//    public boolean isRosEnabled() {
-//        return ROS_ENABLED;
-//    }
-//
-//    public String getRosMasterIP() {
-//        return ROS_MASTER_IP;
-//    }
-//
-//    public List<String> getRosActivePackages() {
-//        return ROS_ACTIVE_PKGS;
-//    }
-//
-//    public List<String> getInputs() {
-//        return INPUTS;
-//    }
-//
-//    public List<String> getOutputs() {
-//        return OUTPUTS;
-//    }
-//
-//    public int getParserPort() {
-//        return PARSER_PORT;
-//    }
-//
-//    public boolean isDemoGUI() {
-//        return DEMO_GUI;
-//    }
-//
-//    public String getPersonalityFile() {
-//        return PERSONALITY_FILE;
-//    }
 }

@@ -37,29 +37,31 @@ public class RosMainNode extends AbstractNodeMain {
     public RosMainNode() {
 
         if (!ConfigManager.ROS_ENABLED) {
-            LOGGER.error("ROS is disabled in config.properties, but you are still trying to use it");
+            LOGGER.warn("ROS is disabled in config.properties, but you are still trying to use it");
         }
 
-        services = new RosManager();
+        else {
+            services = new RosManager();
 
-        if (ConfigManager.ROS_MASTER_IP == null || ConfigManager.ROS_MASTER_IP.isEmpty()) {
-            LOGGER.error("Could not find ROS hostname. ROS will be unavailable. Check if ROS_MASTER_IP is specified " +
-                    "correctly or disable ROS in config.properties file.");
+            if (ConfigManager.ROS_MASTER_IP == null || ConfigManager.ROS_MASTER_IP.isEmpty()) {
+                LOGGER.error("Could not connect to ROS master. ROS will be unavailable. Check if ROS_MASTER_IP is specified " +
+                        "correctly or disable ROS in config.properties file.");
+            }
+
+            URI masterURI = URI.create("http://" + ConfigManager.ROS_MASTER_IP + ":11311");
+
+            NodeConfiguration nodeConfiguration = NodeConfiguration.newPublic(ConfigManager.ROS_MASTER_IP);
+            nodeConfiguration.setMasterUri(masterURI);
+
+            // Create and start ROS Node
+            nodeConfiguration.setNodeName("roboy_dialog");
+            NodeMainExecutor nodeMainExecutor = DefaultNodeMainExecutor.newDefault();
+            nodeMainExecutor.execute(this, nodeConfiguration);
+            rosConnectionLatch = new CountDownLatch(1);
+            waitForLatchUnlock(rosConnectionLatch, "ROS init");
+
+            Context.getInstance().initializeROS(this);
         }
-
-        URI masterURI = URI.create("http://" + ConfigManager.ROS_MASTER_IP + ":11311");
-
-        NodeConfiguration nodeConfiguration = NodeConfiguration.newPublic(ConfigManager.ROS_MASTER_IP);
-        nodeConfiguration.setMasterUri(masterURI);
-
-        // Create and start ROS Node
-        nodeConfiguration.setNodeName("roboy_dialog");
-        NodeMainExecutor nodeMainExecutor = DefaultNodeMainExecutor.newDefault();
-        nodeMainExecutor.execute(this, nodeConfiguration);
-        rosConnectionLatch = new CountDownLatch(1);
-        waitForLatchUnlock(rosConnectionLatch, "ROS init");
-
-        Context.getInstance().initializeROS(this);
     }
 
     @Override

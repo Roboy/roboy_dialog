@@ -17,7 +17,9 @@ import roboy.dialog.personality.SmallTalkPersonality;
 import roboy.io.*;
 
 import roboy.linguistics.sentenceanalysis.*;
+import roboy.memory.DummyMemory;
 import roboy.memory.Neo4jMemory;
+import roboy.memory.Neo4jMemoryInterface;
 import roboy.talk.Verbalizer;
 
 import roboy.ros.RosMainNode;
@@ -73,26 +75,29 @@ import roboy.util.ConfigManager;
  * personality. If one wants to use the DBpedia, Protege, generative model or state machine
  * stuff, one has to dig deeper into the small talk personality and see how it is used there.
  */
+@Deprecated
 public class DialogSystem {
 
 	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
-
-        // This sets a configuration profile for the entire run.
-        // Profiles can be added in roboy.dialog.ConfigManager.ConfigurationProfile
 
 
         // initialize ROS node
         RosMainNode rosMainNode = new RosMainNode();
         // initialize Memory with ROS
 
-        Neo4jMemory.getInstance(rosMainNode);
+        Neo4jMemoryInterface memory;
+        if (ConfigManager.ROS_ENABLED && ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_memory")) {
+            memory = new Neo4jMemory(rosMainNode);
+        }
+        else {
+            memory = new DummyMemory();
+        }
+
         if(ConfigManager.DEMO_GUI) {
             final Runnable gui = () -> ContextGUI.run();
             Thread t = new Thread(gui);
             t.start();
         }
-
-        Thread.sleep(2000);
 
         /*
          * I/O INITIALIZATION
@@ -149,7 +154,7 @@ public class DialogSystem {
 //            while (!multiIn.listen().lists.containsKey(Linguistics.ROBOYDETECTED)) {
 //            }
 
-            Personality smallTalk = new SmallTalkPersonality(new Verbalizer(), rosMainNode);
+            Personality smallTalk = new SmallTalkPersonality(new Verbalizer(), rosMainNode, memory);
             Input raw;
             Interpretation interpretation;
             List<Action> actions = smallTalk.answer(new Interpretation(""));

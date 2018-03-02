@@ -1,8 +1,11 @@
 package roboy.memory.nodes;
 
+import com.google.gson.Gson;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.memory.Memory;
 import roboy.memory.Neo4jMemory;
+import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.Neo4jRelationships;
 import roboy.util.UzupisIntents;
 
@@ -14,21 +17,14 @@ import java.util.HashMap;
  * Encapsulates a MemoryNodeModel and enables dialog states to easily store
  * and retrieve information about its current conversation partner.
  */
-public class Interlocutor {
-    private MemoryNodeModel person;
-    Neo4jMemory memory;
+public class Interlocutor extends MemoryNodeModel {
     public boolean FAMILIAR = false;
-    // Memory is not queried in NOROS mode.
-//    private boolean memoryROS;
-    private HashMap<UzupisIntents,String> uzupisInfo;
+    private HashMap<UzupisIntents,String> uzupisInfo = new HashMap<>();
 
     final Logger LOGGER = LogManager.getLogger();
 
-    public Interlocutor() {
-        this.person = new MemoryNodeModel(true);
-        this.memory = Neo4jMemory.getInstance();
-//        this.memoryROS = Config.MEMORY;
-        this.uzupisInfo = new HashMap<>();
+    public Interlocutor(Neo4jMemoryInterface memory) {
+        super(memory);
     }
 
     /**
@@ -39,13 +35,13 @@ public class Interlocutor {
      * following communication severely.
      */
     public void addName(String name) {
-        person.setProperty("name", name);
-        person.setLabel("Person");
+        setProperty("name", name);
+        setLabel("Person");
 
             ArrayList<Integer> ids = new ArrayList<>();
             // Query memory for matching persons.
             try {
-                ids = memory.getByQuery(person);
+                ids = memory.getByQuery(this);
             } catch (InterruptedException | IOException e) {
                 LOGGER.info("Exception while querying memory, assuming person unknown.");
                 e.printStackTrace();
@@ -54,7 +50,7 @@ public class Interlocutor {
             if (ids != null && !ids.isEmpty()) {
                 //TODO Change from using first id to specifying if multiple matches are found.
                 try {
-                    this.person = memory.getById(ids.get(0));
+                    fromJSON(memory.getById(ids.get(0)), new Gson());
                     FAMILIAR = true;
                 } catch (InterruptedException | IOException e) {
                     LOGGER.warn("Unexpected memory error: provided ID not found upon querying.");
@@ -64,9 +60,9 @@ public class Interlocutor {
             // Create new node if match is not found.
             else {
                 try {
-                    int id = memory.create(person);
+                    int id = memory.create(this);
                     // Need to retrieve the created node by the id returned by memory
-                    person = memory.getById(id);
+                    fromJSON(memory.getById(id), new Gson());
                 } catch (InterruptedException | IOException e) {
                     LOGGER.warn("Unexpected memory error: provided ID not found upon querying.");
                     e.printStackTrace();
@@ -76,15 +72,15 @@ public class Interlocutor {
 
 
     public String getName() {
-        return (String) person.getProperty("name");
+        return (String) getProperty("name");
     }
 
     public boolean hasRelationship(Neo4jRelationships type) {
-        return !(person.getRelationship(type.type) == null) && (!person.getRelationship(type.type).isEmpty());
+        return !(getRelationship(type.type) == null) && (!getRelationship(type.type).isEmpty());
     }
 
     public ArrayList<Integer> getRelationships(Neo4jRelationships type) {
-        return person.getRelationship(type.type);
+        return getRelationship(type.type);
     }
 
 
@@ -102,10 +98,10 @@ public class Interlocutor {
     public void addInformation(String relationship, String name) {
         ArrayList<Integer> ids = new ArrayList<>();
         // First check if node with given name exists by a matching query.
-        MemoryNodeModel relatedNode = new MemoryNodeModel(true);
+        MemoryNodeModel relatedNode = new MemoryNodeModel(true, memory);
         relatedNode.setProperty("name", name);
         //This adds a label type to the memory query depending on the relation.
-        relatedNode.setLabel(memory.determineNodeType(relationship));
+        relatedNode.setLabel(Neo4jRelationships.determineNodeType(relationship));
         try {
             ids = memory.getByQuery(relatedNode);
         } catch (InterruptedException | IOException e) {
@@ -115,14 +111,14 @@ public class Interlocutor {
         // Pick first from list if multiple matches found.
         if(ids != null && !ids.isEmpty()) {
             //TODO Change from using first id to specifying if multiple matches are found.
-            person.setRelationship(relationship, ids.get(0));
+            setRelationship(relationship, ids.get(0));
         }
         // Create new node if match is not found.
         else {
             try {
                 int id = memory.create(relatedNode);
                 if(id != 0) { // 0 is default value, returned if Memory response was FAIL.
-                    person.setRelationship(relationship, id);
+                    setRelationship(relationship, id);
                 }
             } catch (InterruptedException | IOException e) {
                 LOGGER.error("Unexpected memory error: creating node for new relation failed.");
@@ -131,7 +127,7 @@ public class Interlocutor {
         }
         //Update the person node in memory.
         try{
-            memory.save(person);
+            memory.save(this);
         } catch (InterruptedException | IOException e) {
             LOGGER.error("Unexpected memory error: updating person information failed.");
             e.printStackTrace();

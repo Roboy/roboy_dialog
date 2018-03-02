@@ -1,9 +1,11 @@
 package roboy.dialog.personality.states;
 
+import com.google.gson.Gson;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Linguistics.SEMANTIC_ROLE;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jMemory;
+import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.MemoryNodeModel;
@@ -20,9 +22,13 @@ public class PersonalFollowUpState extends AbstractBooleanState{
 	private List<String> successTexts;
 	public Neo4jRelationships predicate;
 	private Interlocutor person;
+	private Neo4jMemoryInterface memory;
 
-	public PersonalFollowUpState(List<String> questions, List<String> failureTexts,
-                                 List<String> successTexts, Neo4jRelationships predicate, QuestionRandomizerState nextState, Interlocutor person) {
+	public PersonalFollowUpState(Neo4jMemoryInterface memory,
+								 List<String> questions, List<String> failureTexts,
+								 List<String> successTexts, Neo4jRelationships predicate,
+								 QuestionRandomizerState nextState, Interlocutor person) {
+		this.memory = memory;
 		this.questions = questions;
 		this.successTexts = successTexts;
 		this.predicate = predicate;
@@ -39,9 +45,9 @@ public class PersonalFollowUpState extends AbstractBooleanState{
 	public List<Interpretation> act() {
 		String retrievedResult = "";
         ArrayList<Integer> ids = person.getRelationships(predicate);
-        Neo4jMemory memory = Neo4jMemory.getInstance();
         try {
-            MemoryNodeModel requestedObject = memory.getById(ids.get(0));
+            MemoryNodeModel requestedObject = new MemoryNodeModel(memory);
+            requestedObject.fromJSON(memory.getById(ids.get(0)), new Gson());
             retrievedResult = requestedObject.getProperties().get("name").toString();
         } catch (InterruptedException e) {
             e.printStackTrace();

@@ -4,8 +4,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-
+//TODO unify & merge with memoryRelationships
 public enum UzupisIntents {
+    INTRO("INTRO"),
     NAME("NAME"),
     FRUIT("FRUIT"),
     COLOR("COLOR"),
@@ -26,6 +27,10 @@ public enum UzupisIntents {
     private static final Random RANDOM = new Random();
 
     public static UzupisIntents randomIntent()  {
-        return VALUES.get(RANDOM.nextInt(SIZE));
+        UzupisIntents ret;
+        do {
+            ret =  VALUES.get(RANDOM.nextInt(SIZE));
+        } while (ret==INTRO && ret==NAME);
+        return ret;
     }
 }

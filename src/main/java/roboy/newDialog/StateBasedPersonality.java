@@ -2,6 +2,7 @@ package roboy.newDialog;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.context.Context;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
 import roboy.dialog.personality.Personality;
@@ -66,7 +67,6 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
         List<Action> initialActions = new ArrayList<>();
         initialActions = stateAct(activeState, initialActions);
-
         return initialActions;
     }
 

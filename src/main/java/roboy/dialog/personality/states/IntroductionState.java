@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.Gson;
+import roboy.context.Context;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Linguistics.SEMANTIC_ROLE;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jMemory;
+import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.MemoryNodeModel;
@@ -20,8 +23,8 @@ import roboy.util.Lists;
  */
 public class IntroductionState extends AbstractBooleanState{
 
-	Interlocutor person = new Interlocutor();
-    Neo4jMemory memory;
+	Interlocutor person;
+    Neo4jMemoryInterface memory;
     public Neo4jRelationships predicate = Neo4jRelationships.FRIEND_OF;
 
 	private static final List<String> introductions = Lists.stringList(
@@ -29,11 +32,12 @@ public class IntroductionState extends AbstractBooleanState{
 			"My name is Roboy. What is your name?"
 			);
 	
-	public IntroductionState(Interlocutor person) {
+	public IntroductionState(Neo4jMemoryInterface memory) {
 		setFailureTexts(Lists.stringList(
 				"It's always nice to meet new people.",
 				"How refreshing to see a new face."));
-		this.person = person;
+		this.person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+		this.memory = memory;
 	}
 	
 	@Override
@@ -47,6 +51,8 @@ public class IntroductionState extends AbstractBooleanState{
 	@SuppressWarnings("unchecked")
 	@Override
 	protected boolean determineSuccess(Interpretation input) {
+		Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+
 		String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
 		String name = null;
 		if(tokens.length==1){
@@ -78,10 +84,10 @@ public class IntroductionState extends AbstractBooleanState{
             } else {
                 ArrayList<Integer> ids = person.getRelationships(predicate);
                 if (ids != null && !ids.isEmpty()) {
-                    memory = Neo4jMemory.getInstance();
                     try {
                         for (int i = 0; i < ids.size() && i < 3; i++) {
-                            MemoryNodeModel requestedObject = memory.getById(ids.get(i));
+                            MemoryNodeModel requestedObject = new MemoryNodeModel(memory);
+							requestedObject.fromJSON(memory.getById(ids.get(i)), new Gson());
                             retrievedResult += requestedObject.getProperties().get("name").toString();
                             retrievedResult += " and ";
                         }

@@ -2,6 +2,7 @@ package roboy.newDialog.states;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.context.Context;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.nodes.Interlocutor;
 
@@ -59,9 +60,9 @@ public class IntroductionState extends State {
         }
 
 
-        // 2. create interlocutor object based on the person name
+        // 2. get interlocutor object from context
         // this also should query memory and do other magic
-        Interlocutor person = new Interlocutor();
+        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
         person.addName(name);
 
 

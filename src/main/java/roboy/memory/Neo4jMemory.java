@@ -2,6 +2,8 @@ package roboy.memory;
 import com.google.gson.Gson;
 
 import com.google.gson.reflect.TypeToken;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import roboy.memory.nodes.MemoryNodeModel;
 import roboy.ros.RosMainNode;
 
@@ -12,31 +14,15 @@ import java.util.*;
 /**
  * Implements the high-level-querying tasks to the Memory services using RosMainNode.
  */
-public class Neo4jMemory implements Memory<MemoryNodeModel>
-{
-    private static Neo4jMemory memory;
+public class Neo4jMemory implements Neo4jMemoryInterface {
+
     private static RosMainNode rosMainNode;
     private Gson gson = new Gson();
+    private final static Logger logger = LogManager.getLogger();
 
-    private Neo4jMemory (RosMainNode node){
+    public Neo4jMemory (RosMainNode node){
         Neo4jMemory.rosMainNode = node;
-    }
-
-    public static Neo4jMemory getInstance(RosMainNode node)
-    {
-        if (memory==null) {
-            memory = new Neo4jMemory(node);
-        }
-        return memory;
-
-    }
-
-    public static Neo4jMemory getInstance()
-    {
-        if (memory == null) {
-            System.out.println("Memory wasn't initialized correctly. Use public static Neo4jMemory getInstance(RosMainNode node) instead.");
-        }
-        return memory;
+        logger.info("Using Neo4jMemory");
     }
 
     /**
@@ -49,7 +35,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
     public boolean save(MemoryNodeModel node) throws InterruptedException, IOException
     {
 //        if(!Config.MEMORY) return false;
-        String response = rosMainNode.UpdateMemoryQuery(node.toJSON(gson));
+        String response = rosMainNode.UpdateMemoryQuery(node.toJSON());
         return response != null && (response.contains("OK"));
     }
 
@@ -59,12 +45,11 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
      * @param  id the ID of requested
      * @return Node representation of the result.
      */
-    public MemoryNodeModel getById(int id) throws InterruptedException, IOException
+    public String getById(int id) throws InterruptedException, IOException
     {
-//        if(!Config.MEMORY) return new MemoryNodeModel();
         String result = rosMainNode.GetMemoryQuery("{'id':"+id+"}");
         if(result == null || result.contains("FAIL")) return null;
-        return gson.fromJson(result, MemoryNodeModel.class);
+        return result;
     }
 
     /**
@@ -76,7 +61,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
     public ArrayList<Integer> getByQuery(MemoryNodeModel query) throws InterruptedException, IOException
     {
 //        if(!Config.MEMORY) return new ArrayList<>();
-        String result = rosMainNode.GetMemoryQuery(query.toJSON(gson));
+        String result = rosMainNode.GetMemoryQuery(query.toJSON());
         if(result == null || result.contains("FAIL")) return null;
         Type type = new TypeToken<HashMap<String, List<Integer>>>() {}.getType();
         HashMap<String, ArrayList<Integer>> list = gson.fromJson(result, type);
@@ -86,7 +71,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
     public int create(MemoryNodeModel query) throws InterruptedException, IOException
     {
 //        if(!Config.MEMORY) return 0;
-        String result = rosMainNode.CreateMemoryQuery(query.toJSON(gson));
+        String result = rosMainNode.CreateMemoryQuery(query.toJSON());
         // Handle possible Memory error message.
         if(result == null || result.contains("FAIL")) return 0;
         Type type = new TypeToken<Map<String,Integer>>() {}.getType();
@@ -105,31 +90,7 @@ public class Neo4jMemory implements Memory<MemoryNodeModel>
 
         //Remove all fields which were not explicitly set, for safety.
         query.setStripQuery(true);
-        String response = rosMainNode.DeleteMemoryQuery(query.toJSON(gson));
+        String response = rosMainNode.DeleteMemoryQuery(query.toJSON());
         return response != null && response.contains("OK");
-    }
-
-    /**
-     * //TODO Deprecated due to interface incompatibility, use getById or getByMatch
-     *
-     * @param query a GetByIDQuery instance
-     * @return Array with a single node
-     */
-    @Override
-    @Deprecated
-    public List<MemoryNodeModel> retrieve(MemoryNodeModel query) throws InterruptedException, IOException
-    {
-        return null;
-    }
-
-    public String determineNodeType(String relationship) {
-        // TODO expand list as new Node types are added.
-        if(relationship.equals(Neo4jRelationships.HAS_HOBBY.type)) return "Hobby";
-        if(relationship.equals(Neo4jRelationships.FROM.type)) return "Country";
-        if(relationship.equals(Neo4jRelationships.WORK_FOR.type)) return "Organization";
-        if(relationship.equals(Neo4jRelationships.STUDY_AT.type)) return "Organization";
-        if(relationship.equals(Neo4jRelationships.OCCUPIED_AS.type)) return "Occupation";
-        if(relationship.equals(Neo4jRelationships.OTHER.type)) return "Other";
-        else return "";
     }
 }

@@ -14,6 +14,7 @@ import roboy.util.*;
 /**
  * Restores information from the DBpedia.
  */
+@Deprecated
 public class DBpediaMemory implements Memory<Relation>{
 
 //	static Concept  sub = new Concept("Berlin");
@@ -116,7 +117,6 @@ private static final Map<String, String> supportedRelations = Maps.stringMap(
 	/**
 	 * Retrive all matching relations from DBpedia.
 	 */
-	@Override
 	public List<Relation> retrieve(Relation object) throws InterruptedException, IOException {
 		// No querying in STANDALONE mode
 		if(ConfigManager.ROS_ENABLED) {

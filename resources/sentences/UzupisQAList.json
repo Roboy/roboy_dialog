@@ -1,4 +1,17 @@
 {
+  "INTRO": {
+    "Q": [
+      "Now you will undergo the naturalization process for the republic of Uzupis"
+    ],
+    "A": {
+      "SUCCESS": [
+        "Let's get going"
+      ],
+      "FAILURE": [
+        "Not gonna ask you twice, you know"
+      ]
+    }
+  },
   "NAME": {
     "Q": [
       "How can I call you?",

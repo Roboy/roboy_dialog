@@ -26,7 +26,7 @@ public class UzupisState extends State {
     private final String QAFILEPATH = "QAFilePath";
 
     private ArrayList<UzupisIntents> alreadyAsked;
-    private final int toAskCounter = 7;
+    private final int toAskCounter = UzupisIntents.values().length;
     private UzupisIntents currentIntent;
 
     private Map<String, List<String>> questions;
@@ -46,20 +46,28 @@ public class UzupisState extends State {
 
         alreadyAsked = new ArrayList<>();
 
-        // TODO proper Interlocutor handling via Context
-        person = Context.ACTIVE_INTERLOCUTOR.getValue();
+        person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
     }
 
     @Override
     public Output act() {
 
-        // TODO implement special treatment for name -> interlocutor
-
         String toAsk;
 
-        do {
-            currentIntent = UzupisIntents.randomIntent();
-        } while (alreadyAsked.contains(currentIntent));
+        if (alreadyAsked.isEmpty()) {
+            currentIntent = UzupisIntents.INTRO;
+        }
+        else if (alreadyAsked.size()==1 && person.getName() == null) {
+            currentIntent = UzupisIntents.NAME;
+        }
+        else {
+            if (person.getName() != null && !alreadyAsked.contains(NAME)) {
+                alreadyAsked.add(UzupisIntents.NAME);
+            }
+            do {
+                currentIntent = UzupisIntents.randomIntent();
+            } while (alreadyAsked.contains(currentIntent));
+        }
 
         alreadyAsked.add(currentIntent);
         toAsk = questions.get(currentIntent.toString()).get(
@@ -73,13 +81,23 @@ public class UzupisState extends State {
         String toAnswer;
         if (answer.length()>2)
         {
-            person.saveUzupisProperty(currentIntent, answer);
+            if (currentIntent==UzupisIntents.NAME) {
+                person.addName(answer);
+            }
+            else if(currentIntent!=UzupisIntents.INTRO) {
+                person.saveUzupisProperty(currentIntent, answer);
+            }
             toAnswer = successAnswers.get(currentIntent.toString()).get(
                     (int) Math.random() * successAnswers.get(currentIntent.toString()).size());
             toAnswer = String.format(toAnswer, answer);
         }
         else {
-            person.saveUzupisProperty(currentIntent, "classified information");
+            if (currentIntent!=UzupisIntents.INTRO) {
+                person.saveUzupisProperty(currentIntent, "classified information");
+            }
+            if (currentIntent==UzupisIntents.NAME) {
+                person.addName("human");
+            }
             toAnswer = failureAnswers.get(currentIntent.toString()).get(
                     (int) Math.random() * failureAnswers.get(currentIntent.toString()).size());
         }
@@ -90,20 +108,23 @@ public class UzupisState extends State {
 
     @Override
     public State getNextState() {
+
+        Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+
         if (alreadyAsked.size() != toAskCounter) {
             return getTransition("loop");
         }
         String color = person.getUzupisInfo().get(COLOR);
         String plant = person.getUzupisInfo().get(PLANT);
-        String  animal = person.getUzupisInfo().get(ANIMAL);
+        String animal = person.getUzupisInfo().get(ANIMAL);
         String word = person.getUzupisInfo().get(WORD);
-        String name = person.getUzupisInfo().get(NAME);
+        String name = person.getName();
         try {
             ProcessBuilder pb = new ProcessBuilder("python", "/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/resources/scripts/uzupizer.py", "0", color, plant, animal, word, name, "2018");
             pb.start();
         }
         catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return getTransition("next");
 

@@ -7,6 +7,7 @@ import org.mockito.Mockito;
 import org.ros.internal.message.RawMessage;
 import org.ros.message.MessageListener;
 import roboy.context.contextObjects.*;
+import roboy.memory.DummyMemory;
 import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
 import roboy_communication_cognition.DirectionVector;
@@ -37,7 +38,7 @@ public class ContextTest {
     public void testInterlocutor() {
         Interlocutor in = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
         assertNull(in);
-        Interlocutor in2 = new Interlocutor();
+        Interlocutor in2 = new Interlocutor(new DummyMemory());
         Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(in2);
         in = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
         assertEquals("Should return the last added Interlocutor instance!", in, in2);
