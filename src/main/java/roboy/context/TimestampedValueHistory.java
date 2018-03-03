@@ -18,9 +18,7 @@ public class TimestampedValueHistory<V> implements AbstractValueHistory<Long, V>
      */
     private volatile long lastTime;
     private TreeMap<Long, V> data;
-    /* When value count reaches MAX_LIMIT, it is reduced to REDUCE_BY. */
-    private final int MAX_LIMIT = 50;
-    private final int REDUCE_BY = 20;
+    private int totalValuesAdded;
 
     public TimestampedValueHistory() {
         data = new TreeMap<>();
@@ -61,22 +59,11 @@ public class TimestampedValueHistory<V> implements AbstractValueHistory<Long, V>
      */
     @Override
     public synchronized void updateValue(V value) {
-        reduce();
+        if(data.size() >= getMaxLimit()) {
+            data.remove(data.firstKey());
+        }
         data.put(generateKey(), value);
-    }
-
-    private synchronized void reduce() {
-        if(data.size() < MAX_LIMIT) {
-            return;
-        }
-        // Remove the oldest values.
-        Iterator<Long> keySet = data.keySet().iterator();
-        int leftToRemove = REDUCE_BY;
-        while (leftToRemove > 0 && keySet.hasNext()) {
-            keySet.next();
-            keySet.remove();
-            leftToRemove--;
-        }
+        totalValuesAdded++;
     }
 
     private synchronized long generateKey() {
@@ -93,7 +80,7 @@ public class TimestampedValueHistory<V> implements AbstractValueHistory<Long, V>
     }
 
     @Override
-    public synchronized int valuesAddedSinceStart() {
-        return data.size();
+    public int valuesAddedSinceStart() {
+        return totalValuesAdded;
     }
 }
