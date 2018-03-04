@@ -360,6 +360,12 @@
             <version>2.3</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.ibm.watson.developer_cloud</groupId>
+            <artifactId>java-sdk</artifactId>
+            <version>4.2.1</version>
+        </dependency>
+
     </dependencies>
 
 </project>

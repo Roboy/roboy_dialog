@@ -41,6 +41,9 @@ public class ConfigManager {
 
     public static String PERSONALITY_FILE = "resources/personalityFiles/ExamplePersonality.json";
 
+    public static String IBM_TTS_USER = "";
+    public static String IBM_TTS_PASS = "";
+
     private static final ConfigManager manager = new ConfigManager();
 
 
@@ -84,6 +87,9 @@ public class ConfigManager {
             DEMO_GUI = yamlConfig.getBoolean("DEMO_GUI");
 
             PERSONALITY_FILE = yamlConfig.getString("PERSONALITY_FILE");
+
+            IBM_TTS_USER = yamlConfig.getString("IBM_TTS_USER");
+            IBM_TTS_PASS = yamlConfig.getString("IBM_TTS_PASS");
 
         }
         catch(ConfigurationException | FileNotFoundException e)

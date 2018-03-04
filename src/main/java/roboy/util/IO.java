@@ -74,6 +74,9 @@ public class IO {
 		List<OutputDevice> outputs = new ArrayList<>();
 		for (String output: ConfigManager.OUTPUTS) {
 			switch(output) {
+				case "ibm":
+					outputs.add(new IBMWatsonOutput());
+					break;
 				case "cerevoice":
 					outputs.add(new CerevoiceOutput(rosMainNode));
 					break;
