@@ -34,7 +34,8 @@ public class PIAState extends State {
 
     @Override
     public State.Output act() {
-        Interlocutor person = Context.Values.ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+
         // TODO: Check for white spaces in the Interlocutor node and select the predicate
         // TODO: We need the predicate itself, not the index
         selectedPredicateIndex = (int)(Math.random() * predicates.length);

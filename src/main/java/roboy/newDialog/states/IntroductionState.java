@@ -2,9 +2,15 @@ package roboy.newDialog.states;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.context.Context;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
+import roboy.memory.nodes.MemoryNodeModel;
+import roboy.memory.Neo4jMemory;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Set;
 
 
@@ -54,7 +60,7 @@ public class IntroductionState extends State {
             // TODO: do something intelligent if the parser fails
             nextState = this;
             logger.warn("IntroductionState could't get name! Staying in the same state.");
-            return Output.say("Sorry, my parser is broken.");
+            return Output.say("Sorry, my parser is out of service.");
             // alternatively: Output.useFallback() or Output.sayNothing()
         }
 
@@ -67,6 +73,7 @@ public class IntroductionState extends State {
 
         // 3. update interlocutor in context
         updateInterlocutorInContext(person);
+        Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
 
 
         // 4. check if person is known/familiar
@@ -75,8 +82,20 @@ public class IntroductionState extends State {
             // 4a. person known/familiar
             nextState = getTransition(TRANSITION_KNOWN_PERSON);
 
+            String retrievedResult = "";
+            ArrayList<Integer> ids = person.getRelationships(Neo4jRelationships.FRIEND_OF);
+            if (ids != null && !ids.isEmpty()) {
+                Neo4jMemory memory = Neo4jMemory.getInstance();
+                try {
+                    MemoryNodeModel requestedObject = memory.getById(ids.get(ids.size()-1));
+                    retrievedResult = requestedObject.getProperties().get("name").toString();
+                } catch (InterruptedException | IOException e) {
+                    logger.error("Error on Memory data retrieval: " + e.getMessage());
+                }
+            }
+
             // TODO: get some friends or hobbies of the person to make answer more interesting
-            return Output.say("Hey, I know you! + NAME here + some friends here");
+            return Output.say("Hey, I know you, " + person.getName() + "! You are friends with " + retrievedResult);
 
         } else {
 
@@ -85,17 +104,13 @@ public class IntroductionState extends State {
 
             // TODO: what would you say to a new person?
             return Output.say("Nice to meet you!");
-
         }
-
     }
 
     @Override
     public State getNextState() {
         return nextState;
     }
-
-
 
     private String getNameFromInput(Interpretation input) {
         // TODO: call Emilka's parser
@@ -105,7 +120,6 @@ public class IntroductionState extends State {
     private void updateInterlocutorInContext(Interlocutor interlocutor) {
         // TODO: update interlocutor
     }
-
 
     @Override
     protected Set<String> getRequiredTransitionNames() {

@@ -85,12 +85,10 @@ public class IntroductionState extends AbstractBooleanState{
                             retrievedResult += requestedObject.getProperties().get("name").toString();
                             retrievedResult += " and ";
                         }
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
+                    } catch (InterruptedException | IOException e) {
                         e.printStackTrace();
                     }
-                }
+				}
                 if (!retrievedResult.equals("")) {
                     retrievedResult = "By the way I know you are friends with " + retrievedResult.substring(0, retrievedResult.length() - 5);
                 }

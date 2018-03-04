@@ -25,15 +25,16 @@
       "implementation": "roboy.newDialog.states.FUAState",
       "transition": {
         "next": "Farewell",
-        "nextPersonalAsking": "PersonalAsking"
+        "nextPersonalQA": "PersonalQA",
+        "stay": "FollowUp"
       },
       "parameters" : {
         "qaFile" : "sentences/QAList.json"
       }
     },
     {
-      "identifier": "PersonalAsking",
-      "implementation": "roboy.newDialog.states.FUAState",
+      "identifier": "PersonalQA",
+      "implementation": "roboy.newDialog.states.PIAState",
       "transition": {
         "next": "Farewell"
       },

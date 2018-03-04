@@ -24,6 +24,9 @@ public class FUAState extends State{
     private PFUAValues qaValues;
     private Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
     private int selectedPredicateIndex = 0;
+    private State nextState;
+    // Logic stub
+    private boolean asked = true;
 
     final Logger LOGGER = LogManager.getLogger();
 
@@ -34,9 +37,9 @@ public class FUAState extends State{
 
     @Override
     public State.Output act() {
-        Interlocutor person = Context.Values.ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
 
-        selectedPredicateIndex = (int)(Math.random() * predicates.length);
+        selectedPredicateIndex = (int) (Math.random() * predicates.length);
         List<String> questions = qaValues.getEntry(predicates[selectedPredicateIndex]).getFUP().get("Q");
         String retrievedResult = "";
         ArrayList<Integer> ids = person.getRelationships(predicates[selectedPredicateIndex]);
@@ -50,28 +53,42 @@ public class FUAState extends State{
             }
         } else {
             LOGGER.info("Go to PersonalQA state");
+            asked = false;
+            return Output.sayNothing();
         }
-        String question = String.format(questions.get((int)(Math.random()*questions.size())), retrievedResult);
-        return State.Output.say(question);
+        String question = String.format(questions.get((int) (Math.random() * questions.size())), retrievedResult);
+        return Output.say(question);
     }
 
     @Override
     public State.Output react(Interpretation input) {
-        List<String> answers;
+        // TODO: How do we ensure it is the same Interlocutor in the same state of existence?
+        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
         String answer = "I have no words";
-        // TODO: What is the condition?
-        if (true) {
-            answers = qaValues.getEntry(predicates[selectedPredicateIndex]).getFUP().get("A");
+
+        if (!asked) {
+            answer = "It seems like we can learn about each other more, fam";
+            nextState = getTransition("nextPersonalQA");
+        } else {
+            // TODO: What is the condition on interpretation?
+            if (true) {
+                // TODO: Perform updating the person object
+                Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+                List<String> answers = qaValues.getEntry(predicates[selectedPredicateIndex]).getFUP().get("A");
+                if (answers != null && !answers.isEmpty()) {
+                    answer = String.format(answers.get((int) (Math.random() * answers.size())), "");
+                }
+            }
+
+            nextState = getTransition("next");
         }
-        if (answers != null && !answers.isEmpty()) {
-            answer = String.format(answers.get((int) (Math.random() * answers.size())), "");
-        }
-        return State.Output.say(answer);
+
+        return Output.say(answer);
     }
 
     @Override
     public State getNextState() {
-        return getTransition("next");
+        return nextState;
     }
 
     @Override
