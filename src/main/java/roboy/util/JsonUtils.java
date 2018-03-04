@@ -2,31 +2,13 @@ package roboy.util;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import roboy.memory.Neo4jRelationships;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.*;
-
-class JsonModel {
-    // Add the new entry
-    JsonEntryModel name;
-    JsonEntryModel FROM;
-    JsonEntryModel HAS_HOBBY;
-    JsonEntryModel LIVE_IN;
-    JsonEntryModel FRIEND_OF;
-    JsonEntryModel STUDY_AT;
-    JsonEntryModel MEMBER_OF;
-    JsonEntryModel WORK_FOR;
-    JsonEntryModel OCCUPIED_AS;
-}
-
-class JsonEntryModel {
-    List<String> Q;
-    Map<String, List<String>> A;
-    Map<String, List<String>> FUP;
-}
 
 public class JsonUtils {
     /**

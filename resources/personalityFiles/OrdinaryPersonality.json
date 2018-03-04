@@ -1,0 +1,57 @@
+{
+  "initialState": "Greetings",
+  "states": [
+    {
+      "identifier": "Greetings",
+      "implementation" : "roboy.newDialog.examples.toyStates.ToyGreetingsState",
+      "fallback" : "RandomAnswer",
+      "transitions" : {
+        "next" : "Intro",
+        "noHello" : "Farewell"
+      }
+    },
+    {
+      "identifier": "Intro",
+      "implementation" : "roboy.newDialog.examples.toyStates.ToyIntroState",
+      "transitions" : {
+        "next" : "Farewell"
+      },
+      "parameters" : {
+        "introductionSentence" : "My name is Roboy!"
+      }
+    },
+    {
+      "identifier": "FollowUp",
+      "implementation": "roboy.newDialog.states.FUAState",
+      "transition": {
+        "next": "Farewell",
+        "nextPersonalAsking": "PersonalAsking"
+      },
+      "parameters" : {
+        "qaFile" : "sentences/QAList.json"
+      }
+    },
+    {
+      "identifier": "PersonalAsking",
+      "implementation": "roboy.newDialog.states.FUAState",
+      "transition": {
+        "next": "Farewell"
+      },
+      "parameters" : {
+        "qaFile" : "sentences/QAList.json"
+      }
+    },
+    {
+      "identifier": "Farewell",
+      "implementation" : "roboy.newDialog.examples.toyStates.ToyFarewellState",
+      "transitions" : {}
+    },
+    {
+      "identifier": "RandomAnswer",
+      "implementation" : "roboy.newDialog.examples.toyStates.ToyRandomAnswerState",
+      "transitions" : {
+        "next" : "Farewell"
+      }
+    }
+  ]
+}
