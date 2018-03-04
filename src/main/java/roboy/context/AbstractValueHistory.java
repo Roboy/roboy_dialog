@@ -3,7 +3,7 @@ package roboy.context;
 import java.util.Map;
 
 /**
- * ValueHistory maintains a map containing all (current and past) values.
+ * Maintains a map containing many values.
  * These values are accessible over the getLastNValues method.
  */
 public interface AbstractValueHistory<K, V> extends AbstractValue<V> {

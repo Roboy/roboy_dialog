@@ -1,6 +1,7 @@
 package roboy.context;
 
 import java.util.Iterator;
+import java.util.NavigableSet;
 import java.util.TreeMap;
 
 /**
@@ -17,6 +18,9 @@ public class TimestampedValueHistory<V> implements AbstractValueHistory<Long, V>
      */
     private volatile long lastTime;
     private TreeMap<Long, V> data;
+    /* When value count reaches MAX_LIMIT, it is reduced to REDUCE_BY. */
+    private final int MAX_LIMIT = 50;
+    private final int REDUCE_BY = 20;
 
     public TimestampedValueHistory() {
         data = new TreeMap<>();
@@ -42,7 +46,7 @@ public class TimestampedValueHistory<V> implements AbstractValueHistory<Long, V>
     @Override
     public synchronized TreeMap<Long, V> getLastNValues(int n) {
         TreeMap<Long, V> map = new TreeMap<>();
-        Iterator<Long> keyIterator = data.descendingKeySet().descendingIterator();
+        Iterator<Long> keyIterator = data.descendingKeySet().iterator();
         Long key;
         while (keyIterator.hasNext() && (n > 0)) {
             key = keyIterator.next();
@@ -57,7 +61,22 @@ public class TimestampedValueHistory<V> implements AbstractValueHistory<Long, V>
      */
     @Override
     public synchronized void updateValue(V value) {
+        reduce();
         data.put(generateKey(), value);
+    }
+
+    private synchronized void reduce() {
+        if(data.size() < MAX_LIMIT) {
+            return;
+        }
+        // Remove the oldest values.
+        Iterator<Long> keySet = data.keySet().iterator();
+        int leftToRemove = REDUCE_BY;
+        while (leftToRemove > 0 && keySet.hasNext()) {
+            keySet.next();
+            keySet.remove();
+            leftToRemove--;
+        }
     }
 
     private synchronized long generateKey() {

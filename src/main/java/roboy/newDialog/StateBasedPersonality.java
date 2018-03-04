@@ -1,13 +1,14 @@
 package roboy.newDialog;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
 import roboy.dialog.personality.Personality;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.newDialog.states.State;
+import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
 
 import java.util.ArrayList;
@@ -30,13 +31,14 @@ import java.util.List;
  */
 public class StateBasedPersonality extends DialogStateMachine implements Personality {
 
-    private final Logger logger = LoggerFactory.getLogger(StateBasedPersonality.class);
+    private final Logger logger = LogManager.getLogger();
 
 
     private final Verbalizer verbalizer;
 
 
-    public StateBasedPersonality(Verbalizer verb) {
+    public StateBasedPersonality(RosMainNode rmn, Verbalizer verb) {
+        super(rmn);
         verbalizer = verb;
         reset();
     }

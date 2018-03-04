@@ -6,9 +6,9 @@ import java.util.List;
 
 import com.google.gson.JsonIOException;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import roboy.context.GUI.ContextGUI;
+import roboy.context.Context;
+import roboy.context.ContextGUI;
+import roboy.context.contextObjects.CoordinateSet;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.ShutDownAction;
 import roboy.dialog.personality.Personality;
@@ -96,6 +96,9 @@ public class DialogSystem {
             Thread t = new Thread(gui);
             t.start();
         }
+
+        Thread.sleep(2000);
+
         /*
          * I/O INITIALIZATION
          */

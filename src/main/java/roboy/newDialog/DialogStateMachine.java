@@ -1,11 +1,12 @@
 package roboy.newDialog;
 
 import com.google.gson.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import roboy.newDialog.states.State;
 import roboy.newDialog.states.StateFactory;
 import roboy.newDialog.states.StateParameters;
+import roboy.ros.RosMainNode;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,7 +23,7 @@ import java.util.Map;
  */
 public class DialogStateMachine {
 
-    private final Logger logger = LoggerFactory.getLogger(DialogStateMachine.class);
+    private final static Logger logger = LogManager.getLogger();
 
     // maps string identifiers to state objects ("Greeting" -> {GreetingState})
     // allows to have multiple instances of the same state class with different identifiers ("Greeting2" -> {GreetingState})
@@ -30,11 +31,29 @@ public class DialogStateMachine {
 
     private State activeState;
     private State initialState;
+    private final RosMainNode rosMainNode;
 
-    public DialogStateMachine() {
+    // Personality file additional information: everything like comment goes here.
+    // [!!] Do not use it in your state code! This info is only stored to make sure we don't
+    //      lose the comment etc. when saving this dialog state machine to file.
+    private HashMap<String, String> optionalPersFileInfo;
+
+
+    public DialogStateMachine(RosMainNode rmn) {
         identifierToState = new HashMap<>();
         activeState = null;
+        rosMainNode = rmn;
+        optionalPersFileInfo = new HashMap<>();
+
+        if (rosMainNode == null) {
+            logger.info("Using offline DialogStateMachine (no RosMainNode was passed)");
+        }
     }
+
+    public DialogStateMachine() {
+        this(null);
+    }
+
 
     public State getInitialState() {
         return initialState;
@@ -112,6 +131,7 @@ public class DialogStateMachine {
 
     private void loadFromJSON(JsonElement json) {
         identifierToState.clear();
+        optionalPersFileInfo.clear();
         activeState = null;
         initialState = null;
 
@@ -120,6 +140,11 @@ public class DialogStateMachine {
             return;
         }
         JsonObject personalityJson = json.getAsJsonObject();
+
+        JsonElement commentJson = personalityJson.get("comment");
+        if (commentJson != null) {
+            optionalPersFileInfo.put("comment", commentJson.getAsString());
+        }
 
         JsonElement initialStateJson = personalityJson.get("initialState");
         if (initialStateJson == null) {
@@ -156,7 +181,7 @@ public class DialogStateMachine {
      * @return StateParameters instance with all parameters defined in json object
      */
     private StateParameters parseStateParameters(JsonObject stateJsO) {
-        StateParameters params = new StateParameters(this);
+        StateParameters params = new StateParameters(this, rosMainNode);
 
         // set the transitions
         JsonObject paramsJsO = stateJsO.getAsJsonObject("parameters");
@@ -185,13 +210,21 @@ public class DialogStateMachine {
             String identifier = stateJsO.get("identifier").getAsString();
             String implClassName = stateJsO.get("implementation").getAsString();
 
+            // create state object by class name with java reflection
             State state = StateFactory.createStateByClassName(implClassName, identifier, params);
-
             if (state == null) {
                 logger.error("parseAndCreateStates(): state " + identifier + " was not created!");
-            } else {
-                addState(state);
+                continue;
             }
+
+            // set optional values
+            JsonElement commentJson = stateJsO.get("comment");
+            if (commentJson != null) {
+                state.setOptionalPersFileInfo("comment", commentJson.getAsString());
+            }
+
+            addState(state);
+
         }
     }
 
@@ -286,6 +319,11 @@ public class DialogStateMachine {
 
     private JsonObject toJsonObject() {
         JsonObject stateMachineJson = new JsonObject();
+
+        if (optionalPersFileInfo.containsKey("comment")) {
+            stateMachineJson.addProperty("comment", optionalPersFileInfo.get("comment"));
+        }
+
         if (initialState == null) {
             logger.error("toJsonObject(): initial state undefined!");
         } else {

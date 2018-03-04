@@ -6,13 +6,16 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Root level="WARN">
+        <Root level="WARN" >
             <AppenderRef ref="Console"/>
         </Root>
-        <Logger name="roboy.dialog" level="INFO">
+        <Logger name="roboy.dialog" level="INFO" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Logger name="roboy.context" level="INFO">
+        <Logger name="roboy.newDialog" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="roboy.context" level="INFO" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
     </Loggers>
