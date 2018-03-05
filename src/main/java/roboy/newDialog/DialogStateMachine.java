@@ -65,13 +65,11 @@ public class DialogStateMachine {
      * @param initial initial state
      */
     public void setInitialState(State initial) {
-        if (initial == null) return;
-
-        if (!identifierToState.containsValue(initial)) {
+        if (!identifierToState.containsValue(initial) && initial != null) {
             addState(initial);
         }
         this.initialState = initial;
-        if (activeState == null) {
+        if (activeState == null) { // if active state is not set yet, aet active to initial
             setActiveState(initial);
         }
     }
@@ -79,7 +77,6 @@ public class DialogStateMachine {
         State initial = identifierToState.get(identifier);
         if (initial == null) {
             logger.error("setInitialState(" + identifier + "): Unknown identifier!");
-            return;
         }
         setInitialState(initial);
     }
@@ -89,9 +86,7 @@ public class DialogStateMachine {
         return activeState;
     }
     public void setActiveState(State s) {
-        if (s == null) return;
-
-        if (!identifierToState.containsValue(s)) {
+        if (!identifierToState.containsValue(s) && s != null) {
             addState(s);
         }
         activeState = s;
@@ -100,7 +95,6 @@ public class DialogStateMachine {
         State s = identifierToState.get(identifier);
         if (s == null) {
             logger.error("setActiveState(" + identifier + "): Unknown identifier!");
-            return;
         }
         activeState = s;
     }
@@ -111,6 +105,10 @@ public class DialogStateMachine {
         return identifierToState.get(identifier);
     }
     public void addState(State s) {
+        if (s == null) {
+            logger.warn("trying to add null to (ID->State) hash map!");
+            return;
+        }
         identifierToState.put(s.getIdentifier(), s);
     }
 

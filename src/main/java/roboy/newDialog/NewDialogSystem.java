@@ -74,12 +74,13 @@ public class NewDialogSystem {
         // Repeat conversation a few times
         for (int numConversations = 0; numConversations < 2; numConversations++) {
 
-            logger.info("-------------- New Conversation --------------");
-            // important: reset personality completely before every conversation
-            // otherwise some states (with possibly bad implementation) will keep the old internal variables
+            logger.info("############## New Conversation ##############");
 
             try {
+                // create "fresh" State objects using loadFromFile() at the beginning of every conversation
+                // otherwise some states (with possibly bad implementation) will keep the old internal variables
                 personality.loadFromFile(personalityFile);
+
             } catch (FileNotFoundException e) {
                 logger.error("Personality file not found: " + e.getMessage());
                 return;
@@ -87,9 +88,16 @@ public class NewDialogSystem {
 
             List<Action> actions = personality.startConversation();
 
-            while ( ! actions.isEmpty() ) {
+            while (true) {
+                // do all actions defined in startConversation() or answer()
                 multiOut.act(actions);
 
+                // now stop if conversation ended
+                if (personality.conversationEnded()) {
+                    break;
+                }
+
+                // listen to interlocutor if conversation didn't end
                 Input raw;
                 try {
                     raw = multiIn.listen();
@@ -98,12 +106,17 @@ public class NewDialogSystem {
                     return;
                 }
 
+                // analyze and answer
                 Interpretation interpretation = new Interpretation(raw.sentence, raw.attributes);
                 for (Analyzer a : analyzers) {
                     interpretation = a.analyze(interpretation);
                 }
                 actions = personality.answer(interpretation);
             }
+
+            logger.info("############# Reset State Machine ############");
+            // now reset --> conversationEnded() will now return false --> new conversation possible
+            personality.reset();
 
         }
     }
