@@ -38,7 +38,7 @@ public class IntroductionState extends AbstractBooleanState{
 	
 	@Override
 	public List<Interpretation> act() {
-		return Lists.interpretationList(new Interpretation(introductions.get((int)Math.random()*introductions.size())));
+		return Lists.interpretationList(new Interpretation(introductions.get((int)(Math.random()*introductions.size()))));
 	}
 
 	/**
@@ -57,13 +57,13 @@ public class IntroductionState extends AbstractBooleanState{
 			String predicate = ((String)pas.get(SEMANTIC_ROLE.PREDICATE)).toLowerCase();
 			String agent = (String)pas.get(SEMANTIC_ROLE.AGENT);
 			String patient = (String)pas.get(SEMANTIC_ROLE.PATIENT);
-			//if(agent==null) agent = "i";
-			//TODO Handle cases where name could not be parsed.
+			// if(agent==null) agent = "i";
+			// TODO Handle cases where name could not be parsed.
 			// Maybe something like "I did not quite get your name, could you repeat it."
 			// When using a default value with persistent memory, Roboy will always recognize them.
 			if(patient==null) agent = "laura";
-			//if(!"am".equals(predicate) && !"is".equals(predicate)) return false;
-			//if(!agent.toLowerCase().contains("i") && !agent.toLowerCase().contains("my")) return false;
+			// if(!"am".equals(predicate) && !"is".equals(predicate)) return false;
+			// if(!agent.toLowerCase().contains("i") && !agent.toLowerCase().contains("my")) return false;
 			name = patient;
 		}
 		if(name!=null){
