@@ -4,14 +4,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
-import roboy.memory.nodes.MemoryNodeModel;
 import roboy.util.PFUAValues;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -41,6 +37,7 @@ public class PIAState extends State {
         selectedPredicateIndex = (int)(Math.random() * predicates.length);
         List<String> questions = qaValues.getEntry(predicates[selectedPredicateIndex]).getQuestions();
         String question = questions.get((int)(Math.random()*questions.size()));
+        Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(predicates[selectedPredicateIndex].type);
         return State.Output.say(question);
     }
 

@@ -27,6 +27,9 @@ public class Context {
     public final HistoryInterface<DialogTopics, Integer, String> DIALOG_TOPICS =
             new HistoryInterface<>(new DialogTopics());
 
+    public final HistoryInterface<DialogIntents, Integer, String> DIALOG_INTENTS =
+            new HistoryInterface<>(new DialogIntents());
+
     public final HistoryInterface<AudioDirection, Integer, DirectionVector> AUDIO_ANGLES =
             new HistoryInterface<>(new AudioDirection());
 
@@ -35,6 +38,7 @@ public class Context {
 
     /* INTERNAL UPDATERS DEFINED HERE */
     public final DialogTopicsUpdater DIALOG_TOPICS_UPDATER;
+    public final DialogIntentsUpdater DIALOG_INTENTS_UPDATER;
     public final ActiveInterlocutorUpdater ACTIVE_INTERLOCUTOR_UPDATER;
 
     /* EXTERNAL UPDATERS DEFINED HERE */
@@ -56,6 +60,7 @@ public class Context {
     private Context() {
         /* INTERNAL UPDATERS INITIALIZED HERE */
         DIALOG_TOPICS_UPDATER = new DialogTopicsUpdater(DIALOG_TOPICS.valueHistory);
+        DIALOG_INTENTS_UPDATER = new DialogIntentsUpdater(DIALOG_INTENTS.valueHistory);
         ACTIVE_INTERLOCUTOR_UPDATER = new ActiveInterlocutorUpdater(ACTIVE_INTERLOCUTOR.value);
 
         /* OBSERVERS INITIALIZED AND ADDED HERE */

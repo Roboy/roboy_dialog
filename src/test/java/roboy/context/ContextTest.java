@@ -35,6 +35,19 @@ public class ContextTest {
     }
 
     @Test
+    public void setAndGetDialogIntents() {
+        DialogIntentsUpdater updater = Context.getInstance().DIALOG_INTENTS_UPDATER;
+        Context.HistoryInterface<DialogIntents, Integer, String> intents = Context.getInstance().DIALOG_INTENTS;
+
+        updater.updateValue("test_intent1");
+        assertEquals("test_intent1", (intents.getLastValue()));
+        updater.updateValue("test_intent2");
+        Map<Integer, String> values = intents.getLastNValues(2);
+        assertEquals("test_intent1", values.get(0));
+        assertEquals("test_intent2", values.get(1));
+    }
+
+    @Test
     public void testInterlocutor() {
         Interlocutor in = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
         assertNull(in);

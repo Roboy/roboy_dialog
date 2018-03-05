@@ -57,6 +57,7 @@ public class FUAState extends State{
             return Output.sayNothing();
         }
         String question = String.format(questions.get((int) (Math.random() * questions.size())), retrievedResult);
+        Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(predicates[selectedPredicateIndex].type);
         return Output.say(question);
     }
 
