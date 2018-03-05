@@ -14,7 +14,8 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 
 class JsonModel {
-    // Add the new entry
+    // TODO: Dynamically create JsonModel as JsonEntryModel fields based on existing Neo4jRelationships entries
+    // Add a new entry
     JsonEntryModel name;
     JsonEntryModel FROM;
     JsonEntryModel HAS_HOBBY;
