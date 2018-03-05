@@ -88,9 +88,13 @@ public class DialogSystem {
 
         // initialize ROS node
         RosMainNode rosMainNode = new RosMainNode();
-        // initialize Memory with ROS
 
+        // initialize Memory with ROS
         Neo4jMemory.getInstance(rosMainNode);
+
+        // initialize Context
+        Context.getInstance();
+
         if(Config.CONTEXT_DEMO) {
             final Runnable gui = () -> ContextGUI.run();
             Thread t = new Thread(gui);

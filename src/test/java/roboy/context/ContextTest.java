@@ -11,6 +11,7 @@ import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
 import roboy_communication_cognition.DirectionVector;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
@@ -61,6 +62,34 @@ public class ContextTest {
         Long key2 = returnedKeys.next();
         assertTrue("Keys of the timestamped history were in reverse order!", key1 < key2);
         assertTrue("Second added value should have a higher key!", values.get(key2).equals("test2"));
+    }
+
+    @Test
+    public void historyLimitExceededTest() {
+        ValueHistory<String> testHistory = new ValueHistory<>();
+
+        int limit = testHistory.getMaxLimit(); // Standard is 50, but could change in the future.
+        for(int i = 0; i < limit + 100; i++) {
+            testHistory.updateValue("test"+i);
+        }
+        HashMap<Integer, String> historyValues = testHistory.getLastNValues(limit + 1);
+
+        assertEquals(limit, historyValues.size());
+        for(int i = 0; i < limit; i++) {
+            assertTrue(historyValues.containsKey(i));
+        }
+    }
+
+    @Test
+    public void timestampedHistoryLimitExceededTest() {
+        TimestampedValueHistory<String> testTimestampHistory = new TimestampedValueHistory<>();
+        int limit = testTimestampHistory.getMaxLimit(); // Standard is 50, but could change in the future.
+        for(int i = 0; i < limit + 100; i++) {
+            testTimestampHistory.updateValue("test"+i);
+        }
+        TreeMap<Long, String> timestampHistoryValues = testTimestampHistory.getLastNValues(limit + 1);
+
+        assertEquals(limit, timestampHistoryValues.size());
     }
 
     @Test
