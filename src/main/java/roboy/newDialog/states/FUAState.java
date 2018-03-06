@@ -8,7 +8,7 @@ import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.MemoryNodeModel;
-import roboy.util.PFUAValues;
+import roboy.util.QAJsonParser;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,18 +21,21 @@ import static roboy.memory.Neo4jRelationships.*;
  * Follow Up Asking State
  */
 public class FUAState extends State{
-    private PFUAValues qaValues;
+    private QAJsonParser qaValues;
     private Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
     private int selectedPredicateIndex = 0;
     private State nextState;
     // Logic stub
     private boolean asked = true;
 
+    private final String next = "next";
+    private final String nextPersonalQA = "nextPersonalQA";
+
     final Logger LOGGER = LogManager.getLogger();
 
     public FUAState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
-        qaValues = new PFUAValues(params.getParameter("qaFile"));
+        qaValues = new QAJsonParser(params.getParameter("qaFile"));
     }
 
     @Override
@@ -40,7 +43,7 @@ public class FUAState extends State{
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
 
         selectedPredicateIndex = (int) (Math.random() * predicates.length);
-        List<String> questions = qaValues.getEntry(predicates[selectedPredicateIndex]).getFUP().get("Q");
+        List<String> questions = qaValues.getFollowUpQuestions(predicates[selectedPredicateIndex]);
         String retrievedResult = "";
         ArrayList<Integer> ids = person.getRelationships(predicates[selectedPredicateIndex]);
         if (ids != null && !ids.isEmpty()) {
@@ -69,19 +72,19 @@ public class FUAState extends State{
 
         if (!asked) {
             answer = "It seems like we can learn about each other more, fam";
-            nextState = getTransition("nextPersonalQA");
+            nextState = getTransition(nextPersonalQA);
         } else {
             // TODO: What is the condition on interpretation?
             if (true) {
                 // TODO: Perform updating the person object
                 Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
-                List<String> answers = qaValues.getEntry(predicates[selectedPredicateIndex]).getFUP().get("A");
+                List<String> answers = qaValues.getFollowUpAnswers(predicates[selectedPredicateIndex]);
                 if (answers != null && !answers.isEmpty()) {
-                    answer = String.format(answers.get((int) (Math.random() * answers.size())), "");
+                    answer = String.format(answers.get((int)(Math.random() * answers.size())), "");
                 }
             }
 
-            nextState = getTransition("next");
+            nextState = getTransition(next);
         }
 
         return Output.say(answer);
@@ -95,7 +98,7 @@ public class FUAState extends State{
     @Override
     protected Set<String> getRequiredTransitionNames() {
         // optional: define all required transitions here:
-        return newSet("next");
+        return newSet(next, nextPersonalQA);
     }
 
     @Override

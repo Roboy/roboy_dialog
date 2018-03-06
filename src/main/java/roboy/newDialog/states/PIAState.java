@@ -6,7 +6,7 @@ import roboy.context.Context;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
-import roboy.util.PFUAValues;
+import roboy.util.QAJsonParser;
 
 import java.util.List;
 import java.util.Set;
@@ -17,15 +17,17 @@ import static roboy.memory.Neo4jRelationships.*;
  * Personal Information Asking State
  */
 public class PIAState extends State {
-    private PFUAValues qaValues;
+    private QAJsonParser qaValues;
     private Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
     private int selectedPredicateIndex = 0;
+    private State nextState;
 
+    private final String next = "next";
     final Logger LOGGER = LogManager.getLogger();
 
     public PIAState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
-        qaValues = new PFUAValues(params.getParameter("qaFile"));
+        qaValues = new QAJsonParser(params.getParameter("qaFile"));
     }
 
     @Override
@@ -57,18 +59,19 @@ public class PIAState extends State {
         if (answers != null && !answers.isEmpty()) {
             answer = String.format(answers.get((int) (Math.random() * answers.size())), "");
         }
+        nextState = getTransition(next);
         return State.Output.say(answer);
     }
 
     @Override
     public State getNextState() {
-        return getTransition("next");
+        return nextState;
     }
 
     @Override
     protected Set<String> getRequiredTransitionNames() {
         // optional: define all required transitions here:
-        return newSet("next");
+        return newSet(next);
     }
 
     @Override
