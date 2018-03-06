@@ -55,11 +55,12 @@ public class IntroductionState extends State {
 
         // 1. get name
         String name = getNameFromInput(input);
+        name = "laura"; // TODO: Remove
         if (name == null) {
             // input couldn't be parsed properly
             // TODO: do something intelligent if the parser fails
             nextState = this;
-            logger.warn("IntroductionState could't get name! Staying in the same state.");
+            logger.warn("IntroductionState couldn't get name! Staying in the same state.");
             return Output.say("Sorry, my parser is out of service.");
             // alternatively: Output.useFallback() or Output.sayNothing()
         }
