@@ -8,6 +8,7 @@ import roboy.dialog.Config;
 import roboy.dialog.action.Action;
 import roboy.io.*;
 import roboy.linguistics.sentenceanalysis.*;
+import roboy.memory.Neo4jMemory;
 import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
 
@@ -17,6 +18,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import static roboy.dialog.Config.ConfigurationProfile.MEMORY;
 import static roboy.dialog.Config.ConfigurationProfile.NOROS;
 
 /**
@@ -47,12 +49,15 @@ public class NewDialogSystem {
 
     public static void main(String[] args) {
 
-        new Config(NOROS);
+        new Config(MEMORY);
 
 
         // initialize ROS node
         // TODO: refactor RosMainNode, Thread.sleep() after initialization is not nice at all
         RosMainNode rosMainNode = new RosMainNode();
+
+        // initialize Memory with ROS
+        Neo4jMemory.getInstance(rosMainNode);
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -107,7 +112,4 @@ public class NewDialogSystem {
 
         }
     }
-
-
-
 }
