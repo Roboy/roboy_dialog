@@ -42,6 +42,7 @@ public class ContextGUI {
     }
 
     private ContextGUI() {
+        Context.getInstance(); // See that Context is initialized before starting GUI.
         prepareGUI();
     }
 

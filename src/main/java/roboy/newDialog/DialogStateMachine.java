@@ -16,14 +16,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * State machine to manage dialog states.
- * Dialog state machines can be written to files and loaded from them later.
+ * State machine to manage dialog states. State based personality is built on top of this class.
  *
- * Personalities can be implemented using a dialog state machine.
+ * Main functionality of this class enables loading dialog state machines from personality files.
+ * There is also an option to save an existing state machine to file.
+ *
+ * Personality files are JSON files that define a set of dialog states and transitions between them
+ * (see examples in resources/personalityFiles/). Every state definition in the file has an identifier
+ * and specifies the implementation (class name) for the state. During parsing of the personality file
+ * this class will take the class name and create a Java State object using Java reflection.
  */
 public class DialogStateMachine {
 
-    private final static Logger logger = LogManager.getLogger();
+
+    // #####################################################
+    // #             Variables & Constructors              #
+    // #####################################################
+
+    //region variables
+
+    private final Logger logger = LogManager.getLogger();
 
     // maps string identifiers to state objects ("Greeting" -> {GreetingState})
     // allows to have multiple instances of the same state class with different identifiers ("Greeting2" -> {GreetingState})
@@ -31,14 +43,26 @@ public class DialogStateMachine {
 
     private State activeState;
     private State initialState;
+
+    // RosMainNode will be passed to every state as parameter
     private final RosMainNode rosMainNode;
 
     // Personality file additional information: everything like comment goes here.
-    // [!!] Do not use it in your state code! This info is only stored to make sure we don't
-    //      lose the comment etc. when saving this dialog state machine to file.
+    // [!!] Do not use it in your State implementation! This info is only stored to make sure
+    //      we don't lose the comment etc. when saving this dialog state machine to file.
     private HashMap<String, String> optionalPersFileInfo;
 
+    // endregion
 
+    //region constructors
+
+    /**
+     * Create an empty DialogStateMachine. Use loadFromFile(...) to load definitions from the
+     * personality file after creation. Alternatively you can create and add States to the machine
+     * manually from code.
+     *
+     * @param rmn reference to the RosMainNode that will be passed to every newly created State object
+     */
     public DialogStateMachine(RosMainNode rmn) {
         identifierToState = new HashMap<>();
         activeState = null;
@@ -50,71 +74,134 @@ public class DialogStateMachine {
         }
     }
 
+    /**
+     * Create an empty OFFLINE DialogStateMachine without a reference to the RosMainNode.
+     * States will not be able to access the RosMainNode functionality.
+     * This constructor is mainly used for testing.
+     */
     public DialogStateMachine() {
         this(null);
     }
 
+    //endregion
 
+
+    // #####################################################
+    // #                 Getter & Setter                   #
+    // #####################################################
+
+    //region initial state
+
+    /**
+     * Returns the initial state for this state machine.
+     * @return initial state for this state machine
+     */
     public State getInitialState() {
         return initialState;
     }
+
     /**
      * Set the initial state of this state machine.
-     * The state will be automatically added to the machine.
+     * The state will be automatically added to the machine if not already added.
      * If active state was null, it will be set to the new initial state.
      * @param initial initial state
      */
     public void setInitialState(State initial) {
-        if (initial == null) return;
-
-        if (!identifierToState.containsValue(initial)) {
+        if (!identifierToState.containsValue(initial) && initial != null) {
             addState(initial);
         }
         this.initialState = initial;
-        if (activeState == null) {
+        if (activeState == null) { // if active state is not set yet, aet active to initial
             setActiveState(initial);
         }
     }
+
+    /**
+     * Set the initial state of this state machine using state identifier.
+     * If there is no state with specified identifier, you will get an error message
+     * and the initial state will be set to null.
+     * @param identifier identifier of the state that should become the initial state
+     */
     public void setInitialState(String identifier) {
         State initial = identifierToState.get(identifier);
         if (initial == null) {
             logger.error("setInitialState(" + identifier + "): Unknown identifier!");
-            return;
         }
         setInitialState(initial);
     }
 
+    //endregion
 
+    //region active state
+
+    /**
+     * Returns the active state for this state machine.
+     * @return active state for this state machine
+     */
     public State getActiveState() {
         return activeState;
     }
-    public void setActiveState(State s) {
-        if (s == null) return;
 
-        if (!identifierToState.containsValue(s)) {
+    /**
+     *
+     * Set the active state of this state machine.
+     * The state will be automatically added to the machine if not already added.
+     * @param s state to make active
+     */
+    public void setActiveState(State s) {
+        if (!identifierToState.containsValue(s) && s != null) {
             addState(s);
         }
         activeState = s;
     }
+
+    /**
+     * Set the active state using state identifier.
+     * If there is no state with specified identifier, you will get an error message and
+     * active state will be set to null.
+     * @param identifier identifier of the state that should become the active state
+     */
     public void setActiveState(String identifier) {
         State s = identifierToState.get(identifier);
         if (s == null) {
             logger.error("setActiveState(" + identifier + "): Unknown identifier!");
-            return;
         }
         activeState = s;
     }
 
+    //endregion
 
+    //region get by id & add state
 
+    /**
+     * Returns a state with given identifier. Returns null if no such state was previously added to the machine.
+     * @param identifier identifier of the state to retrieve
+     * @return state with given identifier or null
+     */
     public State getStateByIdentifier(String identifier) {
         return identifierToState.get(identifier);
     }
+
+    /**
+     * Add a state to this state machine.
+     * @param s state to add.
+     */
     public void addState(State s) {
+        if (s == null) {
+            logger.warn("trying to add null to (ID->State) hash map!");
+            return;
+        }
         identifierToState.put(s.getIdentifier(), s);
     }
 
+    //endregion
 
+
+    // #####################################################
+    // #                Loading & Parsing                  #
+    // #####################################################
+
+    //region load from ...
 
     public void loadFromString(String s) {
         JsonParser parser = new JsonParser();
@@ -174,6 +261,10 @@ public class DialogStateMachine {
         // check if all states have all required transitions initialized correctly
         checkSuccessfulInitialization(identifierToState);
     }
+
+    //endregion
+
+    //region parsing & init checks
 
     /**
      * Parses parameters from the state json object. A new instance of StateParameters is created.
@@ -304,7 +395,19 @@ public class DialogStateMachine {
         }
     }
 
+    //endregion
 
+
+    // #####################################################
+    // #           Saving, toString, equals                #
+    // #####################################################
+
+    //region save to file / JSON object
+
+    /**
+     * Save this state machine to a personality file in JSON format.
+     * @param f file to save
+     */
     public void saveToFile(File f) throws FileNotFoundException {
 
         String json = toJsonString();
@@ -312,11 +415,13 @@ public class DialogStateMachine {
         try( PrintWriter out = new PrintWriter( f ) ){
             out.println( json );
         }
-
+        // Not catching the exception here! It should be handled inside the code that calls this function.
     }
 
-
-
+    /**
+     * Creates a JSON object that represents this state machine.
+     * @return JSON object that represents this state machine
+     */
     private JsonObject toJsonObject() {
         JsonObject stateMachineJson = new JsonObject();
 
@@ -341,6 +446,15 @@ public class DialogStateMachine {
         return stateMachineJson;
     }
 
+    //endregion
+
+    //region toJsonString & toString
+
+    /**
+     * Creates a JSON string that represents this state machine.
+     * The JSON string is different from the toString representation which is more readable.
+     * @return JSON string that represents this state machine
+     */
     public String toJsonString() {
         Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
         JsonObject json = toJsonObject();
@@ -370,6 +484,9 @@ public class DialogStateMachine {
         return s.toString();
     }
 
+    //endregion
+
+    //region equals
 
     @Override
     public boolean equals(Object obj) {
@@ -416,5 +533,6 @@ public class DialogStateMachine {
         return true;
     }
 
+    //endregion
 
 }

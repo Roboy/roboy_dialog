@@ -35,10 +35,6 @@ public abstract class PeriodicUpdater<Target> extends ExternalUpdater {
         // Schedules regular updates, starting 1 second after initialization.
         final ScheduledFuture<?> updaterHandle = scheduler.scheduleAtFixedRate(
                 updater, 1, updateFrequencySeconds, SECONDS);
-        // UPDATE: cancel() KILLS THE UPDATER AFTER 30 SECONDS.
-        // Updaters should run for the entire DM runtime, so do not kill them.
-        // Leaving for reference.
-        // scheduler.schedule((Runnable) () -> updaterHandle.cancel(true), 30, SECONDS);
     }
 
 }

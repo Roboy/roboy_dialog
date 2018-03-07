@@ -83,7 +83,6 @@ public class DialogSystem {
 
         // initialize ROS node
         RosMainNode rosMainNode = new RosMainNode();
-        // initialize Memory with ROS
 
         Neo4jMemoryInterface memory;
         if (ConfigManager.ROS_ENABLED && ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_memory")) {

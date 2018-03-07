@@ -36,20 +36,24 @@ public abstract class State {
 
     /**
      *  Output static inner class represents the return values of act() and react() methods.
-     *  There are three possible scenarios:
-     *   - the state wants to say something     -> a single interpretation is returned
-     *   - the state does not say anything      -> no interpretation
-     *   - the state does not know how to react -> fallback state is required to fix this
+     *  There are four possible scenarios:
+     *   - the state wants to say something         -> a single interpretation is returned
+     *   - the state does not say anything          -> no interpretation
+     *   - the state does not know how to react     -> fallback state is required to fix this
+     *   - the state wants to end the conversation  -> reset the whole dialog state machine
      *
      *   To create an instance of this class inside the act() or react() method use following:
      *   - Output.say( new Interpretation(...) )  - to return an interpretation
+     *   - Output.say( "Some phrase here" )       - to return an interpretation (will be created from string)
      *   - Output.sayNothing()                    - to make clear that you don't want to say anything
      *   - Output.useFallback()                   - to indicate that you can't react and want to use the fallback
+     *   - Output.endConversation()               - to stop the conversation immediately and reset the state machine
+     *   - Output.endConversation( "last words" ) - to say the last words and reset the state machine afterwards
      */
     public static class Output {
 
         public enum OutputType {
-            INTERPRETATION, SAY_NOTHING, USE_FALLBACK
+            INTERPRETATION, SAY_NOTHING, USE_FALLBACK, END_CONVERSATION
         }
 
         private final OutputType type;
@@ -89,6 +93,18 @@ public abstract class State {
             return new Output(OutputType.USE_FALLBACK, null);
         }
 
+        public static Output endConversation() {
+            return new Output(OutputType.END_CONVERSATION, null);
+        }
+
+        public static Output endConversation(String lastWords) {
+            if (lastWords == null) {
+                return endConversation();
+            }
+            return new Output(OutputType.END_CONVERSATION, new Interpretation(lastWords));
+        }
+
+
         // Non-static methods
 
         public boolean hasInterpretation() {
@@ -101,6 +117,10 @@ public abstract class State {
 
         public boolean isEmpty() {
             return type == OutputType.SAY_NOTHING;
+        }
+
+        public boolean isEndOfConversation() {
+            return type == OutputType.END_CONVERSATION;
         }
 
         public Interpretation getInterpretation() {

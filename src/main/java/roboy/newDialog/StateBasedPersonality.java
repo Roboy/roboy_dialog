@@ -36,24 +36,63 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
     private final Verbalizer verbalizer;
 
+    private boolean stopTalking;
+
 
     public StateBasedPersonality(RosMainNode rmn, Verbalizer verb) {
         super(rmn);
         verbalizer = verb;
-        reset();
+        stopTalking = false;
+    }
+
+    /**
+     * Reset this state machine: active state will be set to initial state. All State objects will stay
+     * as they are and will KEEP all internal variables unchanged.
+     *
+     * If you do not want to keep any information from the previous conversation, call loadFromFile() before reset.
+     * Reloading from file will create "fresh" State objects.
+     */
+    public void reset() {
+        // start talking again
+        stopTalking = false;
+
+        // and go back to initial state
+        State initial = getInitialState();
+        if (initial == null) {
+            logger.error("This personality state machine has not been initialized!");
+            return;
+        }
+        setActiveState(initial);
+    }
+
+    private void endConversation() {
+        setActiveState((State) null);
+        stopTalking = true;
+    }
+
+    /**
+     * Indicates that the conversation should stop. This happens if
+     *  - the active state returns no next state
+     *  - or the active state returns END_CONVERSATION from act() or react()
+     * @return true if the conversation is finished and this personality should be reset or reloaded from file.
+     */
+    public boolean conversationEnded() {
+        return stopTalking;
     }
 
 
-    private void reset() {
-        // go back to initial state
-        setActiveState(getInitialState());
-    }
 
     /**
      * Always called once by the (new) DialogSystem at the beginning of every new conversation.
      * @return list of actions based on act() of the initial/active state
      */
     public List<Action> startConversation() {
+
+        if (conversationEnded()) {
+            logger.error("The end of conversation was reached! Maybe you forgot to call reset() or loadFromFile()?");
+            return new ArrayList<>();
+        }
+
         State activeState = getActiveState();
         if (activeState == null) {
             logger.error("This personality state machine has not been initialized!");
@@ -72,6 +111,11 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
     @Override
     public List<Action> answer(Interpretation input) {
+
+        if (conversationEnded()) {
+            logger.error("The end of conversation was reached! Maybe you forgot to call reset() or loadFromFile()?");
+            return new ArrayList<>();
+        }
 
         State activeState = getActiveState();
         if (activeState == null) {
@@ -96,7 +140,8 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
         // MOVE TO THE NEXT STATE
         State next = activeState.getNextState();
         if (next == null) {
-            reset(); // go back to initial state
+            // no next state -> conversation ends
+            endConversation();
             return answerActions;
         }
         setActiveState(next);
@@ -107,6 +152,8 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
         return answerActions;
     }
+
+
 
 
     /**
@@ -127,14 +174,21 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
             logger.warn("state acted with null. This should not happen! " +
                     "Return Output.sayNothing() instead!");
             return previousActions;  // say nothing, just return the list of previous actions
-
         }
 
         if (act.hasInterpretation()) {
             Interpretation inter = act.getInterpretation();
             previousActions.add(verbalizer.verbalize(inter));
+
         } else if (act.requiresFallback()) {
            logger.warn("act() required fallback! Fallbacks are currently only allowed in react().");
+
+        } else if (act.isEndOfConversation()) {
+            endConversation();
+            Interpretation lastWords = act.getInterpretation();
+            if (lastWords != null) { // we still have some last words to say
+                previousActions.add(verbalizer.verbalize(lastWords));
+            }
         }
         // else: act.isEmpty()
 
@@ -199,15 +253,23 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
             if (react == null) {
                 logger.warn("state with identifier " + state.getIdentifier() +
                         " reacted with null. This should not happen!" +
-                        " It is not clear whether it wants to say nothing or ask the fallback.");
+                        " It is not clear whether it wants to say nothing, end the conversation or ask the fallback.");
                 return previousActions;  // say nothing, just return the list of previous actions
             }
         }
 
-        // verbalize only if there is a reply
         if (react.hasInterpretation()) {
+            // verbalize only if there is a reply
             Interpretation inter = react.getInterpretation();
             previousActions.add(verbalizer.verbalize(inter));
+
+        } else if (react.isEndOfConversation()) {
+            // end conversation and check for last words
+            endConversation();
+            Interpretation lastWords = react.getInterpretation();
+            if (lastWords != null) {
+                previousActions.add(verbalizer.verbalize(lastWords));
+            }
         }
 
         // else: react.isEmpty()
