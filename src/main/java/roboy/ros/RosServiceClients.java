@@ -6,9 +6,6 @@ import roboy_communication_control.*;
 /**
  * Stores the different client addresses and corresponding ROS message types.
  */
-//class RosServiceClients {
-//
-//}
 
 enum RosServiceClients {
 

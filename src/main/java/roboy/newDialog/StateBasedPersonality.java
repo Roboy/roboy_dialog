@@ -2,7 +2,6 @@ package roboy.newDialog;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import roboy.context.Context;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
 import roboy.dialog.personality.Personality;

@@ -13,7 +13,6 @@ public class GreetingsState extends State {
     private final String TRANSITION_GREETING_DETECTED = "greetingDetected";
 
     private State next;
-    private boolean inputOK = true;
 
     public GreetingsState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
@@ -28,7 +27,7 @@ public class GreetingsState extends State {
 
     @Override
     public Output react(Interpretation input) {
-
+        boolean inputOK;
         String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
         inputOK = StatementInterpreter.isFromList(sentence, Verbalizer.greetings) ||
                 StatementInterpreter.isFromList(sentence, Verbalizer.roboyNames) ||

@@ -82,7 +82,7 @@ public abstract class State {
         }
 
         public static Output sayNothing() {
-            return new Output(OutputType.SAY_NOTHING, new Interpretation(""));
+            return new Output(OutputType.SAY_NOTHING, null);
         }
 
         public static Output useFallback() {
