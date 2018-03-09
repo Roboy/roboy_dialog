@@ -1,9 +1,11 @@
 package roboy.newDialog.states;
 
+import com.google.gson.Gson;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.MemoryNodeModel;
@@ -84,10 +86,12 @@ public class IntroductionState extends State {
             String retrievedResult = "";
             ArrayList<Integer> ids = person.getRelationships(Neo4jRelationships.FRIEND_OF);
             if (ids != null && !ids.isEmpty()) {
-                Neo4jMemory memory = Neo4jMemory.getInstance();
+                Neo4jMemoryInterface memory = getParameters().getMemory();
                 try {
-                    MemoryNodeModel requestedObject = memory.getById(ids.get(ids.size()-1));
-                    retrievedResult = requestedObject.getProperties().get("name").toString();
+                    Gson gson = new Gson();
+                    String requestedObject = memory.getById(ids.get(0));
+                    MemoryNodeModel node = gson.fromJson(requestedObject, MemoryNodeModel.class);
+                    retrievedResult = node.getProperties().get("name").toString();
                 } catch (InterruptedException | IOException e) {
                     logger.error("Error on Memory data retrieval: " + e.getMessage());
                 }

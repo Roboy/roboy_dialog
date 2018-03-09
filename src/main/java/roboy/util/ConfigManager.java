@@ -65,13 +65,20 @@ public class ConfigManager {
             if (ROS_ENABLED)
             {
                 ROS_MASTER_IP = yamlConfig.getString("ROS_MASTER_IP");
-                ROS_ACTIVE_PKGS = yamlConfig.getList(String.class, "ROS_ACTIVE_PKGS");
+                List<String> activePkgs = yamlConfig.getList(String.class, "ROS_ACTIVE_PKGS");
+                if (activePkgs != null) {
+                    ROS_ACTIVE_PKGS = activePkgs;
+                }
+
             }
 
             DEBUG = yamlConfig.getBoolean("DEBUG");
 
             INPUT = yamlConfig.getString( "INPUT");
-            OUTPUTS = yamlConfig.getList(String.class, "OUTPUTS");
+            List<String> outputs = yamlConfig.getList(String.class, "OUTPUTS");
+            if (outputs != null) {
+                OUTPUTS = outputs;
+            }
 
             UDP_HOST_ADDRESS = yamlConfig.getString("UDP_HOST_ADDRESS");
             UDP_IN_SOCKET = yamlConfig.getInt("UDP_IN_SOCKET");

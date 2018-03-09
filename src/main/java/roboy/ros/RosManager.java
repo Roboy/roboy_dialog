@@ -31,6 +31,7 @@ class RosManager {
         boolean success = true;
         // Iterate through the RosServiceClients enum, mapping a client for each.
         for(RosServiceClients client : RosServiceClients.values()) {
+            
 
             if (ConfigManager.ROS_ACTIVE_PKGS.contains(client.rosPackage)) {
                 try {
@@ -41,6 +42,7 @@ class RosManager {
                     LOGGER.warn("{} client initialization FAILED!", client.toString());
                 }
             }
+
 
         }
 

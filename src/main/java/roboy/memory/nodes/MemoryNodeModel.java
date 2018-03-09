@@ -173,10 +173,10 @@ public class MemoryNodeModel {
         return gson.fromJson(json, this.getClass());
     }
 
-    public String toString() {
-        return "\nid: " + this.getId() +
-                "\nlabels: " + this.getLabels() +
-                "\nrelationships: " + this.getRelationships().toString() +
-                "\nproperties: " + this.getProperties();
-    }
+//    public String toString() {
+//        return "\nid: " + this.getId() +
+//                "\nlabels: " + this.getLabels() +
+//                "\nrelationships: " + this.getRelationships().toString() +
+//                "\nproperties: " + this.getProperties();
+//    }
 }

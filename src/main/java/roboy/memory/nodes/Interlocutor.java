@@ -50,7 +50,10 @@ public class Interlocutor extends MemoryNodeModel {
             if (ids != null && !ids.isEmpty()) {
                 //TODO Change from using first id to specifying if multiple matches are found.
                 try {
-                    fromJSON(memory.getById(ids.get(0)), new Gson());
+                    MemoryNodeModel node = fromJSON(memory.getById(ids.get(0)), new Gson());
+                    setId(node.getId());
+                    setRelationships(node.getRelationships());
+                    setProperties(node.getProperties());
                     FAMILIAR = true;
                 } catch (InterruptedException | IOException e) {
                     LOGGER.warn("Unexpected memory error: provided ID not found upon querying.");
