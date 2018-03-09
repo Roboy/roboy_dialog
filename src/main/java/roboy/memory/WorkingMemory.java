@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import roboy.linguistics.Triple;
-
+@Deprecated
 public class WorkingMemory implements Memory<Triple>{
 	
 	private static WorkingMemory memory;
@@ -47,7 +47,7 @@ public class WorkingMemory implements Memory<Triple>{
 		list.get(s).add(t);
 	}
 
-	@Override
+
 	public List<Triple> retrieve(Triple object) {
 		List<Triple> agensTriples = null;
 		List<Triple> patiensTriples = null;

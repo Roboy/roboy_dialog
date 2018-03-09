@@ -12,7 +12,7 @@ import org.ros.node.service.ServiceResponseListener;
 
 import org.ros.node.topic.Subscriber;
 import roboy.context.Context;
-import roboy.dialog.Config;
+import roboy.util.ConfigManager;
 import roboy_communication_cognition.*;
 import roboy_communication_control.*;
 
@@ -25,40 +25,43 @@ public class RosMainNode extends AbstractNodeMain {
     private CountDownLatch rosConnectionLatch;
     private RosManager services = new RosManager();
     protected Object resp;
-    public boolean STARTUP_SUCCESS = true;
+
+    String warning = "Trying to talk to ROS package %s, but it's not initialized or deactivated";
     String memoryFailure = "{" +
             "status : \"FAIL\", " +
             "message : \"Memory client not initialized.\"" +
             "}";
 
-
     final Logger LOGGER = LogManager.getLogger();
 
     public RosMainNode() {
-        // Ctor is called but should not be initialized offline.
-        if (Config.NOROS && !Config.MEMORY) return;
 
-        services = new RosManager();
-
-        String hostName = Config.ROS_HOSTNAME;
-        if (hostName == null || hostName.isEmpty()) {
-            LOGGER.warn("Could not find ROS hostname. ROS will be unavailable. Set ROS_HOSTNAME environmental variable.");
-            STARTUP_SUCCESS = false;
+        if (!ConfigManager.ROS_ENABLED) {
+            LOGGER.warn("ROS is disabled in config.properties, but you are still trying to use it");
         }
 
-        URI masterURI = URI.create("http://" + hostName + ":11311");
+        else {
+            services = new RosManager();
 
-        NodeConfiguration nodeConfiguration = NodeConfiguration.newPublic(hostName);
-        nodeConfiguration.setMasterUri(masterURI);
+            if (ConfigManager.ROS_MASTER_IP == null || ConfigManager.ROS_MASTER_IP.isEmpty()) {
+                LOGGER.error("Could not connect to ROS master. ROS will be unavailable. Check if ROS_MASTER_IP is specified " +
+                        "correctly or disable ROS in config.properties file.");
+            }
 
-        // Create and start ROS Node
-        nodeConfiguration.setNodeName("roboy_dialog");
-        NodeMainExecutor nodeMainExecutor = DefaultNodeMainExecutor.newDefault();
-        nodeMainExecutor.execute(this, nodeConfiguration);
-        rosConnectionLatch = new CountDownLatch(1);
-        waitForLatchUnlock(rosConnectionLatch, "startup");
+            URI masterURI = URI.create("http://" + ConfigManager.ROS_MASTER_IP + ":11311");
 
-        Context.getInstance().initializeROS(this);
+            NodeConfiguration nodeConfiguration = NodeConfiguration.newPublic(ConfigManager.ROS_MASTER_IP);
+            nodeConfiguration.setMasterUri(masterURI);
+
+            // Create and start ROS Node
+            nodeConfiguration.setNodeName("roboy_dialog");
+            NodeMainExecutor nodeMainExecutor = DefaultNodeMainExecutor.newDefault();
+            nodeMainExecutor.execute(this, nodeConfiguration);
+            rosConnectionLatch = new CountDownLatch(1);
+            waitForLatchUnlock(rosConnectionLatch, "ROS init");
+
+            Context.getInstance().initializeROS(this);
+        }
     }
 
     @Override
@@ -68,21 +71,18 @@ public class RosMainNode extends AbstractNodeMain {
 
     @Override
     public void onStart(final ConnectedNode connectedNode) {
-        boolean initializationSuccess = services.initialize(connectedNode);
-        if(!initializationSuccess) {
-            STARTUP_SUCCESS = false;
-        }
+        services.initialize(connectedNode);
         rosConnectionLatch.countDown();
     }
 
     public boolean SynthesizeSpeech(String text) {
 
-        if(services.notInitialized(RosClients.SPEECHSYNTHESIS)) {
+        if(services.notInitialized(RosServiceClients.SPEECHSYNTHESIS)) {
             // FALLBACK RETURN VALUE
             return false;
         }
 
-        ServiceClient<TalkRequest, TalkResponse> speechSynthesisClient = services.getServiceClient(RosClients.SPEECHSYNTHESIS);
+        ServiceClient<TalkRequest, TalkResponse> speechSynthesisClient = services.getService(RosServiceClients.SPEECHSYNTHESIS);
         rosConnectionLatch = new CountDownLatch(1);
         TalkRequest request = speechSynthesisClient.newMessage();
         request.setText(text);
@@ -107,12 +107,12 @@ public class RosMainNode extends AbstractNodeMain {
 
     public String RecognizeSpeech() {
 
-        if(services.notInitialized(RosClients.STT)) {
+        if(services.notInitialized(RosServiceClients.STT)) {
             // FALLBACK RETURN VALUE
             return null;
         }
 
-        ServiceClient<RecognizeSpeechRequest, RecognizeSpeechResponse> sttClient = services.getServiceClient(RosClients.STT);
+        ServiceClient<RecognizeSpeechRequest, RecognizeSpeechResponse> sttClient = services.getService(RosServiceClients.STT);
         rosConnectionLatch = new CountDownLatch(1);
         RecognizeSpeechRequest request = sttClient.newMessage();
         ServiceResponseListener<RecognizeSpeechResponse> listener = new ServiceResponseListener<RecognizeSpeechResponse>() {
@@ -137,16 +137,17 @@ public class RosMainNode extends AbstractNodeMain {
 
     public String GenerateAnswer(String question) {
 
-        if (Config.NOROS || question == null || question.isEmpty()) {
+        if (question == null || question.isEmpty()) {
+            LOGGER.warn("GenerateAnswer ROS service received NULL on input");
             return null;
         }
 
 
-        if(services.notInitialized(RosClients.GENERATIVE)) {
+        if(services.notInitialized(RosServiceClients.GENERATIVE)) {
             // FALLBACK RETURN VALUE
             return null;
         }
-        ServiceClient<GenerateAnswerRequest, GenerateAnswerResponse> generativeClient = services.getServiceClient(RosClients.GENERATIVE);
+        ServiceClient<GenerateAnswerRequest, GenerateAnswerResponse> generativeClient = services.getService(RosServiceClients.GENERATIVE);
         rosConnectionLatch = new CountDownLatch(1);
         GenerateAnswerRequest request = generativeClient.newMessage();
         request.setTextInput(question);
@@ -171,11 +172,11 @@ public class RosMainNode extends AbstractNodeMain {
 
     public boolean ShowEmotion(String emotion) {
 
-        if(services.notInitialized(RosClients.EMOTION)) {
+        if(services.notInitialized(RosServiceClients.EMOTION)) {
             // FALLBACK RETURN VALUE
             return false;
         }
-        ServiceClient<ShowEmotionRequest, ShowEmotionResponse> emotionClient = services.getServiceClient(RosClients.EMOTION);
+        ServiceClient<ShowEmotionRequest, ShowEmotionResponse> emotionClient = services.getService(RosServiceClients.EMOTION);
         rosConnectionLatch = new CountDownLatch(1);
         ShowEmotionRequest request = emotionClient.newMessage();
         request.setEmotion(emotion);
@@ -200,11 +201,11 @@ public class RosMainNode extends AbstractNodeMain {
 
     public String CreateMemoryQuery(String query) {
 
-        if(services.notInitialized(RosClients.CREATEMEMORY)) {
+        if(services.notInitialized(RosServiceClients.CREATEMEMORY)) {
             // FALLBACK RETURN VALUE
             return memoryFailure;
         }
-        ServiceClient<DataQueryRequest, DataQueryResponse> createMemoryClient = services.getServiceClient(RosClients.CREATEMEMORY);
+        ServiceClient<DataQueryRequest, DataQueryResponse> createMemoryClient = services.getService(RosServiceClients.CREATEMEMORY);
         rosConnectionLatch = new CountDownLatch(1);
         DataQueryRequest createRequest = createMemoryClient.newMessage();
         // TODO set the header
@@ -230,11 +231,11 @@ public class RosMainNode extends AbstractNodeMain {
 
     public String UpdateMemoryQuery(String query) {
 
-        if(services.notInitialized(RosClients.UPDATEMEMORY)) {
+        if(services.notInitialized(RosServiceClients.UPDATEMEMORY)) {
             // FALLBACK RETURN VALUE
             return memoryFailure;
         }
-        ServiceClient<DataQueryRequest, DataQueryResponse> updateMemoryClient = services.getServiceClient(RosClients.UPDATEMEMORY);
+        ServiceClient<DataQueryRequest, DataQueryResponse> updateMemoryClient = services.getService(RosServiceClients.UPDATEMEMORY);
         rosConnectionLatch = new CountDownLatch(1);
         DataQueryRequest updateRequest = updateMemoryClient.newMessage();
         // TODO set the header
@@ -260,11 +261,11 @@ public class RosMainNode extends AbstractNodeMain {
 
     public String GetMemoryQuery(String query) {
 
-        if(services.notInitialized(RosClients.GETMEMORY)) {
+        if(services.notInitialized(RosServiceClients.GETMEMORY)) {
             // FALLBACK RETURN VALUE
             return memoryFailure;
         }
-        ServiceClient<DataQueryRequest, DataQueryResponse> getMemoryClient = services.getServiceClient(RosClients.GETMEMORY);
+        ServiceClient<DataQueryRequest, DataQueryResponse> getMemoryClient = services.getService(RosServiceClients.GETMEMORY);
         rosConnectionLatch = new CountDownLatch(1);
         DataQueryRequest getRequest = getMemoryClient.newMessage();
         // TODO set the header
@@ -290,11 +291,11 @@ public class RosMainNode extends AbstractNodeMain {
 
     public String DeleteMemoryQuery(String query) {
 
-        if(services.notInitialized(RosClients.DELETEMEMORY)) {
+        if(services.notInitialized(RosServiceClients.DELETEMEMORY)) {
             // FALLBACK RETURN VALUE
             return memoryFailure;
         }
-        ServiceClient<DataQueryRequest, DataQueryResponse> deleteMemoryClient = services.getServiceClient(RosClients.DELETEMEMORY);
+        ServiceClient<DataQueryRequest, DataQueryResponse> deleteMemoryClient = services.getService(RosServiceClients.DELETEMEMORY);
         rosConnectionLatch = new CountDownLatch(1);
         DataQueryRequest getRequest = deleteMemoryClient.newMessage();
         // TODO set the header
@@ -320,11 +321,11 @@ public class RosMainNode extends AbstractNodeMain {
 
     public String CypherMemoryQuery(String query) {
 
-        if(services.notInitialized(RosClients.CYPHERMEMORY)) {
+        if(services.notInitialized(RosServiceClients.CYPHERMEMORY)) {
             // FALLBACK RETURN VALUE
             return memoryFailure;
         }
-        ServiceClient<DataQueryRequest, DataQueryResponse> cypherMemoryClient = services.getServiceClient(RosClients.CYPHERMEMORY);
+        ServiceClient<DataQueryRequest, DataQueryResponse> cypherMemoryClient = services.getService(RosServiceClients.CYPHERMEMORY);
         rosConnectionLatch = new CountDownLatch(1);
         DataQueryRequest cypherRequest = cypherMemoryClient.newMessage();
         // TODO set the header
@@ -350,11 +351,11 @@ public class RosMainNode extends AbstractNodeMain {
 
     public Object DetectIntent(String sentence) {
 
-        if(services.notInitialized(RosClients.INTENT)) {
+        if(services.notInitialized(RosServiceClients.INTENT)) {
             // FALLBACK RETURN VALUE
             return null;
         }
-        ServiceClient<DetectIntentRequest, DetectIntentResponse> intentClient = services.getServiceClient(RosClients.INTENT);
+        ServiceClient<DetectIntentRequest, DetectIntentResponse> intentClient = services.getService(RosServiceClients.INTENT);
         rosConnectionLatch = new CountDownLatch(1);
         DetectIntentRequest request = intentClient.newMessage();
         request.setSentence(sentence);
@@ -379,6 +380,8 @@ public class RosMainNode extends AbstractNodeMain {
 
     public void addListener(MessageListener listener, RosSubscribers subscriber) {
         if(services.notInitialized(subscriber)) {
+
+            LOGGER.warn(String.format(warning, subscriber.rosPackage));
             return;
         }
         Subscriber s = services.getSubscriber(subscriber);
@@ -396,7 +399,7 @@ public class RosMainNode extends AbstractNodeMain {
             latch.await();
 
         } catch (InterruptedException ie) {
-            System.out.println("Warning: continuing before " + latchName + " latch was released");
+            LOGGER.warn("Continuing before " + latchName + " latch was released");
         }
     }
 

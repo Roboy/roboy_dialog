@@ -1,0 +1,37 @@
+{
+  "initialState": "Greetings",
+  "states": [
+    {
+      "identifier": "Greetings",
+      "implementation" : "roboy.newDialog.states.GreetingsState",
+      "fallback" : "RandomAnswer",
+      "transitions" : {
+        "greetingDetected" : "Uzupis"
+      }
+    },
+    {
+      "identifier": "Uzupis",
+      "implementation" : "roboy.newDialog.states.UzupisState",
+      "fallback" : "RandomAnswer",
+      "transitions" : {
+        "loop": "Uzupis",
+        "next": "Farewell"
+      },
+      "parameters" : {
+        "QAFilePath" : "sentences/UzupisQAList.json"
+      }
+    },
+    {
+      "identifier": "Farewell",
+      "implementation" : "roboy.newDialog.examples.toyStates.ToyFarewellState",
+      "transitions" : {}
+    },
+    {
+      "identifier": "RandomAnswer",
+      "implementation" : "roboy.newDialog.examples.toyStates.ToyRandomAnswerState",
+      "transitions" : {
+        "next" : "Farewell"
+      }
+    }
+  ]
+}

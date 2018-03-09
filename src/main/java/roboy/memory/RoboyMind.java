@@ -23,6 +23,7 @@ import roboy.ros.Ros;
 /**
  * Protege memory.
  */
+@Deprecated
 public class RoboyMind implements Memory<Concept>
 {
 	private static RoboyMind roboyMemory;
@@ -194,7 +195,7 @@ public class RoboyMind implements Memory<Concept>
 		
 	}
 	
-	@Override
+
 	public List<Concept> retrieve(Concept object)
 	{
 		// get objects matching the requested lists

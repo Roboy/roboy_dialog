@@ -28,6 +28,13 @@ class JsonModel {
     JsonEntryModel WORK_FOR;
     JsonEntryModel OCCUPIED_AS;
     JsonEntryModel IS;
+    JsonEntryModel APPLES;
+    JsonEntryModel ANIMAL;
+    JsonEntryModel WORD;
+    JsonEntryModel COLOR;
+    JsonEntryModel PLANT;
+    JsonEntryModel NAME;
+    JsonEntryModel FRUIT;
 }
 
 /**

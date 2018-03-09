@@ -22,7 +22,16 @@ public class ToyFarewellState extends State {
 
     @Override
     public Output act() {
-        return Output.say( "Bye bye! [say anything, will end conversation]" );
+        // Two options here:
+        // - say "bye bye", ignore response and end conversation after react():
+        // - or say "bye bye" and immediately end the conversation
+
+        // wait for response
+        //return Output.say( "Bye bye! [say anything, will end conversation]" );
+
+        // end immediately
+        return Output.endConversation("Bye bye! [end conversation immediately]");
+
     }
 
     @Override

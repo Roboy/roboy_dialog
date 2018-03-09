@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * CSV file memory. Can only be used for retrieving and not for storing.
  */
+@Deprecated
 public class PersistentKnowledge implements Memory<Triple>{
 
     private static PersistentKnowledge persistentKnowledge;
@@ -46,7 +47,7 @@ public class PersistentKnowledge implements Memory<Triple>{
         }
         return persistentKnowledge;
     }
-    @Override
+
     public List<Triple> retrieve(Triple triple)
     {
         List<Triple> triples = new ArrayList<>();

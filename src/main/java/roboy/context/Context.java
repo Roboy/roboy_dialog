@@ -49,7 +49,6 @@ public class Context {
     /* OBSERVERS DEFINED HERE */
     private final FaceCoordinatesObserver FACE_COORDINATES_OBSERVER;
 
-    private RosMainNode node;
 
     // By calling getInstance, Context initializes its updaters and observers.
     private static Context context = Context.getInstance();
@@ -65,7 +64,7 @@ public class Context {
 
         /* OBSERVERS INITIALIZED AND ADDED HERE */
         FACE_COORDINATES_OBSERVER = new FaceCoordinatesObserver();
-        FACE_COORDINATES.value.addObserver(FACE_COORDINATES_OBSERVER);
+//        FACE_COORDINATES.value.addObserver(FACE_COORDINATES_OBSERVER);
     }
 
     /**
@@ -79,8 +78,8 @@ public class Context {
             if(!rosInitialized) {
 
                 /* EXTERNAL UPDATERS INITIALIZED HERE */
-                AUDIO_ANGLES_UPDATER = new AudioDirectionUpdater(AUDIO_ANGLES.valueHistory, ros);
-                ROS_TEST_UPDATER = new ROSTestUpdater(ROS_TEST.valueHistory, ros);
+//                AUDIO_ANGLES_UPDATER = new AudioDirectionUpdater(AUDIO_ANGLES.valueHistory, ros);
+//                ROS_TEST_UPDATER = new ROSTestUpdater(ROS_TEST.valueHistory, ros);
                 // TODO Add a FACE_COORDINATE_UPDATER.
                 // Edit the data type and integration tests, once the real data type is used.
 

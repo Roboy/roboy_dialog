@@ -2,6 +2,7 @@ package roboy.dialog.personality;
 
 import java.util.*;
 
+import roboy.context.Context;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
 import roboy.dialog.action.SpeechAction;
@@ -10,6 +11,7 @@ import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.StatementInterpreter;
+import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.WorkingMemory;
 import roboy.memory.nodes.Interlocutor;
 import roboy.talk.Verbalizer;
@@ -63,13 +65,15 @@ public class SmallTalkPersonality implements Personality {
     private State state;
     private Verbalizer verbalizer;
     private RosMainNode rosMainNode;
+    private Neo4jMemoryInterface memory;
 
     // The class saving information about the conversation partner.
     private Interlocutor person;
 
-    public SmallTalkPersonality(Verbalizer verbalizer, RosMainNode node) {
+    public SmallTalkPersonality(Verbalizer verbalizer, RosMainNode node, Neo4jMemoryInterface memory) {
         this.verbalizer = verbalizer;
         this.rosMainNode = node;
+        this.memory = memory;
         this.initialize();
     }
 
@@ -163,15 +167,15 @@ public class SmallTalkPersonality implements Personality {
     private void initialize()
     {
         // initialize new conversation partner
-        person = new Interlocutor();
+        person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
         // build state machine
         GreetingState greetings = new GreetingState();
-        IntroductionState intro = new IntroductionState(person);
+        IntroductionState intro = new IntroductionState(memory);
         FarewellState farewell = new FarewellState();
         WildTalkState wild = new WildTalkState(rosMainNode);
         SegueState segue = new SegueState(wild);
         QuestionAnsweringState answer = new QuestionAnsweringState(segue);
-        QuestionRandomizerState qa = new QuestionRandomizerState(answer, person);
+        QuestionRandomizerState qa = new QuestionRandomizerState(answer, memory);
 
         greetings.setNextState(intro);
         intro.setNextState(qa);

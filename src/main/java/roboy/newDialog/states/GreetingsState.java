@@ -1,6 +1,10 @@
 package roboy.newDialog.states;
 
+import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.logic.StatementInterpreter;
+import roboy.talk.StatementBuilder;
+import roboy.talk.Verbalizer;
 
 import java.util.Set;
 
@@ -10,7 +14,6 @@ public class GreetingsState extends State {
 
     private State next;
 
-
     public GreetingsState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
         next = this;
@@ -18,15 +21,24 @@ public class GreetingsState extends State {
 
     @Override
     public Output act() {
-        return Output.say("GreetingsState act()");
+
+        return Output.say("standby");
     }
 
     @Override
     public Output react(Interpretation input) {
-        next = getTransition(TRANSITION_GREETING_DETECTED);
-        // or next = this if no greeting was detected
+        boolean inputOK;
+        String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
+        inputOK = StatementInterpreter.isFromList(sentence, Verbalizer.greetings) ||
+                StatementInterpreter.isFromList(sentence, Verbalizer.roboyNames) ||
+                StatementInterpreter.isFromList(sentence, Verbalizer.triggers);
 
-        return Output.say("GreetingsState react()");
+        if (inputOK) {
+            next = getTransition(TRANSITION_GREETING_DETECTED);
+            return Output.say(StatementBuilder.random(Verbalizer.greetings));
+        }
+
+        return Output.sayNothing();
     }
 
     @Override

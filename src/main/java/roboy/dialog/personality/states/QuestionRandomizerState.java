@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import roboy.context.Context;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
 import roboy.util.JsonQAValues;
@@ -22,6 +24,8 @@ public class QuestionRandomizerState implements State{
 	// TODO ask memory to add relation.
 	// TODO There are new predicates from memory, need integrating.
 	
+
+	private Neo4jMemoryInterface memory;
 	private PersonalQAState[] questionStates;
 	private PersonalQAState locationQuestion;
 	private PersonalFollowUpState[] followUpStates;
@@ -47,9 +51,10 @@ public class QuestionRandomizerState implements State{
 	Map<String, List<String>> followUp;
 	Map<String, List<String>> answersFollowUp;
 	
-	public QuestionRandomizerState(State inner, Interlocutor person) {
+	public QuestionRandomizerState(State inner, Neo4jMemoryInterface memory) {
 		this.inner = inner;
-		this.person = person;
+		this.person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+		this.memory = memory;
 //		questions = JsonUtils.getSentencesFromJsonFile(questionsFile);
 //		successAnswers = JsonUtils.getSentenceArraysFromJsonFile(successAnswersFile);
 //		failureAnswers = JsonUtils.getSentencesFromJsonFile(failureAnswersFile);
@@ -122,6 +127,7 @@ public class QuestionRandomizerState implements State{
 
 	@Override
 	public Reaction react(Interpretation input) {
+		Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
 		if(chosenState==null){
 			return inner.react(input);
 		}
@@ -145,6 +151,7 @@ public class QuestionRandomizerState implements State{
 
 	private PersonalFollowUpState initializeFollowUpQuestion(Neo4jRelationships relationship) {
 		return new PersonalFollowUpState(
+				memory,
 				followUp.get(relationship.type),
 				failureAnswers.get(relationship.type),
                 answersFollowUp.get(relationship.type),

@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.LogManager;
 
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
@@ -19,6 +20,7 @@ import roboy.util.Relation;
  * State in which Roboy is answering questions based on DBpedia or the knowledge base
  * from the resources folder.
  */
+@Deprecated
 public class QuestionAnsweringState implements State{
 
 	private boolean first = true;
@@ -159,7 +161,8 @@ public class QuestionAnsweringState implements State{
 //			System.out.println("Relation: "+relation);
 			for(Memory<Relation> mem : memories){
 				try{
-					List<Relation> rememberedList = mem.retrieve(relation);
+					List<Relation> rememberedList = new ArrayList<>();//mem.retrieve(relation);
+					org.apache.logging.log4j.LogManager.getLogger().warn("innerReaction of QA state is not working properly");
 					for (Relation remembered: rememberedList)
 					{
 						if(remembered!=null&&remembered.object!=null){ // TODO: check for proper role
