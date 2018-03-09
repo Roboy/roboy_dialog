@@ -11,7 +11,10 @@ import roboy.memory.Neo4jMemory;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+
+import static roboy.memory.Neo4jRelationships.*;
 
 
 /**
@@ -30,12 +33,11 @@ import java.util.Set;
  * 3) No parameters are used.
  */
 public class IntroductionState extends State {
-    private final String TRANSITION_KNOWN_PERSON = "knownPerson";
-    private final String TRANSITION_NEW_PERSON = "newPerson";
-
-
+    private final String UPDATE_KNOWN_PERSON = "knownPerson";
+    private final String LEARN_ABOUT_PERSON = "newPerson";
     private final Logger logger = LogManager.getLogger();
 
+    private Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
     private State nextState;
 
     public IntroductionState(String stateIdentifier, StateParameters params) {
@@ -74,15 +76,11 @@ public class IntroductionState extends State {
 
         // 3. update interlocutor in context
         updateInterlocutorInContext(person);
-        Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
-
 
         // 4. check if person is known/familiar
         if (person.FAMILIAR) {
 
             // 4a. person known/familiar
-            nextState = getTransition(TRANSITION_KNOWN_PERSON);
-
             String retrievedResult = "";
             ArrayList<Integer> ids = person.getRelationships(Neo4jRelationships.FRIEND_OF);
             if (ids != null && !ids.isEmpty()) {
@@ -95,13 +93,19 @@ public class IntroductionState extends State {
                 }
             }
 
+            Boolean infoPurity = checkInfoPurity3VL(person);
+            if (infoPurity == null) {
+                nextState = (Math.random() < 0.3) ? getTransition(UPDATE_KNOWN_PERSON) : getTransition(LEARN_ABOUT_PERSON);
+            } else {
+                nextState = infoPurity ? getTransition(UPDATE_KNOWN_PERSON) : getTransition(LEARN_ABOUT_PERSON);
+            }
+
             // TODO: get some friends or hobbies of the person to make answer more interesting
             return Output.say("Hey, I know you, " + person.getName() + "! You are friends with " + retrievedResult);
 
         } else {
-
             // 4b. person is not known
-            nextState = getTransition(TRANSITION_NEW_PERSON);
+            nextState = getTransition(LEARN_ABOUT_PERSON);
 
             // TODO: what would you say to a new person?
             return Output.say("Nice to meet you!");
@@ -119,11 +123,30 @@ public class IntroductionState extends State {
     }
 
     private void updateInterlocutorInContext(Interlocutor interlocutor) {
-        // TODO: update interlocutor
+        Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(interlocutor);
     }
+
+    private Boolean checkInfoPurity3VL(Interlocutor interlocutor) {
+        List<Boolean> personInfoPurity = new List<Boolean>;
+
+        for (Neo4jRelationships predicate : predicates) {
+            personInfoPurity.add(interlocutor.hasRelationship(predicate));
+        }
+
+        if (personInfoPurity.contains(true)) {
+            if (personInfoPurity.contains(false)) {
+                return null;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
 
     @Override
     protected Set<String> getRequiredTransitionNames() {
-        return newSet(TRANSITION_KNOWN_PERSON, TRANSITION_NEW_PERSON);
+        return newSet(UPDATE_KNOWN_PERSON, LEARN_ABOUT_PERSON);
     }
 }
