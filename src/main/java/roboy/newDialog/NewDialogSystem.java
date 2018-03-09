@@ -8,14 +8,10 @@ import roboy.context.Context;
 import roboy.dialog.action.Action;
 import roboy.io.*;
 import roboy.linguistics.sentenceanalysis.*;
-<<<<<<< HEAD
 import roboy.memory.Neo4jMemory;
-=======
 import roboy.memory.DummyMemory;
-import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.nodes.Interlocutor;
->>>>>>> devel
 import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
 import roboy.util.ConfigManager;
