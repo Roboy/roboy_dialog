@@ -127,7 +127,7 @@ public class IntroductionState extends State {
     }
 
     private Boolean checkInfoPurity3VL(Interlocutor interlocutor) {
-        List<Boolean> personInfoPurity = new List<Boolean>;
+        ArrayList<Boolean> personInfoPurity = new ArrayList<Boolean>();
 
         for (Neo4jRelationships predicate : predicates) {
             personInfoPurity.add(interlocutor.hasRelationship(predicate));
