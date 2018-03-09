@@ -155,4 +155,11 @@ public class MemoryNodeModel {
     public MemoryNodeModel fromJSON(String json, Gson gson) {
         return gson.fromJson(json, this.getClass());
     }
+
+    public String toString() {
+        return "\nid: " + this.getId() +
+                "\nlabels: " + this.getLabels() +
+                "\nrelationships: " + this.getRelationships().toString() +
+                "\nproperties: " + this.getProperties();
+    }
 }

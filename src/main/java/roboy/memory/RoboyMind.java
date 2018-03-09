@@ -269,7 +269,6 @@ public class RoboyMind implements Memory<Concept>
 					result.put(attribute.getKey(), matchedConcepts);
 				}
 			}
-
 		}
 
 		return result;
