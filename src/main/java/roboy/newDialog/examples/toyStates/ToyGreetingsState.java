@@ -35,7 +35,7 @@ public class ToyGreetingsState extends State {
 
     @Override
     public Output act() {
-        return Output.say("Hello there people! I am Roboy. Good evening!");
+        return Output.say("Hello! [expecting greeting]");
         // you can return an output based on a string or pass an interpretation object:
         // return Output.say(new Interpretation("Hello! [expecting greeting]"));
     }
@@ -48,11 +48,7 @@ public class ToyGreetingsState extends State {
         inputOK = StatementInterpreter.isFromList(sentence, Verbalizer.greetings);
 
         if (inputOK) {
-            return Output.say( "I like it when you greet me. "  +
-                    "Oh, it's so great that you want to become a citizen of the Republic of Uzupis! " +
-                            "Soon you will be a full-fledged citizen of the Unesco world cultural heritage of Uzupis, " +
-                            "the artist republic, the republic of angles and the republic of apples. So let's get started! " +
-                    "I need to collect some information to make a decision." );
+            return Output.say( "I like it when you greet me! [greeting detected, next state]" );
         } else {
             // the case where we don't get a greeting back
             // don't worry about this here, everything will be handled by the fallback state
