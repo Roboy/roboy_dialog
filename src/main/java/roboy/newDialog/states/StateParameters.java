@@ -30,15 +30,15 @@ public class StateParameters {
         this.memory = mem;
 
         if (stateMachine == null) {
-            logger.warn("StateParameters should have a reference to the state machine");
+            logger.debug("StateParameters should have a reference to the state machine");
         }
 
         if (rosMainNode == null) {
-            logger.info("Using offline StateParameters (no RosMainNode passed)");
+            logger.debug("Using offline StateParameters (no RosMainNode passed)");
         }
 
         if (memory == null) {
-            logger.info("Using offline StateParameters (no Memory passed)");
+            logger.debug("Using offline StateParameters (no Memory passed)");
         }
 
     }

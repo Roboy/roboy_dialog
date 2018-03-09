@@ -18,7 +18,6 @@ import java.util.List;
 public class ConfigManager {
 
     private static String yamlConfigFile = "config.properties";
-    final Logger LOGGER = LogManager.getLogger();
 
     public static boolean ROS_ENABLED = false;
     public static String ROS_MASTER_IP = "127.0.0.1";
@@ -44,20 +43,30 @@ public class ConfigManager {
     public static String IBM_TTS_USER = "";
     public static String IBM_TTS_PASS = "";
 
-    private static final ConfigManager manager = new ConfigManager();
+    static {
+        // this block is called once at and will initialize config
+        // alternative: create a singleton for this class
+        initializeConfig();
+    }
 
-
-    private ConfigManager() {
+    /**
+     * This function reads the YAML config file and initializes all fields.
+     * It is called only once at the beginning
+     */
+    private static void initializeConfig() {
+        Logger LOGGER = LogManager.getLogger();
         LOGGER.info("Initializing Config");
 
         YAMLConfiguration yamlConfig = new YAMLConfiguration();
         try
         {
             File propertiesFile = new File(yamlConfigFile);
-            if(! propertiesFile.exists()) { // propertiesFile == null doesn't work!
+
+            if (!propertiesFile.exists()) { // propertiesFile == null doesn't work!
                 LOGGER.error("Could not find "+yamlConfigFile+" file in project path! YAML configurations will be unavailable.");
                 return;
             }
+
             FileReader propertiesReader = new FileReader(propertiesFile);
             yamlConfig.read(propertiesReader);
 
@@ -86,8 +95,7 @@ public class ConfigManager {
 
             try {
                 DATAGRAM_SOCKET = new DatagramSocket(UDP_IN_SOCKET);
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 LOGGER.error(e.getMessage());
             }
 
@@ -100,12 +108,12 @@ public class ConfigManager {
             IBM_TTS_USER = yamlConfig.getString("IBM_TTS_USER");
             IBM_TTS_PASS = yamlConfig.getString("IBM_TTS_PASS");
 
-        }
-        catch(ConfigurationException | FileNotFoundException e)
-        {
+
+        } catch(ConfigurationException | FileNotFoundException e) {
             LOGGER.error("Exception while reading YAML configurations from "+yamlConfigFile);
             LOGGER.error(e.getMessage());
         }
     }
+
 
 }

@@ -33,26 +33,6 @@ public class NewDialogSystem {
 
     private final static Logger logger = LogManager.getLogger();
 
-
-    // TODO move to utils or elsewhere since shared between all possible dialog systems
-    private static String getPersonalityFilePathFromConfig() {
-
-        String personalityPath = null;
-
-        try {
-            YAMLConfiguration yamlConfig = new YAMLConfiguration();
-            File configFile = new File("config.properties");
-            FileReader reader = new FileReader(configFile);
-            yamlConfig.read(reader);
-            personalityPath = yamlConfig.getString("PERSONALITY_FILE");
-
-        } catch (Exception e) {
-            logger.error("Invalid or missing configuration file! " + e.getMessage());
-        }
-
-        return personalityPath;
-    }
-
     public static void main(String[] args) throws SocketException, UnknownHostException {
         // initialize ROS node
 
@@ -64,7 +44,6 @@ public class NewDialogSystem {
             // TODO: create a nice offline interface for RosMainNode, similar to DummyMemory
             rosMainNode = null;
         }
-
 
         MultiInputDevice multiIn = IO.getInputs(rosMainNode);
         MultiOutputDevice multiOut = IO.getOutputs(rosMainNode);
@@ -91,8 +70,7 @@ public class NewDialogSystem {
         analyzers.add(new AnswerAnalyzer());
 
         StateBasedPersonality personality = new StateBasedPersonality(rosMainNode, memory, new Verbalizer());
-        String personalityFilePath = getPersonalityFilePathFromConfig();
-        File personalityFile = new File(personalityFilePath);
+        File personalityFile = new File(ConfigManager.PERSONALITY_FILE);
 
 
 
