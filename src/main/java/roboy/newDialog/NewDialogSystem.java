@@ -55,7 +55,16 @@ public class NewDialogSystem {
 
     public static void main(String[] args) throws SocketException, UnknownHostException {
         // initialize ROS node
-        RosMainNode rosMainNode = new RosMainNode();
+
+        RosMainNode rosMainNode;
+
+        if (ConfigManager.ROS_ENABLED) {
+            rosMainNode = new RosMainNode();
+        } else {
+            // TODO: create a nice offline interface for RosMainNode, similar to DummyMemory
+            rosMainNode = null;
+        }
+
 
         MultiInputDevice multiIn = IO.getInputs(rosMainNode);
         MultiOutputDevice multiOut = IO.getOutputs(rosMainNode);
@@ -81,7 +90,7 @@ public class NewDialogSystem {
         analyzers.add(new OntologyNERAnalyzer());
         analyzers.add(new AnswerAnalyzer());
 
-        StateBasedPersonality personality = new StateBasedPersonality(rosMainNode, new Verbalizer());
+        StateBasedPersonality personality = new StateBasedPersonality(rosMainNode, memory, new Verbalizer());
         String personalityFilePath = getPersonalityFilePathFromConfig();
         File personalityFile = new File(personalityFilePath);
 

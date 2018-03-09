@@ -7,6 +7,7 @@ import roboy.dialog.action.FaceAction;
 import roboy.dialog.personality.Personality;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.memory.Neo4jMemoryInterface;
 import roboy.newDialog.states.State;
 import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
@@ -39,8 +40,8 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
     private boolean stopTalking;
 
 
-    public StateBasedPersonality(RosMainNode rmn, Verbalizer verb) {
-        super(rmn);
+    public StateBasedPersonality(RosMainNode rmn, Neo4jMemoryInterface memory, Verbalizer verb) {
+        super(rmn, memory);
         verbalizer = verb;
         stopTalking = false;
     }
