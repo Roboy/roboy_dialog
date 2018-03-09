@@ -23,15 +23,11 @@ import static roboy.memory.Neo4jRelationships.*;
 public class FUAState extends State{
     private QAJsonParser qaValues;
     private Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
-    private int selectedPredicateIndex = 0;
+    private Neo4jRelationships selectedPredicate;
     private State nextState;
-    // Logic stub
-    private boolean asked = true;
 
     private final String next = "next";
-    private final String nextPersonalQA = "nextPersonalQA";
-
-    final Logger LOGGER = LogManager.getLogger();
+    private final Logger LOGGER = LogManager.getLogger();
 
     public FUAState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
@@ -42,10 +38,15 @@ public class FUAState extends State{
     public State.Output act() {
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
 
-        selectedPredicateIndex = (int) (Math.random() * predicates.length);
-        List<String> questions = qaValues.getFollowUpQuestions(predicates[selectedPredicateIndex]);
+        for (Neo4jRelationships predicate : predicates) {
+            if (person.hasRelationship(predicate)) {
+                selectedPredicate = predicate;
+            }
+        }
+
+        List<String> questions = qaValues.getFollowUpQuestions(selectedPredicate);
         String retrievedResult = "";
-        ArrayList<Integer> ids = person.getRelationships(predicates[selectedPredicateIndex]);
+        ArrayList<Integer> ids = person.getRelationships(selectedPredicate);
         if (ids != null && !ids.isEmpty()) {
             Neo4jMemory memory = Neo4jMemory.getInstance();
             try {
@@ -54,14 +55,10 @@ public class FUAState extends State{
             } catch (InterruptedException | IOException e) {
                 LOGGER.error("Error on Memory data retrieval: " + e.getMessage());
             }
-        } else {
-            LOGGER.info("Go to PersonalQA state");
-            asked = false;
-            return Output.sayNothing();
         }
         String question = String.format(questions.get((int) (Math.random() * questions.size())), retrievedResult);
-        Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(predicates[selectedPredicateIndex].type);
-        return Output.say(question);
+        Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(selectedPredicate.type);
+        return Output.say(question + "\nPerson obtained in act(): " + person.toString());
     }
 
     @Override
@@ -70,24 +67,19 @@ public class FUAState extends State{
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
         String answer = "I have no words";
 
-        if (!asked) {
-            answer = "It seems like we can learn about each other more, fam";
-            nextState = getTransition(nextPersonalQA);
-        } else {
-            // TODO: What is the condition on interpretation?
-            if (true) {
-                // TODO: Perform updating the person object
-                Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
-                List<String> answers = qaValues.getFollowUpAnswers(predicates[selectedPredicateIndex]);
-                if (answers != null && !answers.isEmpty()) {
-                    answer = String.format(answers.get((int)(Math.random() * answers.size())), "");
-                }
+        // TODO: What is the condition on interpretation?
+        if (true) {
+            // TODO: Perform updating the person object
+            Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+            List<String> answers = qaValues.getFollowUpAnswers(selectedPredicate);
+            if (answers != null && !answers.isEmpty()) {
+                answer = String.format(answers.get((int)(Math.random() * answers.size())), "");
             }
-
-            nextState = getTransition(next);
         }
 
-        return Output.say(answer);
+        nextState = getTransition(next);
+
+        return Output.say(answer + "\nPerson obtained in react(): " + person.toString());
     }
 
     @Override
@@ -98,7 +90,7 @@ public class FUAState extends State{
     @Override
     protected Set<String> getRequiredTransitionNames() {
         // optional: define all required transitions here:
-        return newSet(next, nextPersonalQA);
+        return newSet(next);
     }
 
     @Override

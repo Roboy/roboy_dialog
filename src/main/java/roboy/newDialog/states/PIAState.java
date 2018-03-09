@@ -19,7 +19,7 @@ import static roboy.memory.Neo4jRelationships.*;
 public class PIAState extends State {
     private QAJsonParser qaValues;
     private Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
-    private int selectedPredicateIndex = 0;
+    private Neo4jRelationships selectedPredicate;
     private State nextState;
 
     private final String next = "next";
@@ -34,12 +34,14 @@ public class PIAState extends State {
     public State.Output act() {
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
 
-        // TODO: Check for white spaces in the Interlocutor node and select the predicate
-        // TODO: We need the predicate itself, not the index
-        selectedPredicateIndex = (int)(Math.random() * predicates.length);
-        List<String> questions = qaValues.getEntry(predicates[selectedPredicateIndex]).getQuestions();
+        for (Neo4jRelationships predicate : predicates) {
+            if (!person.hasRelationship(predicate)) {
+                selectedPredicate = predicate;
+            }
+        }
+        List<String> questions = qaValues.getQuestions(selectedPredicate);
         String question = questions.get((int)(Math.random()*questions.size()));
-        Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(predicates[selectedPredicateIndex].type);
+        Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(selectedPredicate.type);
         return State.Output.say(question);
     }
 
@@ -52,9 +54,9 @@ public class PIAState extends State {
         String answer = "I have no words";
         // TODO: What is the condition?
         if (true) {
-            answers = qaValues.getEntry(predicates[selectedPredicateIndex]).getAnswers().get("SUCCESS");
+            answers = qaValues.getSuccessAnswers(selectedPredicate);
         } else {
-            answers = qaValues.getEntry(predicates[selectedPredicateIndex]).getAnswers().get("FAILURE");
+            answers = qaValues.getFailureAnswers(selectedPredicate);
         }
         if (answers != null && !answers.isEmpty()) {
             answer = String.format(answers.get((int) (Math.random() * answers.size())), "");
