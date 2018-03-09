@@ -18,7 +18,7 @@ import java.util.List;
 public class ConfigManager {
 
     private static String yamlConfigFile = "config.properties";
-    final Logger LOGGER = LogManager.getLogger();
+    private final Logger LOGGER = LogManager.getLogger();
 
     public static boolean ROS_ENABLED = false;
     public static String ROS_MASTER_IP = "127.0.0.1";

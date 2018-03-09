@@ -19,38 +19,8 @@ import org.apache.logging.log4j.Logger;
  * Helper class for IO related tasks.
  */
 public class IO {
-	
-	public static String readFile(String file){
-		try{
-			return new String(Files.readAllBytes(Paths.get(file)));
-		} catch(IOException e){
-			return "";
-		}
-	}
-	
-	public static String readFile(File file){
-		try{
-			return new String(Files.readAllBytes(Paths.get(file.getAbsolutePath())));
-		} catch(IOException e){
-			return "";
-		}
-	}
-	
-	public static List<String> readLines(String file){
-		try{
-			return Files.readAllLines(Paths.get(file));
-		} catch(IOException e){
-			return new ArrayList<>();
-		}
-	}
-	
-	public static List<String> readLines(File file){
-		try{
-			return Files.readAllLines(Paths.get(file.getAbsolutePath()));
-		} catch(IOException e){
-			return new ArrayList<>();
-		}
-	}
+
+	private final static Logger logger = LogManager.getLogger();
 
 	public static MultiInputDevice getInputs(RosMainNode rosMainNode) throws SocketException{
 		MultiInputDevice multiIn;
@@ -63,6 +33,8 @@ public class IO {
 				break;
 			case "udp":
 				multiIn = new MultiInputDevice(new UdpInput(ConfigManager.DATAGRAM_SOCKET));
+				break;
+
 			default:
 				multiIn = new MultiInputDevice(new CommandLineInput());
 		}
@@ -98,6 +70,12 @@ public class IO {
 					outputs.add(new CommandLineOutput());
 			}
 		}
+
+		if (outputs.size() < 1) {
+			logger.warn("Seems like no outputs were defined in ConfigManager, using CommandLineOutput");
+			return new MultiOutputDevice(new CommandLineOutput());
+		}
+
 		multiOut = new MultiOutputDevice(outputs.get(0));
 		if (outputs.size()>1) {
 			for (int i=1; i<outputs.size(); i++)
