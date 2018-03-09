@@ -45,7 +45,10 @@ public class Roboy extends MemoryNodeModel{
             // Pick first if matches found.
             if (ids != null && !ids.isEmpty()) {
                 try {
-                    fromJSON(memory.getById(ids.get(0)), new Gson());
+                    MemoryNodeModel node = fromJSON(memory.getById(ids.get(0)), new Gson());
+                    setId(node.getId());
+                    setRelationships(node.getRelationships());
+                    setProperties(node.getProperties());
                 } catch (InterruptedException | IOException e) {
                     logger.error("Unexpected memory error: provided ID not found upon querying. Go the amnesia mode");
                     logger.error(e.getMessage());
