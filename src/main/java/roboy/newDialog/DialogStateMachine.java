@@ -3,6 +3,7 @@ package roboy.newDialog;
 import com.google.gson.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.memory.Neo4jMemoryInterface;
 import roboy.newDialog.states.State;
 import roboy.newDialog.states.StateFactory;
 import roboy.newDialog.states.StateParameters;
@@ -46,6 +47,7 @@ public class DialogStateMachine {
 
     // RosMainNode will be passed to every state as parameter
     private final RosMainNode rosMainNode;
+    private final Neo4jMemoryInterface memory;
 
     // Personality file additional information: everything like comment goes here.
     // [!!] Do not use it in your State implementation! This info is only stored to make sure
@@ -62,25 +64,30 @@ public class DialogStateMachine {
      * manually from code.
      *
      * @param rmn reference to the RosMainNode that will be passed to every newly created State object
+     * @param mem reference to Memory that will be passed to every newly created State object
      */
-    public DialogStateMachine(RosMainNode rmn) {
+    public DialogStateMachine(RosMainNode rmn, Neo4jMemoryInterface mem) {
         identifierToState = new HashMap<>();
         activeState = null;
         rosMainNode = rmn;
+        memory = mem;
         optionalPersFileInfo = new HashMap<>();
 
         if (rosMainNode == null) {
-            logger.info("Using offline DialogStateMachine (no RosMainNode was passed)");
+            logger.info("RosMainNode will be unavailable in DialogStateMachine (null was passed)");
+        }
+        if (memory == null) {
+            logger.info("Memory will be unavailable in DialogStateMachine (null was passed)");
         }
     }
 
     /**
-     * Create an empty OFFLINE DialogStateMachine without a reference to the RosMainNode.
-     * States will not be able to access the RosMainNode functionality.
+     * Create an empty OFFLINE DialogStateMachine without a reference to the RosMainNode and Memory.
+     * States will not be able to access the RosMainNode and Memory functionality.
      * This constructor is mainly used for testing.
      */
     public DialogStateMachine() {
-        this(null);
+        this(null, null);
     }
 
     //endregion
@@ -272,7 +279,7 @@ public class DialogStateMachine {
      * @return StateParameters instance with all parameters defined in json object
      */
     private StateParameters parseStateParameters(JsonObject stateJsO) {
-        StateParameters params = new StateParameters(this, rosMainNode);
+        StateParameters params = new StateParameters(this, rosMainNode, memory);
 
         // set the transitions
         JsonObject paramsJsO = stateJsO.getAsJsonObject("parameters");

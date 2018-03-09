@@ -48,6 +48,8 @@ public class ConfigManager {
 
 
     private ConfigManager() {
+        LOGGER.info("Initializing Config");
+
         YAMLConfiguration yamlConfig = new YAMLConfiguration();
         try
         {
