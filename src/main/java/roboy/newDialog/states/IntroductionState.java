@@ -57,6 +57,17 @@ public class IntroductionState extends State {
 
         // expecting something like "I'm NAME"
 
+        // parser response might look like:
+        /*
+        {"postags":["PRP$","NN","BE","NNP"],"answer":"(triples (triple rb:active_person rb:NAME_OF emily))",
+        "lemma_tokens":["my","name","be","emily"],"tokens":["my","name","is","emily"],
+        "parse":"(triples (triple rb:active_person rb:NAME_OF emily))","relations":{"(my name,be,emily)":1.0},
+        "type":"question"}
+        {"postags":["PRP$","NN","BE","NNP"],"answer":"(triples (triple rb:active_person rb:NAME_OF emily))",
+        "lemma_tokens":["my","name","be","emily"],"tokens":["my","name","is","emily"],
+        "parse":"(triples (triple rb:active_person rb:NAME_OF emily))","relations":{"(my name,be,emily)":1.0},
+        "type":"statement"}
+        */
         // 1. get name
         String name = getNameFromInput(input);
         name = "laura"; // TODO: Remove
