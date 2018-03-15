@@ -1,5 +1,6 @@
 package roboy.newDialog.examples.toyStates;
 
+import roboy.newDialog.Segue;
 import roboy.newDialog.states.State;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
@@ -25,8 +26,8 @@ import java.util.*;
  */
 public class ToyGreetingsState extends State {
 
-    // used to remember whether the response was a greeting
-    private boolean inputOK = true;
+    // used to remember which state to take next
+    private State next;
 
     public ToyGreetingsState(String stateIdentifier, StateParameters params) {
         // nothing to initialize in constructor: just pass the parameters to the super class (State)
@@ -35,9 +36,15 @@ public class ToyGreetingsState extends State {
 
     @Override
     public Output act() {
-        return Output.say("Hello! [expecting greeting]");
-        // you can return an output based on a string or pass an interpretation object:
-        // return Output.say(new Interpretation("Hello! [expecting greeting]"));
+
+        // let's greet the person
+        return Output.say("Hello! [expecting greeting]")
+        // and add a random segue of type FLATTERY with probability of 0.7
+            .setSegue(new Segue(Segue.SegueType.FLATTERY, 0.7));
+
+        // Note:    When using Output.say(...), you can return an output based on
+        //          a string or pass an interpretation object:
+        //          return Output.say(new Interpretation("Hello! [expecting greeting]"));
     }
 
     @Override
@@ -45,13 +52,18 @@ public class ToyGreetingsState extends State {
         // react to input
 
         String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
-        inputOK = StatementInterpreter.isFromList(sentence, Verbalizer.greetings);
+        boolean inputOK = StatementInterpreter.isFromList(sentence, Verbalizer.greetings);
 
         if (inputOK) {
+            next = getTransition("next");
             return Output.say( "I like it when you greet me! [greeting detected, next state]" );
+
         } else {
             // the case where we don't get a greeting back
-            // don't worry about this here, everything will be handled by the fallback state
+            // set another state as the next one
+            next = getTransition("noHello");
+
+            // don't think about the reply here, let the fallback state handle it
             return Output.useFallback(); // -> fallback state will be used
         }
     }
@@ -59,15 +71,8 @@ public class ToyGreetingsState extends State {
 
     @Override
     public State getNextState() {
-        if (inputOK) {
-            return getTransition("next");
-
-        } else {
-            return getTransition("noHello");
-            // alternatively: return `this` to stay in this state until a greeting is detected
-        }
+        return next;
     }
-
 
 
     @Override

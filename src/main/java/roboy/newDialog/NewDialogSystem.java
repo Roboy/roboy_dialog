@@ -1,7 +1,6 @@
 package roboy.newDialog;
 
 
-import org.apache.commons.configuration2.YAMLConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
@@ -19,7 +18,6 @@ import roboy.util.IO;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -57,17 +55,22 @@ public class NewDialogSystem {
             memory = new DummyMemory();
         }
 
+        logger.info("Initializing analyzers...");
+
         List<Analyzer> analyzers = new ArrayList<>();
         analyzers.add(new Preprocessor());
         analyzers.add(new SimpleTokenizer());
-//        analyzers.add(new SemanticParserAnalyzer(ConfigManager.PARSER_PORT));
+        // analyzers.add(new SemanticParserAnalyzer(ConfigManager.PARSER_PORT));
 
         analyzers.add(new OpenNLPPPOSTagger());
         analyzers.add(new DictionaryBasedSentenceTypeDetector());
-//        analyzers.add(new SentenceAnalyzer());
+        // analyzers.add(new SentenceAnalyzer());
         analyzers.add(new OpenNLPParser());
         analyzers.add(new OntologyNERAnalyzer());
         analyzers.add(new AnswerAnalyzer());
+
+
+        logger.info("Creating StateBasedPersonality...");
 
         StateBasedPersonality personality = new StateBasedPersonality(rosMainNode, memory, new Verbalizer());
         File personalityFile = new File(ConfigManager.PERSONALITY_FILE);
@@ -75,7 +78,7 @@ public class NewDialogSystem {
 
 
         // Repeat conversation a few times
-        for (int numConversations = 0; numConversations < 2; numConversations++) {
+        for (int numConversations = 0; numConversations < 3; numConversations++) {
 
             logger.info("############## New Conversation ##############");
 

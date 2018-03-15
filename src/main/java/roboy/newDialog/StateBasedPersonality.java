@@ -2,18 +2,21 @@ package roboy.newDialog;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.context.Context;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
 import roboy.dialog.personality.Personality;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jMemoryInterface;
+import roboy.memory.nodes.Interlocutor;
 import roboy.newDialog.states.State;
 import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Implementation of Personality based on a DialogStateMachine.
@@ -105,7 +108,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
         }
 
         List<Action> initialActions = new ArrayList<>();
-        initialActions = stateAct(activeState, initialActions);
+        stateAct(activeState, initialActions);
         return initialActions;
     }
 
@@ -135,7 +138,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
 
         // ACTIVE STATE REACTS TO INPUT
-        answerActions = stateReact(activeState, input, answerActions);
+        stateReact(activeState, input, answerActions);
 
 
         // MOVE TO THE NEXT STATE
@@ -149,7 +152,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
 
         // NEXT STATE ACTS
-        answerActions = stateAct(next, answerActions);
+        stateAct(next, answerActions);
 
         return answerActions;
     }
@@ -163,18 +166,19 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
      * @param previousActions list of previous action to append the verbalized result
      * @return updated list of actions
      */
-    private List<Action> stateAct(State state, List<Action> previousActions) {
+    private void stateAct(State state, List<Action> previousActions) {
         State.Output act;
         try {
             act = state.act();
         } catch (Exception e) {
-            return exceptionHandler(state, e, previousActions, true);
+            exceptionHandler(state, e, previousActions, true);
+            return;
         }
 
         if (act == null) {
             logger.warn("state acted with null. This should not happen! " +
                     "Return Output.sayNothing() instead!");
-            return previousActions;  // say nothing, just return the list of previous actions
+            return; // say nothing, just return and don't modify the list
         }
 
         if (act.hasInterpretation()) {
@@ -193,7 +197,14 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
         }
         // else: act.isEmpty()
 
-        return previousActions;
+
+        // add segue to the end of the output if defined
+        if (act.hasSegue()) {
+            segueHandler(previousActions, act.getSegue());
+        }
+
+        // add face action to the output if defined (not implemented yet)
+        // TODO
     }
 
 
@@ -204,22 +215,22 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
      * @param state state to call REact on
      * @param input input from the person Roboy speaks to
      * @param previousActions list of previous action to append the verbalized result
-     * @return updated list of actions
      */
-    private List<Action> stateReact(State state, Interpretation input, List<Action> previousActions) {
+    private void stateReact(State state, Interpretation input, List<Action> previousActions) {
 
         State.Output react;
         try {
             react = state.react(input);
         } catch (Exception e) {
-            return exceptionHandler(state, e, previousActions, false);
+            exceptionHandler(state, e, previousActions, false);
+            return;
         }
 
 
         if (react == null) {
             logger.warn("state reacted with null. This should not happen! " +
                     "It is not clear whether it wants to say nothing or ask the fallback.");
-            return previousActions;  // say nothing, just return the list of previous actions
+            return;  // say nothing, just return and don't modify the list
         }
 
 
@@ -233,13 +244,13 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
             if (fallbackCount >= maxFallbackCount) {
                 logger.warn("possibly infinite fallback loop, stopping after " +
                         maxFallbackCount + " iterations");
-                return previousActions;  // say nothing, just return the list of previous actions
+                return;  // say nothing, just return and don't modify the list
             }
 
             if (fallback == null) {
                 logger.warn("state with identifier " + state.getIdentifier()
                         + " required fallback but none was attached, saying nothing");
-                return previousActions;  // say nothing, just return the list of previous actions
+                return;  // say nothing, just return and don't modify the list
             }
 
             // fallback exists
@@ -248,14 +259,15 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
             try {
                 react = state.react(input);
             } catch (Exception e) {
-                return exceptionHandler(state, e, previousActions, false);
+                exceptionHandler(state, e, previousActions, false);
+                return;
             }
 
             if (react == null) {
                 logger.warn("state with identifier " + state.getIdentifier() +
                         " reacted with null. This should not happen!" +
                         " It is not clear whether it wants to say nothing, end the conversation or ask the fallback.");
-                return previousActions;  // say nothing, just return the list of previous actions
+                return;  // say nothing, just return and don't modify the list
             }
         }
 
@@ -275,16 +287,54 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
         // else: react.isEmpty()
 
-        return previousActions;
+
+        // add segue to the end of the output if defined
+        if (react.hasSegue()) {
+            segueHandler(previousActions, react.getSegue());
+        }
+
+        // add face action to the output if defined (not implemented yet)
+        // TODO
     }
 
-    private List<Action> exceptionHandler(State state, Exception e, List<Action> previousActions, boolean comesFromAct) {
+    /**
+     * Decide whether to use segue or not and append it to the end of the list of previous actions.
+     * @param previousActions list of previous actions
+     * @param segue segue object
+     */
+    private void segueHandler(List<Action> previousActions, Segue segue) {
+
+        // decide whether to use this segue based on its probability
+        if (Math.random() > segue.getProbability()) {
+            return;  // skip segue
+        }
+
+        // select random segue
+        String rndSegue = segue.getType().getPossibleSegues().getRandomElement();
+
+        // check if the interlocutor's name is required
+        if (rndSegue.contains("%s")) {
+            // we need to get the name of the interlocutor
+            Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+            if (person == null || person.getName() == null) {
+                // no interlocutor or no name -> skip segue
+                return;
+            }
+            // paste name
+            rndSegue = String.format(rndSegue, person.getName());
+        }
+
+        // verbalize and finally append segue to the end of the list
+        Interpretation segueInterpretation = new Interpretation(rndSegue);
+        previousActions.add(verbalizer.verbalize(segueInterpretation));
+    }
+
+    private void exceptionHandler(State state, Exception e, List<Action> previousActions, boolean comesFromAct) {
         String actOrReact = comesFromAct ? "act" : "react";
         logger.error("Exception in " + actOrReact + "() of state with identifier "
                 + state.getIdentifier() + ":\n" + e.getMessage());
         previousActions.add(verbalizer.verbalize(
                 new Interpretation("Well, looks like some states are not implemented correctly...")));
-        return previousActions;
     }
 
 }

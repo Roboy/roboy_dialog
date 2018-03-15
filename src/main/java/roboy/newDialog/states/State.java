@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.newDialog.DialogStateMachine;
+import roboy.newDialog.Segue;
 import roboy.ros.RosMainNode;
 
 import java.util.*;
@@ -58,6 +59,7 @@ public abstract class State {
 
         private final OutputType type;
         private final Interpretation interpretation;
+        private Segue segue;
 
         /**
          * Private constructor, used only inside static methods.
@@ -67,6 +69,7 @@ public abstract class State {
         private Output(OutputType type, Interpretation interpretation) {
             this.type = type;
             this.interpretation = interpretation;
+            this.segue = null;
         }
 
         //  Static creators
@@ -125,6 +128,19 @@ public abstract class State {
 
         public Interpretation getInterpretation() {
             return interpretation;
+        }
+
+
+        // Additional transition actions: Segues
+        public Output setSegue(Segue s) {
+            segue = s;
+            return this;
+        }
+        public boolean hasSegue() {
+            return segue != null;
+        }
+        public Segue getSegue() {
+            return segue;
         }
 
     }
