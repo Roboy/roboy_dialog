@@ -37,6 +37,7 @@ public class PIAState extends State {
         for (Neo4jRelationships predicate : predicates) {
             if (!person.hasRelationship(predicate)) {
                 selectedPredicate = predicate;
+                break;
             }
         }
         List<String> questions = qaValues.getQuestions(selectedPredicate);

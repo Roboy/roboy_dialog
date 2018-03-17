@@ -5,7 +5,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
@@ -28,7 +27,7 @@ public class FUAState extends State{
     private Neo4jRelationships selectedPredicate;
     private State nextState;
 
-    private final String next = "next";
+    private final String TRANSITION_QUESTION_ANSWERING = "questionAnswering";
     private final Logger LOGGER = LogManager.getLogger();
 
     public FUAState(String stateIdentifier, StateParameters params) {
@@ -43,6 +42,7 @@ public class FUAState extends State{
         for (Neo4jRelationships predicate : predicates) {
             if (person.hasRelationship(predicate)) {
                 selectedPredicate = predicate;
+                break;
             }
         }
 
@@ -62,7 +62,7 @@ public class FUAState extends State{
         }
         String question = String.format(questions.get((int) (Math.random() * questions.size())), retrievedResult);
         Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(selectedPredicate.type);
-        return Output.say(question + "\nPerson obtained in act(): " + person.toString());
+        return Output.say(question);
     }
 
     @Override
@@ -81,9 +81,9 @@ public class FUAState extends State{
             }
         }
 
-        nextState = getTransition(next);
+        nextState = getTransition(TRANSITION_QUESTION_ANSWERING);
 
-        return Output.say(answer + "\nPerson obtained in react(): " + person.toString());
+        return Output.say(answer);
     }
 
     @Override
@@ -94,7 +94,7 @@ public class FUAState extends State{
     @Override
     protected Set<String> getRequiredTransitionNames() {
         // optional: define all required transitions here:
-        return newSet(next);
+        return newSet(TRANSITION_QUESTION_ANSWERING);
     }
 
     @Override
