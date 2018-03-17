@@ -26,9 +26,7 @@
       "identifier": "FollowUp",
       "implementation": "roboy.newDialog.states.FUAState",
       "transitions": {
-        "next": "Farewell",
-        "nextPersonalQA": "PersonalQA",
-        "stay": "FollowUp"
+        "questionAnswering": "QuestionAnswering"
       },
       "parameters" : {
         "qaFile" : "sentences/QAList.json"
@@ -38,11 +36,28 @@
       "identifier": "PersonalQA",
       "implementation": "roboy.newDialog.states.PIAState",
       "transitions": {
-        "next": "Farewell"
+        "questionAnswering": "QuestionAnswering"
       },
       "parameters" : {
         "qaFile" : "sentences/QAList.json"
       }
+    },
+    {
+      "identifier": "QuestionAnswering",
+      "implementation": "roboy.newDialog.states.QuestionAnsweringState",
+      "fallback": "WildTalk",
+      "transitions": {
+        "finishedQuestionAnswering": "Farewell",
+        "askPersonalQuestions": "PersonalQA",
+        "askFollowUp": "FollowUp"
+      },
+      "parameters" : {
+      }
+    },
+    {
+      "identifier": "WildTalk",
+      "implementation": "roboy.newDialog.states.WildTalkFallbackState",
+      "transitions": {}
     },
     {
       "identifier": "Farewell",
