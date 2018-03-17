@@ -41,8 +41,8 @@ public class Word2vecTrainingExample {
 
         System.out.println("Building model....");
         Word2Vec vec = new Word2Vec.Builder()
-                .minWordFrequency(5)
-                .iterations(1)
+                .minWordFrequency(10)
+                .iterations(100)
                 .layerSize(100)
                 .seed(42)
                 .windowSize(5)
