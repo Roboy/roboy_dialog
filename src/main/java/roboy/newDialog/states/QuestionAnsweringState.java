@@ -4,6 +4,8 @@ import roboy.context.Context;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
+import roboy.memory.nodes.Interlocutor.RelationshipAvailability;
+import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
 
 import java.util.Set;
 
@@ -30,7 +32,7 @@ public class QuestionAnsweringState extends State {
 
     private final static String TRANSITION_FINISHED_ANSWERING = "finishedQuestionAnswering";
     private final static String TRANSITION_ASK_INFO = "askPersonalQuestions";
-    private final static String TRANSITION_FOLLOW_UP = "askFollowUp";
+    private final static String TRANSITION_LOOP_TO_KNOWN_PERSON = "askFollowUp";
 
 
     private State nextState;
@@ -47,17 +49,25 @@ public class QuestionAnsweringState extends State {
     @Override
     public Output react(Interpretation input) {
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+
         // Let's sometimes go back to question asking
-        double treshold = 0.8;
-        if (Math.random() > treshold) {
+        double threshold = 0.8;
+        if (Math.random() > threshold) {
+            // loop back to previous states
+
             Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
-            Boolean infoPurity = person.checkInfoPurity3VL(predicates);
-            if (infoPurity == null) {
-                nextState = (Math.random() < 0.3) ? getTransition(TRANSITION_FOLLOW_UP) : getTransition(TRANSITION_ASK_INFO);
+            RelationshipAvailability availability = person.checkRelationshipAvailability(predicates);
+
+            if (availability == SOME_AVAILABLE) {
+                nextState = (Math.random() < 0.3) ? getTransition(TRANSITION_LOOP_TO_KNOWN_PERSON) : getTransition(TRANSITION_ASK_INFO);
+            } else if (availability == NONE_AVAILABLE) {
+                nextState = getTransition(TRANSITION_ASK_INFO);
             } else {
-                nextState = infoPurity ? getTransition(TRANSITION_FOLLOW_UP) : getTransition(TRANSITION_ASK_INFO);
+                nextState = getTransition(TRANSITION_LOOP_TO_KNOWN_PERSON);
             }
+
         } else {
+            // stay in this state
             nextState = this;
         }
 

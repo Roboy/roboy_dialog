@@ -21,7 +21,7 @@ public class Interlocutor extends MemoryNodeModel {
     public boolean FAMILIAR = false;
     private HashMap<UzupisIntents,String> uzupisInfo = new HashMap<>();
 
-    final Logger LOGGER = LogManager.getLogger();
+    private final Logger LOGGER = LogManager.getLogger();
 
     public Interlocutor(Neo4jMemoryInterface memory) {
         super(memory);
@@ -137,40 +137,35 @@ public class Interlocutor extends MemoryNodeModel {
         }
     }
 
-    public Boolean checkInfoPurity3VL(Neo4jRelationships[] predicates) {
-        ArrayList<Boolean> nodeInfoPurity = new ArrayList<Boolean>();
+    public enum RelationshipAvailability {
+        ALL_AVAILABLE, SOME_AVAILABLE, NONE_AVAILABLE
+    }
 
-        for (Neo4jRelationships predicate : predicates) {
-            nodeInfoPurity.add(this.hasRelationship(predicate));
-        }
+    /**
+     * Checks if predicates from the input array are available for this interlocutor.
+     * @param rels array of predicates to check
+     * @return one of three: all, some or none available
+     */
+    public RelationshipAvailability checkRelationshipAvailability(Neo4jRelationships[] rels) {
+        boolean atLeastOneAvailable = false;
+        boolean allAvailable = true;
 
-        if (nodeInfoPurity.contains(true)) {
-            if (nodeInfoPurity.contains(false)) {
-                return null;
+        for (Neo4jRelationships predicate : rels) {
+            if (this.hasRelationship(predicate)) {
+                atLeastOneAvailable = true;
             } else {
-                return true;
+                allAvailable = false;
             }
-        } else {
-            return false;
         }
-
-        /*HashMap<Boolean, ArrayList<Neo4jRelationships>> nodeInfoPurity = getPurityRelationships(predicates);
-
-        if (!nodeInfoPurity.get(true).isEmpty()) {
-            if (!nodeInfoPurity.get(false).isEmpty()) {
-                return null;
-            } else {
-                return true;
-            }
-        } else {
-            return false;
-        }*/
+        if (allAvailable) return RelationshipAvailability.ALL_AVAILABLE;
+        if (atLeastOneAvailable) return RelationshipAvailability.SOME_AVAILABLE;
+        return RelationshipAvailability.NONE_AVAILABLE;
     }
 
     public HashMap<Boolean, ArrayList<Neo4jRelationships>> getPurityRelationships(Neo4jRelationships[] predicates) {
         HashMap<Boolean, ArrayList<Neo4jRelationships>> pureImpureValues = new HashMap<>();
-        pureImpureValues.put(false, new ArrayList<Neo4jRelationships>());
-        pureImpureValues.put(true, new ArrayList<Neo4jRelationships>());
+        pureImpureValues.put(false, new ArrayList<>());
+        pureImpureValues.put(true, new ArrayList<>());
 
         for (Neo4jRelationships predicate : predicates) {
             pureImpureValues.get(this.hasRelationship(predicate)).add(predicate);
