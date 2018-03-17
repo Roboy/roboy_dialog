@@ -108,7 +108,7 @@ public class IntroductionState extends State {
                 }
             }
 
-            Boolean infoPurity = checkInfoPurity3VL(person);
+            Boolean infoPurity = person.checkInfoPurity3VL(predicates);
             if (infoPurity == null) {
                 nextState = (Math.random() < 0.3) ? getTransition(UPDATE_KNOWN_PERSON) : getTransition(LEARN_ABOUT_PERSON);
             } else {
@@ -139,24 +139,6 @@ public class IntroductionState extends State {
 
     private void updateInterlocutorInContext(Interlocutor interlocutor) {
         Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(interlocutor);
-    }
-
-    private Boolean checkInfoPurity3VL(Interlocutor interlocutor) {
-        ArrayList<Boolean> personInfoPurity = new ArrayList<Boolean>();
-
-        for (Neo4jRelationships predicate : predicates) {
-            personInfoPurity.add(interlocutor.hasRelationship(predicate));
-        }
-
-        if (personInfoPurity.contains(true)) {
-            if (personInfoPurity.contains(false)) {
-                return null;
-            } else {
-                return true;
-            }
-        } else {
-            return false;
-        }
     }
 
 

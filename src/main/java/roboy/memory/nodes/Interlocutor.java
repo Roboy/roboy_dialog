@@ -136,4 +136,46 @@ public class Interlocutor extends MemoryNodeModel {
             e.printStackTrace();
         }
     }
+
+    public Boolean checkInfoPurity3VL(Neo4jRelationships[] predicates) {
+        ArrayList<Boolean> nodeInfoPurity = new ArrayList<Boolean>();
+
+        for (Neo4jRelationships predicate : predicates) {
+            nodeInfoPurity.add(this.hasRelationship(predicate));
+        }
+
+        if (nodeInfoPurity.contains(true)) {
+            if (nodeInfoPurity.contains(false)) {
+                return null;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+
+        /*HashMap<Boolean, ArrayList<Neo4jRelationships>> nodeInfoPurity = getPurityRelationships(predicates);
+
+        if (!nodeInfoPurity.get(true).isEmpty()) {
+            if (!nodeInfoPurity.get(false).isEmpty()) {
+                return null;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }*/
+    }
+
+    public HashMap<Boolean, ArrayList<Neo4jRelationships>> getPurityRelationships(Neo4jRelationships[] predicates) {
+        HashMap<Boolean, ArrayList<Neo4jRelationships>> pureImpureValues = new HashMap<>();
+        pureImpureValues.put(false, new ArrayList<Neo4jRelationships>());
+        pureImpureValues.put(true, new ArrayList<Neo4jRelationships>());
+
+        for (Neo4jRelationships predicate : predicates) {
+            pureImpureValues.get(this.hasRelationship(predicate)).add(predicate);
+        }
+
+        return pureImpureValues;
+    }
 }
