@@ -4,7 +4,6 @@
     {
       "identifier": "Greetings",
       "implementation" : "roboy.newDialog.states.GreetingsState",
-      "fallback" : "RandomAnswer",
       "transitions" : {
         "greetingDetected" : "Intro",
         "noHello" : "Farewell"
@@ -48,8 +47,8 @@
       "fallback": "WildTalk",
       "transitions": {
         "finishedQuestionAnswering": "Farewell",
-        "askPersonalQuestions": "PersonalQA",
-        "askFollowUp": "FollowUp"
+        "loopToNewPerson": "PersonalQA",
+        "loopToKnownPerson": "FollowUp"
       },
       "parameters" : {
       }
@@ -63,13 +62,6 @@
       "identifier": "Farewell",
       "implementation" : "roboy.newDialog.examples.toyStates.ToyFarewellState",
       "transitions" : {}
-    },
-    {
-      "identifier": "RandomAnswer",
-      "implementation" : "roboy.newDialog.examples.toyStates.ToyRandomAnswerState",
-      "transitions" : {
-        "next" : "Farewell"
-      }
     }
   ]
 }

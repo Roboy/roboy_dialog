@@ -3,7 +3,6 @@ package roboy.newDialog.states;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.StatementInterpreter;
-import roboy.talk.StatementBuilder;
 import roboy.talk.Verbalizer;
 
 import java.util.Set;
@@ -22,7 +21,7 @@ public class GreetingsState extends State {
     @Override
     public Output act() {
 
-        return Output.say("standby");
+        return Output.sayNothing();
     }
 
     @Override
@@ -35,7 +34,7 @@ public class GreetingsState extends State {
 
         if (inputOK) {
             next = getTransition(TRANSITION_GREETING_DETECTED);
-            return Output.say(StatementBuilder.random(Verbalizer.greetings));
+            return Output.say(Verbalizer.greetings.getRandomElement());
         }
 
         return Output.sayNothing();

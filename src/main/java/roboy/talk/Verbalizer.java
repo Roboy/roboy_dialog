@@ -12,6 +12,7 @@ import roboy.dialog.action.SpeechAction;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.Maps;
+import roboy.util.RandomList;
 
 /**
  * Turns interpretations to actual utterances. This should in the future lead to diversifying
@@ -47,8 +48,8 @@ public class Verbalizer {
 	public static final List<String> triggers =
 			Arrays.asList("talk", "fun", "conversation", "new", "chat");
 
-	public static final List<String> greetings =
-			Arrays.asList("hello","hi","greetings", "good morning", "howdy", "good day", "hey", "good evening",
+	public static final RandomList<String> greetings =
+			new RandomList<>("hello","hi","greetings", "good morning", "howdy", "good day", "hey", "good evening",
 					"what's up", "greeting to everyone here","hi there people",
 					"hello world","gruse gott","wazup wazup wazup","howdy humans",
 					"good day ladies and gentlemen","hey hey hey you there");

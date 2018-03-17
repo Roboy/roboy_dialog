@@ -53,6 +53,8 @@ public abstract class State {
      */
     public static class Output {
 
+        private final Logger logger = LogManager.getLogger();
+
         public enum OutputType {
             INTERPRETATION, SAY_NOTHING, USE_FALLBACK, END_CONVERSATION
         }
@@ -133,6 +135,10 @@ public abstract class State {
 
         // Additional transition actions: Segues
         public Output setSegue(Segue s) {
+            if (type == OutputType.USE_FALLBACK) {
+                logger.warn("Adding a segue to an answer that requires fallback is not allowed! " +
+                        "Segue behaviour is defined in the fallback state.");
+            }
             segue = s;
             return this;
         }
