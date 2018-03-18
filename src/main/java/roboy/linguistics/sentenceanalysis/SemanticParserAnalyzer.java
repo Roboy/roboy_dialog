@@ -89,7 +89,7 @@ public class SemanticParserAnalyzer implements Analyzer{
             }
             // Read followUp questions for underspecified terms
             if (full_response.containsKey("followUp")){
-              interpretation.getFeatures().put(Linguistics.UNDERSPECIFIED_TERM_QUESTION, (Map<String,String>) full_response.get("followUp"));
+              interpretation.getFeatures().put(Linguistics.UNDERSPECIFIED_TERM_QUESTION, (List<Map.Entry<String,String>>) full_response.get("followUp"));
               interpretation.getFeatures().put(Linguistics.PARSER_RESULT,Linguistics.PARSER_OUTCOME.UNDERSPECIFIED);
             }
             // Read tokens
@@ -177,11 +177,6 @@ public class SemanticParserAnalyzer implements Analyzer{
         analyzer.analyze(inter);
         for (String key: inter.getFeatures().keySet()) {
           System.out.println(key + " : " + inter.getFeature(key).toString());
-        }
-        if (inter.getFeatures().keySet().contains(Linguistics.UNDERSPECIFIED_TERM_QUESTION)) {
-            for (String key : ((Map<String, String>) inter.getFeature(Linguistics.UNDERSPECIFIED_TERM_QUESTION)).keySet()) {
-                System.out.println(key + " : " + ((Map<String, String>) inter.getFeature(Linguistics.UNDERSPECIFIED_TERM_QUESTION)).get(key));
-            }
         }
       }
     }
