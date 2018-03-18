@@ -69,7 +69,7 @@ public class SemanticParserAnalyzer implements Analyzer{
         if (this.debug) {
           System.out.println("> Full response:" + response);
         }
-        if (response!=null && !response.contains("no answer")) {
+        if (response!=null) {
           // Convert JSON string back to Map.
           Gson gson = new Gson();
           Type type = new TypeToken<Map<String, Object>>(){}.getType();
@@ -78,19 +78,19 @@ public class SemanticParserAnalyzer implements Analyzer{
             Map<String, Object> full_response = gson.fromJson(response, type);
             // Read formula and answer
             if (full_response.containsKey("parse")){
-              interpretation.getFeatures().put(Linguistics.PARSE_ANSWER, full_response.get("answer").toString());
-              interpretation.getFeatures().put(Linguistics.PARSE, full_response.get("parse").toString());
-              interpretation.getFeatures().put(Linguistics.SEM_TRIPLE, extract_triples(full_response.get("parse").toString()));
-              if (full_response.get("answer").toString().equals("(no answer)"))
-                interpretation.getFeatures().put(Linguistics.PARSER_RESULT,Linguistics.PARSER_OUTCOME.FAILURE);
-              else
-                interpretation.getFeatures().put(Linguistics.PARSER_RESULT,Linguistics.PARSER_OUTCOME.SUCCESS);
+                if (full_response.get("answer").toString().equals("(no answer)"))
+                    interpretation.getFeatures().put(Linguistics.PARSER_RESULT,Linguistics.PARSER_OUTCOME.FAILURE);
+                else {
+                    interpretation.getFeatures().put(Linguistics.PARSE_ANSWER, full_response.get("answer").toString());
+                    interpretation.getFeatures().put(Linguistics.PARSE, full_response.get("parse").toString());
+                    interpretation.getFeatures().put(Linguistics.SEM_TRIPLE, extract_triples(full_response.get("parse").toString()));
+                    interpretation.getFeatures().put(Linguistics.PARSER_RESULT, Linguistics.PARSER_OUTCOME.SUCCESS);
+                }
             }
             // Read followUp questions for underspecified terms
             if (full_response.containsKey("followUp")){
               interpretation.getFeatures().put(Linguistics.UNDERSPECIFIED_TERM_QUESTION, (Map<String,String>) full_response.get("followUp"));
-              if (full_response.get("answer").toString().equals("(no answer)"))
-                interpretation.getFeatures().put(Linguistics.PARSER_RESULT,Linguistics.PARSER_OUTCOME.UNDERSPECIFIED);
+              interpretation.getFeatures().put(Linguistics.PARSER_RESULT,Linguistics.PARSER_OUTCOME.UNDERSPECIFIED);
             }
             // Read tokens
             if (full_response.containsKey("tokens")) {
@@ -102,7 +102,7 @@ public class SemanticParserAnalyzer implements Analyzer{
             }
             // Read extracted sentiment
             if (full_response.containsKey("sentiment")) {
-              interpretation.getFeatures().put(Linguistics.SENTIMENT, full_response.get("sentiment").toString().split(","));
+              interpretation.getFeatures().put(Linguistics.SENTIMENT, full_response.get("sentiment").toString());
             }
             // Read POS-tags
             if (full_response.containsKey("postags")) {
@@ -139,7 +139,7 @@ public class SemanticParserAnalyzer implements Analyzer{
       key = key.replaceAll("\\)","");
       String[] triple = key.split(",");
       if (triple.length == 3)
-        result.add(new Triple(triple[0],triple[1],triple[2]));
+        result.add(new Triple(triple[1],triple[0],triple[2]));
     }
     return result;
   }
@@ -178,8 +178,10 @@ public class SemanticParserAnalyzer implements Analyzer{
         for (String key: inter.getFeatures().keySet()) {
           System.out.println(key + " : " + inter.getFeature(key).toString());
         }
-        for (String key: ((Map<String,String>)inter.getFeature(Linguistics.UNDERSPECIFIED_TERM_QUESTION)).keySet()) {
-          System.out.println(key + " : " + ((Map<String,String>)inter.getFeature(Linguistics.UNDERSPECIFIED_TERM_QUESTION)).get(key));
+        if (inter.getFeatures().keySet().contains(Linguistics.UNDERSPECIFIED_TERM_QUESTION)) {
+            for (String key : ((Map<String, String>) inter.getFeature(Linguistics.UNDERSPECIFIED_TERM_QUESTION)).keySet()) {
+                System.out.println(key + " : " + ((Map<String, String>) inter.getFeature(Linguistics.UNDERSPECIFIED_TERM_QUESTION)).get(key));
+            }
         }
       }
     }
