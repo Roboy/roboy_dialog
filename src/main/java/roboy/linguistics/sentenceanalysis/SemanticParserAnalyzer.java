@@ -36,7 +36,7 @@ public class SemanticParserAnalyzer implements Analyzer{
    * Creates ParserAnalyzer class and connects the parser to DM using a socket.
    */
   public SemanticParserAnalyzer(int portNumber) {
-    this.debug = true;
+    this.debug = ConfigManager.DEBUG;
     try {
       // Create string-string socket
       this.clientSocket = new Socket("localhost", portNumber);
@@ -89,7 +89,8 @@ public class SemanticParserAnalyzer implements Analyzer{
             // Read followUp questions for underspecified terms
             if (full_response.containsKey("followUp")){
               interpretation.getFeatures().put(Linguistics.UNDERSPECIFIED_TERM_QUESTION, (Map<String,String>) full_response.get("followUp"));
-              interpretation.getFeatures().put(Linguistics.PARSER_RESULT,Linguistics.PARSER_OUTCOME.UNDERSPECIFIED);
+              if (full_response.get("answer").toString().equals("(no answer)"))
+                interpretation.getFeatures().put(Linguistics.PARSER_RESULT,Linguistics.PARSER_OUTCOME.UNDERSPECIFIED);
             }
             // Read tokens
             if (full_response.containsKey("tokens")) {
@@ -133,10 +134,9 @@ public class SemanticParserAnalyzer implements Analyzer{
 
   public List<Triple> extract_relations(Map<String, Double> relations){
     List<Triple> result = new ArrayList<>();
-    System.out.println(relations.toString());
     for (String key: relations.keySet()){
-      key = key.replaceAll("(","");
-      key = key.replaceAll(")","");
+      key = key.replaceAll("\\(","");
+      key = key.replaceAll("\\)","");
       String[] triple = key.split(",");
       if (triple.length == 3)
         result.add(new Triple(triple[0],triple[1],triple[2]));
@@ -177,6 +177,9 @@ public class SemanticParserAnalyzer implements Analyzer{
         analyzer.analyze(inter);
         for (String key: inter.getFeatures().keySet()) {
           System.out.println(key + " : " + inter.getFeature(key).toString());
+        }
+        for (String key: ((Map<String,String>)inter.getFeature(Linguistics.UNDERSPECIFIED_TERM_QUESTION)).keySet()) {
+          System.out.println(key + " : " + ((Map<String,String>)inter.getFeature(Linguistics.UNDERSPECIFIED_TERM_QUESTION)).get(key));
         }
       }
     }
