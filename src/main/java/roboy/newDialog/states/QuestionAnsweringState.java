@@ -110,7 +110,8 @@ public class QuestionAnsweringState extends State {
         } else {
             // the answer is no. we don't ask more specifying questions
             // use avoid answer segue
-            return Output.say("I see [answer to specifying got NO]").setSegue(new Segue(Segue.SegueType.AVOID_ANSWER, 1));
+            return Output.say("replace with say nothing [answer to specifying got NO]")
+                    .setSegue(new Segue(Segue.SegueType.AVOID_ANSWER, 1));
         }
     }
 
@@ -125,7 +126,7 @@ public class QuestionAnsweringState extends State {
             String specifyingQuestion = (String) input.getFeature("specifyingQuestion");
             answerToTheBestUnspecifiedCandidate = (String) input.getFeature("answerToTheBestUnspecifiedCandidate"); // save for later
             askingSpecifyingQuestion = true;
-            return Output.say("[parser underspecified] could you be more precise, please? " + specifyingQuestion);
+            return Output.say("[parser underspecified] could you be more precise, please? Did you mean ...? [yes/no] " + specifyingQuestion);
         }
 
         askingSpecifyingQuestion = false;
