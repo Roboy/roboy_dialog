@@ -8,24 +8,24 @@ import java.util.List;
  * Extension of ArrayList with possibility to get a random element.
  * @param <T> Class of objects in this list
  */
-public class RndList<T> extends ArrayList<T> {
+public class RandomList<T> extends ArrayList<T> {
 
     /**
      * Creates an empty ArrayList.
      */
-    public RndList() {
+    public RandomList() {
     }
 
     /**
      * Creates a list of objects that allows to select one element at random.
      *
      * To prevent issues with heap pollution, use this constructor to reduce
-     * syntactic overhead only: new RndList("a", "b", "c")
+     * syntactic overhead only: new RandomList("a", "b", "c")
      *
      * @param objects objects to put in the list
      */
     @SafeVarargs
-    public RndList(T... objects) {
+    public RandomList(T... objects) {
         addAll(Arrays.asList(objects));
     }
 
@@ -33,7 +33,7 @@ public class RndList<T> extends ArrayList<T> {
      * Creates list of objects that allows to select one element at random.
      * @param objectList list containing the objects to add to this list
      */
-    public RndList(List<T> objectList) {
+    public RandomList(List<T> objectList) {
         addAll(objectList);
     }
 

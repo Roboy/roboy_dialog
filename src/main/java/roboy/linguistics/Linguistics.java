@@ -41,7 +41,11 @@ public class Linguistics {
 		PREDICATE, AGENT, PATIENT, TIME, LOCATION, MANNER, INSTRUMENT, ORIGIN, DESTINATION,
 		RECIPIENT, BENEFICIARY, PURPOSE, CAUSE
 	}
-	
+
+    public enum PARSER_OUTCOME{
+        SUCCESS, FAILURE, UNDERSPECIFIED
+    }
+
 	public static final List<String> tobe = Arrays.asList("am","are","is","was","were","been");
 	public static final List<String> beMod = Lists.stringList("am","are","is","was","were","has been","have been","had been");
 	
@@ -56,6 +60,11 @@ public class Linguistics {
 	 * A triple of subject, predicate and object extracted by a very primitive rule system
 	 */
 	public static final String TRIPLE = "triple";
+
+	/**
+	 * A triple of subject, predicate and object extracted by a very primitive rule system
+	 */
+	public static final String SEM_TRIPLE = "sem_triple";
 	
 	/**
 	 * The tokens (usually words) of the sentence
@@ -139,5 +148,25 @@ public class Linguistics {
 	 * The result of SemanticParserAnalyzer, answer for the query
 	 */
 	public static final String PARSE_ANSWER = "parse_ans";
-	
+
+
+	/**
+	 * The result of SemanticParserAnalyzer, formal language representation
+	 */
+	public static final String UNDERSPECIFIED_TERM_QUESTION= "underspecified_term_question";
+	/**
+	 * The result of Sentiment Analyzer
+	 */
+	public static final String SENTIMENT = "sentiment";
+
+    /**
+     * The type of utterance resolved by the parser
+     */
+    public static final String UTTERANCE_TYPE = "utt_type";
+
+    /**
+     * The result of the Parser
+     */
+    public static final String PARSER_RESULT = "parser_result";
+
 }

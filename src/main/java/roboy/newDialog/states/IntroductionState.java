@@ -8,12 +8,12 @@ import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
+import roboy.memory.nodes.Interlocutor.RelationshipAvailability;
+import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
 import roboy.memory.nodes.MemoryNodeModel;
-import roboy.memory.Neo4jMemory;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 import static roboy.memory.Neo4jRelationships.*;
@@ -108,11 +108,13 @@ public class IntroductionState extends State {
                 }
             }
 
-            Boolean infoPurity = person.checkInfoPurity3VL(predicates);
-            if (infoPurity == null) {
+            RelationshipAvailability availability = person.checkRelationshipAvailability(predicates);
+            if (availability == SOME_AVAILABLE) {
                 nextState = (Math.random() < 0.3) ? getTransition(UPDATE_KNOWN_PERSON) : getTransition(LEARN_ABOUT_PERSON);
+            } else if (availability == NONE_AVAILABLE) {
+                nextState = getTransition(LEARN_ABOUT_PERSON);
             } else {
-                nextState = infoPurity ? getTransition(UPDATE_KNOWN_PERSON) : getTransition(LEARN_ABOUT_PERSON);
+                nextState = getTransition(UPDATE_KNOWN_PERSON);
             }
 
             // TODO: get some friends or hobbies of the person to make answer more interesting

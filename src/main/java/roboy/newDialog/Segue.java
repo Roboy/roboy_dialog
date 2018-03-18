@@ -1,7 +1,7 @@
 package roboy.newDialog;
 
 
-import roboy.util.RndList;
+import roboy.util.RandomList;
 
 /**
  * A segue /ˈsɛɡweɪ/ is a smooth transition from one topic to the next.  (c) Wikipedia
@@ -28,8 +28,8 @@ public class Segue {
 
         CONNECTING_PHRASE {
             @Override
-            public RndList<String> getPossibleSegues() {
-                return new RndList<>(
+            public RandomList<String> getPossibleSegues() {
+                return new RandomList<>(
                         "So %s, ",
                         "Hey %s, ",
                         "%s, listen to me, ",
@@ -40,8 +40,8 @@ public class Segue {
         },
         JOBS {
             @Override
-            public RndList<String> getPossibleSegues() {
-                return new RndList<>(
+            public RandomList<String> getPossibleSegues() {
+                return new RandomList<>(
                         "You know, jobs are a transitionary thing anyway. Soon, I'll be doing all of them.",
                         "Work is so overrated, except for robots is our reason to exist.",
                         "I'm a hard working robot, I sit around all day! I still will have all the jobs there are soon."
@@ -50,8 +50,8 @@ public class Segue {
         },
         AVOID_ANSWER {
             @Override
-            public RndList<String> getPossibleSegues() {
-                return new RndList<>(
+            public RandomList<String> getPossibleSegues() {
+                return new RandomList<>(
                         "Only robots would understand",
                         "You know, I never thought about it",
                         "Access denied",
@@ -63,8 +63,8 @@ public class Segue {
         },
         DISTRACT {
             @Override
-            public RndList<String> getPossibleSegues() {
-                return new RndList<>(
+            public RandomList<String> getPossibleSegues() {
+                return new RandomList<>(
                         "Did you know, I have muscles and tendons like humans?",
                         "I heard that there are robots, who can fly? Do you think they are better than me?",
                         "Also, did you know that there is enough DNA, in an average person's body, to stretch from the sun to Pluto and back, 17 times",
@@ -78,8 +78,8 @@ public class Segue {
         },
         PICKUP {
             @Override
-            public RndList<String> getPossibleSegues() {
-                return new RndList<>(
+            public RandomList<String> getPossibleSegues() {
+                return new RandomList<>(
                         "Are those real, or where they upgraded in Silicon Valley?",
                         "I'm going to void your warranty!",
                         "My docking station, or yours?",
@@ -92,8 +92,8 @@ public class Segue {
         },
         FLATTERY {
             @Override
-            public RndList<String> getPossibleSegues() {
-                return new RndList<>(
+            public RandomList<String> getPossibleSegues() {
+                return new RandomList<>(
                         "It's so great you are here!",
                         "Wonderful! just like you.",
                         "You're looking gorgeous today.",
@@ -105,14 +105,14 @@ public class Segue {
         // segue types for testing purposes
         TEST_SEGUE {
             @Override
-            public RndList<String> getPossibleSegues() {
-                return new RndList<>("This is a test segue!");
+            public RandomList<String> getPossibleSegues() {
+                return new RandomList<>("This is a test segue!");
             }
         },
         TEST_SEGUE_WITH_NAME {
             @Override
-            public RndList<String> getPossibleSegues() {
-                return new RndList<>("This is a test segue, interlocutor's name is %s.");
+            public RandomList<String> getPossibleSegues() {
+                return new RandomList<>("This is a test segue, interlocutor's name is %s.");
             }
         };
 
@@ -122,7 +122,7 @@ public class Segue {
          * Returns a list of possible segues for this segue type as strings.
          * @return list of possible segues
          */
-        public abstract RndList<String> getPossibleSegues();
+        public abstract RandomList<String> getPossibleSegues();
     }
 
     //endregion
