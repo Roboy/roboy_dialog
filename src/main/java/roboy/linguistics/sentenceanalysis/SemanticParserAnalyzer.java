@@ -1,20 +1,24 @@
 package roboy.linguistics.sentenceanalysis;
 
+import com.google.gson.stream.JsonReader;
 import jdk.nashorn.internal.runtime.regexp.joni.Config;
+import org.apache.jena.base.Sys;
 import roboy.linguistics.Linguistics;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import java.net.Socket;
 import java.net.ConnectException;
+import java.util.Scanner;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import roboy.linguistics.Triple;
+import roboy.util.ConfigManager;
 
 
 /**
@@ -72,24 +76,44 @@ public class SemanticParserAnalyzer implements Analyzer{
 
           try {
             Map<String, Object> full_response = gson.fromJson(response, type);
-            if (this.debug) {
-              System.out.println("> Parse:" + full_response.get("parse"));
-            }
-            if (this.debug) {
-              System.out.println("> Answer:"+ full_response.get("answer"));
-            }
+            // Read formula and answer
             if (full_response.containsKey("parse")){
               interpretation.getFeatures().put(Linguistics.PARSE_ANSWER, full_response.get("answer").toString());
               interpretation.getFeatures().put(Linguistics.PARSE, full_response.get("parse").toString());
+              interpretation.getFeatures().put(Linguistics.SEM_TRIPLE, extract_triples(full_response.get("parse").toString()));
+              if (full_response.get("answer").toString().equals("(no answer)"))
+                interpretation.getFeatures().put(Linguistics.PARSER_RESULT,Linguistics.PARSER_OUTCOME.FAILURE);
+              else
+                interpretation.getFeatures().put(Linguistics.PARSER_RESULT,Linguistics.PARSER_OUTCOME.SUCCESS);
             }
+            // Read followUp questions for underspecified terms
+            if (full_response.containsKey("followUp")){
+              interpretation.getFeatures().put(Linguistics.UNDERSPECIFIED_TERM_QUESTION, (Map<String,String>) full_response.get("followUp"));
+              interpretation.getFeatures().put(Linguistics.PARSER_RESULT,Linguistics.PARSER_OUTCOME.UNDERSPECIFIED);
+            }
+            // Read tokens
             if (full_response.containsKey("tokens")) {
                 interpretation.getFeatures().put(Linguistics.TOKENS, full_response.get("tokens").toString().split(","));
             }
+            // Read extracted non-semantic relations
+            if (full_response.containsKey("relations")) {
+              interpretation.getFeatures().put(Linguistics.TRIPLE, extract_relations((Map<String,Double>)full_response.get("relations")));
+            }
+            // Read extracted sentiment
+            if (full_response.containsKey("sentiment")) {
+              interpretation.getFeatures().put(Linguistics.SENTIMENT, full_response.get("sentiment").toString().split(","));
+            }
+            // Read POS-tags
             if (full_response.containsKey("postags")) {
                 interpretation.getFeatures().put(Linguistics.POSTAGS, full_response.get("postags").toString().split(","));
             }
+            // Read lemmatized tokens
             if (full_response.containsKey("lemma_tokens")) {
                 interpretation.getFeatures().put(Linguistics.LEMMAS, full_response.get("lemma_tokens").toString().split(","));
+            }
+            // Read utterance type
+            if (full_response.containsKey("type")) {
+              interpretation.getFeatures().put(Linguistics.UTTERANCE_TYPE, full_response.get("type").toString());
             }
           }
           catch (Exception e) {
@@ -105,6 +129,60 @@ public class SemanticParserAnalyzer implements Analyzer{
     }
     else
       return interpretation;
+  }
+
+  public List<Triple> extract_relations(Map<String, Double> relations){
+    List<Triple> result = new ArrayList<>();
+    System.out.println(relations.toString());
+    for (String key: relations.keySet()){
+      key = key.replaceAll("(","");
+      key = key.replaceAll(")","");
+      String[] triple = key.split(",");
+      if (triple.length == 3)
+        result.add(new Triple(triple[0],triple[1],triple[2]));
+    }
+    return result;
+  }
+
+  public List<Triple> extract_triples(String input){
+    List<Triple> result = new ArrayList<>();
+    input = input.replace(")"," )");
+    input = input.replace("(","( ");
+    String[] tokens = input.split(" ");
+    for (int i = 0; i < tokens.length; i++)
+    {
+      if (tokens[i].contains("triple") && i+3 < tokens.length && !tokens[i].contains("triples"))
+      {
+        result.add(new Triple(tokens[i+2], tokens[i+1], tokens[i+3]));
+      }
+      else if (tokens[i].contains("(") && i+1 < tokens.length && !tokens[i+1].contains("triple"))
+      {
+        if (tokens[i].contains("!"))
+          result.add(new Triple(tokens[i], tokens[i+1], null));
+        else
+          result.add(new Triple( tokens[i], null, tokens[i+1]));
+      }
+    }
+    return result;
+  }
+
+  public static void main(String[] args) {
+    SemanticParserAnalyzer analyzer = new SemanticParserAnalyzer(ConfigManager.PARSER_PORT);
+    try {
+      BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+      String line;
+      System.out.print("Enter utterance: ");
+      while ((line = reader.readLine()) != null) {
+        Interpretation inter = new Interpretation(line);
+        analyzer.analyze(inter);
+        for (String key: inter.getFeatures().keySet()) {
+          System.out.println(key + " : " + inter.getFeature(key).toString());
+        }
+      }
+    }
+    catch(IOException e){
+      e.printStackTrace();
+    }
   }
 
 }
