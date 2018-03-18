@@ -1,5 +1,7 @@
 package roboy.newDialog.states;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
@@ -41,6 +43,8 @@ import static roboy.memory.Neo4jRelationships.*;
  */
 public class QuestionAnsweringState extends State {
 
+    private final Logger logger = LogManager.getLogger();
+
     private final static String TRANSITION_FINISHED_ANSWERING = "finishedQuestionAnswering";
     private final static String TRANSITION_LOOP_TO_NEW_PERSON = "loopToNewPerson";
     private final static String TRANSITION_LOOP_TO_KNOWN_PERSON = "loopToKnownPerson";
@@ -49,11 +53,10 @@ public class QuestionAnsweringState extends State {
     private int questionsAnswered = 0;
 
     private final static RandomList<String> reenteringPhrases = new RandomList<>(
-            "anything else",
-            "Is that all that comes to your mind?",
-            "Oh well, I know much more stuff",
-		    "Let me uncover my potential. Ask something really difficult");
-    private boolean reenteringItself = false; // indicates that this state is reentered from itself
+            "Is there anything else you would like to know?",
+            "Is that all that comes to your mind? Ask me something!",
+            "Oh well, I know much more stuff, just ask me a question.",
+		    "Let me uncover my potential. Ask something really difficult!");
 
     private boolean askingSpecifyingQuestion = false;
     private String answerToTheBestUnspecifiedCandidate = ""; // the answer to use if specifying question is answered with YES
@@ -69,10 +72,10 @@ public class QuestionAnsweringState extends State {
             return Output.sayNothing();
         }
 
-        if (reenteringItself) {
-            return Output.say(reenteringPhrases.getRandomElement());
+        if (questionsAnswered > 0) {
+            return Output.say("[reentering, q answered: " + questionsAnswered + "] " + reenteringPhrases.getRandomElement());
         }
-        return Output.say("I'm pretty good at answering questions about myself and other stuff. What would you like to know?");
+        return Output.say("[first entry] I'm pretty good at answering questions about myself and other stuff. What would you like to know?");
     }
 
     @Override
@@ -96,19 +99,18 @@ public class QuestionAnsweringState extends State {
      */
     private Output reactToSpecifyingAnswer(Interpretation input) {
 
+        askingSpecifyingQuestion = false;
+        questionsAnswered++;
+
         // check if answer is yes
         if (((String) input.getFeature(Linguistics.SENTENCE)).contains("yes")) {
-            // send formula to the parser
-            //   something like  parser.parse(specifyingQuestionFormula);
-            // get the response
-            // get the answer out the response
-            // tell the response
-            return Output.say(answerToTheBestUnspecifiedCandidate);
+            // tell the response previously cached in answerToTheBestUnspecifiedCandidate
+            return Output.say("[answer to specifying got YES] " + answerToTheBestUnspecifiedCandidate);
 
         } else {
             // the answer is no. we don't ask more specifying questions
             // use avoid answer segue
-            return Output.sayNothing().setSegue(new Segue(Segue.SegueType.AVOID_ANSWER, 1));
+            return Output.say("I see [answer to specifying got NO]").setSegue(new Segue(Segue.SegueType.AVOID_ANSWER, 1));
         }
     }
 
@@ -123,7 +125,7 @@ public class QuestionAnsweringState extends State {
             String specifyingQuestion = (String) input.getFeature("specifyingQuestion");
             answerToTheBestUnspecifiedCandidate = (String) input.getFeature("answerToTheBestUnspecifiedCandidate"); // save for later
             askingSpecifyingQuestion = true;
-            return Output.say("could you be more precise, please? " + specifyingQuestion);
+            return Output.say("[parser underspecified] could you be more precise, please? " + specifyingQuestion);
         }
 
         askingSpecifyingQuestion = false;
@@ -131,7 +133,7 @@ public class QuestionAnsweringState extends State {
 
         if (dummyParserResult.equals("SUCCESS")) {
             // tell the answer, that was provided by the parser
-            return Output.say("parser says: " + input.getFeature("get result from parser here"));
+            return Output.say("[parser success] parser says: " + input.getFeature("get result from parser here"));
         }
 
         // from here we know that dummyParserResult.equals("FAILURE")
@@ -140,21 +142,26 @@ public class QuestionAnsweringState extends State {
         Neo4jMemoryInterface mem = getParameters().getMemory();
         // mem.answer(input) // TODO
 
+        return Output.say("[parser failure] reply from memory or fallback");
 
         // if memory has no answer, use fallback
-        return Output.useFallback();
+        //return Output.useFallback();
     }
 
     @Override
     public State getNextState() {
 
-        reenteringItself = false;
+        if (askingSpecifyingQuestion) { // we are asking a yes/no question --> stay in this state
+            logger.info("askingSpecifyingQuestion, staying in same state");
+            return this;
 
-        if (questionsAnswered >= MAX_NUM_OF_QUESTIONS) { // enough questions answered --> finish asking
+        } else if (questionsAnswered > MAX_NUM_OF_QUESTIONS) { // enough questions answered --> finish asking
+            logger.info("enough questions answered, DONE");
 
             return getTransition(TRANSITION_FINISHED_ANSWERING);
 
-        } else if (Math.random() < 0.2) { // loop back to previous states with probability 0.2
+        } else if (Math.random() < 1) { // loop back to previous states with probability 0.2
+            logger.info("random loopback to previous");
 
             Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
             Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
@@ -169,8 +176,7 @@ public class QuestionAnsweringState extends State {
             }
 
         } else { // stay in this state
-
-            reenteringItself = true;
+            logger.info("decided to stay and answer another (reentering)");
             return this;
 
         }
