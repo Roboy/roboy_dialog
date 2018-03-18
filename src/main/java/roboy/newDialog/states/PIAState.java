@@ -22,7 +22,7 @@ public class PIAState extends State {
     private Neo4jRelationships selectedPredicate;
     private State nextState;
 
-    private final String next = "next";
+    private final String TRANSITION_INFO_OBTAINED = "questionAnswering";
     final Logger LOGGER = LogManager.getLogger();
 
     public PIAState(String stateIdentifier, StateParameters params) {
@@ -62,7 +62,7 @@ public class PIAState extends State {
         if (answers != null && !answers.isEmpty()) {
             answer = String.format(answers.get((int) (Math.random() * answers.size())), "");
         }
-        nextState = getTransition(next);
+        nextState = getTransition(TRANSITION_INFO_OBTAINED);
         return State.Output.say(answer);
     }
 
@@ -74,7 +74,7 @@ public class PIAState extends State {
     @Override
     protected Set<String> getRequiredTransitionNames() {
         // optional: define all required transitions here:
-        return newSet(next);
+        return newSet(TRANSITION_INFO_OBTAINED);
     }
 
     @Override
