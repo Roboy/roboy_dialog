@@ -27,7 +27,7 @@ public class FUAState extends State{
     private Neo4jRelationships selectedPredicate;
     private State nextState;
 
-    private final String TRANSITION_QUESTION_ANSWERING = "questionAnswering";
+    private final String TRANSITION_INFO_UPDATED = "questionAnswering";
     private final Logger LOGGER = LogManager.getLogger();
 
     public FUAState(String stateIdentifier, StateParameters params) {
@@ -81,7 +81,7 @@ public class FUAState extends State{
             }
         }
 
-        nextState = getTransition(TRANSITION_QUESTION_ANSWERING);
+        nextState = getTransition(TRANSITION_INFO_UPDATED);
 
         return Output.say(answer);
     }
@@ -94,7 +94,7 @@ public class FUAState extends State{
     @Override
     protected Set<String> getRequiredTransitionNames() {
         // optional: define all required transitions here:
-        return newSet(TRANSITION_QUESTION_ANSWERING);
+        return newSet(TRANSITION_INFO_UPDATED);
     }
 
     @Override

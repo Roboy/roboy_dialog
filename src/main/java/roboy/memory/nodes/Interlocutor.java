@@ -52,8 +52,8 @@ public class Interlocutor extends MemoryNodeModel {
                 try {
                     MemoryNodeModel node = fromJSON(memory.getById(ids.get(0)), new Gson());
                     setId(node.getId());
-                    setRelationships(node.getRelationships());
-                    setProperties(node.getProperties());
+                    setRelationships(node.getRelationships() != null ? node.getRelationships() : new HashMap<>());
+                    setProperties(node.getProperties() != null ? node.getProperties() : new HashMap<>());
                     FAMILIAR = true;
                 } catch (InterruptedException | IOException e) {
                     LOGGER.warn("Unexpected memory error: provided ID not found upon querying.");

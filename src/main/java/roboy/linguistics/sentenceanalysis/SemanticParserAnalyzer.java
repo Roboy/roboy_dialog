@@ -81,7 +81,7 @@ public class SemanticParserAnalyzer implements Analyzer{
                 if (full_response.get("answer").toString().equals("(no answer)"))
                     interpretation.getFeatures().put(Linguistics.PARSER_RESULT,Linguistics.PARSER_OUTCOME.FAILURE);
                 else {
-                    interpretation.getFeatures().put(Linguistics.PARSE_ANSWER, full_response.get("answer").toString());
+                    interpretation.getFeatures().put(Linguistics.PARSE_ANSWER, get_answers(full_response.get("answer").toString()));
                     interpretation.getFeatures().put(Linguistics.PARSE, full_response.get("parse").toString());
                     interpretation.getFeatures().put(Linguistics.SEM_TRIPLE, extract_triples(full_response.get("parse").toString()));
                     interpretation.getFeatures().put(Linguistics.PARSER_RESULT, Linguistics.PARSER_OUTCOME.SUCCESS);
@@ -132,6 +132,40 @@ public class SemanticParserAnalyzer implements Analyzer{
       return interpretation;
   }
 
+  public List<Object> get_answers(String answer){
+    List<Object> result = new ArrayList<>();
+
+    //Check if contains triples
+    if (answer.contains("triples"))
+    {
+      result.addAll(extract_triples(answer));
+    }
+    String[] tokens = answer.split(" ");
+    for (int i = 0; i < tokens.length; i++){
+      //Check for specific types
+      if (tokens[i].contains("number"))
+      {
+        outerloop:
+        for (int j = i+1; j < tokens.length; j++) {
+          result.add(Double.valueOf(tokens[j].replaceAll("\\)","")));
+          if (tokens[j].contains(")"))
+            break outerloop;
+        }
+      }
+      //Check for specific types
+      if (tokens[i].contains("string"))
+      {
+        outerloop:
+        for (int j = i+1; j < tokens.length; j++) {
+          result.add(tokens[j]);
+          if (tokens[j].contains(")"))
+            break outerloop;
+        }
+      }
+    }
+    return result;
+  }
+
   public List<Triple> extract_relations(Map<String, Double> relations){
     List<Triple> result = new ArrayList<>();
     for (String key: relations.keySet()){
@@ -155,12 +189,12 @@ public class SemanticParserAnalyzer implements Analyzer{
       {
         result.add(new Triple(tokens[i+2], tokens[i+1], tokens[i+3]));
       }
-      else if (tokens[i].contains("(") && i+1 < tokens.length && !tokens[i+1].contains("triple"))
+      else if (tokens[i].contains("(") && i+2 < tokens.length && tokens[i+1].contains(":"))
       {
-        if (tokens[i].contains("!"))
-          result.add(new Triple(tokens[i], tokens[i+1], null));
+        if (tokens[i+1].contains("!"))
+          result.add(new Triple(tokens[i+1].replaceAll("!",""), tokens[i+2], null));
         else
-          result.add(new Triple( tokens[i], null, tokens[i+1]));
+          result.add(new Triple( tokens[i+1], null, tokens[i+2]));
       }
     }
     return result;

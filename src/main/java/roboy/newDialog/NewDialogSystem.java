@@ -60,7 +60,7 @@ public class NewDialogSystem {
         List<Analyzer> analyzers = new ArrayList<>();
         analyzers.add(new Preprocessor());
         analyzers.add(new SimpleTokenizer());
-        // analyzers.add(new SemanticParserAnalyzer(ConfigManager.PARSER_PORT));
+        analyzers.add(new SemanticParserAnalyzer(ConfigManager.PARSER_PORT));
 
         analyzers.add(new OpenNLPPPOSTagger());
         analyzers.add(new DictionaryBasedSentenceTypeDetector());
