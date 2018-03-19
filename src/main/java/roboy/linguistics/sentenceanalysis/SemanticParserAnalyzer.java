@@ -78,20 +78,39 @@ public class SemanticParserAnalyzer implements Analyzer{
             Map<String, Object> full_response = gson.fromJson(response, type);
             // Read formula and answer
             if (full_response.containsKey("parse")){
-                if (full_response.get("answer").toString().equals("(no answer)"))
+                if (full_response.get("answer").toString().equals("(no answer)")) {
+
                     interpretation.getFeatures().put(Linguistics.PARSER_RESULT,Linguistics.PARSER_OUTCOME.FAILURE);
-                else {
-                    interpretation.getFeatures().put(Linguistics.PARSE_ANSWER, get_answers(full_response.get("answer").toString()));
+                    interpretation.parserOutcome = Linguistics.PARSER_OUTCOME.FAILURE; // type safe version
+
+                } else {
+                    String answer = get_answers(full_response.get("answer").toString());
+
+                    interpretation.getFeatures().put(Linguistics.PARSE_ANSWER, answer);
+                    interpretation.answer = answer; // type safe
+
                     interpretation.getFeatures().put(Linguistics.PARSE, full_response.get("parse").toString());
-                    interpretation.getFeatures().put(Linguistics.SEM_TRIPLE, extract_triples(full_response.get("parse").toString()));
+
+                    List<Triple> triples = extract_triples(full_response.get("parse").toString());
+                    interpretation.getFeatures().put(Linguistics.SEM_TRIPLE, triples);
+                    interpretation.semParserTriples = triples; // type safe
+
                     interpretation.getFeatures().put(Linguistics.PARSER_RESULT, Linguistics.PARSER_OUTCOME.SUCCESS);
+                    interpretation.parserOutcome = Linguistics.PARSER_OUTCOME.SUCCESS;
                 }
             }
             // Read followUp questions for underspecified terms
             if (full_response.containsKey("followUpQ")){
-              interpretation.getFeatures().put(Linguistics.UNDERSPECIFIED_QUESTION, full_response.get("followUpQ"));
-              interpretation.getFeatures().put(Linguistics.UNDERSPECIFIED_ANSWER, get_answers(full_response.get("answer").toString()));
+              String specifyingQuestion = (String) full_response.get("followUpQ");
+              interpretation.getFeatures().put(Linguistics.UNDERSPECIFIED_QUESTION, specifyingQuestion);
+              interpretation.underspecifiedQuestion = specifyingQuestion;
+
+              String answer = get_answers(full_response.get("answer").toString());
+              interpretation.getFeatures().put(Linguistics.UNDERSPECIFIED_ANSWER, answer);
+              interpretation.answer = answer;
+
               interpretation.getFeatures().put(Linguistics.PARSER_RESULT,Linguistics.PARSER_OUTCOME.UNDERSPECIFIED);
+              interpretation.parserOutcome = Linguistics.PARSER_OUTCOME.UNDERSPECIFIED;
             }
             // Read tokens
             if (full_response.containsKey("tokens")) {
