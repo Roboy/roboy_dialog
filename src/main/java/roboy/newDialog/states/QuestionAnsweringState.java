@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
 import roboy.linguistics.Linguistics;
+import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.Neo4jRelationships;
@@ -105,8 +106,14 @@ public class QuestionAnsweringState extends State {
 
         // check if answer is yes
         if (((String) input.getFeature(Linguistics.SENTENCE)).contains("yes")) {
-            // tell the response previously cached in answerToTheBestUnspecifiedCandidate
-            return Output.say("In this case, I think the answer is " + answerToTheBestUnspecifiedCandidate);
+            if (answerToTheBestUnspecifiedCandidate == null) {
+                //
+                return Output.say("Well, parsing worked, but I don't know the answer");
+            } else {
+                // tell the response previously cached in answerToTheBestUnspecifiedCandidate
+                return Output.say("In this case, I think the answer is " + answerToTheBestUnspecifiedCandidate);
+            }
+
 
         } else {
             // the answer is no. we don't ask more specifying questions
@@ -124,7 +131,7 @@ public class QuestionAnsweringState extends State {
         askingSpecifyingQuestion = false;
         questionsAnswered++;
 
-        Linguistics.PARSER_OUTCOME parseOutcome = (Linguistics.PARSER_OUTCOME) input.getFeature(Linguistics.PARSER_RESULT);
+        Linguistics.PARSER_OUTCOME parseOutcome = input.parserOutcome;
         if (parseOutcome == null) {
             logger.error("Invalid parser outcome!");
             return Output.say("Invalid parser outcome!");
@@ -133,44 +140,33 @@ public class QuestionAnsweringState extends State {
         if (parseOutcome == Linguistics.PARSER_OUTCOME.UNDERSPECIFIED) {
 
             // ambiguous question, luckily the parser has prepared a followup question
+            // and maybe even an answer if we are lucky (we will check in reactToSpecifyingAnswer later)
 
-            Object underspQuestionObj = input.getFeature(Linguistics.UNDERSPECIFIED_QUESTION);
-
-            if (!(underspQuestionObj instanceof String)) {
-                logger.error("UNDERSPECIFIED_QUESTION is not a String");
-                return Output.say("Well, looks like my parser has some problems: something is wrong with the types.");
-            }
-
-            // answer will be in input.getFeature(Linguistics.UNDERSPECIFIED_ANSWER);
-            // TODO: get answer
-
-
-            String question = (String) underspQuestionObj;
-            answerToTheBestUnspecifiedCandidate = "TODO"; // save answer for later
+            String question = input.underspecifiedQuestion;
+            answerToTheBestUnspecifiedCandidate = input.answer; // could be null, but that's fine for now
 
             askingSpecifyingQuestion = true; // next input should be a yes/no answer
             return Output.say("Could you be more precise, please? " + question);
         }
 
         if (parseOutcome == Linguistics.PARSER_OUTCOME.SUCCESS) {
-            // tell the answer, that was provided by the parser
-            return Output.say("I think, the answer is " + input.getFeature(Linguistics.PARSE_ANSWER));
+            if (input.answer != null) {
+                // tell the answer, that was provided by the parser
+                return Output.say("I think, the answer is " + input.answer);
+
+            } else {
+                // parser could parse the question but has no answer
+                // ask memory
+                Output memoryAnswer = wagramCouldImplementGettingStuffFromMemoryHere(input.semParserTriples);
+                if (memoryAnswer != null) return memoryAnswer;
+            }
         }
 
         // from here we know that dummyParserResult.equals("FAILURE")
-        // another check to be safe
-        if (parseOutcome != Linguistics.PARSER_OUTCOME.FAILURE) {
-            logger.error("This is very wrong! parseOutcome != Linguistics.PARSER_OUTCOME.FAILURE");
-            return Output.say("This is very wrong! parseOutcome != Linguistics.PARSER_OUTCOME.FAILURE");
-        }
+        Output memoryAnswer = wagramCouldImplementGettingStuffFromMemoryHere(input.semParserTriples);
+        if (memoryAnswer != null) return memoryAnswer;
 
-        // try to use memory to answer
-        Neo4jMemoryInterface mem = getParameters().getMemory();
-        // mem.answer(input) // TODO
-
-        return Output.say("[parser failure] reply from memory or fallback");
-
-        // if memory has no answer, use fallback
+        return Output.say("[parser failure] USE FALLBACK"); // use real fallback later
         //return Output.useFallback();
     }
 
@@ -186,7 +182,7 @@ public class QuestionAnsweringState extends State {
 
             return getTransition(TRANSITION_FINISHED_ANSWERING);
 
-        } else if (Math.random() < 1) { // loop back to previous states with probability 0.2
+        } else if (Math.random() < 0.2) { // loop back to previous states with probability 0.2
             logger.info("random loopback to previous");
 
             Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
@@ -212,6 +208,20 @@ public class QuestionAnsweringState extends State {
         }
 
     }
+
+
+    private Output wagramCouldImplementGettingStuffFromMemoryHere(List<Triple> triples) {
+
+        // try to use memory to answer
+        Neo4jMemoryInterface mem = getParameters().getMemory();
+
+        // Wagram, do some magic here
+
+
+        return null;
+    }
+
+
 
     @Override
     protected Set<String> getRequiredTransitionNames() {
