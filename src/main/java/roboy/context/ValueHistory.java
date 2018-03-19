@@ -66,6 +66,17 @@ public class ValueHistory<V> implements AbstractValueHistory<Integer, V> {
     }
 
     /**
+     * Checks if the value is contained in the history.
+     *
+     * @param value The value to be checked if exists.
+     * @return true if such value is in the history and false otherwise
+     */
+    @Override
+    public synchronized boolean contains(V value) {
+        return data.containsValue(value);
+    }
+
+    /**
      * Generates a key that is unique through incrementing an internal counter.
      *
      * @return A key which is unique in this list instance.

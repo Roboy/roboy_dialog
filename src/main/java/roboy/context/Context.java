@@ -185,5 +185,12 @@ public class Context {
         public int valuesAddedSinceStart() {
             return valueHistory.valuesAddedSinceStart();
         }
+
+        /**
+         * Check if the object exists among the valueHistory values
+         */
+        public boolean contains(V value) {
+            return valueHistory.contains(value);
+        }
     }
 }
