@@ -153,7 +153,13 @@ public class Linguistics {
 	/**
 	 * The result of SemanticParserAnalyzer, formal language representation
 	 */
+	@Deprecated
 	public static final String UNDERSPECIFIED_TERM_QUESTION= "underspecified_term_question";
+
+	public static final String UNDERSPECIFIED_QUESTION = "underspecified_question";
+	public static final String UNDERSPECIFIED_ANSWER = "underspecified_answer";
+
+
 	/**
 	 * The result of Sentiment Analyzer
 	 */

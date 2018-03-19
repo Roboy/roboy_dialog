@@ -15,6 +15,8 @@ import roboy.util.RandomList;
 
 import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import static roboy.memory.Neo4jRelationships.*;
@@ -100,12 +102,11 @@ public class QuestionAnsweringState extends State {
     private Output reactToSpecifyingAnswer(Interpretation input) {
 
         askingSpecifyingQuestion = false;
-        questionsAnswered++;
 
         // check if answer is yes
         if (((String) input.getFeature(Linguistics.SENTENCE)).contains("yes")) {
             // tell the response previously cached in answerToTheBestUnspecifiedCandidate
-            return Output.say("[answer to specifying got YES] " + answerToTheBestUnspecifiedCandidate);
+            return Output.say("In this case, I think the answer is " + answerToTheBestUnspecifiedCandidate);
 
         } else {
             // the answer is no. we don't ask more specifying questions
@@ -115,29 +116,53 @@ public class QuestionAnsweringState extends State {
         }
     }
 
+
+
     private Output reactToQuestion(Interpretation input) {
 
-        // Check if the semantic parser has an answer
-        // it should contain an enum ParsingResult \in { PARSE_SUCCESS, PARSE_FAILURE, UNDERSPECIFIED_ANSWER }
-        String dummyParserResult = Math.random() < .33 ? "SUCCESS" : (Math.random() < 0.5 ? "FAILURE" : "UNDERSPECIFIED");
-
-        if (dummyParserResult.equals("UNDERSPECIFIED")) {
-            // ambiguous question, luckily the parser has prepared a followup question
-            String specifyingQuestion = (String) input.getFeature("specifyingQuestion");
-            answerToTheBestUnspecifiedCandidate = (String) input.getFeature("answerToTheBestUnspecifiedCandidate"); // save for later
-            askingSpecifyingQuestion = true;
-            return Output.say("[parser underspecified] could you be more precise, please? Did you mean ...? [yes/no] " + specifyingQuestion);
-        }
 
         askingSpecifyingQuestion = false;
         questionsAnswered++;
 
-        if (dummyParserResult.equals("SUCCESS")) {
+        Linguistics.PARSER_OUTCOME parseOutcome = (Linguistics.PARSER_OUTCOME) input.getFeature(Linguistics.PARSER_RESULT);
+        if (parseOutcome == null) {
+            logger.error("Invalid parser outcome!");
+            return Output.say("Invalid parser outcome!");
+        }
+
+        if (parseOutcome == Linguistics.PARSER_OUTCOME.UNDERSPECIFIED) {
+
+            // ambiguous question, luckily the parser has prepared a followup question
+
+            Object underspQuestionObj = input.getFeature(Linguistics.UNDERSPECIFIED_QUESTION);
+
+            if (!(underspQuestionObj instanceof String)) {
+                logger.error("UNDERSPECIFIED_QUESTION is not a String");
+                return Output.say("Well, looks like my parser has some problems: something is wrong with the types.");
+            }
+
+            // answer will be in input.getFeature(Linguistics.UNDERSPECIFIED_ANSWER);
+            // TODO: get answer
+
+
+            String question = (String) underspQuestionObj;
+            answerToTheBestUnspecifiedCandidate = "TODO"; // save answer for later
+
+            askingSpecifyingQuestion = true; // next input should be a yes/no answer
+            return Output.say("Could you be more precise, please? " + question);
+        }
+
+        if (parseOutcome == Linguistics.PARSER_OUTCOME.SUCCESS) {
             // tell the answer, that was provided by the parser
-            return Output.say("[parser success] parser says: " + input.getFeature("get result from parser here"));
+            return Output.say("I think, the answer is " + input.getFeature(Linguistics.PARSE_ANSWER));
         }
 
         // from here we know that dummyParserResult.equals("FAILURE")
+        // another check to be safe
+        if (parseOutcome != Linguistics.PARSER_OUTCOME.FAILURE) {
+            logger.error("This is very wrong! parseOutcome != Linguistics.PARSER_OUTCOME.FAILURE");
+            return Output.say("This is very wrong! parseOutcome != Linguistics.PARSER_OUTCOME.FAILURE");
+        }
 
         // try to use memory to answer
         Neo4jMemoryInterface mem = getParameters().getMemory();

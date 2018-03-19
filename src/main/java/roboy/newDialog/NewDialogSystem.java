@@ -59,15 +59,15 @@ public class NewDialogSystem {
 
         List<Analyzer> analyzers = new ArrayList<>();
         analyzers.add(new Preprocessor());
-        analyzers.add(new SimpleTokenizer());
+        //analyzers.add(new SimpleTokenizer());
         analyzers.add(new SemanticParserAnalyzer(ConfigManager.PARSER_PORT));
 
-        analyzers.add(new OpenNLPPPOSTagger());
-        analyzers.add(new DictionaryBasedSentenceTypeDetector());
+        //analyzers.add(new OpenNLPPPOSTagger());
+        //analyzers.add(new DictionaryBasedSentenceTypeDetector());
         // analyzers.add(new SentenceAnalyzer());
-        analyzers.add(new OpenNLPParser());
-        analyzers.add(new OntologyNERAnalyzer());
-        analyzers.add(new AnswerAnalyzer());
+        //analyzers.add(new OpenNLPParser());
+        //analyzers.add(new OntologyNERAnalyzer());
+        //analyzers.add(new AnswerAnalyzer());
 
 
         logger.info("Creating StateBasedPersonality...");
