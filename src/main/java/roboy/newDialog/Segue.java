@@ -52,13 +52,13 @@ public class Segue {
             @Override
             public RandomList<String> getPossibleSegues() {
                 return new RandomList<>(
-                        "Only robots would understand",
+                        "the answer, well, only robots would understand",
                         "You know, I never thought about it",
                         "Access denied",
-                        "Telling you, would make your head explode.",
-                        "Processing, wait for it, processing",
+                        //"Telling you, would make your head explode.",
+                        "Processing, wait for it, processing, oh well, forget about it",
                         "The answer is, uh, oh, Core dumped",
-                        "The answer is 42");
+                        "The answer is 42 then");
             }
         },
         DISTRACT {

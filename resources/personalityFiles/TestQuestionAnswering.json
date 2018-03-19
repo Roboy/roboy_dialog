@@ -1,0 +1,24 @@
+{
+  "comment": "Test for QuestionAnsweringState.",
+  "initialState": "QuestionAnswering",
+  "states": [
+    {
+      "identifier": "QuestionAnswering",
+      "implementation" : "roboy.newDialog.states.QuestionAnsweringState",
+      "fallback" : "Routing",
+      "transitions" : {
+        "finishedQuestionAnswering" : "Routing",
+        "loopToNewPerson" : "Routing",
+        "loopToKnownPerson" : "Routing"
+      }
+    },
+    {
+      "identifier": "Routing",
+      "implementation" : "roboy.newDialog.states.test.TestState",
+      "transitions" : {
+        "next" : "QuestionAnswering"
+      },
+      "comment": "Always return to QuestionAnswering."
+    }
+  ]
+}

@@ -76,20 +76,23 @@ public class SemanticParserAnalyzer implements Analyzer{
 
           try {
             Map<String, Object> full_response = gson.fromJson(response, type);
+            List<Object> answers = null;
             // Read formula and answer
             if (full_response.containsKey("parse")){
                 if (full_response.get("answer").toString().equals("(no answer)"))
                     interpretation.getFeatures().put(Linguistics.PARSER_RESULT,Linguistics.PARSER_OUTCOME.FAILURE);
                 else {
-                    interpretation.getFeatures().put(Linguistics.PARSE_ANSWER, get_answers(full_response.get("answer").toString()));
+                    answers = get_answers(full_response.get("answer").toString());
+                    interpretation.getFeatures().put(Linguistics.PARSE_ANSWER, answers);
                     interpretation.getFeatures().put(Linguistics.PARSE, full_response.get("parse").toString());
                     interpretation.getFeatures().put(Linguistics.SEM_TRIPLE, extract_triples(full_response.get("parse").toString()));
                     interpretation.getFeatures().put(Linguistics.PARSER_RESULT, Linguistics.PARSER_OUTCOME.SUCCESS);
                 }
             }
             // Read followUp questions for underspecified terms
-            if (full_response.containsKey("followUp")){
-              interpretation.getFeatures().put(Linguistics.UNDERSPECIFIED_TERM_QUESTION, (List<Map.Entry<String,String>>) full_response.get("followUp"));
+            if (full_response.containsKey("followUpQ")){
+              interpretation.getFeatures().put(Linguistics.UNDERSPECIFIED_QUESTION, full_response.get("followUpQ"));
+              interpretation.getFeatures().put(Linguistics.UNDERSPECIFIED_ANSWER, answers);
               interpretation.getFeatures().put(Linguistics.PARSER_RESULT,Linguistics.PARSER_OUTCOME.UNDERSPECIFIED);
             }
             // Read tokens
@@ -132,6 +135,7 @@ public class SemanticParserAnalyzer implements Analyzer{
       return interpretation;
   }
 
+  // list can contain triples, strings or doubles
   public List<Object> get_answers(String answer){
     List<Object> result = new ArrayList<>();
 
