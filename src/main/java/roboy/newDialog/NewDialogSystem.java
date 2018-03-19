@@ -98,7 +98,8 @@ public class NewDialogSystem {
 
             List<Action> actions = personality.startConversation();
 
-            while (!actions.isEmpty()) {
+            while (true) {
+                // do all actions defined in startConversation() or answer()
                 multiOut.act(actions);
 
                 // now stop if conversation ended
