@@ -7,6 +7,7 @@ import roboy.memory.Neo4jRelationships;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Encapsulates a MemoryNodeModel and enables dialog states to easily store
@@ -47,8 +48,8 @@ public class Roboy extends MemoryNodeModel{
                 try {
                     MemoryNodeModel node = fromJSON(memory.getById(ids.get(0)), new Gson());
                     setId(node.getId());
-                    setRelationships(node.getRelationships());
-                    setProperties(node.getProperties());
+                    setRelationships(node.getRelationships() != null ? node.getRelationships() : new HashMap<>());
+                    setProperties(node.getProperties() != null ? node.getProperties() : new HashMap<>());
                 } catch (InterruptedException | IOException e) {
                     logger.error("Unexpected memory error: provided ID not found upon querying. Go the amnesia mode");
                     logger.error(e.getMessage());
