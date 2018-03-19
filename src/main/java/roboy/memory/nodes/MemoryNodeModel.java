@@ -2,6 +2,7 @@ package roboy.memory.nodes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import com.google.gson.annotations.Expose;
 import com.google.gson.reflect.TypeToken;
 import org.apache.logging.log4j.LogManager;
@@ -134,7 +135,16 @@ public class MemoryNodeModel {
      */
     public String toJSON(){
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
-        String json = gson.toJson(this);
+        String json;
+        // ID of 0 is default ID for an uncertain node.
+        // If there exists a valid non-default ID value obtained from memory, it has to be included
+        if (getId() != 0) {
+            JsonElement jsonElement = gson.toJsonTree(this);
+            jsonElement.getAsJsonObject().addProperty("id", getId());
+            json = gson.toJson(jsonElement);
+        } else {
+            json = gson.toJson(this);
+        }
         if(stripQuery) {
             //This is based on https://stackoverflow.com/questions/23920740/remove-empty-collections-from-a-json-with-gson
             Type type = new TypeToken<Map<String, Object>>() {}.getType();

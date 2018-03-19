@@ -98,11 +98,6 @@ public class PIAState extends State {
         if (answers != null && !answers.isEmpty()) {
             answer = String.format(answers.get((int) (Math.random() * answers.size())), result);
         }
-        try {
-            getParameters().getMemory().save(person);
-        } catch (InterruptedException | IOException e) {
-            LOGGER.error(e.getMessage());
-        }
         nextState = getTransition(TRANSITION_INFO_OBTAINED);
         return State.Output.say(answer);
     }
