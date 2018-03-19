@@ -64,10 +64,10 @@ public class NewDialogSystem {
 
         //analyzers.add(new OpenNLPPPOSTagger());
         //analyzers.add(new DictionaryBasedSentenceTypeDetector());
-        // analyzers.add(new SentenceAnalyzer());
-        //analyzers.add(new OpenNLPParser());
+        //analyzers.add(new SentenceAnalyzer());
+        analyzers.add(new OpenNLPParser());
         //analyzers.add(new OntologyNERAnalyzer());
-        //analyzers.add(new AnswerAnalyzer());
+        analyzers.add(new AnswerAnalyzer());
 
 
         logger.info("Creating StateBasedPersonality...");
