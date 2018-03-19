@@ -3,11 +3,14 @@ package roboy.newDialog.states;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
+import roboy.linguistics.Linguistics;
+import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
 import roboy.util.QAJsonParser;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
@@ -51,16 +54,50 @@ public class PIAState extends State {
         // TODO: Get relevant data from the input
         // TODO: Update the Interlocutor
         // TODO: Update the Memory
-        List<String> answers;
+        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        List<String> answers = null;
         String answer = "I have no words";
+        String result = "";
         // TODO: What is the condition?
-        if (true) {
-            answers = qaValues.getSuccessAnswers(selectedPredicate);
+        if (input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.STATEMENT) == 0) {
+            String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
+            if (tokens.length == 1) {
+                result = tokens[0].replace("[", "").replace("]","").toLowerCase();
+                person.addInformation(selectedPredicate.type, result);
+                Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+                answers = qaValues.getSuccessAnswers(selectedPredicate);
+            } else {
+                if (input.getFeatures().get(Linguistics.PARSER_RESULT).toString().equals("SUCCESS")) {
+                    List<Triple> sem_triple = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
+                    if (sem_triple.get(0).predicate.contains(selectedPredicate.type)) {
+                        result = sem_triple.get(0).patiens.toLowerCase();
+                        person.addInformation(selectedPredicate.type, result);
+                        Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+                        answers = qaValues.getSuccessAnswers(selectedPredicate);
+                    } else {
+                        answers = qaValues.getFailureAnswers(selectedPredicate);
+                    }
+                } else {
+                    if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
+                        result = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
+                        person.addInformation(selectedPredicate.type, result);
+                        Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+                        answers = qaValues.getSuccessAnswers(selectedPredicate);
+                    } else {
+                        answers = qaValues.getFailureAnswers(selectedPredicate);
+                    }
+                }
+            }
         } else {
             answers = qaValues.getFailureAnswers(selectedPredicate);
         }
         if (answers != null && !answers.isEmpty()) {
-            answer = String.format(answers.get((int) (Math.random() * answers.size())), "");
+            answer = String.format(answers.get((int) (Math.random() * answers.size())), result);
+        }
+        try {
+            getParameters().getMemory().save(person);
+        } catch (InterruptedException | IOException e) {
+            LOGGER.error(e.getMessage());
         }
         nextState = getTransition(TRANSITION_INFO_OBTAINED);
         return State.Output.say(answer);
