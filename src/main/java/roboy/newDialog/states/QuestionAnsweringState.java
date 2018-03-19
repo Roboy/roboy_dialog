@@ -165,7 +165,11 @@ public class QuestionAnsweringState extends State {
             } else if (availability == NONE_AVAILABLE) {
                 return getTransition(TRANSITION_LOOP_TO_NEW_PERSON);
             } else {
-                return getTransition(TRANSITION_LOOP_TO_KNOWN_PERSON);
+                if (!isIntentsHistoryComplete(predicates)) {
+                    return getTransition(TRANSITION_LOOP_TO_KNOWN_PERSON);
+                } else {
+                    return this;
+                }
             }
 
         } else { // stay in this state
@@ -185,5 +189,15 @@ public class QuestionAnsweringState extends State {
     @Override
     public boolean isFallbackRequired() {
         return true;
+    }
+
+    private boolean isIntentsHistoryComplete(Neo4jRelationships[] predicates) {
+        boolean isComplete = true;
+        for (Neo4jRelationships predicate : predicates) {
+            if (!Context.getInstance().DIALOG_INTENTS.contains(predicate.type)) {
+                isComplete = false;
+            }
+        }
+        return isComplete;
     }
 }
