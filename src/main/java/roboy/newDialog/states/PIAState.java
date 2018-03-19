@@ -80,9 +80,13 @@ public class PIAState extends State {
                 } else {
                     if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
                         result = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
-                        person.addInformation(selectedPredicate.type, result);
-                        Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
-                        answers = qaValues.getSuccessAnswers(selectedPredicate);
+                        if (!result.equals("")) {
+                            person.addInformation(selectedPredicate.type, result);
+                            Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+                            answers = qaValues.getSuccessAnswers(selectedPredicate);
+                        } else {
+                            answers = qaValues.getFailureAnswers(selectedPredicate);
+                        }
                     } else {
                         answers = qaValues.getFailureAnswers(selectedPredicate);
                     }

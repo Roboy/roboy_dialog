@@ -150,7 +150,8 @@ public class IntroductionState extends State {
                     return result.get(0).patiens.toLowerCase();
                 } else {
                     if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
-                        return input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
+                        String name = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
+                        return !name.equals("") ? name : null;
                     }
                 }
             }
