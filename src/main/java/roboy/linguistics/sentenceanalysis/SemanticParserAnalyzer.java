@@ -26,10 +26,10 @@ import roboy.util.ConfigManager;
  */
 public class SemanticParserAnalyzer implements Analyzer{
 
-  private Socket clientSocket;  /**< Client socket for the parser */
-  private PrintWriter out;      /**< Output stream for the parser */
-  private BufferedReader in;    /**< Input stream from the parser */
-  private boolean debug = true; /**< Boolean variable for debugging purpose */
+  private Socket clientSocket;  /*< Client socket for the parser */
+  private PrintWriter out;      /*< Output stream for the parser */
+  private BufferedReader in;    /*< Input stream from the parser */
+  private boolean debug = true; /*< Boolean variable for debugging purpose */
 
   /**
    * A constructor.
@@ -76,14 +76,12 @@ public class SemanticParserAnalyzer implements Analyzer{
 
           try {
             Map<String, Object> full_response = gson.fromJson(response, type);
-            List<Object> answers = null;
             // Read formula and answer
             if (full_response.containsKey("parse")){
                 if (full_response.get("answer").toString().equals("(no answer)"))
                     interpretation.getFeatures().put(Linguistics.PARSER_RESULT,Linguistics.PARSER_OUTCOME.FAILURE);
                 else {
-                    answers = get_answers(full_response.get("answer").toString());
-                    interpretation.getFeatures().put(Linguistics.PARSE_ANSWER, answers);
+                    interpretation.getFeatures().put(Linguistics.PARSE_ANSWER, get_answers(full_response.get("answer").toString()));
                     interpretation.getFeatures().put(Linguistics.PARSE, full_response.get("parse").toString());
                     interpretation.getFeatures().put(Linguistics.SEM_TRIPLE, extract_triples(full_response.get("parse").toString()));
                     interpretation.getFeatures().put(Linguistics.PARSER_RESULT, Linguistics.PARSER_OUTCOME.SUCCESS);
@@ -92,7 +90,7 @@ public class SemanticParserAnalyzer implements Analyzer{
             // Read followUp questions for underspecified terms
             if (full_response.containsKey("followUpQ")){
               interpretation.getFeatures().put(Linguistics.UNDERSPECIFIED_QUESTION, full_response.get("followUpQ"));
-              interpretation.getFeatures().put(Linguistics.UNDERSPECIFIED_ANSWER, answers);
+              interpretation.getFeatures().put(Linguistics.UNDERSPECIFIED_ANSWER, get_answers(full_response.get("answer").toString()));
               interpretation.getFeatures().put(Linguistics.PARSER_RESULT,Linguistics.PARSER_OUTCOME.UNDERSPECIFIED);
             }
             // Read tokens
@@ -121,7 +119,8 @@ public class SemanticParserAnalyzer implements Analyzer{
             }
           }
           catch (Exception e) {
-            System.err.println("Exception while parsing semantic response: " + e.getStackTrace());
+            System.err.println("Exception while parsing semantic response: " + e.getMessage());
+            e.printStackTrace();
           }
         }
         return interpretation;
@@ -136,38 +135,32 @@ public class SemanticParserAnalyzer implements Analyzer{
   }
 
   // list can contain triples, strings or doubles
-  public List<Object> get_answers(String answer){
-    List<Object> result = new ArrayList<>();
+  public String get_answers(String answer){
+    List<String> result = new ArrayList<>();
 
     //Check if contains triples
-    if (answer.contains("triples"))
-    {
-      result.addAll(extract_triples(answer));
+    List<Triple> triples = extract_triples(answer);
+    if (triples.size() > 0){
+      result.add("triples");
+      for (Triple t:triples) {
+        result.add(t.toString());
+      }
+      return result.toString();
     }
     String[] tokens = answer.split(" ");
     for (int i = 0; i < tokens.length; i++){
       //Check for specific types
-      if (tokens[i].contains("number"))
+      if ((tokens[i].contains("number") || tokens[i].contains("string")) && i+1 < tokens.length)
       {
-        outerloop:
-        for (int j = i+1; j < tokens.length; j++) {
-          result.add(Double.valueOf(tokens[j].replaceAll("\\)","")));
-          if (tokens[j].contains(")"))
-            break outerloop;
-        }
-      }
-      //Check for specific types
-      if (tokens[i].contains("string"))
-      {
-        outerloop:
-        for (int j = i+1; j < tokens.length; j++) {
-          result.add(tokens[j]);
-          if (tokens[j].contains(")"))
-            break outerloop;
-        }
+          for (int j = i+1; j < tokens.length; j++) {
+            result.add(tokens[j].replaceAll("\\)",""));
+            if (tokens[j].contains(")")) break;
+
+          }
+        return String.join(" ",result);
       }
     }
-    return result;
+    return null;
   }
 
   public List<Triple> extract_relations(Map<String, Double> relations){
@@ -214,7 +207,7 @@ public class SemanticParserAnalyzer implements Analyzer{
         Interpretation inter = new Interpretation(line);
         analyzer.analyze(inter);
         for (String key: inter.getFeatures().keySet()) {
-          System.out.println(key + " : " + inter.getFeature(key).toString());
+          System.out.println(key + " : " + inter.getFeature(key));
         }
       }
     }
