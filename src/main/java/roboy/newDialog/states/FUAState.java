@@ -40,29 +40,33 @@ public class FUAState extends State{
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
 
         for (Neo4jRelationships predicate : predicates) {
-            if (person.hasRelationship(predicate)) {
+            if (person.hasRelationship(predicate) && !Context.getInstance().DIALOG_INTENTS.contains(predicate.type)) {
                 selectedPredicate = predicate;
                 break;
             }
         }
 
-        List<String> questions = qaValues.getFollowUpQuestions(selectedPredicate);
-        String retrievedResult = "";
-        ArrayList<Integer> ids = person.getRelationships(selectedPredicate);
-        if (ids != null && !ids.isEmpty()) {
-            Neo4jMemoryInterface memory = getParameters().getMemory();
-            try {
-                Gson gson = new Gson();
-                String requestedObject = memory.getById(ids.get(0));
-                MemoryNodeModel node = gson.fromJson(requestedObject, MemoryNodeModel.class);
-                retrievedResult = node.getProperties().get("name").toString();
-            } catch (InterruptedException | IOException e) {
-                LOGGER.error("Error on Memory data retrieval: " + e.getMessage());
+        if (selectedPredicate != null) {
+            List<String> questions = qaValues.getFollowUpQuestions(selectedPredicate);
+            String retrievedResult = "";
+            ArrayList<Integer> ids = person.getRelationships(selectedPredicate);
+            if (ids != null && !ids.isEmpty()) {
+                Neo4jMemoryInterface memory = getParameters().getMemory();
+                try {
+                    Gson gson = new Gson();
+                    String requestedObject = memory.getById(ids.get(0));
+                    MemoryNodeModel node = gson.fromJson(requestedObject, MemoryNodeModel.class);
+                    retrievedResult = node.getProperties().get("name").toString();
+                } catch (InterruptedException | IOException e) {
+                    LOGGER.error("Error on Memory data retrieval: " + e.getMessage());
+                }
             }
+            String question = String.format(questions.get((int) (Math.random() * questions.size())), retrievedResult);
+            Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(selectedPredicate.type);
+            return Output.say(question);
+        } else {
+            return Output.say("Well, say it to me!");
         }
-        String question = String.format(questions.get((int) (Math.random() * questions.size())), retrievedResult);
-        Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(selectedPredicate.type);
-        return Output.say(question);
     }
 
     @Override
@@ -71,8 +75,8 @@ public class FUAState extends State{
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
         String answer = "I have no words";
 
-        // TODO: What is the condition on interpretation?
-        if (true) {
+        // TODO: Will need to consider proper conditions for processing
+        if (selectedPredicate != null) {
             // TODO: Perform updating the person object
             Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
             List<String> answers = qaValues.getFollowUpAnswers(selectedPredicate);
