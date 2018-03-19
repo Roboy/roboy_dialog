@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
+import roboy.linguistics.Linguistics;
+import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.Neo4jRelationships;
@@ -14,6 +16,7 @@ import roboy.memory.nodes.MemoryNodeModel;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import static roboy.memory.Neo4jRelationships.*;
@@ -70,7 +73,7 @@ public class IntroductionState extends State {
         */
         // 1. get name
         String name = getNameFromInput(input);
-        name = "laura"; // TODO: Remove
+
         if (name == null) {
             // input couldn't be parsed properly
             // TODO: do something intelligent if the parser fails
@@ -106,6 +109,7 @@ public class IntroductionState extends State {
                 } catch (InterruptedException | IOException e) {
                     logger.error("Error on Memory data retrieval: " + e.getMessage());
                 }
+                retrievedResult = "! You are friends with " + retrievedResult;
             }
 
             RelationshipAvailability availability = person.checkRelationshipAvailability(predicates);
@@ -118,14 +122,14 @@ public class IntroductionState extends State {
             }
 
             // TODO: get some friends or hobbies of the person to make answer more interesting
-            return Output.say("Hey, I know you, " + person.getName() + "! You are friends with " + retrievedResult);
+            return Output.say("Hey, I know you, " + person.getName() + retrievedResult);
 
         } else {
             // 4b. person is not known
             nextState = getTransition(LEARN_ABOUT_PERSON);
 
             // TODO: what would you say to a new person?
-            return Output.say("Nice to meet you!");
+            return Output.say(String.format("Nice to meet you, %s!", name));
         }
     }
 
@@ -136,6 +140,21 @@ public class IntroductionState extends State {
 
     private String getNameFromInput(Interpretation input) {
         // TODO: call Emilka's parser
+        if (input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.STATEMENT) == 0) {
+            String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
+            if (tokens.length == 1) {
+                return tokens[0].replace("[", "").replace("]","").toLowerCase();
+            } else {
+                if (input.getFeatures().get(Linguistics.PARSER_RESULT).toString().equals("SUCCESS")) {
+                    List<Triple> result = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
+                    return result.get(0).patiens.toLowerCase();
+                } else {
+                    if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
+                        return input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
+                    }
+                }
+            }
+        }
         return null;
     }
 
