@@ -83,4 +83,9 @@ public class TimestampedValueHistory<V> implements AbstractValueHistory<Long, V>
     public int valuesAddedSinceStart() {
         return totalValuesAdded;
     }
+
+    @Override
+    public synchronized boolean contains(V value) {
+        return data.containsValue(value);
+    }
 }
