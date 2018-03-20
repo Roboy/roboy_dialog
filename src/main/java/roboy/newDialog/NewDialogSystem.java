@@ -116,12 +116,24 @@ public class NewDialogSystem {
                     return;
                 }
 
-                // analyze and answer
+                // analyze
                 Interpretation interpretation = new Interpretation(raw.sentence, raw.attributes);
                 for (Analyzer a : analyzers) {
-                    interpretation = a.analyze(interpretation);
+                    try {
+                        interpretation = a.analyze(interpretation);
+                    } catch (Exception e) {
+                        logger.error("Exception in analyzer " + a.getClass().getName() + ": " + e.getMessage());
+                        e.printStackTrace();
+                    }
                 }
-                actions = personality.answer(interpretation);
+
+                // answer
+                try {
+                    actions = personality.answer(interpretation);
+                } catch (Exception e) {
+                    logger.error("Error in personality.answer: " + e.getMessage());
+                    e.printStackTrace();
+                }
             }
 
             logger.info("############# Reset State Machine ############");

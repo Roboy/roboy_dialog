@@ -81,9 +81,9 @@ public class QuestionAnsweringState extends State {
         }
 
         if (questionsAnswered > 0) {
-            return Output.say("[reentering, q answered: " + questionsAnswered + "] " + reenteringPhrases.getRandomElement());
+            return Output.say(reenteringPhrases.getRandomElement());
         }
-        return Output.say("[first entry] I'm pretty good at answering questions about myself and other stuff. What would you like to know?");
+        return Output.say("I'm pretty good at answering questions about myself and other stuff. What would you like to know?");
     }
 
     @Override
@@ -121,12 +121,10 @@ public class QuestionAnsweringState extends State {
                 return Output.say("In this case, " + answerStartingPhrases.getRandomElement() + answerAfterUnspecifiedQuestion);
             }
 
-
         } else {
             // the answer is no. we don't ask more specifying questions
             // use avoid answer segue
-            return Output.say("replace with say nothing [answer to specifying got NO]")
-                    .setSegue(new Segue(Segue.SegueType.AVOID_ANSWER, 1));
+            return Output.sayNothing().setSegue(new Segue(Segue.SegueType.AVOID_ANSWER, 1));
         }
     }
 
@@ -174,16 +172,16 @@ public class QuestionAnsweringState extends State {
     public State getNextState() {
 
         if (askingSpecifyingQuestion) { // we are asking a yes/no question --> stay in this state
-            logger.info("askingSpecifyingQuestion, staying in same state");
+            //logger.info("askingSpecifyingQuestion, staying in same state");
             return this;
 
         } else if (questionsAnswered > MAX_NUM_OF_QUESTIONS) { // enough questions answered --> finish asking
-            logger.info("enough questions answered, DONE");
+            //logger.info("enough questions answered, DONE");
 
             return getTransition(TRANSITION_FINISHED_ANSWERING);
 
         } else if (Math.random() < 0.2) { // loop back to previous states with probability 0.2
-            logger.info("random loopback to previous");
+            //logger.info("random loopback to previous");
 
             Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
             Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
@@ -202,7 +200,7 @@ public class QuestionAnsweringState extends State {
             }
 
         } else { // stay in this state
-            logger.info("decided to stay and answer another (reentering)");
+            //logger.info("decided to stay and answer another (reentering)");
             return this;
 
         }
@@ -214,9 +212,7 @@ public class QuestionAnsweringState extends State {
         Output memoryAnswer = tryToAnswerWithMemory(input, input.semParserTriples);
         if (memoryAnswer != null) return memoryAnswer;
 
-
-        return Output.say("[parser failure] USE FALLBACK"); // use real fallback later
-        //return Output.useFallback();
+        return Output.useFallback();
     }
 
     private Output tryToAnswerWithMemory(Interpretation input, List<Triple> triples) {

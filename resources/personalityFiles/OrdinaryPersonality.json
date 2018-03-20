@@ -3,7 +3,7 @@
   "states": [
     {
       "identifier": "Greetings",
-      "implementation" : "roboy.newDialog.states.GreetingsState",
+      "implementation" : "roboy.newDialog.states.PassiveGreetingsState",
       "transitions" : {
         "greetingDetected" : "Intro",
         "noHello" : "Farewell"

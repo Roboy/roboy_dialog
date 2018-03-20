@@ -7,13 +7,18 @@ import roboy.talk.Verbalizer;
 
 import java.util.Set;
 
-public class GreetingsState extends State {
+/**
+ * Passive state to start a conversation.
+ * Roboy is waiting until a greeting or his name is detected.
+ *
+ */
+public class PassiveGreetingsState extends State {
 
     private final String TRANSITION_GREETING_DETECTED = "greetingDetected";
 
     private State next;
 
-    public GreetingsState(String stateIdentifier, StateParameters params) {
+    public PassiveGreetingsState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
         next = this;
     }

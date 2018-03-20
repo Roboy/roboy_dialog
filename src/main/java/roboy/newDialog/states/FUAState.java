@@ -10,6 +10,7 @@ import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.MemoryNodeModel;
 import roboy.util.QAJsonParser;
+import roboy.util.RandomList;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,8 +21,11 @@ import static roboy.memory.Neo4jRelationships.*;
 
 /**
  * Follow Up Asking State
+ * This state is only entered if there are some known facts about the active interlocutor.
+ * It asks if the known facts are still up to date.
  */
-public class FUAState extends State{
+public class FUAState extends State {
+
     private QAJsonParser qaValues;
     private Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
     private Neo4jRelationships selectedPredicate;
@@ -47,21 +51,21 @@ public class FUAState extends State{
         }
 
         if (selectedPredicate != null) {
-            List<String> questions = qaValues.getFollowUpQuestions(selectedPredicate);
+            RandomList<String> questions = new RandomList<>(qaValues.getFollowUpQuestions(selectedPredicate));
             String retrievedResult = "";
-            ArrayList<Integer> ids = person.getRelationships(selectedPredicate);
-            if (ids != null && !ids.isEmpty()) {
+            RandomList<Integer> ids = new RandomList<>(person.getRelationships(selectedPredicate));
+            if (!ids.isEmpty()) {
                 Neo4jMemoryInterface memory = getParameters().getMemory();
                 try {
                     Gson gson = new Gson();
-                    String requestedObject = memory.getById(ids.get(0));
+                    String requestedObject = memory.getById(ids.getRandomElement());
                     MemoryNodeModel node = gson.fromJson(requestedObject, MemoryNodeModel.class);
                     retrievedResult = node.getProperties().get("name").toString();
                 } catch (InterruptedException | IOException e) {
                     LOGGER.error("Error on Memory data retrieval: " + e.getMessage());
                 }
             }
-            String question = String.format(questions.get((int) (Math.random() * questions.size())), retrievedResult);
+            String question = String.format(questions.getRandomElement(), retrievedResult);
             Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(selectedPredicate.type);
             return Output.say(question);
         } else {
