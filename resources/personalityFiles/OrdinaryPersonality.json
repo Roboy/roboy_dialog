@@ -60,7 +60,7 @@
     },
     {
       "identifier": "Farewell",
-      "implementation" : "roboy.newDialog.examples.toyStates.ToyFarewellState",
+      "implementation" : "roboy.newDialog.states.FarewellState",
       "transitions" : {}
     }
   ]

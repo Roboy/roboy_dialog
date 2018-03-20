@@ -10,14 +10,12 @@ import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.Interlocutor.RelationshipAvailability;
-import roboy.memory.nodes.MemoryNodeModel;
 import roboy.newDialog.Segue;
 import roboy.util.RandomList;
 
 import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import static roboy.memory.Neo4jRelationships.*;
@@ -61,8 +59,15 @@ public class QuestionAnsweringState extends State {
             "Oh well, I know much more stuff, just ask me a question.",
 		    "Let me uncover my potential. Ask something really difficult!");
 
+    private final static RandomList<String> answerStartingPhrases = new RandomList<>(
+            "I think, the answer is ",
+            "I am sure that it is ",
+            "How about ",
+            "I know for sure, it must be "
+    );
+
     private boolean askingSpecifyingQuestion = false;
-    private String answerToTheBestUnspecifiedCandidate = ""; // the answer to use if specifying question is answered with YES
+    private String answerAfterUnspecifiedQuestion = ""; // the answer to use if specifying question is answered with YES
 
 
     public QuestionAnsweringState(String stateIdentifier, StateParameters params) {
@@ -106,12 +111,14 @@ public class QuestionAnsweringState extends State {
 
         // check if answer is yes
         if (((String) input.getFeature(Linguistics.SENTENCE)).contains("yes")) {
-            if (answerToTheBestUnspecifiedCandidate == null) {
-                //
-                return Output.say("Well, parsing worked, but I don't know the answer");
+            if (answerAfterUnspecifiedQuestion == null) {
+                // parser could parse the question but did't provide an answer
+                return Output.say("Not sure about the answer, " +
+                        "but at least my amazing parser could understand you! ")
+                        .setSegue(new Segue(Segue.SegueType.FLATTERY, 0.4));
             } else {
-                // tell the response previously cached in answerToTheBestUnspecifiedCandidate
-                return Output.say("In this case, I think the answer is " + answerToTheBestUnspecifiedCandidate);
+                // tell the response previously cached in answerAfterUnspecifiedQuestion
+                return Output.say("In this case, " + answerStartingPhrases.getRandomElement() + answerAfterUnspecifiedQuestion);
             }
 
 
@@ -126,7 +133,6 @@ public class QuestionAnsweringState extends State {
 
 
     private Output reactToQuestion(Interpretation input) {
-
 
         askingSpecifyingQuestion = false;
         questionsAnswered++;
@@ -143,7 +149,7 @@ public class QuestionAnsweringState extends State {
             // and maybe even an answer if we are lucky (we will check in reactToSpecifyingAnswer later)
 
             String question = input.underspecifiedQuestion;
-            answerToTheBestUnspecifiedCandidate = input.answer; // could be null, but that's fine for now
+            answerAfterUnspecifiedQuestion = input.answer; // could be null, but that's fine for now
 
             askingSpecifyingQuestion = true; // next input should be a yes/no answer
             return Output.say("Could you be more precise, please? " + question);
@@ -152,22 +158,16 @@ public class QuestionAnsweringState extends State {
         if (parseOutcome == Linguistics.PARSER_OUTCOME.SUCCESS) {
             if (input.answer != null) {
                 // tell the answer, that was provided by the parser
-                return Output.say("I think, the answer is " + input.answer);
+                return Output.say(answerStartingPhrases.getRandomElement() + " " + input.answer);
 
             } else {
                 // parser could parse the question but has no answer
-                // ask memory
-                Output memoryAnswer = wagramCouldImplementGettingStuffFromMemoryHere(input.semParserTriples);
-                if (memoryAnswer != null) return memoryAnswer;
+                return useMemoryOrFallback(input);
             }
         }
 
         // from here we know that dummyParserResult.equals("FAILURE")
-        Output memoryAnswer = wagramCouldImplementGettingStuffFromMemoryHere(input.semParserTriples);
-        if (memoryAnswer != null) return memoryAnswer;
-
-        return Output.say("[parser failure] USE FALLBACK"); // use real fallback later
-        //return Output.useFallback();
+        return useMemoryOrFallback(input);
     }
 
     @Override
@@ -210,12 +210,23 @@ public class QuestionAnsweringState extends State {
     }
 
 
-    private Output wagramCouldImplementGettingStuffFromMemoryHere(List<Triple> triples) {
+    private Output useMemoryOrFallback(Interpretation input) {
+        Output memoryAnswer = tryToAnswerWithMemory(input, input.semParserTriples);
+        if (memoryAnswer != null) return memoryAnswer;
+
+
+        return Output.say("[parser failure] USE FALLBACK"); // use real fallback later
+        //return Output.useFallback();
+    }
+
+    private Output tryToAnswerWithMemory(Interpretation input, List<Triple> triples) {
 
         // try to use memory to answer
         Neo4jMemoryInterface mem = getParameters().getMemory();
 
         // Wagram, do some magic here
+
+        // we could also reuse some functionality from the old QuestionAnsweringState
 
 
         return null;

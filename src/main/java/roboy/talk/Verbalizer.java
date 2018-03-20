@@ -49,18 +49,24 @@ public class Verbalizer {
 			Arrays.asList("talk", "fun", "conversation", "new", "chat");
 
 	public static final RandomList<String> greetings =
-			new RandomList<>("hello","hi","greetings", "good morning", "howdy", "good day", "hey", "good evening",
+			new RandomList<>("hello","hi","greetings",
+                    // "good morning", // not for the final demo ;)
+                    "howdy",
+                    // "good day", // not for the final demo ;)
+                    "hey", "good evening",
 					"what's up", "greeting to everyone here","hi there people",
 					"hello world","gruse gott","wazup wazup wazup","howdy humans",
-					"good day ladies and gentlemen","hey hey hey you there");
+                    // "good day ladies and gentlemen",  // not for the final demo ;)
+                    "good evening ladies and gentlemen",
+                    "hey hey hey you there");
 	
 	private SpeechAction greet(Interpretation interpretation){
 		return new SpeechAction(StatementBuilder.random(greetings));
 	}
 	
-	public static final List<String> farewells =
-			Arrays.asList("ciao","goodbye","cheerio","bye","see you",
-					"farewell","bye-bye");
+	public static final RandomList<String> farewells = new RandomList<>(
+			"ciao", "goodbye", "cheerio", "bye",
+            "see you", "farewell", "bye-bye");
 	
 	private ShutDownAction farewell(Interpretation interpretation){
 		return new ShutDownAction(Arrays.asList(new SpeechAction(StatementBuilder.random(farewells))));

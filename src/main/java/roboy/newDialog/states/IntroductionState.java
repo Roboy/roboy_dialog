@@ -13,6 +13,7 @@ import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.Interlocutor.RelationshipAvailability;
 import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
 import roboy.memory.nodes.MemoryNodeModel;
+import roboy.newDialog.Segue;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,7 +32,6 @@ import static roboy.memory.Neo4jRelationships.*;
  *
  * IntroductionState interface:
  * 1) Fallback is not required.
- * TODO: maybe react() would like to have it?
  * 2) Outgoing transitions that have to be defined:
  *    - knownPerson:    following state if the person is already known
  *    - newPerson:      following state if the person is NOT known
@@ -60,17 +60,6 @@ public class IntroductionState extends State {
 
         // expecting something like "I'm NAME"
 
-        // parser response might look like:
-        /*
-        {"postags":["PRP$","NN","BE","NNP"],"answer":"(triples (triple rb:active_person rb:NAME_OF emily))",
-        "lemma_tokens":["my","name","be","emily"],"tokens":["my","name","is","emily"],
-        "parse":"(triples (triple rb:active_person rb:NAME_OF emily))","relations":{"(my name,be,emily)":1.0},
-        "type":"question"}
-        {"postags":["PRP$","NN","BE","NNP"],"answer":"(triples (triple rb:active_person rb:NAME_OF emily))",
-        "lemma_tokens":["my","name","be","emily"],"tokens":["my","name","is","emily"],
-        "parse":"(triples (triple rb:active_person rb:NAME_OF emily))","relations":{"(my name,be,emily)":1.0},
-        "type":"statement"}
-        */
         // 1. get name
         String name = getNameFromInput(input);
 
@@ -129,7 +118,7 @@ public class IntroductionState extends State {
             nextState = getTransition(LEARN_ABOUT_PERSON);
 
             // TODO: what would you say to a new person?
-            return Output.say(String.format("Nice to meet you, %s!", name));
+            return Output.say(String.format("Nice to meet you, %s!", name)).setSegue(new Segue(Segue.SegueType.DISTRACT, 0.6));
         }
     }
 

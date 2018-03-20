@@ -8,6 +8,7 @@ import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
+import roboy.newDialog.Segue;
 import roboy.util.QAJsonParser;
 
 import java.io.IOException;
@@ -99,7 +100,7 @@ public class PIAState extends State {
             answer = String.format(answers.get((int) (Math.random() * answers.size())), result);
         }
         nextState = getTransition(TRANSITION_INFO_OBTAINED);
-        return State.Output.say(answer);
+        return State.Output.say(answer).setSegue(new Segue(Segue.SegueType.CONNECTING_PHRASE, 0.5));
     }
 
     @Override

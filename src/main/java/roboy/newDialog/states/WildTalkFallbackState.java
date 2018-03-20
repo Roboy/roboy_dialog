@@ -2,6 +2,7 @@ package roboy.newDialog.states;
 
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.newDialog.Segue;
 import roboy.ros.RosMainNode;
 
 import java.util.Set;
@@ -25,7 +26,7 @@ public class WildTalkFallbackState extends State {
         String reaction = rmn.GenerateAnswer(sentence);
 
         if (reaction == null) {
-            return Output.say("I am out of words.");
+            return Output.say("I am out of words.").setSegue(new Segue(Segue.SegueType.DISTRACT, 0.8));
         } else {
             return Output.say(reaction);
         }
