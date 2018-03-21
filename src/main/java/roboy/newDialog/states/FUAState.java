@@ -46,7 +46,7 @@ public class FUAState extends State {
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
 
         for (Neo4jRelationships predicate : predicates) {
-            if (person.hasRelationship(predicate) && !Context.getInstance().DIALOG_INTENTS.contains(predicate.type)) {
+            if (person.hasRelationship(predicate) && !Context.getInstance().DIALOG_INTENTS.contains(new IntentValue("FUP", predicate))) {
                 selectedPredicate = predicate;
                 break;
             }
