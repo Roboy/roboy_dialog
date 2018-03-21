@@ -22,7 +22,7 @@ public class AnswerAnalyzer implements Analyzer{
 		
 		// case pas object answer
 		@SuppressWarnings("unchecked")
-		Map<SEMANTIC_ROLE,Object> pas = (Map<SEMANTIC_ROLE,Object>) 
+		Map<SEMANTIC_ROLE,Object> pas = (Map<SEMANTIC_ROLE,Object>)
 				interpretation.getFeatures().get(Linguistics.PAS);
 //		System.out.println(interpretation.getFeatures());
 		if(pas.containsKey(SEMANTIC_ROLE.PREDICATE)

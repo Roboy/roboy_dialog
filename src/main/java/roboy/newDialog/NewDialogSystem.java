@@ -18,6 +18,7 @@ import roboy.util.IO;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class NewDialogSystem {
 
     private final static Logger logger = LogManager.getLogger();
 
-    public static void main(String[] args) throws SocketException, UnknownHostException {
+    public static void main(String[] args) throws SocketException, UnknownHostException, IOException {
         // initialize ROS node
 
         RosMainNode rosMainNode;
@@ -64,7 +65,7 @@ public class NewDialogSystem {
 
         //analyzers.add(new OpenNLPPPOSTagger());
         //analyzers.add(new DictionaryBasedSentenceTypeDetector());
-        //analyzers.add(new SentenceAnalyzer());
+        analyzers.add(new SentenceAnalyzer());
         analyzers.add(new OpenNLPParser());
         //analyzers.add(new OntologyNERAnalyzer());
         analyzers.add(new AnswerAnalyzer());

@@ -6,6 +6,7 @@ import roboy.ros.RosMainNode;
 import roboy_communication_cognition.DirectionVector;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -27,7 +28,7 @@ public class Context {
     public final HistoryInterface<DialogTopics, Integer, String> DIALOG_TOPICS =
             new HistoryInterface<>(new DialogTopics());
 
-    public final HistoryInterface<DialogIntents, Integer, String> DIALOG_INTENTS =
+    public final HistoryInterface<DialogIntents, Integer, IntentValue> DIALOG_INTENTS =
             new HistoryInterface<>(new DialogIntents());
 
     public final HistoryInterface<AudioDirection, Integer, DirectionVector> AUDIO_ANGLES =
