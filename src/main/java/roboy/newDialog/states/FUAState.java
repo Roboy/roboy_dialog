@@ -69,7 +69,7 @@ public class FUAState extends State {
             Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(selectedPredicate.type);
             return Output.say(question);
         } else {
-            return Output.say("Well, say it to me!");
+            return Output.sayNothing();
         }
     }
 

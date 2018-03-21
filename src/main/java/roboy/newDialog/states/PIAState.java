@@ -70,7 +70,7 @@ public class PIAState extends State {
             } else {
                 if (input.getFeatures().get(Linguistics.PARSER_RESULT).toString().equals("SUCCESS")) {
                     List<Triple> sem_triple = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
-                    if (sem_triple.get(0).predicate.contains(selectedPredicate.type)) {
+                    if (sem_triple.size() > 0 && sem_triple.get(0).predicate.contains(selectedPredicate.type)) {
                         result = sem_triple.get(0).patiens.toLowerCase();
                         person.addInformation(selectedPredicate.type, result);
                         Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
