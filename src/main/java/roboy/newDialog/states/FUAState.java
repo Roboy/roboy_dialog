@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
+import roboy.context.contextObjects.IntentValue;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.Neo4jRelationships;
@@ -14,6 +15,7 @@ import roboy.util.RandomList;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -66,7 +68,7 @@ public class FUAState extends State {
                 }
             }
             String question = String.format(questions.getRandomElement(), retrievedResult);
-            Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(selectedPredicate.type);
+            Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue("FUP", selectedPredicate));
             return Output.say(question);
         } else {
             return Output.say("Well, say it to me!");

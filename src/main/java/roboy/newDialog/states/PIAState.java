@@ -3,6 +3,7 @@ package roboy.newDialog.states;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
+import roboy.context.contextObjects.IntentValue;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
@@ -12,6 +13,7 @@ import roboy.newDialog.Segue;
 import roboy.util.QAJsonParser;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -46,7 +48,9 @@ public class PIAState extends State {
         }
         List<String> questions = qaValues.getQuestions(selectedPredicate);
         String question = questions.get((int)(Math.random()*questions.size()));
-        Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(selectedPredicate.type);
+        HashMap<String, String> INTENT_VALUE = new HashMap<>();
+        INTENT_VALUE.put("PIA", selectedPredicate.type);
+        Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue("PIA", selectedPredicate));
         return State.Output.say(question);
     }
 
@@ -70,20 +74,29 @@ public class PIAState extends State {
             } else {
                 if (input.getFeatures().get(Linguistics.PARSER_RESULT).toString().equals("SUCCESS")) {
                     List<Triple> sem_triple = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
-                    if (sem_triple.get(0).predicate.contains(selectedPredicate.type)) {
-                        result = sem_triple.get(0).patiens.toLowerCase();
-                        person.addInformation(selectedPredicate.type, result);
-                        Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
-                        answers = qaValues.getSuccessAnswers(selectedPredicate);
+                    if (sem_triple.size() != 0) {
+                        if (sem_triple.get(0).predicate.contains(selectedPredicate.type)) {
+                            result = sem_triple.get(0).patiens.toLowerCase();
+                            answers = qaValues.getSuccessAnswers(selectedPredicate);
+                        } else {
+                            answers = qaValues.getFailureAnswers(selectedPredicate);
+                        }
                     } else {
-                        answers = qaValues.getFailureAnswers(selectedPredicate);
+                        if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
+                            result = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
+                            if (!result.equals("")) {
+                                answers = qaValues.getSuccessAnswers(selectedPredicate);
+                            } else {
+                                answers = qaValues.getFailureAnswers(selectedPredicate);
+                            }
+                        } else {
+                            answers = qaValues.getFailureAnswers(selectedPredicate);
+                        }
                     }
                 } else {
                     if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
                         result = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
                         if (!result.equals("")) {
-                            person.addInformation(selectedPredicate.type, result);
-                            Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
                             answers = qaValues.getSuccessAnswers(selectedPredicate);
                         } else {
                             answers = qaValues.getFailureAnswers(selectedPredicate);
@@ -95,6 +108,10 @@ public class PIAState extends State {
             }
         } else {
             answers = qaValues.getFailureAnswers(selectedPredicate);
+        }
+        if (!result.equals("")) {
+            person.addInformation(selectedPredicate.type, result);
+            Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
         }
         if (answers != null && !answers.isEmpty()) {
             answer = String.format(answers.get((int) (Math.random() * answers.size())), result);

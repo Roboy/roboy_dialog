@@ -3,6 +3,7 @@ package roboy.newDialog.states;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
+import roboy.context.contextObjects.IntentValue;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
@@ -180,7 +181,7 @@ public class QuestionAnsweringState extends State {
 
             return getTransition(TRANSITION_FINISHED_ANSWERING);
 
-        } else if (Math.random() < 0.2) { // loop back to previous states with probability 0.2
+        } else if (Math.random() < 0.5) { // loop back to previous states with probability 0.2
             //logger.info("random loopback to previous");
 
             Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
@@ -243,7 +244,7 @@ public class QuestionAnsweringState extends State {
     private boolean isIntentsHistoryComplete(Neo4jRelationships[] predicates) {
         boolean isComplete = true;
         for (Neo4jRelationships predicate : predicates) {
-            if (!Context.getInstance().DIALOG_INTENTS.contains(predicate.type)) {
+            if (!Context.getInstance().DIALOG_INTENTS.contains(new IntentValue("FUP", predicate))) {
                 isComplete = false;
             }
         }
