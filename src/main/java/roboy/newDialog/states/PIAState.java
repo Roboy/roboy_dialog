@@ -59,7 +59,7 @@ public class PIAState extends State {
         // TODO: Update the Interlocutor
         // TODO: Update the Memory
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
-        List<String> answers = null;
+        List<String> answers;
         String answer = "I have no words";
         String result = "";
         // TODO: What is the condition?
@@ -67,12 +67,11 @@ public class PIAState extends State {
             String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
             if (tokens.length == 1) {
                 result = tokens[0].replace("[", "").replace("]","").toLowerCase();
-                person.addInformation(selectedPredicate.type, result);
-                Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
                 answers = qaValues.getSuccessAnswers(selectedPredicate);
             } else {
                 if (input.getFeatures().get(Linguistics.PARSER_RESULT).toString().equals("SUCCESS")) {
                     List<Triple> sem_triple = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
+
                     if (sem_triple.size() != 0) {
                         if (sem_triple.get(0).predicate.contains(selectedPredicate.type)) {
                             result = sem_triple.get(0).object.toLowerCase();
@@ -80,6 +79,7 @@ public class PIAState extends State {
                         } else {
                             answers = qaValues.getFailureAnswers(selectedPredicate);
                         }
+
                     } else {
                         if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
                             result = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();

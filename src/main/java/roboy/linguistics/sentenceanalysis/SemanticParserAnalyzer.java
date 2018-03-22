@@ -163,12 +163,29 @@ public class SemanticParserAnalyzer implements Analyzer {
         }
         String[] tokens = answer.split(" ");
         for (int i = 0; i < tokens.length; i++) {
-            //Check for specific types
+            // Check for specific types
             if ((tokens[i].contains("number") || tokens[i].contains("string")) && i + 1 < tokens.length) {
                 for (int j = i + 1; j < tokens.length; j++) {
                     result.add(tokens[j].replaceAll("\\)", ""));
                     if (tokens[j].contains(")")) break;
 
+                }
+                return String.join(" ", result);
+            }
+            else if ((tokens[i].contains("name") && i + 1 < tokens.length)) {
+                for (int j = i + 1; j < tokens.length; j++) {
+                    if (!tokens[j].contains("null"))
+                        result.add(tokens[j].replaceAll("\\)", ""));
+                    if (tokens[j].contains("\")")) break;
+
+                }
+                return String.join(" ", result);
+            }
+            else if (tokens[i].contains(":") && !tokens[i].contains("fb:")) {
+                for (int j = i; j < tokens.length; j++) {
+                    if (!tokens[j].contains("null"))
+                        result.add(tokens[j].replaceAll("\\)", ""));
+                    if (tokens[j].contains(")")) break;
                 }
                 return String.join(" ", result);
             }

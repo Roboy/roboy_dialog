@@ -32,7 +32,7 @@ public class NewDialogSystem {
 
     private final static Logger logger = LogManager.getLogger();
 
-    public static void main(String[] args) throws SocketException, UnknownHostException, IOException {
+    public static void main(String[] args) throws IOException {
         // initialize ROS node
 
         RosMainNode rosMainNode;

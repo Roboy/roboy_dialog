@@ -189,7 +189,7 @@ public class QuestionAnsweringState extends State {
 
             return getTransition(TRANSITION_FINISHED_ANSWERING);
 
-        } else if (Math.random() < 0.5) { // loop back to previous states with probability 0.2
+        } else if (Math.random() < 0.5) { // loop back to previous states with probability 0.5
             //logger.info("random loopback to previous");
 
             Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
