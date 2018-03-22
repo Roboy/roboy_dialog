@@ -229,7 +229,6 @@ public class QuestionAnsweringState extends State {
 
         // try to use memory to answer
         Roboy roboy = new Roboy(getParameters().getMemory());
-        System.out.print(roboy.toJSON());
         // Wagram, do some magic here
         List<Triple> results = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
         if (results.size() != 0) {
