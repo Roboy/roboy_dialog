@@ -104,7 +104,7 @@ public class QuestionRandomizerState implements State{
 		chosenState = null;
 		// List<Triple> nameTriples = memory.retrieve(new Triple("is","name",null));
 		// if(nameTriples.isEmpty()) return inner.act();
-		// String name = nameTriples.get(0).patiens;
+		// String name = nameTriples.get(0).object;
 		//List<Triple> infos = memory.retrieve(new Triple(null,name,null));
 		//infos.addAll(memory.retrieve(new Triple(null,null,name)));
 		//TODO why this if statement?

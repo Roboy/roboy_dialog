@@ -5,9 +5,9 @@
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_triple_1ad7bec6e7a02a8a76a4831cce3a84bd94" prot="public" static="no" mutable="no">
         <type>String</type>
-        <definition>String roboy.linguistics.Triple.agens</definition>
+        <definition>String roboy.linguistics.Triple.subject</definition>
         <argsstring></argsstring>
-        <name>agens</name>
+        <name>subject</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -31,9 +31,9 @@
       </memberdef>
       <memberdef kind="variable" id="classroboy_1_1linguistics_1_1_triple_1ad631270371bed1955ca108acf5aea3a7" prot="public" static="no" mutable="no">
         <type>String</type>
-        <definition>String roboy.linguistics.Triple.patiens</definition>
+        <definition>String roboy.linguistics.Triple.object</definition>
         <argsstring></argsstring>
-        <name>patiens</name>
+        <name>object</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -47,7 +47,7 @@
       <memberdef kind="function" id="classroboy_1_1linguistics_1_1_triple_1aa648a9c92007423b2435174a3e963a22" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>roboy.linguistics.Triple.Triple</definition>
-        <argsstring>(String predicate, String agens, String patiens)</argsstring>
+        <argsstring>(String predicate, String subject, String object)</argsstring>
         <name>Triple</name>
         <param>
           <type>String</type>
@@ -55,11 +55,11 @@
         </param>
         <param>
           <type>String</type>
-          <declname>agens</declname>
+          <declname>subject</declname>
         </param>
         <param>
           <type>String</type>
-          <declname>patiens</declname>
+          <declname>object</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -84,13 +84,13 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Represents a simple who(agens) does what(predicate) to whom(patiens) relation. </para>    </briefdescription>
+<para>Represents a simple who(subject) does what(predicate) to whom(object) relation. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <location file="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/Triple.java" line="6" column="1" bodyfile="/home/laura/Downloads/Roboy/Dialog/DialogSystem/src/main/java/roboy/linguistics/Triple.java" bodystart="6" bodyend="25"/>
     <listofallmembers>
-      <member refid="classroboy_1_1linguistics_1_1_triple_1ad7bec6e7a02a8a76a4831cce3a84bd94" prot="public" virt="non-virtual"><scope>roboy::linguistics::Triple</scope><name>agens</name></member>
-      <member refid="classroboy_1_1linguistics_1_1_triple_1ad631270371bed1955ca108acf5aea3a7" prot="public" virt="non-virtual"><scope>roboy::linguistics::Triple</scope><name>patiens</name></member>
+      <member refid="classroboy_1_1linguistics_1_1_triple_1ad7bec6e7a02a8a76a4831cce3a84bd94" prot="public" virt="non-virtual"><scope>roboy::linguistics::Triple</scope><name>subject</name></member>
+      <member refid="classroboy_1_1linguistics_1_1_triple_1ad631270371bed1955ca108acf5aea3a7" prot="public" virt="non-virtual"><scope>roboy::linguistics::Triple</scope><name>object</name></member>
       <member refid="classroboy_1_1linguistics_1_1_triple_1aada23904eaa0e18ac237ff5bb3005a79" prot="public" virt="non-virtual"><scope>roboy::linguistics::Triple</scope><name>predicate</name></member>
       <member refid="classroboy_1_1linguistics_1_1_triple_1a3da6ef091d5a7af1dba2705623da7d04" prot="public" virt="non-virtual"><scope>roboy::linguistics::Triple</scope><name>toString</name></member>
       <member refid="classroboy_1_1linguistics_1_1_triple_1aa648a9c92007423b2435174a3e963a22" prot="public" virt="non-virtual"><scope>roboy::linguistics::Triple</scope><name>Triple</name></member>

@@ -137,7 +137,7 @@ public class IntroductionState extends State {
                 if (input.getFeatures().get(Linguistics.PARSER_RESULT).toString().equals("SUCCESS")) {
                     List<Triple> result = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
                     if (result.size() != 0) {
-                        return result.get(0).patiens.toLowerCase();
+                        return result.get(0).object.toLowerCase();
                     } else {
                         if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
                             String name = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();

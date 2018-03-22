@@ -92,7 +92,7 @@ public class Linguistics {
 	public static final String ASSOCIATION = "association";
 	
 	/**
-	 * Predicate-argument structures (who(agens) did what(predicate) to whom(patiens))
+	 * Predicate-argument structures (who(subject) did what(predicate) to whom(object))
 	 */
 	public static final String PAS = "pas";
 	

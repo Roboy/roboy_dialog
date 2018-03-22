@@ -12,7 +12,6 @@ import roboy.memory.nodes.Interlocutor;
 import roboy.newDialog.Segue;
 import roboy.util.QAJsonParser;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -76,7 +75,7 @@ public class PIAState extends State {
                     List<Triple> sem_triple = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
                     if (sem_triple.size() != 0) {
                         if (sem_triple.get(0).predicate.contains(selectedPredicate.type)) {
-                            result = sem_triple.get(0).patiens.toLowerCase();
+                            result = sem_triple.get(0).object.toLowerCase();
                             answers = qaValues.getSuccessAnswers(selectedPredicate);
                         } else {
                             answers = qaValues.getFailureAnswers(selectedPredicate);

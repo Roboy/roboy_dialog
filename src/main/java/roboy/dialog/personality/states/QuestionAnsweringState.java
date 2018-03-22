@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.LogManager;
 
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
@@ -80,8 +79,8 @@ public class QuestionAnsweringState implements State{
 	public Reaction react(Interpretation input) {
 		Triple triple = (Triple) input.getFeatures().get(Linguistics.TRIPLE);
 		// reverse you <-> I
-		if(triple!=null && triple.agens!=null && "you".equals(triple.agens.toLowerCase())) triple.agens = "i";
-		if(triple!=null && triple.patiens!=null && "you".equals(triple.patiens.toLowerCase())) triple.patiens = "i";
+		if(triple!=null && triple.subject !=null && "you".equals(triple.subject.toLowerCase())) triple.subject = "i";
+		if(triple!=null && triple.object !=null && "you".equals(triple.object.toLowerCase())) triple.object = "i";
 		if(triple!=null && triple.predicate!=null && "are".equals(triple.predicate.toLowerCase())) triple.predicate = "am";
 
 		//TODO Integrate results from intent analysis into sentence type detection.
@@ -97,26 +96,26 @@ public class QuestionAnsweringState implements State{
 		}
 
 		if(triple!=null && input.getSentenceType() == SENTENCE_TYPE.DOES_IT || input.getSentenceType() == SENTENCE_TYPE.IS_IT){
-			List<Triple> t = remember(triple.predicate, triple.agens, null);
+			List<Triple> t = remember(triple.predicate, triple.subject, null);
 			if(t.isEmpty()){
 				return innerReaction(input,result);
 			} else {
 				result.add(new Interpretation("Yes. "));
 				for(int i=0; i<t.size(); i++){
 					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
-					result.add(new Interpretation(prefix+t.get(i).agens+" "+t.get(i).predicate+" "+t.get(i).patiens));
+					result.add(new Interpretation(prefix+t.get(i).subject +" "+t.get(i).predicate+" "+t.get(i).object));
 				}
 			}
 		} else if(triple!=null && input.getSentenceType() == SENTENCE_TYPE.WHO){
-			List<Triple> t = remember(triple.predicate, triple.agens, triple.patiens);
+			List<Triple> t = remember(triple.predicate, triple.subject, triple.object);
 			if(t.isEmpty()){
-				if(triple.agens != null && triple.patiens == null){
-					triple.patiens = triple.agens;
-					triple.agens = null;
-					if(triple.patiens.equals("i")) {
-						triple.patiens = "me";
+				if(triple.subject != null && triple.object == null){
+					triple.object = triple.subject;
+					triple.subject = null;
+					if(triple.object.equals("i")) {
+						triple.object = "me";
 					}
-					t = remember(triple.predicate, triple.agens, triple.patiens);
+					t = remember(triple.predicate, triple.subject, triple.object);
 					if(t.isEmpty()) {
 						return innerReaction(input, result);
 					}
@@ -124,26 +123,26 @@ public class QuestionAnsweringState implements State{
 			}
 			for(int i=0; i<t.size(); i++){
 				String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
-				result.add(new Interpretation(prefix+t.get(i).agens+" "+t.get(i).predicate+" "+t.get(i).patiens));
+				result.add(new Interpretation(prefix+t.get(i).subject +" "+t.get(i).predicate+" "+t.get(i).object));
 			}
 		} else if(triple!=null && input.getSentenceType() == SENTENCE_TYPE.WHAT){
-			List<Triple> t = remember(triple.predicate, triple.agens, triple.patiens);
+			List<Triple> t = remember(triple.predicate, triple.subject, triple.object);
 			if(t.isEmpty()){
 				return innerReaction(input,result);
 			} else {
 				for(int i=0; i<t.size(); i++){
 					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
-					result.add(new Interpretation(prefix+t.get(i).agens+" "+t.get(i).predicate+" "+t.get(i).patiens));
+					result.add(new Interpretation(prefix+t.get(i).subject +" "+t.get(i).predicate+" "+t.get(i).object));
 				}
 			}
 		} else if(triple!=null && input.getSentenceType() == SENTENCE_TYPE.HOW_DO){
-			List<Triple> t = remember(triple.predicate, triple.agens, null);
+			List<Triple> t = remember(triple.predicate, triple.subject, null);
 			if(t.isEmpty()){
 				return innerReaction(input,result);
 			} else {
 				for(int i=0; i<t.size(); i++){
 					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
-					result.add(new Interpretation(prefix+t.get(i).agens+" "+t.get(i).predicate+" "+t.get(i).patiens));
+					result.add(new Interpretation(prefix+t.get(i).subject +" "+t.get(i).predicate+" "+t.get(i).object));
 				}
 			}
 		}
@@ -185,8 +184,8 @@ public class QuestionAnsweringState implements State{
 		for(Triple t: memory){
 			if(
 					(predicate==null || predicate.toLowerCase().equals(t.predicate)) &&
-					(agens==null || agens.toLowerCase().equals(t.agens)) &&
-					(patiens==null || patiens.toLowerCase().equals(t.patiens)) 
+					(agens==null || agens.toLowerCase().equals(t.subject)) &&
+					(patiens==null || patiens.toLowerCase().equals(t.object))
 					){
 				triples.add(t);
 			}

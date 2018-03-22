@@ -70,7 +70,7 @@ public class PersonalQAState extends AbstractBooleanState{
 			//WorkingMemory memory = WorkingMemory.getInstance();
 			// List<Triple> nameTriple = memory.retrieve(new Triple("is","name",null));
 			//if(nameTriple.isEmpty()) return false;
-			//String name = nameTriple.get(0).patiens;
+			//String name = nameTriple.get(0).object;
 			//WorkingMemory.getInstance().save(new Triple(predicate,name,answer));
 
 			// Add the new information about the person to the memory.

@@ -96,7 +96,7 @@ public class SmallTalkPersonality implements Personality {
             //TODO remove old memory usage when new memory integration done
 //            List<Triple> names = WorkingMemory.getInstance().retrieve(new Triple("is", "name", null));
 //            if (!names.isEmpty()) {
-//                name = names.get(0).patiens;
+//                name = names.get(0).object;
 //            }
             String name = null;
             if(person!= null && person.getName() != null) {

@@ -54,8 +54,8 @@ public class PersistentKnowledge implements Memory<Triple>{
         for(Triple t: memory){
             if(
                     (triple.predicate==null || triple.predicate.toLowerCase().equals(t.predicate)) &&
-                            (triple.agens==null || triple.agens.toLowerCase().equals(t.agens)) &&
-                            (triple.patiens==null || triple.patiens.toLowerCase().equals(t.patiens))
+                            (triple.subject ==null || triple.subject.toLowerCase().equals(t.subject)) &&
+                            (triple.object ==null || triple.object.toLowerCase().equals(t.object))
                     ){
                 triples.add(t);
             }

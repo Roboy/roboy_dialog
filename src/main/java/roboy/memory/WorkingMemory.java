@@ -1,6 +1,5 @@
 package roboy.memory;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,8 +28,8 @@ public class WorkingMemory implements Memory<Triple>{
 	
 	@Override
 	public boolean save(Triple object) {
-		addToMap(agensTripleMap,object.agens.toLowerCase(), object);
-		addToMap(patiensTripleMap,object.patiens.toLowerCase(), object);
+		addToMap(agensTripleMap,object.subject.toLowerCase(), object);
+		addToMap(patiensTripleMap,object.object.toLowerCase(), object);
 		addToMap(predicateTripleMap,object.predicate.toLowerCase(), object);
 		return true;
 	}
@@ -52,12 +51,12 @@ public class WorkingMemory implements Memory<Triple>{
 		List<Triple> agensTriples = null;
 		List<Triple> patiensTriples = null;
 		List<Triple> predicateTriples = null;
-		if(object.agens!=null){
-			agensTriples = agensTripleMap.get(object.agens.toLowerCase());
+		if(object.subject !=null){
+			agensTriples = agensTripleMap.get(object.subject.toLowerCase());
 			if(agensTriples==null) return new ArrayList<>();
 		}
-		if(object.patiens!=null){
-			patiensTriples = patiensTripleMap.get(object.patiens.toLowerCase());
+		if(object.object !=null){
+			patiensTriples = patiensTripleMap.get(object.object.toLowerCase());
 			if(patiensTriples==null) return new ArrayList<>();
 		}
 		if(object.predicate!=null){

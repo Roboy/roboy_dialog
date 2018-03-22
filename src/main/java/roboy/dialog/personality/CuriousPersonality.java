@@ -43,29 +43,29 @@ public class CuriousPersonality implements Personality {
 		Triple triple = (Triple) sentence.getFeatures().get(Linguistics.TRIPLE);
 		List<Action> result = new ArrayList<>();
 		if(sentence.getSentenceType() == SENTENCE_TYPE.DOES_IT || sentence.getSentenceType() == SENTENCE_TYPE.IS_IT){
-			Triple t = remember(triple.predicate, triple.agens, triple.patiens);
+			Triple t = remember(triple.predicate, triple.subject, triple.object);
 			if(t==null){
 				result.add(new SpeechAction("No, not that I know of."));
 			} else {
 				result.add(new SpeechAction("Yes."));
 			}
 		} else if(sentence.getSentenceType() == SENTENCE_TYPE.HOW_IS){
-			Triple t = remember(triple.predicate, triple.agens, triple.patiens);
+			Triple t = remember(triple.predicate, triple.subject, triple.object);
 			if(t==null){
 				result.add(new SpeechAction("I don't know. You tell me."));
 			} else {
-				result.add(new SpeechAction(t.patiens));
+				result.add(new SpeechAction(t.object));
 			}
 		} else if(sentence.getSentenceType() == SENTENCE_TYPE.WHO){
-			Triple t = remember(triple.predicate, triple.agens, triple.patiens);
+			Triple t = remember(triple.predicate, triple.subject, triple.object);
 			if(t==null){
 				result.add(new SpeechAction("I don't know. You tell me."));
 			} else {
-				result.add(new SpeechAction(t.agens));
+				result.add(new SpeechAction(t.subject));
 			}
 		} else if(sentence.getSentenceType() == SENTENCE_TYPE.STATEMENT && triple.predicate!=null){
 			result.add(new SpeechAction("Great, I will keep that in mind."));
-			memory.add(new Triple(triple.predicate.toLowerCase(), triple.agens.toLowerCase(), triple.patiens.toLowerCase()));
+			memory.add(new Triple(triple.predicate.toLowerCase(), triple.subject.toLowerCase(), triple.object.toLowerCase()));
 		} else {
 			result.add(new SpeechAction("Ok, if you say so."));
 		}
@@ -76,8 +76,8 @@ public class CuriousPersonality implements Personality {
 		for(Triple t: memory){
 			if(
 					(predicate==null || predicate.toLowerCase().equals(t.predicate)) &&
-					(agens==null || agens.toLowerCase().equals(t.agens)) &&
-					(patiens==null || patiens.toLowerCase().equals(t.patiens)) 
+					(agens==null || agens.toLowerCase().equals(t.subject)) &&
+					(patiens==null || patiens.toLowerCase().equals(t.object))
 					){
 				return t;
 			}

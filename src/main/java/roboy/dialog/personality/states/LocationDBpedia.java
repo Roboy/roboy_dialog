@@ -24,12 +24,12 @@ public class LocationDBpedia extends AbstractBooleanState {
         if (names.isEmpty()) {
             return Lists.interpretationList();
         }
-        String name = names.get(0).patiens;
+        String name = names.get(0).object;
         List<Triple> locations = WorkingMemory.getInstance().retrieve(new Triple("is from", name, null));
         if (locations.isEmpty()) {
             return Lists.interpretationList();
         }
-        String location = locations.get(0).patiens;
+        String location = locations.get(0).object;
         DBpediaMemory memory = DBpediaMemory.getInstance();
         Map<String, Relation> queries = new HashMap<>();new ArrayList<Relation>();
         queries.put(location + " has population of ", new Relation(new Concept(location), "populationTotal", new Concept()));

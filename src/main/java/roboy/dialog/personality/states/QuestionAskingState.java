@@ -208,45 +208,45 @@ public class QuestionAskingState implements State
 		Triple triple = (Triple) input.getFeatures().get(Linguistics.TRIPLE);
 
 		// reverse you <-> I
-		if(triple.agens!=null && "you".equals(triple.agens.toLowerCase())) triple.agens = "i";
-		if(triple.patiens!=null && "you".equals(triple.patiens.toLowerCase())) triple.patiens = "i";
+		if(triple.subject !=null && "you".equals(triple.subject.toLowerCase())) triple.subject = "i";
+		if(triple.object !=null && "you".equals(triple.object.toLowerCase())) triple.object = "i";
 		if(triple.predicate!=null && "are".equals(triple.predicate.toLowerCase())) triple.predicate = "am";
 
 		//TODO remove this ugly parsing!
 		List<Interpretation> result = new ArrayList<>();
 		if(input.getSentenceType() == Linguistics.SENTENCE_TYPE.DOES_IT || input.getSentenceType() == Linguistics.SENTENCE_TYPE.IS_IT){
-			List<Triple> t = PersistentKnowledge.getInstance().retrieve(new Triple(triple.predicate, triple.agens, null));
+			List<Triple> t = PersistentKnowledge.getInstance().retrieve(new Triple(triple.predicate, triple.subject, null));
 			if(!t.isEmpty()){
 				result.add(new Interpretation("Yes. "));
 				for(int i=0; i<t.size(); i++){
 					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
-					result.add(new Interpretation(prefix+t.get(i).agens+" "+t.get(i).predicate+" "+t.get(i).patiens));
+					result.add(new Interpretation(prefix+t.get(i).subject +" "+t.get(i).predicate+" "+t.get(i).object));
 				}
 			}
 		} else if(input.getSentenceType() == Linguistics.SENTENCE_TYPE.WHO){
-			List<Triple> t = PersistentKnowledge.getInstance().retrieve(new Triple(triple.predicate, triple.agens, triple.patiens));
+			List<Triple> t = PersistentKnowledge.getInstance().retrieve(new Triple(triple.predicate, triple.subject, triple.object));
 			if(!t.isEmpty()){
 				for(int i=0; i<t.size(); i++){
 					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
-					result.add(new Interpretation(prefix+t.get(i).agens+" "+t.get(i).predicate+" "+t.get(i).patiens));
+					result.add(new Interpretation(prefix+t.get(i).subject +" "+t.get(i).predicate+" "+t.get(i).object));
 				}
 			}
 		} else if(input.getSentenceType() == Linguistics.SENTENCE_TYPE.WHAT){
-			List<Triple> t = PersistentKnowledge.getInstance().retrieve(new Triple(triple.predicate, triple.agens, triple.patiens));
+			List<Triple> t = PersistentKnowledge.getInstance().retrieve(new Triple(triple.predicate, triple.subject, triple.object));
 			if(!t.isEmpty()){
 
 				for(int i=0; i<t.size(); i++){
 					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
-					result.add(new Interpretation(prefix+t.get(i).agens+" "+t.get(i).predicate+" "+t.get(i).patiens));
+					result.add(new Interpretation(prefix+t.get(i).subject +" "+t.get(i).predicate+" "+t.get(i).object));
 				}
 			}
 		} else if(input.getSentenceType() == Linguistics.SENTENCE_TYPE.HOW_DO){
-			List<Triple> t = PersistentKnowledge.getInstance().retrieve(new Triple(triple.predicate, triple.agens, null));
+			List<Triple> t = PersistentKnowledge.getInstance().retrieve(new Triple(triple.predicate, triple.subject, null));
 			if(!t.isEmpty())
 			{
 				for(int i=0; i<t.size(); i++){
 					String prefix = (i>0 && i==t.size()-1) ? "also, " : "";
-					result.add(new Interpretation(prefix+t.get(i).agens+" "+t.get(i).predicate+" "+t.get(i).patiens));
+					result.add(new Interpretation(prefix+t.get(i).subject +" "+t.get(i).predicate+" "+t.get(i).object));
 				}
 			}
 		}

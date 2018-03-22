@@ -74,8 +74,8 @@ public class IntroductionState extends AbstractBooleanState{
 		}
 		if(name!=null){
 //			WorkingMemory.getInstance().save(new Triple("is","name",name));
-//			List<Triple> agens = PersistentKnowledge.getInstance().retrieve(new Triple(null,name,null));
-//			List<Triple> patiens = PersistentKnowledge.getInstance().retrieve(new Triple(null,null,name));
+//			List<Triple> subject = PersistentKnowledge.getInstance().retrieve(new Triple(null,name,null));
+//			List<Triple> object = PersistentKnowledge.getInstance().retrieve(new Triple(null,null,name));
 			//TODO Currently assuming no duplicate names in memory. Support for last name addition needed.
             String retrievedResult = "";
             person.addName(name);

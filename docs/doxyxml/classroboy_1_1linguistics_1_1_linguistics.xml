@@ -124,7 +124,7 @@
         <name>PAS</name>
         <initializer>= &quot;pas&quot;</initializer>
         <briefdescription>
-<para>Predicate-argument structures (who(agens) did what(predicate) to whom(patiens)) </para>        </briefdescription>
+<para>Predicate-argument structures (who(subject) did what(predicate) to whom(object)) </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
