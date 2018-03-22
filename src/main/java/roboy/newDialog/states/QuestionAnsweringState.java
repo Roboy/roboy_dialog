@@ -218,8 +218,14 @@ public class QuestionAnsweringState extends State {
 
 
     private Output useMemoryOrFallback(Interpretation input) {
-        Output memoryAnswer = tryToAnswerWithMemory(input, input.semParserTriples);
-        if (memoryAnswer != null) return memoryAnswer;
+        try {
+            if (input.semParserTriples != null) {
+                Output memoryAnswer = tryToAnswerWithMemory(input, input.semParserTriples);
+                if (memoryAnswer != null) return memoryAnswer;
+            }
+        } catch (Exception e) {
+            logger.warn(e.getMessage());
+        }
 
         return Output.useFallback();
     }
@@ -233,10 +239,11 @@ public class QuestionAnsweringState extends State {
         List<Triple> results = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
         if (results.size() != 0) {
             for (Triple result : results) {
-                if (result.subject.contains("roboy"))
-                    if (result.predicate.contains(Neo4jRelationships.HAS_HOBBY.type)) {
+                if (result.subject != null && result.subject.contains("roboy") ||
+                        result.object != null && result.object.contains("roboy"))
+                    if (result.predicate != null && result.predicate.contains(Neo4jRelationships.HAS_HOBBY.type)) {
+                        String answer = "I like ";
                         if (result.object == null) {
-                            String answer = "I like ";
                             ArrayList<Integer> ids = roboy.getRelationships(Neo4jRelationships.HAS_HOBBY);
                             if (ids != null && !ids.isEmpty()) {
                                 try {
@@ -248,9 +255,9 @@ public class QuestionAnsweringState extends State {
                                     logger.error("Error on Memory data retrieval: " + e.getMessage());
                                 }
                             }
-                            answer += "humans. They are cute!";
-                            return Output.say(answer);
                         }
+                        answer += "humans. They are cute!";
+                        return Output.say(answer);
                     }
                 }
             }
