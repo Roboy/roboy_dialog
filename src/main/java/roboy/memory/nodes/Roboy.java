@@ -32,7 +32,7 @@ public class Roboy extends MemoryNodeModel{
      */
     // TODO consider a fallback for the amnesia mode
     private void InitializeRoboy() {
-        setProperty("name", "Roboy Junior");
+        setProperty("name", "roboy");
         setLabel("Robot");
 
         //
