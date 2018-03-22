@@ -1,5 +1,6 @@
 package roboy.newDialog.states;
 
+import com.google.gson.Gson;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
@@ -11,11 +12,15 @@ import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.Interlocutor.RelationshipAvailability;
+import roboy.memory.nodes.MemoryNodeModel;
+import roboy.memory.nodes.Roboy;
 import roboy.newDialog.Segue;
 import roboy.util.RandomList;
 
 import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -160,6 +165,9 @@ public class QuestionAnsweringState extends State {
                 return Output.say(answerStartingPhrases.getRandomElement() + " " + input.answer);
 
             } else {
+                // check for triple
+
+
                 // parser could parse the question but has no answer
                 return useMemoryOrFallback(input);
             }
@@ -217,14 +225,37 @@ public class QuestionAnsweringState extends State {
     }
 
     private Output tryToAnswerWithMemory(Interpretation input, List<Triple> triples) {
+        //if (input.getFeatures().get(Linguistics))
 
         // try to use memory to answer
-        Neo4jMemoryInterface mem = getParameters().getMemory();
-
+        Roboy roboy = new Roboy(getParameters().getMemory());
+        System.out.print(roboy.toJSON());
         // Wagram, do some magic here
-
+        List<Triple> results = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
+        if (results.size() != 0) {
+            for (Triple result : results) {
+                if (result.subject.contains("roboy"))
+                    if (result.predicate.contains(Neo4jRelationships.HAS_HOBBY.type)) {
+                        if (result.object == null) {
+                            String answer = "I like ";
+                            ArrayList<Integer> ids = roboy.getRelationships(Neo4jRelationships.HAS_HOBBY);
+                            if (ids != null && !ids.isEmpty()) {
+                                try {
+                                    Gson gson = new Gson();
+                                    String requestedObject = getParameters().getMemory().getById(ids.get(0));
+                                    MemoryNodeModel node = gson.fromJson(requestedObject, MemoryNodeModel.class);
+                                    answer += node.getProperties().get("name").toString() + " and ";
+                                } catch (InterruptedException | IOException e) {
+                                    logger.error("Error on Memory data retrieval: " + e.getMessage());
+                                }
+                            }
+                            answer += "humans. They are cute!";
+                            return Output.say(answer);
+                        }
+                    }
+                }
+            }
         // we could also reuse some functionality from the old QuestionAnsweringState
-
 
         return null;
     }
