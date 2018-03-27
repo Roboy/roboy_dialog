@@ -28,9 +28,6 @@ public class Interpretation {
 	public String underspecifiedQuestion;
 	public List<Triple> semParserTriples;
 	public Linguistics.PARSER_OUTCOME parserOutcome;
-
-
-
 	
 	public Interpretation(String sentence){
 		features = new HashMap<>();

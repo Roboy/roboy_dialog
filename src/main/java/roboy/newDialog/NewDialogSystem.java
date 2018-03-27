@@ -64,7 +64,7 @@ public class NewDialogSystem {
         analyzers.add(new SemanticParserAnalyzer(ConfigManager.PARSER_PORT));
 
         //analyzers.add(new OpenNLPPPOSTagger());
-        //analyzers.add(new DictionaryBasedSentenceTypeDetector());
+        analyzers.add(new DictionaryBasedSentenceTypeDetector());
         analyzers.add(new SentenceAnalyzer());
         analyzers.add(new OpenNLPParser());
         //analyzers.add(new OntologyNERAnalyzer());

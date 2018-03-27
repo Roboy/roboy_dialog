@@ -238,28 +238,53 @@ public class QuestionAnsweringState extends State {
         // Wagram, do some magic here
         List<Triple> results = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
         if (results.size() != 0) {
+            String answer = "I like ";
             for (Triple result : results) {
-                if (result.subject != null && result.subject.contains("roboy") ||
-                        result.object != null && result.object.contains("roboy"))
-                    if (result.predicate != null && result.predicate.contains(Neo4jRelationships.HAS_HOBBY.type)) {
-                        String answer = "I like ";
-                        if (result.object == null) {
+                //if (result.subject != null && result.subject.contains("roboy") ||
+                //        result.object != null && result.object.contains("roboy"))
+
+
+                    if (result.predicate != null) {
+                        if (result.predicate.contains(Neo4jRelationships.HAS_HOBBY.type)) {
+                            //if (result.object == null) {
+                                ArrayList<Integer> ids = roboy.getRelationships(Neo4jRelationships.HAS_HOBBY);
+                                if (ids != null && !ids.isEmpty()) {
+                                    try {
+                                        Gson gson = new Gson();
+                                        for (int i = 0; i < ids.size(); i++) {
+                                            String requestedObject = getParameters().getMemory().getById(ids.get(i));
+                                            MemoryNodeModel node = gson.fromJson(requestedObject, MemoryNodeModel.class);
+                                            answer += node.getProperties().get("name").toString() + " and ";
+                                        }
+                                    } catch (InterruptedException | IOException e) {
+                                        logger.error("Error on Memory data retrieval: " + e.getMessage());
+                                    }
+                                }
+                            //}
+                            break;
+                        } else if (result.predicate.contains(Neo4jRelationships.FRIEND_OF.type)) {
+                            answer += "my friends ";
                             ArrayList<Integer> ids = roboy.getRelationships(Neo4jRelationships.HAS_HOBBY);
                             if (ids != null && !ids.isEmpty()) {
                                 try {
                                     Gson gson = new Gson();
-                                    String requestedObject = getParameters().getMemory().getById(ids.get(0));
-                                    MemoryNodeModel node = gson.fromJson(requestedObject, MemoryNodeModel.class);
-                                    answer += node.getProperties().get("name").toString() + " and ";
+                                    for (int i = 0; i < ids.size() && i < 3; i++) {
+                                        String requestedObject = getParameters().getMemory().getById(ids.get(i));
+                                        MemoryNodeModel node = gson.fromJson(requestedObject, MemoryNodeModel.class);
+                                        answer += node.getProperties().get("name").toString() + " and ";
+                                    }
                                 } catch (InterruptedException | IOException e) {
                                     logger.error("Error on Memory data retrieval: " + e.getMessage());
                                 }
                             }
+                            answer += " other ";
+                            break;
                         }
-                        answer += "humans. They are cute!";
-                        return Output.say(answer);
                     }
+
                 }
+            answer += "humans. They are funny and cute!";
+            return Output.say(answer);
             }
         // we could also reuse some functionality from the old QuestionAnsweringState
 
