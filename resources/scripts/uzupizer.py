@@ -13,6 +13,7 @@ for s in range(len(sys.argv)):
 
 path = "/home/roboy/cognition_ws/src/roboy_cognition/roboy_dialog/resources/scripts/"
 
+# TODO OSError is raised here - check if counter.txt does not exist and create it
 file = open(path+'counter.txt', 'r+')
 counter = int(file.readline())
 counter += 1

@@ -12,7 +12,7 @@ During one run-through, the Dialog System uses a single Personality instance (``
 
 The current primary personality is the SmallTalkPersonality (``de.roboy.dialog.personality.SmallTalkPersonality``).
 
-A new personality (``roboy.newDialog.StateBasedPersonality``) is currently being implemented. Similarly to the SmallTalkPersonality, it is built on top of a state machine. The new personality is designed to be more generic one and allows to load the behaviour from a personality file. The file stores a representation of the state machine. Additionally, it is still possible to define the dialog structure directly from code (as it was done in previous implementations).
+A new personality (``roboy.dialog.personality.StateBasedPersonality``) is currently being implemented. Similarly to the SmallTalkPersonality, it is built on top of a state machine. The new personality is designed to be more generic one and allows to load the behaviour from a personality file. The file stores a representation of the state machine. Additionally, it is still possible to define the dialog structure directly from code (as it was done in previous implementations).
 
 Legacy State
 ------------

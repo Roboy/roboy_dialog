@@ -3,7 +3,7 @@
   "states": [
     {
       "identifier": "Greetings",
-      "implementation" : "roboy.newDialog.states.PassiveGreetingsState",
+      "implementation" : "roboy.dialog.states.PassiveGreetingsState",
       "transitions" : {
         "greetingDetected" : "Intro",
         "noHello" : "Farewell"
@@ -11,7 +11,7 @@
     },
     {
       "identifier": "Intro",
-      "implementation" : "roboy.newDialog.states.IntroductionState",
+      "implementation" : "roboy.dialog.states.IntroductionState",
       "transitions" : {
         "next" : "Farewell",
         "knownPerson": "FollowUp",
@@ -23,7 +23,7 @@
     },
     {
       "identifier": "FollowUp",
-      "implementation": "roboy.newDialog.states.FUAState",
+      "implementation": "roboy.dialog.states.FUAState",
       "transitions": {
         "questionAnswering": "QuestionAnswering"
       },
@@ -33,7 +33,7 @@
     },
     {
       "identifier": "PersonalQA",
-      "implementation": "roboy.newDialog.states.PIAState",
+      "implementation": "roboy.dialog.states.PIAState",
       "transitions": {
         "questionAnswering": "QuestionAnswering"
       },
@@ -43,7 +43,7 @@
     },
     {
       "identifier": "QuestionAnswering",
-      "implementation": "roboy.newDialog.states.QuestionAnsweringState",
+      "implementation": "roboy.dialog.states.QuestionAnsweringState",
       "fallback": "WildTalk",
       "transitions": {
         "finishedQuestionAnswering": "Farewell",
@@ -55,12 +55,12 @@
     },
     {
       "identifier": "WildTalk",
-      "implementation": "roboy.newDialog.states.WildTalkFallbackState",
+      "implementation": "roboy.dialog.states.WildTalkFallbackState",
       "transitions": {}
     },
     {
       "identifier": "Farewell",
-      "implementation" : "roboy.newDialog.states.FarewellState",
+      "implementation" : "roboy.dialog.states.FarewellState",
       "transitions" : {}
     }
   ]

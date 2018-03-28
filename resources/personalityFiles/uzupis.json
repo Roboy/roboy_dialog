@@ -11,7 +11,7 @@
     },
     {
       "identifier": "Uzupis",
-      "implementation" : "roboy.newDialog.states.UzupisState",
+      "implementation" : "roboy.dialog.states.UzupisState",
       "fallback" : "RandomAnswer",
       "transitions" : {
         "loop": "Uzupis",
@@ -23,12 +23,12 @@
     },
     {
       "identifier": "Farewell",
-      "implementation" : "roboy.newDialog.examples.toyStates.ToyFarewellState",
+      "implementation" : "roboy.dialog.examples.toyStates.ToyFarewellState",
       "transitions" : {}
     },
     {
       "identifier": "RandomAnswer",
-      "implementation" : "roboy.newDialog.examples.toyStates.ToyRandomAnswerState",
+      "implementation" : "roboy.dialog.examples.toyStates.ToyRandomAnswerState",
       "transitions" : {
         "next" : "Farewell"
       }

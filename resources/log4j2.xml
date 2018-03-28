@@ -12,7 +12,7 @@
         <Logger name="roboy.dialog" level="INFO" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
-        <Logger name="roboy.newDialog" level="INFO" additivity="false">
+        <Logger name="roboy.dialog" level="INFO" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
         <Logger name="roboy.context" level="INFO" additivity="false">
