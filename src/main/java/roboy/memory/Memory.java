@@ -1,9 +1,6 @@
 package roboy.memory;
 
 import java.io.IOException;
-import java.util.List;
-import roboy.util.Concept;
-import roboy.util.Relation;
 
 /**
  * The Memory interface contains of methods to save and retrieve information.

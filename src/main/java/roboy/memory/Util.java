@@ -1,32 +1,23 @@
 package roboy.memory;
 
-
 import java.util.*;
 
 /**
  * Helper class.
  */
 public class Util extends Exception {
-
-	
-	
-	
-	
 	public static String getPartURI(String URI){
 		String nameToSend = URI.substring(URI.lastIndexOf('/')+1, URI.length());
 		return nameToSend;
 	}
-	
-	
 
 	public static List<String> getQuestionType(String question) throws Exception {
 		List<String> questionAndType = new ArrayList<String>();
 		questionAndType.add(question);
 		questionAndType.add("normal");
 
-				return questionAndType;
+		return questionAndType;
 	}
-
 	
 	public static int calculateLevenshteinDistance(String s, String t) {
 		t=t.toLowerCase();

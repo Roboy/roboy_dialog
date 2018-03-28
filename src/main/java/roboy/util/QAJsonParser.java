@@ -57,7 +57,7 @@ public class QAJsonParser {
 
     public JsonModel parse(String file) {
         try {
-            InputStream input = JsonUtils.class.getClassLoader().getResourceAsStream(file);
+            InputStream input = QAJsonParser.class.getClassLoader().getResourceAsStream(file);
             BufferedReader br = new BufferedReader(new InputStreamReader(input));
             gson = new Gson();
             return gson.fromJson(br, JsonModel.class);

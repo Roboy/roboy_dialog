@@ -3,8 +3,6 @@ package roboy.util;
 import java.util.HashMap;
 import java.util.Map;
 
-import roboy.dialog.personality.states.Reaction;
-
 /**
  * Helper class for map related tasks.
  */
@@ -22,14 +20,6 @@ public class Maps {
 		Map<String, Object> result = new HashMap<>();
 		for(int i=0; i<elements.length; i+=2){
 			result.put((String)elements[i],elements[i+1]);
-		}
-		return result;
-	}
-	
-	public static Map<String,Reaction> stringReactionMap(Object... elements){
-		Map<String, Reaction> result = new HashMap<>();
-		for(int i=0; i<elements.length; i+=2){
-			result.put((String)elements[i],(Reaction)elements[i+1]);
 		}
 		return result;
 	}
