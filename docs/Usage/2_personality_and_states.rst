@@ -3,62 +3,86 @@ Personality and states
 Overview
 --------
 
-To enable a natural way of communication, Roboy's Dialog Module implements a flexible architecture using personality classes, which each manage a number of different states. This enables us to dynamically react to clues from the conversation partner and spontaneously switch between purposes and stages of a dialog, mimicing a natural conversation.
+To enable a natural way of communication, Roboy's Dialog System implements a flexible architecture using different personalities defined in personality files. Each file represents a state machine and defines transitions between different states. This enables us to dynamically react to clues from the conversation partner and spontaneously switch between purposes and stages of a dialog, mimicing a natural conversation.
+
 
 Personality
 -----------
 
-During one run-through, the Dialog System uses a single Personality instance (``de.roboy.dialog.personality.Personality``). A personality is designed to define how roboy reacts to every given situation, and as such Roboy can always only represent one personality at a time. Different personalities are meant to be used in different situations, like a more formal or loose one depending on the occasion.
+A personality defines how roboy reacts to every given situation. Different personalities are meant to be used in different situations, like a more formal or loose one depending on the occasion. Roboy always represents one personality at a time. Personalities are stored in JSON personality files.
 
-The current primary personality is the SmallTalkPersonality (``de.roboy.dialog.personality.SmallTalkPersonality``).
+During one run-through, the Dialog System uses a single Personality instance (currently implemented in ``roboy.dialog.personality.StateBasedPersonality``) which is built on top of a state machine. This implementation loads the behaviour from a personality file that stores a representation of a state machine. Additionally, it is possible to define the dialog structure directly from code (as it was done in previous implementations).
 
-A new personality (``roboy.dialog.personality.StateBasedPersonality``) is currently being implemented. Similarly to the SmallTalkPersonality, it is built on top of a state machine. The new personality is designed to be more generic one and allows to load the behaviour from a personality file. The file stores a representation of the state machine. Additionally, it is still possible to define the dialog structure directly from code (as it was done in previous implementations).
+As the conversation goes on, the state machine will move from one state to another consuming inputs and producing outputs. The outputs are always defined by the current active state.
 
-Legacy State
+
+State
+-----
+
+A state contains logic to control a small part of the conversation. It is a class that extends ``roboy.dialog.states.State`` and implements three functions: ``act()``, ``react()`` and ``getNextState()``.
+
+State's activity can be divided into three stages. First, when the state is entered, the initial action from the ``act()`` method is carried out, which is expected to trigger a response from the person. After Roboy has received and analyzed the response (see semantic parser), the ``react()`` method completes the current state's actions. Finally, Roboy picks a transition to the next state defined by the ``getNextState()`` method of the current state.
+
+State Output
 ------------
+The ``act()`` and ``react()`` functions return a ``State.Output`` object. This object defines what actions Roboy should do at this point of time. Most important actions include:
+- say a phrase
+- say nothing
+- end the conversation and optionally say a few last words
 
-A state's activity can be divided into two stages. When the state is entered, the initial action from the ``act()`` method is carried out, which is expected to trigger a response from the person. After Roboy has received and analyzed the response, the ``react()`` method completes the current state's actions and Roboy moves on to the next state.
+The ``Output`` objects are created using static factory functions inside ``act()`` or ``react()`` in a very simple way. For example, if Roboy should react with a phrase, the ``react()`` function could be implemented like this: ``return Output.say("some text here")``. Here, ``Output.say`` is the static factory function that creates an ``Output`` object.
 
-The AbstractBooleanState describes a special case where the state's reaction depends on whether the ``act()`` method resulted in successful interaction. States which implement AbstractBooleanState can respond differently move on into different stages according to their ``determineSuccess()`` method.
+To improve the dialog flow, you can add segues to the ``Output`` objects using ``outputObj.setSegue()``. A segue is a smooth transition from one topic to the next. It is also planned to add control over Roboy's face to the ``Output`` objects but this feature is not implemented yet.
 
-For example, the initial action of ``de.roboy.dialog.personality.states.IntroductionState`` is to ask the user's name. Then the response is analyzed externally and when the state's determineSuccess() method is called, it checks whether a name was extracted. If this is the case, then the system outputs predefined sentences with the extracted name embedded into them. Otherwise, fallback sentences are used which do not include a name.
 
-New State
----------
-
-Currently, we are improving the state system. Old state implementations will be replaced with newer ones. The functionality of the AbstractBooleanState will be improved to allow arbitrary conditional transitions in every new state. Nested states will be replaced with the fallback concept.
-
-A state's activity can be divided into two stages. When the state is entered, the initial action from the ``act()`` method is carried out, which is expected to trigger a response from the person. After Roboy has received and analyzed the response, the ``react()`` method completes the current state's actions and Roboy picks a transition to the next state defined by the ``getNextState()`` method of the current state.
-
-It is possible to remain in the same state for many cycles. In this case the ``getNextState()`` method just returns a reference to the current state (``this``) and the ``act()`` and ``react()`` methods are carried out again.
+State Transitions
+-----------------
 
 A state can have any number of transitions to other states. Every transition has a name (like "next" or "errorState"). When changing states, the following state can be selected based on internal conditions of the current state. For example, a state can expect a "yes/no" answer and have tree outgoing transitions: "gotYes", "gotNo" and "askAgain" (if the reply is not "yes/no"). 
  
-When designing a new state, only the transition names are defined. The following states are defined in the personality file later. At run time the state machine loads the file and initializes the transitions to point it correct states. The destination state can be retrieved by the transition name using ``getTransition(transitionName)``.
+When designing a new state, only the transition names are defined. The connections between states are defined in the personality file later. At run time the state machine loads the file and initializes the transitions to point to correct states. The destination state can be retrieved by the transition name using ``getTransition(transitionName)``.
 
-A fallback can be attached to a state. In the case this state doesn't know how to react to an utterance, it can return ``ReAct.useFallback()`` from the ``react()`` function. The state machine will query the fallback in this case. This concept helps to decouple the states and reduce the dependencies between them. When implementing the ``react()`` function of a new state, it is sufficient to detect unknown input and return ``ReAct.useFallback()``.
-
-
+It is possible to remain in the same state for many cycles. In this case the ``getNextState()`` method just returns a reference to the current state (``this``) and the ``act()`` and ``react()`` methods are carried out again. If ``getNextState()`` returns no next state (``null``), the conversation ends immediately.
 
 
-Legacy State machine structure
+Fallback States
+---------------
+
+Fallbacks are classes that handle unpredicted or unexpected input. A fallback can be attached to any state that expects inputs that it cannot deal with. In the case this state doesn't know how to react to an utterance, it can return ``Output.useFallback()`` from the ``react()`` function. The state machine will query the fallback in this case. This concept helps to keep the states simple and reduce the dependencies between them. When implementing the ``react()`` function of a new state, it is sufficient to detect unknown input and return ``Output.useFallback()``.
+
+In the current Dialog System, we use special states to implement the fallback functionality. A fallback state never becomes active so only the ``react()`` function has to be implemented. This function will be called if the active state returned ``Output.useFallback()``.
+
+
+State Parameters
+----------------
+TODO
+
+
+State Interface
+---------------
+
+TODO: Define required transitions, required parameter names and fallback availability to detect errors in the personality file during loading.
+
+
+Current 'standard' personality
+------------------------------
+TODO: picture + short description
+
+
+
+Overview over Implemented States
+--------------------------------
+
+TODO: most important states
+
+
+Tutorial: Creating a New State
 ------------------------------
 
-Every state defines at least one successor state, and more complex hierarchies can be realized - for example as a fallback system for cases when a single state cannot respond in a meaningful manner. The fallback system implemented using nested states in the legacy state machine and will be improved in the newer implementation. The following is an example from the documentation of SmallTalkPersonality:
-
-The current legacy state machine looks like this:
-
-Greeting state
-      |
-      V
- Introduction state
-      |
-      V
- Question Randomizer state
-  |_Question Answering state
-    |_Segue state
-      |_Wild talk state
-
- The Question Randomizer, Question Answering, Segue and Wilk talk states are nested. If one cannot give an appropriate reaction to the given utterance, the utterance is passed on to the next one. The Wild talk state will always answer.
+TODO: create a new state that has specified behaviour
 
 
+Tutorial: Creating a New Personality
+------------------------------------
+
+TODO: create a new personality file
