@@ -14,6 +14,7 @@ import roboy.memory.nodes.Interlocutor.RelationshipAvailability;
 import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
 import roboy.memory.nodes.MemoryNodeModel;
 import roboy.newDialog.Segue;
+import roboy.util.RandomList;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -87,18 +88,9 @@ public class IntroductionState extends State {
 
             // 4a. person known/familiar
             String retrievedResult = "";
-            ArrayList<Integer> ids = person.getRelationships(Neo4jRelationships.FRIEND_OF);
-            if (ids != null && !ids.isEmpty()) {
-                Neo4jMemoryInterface memory = getParameters().getMemory();
-                try {
-                    Gson gson = new Gson();
-                    String requestedObject = memory.getById(ids.get(0));
-                    MemoryNodeModel node = gson.fromJson(requestedObject, MemoryNodeModel.class);
-                    retrievedResult = node.getProperties().get("name").toString();
-                } catch (InterruptedException | IOException e) {
-                    logger.error("Error on Memory data retrieval: " + e.getMessage());
-                }
-                retrievedResult = "! You are friends with " + retrievedResult;
+            RandomList<MemoryNodeModel> nodes = retrieveNodesFromMemoryByIds(person.getRelationships(Neo4jRelationships.FRIEND_OF));
+            if (!nodes.isEmpty()) {
+                retrievedResult = " You are friends with " + nodes.getRandomElement().getProperties().get("name").toString();
             }
 
             RelationshipAvailability availability = person.checkRelationshipAvailability(predicates);

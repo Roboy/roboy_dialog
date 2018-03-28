@@ -55,17 +55,9 @@ public class FUAState extends State {
         if (selectedPredicate != null) {
             RandomList<String> questions = new RandomList<>(qaValues.getFollowUpQuestions(selectedPredicate));
             String retrievedResult = "";
-            RandomList<Integer> ids = new RandomList<>(person.getRelationships(selectedPredicate));
-            if (!ids.isEmpty()) {
-                Neo4jMemoryInterface memory = getParameters().getMemory();
-                try {
-                    Gson gson = new Gson();
-                    String requestedObject = memory.getById(ids.getRandomElement());
-                    MemoryNodeModel node = gson.fromJson(requestedObject, MemoryNodeModel.class);
-                    retrievedResult = node.getProperties().get("name").toString();
-                } catch (InterruptedException | IOException e) {
-                    LOGGER.error("Error on Memory data retrieval: " + e.getMessage());
-                }
+            RandomList<MemoryNodeModel> nodes = retrieveNodesFromMemoryByIds(person.getRelationships(selectedPredicate));
+            if (!nodes.isEmpty()) {
+                retrievedResult = nodes.getRandomElement().getProperties().get("name").toString();
             }
             String question = String.format(questions.getRandomElement(), retrievedResult);
             Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue("FUP", selectedPredicate));

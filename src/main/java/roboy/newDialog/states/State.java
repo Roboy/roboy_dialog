@@ -10,6 +10,7 @@ import roboy.memory.nodes.MemoryNodeModel;
 import roboy.newDialog.DialogStateMachine;
 import roboy.newDialog.Segue;
 import roboy.ros.RosMainNode;
+import roboy.util.RandomList;
 
 import java.io.IOException;
 import java.util.*;
@@ -564,8 +565,14 @@ public abstract class State {
 
     //endregion
 
-    protected ArrayList<MemoryNodeModel> requestNodesFromMemoryByIds(ArrayList<Integer> ids) {
-        ArrayList<MemoryNodeModel> retrievedNodes = new ArrayList<>();
+    /**
+     * Helper function
+     * Ask memory to return nodes for given ids
+     * @param ids
+     * @return Collection of MemoryNodeModels
+     */
+    protected RandomList<MemoryNodeModel> retrieveNodesFromMemoryByIds(ArrayList<Integer> ids) {
+        RandomList<MemoryNodeModel> retrievedNodes = new RandomList<>();
 
         if (ids != null && !ids.isEmpty()) {
             try {
