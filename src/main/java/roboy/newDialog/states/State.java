@@ -1,14 +1,17 @@
 package roboy.newDialog.states;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.memory.nodes.MemoryNodeModel;
 import roboy.newDialog.DialogStateMachine;
 import roboy.newDialog.Segue;
 import roboy.ros.RosMainNode;
 
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -560,5 +563,23 @@ public abstract class State {
     }
 
     //endregion
+
+    protected ArrayList<MemoryNodeModel> requestNodesFromMemoryByIds(ArrayList<Integer> ids) {
+        ArrayList<MemoryNodeModel> retrievedNodes = new ArrayList<>();
+
+        if (ids != null && !ids.isEmpty()) {
+            try {
+                Gson gson = new Gson();
+                for (Integer id : ids) {
+                    String requestedObject = getParameters().getMemory().getById(id);
+                    retrievedNodes.add(gson.fromJson(requestedObject, MemoryNodeModel.class));
+                }
+            } catch (InterruptedException | IOException e) {
+                logger.error("Error on Memory data retrieval: " + e.getMessage());
+            }
+        }
+
+        return retrievedNodes;
+    }
 
 }

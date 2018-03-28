@@ -247,24 +247,31 @@ public class QuestionAnsweringState extends State {
                     if (result.predicate != null) {
                         if (result.predicate.contains(Neo4jRelationships.HAS_HOBBY.type)) {
                             //if (result.object == null) {
-                                ArrayList<Integer> ids = roboy.getRelationships(Neo4jRelationships.HAS_HOBBY);
-                                if (ids != null && !ids.isEmpty()) {
-                                    try {
-                                        Gson gson = new Gson();
-                                        for (int i = 0; i < ids.size(); i++) {
-                                            String requestedObject = getParameters().getMemory().getById(ids.get(i));
-                                            MemoryNodeModel node = gson.fromJson(requestedObject, MemoryNodeModel.class);
-                                            answer += node.getProperties().get("name").toString() + " and ";
-                                        }
-                                    } catch (InterruptedException | IOException e) {
-                                        logger.error("Error on Memory data retrieval: " + e.getMessage());
-                                    }
-                                }
+                            //    ArrayList<Integer> ids = roboy.getRelationships(Neo4jRelationships.HAS_HOBBY);
+                            //    if (ids != null && !ids.isEmpty()) {
+                            //        try {
+                            //            Gson gson = new Gson();
+                            //            for (int i = 0; i < ids.size(); i++) {
+                            //                String requestedObject = getParameters().getMemory().getById(ids.get(i));
+                            //                MemoryNodeModel node = gson.fromJson(requestedObject, MemoryNodeModel.class);
+                            //                answer += node.getProperties().get("name").toString() + " and ";
+                            //            }
+                            //        } catch (InterruptedException | IOException e) {
+                            //            logger.error("Error on Memory data retrieval: " + e.getMessage());
+                            //        }
+                            //    }
                             //}
+                            ArrayList<MemoryNodeModel> nodes = requestNodesFromMemoryByIds(roboy.getRelationships(Neo4jRelationships.HAS_HOBBY));
+                            if (!nodes.isEmpty()) {
+                                for (MemoryNodeModel node : nodes) {
+                                    answer += node.getProperties().get("name").toString() + " and ";
+                                }
+                            }
+
                             break;
                         } else if (result.predicate.contains(Neo4jRelationships.FRIEND_OF.type)) {
                             answer += "my friends ";
-                            ArrayList<Integer> ids = roboy.getRelationships(Neo4jRelationships.HAS_HOBBY);
+                            ArrayList<Integer> ids = roboy.getRelationships(Neo4jRelationships.FRIEND_OF);
                             if (ids != null && !ids.isEmpty()) {
                                 try {
                                     Gson gson = new Gson();
