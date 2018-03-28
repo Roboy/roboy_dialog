@@ -20,6 +20,7 @@ In order to use semantic parser, you need to:
 	cd roboy_parser
 
 - download dependencies::
+
     ./pull-dependencies roboy
 
 - build it::
