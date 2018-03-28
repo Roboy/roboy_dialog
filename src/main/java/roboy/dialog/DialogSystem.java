@@ -1,89 +1,52 @@
 package roboy.dialog;
 
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import roboy.context.Context;
+import roboy.dialog.action.Action;
+import roboy.dialog.personality.StateBasedPersonality;
+import roboy.io.*;
+import roboy.linguistics.sentenceanalysis.*;
+import roboy.memory.Neo4jMemory;
+import roboy.memory.DummyMemory;
+import roboy.memory.Neo4jMemoryInterface;
+import roboy.memory.nodes.Interlocutor;
+import roboy.ros.RosMainNode;
+import roboy.talk.Verbalizer;
+import roboy.util.ConfigManager;
+import roboy.util.IO;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gson.JsonIOException;
-
-import roboy.context.Context;
-import roboy.context.ContextGUI;
-import roboy.context.contextObjects.CoordinateSet;
-import roboy.dialog.action.Action;
-import roboy.dialog.action.ShutDownAction;
-import roboy.dialog.personality.Personality;
-import roboy.dialog.personality.SmallTalkPersonality;
-
-import roboy.io.*;
-
-import roboy.linguistics.sentenceanalysis.*;
-import roboy.memory.DummyMemory;
-import roboy.memory.Neo4jMemory;
-import roboy.memory.Neo4jMemoryInterface;
-import roboy.talk.Verbalizer;
-
-import roboy.ros.RosMainNode;
-import roboy.util.ConfigManager;
-
-
 /**
- * The dialog manager's main class.
- * 
- * Here, the used components are put together and executed using the main method. In the future,
- * the different combinations of components should probably be transfered to configuration files.
- * 
- * The workflow in the dialog manager is the following:
- * 1. Input devices produce an Input object
- * 2. The Input object is transformed into an Interpretation object containing
- *    the input sentence in the Linguistics.SENTENCE attribute and all other
- *    lists of the Input object in the corresponding fields
- * 3. Linguistic Analyzers are used on the Interpretation object to add additional information
- * 4. The Personality class takes the Interpretation object and decides how to answer
- *    to this input
- * 5. The list of actions returned by Personality.answer is performed by the Output devices
- * 6. If one of these actions is a ShutDownAction the program terminates
- * 7. Otherwise repeat
- * 
- * Input devices:
- * - For testing from command line: CommandLineInput
- * - For speech to text: BingInput (requires internet)
- * - For combining multiple inputs: MultiInputDevice
- * - Others for specific tasks
- * 
- * Analyzers:
- * - Tokenization: SimpleTokenizer
- * - Part-of-speech-tagging: OpenNLPPOSTagger
- * - Semantic role labeling: OpenNLPParser
- * - DBpedia question answering: AnswerAnalyzer
- * - Other more stupid ones
- * 
- * Personalities:
- * - SmallTalkPersonality: main one
- * - Others for testing specific things
- * 
- * Output devices:
- * - For testing with command line: CommandLineOutput
- * - For text to speech: BingOutput (requires internet)
- * - For combining multiple outputs: MultiOutputDevice
- * - For text to speech + facial expressions: CerevoiceOutput
- * - For facial expressions: EmotionOutput
- * - For text to speech (worse quality): FreeTTSOutput
- * 
- * The easiest way to create ones own Roboy communication application is to pick the 
- * input and output devices provided here, use the tokenization, POS tagging and possibly
- * semantic role labeling (though still under development) if needed and write an own 
- * personality. If one wants to use the DBpedia, Protege, generative model or state machine
- * stuff, one has to dig deeper into the small talk personality and see how it is used there.
+ * Temporary class to test new state based personality.
+ * Will be be extended and might replace the old DialogSystem in the future.
  */
-@Deprecated
 public class DialogSystem {
 
-	public static void main(String[] args) throws JsonIOException, IOException, InterruptedException {
+    private final static Logger logger = LogManager.getLogger();
 
-
+    public static void main(String[] args) throws IOException {
         // initialize ROS node
-        RosMainNode rosMainNode = new RosMainNode();
 
+        RosMainNode rosMainNode;
+
+        if (ConfigManager.ROS_ENABLED) {
+            rosMainNode = new RosMainNode();
+        } else {
+            // TODO: create a nice offline interface for RosMainNode, similar to DummyMemory
+            rosMainNode = null;
+        }
+
+        MultiInputDevice multiIn = IO.getInputs(rosMainNode);
+        MultiOutputDevice multiOut = IO.getOutputs(rosMainNode);
+
+        // TODO deal with memory
         Neo4jMemoryInterface memory;
         if (ConfigManager.ROS_ENABLED && ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_memory")) {
             memory = new Neo4jMemory(rosMainNode);
@@ -92,85 +55,91 @@ public class DialogSystem {
             memory = new DummyMemory();
         }
 
-        if(ConfigManager.DEMO_GUI) {
-            final Runnable gui = () -> ContextGUI.run();
-            Thread t = new Thread(gui);
-            t.start();
-        }
+        logger.info("Initializing analyzers...");
 
-        /*
-         * I/O INITIALIZATION
-         */
-        MultiInputDevice multiIn;
-        // By default, all output is also written to the command line.
-        MultiOutputDevice multiOut = new MultiOutputDevice(new CommandLineOutput());
-        multiIn = new MultiInputDevice(new CommandLineInput());
-
-        if(!ConfigManager.ROS_ENABLED) {
-            multiIn = new MultiInputDevice(new CommandLineInput());
-        } else {
-//            multiIn = new MultiInputDevice(new BingInput(rosMainNode));
-//            multiOut.add(new CerevoiceOutput(rosMainNode));
-        }
-        // OPTIONAL INPUTS
-        // DatagramSocket ds = new DatagramSocket(55555);
-        // multiIn.add(new UdpInput(ds));
-        // multiIn.add(new CelebritySimilarityInput());
-        // multiIn.add(new RoboyNameDetectionInput());
-        // OPTIONAL OUTPUTS
-        // multiOut.add(new BingOutput());
-        // multiOut.add(new UdpOutput(ds, "localhost", 55556));
-        // multiOut.add(new EmotionOutput(rosMainNode));
-
-        /*
-         * ANALYZER INITIALIZATION
-         */
-		List<Analyzer> analyzers = new ArrayList<Analyzer>();
-		analyzers.add(new Preprocessor());
-		analyzers.add(new SimpleTokenizer());
-		analyzers.add(new OpenNLPPPOSTagger());
-		analyzers.add(new DictionaryBasedSentenceTypeDetector());
-		analyzers.add(new SentenceAnalyzer());
-		analyzers.add(new OpenNLPParser());
-		analyzers.add(new OntologyNERAnalyzer());
-		analyzers.add(new AnswerAnalyzer());
-        analyzers.add(new EmotionAnalyzer());
+        List<Analyzer> analyzers = new ArrayList<>();
+        analyzers.add(new Preprocessor());
+        //analyzers.add(new SimpleTokenizer());
         analyzers.add(new SemanticParserAnalyzer(ConfigManager.PARSER_PORT));
-        //if(!ConfigManager.NOROS) {
-        //    analyzers.add(new IntentAnalyzer(rosMainNode));
-        //}
+
+        //analyzers.add(new OpenNLPPPOSTagger());
+        analyzers.add(new DictionaryBasedSentenceTypeDetector());
+        //analyzers.add(new SentenceAnalyzer());
+        analyzers.add(new OpenNLPParser());
+        //analyzers.add(new OntologyNERAnalyzer());
+        analyzers.add(new AnswerAnalyzer());
+
+
+        logger.info("Creating StateBasedPersonality...");
+
+        StateBasedPersonality personality = new StateBasedPersonality(rosMainNode, memory, new Verbalizer());
+        File personalityFile = new File(ConfigManager.PERSONALITY_FILE);
 
 
 
-        System.out.println("DM initialized...");
+        // Repeat conversation a few times
+        for (int numConversations = 0; numConversations < 3; numConversations++) {
 
-        while(true) {
+            logger.info("############## New Conversation ##############");
 
-//            while (!Vision.getInstance().findFaces()) {
-//                emotion.act(new FaceAction("angry"));
-//            }
-//            emotion.act(new FaceAction("neutral"));
-//            while (!multiIn.listen().lists.containsKey(Linguistics.ROBOYDETECTED)) {
-//            }
+            // flush the interlocutor
+            Interlocutor person = new Interlocutor(memory);
+            Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
 
-            Personality smallTalk = new SmallTalkPersonality(new Verbalizer(), rosMainNode, memory);
-            Input raw;
-            Interpretation interpretation;
-            List<Action> actions = smallTalk.answer(new Interpretation(""));
+            try {
+                // create "fresh" State objects using loadFromFile() at the beginning of every conversation
+                // otherwise some states (with possibly bad implementation) will keep the old internal variables
+                personality.loadFromFile(personalityFile);
 
-
-            while (actions.isEmpty() || !(actions.get(0) instanceof ShutDownAction)) {
-                multiOut.act(actions);
-                raw = multiIn.listen();
-                interpretation = new Interpretation(raw.sentence, raw.attributes); //TODO: Input devices should immediately produce Interpretation objects
-                for (Analyzer a : analyzers) {
-                    interpretation = a.analyze(interpretation);
-                }
-                actions = smallTalk.answer(interpretation);
+            } catch (FileNotFoundException e) {
+                logger.error("Personality file not found: " + e.getMessage());
+                return;
             }
-            List<Action> lastwords = ((ShutDownAction) actions.get(0)).getLastWords();
-            multiOut.act(lastwords);
-            actions.clear();
+
+            List<Action> actions = personality.startConversation();
+
+            while (true) {
+                // do all actions defined in startConversation() or answer()
+                multiOut.act(actions);
+
+                // now stop if conversation ended
+                if (personality.conversationEnded()) {
+                    break;
+                }
+
+                // listen to interlocutor if conversation didn't end
+                Input raw;
+                try {
+                    raw = multiIn.listen();
+                } catch (Exception e) {
+                    logger.error("Exception in input: " + e.getMessage());
+                    return;
+                }
+
+                // analyze
+                Interpretation interpretation = new Interpretation(raw.sentence, raw.attributes);
+                for (Analyzer a : analyzers) {
+                    try {
+                        interpretation = a.analyze(interpretation);
+                    } catch (Exception e) {
+                        logger.error("Exception in analyzer " + a.getClass().getName() + ": " + e.getMessage());
+                        e.printStackTrace();
+                    }
+                }
+
+                // answer
+                try {
+                    actions = personality.answer(interpretation);
+                } catch (Exception e) {
+                    logger.error("Error in personality.answer: " + e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+
+            logger.info("############# Reset State Machine ############");
+            // now reset --> conversationEnded() will now return false --> new conversation possible
+            personality.reset();
+
         }
-	}
+    }
 }
