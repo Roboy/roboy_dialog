@@ -1,8 +1,8 @@
-package roboy.dialog.examples.toyStates;
+package roboy.dialog.tutorials.toyStates;
 
-import roboy.dialog.states.State;
+import roboy.dialog.states.definitions.State;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.dialog.states.StateParameters;
+import roboy.dialog.states.definitions.StateParameters;
 
 /**
  * ToyFarewellState always acts with "Bye bye" to indicate the end of conversation.

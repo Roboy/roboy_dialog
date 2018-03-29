@@ -4,9 +4,9 @@ import com.google.gson.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.memory.Neo4jMemoryInterface;
-import roboy.dialog.states.State;
-import roboy.dialog.states.StateFactory;
-import roboy.dialog.states.StateParameters;
+import roboy.dialog.states.definitions.State;
+import roboy.dialog.states.definitions.StateFactory;
+import roboy.dialog.states.definitions.StateParameters;
 import roboy.ros.RosMainNode;
 
 import java.io.File;

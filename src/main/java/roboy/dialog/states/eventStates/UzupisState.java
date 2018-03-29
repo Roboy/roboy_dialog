@@ -1,9 +1,11 @@
-package roboy.dialog.states;
+package roboy.dialog.states.eventStates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
 
+import roboy.dialog.states.definitions.State;
+import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.nodes.Interlocutor;
 import roboy.util.QAFileParser;
@@ -18,7 +20,7 @@ import static roboy.util.UzupisIntents.*;
 
 /**
  * A class that will issue a naturalization certificate for the Republic of Uzupiz
- * Asks a few personal questions and can automagically generate a pdf with a certificate and print it (python script)
+ * Asks a few personalStates questions and can automagically generate a pdf with a certificate and print it (python script)
  */
 public class UzupisState extends State {
 

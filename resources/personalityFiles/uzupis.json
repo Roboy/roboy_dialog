@@ -3,7 +3,7 @@
   "states": [
     {
       "identifier": "Greetings",
-      "implementation" : "roboy.newDialog.states.GreetingsState",
+      "implementation" : "roboy.newDialog.states.ordinaryStates.GreetingsState",
       "fallback" : "RandomAnswer",
       "transitions" : {
         "greetingDetected" : "Uzupis"
@@ -11,7 +11,7 @@
     },
     {
       "identifier": "Uzupis",
-      "implementation" : "roboy.dialog.states.UzupisState",
+      "implementation" : "roboy.dialog.states.eventStates.UzupisState",
       "fallback" : "RandomAnswer",
       "transitions" : {
         "loop": "Uzupis",
@@ -23,12 +23,12 @@
     },
     {
       "identifier": "Farewell",
-      "implementation" : "roboy.dialog.examples.toyStates.ToyFarewellState",
+      "implementation" : "roboy.dialog.tutorials.toyStates.ToyFarewellState",
       "transitions" : {}
     },
     {
       "identifier": "RandomAnswer",
-      "implementation" : "roboy.dialog.examples.toyStates.ToyRandomAnswerState",
+      "implementation" : "roboy.dialog.tutorials.toyStates.ToyRandomAnswerState",
       "transitions" : {
         "next" : "Farewell"
       }

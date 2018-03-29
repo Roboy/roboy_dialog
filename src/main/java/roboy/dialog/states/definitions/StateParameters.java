@@ -1,4 +1,4 @@
-package roboy.dialog.states;
+package roboy.dialog.states.definitions;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

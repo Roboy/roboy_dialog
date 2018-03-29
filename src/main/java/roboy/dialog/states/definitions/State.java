@@ -1,4 +1,4 @@
-package roboy.dialog.states;
+package roboy.dialog.states.definitions;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonNull;
@@ -568,7 +568,7 @@ public abstract class State {
     /**
      * Helper function
      * Ask memory to return nodes for given ids
-     * @param ids
+     * @param ids ids for memory
      * @return Collection of MemoryNodeModels
      */
     protected RandomList<MemoryNodeModel> retrieveNodesFromMemoryByIds(ArrayList<Integer> ids) {

@@ -1,9 +1,11 @@
-package roboy.dialog.states;
+package roboy.dialog.states.ordinaryStates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
 import roboy.context.contextObjects.IntentValue;
+import roboy.dialog.states.definitions.State;
+import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;

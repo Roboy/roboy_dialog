@@ -7,7 +7,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import roboy.dialog.action.Action;
-import roboy.dialog.action.ShutDownAction;
 import roboy.dialog.action.SpeechAction;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
@@ -33,7 +32,6 @@ public class Verbalizer {
 		interpretation = verbalizeDates(interpretation);
 		switch(interpretation.getSentenceType()){
 		case GREETING: return greet(interpretation);
-		case FAREWELL: return farewell(interpretation);
 		case SEGUE:    return segue(interpretation);
 		case ANECDOTE: return anecdote(interpretation);
 		default:       return literalSentence(interpretation);
@@ -67,10 +65,6 @@ public class Verbalizer {
 	public static final RandomList<String> farewells = new RandomList<>(
 			"ciao", "goodbye", "cheerio", "bye",
             "see you", "farewell", "bye-bye");
-	
-	private ShutDownAction farewell(Interpretation interpretation){
-		return new ShutDownAction(Arrays.asList(new SpeechAction(StatementBuilder.random(farewells))));
-	}
 	
 	private static final List<String> segues = 
 			Arrays.asList("talking about ","since you mentioned ","on the topic of ");

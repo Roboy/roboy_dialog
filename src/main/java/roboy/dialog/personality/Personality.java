@@ -11,9 +11,6 @@ import roboy.linguistics.sentenceanalysis.Interpretation;
  * personalities are meant to be used in different situations, like a more formal or loose
  * one depending on the occasion where he is at. In the future, also different languages
  * could be realized by the use of different personalities.
- * 
- * The currently used personality is the SmallTalkPersonality which makes use of a state machine
- * to act and react differently in different situations.
  */
 public interface Personality {
 
@@ -25,5 +22,5 @@ public interface Personality {
 	 * @param input The interpretation of the inputs
 	 * @return A list of actions to perform in response
 	 */
-	public List<Action> answer(Interpretation input);
+	List<Action> answer(Interpretation input);
 }

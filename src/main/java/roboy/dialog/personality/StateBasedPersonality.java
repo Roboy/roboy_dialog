@@ -11,7 +11,7 @@ import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.nodes.Interlocutor;
 import roboy.dialog.DialogStateMachine;
 import roboy.dialog.Segue;
-import roboy.dialog.states.State;
+import roboy.dialog.states.definitions.State;
 import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
 
@@ -164,7 +164,6 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
      * Call the act function of the state, verbalize the interpretation (if any) and add it to the list of actions.
      * @param state state to call ACT on
      * @param previousActions list of previous action to append the verbalized result
-     * @return updated list of actions
      */
     private void stateAct(State state, List<Action> previousActions) {
         State.Output act;

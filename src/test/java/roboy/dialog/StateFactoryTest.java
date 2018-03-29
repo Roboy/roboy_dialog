@@ -1,11 +1,10 @@
 package roboy.dialog;
 
 import org.junit.Test;
-import roboy.dialog.DialogStateMachine;
-import roboy.dialog.examples.toyStates.*;
-import roboy.dialog.states.State;
-import roboy.dialog.states.StateFactory;
-import roboy.dialog.states.StateParameters;
+import roboy.dialog.tutorials.toyStates.*;
+import roboy.dialog.states.definitions.State;
+import roboy.dialog.states.definitions.StateFactory;
+import roboy.dialog.states.definitions.StateParameters;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

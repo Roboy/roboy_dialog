@@ -19,7 +19,7 @@ As the conversation goes on, the state machine will move from one state to anoth
 State
 -----
 
-A state contains logic to control a small part of the conversation. It is a class that extends ``roboy.dialog.states.State`` and implements three functions: ``act()``, ``react()`` and ``getNextState()``.
+A state contains logic to control a small part of the conversation. It is a class that extends ``roboy.dialog.states.definitions.State`` and implements three functions: ``act()``, ``react()`` and ``getNextState()``.
 
 State's activity can be divided into three stages. First, when the state is entered, the initial action from the ``act()`` method is carried out, which is expected to trigger a response from the person. After Roboy has received and analyzed the response (see semantic parser), the ``react()`` method completes the current state's actions. Finally, Roboy picks a transition to the next state defined by the ``getNextState()`` method of the current state.
 

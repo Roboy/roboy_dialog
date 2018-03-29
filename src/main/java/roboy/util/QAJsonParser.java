@@ -38,7 +38,7 @@ class JsonModel {
 }
 
 /**
- * Getting values for personal and follow-up questions
+ * Getting values for personalStates and follow-up questions
  * from a JSON file
  */
 public class QAJsonParser {

@@ -1,7 +1,7 @@
 package roboy.dialog;
 
 import org.junit.Test;
-import roboy.dialog.states.State;
+import roboy.dialog.states.definitions.State;
 
 import static org.junit.Assert.*;
 

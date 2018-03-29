@@ -1,5 +1,7 @@
-package roboy.dialog.states;
+package roboy.dialog.states.ordinaryStates;
 
+import roboy.dialog.states.definitions.State;
+import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.dialog.Segue;

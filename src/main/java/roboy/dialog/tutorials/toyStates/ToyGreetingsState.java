@@ -1,10 +1,10 @@
-package roboy.dialog.examples.toyStates;
+package roboy.dialog.tutorials.toyStates;
 
 import roboy.dialog.Segue;
-import roboy.dialog.states.State;
+import roboy.dialog.states.definitions.State;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.dialog.states.StateParameters;
+import roboy.dialog.states.definitions.StateParameters;
 import roboy.logic.StatementInterpreter;
 import roboy.talk.Verbalizer;
 

@@ -1,9 +1,11 @@
-package roboy.dialog.states;
+package roboy.dialog.states.ordinaryStates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
 import roboy.context.contextObjects.IntentValue;
+import roboy.dialog.states.definitions.State;
+import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
@@ -23,7 +25,7 @@ import java.util.Set;
 import static roboy.memory.Neo4jRelationships.*;
 
 /**
- * This state will answer general questions.
+ * This state will answer generalStates questions.
  * The parser:
  * - provides triples generated from the question
  * - adds the answer to the question if there is an answer in DBpedia
