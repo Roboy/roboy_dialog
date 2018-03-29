@@ -63,10 +63,19 @@ During runtime, state objects can access the parameters using the ``getParameter
 State Interface
 ---------------
 
-TODO: Define required transitions, required parameter names and fallback availability to detect errors in the personality file during loading.
+When you create a new personality file you might forget to define important transitions and provide required parameters to some states. To prevent long debugging and find errors faster you can define an interface for every state. The interface describes:
+
+- transitions that have to be set
+- parameters that has to be provided
+- whether a fallback is required for this state
+
+After the personality file was loaded and the state machine was initialized, the dialog system will check if all states have everything they define in the state interface.
+
+For every state, its interface is implemented by overriding three functions: ``getRequiredTransitionNames()``, ``isFallbackRequired()`` and ``getRequiredParameterNames()``. Note, that you don't have to override those functions if your state has no specific requirements.
 
 
-Current 'standard' personality
+
+Current 'standard' Personality
 ------------------------------
 TODO: picture + short description
 
@@ -75,7 +84,21 @@ TODO: picture + short description
 Overview over Implemented States
 --------------------------------
 
-TODO: most important states
+PassiveGreetingsState: Roboy is listening until a greeting or his name is detected (passive state to start a conversation).
+
+IntroductionState: Roboy asks the interlocutor for his name, decides if the person is known and takes one of two transitions: knownPerson or newPerson.
+
+PIAState (PersonalInformationAskingState): Roboy asks one of the personal questions (like 'Where do you live?') and updates facts in Memory.
+
+FUAState (FollowUpAskingState): Roboy asks if the known facts are still up to date (like 'Do you still live in XY?').  This state is only entered if there are some known facts about the active interlocutor.
+
+QuestionAnsweringState: Roboy answers questions about itself or some general questions. Answers are provided by the parser (from sources like DBpedia) or the Memory.
+
+WildTalkFallbackState: This fallback state will query the deep learning generative model over ROS to create a reply for any situation.
+
+FarewellState: Roboy ends the conversation after a few statements.
+
+
 
 
 Tutorial: Creating a New State
