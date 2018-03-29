@@ -55,7 +55,9 @@ In the current Dialog System, we use special states to implement the fallback fu
 
 State Parameters
 ----------------
-TODO
+Sometimes you want to pass parameters to the states, for example define a path to a file that contains some data. Parameters are defined inside the personality file. Each parameter has a name and a string value. When a state is created, the state machine passes all parameters from the file to the state constructor. Therefore, every state sub-class should have a constructor that accepts parameters matching the constructor of the ``State`` class.
+
+During runtime, state objects can access the parameters using the ``getParameters()`` function with returns a ``StateParameters`` object. This object contains parameters from the personality file as well as references to ``StateMachine``, ``RosMainNode`` and ``Neo4jMemoryInterface`` in case you need them.
 
 
 State Interface
