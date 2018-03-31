@@ -9,7 +9,8 @@ To remember information about itself and its conversation partners, their hobbie
 Implementation
 --------------
 
-Roboy's Dialog System interactions with the Memory module are based on ROS messages. The messages are sent using the methods in ``de.roboy.ros.RosMainNode``, which implements the four query types based on the specified Memory services:
+Roboy's Dialog System interactions with the Memory module (`learn more <http://roboy-memory.readthedocs.io/>`_) are based on ROS messages.
+The messages are sent using the methods in ``de.roboy.ros.RosMainNode``, which implements the four query types based on the specified Memory services:
 
 +--------------------+--------------------------------------------------+
 | Method name        | Description                                      |
