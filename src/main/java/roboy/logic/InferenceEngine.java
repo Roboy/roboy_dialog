@@ -1,13 +1,15 @@
 package roboy.logic;
 
+import org.bytedeco.javacpp.presets.opencv_core;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jLabels;
 import roboy.memory.Neo4jProperties;
 import roboy.memory.Neo4jRelationships;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public interface InferenceEngine<V> {
+public interface InferenceEngine {
 
 	// There lies the future of Roboy and the brilliance of his logic
     // TODO: Implement
@@ -18,9 +20,9 @@ public interface InferenceEngine<V> {
      * tries to extract and ground the information from the available Interpretation
      *
      * @param keys
-     * @return V value
+     * @return HashMap containing properties and inferred data/null if NA
      */
-    public HashMap<Neo4jProperties, V> inferProperties(Neo4jProperties[] keys, Interpretation input);
+    HashMap<Neo4jProperties, String> inferProperties(ArrayList<Neo4jProperties> keys, Interpretation input);
 
     /**
      * Basic inference method
@@ -28,9 +30,9 @@ public interface InferenceEngine<V> {
      * tries to extract and ground the information from the available Interpretation
      *
      * @param keys
-     * @return V value
+     * @return HashMap containing relationships and inferred data/null if NA
      */
-    public HashMap<Neo4jProperties, V> inferRelationships(Neo4jRelationships[] keys, Interpretation input);
+    HashMap<Neo4jRelationships, String> inferRelationships(ArrayList<Neo4jRelationships> keys, Interpretation input);
 
     /**
      * Basic inference method
@@ -38,8 +40,8 @@ public interface InferenceEngine<V> {
      * tries to extract and ground the information from the available Interpretation
      *
      * @param keys
-     * @return V value
+     * @return HashMap containing labels and inferred data/null if NA
      */
-    public HashMap<Neo4jProperties, V> inferLabel(Neo4jLabels[] keys, Interpretation input);
+    HashMap<Neo4jLabels, String> inferLabel(ArrayList<Neo4jLabels> keys, Interpretation input);
 
 }
