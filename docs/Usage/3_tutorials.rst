@@ -1,6 +1,7 @@
 Tutorials
 =========
 
+.. highlight:: java
 
 Adding a New State
 ------------------
@@ -11,11 +12,15 @@ In this tutorial you will learn how to design and implement a new state. To keep
 
 Let's start! We are going to add a state that tests whether the interlocutor (person speaking to Roboy) knows some basic math. First, create a new class named ``DoYouKnowMathState`` that extends from ``roboy.dialog.states.definitions.State``::
 
+    // inside DoYouKnowMathState.java
+
     public class DoYouKnowMathState extends State {
 
     }
 
 Your IDE will notify you that three functions (``act()``, ``react(...)`` and ``getNextState()``) have to be implemented. Let's add them::
+
+    // inside DoYouKnowMathState.java
 
     @Override
     public Output act() {
@@ -32,21 +37,25 @@ Your IDE will notify you that three functions (``act()``, ``react(...)`` and ``g
         return null;
     }
 
-Additionally, we need a special constructor::
+Additionally, we need a special constructor and a new variable to store the next state for later::
+
+    // inside DoYouKnowMathState.java
+
+    private State next;
 
     public DoYouKnowMathState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
     }
 
-We also introduce a new variable to store the next state for later (place it just above the constructor)::
-
-    private State next;
-
 Now, we can write some logic and define what our new state should do. The ``act()`` function is always executed first. In our case, we want to ask a simple question. Replace ``return null;`` inside ``act()`` with following::
+
+    // inside public Output act()
 
     return Output.say("What is 2 plus 2?");
 
 The interlocutor's answer will be passed to the ``react(...)`` function once it is available. Inside, we should check if the answer is correct and react based on correctness. This code is one of the simplest ways to do this::
+
+    // inside public Output react(Interpretation input)
 
     // get tokens (= single words of the input)
     String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
@@ -63,15 +72,68 @@ The interlocutor's answer will be passed to the ``react(...)`` function once it 
     }
 
 Note a few things here:
+
 - to keep this tutorial simple, we only check if the first word of the reply equals "four"
 - based on reply correctness, we get the next state using ``getTransition(<transitionName>)`` save it for later
 - similarly to ``act()``, we define the output with ``return Output.say(<stringToSay>);``
 
 Finally, we can implement the last required function ``getNextState()`` that defines the next state to enter. Inside, we just return the next state that we defined inside ``react(...)``::
 
+    // inside public State getNextState()
+
     return next;
 
-That's it, you have just created your first state! The complete code can be found in in ``roboy.dialog.tutorials.tutorialStates.DoYouKnowMathState``. Read the **Creating a New Personality** tutorial (:ref:`tut_new_personality`) to learn how to connect your new state with others.
+That's it, you have just created your first state! Here is how the class should look like::
+
+    // inside DoYouKnowMathState.java
+
+    package roboy.dialog.tutorials.tutorialStates;
+
+    import roboy.dialog.states.definitions.State;
+    import roboy.dialog.states.definitions.StateParameters;
+    import roboy.linguistics.Linguistics;
+    import roboy.linguistics.sentenceanalysis.Interpretation;
+
+    public class DoYouKnowMathState extends State {
+
+        private State next;
+
+        public DoYouKnowMathState(String stateIdentifier, StateParameters params) {
+            super(stateIdentifier, params);
+        }
+
+        @Override
+        public Output act() {
+            return Output.say("What is 2 plus 2?");
+        }
+
+        @Override
+        public Output react(Interpretation input) {
+
+            // get tokens (= single words of the input)
+            String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
+
+            // check if the answer is correct (simplest version)
+            if (tokens.length > 0 && tokens[0].equals("four")) {
+                // answer correct
+                next = getTransition("personKnowsMath");
+                return Output.say("You are good at math!");
+
+            } else {
+                // answer incorrect
+                next = getTransition("personDoesNotKnowMath");
+                return Output.say("Well, 2 plus 2 is 4!");
+            }
+        }
+
+        @Override
+        public State getNextState() {
+            return next;
+        }
+    }
+
+
+The newest version of the complete code can be found in in ``roboy.dialog.tutorials.tutorialStates.DoYouKnowMathState``. Read the :ref:`tut_new_personality` tutorial to learn how to connect your new state with others.
 
 When using the new state, you could encounter the conversation::
 
@@ -85,7 +147,7 @@ Or, if you provide a wrong answer::
     [You]:   one
     [Roboy]: Well, 2 plus 2 is 4!
 
-To learn more details about states and personalities, refer to the **Personality and States** page (:ref:`personality_and_states`). There, you will find details about state fallbacks, parameters and interfaces, as well as more information about different personalities and more output options.
+To learn more details about states and personalities, refer to the :ref:`personality_and_states` page. There, you will find details about state fallbacks, parameters and interfaces, as well as more information about different personalities and more output options.
 
 .. _tut_new_personality:
 
