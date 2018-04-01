@@ -1,3 +1,5 @@
+.. _personality_and_states:
+
 Personality and states
 ======================
 Overview
