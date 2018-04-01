@@ -3,13 +3,13 @@ Personality and states
 Overview
 --------
 
-To enable a natural way of communication, Roboy's Dialog System implements a flexible architecture using different personalities defined in personality files. Each file represents a state machine and defines transitions between different states. This enables us to dynamically react to clues from the conversation partner and spontaneously switch between purposes and stages of a dialog, mimicing a natural conversation.
+To enable a natural way of communication, Roboy's Dialog System implements a flexible architecture using different personalities defined in **personality files**. Each file represents a **state machine** and defines transitions between different **states**. This enables us to dynamically react to clues from the conversation partner and spontaneously switch between purposes and stages of a dialog, mimicing a natural conversation.
 
 
 Personality
 -----------
 
-A personality defines how roboy reacts to every given situation. Different personalities are meant to be used in different situations, like a more formal or loose one depending on the occasion. Roboy always represents one personality at a time. Personalities are stored in JSON personality files.
+A personality defines how Roboy reacts to every given situation. Different personalities are meant to be used in different situations, like a more formal or loose one depending on the occasion. Roboy always represents one personality at a time. Personalities are stored in JSON personality files.
 
 During one run-through, the Dialog System uses a single Personality instance (currently implemented in ``roboy.dialog.personality.StateBasedPersonality``) which is built on top of a state machine. This implementation loads the behaviour from a personality file that stores a representation of a state machine. Additionally, it is possible to define the dialog structure directly from code (as it was done in previous implementations).
 
@@ -38,9 +38,11 @@ To improve the dialog flow, you can add segues to the ``Output`` objects using `
 State Transitions
 -----------------
 
-A state can have any number of transitions to other states. Every transition has a name (like "next" or "errorState"). When changing states, the following state can be selected based on internal conditions of the current state. For example, a state can expect a "yes/no" answer and have tree outgoing transitions: "gotYes", "gotNo" and "askAgain" (if the reply is not "yes/no"). 
+A state can have any number of transitions to other states. Every transition has a name (like "next" or "error"). When changing states, the following state can be selected based on internal conditions of the current state. For example, a state can expect a "yes/no" answer and have tree outgoing transitions: "gotYes", "gotNo" and "askAgain" (if the reply is not "yes/no").
  
-When designing a new state, only the transition names are defined. The connections between states are defined in the personality file later. At run time the state machine loads the file and initializes the transitions to point to correct states. The destination state can be retrieved by the transition name using ``getTransition(transitionName)``.
+When designing a new state, the transition names are defined first. The transition name should describe a condition and not another state. For example, a good name would be "knownPerson" (take this transition when you meet a known person) or "greetingDetected" (take this transition when you hear a greeting). In this case, the name only defines a condition and allows the transition to point to any state. In contrary, a bad name would be "goToQuestionAnsweringState" because it implies that no other state than QuestionAnsweringState should be attached to this transition. This breaks modularity.
+
+ Once the state is implemented, the connections between states are defined in the personality file. At run time the state machine loads the file and initializes the transitions to point to correct states. During the implementation, the destination state can be retrieved by the transition name using ``getTransition(transitionName)``.
 
 It is possible to remain in the same state for many cycles. In this case the ``getNextState()`` method just returns a reference to the current state (``this``) and the ``act()`` and ``react()`` methods are carried out again. If ``getNextState()`` returns no next state (``null``), the conversation ends immediately.
 
@@ -75,39 +77,28 @@ For every state, its interface is implemented by overriding three functions: ``g
 
 
 
-Current 'standard' Personality
-------------------------------
-TODO: picture + short description
+Current standard Personality
+----------------------------
 
+Current standard personality is used to interact with a single person. After Roboy hears a greeting and learns the name of the person, he will ask a few personal questions and answer some general questions about himself or the environment.
+
+.. figure:: images/ordinary_personality.png
+:alt: Current standard personality
 
 
 Overview over Implemented States
 --------------------------------
 
-PassiveGreetingsState: Roboy is listening until a greeting or his name is detected (passive state to start a conversation).
+**PassiveGreetingsState**: Roboy is listening until a greeting or his name is detected (passive state to start a conversation).
 
-IntroductionState: Roboy asks the interlocutor for his name, decides if the person is known and takes one of two transitions: knownPerson or newPerson.
+**IntroductionState**: Roboy asks the interlocutor for his name, decides if the person is known and takes one of two transitions: knownPerson or newPerson.
 
-PIAState (PersonalInformationAskingState): Roboy asks one of the personal questions (like 'Where do you live?') and updates facts in Memory.
+**PIAState** (PersonalInformationAskingState): Roboy asks one of the personal questions (like 'Where do you live?') and updates facts in Memory.
 
-FUAState (FollowUpAskingState): Roboy asks if the known facts are still up to date (like 'Do you still live in XY?').  This state is only entered if there are some known facts about the active interlocutor.
+**FUAState** (FollowUpAskingState): Roboy asks if the known facts are still up to date (like 'Do you still live in XY?').  This state is only entered if there are some known facts about the active interlocutor.
 
-QuestionAnsweringState: Roboy answers questions about itself or some general questions. Answers are provided by the parser (from sources like DBpedia) or the Memory.
+**QuestionAnsweringState**: Roboy answers questions about itself or some general questions. Answers are provided by the parser (from sources like DBpedia) or the Memory.
 
-WildTalkFallbackState: This fallback state will query the deep learning generative model over ROS to create a reply for any situation.
+**WildTalkFallbackState**: This fallback state will query the deep learning generative model over ROS to create a reply for any situation.
 
-FarewellState: Roboy ends the conversation after a few statements.
-
-
-
-
-Tutorial: Creating a New State
-------------------------------
-
-TODO: create a new state that has specified behaviour
-
-
-Tutorial: Creating a New Personality
-------------------------------------
-
-TODO: create a new personality file
+**FarewellState**: Roboy ends the conversation after a few statements.

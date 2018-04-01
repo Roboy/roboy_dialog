@@ -1,12 +1,27 @@
 Tutorials
 =========
 
-Creating a New Personality
---------------------------
-
 
 Adding a New State
 ------------------
+
+Roboy often visits different events and you might want him to say something specific, for example mention a company or a sponsor. One way to do this would be to modify an existing state. However, these changes are often discarded as you still want to have the old behaviour. There is a better way: create a new custom state specifically for your needs.
+
+In this tutorial you will learn how to design and implement a new state. To keep everything simple, the state will just ask a yes-no question and listen to the answer. Based on the answer, you will pick one of two replies and choose one of two transitions.
+
+Let's start! We are going to add a state that tests whether the interlocutor (person speaking to Roboy) knows some basic math. First, create a new class named ``DoYouKnowMathState`` that extends from ``roboy.dialog.states.definitions.State``::
+
+    .. code-block:: java
+    public class DoYouKnowMathState extends State {
+
+    }
+
+
+
+
+
+Creating a New Personality
+--------------------------
 
 
 Adding New Questions to the State
@@ -18,7 +33,7 @@ Querying the Memory from the Dialog System
 
 
 Creating a Value History
---------------------------------------
+------------------------
 
 
 Storing and Updating Values in the Context
@@ -26,7 +41,7 @@ Storing and Updating Values in the Context
 
 
 Extending the Lexicon and the Grammar
---------------------------------------
+-------------------------------------
 
 This tutorial explains how to create or change grammar and lexicon used in the semantic parser.
 
