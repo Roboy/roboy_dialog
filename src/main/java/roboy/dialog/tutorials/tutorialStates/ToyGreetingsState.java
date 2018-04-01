@@ -1,4 +1,4 @@
-package roboy.dialog.tutorials.toyStates;
+package roboy.dialog.tutorials.tutorialStates;
 
 import roboy.dialog.Segue;
 import roboy.dialog.states.definitions.State;

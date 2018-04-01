@@ -1,7 +1,7 @@
 package roboy.dialog;
 
 import org.junit.Test;
-import roboy.dialog.tutorials.toyStates.*;
+import roboy.dialog.tutorials.tutorialStates.*;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateFactory;
 import roboy.dialog.states.definitions.StateParameters;

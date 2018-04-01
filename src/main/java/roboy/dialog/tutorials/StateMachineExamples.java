@@ -2,7 +2,7 @@ package roboy.dialog.tutorials;
 
 import roboy.dialog.DialogStateMachine;
 import roboy.dialog.states.definitions.StateParameters;
-import roboy.dialog.tutorials.toyStates.*;
+import roboy.dialog.tutorials.tutorialStates.*;
 
 import java.io.File;
 
@@ -91,7 +91,7 @@ public class StateMachineExamples {
 
     private static DialogStateMachine fromFile() throws Exception {
         DialogStateMachine stateMachine = new DialogStateMachine();
-        stateMachine.loadFromFile(new File("resources/personalityFiles/ExamplePersonality.json"));
+        stateMachine.loadFromFile(new File("resources/personalityFiles/tutorial/ToyStateMachine.json"));
         return stateMachine;
     }
 
@@ -108,7 +108,7 @@ public class StateMachineExamples {
             "  \"states\": [\n" +
             "    {\n" +
             "      \"identifier\": \"Greetings\",\n" +
-            "      \"implementation\" : \"roboy.dialog.tutorials.toyStates.ToyGreetingsState\",\n" +
+            "      \"implementation\" : \"roboy.dialog.tutorials.tutorialStates.ToyGreetingsState\",\n" +
             "      \"fallback\" : \"RandomAnswer\",\n" +
             "      \"transitions\" : {\n" +
             "        \"next\" : \"Intro\",\n" +
@@ -117,7 +117,7 @@ public class StateMachineExamples {
             "    },\n" +
             "    {\n" +
             "      \"identifier\": \"Intro\",\n" +
-            "      \"implementation\" : \"roboy.dialog.tutorials.toyStates.ToyIntroState\",\n" +
+            "      \"implementation\" : \"roboy.dialog.tutorials.tutorialStates.ToyIntroState\",\n" +
             "      \"fallback\" : null,\n" +
             "      \"transitions\" : {\n" +
             "        \"next\" : \"Farewell\"\n" +
@@ -128,13 +128,13 @@ public class StateMachineExamples {
             "    },\n" +
             "    {\n" +
             "      \"identifier\": \"Farewell\",\n" +
-            "      \"implementation\" : \"roboy.dialog.tutorials.toyStates.ToyFarewellState\",\n" +
+            "      \"implementation\" : \"roboy.dialog.tutorials.tutorialStates.ToyFarewellState\",\n" +
             "      \"fallback\" : null,\n" +
             "      \"transitions\" : {}\n" +
             "    },\n" +
             "    {\n" +
             "      \"identifier\": \"RandomAnswer\",\n" +
-            "      \"implementation\" : \"roboy.dialog.tutorials.toyStates.ToyRandomAnswerState\",\n" +
+            "      \"implementation\" : \"roboy.dialog.tutorials.tutorialStates.ToyRandomAnswerState\",\n" +
             "      \"fallback\" : null,\n" +
             "      \"transitions\" : {\n" +
             "        \"next\" : \"Farewell\"\n" +

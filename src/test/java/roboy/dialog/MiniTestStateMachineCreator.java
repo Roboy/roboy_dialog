@@ -1,7 +1,7 @@
 package roboy.dialog;
 
-import roboy.dialog.tutorials.toyStates.ToyFarewellState;
-import roboy.dialog.tutorials.toyStates.ToyGreetingsState;
+import roboy.dialog.tutorials.tutorialStates.ToyFarewellState;
+import roboy.dialog.tutorials.tutorialStates.ToyGreetingsState;
 import roboy.dialog.states.definitions.StateParameters;
 
 /**
@@ -21,7 +21,7 @@ public class MiniTestStateMachineCreator {
                 "  \"states\": [\n" +
                 "    {\n" +
                 "      \"identifier\": \"Farewell\",\n" +
-                "      \"implementation\": \"roboy.dialog.tutorials.toyStates.ToyFarewellState\",\n" +
+                "      \"implementation\": \"roboy.dialog.tutorials.tutorialStates.ToyFarewellState\",\n" +
                 "      \"transitions\": {},\n" +
                 "      \"parameters\": {\n" +
                 "        \"PARAMETER_NAME\": \"PARAMETER_VALUE\"\n" +
@@ -29,7 +29,7 @@ public class MiniTestStateMachineCreator {
                 "    },\n" +
                 "    {\n" +
                 "      \"identifier\": \"Greetings\",\n" +
-                "      \"implementation\": \"roboy.dialog.tutorials.toyStates.ToyGreetingsState\",\n" +
+                "      \"implementation\": \"roboy.dialog.tutorials.tutorialStates.ToyGreetingsState\",\n" +
                 "      \"fallback\": \"Farewell\",\n" +
                 "      \"transitions\": {\n" +
                 "        \"next\": \"Farewell\",\n" +

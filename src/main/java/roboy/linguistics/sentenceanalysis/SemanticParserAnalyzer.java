@@ -1,5 +1,7 @@
 package roboy.linguistics.sentenceanalysis;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import roboy.linguistics.Linguistics;
 
 import java.io.*;
@@ -21,6 +23,8 @@ import roboy.util.ConfigManager;
  */
 public class SemanticParserAnalyzer implements Analyzer {
 
+    private final static Logger logger = LogManager.getLogger();
+
     private Socket clientSocket;  /*< Client socket for the parser */
     private PrintWriter out;      /*< Output stream for the parser */
     private BufferedReader in;    /*< Input stream from the parser */
@@ -41,7 +45,7 @@ public class SemanticParserAnalyzer implements Analyzer {
             // Declaring output
             this.out = new PrintWriter(clientSocket.getOutputStream(), true);
         } catch (IOException e) {
-            System.err.println("Semantic Parser Client Error: " + e.getMessage());
+            logger.error("Semantic Parser Client Error: " + e.getMessage());
         }
     }
 
@@ -59,12 +63,12 @@ public class SemanticParserAnalyzer implements Analyzer {
             try {
                 String response;
                 if (this.debug) {
-                    System.out.println("SEMANTIC PARSER:" + interpretation.getFeature("sentence"));
+                    logger.debug("SEMANTIC PARSER:" + interpretation.getFeature("sentence"));
                 }
                 this.out.println(interpretation.getFeature("sentence"));
                 response = this.in.readLine();
                 if (this.debug) {
-                    System.out.println("> Full response:" + response);
+                    logger.debug("> Full response:" + response);
                 }
                 if (response != null) {
                     // Convert JSON string back to Map.
@@ -135,7 +139,7 @@ public class SemanticParserAnalyzer implements Analyzer {
                             interpretation.getFeatures().put(Linguistics.UTTERANCE_TYPE, full_response.get("type").toString());
                         }
                     } catch (Exception e) {
-                        System.err.println("Exception while parsing semantic response: " + e.getMessage());
+                        logger.error("Exception while parsing semantic response: " + e.getMessage());
                         e.printStackTrace();
                     }
                 }

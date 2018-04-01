@@ -1,0 +1,21 @@
+{
+  "comment": "A simple personality that only contains two states (used in tutorial).",
+  "initialState": "MathTest",
+  "states": [
+    {
+      "identifier": "MathTest",
+      "implementation" : "roboy.dialog.tutorials.tutorialStates.DoYouKnowMathState",
+      "transitions" : {
+        "personKnowsMath" : "Farewell",
+        "personDoesNotKnowMath" : "Farewell"
+      },
+      "comment": "A state that will test your math knowledge."
+    },
+    {
+      "identifier": "Farewell",
+      "implementation" : "roboy.dialog.tutorials.tutorialStates.ToyFarewellState",
+      "transitions" : {},
+      "comment": "Last state: Tells goodbye, ignores reply, ends the conversation."
+    }
+  ]
+}

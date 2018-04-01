@@ -58,10 +58,13 @@ public class DialogSystem {
         logger.info("Initializing analyzers...");
 
         List<Analyzer> analyzers = new ArrayList<>();
-        analyzers.add(new Preprocessor());
-        //analyzers.add(new SimpleTokenizer());
-        analyzers.add(new SemanticParserAnalyzer(ConfigManager.PARSER_PORT));
 
+        // Do not disable the following two analyzers!
+        // They allow simple states to work without running SemanticParserAnalyzer
+        analyzers.add(new Preprocessor());
+        analyzers.add(new SimpleTokenizer());
+
+        analyzers.add(new SemanticParserAnalyzer(ConfigManager.PARSER_PORT));
         //analyzers.add(new OpenNLPPPOSTagger());
         analyzers.add(new DictionaryBasedSentenceTypeDetector());
         //analyzers.add(new SentenceAnalyzer());

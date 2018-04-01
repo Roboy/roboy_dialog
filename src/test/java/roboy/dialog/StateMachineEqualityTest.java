@@ -3,7 +3,7 @@ package roboy.dialog;
 import org.junit.Test;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
-import roboy.dialog.tutorials.toyStates.ToyGreetingsState;
+import roboy.dialog.tutorials.tutorialStates.ToyGreetingsState;
 
 import static org.junit.Assert.*;
 

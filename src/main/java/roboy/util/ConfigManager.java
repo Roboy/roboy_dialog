@@ -38,7 +38,7 @@ public class ConfigManager {
 
     public static boolean DEMO_GUI = false;
 
-    public static String PERSONALITY_FILE = "resources/personalityFiles/ExamplePersonality.json";
+    public static String PERSONALITY_FILE = "resources/personalityFiles/tutorial/ToyStateMachine.json";
 
     public static String IBM_TTS_USER = "";
     public static String IBM_TTS_PASS = "";
