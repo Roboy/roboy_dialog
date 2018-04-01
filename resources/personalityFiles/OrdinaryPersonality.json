@@ -3,22 +3,17 @@
   "states": [
     {
       "identifier": "Greetings",
-      "implementation" : "roboy.dialog.states.ordinaryStates.PassiveGreetingsState",
-      "transitions" : {
-        "greetingDetected" : "Intro",
-        "noHello" : "Farewell"
+      "implementation": "roboy.dialog.states.ordinaryStates.PassiveGreetingsState",
+      "transitions": {
+        "greetingDetected": "Intro"
       }
     },
     {
       "identifier": "Intro",
-      "implementation" : "roboy.dialog.states.ordinaryStates.IntroductionState",
-      "transitions" : {
-        "next" : "Farewell",
+      "implementation": "roboy.dialog.states.ordinaryStates.IntroductionState",
+      "transitions": {
         "knownPerson": "FollowUp",
         "newPerson": "PersonalQA"
-      },
-      "parameters" : {
-        "introductionSentence" : "My name is Roboy!"
       }
     },
     {
@@ -27,8 +22,8 @@
       "transitions": {
         "questionAnswering": "QuestionAnswering"
       },
-      "parameters" : {
-        "qaFile" : "sentences/QAList.json"
+      "parameters": {
+        "qaFile": "sentences/QAList.json"
       }
     },
     {
@@ -37,8 +32,8 @@
       "transitions": {
         "questionAnswering": "QuestionAnswering"
       },
-      "parameters" : {
-        "qaFile" : "sentences/QAList.json"
+      "parameters": {
+        "qaFile": "sentences/QAList.json"
       }
     },
     {
@@ -49,8 +44,6 @@
         "finishedQuestionAnswering": "Farewell",
         "loopToNewPerson": "PersonalQA",
         "loopToKnownPerson": "FollowUp"
-      },
-      "parameters" : {
       }
     },
     {
@@ -60,8 +53,8 @@
     },
     {
       "identifier": "Farewell",
-      "implementation" : "roboy.dialog.states.ordinaryStates.FarewellState",
-      "transitions" : {}
+      "implementation": "roboy.dialog.states.ordinaryStates.FarewellState",
+      "transitions": {}
     }
   ]
 }

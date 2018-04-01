@@ -118,7 +118,6 @@ public class IntroductionState extends State {
     }
 
     private String getNameFromInput(Interpretation input) {
-        // TODO: call Emilka's parser
         if (input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.STATEMENT) == 0) {
             String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
             if (tokens.length == 1) {
