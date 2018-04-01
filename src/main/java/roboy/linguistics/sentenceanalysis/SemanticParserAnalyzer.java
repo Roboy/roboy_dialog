@@ -148,7 +148,14 @@ public class SemanticParserAnalyzer implements Analyzer {
             return interpretation;
     }
 
-    // list can contain triples, strings or doubles
+
+    /**
+     * Function reading parser answer in returned JSON string.
+     * List can contain triples, strings or doubles.
+     *
+     * @param answer String containing parser answer received by analyzer.
+     * @return String formed by joined list.
+     */
     private String get_answers(String answer) {
         List<String> result = new ArrayList<>();
 
@@ -163,7 +170,7 @@ public class SemanticParserAnalyzer implements Analyzer {
         }
         String[] tokens = answer.split(" ");
         for (int i = 0; i < tokens.length; i++) {
-            // Check for specific types
+            // Number/String type
             if ((tokens[i].contains("number") || tokens[i].contains("string")) && i + 1 < tokens.length) {
                 for (int j = i + 1; j < tokens.length; j++) {
                     result.add(tokens[j].replaceAll("\\)", ""));
@@ -172,6 +179,7 @@ public class SemanticParserAnalyzer implements Analyzer {
                 }
                 return String.join(" ", result);
             }
+            // Name value type
             else if ((tokens[i].contains("name") && i + 1 < tokens.length)) {
                 for (int j = i + 1; j < tokens.length; j++) {
                     if (!tokens[j].contains("null"))
@@ -181,6 +189,7 @@ public class SemanticParserAnalyzer implements Analyzer {
                 }
                 return String.join(" ", result);
             }
+            // Result from DBpedia / different knowledge base
             else if (tokens[i].contains(":") && !tokens[i].contains("fb:")) {
                 for (int j = i; j < tokens.length; j++) {
                     if (!tokens[j].contains("null"))
@@ -193,6 +202,12 @@ public class SemanticParserAnalyzer implements Analyzer {
         return null;
     }
 
+    /**
+     * Function reading extracted relations in returned JSON string.
+     *
+     * @param relations Map of relations and their confidence.
+     * @return List of triple objects with relations extracted.
+     */
     private List<Triple> extract_relations(Map<String, Double> relations) {
         List<Triple> result = new ArrayList<>();
         for (String key : relations.keySet()) {
@@ -205,6 +220,12 @@ public class SemanticParserAnalyzer implements Analyzer {
         return result;
     }
 
+    /**
+     * Function reading triples from returned JSON string.
+     *
+     * @param   input     parsing result
+     * @return List of triple objects with RDF triples extracted.
+     */
     private List<Triple> extract_triples(String input) {
         List<Triple> result = new ArrayList<>();
         input = input.replace(")", " )");
@@ -223,6 +244,9 @@ public class SemanticParserAnalyzer implements Analyzer {
         return result;
     }
 
+    /**
+     * Testing function
+     */
     public static void main(String[] args) {
         SemanticParserAnalyzer analyzer = new SemanticParserAnalyzer(ConfigManager.PARSER_PORT);
         try {
