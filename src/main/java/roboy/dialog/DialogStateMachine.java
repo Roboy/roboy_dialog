@@ -23,7 +23,7 @@ import java.util.Map;
  * There is also an option to save an existing state machine to file.
  *
  * Personality files are JSON files that define a set of dialog states and transitions between them
- * (see examples in resources/personalityFiles/). Every state definition in the file has an identifier
+ * (see examples in resources/personalityFiles/tutorial/). Every state definition in the file has an identifier
  * and specifies the implementation (class name) for the state. During parsing of the personality file
  * this class will take the class name and create a Java State object using Java reflection.
  */
@@ -38,20 +38,24 @@ public class DialogStateMachine {
 
     private final Logger logger = LogManager.getLogger();
 
-    // maps string identifiers to state objects ("Greeting" -> {GreetingState})
-    // allows to have multiple instances of the same state class with different identifiers ("Greeting2" -> {GreetingState})
+    /**
+     * maps string identifiers to state objects ("Greeting" -> {GreetingState})
+     * allows to have multiple instances of the same state class with different identifiers ("Greeting2" -> {GreetingState})
+     */
     private HashMap<String, State> identifierToState;
 
     private State activeState;
     private State initialState;
 
-    // RosMainNode will be passed to every state as parameter
+    /** RosMainNode will be passed to every state as parameter */
     private final RosMainNode rosMainNode;
     private final Neo4jMemoryInterface memory;
 
-    // Personality file additional information: everything like comment goes here.
-    // [!!] Do not use it in your State implementation! This info is only stored to make sure
-    //      we don't lose the comment etc. when saving this dialog state machine to file.
+    /**
+     * Personality file additional information: everything like comment goes here.
+     * [!!] Do not use it in your State implementation! This info is only stored to make sure
+     *      we don't lose the comment etc. when saving this dialog state machine to file.
+     */
     private HashMap<String, String> optionalPersFileInfo;
 
     // endregion
@@ -114,7 +118,7 @@ public class DialogStateMachine {
      * @param initial initial state
      */
     public void setInitialState(State initial) {
-        if (!identifierToState.containsValue(initial) && initial != null) {
+        if (initial != null && !identifierToState.containsValue(initial)) {
             addState(initial);
         }
         this.initialState = initial;
@@ -156,7 +160,7 @@ public class DialogStateMachine {
      * @param s state to make active
      */
     public void setActiveState(State s) {
-        if (!identifierToState.containsValue(s) && s != null) {
+        if (s != null && !identifierToState.containsValue(s)) {
             addState(s);
         }
         activeState = s;
@@ -210,12 +214,22 @@ public class DialogStateMachine {
 
     //region load from ...
 
+    /**
+     * Loads state machine from a JSON string. The string must be a valid personality
+     * (usually loaded from a personality file).
+     * @param s personality string
+     */
     public void loadFromString(String s) {
         JsonParser parser = new JsonParser();
         JsonElement json = parser.parse(s);
         loadFromJSON(json);
     }
 
+    /**
+     * Loads state machine from a personality file. File must contain a valid personality definition.
+     * @param f file with the personality definition
+     * @throws FileNotFoundException if file is not found
+     */
     public void loadFromFile(File f) throws FileNotFoundException {
         JsonParser parser = new JsonParser();
         JsonElement json = parser.parse(new FileReader(f));
@@ -223,6 +237,15 @@ public class DialogStateMachine {
     }
 
 
+    /**
+     * Main function that parses a JSON personality object and creates a state machine.
+     * Required properties:
+     * - initialState (string identifier)
+     * - states (array of state definitions)
+     * Optional properties:
+     * - comment (personality file comment)
+     * @param json json object with the personality definition
+     */
     private void loadFromJSON(JsonElement json) {
         identifierToState.clear();
         optionalPersFileInfo.clear();

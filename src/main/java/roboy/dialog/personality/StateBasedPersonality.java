@@ -69,6 +69,11 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
         setActiveState(initial);
     }
 
+    /**
+     * Internal function, cleanup before the conversation ends:
+     * - set active state to null
+     * - set stopTalking flag to true
+     */
     private void endConversation() {
         setActiveState((State) null);
         stopTalking = true;
@@ -328,6 +333,15 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
         previousActions.add(verbalizer.verbalize(segueInterpretation));
     }
 
+    /**
+     * Internal function, handles exceptions coming from act() or react(...) functions.
+     * In general, act() and react(...) should never throw an exception unless the implementation is buggy.
+     * In that case the dialog system will log the error and try to continue working.
+     * @param state state that threw the exception
+     * @param e exception
+     * @param previousActions list of previous planned actions, will be extended
+     * @param comesFromAct indicates whether act() or react(...) threw the exception
+     */
     private void exceptionHandler(State state, Exception e, List<Action> previousActions, boolean comesFromAct) {
         String actOrReact = comesFromAct ? "act" : "react";
         logger.error("Exception in " + actOrReact + "() of state with identifier "
