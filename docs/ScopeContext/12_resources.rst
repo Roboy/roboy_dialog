@@ -40,13 +40,3 @@ CSV Resources
 -------------
 
 - trivia - funny facts Roboy would love to tell you
-
-BIN Resources
--------------
-
-- to be updated
-
-XML Resources
--------------
-
-- to be updated
