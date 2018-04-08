@@ -302,13 +302,83 @@ While the editor is not implemented yet, we still have good news for you. You *c
 
 
 
-
-
 Adding New Questions to the State
 ---------------------------------
 
+There exists a list of questions, we may want Roboy to ask in order to acquire new information about people and the environment.
+It is stored in the resources directory under sentences/QAList.json and follows the next JSON structure as given:
 
+    "FRIEND_OF": {
+        "Q": [
+          "Who is your best friend?",
+          "Have I met any of your friends?",
+          "Do you have a friend whom I have met?",
+          "Maybe I know some friends of yours. Would you name one?"
+        ],
+        "A": {
+          "SUCCESS": [
+            "Oh, I believe I have met %s they're nice."
+          ],
+          "FAILURE": [
+            "I don't think I know them."
+          ]
+        },
+        "FUP": {
+          "Q": [
+            "Have you made any new friends, %s?"
+          ],
+          "A": [
+            "Oh, I have met %s they're nice."
+          ]
+        }
+     }
 
+Here, we have a set of questions about friends ("FRIEND_OF" intent), so Roboy can learn about friends of the person he is talking to. "SUCCESS" and "FAILURE" are the answerS, Roboy will say
+if the information input was processed successfully or not, respectively.
+Follow up questions ("FUP") are the ones that are used to update the information in the future if the questions ("Q") were already asked.
+
+We can add a new entry there with a new intent. Let it be "LIKE":
+
+    "LIKE": {
+        "Q": [
+          "What do you like?"
+        ],
+        "A": {
+          "SUCCESS": [
+            "Me too. I really like %s!"
+          ],
+          "FAILURE": [
+            "Well, I do not know what to think about this"
+          ]
+        },
+        "FUP": {
+          "Q": [
+            "Do you still like, %s?"
+          ],
+          "A": [
+            "Maybe, I should consider liking this stuff"
+          ]
+        }
+    }
+
+Then we have to add a new entry into our local ontology - Neo4jRelationships::
+
+    public enum Neo4jRelationships {
+        ...
+        LIKE("LIKE");
+
+        ...
+    }
+
+Go back to your state and inside the act() method implement the following logic::
+
+    Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+
+    RandomList<String> questions = qaValues.getQuestions(Neo4jRelationships.LIKE);
+    String question = questions.getRandomElement();
+    return State.Output.say(question);
+
+Now, we can ask these newly added questions and later process the answers in the react() method.
 
 
 Querying the Memory from the Dialog System
