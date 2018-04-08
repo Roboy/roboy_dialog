@@ -308,16 +308,91 @@ Adding New Questions to the State
 ---------------------------------
 
 
+
+
+
 Querying the Memory from the Dialog System
 ------------------------------------------
+
+
+Indeed, the newly created state may be the pinnacle of State Machines practice, but it does not yet exploit all of the Roboy Dialog System capabilities, such as
+the graph database Roboy Memory Module which allows to store and recall information about the environment. For instance, you may want to check whether you belong to
+the circle of Roboy's friends.
+
+Every state is bundled with the memory reference inside its parameters, to call the memory you have to access it the following way::
+
+    Neo4jMemoryInterface memory = getParameters().getMemory();
+
+Then you may want to call one of the most used methods, namely, getById - which will query the Neo4j database and get the description of the node with the same (unique) ID
+in JSON format. Roboy's ID is 26.::
+
+    String requestedObject = getParameters().getMemory().getById(26);
+    MemoryNodeModel roboy = gson.fromJson(requestedObject, MemoryNodeModel.class);
+
+The MemoryNodeModel class is the general class which is a model for the nodes stored in Neo4j. It has a label, an ID, parameters and relationships with other nodes denoted by IDs.
+As soon as we have the Roboy node we can get his friends' IDs like this:
+
+    ArrayList<Integer> ids = roboy.getRelationships(Neo4jRelationships.FRIEND_OF);
+
+Then we can proceed with checking Roboy's friends as follows::
+
+    RandomList<MemoryNodeModel> roboyFriends = new RandomList<>();
+
+    if (ids != null && !ids.isEmpty()) {
+        try {
+            Gson gson = new Gson();
+            for (Integer id : ids) {
+                String requestedObject = getParameters().getMemory().getById(id);
+                roboyFriends.add(gson.fromJson(requestedObject, MemoryNodeModel.class));
+            }
+        } catch (InterruptedException | IOException e) {
+            logger.error("Error on Memory data retrieval: " + e.getMessage());
+        }
+    }
+
+Let's check if we are friends with him::
+
+    if (!roboyFriends.isEmpty()) {
+        for (MemoryNodeModel friend : roboyFriends) {
+            if (friend.getProperties().get("name").toString() == myName) {
+                success = true;
+                break;
+            }
+        }
+    }
+
+However, there exists a special Roboy node class initialized in a specific way like this::
+
+    Roboy roboy = new Roboy(memory);
+
+It will retrieve and fill all the data for Roboy from the memory.
+
+Furthermore, we wanted to make it less of miserable routine thus there is a helper function in the State superclass, which makes your life much easier::
+
+    RandomList<MemoryNodeModel> nodes = retrieveNodesFromMemoryByIds(roboy.getRelationships(Neo4jRelationships.FRIEND_OF));
+
+    if (!nodes.isEmpty()) {
+        for (MemoryNodeModel node : nodes) {
+            if (node.getProperties().get("name").toString() == myName) {
+                success = true;
+                break;
+            }
+        }
+    }
 
 
 Creating a Value History
 ------------------------
 
 
+To be updated
+
+
 Storing and Updating Values in the Context
 ------------------------------------------
+
+
+To be updated
 
 
 Extending the Lexicon and the Grammar
