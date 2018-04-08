@@ -1,4 +1,0 @@
-
-
-Dialog System Scope
-===================

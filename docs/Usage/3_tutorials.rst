@@ -302,22 +302,159 @@ While the editor is not implemented yet, we still have good news for you. You *c
 
 
 
-
-
 Adding New Questions to the State
 ---------------------------------
+
+There exists a list of questions, we may want Roboy to ask in order to acquire new information about people and the environment.
+It is stored in the resources directory under sentences/QAList.json and follows the next JSON structure as given:
+
+    "FRIEND_OF": {
+        "Q": [
+          "Who is your best friend?",
+          "Have I met any of your friends?",
+          "Do you have a friend whom I have met?",
+          "Maybe I know some friends of yours. Would you name one?"
+        ],
+        "A": {
+          "SUCCESS": [
+            "Oh, I believe I have met %s they're nice."
+          ],
+          "FAILURE": [
+            "I don't think I know them."
+          ]
+        },
+        "FUP": {
+          "Q": [
+            "Have you made any new friends, %s?"
+          ],
+          "A": [
+            "Oh, I have met %s they're nice."
+          ]
+        }
+     }
+
+Here, we have a set of questions about friends ("FRIEND_OF" intent), so Roboy can learn about friends of the person he is talking to. "SUCCESS" and "FAILURE" are the answerS, Roboy will say
+if the information input was processed successfully or not, respectively.
+Follow up questions ("FUP") are the ones that are used to update the information in the future if the questions ("Q") were already asked.
+
+We can add a new entry there with a new intent. Let it be "LIKE":
+
+    "LIKE": {
+        "Q": [
+          "What do you like?"
+        ],
+        "A": {
+          "SUCCESS": [
+            "Me too. I really like %s!"
+          ],
+          "FAILURE": [
+            "Well, I do not know what to think about this"
+          ]
+        },
+        "FUP": {
+          "Q": [
+            "Do you still like, %s?"
+          ],
+          "A": [
+            "Maybe, I should consider liking this stuff"
+          ]
+        }
+    }
+
+Then we have to add a new entry into our local ontology - Neo4jRelationships::
+
+    public enum Neo4jRelationships {
+        ...
+        LIKE("LIKE");
+
+        ...
+    }
+
+Go back to your state and inside the act() method implement the following logic::
+
+    Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+
+    RandomList<String> questions = qaValues.getQuestions(Neo4jRelationships.LIKE);
+    String question = questions.getRandomElement();
+    return State.Output.say(question);
+
+Now, we can ask these newly added questions and later process the answers in the react() method.
 
 
 Querying the Memory from the Dialog System
 ------------------------------------------
 
 
-Creating a Value History
-------------------------
+Indeed, the newly created state may be the pinnacle of State Machines practice, but it does not yet exploit all of the Roboy Dialog System capabilities, such as
+the graph database Roboy Memory Module which allows to store and recall information about the environment. For instance, you may want to check whether you belong to
+the circle of Roboy's friends.
+
+Every state is bundled with the memory reference inside its parameters, to call the memory you have to access it the following way::
+
+    Neo4jMemoryInterface memory = getParameters().getMemory();
+
+Then you may want to call one of the most used methods, namely, getById - which will query the Neo4j database and get the description of the node with the same (unique) ID
+in JSON format. Roboy's ID is 26.::
+
+    String requestedObject = getParameters().getMemory().getById(26);
+    MemoryNodeModel roboy = gson.fromJson(requestedObject, MemoryNodeModel.class);
+
+The MemoryNodeModel class is the general class which is a model for the nodes stored in Neo4j. It has a label, an ID, parameters and relationships with other nodes denoted by IDs.
+As soon as we have the Roboy node we can get his friends' IDs like this:
+
+    ArrayList<Integer> ids = roboy.getRelationships(Neo4jRelationships.FRIEND_OF);
+
+Then we can proceed with checking Roboy's friends as follows::
+
+    RandomList<MemoryNodeModel> roboyFriends = new RandomList<>();
+
+    if (ids != null && !ids.isEmpty()) {
+        try {
+            Gson gson = new Gson();
+            for (Integer id : ids) {
+                String requestedObject = getParameters().getMemory().getById(id);
+                roboyFriends.add(gson.fromJson(requestedObject, MemoryNodeModel.class));
+            }
+        } catch (InterruptedException | IOException e) {
+            logger.error("Error on Memory data retrieval: " + e.getMessage());
+        }
+    }
+
+Let's check if we are friends with him::
+
+    if (!roboyFriends.isEmpty()) {
+        for (MemoryNodeModel friend : roboyFriends) {
+            if (friend.getProperties().get("name").toString() == myName) {
+                success = true;
+                break;
+            }
+        }
+    }
+
+However, there exists a special Roboy node class initialized in a specific way like this::
+
+    Roboy roboy = new Roboy(memory);
+
+It will retrieve and fill all the data for Roboy from the memory.
+
+Furthermore, we wanted to make it less of miserable routine thus there is a helper function in the State superclass, which makes your life much easier::
+
+    RandomList<MemoryNodeModel> nodes = retrieveNodesFromMemoryByIds(roboy.getRelationships(Neo4jRelationships.FRIEND_OF));
+
+    if (!nodes.isEmpty()) {
+        for (MemoryNodeModel node : nodes) {
+            if (node.getProperties().get("name").toString() == myName) {
+                success = true;
+                break;
+            }
+        }
+    }
 
 
-Storing and Updating Values in the Context
+Creating a Value History / Storing and Updating Values in the Context
 ------------------------------------------
+
+See :ref:`context`
 
 
 Extending the Lexicon and the Grammar
