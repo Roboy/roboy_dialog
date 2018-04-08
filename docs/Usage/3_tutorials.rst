@@ -451,18 +451,10 @@ Furthermore, we wanted to make it less of miserable routine thus there is a help
     }
 
 
-Creating a Value History
-------------------------
-
-
-To be updated
-
-
-Storing and Updating Values in the Context
+Creating a Value History / Storing and Updating Values in the Context
 ------------------------------------------
 
-
-To be updated
+See :ref:`context`
 
 
 Extending the Lexicon and the Grammar
