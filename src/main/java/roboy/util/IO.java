@@ -3,11 +3,12 @@ package roboy.util;
 import roboy.io.*;
 import roboy.ros.RosMainNode;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,16 @@ import org.apache.logging.log4j.Logger;
 public class IO {
 
 	private final static Logger logger = LogManager.getLogger();
+
+	public static List<String> readLinesFromUtf8File(String path) {
+	    try {
+            Path p = Paths.get(path);
+            return Files.readAllLines(p, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+	        logger.error("Error reading file " + path + ": " + e.getMessage());
+        }
+        return null;
+	}
 
 	public static MultiInputDevice getInputs(RosMainNode rosMainNode) throws SocketException{
 		MultiInputDevice multiIn;

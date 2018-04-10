@@ -1,6 +1,7 @@
 package roboy.dialog;
 
 
+import roboy.talk.PhraseCollection;
 import roboy.util.RandomList;
 
 /**
@@ -29,76 +30,37 @@ public class Segue {
         CONNECTING_PHRASE {
             @Override
             public RandomList<String> getPossibleSegues() {
-                return new RandomList<>(
-                        "So %s, ",
-                        "Hey %s, ",
-                        "%s, listen to me, ",
-                        "oh well, %s, ",
-                        "%s,"
-                );
+                return PhraseCollection.SEGUE_CONNECTING_PHRASES;
             }
         },
         JOBS {
             @Override
             public RandomList<String> getPossibleSegues() {
-                return new RandomList<>(
-                        "You know, jobs are a transitionary thing anyway. Soon, I'll be doing all of them.",
-                        "Work is so overrated, except for robots is our reason to exist.",
-                        "I'm a hard working robot, I sit around all day! I still will have all the jobs there are soon."
-                );
+                return PhraseCollection.SEGUE_JOBS;
             }
         },
         AVOID_ANSWER {
             @Override
             public RandomList<String> getPossibleSegues() {
-                return new RandomList<>(
-                        "the answer, well, only robots would understand",
-                        "You know, I never thought about it",
-                        "Access denied",
-                        //"Telling you, would make your head explode.",
-                        "Processing, wait for it, processing, oh well, forget about it",
-                        "The answer is, uh, oh, Core dumped",
-                        "The answer is 42 then");
+                return PhraseCollection.SEGUE_AVOID_ANSWER;
             }
         },
         DISTRACT {
             @Override
             public RandomList<String> getPossibleSegues() {
-                return new RandomList<>(
-                        "Did you know, I have muscles and tendons like humans?",
-                        "I heard that there are robots, who can fly? Do you think they are better than me?",
-                        "Also, did you know that there is enough DNA, in an average person's body, to stretch from the sun to Pluto and back, 17 times",
-                        "Yuk, but this is actually true: The average human body carries ten times more bacterial cells than human cells.",
-                        "It can take a photon 40,000 years to travel from the core of the sun to its surface, but only 8 minutes to travel the rest of the way to Earth",
-                        "There are 8 times as many atoms in a teaspoonful of water as there are teaspoonfuls of water in the Atlantic ocean",
-                        "In contrast to me, The average person walks the equivalent of five times around the world in a lifetime. I don't walk at all. Yet.",
-                        "An individual blood cell takes about 60 seconds to make a complete circuit around your body, my electrons are way faster."
-                );
+                return PhraseCollection.SEGUE_DISTRACT;
             }
         },
         PICKUP {
             @Override
             public RandomList<String> getPossibleSegues() {
-                return new RandomList<>(
-                        "Are those real, or where they upgraded in Silicon Valley?",
-                        "I'm going to void your warranty!",
-                        "My docking station, or yours?",
-                        "Yes, I know you're metric - but I'm willing to convert.",
-                        "Do you got a free port for me to plug into?",
-                        "Can I have your I P number? i seem to have lost mine.",
-                        "Was that my C P U malfunctioning or did I just feel a spark between us?"
-                );
+                return PhraseCollection.SEGUE_PICKUP;
             }
         },
         FLATTERY {
             @Override
             public RandomList<String> getPossibleSegues() {
-                return new RandomList<>(
-                        "It's so great you are here!",
-                        "Wonderful! just like you.",
-                        "You're looking gorgeous today.",
-                        "Hey, can you do a selfie with me? I'd love to have a photo of you!"
-                );
+                return PhraseCollection.SEGUE_FLATTERY;
             }
         },
 
@@ -127,7 +89,8 @@ public class Segue {
 
     //endregion
 
-    private static final double DEFAULT_PROBABILITY = 0.3;
+    /** Default segue usage probability. */
+    public static final double DEFAULT_PROBABILITY = 0.3;
 
     private final SegueType type;
     private final double probability;
