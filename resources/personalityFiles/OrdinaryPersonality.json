@@ -48,7 +48,7 @@
     },
     {
       "identifier": "WildTalk",
-      "implementation": "roboy.dialog.states.ordinaryStates.WildTalkFallbackState",
+      "implementation": "roboy.dialog.states.ordinaryStates.WildTalkState",
       "transitions": {}
     },
     {

@@ -102,6 +102,6 @@ Overview over Implemented States
 
 **QuestionAnsweringState**: Roboy answers questions about itself or some general questions. Answers are provided by the parser (from sources like DBpedia) or the Memory.
 
-**WildTalkFallbackState**: This fallback state will query the deep learning generative model over ROS to create a reply for any situation.
+**WildTalkState**: This fallback state will query the deep learning generative model over ROS to create a reply for any situation.
 
 **FarewellState**: Roboy ends the conversation after a few statements.

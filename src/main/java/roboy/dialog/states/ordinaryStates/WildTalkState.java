@@ -17,12 +17,12 @@ import java.util.Set;
  * returning a hardcoded random answer. This state should never become active (meaning that no transition
  * should point to it.)
  *
- * WildTalkFallbackState interface:
+ * WildTalkState interface:
  * 1) Fallback is not required (this state should be the fallback).
  * 2) This state has no outgoing transitions.
  * 3) No parameters are used.
  */
-public class WildTalkFallbackState extends State {
+public class WildTalkState extends State {
 
     private RandomList<String> rosFailurePhrases = new RandomList<>(
             "Hey, who disconnected me from my beloved ros node? I need it! ",
@@ -31,13 +31,13 @@ public class WildTalkFallbackState extends State {
             "I'm on holiday and don't have internet connection right now, let's talk about something else "
     );
 
-    public WildTalkFallbackState(String stateIdentifier, StateParameters params) {
+    public WildTalkState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
     }
 
     @Override
     public Output act() {
-        return Output.say("WildTalkFallbackState should never act!");
+        return Output.say("WildTalkState should never act!");
     }
 
     @Override
