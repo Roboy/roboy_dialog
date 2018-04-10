@@ -15,6 +15,7 @@ import roboy.memory.nodes.Interlocutor.RelationshipAvailability;
 import roboy.memory.nodes.MemoryNodeModel;
 import roboy.memory.nodes.Roboy;
 import roboy.dialog.Segue;
+import roboy.talk.PhraseCollection;
 import roboy.util.RandomList;
 
 import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
@@ -57,18 +58,8 @@ public class QuestionAnsweringState extends State {
     private final static int MAX_NUM_OF_QUESTIONS = 5;
     private int questionsAnswered = 0;
 
-    private final static RandomList<String> reenteringPhrases = new RandomList<>(
-            "Is there anything else you would like to know?",
-            "Is that all that comes to your mind? Ask me something!",
-            "Oh well, I know much more stuff, just ask me a question.",
-		    "Let me uncover my potential. Ask something really difficult!");
-
-    private final static RandomList<String> answerStartingPhrases = new RandomList<>(
-            "I think, the answer is ",
-            "I am sure that it is ",
-            "How about ",
-            "I know for sure, it must be "
-    );
+    private final static RandomList<String> reenteringPhrases = PhraseCollection.QUESTION_ANSWERING_REENTERING;
+    private final static RandomList<String> answerStartingPhrases = PhraseCollection.QUESTION_ANSWERING_START;
 
     private boolean askingSpecifyingQuestion = false;
     private String answerAfterUnspecifiedQuestion = ""; // the answer to use if specifying question is answered with YES
