@@ -652,7 +652,7 @@ public abstract class State {
             try {
                 Gson gson = new Gson();
                 for (Integer id : ids) {
-                    String requestedObject = getParameters().getMemory().getById(id);
+                    String requestedObject = getMemory().getById(id);
                     retrievedNodes.add(gson.fromJson(requestedObject, MemoryNodeModel.class));
                 }
             } catch (InterruptedException | IOException e) {
