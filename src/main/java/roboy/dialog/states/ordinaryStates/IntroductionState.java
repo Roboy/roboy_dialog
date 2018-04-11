@@ -109,7 +109,7 @@ public class IntroductionState extends State {
             segueProbability = 0.6;
         }
         Segue s = new Segue(Segue.SegueType.DISTRACT, segueProbability);
-        return Output.say(getResponsePhrases(person.getName(), person.FAMILIAR) + retrievedPersonalFact).setSegue(s);
+        return Output.say(getResponsePhrase(person.getName(), person.FAMILIAR) + retrievedPersonalFact).setSegue(s);
     }
 
     @Override
@@ -160,7 +160,7 @@ public class IntroductionState extends State {
         return introPhrases.getRandomElement();
     }
 
-    private String getResponsePhrases(String name, boolean familiar) {
+    private String getResponsePhrase(String name, boolean familiar) {
         if (familiar) {
             return String.format(successResponsePhrases.getRandomElement(), name);
         } else {
