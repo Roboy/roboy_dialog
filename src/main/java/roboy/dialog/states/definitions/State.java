@@ -571,7 +571,7 @@ public abstract class State {
      * @param ids ids for memory
      * @return Collection of MemoryNodeModels
      */
-    protected RandomList<MemoryNodeModel> retrieveNodesFromMemoryByIds(ArrayList<Integer> ids) {
+    protected RandomList<MemoryNodeModel> getMemNodesByIds(ArrayList<Integer> ids) {
         RandomList<MemoryNodeModel> retrievedNodes = new RandomList<>();
 
         if (ids != null && !ids.isEmpty()) {

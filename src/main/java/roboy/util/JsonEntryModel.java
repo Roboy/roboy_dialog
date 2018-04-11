@@ -1,22 +1,21 @@
 package roboy.util;
 
-import java.util.List;
 import java.util.Map;
 
 public class JsonEntryModel {
-    List<String> Q;
-    Map<String, List<String>> A;
-    Map<String, List<String>> FUP;
+    RandomList<String> Q;
+    Map<String, RandomList<String>> A;
+    Map<String, RandomList<String>> FUP;
 
-    public List<String> getQuestions() {
+    public RandomList<String> getQuestions() {
         return Q;
     }
 
-    public Map<String, List<String>> getAnswers() {
+    public Map<String, RandomList<String>> getAnswers() {
         return A;
     }
 
-    public Map<String, List<String>> getFUP() {
+    public Map<String, RandomList<String>> getFUP() {
         return FUP;
     }
 }

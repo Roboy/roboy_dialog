@@ -18,7 +18,7 @@
     },
     {
       "identifier": "FollowUp",
-      "implementation": "roboy.dialog.states.ordinaryStates.FUAState",
+      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationFollowUpState",
       "transitions": {
         "questionAnswering": "QuestionAnswering"
       },
@@ -28,7 +28,7 @@
     },
     {
       "identifier": "PersonalQA",
-      "implementation": "roboy.dialog.states.ordinaryStates.PIAState",
+      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationAskingState",
       "transitions": {
         "questionAnswering": "QuestionAnswering"
       },

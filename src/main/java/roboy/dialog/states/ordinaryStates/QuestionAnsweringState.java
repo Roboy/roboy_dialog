@@ -244,7 +244,7 @@ public class QuestionAnsweringState extends State {
 
                     if (result.predicate != null) {
                         if (result.predicate.contains(Neo4jRelationships.HAS_HOBBY.type)) {
-                            RandomList<MemoryNodeModel> nodes = retrieveNodesFromMemoryByIds(roboy.getRelationships(Neo4jRelationships.HAS_HOBBY));
+                            RandomList<MemoryNodeModel> nodes = getMemNodesByIds(roboy.getRelationships(Neo4jRelationships.HAS_HOBBY));
                             if (!nodes.isEmpty()) {
                                 for (MemoryNodeModel node : nodes) {
                                     answer += node.getProperties().get("name").toString() + " and ";
@@ -254,7 +254,7 @@ public class QuestionAnsweringState extends State {
                             break;
                         } else if (result.predicate.contains(Neo4jRelationships.FRIEND_OF.type)) {
                             answer += "my friends ";
-                            RandomList<MemoryNodeModel> nodes = retrieveNodesFromMemoryByIds(roboy.getRelationships(Neo4jRelationships.FRIEND_OF));
+                            RandomList<MemoryNodeModel> nodes = getMemNodesByIds(roboy.getRelationships(Neo4jRelationships.FRIEND_OF));
                             if (!nodes.isEmpty()) {
                                 for (MemoryNodeModel node : nodes) {
                                     answer += node.getProperties().get("name").toString() + " and ";
@@ -289,7 +289,7 @@ public class QuestionAnsweringState extends State {
     private boolean isIntentsHistoryComplete(Neo4jRelationships[] predicates) {
         boolean isComplete = true;
         for (Neo4jRelationships predicate : predicates) {
-            if (!Context.getInstance().DIALOG_INTENTS.contains(new IntentValue("FUP", predicate))) {
+            if (!Context.getInstance().DIALOG_INTENTS.contains(new IntentValue(PersonalInformationFollowUpState.INTENTS_HISTORY_ID, predicate))) {
                 isComplete = false;
             }
         }
