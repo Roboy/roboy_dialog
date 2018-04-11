@@ -32,7 +32,4 @@ Currently, it also provides with the next custom methods:
     - addListener
     - waitForLatchUnlock
 
-Socket
--------------
-
 
