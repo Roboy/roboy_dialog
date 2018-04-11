@@ -1,7 +1,5 @@
 package roboy.context;
 
-import org.junit.Assert;
-
 import java.util.HashMap;
 
 /**

@@ -2,8 +2,6 @@ package roboy.context.contextObjects;
 
 import roboy.context.ValueHistory;
 
-import java.util.HashMap;
-
 /**
  * Store the history of intents
  */

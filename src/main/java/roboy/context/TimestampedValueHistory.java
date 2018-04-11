@@ -1,7 +1,6 @@
 package roboy.context;
 
 import java.util.Iterator;
-import java.util.NavigableSet;
 import java.util.TreeMap;
 
 /**
