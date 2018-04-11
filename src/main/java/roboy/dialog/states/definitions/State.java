@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.nodes.MemoryNodeModel;
 import roboy.dialog.DialogStateMachine;
 import roboy.dialog.Segue;
@@ -80,6 +81,11 @@ public abstract class State {
 
         //  Static creators
 
+        /**
+         * Say a phrase.
+         * @param i interpretation object that contains the phrase
+         * @return State.Output object with appropriate settings
+         */
         public static Output say(Interpretation i) {
             if (i == null) {
                 return sayNothing();
@@ -87,6 +93,11 @@ public abstract class State {
             return new Output(OutputType.INTERPRETATION, i);
         }
 
+        /**
+         * Say a phrase.
+         * @param s phrase to say
+         * @return State.Output object with appropriate settings
+         */
         public static Output say(String s) {
             if (s == null || s.equals("")) {
                 return sayNothing();
@@ -94,18 +105,37 @@ public abstract class State {
             return say(new Interpretation(s));
         }
 
+        /**
+         * Say nothing (as the output of State act/react).
+         * @return State.Output object with appropriate settings
+         */
         public static Output sayNothing() {
             return new Output(OutputType.SAY_NOTHING, null);
         }
 
+        /**
+         * Indicate that current state has no idea how to react and that the dialog system
+         * should use a fallback state to react instead. This option is only allowed for react(...) output.
+         * States should never use this option from the act() function.
+         * @return State.Output object with appropriate settings
+         */
         public static Output useFallback() {
             return new Output(OutputType.USE_FALLBACK, null);
         }
 
+        /**
+         * End the conversation immediately.
+         * @return State.Output object with appropriate settings
+         */
         public static Output endConversation() {
             return new Output(OutputType.END_CONVERSATION, null);
         }
 
+        /**
+         * End the conversation after saying some last words
+         * @param lastWords last word to say (something like "I'll be back")
+         * @return State.Output object with appropriate settings
+         */
         public static Output endConversation(String lastWords) {
             if (lastWords == null) {
                 return endConversation();
@@ -138,6 +168,14 @@ public abstract class State {
 
 
         // Additional transition actions: Segues
+
+        /**
+         * A segue is a smooth transition from one topic to the next. You can add a segues of a specific
+         * types to the state output if you want to change the topic. Segues have a certain probabilities
+         * to be used and are always added after the original output was said.
+         * @param s segue to add
+         * @return the same Output object so you can chain multiple function calls on it
+         */
         public Output setSegue(Segue s) {
             if (type == OutputType.USE_FALLBACK) {
                 logger.warn("Adding a segue to an answer that requires fallback is not allowed! " +
@@ -179,9 +217,11 @@ public abstract class State {
     // Possible transitions to other states. The next state is selected based on some conditions in getNextState();
     private HashMap<String, State> transitions;
 
-    // Personality file additional information: everything like state comment goes here.
-    // [!!] Do not use it in your state code! This info is only stored to make sure we don't
-    //      lose the comment etc. when saving this state to file.
+    /**
+     * Personality file additional information: everything like state comment goes here.
+     * [!!] Do not use it in your state code! This info is only stored to make sure we don't
+     *      lose the comment etc. when saving this state to file.
+     */
     private HashMap<String, String> optionalPersFileInfo;
 
 
@@ -257,9 +297,20 @@ public abstract class State {
         return transitions;
     }
 
+
+    /**
+     * Set personality file additional information like state comment.
+     * [!!] Do not use it in your state code! This info is only stored to make sure we don't
+     *      lose the comment etc. when saving this state to file.
+     */
     public final void setOptionalPersFileInfo(String key, String value) {
         optionalPersFileInfo.put(key, value);
     }
+    /**
+     * Get personality file additional information like state comment.
+     * [!!] Do not use it in your state code! This info is only stored to make sure we don't
+     *      lose the comment etc. when saving this state to file.
+     */
     public final String getOptionalPersFileInfo(String key) {
         return optionalPersFileInfo.get(key);
     }
@@ -300,7 +351,7 @@ public abstract class State {
      * If this state is not ready, it will return itself. Otherwise, depending on internal conditions, this state
      * will select one of the states defined in transitions to be the next one.
      *
-     * @return next actie state after this one has reacted
+     * @return next active state after this one has reacted
      */
     public abstract State getNextState();
 
@@ -401,14 +452,31 @@ public abstract class State {
         return result;
     }
 
+    /**
+     * Shortcut for getParameters().getStateMachine()
+     * @return DialogStateMachine
+     */
     protected DialogStateMachine getStateMachine() {
         if (getParameters() == null) return null;
         return getParameters().getStateMachine();
     }
 
+    /**
+     * Shortcut for getParameters().getRosMainNode()
+     * @return RosMainNode (if previously provided to the DialogStateMachine)
+     */
     protected RosMainNode getRosMainNode() {
         if (getParameters() == null) return null;
         return getParameters().getRosMainNode();
+    }
+
+    /**
+     * Shortcut for getParameters().getMemory()
+     * @return Neo4jMemoryInterface (if previously provided to the DialogStateMachine)
+     */
+    protected Neo4jMemoryInterface getMemory() {
+        if (getParameters() == null) return null;
+        return getParameters().getMemory();
     }
 
     //endregion
@@ -421,6 +489,12 @@ public abstract class State {
 
     //region to string & to json
 
+    /**
+     * Create a JSON representation for this state. Only the identifier,
+     * class name, transitions, parameters and fallback identifier are saved.
+     * Internal other internal variables are ignored.
+     * @return JSON representation for this state
+     */
     public JsonObject toJsonObject() {
         JsonObject stateJson = new JsonObject();
         stateJson.addProperty("identifier", getIdentifier());
