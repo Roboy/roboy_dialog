@@ -548,17 +548,18 @@ Editing the Config File
 Dialog System is configured using the ``config.properties`` file in the root of the project. 
 
 ROS configuration
-"""""""""""""""""
+^^^^^^^^^^^^^^^^^
 
 Dialog outsources many tasks to other modules implemented in Pyhton or C++ as ROS packages. In the config file you can enabled/disable ROS modules, choose which packages to use, and set the ``ROS_MASTER_URI``. 
-Available ROS packages are::
+
+Available ROS packages are:
     - ``roboy_gnlp`` (generative model for answer generation)
     - ``roboy_memory`` (Neo4j graph-based memory)
     - ``roboy_speech_synthesis`` (text to speech using Cerevoice)
     - ``roboy_speech_recognition`` (speech to text using Bing Speech API)
     - ``roboy_audio`` (audio source localization)
     - ``roboy_vision`` (face recogntion & object classification and localization)
-    - ``roboy_face`` (triggers emotions)
+    - ``roboy_face`` (triggers emotions)::
     
 .. code-block:: yaml
     ROS_ENABLED: false
@@ -568,20 +569,21 @@ Available ROS packages are::
       - roboy_speech_synthesis
 
 Inputs and Outputs
-""""""""""""""""""
+^^^^^^^^^^^^^^^^^^
    
 A developer can choose how to interact with the dialog system. For example, for debugging purposes there are command line input and output. Importantly, there can be only one input, but many outputs. 
-Available inputs are::
-    - cmdline
-    - upd (listens for incoming udp packets in the port specified below)
-    - bing (requires Internet connection and the ``roboy_speech_recognition`` ROS package)
+
+Available inputs are:
+    - ``cmdline``
+    - ``upd`` (listens for incoming udp packets in the port specified below)
+    - ``bing`` (requires Internet connection and the ``roboy_speech_recognition`` ROS package)
     
 Arbitraty of the following outputs can be used simultaniously at the runtime::
-    - cerevoice (requires ``roboy_speech_synthesis`` ROS package)
-    - cmdline
-    - ibm (uses IBM Bluemix, requires Internet connection, user & pass configured below)
-    - emotions (requires ``roboy_face`` ROS package)
-    - udp (sends packets on the port configure below)
+    - ``cerevoice`` (requires ``roboy_speech_synthesis`` ROS package)
+    - ``cmdline``
+    - ``ibm`` (uses IBM Bluemix, requires Internet connection, user & pass configured below)
+    - ``emotions`` (requires ``roboy_face`` ROS package)
+    - ``udp ``(sends packets on the port configure below)::
 
 .. code-block:: yaml
     INPUT: cmdline
@@ -591,17 +593,17 @@ Arbitraty of the following outputs can be used simultaniously at the runtime::
      - cerevoice
 
 Personality
-"""""""""""
+^^^^^^^^^^^
 
-Here you specify the state machine description store in the JSON file containing personality, i.e. states and transitions between them.
+Here you specify the state machine description store in the JSON file containing personality, i.e. states and transitions between them.::
 
 .. code-block:: yaml
     PERSONALITY_FILE: "resources/personalityFiles/OrdinaryPersonality.json"
     
- Utilities
- """""""""
+Utilities
+^^^^^^^^^^
  
-Configure third party communication ports, credentials, etc.
+Configure third party communication ports, credentials, etc.::
  
 .. code-block:: yaml
     UDP_IN_SOCKET: 55555
