@@ -563,7 +563,7 @@ Available ROS packages are:
 
 Example ROS config::
 
-    ROS_ENABLED: false
+    ROS_ENABLED: true
     ROS_MASTER_IP: 10.183.49.162
     ROS_ACTIVE_PKGS:
       - roboy_memory
