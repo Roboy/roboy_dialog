@@ -559,7 +559,7 @@ Available ROS packages are:
     - ``roboy_speech_recognition`` (speech to text using Bing Speech API)
     - ``roboy_audio`` (audio source localization)
     - ``roboy_vision`` (face recogntion & object classification and localization)
-    - ``roboy_face`` (triggers emotions)::
+    - ``roboy_face`` (triggers emotions)
     
 .. code-block:: yaml
     ROS_ENABLED: false
@@ -583,7 +583,7 @@ Arbitraty of the following outputs can be used simultaniously at the runtime::
     - ``cmdline``
     - ``ibm`` (uses IBM Bluemix, requires Internet connection, user & pass configured below)
     - ``emotions`` (requires ``roboy_face`` ROS package)
-    - ``udp ``(sends packets on the port configure below)::
+    - ``udp`` (sends packets on the port configure below)
 
 .. code-block:: yaml
     INPUT: cmdline
@@ -595,7 +595,7 @@ Arbitraty of the following outputs can be used simultaniously at the runtime::
 Personality
 ^^^^^^^^^^^
 
-Here you specify the state machine description store in the JSON file containing personality, i.e. states and transitions between them.::
+Here you specify the state machine description store in the JSON file containing personality, i.e. states and transitions between them.
 
 .. code-block:: yaml
     PERSONALITY_FILE: "resources/personalityFiles/OrdinaryPersonality.json"
