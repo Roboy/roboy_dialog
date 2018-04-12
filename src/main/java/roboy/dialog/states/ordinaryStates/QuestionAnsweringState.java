@@ -170,16 +170,12 @@ public class QuestionAnsweringState extends State {
     public State getNextState() {
 
         if (askingSpecifyingQuestion) { // we are asking a yes/no question --> stay in this state
-            //logger.info("askingSpecifyingQuestion, staying in same state");
             return this;
 
         } else if (questionsAnswered > MAX_NUM_OF_QUESTIONS) { // enough questions answered --> finish asking
-            //logger.info("enough questions answered, DONE");
-
             return getTransition(TRANSITION_FINISHED_ANSWERING);
 
         } else if (Math.random() < 0.5) { // loop back to previous states with probability 0.5
-            //logger.info("random loopback to previous");
 
             Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
             Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
@@ -198,7 +194,6 @@ public class QuestionAnsweringState extends State {
             }
 
         } else { // stay in this state
-            //logger.info("decided to stay and answer another (reentering)");
             return this;
 
         }
@@ -209,7 +204,7 @@ public class QuestionAnsweringState extends State {
     private Output useMemoryOrFallback(Interpretation input) {
         try {
             if (input.semParserTriples != null) {
-                Output memoryAnswer = tryToAnswerWithMemory(input, input.semParserTriples);
+                Output memoryAnswer = answerFromMemory(input.semParserTriples);
                 if (memoryAnswer != null) return memoryAnswer;
             }
         } catch (Exception e) {
@@ -219,50 +214,43 @@ public class QuestionAnsweringState extends State {
         return Output.useFallback();
     }
 
-    private Output tryToAnswerWithMemory(Interpretation input, List<Triple> triples) {
-        //if (input.getFeatures().get(Linguistics))
+    private Output answerFromMemory(List<Triple> triples) {
 
         // try to use memory to answer
         Roboy roboy = new Roboy(getParameters().getMemory());
-        // Wagram, do some magic here
-        List<Triple> results = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
-        if (results.size() != 0) {
-            String answer = "I like ";
-            for (Triple result : results) {
-                //if (result.subject != null && result.subject.contains("roboy") ||
-                //        result.object != null && result.object.contains("roboy"))
 
+        if (triples.size() == 0) {
+            return null;
+        }
 
-                    if (result.predicate != null) {
-                        if (result.predicate.contains(Neo4jRelationships.HAS_HOBBY.type)) {
-                            RandomList<MemoryNodeModel> nodes = getMemNodesByIds(roboy.getRelationships(Neo4jRelationships.HAS_HOBBY));
-                            if (!nodes.isEmpty()) {
-                                for (MemoryNodeModel node : nodes) {
-                                    answer += node.getProperties().get("name").toString() + " and ";
-                                }
-                            }
+        String answer = "I like ";
+        for (Triple result : triples) {
 
-                            break;
-                        } else if (result.predicate.contains(Neo4jRelationships.FRIEND_OF.type)) {
-                            answer += "my friends ";
-                            RandomList<MemoryNodeModel> nodes = getMemNodesByIds(roboy.getRelationships(Neo4jRelationships.FRIEND_OF));
-                            if (!nodes.isEmpty()) {
-                                for (MemoryNodeModel node : nodes) {
-                                    answer += node.getProperties().get("name").toString() + " and ";
-                                }
-                            }
-                            answer += " other ";
-                            break;
+            if (result.predicate != null) {
+                if (result.predicate.contains(Neo4jRelationships.HAS_HOBBY.type)) {
+                    RandomList<MemoryNodeModel> nodes = getMemNodesByIds(roboy.getRelationships(Neo4jRelationships.HAS_HOBBY));
+                    if (!nodes.isEmpty()) {
+                        for (MemoryNodeModel node : nodes) {
+                            answer += node.getProperties().get("name").toString() + " and ";
                         }
                     }
+                    break;
 
+                } else if (result.predicate.contains(Neo4jRelationships.FRIEND_OF.type)) {
+                    answer += "my friends ";
+                    RandomList<MemoryNodeModel> nodes = getMemNodesByIds(roboy.getRelationships(Neo4jRelationships.FRIEND_OF));
+                    if (!nodes.isEmpty()) {
+                        for (MemoryNodeModel node : nodes) {
+                            answer += node.getProperties().get("name").toString() + " and ";
+                        }
+                    }
+                    answer += " other ";
+                    break;
                 }
-            answer += "humans. They are funny and cute!";
-            return Output.say(answer);
             }
-        // we could also reuse some functionality from the old QuestionAnsweringState
-
-        return null;
+        }
+        answer += "humans. ";
+        return Output.say(answer);
     }
 
 
