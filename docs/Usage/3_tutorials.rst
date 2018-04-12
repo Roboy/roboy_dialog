@@ -396,7 +396,7 @@ Every state is bundled with the memory reference inside its parameters, to call 
 Then you may want to call one of the most used methods, namely, getById - which will query the Neo4j database and get the description of the node with the same (unique) ID
 in JSON format. Roboy's ID is 26.::
 
-    String requestedObject = getParameters().getMemory().getById(26);
+    String requestedObject = getMemory().getById(26);
     MemoryNodeModel roboy = gson.fromJson(requestedObject, MemoryNodeModel.class);
 
 The MemoryNodeModel class is the general class which is a model for the nodes stored in Neo4j. It has a label, an ID, parameters and relationships with other nodes denoted by IDs.

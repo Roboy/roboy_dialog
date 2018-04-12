@@ -1,6 +1,5 @@
 package roboy.logic;
 
-import org.bytedeco.javacpp.presets.opencv_core;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jLabels;
 import roboy.memory.Neo4jProperties;

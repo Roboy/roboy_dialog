@@ -1,7 +1,6 @@
 package roboy.memory.nodes;
 
 import com.google.gson.Gson;
-import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.Neo4jRelationships;
 

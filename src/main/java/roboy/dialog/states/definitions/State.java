@@ -645,14 +645,14 @@ public abstract class State {
      * @param ids ids for memory
      * @return Collection of MemoryNodeModels
      */
-    protected RandomList<MemoryNodeModel> retrieveNodesFromMemoryByIds(ArrayList<Integer> ids) {
+    protected RandomList<MemoryNodeModel> getMemNodesByIds(ArrayList<Integer> ids) {
         RandomList<MemoryNodeModel> retrievedNodes = new RandomList<>();
 
         if (ids != null && !ids.isEmpty()) {
             try {
                 Gson gson = new Gson();
                 for (Integer id : ids) {
-                    String requestedObject = getParameters().getMemory().getById(id);
+                    String requestedObject = getMemory().getById(id);
                     retrievedNodes.add(gson.fromJson(requestedObject, MemoryNodeModel.class));
                 }
             } catch (InterruptedException | IOException e) {

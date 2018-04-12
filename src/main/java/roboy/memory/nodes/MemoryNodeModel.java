@@ -7,7 +7,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.reflect.TypeToken;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jMemoryInterface;
 
 import java.lang.reflect.Type;

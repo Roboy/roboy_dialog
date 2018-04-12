@@ -8,8 +8,25 @@ Resources are located in resources folder and comprise important text files cont
 JSON Resources
 --------------
 
-- personality files - contain the description of Roboy's personality
-- question asking lists - contain the personal questions in the following form:
+- personality files - contain the description of Roboy's personality::
+
+    {
+      "initialState": "stateIdentifier",
+      "states": [
+        {
+          "identifier": "stateIdentifier",
+          "implementation": "roboy.dialog.states.StateImplementation",
+          "transitions": {
+            "stateTransition": "anotherStateIdentifier"
+          },
+          "parameters": {
+            "stateParameter": "someStringParameter"
+          }
+        }
+      ]
+    }
+
+- question asking lists - contain the personal questions in the following form::
 
     "INTENT": {
       "Q": [
@@ -39,4 +56,22 @@ JSON Resources
 CSV Resources
 -------------
 
-- trivia - funny facts Roboy would love to tell you
+- trivia - funny facts Roboy would love to tell you in the following form:
+
+    keyword;Reddit;The sentence contining the particular fact with regard to the keyword
+
+.. warning::
+
+    There is no positive or negative evidence that the trivia facts work when omitting "Reddit" in the middle!
+
+
+BIN Resources
+-------------
+
+- BIN files contain the models for the Roboy Semantic Parser
+
+XML Resources
+-------------
+
+- contains the configuration for the Roboy Dialog Logger where you can set the logger scope and the means of output
+

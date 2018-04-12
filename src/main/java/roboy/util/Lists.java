@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import roboy.dialog.action.Action;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-
 /**
  * Helper class for list related tasks.
  */

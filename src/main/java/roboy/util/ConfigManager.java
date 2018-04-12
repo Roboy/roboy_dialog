@@ -4,9 +4,6 @@ import org.apache.commons.configuration2.YAMLConfiguration;
 import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.bytedeco.javacv.ImageTransformer;
-import roboy.io.CommandLineInput;
-import roboy.io.MultiInputDevice;
 
 import java.io.File;
 import java.io.FileNotFoundException;

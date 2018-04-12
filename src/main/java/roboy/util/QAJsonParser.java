@@ -12,7 +12,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Field;
-import java.util.List;
 import java.util.Map;
 
 class JsonModel {
@@ -96,31 +95,31 @@ public class QAJsonParser {
         return entryValue;
     }
 
-    public List<String> getQuestions(Neo4jRelationships relationship) {
+    public RandomList<String> getQuestions(Neo4jRelationships relationship) {
         return getEntry(relationship).getQuestions();
     }
 
-    public Map<String, List<String>> getAnswers(Neo4jRelationships relationship) {
+    public Map<String, RandomList<String>> getAnswers(Neo4jRelationships relationship) {
         return getEntry(relationship).getAnswers();
     }
 
-    public List<String> getSuccessAnswers(Neo4jRelationships relationship) {
+    public RandomList<String> getSuccessAnswers(Neo4jRelationships relationship) {
         return getAnswers(relationship).get("SUCCESS");
     }
 
-    public List<String> getFailureAnswers(Neo4jRelationships relationship) {
+    public RandomList<String> getFailureAnswers(Neo4jRelationships relationship) {
         return getAnswers(relationship).get("FAILURE");
     }
 
-    public Map<String, List<String>> getFollowUp(Neo4jRelationships relationship) {
+    public Map<String, RandomList<String>> getFollowUp(Neo4jRelationships relationship) {
         return getEntry(relationship).getFUP();
     }
 
-    public List<String> getFollowUpQuestions(Neo4jRelationships relationship) {
+    public RandomList<String> getFollowUpQuestions(Neo4jRelationships relationship) {
         return getFollowUp(relationship).get("Q");
     }
 
-    public List<String> getFollowUpAnswers(Neo4jRelationships relationship) {
+    public RandomList<String> getFollowUpAnswers(Neo4jRelationships relationship) {
         return getFollowUp(relationship).get("A");
     }
 }

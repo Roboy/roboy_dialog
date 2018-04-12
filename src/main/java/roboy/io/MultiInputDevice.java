@@ -2,7 +2,6 @@ package roboy.io;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Meta class to combine multiple input devices.

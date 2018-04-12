@@ -39,7 +39,10 @@ import static roboy.memory.Neo4jRelationships.*;
 public class IntroductionState extends State {
     private final String UPDATE_KNOWN_PERSON = "knownPerson";
     private final String LEARN_ABOUT_PERSON = "newPerson";
-    private final Logger logger = LogManager.getLogger();
+    private final Logger LOGGER = LogManager.getLogger();
+    private final RandomList<String> introPhrases = new RandomList<>("I'm Roboy. What's your name?");
+    private final RandomList<String> successResponsePhrases = new RandomList<>("Hey, I know you, %s!");
+    private final RandomList<String> failureResponsePhrases = new RandomList<>("Nice to meet you, %s!");
 
     private Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
     private State nextState;
@@ -50,14 +53,13 @@ public class IntroductionState extends State {
 
     @Override
     public Output act() {
-        // TODO: add more different introduction phrases
-        return Output.say("I'm Roboy. What's your name?");
+        return Output.say(getIntroPhrase());
     }
 
     @Override
     public Output react(Interpretation input) {
 
-        // expecting something like "I'm NAME"
+        // expecting something like "My name is NAME"
 
         // 1. get name
         String name = getNameFromInput(input);
@@ -66,7 +68,7 @@ public class IntroductionState extends State {
             // input couldn't be parsed properly
             // TODO: do something intelligent if the parser fails
             nextState = this;
-            logger.warn("IntroductionState couldn't get name! Staying in the same state.");
+            LOGGER.warn("IntroductionState couldn't get name! Staying in the same state.");
             return Output.say("Sorry, my parser is out of service.");
             // alternatively: Output.useFallback() or Output.sayNothing()
         }
@@ -80,15 +82,17 @@ public class IntroductionState extends State {
 
         // 3. update interlocutor in context
         updateInterlocutorInContext(person);
+        String retrievedPersonalFact = "";
+        Double segueProbability = 0.0;
 
         // 4. check if person is known/familiar
         if (person.FAMILIAR) {
-
             // 4a. person known/familiar
-            String retrievedResult = "";
-            RandomList<MemoryNodeModel> nodes = retrieveNodesFromMemoryByIds(person.getRelationships(Neo4jRelationships.FRIEND_OF));
+            // TODO: get some hobbies or occupation of the person to make answer more interesting
+            RandomList<MemoryNodeModel> nodes = getMemNodesByIds(person.getRelationships(FRIEND_OF));
             if (!nodes.isEmpty()) {
-                retrievedResult = " You are friends with " + nodes.getRandomElement().getProperties().get("name").toString();
+                retrievedPersonalFact = " You are friends with " +
+                        nodes.getRandomElement().getProperties().get("name").toString();
             }
 
             RelationshipAvailability availability = person.checkRelationshipAvailability(predicates);
@@ -99,17 +103,13 @@ public class IntroductionState extends State {
             } else {
                 nextState = getTransition(UPDATE_KNOWN_PERSON);
             }
-
-            // TODO: get some friends or hobbies of the person to make answer more interesting
-            return Output.say("Hey, I know you, " + person.getName() + retrievedResult);
-
         } else {
             // 4b. person is not known
             nextState = getTransition(LEARN_ABOUT_PERSON);
-
-            // TODO: what would you say to a new person?
-            return Output.say(String.format("Nice to meet you, %s!", name)).setSegue(new Segue(Segue.SegueType.DISTRACT, 0.6));
+            segueProbability = 0.6;
         }
+        Segue s = new Segue(Segue.SegueType.DISTRACT, segueProbability);
+        return Output.say(getResponsePhrase(person.getName(), person.FAMILIAR) + retrievedPersonalFact).setSegue(s);
     }
 
     @Override
@@ -118,34 +118,54 @@ public class IntroductionState extends State {
     }
 
     private String getNameFromInput(Interpretation input) {
+        String result = null;
         if (input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.STATEMENT) == 0) {
             String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
             if (tokens.length == 1) {
-                return tokens[0].replace("[", "").replace("]","").toLowerCase();
+                result =  tokens[0].replace("[", "").replace("]","").toLowerCase();
+                LOGGER.info(this.getClass().getName() + " -> Retrieved only one token: " + result);
+                return result;
             } else {
-                if (input.getFeatures().get(Linguistics.PARSER_RESULT).toString().equals("SUCCESS")) {
-                    List<Triple> result = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
-                    if (result.size() != 0) {
-                        return result.get(0).object.toLowerCase();
-                    } else {
-                        if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
-                            String name = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
-                            return !name.equals("") ? name : null;
-                        }
-                    }
+                if (input.getFeatures().get(Linguistics.PARSER_RESULT).toString().equals("SUCCESS") &&
+                        ((List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE)).size() != 0) {
+                    LOGGER.info(this.getClass().getName() + " -> Semantic parsing is successful and semantic triple exists");
+                    List<Triple> triple = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
+                    result = triple.get(0).object.toLowerCase();
+                    LOGGER.info(this.getClass().getName() + " -> Retrieved object " + result);
                 } else {
+                    LOGGER.warn(this.getClass().getName() + " -> Semantic parsing failed or semantic triple does not exist");
                     if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
+                        LOGGER.info(this.getClass().getName() + " -> OBJ_ANSWER exits");
                         String name = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
-                        return !name.equals("") ? name : null;
+                        if (!name.equals("")) {
+                            result = name;
+                            LOGGER.info(this.getClass().getName() + " -> Retrieved OBJ_ANSWER result " + result);
+                        } else {
+                            LOGGER.warn(this.getClass().getName() + " -> OBJ_ANSWER is empty");
+                        }
+                    } else {
+                        LOGGER.warn(this.getClass().getName() + " -> OBJ_ANSWER does not exit");
                     }
                 }
             }
         }
-        return null;
+        return result;
     }
 
     private void updateInterlocutorInContext(Interlocutor interlocutor) {
         Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(interlocutor);
+    }
+
+    private String getIntroPhrase() {
+        return introPhrases.getRandomElement();
+    }
+
+    private String getResponsePhrase(String name, boolean familiar) {
+        if (familiar) {
+            return String.format(successResponsePhrases.getRandomElement(), name);
+        } else {
+            return String.format(failureResponsePhrases.getRandomElement(), name);
+        }
     }
 
 
