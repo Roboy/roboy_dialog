@@ -56,19 +56,19 @@ public class PersonalInformationAskingState extends State {
     public PersonalInformationAskingState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
         String qaListPath = params.getParameter(QA_FILE_PARAMETER_ID);
-        LOGGER.info(this.getClass() + " -> The QAList path: " + qaListPath);
+        LOGGER.info(this.getClass().getName() + " -> The QAList path: " + qaListPath);
         qaValues = new QAJsonParser(qaListPath);
     }
 
     @Override
     public Output act() {
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
-        LOGGER.info(this.getClass() + " -> Retrieved Interlocutor: " + person.getName());
+        LOGGER.info(this.getClass().getName() + " -> Retrieved Interlocutor: " + person.getName());
 
         for (Neo4jRelationships predicate : predicates) {
             if (!person.hasRelationship(predicate)) {
                 selectedPredicate = predicate;
-                LOGGER.info(this.getClass() + " -> Selected predicate: " + selectedPredicate.type);
+                LOGGER.info(this.getClass().getName() + " -> Selected predicate: " + selectedPredicate.type);
                 break;
             }
         }
@@ -76,15 +76,15 @@ public class PersonalInformationAskingState extends State {
         String question = "";
         if (questions != null && !questions.isEmpty()) {
             question = questions.getRandomElement();
-            LOGGER.info(this.getClass() + " -> Selected question: " + question);
+            LOGGER.info(this.getClass().getName() + " -> Selected question: " + question);
         } else {
-            LOGGER.error(this.getClass() + " -> The list of " + selectedPredicate.type + " questions is empty or null");
+            LOGGER.error(this.getClass().getName() + " -> The list of " + selectedPredicate.type + " questions is empty or null");
         }
         try {
             Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, selectedPredicate));
-            LOGGER.info(this.getClass() + " -> Dialog IntentsHistory updated");
+            LOGGER.info(this.getClass().getName() + " -> Dialog IntentsHistory updated");
         } catch (Exception e) {
-            LOGGER.error(this.getClass() + " -> Error on updating the IntentHistory: " + e.getMessage());
+            LOGGER.error(this.getClass().getName() + " -> Error on updating the IntentHistory: " + e.getMessage());
         }
         return State.Output.say(question);
     }
@@ -92,29 +92,29 @@ public class PersonalInformationAskingState extends State {
     @Override
     public Output react(Interpretation input) {
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
-        LOGGER.info(this.getClass() + "-> Retrieved Interlocutor: " + person.getName());
+        LOGGER.info(this.getClass().getName() + "-> Retrieved Interlocutor: " + person.getName());
         RandomList<String> answers;
         String answer = "I have no words";
         String result = InferResult(input);
 
         if (result != null && !result.equals("")) {
-            LOGGER.info(this.getClass() + " -> Inference was successful");
+            LOGGER.info(this.getClass().getName() + " -> Inference was successful");
             answers = qaValues.getSuccessAnswers(selectedPredicate);
             person.addInformation(selectedPredicate.type, result);
             Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
-            LOGGER.info(this.getClass() + " -> Updated Interlocutor: " + person.getName());
+            LOGGER.info(this.getClass().getName() + " -> Updated Interlocutor: " + person.getName());
         } else {
-            LOGGER.warn(this.getClass() + " -> Inference failed");
+            LOGGER.warn(this.getClass().getName() + " -> Inference failed");
             answers = qaValues.getFailureAnswers(selectedPredicate);
             result = "";
-            LOGGER.warn(this.getClass() + " -> The result is empty. Nothing to store");
+            LOGGER.warn(this.getClass().getName() + " -> The result is empty. Nothing to store");
         }
         if (answers != null && !answers.isEmpty()) {
             answer = String.format(answers.getRandomElement(), result);
         } else {
-            LOGGER.error(this.getClass() + " -> The list of " + selectedPredicate.type + " answers is empty or null");
+            LOGGER.error(this.getClass().getName() + " -> The list of " + selectedPredicate.type + " answers is empty or null");
         }
-        LOGGER.info(this.getClass() + " -> Produced answer: " + answer);
+        LOGGER.info(this.getClass().getName() + " -> Produced answer: " + answer);
         nextState = getTransition(TRANSITION_INFO_OBTAINED);
         Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE, 0.5);
         return Output.say(answer).setSegue(s);
@@ -143,36 +143,36 @@ public class PersonalInformationAskingState extends State {
             String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
             if (tokens.length == 1) {
                 result = tokens[0].replace("[", "").replace("]","").toLowerCase();
-                LOGGER.info(this.getClass() + " -> Retrieved only one token: " + result);
+                LOGGER.info(this.getClass().getName() + " -> Retrieved only one token: " + result);
             } else {
                 if (input.getFeatures().get(Linguistics.PARSER_RESULT).toString().equals("SUCCESS") &&
                         ((List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE)).size() != 0) {
                     List<Triple> sem_triple = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
-                    LOGGER.info(this.getClass() + " -> Semantic parsing is successful and semantic triple exists");
+                    LOGGER.info(this.getClass().getName() + " -> Semantic parsing is successful and semantic triple exists");
                     if (sem_triple.get(0).predicate.contains(selectedPredicate.type)) {
-                        LOGGER.info(this.getClass() + " -> Semantic predicate " + selectedPredicate.type + " exits");
+                        LOGGER.info(this.getClass().getName() + " -> Semantic predicate " + selectedPredicate.type + " exits");
                         result = sem_triple.get(0).object.toLowerCase();
-                        LOGGER.info(this.getClass() + " -> Retrieved object " + result);
+                        LOGGER.info(this.getClass().getName() + " -> Retrieved object " + result);
                     } else {
-                        LOGGER.warn(this.getClass() + " -> Semantic predicate " + selectedPredicate.type + " does not exit");
+                        LOGGER.warn(this.getClass().getName() + " -> Semantic predicate " + selectedPredicate.type + " does not exit");
                     }
                 } else {
-                    LOGGER.warn(this.getClass() + " -> Semantic parsing failed or semantic triple does not exist");
+                    LOGGER.warn(this.getClass().getName() + " -> Semantic parsing failed or semantic triple does not exist");
                     if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
-                        LOGGER.info(this.getClass() + " -> OBJ_ANSWER exits");
+                        LOGGER.info(this.getClass().getName() + " -> OBJ_ANSWER exits");
                         result = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
                         if (!result.equals("")) {
-                            LOGGER.info(this.getClass() + " -> Retrieved OBJ_ANSWER result " + result);
+                            LOGGER.info(this.getClass().getName() + " -> Retrieved OBJ_ANSWER result " + result);
                         } else {
-                            LOGGER.warn(this.getClass() + " -> OBJ_ANSWER result is empty");
+                            LOGGER.warn(this.getClass().getName() + " -> OBJ_ANSWER result is empty");
                         }
                     } else {
-                        LOGGER.warn(this.getClass() + " -> OBJ_ANSWER does not exit");
+                        LOGGER.warn(this.getClass().getName() + " -> OBJ_ANSWER does not exit");
                     }
                 }
             }
         } else {
-            LOGGER.warn(this.getClass() + " -> The sentence type is NOT a STATEMENT");
+            LOGGER.warn(this.getClass().getName() + " -> The sentence type is NOT a STATEMENT");
         }
         return result;
     }
