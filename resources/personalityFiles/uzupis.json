@@ -18,7 +18,7 @@
         "next": "Farewell"
       },
       "parameters" : {
-        "QAFilePath" : "sentences/UzupisQAList.json"
+        "QAFilePath" : "resources/sentences/UzupisQAList.json"
       }
     },
     {

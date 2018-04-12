@@ -23,7 +23,7 @@
         "questionAnswering": "QuestionAnswering"
       },
       "parameters": {
-        "qaFile": "sentences/QAList.json"
+        "qaFile": "resources/sentences/QAList.json"
       }
     },
     {
@@ -33,7 +33,7 @@
         "questionAnswering": "QuestionAnswering"
       },
       "parameters": {
-        "qaFile": "sentences/QAList.json"
+        "qaFile": "resources/sentences/QAList.json"
       }
     },
     {

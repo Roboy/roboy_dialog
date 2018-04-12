@@ -66,22 +66,22 @@ public class QAParserTest {
 
     @Test
     public void testAnswers() {
-        assertEquals("TEST_SUCCESS", parser.getEntry(Neo4jRelationships.IS).getAnswers().get("SUCCESS").get(0));
+        assertEquals("TEST_SUCCESS %s", parser.getEntry(Neo4jRelationships.IS).getAnswers().get("SUCCESS").get(0));
         assertEquals("TEST_FAILURE", parser.getEntry(Neo4jRelationships.IS).getAnswers().get("FAILURE").get(0));
-        assertEquals("TEST_SUCCESS", parser.getAnswers(Neo4jRelationships.IS).get("SUCCESS").get(0));
+        assertEquals("TEST_SUCCESS %s", parser.getAnswers(Neo4jRelationships.IS).get("SUCCESS").get(0));
         assertEquals("TEST_FAILURE", parser.getAnswers(Neo4jRelationships.IS).get("FAILURE").get(0));
-        assertEquals("TEST_SUCCESS", parser.getSuccessAnswers(Neo4jRelationships.IS).get(0));
+        assertEquals("TEST_SUCCESS %s", parser.getSuccessAnswers(Neo4jRelationships.IS).get(0));
         assertEquals("TEST_FAILURE", parser.getFailureAnswers(Neo4jRelationships.IS).get(0));
     }
 
     @Test
     public void testFollowUp() {
-        assertEquals("TEST_FUP_QUESTION", parser.getEntry(Neo4jRelationships.IS).getFUP().get("Q").get(0));
-        assertEquals("TEST_FUP_ANSWER", parser.getEntry(Neo4jRelationships.IS).getFUP().get("A").get(0));
-        assertEquals("TEST_FUP_QUESTION", parser.getFollowUp(Neo4jRelationships.IS).get("Q").get(0));
-        assertEquals("TEST_FUP_ANSWER", parser.getFollowUp(Neo4jRelationships.IS).get("A").get(0));
-        assertEquals("TEST_FUP_QUESTION", parser.getFollowUpQuestions(Neo4jRelationships.IS).get(0));
-        assertEquals("TEST_FUP_ANSWER", parser.getFollowUpAnswers(Neo4jRelationships.IS).get(0));
+        assertEquals("TEST_FUP_QUESTION %s", parser.getEntry(Neo4jRelationships.IS).getFUP().get("Q").get(0));
+        assertEquals("TEST_FUP_ANSWER %s", parser.getEntry(Neo4jRelationships.IS).getFUP().get("A").get(0));
+        assertEquals("TEST_FUP_QUESTION %s", parser.getFollowUp(Neo4jRelationships.IS).get("Q").get(0));
+        assertEquals("TEST_FUP_ANSWER %s", parser.getFollowUp(Neo4jRelationships.IS).get("A").get(0));
+        assertEquals("TEST_FUP_QUESTION %s", parser.getFollowUpQuestions(Neo4jRelationships.IS).get(0));
+        assertEquals("TEST_FUP_ANSWER %s", parser.getFollowUpAnswers(Neo4jRelationships.IS).get(0));
     }
 
     @AfterClass

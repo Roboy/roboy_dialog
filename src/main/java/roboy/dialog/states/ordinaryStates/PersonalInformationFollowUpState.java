@@ -61,14 +61,14 @@ public class PersonalInformationFollowUpState extends State {
     @Override
     public Output act() {
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
-        LOGGER.info(this.getClass().getName() + "-> Retrieved Interlocutor: " + person.getName());
+        LOGGER.info("-> Retrieved Interlocutor: " + person.getName());
 
         for (Neo4jRelationships predicate : predicates) {
             if (person.hasRelationship(predicate) &&
                     !Context.getInstance().DIALOG_INTENTS.contains(new IntentValue(INTENTS_HISTORY_ID, predicate)) &&
                     !Context.getInstance().DIALOG_INTENTS.contains(new IntentValue(PersonalInformationAskingState.INTENTS_HISTORY_ID, predicate))) {
                 selectedPredicate = predicate;
-                LOGGER.info(this.getClass().getName() + " -> Selected predicate: " + selectedPredicate.type);
+                LOGGER.info(" -> Selected predicate: " + selectedPredicate.type);
                 break;
             }
         }
@@ -80,27 +80,27 @@ public class PersonalInformationFollowUpState extends State {
             RandomList<MemoryNodeModel> nodes = getMemNodesByIds(person.getRelationships(selectedPredicate));
             if (!nodes.isEmpty()) {
                 retrievedResult = nodes.getRandomElement().getProperties().get("name").toString();
-                LOGGER.info(this.getClass().getName() + " -> Retrieved memory node name: " + retrievedResult);
+                LOGGER.info(" -> Retrieved memory node name: " + retrievedResult);
             } else {
-                LOGGER.error(this.getClass().getName() + "Could not retrieve memory data");
+                LOGGER.error("Could not retrieve memory data");
             }
             if (!retrievedResult.equals("")) {
                 String question = "";
                 if (questions != null && !questions.isEmpty()) {
                     question = String.format(questions.getRandomElement(), retrievedResult);
-                    LOGGER.info(this.getClass().getName() + " -> Selected question: " + question);
+                    LOGGER.info(" -> Selected question: " + question);
                 } else {
-                    LOGGER.error(this.getClass().getName() + " -> The list of " + selectedPredicate.type + " questions is empty or null");
+                    LOGGER.error(" -> The list of " + selectedPredicate.type + " questions is empty or null");
                 }
                 try {
                     Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, selectedPredicate));
-                    LOGGER.info(this.getClass().getName() + " -> Dialog IntentsHistory updated");
+                    LOGGER.info(" -> Dialog IntentsHistory updated");
                 } catch (Exception e) {
-                    LOGGER.error(this.getClass().getName() + " -> Error on updating the IntentHistory: " + e.getMessage());
+                    LOGGER.error(" -> Error on updating the IntentHistory: " + e.getMessage());
                 }
                 return Output.say(question);
             } else {
-                LOGGER.error(this.getClass().getName() + "The retrieved memory data is empty");
+                LOGGER.error("The retrieved memory data is empty");
                 return Output.sayNothing().setSegue(s);
             }
         } else {
@@ -111,30 +111,30 @@ public class PersonalInformationFollowUpState extends State {
     @Override
     public Output react(Interpretation input) {
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
-        LOGGER.info(this.getClass().getName() + "-> Retrieved Interlocutor: " + person.getName());
+        LOGGER.info("-> Retrieved Interlocutor: " + person.getName());
         RandomList<String> answers;
         String answer = "I have no words";
         String result = InferUpdateResult(input);
 
         if (selectedPredicate != null) {
             if (result != null && !result.equals("")) {
-                LOGGER.info(this.getClass().getName() + " -> Inference was successful");
+                LOGGER.info(" -> Inference was successful");
                 answers = qaValues.getFollowUpAnswers(selectedPredicate);
                 person.addInformation(selectedPredicate.type, result);
                 Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
-                LOGGER.info(this.getClass().getName() + " -> Updated Interlocutor: " + person.getName());
+                LOGGER.info(" -> Updated Interlocutor: " + person.getName());
             } else {
-                LOGGER.warn(this.getClass().getName() + " -> Inference failed");
+                LOGGER.warn(" -> Inference failed");
                 answers = qaValues.getFollowUpAnswers(selectedPredicate);
-                LOGGER.warn(this.getClass().getName() + " -> The result is empty. Nothing to update");
+                LOGGER.warn(" -> The result is empty. Nothing to update");
             }
             if (answers != null && !answers.isEmpty()) {
                 answer = String.format(answers.getRandomElement(), "");
             } else {
-                LOGGER.error(this.getClass().getName() + " -> The list of " + selectedPredicate.type + " answers is empty or null");
+                LOGGER.error(" -> The list of " + selectedPredicate.type + " answers is empty or null");
             }
         } else {
-            LOGGER.error(this.getClass().getName() + " -> Selected predicate is null");
+            LOGGER.error(" -> Selected predicate is null");
         }
 
         nextState = getTransition(TRANSITION_INFO_UPDATED);

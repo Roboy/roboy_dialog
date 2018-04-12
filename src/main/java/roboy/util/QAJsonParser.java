@@ -8,9 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.memory.Neo4jRelationships;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.util.Map;
 
@@ -44,7 +42,7 @@ public class QAJsonParser {
     private Gson gson;
     private JsonModel jsonObject;
 
-    final Logger LOGGER = LogManager.getLogger();
+    private final Logger LOGGER = LogManager.getLogger();
 
     public QAJsonParser() {
         jsonObject = null;
@@ -56,7 +54,8 @@ public class QAJsonParser {
 
     public JsonModel parse(String file) {
         try {
-            InputStream input = QAJsonParser.class.getClassLoader().getResourceAsStream(file);
+            File f = new File(file);
+            InputStream input = new FileInputStream(f);
             BufferedReader br = new BufferedReader(new InputStreamReader(input));
             gson = new Gson();
             return gson.fromJson(br, JsonModel.class);

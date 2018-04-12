@@ -123,28 +123,28 @@ public class IntroductionState extends State {
             String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
             if (tokens.length == 1) {
                 result =  tokens[0].replace("[", "").replace("]","").toLowerCase();
-                LOGGER.info(this.getClass().getName() + " -> Retrieved only one token: " + result);
+                LOGGER.info(" -> Retrieved only one token: " + result);
                 return result;
             } else {
                 if (input.getFeatures().get(Linguistics.PARSER_RESULT).toString().equals("SUCCESS") &&
                         ((List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE)).size() != 0) {
-                    LOGGER.info(this.getClass().getName() + " -> Semantic parsing is successful and semantic triple exists");
+                    LOGGER.info(" -> Semantic parsing is successful and semantic triple exists");
                     List<Triple> triple = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
                     result = triple.get(0).object.toLowerCase();
-                    LOGGER.info(this.getClass().getName() + " -> Retrieved object " + result);
+                    LOGGER.info(" -> Retrieved object " + result);
                 } else {
-                    LOGGER.warn(this.getClass().getName() + " -> Semantic parsing failed or semantic triple does not exist");
+                    LOGGER.warn(" -> Semantic parsing failed or semantic triple does not exist");
                     if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
-                        LOGGER.info(this.getClass().getName() + " -> OBJ_ANSWER exits");
+                        LOGGER.info(" -> OBJ_ANSWER exits");
                         String name = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
                         if (!name.equals("")) {
                             result = name;
-                            LOGGER.info(this.getClass().getName() + " -> Retrieved OBJ_ANSWER result " + result);
+                            LOGGER.info(" -> Retrieved OBJ_ANSWER result " + result);
                         } else {
-                            LOGGER.warn(this.getClass().getName() + " -> OBJ_ANSWER is empty");
+                            LOGGER.warn(" -> OBJ_ANSWER is empty");
                         }
                     } else {
-                        LOGGER.warn(this.getClass().getName() + " -> OBJ_ANSWER does not exit");
+                        LOGGER.warn(" -> OBJ_ANSWER does not exit");
                     }
                 }
             }
