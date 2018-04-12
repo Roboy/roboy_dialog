@@ -223,7 +223,13 @@ public class QuestionAnsweringState extends State {
             return null;
         }
 
-        String answer = "I like ";
+        String answer = "I like " + inferMemoryAnswer(triples, roboy) + "humans. ";
+        return Output.say(answer);
+    }
+
+
+    private String inferMemoryAnswer(List<Triple> triples, Roboy roboy) {
+        String answer = "";
         for (Triple result : triples) {
 
             if (result.predicate != null) {
@@ -249,10 +255,8 @@ public class QuestionAnsweringState extends State {
                 }
             }
         }
-        answer += "humans. ";
-        return Output.say(answer);
+        return answer;
     }
-
 
 
     @Override
