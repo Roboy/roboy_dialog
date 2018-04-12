@@ -559,7 +559,9 @@ Available ROS packages are:
     - ``roboy_speech_recognition`` (speech to text using Bing Speech API)
     - ``roboy_audio`` (audio source localization)
     - ``roboy_vision`` (face recogntion & object classification and localization)
-    - ``roboy_face`` (triggers emotions)::
+    - ``roboy_face`` (triggers emotions)
+
+Example ROS config::
 
     ROS_ENABLED: false
     ROS_MASTER_IP: 10.183.49.162
@@ -582,7 +584,9 @@ Arbitraty of the following outputs can be used simultaniously at the runtime::
     - ``cmdline``
     - ``ibm`` (uses IBM Bluemix, requires Internet connection, user & pass configured below)
     - ``emotions`` (requires ``roboy_face`` ROS package)
-    - ``udp`` (sends packets on the port configure below)::
+    - ``udp`` (sends packets on the port configure below)
+
+Example IO config::
 
     INPUT: cmdline
     OUTPUTS:
@@ -594,12 +598,14 @@ Personality
 ^^^^^^^^^^^
 
 Here you specify the state machine description store in the JSON file containing personality, i.e. states and transitions between them::
+
     PERSONALITY_FILE: "resources/personalityFiles/OrdinaryPersonality.json"
     
 Utilities
 ^^^^^^^^^^
  
 Configure third party communication ports, credentials, etc.::
+
     UDP_IN_SOCKET: 55555
     UDP_OUT_SOCKET: 55556
     UDP_HOST_ADDRESS: 127.0.0.1
