@@ -89,7 +89,7 @@ public class ContextGUI {
         for (AbstractValueHistory attribute : Context.HistoryInterface.allHistories) {
             historyPanel.add(new JLabel(attribute.getClass().getSimpleName() + ":", JLabel.CENTER));
             Map<Integer, Object> vals = attribute.getLastNValues(MAX_HISTORY_VALUES);
-            int elements = attribute.valuesAddedSinceStart();
+            int elements = attribute.getNumberOfValuesSinceStart();
             DefaultListModel<String> sorted = new DefaultListModel<>();
             if (vals.size() == 0) {
                 sorted.add(0, NO_VALUE);
@@ -144,7 +144,7 @@ public class ContextGUI {
     private void updateHistories() {
         for (AbstractValueHistory attribute : Context.HistoryInterface.allHistories) {
             Map<Integer, Object> vals = attribute.getLastNValues(MAX_HISTORY_VALUES);
-            int elements = attribute.valuesAddedSinceStart();
+            int elements = attribute.getNumberOfValuesSinceStart();
             if (vals.size() == 0) {
                 continue;
             }

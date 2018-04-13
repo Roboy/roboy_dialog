@@ -14,7 +14,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  */
 public abstract class PeriodicUpdater<Target> extends ExternalUpdater {
     protected final Target target;
-    protected final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     public static int updateFrequencySeconds = 1;
 
     /**

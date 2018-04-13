@@ -23,7 +23,7 @@ public interface AbstractValueHistory<K, V> extends AbstractValue<V> {
     /**
      * Returns the total amount of updateValue() calls made on this history.
      */
-    int valuesAddedSinceStart();
+    int getNumberOfValuesSinceStart();
 
     /**
      * Returns if object is present in this history.

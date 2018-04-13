@@ -6,7 +6,6 @@ import roboy.ros.RosMainNode;
 import roboy_communication_cognition.DirectionVector;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -43,7 +42,7 @@ public class Context {
     public final ActiveInterlocutorUpdater ACTIVE_INTERLOCUTOR_UPDATER;
 
     /* EXTERNAL UPDATERS DEFINED HERE */
-    private volatile boolean rosInitialized = false;
+    private boolean rosInitialized = false;
     private AudioDirectionUpdater AUDIO_ANGLES_UPDATER;
     private ROSTestUpdater ROS_TEST_UPDATER;
 
@@ -184,7 +183,7 @@ public class Context {
          * Note: as histories can be limited in size, less elements might be actually stored than the total.
          */
         public int valuesAddedSinceStart() {
-            return valueHistory.valuesAddedSinceStart();
+            return valueHistory.getNumberOfValuesSinceStart();
         }
 
         /**

@@ -95,7 +95,7 @@ public class ValueHistory<V> implements AbstractValueHistory<Integer, V> {
     }
 
     @Override
-    public int valuesAddedSinceStart() {
+    public int getNumberOfValuesSinceStart() {
         return counter;
     }
 }

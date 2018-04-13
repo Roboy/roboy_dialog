@@ -79,7 +79,7 @@ public class TimestampedValueHistory<V> implements AbstractValueHistory<Long, V>
     }
 
     @Override
-    public int valuesAddedSinceStart() {
+    public int getNumberOfValuesSinceStart() {
         return totalValuesAdded;
     }
 

@@ -4,7 +4,7 @@
 Context
 *******
 
-The goal of Context is to collect information about Roboy's environment and state. This information can be used by the DM classes and also to react upon situations that match certain conditions, such as turning the head of Roboy when the Interlocutor moves.
+The goal of Context is to collect information about Roboy's environment and state. This information can be used by the dialog manager and also to react upon situations that match certain conditions, such as turning the head of Roboy when the Interlocutor moves.
 
 Architecture
 ============
@@ -42,7 +42,7 @@ Adding a ``ValueHistory`` is very much alike to adding a ``Value``, just make su
 How to add Updaters?
 ====================
 
-New values can only flow into the Context over an ``Updater`` instance. Internal Updaters can be used by DM classes to actively add new values. External Updaters run in separate threads and query or listen for new values, for example over a ROS connection.
+New values can only flow into the Context over an ``Updater`` instance. Internal Updaters can be used by the dialog manager to actively add new values. External Updaters run in separate threads and query or listen for new values, for example over a ROS connection.
 
 Updaters only add a single new data unit, relying on the ``AbstractValue.updateValue()`` method. Thanks to the inheritance chain, you can use an arbitrary Value or ValueHistory implementation as the target of an updater.
 

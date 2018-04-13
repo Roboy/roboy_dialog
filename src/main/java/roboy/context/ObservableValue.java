@@ -19,6 +19,5 @@ public class ObservableValue<V> extends Observable implements AbstractValue<V> {
         this.value = value;
         setChanged();
         notifyObservers();
-        clearChanged();
     }
 }
