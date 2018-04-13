@@ -15,9 +15,9 @@ public class VerbalizerTest {
 		SpeechAction action = (SpeechAction) verbalizer.verbalize(new Interpretation("0666-01-01"));
 		assertEquals("January first six hundred sixty six",action.getText());
 		action = (SpeechAction) verbalizer.verbalize(new Interpretation("2010-12-31"));
-		assertEquals("December thiry first two thousand ten",action.getText());
+		assertEquals("December thirty first two thousand ten",action.getText());
 		action = (SpeechAction) verbalizer.verbalize(new Interpretation("1040-09-13"));
-		assertEquals("September thirteenth one thousand fourty",action.getText());
+		assertEquals("September thirteenth one thousand forty",action.getText());
 		action = (SpeechAction) verbalizer.verbalize(new Interpretation("2300-07-28")); 
 		assertEquals("July twenty eighth two thousand three hundred",action.getText());
 		action = (SpeechAction) verbalizer.verbalize(new Interpretation("1604-04-04"));

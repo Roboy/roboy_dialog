@@ -1,7 +1,13 @@
 package roboy.memory.nodes;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.annotations.Expose;
 import com.google.gson.reflect.TypeToken;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import roboy.memory.Neo4jMemoryInterface;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -13,26 +19,36 @@ import java.util.Map;
  * This class represents a full node similarly to its representation in Memory.
  */
 public class MemoryNodeModel {
+    final static Logger logger = LogManager.getLogger();
+    protected Neo4jMemoryInterface memory;
     //Unique node IDs assigned by the memory.
     private int id;
     //"Person" etc.
+    @Expose
     private ArrayList<String> labels;
     //"Person" etc. Duplicate because Memory expects a single Label in CREATE queries, but
     // returns an array of labels inside GET responses.
+    @Expose
     private String label;
     //name, birthdate
+    @Expose
     private HashMap<String, Object> properties;
     //Relation: <name as String, ArrayList of IDs (nodes related to this node over this relation)>
+    @Expose
     private HashMap<String, ArrayList<Integer>> relationships;
     //If true, then fields with default values will be removed from JSON format.
     // Transient as stripping information is not a part of the node and not included in query.
+    @Expose
     transient boolean stripQuery = false;
 
-    public MemoryNodeModel(){
+    public MemoryNodeModel(Neo4jMemoryInterface memory){
+        this.memory = memory;
+        // TODO why id is assigned here?
         this.id = 0;
     }
 
-    public MemoryNodeModel(boolean stripQuery) {
+    public MemoryNodeModel(boolean stripQuery, Neo4jMemoryInterface memory) {
+        this.memory = memory;
         if(!stripQuery) {
             id = 0;
             labels = new ArrayList<>();
@@ -116,8 +132,18 @@ public class MemoryNodeModel {
     /**
      * This toString method returns the whole object, including empty variables.
      */
-    public String toJSON(Gson gson){
-        String json = gson.toJson(this);
+    public String toJSON(){
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        String json;
+        // ID of 0 is default ID for an uncertain node.
+        // If there exists a valid non-default ID value obtained from memory, it has to be included
+        if (getId() != 0) {
+            JsonElement jsonElement = gson.toJsonTree(this);
+            jsonElement.getAsJsonObject().addProperty("id", getId());
+            json = gson.toJson(jsonElement);
+        } else {
+            json = gson.toJson(this);
+        }
         if(stripQuery) {
             //This is based on https://stackoverflow.com/questions/23920740/remove-empty-collections-from-a-json-with-gson
             Type type = new TypeToken<Map<String, Object>>() {}.getType();
@@ -155,4 +181,11 @@ public class MemoryNodeModel {
     public MemoryNodeModel fromJSON(String json, Gson gson) {
         return gson.fromJson(json, this.getClass());
     }
+
+//    public String toString() {
+//        return "\nid: " + this.getId() +
+//                "\nlabels: " + this.getLabels() +
+//                "\nrelationships: " + this.getRelationships().toString() +
+//                "\nproperties: " + this.getProperties();
+//    }
 }

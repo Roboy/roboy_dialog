@@ -1,8 +1,11 @@
 package roboy.ros;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.ros.node.ConnectedNode;
 import org.ros.node.service.ServiceClient;
-import roboy.dialog.Config;
+import org.ros.node.topic.Subscriber;
+import roboy.util.ConfigManager;
 
 import java.util.HashMap;
 
@@ -14,57 +17,81 @@ import java.util.HashMap;
  */
 
 class RosManager {
-    private HashMap<RosClients, ServiceClient> clientMap;
+    private HashMap<RosServiceClients, ServiceClient> serviceMap;
+    private HashMap<RosSubscribers, Subscriber> subscriberMap;
+
+    final Logger LOGGER = LogManager.getLogger();
 
     /**
      * Initializes all ServiceClients for Ros.
      */
     boolean initialize(ConnectedNode node) {
-        clientMap = new HashMap<>();
+        serviceMap = new HashMap<>();
+        subscriberMap = new HashMap<>();
         boolean success = true;
-        // Iterate through the RosClients enum, mapping a client for each.
-        for(RosClients c : RosClients.values()) {
-            // Do not initialize non-memory services if NOROS, but Memory!
-            if(Config.NOROS && Config.MEMORY) {
-                if (!c.address.contains("memory")) {
-                    continue;
+        // Iterate through the RosServiceClients enum, mapping a client for each.
+        for(RosServiceClients client : RosServiceClients.values()) {
+            
+
+            if (ConfigManager.ROS_ACTIVE_PKGS.contains(client.rosPackage)) {
+                try {
+                    serviceMap.put(client, node.newServiceClient(client.address, client.type));
+                    LOGGER.info("{} client initialization SUCCESS!", client.toString());
+                } catch (Exception e) {
+                    success = false;
+                    LOGGER.warn("{} client initialization FAILED!", client.toString());
                 }
             }
-            try {
-                clientMap.put(c, node.newServiceClient(c.address, c.type));
-                System.out.println(c.toString()+" initialization SUCCESS!");
-            } catch (Exception e) {
-                success = false;
-                System.out.println(c.toString()+" initialization FAILED, could not reach ROS service!");
+
+
+        }
+
+        for(RosSubscribers subscriber : RosSubscribers.values()) {
+
+            if (ConfigManager.ROS_ACTIVE_PKGS.contains(subscriber.rosPackage)) {
+                try {
+                    subscriberMap.put(subscriber, node.newSubscriber(subscriber.address, subscriber.type));
+                    LOGGER.info("{} subscriber initialization SUCCESS!", subscriber.toString());
+                } catch (Exception e) {
+                    success = false;
+                    LOGGER.warn("{} subscriber initialization FAILED!", subscriber.toString());
+                }
             }
         }
-        if(Config.SHUTDOWN_ON_SERVICE_FAILURE && !success) {
-            throw new RuntimeException("DialogSystem shutdown caused by ROS service initialization failure.");
-        }
+
         return success;
     }
 
     /**
-     * Should always be called before getServiceClient, such that if a client failed to initialize,
+     * Should always be called before getService, such that if a client failed to initialize,
      * a fallback response can be created instead. Important if SHUTDOWN_ON_ROS_FAILURE is false.
      */
-    boolean notInitialized(RosClients c) {
-        if(clientMap == null) {
-            if(Config.SHUTDOWN_ON_SERVICE_FAILURE) {
-                throw new RuntimeException("ROS clients have not been initialized! Stopping DM execution.");
-            }
-            System.out.println("ROS clients have not been initialized! Is the ROS host running?");
+    boolean notInitialized(RosServiceClients c) {
+        if(serviceMap == null) {
+            LOGGER.error("ROS clients have not been initialized! Is the ROS host running?");
+//            return true;
+        }
+        return !(serviceMap.containsKey(c));
+    }
+
+    boolean notInitialized(RosSubscribers s) {
+        if(subscriberMap == null) {
+            LOGGER.error("ROS subscribers have not been initialized! Is the ROS host running?");
             return true;
         }
-        return !clientMap.containsKey(c);
+        return !(subscriberMap.containsKey(s));
     }
 
     /**
      *
-     * Returns the ServiceClient matching the RosClients entry.
+     * Returns the ServiceClient matching the RosServiceClients entry.
      * the return might need casting before further use.
      */
-    ServiceClient getServiceClient(RosClients c) {
-        return clientMap.get(c);
+    ServiceClient getService(RosServiceClients c) {
+        return serviceMap.get(c);
+    }
+
+    Subscriber getSubscriber(RosSubscribers s) {
+        return subscriberMap.get(s);
     }
 }

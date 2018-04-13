@@ -1,10 +1,12 @@
 package roboy.linguistics.sentenceanalysis;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Linguistics.SENTENCE_TYPE;
+import roboy.linguistics.Triple;
 
 /**
  * An interpretation of all inputs to Roboy consists of the sentence type and an
@@ -18,6 +20,14 @@ public class Interpretation {
 
 	private Map<String,Object> features;
 	private SENTENCE_TYPE sentenceType; //TODO: turn this into a feature
+
+
+	// new type safe fields to use with semantic parser, refactor to private fields + getter & setter later
+	// getting Objects without any type information from the hash map is not a good practice, this is not JavaScript
+	public String answer;
+	public String underspecifiedQuestion;
+	public List<Triple> semParserTriples;
+	public Linguistics.PARSER_OUTCOME parserOutcome;
 	
 	public Interpretation(String sentence){
 		features = new HashMap<>();

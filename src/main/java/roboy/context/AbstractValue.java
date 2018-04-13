@@ -7,5 +7,5 @@ package roboy.context;
 public interface AbstractValue<V> {
     V getValue();
 
-    void updateValue(V key);
+    void updateValue(V value);
 }

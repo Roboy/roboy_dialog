@@ -1,22 +1,22 @@
 package roboy.linguistics;
 
 /**
- * Represents a simple who(agens) does what(predicate) to whom(patiens) relation.
+ * Represents a simple who(subject) does what(predicate) to whom(object) relation.
  */
 public class Triple {
 	
-	public String agens;
+	public String subject; // subject
 	public String predicate;
-	public String patiens;
+	public String object; // object
 
-	public Triple(String predicate, String agens, String patiens){
+	public Triple(String predicate, String subject, String object){
 		this.predicate = predicate;
-		this.agens = agens;
-		this.patiens = patiens;
+		this.subject = subject;
+		this.object = object;
 	}
 	
 	public String toString(){
-		return agens+"-"+predicate+"-"+patiens;
+		return subject +"-"+predicate+"-"+ object;
 	}
 //	public boolean equals(Triple t)
 //	{

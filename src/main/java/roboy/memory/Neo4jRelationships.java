@@ -22,4 +22,15 @@ public enum Neo4jRelationships {
     Neo4jRelationships(String type) {
         this.type=type;
     }
+
+    public static String determineNodeType(String relationship) {
+        // TODO expand list as new Node types are added.
+        if(relationship.equals(HAS_HOBBY.type)) return "Hobby";
+        if(relationship.equals(FROM.type)) return "Country";
+        if(relationship.equals(WORK_FOR.type)) return "Organization";
+        if(relationship.equals(STUDY_AT.type)) return "Organization";
+        if(relationship.equals(OCCUPIED_AS.type)) return "Occupation";
+        if(relationship.equals(OTHER.type)) return "Other";
+        else return "";
+    }
 }

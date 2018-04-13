@@ -2,8 +2,6 @@ package roboy.memory;
 
 import java.util.*;
 
-
-
 import org.apache.jena.query.*;
 import org.apache.jena.sparql.*;
 import org.apache.jena.rdf.model.*;

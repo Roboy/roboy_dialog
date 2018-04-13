@@ -1,9 +1,6 @@
 package roboy.memory;
 
 import java.io.IOException;
-import java.util.List;
-import roboy.util.Concept;
-import roboy.util.Relation;
 
 /**
  * The Memory interface contains of methods to save and retrieve information.
@@ -21,13 +18,15 @@ public interface Memory<T> {
 	 */
 	public boolean save(T object) throws InterruptedException, IOException;
 	
-	/**
-	 * Retrieve an element from memory.
-	 * 
-	 * @param object a version of the object that lacks information (e.g. it only has the ID)
-	 * @return a list of objects that match the query containing all the required information
-	 * @throws InterruptedException
-	 * @throws IOException
-	 */
-	public List<T> retrieve(T object) throws InterruptedException, IOException;
+//	/**
+//	 * Retrieve an element from memory.
+//	 *
+//	 * @param object a version of the object that lacks information (e.g. it only has the ID)
+//	 * @return a list of objects that match the query containing all the required information
+//	 * @throws InterruptedException
+//	 * @throws IOException
+//	 */
+//	public List<T> retrieve(T object) throws InterruptedException, IOException;
+
+
 }

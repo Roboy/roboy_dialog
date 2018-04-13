@@ -1,0 +1,41 @@
+{
+  "comment": "A simple personality defined by four states.\nThis string is just a comment.",
+  "initialState": "Greetings",
+  "states": [
+    {
+      "identifier": "Greetings",
+      "implementation": "roboy.dialog.tutorials.tutorialStates.ToyGreetingsState",
+      "fallback": "RandomAnswer",
+      "transitions": {
+        "next": "Intro",
+        "noHello": "Farewell"
+      },
+      "comment": "Initial state: Greets the person, takes one of the transitions based on response."
+    },
+    {
+      "identifier": "Intro",
+      "implementation": "roboy.dialog.tutorials.tutorialStates.ToyIntroState",
+      "transitions": {
+        "next": "Farewell"
+      },
+      "parameters": {
+        "introductionSentence": "My name is Roboy!"
+      },
+      "comment": "This state becomes active after the Greetings state detected a greeting."
+    },
+    {
+      "identifier": "Farewell",
+      "implementation": "roboy.dialog.tutorials.tutorialStates.ToyFarewellState",
+      "transitions": {},
+      "comment": "Last state: Tells goodbye, ignores reply, ends the conversation."
+    },
+    {
+      "identifier": "RandomAnswer",
+      "implementation": "roboy.dialog.tutorials.tutorialStates.ToyRandomAnswerState",
+      "transitions": {
+        "next": "Farewell"
+      },
+      "comment": "This state never becomes active and is used as fallback by the Greetings state."
+    }
+  ]
+}

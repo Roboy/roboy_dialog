@@ -7,11 +7,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import roboy.dialog.action.Action;
-import roboy.dialog.action.ShutDownAction;
 import roboy.dialog.action.SpeechAction;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.Maps;
+import roboy.util.RandomList;
 
 /**
  * Turns interpretations to actual utterances. This should in the future lead to diversifying
@@ -32,27 +32,39 @@ public class Verbalizer {
 		interpretation = verbalizeDates(interpretation);
 		switch(interpretation.getSentenceType()){
 		case GREETING: return greet(interpretation);
-		case FAREWELL: return farewell(interpretation);
 		case SEGUE:    return segue(interpretation);
 		case ANECDOTE: return anecdote(interpretation);
 		default:       return literalSentence(interpretation);
 		}
 	}
-	
-	public static final List<String> greetings = 
-			Arrays.asList("hello","hi","greetings","good morning","howdy","good day","hey");
+
+	// possible names for Roboy as parsed by Bing speech recognition
+	public static final List<String> roboyNames =
+			Arrays.asList("roboi", "robot", "boy", "roboboy", "robot", "roboy");
+
+	// triggers that will start the conversation
+	public static final List<String> triggers =
+			Arrays.asList("talk", "fun", "conversation", "new", "chat");
+
+	public static final RandomList<String> greetings =
+			new RandomList<>("hello","hi","greetings",
+                    // "good morning", // not for the final demo ;)
+                    "howdy",
+                    // "good day", // not for the final demo ;)
+                    "hey", "good evening",
+					"what's up", "greeting to everyone here","hi there people",
+					"hello world","gruse gott","wazup wazup wazup","howdy humans",
+                    // "good day ladies and gentlemen",  // not for the final demo ;)
+                    "good evening ladies and gentlemen",
+                    "hey hey hey you there");
 	
 	private SpeechAction greet(Interpretation interpretation){
 		return new SpeechAction(StatementBuilder.random(greetings));
 	}
 	
-	public static final List<String> farewells =
-			Arrays.asList("ciao","goodbye","cheerio","bye","see you",
-					"farewell","bye-bye");
-	
-	private ShutDownAction farewell(Interpretation interpretation){
-		return new ShutDownAction(Arrays.asList(new SpeechAction(StatementBuilder.random(farewells))));
-	}
+	public static final RandomList<String> farewells = new RandomList<>(
+			"ciao", "goodbye", "cheerio", "bye",
+            "see you", "farewell", "bye-bye");
 	
 	private static final List<String> segues = 
 			Arrays.asList("talking about ","since you mentioned ","on the topic of ");

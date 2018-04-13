@@ -1,30 +1,25 @@
 package roboy.memory.nodes;
 
-import roboy.dialog.Config;
-import roboy.memory.Neo4jMemory;
+import com.google.gson.Gson;
+import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.Neo4jRelationships;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Encapsulates a MemoryNodeModel and enables dialog states to easily store
  * and retrieve information about Roboy.
  */
-public class Roboy {
-    private MemoryNodeModel roboy;
-    Neo4jMemory memory;
-    // Memory is not queried in NOROS mode.
-    private boolean memoryROS;
+public class Roboy extends MemoryNodeModel{
 
     /**
      * Initializer for the Roboy node
      */
-    public Roboy(String name) {
-        this.roboy = new MemoryNodeModel(true);
-        this.memory = Neo4jMemory.getInstance();
-        this.memoryROS = Config.MEMORY;
-        this.InitializeRoboy(name); // May be eg "roboy junior"
+    public Roboy(Neo4jMemoryInterface memory) {
+        super(true, memory);
+        this.InitializeRoboy();
     }
 
     /**
@@ -35,37 +30,39 @@ public class Roboy {
      * and soulless, and has to fallback
      */
     // TODO consider a fallback for the amnesia mode
-    private void InitializeRoboy(String name) {
-        roboy.setProperty("name", name);
-        roboy.setLabel("Robot");
+    private void InitializeRoboy() {
+        setProperty("name", "roboy");
+        setLabel("Robot");
 
         //
-        if(memoryROS) {
             ArrayList<Integer> ids = new ArrayList<>();
             try {
-                ids = memory.getByQuery(roboy);
+                ids = memory.getByQuery(this);
             } catch (InterruptedException | IOException e) {
-                System.out.println("Cannot retrieve or find Roboy in the Memory. Go the amnesia mode");
-                e.printStackTrace();
+                logger.error("Cannot retrieve or find Roboy in the Memory. Go the amnesia mode");
+                logger.error(e.getMessage());
             }
             // Pick first if matches found.
             if (ids != null && !ids.isEmpty()) {
                 try {
-                    this.roboy = memory.getById(ids.get(0));
+                    MemoryNodeModel node = fromJSON(memory.getById(ids.get(0)), new Gson());
+                    setId(node.getId());
+                    setRelationships(node.getRelationships() != null ? node.getRelationships() : new HashMap<>());
+                    setProperties(node.getProperties() != null ? node.getProperties() : new HashMap<>());
                 } catch (InterruptedException | IOException e) {
-                    System.out.println("Unexpected memory error: provided ID not found upon querying. Go the amnesia mode");
-                    e.printStackTrace();
+                    logger.error("Unexpected memory error: provided ID not found upon querying. Go the amnesia mode");
+                    logger.error(e.getMessage());
                 }
             }
         }
-    }
+
 
     /**
      * Method to obtain the name of the Roboy node
      * @return String name - text containing the name as in the Memory
      */
     public String getName() {
-        return (String) roboy.getProperty("name");
+        return (String) getProperty("name");
     }
 
     /**
@@ -74,48 +71,48 @@ public class Roboy {
      * related to the Roboy by specific relationship type as in the Memory
      */
     public ArrayList<Integer> getRelationships(Neo4jRelationships type) {
-        return roboy.getRelationship(type.type);
+        return getRelationship(type.type);
     }
 
     /**
      * Adds a new relation to the Roboy node, updating memory.
      */
     public void addInformation(String relationship, String name) {
-        if(!memoryROS) return;
+
         ArrayList<Integer> ids = new ArrayList<>();
         // First check if node with given name exists by a matching query.
-        MemoryNodeModel relatedNode = new MemoryNodeModel(true);
+        MemoryNodeModel relatedNode = new MemoryNodeModel(true,memory);
         relatedNode.setProperty("name", name);
         //This adds a label type to the memory query depending on the relation.
-        relatedNode.setLabel(memory.determineNodeType(relationship));
+        relatedNode.setLabel(Neo4jRelationships.determineNodeType(relationship));
         try {
             ids = memory.getByQuery(relatedNode);
         } catch (InterruptedException | IOException e) {
-            System.out.println("Exception while querying memory by template.");
-            e.printStackTrace();
+            logger.error("Exception while querying memory by template.");
+            logger.error(e.getMessage());
         }
         // Pick first from list if multiple matches found.
         if(ids != null && !ids.isEmpty()) {
-            roboy.setRelationship(relationship, ids.get(0));
+            setRelationship(relationship, ids.get(0));
         }
         // Create new node if match is not found.
         else {
             try {
                 int id = memory.create(relatedNode);
                 if(id != 0) { // 0 is default value, returned if Memory response was FAIL.
-                    roboy.setRelationship(relationship, id);
+                    setRelationship(relationship, id);
                 }
             } catch (InterruptedException | IOException e) {
-                System.out.println("Unexpected memory error: creating node for new relation failed.");
-                e.printStackTrace();
+                logger.error("Unexpected memory error: creating node for new relation failed.");
+                logger.error(e.getMessage());
             }
         }
         //Update the Roboy node in memory.
         try{
-            memory.save(roboy);
+            memory.save(this);
         } catch (InterruptedException | IOException e) {
-            System.out.println("Unexpected memory error: updating person information failed.");
-            e.printStackTrace();
+            logger.error("Unexpected memory error: updating person information failed.");
+            logger.error(e.getMessage());
         }
     }
 }

@@ -40,7 +40,7 @@ if on_rtd:
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.doctest',
-    # 'sphinx.ext.intersphinx',
+    #'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
     'sphinx.ext.mathjax',
@@ -67,17 +67,17 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Roboy Dialog Manager'
-copyright = u'2016, Raphael Dürscheid, based on Template by Dr. Peter'
-author = u'Raphael Dürscheid, based on Template by Dr. Peter'
+copyright = u'2018, Roboy, based on Template by Dr. Peter'
+author = u'Roboy, based on Template by Dr. Peter'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-version = u'0.0.'
+version = u'2.1'
 # The full version, including alpha/beta/rc tags.
-release = u'0.0.'
+release = u'2.1.9'
 
 breathe_projects = { project: "doxyxml/" }
 breathe_default_project = project
