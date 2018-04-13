@@ -4,6 +4,7 @@ package roboy.dialog;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
+import roboy.context.ContextGUI;
 import roboy.dialog.action.Action;
 import roboy.dialog.personality.StateBasedPersonality;
 import roboy.io.*;
@@ -16,6 +17,7 @@ import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
 import roboy.util.ConfigManager;
 import roboy.util.IO;
+import sun.security.krb5.Config;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -53,6 +55,12 @@ public class DialogSystem {
         }
         else {
             memory = new DummyMemory();
+        }
+
+        if(ConfigManager.CONTEXT_GUI_ENABLED) {
+            final Runnable gui = () -> ContextGUI.run();
+            Thread t = new Thread(gui);
+            t.start();
         }
 
         logger.info("Initializing analyzers...");

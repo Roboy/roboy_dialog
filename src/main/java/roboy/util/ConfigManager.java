@@ -40,6 +40,8 @@ public class ConfigManager {
     public static String IBM_TTS_USER = "";
     public static String IBM_TTS_PASS = "";
 
+    public static boolean CONTEXT_GUI_ENABLED = false;
+
     static {
         // this block is called once at and will initialize config
         // alternative: create a singleton for this class
@@ -104,6 +106,8 @@ public class ConfigManager {
 
             IBM_TTS_USER = yamlConfig.getString("IBM_TTS_USER");
             IBM_TTS_PASS = yamlConfig.getString("IBM_TTS_PASS");
+
+            CONTEXT_GUI_ENABLED = yamlConfig.getBoolean("CONTEXT_GUI_ENABLED");
 
 
         } catch(ConfigurationException | FileNotFoundException e) {
