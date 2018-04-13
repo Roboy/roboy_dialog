@@ -615,3 +615,7 @@ Configure third party communication ports, credentials, etc.::
     IBM_TTS_USER: x
     IBM_TTS_PASS: x
 
+Show the GUI with Context contents during runtime:
+
+    CONTEXT_GUI_ENABLED: true
+
