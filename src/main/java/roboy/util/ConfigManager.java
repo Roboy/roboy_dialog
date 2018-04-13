@@ -33,8 +33,6 @@ public class ConfigManager {
 
     public static int PARSER_PORT = -1;
 
-    public static boolean DEMO_GUI = false;
-
     public static String PERSONALITY_FILE = "resources/personalityFiles/tutorial/ToyStateMachine.json";
 
     public static String IBM_TTS_USER = "";
@@ -99,8 +97,6 @@ public class ConfigManager {
             }
 
             PARSER_PORT = yamlConfig.getInt("PARSER_PORT");
-
-            DEMO_GUI = yamlConfig.getBoolean("DEMO_GUI");
 
             PERSONALITY_FILE = yamlConfig.getString("PERSONALITY_FILE");
 

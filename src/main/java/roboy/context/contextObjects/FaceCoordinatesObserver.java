@@ -52,7 +52,7 @@ public class FaceCoordinatesObserver implements Observer {
         lastUpdatedY = y;
         lastUpdatedZ = z;
         nextUpdateTime = System.currentTimeMillis() + UPDATE_INTERVAL_MILLIS;
-        if (ConfigManager.DEMO_GUI) {
+        if (ConfigManager.CONTEXT_GUI_ENABLED) {
             System.out.println("[FaceCoordinatesObserver] Triggering head turning.");
         }
     }
