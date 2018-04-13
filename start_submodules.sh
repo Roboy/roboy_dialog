@@ -19,18 +19,10 @@ do
    if [[ ! ${!var} ]]; then echo "$var environmental variable is unset. Memory module is not going to work properly" && exit; else echo "'$var' is set"; fi
 done
 
-echo "[INFO]: Compiling memory"
-cd roboy_memory
-mvn install
-
 echo "[INFO]: Starting memory"
-cd target
+cd roboy_memory/target
 java -jar roboy_memory-1.0.0-jar-with-dependencies.jar &
 
-echo "[INFO]: Compiling parser"
-cd ../../roboy_parser
-mvn clean
-mvn install
-
 echo "[INFO]: Starting parser"
+cd roboy_parser
 mvn exec:java@demo -Dexec.mainClass=edu.stanford.nlp.sempre.Main
