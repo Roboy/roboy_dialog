@@ -1,0 +1,31 @@
+{
+  "initialState": "Greetings",
+  "states": [
+    {
+      "identifier": "Greeting",
+      "implementation": "roboy.dialog.states.searchStates.PassiveGreetingState",
+      "transitions": {
+        "greetingDetected": "Intro"
+      }
+    },
+    {
+      "identifier": "Intro",
+      "implementation": "roboy.dialog.states.searchStates.IntroductionState",
+      "transitions": {
+        "questionAnswering": "FollowUp"
+      }
+    },
+    {
+      "identifier": "GoogleQA",
+      "implementation": "roboy.dialog.states.searchStates.GoogleQuestionAnsweringState",
+      "transitions": {
+        "finishedQuestionAnswering": "Farewell"
+      }
+    },
+    {
+      "identifier": "Farewell",
+      "implementation": "roboy.dialog.states.searchStates.FarewellState",
+      "transitions": {}
+    }
+  ]
+}
