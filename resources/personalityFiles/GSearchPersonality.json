@@ -3,14 +3,14 @@
   "states": [
     {
       "identifier": "Greeting",
-      "implementation": "roboy.dialog.states.searchStates.PassiveGreetingState",
+      "implementation": "roboy.dialog.states.ordinaryStates.PassiveGreetingState",
       "transitions": {
         "greetingDetected": "Intro"
       }
     },
     {
       "identifier": "Intro",
-      "implementation": "roboy.dialog.states.searchStates.IntroductionState",
+      "implementation": "roboy.dialog.states.searchStates.SearchIntroductionState",
       "transitions": {
         "questionAnswering": "FollowUp"
       }
@@ -24,7 +24,7 @@
     },
     {
       "identifier": "Farewell",
-      "implementation": "roboy.dialog.states.searchStates.FarewellState",
+      "implementation": "roboy.dialog.states.ordinaryStates.FarewellState",
       "transitions": {}
     }
   ]

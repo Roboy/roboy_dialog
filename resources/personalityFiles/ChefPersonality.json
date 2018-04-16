@@ -3,7 +3,7 @@
   "states": [
     {
       "identifier": "Greeting",
-      "implementation": "roboy.dialog.states.chefStates.PassiveGreetingState",
+      "implementation": "roboy.dialog.states.ordinaryStates.PassiveGreetingState",
       "transitions": {
         "greetingDetected": "ChefIntro"
       }
@@ -16,8 +16,8 @@
       }
     },
     {
-      "identifier": "RetrieveProducts",
-      "implementation": "roboy.dialog.states.chefStates.RetrieveProductsState",
+      "identifier": "RetrieveProduct",
+      "implementation": "roboy.dialog.states.chefStates.RetrieveProductState",
       "transitions": {
         "offerRecipe": "QuestionAnswering"
       }
@@ -31,7 +31,7 @@
     },
     {
       "identifier": "Farewell",
-      "implementation": "roboy.dialog.states.chefStates.FarewellState",
+      "implementation": "roboy.dialog.states.ordinaryStates.FarewellState",
       "transitions": {}
     }
   ]
