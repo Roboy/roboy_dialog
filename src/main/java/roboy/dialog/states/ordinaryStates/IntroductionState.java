@@ -8,6 +8,7 @@ import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.memory.Neo4jProperties;
 import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.Interlocutor.RelationshipAvailability;
@@ -15,14 +16,19 @@ import roboy.memory.nodes.Roboy;
 import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
 import roboy.memory.nodes.MemoryNodeModel;
 import roboy.dialog.Segue;
+import roboy.util.QAJsonParser;
 import roboy.util.RandomList;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+import java.util.*;
+import java.time.LocalDate;
+import java.time.Period;
 
 import static roboy.memory.Neo4jRelationships.*;
+import static roboy.memory.Neo4jProperties.*;
 
 
 /**
@@ -40,19 +46,25 @@ import static roboy.memory.Neo4jRelationships.*;
  * 3) No parameters are used.
  */
 public class IntroductionState extends State {
+    private QAJsonParser infoValues;
     private final String UPDATE_KNOWN_PERSON = "knownPerson";
     private final String LEARN_ABOUT_PERSON = "newPerson";
     private final Logger LOGGER = LogManager.getLogger();
+    private final String INFO_FILE_PARAMETER_ID = "infoFile";
     private final RandomList<String> introPhrases = new RandomList<>("What's your name?");
     private final RandomList<String> successResponsePhrases = new RandomList<>("Hey, I know you, %s!");
     private final RandomList<String> failureResponsePhrases = new RandomList<>("Nice to meet you, %s!");
 
     private Neo4jRelationships[] personPredicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
-    RandomList<Neo4jRelationships> roboyPredicates = new RandomList<>(FROM, MEMBER_OF, LIVE_IN, HAS_HOBBY, FRIEND_OF, CHILD_OF, SIBLING_OF);
+    private RandomList<Neo4jRelationships> roboyRelatioshipPredicates = new RandomList<>(FROM, MEMBER_OF, LIVE_IN, HAS_HOBBY, FRIEND_OF, CHILD_OF, SIBLING_OF);
+    private RandomList<Neo4jProperties> roboyPropertiesPredicates = new RandomList<>(skills, abilities, future);
     private State nextState;
 
     public IntroductionState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
+        String infoListPath = params.getParameter(INFO_FILE_PARAMETER_ID);
+        LOGGER.info(" -> The infoList path: " + infoListPath);
+        infoValues = new QAJsonParser(infoListPath);
     }
 
     @Override
@@ -181,19 +193,25 @@ public class IntroductionState extends State {
         // Get some random properties facts
         if (roboy.getProperties() != null && !roboy.getProperties().isEmpty()) {
             HashMap<String, Object> properties = roboy.getProperties();
-            if (properties.containsKey("full_name")) {
-                result += "I am " + properties.get("full_name") + "! ";
+            if (properties.containsKey(full_name.type)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(full_name).getRandomElement(), properties.get(full_name.type));
             }
-            if (properties.containsKey("age") && Math.random() < 0.3) {
-                result += "I am only " + properties.get("age") + " years old! ";
+            if (properties.containsKey(birthdate.type)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), determineAge(properties.get(birthdate.type).toString()));
+            } else if (properties.containsKey(age.type)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), properties.get(age.type) + " years!");
             }
-            if (properties.containsKey("skills")) {
-                RandomList<String> skills = new RandomList<>(Arrays.asList(properties.get("skills").toString().split(",")));
-                result += "I know how to " + skills.getRandomElement() + ". ";
+            if (properties.containsKey(skills.type)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("skills").toString().split(",")));
+                result += " " + String.format(infoValues.getSuccessAnswers(skills).getRandomElement(), retrievedResult.getRandomElement());
             }
-            if (properties.containsKey("abilities")) {
-                RandomList<String> abilities = new RandomList<>(Arrays.asList(properties.get("abilities").toString().split(",")));
-                result += "I can " + abilities.getRandomElement() + ". ";
+            if (properties.containsKey(abilities.type)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("abilities").toString().split(",")));
+                result += " " + String.format(infoValues.getSuccessAnswers(abilities).getRandomElement(), retrievedResult.getRandomElement());
+            }
+            if (properties.containsKey(future.type)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("future").toString().split(",")));
+                result += " " + String.format(infoValues.getSuccessAnswers(future).getRandomElement(), retrievedResult.getRandomElement());
             }
         }
 
@@ -202,19 +220,47 @@ public class IntroductionState extends State {
         }
 
         // Get a random relationship fact
-        MemoryNodeModel node = getMemNodesByIds(roboy.getRelationships(roboyPredicates.getRandomElement())).getRandomElement();
+        Neo4jRelationships predicate = roboyRelatioshipPredicates.getRandomElement();
+        MemoryNodeModel node = getMemNodesByIds(roboy.getRelationships(predicate)).getRandomElement();
         if (node != null) {
-            result += "//get a random Roboy predicate answer// ";
+            String nodeName = "";
             if (node.getProperties().containsKey("full_name") && !node.getProperties().get("full_name").equals("")) {
-                result += node.getProperties().get("full_name");
+                nodeName = node.getProperties().get("full_name").toString();
             } else {
-                result += node.getProperties().get("name");
+                nodeName = node.getProperties().get("name").toString();
             }
+            result += " " + String.format(infoValues.getSuccessAnswers(predicate).getRandomElement(), nodeName);
         }
-        
+
         return result;
     }
 
+    private String determineAge(String datestring) {
+        DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
+        Date date = null;
+        try {
+            date = format.parse(datestring);
+        } catch (ParseException e) {
+            LOGGER.error("Error while parsing a date: " + datestring + ". " + e.getMessage());
+        }
+        if (date != null) {
+            LocalDate birthdate = date.toInstant().atZone(ZoneId.of("Europe/Berlin")).toLocalDate();
+            LocalDate now = LocalDate.now(ZoneId.of("Europe/Berlin"));
+            Period age = Period.between(birthdate, now);
+            int years = age.getYears();
+            int months = age.getMonths();
+            int days = age.getDays();
+            if (years > 0) {
+                return years + " years";
+            } else if (months > 0) {
+                return months + " months";
+            } else {
+                return days + " days";
+            }
+        } else {
+            return "0 years";
+        }
+    }
 
     @Override
     protected Set<String> getRequiredTransitionNames() {
