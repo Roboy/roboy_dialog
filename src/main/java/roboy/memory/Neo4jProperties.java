@@ -7,7 +7,14 @@ package roboy.memory;
  */
 public enum Neo4jProperties {
     name("name"),
-    sex("sex");
+    sex("sex"),
+    full_name("full_name"),
+    age("age"),
+    skills("skills"),
+    abilities("abilities"),
+    future("future"),
+    birthdate("birthdate");
+
 
     public String type;
 
