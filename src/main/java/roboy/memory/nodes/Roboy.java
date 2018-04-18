@@ -23,6 +23,14 @@ public class Roboy extends MemoryNodeModel{
     }
 
     /**
+     * Default initializer for the Roboy node
+     */
+    public Roboy(Neo4jMemoryInterface memory) {
+        super(true, memory);
+        this.InitializeRoboy("roboy");
+    }
+
+    /**
      * This method initializes the roboy property as a node that
      * is in sync with memory and represents the Roboy itself.
      *
