@@ -17,9 +17,9 @@ public class Roboy extends MemoryNodeModel{
     /**
      * Initializer for the Roboy node
      */
-    public Roboy(Neo4jMemoryInterface memory) {
+    public Roboy(Neo4jMemoryInterface memory, String name) {
         super(true, memory);
-        this.InitializeRoboy();
+        this.InitializeRoboy(name);
     }
 
     /**
@@ -30,8 +30,8 @@ public class Roboy extends MemoryNodeModel{
      * and soulless, and has to fallback
      */
     // TODO consider a fallback for the amnesia mode
-    private void InitializeRoboy() {
-        setProperty("name", "roboy");
+    private void InitializeRoboy(String name) {
+        setProperty("name", name);
         setLabel("Robot");
 
         //
@@ -42,13 +42,21 @@ public class Roboy extends MemoryNodeModel{
                 logger.error("Cannot retrieve or find Roboy in the Memory. Go the amnesia mode");
                 logger.error(e.getMessage());
             }
-            // Pick first if matches found.
+            // Pick the first if matches found.
             if (ids != null && !ids.isEmpty()) {
                 try {
-                    MemoryNodeModel node = fromJSON(memory.getById(ids.get(0)), new Gson());
-                    setId(node.getId());
-                    setRelationships(node.getRelationships() != null ? node.getRelationships() : new HashMap<>());
-                    setProperties(node.getProperties() != null ? node.getProperties() : new HashMap<>());
+                    for (Integer id : ids) {
+                        MemoryNodeModel node = fromJSON(memory.getById(id), new Gson());
+                        if (!node.getProperties().isEmpty() &&
+                                node.getProperties().containsKey("name") &&
+                                node.getProperties().get("name").equals(name)) {
+                            setId(node.getId());
+                            setRelationships(node.getRelationships() != null ? node.getRelationships() : new HashMap<>());
+                            setProperties(node.getProperties() != null ? node.getProperties() : new HashMap<>());
+                            break;
+                        }
+                    }
+
                 } catch (InterruptedException | IOException e) {
                     logger.error("Unexpected memory error: provided ID not found upon querying. Go the amnesia mode");
                     logger.error(e.getMessage());
