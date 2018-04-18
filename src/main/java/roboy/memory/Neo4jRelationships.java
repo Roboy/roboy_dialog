@@ -14,6 +14,8 @@ public enum Neo4jRelationships {
     WORK_FOR("WORK_FOR"),
     FRIEND_OF("FRIEND_OF"),
     MEMBER_OF("MEMBER_OF"),
+    CHILD_OF("CHILD_OF"),
+    SIBLING_OF("SIBLING_OF"),
     OTHER("OTHER"),
     IS("IS");
 

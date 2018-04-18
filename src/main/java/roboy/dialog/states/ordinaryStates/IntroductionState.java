@@ -11,11 +11,14 @@ import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.Interlocutor.RelationshipAvailability;
+import roboy.memory.nodes.Roboy;
 import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
 import roboy.memory.nodes.MemoryNodeModel;
 import roboy.dialog.Segue;
 import roboy.util.RandomList;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -40,11 +43,12 @@ public class IntroductionState extends State {
     private final String UPDATE_KNOWN_PERSON = "knownPerson";
     private final String LEARN_ABOUT_PERSON = "newPerson";
     private final Logger LOGGER = LogManager.getLogger();
-    private final RandomList<String> introPhrases = new RandomList<>("I'm Roboy. What's your name?");
+    private final RandomList<String> introPhrases = new RandomList<>("What's your name?");
     private final RandomList<String> successResponsePhrases = new RandomList<>("Hey, I know you, %s!");
     private final RandomList<String> failureResponsePhrases = new RandomList<>("Nice to meet you, %s!");
 
-    private Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
+    private Neo4jRelationships[] personPredicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
+    RandomList<Neo4jRelationships> roboyPredicates = new RandomList<>(FROM, MEMBER_OF, LIVE_IN, HAS_HOBBY, FRIEND_OF, CHILD_OF, SIBLING_OF);
     private State nextState;
 
     public IntroductionState(String stateIdentifier, StateParameters params) {
@@ -78,6 +82,7 @@ public class IntroductionState extends State {
         // this also should query memory and do other magic
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
         person.addName(name);
+        Roboy roboy = new Roboy(getMemory());
 
 
         // 3. update interlocutor in context
@@ -95,7 +100,7 @@ public class IntroductionState extends State {
                         nodes.getRandomElement().getProperties().get("name").toString();
             }
 
-            RelationshipAvailability availability = person.checkRelationshipAvailability(predicates);
+            RelationshipAvailability availability = person.checkRelationshipAvailability(personPredicates);
             if (availability == SOME_AVAILABLE) {
                 nextState = (Math.random() < 0.3) ? getTransition(UPDATE_KNOWN_PERSON) : getTransition(LEARN_ABOUT_PERSON);
             } else if (availability == NONE_AVAILABLE) {
@@ -108,8 +113,10 @@ public class IntroductionState extends State {
             nextState = getTransition(LEARN_ABOUT_PERSON);
             segueProbability = 0.6;
         }
+        String retrievedRoboyFacts = getRoboyFactsPhrase(new Roboy(getMemory()));
         Segue s = new Segue(Segue.SegueType.DISTRACT, segueProbability);
-        return Output.say(getResponsePhrase(person.getName(), person.FAMILIAR) + retrievedPersonalFact).setSegue(s);
+        return Output.say(getResponsePhrase(person.getName(), person.FAMILIAR) +
+                retrievedPersonalFact + retrievedRoboyFacts).setSegue(s);
     }
 
     @Override
@@ -166,6 +173,46 @@ public class IntroductionState extends State {
         } else {
             return String.format(failureResponsePhrases.getRandomElement(), name);
         }
+    }
+
+    private String getRoboyFactsPhrase(Roboy roboy) {
+        String result = "";
+
+        // Get some random properties facts
+        if (roboy.getProperties() != null && !roboy.getProperties().isEmpty()) {
+            HashMap<String, Object> properties = roboy.getProperties();
+            if (properties.containsKey("full_name")) {
+                result += "I am " + properties.get("full_name") + "! ";
+            }
+            if (properties.containsKey("age") && Math.random() < 0.3) {
+                result += "I am only " + properties.get("age") + " years old! ";
+            }
+            if (properties.containsKey("skills")) {
+                RandomList<String> skills = new RandomList<>(Arrays.asList(properties.get("skills").toString().split(",")));
+                result += "I know how to " + skills.getRandomElement() + ". ";
+            }
+            if (properties.containsKey("abilities")) {
+                RandomList<String> abilities = new RandomList<>(Arrays.asList(properties.get("abilities").toString().split(",")));
+                result += "I can " + abilities.getRandomElement() + ". ";
+            }
+        }
+
+        if (result.equals("")) {
+            result = "I am Roboy 2.0! ";
+        }
+
+        // Get a random relationship fact
+        MemoryNodeModel node = getMemNodesByIds(roboy.getRelationships(roboyPredicates.getRandomElement())).getRandomElement();
+        if (node != null) {
+            result += "//get a random Roboy predicate answer// ";
+            if (node.getProperties().containsKey("full_name") && !node.getProperties().get("full_name").equals("")) {
+                result += node.getProperties().get("full_name");
+            } else {
+                result += node.getProperties().get("name");
+            }
+        }
+        
+        return result;
     }
 
 

@@ -55,7 +55,8 @@ public class Roboy extends MemoryNodeModel{
                 try {
                     for (Integer id : ids) {
                         MemoryNodeModel node = fromJSON(memory.getById(id), new Gson());
-                        if (!node.getProperties().isEmpty() &&
+                        if (node.getProperties() != null &&
+                                !node.getProperties().isEmpty() &&
                                 node.getProperties().containsKey("name") &&
                                 node.getProperties().get("name").equals(name)) {
                             setId(node.getId());

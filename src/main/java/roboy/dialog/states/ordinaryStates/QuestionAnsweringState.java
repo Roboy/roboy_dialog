@@ -217,7 +217,7 @@ public class QuestionAnsweringState extends State {
     private Output answerFromMemory(List<Triple> triples) {
 
         // try to use memory to answer
-        Roboy roboy = new Roboy(getParameters().getMemory());
+        Roboy roboy = new Roboy(getMemory());
 
         if (triples.size() == 0) {
             return null;
