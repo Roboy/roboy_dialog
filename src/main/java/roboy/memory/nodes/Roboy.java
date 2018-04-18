@@ -27,7 +27,7 @@ public class Roboy extends MemoryNodeModel{
      */
     public Roboy(Neo4jMemoryInterface memory) {
         super(true, memory);
-        this.InitializeRoboy("roboy");
+        this.InitializeRoboy("roboy two");
     }
 
     /**
