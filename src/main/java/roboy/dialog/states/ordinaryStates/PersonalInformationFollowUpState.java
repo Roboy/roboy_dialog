@@ -54,7 +54,7 @@ public class PersonalInformationFollowUpState extends State {
     public PersonalInformationFollowUpState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
         String qaListPath = params.getParameter(QA_FILE_PARAMETER_ID);
-        LOGGER.info(this.getClass().getName() + " -> The QAList path: " + qaListPath);
+        LOGGER.info(" -> The QAList path: " + qaListPath);
         qaValues = new QAJsonParser(qaListPath);
     }
 
