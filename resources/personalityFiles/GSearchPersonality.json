@@ -12,7 +12,7 @@
       "identifier": "Intro",
       "implementation": "roboy.dialog.states.searchStates.SearchIntroductionState",
       "transitions": {
-        "questionAnswering": "FollowUp"
+        "questionAnswering": "GoogleQA"
       }
     },
     {
