@@ -1,6 +1,6 @@
 package roboy.context.contextObjects;
 
-import roboy.memory.Neo4jRelationships;
+import roboy.memory.Neo4jRelationship;
 
 /**
  * The value of the question intent based on Neo4j Relationship.
@@ -9,9 +9,9 @@ import roboy.memory.Neo4jRelationships;
  */
 public class IntentValue {
     private String id;
-    private Neo4jRelationships value;
+    private Neo4jRelationship value;
 
-    public IntentValue(String intentsHistoryId, Neo4jRelationships intentValue) {
+    public IntentValue(String intentsHistoryId, Neo4jRelationship intentValue) {
         id = intentsHistoryId;
         value = intentValue;
     }
@@ -20,7 +20,7 @@ public class IntentValue {
         return id;
     }
 
-    public Neo4jRelationships getIntentValue() {
+    public Neo4jRelationship getIntentValue() {
         return value;
     }
 
