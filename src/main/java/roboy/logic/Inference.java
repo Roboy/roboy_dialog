@@ -3,9 +3,9 @@ package roboy.logic;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jLabels;
-import roboy.memory.Neo4jProperties;
-import roboy.memory.Neo4jRelationships;
+import roboy.memory.Neo4jLabel;
+import roboy.memory.Neo4jProperty;
+import roboy.memory.Neo4jRelationship;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Inference implements InferenceEngine {
 
-    public String inferName(Interpretation input) {
+    private String inferName(Interpretation input) {
         if (input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.STATEMENT) == 0) {
             String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
             if (tokens.length == 1) {
@@ -43,27 +43,47 @@ public class Inference implements InferenceEngine {
 
 
     @Override
-    public HashMap<Neo4jProperties, String> inferProperties(ArrayList<Neo4jProperties> keys, Interpretation input) {
+    public HashMap<Neo4jProperty, String> inferProperties(ArrayList<Neo4jProperty> keys, Interpretation input) {
 
-            HashMap<Neo4jProperties, String> inferenceResult = new HashMap<>();
-            for (Neo4jProperties key : keys) {
+            HashMap<Neo4jProperty, String> inferenceResult = new HashMap<>();
+            for (Neo4jProperty key : keys) {
                 inferenceResult.put(key, null);
             }
 
-            if (keys.contains(Neo4jProperties.name)) {
-                inferenceResult.put(Neo4jProperties.name, inferName(input));
+            if (keys.contains(Neo4jProperty.name)) {
+                inferenceResult.put(Neo4jProperty.name, inferProperty(Neo4jProperty.name, input));
             }
 
             return inferenceResult;
     }
 
     @Override
-    public HashMap<Neo4jRelationships, String> inferRelationships(ArrayList<Neo4jRelationships> keys, Interpretation input) {
+    public String inferProperty(Neo4jProperty key, Interpretation input) {
+        switch (key) {
+            case name:
+                return inferName(input);
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public HashMap<Neo4jRelationship, String> inferRelationships(ArrayList<Neo4jRelationship> keys, Interpretation input) {
         return null;
     }
 
     @Override
-    public HashMap<Neo4jLabels, String> inferLabel(ArrayList<Neo4jLabels> keys, Interpretation input) {
+    public String inferRelationship(Neo4jRelationship key, Interpretation input) {
+        return null;
+    }
+
+    @Override
+    public HashMap<Neo4jLabel, String> inferLabels(ArrayList<Neo4jLabel> keys, Interpretation input) {
+        return null;
+    }
+
+    @Override
+    public String inferLabel(Neo4jLabel key, Interpretation input) {
         return null;
     }
 }
