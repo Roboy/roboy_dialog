@@ -9,6 +9,8 @@ import roboy.dialog.action.Action;
 import roboy.dialog.personality.StateBasedPersonality;
 import roboy.io.*;
 import roboy.linguistics.sentenceanalysis.*;
+import roboy.logic.Inference;
+import roboy.logic.InferenceEngine;
 import roboy.memory.Neo4jMemory;
 import roboy.memory.DummyMemory;
 import roboy.memory.Neo4jMemoryInterface;
@@ -72,7 +74,7 @@ public class DialogSystem {
         analyzers.add(new Preprocessor());
         analyzers.add(new SimpleTokenizer());
 
-        analyzers.add(new SemanticParserAnalyzer(ConfigManager.PARSER_PORT));
+        //analyzers.add(new SemanticParserAnalyzer(ConfigManager.PARSER_PORT));
         //analyzers.add(new OpenNLPPPOSTagger());
         analyzers.add(new DictionaryBasedSentenceTypeDetector());
         //analyzers.add(new SentenceAnalyzer());
@@ -80,10 +82,11 @@ public class DialogSystem {
         //analyzers.add(new OntologyNERAnalyzer());
         analyzers.add(new AnswerAnalyzer());
 
+        InferenceEngine inference = new Inference();
 
         logger.info("Creating StateBasedPersonality...");
 
-        StateBasedPersonality personality = new StateBasedPersonality(rosMainNode, memory, new Verbalizer());
+        StateBasedPersonality personality = new StateBasedPersonality(rosMainNode, memory, inference, new Verbalizer());
         File personalityFile = new File(ConfigManager.PERSONALITY_FILE);
 
 

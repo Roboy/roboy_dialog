@@ -3,6 +3,7 @@ package roboy.dialog;
 import com.google.gson.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.logic.InferenceEngine;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateFactory;
@@ -50,6 +51,7 @@ public class DialogStateMachine {
     /** RosMainNode will be passed to every state as parameter */
     private final RosMainNode rosMainNode;
     private final Neo4jMemoryInterface memory;
+    private final InferenceEngine inference;
 
     /**
      * Personality file additional information: everything like comment goes here.
@@ -67,20 +69,21 @@ public class DialogStateMachine {
      * personality file after creation. Alternatively you can create and add States to the machine
      * manually from code.
      *
-     * @param rmn reference to the RosMainNode that will be passed to every newly created State object
-     * @param mem reference to Memory that will be passed to every newly created State object
+     * @param rosMainNode reference to the RosMainNode that will be passed to every newly created State object
+     * @param memory reference to Memory that will be passed to every newly created State object
      */
-    public DialogStateMachine(RosMainNode rmn, Neo4jMemoryInterface mem) {
+    public DialogStateMachine(RosMainNode rosMainNode, Neo4jMemoryInterface memory, InferenceEngine inference) {
         identifierToState = new HashMap<>();
         activeState = null;
-        rosMainNode = rmn;
-        memory = mem;
+        this.rosMainNode = rosMainNode;
+        this.memory = memory;
+        this.inference = inference;
         optionalPersFileInfo = new HashMap<>();
 
-        if (rosMainNode == null) {
+        if (this.rosMainNode == null) {
             logger.info("RosMainNode will be unavailable in DialogStateMachine (null was passed)");
         }
-        if (memory == null) {
+        if (this.memory == null) {
             logger.info("Memory will be unavailable in DialogStateMachine (null was passed)");
         }
     }
@@ -90,8 +93,8 @@ public class DialogStateMachine {
      * States will not be able to access the RosMainNode and Memory functionality.
      * This constructor is mainly used for testing.
      */
-    public DialogStateMachine() {
-        this(null, null);
+    public DialogStateMachine(InferenceEngine inference) {
+        this(null, null, inference);
     }
 
     //endregion
@@ -302,7 +305,7 @@ public class DialogStateMachine {
      * @return StateParameters instance with all parameters defined in json object
      */
     private StateParameters parseStateParameters(JsonObject stateJsO) {
-        StateParameters params = new StateParameters(this, rosMainNode, memory);
+        StateParameters params = new StateParameters(this, rosMainNode, memory, inference);
 
         // set the transitions
         JsonObject paramsJsO = stateJsO.getAsJsonObject("parameters");
