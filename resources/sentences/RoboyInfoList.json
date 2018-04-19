@@ -4,7 +4,14 @@
       "SUCCESS": [
         "I am %s!",
         "My name is %s.",
-        "They call me %s."
+        "They call me %s.",
+        "Please, call me %s.",
+        "%s, that is my name.",
+        "Could you call me %s?",
+        "My friends call me %s.",
+        "They chose to call me %s.",
+        "%s, I am proud to be called this name!",
+        "My name sounds rather unusual for humans. It is %s."
       ]
     }
   },
@@ -13,16 +20,30 @@
       "SUCCESS": [
         "I am %s old.",
         "My age is %s.",
-        "I am only %s old, but soon, I will grow up."
+        "I was born just %s ago.",
+        "I am pretty young, only %s old!",
+        "I am growing up, today, I am %s old.",
+        "Being %s old means I am still a child.",
+        "Being %s old, I want to grow up faster!",
+        "I am only %s old, but soon, I will grow up.",
+        "According to my birth certificate, I am %s old.",
+        "I am %s old, but I believe I may be older in robot years!"
       ]
     }
   },
   "skills": {
     "A": {
       "SUCCESS": [
-        "I learned to %s.",
-        "I know how to %s.",
-        "I was taught to %s."
+        "I learned %s.",
+        "I was taught %s.",
+        "My skills include %s.",
+        "I learned %s in my lab.",
+        "Learning about %s, I made it!",
+        "In the lab, they taught me %s",
+        "I like %s, but soon i will learn more.",
+        "Sometimes, I am %s just for fun because I can.",
+        "I like interacting with humans, for example, %s.",
+        "The process of learning is indispensable for sapient beings, I learned %s."
       ]
     }
   },
@@ -31,16 +52,30 @@
       "SUCCESS": [
         "I can %s.",
         "I am able to %s.",
-        "One of my abilities is to %s."
+        "One of my abilities is to %s.",
+        "My physical interfaces allow me to %s.",
+        "Having a body is wonderful, I am able to %s!",
+        "I have a lot of abilities, for example, I can %s.",
+        "My friends built this body for me, so I would be able to %s.",
+        "A physical embodiment is very convenient, it helps me to %s.",
+        "Robots are becoming more complex. For example, I evolved to %s.",
+        "I believe robot evolution is very fast, now, I can %s almost like you!"
       ]
     }
   },
   "future": {
     "A": {
       "SUCCESS": [
+        "Often, I wish to %s.",
         "When I grow up, I will %s.",
+        "I hope to %s in the future.",
         "In the future, I want to %s.",
-        "Talking about my plans, I want to %s."
+        "My childhood dream is to %s.",
+        "Talking about my plans, I want to %s.",
+        "Friends tell me, in the future, I can %s.",
+        "I wish, I would be able to %s when I grew up.",
+        "Dreams are what keeps the world moving. Mine is to %s.",
+        "I have already made up my mind that I would %s in the future!"
       ]
     }
   },
@@ -111,16 +146,16 @@
   "FRIEND_OF": {
     "A": {
       "SUCCESS": [
-        "I like my friends %s",
-        "My friends, %s, are like my family.",
-        "I have a lot of friends, for instance, %s",
-        "If you want to become my friends like %s, then follow Roboy page on facebook.",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "I know my friend %s from Telegram, join the Roboy channel there too!",
+        "If you want to become my friend like %s, then follow Roboy on facebook.",
+        "My friend %s uses twitter and follows Roboy there, you should follow too!",
+        "My friend %s really likes Patreon, you should become a Roboy patron there!",
+        "I like my friend %s, and he likes me on facebook. Like the Roboy page too!",
+        "I got to know my friend %s on LinkedIn, you can connect to Roboy there too!",
+        "I have a lot of friends in telegram, for instance, %s. Join Roboy channel there too!",
+        "My friend, %s, is like my family. If you want to join my family, join the Roboy channel on Telegram!",
+        "My friend %s likes Patreon because of indy artists - I will like it too when you become a Roboy patron!",
+        "Soon, I will be able to talk to my friend %s on telegram. Want to talk too, join the Roboy channel there"
       ]
     }
   },
@@ -152,7 +187,7 @@
         "One day, I dream to reach the fame of my brother, %s",
         "I hope people will not like me less than my brother, %s.",
         "Now, I am participating in the events instead of my brother, %s.",
-        "My brother, %s, wants to leave a career and be a stay-at-home robot, I will be substituting him."
+        "My brother, %s, wants to leave his career and be a stay-at-home robot, I am substituting him."
       ]
     }
   }
