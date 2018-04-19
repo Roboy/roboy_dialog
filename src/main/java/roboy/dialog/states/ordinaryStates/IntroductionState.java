@@ -13,7 +13,6 @@ import roboy.memory.Neo4jRelationships;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.Interlocutor.RelationshipAvailability;
 import roboy.memory.nodes.Roboy;
-import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
 import roboy.memory.nodes.MemoryNodeModel;
 import roboy.dialog.Segue;
 import roboy.util.QAJsonParser;
@@ -23,13 +22,13 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
-import java.util.*;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.*;
 
 import static roboy.memory.Neo4jRelationships.*;
 import static roboy.memory.Neo4jProperties.*;
-
+import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
 
 /**
  * This state will:
@@ -235,6 +234,14 @@ public class IntroductionState extends State {
         return result;
     }
 
+    /**
+     * A helper function to determine the age based on the birthdate
+     *
+     * Java 8 specific
+     *
+     * @param datestring
+     * @return
+     */
     private String determineAge(String datestring) {
         DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
         Date date = null;
