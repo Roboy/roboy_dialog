@@ -8,8 +8,8 @@ import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jProperties;
-import roboy.memory.Neo4jRelationships;
+import roboy.memory.Neo4jProperty;
+import roboy.memory.Neo4jRelationship;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.Interlocutor.RelationshipAvailability;
 import roboy.memory.nodes.Roboy;
@@ -26,8 +26,8 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
 
-import static roboy.memory.Neo4jRelationships.*;
-import static roboy.memory.Neo4jProperties.*;
+import static roboy.memory.Neo4jRelationship.*;
+import static roboy.memory.Neo4jProperty.*;
 import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
 
 /**
@@ -54,9 +54,9 @@ public class IntroductionState extends State {
     private final RandomList<String> successResponsePhrases = new RandomList<>("Hey, I know you, %s!");
     private final RandomList<String> failureResponsePhrases = new RandomList<>("Nice to meet you, %s!");
 
-    private Neo4jRelationships[] personPredicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
-    private RandomList<Neo4jRelationships> roboyRelatioshipPredicates = new RandomList<>(FROM, MEMBER_OF, LIVE_IN, HAS_HOBBY, FRIEND_OF, CHILD_OF, SIBLING_OF);
-    private RandomList<Neo4jProperties> roboyPropertiesPredicates = new RandomList<>(skills, abilities, future);
+    private Neo4jRelationship[] personPredicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
+    private RandomList<Neo4jRelationship> roboyRelatioshipPredicates = new RandomList<>(FROM, MEMBER_OF, LIVE_IN, HAS_HOBBY, FRIEND_OF, CHILD_OF, SIBLING_OF);
+    private RandomList<Neo4jProperty> roboyPropertiesPredicates = new RandomList<>(skills, abilities, future);
     private State nextState;
 
     public IntroductionState(String stateIdentifier, StateParameters params) {
@@ -93,7 +93,7 @@ public class IntroductionState extends State {
         // this also should query memory and do other magic
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
         person.addName(name);
-        Roboy roboy = new Roboy(getMemory());
+        // Roboy roboy = new Roboy(getMemory());
 
 
         // 3. update interlocutor in context
@@ -219,7 +219,7 @@ public class IntroductionState extends State {
         }
 
         // Get a random relationship fact
-        Neo4jRelationships predicate = roboyRelatioshipPredicates.getRandomElement();
+        Neo4jRelationship predicate = roboyRelatioshipPredicates.getRandomElement();
         MemoryNodeModel node = getMemNodesByIds(roboy.getRelationships(predicate)).getRandomElement();
         if (node != null) {
             String nodeName = "";

@@ -8,7 +8,7 @@ import roboy.dialog.Segue;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jRelationships;
+import roboy.memory.Neo4jRelationship;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.MemoryNodeModel;
 import roboy.util.QAJsonParser;
@@ -16,7 +16,7 @@ import roboy.util.RandomList;
 
 import java.util.Set;
 
-import static roboy.memory.Neo4jRelationships.*;
+import static roboy.memory.Neo4jRelationship.*;
 
 /**
  * Personal Information Update State
@@ -25,7 +25,7 @@ import static roboy.memory.Neo4jRelationships.*;
  * The state tries to interact with the Interlocutor to update the existing information about the person.
  * This information is sent to the Roboy Memory Module through Neo4jMemoryInterface to keep it up to date.
  *
- * - if there is an existing entry under a specific Neo4jRelationships predicate, select the predicate
+ * - if there is an existing entry under a specific Neo4jRelationship predicate, select the predicate
  * - check the Context IntentsHistory if we already asked similar questions
  * - the question topic (intent) is selected upon the predicate
  * - update the Context IntentsHistory with the selected predicate
@@ -41,8 +41,8 @@ import static roboy.memory.Neo4jRelationships.*;
 public class PersonalInformationFollowUpState extends State {
 
     private QAJsonParser qaValues;
-    private Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
-    private Neo4jRelationships selectedPredicate;
+    private Neo4jRelationship[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
+    private Neo4jRelationship selectedPredicate;
     private State nextState;
 
     private final String TRANSITION_INFO_UPDATED = "questionAnswering";
@@ -63,7 +63,7 @@ public class PersonalInformationFollowUpState extends State {
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
         LOGGER.info("-> Retrieved Interlocutor: " + person.getName());
 
-        for (Neo4jRelationships predicate : predicates) {
+        for (Neo4jRelationship predicate : predicates) {
             if (person.hasRelationship(predicate) &&
                     !Context.getInstance().DIALOG_INTENTS.contains(new IntentValue(INTENTS_HISTORY_ID, predicate)) &&
                     !Context.getInstance().DIALOG_INTENTS.contains(new IntentValue(PersonalInformationAskingState.INTENTS_HISTORY_ID, predicate))) {
