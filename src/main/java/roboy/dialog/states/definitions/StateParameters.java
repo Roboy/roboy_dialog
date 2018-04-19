@@ -2,6 +2,7 @@ package roboy.dialog.states.definitions;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.logic.InferenceEngine;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.dialog.DialogStateMachine;
 import roboy.ros.RosMainNode;
@@ -22,12 +23,14 @@ public class StateParameters {
     private final DialogStateMachine stateMachine;
     private final RosMainNode rosMainNode;
     private final Neo4jMemoryInterface memory;
+    private final InferenceEngine inference;
 
-    public StateParameters(DialogStateMachine stateMachine, RosMainNode rmn, Neo4jMemoryInterface mem) {
+    public StateParameters(DialogStateMachine stateMachine, RosMainNode rosMainNode, Neo4jMemoryInterface memory, InferenceEngine inference) {
         paramNameToValue = new HashMap<>();
         this.stateMachine = stateMachine;
-        this.rosMainNode = rmn;
-        this.memory = mem;
+        this.rosMainNode = rosMainNode;
+        this.memory = memory;
+        this.inference = inference;
 
         if (stateMachine == null) {
             logger.debug("StateParameters should have a reference to the state machine");
@@ -40,11 +43,10 @@ public class StateParameters {
         if (memory == null) {
             logger.debug("Using offline StateParameters (no Memory passed)");
         }
-
     }
 
-    public StateParameters(DialogStateMachine stateMachine) {
-        this(stateMachine, null, null);
+    public StateParameters(DialogStateMachine stateMachine, InferenceEngine inference) {
+        this(stateMachine, null, null, inference);
     }
 
     public StateParameters setParameter(String parameterName, String value) {
@@ -70,5 +72,9 @@ public class StateParameters {
 
     public Neo4jMemoryInterface getMemory() {
         return memory;
+    }
+
+    public InferenceEngine getInference() {
+        return inference;
     }
 }
