@@ -6,15 +6,15 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import roboy.memory.Neo4jProperties;
-import roboy.memory.Neo4jRelationships;
+import roboy.memory.Neo4jProperty;
+import roboy.memory.Neo4jRelationship;
 
 import java.io.*;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 class JsonModel {
-    // TODO: Dynamically create JsonModel as JsonEntryModel fields based on existing Neo4jRelationships/Properties entries
+    // TODO: Dynamically create JsonModel as JsonEntryModel fields based on existing Neo4jRelationship/Properties entries
     // Add a new entry
     JsonEntryModel name;
     JsonEntryModel full_name;
@@ -83,67 +83,67 @@ public class QAJsonParser {
         return jsonObject;
     }
 
-    public JsonEntryModel getEntry(Neo4jRelationships relationship) {
+    public JsonEntryModel getEntry(Neo4jRelationship relationship) {
         return getJsonEntryModel(relationship.type);
     }
 
-    public JsonEntryModel getEntry(Neo4jProperties property) {
+    public JsonEntryModel getEntry(Neo4jProperty property) {
         return getJsonEntryModel(property.type);
     }
 
-    public RandomList<String> getQuestions(Neo4jRelationships relationship) {
+    public RandomList<String> getQuestions(Neo4jRelationship relationship) {
         return getEntry(relationship).getQuestions();
     }
 
-    public Map<String, RandomList<String>> getAnswers(Neo4jRelationships relationship) {
+    public Map<String, RandomList<String>> getAnswers(Neo4jRelationship relationship) {
         return getEntry(relationship).getAnswers();
     }
 
-    public RandomList<String> getSuccessAnswers(Neo4jRelationships relationship) {
+    public RandomList<String> getSuccessAnswers(Neo4jRelationship relationship) {
         return getAnswers(relationship).get("SUCCESS");
     }
 
-    public RandomList<String> getFailureAnswers(Neo4jRelationships relationship) {
+    public RandomList<String> getFailureAnswers(Neo4jRelationship relationship) {
         return getAnswers(relationship).get("FAILURE");
     }
 
-    public Map<String, RandomList<String>> getFollowUp(Neo4jRelationships relationship) {
+    public Map<String, RandomList<String>> getFollowUp(Neo4jRelationship relationship) {
         return getEntry(relationship).getFUP();
     }
 
-    public RandomList<String> getFollowUpQuestions(Neo4jRelationships relationship) {
+    public RandomList<String> getFollowUpQuestions(Neo4jRelationship relationship) {
         return getFollowUp(relationship).get("Q");
     }
 
-    public RandomList<String> getFollowUpAnswers(Neo4jRelationships relationship) {
+    public RandomList<String> getFollowUpAnswers(Neo4jRelationship relationship) {
         return getFollowUp(relationship).get("A");
     }
 
-    public RandomList<String> getQuestions(Neo4jProperties property) {
+    public RandomList<String> getQuestions(Neo4jProperty property) {
         return getEntry(property).getQuestions();
     }
 
-    public Map<String, RandomList<String>> getAnswers(Neo4jProperties property) {
+    public Map<String, RandomList<String>> getAnswers(Neo4jProperty property) {
         return getEntry(property).getAnswers();
     }
 
-    public RandomList<String> getSuccessAnswers(Neo4jProperties property) {
+    public RandomList<String> getSuccessAnswers(Neo4jProperty property) {
         return getAnswers(property).get("SUCCESS");
     }
 
-    public RandomList<String> getFailureAnswers(Neo4jProperties property) {
+    public RandomList<String> getFailureAnswers(Neo4jProperty property) {
         return getAnswers(property).get("FAILURE");
     }
 
-    public Map<String, RandomList<String>> getFollowUp(Neo4jProperties property) {
+    public Map<String, RandomList<String>> getFollowUp(Neo4jProperty property) {
         return getEntry(property).getFUP();
     }
 
-    public RandomList<String> getFollowUpQuestions(Neo4jProperties property) {
+    public RandomList<String> getFollowUpQuestions(Neo4jProperty property) {
         return getFollowUp(property).get("Q");
     }
 
-    public RandomList<String> getFollowUpAnswers(Neo4jProperties property) {
+    public RandomList<String> getFollowUpAnswers(Neo4jProperty property) {
         return getFollowUp(property).get("A");
     }
 
