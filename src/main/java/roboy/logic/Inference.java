@@ -7,11 +7,11 @@ import roboy.memory.Neo4jLabel;
 import roboy.memory.Neo4jProperty;
 import roboy.memory.Neo4jRelationship;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Inference implements InferenceEngine {
+    final static List<String> positiveTokens = Arrays.asList("yes", "yep", "sure", "yeah", "ok");
+    final static List<String> negativeTokens = Arrays.asList("no", "nope");
 
     private String inferName(Interpretation input) {
         if (input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.STATEMENT) == 0) {
@@ -85,5 +85,31 @@ public class Inference implements InferenceEngine {
     @Override
     public String inferLabel(Neo4jLabel key, Interpretation input) {
         return null;
+    }
+
+    @Override
+    public Linguistics.UtteranceSentiment inferSentiment(Interpretation input) {
+        // Brute-force implementation
+        boolean positive = false;
+        boolean negative = false;
+        for (String token : positiveTokens) {
+            if (input.getFeatures().get(Linguistics.SENTENCE).toString().contains(token)) {
+                positive = true;
+                break;
+            }
+        }
+        for (String token : negativeTokens) {
+            if (input.getFeatures().get(Linguistics.SENTENCE).toString().contains(token)) {
+                negative = true;
+                break;
+            }
+        }
+        if (positive && !negative) {
+            return Linguistics.UtteranceSentiment.POSITIVE;
+        } else if (!positive && negative) {
+            return Linguistics.UtteranceSentiment.NEGATIVE;
+        } else {
+            return Linguistics.UtteranceSentiment.NEUTRAL;
+        }
     }
 }
