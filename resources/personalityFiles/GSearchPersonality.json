@@ -2,7 +2,7 @@
   "initialState": "Greetings",
   "states": [
     {
-      "identifier": "Greeting",
+      "identifier": "Greetings",
       "implementation": "roboy.dialog.states.ordinaryStates.PassiveGreetingState",
       "transitions": {
         "greetingDetected": "Intro"

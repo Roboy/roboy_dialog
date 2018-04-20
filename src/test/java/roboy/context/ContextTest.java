@@ -43,12 +43,12 @@ public class ContextTest {
 
         updater.updateValue(new IntentValue("test_id1", Neo4jRelationship.FROM));
         IntentValue testIntent = intents.getLastValue();
-        assertEquals("test_id1", testIntent.getStateId());
-        assertEquals(Neo4jRelationship.FROM, (testIntent.getIntentValue()));
+        assertEquals("test_id1", testIntent.getId());
+        assertEquals(Neo4jRelationship.FROM, (testIntent.getNeo4jRelationshipValue()));
         updater.updateValue(new IntentValue("test_id2", Neo4jRelationship.HAS_HOBBY));
         Map<Integer, IntentValue> values = intents.getLastNValues(2);
-        assertEquals("test_id1", values.get(0).getStateId());
-        assertEquals("test_id2", values.get(1).getStateId());
+        assertEquals("test_id1", values.get(0).getId());
+        assertEquals("test_id2", values.get(1).getId());
     }
 
     @Test
