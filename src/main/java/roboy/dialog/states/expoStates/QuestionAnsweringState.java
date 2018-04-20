@@ -53,7 +53,6 @@ public class QuestionAnsweringState extends State {
 
     private final static String TRANSITION_FINISHED_ANSWERING = "finishedQuestionAnswering";
     private final static String TRANSITION_LOOP_TO_NEW_PERSON = "loopToNewPerson";
-    private final static String TRANSITION_LOOP_TO_KNOWN_PERSON = "loopToKnownPerson";
 
     private final static int MAX_NUM_OF_QUESTIONS = 5;
     private int questionsAnswered = 0;
@@ -249,7 +248,7 @@ public class QuestionAnsweringState extends State {
 
     @Override
     protected Set<String> getRequiredTransitionNames() {
-        return newSet(TRANSITION_FINISHED_ANSWERING, TRANSITION_LOOP_TO_NEW_PERSON, TRANSITION_LOOP_TO_KNOWN_PERSON);
+        return newSet(TRANSITION_FINISHED_ANSWERING, TRANSITION_LOOP_TO_NEW_PERSON);
     }
 
     @Override

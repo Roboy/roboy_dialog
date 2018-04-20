@@ -10,7 +10,7 @@
     },
     {
       "identifier": "Intro",
-      "implementation": "roboy.dialog.states.expoStates.IntroductionState",
+      "implementation": "roboy.dialog.states.expoStates.ExpoIntroductionState",
       "transitions": {
         "roboyInfo": "RoboyState"
       },
