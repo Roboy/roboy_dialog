@@ -53,7 +53,6 @@ public class QuestionAnsweringState extends State {
 
     private final static String TRANSITION_FINISHED_ANSWERING = "finishedQuestionAnswering";
     private final static String TRANSITION_LOOP_TO_NEW_PERSON = "loopToNewPerson";
-    private final static String TRANSITION_LOOP_TO_KNOWN_PERSON = "loopToKnownPerson";
 
     private final static int MAX_NUM_OF_QUESTIONS = 5;
     private int questionsAnswered = 0;
@@ -173,15 +172,7 @@ public class QuestionAnsweringState extends State {
         } else if (questionsAnswered > MAX_NUM_OF_QUESTIONS) { // enough questions answered --> finish asking
             return getTransition(TRANSITION_FINISHED_ANSWERING);
         } else if (Math.random() < 0.5) { // loop back to previous states with probability 0.5
-            Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
-            Neo4jRelationship[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
-            RelationshipAvailability availability = person.checkRelationshipAvailability(predicates);
-
-            if (availability == NONE_AVAILABLE) {
-                return getTransition(TRANSITION_LOOP_TO_NEW_PERSON);
-            } else {
-                return this;
-            }
+            return getTransition(TRANSITION_LOOP_TO_NEW_PERSON);
         } else {
             return this;
         }
@@ -249,7 +240,7 @@ public class QuestionAnsweringState extends State {
 
     @Override
     protected Set<String> getRequiredTransitionNames() {
-        return newSet(TRANSITION_FINISHED_ANSWERING, TRANSITION_LOOP_TO_NEW_PERSON, TRANSITION_LOOP_TO_KNOWN_PERSON);
+        return newSet(TRANSITION_FINISHED_ANSWERING, TRANSITION_LOOP_TO_NEW_PERSON);
     }
 
     @Override
