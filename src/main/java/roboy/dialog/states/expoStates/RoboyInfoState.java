@@ -6,7 +6,19 @@ import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics.UtteranceSentiment;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.memory.nodes.Roboy;
+import roboy.util.QAJsonParser;
+import roboy.util.RandomList;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.*;
+
+import static roboy.memory.Neo4jProperty.*;
 
 public class RoboyInfoState extends State {
     private final String SELECTED_SKILLS = "skills";
@@ -14,11 +26,16 @@ public class RoboyInfoState extends State {
     private final String SELECTED_ROBOY_QA = "roboy";
     private final String LEARN_ABOUT_PERSON = "newPerson";
     private final Logger LOGGER = LogManager.getLogger();
+    private final String INFO_FILE_PARAMETER_ID = "infoFile";
 
+    private QAJsonParser infoValues;
     private State nextState;
 
     public RoboyInfoState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
+        String infoListPath = params.getParameter(INFO_FILE_PARAMETER_ID);
+        LOGGER.info(" -> The infoList path: " + infoListPath);
+        infoValues = new QAJsonParser(infoListPath);
     }
 
     @Override
@@ -41,5 +58,77 @@ public class RoboyInfoState extends State {
     @Override
     public State getNextState() {
         return nextState;
+    }
+
+    private String getRoboyFactsPhrase(Roboy roboy) {
+        String result = "";
+
+        // Get some random properties facts
+        if (roboy.getProperties() != null && !roboy.getProperties().isEmpty()) {
+            HashMap<String, Object> properties = roboy.getProperties();
+            if (properties.containsKey(full_name.type)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(full_name).getRandomElement(), properties.get(full_name.type));
+            }
+            if (properties.containsKey(birthdate.type)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), determineAge(properties.get(birthdate.type).toString()));
+            } else if (properties.containsKey(age.type)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), properties.get(age.type) + " years!");
+            }
+            if (properties.containsKey(skills.type)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("skills").toString().split(",")));
+                result += " " + String.format(infoValues.getSuccessAnswers(skills).getRandomElement(), retrievedResult.getRandomElement());
+            }
+            if (properties.containsKey(abilities.type)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("abilities").toString().split(",")));
+                result += " " + String.format(infoValues.getSuccessAnswers(abilities).getRandomElement(), retrievedResult.getRandomElement());
+            }
+            if (properties.containsKey(future.type)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("future").toString().split(",")));
+                result += " " + String.format(infoValues.getSuccessAnswers(future).getRandomElement(), retrievedResult.getRandomElement());
+            }
+        }
+
+        if (result.equals("")) {
+            result = "I am Roboy 2.0! ";
+        }
+
+        return result;
+    }
+
+    /**
+     * A helper function to determine the age based on the birthdate
+     *
+     * Java 8 specific
+     *
+     * @param datestring
+     * @return
+     */
+    private String determineAge(String datestring) {
+        DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
+        Date date = null;
+        try {
+            date = format.parse(datestring);
+        } catch (ParseException e) {
+            LOGGER.error("Error while parsing a date: " + datestring + ". " + e.getMessage());
+        }
+        if (date != null) {
+            LocalDate birthdate = date.toInstant().atZone(ZoneId.of("Europe/Berlin")).toLocalDate();
+            LOGGER.info("The birthdate is " + birthdate.toString());
+            LocalDate now = LocalDate.now(ZoneId.of("Europe/Berlin"));
+            Period age = Period.between(birthdate, now);
+            int years = age.getYears();
+            int months = age.getMonths();
+            int days = age.getDays();
+            LOGGER.info("The estimated age is: " + years + " years, or " + months + " months, or " + days + " days!");
+            if (years > 0) {
+                return years + " years";
+            } else if (months > 0) {
+                return months + " months";
+            } else {
+                return days + " days";
+            }
+        } else {
+            return "0 years";
+        }
     }
 }
