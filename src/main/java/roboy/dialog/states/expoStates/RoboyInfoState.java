@@ -2,11 +2,14 @@ package roboy.dialog.states.expoStates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.context.Context;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics.UtteranceSentiment;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.Roboy;
+import roboy.talk.PhraseCollection;
 import roboy.util.QAJsonParser;
 import roboy.util.RandomList;
 
@@ -28,6 +31,11 @@ public class RoboyInfoState extends State {
     private final Logger LOGGER = LogManager.getLogger();
     private final String INFO_FILE_PARAMETER_ID = "infoFile";
 
+    private final RandomList<String> offerPhrases = new RandomList<>("Do you want me to %s?", "Would you like me to %s?", "Should I show you how I %s?");
+    private final RandomList<String> connectingPhrases = PhraseCollection.SEGUE_CONNECTING_PHRASES;
+    private final RandomList<String> positivePhrases = new RandomList<>(" lets do it!", " behold me!", " I will give you the show of your life!", " that is the best decision!");
+    private final RandomList<String> negativePhrases = new RandomList<>(" let me ask you a question then!", " was I not polite enough?", " lets switch gears!", " lets change the topic!");
+
     private QAJsonParser infoValues;
     private State nextState;
 
@@ -40,18 +48,20 @@ public class RoboyInfoState extends State {
 
     @Override
     public Output act() {
-        return Output.say("");
+        return Output.say(getRoboyFactsPhrase(new Roboy(getMemory())));
     }
 
     @Override
     public Output react(Interpretation input) {
+        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+
         UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
         if (inputSentiment.toBoolean == Boolean.TRUE) {
             nextState = null;
             return Output.say("");
         } else {
             nextState = getTransition(LEARN_ABOUT_PERSON);
-            return Output.say("");
+            return Output.say(getNegativeSentence(person.getName()));
         }
     }
 
@@ -130,5 +140,22 @@ public class RoboyInfoState extends State {
         } else {
             return "0 years";
         }
+    }
+
+
+    private String getConnectingPhrase(String name) {
+        return String.format(connectingPhrases.getRandomElement(), name);
+    }
+
+    private String getOfferSentence(String roboyInfoPhrase) {
+        return String.format(offerPhrases.getRandomElement(), roboyInfoPhrase);
+    }
+
+    private String getPositiveSentence(String name) {
+        return getConnectingPhrase(name) + positivePhrases.getRandomElement();
+    }
+
+    private String getNegativeSentence(String name) {
+        return getConnectingPhrase(name) + negativePhrases.getRandomElement();
     }
 }
