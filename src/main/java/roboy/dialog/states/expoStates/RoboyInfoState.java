@@ -3,6 +3,7 @@ package roboy.dialog.states.expoStates;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
+import roboy.context.contextObjects.IntentValue;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics.UtteranceSentiment;
@@ -24,6 +25,8 @@ import java.util.*;
 import static roboy.memory.Neo4jProperty.*;
 
 public class RoboyInfoState extends State {
+    public final static String INTENTS_HISTORY_ID = "RIS";
+
     private final String SELECTED_SKILLS = "skills";
     private final String SELECTED_ABILITIES = "abilities";
     private final String SELECTED_ROBOY_QA = "roboy";
@@ -31,10 +34,11 @@ public class RoboyInfoState extends State {
     private final Logger LOGGER = LogManager.getLogger();
     private final String INFO_FILE_PARAMETER_ID = "infoFile";
 
-    private final RandomList<String> offerPhrases = new RandomList<>("Do you want me to %s?", "Would you like me to %s?", "Should I show you how I %s?");
+    private final RandomList<String> offerPhrases = new RandomList<>("Do you want me to %s?", "Would you like me to %s?", "Should I demonstrate you how I %s?");
     private final RandomList<String> connectingPhrases = PhraseCollection.SEGUE_CONNECTING_PHRASES;
     private final RandomList<String> positivePhrases = new RandomList<>(" lets do it!", " behold me!", " I will give you the show of your life!", " that is the best decision!");
     private final RandomList<String> negativePhrases = new RandomList<>(" let me ask you a question then!", " was I not polite enough?", " lets switch gears!", " lets change the topic!");
+    private final RandomList<String> roboyQAPhrases = new RandomList<>(" answer some questions about myself", " tell you more about myself");
 
     private QAJsonParser infoValues;
     private State nextState;
@@ -48,7 +52,7 @@ public class RoboyInfoState extends State {
 
     @Override
     public Output act() {
-        return Output.say(getRoboyFactsPhrase(new Roboy(getMemory())));
+        return Output.say(getRoboyFactsPhrase(new Roboy(getMemory())) + getOfferSentence(""));
     }
 
     @Override
@@ -57,8 +61,8 @@ public class RoboyInfoState extends State {
 
         UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
         if (inputSentiment.toBoolean == Boolean.TRUE) {
-            nextState = null;
-            return Output.say("");
+            nextState = getTransitionByIntent(Context.getInstance().DIALOG_INTENTS.getLastValue());
+            return Output.say(getPositiveSentence(person.getName()));
         } else {
             nextState = getTransition(LEARN_ABOUT_PERSON);
             return Output.say(getNegativeSentence(person.getName()));
@@ -72,6 +76,8 @@ public class RoboyInfoState extends State {
 
     private String getRoboyFactsPhrase(Roboy roboy) {
         String result = "";
+        String retrievedRandomSkill = "";
+        String retrievedRandomAbility = "";
 
         // Get some random properties facts
         if (roboy.getProperties() != null && !roboy.getProperties().isEmpty()) {
@@ -86,21 +92,25 @@ public class RoboyInfoState extends State {
             }
             if (properties.containsKey(skills.type)) {
                 RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("skills").toString().split(",")));
-                result += " " + String.format(infoValues.getSuccessAnswers(skills).getRandomElement(), retrievedResult.getRandomElement());
+                retrievedRandomSkill = retrievedResult.getRandomElement();
+                result += " " + String.format(infoValues.getSuccessAnswers(skills).getRandomElement(), retrievedRandomSkill);
             }
             if (properties.containsKey(abilities.type)) {
                 RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("abilities").toString().split(",")));
-                result += " " + String.format(infoValues.getSuccessAnswers(abilities).getRandomElement(), retrievedResult.getRandomElement());
+                retrievedRandomAbility = retrievedResult.getRandomElement();
+                result += " " + String.format(infoValues.getSuccessAnswers(abilities).getRandomElement(), retrievedRandomAbility);
             }
             if (properties.containsKey(future.type)) {
                 RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("future").toString().split(",")));
-                result += " " + String.format(infoValues.getSuccessAnswers(future).getRandomElement(), retrievedResult.getRandomElement());
+                result += " " + String.format(infoValues.getSuccessAnswers(future).getRandomElement(), retrievedResult.getRandomElement()) + " ";
             }
         }
 
         if (result.equals("")) {
             result = "I am Roboy 2.0! ";
         }
+
+        result += getOfferSentence(chooseIntentAndStoreInContext(retrievedRandomSkill, retrievedRandomAbility));
 
         return result;
     }
@@ -147,8 +157,8 @@ public class RoboyInfoState extends State {
         return String.format(connectingPhrases.getRandomElement(), name);
     }
 
-    private String getOfferSentence(String roboyInfoPhrase) {
-        return String.format(offerPhrases.getRandomElement(), roboyInfoPhrase);
+    private String getOfferSentence(String roboyOfferPhrase) {
+        return String.format(offerPhrases.getRandomElement(), roboyOfferPhrase);
     }
 
     private String getPositiveSentence(String name) {
@@ -157,5 +167,39 @@ public class RoboyInfoState extends State {
 
     private String getNegativeSentence(String name) {
         return getConnectingPhrase(name) + negativePhrases.getRandomElement();
+    }
+
+    private State getTransitionByIntent(IntentValue intentValue) {
+        if (intentValue.getNeo4jPropertyValue() != null) {
+            if (intentValue.getNeo4jPropertyValue() == skills) {
+                return getTransition(SELECTED_SKILLS);
+            } else if (intentValue.getNeo4jPropertyValue() == abilities) {
+                return getTransition(SELECTED_ABILITIES);
+            }
+        } else if (intentValue.getStringValue() != null) {
+            if (intentValue.getStringValue().equals("info")) {
+                return getTransition(SELECTED_ROBOY_QA);
+            }
+        }
+        return getTransition(LEARN_ABOUT_PERSON);
+    }
+
+    private String chooseIntentAndStoreInContext(String skill, String ability) {
+        IntentValue propertyIntent;
+        int dice = (int) (2 * Math.random() + 1);
+        switch (dice) {
+            case 1:
+                propertyIntent = new IntentValue(INTENTS_HISTORY_ID, skills, skill);
+                break;
+            case 2:
+                propertyIntent = new IntentValue(INTENTS_HISTORY_ID, abilities, ability);
+                break;
+            default:
+                propertyIntent = new IntentValue(INTENTS_HISTORY_ID, "info", roboyQAPhrases.getRandomElement());
+                break;
+        }
+
+        Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(propertyIntent);
+        return propertyIntent.getAttribute();
     }
 }
