@@ -1,0 +1,86 @@
+{
+  "initialState": "Greetings",
+  "states": [
+    {
+      "identifier": "Greetings",
+      "implementation": "roboy.dialog.states.expoStates.PassiveGreetingsState",
+      "transitions": {
+        "greetingDetected": "Intro"
+      }
+    },
+    {
+      "identifier": "Intro",
+      "implementation": "roboy.dialog.states.expoStates.IntroductionState",
+      "transitions": {
+        "roboyInfo": "RoboyState"
+      },
+      "parameters": {
+
+      }
+    },
+    {
+      "identifier": "RoboyState",
+      "implementation": "roboy.dialog.states.expoStates.RoboyInfoState",
+      "fallback": "WildTalk",
+      "transitions": {
+        "newPerson": "PersonalQA",
+        "skills": "SkillsState",
+        "abilities": "AbilitiesState"
+      },
+      "parameters": {
+        "infoFile": "resources/sentences/RoboyInfoList.json"
+      }
+    },
+    {
+      "identifier": "SkillsState",
+      "implementation": "roboy.dialog.states.expoStates.DemonstrateSkillsState",
+      "fallback": "WildTalk",
+      "transitions": {
+        "questionAnswering": "QuestionAnswering"
+      },
+      "parameters": {
+
+      }
+    },
+    {
+      "identifier": "AbilitiesState",
+      "implementation": "roboy.dialog.states.expoStates.DemonstrateAbilitiesState",
+      "fallback": "WildTalk",
+      "transitions": {
+        "questionAnswering": "QuestionAnswering"
+      },
+      "parameters": {
+
+      }
+    },
+    {
+      "identifier": "PersonalQA",
+      "implementation": "roboy.dialog.states.expoStates.PersonalInformationAskingState",
+      "transitions": {
+        "questionAnswering": "QuestionAnswering"
+      },
+      "parameters": {
+        "qaFile": "resources/sentences/QAList.json"
+      }
+    },
+    {
+      "identifier": "QuestionAnswering",
+      "implementation": "roboy.dialog.states.expoStates.QuestionAnsweringState",
+      "fallback": "WildTalk",
+      "transitions": {
+        "finishedQuestionAnswering": "Farewell",
+        "loopToNewPerson": "PersonalQA"
+      }
+    },
+    {
+      "identifier": "WildTalk",
+      "implementation": "roboy.dialog.states.expoStates.WildTalkState",
+      "transitions": {}
+    },
+    {
+      "identifier": "Farewell",
+      "implementation": "roboy.dialog.states.expoStates.FarewellState",
+      "transitions": {}
+    }
+  ]
+}
