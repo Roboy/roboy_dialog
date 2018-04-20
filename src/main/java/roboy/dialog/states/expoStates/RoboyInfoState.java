@@ -52,7 +52,7 @@ public class RoboyInfoState extends State {
 
     @Override
     public Output act() {
-        return Output.say(getRoboyFactsPhrase(new Roboy(getMemory())) + getOfferSentence(""));
+        return Output.say(getRoboyFactsPhrase(new Roboy(getMemory())));
     }
 
     @Override
@@ -60,6 +60,7 @@ public class RoboyInfoState extends State {
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
 
         UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
+        LOGGER.info("The detected sentiment is " + inputSentiment);
         if (inputSentiment.toBoolean == Boolean.TRUE) {
             nextState = getTransitionByIntent(Context.getInstance().DIALOG_INTENTS.getLastValue());
             return Output.say(getPositiveSentence(person.getName()));
