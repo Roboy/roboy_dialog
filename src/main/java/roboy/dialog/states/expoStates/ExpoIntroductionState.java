@@ -63,11 +63,9 @@ public class ExpoIntroductionState extends State {
 
         // 3. update interlocutor in context
         updateInterlocutorInContext(person);
-        Double segueProbability = 0.25;
 
         nextState = getTransition(INTERLOCUTOR_NAME_OBTAINED);
-        Segue s = new Segue(Segue.SegueType.DISTRACT, segueProbability);
-        return Output.say(getResponsePhrase(name)).setSegue(s);
+        return Output.say(getResponsePhrase(name));
     }
 
     @Override
