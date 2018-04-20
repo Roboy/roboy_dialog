@@ -1,5 +1,6 @@
 package roboy.logic;
 
+import roboy.linguistics.Linguistics.UtteranceSentiment;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jLabel;
 import roboy.memory.Neo4jProperty;
@@ -11,7 +12,7 @@ import java.util.HashMap;
 public interface InferenceEngine {
 
 	// There lies the future of Roboy and the brilliance of his logic
-    // TODO: Implement
+    // TODO: Extend/Refactor
 
     /**
      * Basic inference method
@@ -72,5 +73,15 @@ public interface InferenceEngine {
      * @return String containing inferred result/null if NA
      */
     String inferLabel(Neo4jLabel key, Interpretation input);
+
+    /**
+     * Basic inference method
+     * Infers the sentiment of the utterance
+     * tries to extract and ground the information from the available Interpretation
+     *
+     * @param input
+     * @return String containing inferred result/null if NA
+     */
+    UtteranceSentiment inferSentiment(Interpretation input);
 
 }
