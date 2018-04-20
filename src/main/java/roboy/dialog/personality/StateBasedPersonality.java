@@ -5,9 +5,11 @@ import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
+import roboy.dialog.action.SpeechAction;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.InferenceEngine;
+import roboy.logic.StatementInterpreter;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.nodes.Interlocutor;
 import roboy.dialog.DialogStateMachine;
@@ -136,10 +138,17 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
 
         // SPECIAL NON-STATE BASED BEHAVIOUR
-        // TODO: special treatment for profanity, farewell phrases etc.
+        // TODO: special treatment for profanity, etc.
         if (input.getFeatures().containsKey(Linguistics.EMOTION)) {
             // change facial expression based on input
             answerActions.add(new FaceAction((String) input.getFeatures().get(Linguistics.EMOTION)));
+        }
+        String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
+        if (StatementInterpreter.isFromList(sentence, Verbalizer.farewells)) {
+            // stop conversation once the interlocutor says a farewell
+            endConversation();
+            answerActions.add(new SpeechAction(Verbalizer.farewells.getRandomElement()));
+            return answerActions;
         }
 
 
