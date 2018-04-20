@@ -187,7 +187,7 @@ public class RoboyInfoState extends State {
 
     private String chooseIntentAndStoreInContext(String skill, String ability) {
         IntentValue propertyIntent;
-        int dice = (int) (2 * Math.random() + 1);
+        int dice = (int) (3 * Math.random() + 1);
         switch (dice) {
             case 1:
                 propertyIntent = new IntentValue(INTENTS_HISTORY_ID, skills, skill);
