@@ -75,6 +75,9 @@ public class PersonalInformationAskingState extends State {
                 break;
             }
         }
+        if (selectedPredicate == null) {
+            selectedPredicate = OTHER;
+        }
         RandomList<String> questions = qaValues.getQuestions(selectedPredicate);
         String question = "";
         if (questions != null && !questions.isEmpty()) {
@@ -90,6 +93,7 @@ public class PersonalInformationAskingState extends State {
             LOGGER.error(" -> Error on updating the IntentHistory: " + e.getMessage());
         }
         return Output.say(question);
+
     }
 
     @Override
@@ -99,28 +103,37 @@ public class PersonalInformationAskingState extends State {
         RandomList<String> answers;
         String answer = "I have no words";
         String result = InferResult(input);
-
-        if (result != null && !result.equals("")) {
-            LOGGER.info(" -> Inference was successful");
-            answers = qaValues.getSuccessAnswers(selectedPredicate);
-            person.addInformation(selectedPredicate.type, result);
-            Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
-            LOGGER.info(" -> Updated Interlocutor: " + person.getName());
+        if (selectedPredicate != null && selectedPredicate != OTHER) {
+            if (result != null && !result.equals("")) {
+                LOGGER.info(" -> Inference was successful");
+                answers = qaValues.getSuccessAnswers(selectedPredicate);
+                person.addInformation(selectedPredicate.type, result);
+                Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+                LOGGER.info(" -> Updated Interlocutor: " + person.getName());
+            } else {
+                LOGGER.warn(" -> Inference failed");
+                answers = qaValues.getFailureAnswers(selectedPredicate);
+                result = "";
+                LOGGER.warn(" -> The result is empty. Nothing to store");
+            }
         } else {
-            LOGGER.warn(" -> Inference failed");
-            answers = qaValues.getFailureAnswers(selectedPredicate);
-            result = "";
-            LOGGER.warn(" -> The result is empty. Nothing to store");
+            answers = qaValues.getSuccessAnswers(OTHER);
         }
+
         if (answers != null && !answers.isEmpty()) {
             answer = String.format(answers.getRandomElement(), result);
         } else {
             LOGGER.error(" -> The list of " + selectedPredicate.type + " answers is empty or null");
         }
+
         LOGGER.info(" -> Produced answer: " + answer);
-        nextState = this;
+        nextState = getRandomTransition();
         Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE, 0.5);
         return Output.say(answer).setSegue(s);
+    }
+
+    private State getRandomTransition() {
+        return this;
     }
 
     @Override

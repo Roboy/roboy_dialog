@@ -261,7 +261,7 @@
     ],
     "A": {
       "SUCCESS": [
-        "Other %s and other"
+        "Other and other"
       ],
       "FAILURE": [
         "There is no other on the Earth"
@@ -269,10 +269,10 @@
     },
     "FUP": {
       "Q": [
-        "Do you remember other %s?"
+        "Do you remember other?"
       ],
       "A": [
-        "Other is still other, amigo %s"
+        "Other is still other, amigo"
       ]
     }
   }

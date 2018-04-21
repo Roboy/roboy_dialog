@@ -33,6 +33,7 @@ class JsonModel {
     JsonEntryModel IS;
     JsonEntryModel CHILD_OF;
     JsonEntryModel SIBLING_OF;
+    JsonEntryModel OTHER;
     JsonEntryModel APPLES;
     JsonEntryModel ANIMAL;
     JsonEntryModel WORD;
