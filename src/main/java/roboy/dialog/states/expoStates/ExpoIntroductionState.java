@@ -3,13 +3,24 @@ package roboy.dialog.states.expoStates;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
+import roboy.context.contextObjects.IntentValue;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
+import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.nodes.Interlocutor;
 import roboy.dialog.Segue;
+import roboy.memory.nodes.Roboy;
+import roboy.talk.PhraseCollection;
+import roboy.util.QAJsonParser;
 import roboy.util.RandomList;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.*;
 
 import static roboy.memory.Neo4jProperty.*;
@@ -29,15 +40,28 @@ import static roboy.memory.Neo4jProperty.*;
  * 3) No parameters are used.
  */
 public class ExpoIntroductionState extends State {
-    private final String INTERLOCUTOR_NAME_OBTAINED = "roboyInfo";
+    public final static String INTENTS_HISTORY_ID = "RIS";
+
+    private final String SELECTED_SKILLS = "skills";
+    private final String SELECTED_ABILITIES = "abilities";
+    private final String SELECTED_ROBOY_QA = "roboy";
+    private final String LEARN_ABOUT_PERSON = "newPerson";
+    private final String INFO_FILE_PARAMETER_ID = "infoFile";
+
     private final Logger LOGGER = LogManager.getLogger();
+
     private final RandomList<String> introPhrases = new RandomList<>("What's your name?", "Could you tell me your name?");
     private final RandomList<String> responsePhrases = new RandomList<>("Nice to meet you, %s!", "I am glad to meet you, %s!");
+    private final RandomList<String> offerPhrases = new RandomList<>("Do you want me to %s?", "Would you like me to %s?", "Should I demonstrate you how I %s?");
 
+    private QAJsonParser infoValues;
     private State nextState;
 
     public ExpoIntroductionState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
+        String infoListPath = params.getParameter(INFO_FILE_PARAMETER_ID);
+        LOGGER.info(" -> The infoList path: " + infoListPath);
+        infoValues = new QAJsonParser(infoListPath);
     }
 
     @Override
@@ -64,8 +88,14 @@ public class ExpoIntroductionState extends State {
         // 3. update interlocutor in context
         updateInterlocutorInContext(person);
 
-        nextState = getTransition(INTERLOCUTOR_NAME_OBTAINED);
-        return Output.say(getResponsePhrase(name));
+        Roboy roboy = new Roboy(getMemory());
+
+        nextState = getRandomTransition();
+        return Output.say(getResponsePhrase(name) + getRoboyFactsPhrase(roboy));
+    }
+
+    private String getNameFromInput(Interpretation input) {
+        return getInference().inferProperty(name, input);
     }
 
     @Override
@@ -73,12 +103,83 @@ public class ExpoIntroductionState extends State {
         return nextState;
     }
 
-    private String getNameFromInput(Interpretation input) {
-        return getInference().inferProperty(name, input);
+    private String getRoboyFactsPhrase(Roboy roboy) {
+        String result = "";
+        String retrievedRandomSkill = "";
+        String retrievedRandomAbility = "";
+
+        // Get some random properties facts
+        if (roboy.getProperties() != null && !roboy.getProperties().isEmpty()) {
+            HashMap<String, Object> properties = roboy.getProperties();
+            if (properties.containsKey(full_name.type)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(full_name).getRandomElement(), properties.get(full_name.type));
+            }
+            if (properties.containsKey(birthdate.type)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), determineAge(properties.get(birthdate.type).toString()));
+            } else if (properties.containsKey(age.type)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), properties.get(age.type) + " years!");
+            }
+            if (properties.containsKey(skills.type)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("skills").toString().split(",")));
+                retrievedRandomSkill = retrievedResult.getRandomElement();
+                result += " " + String.format(infoValues.getSuccessAnswers(skills).getRandomElement(), retrievedRandomSkill);
+            }
+            if (properties.containsKey(abilities.type)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("abilities").toString().split(",")));
+                retrievedRandomAbility = retrievedResult.getRandomElement();
+                result += " " + String.format(infoValues.getSuccessAnswers(abilities).getRandomElement(), retrievedRandomAbility);
+            }
+            if (properties.containsKey(future.type)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("future").toString().split(",")));
+                result += " " + String.format(infoValues.getSuccessAnswers(future).getRandomElement(), retrievedResult.getRandomElement()) + " ";
+            }
+        }
+
+        if (result.equals("")) {
+            result = "I am Roboy 2.0! ";
+        }
+
+        Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, skills, retrievedRandomSkill));
+        Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, abilities, retrievedRandomAbility));
+
+        return result;
     }
 
-    private void updateInterlocutorInContext(Interlocutor interlocutor) {
-        Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(interlocutor);
+    /**
+     * A helper function to determine the age based on the birthdate
+     *
+     * Java 8 specific
+     *
+     * @param datestring
+     * @return
+     */
+    private String determineAge(String datestring) {
+        DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
+        Date date = null;
+        try {
+            date = format.parse(datestring);
+        } catch (ParseException e) {
+            LOGGER.error("Error while parsing a date: " + datestring + ". " + e.getMessage());
+        }
+        if (date != null) {
+            LocalDate birthdate = date.toInstant().atZone(ZoneId.of("Europe/Berlin")).toLocalDate();
+            LOGGER.info("The birthdate is " + birthdate.toString());
+            LocalDate now = LocalDate.now(ZoneId.of("Europe/Berlin"));
+            Period age = Period.between(birthdate, now);
+            int years = age.getYears();
+            int months = age.getMonths();
+            int days = age.getDays();
+            LOGGER.info("The estimated age is: " + years + " years, or " + months + " months, or " + days + " days!");
+            if (years > 0) {
+                return years + " years";
+            } else if (months > 0) {
+                return months + " months";
+            } else {
+                return days + " days";
+            }
+        } else {
+            return "0 years";
+        }
     }
 
     private String getIntroPhrase() {
@@ -89,8 +190,21 @@ public class ExpoIntroductionState extends State {
         return String.format(responsePhrases.getRandomElement(), name);
     }
 
-    @Override
-    protected Set<String> getRequiredTransitionNames() {
-        return newSet(INTERLOCUTOR_NAME_OBTAINED);
+    private State getRandomTransition() {
+        int dice = (int) (4 * Math.random() + 1);
+        switch (dice) {
+            case 1:
+                return getTransition(SELECTED_SKILLS);
+            case 2:
+                return getTransition(SELECTED_ABILITIES);
+            case 3:
+                return getTransition(SELECTED_ROBOY_QA);
+            default:
+                return getTransition(LEARN_ABOUT_PERSON);
+        }
+    }
+
+    private void updateInterlocutorInContext(Interlocutor interlocutor) {
+        Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(interlocutor);
     }
 }
