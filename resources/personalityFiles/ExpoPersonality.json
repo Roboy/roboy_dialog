@@ -12,19 +12,9 @@
       "identifier": "Intro",
       "implementation": "roboy.dialog.states.expoStates.ExpoIntroductionState",
       "transitions": {
-        "roboyInfo": "RoboyState"
-      },
-      "parameters": {
-
-      }
-    },
-    {
-      "identifier": "RoboyState",
-      "implementation": "roboy.dialog.states.expoStates.RoboyInfoState",
-      "fallback": "WildTalk",
-      "transitions": {
         "newPerson": "PersonalQA",
         "skills": "SkillsState",
+        "roboy": "RoboyQA",
         "abilities": "AbilitiesState"
       },
       "parameters": {
@@ -36,7 +26,22 @@
       "implementation": "roboy.dialog.states.expoStates.DemonstrateSkillsState",
       "fallback": "WildTalk",
       "transitions": {
-        "questionAnswering": "QuestionAnswering"
+        "abilities": "AbilitiesState",
+        "roboy": "RoboyQA",
+        "newPerson": "PersonalQA"
+      },
+      "parameters": {
+
+      }
+    },
+    {
+      "identifier": "RoboyQA",
+      "implementation": "roboy.dialog.states.expoStates.RoboyQAState",
+      "fallback": "WildTalk",
+      "transitions": {
+        "skills": "SkillsState",
+        "abilities": "AbilitiesState",
+        "newPerson": "PersonalQA"
       },
       "parameters": {
 
@@ -47,7 +52,9 @@
       "implementation": "roboy.dialog.states.expoStates.DemonstrateAbilitiesState",
       "fallback": "WildTalk",
       "transitions": {
-        "questionAnswering": "QuestionAnswering"
+        "skills": "SkillsState",
+        "roboy": "RoboyQA",
+        "newPerson": "PersonalQA"
       },
       "parameters": {
 
@@ -57,19 +64,12 @@
       "identifier": "PersonalQA",
       "implementation": "roboy.dialog.states.expoStates.PersonalInformationAskingState",
       "transitions": {
-        "questionAnswering": "QuestionAnswering"
+        "skills": "SkillsState",
+        "abilities": "AbilitiesState",
+        "roboy": "RoboyQA"
       },
       "parameters": {
         "qaFile": "resources/sentences/QAList.json"
-      }
-    },
-    {
-      "identifier": "QuestionAnswering",
-      "implementation": "roboy.dialog.states.expoStates.QuestionAnsweringState",
-      "fallback": "WildTalk",
-      "transitions": {
-        "finishedQuestionAnswering": "Farewell",
-        "loopToNewPerson": "PersonalQA"
       }
     },
     {
