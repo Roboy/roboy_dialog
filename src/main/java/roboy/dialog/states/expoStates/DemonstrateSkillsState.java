@@ -10,15 +10,31 @@ import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jProperty;
 import roboy.memory.nodes.Interlocutor;
+import roboy.memory.nodes.Roboy;
 import roboy.talk.PhraseCollection;
 import roboy.util.RandomList;
 
-enum RoboySkills {
-    jokes,
-    fun_facts,
-    famous_entities,
-    math;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
+import static roboy.memory.Neo4jProperty.abilities;
+import static roboy.memory.Neo4jProperty.skills;
+
+enum RoboySkillIntent {
+    jokes("joke"),
+    fun_facts("fact"),
+    famous_entities("famous"),
+    math("math");
+
+    public String type;
+
+    RoboySkillIntent(String type) {
+        this.type=type;
+    }
+
+    private final RandomList<String> connectingPhrases = PhraseCollection.CONNECTING_PHRASES;
+    private final RandomList<String> negativePhrases = PhraseCollection.NEGATIVE_SENTIMENT_PHRASES;
     private final RandomList<String> offerJokes = PhraseCollection.OFFER_JOKES_PHRASES;
     private final RandomList<String> offerFacts = PhraseCollection.OFFER_FACTS_PHRASES;
     private final RandomList<String> offerFamousEntities = PhraseCollection.OFFER_FAMOUS_ENTITIES_PHRASES;
@@ -41,27 +57,48 @@ enum RoboySkills {
         throw new AssertionError("Unknown error on enum entry: " + this);
     }
 
-    public String getResponsePhrase(Interpretation input) {
+    public String getResponsePhrase(Interpretation input, Linguistics.UtteranceSentiment sentiment, String interlocutorName) {
         switch (this) {
             case jokes:
-                return jokesList.getRandomElement();
+                return getRandomJoke(sentiment, interlocutorName);
             case fun_facts:
-                return factsList.getRandomElement();
+                return getRandomFact(sentiment, interlocutorName);
             case math:
-                return getAnswerFromSemanticParser(input);
+                return getAnswerFromSemanticParser(input, interlocutorName);
             case famous_entities:
-                return getAnswerFromSemanticParser(input);
+                return getAnswerFromSemanticParser(input, interlocutorName);
         }
         throw new AssertionError("Unknown error on enum entry: " + this);
     }
 
-    private String getAnswerFromSemanticParser(Interpretation input) {
+    private String getRandomJoke(Linguistics.UtteranceSentiment sentiment, String name) {
+        if (sentiment != Linguistics.UtteranceSentiment.POSITIVE) {
+            return getNegativeSentence(name);
+        }
+
+        return jokesList.getRandomElement();
+    }
+
+    private String getRandomFact(Linguistics.UtteranceSentiment sentiment, String name) {
+        if (sentiment != Linguistics.UtteranceSentiment.POSITIVE) {
+            return getNegativeSentence(name);
+        }
+
+        return factsList.getRandomElement();
+    }
+
+    private String getAnswerFromSemanticParser(Interpretation input, String name) {
         // TODO Semantic parser
-        if (true) {
-            return null;
+        String result = "";
+        if (false) {
+            return String.format(connectingPhrases.getRandomElement(), name) + result;
         } else {
             return parserError.getRandomElement();
         }
+    }
+
+    private String getNegativeSentence(String name) {
+        return String.format(connectingPhrases.getRandomElement(), name) + negativePhrases.getRandomElement();
     }
 }
 
@@ -74,13 +111,8 @@ public class DemonstrateSkillsState extends State {
 
     private final Logger LOGGER = LogManager.getLogger();
 
-    private final RandomList<String> connectingPhrases = PhraseCollection.CONNECTING_PHRASES;
-    // private final RandomList<String> positivePhrases = new RandomList<>(" lets do it!", " behold me!", " I will give you the show of your life!", " that is the best decision!");
-    private final RandomList<String> negativePhrases = new RandomList<>(" let me ask you a question then!", " was I not polite enough?", " lets switch gears!", " lets change the topic!");
-    private final RandomList<String> roboyQAPhrases = new RandomList<>(" answer some questions about myself", " tell you more about myself");
-
     private State nextState;
-    private RoboySkills roboySkill = null;
+    private RoboySkillIntent skillIntent = null;
 
     public DemonstrateSkillsState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
@@ -94,12 +126,12 @@ public class DemonstrateSkillsState extends State {
                     intentValue.getId() + " / " +
                     intentValue.getNeo4jPropertyValue() + " / " +
                     intentValue.getAttribute() + "]");
-            roboySkill = detectSkill(intentValue.getAttribute());
-            if (roboySkill != null) {
-                LOGGER.info("Extracted the following subintent: " + roboySkill);
-                return Output.say(roboySkill.getRequestPhrase());
+            skillIntent = detectSkill(intentValue.getAttribute());
+            if (skillIntent != null) {
+                LOGGER.info("Extracted the following skill: " + skillIntent);
+                return Output.say(skillIntent.getRequestPhrase());
             } else {
-                LOGGER.info("Subintent extraction failed");
+                LOGGER.error("Skills extraction failed");
             }
         } else {
             LOGGER.error("Unexpected intent value: [" +
@@ -116,17 +148,9 @@ public class DemonstrateSkillsState extends State {
 
         Linguistics.UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
         LOGGER.info("The detected sentiment is " + inputSentiment);
-        if (inputSentiment.toBoolean == Boolean.TRUE) {
-            String answer = "";
-            if (roboySkill != null) {
-                answer = roboySkill.getResponsePhrase(input);
-            }
-            nextState = getRandomTransition();
-            return Output.say(getConnectingPhrase(person.getName()) + answer);
-        } else {
-            nextState = getRandomTransition();
-            return Output.say(getNegativeSentence(person.getName()));
-        }
+
+        nextState = getRandomTransition();
+        return Output.say(skillIntent.getResponsePhrase(input, inputSentiment, person.getName()));
     }
 
     @Override
@@ -134,17 +158,9 @@ public class DemonstrateSkillsState extends State {
         return nextState;
     }
 
-    private String getConnectingPhrase(String name) {
-        return String.format(connectingPhrases.getRandomElement(), name);
-    }
-
-    private String getNegativeSentence(String name) {
-        return getConnectingPhrase(name) + negativePhrases.getRandomElement();
-    }
-
-    private RoboySkills detectSkill(String attribute) {
-        for (RoboySkills intent : RoboySkills.values()) {
-            if (attribute.contains(intent.toString())) {
+    private RoboySkillIntent detectSkill(String attribute) {
+        for (RoboySkillIntent intent : RoboySkillIntent.values()) {
+            if (attribute.contains(intent.type)) {
                 return intent;
             }
         }
@@ -152,16 +168,57 @@ public class DemonstrateSkillsState extends State {
     }
 
     private State getRandomTransition() {
+        Roboy roboy = new Roboy(getMemory());
         int dice = (int) (4 * Math.random() + 1);
         switch (dice) {
             case 1:
-                return this;
+                String skill = chooseIntentAttribute(skills);
+                if (!skill.equals("")) {
+                    Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, skills, skill));
+                    return this;
+                } else {
+                    return getTransition(LEARN_ABOUT_PERSON);
+                }
             case 2:
-                return getTransition(SELECTED_ABILITIES);
+                String ability = chooseIntentAttribute(abilities);
+                if (!ability.equals("")) {
+                    Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, abilities, ability));
+                    return getTransition(SELECTED_ABILITIES);
+                } else {
+                    return getTransition(LEARN_ABOUT_PERSON);
+                }
             case 3:
                 return getTransition(SELECTED_ROBOY_QA);
             default:
                 return getTransition(LEARN_ABOUT_PERSON);
         }
+    }
+
+    private String chooseIntentAttribute(Neo4jProperty predicate) {
+        Roboy roboy = new Roboy(getMemory());
+        String attribute = "";
+        HashMap<String, Object> properties = roboy.getProperties();
+        if (roboy.getProperties() != null && !roboy.getProperties().isEmpty()) {
+            if (properties.containsKey(predicate.type)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("skills").toString().split(",")));
+                int count = 0;
+                do {
+                    attribute = retrievedResult.getRandomElement();
+                    count++;
+                } while (lastNIntentsContainAttribute(attribute, 2) && count < retrievedResult.size());
+            }
+        }
+        return attribute;
+    }
+
+    private boolean lastNIntentsContainAttribute(String attribute, int n) {
+        Map<Integer, IntentValue> lastIntentValues = Context.getInstance().DIALOG_INTENTS.getLastNValues(n);
+
+        for (IntentValue value : lastIntentValues.values()) {
+            if (value.getAttribute().equals(attribute)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
