@@ -47,7 +47,10 @@ public class PersonalInformationAskingState extends State {
     private Neo4jRelationship selectedPredicate;
     private State nextState;
 
-    private final String TRANSITION_INFO_OBTAINED = "questionAnswering";
+    private final String SELECTED_SKILLS = "skills";
+    private final String SELECTED_ABILITIES = "abilities";
+    private final String SELECTED_ROBOY_QA = "roboy";
+
     private final String QA_FILE_PARAMETER_ID = "qaFile";
     final Logger LOGGER = LogManager.getLogger();
 
@@ -115,7 +118,7 @@ public class PersonalInformationAskingState extends State {
             LOGGER.error(" -> The list of " + selectedPredicate.type + " answers is empty or null");
         }
         LOGGER.info(" -> Produced answer: " + answer);
-        nextState = getTransition(TRANSITION_INFO_OBTAINED);
+        nextState = this;
         Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE, 0.5);
         return Output.say(answer).setSegue(s);
     }
@@ -128,7 +131,7 @@ public class PersonalInformationAskingState extends State {
     @Override
     protected Set<String> getRequiredTransitionNames() {
         // optional: define all required transitions here:
-        return newSet(TRANSITION_INFO_OBTAINED);
+        return newSet(SELECTED_SKILLS, SELECTED_ABILITIES, SELECTED_ROBOY_QA);
     }
 
     @Override
