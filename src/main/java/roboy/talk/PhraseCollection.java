@@ -32,8 +32,12 @@ public class PhraseCollection {
     // Added for the ExpoPersonality
     public static RandomList<String> FACTS
             = FileLineReader.readFile("resources/phraseLists/expoPhrases/facts.txt");
+    public static RandomList<String> INFO_ROBOY_INTENT_PHRASES
+            = FileLineReader.readFile("resources/phraseLists/expoPhrases/info-roboy-intent.txt");
     public static RandomList<String> JOKES
             = FileLineReader.readFile("resources/phraseLists/expoPhrases/jokes.txt");
+    public static RandomList<String> NEGATIVE_SENTIMENT_PHRASES
+            = FileLineReader.readFile("resources/phraseLists/expoPhrases/negative-sentiment.txt");
     public static RandomList<String> OFFER_FACTS_PHRASES
             = FileLineReader.readFile("resources/phraseLists/expoPhrases/offer-facts.txt");
     public static RandomList<String> OFFER_FAMOUS_ENTITIES_PHRASES

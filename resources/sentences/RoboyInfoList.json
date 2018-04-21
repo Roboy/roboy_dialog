@@ -10,7 +10,7 @@
         "Could you call me %s?",
         "My friends call me %s.",
         "They chose to call me %s.",
-        "%s, I am proud to be called this name!",
+        "I am proud to be called %s!",
         "My name sounds rather unusual for humans. It is %s."
       ]
     }
@@ -38,7 +38,7 @@
         "I was taught %s.",
         "My skills include %s.",
         "I learned %s in my lab.",
-        "Learning about %s, I made it!",
+        "I had been learning about %s and I made it!",
         "In the lab, they taught me %s",
         "I like %s, but soon i will learn more.",
         "Sometimes, I am %s just for fun because I can.",
