@@ -19,7 +19,8 @@ import roboy.util.RandomList;
 import java.io.IOException;
 
 class KnowledgeGraphClient {
-    private static String API_KEY = "000000000000000000000000000000000000000";
+    private final Logger LOGGER = LogManager.getLogger();
+    private static String API_KEY = "0000000000000000000000000000000000000000";
     final static String KGS_URL = "https://kgsearch.googleapis.com/v1/entities:search";
     final static int DEFAULT_LIMIT = 1;
     final static boolean DEFAULT_INDENT = true;
@@ -49,6 +50,7 @@ class KnowledgeGraphClient {
         url.put("limit", limit);
         url.put("indent", indent);
         url.put("key", apiKey);
+        LOGGER.info(url);
         HttpRequest request = requestFactory.buildGetRequest(url);
         HttpResponse httpResponse = request.execute();
         return httpResponse.parseAsString();

@@ -53,6 +53,7 @@ public class SearchIntroductionState extends State {
             name = "random citizen";
         }
 
+        nextState = getTransition(TRANSITION_INTRO_DONE);
         Segue s = new Segue(Segue.SegueType.DISTRACT, 0.2);
         return Output.say(String.format(successResponsePhrases.getRandomElement(), name)).setSegue(s);
     }
