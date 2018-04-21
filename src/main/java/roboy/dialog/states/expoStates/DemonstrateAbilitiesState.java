@@ -15,9 +15,9 @@ import java.util.Set;
  * Implementations of Roboy's abilities.
  *
  * Following methods have to be implemented:
- *  - wouldYouLikeToSeeDemoQuestions() -  provides a list of phrases for the act method
+ *  - wouldYouLikeToSeeDemoQuestions() -  provides a list of yes/no questions for the act method
  *  - demonstrateAbility()             -  implementation of the ability (should block until demonstration is finished)
- *  - afterDemoEndedPhrases()          -  provides a lList of phrases that wrap up the ability demonstration
+ *  - afterDemoEndedPhrases()          -  provides a list of phrases that wrap up the ability demonstration
  *
  */
 enum RoboyAbility {
@@ -90,7 +90,7 @@ enum RoboyAbility {
 
         @Override
         public RandomList<String> wouldYouLikeToSeeDemoQuestions() {
-            return new RandomList<>("My biggest dream is to become as good as a human. " +
+            return new RandomList<>("My biggest dream is to become a body as good as the human body. " +
                     "I can already move a little bit. Would you like to see it?");
         }
 
@@ -102,7 +102,7 @@ enum RoboyAbility {
 
         @Override
         public RandomList<String> afterDemoEndedPhrases() {
-            return new RandomList<>("Can you guess my feelings?");
+            return new RandomList<>("Trust me, moving is not easy at all but I am getting better and better at it.");
         }
 
     };
@@ -163,6 +163,7 @@ public class DemonstrateAbilitiesState extends State {
     private RoboyAbility activeAbility;
 
     private State nextState;
+    private final Logger logger = LogManager.getLogger();
 
     public DemonstrateAbilitiesState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
@@ -221,6 +222,7 @@ public class DemonstrateAbilitiesState extends State {
         availableAbilities.remove(ability);
         if (availableAbilities.size() == 0) {
             resetAvailableAbilities(); // reset if all abilities were used
+            logger.info("all abilities were selected at least once, resetting the list");
         }
         return ability;
     }
