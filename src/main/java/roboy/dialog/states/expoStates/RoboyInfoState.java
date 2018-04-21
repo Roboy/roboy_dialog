@@ -31,8 +31,9 @@ public class RoboyInfoState extends State {
     private final String SELECTED_ABILITIES = "abilities";
     private final String SELECTED_ROBOY_QA = "roboy";
     private final String LEARN_ABOUT_PERSON = "newPerson";
-    private final Logger LOGGER = LogManager.getLogger();
     private final String INFO_FILE_PARAMETER_ID = "infoFile";
+    private final Logger LOGGER = LogManager.getLogger();
+
 
     private final RandomList<String> offerPhrases = new RandomList<>("Do you want me to %s?", "Would you like me to %s?", "Should I demonstrate you how I %s?");
     private final RandomList<String> connectingPhrases = PhraseCollection.SEGUE_CONNECTING_PHRASES;
