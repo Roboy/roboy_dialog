@@ -36,7 +36,7 @@ public class RoboyInfoState extends State {
 
 
     private final RandomList<String> offerPhrases = new RandomList<>("Do you want me to %s?", "Would you like me to %s?", "Should I demonstrate you how I %s?");
-    private final RandomList<String> connectingPhrases = PhraseCollection.SEGUE_CONNECTING_PHRASES;
+    private final RandomList<String> connectingPhrases = PhraseCollection.CONNECTING_PHRASES;
     private final RandomList<String> positivePhrases = new RandomList<>(" lets do it!", " behold me!", " I will give you the show of your life!", " that is the best decision!");
     private final RandomList<String> negativePhrases = new RandomList<>(" let me ask you a question then!", " was I not polite enough?", " lets switch gears!", " lets change the topic!");
     private final RandomList<String> roboyQAPhrases = new RandomList<>(" answer some questions about myself", " tell you more about myself");
