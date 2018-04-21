@@ -192,5 +192,12 @@ public class Context {
         public boolean contains(V value) {
             return valueHistory.contains(value);
         }
+
+        /**
+         * Removes all the valueHistory values
+         */
+        public boolean purgeHistory() {
+            return valueHistory.purgeHistory();
+        }
     }
 }
