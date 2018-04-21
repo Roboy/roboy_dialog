@@ -42,5 +42,7 @@ public class PhraseCollection {
             = FileLineReader.readFile("resources/phraseLists/expoPhrases/offer-jokes.txt");
     public static RandomList<String> OFFER_MATH_PHRASES
             = FileLineReader.readFile("resources/phraseLists/expoPhrases/offer-math.txt");
+    public static RandomList<String> PARSER_ERROR
+            = FileLineReader.readFile("resources/phraseLists/expoPhrases/parser-error.txt");
 
 }
