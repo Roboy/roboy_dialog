@@ -6,12 +6,9 @@ import roboy.context.Context;
 import roboy.context.contextObjects.IntentValue;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
-import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.nodes.Interlocutor;
-import roboy.dialog.Segue;
 import roboy.memory.nodes.Roboy;
-import roboy.talk.PhraseCollection;
 import roboy.util.QAJsonParser;
 import roboy.util.RandomList;
 
@@ -24,7 +21,6 @@ import java.time.ZoneId;
 import java.util.*;
 
 import static roboy.memory.Neo4jProperty.*;
-
 
 
 /**
@@ -52,7 +48,6 @@ public class ExpoIntroductionState extends State {
 
     private final RandomList<String> introPhrases = new RandomList<>("What's your name?", "Could you tell me your name?");
     private final RandomList<String> responsePhrases = new RandomList<>("Nice to meet you, %s!", "I am glad to meet you, %s!");
-    private final RandomList<String> offerPhrases = new RandomList<>("Do you want me to %s?", "Would you like me to %s?", "Should I demonstrate you how I %s?");
 
     private QAJsonParser infoValues;
     private State nextState;
@@ -90,7 +85,6 @@ public class ExpoIntroductionState extends State {
 
         Roboy roboy = new Roboy(getMemory());
 
-        nextState = getRandomTransition();
         return Output.say(getResponsePhrase(name) + getRoboyFactsPhrase(roboy));
     }
 
@@ -139,8 +133,7 @@ public class ExpoIntroductionState extends State {
             result = "I am Roboy 2.0! ";
         }
 
-        Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, skills, retrievedRandomSkill));
-        Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, abilities, retrievedRandomAbility));
+        nextState = getRandomTransition(retrievedRandomSkill, retrievedRandomAbility);
 
         return result;
     }
@@ -190,12 +183,14 @@ public class ExpoIntroductionState extends State {
         return String.format(responsePhrases.getRandomElement(), name);
     }
 
-    private State getRandomTransition() {
+    private State getRandomTransition(String skill, String ability) {
         int dice = (int) (4 * Math.random() + 1);
         switch (dice) {
             case 1:
+                Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, skills, skill));
                 return getTransition(SELECTED_SKILLS);
             case 2:
+                Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, abilities, ability));
                 return getTransition(SELECTED_ABILITIES);
             case 3:
                 return getTransition(SELECTED_ROBOY_QA);
