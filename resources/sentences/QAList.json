@@ -257,14 +257,35 @@
   },
   "OTHER": {
     "Q": [
-      "Other?"
+      "What do you do for living?",
+      "What is your profession?",
+      "What do you work as?",
+      "What is your field of expertise?",
+      "What is your favourite movie?",
+      "What was the last movie you saw in the cinema?",
+      "What is your favorite TV show?",
+      "Which comedy do you like the most?",
+      "Do you have a best friend?",
+      "Have I met any of your friends?",
+      "Do you have a friend whom I have met?",
+      "Maybe I know some friends of yours. Would you name one?"
     ],
     "A": {
       "SUCCESS": [
-        "Other and other"
+        "I have heard of this",
+        "Good for you",
+        "That is very nice",
+        "No wonder, you are such an interesting human",
+        "I like this",
+        "I will remember this",
+        "I am sure this is nice",
+        "That is great"
       ],
       "FAILURE": [
-        "There is no other on the Earth"
+        "Haven't heard of this. I am sorry!",
+        "Oh well, whatever suits you.",
+        "It turned to be not that interesting",
+        "I am sorry, I am not sure I like this"
       ]
     },
     "FUP": {
