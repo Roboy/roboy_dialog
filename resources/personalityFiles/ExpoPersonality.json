@@ -44,7 +44,7 @@
         "newPerson": "PersonalQA"
       },
       "parameters": {
-
+        "infoFile": "resources/sentences/RoboyInfoList.json"
       }
     },
     {

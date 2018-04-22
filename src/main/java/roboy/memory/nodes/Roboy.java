@@ -3,16 +3,20 @@ package roboy.memory.nodes;
 import com.google.gson.Gson;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.Neo4jRelationship;
+import roboy.util.RandomList;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static roboy.memory.Neo4jRelationship.*;
 
 /**
  * Encapsulates a MemoryNodeModel and enables dialog states to easily store
  * and retrieve information about Roboy.
  */
 public class Roboy extends MemoryNodeModel{
+    public final static RandomList<Neo4jRelationship> VALID_NEO4J_RELATIONSHIPS = new RandomList<>(MEMBER_OF, HAS_HOBBY, FRIEND_OF, FROM, LIVE_IN, CHILD_OF, SIBLING_OF);
 
     /**
      * Initializer for the Roboy node
