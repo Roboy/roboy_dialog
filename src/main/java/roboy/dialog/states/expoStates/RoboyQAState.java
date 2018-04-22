@@ -3,10 +3,12 @@ package roboy.dialog.states.expoStates;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
+import roboy.context.contextObjects.IntentValue;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.memory.Neo4jProperty;
 import roboy.memory.Neo4jRelationship;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.MemoryNodeModel;
@@ -15,11 +17,16 @@ import roboy.talk.PhraseCollection;
 import roboy.util.QAJsonParser;
 import roboy.util.RandomList;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static roboy.memory.Neo4jProperty.*;
 
 public class RoboyQAState extends State {
+    public final static String INTENTS_HISTORY_ID = "RQA";
+
     private final String SELECTED_SKILLS = "skills";
     private final String SELECTED_ABILITIES = "abilities";
     private final String LEARN_ABOUT_PERSON = "newPerson";
@@ -57,10 +64,6 @@ public class RoboyQAState extends State {
         }
         nextState = getRandomTransition();
         return Output.say(answer);
-    }
-
-    private State getRandomTransition() {
-        return this;
     }
 
     private String inferMemoryAnswer(Interpretation input, Roboy roboy) {
@@ -102,5 +105,60 @@ public class RoboyQAState extends State {
     @Override
     public State getNextState() {
         return nextState;
+    }
+
+    private State getRandomTransition() {
+        Roboy roboy = new Roboy(getMemory());
+        int dice = (int) (4 * Math.random() + 1);
+        switch (dice) {
+            case 1:
+                String skill = chooseIntentAttribute(skills);
+                if (!skill.equals("")) {
+                    Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, skills, skill));
+                    return getTransition(SELECTED_SKILLS);
+                } else {
+                    return getTransition(LEARN_ABOUT_PERSON);
+                }
+            case 2:
+                String ability = chooseIntentAttribute(abilities);
+                if (!ability.equals("")) {
+                    Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, abilities, ability));
+                    return getTransition(SELECTED_ABILITIES);
+                } else {
+                    return getTransition(LEARN_ABOUT_PERSON);
+                }
+            case 3:
+                return this;
+            default:
+                return getTransition(LEARN_ABOUT_PERSON);
+        }
+    }
+
+    private String chooseIntentAttribute(Neo4jProperty predicate) {
+        Roboy roboy = new Roboy(getMemory());
+        String attribute = "";
+        HashMap<String, Object> properties = roboy.getProperties();
+        if (roboy.getProperties() != null && !roboy.getProperties().isEmpty()) {
+            if (properties.containsKey(predicate.type)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(predicate.type).toString().split(",")));
+                int count = 0;
+                do {
+                    attribute = retrievedResult.getRandomElement();
+                    count++;
+                } while (lastNIntentsContainAttribute(attribute, 2) && count < retrievedResult.size());
+            }
+        }
+        return attribute;
+    }
+
+    private boolean lastNIntentsContainAttribute(String attribute, int n) {
+        Map<Integer, IntentValue> lastIntentValues = Context.getInstance().DIALOG_INTENTS.getLastNValues(n);
+
+        for (IntentValue value : lastIntentValues.values()) {
+            if (value.getAttribute().equals(attribute)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
