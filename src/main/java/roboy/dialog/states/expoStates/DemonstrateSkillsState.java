@@ -33,6 +33,8 @@ enum RoboySkillIntent {
         this.type=type;
     }
 
+    private final Logger LOGGER = LogManager.getLogger();
+
     private final RandomList<String> connectingPhrases = PhraseCollection.CONNECTING_PHRASES;
     private final RandomList<String> negativePhrases = PhraseCollection.NEGATIVE_SENTIMENT_PHRASES;
     private final RandomList<String> offerJokes = PhraseCollection.OFFER_JOKES_PHRASES;
@@ -88,13 +90,19 @@ enum RoboySkillIntent {
     }
 
     private String getAnswerFromSemanticParser(Interpretation input, String name) {
-        // TODO Semantic parser
-        String result = "";
-        if (false) {
-            return String.format(connectingPhrases.getRandomElement(), name) + result;
-        } else {
-            return parserError.getRandomElement();
+        // TODO Semantic parser lightweight
+        Linguistics.PARSER_OUTCOME parserOutcome = input.parserOutcome;
+        if (parserOutcome == Linguistics.PARSER_OUTCOME.SUCCESS) {
+            if (input.answer != null) {
+                String result = input.answer;
+                LOGGER.info("Parsing was successful! The result is " + result);
+                return String.format(connectingPhrases.getRandomElement(), name) + result;
+            } else {
+                LOGGER.error("Parsing failed! Answer is null!");
+            }
         }
+        LOGGER.error("Parsing failed! Invalid parser outcome!");
+        return parserError.getRandomElement();
     }
 
     private String getNegativeSentence(String name) {
