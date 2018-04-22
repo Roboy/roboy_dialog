@@ -111,7 +111,7 @@ enum RoboySkillIntent {
 }
 
 public class DemonstrateSkillsState extends State {
-    public final static String INTENTS_HISTORY_ID = "RIS";
+    public final static String INTENTS_HISTORY_ID = "RSS";
 
     private final String SELECTED_ABILITIES = "abilities";
     private final String SELECTED_ROBOY_QA = "roboy";
@@ -176,7 +176,6 @@ public class DemonstrateSkillsState extends State {
     }
 
     private State getRandomTransition() {
-        Roboy roboy = new Roboy(getMemory());
         int dice = (int) (4 * Math.random() + 1);
         switch (dice) {
             case 1:
@@ -208,7 +207,7 @@ public class DemonstrateSkillsState extends State {
         HashMap<String, Object> properties = roboy.getProperties();
         if (roboy.getProperties() != null && !roboy.getProperties().isEmpty()) {
             if (properties.containsKey(predicate.type)) {
-                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("skills").toString().split(",")));
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(predicate.type).toString().split(",")));
                 int count = 0;
                 do {
                     attribute = retrievedResult.getRandomElement();

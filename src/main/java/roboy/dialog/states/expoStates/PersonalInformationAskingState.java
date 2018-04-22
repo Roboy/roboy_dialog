@@ -10,14 +10,17 @@ import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.memory.Neo4jProperty;
 import roboy.memory.Neo4jRelationship;
 import roboy.memory.nodes.Interlocutor;
+import roboy.memory.nodes.Roboy;
 import roboy.util.QAJsonParser;
 import roboy.util.RandomList;
 
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
+import static roboy.memory.Neo4jProperty.abilities;
+import static roboy.memory.Neo4jProperty.skills;
 import static roboy.memory.Neo4jRelationship.*;
 
 /**
@@ -42,6 +45,8 @@ import static roboy.memory.Neo4jRelationship.*;
  * 3) Required parameters: path to the QAList.json file.
  */
 public class PersonalInformationAskingState extends State {
+    public final static String INTENTS_HISTORY_ID = "PIA";
+
     private QAJsonParser qaValues;
     private Neo4jRelationship[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
     private Neo4jRelationship selectedPredicate;
@@ -53,8 +58,6 @@ public class PersonalInformationAskingState extends State {
 
     private final String QA_FILE_PARAMETER_ID = "qaFile";
     final Logger LOGGER = LogManager.getLogger();
-
-    public final static String INTENTS_HISTORY_ID = "PIA";
 
     public PersonalInformationAskingState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
@@ -132,10 +135,6 @@ public class PersonalInformationAskingState extends State {
         return Output.say(answer).setSegue(s);
     }
 
-    private State getRandomTransition() {
-        return this;
-    }
-
     @Override
     public State getNextState() {
         return nextState;
@@ -191,5 +190,59 @@ public class PersonalInformationAskingState extends State {
             LOGGER.warn(" -> The sentence type is NOT a STATEMENT");
         }
         return result;
+    }
+
+    private State getRandomTransition() {
+        int dice = (int) (4 * Math.random() + 1);
+        switch (dice) {
+            case 1:
+                String skill = chooseIntentAttribute(skills);
+                if (!skill.equals("")) {
+                    Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, skills, skill));
+                    return getTransition(SELECTED_SKILLS);
+                } else {
+                    return this;
+                }
+            case 2:
+                String ability = chooseIntentAttribute(abilities);
+                if (!ability.equals("")) {
+                    Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, abilities, ability));
+                    return getTransition(SELECTED_ABILITIES);
+                } else {
+                    return this;
+                }
+            case 3:
+                return getTransition(SELECTED_ROBOY_QA);
+            default:
+                return this;
+        }
+    }
+
+    private String chooseIntentAttribute(Neo4jProperty predicate) {
+        Roboy roboy = new Roboy(getMemory());
+        String attribute = "";
+        HashMap<String, Object> properties = roboy.getProperties();
+        if (roboy.getProperties() != null && !roboy.getProperties().isEmpty()) {
+            if (properties.containsKey(predicate.type)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(predicate.type).toString().split(",")));
+                int count = 0;
+                do {
+                    attribute = retrievedResult.getRandomElement();
+                    count++;
+                } while (lastNIntentsContainAttribute(attribute, 2) && count < retrievedResult.size());
+            }
+        }
+        return attribute;
+    }
+
+    private boolean lastNIntentsContainAttribute(String attribute, int n) {
+        Map<Integer, IntentValue> lastIntentValues = Context.getInstance().DIALOG_INTENTS.getLastNValues(n);
+
+        for (IntentValue value : lastIntentValues.values()) {
+            if (value.getAttribute().equals(attribute)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
