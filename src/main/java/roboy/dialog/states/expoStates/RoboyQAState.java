@@ -108,7 +108,6 @@ public class RoboyQAState extends State {
     }
 
     private State getRandomTransition() {
-        Roboy roboy = new Roboy(getMemory());
         int dice = (int) (4 * Math.random() + 1);
         switch (dice) {
             case 1:
