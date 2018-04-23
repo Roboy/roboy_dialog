@@ -63,7 +63,7 @@ public class RoboyQAState extends State {
         nextState = getRandomTransition();
         if (answer.equals("")) {
             answer = parserError.getRandomElement();
-            return Output.useFallback());
+            return Output.useFallback();
         }
         return Output.say(answer);
     }
