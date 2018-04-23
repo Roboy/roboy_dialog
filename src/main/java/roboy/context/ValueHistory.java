@@ -82,6 +82,7 @@ public class ValueHistory<V> implements AbstractValueHistory<Integer, V> {
     @Override
     public synchronized boolean purgeHistory() {
         data.clear();
+        counter = 0;
         return data.isEmpty();
     }
 
