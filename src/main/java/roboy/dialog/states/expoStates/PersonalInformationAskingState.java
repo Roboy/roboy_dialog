@@ -50,6 +50,7 @@ public class PersonalInformationAskingState extends State {
     private QAJsonParser qaValues;
     private Neo4jRelationship[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
     private Neo4jRelationship selectedPredicate;
+    private int otherIndex;
     private State nextState;
 
     private final String SELECTED_SKILLS = "skills";
@@ -72,25 +73,36 @@ public class PersonalInformationAskingState extends State {
         LOGGER.info(" -> Retrieved Interlocutor: " + person.getName());
 
         for (Neo4jRelationship predicate : predicates) {
-            if (!person.hasRelationship(predicate)) {
+            IntentValue intentValue = new IntentValue(INTENTS_HISTORY_ID, predicate);
+            if(!Context.getInstance().DIALOG_INTENTS.contains(intentValue)) {
                 selectedPredicate = predicate;
                 LOGGER.info(" -> Selected predicate: " + selectedPredicate.type);
                 break;
             }
         }
-        if (selectedPredicate == null) {
+        if (selectedPredicate == null || Math.random() < 0.5) {
             selectedPredicate = OTHER;
         }
         RandomList<String> questions = qaValues.getQuestions(selectedPredicate);
         String question = "";
         if (questions != null && !questions.isEmpty()) {
-            question = questions.getRandomElement();
+            if (selectedPredicate == OTHER) {
+                do {
+                    question = questions.getRandomElement();
+                    otherIndex = questions.indexOf(question);
+                }
+                while (!Context.getInstance().OTHER_Q.contains(otherIndex));
+            }
+            else {
+                question = questions.getRandomElement();
+            }
             LOGGER.info(" -> Selected question: " + question);
         } else {
             LOGGER.error(" -> The list of " + selectedPredicate.type + " questions is empty or null");
         }
         try {
             Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, selectedPredicate));
+            Context.getInstance().OTHER_QUESTIONS_UPDATER.updateValue(otherIndex);
             LOGGER.info(" -> Dialog IntentsHistory updated");
         } catch (Exception e) {
             LOGGER.error(" -> Error on updating the IntentHistory: " + e.getMessage());
@@ -124,7 +136,11 @@ public class PersonalInformationAskingState extends State {
         }
 
         if (answers != null && !answers.isEmpty()) {
-            answer = String.format(answers.getRandomElement(), result);
+            if (selectedPredicate == OTHER) {
+                answer = String.format(answers.get(otherIndex));
+            } else {
+                answer = String.format(answers.getRandomElement(), result);
+            }
         } else {
             LOGGER.error(" -> The list of " + selectedPredicate.type + " answers is empty or null");
         }

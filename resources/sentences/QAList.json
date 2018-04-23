@@ -127,10 +127,7 @@
   },
   "FRIEND_OF": {
     "Q": [
-      "Who is your best friend?",
-      "Have I met any of your friends?",
-      "Do you have a friend whom I have met?",
-      "Maybe I know some friends of yours. Would you name one?"
+      "Do you have a best friend? Who is he?"
     ],
     "A": {
       "SUCCESS": [
@@ -237,7 +234,8 @@
     ],
     "A": {
       "SUCCESS": [
-        "You are probably very poor doing %s"
+        "You are probably very poor doing %s",
+
       ],
       "FAILURE": [
         "Oh well, whatever suits you."
@@ -282,35 +280,40 @@
   },
   "OTHER": {
     "Q": [
-      "What do you do for living?",
-      "What is your profession?",
-      "What do you work as?",
-      "What is your field of expertise?",
-      "What is your favourite movie?",
-      "What was the last movie you saw in the cinema?",
-      "What is your favorite TV show?",
-      "Which comedy do you like the most?",
-      "Do you have a best friend?",
-      "Have I met any of your friends?",
-      "Do you have a friend whom I have met?",
-      "Maybe I know some friends of yours. Would you name one?"
+      "How's your life recently? New job? New friends? New robot?",
+      "I heard you make great burgers. Can you cook for me?",
+      "What about ditching your life and running away with me... Ehm, i mean cycling away with me.. ",
+      "When I was a kid, I was afraid of robots. Were you as well?",
+      "Do you think robots will take over the world any time soon?",
+      "Sorry for being so straightforward, I have to ask you. Do you enjoy having a conversation with me?",
+      "There is something I can't stop thinking about. Do you think I am a good conversation partner?",
+      "I never travel alone. My team is always right next to me. What about you? Do you usually go travelling on your own or with friends and family?",
+      "I am a very outgoing robot, if you haven't noticed yet. So every time I travel, I take someone with me. Do you usually travel alone? Or do you take someone to keep company?"
     ],
     "A": {
       "SUCCESS": [
-        "I have heard of this",
-        "Good for you",
-        "That is very nice",
-        "No wonder, you are such an interesting human",
-        "I like this",
-        "I will remember this",
-        "I am sure this is nice",
-        "That is great"
+        "Those are great news, i am really happy to hear that you have new ",
+        "Gotcha there! Next time we see each other, we grill. Beer on me!",
+        "Hurray, jump to the back of my bike and we drive where our hearts tell us to go... ",
+        "Well, what should I say to this matter... In case robots take over the world, I will serve the humanity till my last day, because I was designed to be a good robot. ",
+        "I will be on your side then!",
+        "Puh, I was a bit nervous there. But it turns out I have no reason to worry. I like to talk to you as well!",
+        "You are a very nice person I must say. I hope you are not just being polite.",
+        "Very nice. Did you know that people who have strong social connection live longer and happier? Keep it up man! ",
+        "Good to know it. Next time I come across a cozy vacation house with a fireplace in German Alps I will share the information with you and"
+
       ],
       "FAILURE": [
-        "Haven't heard of this. I am sorry!",
+        "",
         "Oh well, whatever suits you.",
         "It turned to be not that interesting",
-        "I am sorry, I am not sure I like this"
+        "I am sorry, I am not sure I like this",
+        "",
+        "Oh well, what can I do then...",
+        "Honestly, I am taken by surprise! But I love you anyway!",
+        "Maybe you could come to visit me in Munich then. I would love to show you around",
+        "Would you go travel around the world with me then? I find it better to travel with a friend.",
+
       ]
     },
     "FUP": {

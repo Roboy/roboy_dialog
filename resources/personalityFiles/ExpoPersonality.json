@@ -4,6 +4,7 @@
     {
       "identifier": "Greetings",
       "implementation": "roboy.dialog.states.expoStates.PassiveGreetingsState",
+      "fallback": "WildTalk",
       "transitions": {
         "greetingDetected": "Intro"
       }
@@ -11,6 +12,7 @@
     {
       "identifier": "Intro",
       "implementation": "roboy.dialog.states.expoStates.ExpoIntroductionState",
+      "fallback": "WildTalk",
       "transitions": {
         "newPerson": "PersonalQA",
         "skills": "SkillsState",
@@ -62,6 +64,7 @@
     {
       "identifier": "PersonalQA",
       "implementation": "roboy.dialog.states.expoStates.PersonalInformationAskingState",
+      "fallback": "WildTalk",
       "transitions": {
         "skills": "SkillsState",
         "abilities": "AbilitiesState",

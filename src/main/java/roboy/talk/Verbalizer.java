@@ -42,6 +42,12 @@ public class Verbalizer {
 	public static final List<String> roboyNames =
 			Arrays.asList("roboi", "robot", "boy", "roboboy", "robot", "roboy");
 
+	public static final List<String> consent =
+			Arrays.asList("yes", "I do", "sure", "of course", " go ahead");
+
+	public static final List<String> denial =
+			Arrays.asList("no", "nope", "later", "other time", "not");
+
 	// triggers that will start the conversation
 	public static final List<String> triggers =
 			Arrays.asList("talk", "fun", "conversation", "new", "chat");

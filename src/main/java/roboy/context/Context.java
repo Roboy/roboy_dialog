@@ -36,10 +36,14 @@ public class Context {
     public final HistoryInterface<ROSTest, Integer, String> ROS_TEST =
             new HistoryInterface<>(new ROSTest());
 
+    public final HistoryInterface<ValueHistory<Integer>, Integer, Integer> OTHER_Q =
+            new HistoryInterface<>(new ValueHistory<Integer>());
+
     /* INTERNAL UPDATERS DEFINED HERE */
     public final DialogTopicsUpdater DIALOG_TOPICS_UPDATER;
     public final DialogIntentsUpdater DIALOG_INTENTS_UPDATER;
     public final ActiveInterlocutorUpdater ACTIVE_INTERLOCUTOR_UPDATER;
+    public final OtherQuestionsUpdater OTHER_QUESTIONS_UPDATER;
 
     /* EXTERNAL UPDATERS DEFINED HERE */
     private boolean rosInitialized = false;
@@ -61,6 +65,7 @@ public class Context {
         DIALOG_TOPICS_UPDATER = new DialogTopicsUpdater(DIALOG_TOPICS.valueHistory);
         DIALOG_INTENTS_UPDATER = new DialogIntentsUpdater(DIALOG_INTENTS.valueHistory);
         ACTIVE_INTERLOCUTOR_UPDATER = new ActiveInterlocutorUpdater(ACTIVE_INTERLOCUTOR.value);
+        OTHER_QUESTIONS_UPDATER = new OtherQuestionsUpdater(OTHER_Q.valueHistory);
 
         /* OBSERVERS INITIALIZED AND ADDED HERE */
         FACE_COORDINATES_OBSERVER = new FaceCoordinatesObserver();

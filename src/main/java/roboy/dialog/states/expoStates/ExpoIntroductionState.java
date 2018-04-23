@@ -46,7 +46,10 @@ public class ExpoIntroductionState extends State {
 
     private final Logger LOGGER = LogManager.getLogger();
 
-    private final RandomList<String> introPhrases = new RandomList<>("What's your name?", "Could you tell me your name?");
+    private final RandomList<String> introPhrases = new RandomList<>(
+            "What's your name?",
+            "Could you tell me your name?"
+            );
     private final RandomList<String> responsePhrases = new RandomList<>("Nice to meet you, %s!", "I am glad to meet you, %s!");
 
     private QAJsonParser infoValues;

@@ -132,7 +132,7 @@ public class QuestionAnsweringState extends State {
         Linguistics.PARSER_OUTCOME parseOutcome = input.parserOutcome;
         if (parseOutcome == null) {
             logger.error("Invalid parser outcome!");
-            return Output.say("Invalid parser outcome!");
+            return Output.say(PhraseCollection.PARSER_ERROR.getRandomElement());
         }
 
         if (parseOutcome == Linguistics.PARSER_OUTCOME.UNDERSPECIFIED) {
