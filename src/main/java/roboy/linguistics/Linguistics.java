@@ -46,6 +46,16 @@ public class Linguistics {
         SUCCESS, FAILURE, UNDERSPECIFIED
     }
 
+    public enum UtteranceSentiment {
+	    POSITIVE(true), NEUTRAL(null), NEGATIVE(false);
+
+        public Boolean toBoolean;
+
+        UtteranceSentiment(Boolean type) {
+            this.toBoolean=type;
+        }
+    }
+
 	public static final List<String> tobe = Arrays.asList("am","are","is","was","were","been");
 	public static final List<String> beMod = Lists.stringList("am","are","is","was","were","has been","have been","had been");
 	

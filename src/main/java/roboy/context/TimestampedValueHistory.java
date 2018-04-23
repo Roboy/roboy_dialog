@@ -87,4 +87,10 @@ public class TimestampedValueHistory<V> implements AbstractValueHistory<Long, V>
     public synchronized boolean contains(V value) {
         return data.containsValue(value);
     }
+
+    @Override
+    public synchronized boolean purgeHistory() {
+        data.clear();
+        return data.isEmpty();
+    }
 }

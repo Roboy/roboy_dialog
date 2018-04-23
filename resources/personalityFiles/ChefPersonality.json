@@ -1,0 +1,38 @@
+{
+  "initialState": "Greetings",
+  "states": [
+    {
+      "identifier": "Greeting",
+      "implementation": "roboy.dialog.states.ordinaryStates.PassiveGreetingState",
+      "transitions": {
+        "greetingDetected": "ChefIntro"
+      }
+    },
+    {
+      "identifier": "ChefIntro",
+      "implementation": "roboy.dialog.states.chefStates.ChefIntroductionState",
+      "transitions": {
+        "retrieveProducts": "RetrieveProducts",
+      }
+    },
+    {
+      "identifier": "RetrieveProduct",
+      "implementation": "roboy.dialog.states.chefStates.RetrieveProductState",
+      "transitions": {
+        "offerRecipe": "QuestionAnswering"
+      }
+    },
+    {
+      "identifier": "ReciteRecipe",
+      "implementation": "roboy.dialog.states.chefStates.ReciteRecipeState",
+      "transitions": {
+        "questionAnswering": "Farewell"
+      }
+    },
+    {
+      "identifier": "Farewell",
+      "implementation": "roboy.dialog.states.ordinaryStates.FarewellState",
+      "transitions": {}
+    }
+  ]
+}

@@ -75,6 +75,17 @@ public class ValueHistory<V> implements AbstractValueHistory<Integer, V> {
     }
 
     /**
+     * Removes all values from the history.
+     *
+     * @return true if the history was emptied and false otherwise
+     */
+    @Override
+    public synchronized boolean purgeHistory() {
+        data.clear();
+        return data.isEmpty();
+    }
+
+    /**
      * Generates a key that is unique through incrementing an internal counter.
      *
      * @return A key which is unique in this list instance.

@@ -29,4 +29,9 @@ public interface AbstractValueHistory<K, V> extends AbstractValue<V> {
      * Returns if object is present in this history.
      */
     boolean contains(V value);
+
+    /**
+     * Empties the current history.
+     */
+    boolean purgeHistory();
 }

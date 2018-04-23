@@ -137,5 +137,12 @@ public class Context {
                 LOGGER.warn("Unexpected object was passed to addToGUI: {}", newElement.getClass().getSimpleName());
             }
         }
+
+        /**
+         * Removes all the valueHistory values
+         */
+        public boolean purgeHistory() {
+            return valueHistory.purgeHistory();
+        }
     }
 }

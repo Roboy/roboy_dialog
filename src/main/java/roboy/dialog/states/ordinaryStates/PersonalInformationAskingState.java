@@ -9,7 +9,7 @@ import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jRelationships;
+import roboy.memory.Neo4jRelationship;
 import roboy.memory.nodes.Interlocutor;
 import roboy.dialog.Segue;
 import roboy.util.QAJsonParser;
@@ -18,7 +18,7 @@ import roboy.util.RandomList;
 import java.util.List;
 import java.util.Set;
 
-import static roboy.memory.Neo4jRelationships.*;
+import static roboy.memory.Neo4jRelationship.*;
 
 /**
  * Personal Information Asking State
@@ -28,7 +28,7 @@ import static roboy.memory.Neo4jRelationships.*;
  * Afterwards, Roboy can use this acquired data for the future interactions with the same person.
  *
  * - if there is no existing Interlocutor or the data is missing, ask a question
- * - the question topic (intent) is selected from the Neo4jRelationships predicates
+ * - the question topic (intent) is selected from the Neo4jRelationship predicates
  * - retrieve the questions stored in the QAList json file
  * - update the Context IntentsHistory
  * - try to extract the result from the Interpretation
@@ -43,8 +43,8 @@ import static roboy.memory.Neo4jRelationships.*;
  */
 public class PersonalInformationAskingState extends State {
     private QAJsonParser qaValues;
-    private Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
-    private Neo4jRelationships selectedPredicate;
+    private Neo4jRelationship[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
+    private Neo4jRelationship selectedPredicate;
     private State nextState;
 
     private final String TRANSITION_INFO_OBTAINED = "questionAnswering";
@@ -65,7 +65,7 @@ public class PersonalInformationAskingState extends State {
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
         LOGGER.info(" -> Retrieved Interlocutor: " + person.getName());
 
-        for (Neo4jRelationships predicate : predicates) {
+        for (Neo4jRelationship predicate : predicates) {
             if (!person.hasRelationship(predicate)) {
                 selectedPredicate = predicate;
                 LOGGER.info(" -> Selected predicate: " + selectedPredicate.type);

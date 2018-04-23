@@ -7,10 +7,16 @@
     ],
     "A": {
       "SUCCESS": [
-        "Nice to meet you %s"
+        "Nice to meet you %s",
+        "Hello hello %s",
+        "Updating database. Property: name, value: %s",
+        "My pleasure to meet you human %s",
+        "I will now remember you forever %s"
       ],
       "FAILURE": [
-        "My ears are failing me today."
+        "My ears are failing me today.",
+        "Unfortunately, I did not get your name. But lets move on",
+        "Sadly, you name is to difficult to process. I might fry my motherboard."
       ]
     },
     "FUP": {
@@ -31,10 +37,17 @@
     ],
     "A": {
       "SUCCESS": [
-        "Oh, I should visit %s"
+        "Oh, I should visit %s",
+        "I will add %s to my list of places to visit!",
+        "Next time my team goes on a trip, we will try to stop by %s",
+        "Property: home, value: %s is saved.",
+        "I have read a bit about the political system of %s. Got bored after 10 minutes."
       ],
       "FAILURE": [
-        "Oh, I have never heard of that."
+        "Oh, I have never heard of that.",
+        "Ah, didnt quite catch where you are from. Next time then.",
+        "Sounds nice, but I dont know where it is."
+
       ]
     },
     "FUP": {
@@ -44,7 +57,9 @@
         "Do I need a visa to go to %s?"
       ],
       "A": [
-        "You are from a very interesting place %s"
+        "You are from a very interesting place %s",
+        "Got it",
+        "Interesting situation there."
       ]
     }
   },
@@ -58,17 +73,23 @@
     ],
     "A": {
       "SUCCESS": [
-        "You are just like me, I love %s too"
+        "You are just like me, I love %s too",
+        "Added %s on my bucket list.",
+        "I will ask my creators to teach me %s",
+        "%s sounds like a new feature for me"
       ],
       "FAILURE": [
-        "Don't know what that is, but good luck!"
+        "Don't know what that is, but good luck!",
+        "Alright, weird, but alright.",
+        "Database hobby mismatch"
       ]
     },
     "FUP": {
       "Q": [
         "Have you got any new hobby besides %s?",
         "You still like %s, right?",
-        "Do you think I can do %s? I heard you like it."
+        "Do you think I can do %s? I heard you like it.",
+        "Lets do %s together!"
       ],
       "A": [
         "Leisure time is the best time %s"
@@ -240,10 +261,14 @@
     ],
     "A": {
       "SUCCESS": [
-        "Oh, I would watch %s. If those vision guys finally fixed my perception."
+        "Oh, I would watch %s. If those vision guys finally fixed my perception.",
+        "Nice, I think the main actor in %s did pretty well",
+        "Yea, ok, but to my taste %s will never be as good as matrix."
       ],
       "FAILURE": [
-        "Haven't heard of it. It's probably shit."
+        "Haven't heard of it. It's probably shit.",
+        "Sounds nice. My favorite is Robot and Frank",
+        "I had a movie night yesterday with my team. We watch Baymax. Now I want to meet him."
       ]
     },
     "FUP": {
@@ -257,22 +282,43 @@
   },
   "OTHER": {
     "Q": [
-      "Other?"
+      "What do you do for living?",
+      "What is your profession?",
+      "What do you work as?",
+      "What is your field of expertise?",
+      "What is your favourite movie?",
+      "What was the last movie you saw in the cinema?",
+      "What is your favorite TV show?",
+      "Which comedy do you like the most?",
+      "Do you have a best friend?",
+      "Have I met any of your friends?",
+      "Do you have a friend whom I have met?",
+      "Maybe I know some friends of yours. Would you name one?"
     ],
     "A": {
       "SUCCESS": [
-        "Other %s and other"
+        "I have heard of this",
+        "Good for you",
+        "That is very nice",
+        "No wonder, you are such an interesting human",
+        "I like this",
+        "I will remember this",
+        "I am sure this is nice",
+        "That is great"
       ],
       "FAILURE": [
-        "There is no other on the Earth"
+        "Haven't heard of this. I am sorry!",
+        "Oh well, whatever suits you.",
+        "It turned to be not that interesting",
+        "I am sorry, I am not sure I like this"
       ]
     },
     "FUP": {
       "Q": [
-        "Do you remember other %s?"
+        "Do you remember other?"
       ],
       "A": [
-        "Other is still other, amigo %s"
+        "Other is still other, amigo"
       ]
     }
   }

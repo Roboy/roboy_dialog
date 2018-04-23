@@ -8,19 +8,27 @@ import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jRelationships;
+import roboy.memory.Neo4jProperty;
+import roboy.memory.Neo4jRelationship;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.Interlocutor.RelationshipAvailability;
-import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
+import roboy.memory.nodes.Roboy;
 import roboy.memory.nodes.MemoryNodeModel;
 import roboy.dialog.Segue;
+import roboy.util.QAJsonParser;
 import roboy.util.RandomList;
 
-import java.util.List;
-import java.util.Set;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.*;
 
-import static roboy.memory.Neo4jRelationships.*;
-
+import static roboy.memory.Neo4jRelationship.*;
+import static roboy.memory.Neo4jProperty.*;
+import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
 
 /**
  * This state will:
@@ -37,18 +45,25 @@ import static roboy.memory.Neo4jRelationships.*;
  * 3) No parameters are used.
  */
 public class IntroductionState extends State {
+    private QAJsonParser infoValues;
     private final String UPDATE_KNOWN_PERSON = "knownPerson";
     private final String LEARN_ABOUT_PERSON = "newPerson";
     private final Logger LOGGER = LogManager.getLogger();
-    private final RandomList<String> introPhrases = new RandomList<>("I'm Roboy. What's your name?");
+    private final String INFO_FILE_PARAMETER_ID = "infoFile";
+    private final RandomList<String> introPhrases = new RandomList<>("What's your name?");
     private final RandomList<String> successResponsePhrases = new RandomList<>("Hey, I know you, %s!");
     private final RandomList<String> failureResponsePhrases = new RandomList<>("Nice to meet you, %s!");
 
-    private Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
+    private Neo4jRelationship[] personPredicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
+    private RandomList<Neo4jRelationship> roboyRelatioshipPredicates = new RandomList<>(FROM, MEMBER_OF, LIVE_IN, HAS_HOBBY, FRIEND_OF, CHILD_OF, SIBLING_OF);
+    private RandomList<Neo4jProperty> roboyPropertiesPredicates = new RandomList<>(skills, abilities, future);
     private State nextState;
 
     public IntroductionState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
+        String infoListPath = params.getParameter(INFO_FILE_PARAMETER_ID);
+        LOGGER.info(" -> The infoList path: " + infoListPath);
+        infoValues = new QAJsonParser(infoListPath);
     }
 
     @Override
@@ -78,6 +93,7 @@ public class IntroductionState extends State {
         // this also should query memory and do other magic
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
         person.addName(name);
+        // Roboy roboy = new Roboy(getMemory());
 
 
         // 3. update interlocutor in context
@@ -95,7 +111,7 @@ public class IntroductionState extends State {
                         nodes.getRandomElement().getProperties().get("name").toString();
             }
 
-            RelationshipAvailability availability = person.checkRelationshipAvailability(predicates);
+            RelationshipAvailability availability = person.checkRelationshipAvailability(personPredicates);
             if (availability == SOME_AVAILABLE) {
                 nextState = (Math.random() < 0.3) ? getTransition(UPDATE_KNOWN_PERSON) : getTransition(LEARN_ABOUT_PERSON);
             } else if (availability == NONE_AVAILABLE) {
@@ -108,8 +124,10 @@ public class IntroductionState extends State {
             nextState = getTransition(LEARN_ABOUT_PERSON);
             segueProbability = 0.6;
         }
+        String retrievedRoboyFacts = getRoboyFactsPhrase(new Roboy(getMemory()));
         Segue s = new Segue(Segue.SegueType.DISTRACT, segueProbability);
-        return Output.say(getResponsePhrase(person.getName(), person.FAMILIAR) + retrievedPersonalFact).setSegue(s);
+        return Output.say(getResponsePhrase(person.getName(), person.FAMILIAR) +
+                retrievedPersonalFact + retrievedRoboyFacts).setSegue(s);
     }
 
     @Override
@@ -168,6 +186,88 @@ public class IntroductionState extends State {
         }
     }
 
+    private String getRoboyFactsPhrase(Roboy roboy) {
+        String result = "";
+
+        // Get some random properties facts
+        if (roboy.getProperties() != null && !roboy.getProperties().isEmpty()) {
+            HashMap<String, Object> properties = roboy.getProperties();
+            if (properties.containsKey(full_name.type)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(full_name).getRandomElement(), properties.get(full_name.type));
+            }
+            if (properties.containsKey(birthdate.type)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), determineAge(properties.get(birthdate.type).toString()));
+            } else if (properties.containsKey(age.type)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), properties.get(age.type) + " years!");
+            }
+            if (properties.containsKey(skills.type)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("skills").toString().split(",")));
+                result += " " + String.format(infoValues.getSuccessAnswers(skills).getRandomElement(), retrievedResult.getRandomElement());
+            }
+            if (properties.containsKey(abilities.type)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("abilities").toString().split(",")));
+                result += " " + String.format(infoValues.getSuccessAnswers(abilities).getRandomElement(), retrievedResult.getRandomElement());
+            }
+            if (properties.containsKey(future.type)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("future").toString().split(",")));
+                result += " " + String.format(infoValues.getSuccessAnswers(future).getRandomElement(), retrievedResult.getRandomElement());
+            }
+        }
+
+        if (result.equals("")) {
+            result = "I am Roboy 2.0! ";
+        }
+
+        // Get a random relationship fact
+        Neo4jRelationship predicate = roboyRelatioshipPredicates.getRandomElement();
+        MemoryNodeModel node = getMemNodesByIds(roboy.getRelationships(predicate)).getRandomElement();
+        if (node != null) {
+            String nodeName = "";
+            if (node.getProperties().containsKey("full_name") && !node.getProperties().get("full_name").equals("")) {
+                nodeName = node.getProperties().get("full_name").toString();
+            } else {
+                nodeName = node.getProperties().get("name").toString();
+            }
+            result += " " + String.format(infoValues.getSuccessAnswers(predicate).getRandomElement(), nodeName);
+        }
+
+        return result;
+    }
+
+    /**
+     * A helper function to determine the age based on the birthdate
+     *
+     * Java 8 specific
+     *
+     * @param datestring
+     * @return
+     */
+    private String determineAge(String datestring) {
+        DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
+        Date date = null;
+        try {
+            date = format.parse(datestring);
+        } catch (ParseException e) {
+            LOGGER.error("Error while parsing a date: " + datestring + ". " + e.getMessage());
+        }
+        if (date != null) {
+            LocalDate birthdate = date.toInstant().atZone(ZoneId.of("Europe/Berlin")).toLocalDate();
+            LocalDate now = LocalDate.now(ZoneId.of("Europe/Berlin"));
+            Period age = Period.between(birthdate, now);
+            int years = age.getYears();
+            int months = age.getMonths();
+            int days = age.getDays();
+            if (years > 0) {
+                return years + " years";
+            } else if (months > 0) {
+                return months + " months";
+            } else {
+                return days + " days";
+            }
+        } else {
+            return "0 years";
+        }
+    }
 
     @Override
     protected Set<String> getRequiredTransitionNames() {

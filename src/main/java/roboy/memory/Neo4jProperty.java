@@ -5,13 +5,20 @@ package roboy.memory;
  * Respective questions should be added to the questions.json file
  * and used in the QuestionRandomizerState.
  */
-public enum Neo4jProperties {
+public enum Neo4jProperty {
     name("name"),
-    sex("sex");
+    sex("sex"),
+    full_name("full_name"),
+    age("age"),
+    skills("skills"),
+    abilities("abilities"),
+    future("future"),
+    birthdate("birthdate");
+
 
     public String type;
 
-    Neo4jProperties(String type) {
+    Neo4jProperty(String type) {
         this.type=type;
     }
 }
