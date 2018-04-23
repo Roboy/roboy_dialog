@@ -184,7 +184,7 @@ public class ExpoIntroductionState extends State {
     }
 
     private State getRandomTransition(String skill, String ability) {
-        int dice = (int) (4 * Math.random() + 1);
+        int dice = (int) (3 * Math.random() + 1);
         switch (dice) {
             case 1:
                 Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, skills, skill));

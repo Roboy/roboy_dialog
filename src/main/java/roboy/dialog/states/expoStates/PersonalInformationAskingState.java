@@ -208,7 +208,7 @@ public class PersonalInformationAskingState extends State {
 
     private State getRandomTransition() {
         LOGGER.info("Try to choose a random transition");
-        int dice = (int) (4 * Math.random() + 1);
+        int dice = (int) (3 * Math.random() + 1);
         switch (dice) {
             case 1:
                 String skill = chooseIntentAttribute(skills);

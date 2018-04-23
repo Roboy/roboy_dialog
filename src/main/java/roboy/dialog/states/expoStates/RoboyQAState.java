@@ -62,7 +62,8 @@ public class RoboyQAState extends State {
         String answer = inferMemoryAnswer(input, roboy);
         nextState = getRandomTransition();
         if (answer.equals("")) {
-            return Output.say(parserError.getRandomElement());
+            answer = parserError.getRandomElement();
+            return Output.useFallback());
         }
         return Output.say(answer);
     }
@@ -152,7 +153,7 @@ public class RoboyQAState extends State {
     }
 
     private State getRandomTransition() {
-        int dice = (int) (4 * Math.random() + 1);
+        int dice = (int) (3 * Math.random() + 1);
         switch (dice) {
             case 1:
                 String skill = chooseIntentAttribute(skills);
