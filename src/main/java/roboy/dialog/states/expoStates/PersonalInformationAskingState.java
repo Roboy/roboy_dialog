@@ -179,29 +179,43 @@ public class PersonalInformationAskingState extends State {
                 result = tokens[0].replace("[", "").replace("]","").toLowerCase();
                 LOGGER.info(" -> Retrieved only one token: " + result);
             } else {
-                if (input.getFeatures().get(Linguistics.PARSER_RESULT).toString().equals("SUCCESS") &&
-                        ((List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE)).size() != 0) {
-                    List<Triple> sem_triple = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
-                    LOGGER.info(" -> Semantic parsing is successful and semantic triple exists");
-                    if (sem_triple.get(0).predicate.contains(selectedPredicate.type)) {
-                        LOGGER.info(" -> Semantic predicate " + selectedPredicate.type + " exits");
-                        result = sem_triple.get(0).object.toLowerCase();
-                        LOGGER.info(" -> Retrieved object " + result);
+                if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
+                    LOGGER.info(" -> OBJ_ANSWER exits");
+                    result = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
+                    if (!result.equals("")) {
+                        LOGGER.info(" -> Retrieved OBJ_ANSWER result " + result);
                     } else {
-                        LOGGER.warn(" -> Semantic predicate " + selectedPredicate.type + " does not exit");
+                        LOGGER.warn(" -> OBJ_ANSWER result is empty");
+                        if (input.getFeatures().get(Linguistics.PARSER_RESULT).toString().equals("SUCCESS") &&
+                                ((List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE)).size() != 0) {
+                            List<Triple> sem_triple = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
+                            LOGGER.info(" -> Semantic parsing is successful and semantic triple exists");
+                            if (sem_triple.get(0).predicate.contains(selectedPredicate.type)) {
+                                LOGGER.info(" -> Semantic predicate " + selectedPredicate.type + " exits");
+                                result = sem_triple.get(0).object.toLowerCase();
+                                LOGGER.info(" -> Retrieved object " + result);
+                            } else {
+                                LOGGER.warn(" -> Semantic predicate " + selectedPredicate.type + " does not exit");
+                            }
+                        } else {
+                            LOGGER.warn(" -> Semantic parsing failed or semantic triple does not exist");
+                        }
                     }
                 } else {
-                    LOGGER.warn(" -> Semantic parsing failed or semantic triple does not exist");
-                    if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
-                        LOGGER.info(" -> OBJ_ANSWER exits");
-                        result = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
-                        if (!result.equals("")) {
-                            LOGGER.info(" -> Retrieved OBJ_ANSWER result " + result);
+                    LOGGER.warn(" -> OBJ_ANSWER does not exit");
+                    if (input.getFeatures().get(Linguistics.PARSER_RESULT).toString().equals("SUCCESS") &&
+                            ((List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE)).size() != 0) {
+                        List<Triple> sem_triple = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
+                        LOGGER.info(" -> Semantic parsing is successful and semantic triple exists");
+                        if (sem_triple.get(0).predicate.contains(selectedPredicate.type)) {
+                            LOGGER.info(" -> Semantic predicate " + selectedPredicate.type + " exits");
+                            result = sem_triple.get(0).object.toLowerCase();
+                            LOGGER.info(" -> Retrieved object " + result);
                         } else {
-                            LOGGER.warn(" -> OBJ_ANSWER result is empty");
+                            LOGGER.warn(" -> Semantic predicate " + selectedPredicate.type + " does not exit");
                         }
                     } else {
-                        LOGGER.warn(" -> OBJ_ANSWER does not exit");
+                        LOGGER.warn(" -> Semantic parsing failed or semantic triple does not exist");
                     }
                 }
             }

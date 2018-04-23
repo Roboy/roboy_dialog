@@ -6,6 +6,7 @@ import roboy.context.Context;
 import roboy.context.contextObjects.IntentValue;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
+import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jProperty;
@@ -86,8 +87,51 @@ public class RoboyQAState extends State {
                     }
                 }
             }
+        } else if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
+            String objAnswer = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
+            if (!objAnswer.equals("")) {
+                LOGGER.info("OBJ_ANSWER: " + objAnswer);
+                Neo4jRelationship predicate = inferPredicateFromObjectAnswer(objAnswer);
+                if (predicate != null) {
+                    String nodeName = extractNodeNameForPredicate(predicate, roboy);
+                    if (nodeName != null) {
+                        answer = String.format(infoValues.getSuccessAnswers(predicate).getRandomElement(), nodeName);
+                    }
+                }
+            } else {
+                LOGGER.warn("OBJ_ANSWER is empty");
+            }
         }
         return answer;
+    }
+
+    private Neo4jRelationship inferPredicateFromObjectAnswer(String objectAnswer) {
+        if (objectAnswer.contains("hobb")) {
+            return Neo4jRelationship.HAS_HOBBY;
+        } else if (objectAnswer.contains("member")) {
+            return Neo4jRelationship.MEMBER_OF;
+        } else if (objectAnswer.contains("friend")) {
+            return Neo4jRelationship.FRIEND_OF;
+        } else if (objectAnswer.contains("city") ||
+                objectAnswer.contains("place") ||
+                objectAnswer.contains("country") ||
+                objectAnswer.contains("live") ||
+                objectAnswer.contains("life")) {
+            return Neo4jRelationship.LIVE_IN;
+        } else if (objectAnswer.contains("from") ||
+                objectAnswer.contains("born")) {
+            return Neo4jRelationship.FROM;
+        } else if (objectAnswer.contains("child") ||
+                objectAnswer.contains("father") ||
+                objectAnswer.contains("dad") ||
+                objectAnswer.contains("parent")) {
+            return Neo4jRelationship.CHILD_OF;
+        } else if (objectAnswer.contains("brother") ||
+                objectAnswer.contains("family") ||
+                objectAnswer.contains("relativ")) {
+            return Neo4jRelationship.SIBLING_OF;
+        }
+        return null;
     }
 
     private String extractNodeNameForPredicate(Neo4jRelationship predicate, Roboy roboy) {
