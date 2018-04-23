@@ -10,8 +10,9 @@ import roboy.memory.Neo4jRelationship;
 import java.util.*;
 
 public class Inference implements InferenceEngine {
-    final static List<String> positiveTokens = Arrays.asList("yes", "yep", "sure", "yeah", "ok");
-    final static List<String> negativeTokens = Arrays.asList("no", "nope");
+    final static List<String> positiveTokens = Arrays.asList("yes", "yep", "sure", "yeah", "ok", "sure", "do",
+            "of course", "go ahead");
+    final static List<String> negativeTokens = Arrays.asList("no", "nope", "later", "not", "dont", "do not");
 
     private String inferName(Interpretation input) {
         if (input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.STATEMENT) == 0) {

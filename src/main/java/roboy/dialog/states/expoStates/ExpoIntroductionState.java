@@ -47,8 +47,9 @@ public class ExpoIntroductionState extends State {
     private final Logger LOGGER = LogManager.getLogger();
 
     private final RandomList<String> introPhrases = new RandomList<>(
-            "What's your name?",
-            "Could you tell me your name?"
+            "Oh wow.. Sorry for my confusion today. But what's your name?",
+            "Mamma mia. So many people passing by today. Good you stopped by to talk to me. Could you tell me your name?",
+            "Ehm, sorry.. Who am I currently talking to? These lights are so bright I cant see your face"
             );
     private final RandomList<String> responsePhrases = new RandomList<>("Nice to meet you, %s!", "I am glad to meet you, %s!");
 

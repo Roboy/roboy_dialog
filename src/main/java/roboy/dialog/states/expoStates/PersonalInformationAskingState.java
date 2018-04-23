@@ -91,7 +91,7 @@ public class PersonalInformationAskingState extends State {
                     question = questions.getRandomElement();
                     otherIndex = questions.indexOf(question);
                 }
-                while (!Context.getInstance().OTHER_Q.contains(otherIndex));
+                while (Context.getInstance().OTHER_Q.contains(otherIndex));
             }
             else {
                 question = questions.getRandomElement();
@@ -148,6 +148,9 @@ public class PersonalInformationAskingState extends State {
         LOGGER.info(" -> Produced answer: " + answer);
         nextState = getRandomTransition();
         Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE, 0.5);
+        if (answer == "") {
+            return Output.useFallback();
+        }
         return Output.say(answer).setSegue(s);
     }
 
