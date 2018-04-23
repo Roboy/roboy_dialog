@@ -193,32 +193,40 @@ public class PersonalInformationAskingState extends State {
     }
 
     private State getRandomTransition() {
+        LOGGER.info("Try to choose a random transition");
         int dice = (int) (4 * Math.random() + 1);
         switch (dice) {
             case 1:
                 String skill = chooseIntentAttribute(skills);
                 if (!skill.equals("")) {
                     Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, skills, skill));
+                    LOGGER.info("SELECTED_SKILLS transition");
                     return getTransition(SELECTED_SKILLS);
                 } else {
+                    LOGGER.info("Stay in the current state");
                     return this;
                 }
             case 2:
                 String ability = chooseIntentAttribute(abilities);
                 if (!ability.equals("")) {
                     Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, abilities, ability));
+                    LOGGER.info("SELECTED_ABILITIES transition");
                     return getTransition(SELECTED_ABILITIES);
                 } else {
+                    LOGGER.info("Stay in the current state");
                     return this;
                 }
             case 3:
+                LOGGER.info("SELECTED_ROBOY_QA transition");
                 return getTransition(SELECTED_ROBOY_QA);
             default:
+                LOGGER.info("Stay in the current state");
                 return this;
         }
     }
 
     private String chooseIntentAttribute(Neo4jProperty predicate) {
+        LOGGER.info("Trying to choose the intent attribute");
         Roboy roboy = new Roboy(getMemory());
         String attribute = "";
         HashMap<String, Object> properties = roboy.getProperties();
@@ -232,6 +240,7 @@ public class PersonalInformationAskingState extends State {
                 } while (lastNIntentsContainAttribute(attribute, 2) && count < retrievedResult.size());
             }
         }
+        LOGGER.info("The chosen attribute: " + attribute);
         return attribute;
     }
 
@@ -239,8 +248,10 @@ public class PersonalInformationAskingState extends State {
         Map<Integer, IntentValue> lastIntentValues = Context.getInstance().DIALOG_INTENTS.getLastNValues(n);
 
         for (IntentValue value : lastIntentValues.values()) {
-            if (value.getAttribute().equals(attribute)) {
-                return true;
+            if (value.getAttribute() != null) {
+                if (value.getAttribute().equals(attribute)) {
+                    return true;
+                }
             }
         }
         return false;

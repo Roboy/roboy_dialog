@@ -130,7 +130,7 @@ public class ExpoIntroductionState extends State {
         }
 
         if (result.equals("")) {
-            result = "I am Roboy 2.0! ";
+            result = " I am Roboy 2.0! ";
         }
 
         nextState = getRandomTransition(retrievedRandomSkill, retrievedRandomAbility);
