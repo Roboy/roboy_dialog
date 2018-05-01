@@ -11,6 +11,7 @@ import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jProperty;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.Roboy;
+import roboy.ros.RosMainNode;
 import roboy.talk.PhraseCollection;
 import roboy.util.RandomList;
 
@@ -59,16 +60,17 @@ enum RoboySkillIntent {
         throw new AssertionError("Unknown error on enum entry: " + this);
     }
 
-    public String getResponsePhrase(Interpretation input, Linguistics.UtteranceSentiment sentiment, String interlocutorName) {
+    public String getResponsePhrase(Interpretation input, Linguistics.UtteranceSentiment sentiment, String interlocutorName,
+                                    RosMainNode rmn) {
         switch (this) {
             case jokes:
                 return getRandomJoke(sentiment, interlocutorName);
             case fun_facts:
                 return getRandomFact(sentiment, interlocutorName);
             case math:
-                return getAnswerFromSemanticParser(input, interlocutorName);
+                return getAnswerFromSemanticParser(input, interlocutorName, rmn);
             case famous_entities:
-                return getAnswerFromSemanticParser(input, interlocutorName);
+                return getAnswerFromSemanticParser(input, interlocutorName, rmn);
         }
         throw new AssertionError("Unknown error on enum entry: " + this);
     }
@@ -89,7 +91,7 @@ enum RoboySkillIntent {
         return factsList.getRandomElement();
     }
 
-    private String getAnswerFromSemanticParser(Interpretation input, String name) {
+    private String getAnswerFromSemanticParser(Interpretation input, String name, RosMainNode rmn) {
         // TODO Semantic parser lightweight
         Linguistics.PARSER_OUTCOME parserOutcome = input.parserOutcome;
         if (parserOutcome == Linguistics.PARSER_OUTCOME.SUCCESS) {
@@ -101,9 +103,12 @@ enum RoboySkillIntent {
                 LOGGER.error("Parsing failed! Answer is null!");
             }
         }
+
         LOGGER.error("Parsing failed! Invalid parser outcome!");
-        return parserError.getRandomElement();
+        return rmn.GenerateAnswer((String) input.getFeature(Linguistics.SENTENCE));
     }
+
+
 
     private String getNegativeSentence(String name) {
         return String.format(connectingPhrases.getRandomElement(), name) + negativePhrases.getRandomElement();
@@ -158,7 +163,8 @@ public class DemonstrateSkillsState extends State {
         LOGGER.info("The detected sentiment is " + inputSentiment);
 
         nextState = getRandomTransition();
-        return Output.say(skillIntent.getResponsePhrase(input, inputSentiment, person.getName()));
+        String output = skillIntent.getResponsePhrase(input, inputSentiment, person.getName(), getRosMainNode());
+        return Output.say(output);
     }
 
     @Override

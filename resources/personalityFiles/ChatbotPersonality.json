@@ -1,0 +1,19 @@
+{
+  "initialState": "WildTalk",
+  "states": [
+
+    {
+      "identifier": "Greetings",
+      "implementation": "roboy.dialog.states.expoStates.PassiveGreetingsState",
+      "fallback": "WildTalk",
+      "transitions": {
+        "greetingDetected": "WildTalk"
+      }
+    },
+    {
+      "identifier": "WildTalk",
+      "implementation": "roboy.dialog.states.expoStates.WildTalkState",
+      "transitions": {}
+    }
+  ]
+}

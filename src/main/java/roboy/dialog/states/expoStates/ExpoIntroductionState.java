@@ -197,7 +197,7 @@ public class ExpoIntroductionState extends State {
                 Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, abilities, ability));
                 return getTransition(SELECTED_ABILITIES);
             case 3:
-                return getTransition(SELECTED_ROBOY_QA);
+                return getTransition(LEARN_ABOUT_PERSON);
             default:
                 return getTransition(LEARN_ABOUT_PERSON);
         }

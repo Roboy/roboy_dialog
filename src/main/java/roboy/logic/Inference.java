@@ -10,7 +10,7 @@ import roboy.memory.Neo4jRelationship;
 import java.util.*;
 
 public class Inference implements InferenceEngine {
-    final static List<String> positiveTokens = Arrays.asList("yes", "yep", "sure", "yeah", "ok", "sure", "do",
+    final static List<String> positiveTokens = Arrays.asList("yes", "yep", "yeah", "ok", "sure", "do",
             "of course", "go ahead");
     final static List<String> negativeTokens = Arrays.asList("no", "nope", "later", "not", "dont", "do not");
 

@@ -467,7 +467,10 @@ public abstract class State {
      * @return RosMainNode (if previously provided to the DialogStateMachine)
      */
     protected RosMainNode getRosMainNode() {
-        if (getParameters() == null) return null;
+        if (getParameters() == null) {
+            logger.error("RosNode is null");
+            return null;
+        }
         return getParameters().getRosMainNode();
     }
 

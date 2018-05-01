@@ -16,6 +16,7 @@ import roboy.dialog.DialogStateMachine;
 import roboy.dialog.Segue;
 import roboy.dialog.states.definitions.State;
 import roboy.ros.RosMainNode;
+import roboy.talk.PhraseCollection;
 import roboy.talk.Verbalizer;
 
 import java.util.ArrayList;
@@ -357,7 +358,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
         logger.error("Exception in " + actOrReact + "() of state with identifier "
                 + state.getIdentifier() + ":\n" + e.getMessage());
         previousActions.add(verbalizer.verbalize(
-                new Interpretation("Well, looks like some states are not implemented correctly...")));
+                new Interpretation(PhraseCollection.SEGUE_DISTRACT.getRandomElement())));
     }
 
 }

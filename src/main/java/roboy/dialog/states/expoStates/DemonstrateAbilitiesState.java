@@ -6,10 +6,15 @@ import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.ros.RosMainNode;
+import roboy.talk.PhraseCollection;
 import roboy.util.RandomList;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Implementations of Roboy's abilities.
@@ -22,61 +27,110 @@ import java.util.Set;
  */
 enum RoboyAbility {
 
-    SHAKE_HAND {
+//    SHAKE_HAND {
+//
+//        @Override
+//        public RandomList<String> wouldYouLikeToSeeDemoQuestions() {
+//            return new RandomList<>("I have learned that humans sometimes shake hands when they meet. I very " +
+//                    "much enjoy doing it too. Would you like to make our friendship official?");
+//        }
+//
+//        @Override
+//        public void demonstrateAbility(RosMainNode node) {
+//            // TODO: MOVE HAND AND WAIT A BIT
+//            logger.info("moving hand");
+//            try {
+//                node.PerformMovement("shoulder_right", "shanke_hand");
+//            }
+//            catch ( InterruptedException e) {
+//                logger.error(e.getMessage());
+//            }
+//        }
+//
+//        @Override
+//        public RandomList<String> afterDemoEndedPhrases() {
+//            return new RandomList<>("Now I feel even more human! This hand is totally worth it. The roboy student team worked hard on it.");
+//        }
+//
+//    },
+
+    SHOW_HIP {
 
         @Override
         public RandomList<String> wouldYouLikeToSeeDemoQuestions() {
-            return new RandomList<>("My hand is very cool! Should I move it so you can shake it?");
+            return new RandomList<>("In the future, I will be designing myself. I have started with the hip already, done by AI.");
         }
 
         @Override
-        public void demonstrateAbility() {
+        public void demonstrateAbility(RosMainNode node) {
             // TODO: MOVE HAND AND WAIT A BIT
-            logger.info("moving hand");
+            logger.info("talking about the hip");
+            node.ShowEmotion("url:https://www.tctmagazine.com/downloads/8332/download/Autodesk-logo.png?cb=05a923bcee4fbbc61e67476114315d4c&w=480");
+
         }
 
         @Override
         public RandomList<String> afterDemoEndedPhrases() {
-            return new RandomList<>("I hope you like my hand! The roboy student team worked hard on it.");
+            return new RandomList<>("Is that not the hippest hip you have ever seen?");
         }
 
     },
 
-    RECOGNIZE_OBJECTS {
-
-        @Override
-        public RandomList<String> wouldYouLikeToSeeDemoQuestions() {
-            return new RandomList<>("I have a new vision system! Do you want to know which objects I currently see?");
-        }
-
-        private String recognizedObjects = "nothing";
-        @Override
-        public void demonstrateAbility() {
-            // TODO: GET A LIST OF RECOGNIZED OBJECTS ADN SAVE IT IN recognizedObjects
-            recognizedObjects = "nothing";
-
-            logger.info("recognizing objects");
-        }
-
-        @Override
-        public RandomList<String> afterDemoEndedPhrases() {
-            return new RandomList<>("I currently can see " + recognizedObjects);
-        }
-
-    },
+//    RECOGNIZE_OBJECTS {
+//
+//        @Override
+//        public RandomList<String> wouldYouLikeToSeeDemoQuestions() {
+//            return new RandomList<>("I have a new vision system! Do you want to know which objects I currently see?");
+//        }
+//
+//        private String recognizedObjects = "nothing";
+//        @Override
+//        public void demonstrateAbility() {
+//            // TODO: GET A LIST OF RECOGNIZED OBJECTS ADN SAVE IT IN recognizedObjects
+//            recognizedObjects = "nothing";
+//
+//            logger.info("recognizing objects");
+//        }
+//
+//        @Override
+//        public RandomList<String> afterDemoEndedPhrases() {
+//            return new RandomList<>("I currently can see " + recognizedObjects);
+//        }
+//
+//    },
 
     SHOW_EMOTION {
 
         @Override
         public RandomList<String> wouldYouLikeToSeeDemoQuestions() {
-            return new RandomList<>("My face can show a lot of different emotions, would you like to see one of them?");
+            return new RandomList<>("I am just like you are. Wanna know what I mean?");
         }
 
 
         @Override
-        public void demonstrateAbility() {
+        public void demonstrateAbility(RosMainNode node) {
             // TODO: SHOW AN EMOTION
-            logger.info("showing emotions");
+            try {
+                logger.info("showing emotions");
+                node.SynthesizeSpeech("I can be all flirty...");
+                TimeUnit.SECONDS.sleep(1);
+                node.ShowEmotion("smileblink");
+                TimeUnit.SECONDS.sleep(1);
+                node.SynthesizeSpeech("But sometimes I get shy.");
+                node.ShowEmotion("shy");
+                TimeUnit.SECONDS.sleep(1);
+                node.SynthesizeSpeech("You can can check out my facebook page");
+                TimeUnit.SECONDS.sleep(1);
+                node.ShowEmotion("img:facebook");
+                TimeUnit.SECONDS.sleep(1);
+                node.SynthesizeSpeech("And if you do, you can give you a kiss. Muah");
+                TimeUnit.SECONDS.sleep(1);
+                node.ShowEmotion("kiss");
+                TimeUnit.SECONDS.sleep(1);
+            }
+            catch (InterruptedException e) {
+                logger.error(e.getMessage());
+            }
         }
 
         @Override
@@ -90,14 +144,26 @@ enum RoboyAbility {
 
         @Override
         public RandomList<String> wouldYouLikeToSeeDemoQuestions() {
-            return new RandomList<>("My biggest dream is to become a body as good as the human body. " +
+            return new RandomList<>("My biggest dream is to have a body as good as the human body. " +
                     "I can already move a little bit. Would you like to see it?");
         }
 
         @Override
-        public void demonstrateAbility() {
+        public void demonstrateAbility(RosMainNode node) {
             // TODO: MOVE SOME BODY PARTS
             logger.info("moving body");
+            List<String> parts = Arrays.asList("shoulder_left", "spine_right");
+            String name = "random1";
+            try {
+                for (int i=0; i<parts.size();i++) {
+                    node.PerformMovement(parts.get(i), name);
+                }
+            }
+
+            catch (InterruptedException e) {
+                logger.error(e.getMessage());
+            }
+
         }
 
         @Override
@@ -119,7 +185,7 @@ enum RoboyAbility {
     /**
      * Implementation of the ability. This method should block until the ability demonstration is finished.
      */
-    public abstract void demonstrateAbility();
+    public abstract void demonstrateAbility(RosMainNode node);
 
     /**
      * List of phrases that wrap up the ability demonstration.
@@ -181,17 +247,18 @@ public class DemonstrateAbilitiesState extends State {
     public Output react(Interpretation input) {
 
         Linguistics.UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
-        if (inputSentiment != Linguistics.UtteranceSentiment.POSITIVE) {
+        if (inputSentiment == Linguistics.UtteranceSentiment.NEGATIVE) {
             // not positive -> skip this ability
             nextState = getTransition(TRANS_ABILITY_SKIPPED);
-            return Output.say("OK, let's talk about something else. ");
+
+            return Output.say(PhraseCollection.NEGATIVE_SENTIMENT_PHRASES.getRandomElement());
         }
 
         // select next state
         nextState = getTransition(TRANS_ABILITY_DEMONSTRATED);
 
         // demonstrate ability
-        activeAbility.demonstrateAbility();
+        activeAbility.demonstrateAbility(getRosMainNode());
 
         // wrap up with final remark
         String afterDemoEndedPhrase = activeAbility.afterDemoEndedPhrases().getRandomElement();

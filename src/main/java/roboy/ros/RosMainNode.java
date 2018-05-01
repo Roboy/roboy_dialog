@@ -16,6 +16,7 @@ import roboy.util.ConfigManager;
 import roboy_communication_cognition.*;
 import roboy_communication_control.*;
 
+import java.io.IOException;
 import java.net.URI;
 import java.util.concurrent.CountDownLatch;
 
@@ -73,6 +74,19 @@ public class RosMainNode extends AbstractNodeMain {
     public void onStart(final ConnectedNode connectedNode) {
         services.initialize(connectedNode);
         rosConnectionLatch.countDown();
+    }
+
+    public void PerformMovement(String bodyPart, String name) throws InterruptedException {
+        try {
+            ProcessBuilder pb = new ProcessBuilder("python", ConfigManager.ACTION_CLIENT_SCRIPT, bodyPart, name);
+            pb.redirectError();
+            pb.start();
+            pb.wait();
+        }
+        catch (IOException e) {
+            LOGGER.error(e.getMessage());
+        }
+
     }
 
     public boolean SynthesizeSpeech(String text) {
@@ -167,13 +181,16 @@ public class RosMainNode extends AbstractNodeMain {
         };
         generativeClient.call(request,  listener);
         waitForLatchUnlock(rosConnectionLatch, generativeClient.getName().toString());
-        return ((String) resp);
+        String answer = (String) resp;
+        answer.replace("n't", "not");
+        return answer;
     }
 
     public boolean ShowEmotion(String emotion) {
 
         if(services.notInitialized(RosServiceClients.EMOTION)) {
             // FALLBACK RETURN VALUE
+            LOGGER.info("Emotions not initialized");
             return false;
         }
         ServiceClient<ShowEmotionRequest, ShowEmotionResponse> emotionClient = services.getService(RosServiceClients.EMOTION);

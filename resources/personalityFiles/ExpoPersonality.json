@@ -54,7 +54,7 @@
       "implementation": "roboy.dialog.states.expoStates.DemonstrateAbilitiesState",
       "fallback": "WildTalk",
       "transitions": {
-        "abilityWasDemonstrated": "RoboyQA",
+        "abilityWasDemonstrated": "PersonalQA",
         "abilityDemonstrationSkipped": "PersonalQA"
       },
       "parameters": {
