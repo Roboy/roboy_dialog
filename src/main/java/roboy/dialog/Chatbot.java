@@ -61,12 +61,6 @@ public class Chatbot {
             memory = new DummyMemory();
         }
 
-        if (ConfigManager.CONTEXT_GUI_ENABLED) {
-            final Runnable gui = () -> ContextGUI.run();
-            Thread t = new Thread(gui);
-            t.start();
-        }
-
         logger.info("Initializing analyzers...");
 
         List<Analyzer> analyzers = new ArrayList<>();

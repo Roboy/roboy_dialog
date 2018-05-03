@@ -40,7 +40,7 @@ public class Context {
     public final HistoryInterface<ROSTest, Integer, String> ROS_TEST =
             new HistoryInterface<>(new ROSTest());
 
-<<<<<<< HEAD
+
     public final HistoryInterface<ValueHistory<Integer>, Integer, Integer> OTHER_Q =
             new HistoryInterface<>(new ValueHistory<Integer>());
 
