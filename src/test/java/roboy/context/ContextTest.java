@@ -26,7 +26,7 @@ public class ContextTest {
     @Test
     public void setAndGetDialogTopics() {
         DialogTopicsUpdater updater = Context.getInstance().DIALOG_TOPICS_UPDATER;
-        Context.HistoryInterface<DialogTopics, Integer, String> topics = Context.getInstance().DIALOG_TOPICS;
+        HistoryInterface<DialogTopics, Integer, String> topics = Context.getInstance().DIALOG_TOPICS;
 
         updater.updateValue("test1");
         assertEquals("test1", (topics.getLastValue()));
@@ -39,7 +39,7 @@ public class ContextTest {
     @Test
     public void setAndGetDialogIntents() {
         DialogIntentsUpdater updater = Context.getInstance().DIALOG_INTENTS_UPDATER;
-        Context.HistoryInterface<DialogIntents, Integer, IntentValue> intents = Context.getInstance().DIALOG_INTENTS;
+        HistoryInterface<DialogIntents, Integer, IntentValue> intents = Context.getInstance().DIALOG_INTENTS;
 
         updater.updateValue(new IntentValue("test_id1", Neo4jRelationship.FROM));
         IntentValue testIntent = intents.getLastValue();

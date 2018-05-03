@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -36,13 +37,17 @@ public class ContextGUI {
 
     private static String NO_VALUE = "<not initialized>";
 
-    public static void run() {
-        ContextGUI gui = new ContextGUI();
+    private List<AbstractValue> values;
+    private List<AbstractValueHistory> histories;
+
+    public static void run(List<AbstractValue> values, List<AbstractValueHistory> histories) {
+        ContextGUI gui = new ContextGUI(values, histories);
         gui.startFrame();
     }
 
-    private ContextGUI() {
-        Context.getInstance(); // See that Context is initialized before starting GUI.
+    private ContextGUI(List<AbstractValue> values, List<AbstractValueHistory> histories) {
+        this.values = values;
+        this.histories = histories;
         prepareGUI();
     }
 
@@ -65,7 +70,7 @@ public class ContextGUI {
         valuePanel.setBorder(valueBorder);
 
         valueDisplays = new HashMap<>();
-        for (AbstractValue attribute : Context.ValueInterface.allValues) {
+        for (AbstractValue attribute : values) {
             valuePanel.add(new JLabel(attribute.getClass().getSimpleName() + ":", JLabel.CENTER));
             Object val = attribute.getValue();
             if (val == null) {
@@ -86,7 +91,7 @@ public class ContextGUI {
         historyPanel.setBorder(historyBorder);
 
         historyDisplays = new HashMap<>();
-        for (AbstractValueHistory attribute : Context.HistoryInterface.allHistories) {
+        for (AbstractValueHistory attribute : histories) {
             historyPanel.add(new JLabel(attribute.getClass().getSimpleName() + ":", JLabel.CENTER));
             Map<Integer, Object> vals = attribute.getLastNValues(MAX_HISTORY_VALUES);
             int elements = attribute.getNumberOfValuesSinceStart();
@@ -131,7 +136,7 @@ public class ContextGUI {
     }
 
     private void updateValues() {
-        for (AbstractValue attribute : Context.ValueInterface.allValues) {
+        for (AbstractValue attribute : values) {
             Object val = attribute.getValue();
             if (val == null) {
                 continue;
@@ -142,7 +147,7 @@ public class ContextGUI {
     }
 
     private void updateHistories() {
-        for (AbstractValueHistory attribute : Context.HistoryInterface.allHistories) {
+        for (AbstractValueHistory attribute : histories) {
             Map<Integer, Object> vals = attribute.getLastNValues(MAX_HISTORY_VALUES);
             int elements = attribute.getNumberOfValuesSinceStart();
             if (vals.size() == 0) {
