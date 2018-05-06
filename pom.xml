@@ -158,6 +158,12 @@
     </repositories>
 
     <dependencies>
+        <!--Added to use botboy.-->
+        <dependency>
+            <groupId>org.telegram</groupId>
+            <artifactId>telegrambots</artifactId>
+            <version>3.6.1</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.opennlp</groupId>

@@ -57,7 +57,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
      * Reloading from file will create "fresh" State objects.
      */
     public void reset() {
-        // start talking again
+        // start talking again This personality state machine has not been initialized!
         stopTalking = false;
 
         // and go back to initial state

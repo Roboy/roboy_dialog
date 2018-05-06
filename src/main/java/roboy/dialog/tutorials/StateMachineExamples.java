@@ -22,10 +22,10 @@ public class StateMachineExamples {
         // load states and connections from string (not readable, mainly used for unit tests)
         DialogStateMachine string = fromString();
 
-        System.out.println(file);
+        //System.out.println(file);
 
-        System.out.println("JSON representation:");
-        System.out.println(file.toJsonString());
+        //System.out.println("JSON representation:");
+        //System.out.println(file.toJsonString());
 
         boolean allEqual =  code.equals(file)   &&
                             code.equals(string) &&

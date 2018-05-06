@@ -3,6 +3,10 @@ package roboy.dialog;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.telegram.telegrambots.ApiContextInitializer;
+import org.telegram.telegrambots.TelegramBotsApi;
+import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.exceptions.TelegramApiException;
 import roboy.context.Context;
 import roboy.context.ContextGUI;
 import roboy.dialog.action.Action;
@@ -17,6 +21,7 @@ import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
 import roboy.util.ConfigManager;
 import roboy.util.IO;
+import roboy.util.TelegramBotBoyPolling;
 import sun.security.krb5.Config;
 
 import java.io.File;
@@ -34,6 +39,17 @@ public class DialogSystem {
     private final static Logger logger = LogManager.getLogger();
 
     public static void main(String[] args) throws IOException {
+
+        // initialize telegram bot
+        ApiContextInitializer.init();
+        TelegramBotsApi telegramBotApi = new TelegramBotsApi();
+        try {
+
+            telegramBotApi.registerBot(TelegramBotBoyPolling.getInstance());
+        } catch (TelegramApiException e) {
+            logger.error("Telegram bots api error: ", e);
+
+        }//end catch()
         // initialize ROS node
 
         RosMainNode rosMainNode;
@@ -45,8 +61,23 @@ public class DialogSystem {
             rosMainNode = null;
         }
 
-        MultiInputDevice multiIn = IO.getInputs(rosMainNode);
-        MultiOutputDevice multiOut = IO.getOutputs(rosMainNode);
+        // create input and output devices and initialize them with telegram bots api
+        //TODO: this is hardcoded
+        BotBoyInput botBoyInput = new BotBoyInput();
+        BotBoyOutput botBoyOutput = new BotBoyOutput();
+
+//        TelegramBotBoyPolling.getInstance().addInputListener(botBoyInput);
+//        TelegramBotBoyPolling.getInstance().addOutputListener(botBoyOutput);
+
+        MultiInputDevice multiIn = new MultiInputDevice(botBoyInput);
+        MultiOutputDevice multiOut = new MultiOutputDevice(botBoyOutput);
+
+
+        // ------------------------------ OLD ------------------------------
+//        MultiInputDevice multiIn = IO.getInputs(rosMainNode);
+//        MultiOutputDevice multiOut = IO.getOutputs(rosMainNode);
+        // ------------------------------ OLD ------------------------------
+
 
         // TODO deal with memory
         Neo4jMemoryInterface memory;
@@ -86,8 +117,6 @@ public class DialogSystem {
         StateBasedPersonality personality = new StateBasedPersonality(rosMainNode, memory, new Verbalizer());
         File personalityFile = new File(ConfigManager.PERSONALITY_FILE);
 
-
-
         // Repeat conversation a few times
         for (int numConversations = 0; numConversations < 3; numConversations++) {
 
@@ -122,6 +151,7 @@ public class DialogSystem {
                 Input raw;
                 try {
                     raw = multiIn.listen();
+                    logger.error("This is good");
                 } catch (Exception e) {
                     logger.error("Exception in input: " + e.getMessage());
                     return;
