@@ -47,8 +47,8 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
     private boolean stopTalking;
 
 
-    public StateBasedPersonality(RosMainNode rosMainNode, Neo4jMemoryInterface memory, InferenceEngine inference, Verbalizer verb) {
-        super(rosMainNode, memory, inference);
+    public StateBasedPersonality(InferenceEngine inference, RosMainNode rosMainNode, Neo4jMemoryInterface memory, Verbalizer verb) {
+        super(inference, rosMainNode, memory);
         verbalizer = verb;
         stopTalking = false;
     }

@@ -52,9 +52,9 @@ public class MiniTestStateMachineCreator {
         InferenceEngine inference = new Inference();
         DialogStateMachine machine = new DialogStateMachine(inference);
 
-        StateParameters paramsGreetings = new StateParameters(machine, inference);
+        StateParameters paramsGreetings = new StateParameters(machine);
         paramsGreetings.setParameter("PARAMETER_NAME", "PARAMETER_VALUE");
-        StateParameters paramsFarewell = new StateParameters(machine, inference);
+        StateParameters paramsFarewell = new StateParameters(machine);
 
         ToyGreetingsState greeting = new ToyGreetingsState("Greetings", paramsGreetings);
         ToyFarewellState farewell = new ToyFarewellState("Farewell", paramsFarewell);

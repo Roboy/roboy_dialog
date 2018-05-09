@@ -3,7 +3,9 @@ package roboy.dialog;
 import com.google.gson.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.logic.Inference;
 import roboy.logic.InferenceEngine;
+import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateFactory;
@@ -72,7 +74,7 @@ public class DialogStateMachine {
      * @param rosMainNode reference to the RosMainNode that will be passed to every newly created State object
      * @param memory reference to Memory that will be passed to every newly created State object
      */
-    public DialogStateMachine(RosMainNode rosMainNode, Neo4jMemoryInterface memory, InferenceEngine inference) {
+    public DialogStateMachine(InferenceEngine inference, RosMainNode rosMainNode, Neo4jMemoryInterface memory) {
         identifierToState = new HashMap<>();
         activeState = null;
         this.rosMainNode = rosMainNode;
@@ -86,6 +88,10 @@ public class DialogStateMachine {
         if (this.memory == null) {
             logger.info("Memory will be unavailable in DialogStateMachine (null was passed)");
         }
+        if (this.inference == null) {
+            logger.error("All your inference belong to us (null was passed)!");
+            throw new IllegalArgumentException("The inference is null. Roboy is a vegetable! Pulling the plug!");
+        }
     }
 
     /**
@@ -94,7 +100,7 @@ public class DialogStateMachine {
      * This constructor is mainly used for testing.
      */
     public DialogStateMachine(InferenceEngine inference) {
-        this(null, null, inference);
+        this(inference, null, null);
     }
 
     //endregion
@@ -105,6 +111,15 @@ public class DialogStateMachine {
     // #####################################################
 
     //region initial state
+
+    /**
+     * Getter for the InferenceEngine to be accessible externally.
+     * Let semblance of intelligence penetrate the mind of Roboy
+     * @return the reference to the inference
+     */
+    public InferenceEngine getInference() {
+        return inference;
+    }
 
     /**
      * Returns the initial state for this state machine.
@@ -305,7 +320,7 @@ public class DialogStateMachine {
      * @return StateParameters instance with all parameters defined in json object
      */
     private StateParameters parseStateParameters(JsonObject stateJsO) {
-        StateParameters params = new StateParameters(this, rosMainNode, memory, inference);
+        StateParameters params = new StateParameters(this, rosMainNode, memory);
 
         // set the transitions
         JsonObject paramsJsO = stateJsO.getAsJsonObject("parameters");

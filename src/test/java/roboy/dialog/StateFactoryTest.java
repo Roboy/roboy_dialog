@@ -31,7 +31,7 @@ public class StateFactoryTest {
 
 
         InferenceEngine inference = new Inference();
-        StateParameters parms = new StateParameters(new DialogStateMachine(inference), inference);
+        StateParameters parms = new StateParameters(new DialogStateMachine(inference));
         parms.setParameter("introductionSentence", "some magic here");
         for (Class<? extends State> cls : classes) {
             String className = cls.getCanonicalName();

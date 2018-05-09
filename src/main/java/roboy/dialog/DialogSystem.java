@@ -80,7 +80,7 @@ public class DialogSystem {
 
         logger.info("Creating StateBasedPersonality...");
 
-        StateBasedPersonality personality = new StateBasedPersonality(rosMainNode, memory, inference, new Verbalizer());
+        StateBasedPersonality personality = new StateBasedPersonality(inference, rosMainNode, memory, new Verbalizer());
         File personalityFile = new File(ConfigManager.PERSONALITY_FILE);
 
 

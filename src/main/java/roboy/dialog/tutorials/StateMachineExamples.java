@@ -61,13 +61,13 @@ public class StateMachineExamples {
         // 2. create states
 
         // states with no specific parameters -> one StateParameters object that is shared by all states
-        StateParameters emptyParams = new StateParameters(stateMachine, inference);
+        StateParameters emptyParams = new StateParameters(stateMachine);
         ToyGreetingsState greetings = new ToyGreetingsState("Greetings", emptyParams);
         ToyFarewellState farewell = new ToyFarewellState("Farewell", emptyParams);
         ToyRandomAnswerState randomAnswer = new ToyRandomAnswerState("RandomAnswer", emptyParams);
 
         // states that require specific parameters -> one new StateParameters object for every state
-        StateParameters introParams = new StateParameters(stateMachine, inference);
+        StateParameters introParams = new StateParameters(stateMachine);
         introParams.setParameter("introductionSentence", "This dialog was created from code");
         ToyIntroState intro = new ToyIntroState("Intro", introParams);
 

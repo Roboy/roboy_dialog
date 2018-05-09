@@ -82,14 +82,12 @@ public class Chatbot {
 
         logger.info("Creating StateBasedPersonality...");
 
-        StateBasedPersonality personality = new StateBasedPersonality(rosMainNode, memory, inference, new Verbalizer());
+        StateBasedPersonality personality = new StateBasedPersonality(inference, rosMainNode, memory, new Verbalizer());
         File personalityFile = new File(ConfigManager.PERSONALITY_FILE);
 
 
         // Repeat conversation a few times
         for (int numConversations = 0; numConversations < 50; numConversations++) {
-
-
             while (true) {
                 // do all actions defined in startConversation() or answer()
                 try {

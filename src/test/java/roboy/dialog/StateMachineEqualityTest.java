@@ -61,7 +61,7 @@ public class StateMachineEqualityTest {
 
         DialogStateMachine fromCode = MiniTestStateMachineCreator.getMiniStateMachine();
         // add one more state
-        fromCode.addState(new ToyGreetingsState("NewEvilState", new StateParameters(fromString, new Inference())));
+        fromCode.addState(new ToyGreetingsState("NewEvilState", new StateParameters(fromString)));
 
         assertFalse(fromString.equals(fromCode));
         assertFalse(fromCode.equals(fromString));
