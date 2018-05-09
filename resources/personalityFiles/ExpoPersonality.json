@@ -3,7 +3,7 @@
   "states": [
     {
       "identifier": "Greetings",
-      "implementation": "roboy.dialog.states.expoStates.PassiveGreetingsState",
+      "implementation": "roboy.dialog.states.ordinaryStates.PassiveGreetingsState",
       "fallback": "WildTalk",
       "transitions": {
         "greetingDetected": "Intro"
@@ -76,12 +76,12 @@
     },
     {
       "identifier": "WildTalk",
-      "implementation": "roboy.dialog.states.expoStates.WildTalkState",
+      "implementation": "roboy.dialog.states.ordinaryStates.WildTalkState",
       "transitions": {}
     },
     {
       "identifier": "Farewell",
-      "implementation": "roboy.dialog.states.expoStates.FarewellState",
+      "implementation": "roboy.dialog.states.ordinaryStates.FarewellState",
       "transitions": {}
     }
   ]
