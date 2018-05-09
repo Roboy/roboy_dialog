@@ -18,10 +18,26 @@ import roboy.util.RandomList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import static roboy.memory.Neo4jProperty.abilities;
 import static roboy.memory.Neo4jProperty.skills;
 
+/**
+ * Enum implementation of Roboy's skills.
+ *
+ * General functionality:
+ *  - getRequestPhrase()    -   provides a phrase to offer some skills activity
+ *  - getResponsePhrase()   -   provides Roboy's response to the input
+ *  - getNegativeSentence() -   provides response in case the intent was not POSITIVE
+ *
+ * Specific functionality:
+ *  - getRandomJoke()               -   returns a string with a random joke
+ *  - getRandomFact()               -   returns a string with a random fact
+ *  - getAnswerFromSemanticParser() -   tries to resolve the question with the semantic parser,
+ *                                      returns the resulting string on success,
+ *                                      uses generative model on failure
+ */
 enum RoboySkillIntent {
     jokes("joke"),
     fun_facts("fact"),
@@ -116,6 +132,26 @@ enum RoboySkillIntent {
     }
 }
 
+/**
+ * Roboy Demonstrate Skills State
+ *
+ * This state will:
+ * - offer the interlocutor to ask a general question, mathematical problem
+ * - retrive the semantic parser result
+ * - compose an answer
+ * - fall back in case of failure
+ * OR
+ * - offer a joke / an amusing fact
+ * - in case of POSITIVE sentiment say those
+ *
+ * ExpoIntroductionState interface:
+ * 1) Fallback is required.
+ * 2) Outgoing transitions that have to be defined:
+ *    - roboy:     following state if the question was answered or the joke/fact were told
+ *    - abilities: following state if the question was answered or the joke/fact were told
+ *    - newPerson: following state if the question was answered or the joke/fact were told
+ * 3) No parameters are used.
+ */
 public class DemonstrateSkillsState extends State {
     public final static String INTENTS_HISTORY_ID = "RSS";
 
@@ -245,5 +281,11 @@ public class DemonstrateSkillsState extends State {
             }
         }
         return false;
+    }
+
+
+    @Override
+    protected Set<String> getRequiredTransitionNames() {
+        return newSet(SELECTED_ROBOY_QA, SELECTED_ABILITIES, LEARN_ABOUT_PERSON);
     }
 }

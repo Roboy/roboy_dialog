@@ -19,6 +19,8 @@ import static roboy.memory.Neo4jProperty.*;
 
 
 /**
+ * Expo Introduction State
+ *
  * This state will:
  * - ask the interlocutor for his name
  * - create and update the interlocutor in the context
@@ -27,8 +29,12 @@ import static roboy.memory.Neo4jProperty.*;
  * ExpoIntroductionState interface:
  * 1) Fallback is not required.
  * 2) Outgoing transitions that have to be defined:
- *    - roboyInfo:    following state if the name was given
- * 3) No parameters are used.
+ *    - skills:    following state if Roboy introduced himself
+ *    - roboy:     following state if Roboy introduced himself
+ *    - abilities: following state if Roboy introduced himself
+ *    - newPerson: following state if Roboy introduced himself
+ * 3) Used 'infoFile' parameter containing Roboy answer phrases.
+ *    Requires a path to RoboyInfoList.json
  */
 public class ExpoIntroductionState extends State {
     public final static String INTENTS_HISTORY_ID = "RIS";
@@ -164,7 +170,7 @@ public class ExpoIntroductionState extends State {
                 Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, abilities, ability));
                 return getTransition(SELECTED_ABILITIES);
             case 3:
-                return getTransition(LEARN_ABOUT_PERSON);
+                return getTransition(SELECTED_ROBOY_QA);
             default:
                 return getTransition(LEARN_ABOUT_PERSON);
         }
