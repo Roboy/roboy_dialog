@@ -13,7 +13,6 @@ public class BotBoyInput implements InputDevice  {
     public Input listen() throws InterruptedException, IOException {
         String messageFromTelegram = polling.getInput();
         //TODO: listener and event
-        logger.error("Finally here!");
 
         return new Input(messageFromTelegram);
     }

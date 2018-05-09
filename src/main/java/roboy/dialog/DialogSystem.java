@@ -44,7 +44,6 @@ public class DialogSystem {
         ApiContextInitializer.init();
         TelegramBotsApi telegramBotApi = new TelegramBotsApi();
         try {
-
             telegramBotApi.registerBot(TelegramBotBoyPolling.getInstance());
         } catch (TelegramApiException e) {
             logger.error("Telegram bots api error: ", e);
@@ -62,20 +61,10 @@ public class DialogSystem {
         }
 
         // create input and output devices and initialize them with telegram bots api
-        //TODO: this is hardcoded
-        BotBoyInput botBoyInput = new BotBoyInput();
-        BotBoyOutput botBoyOutput = new BotBoyOutput();
-
-//        TelegramBotBoyPolling.getInstance().addInputListener(botBoyInput);
-//        TelegramBotBoyPolling.getInstance().addOutputListener(botBoyOutput);
-
-        MultiInputDevice multiIn = new MultiInputDevice(botBoyInput);
-        MultiOutputDevice multiOut = new MultiOutputDevice(botBoyOutput);
-
 
         // ------------------------------ OLD ------------------------------
-//        MultiInputDevice multiIn = IO.getInputs(rosMainNode);
-//        MultiOutputDevice multiOut = IO.getOutputs(rosMainNode);
+        MultiInputDevice multiIn = IO.getInputs(rosMainNode);
+        MultiOutputDevice multiOut = IO.getOutputs(rosMainNode);
         // ------------------------------ OLD ------------------------------
 
 
@@ -151,7 +140,6 @@ public class DialogSystem {
                 Input raw;
                 try {
                     raw = multiIn.listen();
-                    logger.error("This is good");
                 } catch (Exception e) {
                     logger.error("Exception in input: " + e.getMessage());
                     return;
