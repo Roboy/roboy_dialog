@@ -1,4 +1,5 @@
 {
+  "comment": "An experimental personality for Google Search Graph testing",
   "initialState": "Greetings",
   "states": [
     {
