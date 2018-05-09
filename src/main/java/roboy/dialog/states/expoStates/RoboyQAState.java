@@ -18,13 +18,30 @@ import roboy.talk.PhraseCollection;
 import roboy.util.QAJsonParser;
 import roboy.util.RandomList;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static roboy.memory.Neo4jProperty.*;
 
+/**
+ * Roboy Question Answering State
+ *
+ * This state will:
+ * - offer the interlocutor to ask a question about Roboy
+ * - retrive the semantic parser result
+ * - try to infer an asked question
+ * - retrive the relevant information from the Roboy node
+ * - compose an answer
+ * - fall back in case of failure
+ *
+ * ExpoIntroductionState interface:
+ * 1) Fallback is required.
+ * 2) Outgoing transitions that have to be defined:
+ *    - skills:    following state if the question was answered
+ *    - abilities: following state if the question was answered
+ *    - newPerson: following state if the question was answered
+ * 3) Used 'infoFile' parameter containing Roboy answer phrases.
+ *    Requires a path to RoboyInfoList.json
+ */
 public class RoboyQAState extends State {
     public final static String INTENTS_HISTORY_ID = "RQA";
 
@@ -34,13 +51,13 @@ public class RoboyQAState extends State {
 
     private final RandomList<String> connectingPhrases = PhraseCollection.CONNECTING_PHRASES;
     private final RandomList<String> roboyIntentPhrases = PhraseCollection.INFO_ROBOY_INTENT_PHRASES;
-    private final RandomList<String> parserError = PhraseCollection.PARSER_ERROR;
     private final String INFO_FILE_PARAMETER_ID = "infoFile";
 
     private final Logger LOGGER = LogManager.getLogger();
 
     private QAJsonParser infoValues;
     private State nextState;
+    private boolean intentIsFriend = false;
 
     public RoboyQAState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
@@ -52,13 +69,30 @@ public class RoboyQAState extends State {
     @Override
     public Output act() {
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
-        return Output.say(String.format(connectingPhrases.getRandomElement(), person.getName()) +
-                roboyIntentPhrases.getRandomElement());
+        String intentPhrase = roboyIntentPhrases.getRandomElement();
+        intentIsFriend = intentPhrase.contains("friend");
+        return Output.say(String.format(connectingPhrases.getRandomElement(), person.getName()) + intentPhrase);
     }
 
     @Override
     public Output react(Interpretation input) {
         Roboy roboy = new Roboy(getMemory());
+
+        if (intentIsFriend) {
+            Linguistics.UtteranceSentiment sentiment = getInference().inferSentiment(input);
+            if (sentiment == Linguistics.UtteranceSentiment.POSITIVE) {
+                String nodeName = extractNodeNameForPredicate(Neo4jRelationship.FRIEND_OF, roboy);
+                if (nodeName != null) {
+                    nextState = getRandomTransition();
+                    return Output.say(String.format(
+                            infoValues.getSuccessAnswers(Neo4jRelationship.FRIEND_OF).getRandomElement(),
+                            nodeName));
+                }
+            }
+            nextState = getRandomTransition();
+            return Output.useFallback();
+        }
+
         String answer = inferMemoryAnswer(input, roboy);
         nextState = getRandomTransition();
         if (answer.equals("")) {
@@ -213,5 +247,10 @@ public class RoboyQAState extends State {
             }
         }
         return false;
+    }
+
+    @Override
+    protected Set<String> getRequiredTransitionNames() {
+        return newSet(SELECTED_SKILLS, SELECTED_ABILITIES, LEARN_ABOUT_PERSON);
     }
 }
