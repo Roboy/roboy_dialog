@@ -105,7 +105,8 @@ enum RoboySkillIntent {
         }
 
         LOGGER.error("Parsing failed! Invalid parser outcome!");
-        return rmn.GenerateAnswer((String) input.getFeature(Linguistics.SENTENCE));
+        String generativeAnswer = rmn.GenerateAnswer((String) input.getFeature(Linguistics.SENTENCE));
+        return generativeAnswer != null ? generativeAnswer : parserError.getRandomElement();
     }
 
 
@@ -164,7 +165,7 @@ public class DemonstrateSkillsState extends State {
 
         nextState = getRandomTransition();
         String output = skillIntent.getResponsePhrase(input, inputSentiment, person.getName(), getRosMainNode());
-        return Output.say(output);
+        return output != null && !output.equals("") ? Output.say(output) : Output.useFallback();
     }
 
     @Override

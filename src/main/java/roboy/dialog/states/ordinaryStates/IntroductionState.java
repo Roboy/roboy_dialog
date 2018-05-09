@@ -15,15 +15,10 @@ import roboy.memory.nodes.Interlocutor.RelationshipAvailability;
 import roboy.memory.nodes.Roboy;
 import roboy.memory.nodes.MemoryNodeModel;
 import roboy.dialog.Segue;
+import roboy.util.Agedater;
 import roboy.util.QAJsonParser;
 import roboy.util.RandomList;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.ZoneId;
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.*;
 
 import static roboy.memory.Neo4jRelationship.*;
@@ -196,7 +191,16 @@ public class IntroductionState extends State {
                 result += " " + String.format(infoValues.getSuccessAnswers(full_name).getRandomElement(), properties.get(full_name.type));
             }
             if (properties.containsKey(birthdate.type)) {
-                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), determineAge(properties.get(birthdate.type).toString()));
+                HashMap<String, Integer> ages = new Agedater().determineAge(properties.get(birthdate.type).toString());
+                String retrievedAge = "0 days";
+                if (ages.get("years") > 0) {
+                    retrievedAge = ages.get("years") + " years";
+                } else if (ages.get("months") > 0) {
+                    retrievedAge = ages.get("months") + " years";
+                } else {
+                    retrievedAge = ages.get("days") + " days";
+                }
+                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), retrievedAge);
             } else if (properties.containsKey(age.type)) {
                 result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), properties.get(age.type) + " years!");
             }
@@ -232,41 +236,6 @@ public class IntroductionState extends State {
         }
 
         return result;
-    }
-
-    /**
-     * A helper function to determine the age based on the birthdate
-     *
-     * Java 8 specific
-     *
-     * @param datestring
-     * @return
-     */
-    private String determineAge(String datestring) {
-        DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
-        Date date = null;
-        try {
-            date = format.parse(datestring);
-        } catch (ParseException e) {
-            LOGGER.error("Error while parsing a date: " + datestring + ". " + e.getMessage());
-        }
-        if (date != null) {
-            LocalDate birthdate = date.toInstant().atZone(ZoneId.of("Europe/Berlin")).toLocalDate();
-            LocalDate now = LocalDate.now(ZoneId.of("Europe/Berlin"));
-            Period age = Period.between(birthdate, now);
-            int years = age.getYears();
-            int months = age.getMonths();
-            int days = age.getDays();
-            if (years > 0) {
-                return years + " years";
-            } else if (months > 0) {
-                return months + " months";
-            } else {
-                return days + " days";
-            }
-        } else {
-            return "0 years";
-        }
     }
 
     @Override

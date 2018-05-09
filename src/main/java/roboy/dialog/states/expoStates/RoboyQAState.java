@@ -62,7 +62,6 @@ public class RoboyQAState extends State {
         String answer = inferMemoryAnswer(input, roboy);
         nextState = getRandomTransition();
         if (answer.equals("")) {
-            answer = parserError.getRandomElement();
             return Output.useFallback();
         }
         return Output.say(answer);
