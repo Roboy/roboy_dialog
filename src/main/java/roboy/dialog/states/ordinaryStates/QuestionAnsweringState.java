@@ -84,6 +84,11 @@ public class QuestionAnsweringState extends State {
     @Override
     public Output react(Interpretation input) {
 
+    	//TODO: call function is gams in tokens (true/false)
+    	//true: blababl next <- State game state
+    	
+    	//false:
+    	
         if (askingSpecifyingQuestion) {
             askingSpecifyingQuestion = false;
             return reactToSpecifyingAnswer(input);
