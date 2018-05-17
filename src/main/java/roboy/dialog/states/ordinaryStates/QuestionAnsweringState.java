@@ -33,6 +33,7 @@ import static roboy.memory.Neo4jRelationships.*;
  * - tells a specifying followup question if the interlocutor's question was ambiguous
  *
  * This state:
+ * - checks if interlocutor wants to play a game
  * - returns the answer if provided by the parser
  * - asks the specifying followup question if provided by the parser
  * -    - if answered with yes --> will use the parser again to get the answer to the original question
@@ -54,6 +55,7 @@ public class QuestionAnsweringState extends State {
     private final static String TRANSITION_FINISHED_ANSWERING = "finishedQuestionAnswering";
     private final static String TRANSITION_LOOP_TO_NEW_PERSON = "loopToNewPerson";
     private final static String TRANSITION_LOOP_TO_KNOWN_PERSON = "loopToKnownPerson";
+    private final static String TRANSITION_TO_GAME = "switchToGaming";
 
     private final static int MAX_NUM_OF_QUESTIONS = 5;
     private int questionsAnswered = 0;
@@ -63,6 +65,7 @@ public class QuestionAnsweringState extends State {
 
     private boolean askingSpecifyingQuestion = false;
     private String answerAfterUnspecifiedQuestion = ""; // the answer to use if specifying question is answered with YES
+    private boolean userAskingToPlayGame = false;
 
 
     public QuestionAnsweringState(String stateIdentifier, StateParameters params) {
@@ -84,18 +87,16 @@ public class QuestionAnsweringState extends State {
     @Override
     public Output react(Interpretation input) {
 
-    	//TODO: call function is gams in tokens (true/false)
-    	//true: blababl next <- State game state
-    	
-    	//false:
-    	
-        if (askingSpecifyingQuestion) {
-            askingSpecifyingQuestion = false;
-            return reactToSpecifyingAnswer(input);
+        if(userWantsGame(input)) {
+            return Output.say("I heard that you want to play a game, cool!");
+
+        }else if (askingSpecifyingQuestion) {
+                askingSpecifyingQuestion = false;
+                return reactToSpecifyingAnswer(input);
+
+        } else{
+            return reactToQuestion(input);
         }
-
-        return reactToQuestion(input);
-
 
     }
 
@@ -127,7 +128,6 @@ public class QuestionAnsweringState extends State {
             return Output.sayNothing().setSegue(new Segue(Segue.SegueType.AVOID_ANSWER, 1));
         }
     }
-
 
 
     private Output reactToQuestion(Interpretation input) {
@@ -171,10 +171,14 @@ public class QuestionAnsweringState extends State {
         return useMemoryOrFallback(input);
     }
 
+
     @Override
     public State getNextState() {
 
-        if (askingSpecifyingQuestion) { // we are asking a yes/no question --> stay in this state
+        if(userAskingToPlayGame){
+            return getTransition(TRANSITION_TO_GAME);
+
+        } else if (askingSpecifyingQuestion) { // we are asking a yes/no question --> stay in this state
             return this;
 
         } else if (questionsAnswered > MAX_NUM_OF_QUESTIONS) { // enough questions answered --> finish asking
@@ -232,7 +236,6 @@ public class QuestionAnsweringState extends State {
         return Output.say(answer);
     }
 
-
     private String inferMemoryAnswer(List<Triple> triples, Roboy roboy) {
         String answer = "";
         for (Triple result : triples) {
@@ -263,6 +266,18 @@ public class QuestionAnsweringState extends State {
         return answer;
     }
 
+    private boolean userWantsGame(Interpretation input){
+
+        userAskingToPlayGame = false;
+        String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
+        for (String token:tokens){
+            if(token.equals("game")){
+                userAskingToPlayGame = true;
+                break;
+            }
+        }
+        return userAskingToPlayGame;
+    }
 
     @Override
     protected Set<String> getRequiredTransitionNames() {

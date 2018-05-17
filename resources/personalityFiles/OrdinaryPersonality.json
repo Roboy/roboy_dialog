@@ -43,9 +43,14 @@
       "transitions": {
         "finishedQuestionAnswering": "Farewell",
         "loopToNewPerson": "PersonalQA",
-        "loopToKnownPerson": "FollowUp"
+        "loopToKnownPerson": "FollowUp",
+        "switchToGaming":"GamingTwentyQuestionsState"
       }
     },
+    {
+      "identifier": "GamingTwentyQuestionsState",
+    "implementation": "roboy.dialog.states.ordinaryStates.GamingTwentyQuestionsState",
+    "transitions": {}},
     {
       "identifier": "WildTalk",
       "implementation": "roboy.dialog.states.ordinaryStates.WildTalkState",
