@@ -16,16 +16,18 @@ import java.util.List;
 public class GamingTwentyQuestionsState extends State {
 
 
+	private static final double PROBABILITY_THRESHOLD = 0.85;
+	private final static String TRANSITION_GAME_ENDED = "gameEnded";
 
 	private Akiwrapper aw = new AkiwrapperBuilder().setFilterProfanity(true).build();
 	private Question nextQuestion = null;
+	private Guess currentGuess = null;
+
 	private List<Long> declined = new ArrayList<>();
-
-	private static final double PROBABILITY_THRESHOLD = 0.85;
-
 	private boolean userReady = false;
 	private boolean guessesAvailable = false;
-	private Guess currentGuess = null;
+	private boolean gameFinished = false;
+	private int numberGuesses = 0;
 
 	public GamingTwentyQuestionsState(String stateIdentifier, StateParameters params) {
 		super(stateIdentifier, params);
@@ -34,7 +36,7 @@ public class GamingTwentyQuestionsState extends State {
 	@Override
 	public Output act() {
 
-		System.out.println("--> act()");
+		//System.out.println("--> act()");
 
 		if(!userReady){
 			return Output.say("Now think of a character and tell me when you're ready to start the game.");
@@ -59,13 +61,14 @@ public class GamingTwentyQuestionsState extends State {
 	@Override
 	public Output react(Interpretation input) {
 
-		System.out.println("--> react()");
+		//System.out.println("--> react()");
 
 		String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
 		String intent = getIntent (tokens);
 		System.out.println("Intent: " + intent);
 
 		if(!isUserReady(intent)){
+
 			return Output.say("Nice, then let's start");
 
 		} else if(guessesAvailable){
@@ -86,59 +89,61 @@ public class GamingTwentyQuestionsState extends State {
 
 	@Override
 	public State getNextState() {
-		return this;
+
+		if(gameFinished){
+
+			resetGame();
+			return getTransition(TRANSITION_GAME_ENDED);
+
+		} else {
+			return this;
+		}
 	}
 
+	private String getIntent(String[] tokens) {
 
-	//TODO: methods to implement
-	/*
-	- getToKnowUser
-	- doTheGuess
-	- finishGame
-	- askNextQuestion
-	 */
+		//System.out.println("--> getIntent");
 
-	private Output askNextQuestion(){
-		System.out.println("--> askNextQuestion");
-		nextQuestion = aw.getCurrentQuestion();
-		return Output.say(nextQuestion.getQuestion());
-	}
+		String intent = "";
 
-	private Output doAGuess () throws Exception{
-
-		System.out.println("--> doAGuess");
-
-		String roboyAnswer = "I have no guesses for you...";
-
-		for(Guess guess : aw.getGuessesAboveProbability(PROBABILITY_THRESHOLD)) {
-			if(!declined.contains(Long.valueOf(guess.getIdLong()))) {
-
-				roboyAnswer = guess.getName();
-				currentGuess = guess;
-				break;
+		for(String token : tokens) {
+			if(token.equals("yes")) {
+				intent = "yes";
+			} else if (token.equals("no")) {
+				intent = "no";
+			} else if(token.equals("ready")) {
+				intent = "ready";
+			} else if(token.equals("back")) {
+				intent = "back";
+			} else if(token.equals("dont")) {
+				intent = "dont know";
+			} else if(token.equals("not")) {
+				intent = "probably not";
+			} else if(token.equals("probably")) {
+				intent = "probably";
 			}
 		}
 
-		return Output.say(roboyAnswer);
+		return intent;
 	}
 
-	private Output processUserGuessAnswer(String intent){
+	private Output askNextQuestion() throws NullPointerException{
 
-		System.out.println("--> processUserGuessAnswer");
+		//System.out.println("--> askNextQuestion");
 
-		if (intent.equals("yes")){
-			//TODO: next state...
-			guessesAvailable = false;
-			return Output.say("I won.");
-		} else {
-			declined.add(Long.valueOf(currentGuess.getIdLong()));
-			return Output.say("I have another guess in mind.");
+		try {
+			nextQuestion = aw.getCurrentQuestion();
 		}
+		catch(NullPointerException e){
+			gameFinished = true;
+			return Output.say("I throw in the towel, I think I have no idea what to ask next. You win!");
+		}
+		return Output.say(nextQuestion.getQuestion());
 	}
 
 	private Output saveUsersEstimate(String intent) throws Exception {
 
-		System.out.println("--> saveUserEstimate");
+		//System.out.println("--> saveUserEstimate");
 
 		//check if guesses above threshold are available
 		if(aw.getGuessesAboveProbability(PROBABILITY_THRESHOLD).size() > 0){
@@ -150,7 +155,7 @@ public class GamingTwentyQuestionsState extends State {
 				case "yes":
 					aw.answerCurrentQuestion(Answer.YES);
 					return Output.sayNothing();
-					//break;
+				//break;
 				case "no":
 					aw.answerCurrentQuestion(Answer.NO);
 					return Output.sayNothing();
@@ -188,36 +193,56 @@ public class GamingTwentyQuestionsState extends State {
 		}
 	}
 
-	private String getIntent(String[] tokens) {
+	private Output doAGuess () throws Exception{
 
-		System.out.println("--> getIntent");
+		//System.out.println("--> doAGuess");
 
-		String intent = "";
+		String roboyAnswer = "";
 
-		for(String token : tokens) {
-			if(token.equals("yes")) {
-				intent = "yes";
-			} else if (token.equals("no")) {
-				intent = "no";
-			} else if(token.equals("ready")) {
-				intent = "ready";
-			} else if(token.equals("back")) {
-				intent = "back";
-			} else if(token.equals("don't")) {
-				intent = "don't know";
-			} else if(token.equals("not")) {
-				intent = "probably now";
-			} else if(token.equals("probably")) {
-				intent = "probably";
+		for(Guess guess : aw.getGuessesAboveProbability(PROBABILITY_THRESHOLD)) {
+			if(!declined.contains(Long.valueOf(guess.getIdLong()))) {
+
+				roboyAnswer = "Let me guess... I think it is " + guess.getName() + "?";
+				currentGuess = guess;
+				++numberGuesses;
+				break;
 			}
 		}
 
-		return intent;
+		if(roboyAnswer.isEmpty()){
+			gameFinished = true;
+			roboyAnswer = "Congratulations, you defeated me. I have no more guesses.";
+		}
+
+		return Output.say(roboyAnswer);
+	}
+
+	private Output processUserGuessAnswer(String intent){
+
+		//System.out.println("--> processUserGuessAnswer");
+
+		if (intent.equals("yes")){
+			gameFinished = true;
+			return Output.say("I won at my " + numberGuesses + ". guess.");
+		} else {
+			declined.add(Long.valueOf(currentGuess.getIdLong()));
+			return Output.sayNothing();
+		}
+	}
+
+	private void resetGame(){
+
+		aw = new AkiwrapperBuilder().setFilterProfanity(true).build();
+		declined.clear();
+		userReady = false;
+		guessesAvailable = false;
+		gameFinished = false;
+		numberGuesses = 0;
 	}
 
 	private boolean isUserReady(String intent){
 
-		System.out.println("--> isUserReady");
+		//System.out.println("--> isUserReady");
 
 		if(intent.equals("ready")) {
 			userReady = true;

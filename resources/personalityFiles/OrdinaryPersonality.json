@@ -49,8 +49,11 @@
     },
     {
       "identifier": "GamingTwentyQuestionsState",
-    "implementation": "roboy.dialog.states.ordinaryStates.GamingTwentyQuestionsState",
-    "transitions": {}},
+      "implementation": "roboy.dialog.states.ordinaryStates.GamingTwentyQuestionsState",
+      "transitions": {
+      "gameEnded" : "QuestionAnswering"
+      }
+    },
     {
       "identifier": "WildTalk",
       "implementation": "roboy.dialog.states.ordinaryStates.WildTalkState",
