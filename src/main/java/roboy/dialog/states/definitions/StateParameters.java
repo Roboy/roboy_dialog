@@ -2,6 +2,7 @@ package roboy.dialog.states.definitions;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.context.Context;
 import roboy.logic.Inference;
 import roboy.logic.InferenceEngine;
 import roboy.memory.Neo4jMemoryInterface;

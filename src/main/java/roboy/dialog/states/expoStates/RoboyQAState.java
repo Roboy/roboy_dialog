@@ -68,7 +68,7 @@ public class RoboyQAState extends State {
 
     @Override
     public Output act() {
-        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         String intentPhrase = roboyIntentPhrases.getRandomElement();
         intentIsFriend = intentPhrase.contains("friend");
         return Output.say(String.format(connectingPhrases.getRandomElement(), person.getName()) + intentPhrase);
@@ -191,7 +191,7 @@ public class RoboyQAState extends State {
             case 1:
                 String skill = chooseIntentAttribute(skills);
                 if (!skill.equals("")) {
-                    Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, skills, skill));
+                    getContext().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, skills, skill));
                     LOGGER.info("SELECTED_SKILLS transition");
                     return getTransition(SELECTED_SKILLS);
                 } else {
@@ -201,7 +201,7 @@ public class RoboyQAState extends State {
             case 2:
                 String ability = chooseIntentAttribute(abilities);
                 if (!ability.equals("")) {
-                    Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, abilities, ability));
+                    getContext().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, abilities, ability));
                     LOGGER.info("SELECTED_ABILITIES transition");
                     return getTransition(SELECTED_ABILITIES);
                 } else {
@@ -237,7 +237,7 @@ public class RoboyQAState extends State {
     }
 
     private boolean lastNIntentsContainAttribute(String attribute, int n) {
-        Map<Integer, IntentValue> lastIntentValues = Context.getInstance().DIALOG_INTENTS.getLastNValues(n);
+        Map<Integer, IntentValue> lastIntentValues = getContext().DIALOG_INTENTS.getLastNValues(n);
 
         for (IntentValue value : lastIntentValues.values()) {
             if (value.getAttribute() != null) {

@@ -52,7 +52,7 @@ public class UzupisState extends State {
 
         alreadyAsked = new ArrayList<>();
 
-        person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        person = getContext().ACTIVE_INTERLOCUTOR.getValue();
     }
 
     @Override
@@ -123,7 +123,7 @@ public class UzupisState extends State {
     @Override
     public State getNextState() {
 
-        Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+        getContext().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
 
         if (alreadyAsked.size() != toAskCounter) {
             return getTransition("loop");

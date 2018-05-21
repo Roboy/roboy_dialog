@@ -5,6 +5,7 @@ import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.context.Context;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.InferenceEngine;
 import roboy.memory.Neo4jMemoryInterface;
@@ -491,6 +492,16 @@ public abstract class State {
         if (getParameters() == null) return null;
         return getParameters().getInference();
     }
+
+    /**
+     * Shortcut for getParameters().getStateMachine().getContext()
+     * @return Context
+     */
+    protected Context getContext() {
+        if (getParameters() == null) return null;
+        return getParameters().getStateMachine().getContext();
+    }
+
 
     //endregion
 

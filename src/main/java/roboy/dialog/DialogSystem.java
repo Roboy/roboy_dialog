@@ -4,7 +4,6 @@ package roboy.dialog;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
-import roboy.context.ContextGUI;
 import roboy.dialog.action.Action;
 import roboy.dialog.personality.StateBasedPersonality;
 import roboy.io.*;
@@ -19,7 +18,6 @@ import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
 import roboy.util.ConfigManager;
 import roboy.util.IO;
-import sun.security.krb5.Config;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -34,6 +32,7 @@ import java.util.List;
 public class DialogSystem {
 
     private final static Logger logger = LogManager.getLogger();
+    private final static Context context = new Context();
 
     public static void main(String[] args) throws IOException {
         // initialize ROS node
@@ -42,6 +41,7 @@ public class DialogSystem {
 
         if (ConfigManager.ROS_ENABLED) {
             rosMainNode = new RosMainNode();
+            if(ConfigManager.IS_ROBOT_INSTANCE) context.initializeROS(rosMainNode);
         } else {
             // TODO: create a nice offline interface for RosMainNode, similar to DummyMemory
             rosMainNode = null;
@@ -80,7 +80,7 @@ public class DialogSystem {
 
         logger.info("Creating StateBasedPersonality...");
 
-        StateBasedPersonality personality = new StateBasedPersonality(inference, rosMainNode, memory, new Verbalizer());
+        StateBasedPersonality personality = new StateBasedPersonality(inference, rosMainNode, memory, context, new Verbalizer());
         File personalityFile = new File(ConfigManager.PERSONALITY_FILE);
 
 
@@ -93,7 +93,7 @@ public class DialogSystem {
             System.in.read();
             // flush the interlocutor
             Interlocutor person = new Interlocutor(memory);
-            Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+            context.ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
 
             try {
                 // create "fresh" State objects using loadFromFile() at the beginning of every conversation

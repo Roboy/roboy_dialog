@@ -3,6 +3,7 @@ package roboy.dialog;
 import com.google.gson.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.context.Context;
 import roboy.logic.Inference;
 import roboy.logic.InferenceEngine;
 import roboy.memory.Neo4jMemory;
@@ -54,6 +55,7 @@ public class DialogStateMachine {
     private final RosMainNode rosMainNode;
     private final Neo4jMemoryInterface memory;
     private final InferenceEngine inference;
+    private final Context context;
 
     /**
      * Personality file additional information: everything like comment goes here.
@@ -73,14 +75,16 @@ public class DialogStateMachine {
      *
      * @param rosMainNode reference to the RosMainNode that will be passed to every newly created State object
      * @param memory reference to Memory that will be passed to every newly created State object
+     * @param context reference to the context of the conversation this Statemachine belongs to (will be passed accessible to every newly created State object)
      */
-    public DialogStateMachine(InferenceEngine inference, RosMainNode rosMainNode, Neo4jMemoryInterface memory) {
+    public DialogStateMachine(InferenceEngine inference, RosMainNode rosMainNode, Neo4jMemoryInterface memory, Context context) {
         identifierToState = new HashMap<>();
         activeState = null;
         this.rosMainNode = rosMainNode;
         this.memory = memory;
         this.inference = inference;
         optionalPersFileInfo = new HashMap<>();
+        this.context = context;
 
         if (this.rosMainNode == null) {
             logger.info("RosMainNode will be unavailable in DialogStateMachine (null was passed)");
@@ -92,6 +96,10 @@ public class DialogStateMachine {
             logger.error("All your inference belong to us (null was passed)!");
             throw new IllegalArgumentException("The inference is null. Roboy is a vegetable! Pulling the plug!");
         }
+        if (this.context == null){
+            logger.error("A conversation without context is not interpretable! (null was passed)");
+            throw new IllegalArgumentException("The context is null. Roboy cannot talk without context. Stopping all dialog activity!");
+        }
     }
 
     /**
@@ -99,8 +107,8 @@ public class DialogStateMachine {
      * States will not be able to access the RosMainNode and Memory functionality.
      * This constructor is mainly used for testing.
      */
-    public DialogStateMachine(InferenceEngine inference) {
-        this(inference, null, null);
+    public DialogStateMachine(InferenceEngine inference, Context context) {
+        this(inference, null, null, context);
     }
 
     //endregion
@@ -120,6 +128,8 @@ public class DialogStateMachine {
     public InferenceEngine getInference() {
         return inference;
     }
+
+    public Context getContext() { return context; }
 
     /**
      * Returns the initial state for this state machine.

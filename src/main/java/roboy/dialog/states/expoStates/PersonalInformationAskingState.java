@@ -69,12 +69,12 @@ public class PersonalInformationAskingState extends State {
 
     @Override
     public Output act() {
-        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         LOGGER.info(" -> Retrieved Interlocutor: " + person.getName());
 
         for (Neo4jRelationship predicate : predicates) {
             IntentValue intentValue = new IntentValue(INTENTS_HISTORY_ID, predicate);
-            if(!Context.getInstance().DIALOG_INTENTS.contains(intentValue)) {
+            if(!getContext().DIALOG_INTENTS.contains(intentValue)) {
                 selectedPredicate = predicate;
                 LOGGER.info(" -> Selected predicate: " + selectedPredicate.type);
                 break;
@@ -91,7 +91,7 @@ public class PersonalInformationAskingState extends State {
                     question = questions.getRandomElement();
                     otherIndex = questions.indexOf(question);
                 }
-                while (Context.getInstance().OTHER_Q.contains(otherIndex));
+                while (getContext().OTHER_Q.contains(otherIndex));
             }
             else {
                 question = questions.getRandomElement();
@@ -101,8 +101,8 @@ public class PersonalInformationAskingState extends State {
             LOGGER.error(" -> The list of " + selectedPredicate.type + " questions is empty or null");
         }
         try {
-            Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, selectedPredicate));
-            Context.getInstance().OTHER_QUESTIONS_UPDATER.updateValue(otherIndex);
+            getContext().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, selectedPredicate));
+            getContext().OTHER_QUESTIONS_UPDATER.updateValue(otherIndex);
             LOGGER.info(" -> Dialog IntentsHistory updated");
         } catch (Exception e) {
             LOGGER.error(" -> Error on updating the IntentHistory: " + e.getMessage());
@@ -113,7 +113,7 @@ public class PersonalInformationAskingState extends State {
 
     @Override
     public Output react(Interpretation input) {
-        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         LOGGER.info("-> Retrieved Interlocutor: " + person.getName());
         RandomList<String> answers;
         String answer = "I have no words";
@@ -123,7 +123,7 @@ public class PersonalInformationAskingState extends State {
                 LOGGER.info(" -> Inference was successful");
                 answers = qaValues.getSuccessAnswers(selectedPredicate);
                 person.addInformation(selectedPredicate.type, result);
-                Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+                getContext().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
                 LOGGER.info(" -> Updated Interlocutor: " + person.getName());
             } else {
                 LOGGER.warn(" -> Inference failed");
@@ -232,7 +232,7 @@ public class PersonalInformationAskingState extends State {
             case 1:
                 String skill = chooseIntentAttribute(skills);
                 if (!skill.equals("")) {
-                    Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, skills, skill));
+                    getContext().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, skills, skill));
                     LOGGER.info("SELECTED_SKILLS transition");
                     return getTransition(SELECTED_SKILLS);
                 } else {
@@ -242,7 +242,7 @@ public class PersonalInformationAskingState extends State {
             case 2:
                 String ability = chooseIntentAttribute(abilities);
                 if (!ability.equals("")) {
-                    Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, abilities, ability));
+                    getContext().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, abilities, ability));
                     LOGGER.info("SELECTED_ABILITIES transition");
                     return getTransition(SELECTED_ABILITIES);
                 } else {
@@ -278,7 +278,7 @@ public class PersonalInformationAskingState extends State {
     }
 
     private boolean lastNIntentsContainAttribute(String attribute, int n) {
-        Map<Integer, IntentValue> lastIntentValues = Context.getInstance().DIALOG_INTENTS.getLastNValues(n);
+        Map<Integer, IntentValue> lastIntentValues = getContext().DIALOG_INTENTS.getLastNValues(n);
 
         for (IntentValue value : lastIntentValues.values()) {
             if (value.getAttribute() != null) {

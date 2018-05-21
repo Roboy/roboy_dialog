@@ -47,8 +47,8 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
     private boolean stopTalking;
 
 
-    public StateBasedPersonality(InferenceEngine inference, RosMainNode rosMainNode, Neo4jMemoryInterface memory, Verbalizer verb) {
-        super(inference, rosMainNode, memory);
+    public StateBasedPersonality(InferenceEngine inference, RosMainNode rosMainNode, Neo4jMemoryInterface memory, Context context, Verbalizer verb) {
+        super(inference, rosMainNode, memory, context);
         verbalizer = verb;
         stopTalking = false;
     }
@@ -330,7 +330,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
         // check if the interlocutor's name is required
         if (rndSegue.contains("%s")) {
             // we need to get the name of the interlocutor
-            Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+            Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
             if (person == null || person.getName() == null) {
                 // no interlocutor or no name -> skip segue
                 return;

@@ -60,8 +60,6 @@ public class RosMainNode extends AbstractNodeMain {
             nodeMainExecutor.execute(this, nodeConfiguration);
             rosConnectionLatch = new CountDownLatch(1);
             waitForLatchUnlock(rosConnectionLatch, "ROS init");
-
-            Context.getInstance().initializeROS(this);
         }
     }
 
