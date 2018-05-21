@@ -61,6 +61,8 @@ public class Chatbot {
             memory = new DummyMemory();
         }
 
+        Context context = new Context();
+
         logger.info("Initializing analyzers...");
 
         List<Analyzer> analyzers = new ArrayList<>();
@@ -82,7 +84,7 @@ public class Chatbot {
 
         logger.info("Creating StateBasedPersonality...");
 
-        StateBasedPersonality personality = new StateBasedPersonality(inference, rosMainNode, memory, new Verbalizer());
+        StateBasedPersonality personality = new StateBasedPersonality(inference, rosMainNode, memory, context, new Verbalizer());
         File personalityFile = new File(ConfigManager.PERSONALITY_FILE);
 
 
