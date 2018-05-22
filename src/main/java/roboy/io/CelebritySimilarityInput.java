@@ -12,7 +12,7 @@ public class CelebritySimilarityInput implements InputDevice{
 
 	@Override
 	public Input listen() throws InterruptedException, IOException {
-		return new Input(null,Maps.stringObjectMap(Linguistics.CELEBRITY,"Sponge Bob"));
+		//return new Input(null, Maps.stringObjectMap(Linguistics.CELEBRITY, "Sponge Bob"));
+		return new Input(null);
 	}
-
 }

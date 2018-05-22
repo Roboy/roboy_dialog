@@ -16,9 +16,12 @@ public class CommandLineInput implements InputDevice{
 	public Input listen() {
 		System.out.print("[You]:   ");
 		String input = sc.nextLine();
-		if ( input.contains("roboy") ){
-			return new Input(input, Maps.stringObjectMap(Linguistics.ROBOYDETECTED,true));
-		}
+		//if ( input.contains("roboy") ){
+		//	return new Input(input, Maps.stringObjectMap(Linguistics.ROBOYDETECTED, true));
+		//}
+		if (input.contains("roboy")) {
+            return new Input(input);
+        }
 		return new Input(input);
 	}
 

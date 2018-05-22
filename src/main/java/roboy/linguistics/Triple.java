@@ -5,9 +5,9 @@ package roboy.linguistics;
  */
 public class Triple {
 	
-	public String subject; // subject
+	public String subject;
 	public String predicate;
-	public String object; // object
+	public String object;
 
 	public Triple(String predicate, String subject, String object){
 		this.predicate = predicate;
