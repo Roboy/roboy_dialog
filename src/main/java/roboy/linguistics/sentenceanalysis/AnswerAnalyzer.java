@@ -1,11 +1,12 @@
 package roboy.linguistics.sentenceanalysis;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.linguistics.Linguistics;
-import roboy.linguistics.Linguistics.SEMANTIC_ROLE;
+import roboy.linguistics.Linguistics.SemanticRole;
 
 /**
  * Checks the predicate argument structures produced by the OpenNLPParser analyzer
@@ -25,48 +26,45 @@ public class AnswerAnalyzer implements Analyzer {
 	public Interpretation analyze(Interpretation interpretation) {
 		
 		// case pas object answer
-		@SuppressWarnings("unchecked")
-		Map<SEMANTIC_ROLE,Object> pas = (Map<SEMANTIC_ROLE,Object>)
-				interpretation.getFeatures().get(Linguistics.PAS);
-//		System.out.println(interpretation.getFeatures());
-		if(pas.containsKey(SEMANTIC_ROLE.PREDICATE)
-				&& pas.containsKey(SEMANTIC_ROLE.LOCATION)){
-			String pp = (String) pas.get(SEMANTIC_ROLE.LOCATION);
-			String pred = (String) pas.get(SEMANTIC_ROLE.PREDICATE);
+		Map<SemanticRole, String> pas = interpretation.getPas();
+		if(pas.containsKey(SemanticRole.PREDICATE)
+				&& pas.containsKey(SemanticRole.LOCATION)){
+			String pp = pas.get(SemanticRole.LOCATION);
+			String pred = pas.get(SemanticRole.PREDICATE);
 			if(Linguistics.tobe.contains(pred)){
 				pred = "";
 			} else {
 				pred = pred + " ";
 			}
 			if(pp.contains(" ")){
-				pp = pp.substring(pp.indexOf(" ")+1);
+				pp = pp.substring(pp.indexOf(" ") + 1);
 			}
-			interpretation.getFeatures().put(Linguistics.OBJ_ANSWER, pp.toLowerCase());
-			interpretation.getFeatures().put(Linguistics.PRED_ANSWER, pred+pp.toLowerCase());
-			
+			interpretation.setObjAnswer(pp.toLowerCase());
+			interpretation.setPredAnswer(pred + pp.toLowerCase());
 			return interpretation;
-		} else if(pas.containsKey(SEMANTIC_ROLE.PREDICATE)
-				&& pas.containsKey(SEMANTIC_ROLE.PATIENT)){
-			String pred = ((String) pas.get(SEMANTIC_ROLE.PREDICATE)).toLowerCase();
+
+		} else if(pas.containsKey(SemanticRole.PREDICATE)
+				&& pas.containsKey(SemanticRole.PATIENT)){
+			String pred = pas.get(SemanticRole.PREDICATE).toLowerCase();
 			if(Linguistics.tobe.contains(pred)){
 				pred = "";
 			} else {
 				pred = pred + " ";
 			}
-			String pat = ((String)pas.get(SEMANTIC_ROLE.PATIENT)).toLowerCase();
-			interpretation.getFeatures().put(Linguistics.OBJ_ANSWER, pat);
-			interpretation.getFeatures().put(Linguistics.PRED_ANSWER, pred+pat);
+			String pat = pas.get(SemanticRole.PATIENT).toLowerCase();
+			interpretation.setObjAnswer(pat);
+			interpretation.setPredAnswer(pred + pat);
 			return interpretation;
 		}
 		
 		// check for last verb
 		int verbIndex = -1;
-		String[] tokens = (String[]) interpretation.getFeatures().get(Linguistics.TOKENS);
-		String[] pos = (String[]) interpretation.getFeatures().get(Linguistics.POSTAGS);
+		List<String> tokens = interpretation.getTokens();
+		String[] pos = interpretation.getPosTags();
 
 		if (pos != null) {
-			for(int i=0; i<pos.length; i++){
-				if(pos[i].startsWith("V")){
+			for(int i=0; i < pos.length; i++) {
+				if(pos[i] != null && pos[i].startsWith("V")) {
 					verbIndex = i;
 				}
 			}
@@ -77,36 +75,36 @@ public class AnswerAnalyzer implements Analyzer {
 //		System.out.println("Verbindex="+verbIndex);
 		
 		// case one term answer
-		if(verbIndex==-1){
-			interpretation.getFeatures().put(Linguistics.OBJ_ANSWER, 
-					((String)interpretation.getFeature(Linguistics.SENTENCE)).toLowerCase());
-			interpretation.getFeatures().put(Linguistics.PRED_ANSWER, 
-					((String)interpretation.getFeature(Linguistics.SENTENCE)).toLowerCase());
-			return interpretation;
-		}
+        if (tokens != null && !tokens.isEmpty()) {
+            if(verbIndex == -1){
+                if (tokens.size() == 1) {
+                    interpretation.setObjAnswer(tokens.get(0));
+                    interpretation.setPredAnswer(tokens.get(0));
+                    return interpretation;
+                }
+            }
 		
-		// case pas failed object answer
-		StringBuilder answer = new StringBuilder("");
-		StringBuilder answerPred = new StringBuilder("");
-		if (tokens != null) {
-			for(int i=verbIndex; i<tokens.length; i++){
-				if(i!=verbIndex){
-					if(!"me".equals(tokens[i].toLowerCase())){
-						if(answer.length()>0) answer.append(' ');
-						if(Character.isLetterOrDigit(tokens[i].charAt(0))) answer.append(tokens[i].toLowerCase());
-						if(answerPred.length()>0) answerPred.append(' ');
-						if(Character.isLetterOrDigit(tokens[i].charAt(0))) answerPred.append(tokens[i].toLowerCase());
-					}
-				} else if(!Linguistics.tobe.contains(tokens[i])){
-					answerPred.append(tokens[i].toLowerCase());
-				}
-			}
-		} else {
-			logger.warn("TOKENS missing but AnswerAnalyzer is used!");
+            // case pas failed object answer
+            StringBuilder answer = new StringBuilder("");
+            StringBuilder answerPred = new StringBuilder("");
+            for(int i = verbIndex; i < tokens.size(); i++){
+                if(i != verbIndex){
+                    if(tokens.get(i) != null && !"me".equals(tokens.get(i).toLowerCase())){
+                        if(answer.length() > 0) answer.append(' ');
+                        if(Character.isLetterOrDigit(tokens.get(i).charAt(0))) answer.append(tokens.get(i).toLowerCase());
+                        if(answerPred.length()>0) answerPred.append(' ');
+                        if(Character.isLetterOrDigit(tokens.get(i).charAt(0))) answerPred.append(tokens.get(i).toLowerCase());
+                    }
+                } else if(verbIndex != -1 && !Linguistics.tobe.contains(tokens.get(i))){
+                    answerPred.append(tokens.get(i).toLowerCase());
+                }
+            }
+            interpretation.setObjAnswer(answer.toString());
+            interpretation.setPredAnswer(answerPred.toString());
+        } else {
+		    logger.warn("TOKENS missing but AnswerAnalyzer is used!");
 		}
-		interpretation.getFeatures().put(Linguistics.OBJ_ANSWER, answer.toString());
-		interpretation.getFeatures().put(Linguistics.PRED_ANSWER, answerPred.toString());
+
 		return interpretation;
 	}
-
 }

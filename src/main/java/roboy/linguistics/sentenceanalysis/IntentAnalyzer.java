@@ -17,11 +17,11 @@ public class IntentAnalyzer implements Analyzer {
 
     @Override
     public Interpretation analyze(Interpretation sentence) {
-        Object[] intent = (Object[]) ros.DetectIntent((String) sentence.getFeature(Linguistics.SENTENCE));
+        Object[] intent = (Object[]) ros.DetectIntent(sentence.getSentence());
         if(intent.length == 2) {
             try {
-                sentence.getFeatures().put(Linguistics.INTENT, intent[0]);
-                sentence.getFeatures().put(Linguistics.INTENT_DISTANCE, intent[1]);
+                sentence.setIntent(intent[0].toString());
+                sentence.setIntentDistance(intent[1].toString());
             } catch (RuntimeException e) {
                 System.out.println("Exception while parsing intent response: " + e.getStackTrace());
             }
