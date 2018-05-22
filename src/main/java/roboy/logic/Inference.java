@@ -1,5 +1,6 @@
 package roboy.logic;
 
+import org.bytedeco.javacpp.presets.opencv_core;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
@@ -15,26 +16,28 @@ public class Inference implements InferenceEngine {
     final static List<String> negativeTokens = Arrays.asList("no", "nope", "later", "not", "dont", "do not");
 
     private String inferName(Interpretation input) {
-        if (input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.STATEMENT) == 0) {
-            String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
-            if (tokens.length == 1) {
-                return tokens[0].replace("[", "").replace("]","").toLowerCase();
-            } else {
-                if (input.getFeatures().get(Linguistics.PARSER_RESULT).toString().equals("SUCCESS") &&
-                        input.getFeatures().get(Linguistics.SEM_TRIPLE) != null) {
-                    List<Triple> result = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
-                    if (result.size() != 0) {
-                        return result.get(0).object.toLowerCase();
+        if (input.getSentenceType().compareTo(Linguistics.SentenceType.STATEMENT) == 0) {
+            List<String> tokens = input.getTokens();
+            if (tokens != null && !tokens.isEmpty()) {
+                if (tokens.size() == 1) {
+                    return tokens.get(0).toLowerCase();
+                } else {
+                    if (input.getParsingOutcome() == Linguistics.ParsingOutcome.SUCCESS &&
+                            input.getSemTriples() != null) {
+                        List<Triple> result = input.getSemTriples();
+                        if (result.size() > 0) {
+                            return result.get(0).object.toLowerCase();
+                        } else {
+                            if (input.getObjAnswer() != null) {
+                                String name = input.getObjAnswer();
+                                return !name.equals("") ? name : null;
+                            }
+                        }
                     } else {
-                        if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
-                            String name = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
+                        if (input.getObjAnswer() != null) {
+                            String name = input.getObjAnswer();
                             return !name.equals("") ? name : null;
                         }
-                    }
-                } else {
-                    if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
-                        String name = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
-                        return !name.equals("") ? name : null;
                     }
                 }
             }
@@ -93,16 +96,19 @@ public class Inference implements InferenceEngine {
         // Brute-force implementation
         boolean positive = false;
         boolean negative = false;
-        for (String token : positiveTokens) {
-            if (input.getFeatures().get(Linguistics.SENTENCE).toString().contains(token)) {
-                positive = true;
-                break;
+        List<String> tokens = input.getTokens();
+        if (tokens != null && !tokens.isEmpty()) {
+            for (String token : positiveTokens) {
+                if (tokens.contains(token)) {
+                    positive = true;
+                    break;
+                }
             }
-        }
-        for (String token : negativeTokens) {
-            if (input.getFeatures().get(Linguistics.SENTENCE).toString().contains(token)) {
-                negative = true;
-                break;
+            for (String token : negativeTokens) {
+                if (tokens.contains(token)) {
+                    negative = true;
+                    break;
+                }
             }
         }
         if (positive && !negative) {
