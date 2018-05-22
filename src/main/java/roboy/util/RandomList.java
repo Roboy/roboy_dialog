@@ -43,6 +43,9 @@ public class RandomList<T> extends ArrayList<T> {
      * @return random element from this list
      */
     public T getRandomElement() {
+        if (size() == 0) {
+            return null;
+        }
         int id = (int) (Math.random() * size());
         return get(id);
     }

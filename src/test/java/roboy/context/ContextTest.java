@@ -8,7 +8,7 @@ import org.ros.internal.message.RawMessage;
 import org.ros.message.MessageListener;
 import roboy.context.contextObjects.*;
 import roboy.memory.DummyMemory;
-import roboy.memory.Neo4jRelationships;
+import roboy.memory.Neo4jRelationship;
 import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
 import roboy_communication_cognition.DirectionVector;
@@ -26,7 +26,7 @@ public class ContextTest {
     @Test
     public void setAndGetDialogTopics() {
         DialogTopicsUpdater updater = Context.getInstance().DIALOG_TOPICS_UPDATER;
-        Context.HistoryInterface<DialogTopics, Integer, String> topics = Context.getInstance().DIALOG_TOPICS;
+        HistoryInterface<DialogTopics, Integer, String> topics = Context.getInstance().DIALOG_TOPICS;
 
         updater.updateValue("test1");
         assertEquals("test1", (topics.getLastValue()));
@@ -39,16 +39,16 @@ public class ContextTest {
     @Test
     public void setAndGetDialogIntents() {
         DialogIntentsUpdater updater = Context.getInstance().DIALOG_INTENTS_UPDATER;
-        Context.HistoryInterface<DialogIntents, Integer, IntentValue> intents = Context.getInstance().DIALOG_INTENTS;
+        HistoryInterface<DialogIntents, Integer, IntentValue> intents = Context.getInstance().DIALOG_INTENTS;
 
-        updater.updateValue(new IntentValue("test_id1", Neo4jRelationships.FROM));
+        updater.updateValue(new IntentValue("test_id1", Neo4jRelationship.FROM));
         IntentValue testIntent = intents.getLastValue();
-        assertEquals("test_id1", testIntent.getStateId());
-        assertEquals(Neo4jRelationships.FROM, (testIntent.getIntentValue()));
-        updater.updateValue(new IntentValue("test_id2", Neo4jRelationships.HAS_HOBBY));
+        assertEquals("test_id1", testIntent.getId());
+        assertEquals(Neo4jRelationship.FROM, (testIntent.getNeo4jRelationshipValue()));
+        updater.updateValue(new IntentValue("test_id2", Neo4jRelationship.HAS_HOBBY));
         Map<Integer, IntentValue> values = intents.getLastNValues(2);
-        assertEquals("test_id1", values.get(0).getStateId());
-        assertEquals("test_id2", values.get(1).getStateId());
+        assertEquals("test_id1", values.get(0).getId());
+        assertEquals("test_id2", values.get(1).getId());
     }
 
     @Test

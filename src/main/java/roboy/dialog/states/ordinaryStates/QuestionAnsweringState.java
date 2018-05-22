@@ -9,7 +9,7 @@ import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jRelationships;
+import roboy.memory.Neo4jRelationship;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.Interlocutor.RelationshipAvailability;
 import roboy.memory.nodes.MemoryNodeModel;
@@ -23,7 +23,7 @@ import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
 import java.util.List;
 import java.util.Set;
 
-import static roboy.memory.Neo4jRelationships.*;
+import static roboy.memory.Neo4jRelationship.*;
 
 /**
  * This state will answer generalStates questions.
@@ -168,7 +168,6 @@ public class QuestionAnsweringState extends State {
 
     @Override
     public State getNextState() {
-
         if (askingSpecifyingQuestion) { // we are asking a yes/no question --> stay in this state
             return this;
 
@@ -178,7 +177,7 @@ public class QuestionAnsweringState extends State {
         } else if (Math.random() < 0.5) { // loop back to previous states with probability 0.5
 
             Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
-            Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
+            Neo4jRelationship[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
             RelationshipAvailability availability = person.checkRelationshipAvailability(predicates);
 
             if (availability == SOME_AVAILABLE) {
@@ -192,10 +191,8 @@ public class QuestionAnsweringState extends State {
                     return this;
                 }
             }
-
         } else { // stay in this state
             return this;
-
         }
 
     }
@@ -217,7 +214,7 @@ public class QuestionAnsweringState extends State {
     private Output answerFromMemory(List<Triple> triples) {
 
         // try to use memory to answer
-        Roboy roboy = new Roboy(getParameters().getMemory());
+        Roboy roboy = new Roboy(getMemory());
 
         if (triples.size() == 0) {
             return null;
@@ -233,8 +230,8 @@ public class QuestionAnsweringState extends State {
         for (Triple result : triples) {
 
             if (result.predicate != null) {
-                if (result.predicate.contains(Neo4jRelationships.HAS_HOBBY.type)) {
-                    RandomList<MemoryNodeModel> nodes = getMemNodesByIds(roboy.getRelationships(Neo4jRelationships.HAS_HOBBY));
+                if (result.predicate.contains(Neo4jRelationship.HAS_HOBBY.type)) {
+                    RandomList<MemoryNodeModel> nodes = getMemNodesByIds(roboy.getRelationships(Neo4jRelationship.HAS_HOBBY));
                     if (!nodes.isEmpty()) {
                         for (MemoryNodeModel node : nodes) {
                             answer += node.getProperties().get("name").toString() + " and ";
@@ -242,9 +239,9 @@ public class QuestionAnsweringState extends State {
                     }
                     break;
 
-                } else if (result.predicate.contains(Neo4jRelationships.FRIEND_OF.type)) {
+                } else if (result.predicate.contains(Neo4jRelationship.FRIEND_OF.type)) {
                     answer += "my friends ";
-                    RandomList<MemoryNodeModel> nodes = getMemNodesByIds(roboy.getRelationships(Neo4jRelationships.FRIEND_OF));
+                    RandomList<MemoryNodeModel> nodes = getMemNodesByIds(roboy.getRelationships(Neo4jRelationship.FRIEND_OF));
                     if (!nodes.isEmpty()) {
                         for (MemoryNodeModel node : nodes) {
                             answer += node.getProperties().get("name").toString() + " and ";
@@ -269,9 +266,9 @@ public class QuestionAnsweringState extends State {
         return true;
     }
 
-    private boolean isIntentsHistoryComplete(Neo4jRelationships[] predicates) {
+    private boolean isIntentsHistoryComplete(Neo4jRelationship[] predicates) {
         boolean isComplete = true;
-        for (Neo4jRelationships predicate : predicates) {
+        for (Neo4jRelationship predicate : predicates) {
             if (!Context.getInstance().DIALOG_INTENTS.contains(new IntentValue(PersonalInformationFollowUpState.INTENTS_HISTORY_ID, predicate))) {
                 isComplete = false;
             }

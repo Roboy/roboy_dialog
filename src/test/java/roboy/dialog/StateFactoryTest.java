@@ -5,6 +5,8 @@ import roboy.dialog.tutorials.tutorialStates.*;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateFactory;
 import roboy.dialog.states.definitions.StateParameters;
+import roboy.logic.Inference;
+import roboy.logic.InferenceEngine;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -28,7 +30,8 @@ public class StateFactoryTest {
         classes.add(ToyIntroState.class);
 
 
-        StateParameters parms = new StateParameters(new DialogStateMachine());
+        InferenceEngine inference = new Inference();
+        StateParameters parms = new StateParameters(new DialogStateMachine(inference));
         parms.setParameter("introductionSentence", "some magic here");
         for (Class<? extends State> cls : classes) {
             String className = cls.getCanonicalName();

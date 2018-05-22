@@ -6,16 +6,22 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import roboy.memory.Neo4jRelationships;
+import roboy.memory.Neo4jProperty;
+import roboy.memory.Neo4jRelationship;
 
 import java.io.*;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 class JsonModel {
-    // TODO: Dynamically create JsonModel as JsonEntryModel fields based on existing Neo4jRelationships entries
+    // TODO: Dynamically create JsonModel as JsonEntryModel fields based on existing Neo4jRelationship/Properties entries
     // Add a new entry
     JsonEntryModel name;
+    JsonEntryModel full_name;
+    JsonEntryModel skills;
+    JsonEntryModel abilities;
+    JsonEntryModel age;
+    JsonEntryModel future;
     JsonEntryModel FROM;
     JsonEntryModel HAS_HOBBY;
     JsonEntryModel LIVE_IN;
@@ -25,6 +31,9 @@ class JsonModel {
     JsonEntryModel WORK_FOR;
     JsonEntryModel OCCUPIED_AS;
     JsonEntryModel IS;
+    JsonEntryModel CHILD_OF;
+    JsonEntryModel SIBLING_OF;
+    JsonEntryModel OTHER;
     JsonEntryModel APPLES;
     JsonEntryModel ANIMAL;
     JsonEntryModel WORD;
@@ -75,12 +84,76 @@ public class QAJsonParser {
         return jsonObject;
     }
 
-    public JsonEntryModel getEntry(Neo4jRelationships relationship) {
+    public JsonEntryModel getEntry(Neo4jRelationship relationship) {
+        return getJsonEntryModel(relationship.type);
+    }
+
+    public JsonEntryModel getEntry(Neo4jProperty property) {
+        return getJsonEntryModel(property.type);
+    }
+
+    public RandomList<String> getQuestions(Neo4jRelationship relationship) {
+        return getEntry(relationship).getQuestions();
+    }
+
+    public Map<String, RandomList<String>> getAnswers(Neo4jRelationship relationship) {
+        return getEntry(relationship).getAnswers();
+    }
+
+    public RandomList<String> getSuccessAnswers(Neo4jRelationship relationship) {
+        return getAnswers(relationship).get("SUCCESS");
+    }
+
+    public RandomList<String> getFailureAnswers(Neo4jRelationship relationship) {
+        return getAnswers(relationship).get("FAILURE");
+    }
+
+    public Map<String, RandomList<String>> getFollowUp(Neo4jRelationship relationship) {
+        return getEntry(relationship).getFUP();
+    }
+
+    public RandomList<String> getFollowUpQuestions(Neo4jRelationship relationship) {
+        return getFollowUp(relationship).get("Q");
+    }
+
+    public RandomList<String> getFollowUpAnswers(Neo4jRelationship relationship) {
+        return getFollowUp(relationship).get("A");
+    }
+
+    public RandomList<String> getQuestions(Neo4jProperty property) {
+        return getEntry(property).getQuestions();
+    }
+
+    public Map<String, RandomList<String>> getAnswers(Neo4jProperty property) {
+        return getEntry(property).getAnswers();
+    }
+
+    public RandomList<String> getSuccessAnswers(Neo4jProperty property) {
+        return getAnswers(property).get("SUCCESS");
+    }
+
+    public RandomList<String> getFailureAnswers(Neo4jProperty property) {
+        return getAnswers(property).get("FAILURE");
+    }
+
+    public Map<String, RandomList<String>> getFollowUp(Neo4jProperty property) {
+        return getEntry(property).getFUP();
+    }
+
+    public RandomList<String> getFollowUpQuestions(Neo4jProperty property) {
+        return getFollowUp(property).get("Q");
+    }
+
+    public RandomList<String> getFollowUpAnswers(Neo4jProperty property) {
+        return getFollowUp(property).get("A");
+    }
+
+    private JsonEntryModel getJsonEntryModel(String type) {
         JsonEntryModel entryValue = null;
         if (jsonObject != null) {
             try {
                 Class<JsonEntryModel> types = JsonEntryModel.class;
-                Field field = jsonObject.getClass().getDeclaredField(relationship.type);
+                Field field = jsonObject.getClass().getDeclaredField(type);
                 field.setAccessible(true);
                 Object value = field.get(jsonObject);
                 entryValue = (JsonEntryModel) value;
@@ -90,35 +163,6 @@ public class QAJsonParser {
                 LOGGER.error("Illegal access to the QA entries: " + e.getMessage());
             }
         }
-
         return entryValue;
-    }
-
-    public RandomList<String> getQuestions(Neo4jRelationships relationship) {
-        return getEntry(relationship).getQuestions();
-    }
-
-    public Map<String, RandomList<String>> getAnswers(Neo4jRelationships relationship) {
-        return getEntry(relationship).getAnswers();
-    }
-
-    public RandomList<String> getSuccessAnswers(Neo4jRelationships relationship) {
-        return getAnswers(relationship).get("SUCCESS");
-    }
-
-    public RandomList<String> getFailureAnswers(Neo4jRelationships relationship) {
-        return getAnswers(relationship).get("FAILURE");
-    }
-
-    public Map<String, RandomList<String>> getFollowUp(Neo4jRelationships relationship) {
-        return getEntry(relationship).getFUP();
-    }
-
-    public RandomList<String> getFollowUpQuestions(Neo4jRelationships relationship) {
-        return getFollowUp(relationship).get("Q");
-    }
-
-    public RandomList<String> getFollowUpAnswers(Neo4jRelationships relationship) {
-        return getFollowUp(relationship).get("A");
     }
 }

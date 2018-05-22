@@ -1,0 +1,32 @@
+{
+  "comment": "An experimental personality for Google Search Graph testing",
+  "initialState": "Greetings",
+  "states": [
+    {
+      "identifier": "Greetings",
+      "implementation": "roboy.dialog.states.ordinaryStates.PassiveGreetingsState",
+      "transitions": {
+        "greetingDetected": "Intro"
+      }
+    },
+    {
+      "identifier": "Intro",
+      "implementation": "roboy.dialog.states.searchStates.SearchIntroductionState",
+      "transitions": {
+        "questionAnswering": "GoogleQA"
+      }
+    },
+    {
+      "identifier": "GoogleQA",
+      "implementation": "roboy.dialog.states.searchStates.GoogleQuestionAnsweringState",
+      "transitions": {
+        "finishedQuestionAnswering": "Farewell"
+      }
+    },
+    {
+      "identifier": "Farewell",
+      "implementation": "roboy.dialog.states.ordinaryStates.FarewellState",
+      "transitions": {}
+    }
+  ]
+}

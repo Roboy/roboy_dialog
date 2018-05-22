@@ -9,6 +9,8 @@ import roboy.dialog.action.Action;
 import roboy.dialog.personality.StateBasedPersonality;
 import roboy.io.*;
 import roboy.linguistics.sentenceanalysis.*;
+import roboy.logic.Inference;
+import roboy.logic.InferenceEngine;
 import roboy.memory.Neo4jMemory;
 import roboy.memory.DummyMemory;
 import roboy.memory.Neo4jMemoryInterface;
@@ -57,12 +59,6 @@ public class DialogSystem {
             memory = new DummyMemory();
         }
 
-        if(ConfigManager.CONTEXT_GUI_ENABLED) {
-            final Runnable gui = () -> ContextGUI.run();
-            Thread t = new Thread(gui);
-            t.start();
-        }
-
         logger.info("Initializing analyzers...");
 
         List<Analyzer> analyzers = new ArrayList<>();
@@ -80,19 +76,21 @@ public class DialogSystem {
         //analyzers.add(new OntologyNERAnalyzer());
         analyzers.add(new AnswerAnalyzer());
 
+        InferenceEngine inference = new Inference();
 
         logger.info("Creating StateBasedPersonality...");
 
-        StateBasedPersonality personality = new StateBasedPersonality(rosMainNode, memory, new Verbalizer());
+        StateBasedPersonality personality = new StateBasedPersonality(inference, rosMainNode, memory, new Verbalizer());
         File personalityFile = new File(ConfigManager.PERSONALITY_FILE);
 
 
 
         // Repeat conversation a few times
-        for (int numConversations = 0; numConversations < 3; numConversations++) {
+        for (int numConversations = 0; numConversations < 50; numConversations++) {
 
             logger.info("############## New Conversation ##############");
-
+            logger.info("PRESS ENTER TO START THE DIALOG. ROBOY WILL WAIT FOR SOMEONE TO GREET HIM (HI, HELLO)");
+            System.in.read();
             // flush the interlocutor
             Interlocutor person = new Interlocutor(memory);
             Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);

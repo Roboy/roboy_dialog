@@ -1,12 +1,14 @@
 package roboy.context;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import roboy.context.contextObjects.*;
 import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
+import roboy.util.ConfigManager;
 import roboy_communication_cognition.DirectionVector;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 /**
  * Singleton class serving as an interface to access all context objects.
@@ -14,16 +16,18 @@ import java.util.Map;
  * For usage examples, check out ContextTest.java
  */
 public class Context {
+
+    Logger LOGGER = LogManager.getLogger();
     private static final Object initializationLock = new Object();
 
-    /* VALUES INITIALIZED HERE */
+    /* VALUES */
     public final ValueInterface<FaceCoordinates, CoordinateSet> FACE_COORDINATES =
             new ValueInterface<>(new FaceCoordinates());
 
     public final ValueInterface<ActiveInterlocutor, Interlocutor> ACTIVE_INTERLOCUTOR =
             new ValueInterface<>(new ActiveInterlocutor());
 
-    /* VALUE HISTORIES INITIALIZED HERE */
+    /* VALUE HISTORIES */
     public final HistoryInterface<DialogTopics, Integer, String> DIALOG_TOPICS =
             new HistoryInterface<>(new DialogTopics());
 
@@ -36,17 +40,26 @@ public class Context {
     public final HistoryInterface<ROSTest, Integer, String> ROS_TEST =
             new HistoryInterface<>(new ROSTest());
 
-    /* INTERNAL UPDATERS DEFINED HERE */
+
+    public final HistoryInterface<ValueHistory<Integer>, Integer, Integer> OTHER_Q =
+            new HistoryInterface<>(new ValueHistory<Integer>());
+
+    /* GUI */
+    private static final ArrayList guiValues = new ArrayList();
+    private static final ArrayList guiHistories = new ArrayList();
+
+    /* INTERNAL UPDATERS */
     public final DialogTopicsUpdater DIALOG_TOPICS_UPDATER;
     public final DialogIntentsUpdater DIALOG_INTENTS_UPDATER;
     public final ActiveInterlocutorUpdater ACTIVE_INTERLOCUTOR_UPDATER;
+    public final OtherQuestionsUpdater OTHER_QUESTIONS_UPDATER;
 
-    /* EXTERNAL UPDATERS DEFINED HERE */
+    /* EXTERNAL UPDATERS */
     private boolean rosInitialized = false;
     private AudioDirectionUpdater AUDIO_ANGLES_UPDATER;
     private ROSTestUpdater ROS_TEST_UPDATER;
 
-    /* OBSERVERS DEFINED HERE */
+    /* OBSERVERS */
     private final FaceCoordinatesObserver FACE_COORDINATES_OBSERVER;
 
 
@@ -57,14 +70,29 @@ public class Context {
      * Builds the class to instance maps.
      */
     private Context() {
-        /* INTERNAL UPDATERS INITIALIZED HERE */
+        /* INTERNAL UPDATER INITIALIZATION */
         DIALOG_TOPICS_UPDATER = new DialogTopicsUpdater(DIALOG_TOPICS.valueHistory);
         DIALOG_INTENTS_UPDATER = new DialogIntentsUpdater(DIALOG_INTENTS.valueHistory);
         ACTIVE_INTERLOCUTOR_UPDATER = new ActiveInterlocutorUpdater(ACTIVE_INTERLOCUTOR.value);
+        OTHER_QUESTIONS_UPDATER = new OtherQuestionsUpdater(OTHER_Q.valueHistory);
 
-        /* OBSERVERS INITIALIZED AND ADDED HERE */
+        /* OBSERVER INITIALIZATION */
         FACE_COORDINATES_OBSERVER = new FaceCoordinatesObserver();
-//        FACE_COORDINATES.value.addObserver(FACE_COORDINATES_OBSERVER);
+        FACE_COORDINATES.value.addObserver(FACE_COORDINATES_OBSERVER);
+
+        /* GUI INITIALIZATION */
+        addToGUI(FACE_COORDINATES,
+                ACTIVE_INTERLOCUTOR,
+                DIALOG_TOPICS,
+                DIALOG_INTENTS,
+                AUDIO_ANGLES,
+                ROS_TEST);
+
+        if(ConfigManager.CONTEXT_GUI_ENABLED) {
+            final Runnable gui = () -> ContextGUI.run(guiValues, guiHistories);
+            Thread t = new Thread(gui);
+            t.start();
+        }
     }
 
     /**
@@ -105,92 +133,15 @@ public class Context {
         return context;
     }
 
-    /**
-     * This is the interface over which Context values can be queried.
-     * Initialize as static field of the Context class above.
-     * Add your Value implementation class and its return type as generic parameters.
-     *
-     * For Context-internal usage, the class keeps track of the initialized values with a static list.
-     *
-     * @param <I> An implementation of AbstractValue, such as the standard Value, ROS or Observable.
-     * @param <V> The type of data stored within the Value instance.
-     */
-    public static class ValueInterface<I extends AbstractValue<V>, V> {
-        // Keeping track of all the values instantiated over the ValueInterface class.
-        static ArrayList<AbstractValue> allValues = new ArrayList<>();
-
-        private I value;
-
-        protected ValueInterface(I value) {
-            this.value = value;
-            allValues.add(value);
-        }
-
-        I getContextObject() {
-            return value;
-        }
-
-        /**
-         * Get the last element saved into the corresponding Value instance.
-         */
-        public V getValue() {
-            return value.getValue();
-        }
-    }
-
-    /**
-     * This is the interface over which Context value histories can be queried.
-     * Initialize as static field of the Context class above.
-     * Add your ValueHistory implementation class, its key and return types as generic parameters.
-     *
-     * For Context-internal usage, the class keeps track of the initialized histories with a static list.
-     *
-     * @param <I> An implementation of AbstractValueHistory.
-     * @param <K> The keys used within the History instance.
-     * @param <V> The type of data stored within the History instance.
-     */
-    public static class HistoryInterface<I extends AbstractValueHistory<K, V>, K, V> {
-        // Keeping track of all the histories instantiated over the HistoryInterface class.
-        static ArrayList<AbstractValueHistory> allHistories = new ArrayList<>();
-
-        private I valueHistory;
-
-        protected HistoryInterface (I valueHistory) {
-            this.valueHistory = valueHistory;
-            allHistories.add(valueHistory);
-        }
-
-        I getContextObject() {
-            return valueHistory;
-        }
-
-        /**
-         * Get n elements saved into the corresponding ValueHistory instance (or all elements, if all < n).
-         */
-        public Map<K, V> getLastNValues(int n) {
-            return valueHistory.getLastNValues(n);
-        }
-
-        /**
-         * Get the last element saved into the corresponding ValueHistory instance.
-         */
-        public V getLastValue() {
-            return valueHistory.getValue();
-        }
-
-        /**
-         * Get the total nr of times a new value was saved into the corresponding ValueHistory instance.
-         * Note: as histories can be limited in size, less elements might be actually stored than the total.
-         */
-        public int valuesAddedSinceStart() {
-            return valueHistory.getNumberOfValuesSinceStart();
-        }
-
-        /**
-         * Check if the object exists among the valueHistory values
-         */
-        public boolean contains(V value) {
-            return valueHistory.contains(value);
+    private void addToGUI(Object ... elements) {
+        for(Object newElement : elements) {
+            if (HistoryInterface.class.isAssignableFrom(newElement.getClass())) {
+                guiHistories.add(((HistoryInterface) newElement).valueHistory);
+            } else if (ValueInterface.class.isAssignableFrom(newElement.getClass())) {
+                guiValues.add(((ValueInterface) newElement).value);
+            } else {
+                LOGGER.warn("Unexpected object was passed to addToGUI: {}", newElement.getClass().getSimpleName());
+            }
         }
     }
 }

@@ -39,12 +39,18 @@ public class Verbalizer {
 	}
 
 	// possible names for Roboy as parsed by Bing speech recognition
-	public static final List<String> roboyNames =
-			Arrays.asList("roboi", "robot", "boy", "roboboy", "robot", "roboy");
+	public static final RandomList<String> roboyNames =
+			new RandomList<>("roboi", "robot", "boy", "roboboy", "robot", "roboy");
+
+	public static final RandomList<String> consent =
+            new RandomList<>("yes", "I do", "sure", "of course", " go ahead");
+
+	public static final RandomList<String> denial =
+            new RandomList<>("no", "nope", "later", "other time", "not");
 
 	// triggers that will start the conversation
-	public static final List<String> triggers =
-			Arrays.asList("talk", "fun", "conversation", "new", "chat");
+	public static final RandomList<String> triggers =
+            new RandomList<>("talk", "fun", "conversation", "new", "chat");
 
 	public static final RandomList<String> greetings =
 			new RandomList<>("hello","hi","greetings",
@@ -66,8 +72,8 @@ public class Verbalizer {
 			"ciao", "goodbye", "cheerio", "bye",
             "see you", "farewell", "bye-bye");
 	
-	private static final List<String> segues = 
-			Arrays.asList("talking about ","since you mentioned ","on the topic of ");
+	private static final RandomList<String> segues =
+            new RandomList<>("talking about ","since you mentioned ","on the topic of ");
 	
 	private SpeechAction segue(Interpretation interpretation){
 		return new SpeechAction(StatementBuilder.random(segues)
@@ -75,10 +81,10 @@ public class Verbalizer {
 	}
 	
 	
-	private static final List<String> preAnecdotes = 
-			Arrays.asList("here is an interesting bit of trivia. ", "how about this? ");
-	private static final List<String> anecdotes = 
-			Arrays.asList("did you know ","did you know that ","i read that ",
+	private static final RandomList<String> preAnecdotes =
+            new RandomList<>("here is an interesting bit of trivia. ", "how about this? ");
+	private static final RandomList<String> anecdotes =
+            new RandomList<>("did you know ","did you know that ","i read that ",
 					"i heard that ", "have you heard this: ");
 	
 	private SpeechAction anecdote(Interpretation interpretation){

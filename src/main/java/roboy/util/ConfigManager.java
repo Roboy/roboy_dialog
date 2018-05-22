@@ -19,6 +19,7 @@ public class ConfigManager {
     public static boolean ROS_ENABLED = false;
     public static String ROS_MASTER_IP = "127.0.0.1";
     public static List<String> ROS_ACTIVE_PKGS = new ArrayList<>();
+    public static String ACTION_CLIENT_SCRIPT = "/home/roboy/workspace/Roboy/src/roboy_dialog/resources/scripts/action_client.py";
 
     public static boolean DEBUG = true;
 
@@ -105,7 +106,7 @@ public class ConfigManager {
 
             CONTEXT_GUI_ENABLED = yamlConfig.getBoolean("CONTEXT_GUI_ENABLED");
 
-
+            ACTION_CLIENT_SCRIPT = yamlConfig.getString("ACTION_CLIENT_SCRIPT");
         } catch(ConfigurationException | FileNotFoundException e) {
             LOGGER.error("Exception while reading YAML configurations from "+yamlConfigFile);
             LOGGER.error(e.getMessage());

@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.logic.InferenceEngine;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.nodes.MemoryNodeModel;
 import roboy.dialog.DialogStateMachine;
@@ -466,7 +467,10 @@ public abstract class State {
      * @return RosMainNode (if previously provided to the DialogStateMachine)
      */
     protected RosMainNode getRosMainNode() {
-        if (getParameters() == null) return null;
+        if (getParameters() == null) {
+            logger.error("RosNode is null");
+            return null;
+        }
         return getParameters().getRosMainNode();
     }
 
@@ -477,6 +481,15 @@ public abstract class State {
     protected Neo4jMemoryInterface getMemory() {
         if (getParameters() == null) return null;
         return getParameters().getMemory();
+    }
+
+    /**
+     * Shortcut for getParameters().getInference()
+     * @return InferenceEngine
+     */
+    protected InferenceEngine getInference() {
+        if (getParameters() == null) return null;
+        return getParameters().getInference();
     }
 
     //endregion

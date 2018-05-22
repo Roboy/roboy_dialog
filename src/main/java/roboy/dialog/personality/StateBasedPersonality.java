@@ -5,14 +5,18 @@ import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
+import roboy.dialog.action.SpeechAction;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.logic.InferenceEngine;
+import roboy.logic.StatementInterpreter;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.nodes.Interlocutor;
 import roboy.dialog.DialogStateMachine;
 import roboy.dialog.Segue;
 import roboy.dialog.states.definitions.State;
 import roboy.ros.RosMainNode;
+import roboy.talk.PhraseCollection;
 import roboy.talk.Verbalizer;
 
 import java.util.ArrayList;
@@ -43,8 +47,8 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
     private boolean stopTalking;
 
 
-    public StateBasedPersonality(RosMainNode rmn, Neo4jMemoryInterface memory, Verbalizer verb) {
-        super(rmn, memory);
+    public StateBasedPersonality(InferenceEngine inference, RosMainNode rosMainNode, Neo4jMemoryInterface memory, Verbalizer verb) {
+        super(inference, rosMainNode, memory);
         verbalizer = verb;
         stopTalking = false;
     }
@@ -135,10 +139,17 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
 
         // SPECIAL NON-STATE BASED BEHAVIOUR
-        // TODO: special treatment for profanity, farewell phrases etc.
+        // TODO: special treatment for profanity, etc.
         if (input.getFeatures().containsKey(Linguistics.EMOTION)) {
             // change facial expression based on input
             answerActions.add(new FaceAction((String) input.getFeatures().get(Linguistics.EMOTION)));
+        }
+        String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
+        if (StatementInterpreter.isFromList(sentence, Verbalizer.farewells)) {
+            // stop conversation once the interlocutor says a farewell
+            endConversation();
+            answerActions.add(new SpeechAction(Verbalizer.farewells.getRandomElement()));
+            return answerActions;
         }
 
 
@@ -347,7 +358,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
         logger.error("Exception in " + actOrReact + "() of state with identifier "
                 + state.getIdentifier() + ":\n" + e.getMessage());
         previousActions.add(verbalizer.verbalize(
-                new Interpretation("Well, looks like some states are not implemented correctly...")));
+                new Interpretation(PhraseCollection.SEGUE_DISTRACT.getRandomElement())));
     }
 
 }
