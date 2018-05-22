@@ -139,35 +139,35 @@ public class PersonalInformationAskingState extends State {
     private String InferResult(Interpretation input) {
         String result = null;
         // TODO: What is the condition?
-        if (input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.STATEMENT) == 0) {
-            String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
-            if (tokens.length == 1) {
-                result = tokens[0].replace("[", "").replace("]","").toLowerCase();
-                LOGGER.info(" -> Retrieved only one token: " + result);
+        if (input.getSentenceType().compareTo(Linguistics.SentenceType.STATEMENT) == 0) {
+            List<String> tokens = input.getTokens();
+            if (tokens.size() == 1) {
+                result = tokens.get(0).toLowerCase();
+                LOGGER.info("Retrieved only one token: " + result);
             } else {
-                if (input.getFeatures().get(Linguistics.PARSER_RESULT).toString().equals("SUCCESS") &&
-                        ((List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE)).size() != 0) {
-                    List<Triple> sem_triple = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
-                    LOGGER.info(" -> Semantic parsing is successful and semantic triple exists");
+                if (input.getParsingOutcome() == Linguistics.ParsingOutcome.SUCCESS &&
+                        input.getSemTriples().size() > 0) {
+                    List<Triple> sem_triple = input.getSemTriples();
+                    LOGGER.info("Semantic parsing is successful and semantic triple exists");
                     if (sem_triple.get(0).predicate.contains(selectedPredicate.type)) {
                         LOGGER.info(" -> Semantic predicate " + selectedPredicate.type + " exits");
                         result = sem_triple.get(0).object.toLowerCase();
-                        LOGGER.info(" -> Retrieved object " + result);
+                        LOGGER.info("Retrieved object " + result);
                     } else {
-                        LOGGER.warn(" -> Semantic predicate " + selectedPredicate.type + " does not exit");
+                        LOGGER.warn("Semantic predicate " + selectedPredicate.type + " does not exit");
                     }
                 } else {
-                    LOGGER.warn(" -> Semantic parsing failed or semantic triple does not exist");
-                    if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
-                        LOGGER.info(" -> OBJ_ANSWER exits");
-                        result = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
+                    LOGGER.warn("Semantic parsing failed or semantic triple does not exist");
+                    if (input.getObjAnswer() != null) {
+                        LOGGER.info("OBJ_ANSWER exits");
+                        result = input.getObjAnswer().toLowerCase();
                         if (!result.equals("")) {
-                            LOGGER.info(" -> Retrieved OBJ_ANSWER result " + result);
+                            LOGGER.info("Retrieved OBJ_ANSWER result " + result);
                         } else {
-                            LOGGER.warn(" -> OBJ_ANSWER result is empty");
+                            LOGGER.warn("OBJ_ANSWER result is empty");
                         }
                     } else {
-                        LOGGER.warn(" -> OBJ_ANSWER does not exit");
+                        LOGGER.warn("OBJ_ANSWER does not exit");
                     }
                 }
             }
