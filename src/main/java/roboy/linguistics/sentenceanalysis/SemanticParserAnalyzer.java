@@ -63,9 +63,9 @@ public class SemanticParserAnalyzer implements Analyzer {
             try {
                 String response;
                 if (this.debug) {
-                    logger.debug("SEMANTIC PARSER:" + interpretation.getFeature("sentence"));
+                    logger.debug("SEMANTIC PARSER: " + interpretation.getSentence());
                 }
-                this.out.println(interpretation.getFeature("sentence"));
+                this.out.println(interpretation.getSentence());
                 response = this.in.readLine();
                 if (this.debug) {
                     logger.debug("> Full response:" + response);
@@ -75,68 +75,60 @@ public class SemanticParserAnalyzer implements Analyzer {
                     Gson gson = new Gson();
                     Type type = new TypeToken<Map<String, Object>>() {
                     }.getType();
+                    Type listStringsType = new TypeToken<List<String>>(){}.getType();
 
                     try {
                         Map<String, Object> full_response = gson.fromJson(response, type);
                         // Read formula and answer
                         if (full_response.containsKey("parse")) {
                             if (full_response.get("answer").toString().equals("(no answer)")) {
-
-                                interpretation.getFeatures().put(Linguistics.PARSER_RESULT, Linguistics.PARSER_OUTCOME.FAILURE);
-                                interpretation.parserOutcome = Linguistics.PARSER_OUTCOME.FAILURE; // type safe version
-
+                                interpretation.setParsingOutcome(Linguistics.ParsingOutcome.FAILURE);
                             } else {
                                 String answer = get_answers(full_response.get("answer").toString());
+                                interpretation.setAnswer(answer);
 
-                                interpretation.getFeatures().put(Linguistics.PARSE_ANSWER, answer);
-                                interpretation.answer = answer; // type safe
-
-                                interpretation.getFeatures().put(Linguistics.PARSE, full_response.get("parse").toString());
+                                interpretation.setParse(full_response.get("parse").toString());
 
                                 List<Triple> triples = extract_triples(full_response.get("parse").toString());
-                                interpretation.getFeatures().put(Linguistics.SEM_TRIPLE, triples);
-                                interpretation.semParserTriples = triples; // type safe
+                                interpretation.setSemTriples(triples);
 
-                                interpretation.getFeatures().put(Linguistics.PARSER_RESULT, Linguistics.PARSER_OUTCOME.SUCCESS);
-                                interpretation.parserOutcome = Linguistics.PARSER_OUTCOME.SUCCESS;
+                                interpretation.setParsingOutcome(Linguistics.ParsingOutcome.SUCCESS);
                             }
                         }
                         // Read followUp questions for underspecified terms
                         if (full_response.containsKey("followUpQ")) {
-                            String specifyingQuestion = (String) full_response.get("followUpQ");
-                            interpretation.getFeatures().put(Linguistics.UNDERSPECIFIED_QUESTION, specifyingQuestion);
-                            interpretation.underspecifiedQuestion = specifyingQuestion;
+                            String specifyingQuestion = full_response.get("followUpQ").toString();
+                            interpretation.setUnderspecifiedQuestion(specifyingQuestion);
 
                             String answer = get_answers(full_response.get("answer").toString());
-                            interpretation.getFeatures().put(Linguistics.UNDERSPECIFIED_ANSWER, answer);
-                            interpretation.answer = answer;
+                            interpretation.setUnderspecifiedAnswer(answer);
+                            interpretation.setAnswer(answer);
 
-                            interpretation.getFeatures().put(Linguistics.PARSER_RESULT, Linguistics.PARSER_OUTCOME.UNDERSPECIFIED);
-                            interpretation.parserOutcome = Linguistics.PARSER_OUTCOME.UNDERSPECIFIED;
+                            interpretation.setParsingOutcome(Linguistics.ParsingOutcome.UNDERSPECIFIED);
                         }
                         // Read tokens
                         if (full_response.containsKey("tokens")) {
-                            interpretation.getFeatures().put(Linguistics.TOKENS, full_response.get("tokens").toString().split(","));
+                            interpretation.setTokens(gson.fromJson(full_response.get("tokens").toString(), listStringsType));
                         }
                         // Read extracted non-semantic relations
                         if (full_response.containsKey("relations")) {
-                            interpretation.getFeatures().put(Linguistics.TRIPLE, extract_relations((Map<String, Double>) full_response.get("relations")));
+                            interpretation.setTriples(extract_relations((Map<String, Double>) full_response.get("relations")));
                         }
                         // Read extracted sentiment
                         if (full_response.containsKey("sentiment")) {
-                            interpretation.getFeatures().put(Linguistics.SENTIMENT, full_response.get("sentiment").toString());
+                            interpretation.setSentiment(Linguistics.UtteranceSentiment.valueOf(full_response.get("sentiment").toString().toUpperCase()));
                         }
                         // Read POS-tags
                         if (full_response.containsKey("postags")) {
-                            interpretation.getFeatures().put(Linguistics.POSTAGS, full_response.get("postags").toString().split(","));
+                            interpretation.setPosTags(gson.fromJson(full_response.get("postags").toString(), String[].class));
                         }
                         // Read lemmatized tokens
                         if (full_response.containsKey("lemma_tokens")) {
-                            interpretation.getFeatures().put(Linguistics.LEMMAS, full_response.get("lemma_tokens").toString().split(","));
+                            interpretation.setLemmas(gson.fromJson(full_response.get("lemma_tokens").toString(), String[].class));
                         }
                         // Read utterance type
                         if (full_response.containsKey("type")) {
-                            interpretation.getFeatures().put(Linguistics.UTTERANCE_TYPE, full_response.get("type").toString());
+                            interpretation.setUtteranceType(full_response.get("type").toString());
                         }
                     } catch (Exception e) {
                         logger.error("Exception while parsing semantic response: " + e.getMessage());
@@ -258,11 +250,9 @@ public class SemanticParserAnalyzer implements Analyzer {
             String line;
             System.out.print("Enter utterance: ");
             while ((line = reader.readLine()) != null) {
-                Interpretation inter = new Interpretation(line);
-                analyzer.analyze(inter);
-                for (String key : inter.getFeatures().keySet()) {
-                    System.out.println(key + " : " + inter.getFeature(key));
-                }
+                Interpretation interpretation = new Interpretation(line);
+                analyzer.analyze(interpretation);
+                System.out.println(interpretation.toString());
             }
         } catch (IOException e) {
             e.printStackTrace();
