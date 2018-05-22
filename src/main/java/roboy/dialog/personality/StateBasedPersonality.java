@@ -140,11 +140,11 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
         // SPECIAL NON-STATE BASED BEHAVIOUR
         // TODO: special treatment for profanity, etc.
-        if (input.getFeatures().containsKey(Linguistics.EMOTION)) {
+        if (input.getEmotion() != null) {
             // change facial expression based on input
-            answerActions.add(new FaceAction((String) input.getFeatures().get(Linguistics.EMOTION)));
+            answerActions.add(new FaceAction(input.getEmotion()));
         }
-        String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
+        String sentence = input.getSentence();
         if (StatementInterpreter.isFromList(sentence, Verbalizer.farewells)) {
             // stop conversation once the interlocutor says a farewell
             endConversation();
