@@ -116,7 +116,12 @@ public class SemanticParserAnalyzer implements Analyzer {
                         }
                         // Read extracted sentiment
                         if (full_response.containsKey("sentiment")) {
-                            interpretation.setSentiment(Linguistics.UtteranceSentiment.valueOf(full_response.get("sentiment").toString().toUpperCase()));
+                            try {
+                                interpretation.setSentiment(Linguistics.UtteranceSentiment.valueOf(full_response.get("sentiment").toString().toUpperCase()));
+                            } catch (Exception e) {
+                                interpretation.setSentiment(Linguistics.UtteranceSentiment.NEUTRAL);
+                                logger.error("Sentiment is illegal: " + e.getMessage());
+                            }
                         }
                         // Read POS-tags
                         if (full_response.containsKey("postags")) {
