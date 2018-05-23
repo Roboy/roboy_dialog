@@ -141,6 +141,7 @@ public class DialogSystem {
                 try {
                     raw = multiIn.listen();
                 } catch (Exception e) {
+
                     logger.error("Exception in input: " + e.getMessage());
                     return;
                 }

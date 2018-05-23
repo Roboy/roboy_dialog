@@ -166,6 +166,14 @@
         </dependency>
 
         <dependency>
+            <groupId>org.telegram</groupId>
+            <artifactId>telegrambots-abilities</artifactId>
+            <version>3.6.1</version>
+        </dependency>
+
+        <!--Added to use botboy.-->
+
+        <dependency>
             <groupId>org.apache.opennlp</groupId>
             <artifactId>opennlp-tools</artifactId>
             <version>1.7.0</version>

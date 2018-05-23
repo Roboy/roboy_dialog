@@ -5,6 +5,8 @@ import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.FaceAction;
+import roboy.dialog.action.SpeechAction;
+import roboy.dialog.action.TelegramAction;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jMemoryInterface;
@@ -278,7 +280,16 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
         if (react.hasInterpretation()) {
             // verbalize only if there is a reply
             Interpretation inter = react.getInterpretation();
-            previousActions.add(verbalizer.verbalize(inter));
+
+            //decide if its a telegram chat.
+            if(inter.getFeature("chat-id") != null){
+                //There is a chat id so this must be telegram chat
+                String chatID = (String) inter.getFeature("chat-id");
+                String message = ((SpeechAction) verbalizer.verbalize(inter)).getText();
+                previousActions.add(new TelegramAction(message, chatID));
+            }else{
+                previousActions.add(verbalizer.verbalize(inter));
+            }
 
         } else if (react.isEndOfConversation()) {
             // end conversation and check for last words
