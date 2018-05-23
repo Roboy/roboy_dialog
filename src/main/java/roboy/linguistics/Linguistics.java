@@ -16,7 +16,7 @@ public class Linguistics {
 		SEGUE,
 		ANECDOTE,
         STATEMENT,
-        NAN,
+		NONE,
 		WHO, HOW_IS, HOW_DO, WHY, WHEN, WHERE, WHAT, IS_IT, DOES_IT
     }
 

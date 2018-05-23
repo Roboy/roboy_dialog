@@ -64,7 +64,7 @@ public class DictionaryBasedSentenceTypeDetector implements Analyzer{
 
             return SentenceType.STATEMENT;
         } else {
-            return SentenceType.NAN;
+            return SentenceType.NONE;
         }
 	}
 }

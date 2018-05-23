@@ -84,8 +84,7 @@ public class RoboyNameDetectionInput implements InputDevice{
 		//get a string that was recognized
 		String utterance = recog_copy.getResult().getHypothesis();
 		if ( utterance.contains("ROBOY") ){
-			//return new Input(null, Maps.stringObjectMap(Linguistics.ROBOYDETECTED,true));
-			return new Input(null);
+			return new Input(null, Maps.stringObjectMap("isRoboy",true));
 		}
 		else {
 			return new Input(null);

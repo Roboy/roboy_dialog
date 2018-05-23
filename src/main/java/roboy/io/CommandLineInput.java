@@ -1,6 +1,7 @@
 package roboy.io;
 
 import roboy.linguistics.Linguistics;
+import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.Maps;
 
 import java.util.Scanner;
@@ -16,12 +17,10 @@ public class CommandLineInput implements InputDevice{
 	public Input listen() {
 		System.out.print("[You]:   ");
 		String input = sc.nextLine();
-		//if ( input.contains("roboy") ){
-		//	return new Input(input, Maps.stringObjectMap(Linguistics.ROBOYDETECTED, true));
-		//}
-		if (input.contains("roboy")) {
-            return new Input(input);
-        }
+
+		if (input.contains("roboy")){
+            return new Input(input, Maps.stringObjectMap("isRoboy", true));
+		}
 		return new Input(input);
 	}
 

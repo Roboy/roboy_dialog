@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import com.github.jsonldjava.utils.Obj;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.emotions.RoboyEmotion;
@@ -60,22 +61,23 @@ public class Interpretation {
 	public List<Triple> semParserTriples;
 
 	public Interpretation(String sentence){
-		//features = new HashMap<>();
-		//features.put(SENTENCE, sentence);
 		this.sentenceType = SentenceType.STATEMENT;
 		this.sentence = sentence;
 	}
 
-	public Interpretation(String sentence, Map<String,Object> features){
-		//this.features = features;
-		//this.features.put(SENTENCE, sentence);
+    public Interpretation(String sentence, Map<String, Object> features){
+        this.sentenceType = SentenceType.STATEMENT;
+        this.sentence = sentence;
+    }
+
+	public Interpretation(String sentence, Interpretation interpretation){
+		this.copy(interpretation);
 		this.sentenceType = SentenceType.STATEMENT;
 		this.sentence = sentence;
 	}
 
 	public Interpretation(SentenceType sentenceType){
 		this.sentenceType = sentenceType;
-		//features = new HashMap<>();
 	}
 
 	public Interpretation(SentenceType sentenceType, String sentence, Triple triple){
@@ -86,20 +88,9 @@ public class Interpretation {
 	}
 
 	public Interpretation(Interpretation interpretation) {
+	    this.copy(interpretation);
 	    LOGGER.info("Merge/copy method is under construction! See you soon!");
     }
-
-	//public Map<String, Object> getFeatures() {
-	//	return features;
-	//}
-
-	//public Object getFeature(String featureName){
-	//	return features.get(featureName);
-	//}
-
-	//public void setFeatures(Map<String, Object> features) {
-	//	this.features = features;
-	//}
 
 	public SentenceType getSentenceType() {
 		return sentenceType;
@@ -331,6 +322,19 @@ public class Interpretation {
             triples = new ArrayList<>();
         }
         triples.add(triple);
+    }
+
+    // TODO the method copies the fields from the
+    public boolean copy(Interpretation interpretation) {
+	    return false;
+    }
+
+    // TODO method that merges the interpretations
+    public Interpretation merge(Interpretation interpretation) {
+	    if (this.copy(interpretation)) {
+	        return this;
+        }
+        return null;
     }
 
     @Override
