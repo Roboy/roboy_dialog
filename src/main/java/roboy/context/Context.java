@@ -103,7 +103,7 @@ public class Context {
 
                 /* EXTERNAL UPDATERS INITIALIZED HERE */
 //                AUDIO_ANGLES_UPDATER = new AudioDirectionUpdater(AUDIO_ANGLES.valueHistory, ros);
-//                ROS_TEST_UPDATER = new ROSTestUpdater(ROS_TEST.valueHistory, ros);
+                if(ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_test")) ROS_TEST_UPDATER = new ROSTestUpdater(ROS_TEST.valueHistory, ros);
                 // TODO Add a FACE_COORDINATE_UPDATER.
                 // Edit the data type and integration tests, once the real data type is used.
 
