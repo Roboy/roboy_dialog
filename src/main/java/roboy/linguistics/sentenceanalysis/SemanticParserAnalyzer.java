@@ -10,13 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import java.net.Socket;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import roboy.linguistics.Triple;
 import roboy.util.ConfigManager;
 
+import edu.stanford.nlp.sempre.roboy.SemanticAnalyzerInterface;
 
 /**
  * Semantic parser class. Connects DM to Roboy parser and adds its result to interpretation class.
@@ -24,29 +21,14 @@ import roboy.util.ConfigManager;
 public class SemanticParserAnalyzer implements Analyzer {
 
     private final static Logger logger = LogManager.getLogger();
-
-    private Socket clientSocket;  /*< Client socket for the parser */
-    private PrintWriter out;      /*< Output stream for the parser */
-    private BufferedReader in;    /*< Input stream from the parser */
-    private boolean debug = true; /*< Boolean variable for debugging purpose */
+    private SemanticAnalyzerInterface semanticAnalyzer;
 
     /**
      * A constructor.
      * Creates ParserAnalyzer class and connects the parser to DM using a socket.
      */
-    public SemanticParserAnalyzer(int portNumber) {
-        this.debug = ConfigManager.DEBUG;
-        try {
-            // Create string-string socket
-            this.clientSocket = new Socket("localhost", portNumber);
-            // Declaring input
-            this.in = new BufferedReader(
-                    new InputStreamReader(clientSocket.getInputStream()));
-            // Declaring output
-            this.out = new PrintWriter(clientSocket.getOutputStream(), true);
-        } catch (IOException e) {
-            logger.error("Semantic Parser Client Error: " + e.getMessage());
-        }
+    public SemanticParserAnalyzer() {
+        semanticAnalyzer = new SemanticAnalyzerInterface(false);
     }
 
     /**
@@ -59,99 +41,16 @@ public class SemanticParserAnalyzer implements Analyzer {
      */
     @Override
     public Interpretation analyze(Interpretation interpretation) {
-        if (this.clientSocket != null && this.clientSocket.isConnected()) {
-            try {
-                String response;
-                if (this.debug) {
-                    logger.debug("SEMANTIC PARSER:" + interpretation.getFeature("sentence"));
-                }
-                this.out.println(interpretation.getFeature("sentence"));
-                response = this.in.readLine();
-                if (this.debug) {
-                    logger.debug("> Full response:" + response);
-                }
-                if (response != null) {
-                    // Convert JSON string back to Map.
-                    Gson gson = new Gson();
-                    Type type = new TypeToken<Map<String, Object>>() {
-                    }.getType();
-
-                    try {
-                        Map<String, Object> full_response = gson.fromJson(response, type);
-                        // Read formula and answer
-                        if (full_response.containsKey("parse")) {
-                            if (full_response.get("answer").toString().equals("(no answer)")) {
-
-                                interpretation.getFeatures().put(Linguistics.PARSER_RESULT, Linguistics.PARSER_OUTCOME.FAILURE);
-                                interpretation.parserOutcome = Linguistics.PARSER_OUTCOME.FAILURE; // type safe version
-
-                            } else {
-                                String answer = get_answers(full_response.get("answer").toString());
-
-                                interpretation.getFeatures().put(Linguistics.PARSE_ANSWER, answer);
-                                interpretation.answer = answer; // type safe
-
-                                interpretation.getFeatures().put(Linguistics.PARSE, full_response.get("parse").toString());
-
-                                List<Triple> triples = extract_triples(full_response.get("parse").toString());
-                                interpretation.getFeatures().put(Linguistics.SEM_TRIPLE, triples);
-                                interpretation.semParserTriples = triples; // type safe
-
-                                interpretation.getFeatures().put(Linguistics.PARSER_RESULT, Linguistics.PARSER_OUTCOME.SUCCESS);
-                                interpretation.parserOutcome = Linguistics.PARSER_OUTCOME.SUCCESS;
-                            }
-                        }
-                        // Read followUp questions for underspecified terms
-                        if (full_response.containsKey("followUpQ")) {
-                            String specifyingQuestion = (String) full_response.get("followUpQ");
-                            interpretation.getFeatures().put(Linguistics.UNDERSPECIFIED_QUESTION, specifyingQuestion);
-                            interpretation.underspecifiedQuestion = specifyingQuestion;
-
-                            String answer = get_answers(full_response.get("answer").toString());
-                            interpretation.getFeatures().put(Linguistics.UNDERSPECIFIED_ANSWER, answer);
-                            interpretation.answer = answer;
-
-                            interpretation.getFeatures().put(Linguistics.PARSER_RESULT, Linguistics.PARSER_OUTCOME.UNDERSPECIFIED);
-                            interpretation.parserOutcome = Linguistics.PARSER_OUTCOME.UNDERSPECIFIED;
-                        }
-                        // Read tokens
-                        if (full_response.containsKey("tokens")) {
-                            interpretation.getFeatures().put(Linguistics.TOKENS, full_response.get("tokens").toString().split(","));
-                        }
-                        // Read extracted non-semantic relations
-                        if (full_response.containsKey("relations")) {
-                            interpretation.getFeatures().put(Linguistics.TRIPLE, extract_relations((Map<String, Double>) full_response.get("relations")));
-                        }
-                        // Read extracted sentiment
-                        if (full_response.containsKey("sentiment")) {
-                            interpretation.getFeatures().put(Linguistics.SENTIMENT, full_response.get("sentiment").toString());
-                        }
-                        // Read POS-tags
-                        if (full_response.containsKey("postags")) {
-                            interpretation.getFeatures().put(Linguistics.POSTAGS, full_response.get("postags").toString().split(","));
-                        }
-                        // Read lemmatized tokens
-                        if (full_response.containsKey("lemma_tokens")) {
-                            interpretation.getFeatures().put(Linguistics.LEMMAS, full_response.get("lemma_tokens").toString().split(","));
-                        }
-                        // Read utterance type
-                        if (full_response.containsKey("type")) {
-                            interpretation.getFeatures().put(Linguistics.UTTERANCE_TYPE, full_response.get("type").toString());
-                        }
-                    } catch (Exception e) {
-                        logger.error("Exception while parsing semantic response: " + e.getMessage());
-                        e.printStackTrace();
-                    }
-                }
-                return interpretation;
-            } catch (IOException e) {
-                e.printStackTrace();
-                return interpretation;
-            }
-        } else
-            return interpretation;
+        String response;
+        SemanticAnalyzerInterface.Result result = semanticAnalyzer.analyze(
+            (String) interpretation.getFeature("sentence"));
+        interpretation.getFeatures().put(Linguistics.TOKENS, result.getTokens());
+        interpretation.getFeatures().put(Linguistics.TRIPLE, extract_relations(result.getRelations()));
+        interpretation.getFeatures().put(Linguistics.SENTIMENT, result.getSentiment());
+        interpretation.getFeatures().put(Linguistics.POSTAGS, result.getPostags());
+        interpretation.getFeatures().put(Linguistics.LEMMAS, result.getLemmaTokens());
+        return interpretation;
     }
-
 
     /**
      * Function reading parser answer in returned JSON string.
@@ -252,7 +151,7 @@ public class SemanticParserAnalyzer implements Analyzer {
      * Testing function
      */
     public static void main(String[] args) {
-        SemanticParserAnalyzer analyzer = new SemanticParserAnalyzer(ConfigManager.PARSER_PORT);
+        SemanticParserAnalyzer analyzer = new SemanticParserAnalyzer();
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String line;

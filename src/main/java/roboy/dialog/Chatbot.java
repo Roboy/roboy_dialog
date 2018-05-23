@@ -70,7 +70,7 @@ public class Chatbot {
         analyzers.add(new Preprocessor());
         analyzers.add(new SimpleTokenizer());
 
-        analyzers.add(new SemanticParserAnalyzer(ConfigManager.PARSER_PORT));
+        analyzers.add(new SemanticParserAnalyzer());
         //analyzers.add(new OpenNLPPPOSTagger());
         analyzers.add(new DictionaryBasedSentenceTypeDetector());
         //analyzers.add(new SentenceAnalyzer());

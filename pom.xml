@@ -219,6 +219,7 @@
             <version>1.7.1</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-api-mockito</artifactId>
@@ -360,6 +361,7 @@
             <artifactId>log4j-api</artifactId>
             <version>2.3</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
@@ -370,6 +372,12 @@
             <groupId>com.ibm.watson.developer_cloud</groupId>
             <artifactId>java-sdk</artifactId>
             <version>4.2.1</version>
+        </dependency>
+
+        <dependency>
+          <groupId>roboy-parser</groupId>
+          <artifactId>roboy-parser</artifactId>
+          <version>2.0.0</version>
         </dependency>
 
     </dependencies>
