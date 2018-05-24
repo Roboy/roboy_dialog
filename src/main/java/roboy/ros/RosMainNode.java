@@ -12,6 +12,7 @@ import org.ros.node.service.ServiceResponseListener;
 
 import org.ros.node.topic.Subscriber;
 import roboy.context.Context;
+import roboy.emotions.RoboyEmotion;
 import roboy.util.ConfigManager;
 import roboy_communication_cognition.*;
 import roboy_communication_control.*;
@@ -184,11 +185,16 @@ public class RosMainNode extends AbstractNodeMain {
         return answer;
     }
 
+    public boolean ShowEmotion(RoboyEmotion emotion) {
+
+        return ShowEmotion(emotion.type);
+    }
+
     public boolean ShowEmotion(String emotion) {
 
         if(services.notInitialized(RosServiceClients.EMOTION)) {
             // FALLBACK RETURN VALUE
-            LOGGER.info("Emotions not initialized");
+            LOGGER.info("RoboyEmotion not initialized");
             return false;
         }
         ServiceClient<ShowEmotionRequest, ShowEmotionResponse> emotionClient = services.getService(RosServiceClients.EMOTION);

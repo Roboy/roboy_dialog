@@ -1,8 +1,7 @@
 package roboy.linguistics.sentenceanalysis;
 
-import roboy.linguistics.Linguistics;
+import roboy.emotions.RoboyEmotion;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -12,23 +11,25 @@ import java.util.List;
  */
 public class EmotionAnalyzer implements Analyzer {
 
-    public Interpretation analyze(Interpretation sentence)
+    public Interpretation analyze(Interpretation interpretation)
     {
-        List<String> tokens = Arrays.asList((String[]) sentence.getFeature(Linguistics.TOKENS));
-        if (tokens.contains("love") || tokens.contains("cute"))
-            sentence.getFeatures().put(Linguistics.EMOTION, "shy");
-        else if (tokens.contains("munich") || tokens.contains("robotics"))
-            sentence.getFeatures().put(Linguistics.EMOTION, "smileblink");
-        else if (tokens.contains("left") )
-            sentence.getFeatures().put(Linguistics.EMOTION, "lookleft");
-        else if (tokens.contains("right") )
-            sentence.getFeatures().put(Linguistics.EMOTION, "lookright");
-        else if (tokens.contains("cat") || tokens.contains("cats") )
-            sentence.getFeatures().put(Linguistics.EMOTION, "catiris");
-        if (sentence.getFeatures().containsKey(Linguistics.ROBOYDETECTED))
-        {
-            sentence.getFeatures().put(Linguistics.EMOTION, "smileblink");
+        List<String> tokens = interpretation.getTokens();
+        if (tokens != null && !tokens.isEmpty()) {
+            if (tokens.contains("love") || tokens.contains("cute"))
+                interpretation.setEmotion(RoboyEmotion.SHY);
+            else if (tokens.contains("munich") || tokens.contains("robotics"))
+                interpretation.setEmotion(RoboyEmotion.SMILE_BLINK);
+            else if (tokens.contains("left"))
+                interpretation.setEmotion(RoboyEmotion.LOOK_LEFT);
+            else if (tokens.contains("right"))
+                interpretation.setEmotion(RoboyEmotion.LOOK_RIGHT);
+            else if (tokens.contains("cat") || tokens.contains("cats"))
+                interpretation.setEmotion(RoboyEmotion.CAT_EYES);
+
+            if (interpretation.isRoboy()) {
+                interpretation.setEmotion(RoboyEmotion.SMILE_BLINK);
+            }
         }
-        return sentence;
+        return interpretation;
     }
 }

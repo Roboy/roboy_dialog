@@ -121,8 +121,8 @@ public class RoboyQAState extends State {
                     }
                 }
             }
-        } else if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
-            String objAnswer = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
+        } else if (input.getObjAnswer() != null) {
+            String objAnswer = input.getObjAnswer().toLowerCase();
             if (!objAnswer.equals("")) {
                 LOGGER.info("OBJ_ANSWER: " + objAnswer);
                 Neo4jRelationship predicate = inferPredicateFromObjectAnswer(objAnswer);

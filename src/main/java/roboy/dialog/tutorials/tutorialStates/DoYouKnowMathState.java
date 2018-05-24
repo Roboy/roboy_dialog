@@ -2,8 +2,9 @@ package roboy.dialog.tutorials.tutorialStates;
 
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
-import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+
+import java.util.List;
 
 public class DoYouKnowMathState extends State {
 
@@ -22,10 +23,10 @@ public class DoYouKnowMathState extends State {
     public Output react(Interpretation input) {
 
         // get tokens (= single words of the input)
-        String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
+        List<String> tokens = input.getTokens();
 
         // check if the answer is correct (simplest version)
-        if (tokens.length > 0 && tokens[0].equals("four")) {
+        if (tokens != null && ((List) tokens).size() > 0 && tokens.get(0).equals("four")) {
             // answer correct
             next = getTransition("personKnowsMath");
             return Output.say("You are good at math!");

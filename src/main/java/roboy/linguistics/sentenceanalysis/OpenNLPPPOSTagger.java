@@ -3,8 +3,8 @@ package roboy.linguistics.sentenceanalysis;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
-import roboy.linguistics.Linguistics;
 import opennlp.tools.postag.POSModel;
 import opennlp.tools.postag.POSTaggerME;
 
@@ -34,6 +34,7 @@ public class OpenNLPPPOSTagger implements Analyzer{
 		      modelIn.close();
 		    }
 		    catch (IOException e) {
+				e.printStackTrace();
 		    }
 		  }
 		}
@@ -41,14 +42,14 @@ public class OpenNLPPPOSTagger implements Analyzer{
 	
 	@Override
 	public Interpretation analyze(Interpretation interpretation) {
-		String[] tokens = (String[]) interpretation.getFeatures().get(Linguistics.TOKENS);
-		String[] posTags = posTag(tokens);
-		interpretation.getFeatures().put(Linguistics.POSTAGS,posTags);
+		List<String> tokens = interpretation.getTokens();
+		String[] posTags = extractPosTag(tokens);
+		interpretation.setPosTags(posTags);
 		return interpretation;
 	}
 
-	private String[] posTag(String[] tokens){
-		  String[] posTags =  tagger.tag(tokens);
+	private String[] extractPosTag(List<String> tokens){
+		  String[] posTags = tagger.tag((String[]) tokens.toArray());
 		  return posTags;
 	}
 }

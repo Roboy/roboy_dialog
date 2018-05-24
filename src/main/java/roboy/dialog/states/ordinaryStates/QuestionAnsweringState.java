@@ -105,7 +105,7 @@ public class QuestionAnsweringState extends State {
         askingSpecifyingQuestion = false;
 
         // check if answer is yes
-        if (((String) input.getFeature(Linguistics.SENTENCE)).contains("yes")) {
+        if (input.getSentence() != null && input.getSentence().contains("yes")) {
             if (answerAfterUnspecifiedQuestion == null) {
                 // parser could parse the question but did't provide an answer
                 return Output.say("Not sure about the answer, " +
@@ -130,28 +130,28 @@ public class QuestionAnsweringState extends State {
         askingSpecifyingQuestion = false;
         questionsAnswered++;
 
-        Linguistics.PARSER_OUTCOME parseOutcome = input.parserOutcome;
+        Linguistics.ParsingOutcome parseOutcome = input.getParsingOutcome();
         if (parseOutcome == null) {
             logger.error("Invalid parser outcome!");
             return Output.say("Invalid parser outcome!");
         }
 
-        if (parseOutcome == Linguistics.PARSER_OUTCOME.UNDERSPECIFIED) {
+        if (parseOutcome == Linguistics.ParsingOutcome.UNDERSPECIFIED) {
 
             // ambiguous question, luckily the parser has prepared a followup question
             // and maybe even an answer if we are lucky (we will check in reactToSpecifyingAnswer later)
 
-            String question = input.underspecifiedQuestion;
-            answerAfterUnspecifiedQuestion = input.answer; // could be null, but that's fine for now
+            String question = input.getUnderspecifiedQuestion();
+            answerAfterUnspecifiedQuestion = input.getAnswer(); // could be null, but that's fine for now
 
             askingSpecifyingQuestion = true; // next input should be a yes/no answer
             return Output.say("Could you be more precise, please? " + question);
         }
 
-        if (parseOutcome == Linguistics.PARSER_OUTCOME.SUCCESS) {
-            if (input.answer != null) {
+        if (parseOutcome == Linguistics.ParsingOutcome.SUCCESS) {
+            if (input.getAnswer() != null) {
                 // tell the answer, that was provided by the parser
-                return Output.say(answerStartingPhrases.getRandomElement() + " " + input.answer);
+                return Output.say(answerStartingPhrases.getRandomElement() + " " + input.getAnswer());
 
             } else {
                 // check for triple

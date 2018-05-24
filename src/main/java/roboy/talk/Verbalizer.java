@@ -77,7 +77,7 @@ public class Verbalizer {
 	
 	private SpeechAction segue(Interpretation interpretation){
 		return new SpeechAction(StatementBuilder.random(segues)
-				+ interpretation.getFeatures().get(Linguistics.ASSOCIATION));
+				+ interpretation.getAssociation());
 	}
 	
 	
@@ -90,12 +90,12 @@ public class Verbalizer {
 	private SpeechAction anecdote(Interpretation interpretation){
 		String prefix = Math.random()<0.3 ? StatementBuilder.random(preAnecdotes) : "";
 		return new SpeechAction(prefix+StatementBuilder.random(anecdotes)
-				+ interpretation.getFeatures().get(Linguistics.SENTENCE));
+				+ interpretation.getSentence());
 	}
 	
 	private Interpretation verbalizeDates(Interpretation interpretation){
 		StringBuilder sb = new StringBuilder();
-		String sentence = (String)interpretation.getFeatures().get(Linguistics.SENTENCE);
+		String sentence = interpretation.getSentence();
 		if(sentence == null) return interpretation;
 		Matcher matcher = Pattern.compile( "\\d\\d\\d\\d-\\d\\d?-\\d\\d" ).matcher( sentence );
 		int lastEnd = 0;
@@ -106,7 +106,7 @@ public class Verbalizer {
 		}
 		if(lastEnd>0){
 			sb.append(sentence.substring(lastEnd,sentence.length()));
-			interpretation.getFeatures().put(Linguistics.SENTENCE, sb.toString());
+			interpretation.setSentence(sb.toString());
 		}
 		return interpretation;
 	}
@@ -236,7 +236,7 @@ public class Verbalizer {
 			);
 	
 	private SpeechAction literalSentence(Interpretation interpretation){
-		return new SpeechAction((String)interpretation.getFeatures().get(Linguistics.SENTENCE));
+		return new SpeechAction(interpretation.getSentence());
 	}
 
 }

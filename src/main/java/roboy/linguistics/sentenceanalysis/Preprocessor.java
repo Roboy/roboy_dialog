@@ -7,12 +7,14 @@ import roboy.linguistics.Linguistics;
  * which are expected by later sentence analyses.
  */
 public class Preprocessor implements Analyzer{
-    public Interpretation analyze(Interpretation sentence){
-        String s = (String) sentence.getFeature(Linguistics.SENTENCE);
-        s = s.replaceAll("i'm", "I am");
-        s = s.replaceAll("'ve", " have");
-        s = s.replaceAll("n't", " not");
-        sentence.getFeatures().put(Linguistics.SENTENCE, s);
-        return  sentence;
+    public Interpretation analyze(Interpretation interpretation){
+        String sentence = interpretation.getSentence();
+        if (sentence != null) {
+            sentence = sentence.replaceAll("i'm", "I am");
+            sentence = sentence.replaceAll("'ve", " have");
+            sentence = sentence.replaceAll("n't", " not");
+        }
+        interpretation.setSentence(sentence);
+        return interpretation;
     }
 }

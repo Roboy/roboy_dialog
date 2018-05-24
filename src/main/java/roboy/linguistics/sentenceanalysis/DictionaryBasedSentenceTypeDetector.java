@@ -1,7 +1,8 @@
 package roboy.linguistics.sentenceanalysis;
 
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.Linguistics.SENTENCE_TYPE;
+import roboy.linguistics.Linguistics.SentenceType;
+
+import java.util.List;
 
 /**
  * Checks the sentence type by stupidly looking at the first word of the sentence
@@ -12,37 +13,58 @@ public class DictionaryBasedSentenceTypeDetector implements Analyzer{
 
 	@Override
 	public Interpretation analyze(Interpretation interpretation) {
-		String[] tokens = (String[]) interpretation.getFeatures().get(Linguistics.TOKENS);
-		String[] posTags = (String[]) interpretation.getFeatures().get(Linguistics.POSTAGS);
-		SENTENCE_TYPE sentenceType = determineSentenceType(tokens, posTags);
+		List<String> tokens = interpretation.getTokens();
+		String[] posTags = interpretation.getPosTags();
+		SentenceType sentenceType = determineSentenceType(tokens, posTags);
 		interpretation.setSentenceType(sentenceType);
 		return interpretation;
 	}
 
-	private SENTENCE_TYPE determineSentenceType(String[] tokens, String[] posTags){
-		if(tokens.length==0) return SENTENCE_TYPE.NONE;
-		String first = tokens[0].toLowerCase();
-		if("who".equals(first)) return SENTENCE_TYPE.WHO;
-		if("where".equals(first)) return SENTENCE_TYPE.WHERE;
-		if("what".equals(first)) return SENTENCE_TYPE.WHAT;
-		if("when".equals(first)) return SENTENCE_TYPE.WHEN;
-		if("why".equals(first)) return SENTENCE_TYPE.WHY;
-		if("do".equals(first)) return SENTENCE_TYPE.DOES_IT;
-		if("does".equals(first)) return SENTENCE_TYPE.DOES_IT;
-		if("did".equals(first)) return SENTENCE_TYPE.DOES_IT;
-		if("is".equals(first)) return SENTENCE_TYPE.IS_IT;
-		if("are".equals(first)) return SENTENCE_TYPE.IS_IT;
-		if("am".equals(first)) return SENTENCE_TYPE.IS_IT;
-		if(tokens.length==1) return SENTENCE_TYPE.STATEMENT;
-		String second = tokens[1].toLowerCase();
-		if("how".equals(first) && 
-				("is".equals(second)||"are".equals("second")||"am".equals(second))){
-			return SENTENCE_TYPE.HOW_IS;
-		}
-		if("how".equals(first) && 
-				("do".equals(second)||"did".equals("second"))){
-			return SENTENCE_TYPE.HOW_DO;
-		}
-		return SENTENCE_TYPE.STATEMENT;
+	private SentenceType determineSentenceType(List<String> tokens, String[] posTags){
+		if (tokens != null && !tokens.isEmpty()) {
+            if (tokens.size() == 1) return SentenceType.STATEMENT;
+
+            String first = tokens.get(0).toLowerCase();
+            switch (tokens.get(0).toLowerCase()) {
+                case "who":
+                    return SentenceType.WHO;
+                case "what":
+                    return SentenceType.WHAT;
+                case "where":
+                    return SentenceType.WHERE;
+                case "when":
+                    return SentenceType.WHEN;
+                case "why":
+                    return SentenceType.WHY;
+                case "do":
+                    return SentenceType.DOES_IT;
+                case "does":
+                    return SentenceType.DOES_IT;
+                case "did":
+                    return SentenceType.DOES_IT;
+                case "is":
+                    return SentenceType.IS_IT;
+                case "are":
+                    return SentenceType.IS_IT;
+                case "am":
+                    return SentenceType.IS_IT;
+                case "how":
+                    String second = tokens.get(1).toLowerCase();
+                    if ("is".equals(second) || "are".equals(second) || "am".equals(second)) {
+                        return SentenceType.HOW_IS;
+                    } else if ("how".equals(first) &&
+                            ("do".equals(second) || "does".equals(second) || "did".equals(second))) {
+                        return SentenceType.HOW_DO;
+                    } else {
+                        break;
+                    }
+                default:
+                     break;
+            }
+
+            return SentenceType.STATEMENT;
+        } else {
+            return SentenceType.NONE;
+        }
 	}
 }
