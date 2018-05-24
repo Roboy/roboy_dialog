@@ -21,7 +21,6 @@ public class ConfigManager {
     public static List<String> ROS_ACTIVE_PKGS = new ArrayList<>();
     public static String ACTION_CLIENT_SCRIPT = "/home/roboy/workspace/Roboy/src/roboy_dialog/resources/scripts/action_client.py";
 
-    public static boolean IS_ROBOT_INSTANCE = false;
 
     public static boolean DEBUG = true;
 
@@ -80,8 +79,6 @@ public class ConfigManager {
                 }
 
             }
-
-            IS_ROBOT_INSTANCE = yamlConfig.getBoolean("IS_ROBOT_INSTANCE");
 
             DEBUG = yamlConfig.getBoolean("DEBUG");
 

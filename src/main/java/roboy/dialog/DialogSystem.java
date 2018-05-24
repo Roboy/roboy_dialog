@@ -41,7 +41,7 @@ public class DialogSystem {
 
         if (ConfigManager.ROS_ENABLED) {
             rosMainNode = new RosMainNode();
-            if(ConfigManager.IS_ROBOT_INSTANCE) context.initializeROS(rosMainNode);
+            context.initializeROS(rosMainNode);
         } else {
             // TODO: create a nice offline interface for RosMainNode, similar to DummyMemory
             rosMainNode = null;
