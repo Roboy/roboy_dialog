@@ -66,7 +66,7 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
     {
 //        if(!Config.MEMORY) return new ArrayList<>();
 //        String result = rosMainNode.GetMemoryQuery(query.toJSON());
-/        String result = RoslessCalls.get(query.toJSON());
+        String result = RoslessCalls.get(query.toJSON());
         if(result == null || result.contains("FAIL")) return null;
         Type type = new TypeToken<HashMap<String, List<Integer>>>() {}.getType();
         HashMap<String, ArrayList<Integer>> list = gson.fromJson(result, type);
