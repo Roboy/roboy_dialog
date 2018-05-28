@@ -36,8 +36,8 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
     public boolean save(MemoryNodeModel node) throws InterruptedException, IOException
     {
 //        if(!Config.MEMORY) return false;
-        String response = rosMainNode.UpdateMemoryQuery(node.toJSON());
-//        String response = RoslessCalls.update(node.toJSON());
+//        String response = rosMainNode.UpdateMemoryQuery(node.toJSON());
+        String response = RoslessCalls.update(node.toJSON());
         return response != null && (response.contains("OK"));
     }
 
@@ -49,8 +49,8 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
      */
     public String getById(int id) throws InterruptedException, IOException
     {
-        String result = rosMainNode.GetMemoryQuery("{'id':"+id+"}");
-//        String result = RoslessCalls.get("{'id':"+id+"}");
+//        String result = rosMainNode.GetMemoryQuery("{'id':"+id+"}");
+        String result = RoslessCalls.get("{'id':"+id+"}");
         if(result == null || result.contains("FAIL")) return null;
 
         return result;
@@ -65,8 +65,8 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
     public ArrayList<Integer> getByQuery(MemoryNodeModel query) throws InterruptedException, IOException
     {
 //        if(!Config.MEMORY) return new ArrayList<>();
-        String result = rosMainNode.GetMemoryQuery(query.toJSON());
-//        String result = RoslessCalls.get(query.toJSON());
+//        String result = rosMainNode.GetMemoryQuery(query.toJSON());
+/        String result = RoslessCalls.get(query.toJSON());
         if(result == null || result.contains("FAIL")) return null;
         Type type = new TypeToken<HashMap<String, List<Integer>>>() {}.getType();
         HashMap<String, ArrayList<Integer>> list = gson.fromJson(result, type);
@@ -76,10 +76,10 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
     public int create(MemoryNodeModel query) throws InterruptedException, IOException
     {
 //        if(!Config.MEMORY) return 0;
-        String result = rosMainNode.CreateMemoryQuery(query.toJSON());
+        //String result = rosMainNode.CreateMemoryQuery(query.toJSON());
         // Handle possible Memory error message.
-//        String
-//                result = RoslessCalls.create(query.toJSON());
+        String
+                result = RoslessCalls.create(query.toJSON());
         if(result == null || result.contains("FAIL")) return 0;
         Type type = new TypeToken<Map<String,Integer>>() {}.getType();
         Map<String,Integer> list = gson.fromJson(result, type);
@@ -94,7 +94,6 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
      */
     public boolean remove(MemoryNodeModel query) throws InterruptedException, IOException
     {
-
         //Remove all fields which were not explicitly set, for safety.
         query.setStripQuery(true);
 //        String response = rosMainNode.DeleteMemoryQuery(query.toJSON());

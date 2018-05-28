@@ -20,3 +20,5 @@ resources/word2vec_toy_data_and_model
 
 docs/doxyxml
 memory\.log
+
+memory\.log\.1
