@@ -222,6 +222,7 @@ public class RosMainNode extends AbstractNodeMain {
         return ((boolean) resp);
     }
 
+    @Deprecated
     public String CreateMemoryQuery(String query) {
 
         if(services.notInitialized(RosServiceClients.CREATEMEMORY)) {
@@ -251,7 +252,7 @@ public class RosMainNode extends AbstractNodeMain {
         waitForLatchUnlock(rosConnectionLatch, createMemoryClient.getName().toString());
         return ((String) resp);
     }
-
+    @Deprecated
     public String UpdateMemoryQuery(String query) {
 
         if(services.notInitialized(RosServiceClients.UPDATEMEMORY)) {
@@ -282,6 +283,7 @@ public class RosMainNode extends AbstractNodeMain {
         return ((String) resp);
     }
 
+    @Deprecated
     public String GetMemoryQuery(String query) {
 
         if(services.notInitialized(RosServiceClients.GETMEMORY)) {
@@ -312,6 +314,7 @@ public class RosMainNode extends AbstractNodeMain {
         return ((String) resp);
     }
 
+    @Deprecated
     public String DeleteMemoryQuery(String query) {
 
         if(services.notInitialized(RosServiceClients.DELETEMEMORY)) {
@@ -341,7 +344,7 @@ public class RosMainNode extends AbstractNodeMain {
         waitForLatchUnlock(rosConnectionLatch, deleteMemoryClient.getName().toString());
         return ((String) resp);
     }
-
+    @Deprecated
     public String CypherMemoryQuery(String query) {
 
         if(services.notInitialized(RosServiceClients.CYPHERMEMORY)) {
