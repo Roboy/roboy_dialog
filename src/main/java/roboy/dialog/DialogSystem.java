@@ -3,6 +3,7 @@ package roboy.dialog;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.roboy.memory.Main;
 import roboy.context.Context;
 import roboy.context.ContextGUI;
 import roboy.dialog.action.Action;
@@ -24,18 +25,29 @@ import sun.security.krb5.Config;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static roboy.util.ConfigManager.*;
 
 /**
  * Temporary class to test new state based personality.
  * Will be be extended and might replace the old DialogSystem in the future.
  */
 public class DialogSystem {
-
     private final static Logger logger = LogManager.getLogger();
 
     public static void main(String[] args) throws IOException {
+
+        if(START_MEMORY_MODULE) {
+            try {
+                logger.info("Starting Roboy_Memory");
+                new Main().main(null);
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+        }
         // initialize ROS node
 
         RosMainNode rosMainNode;

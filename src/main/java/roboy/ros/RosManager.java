@@ -9,6 +9,9 @@ import roboy.util.ConfigManager;
 
 import java.util.HashMap;
 
+import static roboy.util.ConfigManager.INIT_MEMORY_CLIENTS;
+
+
 /**
  * Stores all the Ros Service Clients and manages access to them.
  *
@@ -17,9 +20,9 @@ import java.util.HashMap;
  */
 
 class RosManager {
+
     private HashMap<RosServiceClients, ServiceClient> serviceMap;
     private HashMap<RosSubscribers, Subscriber> subscriberMap;
-
     final Logger LOGGER = LogManager.getLogger();
 
     /**
@@ -30,8 +33,14 @@ class RosManager {
         subscriberMap = new HashMap<>();
         boolean success = true;
         // Iterate through the RosServiceClients enum, mapping a client for each.
+
+        if(!INIT_MEMORY_CLIENTS) LOGGER.warn("Memory Clients will NOT be initialised");
+
         for(RosServiceClients client : RosServiceClients.values()) {
-            
+
+            if(!INIT_MEMORY_CLIENTS)
+                if(isMemoryModuleTest(client.toString()))
+                    continue;
 
             if (ConfigManager.ROS_ACTIVE_PKGS.contains(client.rosPackage)) {
                 try {
@@ -61,6 +70,10 @@ class RosManager {
         }
 
         return success;
+    }
+
+    private boolean isMemoryModuleTest(String client){
+        return "CREATEMEMORY".equals(client) || "UPDATEMEMORY".equals(client) || "GETMEMORY".equals(client) || "DELETEMEMORY".equals(client) || "CYPHERMEMORY".equals(client) ;
     }
 
     /**
