@@ -41,6 +41,9 @@ public class ConfigManager {
 
     public static boolean CONTEXT_GUI_ENABLED = false;
 
+    public static boolean INIT_MEMORY_CLIENTS;
+    public static boolean START_MEMORY_MODULE;
+
     static {
         // this block is called once at and will initialize config
         // alternative: create a singleton for this class
@@ -107,6 +110,9 @@ public class ConfigManager {
             CONTEXT_GUI_ENABLED = yamlConfig.getBoolean("CONTEXT_GUI_ENABLED");
 
             ACTION_CLIENT_SCRIPT = yamlConfig.getString("ACTION_CLIENT_SCRIPT");
+
+            START_MEMORY_MODULE = yamlConfig.getString("START_MEMORY_MODULE").equals("true");
+            INIT_MEMORY_CLIENTS = yamlConfig.getString("INIT_MEMORY_CLIENTS").equals("true");
         } catch(ConfigurationException | FileNotFoundException e) {
             LOGGER.error("Exception while reading YAML configurations from "+yamlConfigFile);
             LOGGER.error(e.getMessage());
