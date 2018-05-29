@@ -3,6 +3,9 @@ package roboy.dialog;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.telegram.telegrambots.ApiContextInitializer;
+import org.telegram.telegrambots.TelegramBotsApi;
+import org.telegram.telegrambots.exceptions.TelegramApiException;
 import roboy.context.Context;
 import roboy.dialog.action.Action;
 import roboy.dialog.personality.StateBasedPersonality;
@@ -18,6 +21,7 @@ import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
 import roboy.util.ConfigManager;
 import roboy.util.IO;
+import roboy.util.TelegramBotBoyPolling;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -35,8 +39,17 @@ public class DialogSystem {
     private final static Context context = new Context();
 
     public static void main(String[] args) throws IOException {
-        // initialize ROS node
+        // initialize telegram bot
+        ApiContextInitializer.init();
+        TelegramBotsApi telegramBotApi = new TelegramBotsApi();
+        try {
+            telegramBotApi.registerBot(TelegramBotBoyPolling.getInstance());
+        } catch (TelegramApiException e) {
+            logger.error("Telegram bots api error: ", e);
+        }
 
+
+        // initialize ROS node
         RosMainNode rosMainNode;
 
         if (ConfigManager.ROS_ENABLED) {
@@ -83,14 +96,12 @@ public class DialogSystem {
         StateBasedPersonality personality = new StateBasedPersonality(inference, rosMainNode, memory, context, new Verbalizer());
         File personalityFile = new File(ConfigManager.PERSONALITY_FILE);
 
-
-
         // Repeat conversation a few times
         for (int numConversations = 0; numConversations < 50; numConversations++) {
 
-            logger.info("############## New Conversation ##############");
-            logger.info("PRESS ENTER TO START THE DIALOG. ROBOY WILL WAIT FOR SOMEONE TO GREET HIM (HI, HELLO)");
-            System.in.read();
+//            logger.info("############## New Conversation ##############");
+//            logger.info("PRESS ENTER TO START THE DIALOG. ROBOY WILL WAIT FOR SOMEONE TO GREET HIM (HI, HELLO)");
+//            System.in.read();
             // flush the interlocutor
             Interlocutor person = new Interlocutor(memory);
             context.ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);

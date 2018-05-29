@@ -45,6 +45,9 @@ public class IO {
 			case "udp":
 				multiIn = new MultiInputDevice(new UdpInput(ConfigManager.DATAGRAM_SOCKET));
 				break;
+			case "telegram":
+				multiIn = new MultiInputDevice(new BotBoyInput());
+				break;
 
 			default:
 				multiIn = new MultiInputDevice(new CommandLineInput());
@@ -76,6 +79,9 @@ public class IO {
 					outputs.add(new UdpOutput(ConfigManager.DATAGRAM_SOCKET,
 							ConfigManager.UDP_HOST_ADDRESS,
 							ConfigManager.UDP_OUT_SOCKET));
+					break;
+				case "telegram":
+					outputs.add(new BotBoyOutput());
 					break;
 				default:
 					outputs.add(new CommandLineOutput());
