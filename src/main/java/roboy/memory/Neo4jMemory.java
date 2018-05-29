@@ -6,7 +6,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.memory.nodes.MemoryNodeModel;
 import roboy.ros.RosMainNode;
-import roboy.ros.RoslessCalls;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -37,7 +36,7 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
     {
 //        if(!Config.MEMORY) return false;
 //        String response = rosMainNode.UpdateMemoryQuery(node.toJSON());
-        String response = RoslessCalls.update(node.toJSON());
+        String response = Neo4jMemoryOperations.update(node.toJSON());
         return response != null && (response.contains("OK"));
     }
 
@@ -50,7 +49,7 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
     public String getById(int id) throws InterruptedException, IOException
     {
 //        String result = rosMainNode.GetMemoryQuery("{'id':"+id+"}");
-        String result = RoslessCalls.get("{'id':"+id+"}");
+        String result = Neo4jMemoryOperations.get("{'id':"+id+"}");
         if(result == null || result.contains("FAIL")) return null;
 
         return result;
@@ -66,7 +65,7 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
     {
 //        if(!Config.MEMORY) return new ArrayList<>();
 //        String result = rosMainNode.GetMemoryQuery(query.toJSON());
-        String result = RoslessCalls.get(query.toJSON());
+        String result = Neo4jMemoryOperations.get(query.toJSON());
         if(result == null || result.contains("FAIL")) return null;
         Type type = new TypeToken<HashMap<String, List<Integer>>>() {}.getType();
         HashMap<String, ArrayList<Integer>> list = gson.fromJson(result, type);
@@ -79,7 +78,7 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
         //String result = rosMainNode.CreateMemoryQuery(query.toJSON());
         // Handle possible Memory error message.
         String
-                result = RoslessCalls.create(query.toJSON());
+                result = Neo4jMemoryOperations.create(query.toJSON());
         if(result == null || result.contains("FAIL")) return 0;
         Type type = new TypeToken<Map<String,Integer>>() {}.getType();
         Map<String,Integer> list = gson.fromJson(result, type);
@@ -97,7 +96,7 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
         //Remove all fields which were not explicitly set, for safety.
         query.setStripQuery(true);
 //        String response = rosMainNode.DeleteMemoryQuery(query.toJSON());
-        String response = RoslessCalls.delete(query.toJSON());
+        String response = Neo4jMemoryOperations.delete(query.toJSON());
         return response != null && response.contains("OK");
     }
 }
