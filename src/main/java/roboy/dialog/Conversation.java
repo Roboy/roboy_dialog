@@ -24,7 +24,7 @@ import java.util.List;
  */
 public class Conversation extends Thread {
 
-    private final Logger logger = LogManager.getLogger("Conversation" + this.getId());
+    private final Logger logger = LogManager.getLogger("Conversation" + this.getId());//TODO: change to "[world_interface] conversation: [interlocutor uuid]"
 
     private final MultiInputDevice multiIn;
     private final MultiOutputDevice multiOut;
@@ -32,9 +32,16 @@ public class Conversation extends Thread {
     private final File personalityFile;
     private final StateBasedPersonality personality;
 
-
+    /**
+     *
+     * @param personality roboy.dialog.personality.StateBasedPersonality object.
+     * @param personalityFile File that the personality shall be initialized from.
+     * @param multiIn Inputs for this conversation to act on.
+     * @param multiOut Outputs for this conversation to act to.
+     * @param analyzers All analyzers necessary for analyzing the inputs from multiIn. Please provide these in correct order.
+     */
     public Conversation( StateBasedPersonality personality, File personalityFile, MultiInputDevice multiIn, MultiOutputDevice multiOut, List<Analyzer> analyzers){
-        super("roboy-conversation");
+        super("roboy-conversation");//TODO: adapt thread name too
         this.multiIn = multiIn;
         this.multiOut = multiOut;
         this.analyzers = analyzers;
@@ -99,7 +106,11 @@ public class Conversation extends Thread {
 
 
     }
-    //Resets this conversation so this thread may be reused.
+
+    /**Resets this conversation so this thread may be reused.
+     *
+     * @param person The interlocutor for this conversation to talk to after the reset.
+     */
     void resetConversation(Interlocutor person){
         logger.info("############# Reset State Machine ############");
         // now reset --> conversationEnded() will now return false --> new conversation possible

@@ -103,6 +103,15 @@ public class ConversationManager {
 
     }
 
+    /**
+     * Creates and initializes a new conversation thread. Does not start the thread.
+     * @param rosMainNode ROS node. Set null if ROS_ENABLED=false
+     * @param analyzers   All analyzers necessary for analyzing the inputs from multiIn. Please provide these in correct order.
+     * @param inference Inference engine. The better, the smarter roboy gets.
+     * @param memory Roboy memory access. Without, we cannot remember anything and conversations stay shallow.
+     * @return roboy.dialog.Conversation object. Fully intialized, ready to launch.
+     * @throws IOException In case the IOdevices could not be correctly initialized.
+     */
     private static Conversation createConversation(RosMainNode rosMainNode, List<Analyzer> analyzers, InferenceEngine inference, Neo4jMemoryInterface memory) throws IOException{
         logger.info("Creating new conversation...");
 
