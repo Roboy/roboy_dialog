@@ -19,9 +19,9 @@ import roboy.util.ConfigManager;
 import roboy.util.IO;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -32,11 +32,14 @@ import java.util.List;
 public class ConversationManager {
 
     private final static Logger logger = LogManager.getLogger();
+    private final static HashMap<String, Conversation> conversations = new HashMap<>();
+    private static RosMainNode rosMainNode;
+    private static List<Analyzer> analyzers;
+    private static Neo4jMemoryInterface memory;
 
     public static void main(String[] args) throws IOException {
 
         //Initialize the ROS node.
-        RosMainNode rosMainNode;
         if(ConfigManager.ROS_ENABLED){
             rosMainNode = new RosMainNode();
         }
@@ -56,7 +59,7 @@ public class ConversationManager {
 
 
         //Compose the analyzer chain.
-        List<Analyzer> analyzers = new ArrayList<>();
+        analyzers = new ArrayList<>();
 
 
         // Do not disable the following two analyzers!
@@ -73,14 +76,13 @@ public class ConversationManager {
         analyzers.add(new AnswerAnalyzer());
 
 
-        InferenceEngine inference = new Inference();
 
 
 
         //Roboy mode mode: Repeat a conversation a few times.
         //if(ConfigManager.ROS_ENABLED) {//TODO adapt when dispatching functionality is implemented
 
-            Conversation c = createConversation(rosMainNode, analyzers, inference, memory);
+            Conversation c = createConversation(rosMainNode, analyzers, new Inference(), memory, "local");
 
             //Repeat conversation c.
             for (int numConversations = 0; numConversations < 50; numConversations++) {
@@ -103,6 +105,20 @@ public class ConversationManager {
 
     }
 
+    static void spawnConversation(String uuid) throws IOException{ //TODO add documentation; uuid==local means local interlocutor
+        Conversation conversation = createConversation(rosMainNode, analyzers, new Inference(), memory, uuid);
+        conversations.put(uuid, conversation);
+    }
+
+    static void stopConversation(String uuid){
+        conversations.get(uuid).endExecution();
+    }
+
+    static long getConversationThreadID(String uuid){
+        return conversations.get(uuid).getId();
+    }
+
+
     /**
      * Creates and initializes a new conversation thread. Does not start the thread.
      * @param rosMainNode ROS node. Set null if ROS_ENABLED=false
@@ -112,7 +128,8 @@ public class ConversationManager {
      * @return roboy.dialog.Conversation object. Fully intialized, ready to launch.
      * @throws IOException In case the IOdevices could not be correctly initialized.
      */
-    private static Conversation createConversation(RosMainNode rosMainNode, List<Analyzer> analyzers, InferenceEngine inference, Neo4jMemoryInterface memory) throws IOException{
+
+    private static Conversation createConversation(RosMainNode rosMainNode, List<Analyzer> analyzers, InferenceEngine inference, Neo4jMemoryInterface memory, String uuid) throws IOException{
         logger.info("Creating new conversation...");
 
         //Create IODevices.
@@ -137,6 +154,7 @@ public class ConversationManager {
 
         //Set the interlocutor.
         Interlocutor person = new Interlocutor(memory);
+        person.setProperty("uuid", uuid);
         context.ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
 
 

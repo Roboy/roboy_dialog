@@ -22,7 +22,7 @@ import java.util.List;
  * It communicates with the interlocutor via a MultiInputDevice and a MultiOutputDevice.
  * The List of analyzers is used to make the input string machine understandable.
  */
-public class Conversation extends Thread {
+public class Conversation extends Thread {//TODO: make super threadsafe
 
     private final Logger logger = LogManager.getLogger("Conversation" + this.getId());//TODO: change to "[world_interface] conversation: [interlocutor uuid]"
 
@@ -31,6 +31,7 @@ public class Conversation extends Thread {
     private final List<Analyzer> analyzers;
     private final File personalityFile;
     private final StateBasedPersonality personality;
+    private volatile boolean isRunning = true;
 
     /**
      *
@@ -57,6 +58,11 @@ public class Conversation extends Thread {
     }
 
 
+    public void endExecution(){//todo: what to do when thread is blocked
+        isRunning = false;
+        this.interrupt();
+    }
+
 
     @Override
     public void run(){
@@ -65,7 +71,7 @@ public class Conversation extends Thread {
         List<Action> actions = personality.startConversation();
         logger.info("############# Conversation started ############");
 
-        while (true) {
+        while (isRunning) {
             // do all actions defined in startConversation() or answer()
             multiOut.act(actions);
 
@@ -126,5 +132,7 @@ public class Conversation extends Thread {
         } catch (FileNotFoundException e) {
             logger.error("Personality file not found: " + e.getMessage());
         }
+        isRunning = true;
     }
+
 }
