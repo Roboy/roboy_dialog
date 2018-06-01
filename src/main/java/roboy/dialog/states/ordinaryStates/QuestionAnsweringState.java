@@ -56,7 +56,6 @@ public class QuestionAnsweringState extends State {
     private final static String TRANSITION_LOOP_TO_NEW_PERSON = "loopToNewPerson";
     private final static String TRANSITION_LOOP_TO_KNOWN_PERSON = "loopToKnownPerson";
     private final static String TRANSITION_TO_GAME = "switchToGaming";
-
     private final static int MAX_NUM_OF_QUESTIONS = 5;
     private int questionsAnswered = 0;
 
@@ -65,8 +64,10 @@ public class QuestionAnsweringState extends State {
 
     private boolean askingSpecifyingQuestion = false;
     private String answerAfterUnspecifiedQuestion = ""; // the answer to use if specifying question is answered with YES
-    private boolean userAskingToPlayGame = false;
+    private boolean userWantsGame = false;
 
+    private final static double THRESHOLD_BORED = 0.5;
+    private boolean roboySuggestedGame = false;
 
     public QuestionAnsweringState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
@@ -74,6 +75,11 @@ public class QuestionAnsweringState extends State {
 
     @Override
     public Output act() {
+
+        if(Math.random() > THRESHOLD_BORED && questionsAnswered > 2){
+            roboySuggestedGame = true;
+            return Output.sayNothing().setSegue(new Segue(Segue.SegueType.BORED, 1));
+        }
         if (askingSpecifyingQuestion) {
             return Output.sayNothing();
         }
@@ -87,8 +93,14 @@ public class QuestionAnsweringState extends State {
     @Override
     public Output react(Interpretation input) {
 
-        if(userWantsGame(input)) {
-            return Output.say("I heard that you want to play a game, cool!");
+        if(roboySuggestedGame && userSaysYes(input)){
+            roboySuggestedGame = false;
+            userWantsGame = true;
+            return Output.say("Let's play a game!");
+        }
+
+        if(userWantsGameCheck(input)) {
+            return Output.say("Let's play a game!");
 
         }else if (askingSpecifyingQuestion) {
                 askingSpecifyingQuestion = false;
@@ -128,7 +140,6 @@ public class QuestionAnsweringState extends State {
             return Output.sayNothing().setSegue(new Segue(Segue.SegueType.AVOID_ANSWER, 1));
         }
     }
-
 
     private Output reactToQuestion(Interpretation input) {
 
@@ -171,11 +182,11 @@ public class QuestionAnsweringState extends State {
         return useMemoryOrFallback(input);
     }
 
-
     @Override
     public State getNextState() {
 
-        if(userAskingToPlayGame){
+        if(userWantsGame){
+            userWantsGame = false;
             return getTransition(TRANSITION_TO_GAME);
 
         } else if (askingSpecifyingQuestion) { // we are asking a yes/no question --> stay in this state
@@ -208,7 +219,6 @@ public class QuestionAnsweringState extends State {
         }
 
     }
-
 
     private Output useMemoryOrFallback(Interpretation input) {
         try {
@@ -266,17 +276,21 @@ public class QuestionAnsweringState extends State {
         return answer;
     }
 
-    private boolean userWantsGame(Interpretation input){
+    private boolean userWantsGameCheck(Interpretation input){
 
-        userAskingToPlayGame = false;
+        userWantsGame = false;
         String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
         for (String token:tokens){
             if(token.equals("game")){
-                userAskingToPlayGame = true;
+                userWantsGame = true;
                 break;
             }
         }
-        return userAskingToPlayGame;
+        return userWantsGame;
+    }
+
+    private boolean userSaysYes(Interpretation input){
+        return (input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.YES) == 0);
     }
 
     @Override

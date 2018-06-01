@@ -388,6 +388,37 @@ public class RosMainNode extends AbstractNodeMain {
         s.addMessageListener(listener);
     }
 
+    public boolean ApplyFilter(String filterName) {
+
+        if(services.notInitialized(RosServiceClients.SNAPCHATFILTER)) {
+            // FALLBACK RETURN VALUE
+            return false;
+        }
+
+        ServiceClient<ApplyFilterRequest, ApplyFilterResponse> snapchatFilterClient = services.getService(RosServiceClients.SNAPCHATFILTER);
+        rosConnectionLatch = new CountDownLatch(1);
+        ApplyFilterRequest request = snapchatFilterClient.newMessage();
+        request.setName(filterName);
+
+        ServiceResponseListener<ApplyFilterResponse> listener = new ServiceResponseListener<ApplyFilterResponse>() {
+            @Override
+            public void onSuccess(ApplyFilterResponse response) {
+//                System.out.println(response.getSuccess());
+                resp = response.getSuccess();
+                rosConnectionLatch.countDown();
+            }
+
+            @Override
+            public void onFailure(RemoteException e) {
+                rosConnectionLatch.countDown();
+                throw new RosRuntimeException(e);
+            }
+        };
+        snapchatFilterClient.call(request,  listener);
+        waitForLatchUnlock(rosConnectionLatch, snapchatFilterClient.getName().toString());
+        return ((boolean) resp);
+    }
+
     /**
      * Helper method to block the calling thread until the latch is zeroed by some other task.
      * @param latch Latch to wait for.

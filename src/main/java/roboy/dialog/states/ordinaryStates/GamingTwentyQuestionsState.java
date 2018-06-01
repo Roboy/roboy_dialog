@@ -36,8 +36,6 @@ public class GamingTwentyQuestionsState extends State {
 	@Override
 	public Output act() {
 
-		//System.out.println("--> act()");
-
 		if(!userReady){
 			return Output.say("Now think of a character and tell me when you're ready to start the game.");
 
@@ -55,17 +53,13 @@ public class GamingTwentyQuestionsState extends State {
 			return askNextQuestion();
 		}
 
-
 	}
 
 	@Override
 	public Output react(Interpretation input) {
 
-		//System.out.println("--> react()");
 
-		String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
-		String intent = getIntent (tokens);
-		System.out.println("Intent: " + intent);
+		String intent = getIntent (input);
 
 		if(!isUserReady(intent)){
 
@@ -100,11 +94,12 @@ public class GamingTwentyQuestionsState extends State {
 		}
 	}
 
-	private String getIntent(String[] tokens) {
+	private String getIntent(Interpretation input) {
 
-		//System.out.println("--> getIntent");
 
-		String intent = "";
+		String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
+
+		String intent = null;
 
 		for(String token : tokens) {
 			if(token.equals("yes")) {
@@ -129,21 +124,20 @@ public class GamingTwentyQuestionsState extends State {
 
 	private Output askNextQuestion() throws NullPointerException{
 
-		//System.out.println("--> askNextQuestion");
-
+		String nextQuestionString = null;
 		try {
 			nextQuestion = aw.getCurrentQuestion();
+			nextQuestionString = nextQuestion.getQuestion();
+			++numberGuesses;
 		}
 		catch(NullPointerException e){
 			gameFinished = true;
 			return Output.say("I throw in the towel, I think I have no idea what to ask next. You win!");
 		}
-		return Output.say(nextQuestion.getQuestion());
+		return Output.say(nextQuestionString);
 	}
 
 	private Output saveUsersEstimate(String intent) throws Exception {
-
-		//System.out.println("--> saveUserEstimate");
 
 		//check if guesses above threshold are available
 		if(aw.getGuessesAboveProbability(PROBABILITY_THRESHOLD).size() > 0){
@@ -195,7 +189,6 @@ public class GamingTwentyQuestionsState extends State {
 
 	private Output doAGuess () throws Exception{
 
-		//System.out.println("--> doAGuess");
 
 		String roboyAnswer = "";
 

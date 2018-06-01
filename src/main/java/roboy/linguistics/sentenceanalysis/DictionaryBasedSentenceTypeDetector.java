@@ -23,6 +23,9 @@ public class DictionaryBasedSentenceTypeDetector implements Analyzer{
 		if(tokens.length==0) return SENTENCE_TYPE.NONE;
 		String first = tokens[0].toLowerCase();
 		if("who".equals(first)) return SENTENCE_TYPE.WHO;
+		if("yes".equals(first)) return SENTENCE_TYPE.YES;
+		if("no".equals(first)) return SENTENCE_TYPE.NO;
+		if("stop".equals(first)) return SENTENCE_TYPE.STOP;
 		if("where".equals(first)) return SENTENCE_TYPE.WHERE;
 		if("what".equals(first)) return SENTENCE_TYPE.WHAT;
 		if("when".equals(first)) return SENTENCE_TYPE.WHEN;

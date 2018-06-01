@@ -1,49 +1,14 @@
 {
-  "initialState": "Greetings",
+  "initialState": "QuestionAnswering",
   "states": [
-    {
-      "identifier": "Greetings",
-      "implementation": "roboy.dialog.states.ordinaryStates.PassiveGreetingsState",
-      "transitions": {
-        "greetingDetected": "Intro"
-      }
-    },
-    {
-      "identifier": "Intro",
-      "implementation": "roboy.dialog.states.ordinaryStates.IntroductionState",
-      "transitions": {
-        "knownPerson": "FollowUp",
-        "newPerson": "PersonalQA"
-      }
-    },
-    {
-      "identifier": "FollowUp",
-      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationFollowUpState",
-      "transitions": {
-        "questionAnswering": "QuestionAnswering"
-      },
-      "parameters": {
-        "qaFile": "resources/sentences/QAList.json"
-      }
-    },
-    {
-      "identifier": "PersonalQA",
-      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationAskingState",
-      "transitions": {
-        "questionAnswering": "QuestionAnswering"
-      },
-      "parameters": {
-        "qaFile": "resources/sentences/QAList.json"
-      }
-    },
     {
       "identifier": "QuestionAnswering",
       "implementation": "roboy.dialog.states.ordinaryStates.QuestionAnsweringState",
       "fallback": "WildTalk",
       "transitions": {
         "finishedQuestionAnswering": "Farewell",
-        "loopToNewPerson": "PersonalQA",
-        "loopToKnownPerson": "FollowUp",
+        "loopToNewPerson": "QuestionAnswering",
+        "loopToKnownPerson": "QuestionAnswering",
         "switchToGaming":"ChooseGameState"
       }
     },
@@ -51,7 +16,7 @@
       "identifier": "GamingTwentyQuestionsState",
       "implementation": "roboy.dialog.states.ordinaryStates.GamingTwentyQuestionsState",
       "transitions": {
-      "gameEnded" : "QuestionAnswering"
+        "gameEnded" : "QuestionAnswering"
       }
     },
     {

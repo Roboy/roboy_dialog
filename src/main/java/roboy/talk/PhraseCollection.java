@@ -3,6 +3,7 @@ package roboy.talk;
 import roboy.util.IO;
 import roboy.util.RandomList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,11 +27,14 @@ public class PhraseCollection {
             = readFile("resources/phraseLists/segue-jobs.txt");
     public static RandomList<String> SEGUE_PICKUP
             = readFile("resources/phraseLists/segue-pickup.txt");
-
     public static RandomList<String> QUESTION_ANSWERING_REENTERING
             = readFile("resources/phraseLists/question-answering-reentering-phrases.txt");
     public static RandomList<String> QUESTION_ANSWERING_START
             = readFile("resources/phraseLists/question-answering-starting-phrases.txt");
+    public static RandomList<String> SEGUE_BORED
+            = readFile("resources/phraseLists/bored.txt");
+    public static RandomList<String> SNAPCHAT_FILTERS
+            = readFile("resources/snapchatFilters/snapchat-filters.txt");
 
     private static RandomList<String> readFile(String path) {
         RandomList<String> result = new RandomList<>();
