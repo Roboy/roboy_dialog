@@ -2,6 +2,9 @@ package roboy.dialog;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.telegram.telegrambots.ApiContextInitializer;
+import org.telegram.telegrambots.TelegramBotsApi;
+import org.telegram.telegrambots.exceptions.TelegramApiException;
 import roboy.context.Context;
 import roboy.dialog.personality.StateBasedPersonality;
 import roboy.io.MultiInputDevice;
@@ -18,6 +21,7 @@ import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
 import roboy.util.ConfigManager;
 import roboy.util.IO;
+import roboy.util.TelegramPolling;
 
 import java.io.File;
 import java.io.IOException;
@@ -39,6 +43,8 @@ public class ConversationManager {
     private static Neo4jMemoryInterface memory;
 
     public static void main(String[] args) throws IOException {
+
+
 
         //Initialize the ROS node.
         if(ConfigManager.ROS_ENABLED){
@@ -94,7 +100,8 @@ public class ConversationManager {
                 try {//Since this is roboy mode and only one conversation happens, we need to wait for it to finish so we don't clog the command line.
                     logger.info("Waiting for conversation to end.");
                     c.join();
-                } catch (InterruptedException ie) {
+                }
+                catch (InterruptedException ie) {
                     logger.error("ConversationManager has been interrupted: " + ie.getMessage());
                 }
                 //Reset the conversation before rerun.
@@ -103,7 +110,14 @@ public class ConversationManager {
         }
         else {//non-roboy mode
             if (ConfigManager.INPUT.contains("telegram")) {
-                //TODO initialize polling and add to telegram API
+                // initialize telegram bot
+                ApiContextInitializer.init();
+                TelegramBotsApi telegramBotApi = new TelegramBotsApi();
+                try {
+                    telegramBotApi.registerBot(TelegramPolling.getInstance());
+                } catch (TelegramApiException e) {
+                    logger.error("Telegram bots api error: ", e);
+                }
             }
         }
     }
