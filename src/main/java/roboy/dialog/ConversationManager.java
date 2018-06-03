@@ -2,6 +2,9 @@ package roboy.dialog;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.telegram.telegrambots.ApiContextInitializer;
+import org.telegram.telegrambots.TelegramBotsApi;
+import org.telegram.telegrambots.exceptions.TelegramApiException;
 import roboy.context.Context;
 import roboy.dialog.personality.StateBasedPersonality;
 import roboy.io.MultiInputDevice;
@@ -17,6 +20,7 @@ import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
 import roboy.util.ConfigManager;
 import roboy.util.IO;
+import roboy.util.TelegramPolling;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,6 +42,16 @@ public class ConversationManager {
     private static Neo4jMemoryInterface memory;
 
     public static void main(String[] args) throws IOException {
+
+        // initialize telegram bot
+        ApiContextInitializer.init();
+        TelegramBotsApi telegramBotApi = new TelegramBotsApi();
+        try {
+            telegramBotApi.registerBot(TelegramPolling.getInstance());
+        } catch (TelegramApiException e) {
+            logger.error("Telegram bots api error: ", e);
+        }
+
 
         //Initialize the ROS node.
         if(ConfigManager.ROS_ENABLED){
@@ -75,10 +89,6 @@ public class ConversationManager {
         //analyzers.add(new OntologyNERAnalyzer());
         analyzers.add(new AnswerAnalyzer());
 
-
-
-
-
         //Roboy mode mode: Repeat a conversation a few times.
         //if(ConfigManager.ROS_ENABLED) {//TODO adapt when dispatching functionality is implemented
 
@@ -87,7 +97,7 @@ public class ConversationManager {
             //Repeat conversation c.
             for (int numConversations = 0; numConversations < 50; numConversations++) {
                 logger.info("PRESS ENTER TO START THE DIALOG. ROBOY WILL WAIT FOR SOMEONE TO GREET HIM (HI, HELLO)");
-                System.in.read();
+                //System.in.read();
 
                 c.start();
                 try {//Since this is roboy mode and only one conversation happens, we need to wait for it to finish so we don't clog the command line.
@@ -103,18 +113,20 @@ public class ConversationManager {
             return;//don't execute non-roboy mode
         //}
 
+
+
     }
 
-    static void spawnConversation(String uuid) throws IOException{ //TODO add documentation; uuid==local means local interlocutor
+    public static void spawnConversation(String uuid) throws IOException{ //TODO add documentation; uuid==local means local interlocutor
         Conversation conversation = createConversation(rosMainNode, analyzers, new Inference(), memory, uuid);
         conversations.put(uuid, conversation);
     }
 
-    static void stopConversation(String uuid){
+    public static void stopConversation(String uuid){
         conversations.get(uuid).endExecution();
     }
 
-    static long getConversationThreadID(String uuid){
+    public static long getConversationThreadID(String uuid){
         return conversations.get(uuid).getId();
     }
 

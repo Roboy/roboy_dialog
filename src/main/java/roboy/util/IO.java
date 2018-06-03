@@ -79,6 +79,9 @@ public class IO {
 							ConfigManager.UDP_HOST_ADDRESS,
 							ConfigManager.UDP_OUT_SOCKET));
 					break;
+//				case "telegram":
+//					TODO: add the TelegramOutput device
+//					break;
 				default:
 					outputs.add(new CommandLineOutput());
 			}
