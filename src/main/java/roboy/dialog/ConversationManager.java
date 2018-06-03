@@ -6,6 +6,7 @@ import roboy.context.Context;
 import roboy.dialog.personality.StateBasedPersonality;
 import roboy.io.MultiInputDevice;
 import roboy.io.MultiOutputDevice;
+import roboy.io.TelegramInput;
 import roboy.linguistics.sentenceanalysis.*;
 import roboy.logic.Inference;
 import roboy.logic.InferenceEngine;
@@ -80,7 +81,7 @@ public class ConversationManager {
 
 
         //Roboy mode mode: Repeat a conversation a few times.
-        //if(ConfigManager.ROS_ENABLED) {//TODO adapt when dispatching functionality is implemented
+        if(ConfigManager.ROS_ENABLED) {
 
             Conversation c = createConversation(rosMainNode, analyzers, new Inference(), memory, "local");
 
@@ -93,29 +94,47 @@ public class ConversationManager {
                 try {//Since this is roboy mode and only one conversation happens, we need to wait for it to finish so we don't clog the command line.
                     logger.info("Waiting for conversation to end.");
                     c.join();
-                }
-                catch(InterruptedException ie){
+                } catch (InterruptedException ie) {
                     logger.error("ConversationManager has been interrupted: " + ie.getMessage());
                 }
                 //Reset the conversation before rerun.
                 c.resetConversation(new Interlocutor(memory));
             }
-            return;//don't execute non-roboy mode
-        //}
-
+        }
+        else {//non-roboy mode
+            if (ConfigManager.INPUT.contains("telegram")) {
+                //TODO initialize polling and add to telegram API
+            }
+        }
     }
 
-    static void spawnConversation(String uuid) throws IOException{ //TODO add documentation; uuid==local means local interlocutor
+    /**
+     * Creates and spawns a conversation for a chatuser.
+     * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
+     * @throws IOException If conversation could not created.
+     */
+    public static void spawnConversation(String uuid) throws IOException{
         Conversation conversation = createConversation(rosMainNode, analyzers, new Inference(), memory, uuid);
         conversations.put(uuid, conversation);
     }
 
-    static void stopConversation(String uuid){
+    /**
+     * Stops conversation thread for uuid.
+     * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
+     */
+    public static void stopConversation(String uuid){
         conversations.get(uuid).endExecution();
     }
 
-    static long getConversationThreadID(String uuid){
-        return conversations.get(uuid).getId();
+    /**
+     * returns the threadID of the conversation with interlocutor uuid
+     * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
+     * @return null if thread does not exist, threadID otherwise
+     */
+    public static Long getConversationThreadID(String uuid){
+        Thread conv = conversations.get(uuid);
+
+        return (conv == null) ? null : (Long)conv.getId();
     }
 
 
