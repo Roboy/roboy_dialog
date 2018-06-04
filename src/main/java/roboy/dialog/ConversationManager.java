@@ -167,7 +167,7 @@ public class ConversationManager {
 
         //Create IODevices.
         MultiInputDevice multiIn = IO.getInputs(rosMainNode);
-        MultiOutputDevice multiOut = IO.getOutputs(rosMainNode);
+        MultiOutputDevice multiOut = IO.getOutputs(rosMainNode, uuid);
 
         //Create this conversations context.
         Context context = new Context();

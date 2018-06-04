@@ -55,6 +55,10 @@ public class IO {
 	}
 
 	public static MultiOutputDevice getOutputs(RosMainNode rosMainNode) throws SocketException, UnknownHostException{
+		return getOutputs(rosMainNode, null);
+	}
+
+	public static MultiOutputDevice getOutputs(RosMainNode rosMainNode, String uuid) throws SocketException, UnknownHostException{
 		MultiOutputDevice multiOut;
 		List<OutputDevice> outputs = new ArrayList<>();
 		for (String output: ConfigManager.OUTPUTS) {
@@ -79,9 +83,9 @@ public class IO {
 							ConfigManager.UDP_HOST_ADDRESS,
 							ConfigManager.UDP_OUT_SOCKET));
 					break;
-//				case "telegram":
-//					TODO: add the TelegramOutput device
-//					break;
+				case "telegram":
+					outputs.add(new TelegramOutput(uuid));
+					break;
 				default:
 					outputs.add(new CommandLineOutput());
 			}
