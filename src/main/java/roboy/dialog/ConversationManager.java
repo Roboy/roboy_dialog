@@ -44,7 +44,14 @@ public class ConversationManager {
 
     public static void main(String[] args) throws IOException {
 
-
+        // initialize telegram bot
+//        ApiContextInitializer.init();
+//        TelegramBotsApi telegramBotApi = new TelegramBotsApi();
+//        try {
+//            telegramBotApi.registerBot(TelegramPolling.getInstance());
+//        } catch (TelegramApiException e) {
+//            logger.error("Telegram bots api error: ", e);
+//        }
 
         //Initialize the ROS node.
         if(ConfigManager.ROS_ENABLED){
@@ -110,9 +117,12 @@ public class ConversationManager {
         }
         else {//non-roboy mode
             if (ConfigManager.INPUT.contains("telegram")) {
+                stopConversation("576281777");
+
                 // initialize telegram bot
                 ApiContextInitializer.init();
                 TelegramBotsApi telegramBotApi = new TelegramBotsApi();
+
                 try {
                     telegramBotApi.registerBot(TelegramPolling.getInstance());
                 } catch (TelegramApiException e) {
@@ -130,6 +140,7 @@ public class ConversationManager {
     public static void spawnConversation(String uuid) throws IOException{
         Conversation conversation = createConversation(rosMainNode, analyzers, new Inference(), memory, uuid);
         conversations.put(uuid, conversation);
+        conversation.start();
     }
 
     /**

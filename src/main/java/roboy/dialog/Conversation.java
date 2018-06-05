@@ -54,7 +54,6 @@ public class Conversation extends Thread {//TODO: make super threadsafe
         catch(FileNotFoundException fnfe){
             logger.error("Personality file not found: " + fnfe.getMessage());
         }
-
     }
 
 
