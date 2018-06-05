@@ -25,7 +25,6 @@ public class TelegramOutput implements OutputDevice {
         for(Action a : actions) {
             if (a instanceof SpeechAction) {
                 String message = ((SpeechAction) a).getText();
-                logger.error("sending this chatID: "+this.uuid);
                 polling.sendMessage(message, this.uuid);
             }
         }

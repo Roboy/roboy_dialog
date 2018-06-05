@@ -54,7 +54,7 @@ public class ConversationManager {
         }
 
         // TODO deal with memory
-        Neo4jMemoryInterface memory;
+
         if (ConfigManager.ROS_ENABLED && ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_memory")) {
             memory = new Neo4jMemory(rosMainNode);
         }
@@ -62,7 +62,6 @@ public class ConversationManager {
             memory = new DummyMemory();
         }
 
-        ConversationManager.memory = memory;
 
 
 
@@ -192,7 +191,7 @@ public class ConversationManager {
 
         //Set the interlocutor.
         if(memory == null){
-            logger.error("memory is null while starting a conversation");
+            logger.error("Memory is null while starting a conversation");
         }
         Interlocutor person = new Interlocutor(memory);
         person.setProperty("uuid", uuid);

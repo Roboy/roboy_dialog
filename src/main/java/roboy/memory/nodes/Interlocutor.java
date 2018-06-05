@@ -40,17 +40,10 @@ public class Interlocutor extends MemoryNodeModel {
             // Query memory for matching persons.
             try {
                 ids = memory.getByQuery(this);
-            } catch (InterruptedException e) {
-                LOGGER.debug("InterruptedException----InterruptedException-----InterruptedException");
+            } catch (InterruptedException | IOException e) {
                 LOGGER.info("Exception while querying memory, assuming person unknown.");
                 e.printStackTrace();
             }
-            catch(IOException e){
-                LOGGER.debug("IOException----IOException-----IOException");
-                LOGGER.info("Exception while querying memory, assuming person unknown.");
-                e.printStackTrace();
-            }
-
             // Pick first if matches found.
             if (ids != null && !ids.isEmpty()) {
                 //TODO Change from using first id to specifying if multiple matches are found.
