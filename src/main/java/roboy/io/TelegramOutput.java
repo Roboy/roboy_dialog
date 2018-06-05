@@ -15,7 +15,8 @@ public class TelegramOutput implements OutputDevice {
     private String uuid;
 
     public TelegramOutput(String uuid) {
-        this.uuid = uuid;
+        this.uuid = uuid.substring(uuid.indexOf('-')+1);
+        logger.info("Creating TelegramOutput for " + uuid + "! Setting this.uuid to " + this.uuid + "...");
         logger.error("output initialized with: "+uuid);
     }
 
