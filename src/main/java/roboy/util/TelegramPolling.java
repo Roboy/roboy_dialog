@@ -44,8 +44,6 @@ public class TelegramPolling extends TelegramLongPollingBot implements Timeout.T
     private InputDevice inputDeviceListener;
     private OutputDevice outputDeviceListener;
 
-    private volatile String chatID;
-
     private final Object syncObject = new Object();
 
     // collection of all messages.
@@ -151,6 +149,8 @@ public class TelegramPolling extends TelegramLongPollingBot implements Timeout.T
             }
         }
 
+        List<Pair<String, String>> removedObjects = new ArrayList<>();
+
         // get the all messages
         Pair<String, String> result = null;
         for(Pair p: pairs){
@@ -158,6 +158,7 @@ public class TelegramPolling extends TelegramLongPollingBot implements Timeout.T
                 continue;
             }
 
+            removedObjects.add(p);
             String message = p.getValue().toString();
 
             // check if the result initialized
@@ -172,6 +173,8 @@ public class TelegramPolling extends TelegramLongPollingBot implements Timeout.T
                 result = new Pair<String, String>(chatID, newMessage);
             }
         }
+
+        pairs.removeAll(removedObjects);
 
         TelegramInput.onUpdate(result);
 
@@ -259,14 +262,14 @@ public class TelegramPolling extends TelegramLongPollingBot implements Timeout.T
     //Tries to send message with a string and chatID
     public void sendMessage(String message, String chatID){
         try {
-            sendTypingFromChatID(this.chatID);
+            sendTypingFromChatID(chatID);
 
             //FIXME: this cause some bug, fix it.
             TimeUnit.SECONDS.sleep(TYPING_TIME_LIMIT);
 
             SendMessage sendMessageRequest = new SendMessage();
 //            sendMessageRequest.setChatId(chatID); //who should get the message? the sender from which we got the message...
-            sendMessageRequest.setChatId(this.chatID);
+            sendMessageRequest.setChatId(chatID);
             sendMessageRequest.setText(message);
             try {
                 execute(sendMessageRequest);
@@ -283,7 +286,7 @@ public class TelegramPolling extends TelegramLongPollingBot implements Timeout.T
     public void sendSticker(String chatID, String stickerId){
         SendSticker sendStickerRequest = new SendSticker();
         try {
-            sendStickerRequest.setChatId(this.chatID);
+            sendStickerRequest.setChatId(chatID);
             sendStickerRequest.setSticker(stickerId);
 
             sendSticker(sendStickerRequest);

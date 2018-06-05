@@ -30,7 +30,9 @@ public class TelegramInput implements InputDevice {
      */
     public static void onUpdate(Pair<String, String> update) {
 
-        String uuid = "telegram-" + update.getKey();
+//        String uuid = "telegram-" + update.getKey();
+        String uuid = update.getKey();
+
         //get ThreadID
         Long cThreadID = ConversationManager.getConversationThreadID(uuid);
 

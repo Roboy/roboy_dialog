@@ -48,7 +48,6 @@ public class BotBoyState extends State {
             // add chat-id to attributes
 //            Map<String, Object> attributes = new HashMap<String, Object>();
 //            attributes.put("chat-id", chatID);
-
             Interpretation output = new Interpretation(response);
             return Output.say(output);
         }
