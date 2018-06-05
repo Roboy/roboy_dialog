@@ -130,6 +130,7 @@ public class ConversationManager {
     public static void spawnConversation(String uuid) throws IOException{
         Conversation conversation = createConversation(rosMainNode, analyzers, new Inference(), memory, uuid);
         conversations.put(uuid, conversation);
+        conversation.start();
     }
 
     /**

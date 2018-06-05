@@ -37,7 +37,7 @@ public class TelegramPolling extends TelegramLongPollingBot implements Timeout.T
 //    public static final String TOKEN;
 //    public static final String BOT_USERNAME;
 
-    private static final String tokensPath = "/Users/Apple/botboy/tokens.json";
+    private static final String tokensPath = "/home/mireu/telegramtokens.json";
     private static final int TYPING_TIME_LIMIT = 3; //SECONDS
     private static final int INPUT_TIME_LIMIT = 5;
 

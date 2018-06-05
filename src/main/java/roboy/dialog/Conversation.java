@@ -108,9 +108,7 @@ public class Conversation extends Thread {//TODO: make super threadsafe
                 e.printStackTrace();
             }
         }
-
-
-
+        //not setting isRunning() = false, so the thread may easily be restarted
     }
 
     /**Resets this conversation so this thread may be reused.
