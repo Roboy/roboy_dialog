@@ -37,7 +37,7 @@ public class TelegramPolling extends TelegramLongPollingBot implements Timeout.T
 //    public static final String TOKEN;
 //    public static final String BOT_USERNAME;
 
-    private static final String tokensPath = "/home/mireu/telegramtokens.json";
+    private static final String tokensPath = "/Users/Apple/botboy/tokens.json";
     private static final int TYPING_TIME_LIMIT = 3; //SECONDS
     private static final int INPUT_TIME_LIMIT = 5;
 
@@ -50,7 +50,7 @@ public class TelegramPolling extends TelegramLongPollingBot implements Timeout.T
     private List<Message> messages  = new ArrayList<Message>();
 
     // CHAT ID ----- ITS MESSAGE
-    private List<Pair<String, String>> pairs = new ArrayList<Pair<String, String>>();
+    private volatile List<Pair<String, String>> pairs = new ArrayList<Pair<String, String>>();
 
     //Timeout
     private List<Timeout> telegramTimeouts;
@@ -174,11 +174,16 @@ public class TelegramPolling extends TelegramLongPollingBot implements Timeout.T
             }
         }
 
-        pairs.removeAll(removedObjects);
 
-        TelegramInput.onUpdate(result);
+        if(result != null)
+        {
+            // notify the input device
+            pairs.removeAll(removedObjects);
+            TelegramInput.onUpdate(result);
+        }
 
-        // notify the input devic
+
+
     }
 
     // FIXME: DO NOT DELETE THE CODE BLOCKS BELOW
@@ -299,8 +304,10 @@ public class TelegramPolling extends TelegramLongPollingBot implements Timeout.T
 
 
     //tries to send typing action to given message
-    public void sendTypingFromMessageObject(Message message){
-        try {
+    public void sendTypingFromMessageObject(Message message)
+    {
+        try
+        {
             SendChatAction action = new SendChatAction();
             action.setChatId(message.getChatId());
             action.setAction(ActionType.TYPING);

@@ -22,6 +22,9 @@
       "transitions": {
         "knownPerson": "FollowUp",
         "newPerson": "PersonalQA"
+      },
+      "parameters": {
+        "infoFile": "resources/sentences/RoboyInfoList.json"
       }
     },
     {

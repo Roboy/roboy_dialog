@@ -41,15 +41,7 @@ public class BotBoyState extends State {
 
         if(inputOK){
             next = getTransition(TRANSITION_INITIALIZED);
-            String response = Verbalizer.greetings.getRandomElement();
-            Log.error(this, "produced response: "+response);
-            //return Output.say(response);
-
-            // add chat-id to attributes
-//            Map<String, Object> attributes = new HashMap<String, Object>();
-//            attributes.put("chat-id", chatID);
-            Interpretation output = new Interpretation(response);
-            return Output.say(output);
+            return Output.say(Verbalizer.greetings.getRandomElement());
         }
 
         return Output.sayNothing();

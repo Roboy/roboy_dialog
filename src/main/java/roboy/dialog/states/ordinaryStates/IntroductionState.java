@@ -68,7 +68,6 @@ public class IntroductionState extends State {
 
     @Override
     public Output react(Interpretation input) {
-
         // expecting something like "My name is NAME"
 
         // 1. get name
@@ -119,7 +118,9 @@ public class IntroductionState extends State {
             nextState = getTransition(LEARN_ABOUT_PERSON);
             segueProbability = 0.6;
         }
+
         String retrievedRoboyFacts = getRoboyFactsPhrase(new Roboy(getMemory()));
+        LOGGER.error("retrievedRoboyFacts: "+retrievedRoboyFacts);
         Segue s = new Segue(Segue.SegueType.DISTRACT, segueProbability);
         return Output.say(getResponsePhrase(person.getName(), person.FAMILIAR) +
                 retrievedPersonalFact + retrievedRoboyFacts).setSegue(s);

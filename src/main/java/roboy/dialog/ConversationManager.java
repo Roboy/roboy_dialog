@@ -62,6 +62,9 @@ public class ConversationManager {
             memory = new DummyMemory();
         }
 
+        ConversationManager.memory = memory;
+
+
 
         //Compose the analyzer chain.
         analyzers = new ArrayList<>();
@@ -120,7 +123,7 @@ public class ConversationManager {
                 }
             }
         }
-        logger.info("####################################################\n#                SYSTEM LOADED                     #\n####################################################");
+        logger.info("####################################################\n#                SYSTEM LOADED                     #\n####################################################\n");
     }
 
     /**
@@ -188,6 +191,9 @@ public class ConversationManager {
         File personalityFile = new File(ConfigManager.PERSONALITY_FILE);
 
         //Set the interlocutor.
+        if(memory == null){
+            logger.error("memory is null while starting a conversation");
+        }
         Interlocutor person = new Interlocutor(memory);
         person.setProperty("uuid", uuid);
         context.ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
