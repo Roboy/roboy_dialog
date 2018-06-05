@@ -4,11 +4,16 @@
     <groupId>roboy-dialog</groupId>
     <artifactId>roboy-dialog</artifactId>
     <version>2.1.9</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <organization>
         <name>Roboy</name>
     </organization>
     <name>Roboy Dialog System</name>
+
+    <modules>
+        <module>roboy_parser</module>
+        <!-- <module>roboy_memory</module> -->
+    </modules>
 
     <build>
         <plugins>
@@ -21,6 +26,7 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
+
             </plugin>
 
             <plugin>
