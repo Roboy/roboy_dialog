@@ -10,11 +10,11 @@ import org.apache.commons.codec.language.Soundex;
  * This is intended to be used to correct terms that Roboy misunderstood,
  * but currently is not is use.
  */
-public class SoundexEncoder implements PhoneticEncoder{
+public class SoundexEncoder implements PhoneticEncoder {
 	
 	private Soundex soundex;
 	
-	public SoundexEncoder(Soundex soundex) {
+	public SoundexEncoder (Soundex soundex) {
 		this.soundex = soundex;
 	}
 
@@ -22,6 +22,4 @@ public class SoundexEncoder implements PhoneticEncoder{
 	public String encode(String input) {
 		return soundex.encode(input);
 	}
-
-	
 }

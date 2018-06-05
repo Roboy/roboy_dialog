@@ -29,7 +29,7 @@ public enum UzupisIntents {
     public static UzupisIntents randomIntent()  {
         UzupisIntents ret;
         do {
-            ret =  VALUES.get(RANDOM.nextInt(SIZE));
+            ret = VALUES.get(RANDOM.nextInt(SIZE));
         } while (ret==INTRO && ret==NAME);
         return ret;
     }

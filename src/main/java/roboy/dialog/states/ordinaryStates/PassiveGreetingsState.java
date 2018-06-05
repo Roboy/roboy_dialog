@@ -33,7 +33,7 @@ public class PassiveGreetingsState extends State {
 
     @Override
     public Output react(Interpretation input) {
-        String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
+        String sentence = input.getSentence();
         boolean inputOK = StatementInterpreter.isFromList(sentence, Verbalizer.greetings) ||
                 StatementInterpreter.isFromList(sentence, Verbalizer.roboyNames) ||
                 StatementInterpreter.isFromList(sentence, Verbalizer.triggers);

@@ -7,7 +7,7 @@ import java.util.Map;
 import org.junit.Test;
 
 import roboy.linguistics.Linguistics;
-import roboy.linguistics.Linguistics.SEMANTIC_ROLE;
+import roboy.linguistics.Linguistics.SemanticRole;
 
 public class OpenNLPParserTest {
 	
@@ -18,10 +18,10 @@ public class OpenNLPParserTest {
 	public void testWhatIs() {
 		Interpretation interpretation = new Interpretation("What is the area code of Germany");
 		interpretation = parser.analyze(interpretation);
-		Map<String,Object> pas = (Map<String,Object>) interpretation.getFeature(Linguistics.PAS);
-		assertEquals("is",pas.get(SEMANTIC_ROLE.PREDICATE));
-		assertEquals("the area code of Germany",pas.get(SEMANTIC_ROLE.PATIENT));
-		assertEquals("What", pas.get(SEMANTIC_ROLE.AGENT));
+		Map<SemanticRole, String> pas = interpretation.getPas();
+		assertEquals("is", pas.get(SemanticRole.PREDICATE));
+		assertEquals("the area code of Germany", pas.get(SemanticRole.PATIENT));
+		assertEquals("What", pas.get(SemanticRole.AGENT));
 	}
 	
 //	@SuppressWarnings("unchecked")
@@ -41,10 +41,10 @@ public class OpenNLPParserTest {
 	public void testWhenWas() {
 		Interpretation interpretation = new Interpretation("When was Putin born ?");
 		interpretation = parser.analyze(interpretation);
-		Map<String,Object> pas = (Map<String,Object>) interpretation.getFeature(Linguistics.PAS);
-		assertEquals("born",pas.get(SEMANTIC_ROLE.PREDICATE));
-		assertEquals("Putin",pas.get(SEMANTIC_ROLE.PATIENT));
-		assertEquals("When",pas.get(SEMANTIC_ROLE.TIME));
+		Map<SemanticRole, String> pas = interpretation.getPas();
+		assertEquals("born", pas.get(SemanticRole.PREDICATE));
+		assertEquals("Putin", pas.get(SemanticRole.PATIENT));
+		assertEquals("When", pas.get(SemanticRole.TIME));
 	}
 
 	@SuppressWarnings("unchecked")
@@ -52,10 +52,10 @@ public class OpenNLPParserTest {
 	public void testWhereWas() {
 		Interpretation interpretation = new Interpretation("Where was Putin born ?");
 		interpretation = parser.analyze(interpretation);
-		Map<String,Object> pas = (Map<String,Object>) interpretation.getFeature(Linguistics.PAS);
-		assertEquals("born",pas.get(SEMANTIC_ROLE.PREDICATE));
-		assertEquals("Putin",pas.get(SEMANTIC_ROLE.PATIENT));
-		assertEquals("Where", pas.get(SEMANTIC_ROLE.LOCATION));
+		Map<SemanticRole, String> pas = interpretation.getPas();
+		assertEquals("born", pas.get(SemanticRole.PREDICATE));
+		assertEquals("Putin", pas.get(SemanticRole.PATIENT));
+		assertEquals("Where", pas.get(SemanticRole.LOCATION));
 	}
 
 	@SuppressWarnings("unchecked")
@@ -63,10 +63,10 @@ public class OpenNLPParserTest {
 	public void testWhereDid() {
 		Interpretation interpretation = new Interpretation("Where did Elvis die ?");
 		interpretation = parser.analyze(interpretation);
-		Map<String,Object> pas = (Map<String,Object>) interpretation.getFeature(Linguistics.PAS);
-		assertEquals("die",pas.get(SEMANTIC_ROLE.PREDICATE));
-		assertEquals("Elvis",pas.get(SEMANTIC_ROLE.AGENT));
-		assertEquals("Where", pas.get(SEMANTIC_ROLE.LOCATION));
+		Map<SemanticRole, String> pas = interpretation.getPas();
+		assertEquals("die", pas.get(SemanticRole.PREDICATE));
+		assertEquals("Elvis",pas.get(SemanticRole.AGENT));
+		assertEquals("Where", pas.get(SemanticRole.LOCATION));
 	}
 
 	@SuppressWarnings("unchecked")
@@ -74,10 +74,10 @@ public class OpenNLPParserTest {
 	public void testWhenDid() {
 		Interpretation interpretation = new Interpretation("When did Elvis die ?");
 		interpretation = parser.analyze(interpretation);
-		Map<String,Object> pas = (Map<String,Object>) interpretation.getFeature(Linguistics.PAS);
-		assertEquals("die",pas.get(SEMANTIC_ROLE.PREDICATE));
-		assertEquals("Elvis",pas.get(SEMANTIC_ROLE.AGENT));
-		assertEquals("When", pas.get(SEMANTIC_ROLE.TIME));
+		Map<SemanticRole, String> pas = interpretation.getPas();
+		assertEquals("die", pas.get(SemanticRole.PREDICATE));
+		assertEquals("Elvis", pas.get(SemanticRole.AGENT));
+		assertEquals("When", pas.get(SemanticRole.TIME));
 	}
 
 	@SuppressWarnings("unchecked")
@@ -85,17 +85,17 @@ public class OpenNLPParserTest {
 	public void testHowAdjective() {
 		Interpretation interpretation = new Interpretation("How high is Mount Everest ?");
 		interpretation = parser.analyze(interpretation);
-		Map<String,Object> pas = (Map<String,Object>) interpretation.getFeature(Linguistics.PAS);
-		assertEquals("is",pas.get(SEMANTIC_ROLE.PREDICATE));
-		assertEquals("Mount Everest",pas.get(SEMANTIC_ROLE.PATIENT));
-		assertEquals("How", pas.get(SEMANTIC_ROLE.MANNER));
-		assertEquals("high", pas.get(SEMANTIC_ROLE.AGENT)); // bad parser
+		Map<SemanticRole, String> pas = interpretation.getPas();
+		assertEquals("is", pas.get(SemanticRole.PREDICATE));
+		assertEquals("Mount Everest", pas.get(SemanticRole.PATIENT));
+		assertEquals("How", pas.get(SemanticRole.MANNER));
+		assertEquals("high", pas.get(SemanticRole.AGENT)); // bad parser
 		
 		interpretation = new Interpretation("How many people live in Berlin ?");
 		interpretation = parser.analyze(interpretation);
-		pas = (Map<String,Object>) interpretation.getFeature(Linguistics.PAS);
-		assertEquals("live",pas.get(SEMANTIC_ROLE.PREDICATE));
-		assertEquals("in Berlin",pas.get(SEMANTIC_ROLE.LOCATION));
-		assertEquals("How many people", pas.get(SEMANTIC_ROLE.AGENT)); // bad parser
+		pas = interpretation.getPas();
+		assertEquals("live", pas.get(SemanticRole.PREDICATE));
+		assertEquals("in Berlin", pas.get(SemanticRole.LOCATION));
+		assertEquals("How many people", pas.get(SemanticRole.AGENT)); // bad parser
 	}
 }

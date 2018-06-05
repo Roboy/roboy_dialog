@@ -10,11 +10,12 @@ import roboy.ros.RosMainNode;
 import roboy.talk.PhraseCollection;
 import roboy.util.RandomList;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
+import static roboy.emotions.RoboyEmotion.*;
 
 /**
  * Implementations of Roboy's abilities.
@@ -114,18 +115,18 @@ enum RoboyAbility {
                 logger.info("showing emotions");
                 node.SynthesizeSpeech("I can be all flirty...");
                 TimeUnit.SECONDS.sleep(1);
-                node.ShowEmotion("smileblink");
+                node.ShowEmotion(SMILE_BLINK);
                 TimeUnit.SECONDS.sleep(1);
                 node.SynthesizeSpeech("But sometimes I get shy.");
-                node.ShowEmotion("shy");
+                node.ShowEmotion(SHY);
                 TimeUnit.SECONDS.sleep(1);
                 node.SynthesizeSpeech("You can can check out my facebook page");
                 TimeUnit.SECONDS.sleep(1);
-                node.ShowEmotion("img:facebook");
+                node.ShowEmotion(FACEBOOK_EYES);
                 TimeUnit.SECONDS.sleep(1);
                 node.SynthesizeSpeech("And if you do, you can give you a kiss. Muah");
                 TimeUnit.SECONDS.sleep(1);
-                node.ShowEmotion("kiss");
+                node.ShowEmotion(KISS);
                 TimeUnit.SECONDS.sleep(1);
             }
             catch (InterruptedException e) {

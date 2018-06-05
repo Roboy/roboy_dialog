@@ -30,9 +30,6 @@ public class OntologyNERAnalyzer implements Analyzer{
 				entities.put(parts[0],new Entity(parts[0]));
 			}
 			br.close();
-
-
-
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -43,18 +40,13 @@ public class OntologyNERAnalyzer implements Analyzer{
 	@Override
 	@SuppressWarnings("unchecked")
 	public Interpretation analyze(Interpretation interpretation) {
-		String[] tokens = (String[]) interpretation.getFeatures().get(Linguistics.TOKENS);
-		for(int i=0; i<tokens.length; i++){
-			if(entities.containsKey(tokens[i].toLowerCase())){
-				Entity e = entities.get(tokens[i].toLowerCase());
-				DetectedEntity d = new DetectedEntity(e,i);
-				if(interpretation.getFeatures().containsKey(Linguistics.KEYWORDS)){
-					List<DetectedEntity> detectedEntities = (List<DetectedEntity>)interpretation.getFeatures().get(Linguistics.KEYWORDS);
-					detectedEntities.add(d);
-				} else {
-					List<DetectedEntity> detectedEntities = new ArrayList<>();
-					detectedEntities.add(d);
-					interpretation.getFeatures().put(Linguistics.KEYWORDS, detectedEntities);
+		List<String> tokens = interpretation.getTokens();
+		if (tokens != null && !tokens.isEmpty()) {
+			for (int i = 0; i < tokens.size(); i++) {
+				if (entities.containsKey(tokens.get(i).toLowerCase())) {
+					Entity entity = entities.get(tokens.get(i).toLowerCase());
+					DetectedEntity detectedEntity = new DetectedEntity(i, entity);
+					interpretation.addKeyword(detectedEntity);
 				}
 			}
 		}

@@ -14,7 +14,6 @@ import roboy.util.UzupisIntents;
 import java.io.IOException;
 import java.util.*;
 
-import static roboy.linguistics.Linguistics.OBJ_ANSWER;
 import static roboy.util.UzupisIntents.*;
 
 
@@ -83,29 +82,28 @@ public class UzupisState extends State {
 
     @Override
     public Output react(Interpretation input) {
-        String answer = (String) input.getFeature(OBJ_ANSWER);
-        String toAnswer;
-        if (answer.length()>2)
-        {
-            if (currentIntent==UzupisIntents.NAME) {
-                person.addName(answer);
+        String answer = input.getAnswer();
+        String toAnswer = "";
+        if (answer != null) {
+            if (answer.length() > 2) {
+                if (currentIntent == UzupisIntents.NAME) {
+                    person.addName(answer);
+                } else if (currentIntent != UzupisIntents.INTRO) {
+                    person.saveUzupisProperty(currentIntent, answer);
+                }
+                toAnswer = successAnswers.get(currentIntent.toString()).get(
+                        (int) (Math.random() * successAnswers.get(currentIntent.toString()).size()));
+                toAnswer = String.format(toAnswer, answer);
+            } else {
+                if (currentIntent != UzupisIntents.INTRO) {
+                    person.saveUzupisProperty(currentIntent, "classified information");
+                }
+                if (currentIntent == UzupisIntents.NAME) {
+                    person.addName("human");
+                }
+                toAnswer = failureAnswers.get(currentIntent.toString()).get(
+                        (int) (Math.random() * failureAnswers.get(currentIntent.toString()).size()));
             }
-            else if(currentIntent!=UzupisIntents.INTRO) {
-                person.saveUzupisProperty(currentIntent, answer);
-            }
-            toAnswer = successAnswers.get(currentIntent.toString()).get(
-                    (int) (Math.random() * successAnswers.get(currentIntent.toString()).size()));
-            toAnswer = String.format(toAnswer, answer);
-        }
-        else {
-            if (currentIntent!=UzupisIntents.INTRO) {
-                person.saveUzupisProperty(currentIntent, "classified information");
-            }
-            if (currentIntent==UzupisIntents.NAME) {
-                person.addName("human");
-            }
-            toAnswer = failureAnswers.get(currentIntent.toString()).get(
-                    (int) (Math.random() * failureAnswers.get(currentIntent.toString()).size()));
         }
 
         // TODO add on final uzupis utterance

@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import roboy.linguistics.Linguistics.SENTENCE_TYPE;
+import roboy.linguistics.Linguistics.SentenceType;
 
 public class DictionaryBasedSentenceTypeDetectorTest {
 	
@@ -16,7 +16,7 @@ public class DictionaryBasedSentenceTypeDetectorTest {
 		Interpretation interpretation = new Interpretation("What is area code of Germany?");
 		interpretation = tokenizer.analyze(interpretation);
 		interpretation = detector.analyze(interpretation);
-		assertTrue(interpretation.getSentenceType()==SENTENCE_TYPE.WHAT);
+		assertTrue(interpretation.getSentenceType() == SentenceType.WHAT);
 		
 //		interpretation = new Interpretation("Hey Roboy, what is area code of Germany?");
 //		interpretation = tokenizer.analyze(interpretation);

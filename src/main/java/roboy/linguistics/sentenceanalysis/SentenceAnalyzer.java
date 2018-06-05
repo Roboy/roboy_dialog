@@ -11,7 +11,7 @@ import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 
 import roboy.linguistics.Linguistics;
-import roboy.linguistics.Linguistics.SENTENCE_TYPE;
+import roboy.linguistics.Linguistics.SentenceType;
 import roboy.linguistics.Term;
 import roboy.linguistics.Triple;
 import roboy.util.Maps;
@@ -43,8 +43,8 @@ public class SentenceAnalyzer implements Analyzer{
 			while( (resource = br.readLine()) != null ) {
 				InputStream is2 = cl.getResourceAsStream(path+resource);
 				BufferedReader br2 = new BufferedReader(new InputStreamReader(is2));
-				Term t = gson.fromJson(br2,Term.class);
-				meanings.put(resource,t.concept);
+				Term term = gson.fromJson(br2,Term.class);
+				meanings.put(resource, term.getConcept());
 				filenames.add( resource );
 			}
 		}
@@ -52,141 +52,131 @@ public class SentenceAnalyzer implements Analyzer{
 	
 	@Override
 	public Interpretation analyze(Interpretation interpretation){
-		String sentence = (String) interpretation.getFeatures().get(Linguistics.SENTENCE);
+		String sentence = interpretation.getSentence();
 		// NLP pipeline
-		String[] tokens = (String[]) interpretation.getFeatures().get(Linguistics.TOKENS);
-		String[] posTags = (String[]) interpretation.getFeatures().get(Linguistics.POSTAGS);
-		SENTENCE_TYPE sentenceType = interpretation.getSentenceType();
+		List<String> tokens = interpretation.getTokens();
+		String[] posTags = interpretation.getPosTags();
+		SentenceType sentenceType = interpretation.getSentenceType();
 		
 		Interpretation result = extractPAS(sentence, tokens, posTags, sentenceType); //TODO: avoid object creation
-		interpretation.getFeatures().putAll(result.getFeatures());
+		interpretation.setTriples(result.getTriples());
 		return interpretation;
 	}
 	
 	
-	private Interpretation extractPAS(String sentence, String[] tokens, String[] posTags, SENTENCE_TYPE sentenceType){
+	private Interpretation extractPAS(String sentence, List<String> tokens, String[] posTags, SentenceType sentenceType){
 //		System.out.println("  "+sentenceType);
+        // TODO: Are you serious?
 		switch(sentenceType){
-			case STATEMENT: return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,analyzeStatement(tokens, posTags)));
-			case IS_IT:     return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,analyzeIsIt(tokens, posTags)));
-			case WHO:       return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,analyzeWho(tokens, posTags)));
-			case HOW_IS:       return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,analyzeHowIs(tokens, posTags)));
-			case HOW_DO:       return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,analyzeHowDo(tokens, posTags)));
-			case WHAT:       return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,analyzeWhat(tokens, posTags)));
-			case DOES_IT:       return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,analyzeDoesIt(tokens, posTags)));
-			default:        return new Interpretation(sentenceType,Maps.stringObjectMap(Linguistics.SENTENCE,sentence,Linguistics.TRIPLE,new Triple(null,"","")));
+			case STATEMENT: return new Interpretation(sentenceType,sentence,analyzeStatement(tokens, posTags));
+			case IS_IT:     return new Interpretation(sentenceType,sentence,analyzeIsIt(tokens, posTags));
+			case WHO:       return new Interpretation(sentenceType,sentence,analyzeWho(tokens, posTags));
+			case HOW_IS:    return new Interpretation(sentenceType,sentence,analyzeHowIs(tokens, posTags));
+			case HOW_DO:    return new Interpretation(sentenceType,sentence,analyzeHowDo(tokens, posTags));
+			case WHAT:      return new Interpretation(sentenceType,sentence,analyzeWhat(tokens, posTags));
+			case DOES_IT:   return new Interpretation(sentenceType,sentence,analyzeDoesIt(tokens, posTags));
+			default:        return new Interpretation(sentenceType,sentence,new Triple(null,"",""));
 		}
 	}
 	
-	private Triple analyzeStatement(String[] tokens, String[] posTags){
+	private Triple analyzeStatement(List<String> tokens, String[] posTags){
 		String predicate = null;
-		String agens = "";
-		String patiens = "";
-		for(int i=0; i<tokens.length; i++){
+		String agents = "";
+		String patients = "";
+		for(int i=0; i < tokens.size(); i++) {
 			if(posTags[i].startsWith("V")){
-				for(int j=0; j<i; j++){
-					if(posTags[j].startsWith("N")||posTags[j].startsWith("J")){
-						if(j>0) agens+=" ";
-						agens+=tokens[j];
+				for(int j=0; j < i; j++){
+					if(posTags[j].startsWith("N") || posTags[j].startsWith("J")) {
+						if(j>0) agents += " ";
+						agents += tokens.get(j);
 					}
 				}
-				predicate = tokens[i];
-				for(int j=i+1; j<tokens.length; j++){
-					if(posTags[j].startsWith("N")||posTags[j].startsWith("J")){
-						if(j>i+1) patiens+=" ";
-						patiens+=tokens[j];
+				predicate = tokens.get(i);
+				for(int j=i+1; j < tokens.size(); j++) {
+					if(posTags[j].startsWith("N") || posTags[j].startsWith("J")) {
+						if(j>i+1) patients += " ";
+						patients += tokens.get(j);
 					}
 				}
 			}
 		}
-		return new Triple(predicate,agens,patiens);
+		return new Triple(predicate, agents, patients);
 	}
 	
-	private Triple analyzeIsIt(String[] tokens, String[] posTags){
+	private Triple analyzeIsIt(List<String> tokens, String[] posTags){
 		String predicate = null;
-		String agens = "";
-		String patiens = "";
-		if(tokens.length>2){
-			predicate = tokens[0];
-			agens = tokens[1];
-			for(int j=2; j<tokens.length; j++){
-				if(j>2) patiens+=" ";
-				patiens+=tokens[j];
+		String agents = "";
+		String patients = "";
+		if (tokens.size() > 2) {
+			predicate = tokens.get(0);
+            agents = tokens.get(1);
+			for(int j = 2; j < tokens.size(); j++) {
+				if(j>2) patients += " ";
+                patients += tokens.get(j);
 			}
 		}
-		return new Triple(predicate,agens,patiens);
+		return new Triple(predicate, agents, patients);
 	}
 	
-	private Triple analyzeDoesIt(String[] tokens, String[] posTags){
-		String predicate = null;
-		String agens = "";
-		String patiens = "";
-		if(tokens.length>3 && (posTags[3].startsWith("V") || posTags[2].startsWith("V"))){
-			predicate = posTags[3].startsWith("V") ? tokens[3] : tokens[2];
-			agens = tokens[1];
-			for(int j=3; j<tokens.length; j++){
-				if(j>3) patiens+=" ";
-				patiens+=tokens[j];
+	private Triple analyzeDoesIt(List<String> tokens, String[] posTags){
+        String predicate = null;
+        String agents = "";
+        String patients = "";
+		if(tokens.size() > 3 && (posTags[3].startsWith("V") || posTags[2].startsWith("V"))){
+			predicate = posTags[3].startsWith("V") ? tokens.get(3) : tokens.get(2);
+            agents = tokens.get(1);
+			for(int j = 3; j < tokens.size(); j++) {
+				if(j > 3) patients += "";
+                patients += tokens.get(j);
 			}
 		}
-		return new Triple(predicate,agens,patiens);
+		return new Triple(predicate, agents, patients);
 	}
 	
-	private Triple analyzeWho(String[] tokens, String[] posTags){
-		String predicate = null;
-		String agens = "";
-		String patiens = "";
-		if(tokens.length>2 && posTags[1].startsWith("V")){
-			patiens = null;
-			predicate = tokens[1];
-			for(int j=2; j<tokens.length; j++){
-				if(j>2) agens+=" ";
-				agens+=tokens[j];
+	private Triple analyzeWho(List<String> tokens, String[] posTags){
+        String predicate = null;
+        String agents = "";
+        String patients = "";
+		if(tokens.size() > 2 && posTags[1].startsWith("V")) {
+			patients = null;
+			predicate = tokens.get(1);
+			for(int j = 2; j < tokens.size(); j++) {
+				if(j > 2) agents += " ";
+				agents += tokens.get(j);
 			}
 		}
-		return new Triple(predicate,agens,patiens);
+		return new Triple(predicate, agents, patients);
 	}
 	
-	private Triple analyzeWhat(String[] tokens, String[] posTags){
-		String predicate = null;
-		String agens = "";
-		String patiens = "";
-		if(tokens.length>3 && posTags[3].startsWith("V")){
-			agens = tokens[2];
-			predicate = tokens[3];
-			patiens = null;
+	private Triple analyzeWhat(List<String> tokens, String[] posTags){
+        String predicate = null;
+        String agents = "";
+        String patients = "";
+		if(tokens.size() > 3 && posTags[3].startsWith("V")) {
+			agents = tokens.get(2);
+			predicate = tokens.get(3);
+			patients = null;
 		}
-		return new Triple(predicate,agens,patiens);
+		return new Triple(predicate, agents, patients);
 	}
 	
-	private Triple analyzeHowIs(String[] tokens, String[] posTags){
-		String predicate = null;
-		String agens = "";
-		String patiens = "";
-		if(tokens.length>2 && posTags[1].startsWith("V")){
-			patiens = null;
-			predicate = tokens[1];
-			for(int j=2; j<tokens.length; j++){
-				if(j>2) agens+=" ";
-				agens+=tokens[j];
+	private Triple analyzeHowIs(List<String> tokens, String[] posTags){
+		return analyzeWho(tokens, posTags);
+	}
+
+	private Triple analyzeHowDo(List<String> tokens, String[] posTags){
+        String predicate = null;
+        String agents = "";
+        String patients = "";
+		if(tokens.size() > 3 && posTags[3].startsWith("V")) {
+			agents = tokens.get(2);
+			predicate = tokens.get(3);
+			for(int j = 4; j < tokens.size(); j++) {
+				if(j > 4) patients += " ";
+				patients += tokens.get(j);
 			}
 		}
-		return new Triple(predicate,agens,patiens);
-	}
-	
-	private Triple analyzeHowDo(String[] tokens, String[] posTags){
-		String predicate = null;
-		String agens = "";
-		String patiens = "";
-		if(tokens.length>3 && posTags[3].startsWith("V")){
-			agens = tokens[2];
-			predicate = tokens[3];
-			for(int j=4; j<tokens.length; j++){
-				if(j>4) patiens+=" ";
-				patiens+=tokens[j];
-			}
-		}
-		return new Triple(predicate,agens,patiens);
+		return new Triple(predicate, agents, patients);
 	}
 	
 //	private int detectNP(String[] posTags){

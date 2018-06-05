@@ -77,7 +77,7 @@ public class AnswerAnalyzerTest {
 		analyzers.add(answer);
         Interpretation interpretation = new Interpretation(sentence);
         for (Analyzer a : analyzers) interpretation = a.analyze(interpretation);
-        return (String) interpretation.getFeature(Linguistics.OBJ_ANSWER);
+        return interpretation.getObjAnswer();
 	}
 	
 	private String analyzePred(String sentence){
@@ -88,7 +88,7 @@ public class AnswerAnalyzerTest {
 		analyzers.add(answer);
         Interpretation interpretation = new Interpretation(sentence);
         for (Analyzer a : analyzers) interpretation = a.analyze(interpretation);
-        return (String) interpretation.getFeature(Linguistics.PRED_ANSWER);
+        return interpretation.getPredAnswer();
 	}
 	
 }

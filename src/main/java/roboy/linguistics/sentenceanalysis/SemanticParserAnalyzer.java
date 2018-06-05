@@ -50,6 +50,96 @@ public class SemanticParserAnalyzer implements Analyzer {
         interpretation.getFeatures().put(Linguistics.POSTAGS, result.getPostags());
         interpretation.getFeatures().put(Linguistics.LEMMAS, result.getLemmaTokens());
         return interpretation;
+        /*
+        if (this.clientSocket != null && this.clientSocket.isConnected()) {
+            try {
+                String response;
+                if (this.debug) {
+                    logger.debug("SEMANTIC PARSER: " + interpretation.getSentence());
+                }
+                this.out.println(interpretation.getSentence());
+                response = this.in.readLine();
+                if (this.debug) {
+                    logger.debug("> Full response:" + response);
+                }
+                if (response != null) {
+                    // Convert JSON string back to Map.
+                    Gson gson = new Gson();
+                    Type type = new TypeToken<Map<String, Object>>() {
+                    }.getType();
+                    Type listStringsType = new TypeToken<List<String>>(){}.getType();
+
+                    try {
+                        Map<String, Object> full_response = gson.fromJson(response, type);
+                        // Read formula and answer
+                        if (full_response.containsKey("parse")) {
+                            if (full_response.get("answer").toString().equals("(no answer)")) {
+                                interpretation.setParsingOutcome(Linguistics.ParsingOutcome.FAILURE);
+                            } else {
+                                String answer = get_answers(full_response.get("answer").toString());
+                                interpretation.setAnswer(answer);
+
+                                interpretation.setParse(full_response.get("parse").toString());
+
+                                List<Triple> triples = extract_triples(full_response.get("parse").toString());
+                                interpretation.setSemTriples(triples);
+
+                                interpretation.setParsingOutcome(Linguistics.ParsingOutcome.SUCCESS);
+                            }
+                        }
+                        // Read followUp questions for underspecified terms
+                        if (full_response.containsKey("followUpQ")) {
+                            String specifyingQuestion = full_response.get("followUpQ").toString();
+                            interpretation.setUnderspecifiedQuestion(specifyingQuestion);
+
+                            String answer = get_answers(full_response.get("answer").toString());
+                            interpretation.setUnderspecifiedAnswer(answer);
+                            interpretation.setAnswer(answer);
+
+                            interpretation.setParsingOutcome(Linguistics.ParsingOutcome.UNDERSPECIFIED);
+                        }
+                        // Read tokens
+                        if (full_response.containsKey("tokens")) {
+                            interpretation.setTokens(gson.fromJson(full_response.get("tokens").toString(), listStringsType));
+                        }
+                        // Read extracted non-semantic relations
+                        if (full_response.containsKey("relations")) {
+                            interpretation.setTriples(extract_relations((Map<String, Double>) full_response.get("relations")));
+                        }
+                        // Read extracted sentiment
+                        if (full_response.containsKey("sentiment")) {
+                            try {
+                                interpretation.setSentiment(Linguistics.UtteranceSentiment.valueOf(full_response.get("sentiment").toString().toUpperCase()));
+                            } catch (Exception e) {
+                                interpretation.setSentiment(Linguistics.UtteranceSentiment.NEUTRAL);
+                                logger.error("Sentiment is illegal: " + e.getMessage());
+                            }
+                        }
+                        // Read POS-tags
+                        if (full_response.containsKey("postags")) {
+                            interpretation.setPosTags(gson.fromJson(full_response.get("postags").toString(), String[].class));
+                        }
+                        // Read lemmatized tokens
+                        if (full_response.containsKey("lemma_tokens")) {
+                            interpretation.setLemmas(gson.fromJson(full_response.get("lemma_tokens").toString(), String[].class));
+                        }
+                        // Read utterance type
+                        if (full_response.containsKey("type")) {
+                            interpretation.setUtteranceType(full_response.get("type").toString());
+                        }
+                    } catch (Exception e) {
+                        logger.error("Exception while parsing semantic response: " + e.getMessage());
+                        e.printStackTrace();
+                    }
+                }
+                return interpretation;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return interpretation;
+            }
+        } else
+            return interpretation;
+        */
     }
 
     /**
@@ -157,11 +247,9 @@ public class SemanticParserAnalyzer implements Analyzer {
             String line;
             System.out.print("Enter utterance: ");
             while ((line = reader.readLine()) != null) {
-                Interpretation inter = new Interpretation(line);
-                analyzer.analyze(inter);
-                for (String key : inter.getFeatures().keySet()) {
-                    System.out.println(key + " : " + inter.getFeature(key));
-                }
+                Interpretation interpretation = new Interpretation(line);
+                analyzer.analyze(interpretation);
+                System.out.println(interpretation.toString());
             }
         } catch (IOException e) {
             e.printStackTrace();
