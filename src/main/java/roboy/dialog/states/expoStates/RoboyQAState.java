@@ -107,7 +107,7 @@ public class RoboyQAState extends State {
     }
 
     private Neo4jRelationship inferPredicateFromObjectAnswer(String objectAnswer) {
-        if (objectAnswer.contains("hobb")) {
+        if (objectAnswer.contains("hobby")) {
             return Neo4jRelationship.HAS_HOBBY;
         } else if (objectAnswer.contains("member")) {
             return Neo4jRelationship.MEMBER_OF;
