@@ -32,16 +32,17 @@ class RosManager {
         serviceMap = new HashMap<>();
         subscriberMap = new HashMap<>();
         boolean success = true;
+
         // Iterate through the RosServiceClients enum, mapping a client for each.
-
-        if(!INIT_MEMORY_CLIENTS) LOGGER.warn("Memory Clients will NOT be initialised");
-
+        if(!INIT_MEMORY_CLIENTS) {
+            LOGGER.warn("Memory Clients will NOT be initialised");
+        }
         for(RosServiceClients client : RosServiceClients.values()) {
-
-            if(!INIT_MEMORY_CLIENTS)
-                if(isMemoryModuleTest(client.toString()))
+            if(!INIT_MEMORY_CLIENTS){
+                if(isMemoryModuleTest(client.toString())){
                     continue;
-
+                }
+            }
             if (ConfigManager.ROS_ACTIVE_PKGS.contains(client.rosPackage)) {
                 try {
                     serviceMap.put(client, node.newServiceClient(client.address, client.type));
@@ -52,23 +53,20 @@ class RosManager {
                     LOGGER.warn("{} client initialization FAILED!", client.toString());
                 }
             }
-
-
         }
 
         for(RosSubscribers subscriber : RosSubscribers.values()) {
-
             if (ConfigManager.ROS_ACTIVE_PKGS.contains(subscriber.rosPackage)) {
                 try {
                     subscriberMap.put(subscriber, node.newSubscriber(subscriber.address, subscriber.type));
                     LOGGER.info("{} subscriber initialization SUCCESS!", subscriber.toString());
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     success = false;
                     LOGGER.warn("{} subscriber initialization FAILED!", subscriber.toString());
                 }
             }
         }
-
         return success;
     }
 

@@ -3,7 +3,6 @@ package roboy.dialog;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.roboy.memory.Main;
 import roboy.context.Context;
 import roboy.context.ContextGUI;
 import roboy.dialog.action.Action;
@@ -40,10 +39,13 @@ public class DialogSystem {
 
     public static void main(String[] args) throws IOException {
 
+        //IF you need to start the memory module for some reason, enable this via Config
+        // (Dialog does not need Roboy_Memory running to function anymore)
         if(START_MEMORY_MODULE) {
             try {
                 logger.info("Starting Roboy_Memory");
-                new Main().main(null);
+                //Calls main method of Roboy_Memory
+                org.roboy.memory.Main.main(new String[]{});
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             }
