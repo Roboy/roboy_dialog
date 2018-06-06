@@ -3,7 +3,7 @@ package roboy.parser;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import roboy.memory.Neo4jRelationships;
+import roboy.memory.Neo4jRelationship;
 import roboy.util.JsonEntryModel;
 import roboy.util.QAJsonParser;
 
@@ -60,28 +60,28 @@ public class QAParserTest {
 
     @Test
     public void testQuestions() {
-        assertEquals("TEST_QUESTION", parser.getEntry(Neo4jRelationships.IS).getQuestions().get(0));
-        assertEquals("TEST_QUESTION", parser.getQuestions(Neo4jRelationships.IS).get(0));
+        assertEquals("TEST_QUESTION", parser.getEntry(Neo4jRelationship.IS).getQuestions().get(0));
+        assertEquals("TEST_QUESTION", parser.getQuestions(Neo4jRelationship.IS).get(0));
     }
 
     @Test
     public void testAnswers() {
-        assertEquals("TEST_SUCCESS %s", parser.getEntry(Neo4jRelationships.IS).getAnswers().get("SUCCESS").get(0));
-        assertEquals("TEST_FAILURE", parser.getEntry(Neo4jRelationships.IS).getAnswers().get("FAILURE").get(0));
-        assertEquals("TEST_SUCCESS %s", parser.getAnswers(Neo4jRelationships.IS).get("SUCCESS").get(0));
-        assertEquals("TEST_FAILURE", parser.getAnswers(Neo4jRelationships.IS).get("FAILURE").get(0));
-        assertEquals("TEST_SUCCESS %s", parser.getSuccessAnswers(Neo4jRelationships.IS).get(0));
-        assertEquals("TEST_FAILURE", parser.getFailureAnswers(Neo4jRelationships.IS).get(0));
+        assertEquals("TEST_SUCCESS %s", parser.getEntry(Neo4jRelationship.IS).getAnswers().get("SUCCESS").get(0));
+        assertEquals("TEST_FAILURE", parser.getEntry(Neo4jRelationship.IS).getAnswers().get("FAILURE").get(0));
+        assertEquals("TEST_SUCCESS %s", parser.getAnswers(Neo4jRelationship.IS).get("SUCCESS").get(0));
+        assertEquals("TEST_FAILURE", parser.getAnswers(Neo4jRelationship.IS).get("FAILURE").get(0));
+        assertEquals("TEST_SUCCESS %s", parser.getSuccessAnswers(Neo4jRelationship.IS).get(0));
+        assertEquals("TEST_FAILURE", parser.getFailureAnswers(Neo4jRelationship.IS).get(0));
     }
 
     @Test
     public void testFollowUp() {
-        assertEquals("TEST_FUP_QUESTION %s", parser.getEntry(Neo4jRelationships.IS).getFUP().get("Q").get(0));
-        assertEquals("TEST_FUP_ANSWER %s", parser.getEntry(Neo4jRelationships.IS).getFUP().get("A").get(0));
-        assertEquals("TEST_FUP_QUESTION %s", parser.getFollowUp(Neo4jRelationships.IS).get("Q").get(0));
-        assertEquals("TEST_FUP_ANSWER %s", parser.getFollowUp(Neo4jRelationships.IS).get("A").get(0));
-        assertEquals("TEST_FUP_QUESTION %s", parser.getFollowUpQuestions(Neo4jRelationships.IS).get(0));
-        assertEquals("TEST_FUP_ANSWER %s", parser.getFollowUpAnswers(Neo4jRelationships.IS).get(0));
+        assertEquals("TEST_FUP_QUESTION %s", parser.getEntry(Neo4jRelationship.IS).getFUP().get("Q").get(0));
+        assertEquals("TEST_FUP_ANSWER %s", parser.getEntry(Neo4jRelationship.IS).getFUP().get("A").get(0));
+        assertEquals("TEST_FUP_QUESTION %s", parser.getFollowUp(Neo4jRelationship.IS).get("Q").get(0));
+        assertEquals("TEST_FUP_ANSWER %s", parser.getFollowUp(Neo4jRelationship.IS).get("A").get(0));
+        assertEquals("TEST_FUP_QUESTION %s", parser.getFollowUpQuestions(Neo4jRelationship.IS).get(0));
+        assertEquals("TEST_FUP_ANSWER %s", parser.getFollowUpAnswers(Neo4jRelationship.IS).get(0));
     }
 
     @AfterClass

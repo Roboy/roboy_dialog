@@ -5,7 +5,7 @@ package roboy.memory;
  * Respective questions should be added to the questions.json file
  * and used in the QuestionRandomizerState.
  */
-public enum Neo4jRelationships {
+public enum Neo4jRelationship {
     FROM("FROM"),
     HAS_HOBBY("HAS_HOBBY"),
     LIVE_IN("LIVE_IN"),
@@ -14,12 +14,14 @@ public enum Neo4jRelationships {
     WORK_FOR("WORK_FOR"),
     FRIEND_OF("FRIEND_OF"),
     MEMBER_OF("MEMBER_OF"),
+    CHILD_OF("CHILD_OF"),
+    SIBLING_OF("SIBLING_OF"),
     OTHER("OTHER"),
     IS("IS");
 
     public String type;
 
-    Neo4jRelationships(String type) {
+    Neo4jRelationship(String type) {
         this.type=type;
     }
 

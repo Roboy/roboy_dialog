@@ -3,6 +3,9 @@ package roboy.dialog;
 import com.google.gson.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.logic.Inference;
+import roboy.logic.InferenceEngine;
+import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateFactory;
@@ -50,6 +53,7 @@ public class DialogStateMachine {
     /** RosMainNode will be passed to every state as parameter */
     private final RosMainNode rosMainNode;
     private final Neo4jMemoryInterface memory;
+    private final InferenceEngine inference;
 
     /**
      * Personality file additional information: everything like comment goes here.
@@ -67,21 +71,26 @@ public class DialogStateMachine {
      * personality file after creation. Alternatively you can create and add States to the machine
      * manually from code.
      *
-     * @param rmn reference to the RosMainNode that will be passed to every newly created State object
-     * @param mem reference to Memory that will be passed to every newly created State object
+     * @param rosMainNode reference to the RosMainNode that will be passed to every newly created State object
+     * @param memory reference to Memory that will be passed to every newly created State object
      */
-    public DialogStateMachine(RosMainNode rmn, Neo4jMemoryInterface mem) {
+    public DialogStateMachine(InferenceEngine inference, RosMainNode rosMainNode, Neo4jMemoryInterface memory) {
         identifierToState = new HashMap<>();
         activeState = null;
-        rosMainNode = rmn;
-        memory = mem;
+        this.rosMainNode = rosMainNode;
+        this.memory = memory;
+        this.inference = inference;
         optionalPersFileInfo = new HashMap<>();
 
-        if (rosMainNode == null) {
+        if (this.rosMainNode == null) {
             logger.info("RosMainNode will be unavailable in DialogStateMachine (null was passed)");
         }
-        if (memory == null) {
+        if (this.memory == null) {
             logger.info("Memory will be unavailable in DialogStateMachine (null was passed)");
+        }
+        if (this.inference == null) {
+            logger.error("All your inference belong to us (null was passed)!");
+            throw new IllegalArgumentException("The inference is null. Roboy is a vegetable! Pulling the plug!");
         }
     }
 
@@ -90,8 +99,8 @@ public class DialogStateMachine {
      * States will not be able to access the RosMainNode and Memory functionality.
      * This constructor is mainly used for testing.
      */
-    public DialogStateMachine() {
-        this(null, null);
+    public DialogStateMachine(InferenceEngine inference) {
+        this(inference, null, null);
     }
 
     //endregion
@@ -102,6 +111,15 @@ public class DialogStateMachine {
     // #####################################################
 
     //region initial state
+
+    /**
+     * Getter for the InferenceEngine to be accessible externally.
+     * Let semblance of intelligence penetrate the mind of Roboy
+     * @return the reference to the inference
+     */
+    public InferenceEngine getInference() {
+        return inference;
+    }
 
     /**
      * Returns the initial state for this state machine.

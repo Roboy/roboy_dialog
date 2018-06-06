@@ -8,19 +8,22 @@ import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jRelationships;
+import roboy.memory.Neo4jProperty;
+import roboy.memory.Neo4jRelationship;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.Interlocutor.RelationshipAvailability;
-import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
+import roboy.memory.nodes.Roboy;
 import roboy.memory.nodes.MemoryNodeModel;
 import roboy.dialog.Segue;
+import roboy.util.Agedater;
+import roboy.util.QAJsonParser;
 import roboy.util.RandomList;
 
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-import static roboy.memory.Neo4jRelationships.*;
-
+import static roboy.memory.Neo4jRelationship.*;
+import static roboy.memory.Neo4jProperty.*;
+import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
 
 /**
  * This state will:
@@ -37,18 +40,25 @@ import static roboy.memory.Neo4jRelationships.*;
  * 3) No parameters are used.
  */
 public class IntroductionState extends State {
+    private QAJsonParser infoValues;
     private final String UPDATE_KNOWN_PERSON = "knownPerson";
     private final String LEARN_ABOUT_PERSON = "newPerson";
     private final Logger LOGGER = LogManager.getLogger();
-    private final RandomList<String> introPhrases = new RandomList<>("I'm Roboy. What's your name?");
+    private final String INFO_FILE_PARAMETER_ID = "infoFile";
+    private final RandomList<String> introPhrases = new RandomList<>("What's your name?");
     private final RandomList<String> successResponsePhrases = new RandomList<>("Hey, I know you, %s!");
     private final RandomList<String> failureResponsePhrases = new RandomList<>("Nice to meet you, %s!");
 
-    private Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
+    private Neo4jRelationship[] personPredicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
+    private RandomList<Neo4jRelationship> roboyRelatioshipPredicates = new RandomList<>(FROM, MEMBER_OF, LIVE_IN, HAS_HOBBY, FRIEND_OF, CHILD_OF, SIBLING_OF);
+    private RandomList<Neo4jProperty> roboyPropertiesPredicates = new RandomList<>(skills, abilities, future);
     private State nextState;
 
     public IntroductionState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
+        String infoListPath = params.getParameter(INFO_FILE_PARAMETER_ID);
+        LOGGER.info(" -> The infoList path: " + infoListPath);
+        infoValues = new QAJsonParser(infoListPath);
     }
 
     @Override
@@ -78,6 +88,7 @@ public class IntroductionState extends State {
         // this also should query memory and do other magic
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
         person.addName(name);
+        // Roboy roboy = new Roboy(getMemory());
 
 
         // 3. update interlocutor in context
@@ -95,7 +106,7 @@ public class IntroductionState extends State {
                         nodes.getRandomElement().getProperties().get("name").toString();
             }
 
-            RelationshipAvailability availability = person.checkRelationshipAvailability(predicates);
+            RelationshipAvailability availability = person.checkRelationshipAvailability(personPredicates);
             if (availability == SOME_AVAILABLE) {
                 nextState = (Math.random() < 0.3) ? getTransition(UPDATE_KNOWN_PERSON) : getTransition(LEARN_ABOUT_PERSON);
             } else if (availability == NONE_AVAILABLE) {
@@ -108,8 +119,10 @@ public class IntroductionState extends State {
             nextState = getTransition(LEARN_ABOUT_PERSON);
             segueProbability = 0.6;
         }
+        String retrievedRoboyFacts = getRoboyFactsPhrase(new Roboy(getMemory()));
         Segue s = new Segue(Segue.SegueType.DISTRACT, segueProbability);
-        return Output.say(getResponsePhrase(person.getName(), person.FAMILIAR) + retrievedPersonalFact).setSegue(s);
+        return Output.say(getResponsePhrase(person.getName(), person.FAMILIAR) +
+                retrievedPersonalFact + retrievedRoboyFacts).setSegue(s);
     }
 
     @Override
@@ -119,32 +132,32 @@ public class IntroductionState extends State {
 
     private String getNameFromInput(Interpretation input) {
         String result = null;
-        if (input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.STATEMENT) == 0) {
-            String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
-            if (tokens.length == 1) {
-                result =  tokens[0].replace("[", "").replace("]","").toLowerCase();
-                LOGGER.info(" -> Retrieved only one token: " + result);
+        if (input.getSentenceType() == Linguistics.SentenceType.STATEMENT) {
+            List<String> tokens = input.getTokens();
+            if (tokens.size() == 1) {
+                result =  tokens.get(0).toLowerCase();
+                LOGGER.info("Retrieved only one token: " + result);
                 return result;
             } else {
-                if (input.getFeatures().get(Linguistics.PARSER_RESULT).toString().equals("SUCCESS") &&
-                        ((List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE)).size() != 0) {
-                    LOGGER.info(" -> Semantic parsing is successful and semantic triple exists");
-                    List<Triple> triple = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
+                if (input.getParsingOutcome() == Linguistics.ParsingOutcome.SUCCESS &&
+                        input.getSemTriples().size() > 0) {
+                    LOGGER.info("Semantic parsing is successful and semantic triple exists");
+                    List<Triple> triple = input.getSemTriples();
                     result = triple.get(0).object.toLowerCase();
-                    LOGGER.info(" -> Retrieved object " + result);
+                    LOGGER.info("Retrieved object " + result);
                 } else {
-                    LOGGER.warn(" -> Semantic parsing failed or semantic triple does not exist");
-                    if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
-                        LOGGER.info(" -> OBJ_ANSWER exits");
-                        String name = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
+                    LOGGER.warn("Semantic parsing failed or semantic triple does not exist");
+                    if (input.getObjAnswer() != null) {
+                        LOGGER.info("OBJ_ANSWER exits");
+                        String name = input.getObjAnswer().toLowerCase();
                         if (!name.equals("")) {
                             result = name;
-                            LOGGER.info(" -> Retrieved OBJ_ANSWER result " + result);
+                            LOGGER.info("Retrieved OBJ_ANSWER result " + result);
                         } else {
-                            LOGGER.warn(" -> OBJ_ANSWER is empty");
+                            LOGGER.warn("OBJ_ANSWER is empty");
                         }
                     } else {
-                        LOGGER.warn(" -> OBJ_ANSWER does not exit");
+                        LOGGER.warn("OBJ_ANSWER does not exit");
                     }
                 }
             }
@@ -168,6 +181,62 @@ public class IntroductionState extends State {
         }
     }
 
+    private String getRoboyFactsPhrase(Roboy roboy) {
+        String result = "";
+
+        // Get some random properties facts
+        if (roboy.getProperties() != null && !roboy.getProperties().isEmpty()) {
+            HashMap<String, Object> properties = roboy.getProperties();
+            if (properties.containsKey(full_name.type)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(full_name).getRandomElement(), properties.get(full_name.type));
+            }
+            if (properties.containsKey(birthdate.type)) {
+                HashMap<String, Integer> ages = new Agedater().determineAge(properties.get(birthdate.type).toString());
+                String retrievedAge = "0 days";
+                if (ages.get("years") > 0) {
+                    retrievedAge = ages.get("years") + " years";
+                } else if (ages.get("months") > 0) {
+                    retrievedAge = ages.get("months") + " years";
+                } else {
+                    retrievedAge = ages.get("days") + " days";
+                }
+                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), retrievedAge);
+            } else if (properties.containsKey(age.type)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), properties.get(age.type) + " years!");
+            }
+            if (properties.containsKey(skills.type)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("skills").toString().split(",")));
+                result += " " + String.format(infoValues.getSuccessAnswers(skills).getRandomElement(), retrievedResult.getRandomElement());
+            }
+            if (properties.containsKey(abilities.type)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("abilities").toString().split(",")));
+                result += " " + String.format(infoValues.getSuccessAnswers(abilities).getRandomElement(), retrievedResult.getRandomElement());
+            }
+            if (properties.containsKey(future.type)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("future").toString().split(",")));
+                result += " " + String.format(infoValues.getSuccessAnswers(future).getRandomElement(), retrievedResult.getRandomElement());
+            }
+        }
+
+        if (result.equals("")) {
+            result = "I am Roboy 2.0! ";
+        }
+
+        // Get a random relationship fact
+        Neo4jRelationship predicate = roboyRelatioshipPredicates.getRandomElement();
+        MemoryNodeModel node = getMemNodesByIds(roboy.getRelationships(predicate)).getRandomElement();
+        if (node != null) {
+            String nodeName = "";
+            if (node.getProperties().containsKey("full_name") && !node.getProperties().get("full_name").equals("")) {
+                nodeName = node.getProperties().get("full_name").toString();
+            } else {
+                nodeName = node.getProperties().get("name").toString();
+            }
+            result += " " + String.format(infoValues.getSuccessAnswers(predicate).getRandomElement(), nodeName);
+        }
+
+        return result;
+    }
 
     @Override
     protected Set<String> getRequiredTransitionNames() {

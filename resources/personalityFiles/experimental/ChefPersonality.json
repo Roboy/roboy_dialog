@@ -1,0 +1,39 @@
+{
+  "comment": "An experimental personality for Roboy Chef awesome cooking",
+  "initialState": "Greetings",
+  "states": [
+    {
+      "identifier": "Greeting",
+      "implementation": "roboy.dialog.states.ordinaryStates.PassiveGreetingState",
+      "transitions": {
+        "greetingDetected": "ChefIntro"
+      }
+    },
+    {
+      "identifier": "ChefIntro",
+      "implementation": "roboy.dialog.states.experimental.chefStates.ChefIntroductionState",
+      "transitions": {
+        "retrieveProducts": "RetrieveProducts",
+      }
+    },
+    {
+      "identifier": "RetrieveProduct",
+      "implementation": "roboy.dialog.states.experimental.chefStates.RetrieveProductState",
+      "transitions": {
+        "offerRecipe": "QuestionAnswering"
+      }
+    },
+    {
+      "identifier": "ReciteRecipe",
+      "implementation": "roboy.dialog.states.experimental.chefStates.ReciteRecipeState",
+      "transitions": {
+        "questionAnswering": "Farewell"
+      }
+    },
+    {
+      "identifier": "Farewell",
+      "implementation": "roboy.dialog.states.ordinaryStates.FarewellState",
+      "transitions": {}
+    }
+  ]
+}

@@ -9,7 +9,7 @@ import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jRelationships;
+import roboy.memory.Neo4jRelationship;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.Interlocutor.RelationshipAvailability;
 import roboy.memory.nodes.MemoryNodeModel;
@@ -23,7 +23,7 @@ import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
 import java.util.List;
 import java.util.Set;
 
-import static roboy.memory.Neo4jRelationships.*;
+import static roboy.memory.Neo4jRelationship.*;
 
 /**
  * This state will answer generalStates questions.
@@ -123,7 +123,7 @@ public class QuestionAnsweringState extends State {
         askingSpecifyingQuestion = false;
 
         // check if answer is yes
-        if (((String) input.getFeature(Linguistics.SENTENCE)).contains("yes")) {
+        if (input.getSentence() != null && input.getSentence().contains("yes")) {
             if (answerAfterUnspecifiedQuestion == null) {
                 // parser could parse the question but did't provide an answer
                 return Output.say("Not sure about the answer, " +
@@ -146,28 +146,28 @@ public class QuestionAnsweringState extends State {
         askingSpecifyingQuestion = false;
         questionsAnswered++;
 
-        Linguistics.PARSER_OUTCOME parseOutcome = input.parserOutcome;
+        Linguistics.ParsingOutcome parseOutcome = input.getParsingOutcome();
         if (parseOutcome == null) {
             logger.error("Invalid parser outcome!");
             return Output.say("Invalid parser outcome!");
         }
 
-        if (parseOutcome == Linguistics.PARSER_OUTCOME.UNDERSPECIFIED) {
+        if (parseOutcome == Linguistics.ParsingOutcome.UNDERSPECIFIED) {
 
             // ambiguous question, luckily the parser has prepared a followup question
             // and maybe even an answer if we are lucky (we will check in reactToSpecifyingAnswer later)
 
-            String question = input.underspecifiedQuestion;
-            answerAfterUnspecifiedQuestion = input.answer; // could be null, but that's fine for now
+            String question = input.getUnderspecifiedQuestion();
+            answerAfterUnspecifiedQuestion = input.getAnswer(); // could be null, but that's fine for now
 
             askingSpecifyingQuestion = true; // next input should be a yes/no answer
             return Output.say("Could you be more precise, please? " + question);
         }
 
-        if (parseOutcome == Linguistics.PARSER_OUTCOME.SUCCESS) {
-            if (input.answer != null) {
+        if (parseOutcome == Linguistics.ParsingOutcome.SUCCESS) {
+            if (input.getAnswer() != null) {
                 // tell the answer, that was provided by the parser
-                return Output.say(answerStartingPhrases.getRandomElement() + " " + input.answer);
+                return Output.say(answerStartingPhrases.getRandomElement() + " " + input.getAnswer());
 
             } else {
                 // check for triple
@@ -198,7 +198,7 @@ public class QuestionAnsweringState extends State {
         } else if (Math.random() < 0.5) { // loop back to previous states with probability 0.5
 
             Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
-            Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
+            Neo4jRelationship[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
             RelationshipAvailability availability = person.checkRelationshipAvailability(predicates);
 
             if (availability == SOME_AVAILABLE) {
@@ -212,10 +212,8 @@ public class QuestionAnsweringState extends State {
                     return this;
                 }
             }
-
         } else { // stay in this state
             return this;
-
         }
 
     }
@@ -236,7 +234,7 @@ public class QuestionAnsweringState extends State {
     private Output answerFromMemory(List<Triple> triples) {
 
         // try to use memory to answer
-        Roboy roboy = new Roboy(getParameters().getMemory());
+        Roboy roboy = new Roboy(getMemory());
 
         if (triples.size() == 0) {
             return null;
@@ -251,8 +249,8 @@ public class QuestionAnsweringState extends State {
         for (Triple result : triples) {
 
             if (result.predicate != null) {
-                if (result.predicate.contains(Neo4jRelationships.HAS_HOBBY.type)) {
-                    RandomList<MemoryNodeModel> nodes = getMemNodesByIds(roboy.getRelationships(Neo4jRelationships.HAS_HOBBY));
+                if (result.predicate.contains(Neo4jRelationship.HAS_HOBBY.type)) {
+                    RandomList<MemoryNodeModel> nodes = getMemNodesByIds(roboy.getRelationships(Neo4jRelationship.HAS_HOBBY));
                     if (!nodes.isEmpty()) {
                         for (MemoryNodeModel node : nodes) {
                             answer += node.getProperties().get("name").toString() + " and ";
@@ -260,9 +258,9 @@ public class QuestionAnsweringState extends State {
                     }
                     break;
 
-                } else if (result.predicate.contains(Neo4jRelationships.FRIEND_OF.type)) {
+                } else if (result.predicate.contains(Neo4jRelationship.FRIEND_OF.type)) {
                     answer += "my friends ";
-                    RandomList<MemoryNodeModel> nodes = getMemNodesByIds(roboy.getRelationships(Neo4jRelationships.FRIEND_OF));
+                    RandomList<MemoryNodeModel> nodes = getMemNodesByIds(roboy.getRelationships(Neo4jRelationship.FRIEND_OF));
                     if (!nodes.isEmpty()) {
                         for (MemoryNodeModel node : nodes) {
                             answer += node.getProperties().get("name").toString() + " and ";
@@ -279,7 +277,8 @@ public class QuestionAnsweringState extends State {
     private boolean userWantsGameCheck(Interpretation input){
 
         userWantsGame = false;
-        String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
+
+        List<String> tokens = input.getTokens();
         for (String token:tokens){
             if(token.equals("game")){
                 userWantsGame = true;
@@ -290,7 +289,8 @@ public class QuestionAnsweringState extends State {
     }
 
     private boolean userSaysYes(Interpretation input){
-        return (input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.YES) == 0);
+        //TODO: get intent
+        return true;//(input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.YES) == 0);
     }
 
     @Override
@@ -303,9 +303,9 @@ public class QuestionAnsweringState extends State {
         return true;
     }
 
-    private boolean isIntentsHistoryComplete(Neo4jRelationships[] predicates) {
+    private boolean isIntentsHistoryComplete(Neo4jRelationship[] predicates) {
         boolean isComplete = true;
-        for (Neo4jRelationships predicate : predicates) {
+        for (Neo4jRelationship predicate : predicates) {
             if (!Context.getInstance().DIALOG_INTENTS.contains(new IntentValue(PersonalInformationFollowUpState.INTENTS_HISTORY_ID, predicate))) {
                 isComplete = false;
             }

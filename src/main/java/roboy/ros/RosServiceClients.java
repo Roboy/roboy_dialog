@@ -14,7 +14,7 @@ enum RosServiceClients {
     FACEDETECTION("roboy_vision", "/speech_synthesis/talk", DetectFace._TYPE),
     OBJECTRECOGNITION("roboy_vision", "/speech_synthesis/talk", RecognizeObject._TYPE),
     STT("roboy_speech_recognition", "/roboy/cognition/speech/recognition", RecognizeSpeech._TYPE),
-    EMOTION("roboy_face", "/roboy/control/face/emotion", ShowEmotion._TYPE),
+    EMOTION("roboy_face","/roboy/cognition/face/emotion", ShowEmotion._TYPE),
     CREATEMEMORY("roboy_memory", "/roboy/cognition/memory/create", DataQuery._TYPE),
     UPDATEMEMORY("roboy_memory", "/roboy/cognition/memory/update", DataQuery._TYPE),
     GETMEMORY("roboy_memory", "/roboy/cognition/memory/get", DataQuery._TYPE),

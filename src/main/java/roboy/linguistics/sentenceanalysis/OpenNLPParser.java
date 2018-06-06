@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Semaphore;
 
 import opennlp.tools.cmdline.parser.ParserTool;
 import opennlp.tools.parser.Parse;
@@ -12,7 +13,7 @@ import opennlp.tools.parser.Parser;
 import opennlp.tools.parser.ParserFactory;
 import opennlp.tools.parser.ParserModel;
 import roboy.linguistics.Linguistics;
-import roboy.linguistics.Linguistics.SEMANTIC_ROLE;
+import roboy.linguistics.Linguistics.SemanticRole;
 
 /**
  * Performs a sentence analysis using the Open NLP constituency parser, then interprets the
@@ -46,40 +47,42 @@ public class OpenNLPParser implements Analyzer{
 
 	@Override
 	public Interpretation analyze(Interpretation interpretation) {
-		String sentence = ((String) interpretation.getFeatures().get(Linguistics.SENTENCE)).trim();
-		if(!sentence.endsWith(".")
-				&& !sentence.endsWith("?")
-				&& !sentence.endsWith("!")){
-			sentence = sentence+" .";
+		String sentence = interpretation.getSentence();
+		if (sentence != null) {
+			sentence = sentence.trim();
+			if (!sentence.endsWith(".")
+					&& !sentence.endsWith("?")
+					&& !sentence.endsWith("!")) {
+				sentence = sentence + " .";
+			}
+			if (sentence.length() > 0 && Character.isLowerCase(sentence.charAt(0))) {
+				sentence = Character.toUpperCase(sentence.charAt(0)) + sentence.substring(1, sentence.length());
+			}
+			Parse parse = ParserTool.parseLine(sentence, parser, 1)[0];
+			interpretation = extractPAS(interpretation, parse);
 		}
-		if(sentence.length()>0 && Character.isLowerCase(sentence.charAt(0))){
-			sentence = Character.toUpperCase(sentence.charAt(0))+sentence.substring(1, sentence.length());
-		}
-		Parse parse = ParserTool.parseLine(sentence, parser, 1)[0];
-		interpretation = extractPAS(interpretation,parse);
-//		System.out.println("Done analyzing");
 		return interpretation;
 	}
 	
 	private Interpretation extractPAS(Interpretation interpretation, Parse parse){
 //		System.out.println(parseToString(parse,0));
 //		Map<SEMANTIC_ROLE,Object> result = pas(parse);
-		Map<SEMANTIC_ROLE,Object> parseResult = new HashMap<>();
-		Map<SEMANTIC_ROLE,Object> result = top(parse,parseResult);
+		Map<SemanticRole, String> parseResult = new HashMap<>();
+		Map<SemanticRole, String> result = top(parse, parseResult);
 		
 //		System.out.println(result);
-		interpretation.getFeatures().put(Linguistics.PAS, result);
+		interpretation.setPas(result);
 		return interpretation;
 	}
 	
-	private Map<SEMANTIC_ROLE,Object> top(Parse parse, Map<SEMANTIC_ROLE,Object> result){
+	private Map<SemanticRole, String> top(Parse parse, Map<SemanticRole, String> result){
 		Parse[] children = parse.getChildren();
 		for(Parse child : children){
 			switch(child.getType()){
 				case "SBARQ":
 				case "SBAR":
 				case "S":
-					result = sbar(child,result);
+					result = sbar(child, result);
 					break;
 				default:
 					return new HashMap<>();
@@ -88,7 +91,7 @@ public class OpenNLPParser implements Analyzer{
 		return result;
 	}
 	
-	private Map<SEMANTIC_ROLE,Object> sbar(Parse parse, Map<SEMANTIC_ROLE,Object> result){
+	private Map<SemanticRole, String> sbar(Parse parse, Map<SemanticRole, String> result){
 		Parse[] children = parse.getChildren();
 		boolean passive = false;
 		for(Parse child : children){
@@ -103,49 +106,49 @@ public class OpenNLPParser implements Analyzer{
 					if(Linguistics.beMod.contains(verbMod)) passive = true;
 					break;
 				case "NP":
-					result.put(SEMANTIC_ROLE.AGENT, child.toString());
+					result.put(SemanticRole.AGENT, child.toString());
 					break;
 				case "VP":
 					result = vp(child,result);
 					break;
 				case "WHNP":
-					result.put(SEMANTIC_ROLE.AGENT, child.toString());
+					result.put(SemanticRole.AGENT, child.toString());
 					break;
 				case "WHADVP":
 				case "WHADJP":
 					String questionTerm = child.toString().toLowerCase(); 
-					if(questionTerm.startsWith("how")) result.put(SEMANTIC_ROLE.MANNER, child.toString());
-					if(questionTerm.startsWith("when")) result.put(SEMANTIC_ROLE.TIME, child.toString());
-					if(questionTerm.startsWith("where")) result.put(SEMANTIC_ROLE.LOCATION, child.toString());
+					if(questionTerm.startsWith("how")) result.put(SemanticRole.MANNER, child.toString());
+					if(questionTerm.startsWith("when")) result.put(SemanticRole.TIME, child.toString());
+					if(questionTerm.startsWith("where")) result.put(SemanticRole.LOCATION, child.toString());
 					break;
 			}
 		}
 		if(passive){
-			Object agent = result.get(SEMANTIC_ROLE.AGENT);
-			Object patient = result.get(SEMANTIC_ROLE.PATIENT);
-			if(result.containsKey(SEMANTIC_ROLE.AGENT)) result.remove(SEMANTIC_ROLE.AGENT);
-			if(result.containsKey(SEMANTIC_ROLE.PATIENT)) result.remove(SEMANTIC_ROLE.PATIENT);
-			if(agent!=null) result.put(SEMANTIC_ROLE.PATIENT, agent);
-			if(patient!=null) result.put(SEMANTIC_ROLE.AGENT, patient);
+			String agent = result.get(SemanticRole.AGENT);
+			String patient = result.get(SemanticRole.PATIENT);
+			if(result.containsKey(SemanticRole.AGENT)) result.remove(SemanticRole.AGENT);
+			if(result.containsKey(SemanticRole.PATIENT)) result.remove(SemanticRole.PATIENT);
+			if(agent!=null) result.put(SemanticRole.PATIENT, agent);
+			if(patient!=null) result.put(SemanticRole.AGENT, patient);
 		}
 		return result;
 	}
 	
-	private Map<SEMANTIC_ROLE,Object> vp(Parse parse, Map<SEMANTIC_ROLE,Object> result){
+	private Map<SemanticRole, String> vp(Parse parse, Map<SemanticRole, String> result){
 		Parse[] children = parse.getChildren();
 		for(Parse child : children){
 			switch(child.getType()){
 				case "NP":
-					result.put(SEMANTIC_ROLE.PATIENT, child.toString());
+					result.put(SemanticRole.PATIENT, child.toString());
 					break;
 				case "PP":
-					result.put(SEMANTIC_ROLE.LOCATION, child.toString()); //TODO: check for proper modifiers
+					result.put(SemanticRole.LOCATION, child.toString()); //TODO: check for proper modifiers
 					break;
 				case "VP":
 					result = vp(child,result);
 					break;
 				default:
-					result.put(SEMANTIC_ROLE.PREDICATE, child.toString());
+					result.put(SemanticRole.PREDICATE, child.toString());
 					break;
 			}
 		}

@@ -5,6 +5,8 @@ import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 
+import java.util.List;
+
 public class ChooseGameState extends State {
 
     private final static String TRANSITION_CHOSE_SNAPCHAT = "choseSnapchat";
@@ -47,8 +49,7 @@ public class ChooseGameState extends State {
 
     private String getGame(Interpretation input){
 
-        String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
-
+        List<String> tokens = input.getTokens();
         for(String token : tokens) {
 
             if (token.equals("20questions")) {

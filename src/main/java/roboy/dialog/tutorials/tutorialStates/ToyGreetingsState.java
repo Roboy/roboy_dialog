@@ -51,21 +51,21 @@ public class ToyGreetingsState extends State {
     public Output react(Interpretation input) {
         // react to input
 
-        String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
-        boolean inputOK = StatementInterpreter.isFromList(sentence, Verbalizer.greetings);
+        String sentence = input.getSentence();
 
-        if (inputOK) {
-            next = getTransition("next");
-            return Output.say( "I like it when you greet me! [greeting detected, next state]" );
+        if (sentence != null) {
+            boolean inputOK = StatementInterpreter.isFromList(sentence, Verbalizer.greetings);
 
-        } else {
-            // the case where we don't get a greeting back
-            // set another state as the next one
-            next = getTransition("noHello");
-
-            // don't think about the reply here, let the fallback state handle it
-            return Output.useFallback(); // -> fallback state will be used
+            if (inputOK) {
+                next = getTransition("next");
+                return Output.say("I like it when you greet me! [greeting detected, next state]");
+            }
         }
+        // the case where we don't get a greeting back
+        // set another state as the next one
+        next = getTransition("noHello");
+        // don't think about the reply here, let the fallback state handle it
+        return Output.useFallback(); // -> fallback state will be used
     }
 
 

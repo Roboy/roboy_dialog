@@ -43,7 +43,7 @@ public class WildTalkState extends State {
     @Override
     public Output react(Interpretation input) {
 
-        String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
+        String sentence = input.getSentence();
         RosMainNode rmn = getRosMainNode();
         if (rmn == null) {
             return Output.say(rosFailurePhrases.getRandomElement())

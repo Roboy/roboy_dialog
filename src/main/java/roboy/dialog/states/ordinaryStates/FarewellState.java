@@ -30,7 +30,7 @@ public class FarewellState extends State {
 
     private static RandomList<String> conversationEndings = new RandomList<>(
             "What a nice conversation! I have to think about everything we" +
-                    " were talking about. Let's talk again tomorrow.",
+                    " were talking about. Let's talk again next time.",
             "I feel tired now, maybe my battery is low? Let's talk again later.",
             "Don't you think that the dialog team is amazing? They are happy to " +
                     "tell you more about my system. Just ask one of them!");
@@ -47,7 +47,7 @@ public class FarewellState extends State {
     @Override
     public Output react(Interpretation input) {
 
-        String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
+        String sentence = input.getSentence();
         if (StatementInterpreter.isFromList(sentence, Verbalizer.farewells)) {
             next = null;
         } else {

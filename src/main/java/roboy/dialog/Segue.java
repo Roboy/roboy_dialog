@@ -30,7 +30,7 @@ public class Segue {
         CONNECTING_PHRASE {
             @Override
             public RandomList<String> getPossibleSegues() {
-                return PhraseCollection.SEGUE_CONNECTING_PHRASES;
+                return PhraseCollection.CONNECTING_PHRASES;
             }
         },
         JOBS {

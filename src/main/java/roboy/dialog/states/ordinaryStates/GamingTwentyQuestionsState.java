@@ -102,7 +102,7 @@ public class GamingTwentyQuestionsState extends State {
 	private String getIntent(Interpretation input) {
 
 
-		String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
+		List<String	> tokens = input.getTokens();
 
 
 

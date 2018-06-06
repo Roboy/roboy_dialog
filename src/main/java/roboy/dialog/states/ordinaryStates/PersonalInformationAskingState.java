@@ -9,7 +9,7 @@ import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jRelationships;
+import roboy.memory.Neo4jRelationship;
 import roboy.memory.nodes.Interlocutor;
 import roboy.dialog.Segue;
 import roboy.util.QAJsonParser;
@@ -18,7 +18,7 @@ import roboy.util.RandomList;
 import java.util.List;
 import java.util.Set;
 
-import static roboy.memory.Neo4jRelationships.*;
+import static roboy.memory.Neo4jRelationship.*;
 
 /**
  * Personal Information Asking State
@@ -28,7 +28,7 @@ import static roboy.memory.Neo4jRelationships.*;
  * Afterwards, Roboy can use this acquired data for the future interactions with the same person.
  *
  * - if there is no existing Interlocutor or the data is missing, ask a question
- * - the question topic (intent) is selected from the Neo4jRelationships predicates
+ * - the question topic (intent) is selected from the Neo4jRelationship predicates
  * - retrieve the questions stored in the QAList json file
  * - update the Context IntentsHistory
  * - try to extract the result from the Interpretation
@@ -43,8 +43,8 @@ import static roboy.memory.Neo4jRelationships.*;
  */
 public class PersonalInformationAskingState extends State {
     private QAJsonParser qaValues;
-    private Neo4jRelationships[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
-    private Neo4jRelationships selectedPredicate;
+    private Neo4jRelationship[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
+    private Neo4jRelationship selectedPredicate;
     private State nextState;
 
     private final String TRANSITION_INFO_OBTAINED = "questionAnswering";
@@ -65,7 +65,7 @@ public class PersonalInformationAskingState extends State {
         Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
         LOGGER.info(" -> Retrieved Interlocutor: " + person.getName());
 
-        for (Neo4jRelationships predicate : predicates) {
+        for (Neo4jRelationship predicate : predicates) {
             if (!person.hasRelationship(predicate)) {
                 selectedPredicate = predicate;
                 LOGGER.info(" -> Selected predicate: " + selectedPredicate.type);
@@ -139,35 +139,35 @@ public class PersonalInformationAskingState extends State {
     private String InferResult(Interpretation input) {
         String result = null;
         // TODO: What is the condition?
-        if (input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.STATEMENT) == 0) {
-            String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
-            if (tokens.length == 1) {
-                result = tokens[0].replace("[", "").replace("]","").toLowerCase();
-                LOGGER.info(" -> Retrieved only one token: " + result);
+        if (input.getSentenceType().compareTo(Linguistics.SentenceType.STATEMENT) == 0) {
+            List<String> tokens = input.getTokens();
+            if (tokens.size() == 1) {
+                result = tokens.get(0).toLowerCase();
+                LOGGER.info("Retrieved only one token: " + result);
             } else {
-                if (input.getFeatures().get(Linguistics.PARSER_RESULT).toString().equals("SUCCESS") &&
-                        ((List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE)).size() != 0) {
-                    List<Triple> sem_triple = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
-                    LOGGER.info(" -> Semantic parsing is successful and semantic triple exists");
+                if (input.getParsingOutcome() == Linguistics.ParsingOutcome.SUCCESS &&
+                        input.getSemTriples().size() > 0) {
+                    List<Triple> sem_triple = input.getSemTriples();
+                    LOGGER.info("Semantic parsing is successful and semantic triple exists");
                     if (sem_triple.get(0).predicate.contains(selectedPredicate.type)) {
                         LOGGER.info(" -> Semantic predicate " + selectedPredicate.type + " exits");
                         result = sem_triple.get(0).object.toLowerCase();
-                        LOGGER.info(" -> Retrieved object " + result);
+                        LOGGER.info("Retrieved object " + result);
                     } else {
-                        LOGGER.warn(" -> Semantic predicate " + selectedPredicate.type + " does not exit");
+                        LOGGER.warn("Semantic predicate " + selectedPredicate.type + " does not exit");
                     }
                 } else {
-                    LOGGER.warn(" -> Semantic parsing failed or semantic triple does not exist");
-                    if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
-                        LOGGER.info(" -> OBJ_ANSWER exits");
-                        result = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
+                    LOGGER.warn("Semantic parsing failed or semantic triple does not exist");
+                    if (input.getObjAnswer() != null) {
+                        LOGGER.info("OBJ_ANSWER exits");
+                        result = input.getObjAnswer().toLowerCase();
                         if (!result.equals("")) {
-                            LOGGER.info(" -> Retrieved OBJ_ANSWER result " + result);
+                            LOGGER.info("Retrieved OBJ_ANSWER result " + result);
                         } else {
-                            LOGGER.warn(" -> OBJ_ANSWER result is empty");
+                            LOGGER.warn("OBJ_ANSWER result is empty");
                         }
                     } else {
-                        LOGGER.warn(" -> OBJ_ANSWER does not exit");
+                        LOGGER.warn("OBJ_ANSWER does not exit");
                     }
                 }
             }

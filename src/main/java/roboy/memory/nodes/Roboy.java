@@ -2,24 +2,36 @@ package roboy.memory.nodes;
 
 import com.google.gson.Gson;
 import roboy.memory.Neo4jMemoryInterface;
-import roboy.memory.Neo4jRelationships;
+import roboy.memory.Neo4jRelationship;
+import roboy.util.RandomList;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static roboy.memory.Neo4jRelationship.*;
 
 /**
  * Encapsulates a MemoryNodeModel and enables dialog states to easily store
  * and retrieve information about Roboy.
  */
 public class Roboy extends MemoryNodeModel{
+    public final static RandomList<Neo4jRelationship> VALID_NEO4J_RELATIONSHIPS = new RandomList<>(MEMBER_OF, HAS_HOBBY, FRIEND_OF, FROM, LIVE_IN, CHILD_OF, SIBLING_OF);
 
     /**
      * Initializer for the Roboy node
      */
+    public Roboy(Neo4jMemoryInterface memory, String name) {
+        super(true, memory);
+        this.InitializeRoboy(name);
+    }
+
+    /**
+     * Default initializer for the Roboy node
+     */
     public Roboy(Neo4jMemoryInterface memory) {
         super(true, memory);
-        this.InitializeRoboy();
+        this.InitializeRoboy("roboy two");
     }
 
     /**
@@ -30,8 +42,8 @@ public class Roboy extends MemoryNodeModel{
      * and soulless, and has to fallback
      */
     // TODO consider a fallback for the amnesia mode
-    private void InitializeRoboy() {
-        setProperty("name", "roboy");
+    private void InitializeRoboy(String name) {
+        setProperty("name", name);
         setLabel("Robot");
 
         //
@@ -42,13 +54,22 @@ public class Roboy extends MemoryNodeModel{
                 logger.error("Cannot retrieve or find Roboy in the Memory. Go the amnesia mode");
                 logger.error(e.getMessage());
             }
-            // Pick first if matches found.
+            // Pick the first if matches found.
             if (ids != null && !ids.isEmpty()) {
                 try {
-                    MemoryNodeModel node = fromJSON(memory.getById(ids.get(0)), new Gson());
-                    setId(node.getId());
-                    setRelationships(node.getRelationships() != null ? node.getRelationships() : new HashMap<>());
-                    setProperties(node.getProperties() != null ? node.getProperties() : new HashMap<>());
+                    for (Integer id : ids) {
+                        MemoryNodeModel node = fromJSON(memory.getById(id), new Gson());
+                        if (node.getProperties() != null &&
+                                !node.getProperties().isEmpty() &&
+                                node.getProperties().containsKey("name") &&
+                                node.getProperties().get("name").equals(name)) {
+                            setId(node.getId());
+                            setRelationships(node.getRelationships() != null ? node.getRelationships() : new HashMap<>());
+                            setProperties(node.getProperties() != null ? node.getProperties() : new HashMap<>());
+                            break;
+                        }
+                    }
+
                 } catch (InterruptedException | IOException e) {
                     logger.error("Unexpected memory error: provided ID not found upon querying. Go the amnesia mode");
                     logger.error(e.getMessage());
@@ -70,7 +91,7 @@ public class Roboy extends MemoryNodeModel{
      * @return ArrayList<Integer> ids - list containing integer IDs of the nodes
      * related to the Roboy by specific relationship type as in the Memory
      */
-    public ArrayList<Integer> getRelationships(Neo4jRelationships type) {
+    public ArrayList<Integer> getRelationships(Neo4jRelationship type) {
         return getRelationship(type.type);
     }
 
@@ -84,7 +105,7 @@ public class Roboy extends MemoryNodeModel{
         MemoryNodeModel relatedNode = new MemoryNodeModel(true,memory);
         relatedNode.setProperty("name", name);
         //This adds a label type to the memory query depending on the relation.
-        relatedNode.setLabel(Neo4jRelationships.determineNodeType(relationship));
+        relatedNode.setLabel(Neo4jRelationship.determineNodeType(relationship));
         try {
             ids = memory.getByQuery(relatedNode);
         } catch (InterruptedException | IOException e) {

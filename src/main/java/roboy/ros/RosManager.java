@@ -39,6 +39,7 @@ class RosManager {
                     LOGGER.info("{} client initialization SUCCESS!", client.toString());
                 } catch (Exception e) {
                     success = false;
+                    LOGGER.warn(e.getMessage());
                     LOGGER.warn("{} client initialization FAILED!", client.toString());
                 }
             }

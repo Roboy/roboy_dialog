@@ -3,6 +3,8 @@ package roboy.dialog.tutorials;
 import roboy.dialog.DialogStateMachine;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.dialog.tutorials.tutorialStates.*;
+import roboy.logic.Inference;
+import roboy.logic.InferenceEngine;
 
 import java.io.File;
 
@@ -51,9 +53,10 @@ public class StateMachineExamples {
 
     private static DialogStateMachine fromCode() {
 
-
+        // 0. Create an InferenceEngine
+        InferenceEngine inference = new Inference();
         // 1. create the dialog machine
-        DialogStateMachine stateMachine = new DialogStateMachine();
+        DialogStateMachine stateMachine = new DialogStateMachine(inference);
 
         // 2. create states
 
@@ -90,13 +93,15 @@ public class StateMachineExamples {
     }
 
     private static DialogStateMachine fromFile() throws Exception {
-        DialogStateMachine stateMachine = new DialogStateMachine();
+        InferenceEngine inference = new Inference();
+        DialogStateMachine stateMachine = new DialogStateMachine(inference);
         stateMachine.loadFromFile(new File("resources/personalityFiles/tutorial/ToyStateMachine.json"));
         return stateMachine;
     }
 
     private static DialogStateMachine fromString() {
-        DialogStateMachine stateMachine = new DialogStateMachine();
+        InferenceEngine inference = new Inference();
+        DialogStateMachine stateMachine = new DialogStateMachine(inference);
         stateMachine.loadFromString(toyPersonality);
         return stateMachine;
     }

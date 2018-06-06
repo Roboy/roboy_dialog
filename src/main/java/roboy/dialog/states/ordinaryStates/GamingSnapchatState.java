@@ -10,6 +10,7 @@ import roboy.talk.PhraseCollection;
 import roboy.ros.RosMainNode;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GamingSnapchatState extends State {
 
@@ -56,7 +57,7 @@ public class GamingSnapchatState extends State {
     private String getFilterFromInput(Interpretation input){
 
         String filter = null;
-        String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
+        List<String> tokens = input.getTokens();
         for (String token : tokens){
             token = " " + token + " ";
             if(possibleFilters.contains(token)){
@@ -69,9 +70,11 @@ public class GamingSnapchatState extends State {
     }
 
     private boolean checkUserSaidStop(Interpretation input){
-        if(input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.STOP) == 0){
-            stopGame = true;
-        }
+        //TODO: get intent stop
+        stopGame = false;
+        //if(input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.STOP) == 0){
+          //  stopGame = true;
+        //}
         return stopGame;
     }
 }
