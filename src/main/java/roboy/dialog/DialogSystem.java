@@ -36,11 +36,10 @@ import static roboy.util.ConfigManager.*;
  */
 public class DialogSystem {
     private final static Logger logger = LogManager.getLogger();
-
     public static void main(String[] args) throws IOException {
 
-        //IF you need to start the memory module for some reason, enable this via Config
-        // (Dialog does not need Roboy_Memory running to function anymore)
+        //TODO: Basically we do not need to start memory at all for Dialog. This is only here if we need to for legacy compatibility.
+        //If for some silly reason, memory is required to be active. One can enable this via Config, however there is no reason to do so.
         if(START_MEMORY_MODULE) {
             try {
                 logger.info("Starting Roboy_Memory");
@@ -50,6 +49,8 @@ public class DialogSystem {
                 e.printStackTrace();
             }
         }
+        //End Bit that the Todo can Remove
+
         // initialize ROS node
 
         RosMainNode rosMainNode;

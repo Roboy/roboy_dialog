@@ -38,12 +38,14 @@ class RosManager {
             LOGGER.warn("Memory Clients will NOT be initialised");
         }
         for(RosServiceClients client : RosServiceClients.values()) {
+            //TODO: Remove these functions once we are sure that we do not need these Service Clients. Specifically: Remove the isAMemoryModule clients from ROS_ACTIVE_PKGS
             if(!INIT_MEMORY_CLIENTS){
                 //If client is a ROS Service Client of Memory that we no longer need --> Skip
                 if(isAMemoryModule(client.toString())){
                     continue;
                 }
             }
+            //END REMOVAL FROM TODO
             if (ConfigManager.ROS_ACTIVE_PKGS.contains(client.rosPackage)) {
                 try {
                     serviceMap.put(client, node.newServiceClient(client.address, client.type));
