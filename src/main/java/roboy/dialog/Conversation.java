@@ -24,7 +24,7 @@ import java.util.List;
  */
 public class Conversation extends Thread {//TODO: make super threadsafe
 
-    private final Logger logger = LogManager.getLogger("Conversation" + this.getId());//TODO: change to "[world_interface] conversation: [interlocutor uuid]"
+    private final Logger logger = LogManager.getLogger("Conversation" + this.getId());
 
     private final MultiInputDevice multiIn;
     private final MultiOutputDevice multiOut;
@@ -44,7 +44,7 @@ public class Conversation extends Thread {//TODO: make super threadsafe
      * @param analyzers All analyzers necessary for analyzing the inputs from multiIn. Please provide these in correct order.
      */
     public Conversation( StateBasedPersonality personality, File personalityFile, MultiInputDevice multiIn, MultiOutputDevice multiOut, List<Analyzer> analyzers){
-        super("roboy-conversation");//TODO: adapt thread name too
+        super("roboy-conversation");//TODO: make more explicit? (uuid, etc.)
         this.multiIn = multiIn;
         this.multiOut = multiOut;
         this.analyzers = analyzers;
@@ -133,11 +133,17 @@ public class Conversation extends Thread {//TODO: make super threadsafe
         //not setting isRunning() = false, so the thread may easily be restarted
     }
 
-    /**Resets this conversation so this thread may be reused.
+    /**
+     * Requires the conversation to be stopped.
+     * Resets this conversation so this thread may be reused.
      *
      * @param person The interlocutor for this conversation to talk to after the reset.
      */
     void resetConversation(Interlocutor person){
+        if(isRunning){
+            logger.error("Trying to reset a running conversation is not a good idea. Will not comply...");
+            return;
+        }
         logger.info("############# Reset State Machine ############");
         // now reset --> conversationEnded() will now return false --> new conversation possible
         personality.reset();

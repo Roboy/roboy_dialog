@@ -142,7 +142,13 @@ public class ConversationManager {
      * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
      */
     public static void pauseConversation(String uuid){
-        conversations.get(uuid).pauseExecution();
+        Conversation c = conversations.get(uuid);
+        if (c != null) {
+            c.pauseExecution();
+        }
+        else{
+            logger.error("Conversation to be paused does not exist...");
+        }
     }
 
     /**
@@ -150,7 +156,13 @@ public class ConversationManager {
      * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
      */
     public static void stopConversation(String uuid){
-        conversations.get(uuid).endConversation();
+        Conversation c = conversations.get(uuid);
+        if (c != null) {
+            c.endConversation();
+        }
+        else{
+            logger.error("Conversation to be stopped does not exist...");
+        }
     }
 
     /**
@@ -159,7 +171,13 @@ public class ConversationManager {
      * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
      */
     public static void startConversation(String uuid){
-        conversations.get(uuid).start();
+        Conversation c = conversations.get(uuid);
+        if (c != null) {
+            c.start();
+        }
+        else{
+            logger.error("Conversation to be started does not exist...");
+        }
     }
 
 
