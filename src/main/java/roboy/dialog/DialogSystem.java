@@ -4,7 +4,6 @@ package roboy.dialog;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
-import roboy.context.ContextGUI;
 import roboy.dialog.action.Action;
 import roboy.dialog.personality.StateBasedPersonality;
 import roboy.io.*;
@@ -12,23 +11,19 @@ import roboy.linguistics.sentenceanalysis.*;
 import roboy.logic.Inference;
 import roboy.logic.InferenceEngine;
 import roboy.memory.Neo4jMemory;
-import roboy.memory.DummyMemory;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
 import roboy.util.ConfigManager;
 import roboy.util.IO;
-import sun.security.krb5.Config;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static roboy.util.ConfigManager.*;
 
 /**
  * Temporary class to test new state based personality.
@@ -37,19 +32,6 @@ import static roboy.util.ConfigManager.*;
 public class DialogSystem {
     private final static Logger logger = LogManager.getLogger();
     public static void main(String[] args) throws IOException {
-
-        //TODO: Basically we do not need to start memory at all for Dialog. This is only here if we need to for legacy compatibility.
-        //If for some silly reason, memory is required to be active. One can enable this via Config, however there is no reason to do so.
-        if(START_MEMORY_MODULE) {
-            try {
-                logger.info("Starting Roboy_Memory");
-                //Calls main method of Roboy_Memory
-                org.roboy.memory.Main.main(new String[]{});
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
-            }
-        }
-        //End Bit that the Todo can Remove
 
         // initialize ROS node
 
@@ -65,14 +47,9 @@ public class DialogSystem {
         MultiInputDevice multiIn = IO.getInputs(rosMainNode);
         MultiOutputDevice multiOut = IO.getOutputs(rosMainNode);
 
-        // TODO deal with memory
-        Neo4jMemoryInterface memory;
-        if (ConfigManager.ROS_ENABLED && ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_memory")) {
-            memory = new Neo4jMemory(rosMainNode);
-        }
-        else {
-            memory = new DummyMemory();
-        }
+
+        Neo4jMemoryInterface memory
+                = new Neo4jMemory(rosMainNode);
 
         logger.info("Initializing analyzers...");
 
