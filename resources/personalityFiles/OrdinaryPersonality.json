@@ -60,6 +60,7 @@
       "transitions": {
         "gameEnded" : "QuestionAnswering"
       }
+
     },
     {
       "identifier": "ChooseGameState",

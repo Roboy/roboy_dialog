@@ -8,7 +8,9 @@ import com.markozajc.akiwrapper.core.entities.Guess;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
+import roboy.linguistics.sentenceanalysis.IntentAnalyzer;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.ros.RosMainNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,9 @@ public class GamingTwentyQuestionsState extends State {
 	private boolean guessesAvailable = false;
 	private boolean gameFinished = false;
 	private int numberGuesses = 0;
+
+	private boolean filterApplied = false;
+	private String winner = "roboy";
 
 	public GamingTwentyQuestionsState(String stateIdentifier, StateParameters params) {
 		super(stateIdentifier, params);
@@ -85,7 +90,7 @@ public class GamingTwentyQuestionsState extends State {
 	public State getNextState() {
 
 		if(gameFinished){
-
+			applyFilter(winner);
 			resetGame();
 			return getTransition(TRANSITION_GAME_ENDED);
 
@@ -98,6 +103,10 @@ public class GamingTwentyQuestionsState extends State {
 
 
 		String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
+
+
+
+
 
 		String intent = null;
 
@@ -204,6 +213,7 @@ public class GamingTwentyQuestionsState extends State {
 
 		if(roboyAnswer.isEmpty()){
 			gameFinished = true;
+			winner = "interlocutor";
 			roboyAnswer = "Congratulations, you defeated me. I have no more guesses.";
 		}
 
@@ -211,8 +221,6 @@ public class GamingTwentyQuestionsState extends State {
 	}
 
 	private Output processUserGuessAnswer(String intent){
-
-		//System.out.println("--> processUserGuessAnswer");
 
 		if (intent.equals("yes")){
 			gameFinished = true;
@@ -231,11 +239,10 @@ public class GamingTwentyQuestionsState extends State {
 		guessesAvailable = false;
 		gameFinished = false;
 		numberGuesses = 0;
+		winner = "roboy";
 	}
 
 	private boolean isUserReady(String intent){
-
-		//System.out.println("--> isUserReady");
 
 		if(intent.equals("ready")) {
 			userReady = true;
@@ -243,4 +250,14 @@ public class GamingTwentyQuestionsState extends State {
 
 		return userReady;
 	}
+
+	private void applyFilter(String winner){
+		RosMainNode rmn = getRosMainNode();
+		if(winner.equals("roboy")){
+			filterApplied = rmn.ApplyFilter("flies");
+		} else {
+			filterApplied = rmn.ApplyFilter("crown");
+		}
+	}
+
 }
