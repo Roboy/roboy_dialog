@@ -39,7 +39,8 @@ class RosManager {
         }
         for(RosServiceClients client : RosServiceClients.values()) {
             if(!INIT_MEMORY_CLIENTS){
-                if(isMemoryModuleTest(client.toString())){
+                //If client is a ROS Service Client of Memory that we no longer need --> Skip
+                if(isAMemoryModule(client.toString())){
                     continue;
                 }
             }
@@ -70,7 +71,9 @@ class RosManager {
         return success;
     }
 
-    private boolean isMemoryModuleTest(String client){
+    //Checks whether the client is one of the memory modules, that no longer needs to be init
+    //(basically skip init of these services if we don't need memory active, they fail otherwise)
+    private boolean isAMemoryModule(String client){
         return "CREATEMEMORY".equals(client) || "UPDATEMEMORY".equals(client) || "GETMEMORY".equals(client) || "DELETEMEMORY".equals(client) || "CYPHERMEMORY".equals(client) ;
     }
 

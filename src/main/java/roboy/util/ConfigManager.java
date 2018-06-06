@@ -111,9 +111,10 @@ public class ConfigManager {
 
             ACTION_CLIENT_SCRIPT = yamlConfig.getString("ACTION_CLIENT_SCRIPT");
 
-            START_MEMORY_MODULE = yamlConfig.getString("START_MEMORY_MODULE").equals("true");
-            INIT_MEMORY_CLIENTS = yamlConfig.getString("INIT_MEMORY_CLIENTS").equals("true");
-        } catch(ConfigurationException | FileNotFoundException e) {
+            START_MEMORY_MODULE = yamlConfig.getBoolean("START_MEMORY_MODULE");
+            INIT_MEMORY_CLIENTS = yamlConfig.getBoolean("INIT_MEMORY_CLIENTS");
+        }
+        catch(ConfigurationException | FileNotFoundException e) {
             LOGGER.error("Exception while reading YAML configurations from "+yamlConfigFile);
             LOGGER.error(e.getMessage());
         }
