@@ -165,7 +165,6 @@
             <groupId>org.roboy.memory</groupId>
             <artifactId>roboy_memory</artifactId>
             <version>1.0.0</version>
-            <type>pom</type>
         </dependency>
 
         <dependency>
