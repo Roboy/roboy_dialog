@@ -136,13 +136,32 @@ public class ConversationManager {
         conversation.start();
     }
 
+
+    /**
+     * Pauses conversation so it may be resumed via startConversation.
+     * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
+     */
+    public static void pauseConversation(String uuid){
+        conversations.get(uuid).pauseExecution();
+    }
+
     /**
      * Stops conversation thread for uuid.
      * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
      */
     public static void stopConversation(String uuid){
-        conversations.get(uuid).endExecution();
+        conversations.get(uuid).endConversation();
     }
+
+    /**
+     * Starts a conversation that is not running.
+     * NOT NECESSARY AFTER SPAWNCONVERSATION
+     * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
+     */
+    public static void startConversation(String uuid){
+        conversations.get(uuid).start();
+    }
+
 
     /**
      * returns the threadID of the conversation with interlocutor uuid

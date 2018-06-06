@@ -32,6 +32,8 @@ public class Conversation extends Thread {//TODO: make super threadsafe
     private final File personalityFile;
     private final StateBasedPersonality personality;
     private volatile boolean isRunning = true;
+    private volatile boolean paused = false;
+    private List<Action> actions;
 
     /**
      *
@@ -57,9 +59,24 @@ public class Conversation extends Thread {//TODO: make super threadsafe
     }
 
 
-    public void endExecution(){//todo: what to do when thread is blocked
+    /**
+     * Pauses Thread execution without ending the conversation
+     */
+    void pauseExecution(){
         isRunning = false;
+        paused = false;
         this.interrupt();
+        logger.info("############# Conversation paused ############");
+    }
+
+    /**
+     * Ends conversation and resets state to initial. Does not reset gathered information.
+     */
+    void endConversation(){//Ends conversation including
+        isRunning = false;
+        personality.reset();
+        this.interrupt();
+        logger.info("############# Conversation forcibly ended ############");
     }
 
 
@@ -67,8 +84,14 @@ public class Conversation extends Thread {//TODO: make super threadsafe
     public void run(){
 
         //start conversation
-        List<Action> actions = personality.startConversation();
-        logger.info("############# Conversation started ############");
+        if(paused){//if this is a restart
+            paused = false;
+            logger.info("############# Conversation restarted ############");
+        }
+        else {//if this is an initial start
+            actions = personality.startConversation();
+            logger.info("############# Conversation started ############");
+        }
 
         while (isRunning) {
             // do all actions defined in startConversation() or answer()
