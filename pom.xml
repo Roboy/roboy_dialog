@@ -12,7 +12,7 @@
 
     <modules>
         <module>roboy_parser</module>
-        <!-- <module>roboy_memory</module> -->
+        <module>roboy_memory</module>
     </modules>
 
     <build>
@@ -164,6 +164,12 @@
     </repositories>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.roboy.memory</groupId>
+            <artifactId>roboy_memory</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.opennlp</groupId>

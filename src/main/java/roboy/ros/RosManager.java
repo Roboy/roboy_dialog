@@ -9,6 +9,8 @@ import roboy.util.ConfigManager;
 
 import java.util.HashMap;
 
+
+
 /**
  * Stores all the Ros Service Clients and manages access to them.
  *
@@ -17,9 +19,9 @@ import java.util.HashMap;
  */
 
 class RosManager {
+
     private HashMap<RosServiceClients, ServiceClient> serviceMap;
     private HashMap<RosSubscribers, Subscriber> subscriberMap;
-
     final Logger LOGGER = LogManager.getLogger();
 
     /**
@@ -29,10 +31,11 @@ class RosManager {
         serviceMap = new HashMap<>();
         subscriberMap = new HashMap<>();
         boolean success = true;
-        // Iterate through the RosServiceClients enum, mapping a client for each.
-        for(RosServiceClients client : RosServiceClients.values()) {
-            
 
+        for(RosServiceClients client : RosServiceClients.values()) {
+            //TODO: Remove these functions once we are sure that we do not need these Service Clients. Specifically: Remove the isAMemoryModule clients from ROS_ACTIVE_PKGS
+
+            //END REMOVAL FROM TODO
             if (ConfigManager.ROS_ACTIVE_PKGS.contains(client.rosPackage)) {
                 try {
                     serviceMap.put(client, node.newServiceClient(client.address, client.type));
@@ -43,24 +46,27 @@ class RosManager {
                     LOGGER.warn("{} client initialization FAILED!", client.toString());
                 }
             }
-
-
         }
 
         for(RosSubscribers subscriber : RosSubscribers.values()) {
-
             if (ConfigManager.ROS_ACTIVE_PKGS.contains(subscriber.rosPackage)) {
                 try {
                     subscriberMap.put(subscriber, node.newSubscriber(subscriber.address, subscriber.type));
                     LOGGER.info("{} subscriber initialization SUCCESS!", subscriber.toString());
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     success = false;
                     LOGGER.warn("{} subscriber initialization FAILED!", subscriber.toString());
                 }
             }
         }
-
         return success;
+    }
+
+    //Checks whether the client is one of the memory modules, that no longer needs to be init
+    //(basically skip init of these services if we don't need memory active, they fail otherwise)
+    private boolean isAMemoryModule(String client){
+        return "CREATEMEMORY".equals(client) || "UPDATEMEMORY".equals(client) || "GETMEMORY".equals(client) || "DELETEMEMORY".equals(client) || "CYPHERMEMORY".equals(client) ;
     }
 
     /**

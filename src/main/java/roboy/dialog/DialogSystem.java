@@ -4,7 +4,6 @@ package roboy.dialog;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
-import roboy.context.ContextGUI;
 import roboy.dialog.action.Action;
 import roboy.dialog.personality.StateBasedPersonality;
 import roboy.io.*;
@@ -12,14 +11,12 @@ import roboy.linguistics.sentenceanalysis.*;
 import roboy.logic.Inference;
 import roboy.logic.InferenceEngine;
 import roboy.memory.Neo4jMemory;
-import roboy.memory.DummyMemory;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
 import roboy.util.ConfigManager;
 import roboy.util.IO;
-import sun.security.krb5.Config;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,15 +24,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * Temporary class to test new state based personality.
  * Will be be extended and might replace the old DialogSystem in the future.
  */
 public class DialogSystem {
-
     private final static Logger logger = LogManager.getLogger();
-
     public static void main(String[] args) throws IOException {
+
         // initialize ROS node
 
         RosMainNode rosMainNode;
@@ -50,14 +47,9 @@ public class DialogSystem {
         MultiInputDevice multiIn = IO.getInputs(rosMainNode);
         MultiOutputDevice multiOut = IO.getOutputs(rosMainNode);
 
-        // TODO deal with memory
-        Neo4jMemoryInterface memory;
-        if (ConfigManager.ROS_ENABLED && ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_memory")) {
-            memory = new Neo4jMemory(rosMainNode);
-        }
-        else {
-            memory = new DummyMemory();
-        }
+
+        Neo4jMemoryInterface memory
+                = new Neo4jMemory(rosMainNode);
 
         logger.info("Initializing analyzers...");
 
