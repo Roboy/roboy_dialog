@@ -4,9 +4,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
 import roboy.dialog.action.Action;
-import roboy.dialog.action.FaceAction;
+import roboy.dialog.action.EmotionAction;
 import roboy.dialog.action.SpeechAction;
-import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.InferenceEngine;
 import roboy.logic.StatementInterpreter;
@@ -142,7 +141,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
         // TODO: special treatment for profanity, etc.
         if (input.getEmotion() != null) {
             // change facial expression based on input
-            answerActions.add(new FaceAction(input.getEmotion()));
+            answerActions.add(new EmotionAction(input.getEmotion()));
         }
         String sentence = input.getSentence();
         if (StatementInterpreter.isFromList(sentence, Verbalizer.farewells)) {
@@ -218,8 +217,10 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
             segueHandler(previousActions, act.getSegue());
         }
 
-        // add face action to the output if defined (not implemented yet)
-        // TODO
+        // add emotion action to the output if defined (not implemented yet)
+        if (act.hasEmotion()) {
+            previousActions.add(new EmotionAction(act.getEmotion()));
+        }
     }
 
 
@@ -308,8 +309,10 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
             segueHandler(previousActions, react.getSegue());
         }
 
-        // add face action to the output if defined (not implemented yet)
-        // TODO
+        // add emotion action to the output if defined (not implemented yet)
+        if (react.hasEmotion()) {
+            previousActions.add(new EmotionAction(react.getEmotion()));
+        }
     }
 
     /**
