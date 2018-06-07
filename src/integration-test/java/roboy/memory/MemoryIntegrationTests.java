@@ -19,7 +19,7 @@ import java.util.Date;
 
 /**
  * Basically this class is a mirror copy of Memory's Neo4JTest.
- * The exact same tests were used, only that instead of calling the functions in memory, we call them via Neo4jMemoryOperations
+ * The exact same tests were used, only that instead of calling the functions in memory (few modifications), we call them via Neo4jMemoryOperations.
  */
 
 public class MemoryIntegrationTests extends TestCase {
@@ -31,28 +31,21 @@ public class MemoryIntegrationTests extends TestCase {
     final String TOBY  = "{'label':'Person','properties':{'name':'Tobias_The_Friend', 'sex':'male', 'timestamp_test':'" + timestamp + "'}}";
     final String ROBOY = "{'label':'Robot','properties':{'name':'Roboy_The_Test_Subject', 'timestamp_test':'" + timestamp + "'}}";
 
-    public void testCreateNode() throws Exception {
+    public void testCreateNode() {
         int id = gson.fromJson(Neo4jMemoryOperations.create(LUKAS), JsonObject.class).get("id").getAsInt();
         assertTrue(id > 0);
     }
 
-//    public void testUpdateNode() throws Exception {
-//        int id = gson.fromJson(Neo4jMemoryOperations.create(LUKAS), JsonObject.class).get("id").getAsInt();
-//        int idRob = gson.fromJson(Neo4jMemoryOperations.create(ROBOY), JsonObject.class).get("id").getAsInt();
-//
-//        Update update = gson.fromJson("{'type':'node','id':" + id + ",'properties':{'surname':'Ki', 'xyz':'abc'}, 'relationships':{'FRIEND_OF':[" + idRob + "]}}", Update.class);
-//        String s = Neo4jMemoryOperations.update("{'type':'node','id':" + id + ",'properties':{'surname':'Ki', 'xyz':'abc'}, 'relationships':{'FRIEND_OF':[" + idRob + "]}}");
-//        JsonObject answer = gson.fromJson(s,JsonObject.class);
-//        assertTrue(answer.get("properties updated").getAsBoolean());
-//        assertTrue(answer.get("relationships created").getAsInt() > 0);
-////
-////        JsonObject answer = gson.fromJson(Neo4jMemoryOperations.update("{'type':'node','id':" + id + ",'properties':{'surname':'Ki', 'xyz':'abc'}, 'relationships':{'FRIEND_OF':[" + idRob + "]}}"), JsonObject.class);
-////        assertTrue(answer.get("properties updated").getAsBoolean());
-////        assertTrue(answer.get("relationships created").getAsInt() > 0);
-//    }
+     public void testUpdateNode() {
+        int id = gson.fromJson(Neo4jMemoryOperations.create(LUKAS), JsonObject.class).get("id").getAsInt();
+        int idRob = gson.fromJson(Neo4jMemoryOperations.create(ROBOY), JsonObject.class).get("id").getAsInt();
+        String updateResponse = Neo4jMemoryOperations.update("{'type':'node','id':" + id + ",'properties':{'surname':'Ki', 'xyz':'abc'}, 'relationships':{'FRIEND_OF':[" + idRob + "]}}");
+        assertTrue(updateResponse.contains("properties updated\":true"));
+        assertTrue(updateResponse.contains("relationships created\":1}\"}"));
+    }
 
 
-    public void testGetNode() throws Exception {
+    public void testGetNode() {
         Create create = gson.fromJson("{'label':'Person','properties':{'name':'Lucas_The_Int_Tester', 'sex':'male', 'timestamp_test':'" + timestamp + "'}}", Create.class);
         int id = gson.fromJson(Neo4jMemoryOperations.create(LUKAS), JsonObject.class).get("id").getAsInt();
         Get get = new Get();
@@ -62,7 +55,7 @@ public class MemoryIntegrationTests extends TestCase {
         assertEquals(id, node.get("id").getAsJsonArray().get(0).getAsInt());
     }
 
-    public void testRemove() throws Exception {
+    public void testRemove() {
         Create create = gson.fromJson("{'label':'Person','properties':{'name':'Lucas_The_Int_Tester', 'sex':'male', 'timestamp_test':'" + timestamp + "'}}", Create.class);
         int id = gson.fromJson(Neo4j.createNode(create), JsonObject.class).get("id").getAsInt();
         Create createFriend = gson.fromJson("{'label':'Person','properties':{'name':'Tobias_The_Friend', 'sex':'male', 'timestamp_test':'" + timestamp + "'}}", Create.class);
