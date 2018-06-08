@@ -22,7 +22,7 @@ import java.util.Date;
  * The exact same tests were used, only that instead of calling the functions in memory (few modifications), we call them via Neo4jMemoryOperations.
  */
 
-public class MemoryIntegrationTests extends TestCase {
+public class MemoryIntegrationTest extends TestCase {
 
     Gson gson = new Gson();
     long timestamp = new Date().getTime();
