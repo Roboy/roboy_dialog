@@ -22,7 +22,7 @@ import java.util.List;
  * It communicates with the interlocutor via a MultiInputDevice and a MultiOutputDevice.
  * The List of analyzers is used to make the input string machine understandable.
  */
-public class Conversation extends Thread {//TODO: make super threadsafe
+public class Conversation extends Thread {
 
     private final Logger logger = LogManager.getLogger("Conversation" + this.getId());
 
@@ -44,7 +44,7 @@ public class Conversation extends Thread {//TODO: make super threadsafe
      * @param analyzers All analyzers necessary for analyzing the inputs from multiIn. Please provide these in correct order.
      */
     public Conversation( StateBasedPersonality personality, File personalityFile, MultiInputDevice multiIn, MultiOutputDevice multiOut, List<Analyzer> analyzers){
-        super("roboy-conversation");//TODO: make more explicit? (uuid, etc.)
+        super("roboy-conversation");
         this.multiIn = multiIn;
         this.multiOut = multiOut;
         this.analyzers = analyzers;
@@ -62,7 +62,7 @@ public class Conversation extends Thread {//TODO: make super threadsafe
     /**
      * Pauses Thread execution without ending the conversation
      */
-    void pauseExecution(){
+    synchronized void pauseExecution(){
         isRunning = false;
         paused = false;
         this.interrupt();
@@ -72,7 +72,7 @@ public class Conversation extends Thread {//TODO: make super threadsafe
     /**
      * Ends conversation and resets state to initial. Does not reset gathered information.
      */
-    void endConversation(){//Ends conversation including
+    synchronized void endConversation(){//Ends conversation including
         isRunning = false;
         personality.reset();
         this.interrupt();
@@ -139,7 +139,7 @@ public class Conversation extends Thread {//TODO: make super threadsafe
      *
      * @param person The interlocutor for this conversation to talk to after the reset.
      */
-    void resetConversation(Interlocutor person){
+    synchronized void resetConversation(Interlocutor person){
         if(isRunning){
             logger.error("Trying to reset a running conversation is not a good idea. Will not comply...");
             return;

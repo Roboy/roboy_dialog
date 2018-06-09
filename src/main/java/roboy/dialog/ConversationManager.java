@@ -9,7 +9,6 @@ import roboy.context.Context;
 import roboy.dialog.personality.StateBasedPersonality;
 import roboy.io.MultiInputDevice;
 import roboy.io.MultiOutputDevice;
-import roboy.io.TelegramInput;
 import roboy.linguistics.sentenceanalysis.*;
 import roboy.logic.Inference;
 import roboy.logic.InferenceEngine;
@@ -166,7 +165,7 @@ public class ConversationManager {
     }
 
     /**
-     * Starts a conversation that is not running.
+     * Starts a conversation that is paused or stopped.
      * NOT NECESSARY AFTER SPAWNCONVERSATION
      * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
      */
@@ -177,6 +176,20 @@ public class ConversationManager {
         }
         else{
             logger.error("Conversation to be started does not exist...");
+        }
+    }
+
+    /**
+     * Interrupts a conversation.
+     * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
+     */
+    public static void interruptConversation(String uuid){
+        Conversation c = conversations.get(uuid);
+        if(c != null){
+            c.interrupt();
+        }
+        else{
+            logger.error("Conversation to be interrupted does not exist...");
         }
     }
 

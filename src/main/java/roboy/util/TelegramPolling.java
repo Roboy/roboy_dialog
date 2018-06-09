@@ -37,7 +37,7 @@ public class TelegramPolling extends TelegramLongPollingBot implements Timeout.T
 //    public static final String TOKEN;
 //    public static final String BOT_USERNAME;
 
-    private static final String tokensPath = "/home/mireu/telegramtokens.json";
+    private static final String tokensPath = "";//place path to your token file here
     private static final int TYPING_TIME_LIMIT = 3; //SECONDS
     private static final int INPUT_TIME_LIMIT = 5;
 
@@ -47,15 +47,15 @@ public class TelegramPolling extends TelegramLongPollingBot implements Timeout.T
     private final Object syncObject = new Object();
 
     // collection of all messages.
-    private List<Message> messages  = new ArrayList<Message>();
+    private List<Message> messages  = new ArrayList<>();
 
     // CHAT ID ----- ITS MESSAGE
-    private volatile List<Pair<String, String>> pairs = new ArrayList<Pair<String, String>>();
+    private volatile List<Pair<String, String>> pairs = new ArrayList<>();
 
     //Timeout
     private List<Timeout> telegramTimeouts;
 
-    public TelegramPolling(){
+    private TelegramPolling(){
         super();
         telegramTimeouts = new ArrayList<>();
 
@@ -65,10 +65,12 @@ public class TelegramPolling extends TelegramLongPollingBot implements Timeout.T
     private static TelegramPolling instance;
 
     public static TelegramPolling getInstance(){
-        if(instance == null){
-            instance = new TelegramPolling();
+        if(instance == null){//for speed purposes
+            synchronized (TelegramPolling.class){//in here: for threadsafety
+                //to prevent magic edgecases ruining our day
+                if(instance == null) instance = new TelegramPolling();
+            }
         }
-
         return instance;
     }
 
@@ -118,7 +120,7 @@ public class TelegramPolling extends TelegramLongPollingBot implements Timeout.T
                     try {
                         //get message, add it to containers
 
-                        pairs.add(new Pair<String, String>(chatID, text));
+                        pairs.add(new Pair<>(chatID, text));
                         messages.add(message);
 
                         //wait for certain seconds, start the timer
@@ -163,14 +165,14 @@ public class TelegramPolling extends TelegramLongPollingBot implements Timeout.T
 
             // check if the result initialized
             if(result == null) {
-                result = new Pair<String, String>(chatID, message);
+                result = new Pair<>(chatID, message);
             }
             else {
                 // sum all of the messages
-                String newMessage = result.getValue().toString()+ " " + message;
+                String newMessage = result.getValue()+ " " + message;
 
                 //equal chat id
-                result = new Pair<String, String>(chatID, newMessage);
+                result = new Pair<>(chatID, newMessage);
             }
         }
 
@@ -248,7 +250,7 @@ public class TelegramPolling extends TelegramLongPollingBot implements Timeout.T
 
     //get all messages from user ID
     public List<String> getMessagesFromUserID(int userID){
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
 
         for(Message m: messages){
             int id = m.getFrom().getId();

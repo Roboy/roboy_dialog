@@ -18,7 +18,7 @@ public class TelegramInput implements InputDevice {
     private static TelegramInput telegraminputInstance = TelegramInput.getInstance();
     private static final Logger logger = LogManager.getLogger();
 
-    private static final HashMap<Long, BlockingQueue<String>> newMessages = new HashMap<>(); //maps threadID to message queue since we can access threadID
+    private static final HashMap<Long, String> newMessages = new HashMap<>(); //maps threadID to message queue since we can access threadID
 
     private TelegramInput(){//since this is half-static, the constructor is empty
     }
@@ -35,7 +35,7 @@ public class TelegramInput implements InputDevice {
         //get ThreadID
         Long cThreadID = ConversationManager.getConversationThreadID(uuid);
 
-        if (cThreadID == null){//if Thread does not exist yet, create it and it's queue
+        if (cThreadID == null){//if Thread does not exist yet, create it and place the new message as it's input
             try {
                 ConversationManager.spawnConversation(uuid);
             } catch (IOException e) {
@@ -44,11 +44,17 @@ public class TelegramInput implements InputDevice {
             }
             cThreadID = ConversationManager.getConversationThreadID(uuid);
             synchronized (newMessages) {
-                newMessages.put(cThreadID, new LinkedBlockingQueue<>());
+                newMessages.put(cThreadID, update.getValue());
             }
         }
-        //put message in correct queue
-        newMessages.get(cThreadID).add(update.getValue());
+        else {
+            //add message to the corresponding conversations input
+            synchronized (newMessages) {
+                newMessages.replace(cThreadID, newMessages.get(cThreadID) + " " + update.getValue());
+            }
+        }
+        //make thread do work!
+        ConversationManager.interruptConversation(uuid);
     }
 
     /**
@@ -56,9 +62,10 @@ public class TelegramInput implements InputDevice {
      * @return telegram instance
      */
     public static TelegramInput getInstance(){
-        if(telegraminputInstance == null) {
+        if(telegraminputInstance == null) {//for speed
             //now: Thread safety
             synchronized (TelegramInput.class) {
+                //to prevent magic edgecases from ruining our day
                 if(telegraminputInstance == null) telegraminputInstance = new TelegramInput();
             }
         }
@@ -66,11 +73,28 @@ public class TelegramInput implements InputDevice {
     }
 
     /**
-     * Thread waits in listen() until a new input is provided, then returns with said input.
+     * Thread waits in listen() until a new input is provided and the thread is interrupted, then returns with said input.
+     * If the thread is interrupted without Input waiting to be consumed, listen() throws an IOException
+     * @throws InterruptedException: InterruptedException thrown by the thread when interrupted while wait()ing
      */
     @Override
     public Input listen() throws InterruptedException {
-        BlockingQueue<String> queue = newMessages.get(Thread.currentThread().getId());
-        return new Input(queue.take());
+        String message;
+        synchronized (newMessages) {
+            message = newMessages.get(Thread.currentThread().getId());//try to read new messages
+            while(message.equals("")){//while no new messages for this thread exist: wait
+                try {
+                    newMessages.wait();
+                }
+                catch (InterruptedException e) {//Thread woke up! Process new information!
+                    message = newMessages.get(Thread.currentThread().getId());
+                    if(message == null || message.equals("")){//if this interrupt was not triggered because new messages arrived, throw exception to be handled
+                        throw e;
+                    }
+                }
+            }
+            newMessages.replace(Thread.currentThread().getId(), ""); //consume message
+        }
+        return new Input(message);
     }
 }
