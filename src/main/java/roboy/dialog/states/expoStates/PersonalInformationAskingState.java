@@ -7,20 +7,15 @@ import roboy.context.contextObjects.IntentValue;
 import roboy.dialog.Segue;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.Triple;
+import roboy.dialog.states.definitions.ExpoState;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jProperty;
 import roboy.memory.Neo4jRelationship;
 import roboy.memory.nodes.Interlocutor;
-import roboy.memory.nodes.Roboy;
 import roboy.util.QAJsonParser;
 import roboy.util.RandomList;
 
 import java.util.*;
 
-import static roboy.memory.Neo4jProperty.abilities;
-import static roboy.memory.Neo4jProperty.skills;
 import static roboy.memory.Neo4jRelationship.*;
 
 /**
@@ -44,7 +39,7 @@ import static roboy.memory.Neo4jRelationship.*;
  *    - TRANSITION_INFO_OBTAINED:    following state if the question was asked
  * 3) Required parameters: path to the QAList.json file.
  */
-public class PersonalInformationAskingState extends State {
+public class PersonalInformationAskingState extends ExpoState {
     public final static String INTENTS_HISTORY_ID = "PIA";
 
     private QAJsonParser qaValues;
@@ -53,9 +48,8 @@ public class PersonalInformationAskingState extends State {
     private int otherIndex;
     private State nextState;
 
-    private final String SELECTED_SKILLS = "skills";
-    private final String SELECTED_ABILITIES = "abilities";
-    private final String SELECTED_ROBOY_QA = "roboy";
+    private final String[] TRANSITION_NAMES = { "skills", "abilities", "roboy" };
+    private final String[] INTENT_NAMES = { "skills", "abilities", "roboy" };
 
     private final String QA_FILE_PARAMETER_ID = "qaFile";
     final Logger LOGGER = LogManager.getLogger();
@@ -122,7 +116,7 @@ public class PersonalInformationAskingState extends State {
             if (result != null && !result.equals("")) {
                 LOGGER.info(" -> Inference was successful");
                 answers = qaValues.getSuccessAnswers(selectedPredicate);
-                person.addInformation(selectedPredicate.type, result);
+                person.addInformation(selectedPredicate, result);
                 Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
                 LOGGER.info(" -> Updated Interlocutor: " + person.getName());
             } else {
@@ -142,11 +136,11 @@ public class PersonalInformationAskingState extends State {
                 answer = String.format(answers.getRandomElement(), result);
             }
         } else {
-            LOGGER.error(" -> The list of " + selectedPredicate.type + " answers is empty or null");
+            LOGGER.error(" -> The list of " + selectedPredicate + " answers is empty or null");
         }
 
         LOGGER.info(" -> Produced answer: " + answer);
-        nextState = getRandomTransition();
+        nextState = getRandomTransition(TRANSITION_NAMES, INTENT_NAMES, INTENTS_HISTORY_ID);
         Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE, 0.5);
         if (answer == "") {
             return Output.useFallback();
@@ -162,7 +156,7 @@ public class PersonalInformationAskingState extends State {
     @Override
     protected Set<String> getRequiredTransitionNames() {
         // optional: define all required transitions here:
-        return newSet(SELECTED_SKILLS, SELECTED_ABILITIES, SELECTED_ROBOY_QA);
+        return newSet(TRANSITION_NAMES);
     }
 
     @Override
