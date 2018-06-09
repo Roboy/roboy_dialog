@@ -25,7 +25,7 @@ public class MultiInputDevice implements InputDevice{
 		Input result = mainInput.listen();
 		for(InputDevice device : additionalInputs){
 			Input i = device.listen();
-			result.attributes.putAll(i.attributes);
+			result.setAttributes(i.getAttributes());
 		}
 		return result;
 	}

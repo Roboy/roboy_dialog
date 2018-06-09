@@ -91,7 +91,7 @@ public class Chatbot {
             while (true) {
                 // do all actions defined in startConversation() or answer()
                 try {
-                    String input = multiIn.listen().sentence;
+                    String input = multiIn.listen().getSentence();
                     String out = rosMainNode.GenerateAnswer(input);
                     multiOut.act(Arrays.asList(new SpeechAction(out)));
                 } catch (InterruptedException e) {

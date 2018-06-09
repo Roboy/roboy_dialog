@@ -13,7 +13,7 @@ public class BingInput implements InputDevice
 		this.rosMainNode = node;
 }
 	@Override
-	public Input listen() throws InterruptedException 
+	public Input listen()
 	{
 		String text = rosMainNode.RecognizeSpeech();
 	    System.out.println(text);
