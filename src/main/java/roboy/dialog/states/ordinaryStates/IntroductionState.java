@@ -131,38 +131,7 @@ public class IntroductionState extends State {
     }
 
     private String getNameFromInput(Interpretation input) {
-        String result = null;
-        if (input.getSentenceType() == Linguistics.SentenceType.STATEMENT) {
-            List<String> tokens = input.getTokens();
-            if (tokens.size() == 1) {
-                result =  tokens.get(0).toLowerCase();
-                LOGGER.info("Retrieved only one token: " + result);
-                return result;
-            } else {
-                if (input.getParsingOutcome() == Linguistics.ParsingOutcome.SUCCESS &&
-                        input.getSemTriples().size() > 0) {
-                    LOGGER.info("Semantic parsing is successful and semantic triple exists");
-                    List<Triple> triple = input.getSemTriples();
-                    result = triple.get(0).object.toLowerCase();
-                    LOGGER.info("Retrieved object " + result);
-                } else {
-                    LOGGER.warn("Semantic parsing failed or semantic triple does not exist");
-                    if (input.getObjAnswer() != null) {
-                        LOGGER.info("OBJ_ANSWER exits");
-                        String name = input.getObjAnswer().toLowerCase();
-                        if (!name.equals("")) {
-                            result = name;
-                            LOGGER.info("Retrieved OBJ_ANSWER result " + result);
-                        } else {
-                            LOGGER.warn("OBJ_ANSWER is empty");
-                        }
-                    } else {
-                        LOGGER.warn("OBJ_ANSWER does not exit");
-                    }
-                }
-            }
-        }
-        return result;
+        return getInference().inferProperty(name, input);
     }
 
     private void updateInterlocutorInContext(Interlocutor interlocutor) {
