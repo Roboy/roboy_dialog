@@ -101,8 +101,8 @@ public class RoboyQAState extends ExpoState {
 
     private String inferMemoryAnswer(Interpretation input, Roboy roboy) {
         String answer = "";
-        if (input.semParserTriples != null) {
-            List<Triple> triples = input.semParserTriples;
+        if (input.getSemTriples() != null) {
+            List<Triple> triples = input.getSemTriples();
             for (Triple result : triples) {
                 if (result.predicate != null) {
                     for (Neo4jRelationship predicate : Roboy.VALID_NEO4J_RELATIONSHIPS) {
@@ -169,10 +169,10 @@ public class RoboyQAState extends ExpoState {
     private String extractNodeNameForPredicate(Neo4jRelationship predicate, Roboy roboy) {
         MemoryNodeModel node = getMemNodesByIds(roboy.getRelationships(predicate)).getRandomElement();
         if (node != null) {
-            if (node.getProperties().containsKey(full_name.type) && !node.getProperties().get(full_name.type).equals("")) {
-                return node.getProperties().get(full_name.type).toString();
+            if (node.getProperties().containsKey(full_name) && !node.getProperties().get(full_name).equals("")) {
+                return node.getProperties().get(full_name).toString();
             } else {
-                return node.getProperties().get(name.type).toString();
+                return node.getProperties().get(name).toString();
             }
         }
         return null;

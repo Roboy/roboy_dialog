@@ -7,6 +7,7 @@ import roboy.context.contextObjects.IntentValue;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.memory.Neo4jProperty;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.Roboy;
 import roboy.util.Agedater;
@@ -109,12 +110,12 @@ public class ExpoIntroductionState extends State {
 
         // Get some random properties facts
         if (roboy.getProperties() != null && !roboy.getProperties().isEmpty()) {
-            HashMap<String, Object> properties = roboy.getProperties();
-            if (properties.containsKey(full_name.type)) {
-                result += " " + String.format(infoValues.getSuccessAnswers(full_name).getRandomElement(), properties.get(full_name.type));
+            HashMap<Neo4jProperty, Object> properties = roboy.getProperties();
+            if (properties.containsKey(full_name)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(full_name).getRandomElement(), properties.get(full_name));
             }
-            if (properties.containsKey(birthdate.type)) {
-                HashMap<String, Integer> ages = new Agedater().determineAge(properties.get(birthdate.type).toString());
+            if (properties.containsKey(birthdate)) {
+                HashMap<String, Integer> ages = new Agedater().determineAge(properties.get(birthdate).toString());
                 String retrievedAge = "0 days";
                 if (ages.get("years") > 0) {
                     retrievedAge = ages.get("years") + " years";
@@ -124,20 +125,20 @@ public class ExpoIntroductionState extends State {
                     retrievedAge = ages.get("days") + " days";
                 }
                 result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), retrievedAge);
-            } else if (properties.containsKey(age.type)) {
-                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), properties.get(age.type) + " years!");
+            } else if (properties.containsKey(age)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), properties.get(age) + " years!");
             }
-            if (properties.containsKey(skills.type)) {
+            if (properties.containsKey(skills)) {
                 RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("skills").toString().split(",")));
                 retrievedRandomSkill = retrievedResult.getRandomElement();
                 result += " " + String.format(infoValues.getSuccessAnswers(skills).getRandomElement(), retrievedRandomSkill);
             }
-            if (properties.containsKey(abilities.type)) {
+            if (properties.containsKey(abilities)) {
                 RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("abilities").toString().split(",")));
                 retrievedRandomAbility = retrievedResult.getRandomElement();
                 result += " " + String.format(infoValues.getSuccessAnswers(abilities).getRandomElement(), retrievedRandomAbility);
             }
-            if (properties.containsKey(future.type)) {
+            if (properties.containsKey(future)) {
                 RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("future").toString().split(",")));
                 result += " " + String.format(infoValues.getSuccessAnswers(future).getRandomElement(), retrievedResult.getRandomElement()) + " ";
             }

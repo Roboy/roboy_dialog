@@ -155,12 +155,12 @@ public class IntroductionState extends State {
 
         // Get some random properties facts
         if (roboy.getProperties() != null && !roboy.getProperties().isEmpty()) {
-            HashMap<String, Object> properties = roboy.getProperties();
-            if (properties.containsKey(full_name.type)) {
-                result += " " + String.format(infoValues.getSuccessAnswers(full_name).getRandomElement(), properties.get(full_name.type));
+            HashMap<Neo4jProperty, Object> properties = roboy.getProperties();
+            if (properties.containsKey(full_name)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(full_name).getRandomElement(), properties.get(full_name));
             }
-            if (properties.containsKey(birthdate.type)) {
-                HashMap<String, Integer> ages = new Agedater().determineAge(properties.get(birthdate.type).toString());
+            if (properties.containsKey(birthdate)) {
+                HashMap<String, Integer> ages = new Agedater().determineAge(properties.get(birthdate).toString());
                 String retrievedAge = "0 days";
                 if (ages.get("years") > 0) {
                     retrievedAge = ages.get("years") + " years";
@@ -170,19 +170,19 @@ public class IntroductionState extends State {
                     retrievedAge = ages.get("days") + " days";
                 }
                 result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), retrievedAge);
-            } else if (properties.containsKey(age.type)) {
-                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), properties.get(age.type) + " years!");
+            } else if (properties.containsKey(age)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), properties.get(age) + " years!");
             }
-            if (properties.containsKey(skills.type)) {
-                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("skills").toString().split(",")));
+            if (properties.containsKey(skills)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(skills).toString().split(",")));
                 result += " " + String.format(infoValues.getSuccessAnswers(skills).getRandomElement(), retrievedResult.getRandomElement());
             }
-            if (properties.containsKey(abilities.type)) {
-                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("abilities").toString().split(",")));
+            if (properties.containsKey(abilities)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(abilities).toString().split(",")));
                 result += " " + String.format(infoValues.getSuccessAnswers(abilities).getRandomElement(), retrievedResult.getRandomElement());
             }
-            if (properties.containsKey(future.type)) {
-                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("future").toString().split(",")));
+            if (properties.containsKey(future)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(future).toString().split(",")));
                 result += " " + String.format(infoValues.getSuccessAnswers(future).getRandomElement(), retrievedResult.getRandomElement());
             }
         }
@@ -196,10 +196,10 @@ public class IntroductionState extends State {
         MemoryNodeModel node = getMemNodesByIds(roboy.getRelationships(predicate)).getRandomElement();
         if (node != null) {
             String nodeName = "";
-            if (node.getProperties().containsKey("full_name") && !node.getProperties().get("full_name").equals("")) {
-                nodeName = node.getProperties().get("full_name").toString();
+            if (node.getProperties().containsKey(full_name) && !node.getProperties().get(full_name).equals("")) {
+                nodeName = node.getProperties().get(full_name).toString();
             } else {
-                nodeName = node.getProperties().get("name").toString();
+                nodeName = node.getProperties().get(name).toString();
             }
             result += " " + String.format(infoValues.getSuccessAnswers(predicate).getRandomElement(), nodeName);
         }

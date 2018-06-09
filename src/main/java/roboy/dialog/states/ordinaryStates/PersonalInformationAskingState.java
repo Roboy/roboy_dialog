@@ -100,7 +100,7 @@ public class PersonalInformationAskingState extends State {
         if (result != null && !result.equals("")) {
             LOGGER.info(" -> Inference was successful");
             answers = qaValues.getSuccessAnswers(selectedPredicate);
-            person.addInformation(selectedPredicate.type, result);
+            person.addInformation(selectedPredicate, result);
             Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
             LOGGER.info(" -> Updated Interlocutor: " + person.getName());
         } else {
@@ -112,7 +112,7 @@ public class PersonalInformationAskingState extends State {
         if (answers != null && !answers.isEmpty()) {
             answer = String.format(answers.getRandomElement(), result);
         } else {
-            LOGGER.error(" -> The list of " + selectedPredicate.type + " answers is empty or null");
+            LOGGER.error(" -> The list of " + selectedPredicate + " answers is empty or null");
         }
         LOGGER.info(" -> Produced answer: " + answer);
         nextState = getTransition(TRANSITION_INFO_OBTAINED);
