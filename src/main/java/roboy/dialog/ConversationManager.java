@@ -20,7 +20,7 @@ import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
 import roboy.util.ConfigManager;
 import roboy.util.IO;
-import roboy.util.TelegramPolling;
+import roboy.util.TelegramCommunicationHandler;
 
 import java.io.File;
 import java.io.IOException;
@@ -115,7 +115,7 @@ public class ConversationManager {
                 TelegramBotsApi telegramBotApi = new TelegramBotsApi();
 
                 try {
-                    telegramBotApi.registerBot(TelegramPolling.getInstance());
+                    telegramBotApi.registerBot(TelegramCommunicationHandler.getInstance());
                 } catch (TelegramApiException e) {
                     logger.error("Telegram bots api error: ", e);
                 }
