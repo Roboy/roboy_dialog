@@ -42,6 +42,7 @@ public class Interpretation {
     private String objAnswer = null;
     private String predAnswer = null;
     private RoboyEmotion emotion = null;
+    private boolean profanity = false;
     private String intent = null;
     private String intentDistance = null;
 
@@ -228,6 +229,10 @@ public class Interpretation {
     public void setEmotion(RoboyEmotion emotion) {
         this.emotion = emotion;
     }
+
+    public boolean getProfanity() {return profanity;}
+
+    public void setProfanity(boolean profanity) {this.profanity = profanity;}
 
     public String getIntent() {
         return intent;

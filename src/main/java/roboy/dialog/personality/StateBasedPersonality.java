@@ -140,7 +140,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
         // SPECIAL NON-STATE BASED BEHAVIOUR
         // TODO: special treatment for profanity, etc.
         if (input.getEmotion() != null) {
-            // change facial expression based on input
+            // change emotional expression based on input
             answerActions.add(new EmotionAction(input.getEmotion()));
         }
         String sentence = input.getSentence();

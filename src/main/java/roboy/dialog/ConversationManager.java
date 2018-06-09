@@ -82,7 +82,8 @@ public class ConversationManager {
         analyzers.add(new AnswerAnalyzer());
 
 
-
+        analyzers.add(new EmotionAnalyzer());
+        analyzers.add(new ProfanityAnalyzer());
 
 
         //Roboy mode mode: Repeat a conversation a few times.
