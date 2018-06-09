@@ -200,8 +200,8 @@ public class QuestionAnsweringState extends State {
 
     private Output useMemoryOrFallback(Interpretation input) {
         try {
-            if (input.semParserTriples != null) {
-                Output memoryAnswer = answerFromMemory(input.semParserTriples);
+            if (input.getSemTriples() != null) {
+                Output memoryAnswer = answerFromMemory(input.getSemTriples());
                 if (memoryAnswer != null) return memoryAnswer;
             }
         } catch (Exception e) {
