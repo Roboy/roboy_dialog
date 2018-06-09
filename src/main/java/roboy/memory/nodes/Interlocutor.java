@@ -3,7 +3,9 @@ package roboy.memory.nodes;
 import com.google.gson.Gson;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.memory.Neo4jLabel;
 import roboy.memory.Neo4jMemoryInterface;
+import roboy.memory.Neo4jProperty;
 import roboy.memory.Neo4jRelationship;
 import roboy.util.UzupisIntents;
 
@@ -33,8 +35,8 @@ public class Interlocutor extends MemoryNodeModel {
      * following communication severely.
      */
     public void addName(String name) {
-        setProperty("name", name);
-        setLabel("Person");
+        setProperty(Neo4jProperty.name, name);
+        setLabel(Neo4jLabel.Person);
 
             ArrayList<Integer> ids = new ArrayList<>();
             // Query memory for matching persons.
@@ -77,15 +79,15 @@ public class Interlocutor extends MemoryNodeModel {
 
 
     public String getName() {
-        return (String) getProperty("name");
+        return (String) getProperty(Neo4jProperty.name);
     }
 
-    public boolean hasRelationship(Neo4jRelationship type) {
-        return !(getRelationship(type.type) == null) && (!getRelationship(type.type).isEmpty());
+    public boolean hasRelationship(Neo4jRelationship relationship) {
+        return !(getRelationship(relationship) == null) && (!getRelationship(relationship).isEmpty());
     }
 
-    public ArrayList<Integer> getRelationships(Neo4jRelationship type) {
-        return getRelationship(type.type);
+    public ArrayList<Integer> getRelationships(Neo4jRelationship relationship) {
+        return getRelationship(relationship);
     }
 
 
@@ -100,11 +102,11 @@ public class Interlocutor extends MemoryNodeModel {
     /**
      * Adds a new relation to the person node, updating memory.
      */
-    public void addInformation(String relationship, String name) {
+    public void addInformation(Neo4jRelationship relationship, String name) {
         ArrayList<Integer> ids = new ArrayList<>();
         // First check if node with given name exists by a matching query.
         MemoryNodeModel relatedNode = new MemoryNodeModel(true, memory);
-        relatedNode.setProperty("name", name);
+        relatedNode.setProperty(Neo4jProperty.name, name);
         //This adds a label type to the memory query depending on the relation.
         relatedNode.setLabel(Neo4jRelationship.determineNodeType(relationship));
         try {

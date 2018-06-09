@@ -1,7 +1,9 @@
 package roboy.memory.nodes;
 
 import com.google.gson.Gson;
+import roboy.memory.Neo4jLabel;
 import roboy.memory.Neo4jMemoryInterface;
+import roboy.memory.Neo4jProperty;
 import roboy.memory.Neo4jRelationship;
 import roboy.util.RandomList;
 
@@ -43,8 +45,8 @@ public class Roboy extends MemoryNodeModel{
      */
     // TODO consider a fallback for the amnesia mode
     private void InitializeRoboy(String name) {
-        setProperty("name", name);
-        setLabel("Robot");
+        setProperty(Neo4jProperty.name, name);
+        setLabel(Neo4jLabel.Robot);
 
         //
             ArrayList<Integer> ids = new ArrayList<>();
@@ -61,8 +63,8 @@ public class Roboy extends MemoryNodeModel{
                         MemoryNodeModel node = fromJSON(memory.getById(id), new Gson());
                         if (node.getProperties() != null &&
                                 !node.getProperties().isEmpty() &&
-                                node.getProperties().containsKey("name") &&
-                                node.getProperties().get("name").equals(name)) {
+                                node.getProperties().containsKey(Neo4jProperty.name) &&
+                                node.getProperties().get(Neo4jProperty.name).equals(name)) {
                             setId(node.getId());
                             setRelationships(node.getRelationships() != null ? node.getRelationships() : new HashMap<>());
                             setProperties(node.getProperties() != null ? node.getProperties() : new HashMap<>());
@@ -83,7 +85,7 @@ public class Roboy extends MemoryNodeModel{
      * @return String name - text containing the name as in the Memory
      */
     public String getName() {
-        return (String) getProperty("name");
+        return (String) getProperty(Neo4jProperty.name);
     }
 
     /**
@@ -91,19 +93,19 @@ public class Roboy extends MemoryNodeModel{
      * @return ArrayList<Integer> ids - list containing integer IDs of the nodes
      * related to the Roboy by specific relationship type as in the Memory
      */
-    public ArrayList<Integer> getRelationships(Neo4jRelationship type) {
-        return getRelationship(type.type);
+    public ArrayList<Integer> getRelationships(Neo4jRelationship relationship) {
+        return getRelationship(relationship);
     }
 
     /**
      * Adds a new relation to the Roboy node, updating memory.
      */
-    public void addInformation(String relationship, String name) {
+    public void addInformation(Neo4jRelationship relationship, String name) {
 
         ArrayList<Integer> ids = new ArrayList<>();
         // First check if node with given name exists by a matching query.
         MemoryNodeModel relatedNode = new MemoryNodeModel(true,memory);
-        relatedNode.setProperty("name", name);
+        relatedNode.setProperty(Neo4jProperty.name, name);
         //This adds a label type to the memory query depending on the relation.
         relatedNode.setLabel(Neo4jRelationship.determineNodeType(relationship));
         try {
