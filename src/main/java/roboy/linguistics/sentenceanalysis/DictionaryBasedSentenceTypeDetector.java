@@ -22,8 +22,6 @@ public class DictionaryBasedSentenceTypeDetector implements Analyzer{
 
 	private SentenceType determineSentenceType(List<String> tokens, String[] posTags){
 		if (tokens != null && !tokens.isEmpty()) {
-            if (tokens.size() == 1) return SentenceType.STATEMENT;
-
             String first = tokens.get(0).toLowerCase();
             switch (tokens.get(0).toLowerCase()) {
                 case "who":
@@ -49,14 +47,18 @@ public class DictionaryBasedSentenceTypeDetector implements Analyzer{
                 case "am":
                     return SentenceType.IS_IT;
                 case "how":
-                    String second = tokens.get(1).toLowerCase();
-                    if ("is".equals(second) || "are".equals(second) || "am".equals(second)) {
-                        return SentenceType.HOW_IS;
-                    } else if ("how".equals(first) &&
-                            ("do".equals(second) || "does".equals(second) || "did".equals(second))) {
-                        return SentenceType.HOW_DO;
+                    if (tokens.size() > 1) {
+                        String second = tokens.get(1).toLowerCase();
+                        if ("is".equals(second) || "are".equals(second) || "am".equals(second)) {
+                            return SentenceType.HOW_IS;
+                        } else if ("how".equals(first) &&
+                                ("do".equals(second) || "does".equals(second) || "did".equals(second))) {
+                            return SentenceType.HOW_DO;
+                        } else {
+                            break;
+                        }
                     } else {
-                        break;
+                        return SentenceType.HOW;
                     }
                 default:
                      break;

@@ -1,17 +1,16 @@
 package roboy.linguistics.sentenceanalysis;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.lang.reflect.InvocationTargetException;
+import java.util.*;
 
-import com.github.jsonldjava.utils.Obj;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.emotions.RoboyEmotion;
 import roboy.linguistics.DetectedEntity;
 import roboy.linguistics.Linguistics.*;
 import roboy.linguistics.Triple;
+
+import javax.annotation.Nullable;
 
 /**
  * An interpretation of all inputs to Roboy consists of the sentence type and an
@@ -21,12 +20,10 @@ import roboy.linguistics.Triple;
  * The interpretation class is also used to pass the output information from the
  * states to the verbalizer class.
  */
-public class Interpretation {
+public class Interpretation implements Cloneable {
 
     private final Logger LOGGER = LogManager.getLogger();
-
-	//private Map<String,Object> features;
-	private SentenceType sentenceType;
+	private SentenceType sentenceType = null;
     private String sentence = null;
     private List<Triple> triples = null;
     private List<Triple> semTriples = null;
@@ -44,7 +41,6 @@ public class Interpretation {
     private RoboyEmotion emotion = null;
     private String intent = null;
     private String intentDistance = null;
-
     private String parse = null;
     private String parseAnswer = null;
     private String underspecifiedTermQuestion = null;
@@ -58,40 +54,43 @@ public class Interpretation {
     // new type safe fields to use with semantic parser, refactor to private fields + getter & setter later
 	// getting Objects without any type information from the hash map is not a good practice, this is not JavaScript
 	private String answer;
-	public List<Triple> semParserTriples;
+
+	public Interpretation() {
+	    LOGGER.debug("Empty Interpretation initialized");
+    }
 
 	public Interpretation(String sentence){
 		this.sentenceType = SentenceType.STATEMENT;
 		this.sentence = sentence;
+        LOGGER.debug("Interpretation initialized by sentence: " + sentence);
 	}
 
-    public Interpretation(String sentence, Map<String, Object> features){
-        this.sentenceType = SentenceType.STATEMENT;
-        this.sentence = sentence;
-    }
-
-	public Interpretation(String sentence, Interpretation interpretation){
-		this.copy(interpretation);
+	public Interpretation(String sentence, Interpretation interpretation) {
+		this.put(interpretation);
 		this.sentenceType = SentenceType.STATEMENT;
 		this.sentence = sentence;
+        LOGGER.debug("Interpretation initialized by sentence: " + sentence + " and Interpretation: " + interpretation);
 	}
 
-	public Interpretation(SentenceType sentenceType){
-		this.sentenceType = sentenceType;
-	}
+//	public Interpretation(SentenceType sentenceType){
+//		this.sentenceType = sentenceType;
+//	}
 
 	public Interpretation(SentenceType sentenceType, String sentence, Triple triple){
 		this.sentenceType = sentenceType;
 		this.sentence = sentence;
 		this.triples = new ArrayList<>();
 		this.triples.add(triple);
+        LOGGER.debug("Interpretation initialized by sentence: " + sentence + "" +
+                ", sentence type: " + sentenceType + " and triple: " + triple.toString());
 	}
 
 	public Interpretation(Interpretation interpretation) {
 	    this.copy(interpretation);
-	    LOGGER.info("Merge/copy method is under construction! See you soon!");
+        LOGGER.debug("Interpretation initialized by Interpretation: " + interpretation);
     }
 
+    @Nullable
 	public SentenceType getSentenceType() {
 		return sentenceType;
 	}
@@ -100,6 +99,7 @@ public class Interpretation {
 		this.sentenceType = sentenceType;
 	}
 
+    @Nullable
     public String getSentence() {
         return sentence;
     }
@@ -108,6 +108,7 @@ public class Interpretation {
         this.sentence = sentence;
     }
 
+    @Nullable
     public List<Triple> getTriples() {
         return triples;
     }
@@ -116,6 +117,7 @@ public class Interpretation {
         this.triples = triple;
     }
 
+    @Nullable
     public List<Triple> getSemTriples() {
         return semTriples;
     }
@@ -125,6 +127,7 @@ public class Interpretation {
         this.semTriples.removeIf(Objects::isNull);
     }
 
+    @Nullable
     public List<String> getTokens() {
         return tokens;
     }
@@ -134,6 +137,7 @@ public class Interpretation {
         //this.tokens.removeIf(Objects::isNull);
     }
 
+    @Nullable
     public String[] getPosTags() {
         return posTags;
     }
@@ -142,6 +146,7 @@ public class Interpretation {
         this.posTags = posTags;
     }
 
+    @Nullable
     public String[] getLemmas() {
         return lemmas;
     }
@@ -150,6 +155,7 @@ public class Interpretation {
         this.lemmas = lemmas;
     }
 
+    @Nullable
     public List<DetectedEntity> getKeywords() {
         return keywords;
     }
@@ -165,6 +171,7 @@ public class Interpretation {
         keywords.add(keyword);
     }
 
+    @Nullable
     public String getAssociation() {
         return association;
     }
@@ -173,6 +180,7 @@ public class Interpretation {
         this.association = association;
     }
 
+    @Nullable
     public Map<SemanticRole, String> getPas() {
         return pas;
     }
@@ -181,6 +189,7 @@ public class Interpretation {
         this.pas = pas;
     }
 
+    @Nullable
     public String getName() {
         return name;
     }
@@ -189,6 +198,7 @@ public class Interpretation {
         this.name = name;
     }
 
+    @Nullable
     public String getCelebrity() {
         return celebrity;
     }
@@ -205,6 +215,7 @@ public class Interpretation {
         isRoboy = roboy;
     }
 
+    @Nullable
     public String getObjAnswer() {
         return objAnswer;
     }
@@ -213,6 +224,7 @@ public class Interpretation {
         this.objAnswer = objAnswer;
     }
 
+    @Nullable
     public String getPredAnswer() {
         return predAnswer;
     }
@@ -221,6 +233,7 @@ public class Interpretation {
         this.predAnswer = predAnswer;
     }
 
+    @Nullable
     public RoboyEmotion getEmotion() {
         return emotion;
     }
@@ -229,6 +242,7 @@ public class Interpretation {
         this.emotion = emotion;
     }
 
+    @Nullable
     public String getIntent() {
         return intent;
     }
@@ -237,6 +251,7 @@ public class Interpretation {
         this.intent = intent;
     }
 
+    @Nullable
     public String getIntentDistance() {
         return intentDistance;
     }
@@ -245,6 +260,7 @@ public class Interpretation {
         this.intentDistance = intentDistance;
     }
 
+    @Nullable
     public String getParse() {
         return parse;
     }
@@ -253,6 +269,7 @@ public class Interpretation {
         this.parse = parse;
     }
 
+    @Nullable
     public String getParseAnswer() {
         return parseAnswer;
     }
@@ -261,6 +278,7 @@ public class Interpretation {
         this.parseAnswer = parseAnswer;
     }
 
+    @Nullable
     public String getUnderspecifiedTermQuestion() {
         return underspecifiedTermQuestion;
     }
@@ -269,6 +287,7 @@ public class Interpretation {
         this.underspecifiedTermQuestion = underspecifiedTermQuestion;
     }
 
+    @Nullable
     public String getUnderspecifiedQuestion() {
         return underspecifiedQuestion;
     }
@@ -277,6 +296,7 @@ public class Interpretation {
         this.underspecifiedQuestion = underspecifiedQuestion;
     }
 
+    @Nullable
     public String getUnderspecifiedAnswer() {
         return underspecifiedAnswer;
     }
@@ -285,6 +305,7 @@ public class Interpretation {
         this.underspecifiedAnswer = underspecifiedAnswer;
     }
 
+    @Nullable
     public UtteranceSentiment getSentiment() {
         return sentiment;
     }
@@ -293,6 +314,7 @@ public class Interpretation {
         this.sentiment = sentiment;
     }
 
+    @Nullable
     public String getUtteranceType() {
         return utteranceType;
     }
@@ -301,6 +323,7 @@ public class Interpretation {
         this.utteranceType = utteranceType;
     }
 
+    @Nullable
     public ParsingOutcome getParsingOutcome() {
         return parsingOutcome;
     }
@@ -309,6 +332,7 @@ public class Interpretation {
         this.parsingOutcome = parsingOutcome;
     }
 
+    @Nullable
     public String getAnswer() {
         return answer;
     }
@@ -325,22 +349,134 @@ public class Interpretation {
     }
 
     // TODO the method copies the fields from the
-    public boolean copy(Interpretation interpretation) {
-	    return false;
+    public void copy(Interpretation interpretation) {
+        if (interpretation != null) {
+            this.sentenceType = interpretation.getSentenceType();
+            this.sentence = interpretation.getSentence();
+            this.triples = interpretation.getTriples();
+            this.semTriples = interpretation.getSemTriples();
+            this.tokens = interpretation.getTokens();
+            this.posTags = interpretation.getPosTags();
+            this.lemmas = interpretation.getLemmas();
+            this.keywords = interpretation.getKeywords();
+            this.association = interpretation.getAssociation();
+            this.pas = interpretation.getPas();
+            this.name = interpretation.getName();
+            this.celebrity = interpretation.getCelebrity();
+            this.isRoboy = interpretation.isRoboy();
+            this.objAnswer = interpretation.getObjAnswer();
+            this.predAnswer = interpretation.getPredAnswer();
+            this.emotion = interpretation.getEmotion();
+            this.intent = interpretation.getIntent();
+            this.intentDistance = interpretation.getIntentDistance();
+            this.parse = interpretation.getParse();
+            this.parseAnswer = interpretation.getParseAnswer();
+            this.underspecifiedTermQuestion = interpretation.getUnderspecifiedTermQuestion();
+            this.underspecifiedQuestion = interpretation.getUnderspecifiedQuestion();
+            this.underspecifiedAnswer = interpretation.getUnderspecifiedAnswer();
+            this.sentiment = interpretation.getSentiment();
+            this.utteranceType = interpretation.getUtteranceType();
+            this.parsingOutcome = interpretation.getParsingOutcome();
+        }
+//        Field[] fields = interpretation.getClass().getFields();
+//        Method[] localMethods = this.getClass().getMethods();
+//        for (Method m : interpretation.getClass().getMethods())
+//            if (m.getName().startsWith("get") && m.getParameterTypes().length == 0) {
+//                Object r = m.invoke(interpretation);
+//                Class<?> type = m.getReturnType();
+//                for (Method localMethod : localMethods) {
+//                    if (localMethod.getName().startsWith("set") && localMethod.getName().endsWith(m.getName().substring(3))) {
+//                        localMethod.invoke(this, r);
+//                    }
+//                }
+//                // do your thing with r
+//            }
     }
 
-    // TODO method that merges the interpretations
-    public Interpretation merge(Interpretation interpretation) {
-	    if (this.copy(interpretation)) {
-	        return this;
+    public void put(Interpretation interpretation) {
+	    if (interpretation != null) {
+            if (interpretation.getSentenceType() != null) {
+                this.sentenceType = interpretation.getSentenceType();
+            }
+            if (interpretation.getSentence() != null) {
+                this.sentence = interpretation.getSentence();
+            }
+            if (interpretation.getTriples() != null) {
+                this.triples = interpretation.getTriples();
+            }
+            if (interpretation.getSemTriples() != null) {
+                this.semTriples = interpretation.getSemTriples();
+            }
+            if (interpretation.getTokens() != null) {
+                this.tokens = interpretation.getTokens();
+            }
+            if (interpretation.getPosTags() != null) {
+                this.posTags = interpretation.getPosTags();
+            }
+            if (interpretation.getLemmas() != null) {
+                this.lemmas = interpretation.getLemmas();
+            }
+            if (interpretation.getKeywords() != null) {
+                this.keywords = interpretation.getKeywords();
+            }
+            if (interpretation.getAssociation() != null) {
+                this.association = interpretation.getAssociation();
+            }
+            if (interpretation.getPas() != null) {
+                this.pas = interpretation.getPas();
+            }
+            if (interpretation.getName() != null) {
+                this.name = interpretation.getName();
+            }
+            if (interpretation.getCelebrity() != null) {
+                this.celebrity = interpretation.getCelebrity();
+            }
+            if (interpretation.getObjAnswer() != null) {
+                this.objAnswer = interpretation.getObjAnswer();
+            }
+            if (interpretation.getPredAnswer() != null) {
+                this.predAnswer = interpretation.getPredAnswer();
+            }
+            if (interpretation.getEmotion() != null) {
+                this.emotion = interpretation.getEmotion();
+            }
+            if (interpretation.getIntent() != null) {
+                this.intent = interpretation.getIntent();
+            }
+            if (interpretation.getIntentDistance() != null) {
+                this.intentDistance = interpretation.getIntentDistance();
+            }
+            if (interpretation.getParse() != null) {
+                this.parse = interpretation.getParse();
+            }
+            if (interpretation.getParseAnswer() != null) {
+                this.parseAnswer = interpretation.getParseAnswer();
+            }
+            if (interpretation.getUnderspecifiedTermQuestion() != null) {
+                this.underspecifiedTermQuestion = interpretation.getUnderspecifiedTermQuestion();
+            }
+            if (interpretation.getUnderspecifiedQuestion() != null) {
+                this.underspecifiedQuestion = interpretation.getUnderspecifiedQuestion();
+            }
+            if (interpretation.getUnderspecifiedAnswer() != null) {
+                this.underspecifiedAnswer = interpretation.getUnderspecifiedAnswer();
+            }
+            if (interpretation.getSentiment() != null) {
+                this.sentiment = interpretation.getSentiment();
+            }
+            if (interpretation.getUtteranceType() != null) {
+                this.utteranceType = interpretation.getUtteranceType();
+            }
+            if (interpretation.getParsingOutcome() != null) {
+                this.parsingOutcome = interpretation.getParsingOutcome();
+            }
+            this.isRoboy = interpretation.isRoboy();
         }
-        return null;
     }
 
     @Override
     public String toString() {
         return "Interpretation{" +
-                //"features=" + features +
                 ", sentenceType=" + sentenceType +
                 ", sentence='" + sentence + '\'' +
                 ", triple='" + triples + '\'' +
@@ -368,8 +504,58 @@ public class Interpretation {
                 ", utteranceType=" + utteranceType +
                 ", parserResult='" + parsingOutcome + '\'' +
                 ", answer='" + answer + '\'' +
-                ", semParserTriples=" + semParserTriples +
                 ", parsingOutcome=" + parsingOutcome +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Interpretation comparableObject = (Interpretation) obj;
+        return isRoboy() == comparableObject.isRoboy() &&
+                getIntentDistance() == comparableObject.getIntentDistance() &&
+                getSentenceType() == comparableObject.getSentenceType() &&
+                Objects.equals(getSentence(), comparableObject.getSentence()) &&
+                Objects.equals(getTriples(), comparableObject.getTriples()) &&
+                Objects.equals(getSemTriples(), comparableObject.getSemTriples()) &&
+                Objects.equals(getTokens(), comparableObject.getTokens()) &&
+                Arrays.equals(getPosTags(), comparableObject.getPosTags()) &&
+                Arrays.equals(getLemmas(), comparableObject.getLemmas()) &&
+                Objects.equals(getKeywords(), comparableObject.getKeywords()) &&
+                Objects.equals(getAssociation(), comparableObject.getAssociation()) &&
+                Objects.equals(getPas(), comparableObject.getPas()) &&
+                Objects.equals(getName(), comparableObject.getName()) &&
+                Objects.equals(getCelebrity(), comparableObject.getCelebrity()) &&
+                Objects.equals(getObjAnswer(), comparableObject.getObjAnswer()) &&
+                Objects.equals(getPredAnswer(), comparableObject.getPredAnswer()) &&
+                getEmotion() == comparableObject.getEmotion() &&
+                Objects.equals(getIntent(), comparableObject.getIntent()) &&
+                Objects.equals(getParse(), comparableObject.getParse()) &&
+                Objects.equals(getParseAnswer(), comparableObject.getParseAnswer()) &&
+                Objects.equals(getUnderspecifiedTermQuestion(), comparableObject.getUnderspecifiedTermQuestion()) &&
+                Objects.equals(getUnderspecifiedQuestion(), comparableObject.getUnderspecifiedQuestion()) &&
+                Objects.equals(getUnderspecifiedAnswer(), comparableObject.getUnderspecifiedAnswer()) &&
+                getSentiment() == comparableObject.getSentiment() &&
+                Objects.equals(getUtteranceType(), comparableObject.getUtteranceType()) &&
+                getParsingOutcome() == comparableObject.getParsingOutcome() &&
+                Objects.equals(getAnswer(), comparableObject.getAnswer());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(getSentenceType(), getSentence(), getTriples(), getSemTriples(), getTokens(),
+                getKeywords(), getAssociation(), getPas(), getName(), getCelebrity(), isRoboy(), getObjAnswer(),
+                getPredAnswer(), getEmotion(), getIntent(), getIntentDistance(), getParse(), getParseAnswer(),
+                getUnderspecifiedTermQuestion(), getUnderspecifiedQuestion(), getUnderspecifiedAnswer(), getSentiment(),
+                getUtteranceType(), getParsingOutcome(), getAnswer());
+        result = 31 * result + Arrays.hashCode(getPosTags());
+        result = 31 * result + Arrays.hashCode(getLemmas());
+        return result;
     }
 }
