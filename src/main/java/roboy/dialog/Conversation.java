@@ -112,7 +112,7 @@ public class Conversation extends Thread {
             }
 
             // analyze
-            Interpretation interpretation = new Interpretation(raw.sentence, raw.attributes);
+            Interpretation interpretation = new Interpretation(raw.getSentence(), raw.getAttributes());
             for (Analyzer a : analyzers) {
                 try {
                     interpretation = a.analyze(interpretation);

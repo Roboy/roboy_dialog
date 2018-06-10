@@ -117,7 +117,7 @@ public class PersonalInformationAskingState extends ExpoState {
                 LOGGER.info(" -> Inference was successful");
                 answers = qaValues.getSuccessAnswers(selectedPredicate);
                 person.addInformation(selectedPredicate, result);
-                getContext()().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+                getContext().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
                 LOGGER.info(" -> Updated Interlocutor: " + person.getName());
             } else {
                 LOGGER.warn(" -> Inference failed");

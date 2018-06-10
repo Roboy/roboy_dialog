@@ -40,7 +40,7 @@ public abstract class ExpoState extends State {
                 if (property.name().equals(intentNames[dice])) {
                     String attribute = chooseIntentAttribute(property);
                     if (!attribute.equals("")) {
-                        Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(intentsHistoryId, property, attribute));
+                        getContext().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(intentsHistoryId, property, attribute));
                         LOGGER.info(transitionNames[dice] + " transition");
                         return getTransition(transitionNames[dice]);
                     } else {
@@ -77,7 +77,7 @@ public abstract class ExpoState extends State {
     }
 
     private boolean lastNIntentsContainAttribute(String attribute, int n) {
-        Map<Integer, IntentValue> lastIntentValues = Context.getInstance().DIALOG_INTENTS.getLastNValues(n);
+        Map<Integer, IntentValue> lastIntentValues = getContext().DIALOG_INTENTS.getLastNValues(n);
 
         for (IntentValue value : lastIntentValues.values()) {
             if (value.getAttribute() != null) {

@@ -15,6 +15,7 @@ import roboy.logic.InferenceEngine;
 import roboy.memory.DummyMemory;
 import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jMemoryInterface;
+import roboy.memory.Neo4jProperty;
 import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
@@ -245,7 +246,7 @@ public class ConversationManager {
             logger.error("Memory is null while starting a conversation");
         }
         Interlocutor person = new Interlocutor(memory);
-        person.setProperty("uuid", uuid);
+        person.setProperty(Neo4jProperty.telegram_id, uuid);
         context.ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
 
 
