@@ -28,12 +28,15 @@ public class TelegramOutput implements OutputDevice {
                 String message = ((SpeechAction) a).getText();
                 communicationHandler.sendMessage(message, this.uuid);
             }else if (a instanceof EmotionAction) {
-                if (((EmotionAction) a).getState() == "shy") {
-                    communicationHandler.sendSticker(this.uuid, "CAADAgADNgAD5dCAEAlV6j8y7a68Ag"); //a sticker added for test
-                }else if (((EmotionAction) a).getState() == "smileblink") {
+                String state = ((EmotionAction) a).getState();
+                if (state.equals("shy")) {
+                    communicationHandler.sendSticker(this.uuid, "CAADAgADSwAD5dCAEBGmde8-twTLAg");
+                }else if (state.equals("smileblink")) {
                     communicationHandler.sendSticker(this.uuid, "CAADAgADSgAD5dCAEMQakIa3aHHSAg");
-                }else if(((EmotionAction) a).getState() == "kiss") {
+                }else if(state.equals("kiss")) {
                     communicationHandler.sendSticker(this.uuid, "CAADAgADOQAD5dCAEOtbfZz0NKh2Ag");
+                }else if(state.equals("lookleft") || state.equals("lookright")) {
+                    communicationHandler.sendSticker(this.uuid, "CAADAgADFQAD5dCAEKM0TS8sjXiAAg");
                 }
             }
         }

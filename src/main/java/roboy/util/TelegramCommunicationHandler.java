@@ -27,7 +27,7 @@ import java.util.concurrent.*;
 public class TelegramCommunicationHandler extends TelegramLongPollingBot implements Timeout.TimeoutObserver{
     private final static Logger logger = LogManager.getLogger();
 
-    private static final String tokensPath = "";//place path to your token file here
+    private static final String tokensPath = "/Users/Apple/botboy/tokens.json";//place path to your token file here
     private static final int TYPING_TIME_LIMIT = 3; //SECONDS
     private static final int INPUT_TIME_LIMIT = 5; //SECONDS
 
