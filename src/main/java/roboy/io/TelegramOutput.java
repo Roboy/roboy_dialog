@@ -3,6 +3,7 @@ package roboy.io;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.dialog.action.Action;
+import roboy.dialog.action.EmotionAction;
 import roboy.dialog.action.SpeechAction;
 import roboy.util.TelegramCommunicationHandler;
 
@@ -26,6 +27,14 @@ public class TelegramOutput implements OutputDevice {
             if (a instanceof SpeechAction) {
                 String message = ((SpeechAction) a).getText();
                 communicationHandler.sendMessage(message, this.uuid);
+            }else if (a instanceof EmotionAction) {
+                if (((EmotionAction) a).getState() == "shy") {
+                    communicationHandler.sendSticker(this.uuid, "CAADAgADNgAD5dCAEAlV6j8y7a68Ag"); //a sticker added for test
+                }else if (((EmotionAction) a).getState() == "smileblink") {
+                    communicationHandler.sendSticker(this.uuid, "CAADAgADSgAD5dCAEMQakIa3aHHSAg");
+                }else if(((EmotionAction) a).getState() == "kiss") {
+                    communicationHandler.sendSticker(this.uuid, "CAADAgADOQAD5dCAEOtbfZz0NKh2Ag");
+                }
             }
         }
     }
