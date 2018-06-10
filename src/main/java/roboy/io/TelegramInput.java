@@ -11,65 +11,54 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
- * Is a singleton because there is only one key. Handles telegram API and hands threads their respective messages.
- * Use getInstance() for access.
+ * Handles telegram API and hands threads their respective messages.
+ *
  */
 public class TelegramInput implements InputDevice {
-    private static TelegramInput telegraminputInstance = TelegramInput.getInstance();
+    //static part since there is only one API handle
     private static final Logger logger = LogManager.getLogger();
+    private static final HashMap<String, TelegramInput> inputDevices = new HashMap<>(); //maps uuid to InputDevices so we can sort messages into them
 
-    private static final HashMap<Long, String> newMessages = new HashMap<>(); //maps threadID to message queue since we can access threadID
+    private volatile String message; //one input message per thread
 
-    private TelegramInput(){//since this is half-static, the constructor is empty
+
+    /**
+     * Creates a Telegraminput device that sorts incoming messages from the telegram handle to the individual conversations
+     * @param uuid The uuid of the interlocutor must be formed like this: "telegram-[uuid from service]"
+     */
+    public TelegramInput(String uuid){//since this is half-static, the constructor is empty
+        this.message = "";
+        synchronized (inputDevices){//place this in hashmap so we can find it when we want to deliver a new message
+            inputDevices.put(uuid, this);
+        }
     }
 
     /**
      * Gets called whenever a new telegram message arrives.
-     * Places them in the appropriate thread's queue. Creates queue and thread before if necessary.
+     * Places them in the appropriate thread's message string. Creates thread beforehand, if necessary.
      * @param update contains a (sender uuid,message) string pair.
      */
     public static void onUpdate(Pair<String, String> update) {
 
         String uuid = "telegram-" + update.getKey();
 
-        //get ThreadID
-        Long cThreadID = ConversationManager.getConversationThreadID(uuid);
+        TelegramInput input = inputDevices.get(uuid);
 
-        if (cThreadID == null){//if Thread does not exist yet, create it and place the new message as it's input
+        if (input == null){//if Thread does not exist yet, create it and place the new message as it's input
             try {
                 ConversationManager.spawnConversation(uuid);
             } catch (IOException e) {
                 logger.error("Could not create conversation for telegram uuid '" + update.getKey() + "'!");
                 return;
             }
-            cThreadID = ConversationManager.getConversationThreadID(uuid);
-            synchronized (newMessages) {
-                newMessages.put(cThreadID, update.getValue());
-            }
+            input = inputDevices.get(uuid);
         }
-        else {
-            //add message to the corresponding conversations input
-            synchronized (newMessages) {
-                newMessages.replace(cThreadID, newMessages.get(cThreadID) + " " + update.getValue());
-            }
+        //add message to the corresponding conversations input
+        synchronized (input) {
+            input.message += update.getValue();
+            //make thread do work!
+            input.notify();
         }
-        //make thread do work!
-        ConversationManager.interruptConversation(uuid);
-    }
-
-    /**
-     * Provides the TelegramInput singleton instance.
-     * @return telegram instance
-     */
-    public static TelegramInput getInstance(){
-        if(telegraminputInstance == null) {//for speed
-            //now: Thread safety
-            synchronized (TelegramInput.class) {
-                //to prevent magic edgecases from ruining our day
-                if(telegraminputInstance == null) telegraminputInstance = new TelegramInput();
-            }
-        }
-        return telegraminputInstance;
     }
 
     /**
@@ -79,22 +68,21 @@ public class TelegramInput implements InputDevice {
      */
     @Override
     public Input listen() throws InterruptedException {
-        String message;
-        synchronized (newMessages) {
-            message = newMessages.get(Thread.currentThread().getId());//try to read new messages
+        Input newInput;
+        synchronized (this) {
             while(message.equals("")){//while no new messages for this thread exist: wait
                 try {
-                    newMessages.wait();
+                    this.wait();
                 }
                 catch (InterruptedException e) {//Thread woke up! Process new information!
-                    message = newMessages.get(Thread.currentThread().getId());
                     if(message == null || message.equals("")){//if this interrupt was not triggered because new messages arrived, throw exception to be handled
                         throw e;
                     }
                 }
             }
-            newMessages.replace(Thread.currentThread().getId(), ""); //consume message
+            newInput = new Input(message);
+            message = ""; //consume message
         }
-        return new Input(message);
+        return newInput;
     }
 }

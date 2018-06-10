@@ -34,6 +34,10 @@ public class IO {
 	}
 
 	public static MultiInputDevice getInputs(RosMainNode rosMainNode) throws SocketException{
+		return getInputs(rosMainNode, null);
+	}
+
+	public static MultiInputDevice getInputs(RosMainNode rosMainNode, String uuid) throws SocketException{
 		MultiInputDevice multiIn;
 		switch (ConfigManager.INPUT) {
 			case "cmdline":
@@ -46,7 +50,7 @@ public class IO {
 				multiIn = new MultiInputDevice(new UdpInput(ConfigManager.DATAGRAM_SOCKET));
 				break;
 			case "telegram":
-				multiIn = new MultiInputDevice(TelegramInput.getInstance());
+				multiIn = new MultiInputDevice(new TelegramInput(uuid));
 				break;
 			default:
 				multiIn = new MultiInputDevice(new CommandLineInput());

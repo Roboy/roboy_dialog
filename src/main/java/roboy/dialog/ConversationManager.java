@@ -221,7 +221,7 @@ public class ConversationManager {
         logger.info("Creating new conversation...");
 
         //Create IODevices.
-        MultiInputDevice multiIn = IO.getInputs(rosMainNode);
+        MultiInputDevice multiIn = IO.getInputs(rosMainNode, uuid);
         MultiOutputDevice multiOut = IO.getOutputs(rosMainNode, uuid);
 
         //Create this conversations context.
