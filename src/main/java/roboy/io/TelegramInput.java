@@ -1,14 +1,12 @@
 package roboy.io;
 
-import javafx.util.Pair;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.dialog.ConversationManager;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * Handles telegram API and hands threads their respective messages.

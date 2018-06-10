@@ -1,6 +1,5 @@
 package roboy.util;
 
-import javafx.util.Pair;
 import org.apache.commons.io.IOUtils;
 import org.apache.jena.atlas.logging.Log;
 import org.apache.logging.log4j.LogManager;
@@ -22,7 +21,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.*;
 
 /** Singleton Class For Telegram Bot */
