@@ -7,7 +7,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.reflect.TypeToken;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.memory.Neo4jLabel;
 import roboy.memory.Neo4jMemoryInterface;
+import roboy.memory.Neo4jProperty;
+import roboy.memory.Neo4jRelationship;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -29,7 +32,7 @@ public class MemoryNodeModel {
     //"Person" etc. Duplicate because Memory expects a single Label in CREATE queries, but
     // returns an array of labels inside GET responses.
     @Expose
-    private String label;
+    private Neo4jLabel label;
     //name, birthdate
     @Expose
     private HashMap<String, Object> properties;
@@ -45,6 +48,14 @@ public class MemoryNodeModel {
         this.memory = memory;
         // TODO why id is assigned here?
         this.id = 0;
+    }
+
+    public MemoryNodeModel(String jsonString, Neo4jMemoryInterface memory){
+        this.memory = memory;
+        MemoryNodeModel node = fromJSON(jsonString, new Gson());
+        setId(node.getId());
+        setRelationships(node.getRelationships() != null ? node.getRelationships() : new HashMap<>());
+        setProperties(node.getProperties() != null ? node.getProperties() : new HashMap<>());
     }
 
     public MemoryNodeModel(boolean stripQuery, Neo4jMemoryInterface memory) {
@@ -67,61 +78,102 @@ public class MemoryNodeModel {
         this.id = id;
     }
 
-    public ArrayList<String> getLabels() {
-        return labels;
+    public ArrayList<Neo4jLabel> getLabels() {
+        ArrayList<Neo4jLabel> neo4jLabels = new ArrayList<>();
+        for (String label : labels) {
+            Neo4jLabel neo4jLabel = Neo4jLabel.lookupByType(label);
+            if (neo4jLabel != null) {
+                neo4jLabels.add(neo4jLabel);
+            }
+        }
+        return neo4jLabels;
     }
-    public void setLabel(String label) {
+    public void setLabel(Neo4jLabel label) {
         if(this.labels == null) {
             this.labels = new ArrayList<>();
         }
-        labels.add(label);
+        labels.add(label.type);
         this.label = label;
     }
 
-    public HashMap<String, Object> getProperties() {
-        return properties;
-    }
-    public Object getProperty(String key) {
-        return (properties != null ? properties.get(key) : null);
+    public HashMap<Neo4jProperty, Object> getProperties() {
+        HashMap<Neo4jProperty, Object> neo4jProperties = new HashMap<>();
+        for (String key : properties.keySet()) {
+            Neo4jProperty neo4jProperty = Neo4jProperty.lookupByType(key);
+            if (neo4jProperty != null) {
+                neo4jProperties.put(neo4jProperty, properties.get(key));
+            }
+        }
+        return neo4jProperties;
     }
 
-    public void setProperties(HashMap<String, Object> properties) {
+    public Object getProperty(Neo4jProperty key) {
+        return (properties != null ? properties.get(key.type) : null);
+    }
+
+    public void setProperties(HashMap<Neo4jProperty, Object> properties) {
         if(this.properties == null) {
             this.properties = new HashMap<>();
         }
-        this.properties.putAll(properties);
+        for (Neo4jProperty key : properties.keySet()) {
+            setProperty(key, properties.get(key));
+        }
     }
-    public void setProperty(String key, Object property) {
+
+    public void setProperty(Neo4jProperty key, Object property) {
         if(this.properties == null) {
             this.properties = new HashMap<>();
         }
-        properties.put(key, property);
+        properties.put(key.type, property);
     }
 
-    public HashMap<String, ArrayList<Integer>> getRelationships() {
-        return relationships;
+    public HashMap<Neo4jRelationship, ArrayList<Integer>> getRelationships() {
+        HashMap<Neo4jRelationship, ArrayList<Integer>> neo4jRelationships = new HashMap<>();
+        for (String key : relationships.keySet()) {
+            Neo4jRelationship neo4jRelationship = Neo4jRelationship.lookupByType(key);
+            if (neo4jRelationship != null) {
+                neo4jRelationships.put(neo4jRelationship, relationships.get(key));
+            }
+        }
+        return neo4jRelationships;
     }
-    public ArrayList<Integer> getRelationship(String key) {
+
+    public ArrayList<Integer> getRelationship(Neo4jRelationship key) {
         //TODO: Sort this shit out
         //return (relationships != null ? relationships.get(key.toLowerCase()) : null);
         return (relationships != null ? relationships.get(key) : null);
     }
-    public void setRelationships(HashMap<String, ArrayList<Integer>> relationships) {
+
+    public void setRelationships(HashMap<Neo4jRelationship, ArrayList<Integer>> relationships) {
         if(this.relationships == null) {
             this.relationships = new HashMap<>();
         }
-        this.relationships.putAll(relationships);
+        for (Neo4jRelationship key : relationships.keySet()) {
+            setRelationships(key, relationships.get(key));
+        }
     }
-    public void setRelationship(String key, Integer id) {
+
+    public void setRelationships(Neo4jRelationship key, ArrayList<Integer> ids) {
         if(this.relationships == null) {
             this.relationships = new HashMap<>();
         }
-        if(relationships.containsKey(key)) {
-            relationships.get(key).add(id);
+        if(relationships.containsKey(key.type)) {
+            relationships.get(key.type).addAll(ids);
         } else {
-            ArrayList idList = new ArrayList();
+            relationships.put(key.type, ids);
+        }
+    }
+
+    public void setRelationship(Neo4jRelationship key, Integer id) {
+        if(this.relationships == null) {
+            this.relationships = new HashMap<>();
+        }
+        if(relationships.containsKey(key.type)) {
+            relationships.get(key.type).add(id);
+        } else {
+            ArrayList<Integer> idList = new ArrayList<>();
             idList.add(id);
-            relationships.put(key, idList);
+            relationships.put(key.type, idList);
         }
     }
 
@@ -182,10 +234,16 @@ public class MemoryNodeModel {
         return gson.fromJson(json, this.getClass());
     }
 
-//    public String toString() {
-//        return "\nid: " + this.getId() +
-//                "\nlabels: " + this.getLabels() +
-//                "\nrelationships: " + this.getRelationships().toString() +
-//                "\nproperties: " + this.getProperties();
-//    }
+    @Override
+    public String toString() {
+        return "MemoryNodeModel{" +
+                "memory=" + memory +
+                ", id=" + id +
+                ", labels=" + labels +
+                ", label=" + label +
+                ", properties=" + properties +
+                ", relationships=" + relationships +
+                ", stripQuery=" + stripQuery +
+                '}';
+    }
 }

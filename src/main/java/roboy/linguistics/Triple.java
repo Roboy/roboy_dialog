@@ -1,5 +1,7 @@
 package roboy.linguistics;
 
+import java.util.Objects;
+
 /**
  * Represents a simple who(subject) does what(predicate) to whom(object) relation.
  */
@@ -9,37 +11,38 @@ public class Triple {
 	public String predicate;
 	public String object;
 
-	public Triple(String predicate, String subject, String object){
+	public Triple(String subject, String predicate, String object){
 		this.predicate = predicate;
 		this.subject = subject;
 		this.object = object;
 	}
-	
-	public String toString(){
-		return subject +"-"+predicate+"-"+ object;
-	}
 
-	public boolean equals(Object obj)
-	{
-        if (!(obj instanceof Triple)) {
+    @Override
+    public String toString() {
+        return "Triple{" +
+                "SUB: '" + subject + '\'' +
+                ", PRED: '" + predicate + '\'' +
+                ", OBJ: '" + object + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
 
-        boolean[] equality = {false, false, false};
         Triple comparableObject = (Triple) obj;
+        return Objects.equals(subject, comparableObject.subject) &&
+                Objects.equals(predicate, comparableObject.predicate) &&
+                Objects.equals(this.object, comparableObject.object);
+    }
 
-        if (subject != null) {
-            equality[0] = comparableObject.subject.equals(this.subject);
-        }
-
-        if (predicate != null) {
-            equality[1] = comparableObject.predicate.equals(this.predicate);
-        }
-
-        if (object != null) {
-            equality[2] = comparableObject.object.equals(this.object);
-        }
-
-        return equality[0] && equality[1] && equality[2];
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(subject, predicate, object);
+    }
 }

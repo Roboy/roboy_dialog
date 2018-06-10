@@ -17,7 +17,7 @@ public class Linguistics {
 		ANECDOTE,
         STATEMENT,
 		NONE,
-		WHO, HOW_IS, HOW_DO, WHY, WHEN, WHERE, WHAT, IS_IT, DOES_IT
+		WHO, HOW, HOW_IS, HOW_DO, WHY, WHEN, WHERE, WHAT, IS_IT, DOES_IT
     }
 
 	public enum SemanticRole {

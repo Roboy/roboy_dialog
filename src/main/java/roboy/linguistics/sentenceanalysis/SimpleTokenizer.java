@@ -20,7 +20,7 @@ public class SimpleTokenizer implements Analyzer{
 
 	private List<String> tokenize(String sentence) {
 	    if (sentence != null) {
-            return Arrays.asList(sentence.split("\\s+"));
+            return Arrays.asList(sentence.toLowerCase().split("\\s+"));
         }
         return null;
 	}

@@ -1,5 +1,7 @@
 package roboy.logic;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.bytedeco.javacpp.presets.opencv_core;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
@@ -11,6 +13,8 @@ import roboy.memory.Neo4jRelationship;
 import java.util.*;
 
 public class Inference implements InferenceEngine {
+    final Logger LOGGER = LogManager.getLogger();
+
     final static List<String> positiveTokens = Arrays.asList("yes", "yep", "yeah", "ok", "sure", "do",
             "of course", "go ahead");
     final static List<String> negativeTokens = Arrays.asList("no", "nope", "later", "not", "dont", "do not");
@@ -78,7 +82,44 @@ public class Inference implements InferenceEngine {
 
     @Override
     public String inferRelationship(Neo4jRelationship key, Interpretation input) {
-        return null;
+        // TODO we may need to do different inference
+        String result = null;
+        if (input.getSentenceType().compareTo(Linguistics.SentenceType.STATEMENT) == 0) {
+            List<String> tokens = input.getTokens();
+            if (tokens.size() == 1) {
+                result = tokens.get(0).toLowerCase();
+                LOGGER.info("Retrieved only one token: " + result);
+            } else {
+                if (input.getParsingOutcome() == Linguistics.ParsingOutcome.SUCCESS &&
+                        input.getSemTriples().size() > 0) {
+                    List<Triple> sem_triple = input.getSemTriples();
+                    LOGGER.info("Semantic parsing is successful and semantic triple exists");
+                    if (sem_triple.get(0).predicate.contains(key.type)) {
+                        LOGGER.info(" -> Semantic predicate " + key.type + " exits");
+                        result = sem_triple.get(0).object.toLowerCase();
+                        LOGGER.info("Retrieved object " + result);
+                    } else {
+                        LOGGER.warn("Semantic predicate " + key.type + " does not exit");
+                    }
+                } else {
+                    LOGGER.warn("Semantic parsing failed or semantic triple does not exist");
+                    if (input.getObjAnswer() != null) {
+                        LOGGER.info("OBJ_ANSWER exits");
+                        result = input.getObjAnswer().toLowerCase();
+                        if (!result.equals("")) {
+                            LOGGER.info("Retrieved OBJ_ANSWER result " + result);
+                        } else {
+                            LOGGER.warn("OBJ_ANSWER result is empty");
+                        }
+                    } else {
+                        LOGGER.warn("OBJ_ANSWER does not exit");
+                    }
+                }
+            }
+        } else {
+            LOGGER.warn(" -> The sentence type is NOT a STATEMENT");
+        }
+        return result;
     }
 
     @Override

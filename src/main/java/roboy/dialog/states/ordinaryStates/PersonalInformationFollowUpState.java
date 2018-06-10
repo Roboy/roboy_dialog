@@ -120,7 +120,7 @@ public class PersonalInformationFollowUpState extends State {
             if (result != null && !result.equals("")) {
                 LOGGER.info(" -> Inference was successful");
                 answers = qaValues.getFollowUpAnswers(selectedPredicate);
-                person.addInformation(selectedPredicate.type, result);
+                person.addInformation(selectedPredicate, result);
                 getContext().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
                 LOGGER.info(" -> Updated Interlocutor: " + person.getName());
             } else {
@@ -131,7 +131,7 @@ public class PersonalInformationFollowUpState extends State {
             if (answers != null && !answers.isEmpty()) {
                 answer = String.format(answers.getRandomElement(), "");
             } else {
-                LOGGER.error(" -> The list of " + selectedPredicate.type + " answers is empty or null");
+                LOGGER.error(" -> The list of " + selectedPredicate + " answers is empty or null");
             }
         } else {
             LOGGER.error(" -> Selected predicate is null");

@@ -19,7 +19,9 @@ public class CommandLineInput implements InputDevice{
 		String input = sc.nextLine();
 
 		if (input.contains("roboy")){
-            return new Input(input, Maps.stringObjectMap("isRoboy", true));
+			Interpretation interpretation = new Interpretation();
+			interpretation.setRoboy(true);
+            return new Input(input, interpretation);
 		}
 		return new Input(input);
 	}
