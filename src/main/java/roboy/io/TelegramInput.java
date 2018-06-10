@@ -38,9 +38,10 @@ public class TelegramInput implements InputDevice {
      * Places them in the appropriate thread's message string. Creates thread beforehand, if necessary.
      * @param update contains a (sender uuid,message) string pair.
      */
-    public static void onUpdate(Pair<String, String> update) {
+    public static void onUpdate(HashMap<String, String> update) {
 
-        String uuid = "telegram-" + update.getKey();
+        String chatId = update.keySet().toArray()[0].toString();
+        String uuid = "telegram-" + chatId;
 
         TelegramInput input = inputDevices.get(uuid);
 
@@ -48,14 +49,14 @@ public class TelegramInput implements InputDevice {
             try {
                 ConversationManager.spawnConversation(uuid);
             } catch (IOException e) {
-                logger.error("Could not create conversation for telegram uuid '" + update.getKey() + "'!");
+                logger.error("Could not create conversation for telegram uuid '" + chatId + "'!");
                 return;
             }
             input = inputDevices.get(uuid);
         }
         //add message to the corresponding conversations input
         synchronized (input) {
-            input.message += update.getValue();
+            input.message += update.values().toArray()[0].toString();
             //make thread do work!
             input.notify();
         }

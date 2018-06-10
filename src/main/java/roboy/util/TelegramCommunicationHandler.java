@@ -20,19 +20,22 @@ import roboy.io.TelegramInput;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.*;
 
 /** Singleton Class For Telegram Bot */
 public class TelegramCommunicationHandler extends TelegramLongPollingBot implements Timeout.TimeoutObserver{
     private final static Logger logger = LogManager.getLogger();
 
-    private static final String tokensPath = "";//place path to your token file here
+    private static final String tokensPath = "/Users/Apple/botboy/tokens.json";//place path to your token file here
     private static final int TYPING_TIME_LIMIT = 3; //SECONDS
     private static final int INPUT_TIME_LIMIT = 5; //SECONDS
 
     // CHAT ID ----- ITS MESSAGE
-    private volatile List<Pair<String, String>> pairs = new ArrayList<>();
+//    private volatile List<Pair<String, String>> pairs = new ArrayList<>();
+    private volatile List<HashMap<String, String>> pairs = new ArrayList<>();
     private List<Timeout> telegramTimeouts; //Timeouts
 
     private TelegramCommunicationHandler(){
@@ -104,7 +107,11 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
                 }else{
                     try {
                         //get message, add it to containers
-                        pairs.add(new Pair<>(chatID, text));
+                        //pairs.add(new Pair<>(chatID, text));
+
+                        HashMap<String, String> pair = new HashMap<String, String>();
+                        pair.put(chatID, text);
+                        pairs.add(pair);
 
                         //wait for certain seconds, start the timer
                         handleTimeout(chatID);
@@ -138,28 +145,33 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
             }
         }
 
-        List<Pair<String, String>> removedObjects = new ArrayList<>();
+        List<HashMap<String, String>> removedObjects = new ArrayList<>();
 
         // get the all messages
-        Pair<String, String> result = null;
-        for(Pair p: pairs){
-            if(!chatID.equals(p.getKey())){
+        HashMap<String, String> result = null;
+        for(HashMap<String, String> p: pairs){
+            //Map a = new HashMap<String, String>();
+            String chatIdFromPair = p.keySet().toArray()[0].toString();
+            if(!chatID.equals(chatIdFromPair)){
                 continue;
             }
 
             removedObjects.add(p);
-            String message = p.getValue().toString();
+            String message = p.values().toArray()[0].toString();
 
             // check if the result initialized
             if(result == null) {
-                result = new Pair<>(chatID, message);
+                result = new HashMap<>();
+                result.put(chatID, message);
             }
             else {
                 // sum all of the messages
-                String newMessage = result.getValue()+ " " + message;
+                String oldMessage = result.values().toArray()[0].toString();
+                String newMessage = oldMessage + " " + message;
 
                 //equal chat id
-                result = new Pair<>(chatID, newMessage);
+                result = new HashMap<>();
+                result.put(chatID, newMessage);
             }
         }
 
