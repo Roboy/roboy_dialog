@@ -33,7 +33,7 @@ public class MemoryIntegrationTest extends TestCase {
 
     public void testCreateNode() {
         int id = gson.fromJson(Neo4jMemoryOperations.create(LUKAS), JsonObject.class).get("id").getAsInt();
-        assertTrue(id > 0);
+        assertTrue("The node should have an ID greater 0. 0 means something went wrong in the creation process", id > 0);
     }
 
      public void testUpdateNode() {
@@ -43,8 +43,8 @@ public class MemoryIntegrationTest extends TestCase {
         String updateResponse = Neo4jMemoryOperations.update("{'type':'node','id':" + id + ",'properties':{'surname':'Ki', 'xyz':'abc'}, 'relationships':{'FRIEND_OF':[" + idRob + "]}}");
 
          assertTrue("Answer returns a failure", updateResponse.contains("status\":\"OK\""));
-         assertTrue("Answer Message Part One is incorrect: Return JSON incorrect message", updateResponse.contains("properties updated\":true"));
-         assertTrue("Answer Message Part Two is incorrect: Should create at least one relationship (One Ideally)", !updateResponse.contains("relationships created\":0}\"}"));
+         assertTrue("Answer Message Part One is incorrect: Properties Updated should be true. Likely Culprit: JSON formatting or NEO4J", updateResponse.contains("properties updated\":true"));
+         assertTrue("Answer Message Part Two is incorrect: Should create at least one relationship (One Ideally). Likely Culprit: NEO4J", !updateResponse.contains("relationships created\":0}\"}"));
 //         assertTrue("Answer Message Part Two is incorrect: Should only create one relationship", updateResponse.contains("relationships created\":1}\"}"));
     }
 
@@ -56,7 +56,7 @@ public class MemoryIntegrationTest extends TestCase {
         get.setProperties(create.getProperties());
         get.setLabel(create.getLabel());
         JsonObject node = gson.fromJson(Neo4j.getNode(get), JsonObject.class);
-        assertEquals(id, node.get("id").getAsJsonArray().get(0).getAsInt());
+        assertEquals("ID from that is passed via the Create function does not match that of the Get Method", id, node.get("id").getAsJsonArray().get(0).getAsInt());
     }
 
     public void testRemove() {
@@ -69,9 +69,9 @@ public class MemoryIntegrationTest extends TestCase {
         Remove remove = gson.fromJson("{'type':'node','id':" + id + ",'properties_list': ['sex'], 'relationships':{'FRIEND_OF':[" + idFriend + "]}}", Remove.class);
         Neo4j.remove(remove);
         Node node = gson.fromJson(Neo4j.getNodeById(id), Node.class);
-        assertEquals(id, (int)node.getId());
-        assertEquals(null, node.getProperties().get("sex"));
-        assertEquals(null, node.getRelationships());
+        assertEquals("Remove somehow altered our node's ID. Possible Culprits: Neo4J.getNodeById fails, ergo there is an issue with NEO4j", id, (int)node.getId());
+        assertEquals("Remove does not remove items on the properties list", null, node.getProperties().get("sex"));
+        assertEquals("Remove does not remove relationships", null, node.getRelationships());
     }
 
     public void tearDown() throws Exception {
