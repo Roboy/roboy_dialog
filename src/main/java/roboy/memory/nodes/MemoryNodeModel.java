@@ -141,7 +141,7 @@ public class MemoryNodeModel {
     public ArrayList<Integer> getRelationship(Neo4jRelationship key) {
         //TODO: Sort this shit out
         //return (relationships != null ? relationships.get(key.toLowerCase()) : null);
-        return (relationships != null ? relationships.get(key) : null);
+        return (relationships != null ? relationships.get(key.type) : null);
     }
 
     public void setRelationships(HashMap<Neo4jRelationship, ArrayList<Integer>> relationships) {
