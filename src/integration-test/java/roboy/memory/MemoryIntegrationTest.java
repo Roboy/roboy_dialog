@@ -36,11 +36,12 @@ public class MemoryIntegrationTest extends TestCase {
         assertTrue("The node should have an ID greater 0. 0 means something went wrong in the creation process", id > 0);
     }
 
+    //{"labels":["Person"],"label":"Person","properties":{"name":"luo"},"relationships":{"FROM":[378]},"id":420}
      public void testUpdateNode() {
         int id = gson.fromJson(Neo4jMemoryOperations.create(LUKAS), JsonObject.class).get("id").getAsInt();
         int idRob = gson.fromJson(Neo4jMemoryOperations.create(ROBOY), JsonObject.class).get("id").getAsInt();
         //Update Sends back an item as an Answer, NOT a update object. This is where the test differs from NEO4jTest
-        String updateResponse = Neo4jMemoryOperations.update("{'type':'node','id':" + id + ",'properties':{'surname':'Ki', 'xyz':'abc'}, 'relationships':{'FRIEND_OF':[" + idRob + "]}}");
+        String updateResponse = Neo4jMemoryOperations.update("{'type':'node','label':'Person','id':" + id + ",'properties':{'surname':'Ki', 'xyz':'abc'}, 'relationships':{'FRIEND_OF':[" + idRob + "]}}");
 
          assertTrue("Answer returns a failure", updateResponse.contains("status\":\"OK\""));
          assertTrue("Answer Message Part One is incorrect: Properties Updated should be true. Likely Culprit: JSON formatting or NEO4J", updateResponse.contains("properties updated\":true"));
