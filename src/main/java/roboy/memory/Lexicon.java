@@ -146,8 +146,7 @@ public class Lexicon
 						}
 
 					}
-				}
-				catch (Exception e)
+				}catch (Exception e)
 				{
 					System.out.println("Exception caught: " + e.toString());
 				}
@@ -214,8 +213,7 @@ public class Lexicon
 						literal.typeOfOwner.add(typeOfOwner.toString());
 					}
 				}
-			}
-			catch (Exception e)
+			}catch (Exception e)
 			{
 				System.out.println("Exception caught: " + e.toString());
 			}

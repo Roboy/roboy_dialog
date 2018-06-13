@@ -4,6 +4,7 @@ package roboy.io;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.dialog.ConversationManager;
+import roboy.util.Pair;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -17,7 +18,7 @@ public class TelegramInput implements InputDevice {
     private static final Logger logger = LogManager.getLogger();
     private static final HashMap<String, TelegramInput> inputDevices = new HashMap<>(); //maps uuid to InputDevices so we can sort messages into them
 
-    private volatile String message; //one input message per thread
+    private volatile String message; //one input message per thread; is volatile since the TelegramAPI thread calls onUpdate and writes into it while the Conversation thread reads it in listen()
 
 
     /**
@@ -32,13 +33,13 @@ public class TelegramInput implements InputDevice {
     }
 
     /**
-     * Gets called whenever a new telegram message arrives.
+     * Gets called by the TelegramAPI Thread whenever a new telegram message arrives.
      * Places them in the appropriate thread's message string. Creates thread beforehand, if necessary.
      * @param update contains a (sender uuid,message) string pair.
      */
-    public static void onUpdate(HashMap<String, String> update) {
+    public static void onUpdate(Pair<String, String> update) {
 
-        String chatId = update.keySet().toArray()[0].toString();
+        String chatId = update.getKey();
         String uuid = "telegram-" + chatId;
 
         TelegramInput input = inputDevices.get(uuid);
@@ -54,7 +55,7 @@ public class TelegramInput implements InputDevice {
         }
         //add message to the corresponding conversations input
         synchronized (input) {
-            input.message += update.values().toArray()[0].toString();
+            input.message += update.getValue();
             //make thread do work!
             input.notify();
         }
@@ -72,8 +73,7 @@ public class TelegramInput implements InputDevice {
             while(message.equals("")){//while no new messages for this thread exist: wait
                 try {
                     this.wait();
-                }
-                catch (InterruptedException e) {//Thread woke up! Process new information!
+                }catch (InterruptedException e) {//Thread woke up! Process new information!
                     if(message == null || message.equals("")){//if this interrupt was not triggered because new messages arrived, throw exception to be handled
                         throw e;
                     }

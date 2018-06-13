@@ -32,8 +32,7 @@ public class UdpOutput implements OutputDevice {
                 try{
                     DatagramPacket sendPacket = new DatagramPacket(out, out.length, udpEndpointAddress, updEndpointPort);
                     serverSocket.send(sendPacket);
-                }
-                catch (Exception e)
+                }catch (Exception e)
                 {
                     e.printStackTrace();
                 }

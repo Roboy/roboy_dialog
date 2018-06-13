@@ -57,8 +57,7 @@ public class IBMWatsonOutput implements OutputDevice{
             AudioPlayer.player.join( (long) (0.025*ain.getLength() + 100));
             logger.info("done talking");
 //            AudioPlayer.player.wait();
-        }
-        catch (Exception e) {
+        }catch (Exception e) {
             logger.error("Unable to synthesize speech");
             logger.error(e.getMessage());
         }

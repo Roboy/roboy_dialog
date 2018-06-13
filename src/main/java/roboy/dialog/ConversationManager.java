@@ -87,7 +87,7 @@ public class ConversationManager {
         analyzers.add(new ProfanityAnalyzer());
 
 
-        //Roboy mode mode: Repeat a conversation a few times.
+        //Roboy mode: Repeat a conversation a few times.
         if(ConfigManager.ROS_ENABLED) {
 
             Conversation c = createConversation(rosMainNode, analyzers, new Inference(), memory, "local");
@@ -101,8 +101,7 @@ public class ConversationManager {
                 try {//Since this is roboy mode and only one conversation happens, we need to wait for it to finish so we don't clog the command line.
                     logger.info("Waiting for conversation to end.");
                     c.join();
-                }
-                catch (InterruptedException ie) {
+                }catch (InterruptedException ie) {
                     logger.error("ConversationManager has been interrupted: " + ie.getMessage());
                 }
                 //Reset the conversation before rerun.
@@ -178,20 +177,6 @@ public class ConversationManager {
         }
         else{
             logger.error("Conversation to be started does not exist...");
-        }
-    }
-
-    /**
-     * Interrupts a conversation.
-     * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
-     */
-    public static void interruptConversation(String uuid){
-        Conversation c = conversations.get(uuid);
-        if(c != null){
-            c.interrupt();
-        }
-        else{
-            logger.error("Conversation to be interrupted does not exist...");
         }
     }
 

@@ -81,8 +81,7 @@ public class RosMainNode extends AbstractNodeMain {
             pb.redirectError();
             pb.start();
             pb.wait();
-        }
-        catch (IOException e) {
+        }catch (IOException e) {
             LOGGER.error(e.getMessage());
         }
 

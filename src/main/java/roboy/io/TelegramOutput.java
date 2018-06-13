@@ -15,12 +15,22 @@ public class TelegramOutput implements OutputDevice {
     private final static Logger logger = LogManager.getLogger();
     private String uuid;
 
+    /**
+     * Handles sending messages to the TelegramAPI from the DialogSystem
+     * @param uuid The uuid of the interlocutor must be formed like this: "telegram-[uuid from service]"
+     */
     public TelegramOutput(String uuid) {
         this.uuid = uuid.substring(uuid.indexOf('-')+1);
         logger.info("Creating TelegramOutput for " + uuid + "! Setting this.uuid to " + this.uuid + "...");
         logger.error("output initialized with: "+uuid);
     }
 
+    /**
+     * Carries out actions in the telegram way:
+     * Speechactions are sent as text messages via telegram,
+     * EmotionActions are sent as stickers via telegram
+     * @param actions Actions to be carried out on the telegram service
+     */
     @Override
     public void act(List<Action> actions) {
         for(Action a : actions) {
@@ -28,16 +38,23 @@ public class TelegramOutput implements OutputDevice {
                 String message = ((SpeechAction) a).getText();
                 communicationHandler.sendMessage(message, this.uuid);
             }else if (a instanceof EmotionAction) {
-                String state = ((EmotionAction) a).getState();
-                if (state.equals("shy")) {
-                    communicationHandler.sendSticker(this.uuid, "CAADAgADSwAD5dCAEBGmde8-twTLAg");
-                }else if (state.equals("smileblink")) {
-                    communicationHandler.sendSticker(this.uuid, "CAADAgADSgAD5dCAEMQakIa3aHHSAg");
-                }else if(state.equals("kiss")) {
-                    communicationHandler.sendSticker(this.uuid, "CAADAgADOQAD5dCAEOtbfZz0NKh2Ag");
-                }else if(state.equals("lookleft") || state.equals("lookright")) {
-                    communicationHandler.sendSticker(this.uuid, "CAADAgADFQAD5dCAEKM0TS8sjXiAAg");
+                switch(((EmotionAction) a).getState()){
+                    case "shy":
+                        communicationHandler.sendSticker(this.uuid, "CAADAgADSwAD5dCAEBGmde8-twTLAg");
+                        break;
+                    case "smileblink":
+                        communicationHandler.sendSticker(this.uuid, "CAADAgADSgAD5dCAEMQakIa3aHHSAg");
+                        break;
+                    case "kiss":
+                        communicationHandler.sendSticker(this.uuid, "CAADAgADOQAD5dCAEOtbfZz0NKh2Ag");
+                        break;
+                    case "lookleft":
+                    case "lookright":
+                        communicationHandler.sendSticker(this.uuid, "CAADAgADFQAD5dCAEKM0TS8sjXiAAg");
+                        break;
                 }
+
+
             }
         }
     }

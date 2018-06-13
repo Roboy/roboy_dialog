@@ -31,6 +31,11 @@ public class Conversation extends Thread {
     private final List<Analyzer> analyzers;
     private final File personalityFile;
     private final StateBasedPersonality personality;
+    /* isRunning specifies that the thread is running, paused specifies if the conversation has been terminated or paused:
+    isRunning: Thread (therefore conversation) is running
+    !isRunning && paused: Conversation paused, thread not running
+    !isRunning && !paused: Conversation and thread ended
+     */
     private volatile boolean isRunning = true;
     private volatile boolean paused = false;
     private List<Action> actions;
@@ -52,8 +57,7 @@ public class Conversation extends Thread {
         this.personality = personality;
         try {
             this.personality.loadFromFile(this.personalityFile);
-        }
-        catch(FileNotFoundException fnfe){
+        }catch(FileNotFoundException fnfe){
             logger.error("Personality file not found: " + fnfe.getMessage());
         }
     }
@@ -64,7 +68,7 @@ public class Conversation extends Thread {
      */
     synchronized void pauseExecution(){
         isRunning = false;
-        paused = false;
+        paused = true;
         this.interrupt();
         logger.info("############# Conversation paused ############");
     }
@@ -75,7 +79,7 @@ public class Conversation extends Thread {
     synchronized void endConversation(){//Ends conversation including
         isRunning = false;
         personality.reset();
-        this.interrupt();
+        this.interrupt();//to wake conversations that wait for input
         logger.info("############# Conversation forcibly ended ############");
     }
 

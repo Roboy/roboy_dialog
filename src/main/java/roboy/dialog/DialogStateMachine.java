@@ -4,9 +4,7 @@ import com.google.gson.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
-import roboy.logic.Inference;
 import roboy.logic.InferenceEngine;
-import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateFactory;
@@ -73,11 +71,11 @@ public class DialogStateMachine {
      * personality file after creation. Alternatively you can create and add States to the machine
      * manually from code.
      *
+     * @param context reference to the context of the conversation this Statemachine belongs to (will be passed accessible to every newly created State object)
      * @param rosMainNode reference to the RosMainNode that will be passed to every newly created State object
      * @param memory reference to Memory that will be passed to every newly created State object
-     * @param context reference to the context of the conversation this Statemachine belongs to (will be passed accessible to every newly created State object)
      */
-    public DialogStateMachine(InferenceEngine inference, RosMainNode rosMainNode, Neo4jMemoryInterface memory, Context context) {
+    public DialogStateMachine(InferenceEngine inference, Context context, RosMainNode rosMainNode, Neo4jMemoryInterface memory) {
         identifierToState = new HashMap<>();
         activeState = null;
         this.rosMainNode = rosMainNode;
@@ -108,7 +106,7 @@ public class DialogStateMachine {
      * This constructor is mainly used for testing.
      */
     public DialogStateMachine(InferenceEngine inference, Context context) {
-        this(inference, null, null, context);
+        this(inference, context, null, null);
     }
 
     //endregion

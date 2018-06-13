@@ -134,8 +134,7 @@ public class UzupisState extends State {
         try {
             ProcessBuilder pb = new ProcessBuilder("python", CertificatesGeneratorScript, "0", color, plant, animal, word, name, "2018");
             pb.start();
-        }
-        catch (IOException e) {
+        }catch (IOException e) {
             logger.error(e.getMessage());
         }
         return getTransition("next");

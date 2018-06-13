@@ -17,9 +17,12 @@ public class EmotionAction implements Action
 	 * Constructor. Duration is set to 1.
 	 * 
 	 * @param state The emotional expression. Possible values: angry, neutral, speak
+	 * @Deprecated Please use RoboyEmotions instead of state Strings.
 	 */
+	@Deprecated
 	public EmotionAction(String state)
 	{
+		System.err.println("EmotionAction(String state) is deprecated. Please use EmotionAction(RoboyEmotion state) instead.");
 		this.state = state;
 		this.duration = 1;
 	}
@@ -27,7 +30,7 @@ public class EmotionAction implements Action
 	/**
 	 * Constructor. Duration is set to 1.
 	 *
-	 * @param state The emotional expression. Possible values: angry, neutral, speak
+	 * @param state The emotional expression. Please refer roboy.emotions.RoboyEmotion for supported emotions.
 	 */
 	public EmotionAction(RoboyEmotion state)
 	{
