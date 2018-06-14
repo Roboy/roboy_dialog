@@ -12,9 +12,9 @@
     <name>Roboy Dialog System Modules</name>
 
     <modules>
-        <module>roboy_parser</module>
-        <module>roboy_memory</module>
-        <module>roboy_dialog</module>
+        <module>nlu</module>
+        <module>memory</module>
+        <module>dialog</module>
     </modules>
 
     <build>
@@ -23,7 +23,7 @@
                 <directory>resources</directory>
             </resource>
             <resource>
-                <directory>roboy_parser_resources</directory>
+                <directory>resources_nlu</directory>
             </resource>
         </resources>
     </build>
