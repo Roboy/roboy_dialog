@@ -17,6 +17,7 @@ import roboy.util.RandomList;
 import java.util.Set;
 
 import static roboy.memory.Neo4jRelationship.*;
+import static roboy.memory.Neo4jProperty.*;
 
 /**
  * Personal Information Update State
@@ -79,7 +80,7 @@ public class PersonalInformationFollowUpState extends State {
             String retrievedResult = "";
             RandomList<MemoryNodeModel> nodes = getMemNodesByIds(person.getRelationships(selectedPredicate));
             if (!nodes.isEmpty()) {
-                retrievedResult = nodes.getRandomElement().getProperties().get("name").toString();
+                retrievedResult = nodes.getRandomElement().getProperties().get(name).toString();
                 LOGGER.info(" -> Retrieved memory node name: " + retrievedResult);
             } else {
                 LOGGER.error("Could not retrieve memory data");

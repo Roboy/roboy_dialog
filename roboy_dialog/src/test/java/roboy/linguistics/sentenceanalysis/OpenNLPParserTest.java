@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import roboy.linguistics.Linguistics;
 import roboy.linguistics.Linguistics.SemanticRole;
 
 public class OpenNLPParserTest {

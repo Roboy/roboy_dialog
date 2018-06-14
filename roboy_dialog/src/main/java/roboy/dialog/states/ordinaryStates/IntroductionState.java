@@ -103,7 +103,7 @@ public class IntroductionState extends State {
             RandomList<MemoryNodeModel> nodes = getMemNodesByIds(person.getRelationships(FRIEND_OF));
             if (!nodes.isEmpty()) {
                 retrievedPersonalFact = " You are friends with " +
-                        nodes.getRandomElement().getProperties().get("name").toString();
+                        nodes.getRandomElement().getProperties().get(Neo4jProperty.name).toString();
             }
 
             RelationshipAvailability availability = person.checkRelationshipAvailability(personPredicates);
