@@ -80,10 +80,12 @@ public class MemoryNodeModel {
 
     public ArrayList<Neo4jLabel> getLabels() {
         ArrayList<Neo4jLabel> neo4jLabels = new ArrayList<>();
-        for (String label : labels) {
-            Neo4jLabel neo4jLabel = Neo4jLabel.lookupByType(label);
-            if (neo4jLabel != null) {
-                neo4jLabels.add(neo4jLabel);
+        if (labels != null) {
+            for (String label : labels) {
+                Neo4jLabel neo4jLabel = Neo4jLabel.lookupByType(label);
+                if (neo4jLabel != null) {
+                    neo4jLabels.add(neo4jLabel);
+                }
             }
         }
         return neo4jLabels;
@@ -98,10 +100,12 @@ public class MemoryNodeModel {
 
     public HashMap<Neo4jProperty, Object> getProperties() {
         HashMap<Neo4jProperty, Object> neo4jProperties = new HashMap<>();
-        for (String key : properties.keySet()) {
-            Neo4jProperty neo4jProperty = Neo4jProperty.lookupByType(key);
-            if (neo4jProperty != null) {
-                neo4jProperties.put(neo4jProperty, properties.get(key));
+        if (properties != null) {
+            for (String key : properties.keySet()) {
+                Neo4jProperty neo4jProperty = Neo4jProperty.lookupByType(key);
+                if (neo4jProperty != null) {
+                    neo4jProperties.put(neo4jProperty, properties.get(key));
+                }
             }
         }
         return neo4jProperties;
@@ -129,10 +133,12 @@ public class MemoryNodeModel {
 
     public HashMap<Neo4jRelationship, ArrayList<Integer>> getRelationships() {
         HashMap<Neo4jRelationship, ArrayList<Integer>> neo4jRelationships = new HashMap<>();
-        for (String key : relationships.keySet()) {
-            Neo4jRelationship neo4jRelationship = Neo4jRelationship.lookupByType(key);
-            if (neo4jRelationship != null) {
-                neo4jRelationships.put(neo4jRelationship, relationships.get(key));
+        if (relationships != null) {
+            for (String key : relationships.keySet()) {
+                Neo4jRelationship neo4jRelationship = Neo4jRelationship.lookupByType(key);
+                if (neo4jRelationship != null) {
+                    neo4jRelationships.put(neo4jRelationship, relationships.get(key));
+                }
             }
         }
         return neo4jRelationships;
@@ -141,7 +147,7 @@ public class MemoryNodeModel {
     public ArrayList<Integer> getRelationship(Neo4jRelationship key) {
         //TODO: Sort this shit out
         //return (relationships != null ? relationships.get(key.toLowerCase()) : null);
-        return (relationships != null ? relationships.get(key) : null);
+        return (relationships != null ? relationships.get(key.type) : null);
     }
 
     public void setRelationships(HashMap<Neo4jRelationship, ArrayList<Integer>> relationships) {

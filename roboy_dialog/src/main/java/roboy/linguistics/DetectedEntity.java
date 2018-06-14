@@ -2,6 +2,7 @@ package roboy.linguistics;
 
 import java.util.Objects;
 
+
 public class DetectedEntity {
 	private Entity entity;
 	private int tokenIndex;

@@ -140,17 +140,18 @@ enum RoboySkillIntent {
  *
  * ExpoIntroductionState interface:
  * 1) Fallback is required.
- * 2) Outgoing transitions that have to be defined:
- *    - roboy:     following state if the question was answered or the joke/fact were told
- *    - abilities: following state if the question was answered or the joke/fact were told
- *    - newPerson: following state if the question was answered or the joke/fact were told
+ * 2) Outgoing transitions that have to be defined,
+ *    following state if the question was answered or the joke/fact were told:
+ *    - roboy,
+ *    - abilities,
+ *    - newPerson.
  * 3) No parameters are used.
  */
 public class DemonstrateSkillsState extends ExpoState {
     public final static String INTENTS_HISTORY_ID = "RSS";
 
     private final String[] TRANSITION_NAMES = { "abilities", "roboy", "newPerson" };
-    private final String[] INTENT_NAMES = { "abilities", "roboy", "newPerson" };
+    private final String[] INTENT_NAMES = TRANSITION_NAMES;
 
     private final Logger LOGGER = LogManager.getLogger();
 
@@ -192,7 +193,7 @@ public class DemonstrateSkillsState extends ExpoState {
         Linguistics.UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
         LOGGER.info("The detected sentiment is " + inputSentiment);
 
-        nextState = getRandomTransition(TRANSITION_NAMES, INTENT_NAMES, INTENTS_HISTORY_ID);
+        nextState = getTransitionRandomly(TRANSITION_NAMES, INTENT_NAMES, INTENTS_HISTORY_ID);
         String output = skillIntent.getResponsePhrase(input, inputSentiment, person.getName(), getRosMainNode());
         return output != null && !output.equals("") ? Output.say(output) : Output.useFallback();
     }

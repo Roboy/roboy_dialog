@@ -2,6 +2,7 @@ package roboy.linguistics;
 
 import java.util.Objects;
 
+
 public class Concept {
 	private String id;
 

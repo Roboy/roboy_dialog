@@ -34,10 +34,11 @@ import static roboy.memory.Neo4jProperty.*;
  *
  * ExpoIntroductionState interface:
  * 1) Fallback is required.
- * 2) Outgoing transitions that have to be defined:
- *    - skills:    following state if the question was answered
- *    - abilities: following state if the question was answered
- *    - newPerson: following state if the question was answered
+ * 2) Outgoing transitions that have to be defined,
+ *    following state if the question was answered:
+ *    - skills,
+ *    - abilities,
+ *    - newPerson.
  * 3) Used 'infoFile' parameter containing Roboy answer phrases.
  *    Requires a path to RoboyInfoList.json
  */
@@ -45,11 +46,11 @@ public class RoboyQAState extends ExpoState {
     public final static String INTENTS_HISTORY_ID = "RQA";
 
     private final String[] TRANSITION_NAMES = { "skills", "abilities", "newPerson"};
-    private final String[] INTENT_NAMES = { "skills", "abilities", "newPerson" };
+    private final String[] INTENT_NAMES = TRANSITION_NAMES;
 
+    private final String INFO_FILE_PARAMETER_ID = "infoFile";
     private final RandomList<String> connectingPhrases = PhraseCollection.CONNECTING_PHRASES;
     private final RandomList<String> roboyIntentPhrases = PhraseCollection.INFO_ROBOY_INTENT_PHRASES;
-    private final String INFO_FILE_PARAMETER_ID = "infoFile";
 
     private final Logger LOGGER = LogManager.getLogger();
 
@@ -81,18 +82,18 @@ public class RoboyQAState extends ExpoState {
             if (sentiment == Linguistics.UtteranceSentiment.POSITIVE) {
                 String nodeName = extractNodeNameForPredicate(Neo4jRelationship.FRIEND_OF, roboy);
                 if (nodeName != null) {
-                    nextState = getRandomTransition(TRANSITION_NAMES, INTENT_NAMES, INTENTS_HISTORY_ID);
+                    nextState = getTransitionRandomly(TRANSITION_NAMES, INTENT_NAMES, INTENTS_HISTORY_ID);
                     return Output.say(String.format(
                             infoValues.getSuccessAnswers(Neo4jRelationship.FRIEND_OF).getRandomElement(),
                             nodeName));
                 }
             }
-            nextState = getRandomTransition(TRANSITION_NAMES, INTENT_NAMES, INTENTS_HISTORY_ID);
+            nextState = getTransitionRandomly(TRANSITION_NAMES, INTENT_NAMES, INTENTS_HISTORY_ID);
             return Output.useFallback();
         }
 
         String answer = inferMemoryAnswer(input, roboy);
-        nextState = getRandomTransition(TRANSITION_NAMES, INTENT_NAMES, INTENTS_HISTORY_ID);
+        nextState = getTransitionRandomly(TRANSITION_NAMES, INTENT_NAMES, INTENTS_HISTORY_ID);
         if (answer.equals("")) {
             return Output.useFallback();
         }
@@ -144,7 +145,8 @@ public class RoboyQAState extends ExpoState {
             return Neo4jRelationship.MEMBER_OF;
         } else if (objectAnswer.contains("friend")) {
             return Neo4jRelationship.FRIEND_OF;
-        } else if (objectAnswer.contains("city") ||
+        } else if (objectAnswer.contains("where") ||
+                objectAnswer.contains("city") ||
                 objectAnswer.contains("place") ||
                 objectAnswer.contains("country") ||
                 objectAnswer.contains("live") ||

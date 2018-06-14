@@ -35,24 +35,28 @@ import static roboy.memory.Neo4jRelationship.*;
  *
  * PersonalInformationAskingState interface:
  * 1) Fallback is not required.
- * 2) Outgoing transitions that have to be defined:
- *    - TRANSITION_INFO_OBTAINED:    following state if the question was asked
+ * 2) Outgoing transitions that have to be defined,
+ *    following state if the question was asked:
+ *    - skills,
+ *    - abilities,
+ *    - roboy.
  * 3) Required parameters: path to the QAList.json file.
  */
 public class PersonalInformationAskingState extends ExpoState {
     public final static String INTENTS_HISTORY_ID = "PIA";
+
+    private final String[] TRANSITION_NAMES = { "skills", "abilities", "roboy" };
+    private final String[] INTENT_NAMES = TRANSITION_NAMES;
+
+    private final String QA_FILE_PARAMETER_ID = "qaFile";
+
+    private final Logger LOGGER = LogManager.getLogger();
 
     private QAJsonParser qaValues;
     private Neo4jRelationship[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
     private Neo4jRelationship selectedPredicate;
     private int otherIndex;
     private State nextState;
-
-    private final String[] TRANSITION_NAMES = { "skills", "abilities", "roboy" };
-    private final String[] INTENT_NAMES = { "skills", "abilities", "roboy" };
-
-    private final String QA_FILE_PARAMETER_ID = "qaFile";
-    final Logger LOGGER = LogManager.getLogger();
 
     public PersonalInformationAskingState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
@@ -140,7 +144,7 @@ public class PersonalInformationAskingState extends ExpoState {
         }
 
         LOGGER.info(" -> Produced answer: " + answer);
-        nextState = getRandomTransition(TRANSITION_NAMES, INTENT_NAMES, INTENTS_HISTORY_ID);
+        nextState = getTransitionRandomly(TRANSITION_NAMES, INTENT_NAMES, INTENTS_HISTORY_ID);
         Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE, 0.5);
         if (answer == "") {
             return Output.useFallback();

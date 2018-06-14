@@ -3,6 +3,7 @@ package roboy.linguistics;
 import java.util.List;
 import java.util.Objects;
 
+
 public class Term {
     private List<String> pos = null;
 	private float probability = 0;

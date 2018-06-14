@@ -84,13 +84,14 @@ public class Inference implements InferenceEngine {
     public String inferRelationship(Neo4jRelationship key, Interpretation input) {
         // TODO we may need to do different inference
         String result = null;
-        if (input.getSentenceType().compareTo(Linguistics.SentenceType.STATEMENT) == 0) {
+        if (input.getSentenceType() != null && input.getSentenceType().equals(Linguistics.SentenceType.STATEMENT)) {
             List<String> tokens = input.getTokens();
-            if (tokens.size() == 1) {
+            if (tokens != null && tokens.size() == 1) {
                 result = tokens.get(0).toLowerCase();
                 LOGGER.info("Retrieved only one token: " + result);
             } else {
                 if (input.getParsingOutcome() == Linguistics.ParsingOutcome.SUCCESS &&
+                        input.getSemTriples() != null &&
                         input.getSemTriples().size() > 0) {
                     List<Triple> sem_triple = input.getSemTriples();
                     LOGGER.info("Semantic parsing is successful and semantic triple exists");

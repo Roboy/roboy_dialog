@@ -165,7 +165,7 @@ public class IntroductionState extends State {
                 if (ages.get("years") > 0) {
                     retrievedAge = ages.get("years") + " years";
                 } else if (ages.get("months") > 0) {
-                    retrievedAge = ages.get("months") + " years";
+                    retrievedAge = ages.get("months") + " months";
                 } else {
                     retrievedAge = ages.get("days") + " days";
                 }

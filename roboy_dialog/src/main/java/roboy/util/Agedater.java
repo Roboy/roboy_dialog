@@ -35,13 +35,13 @@ public class Agedater {
         }
         if (date != null) {
             LocalDate birthdate = date.toInstant().atZone(ZoneId.of("Europe/Berlin")).toLocalDate();
-            LOGGER.info("The birthdate is " + birthdate.toString());
+            LOGGER.debug("The birthdate is " + birthdate.toString());
             LocalDate now = LocalDate.now(ZoneId.of("Europe/Berlin"));
             Period age = Period.between(birthdate, now);
             timeSpans.put("years", age.getYears());
             timeSpans.put("months", age.getMonths());
             timeSpans.put("days", age.getDays());
-            LOGGER.info("The estimated age is: " +
+            LOGGER.debug("The estimated age is: " +
                     timeSpans.get("years") + " years, or " +
                     timeSpans.get("months") + " months, or " +
                     timeSpans.get("days") + " days!");

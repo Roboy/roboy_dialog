@@ -12,6 +12,18 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Used for Hannover Messe 2018 states.
+ * Extends the State class of the dialog state system.
+ * Expo dialog states that require probabilistic transitioning should extend this class.
+ * Uses uniform distribution.
+ *
+ * Extends the State class with:
+ * - getTransitionRandomly - chooses a named transition randomly from the transition names and intent names.
+ * - chooseIntentAttribute - chooses the attribute of the intent randomly, so that it is not similar to the last ones.
+ * - lastNIntentsContainAttribute - checks if the last N IntentValues of the IntentsHistory contain the given attribute.
+ *
+ */
 public abstract class ExpoState extends State {
 
     /**
@@ -29,18 +41,35 @@ public abstract class ExpoState extends State {
 
     private final Logger LOGGER = LogManager.getLogger();
 
-    public final State getRandomTransition(String[] transitionNames, String[] intentNames, String intentsHistoryId) throws IllegalArgumentException {
-        LOGGER.info("Try to choose a random transition");
-        int dice = (int) (3 * Math.random() + 1);
+    /**
+     * Chooses a named transition randomly. Gets transition names and intent names.
+     * Upon choosing the transition checks if the corresponding intent is a valid Neo4jProperty.
+     * If so, requests the attribute based on the property and saves property and attribute in the IntentsHistory.
+     * If the attribute is unrecoverable, returns the current state. Otherwise, returns the chosen state.
+     * When the dice hits a bigger number, returns the current state.
+     *
+     * @param transitionNames
+     * @param intentNames
+     * @param intentsHistoryId
+     * @return transitionNames[i] -> State
+     * @throws IllegalArgumentException
+     */
+    public final State getTransitionRandomly(String[] transitionNames, String[] intentNames, String intentsHistoryId)
+            throws IllegalArgumentException {
+
+        LOGGER.debug("Try to choose a random transition");
+        int dice = (int) (transitionNames.length * Math.random() + 1);
         if (transitionNames.length != intentNames.length) {
             throw new IllegalArgumentException("The arrays have different length");
         }
         if (dice < transitionNames.length) {
             for (Neo4jProperty property : Neo4jProperty.values()) {
                 if (property.name().equals(intentNames[dice])) {
-                    String attribute = chooseIntentAttribute(property);
+                    String attribute = chooseIntentAttribute(property, 2);
                     if (!attribute.equals("")) {
-                        Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(intentsHistoryId, property, attribute));
+                        IntentValue historyValue = new IntentValue(intentsHistoryId, property, attribute);
+                        LOGGER.debug("The intent history value: " + historyValue);
+                        Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(historyValue);
                         LOGGER.info(transitionNames[dice] + " transition");
                         return getTransition(transitionNames[dice]);
                     } else {
@@ -57,25 +86,39 @@ public abstract class ExpoState extends State {
         }
     }
 
-    private String chooseIntentAttribute(Neo4jProperty predicate) {
-        LOGGER.info("Trying to choose the intent attribute");
+    /**
+     * Chooses the attribute of the intent randomly, so that it is not similar to the last n intents.
+     *
+     * @param predicate
+     * @param evaluateLastN
+     * @return String containing the chosen value
+     */
+    private String chooseIntentAttribute(Neo4jProperty predicate, int evaluateLastN) {
+        LOGGER.debug("Trying to choose the intent attribute");
         Roboy roboy = new Roboy(getMemory());
         String attribute = "";
         HashMap<Neo4jProperty, Object> properties = roboy.getProperties();
         if (roboy.getProperties() != null && !roboy.getProperties().isEmpty()) {
-            if (properties.containsKey(predicate.type)) {
-                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(predicate.type).toString().split(",")));
+            if (properties.containsKey(predicate)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(predicate).toString().split(",")));
                 int count = 0;
                 do {
                     attribute = retrievedResult.getRandomElement();
                     count++;
-                } while (lastNIntentsContainAttribute(attribute, 2) && count < retrievedResult.size());
+                } while (lastNIntentsContainAttribute(attribute, evaluateLastN) && count < retrievedResult.size());
             }
         }
-        LOGGER.info("The chosen attribute: " + attribute);
+        LOGGER.debug("The chosen attribute: " + attribute);
         return attribute;
     }
 
+    /**
+     * Checks if the last N IntentValues of the IntentsHistory contain the given attribute.
+     *
+     * @param attribute
+     * @param n
+     * @return true if contains otherwise false
+     */
     private boolean lastNIntentsContainAttribute(String attribute, int n) {
         Map<Integer, IntentValue> lastIntentValues = Context.getInstance().DIALOG_INTENTS.getLastNValues(n);
 
