@@ -121,6 +121,16 @@ public class ConversationManager {
                     logger.error("Telegram bots api error: ", e);
                 }
             }
+            else if(ConfigManager.INPUT.contains("cmdline")){
+                Conversation c = createConversation(rosMainNode, analyzers, new Inference(), memory, "local");
+                c.start();
+                try {//Since this is roboy mode and only one conversation happens, we need to wait for it to finish so we don't clog the command line.
+                    logger.info("Waiting for conversation to end.");
+                    c.join();
+                }catch (InterruptedException ie) {
+                    logger.error("ConversationManager has been interrupted: " + ie.getMessage());
+                }
+            }
         }
         logger.info("####################################################\n#                SYSTEM LOADED                     #\n####################################################\n");
     }

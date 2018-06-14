@@ -55,7 +55,7 @@ public class TelegramInput implements InputDevice {
         }
         //add message to the corresponding conversations input
         synchronized (input) {
-            input.message += update.getValue();
+            input.message += " " + update.getValue();
             //make thread do work!
             input.notify();
         }

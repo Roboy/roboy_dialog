@@ -1,5 +1,6 @@
 package roboy.util;
 
+import roboy.util.Pair;
 import org.apache.commons.io.IOUtils;
 import org.apache.jena.atlas.logging.Log;
 import org.apache.logging.log4j.LogManager;
@@ -16,7 +17,6 @@ import org.telegram.telegrambots.api.objects.User;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 import roboy.io.TelegramInput;
-import roboy.util.Pair;
 
 import java.io.*;
 import java.security.InvalidParameterException;
@@ -155,7 +155,7 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
 
             // check if the result initialized
             if(result == null) {
-                new Pair<>(chatID, message);
+                result = new Pair<>(chatID, message);
             }
             else {
                 // sum all of the messages
