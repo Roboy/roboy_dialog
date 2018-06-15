@@ -5,23 +5,20 @@ import com.google.gson.reflect.TypeToken;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.memory.nodes.MemoryNodeModel;
-import roboy.ros.RosMainNode;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.*;
 
 /**
- * Implements the high-level-querying tasks to the Memory services using RosMainNode.
+ * Implements the high-level-querying tasks to the Memory services.
  */
 public class Neo4jMemory implements Neo4jMemoryInterface {
 
-    private static RosMainNode rosMainNode;
     private Gson gson = new Gson();
     private final static Logger logger = LogManager.getLogger();
 
-    public Neo4jMemory (RosMainNode node){
-        Neo4jMemory.rosMainNode = node;
+    public Neo4jMemory (){
         logger.info("Using Neo4jMemory");
     }
 
@@ -34,8 +31,6 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
     @Override
     public boolean save(MemoryNodeModel node) throws InterruptedException, IOException
     {
-//        if(!Config.MEMORY) return false;
-//        String response = rosMainNode.UpdateMemoryQuery(node.toJSON());
         String response = Neo4jMemoryOperations.update(node.toJSON());
         return response != null && (response.contains("OK"));
     }
@@ -48,7 +43,6 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
      */
     public String getById(int id) throws InterruptedException, IOException
     {
-//        String result = rosMainNode.GetMemoryQuery("{'id':"+id+"}");
         String result = Neo4jMemoryOperations.get("{'id':"+id+"}");
         if(result == null || result.contains("FAIL")) return null;
 
@@ -63,8 +57,6 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
      */
     public ArrayList<Integer> getByQuery(MemoryNodeModel query) throws InterruptedException, IOException
     {
-//        if(!Config.MEMORY) return new ArrayList<>();
-//        String result = rosMainNode.GetMemoryQuery(query.toJSON());
         String result = Neo4jMemoryOperations.get(query.toJSON());
         if(result == null || result.contains("FAIL")) return null;
         Type type = new TypeToken<HashMap<String, List<Integer>>>() {}.getType();
@@ -74,11 +66,7 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
 
     public int create(MemoryNodeModel query) throws InterruptedException, IOException
     {
-//        if(!Config.MEMORY) return 0;
-        //String result = rosMainNode.CreateMemoryQuery(query.toJSON());
-        // Handle possible Memory error message.
-        String
-                result = Neo4jMemoryOperations.create(query.toJSON());
+        String result = Neo4jMemoryOperations.create(query.toJSON());
         if(result == null || result.contains("FAIL")) return 0;
         Type type = new TypeToken<Map<String,Integer>>() {}.getType();
         Map<String,Integer> list = gson.fromJson(result, type);
@@ -93,9 +81,7 @@ public class Neo4jMemory implements Neo4jMemoryInterface {
      */
     public boolean remove(MemoryNodeModel query) throws InterruptedException, IOException
     {
-        //Remove all fields which were not explicitly set, for safety.
         query.setStripQuery(true);
-//        String response = rosMainNode.DeleteMemoryQuery(query.toJSON());
         String response = Neo4jMemoryOperations.delete(query.toJSON());
         return response != null && response.contains("OK");
     }
