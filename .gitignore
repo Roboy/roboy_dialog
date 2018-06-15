@@ -1,6 +1,8 @@
 /bin/
 /target/
-/roboy_parser/target
+/dialog/target
+/nlu/target
+/memory/target
 .metadata
 tmp/
 *.tmp
