@@ -48,8 +48,7 @@ public class DialogSystem {
         MultiOutputDevice multiOut = IO.getOutputs(rosMainNode);
 
 
-        Neo4jMemoryInterface memory
-                = new Neo4jMemory(rosMainNode);
+        Neo4jMemoryInterface memory = new Neo4jMemory();
 
         logger.info("Initializing analyzers...");
 

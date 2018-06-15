@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Implements the high-level-querying tasks to the Memory services using RosMainNode.
+ * Implements the high-level-querying tasks to the Memory services.
  */
 public class DummyMemory implements Neo4jMemoryInterface {
     private final static Logger logger = LogManager.getLogger();
