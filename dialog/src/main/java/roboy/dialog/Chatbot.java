@@ -56,7 +56,7 @@ public class Chatbot {
         // TODO deal with memory
         Neo4jMemoryInterface memory;
         if (ConfigManager.ROS_ENABLED && ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_memory")) {
-            memory = new Neo4jMemory(rosMainNode);
+            memory = new Neo4jMemory();
         } else {
             memory = new DummyMemory();
         }
