@@ -194,10 +194,12 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
             try {
                 execute(sendMessageRequest);
             } catch (TelegramApiException e) {
-                //do some error handling
-            }//end catch()
+                Log.error(this, "Unable to send a message to telegram: "+e.getMessage());
+                e.printStackTrace();
+            }
 
         } catch (InterruptedException e) {
+            Log.error(this, "Unable to send a message to telegram: "+e.getMessage());
             e.printStackTrace();
         }
     }
@@ -215,9 +217,8 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
             sendStickerRequest.setSticker(stickerId);
 
             sendSticker(sendStickerRequest);
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
-        }catch (Exception e){
+        } catch (Exception e){
+            Log.error(this, "Unable to send sticker: "+e.getMessage());
             e.printStackTrace();
         }
     }
@@ -323,8 +324,9 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
             }catch(IOException e) {
                 e.printStackTrace();
             }
+        }else{
+            Log.error(this, "Token file doesn't exist");
         }
-
         return result;
     }
 
