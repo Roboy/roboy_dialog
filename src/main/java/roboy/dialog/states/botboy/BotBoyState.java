@@ -13,6 +13,10 @@ import roboy.talk.Verbalizer;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Start a conversation with telegram.
+ * Try to detect a greeting or roboy names or some key word that initialize the conversation.
+ */
 public class BotBoyState extends State {
 
     private final Logger logger = LogManager.getLogger();

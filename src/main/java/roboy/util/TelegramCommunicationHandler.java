@@ -94,32 +94,31 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
      */
     @Override
     public void onUpdateReceived(Update update) {
-        if(update.hasMessage()){
-            Message message = update.getMessage();
-            User user = message.getFrom();
+        if(!update.hasMessage()){
+            return;
+        }
 
-            if(message.hasText()){
-                String chatID = message.getChatId().toString();
-                String text = message.getText();
-                if(text.startsWith("/")){
-                    //inline command
-                }else{
-                    try {
-                        //get message, add it to containers
-                        pairs.add(new Pair<>(chatID, text));
+        Message message = update.getMessage();
+        if(message.hasText()){
+            // the message could be a sticker, a photo or a file but does not have any text to interpret
+            return;
+        }
 
-                        //wait for certain seconds, start the timer
-                        handleTimeout(chatID);
-
-                    } catch (Exception e) {
-                        Log.error(this, "Message receiving has been interrupted.");
-                        e.printStackTrace();
-                    }
-                }
-            }
+        String chatID = message.getChatId().toString();
+        String text = message.getText();
+        if(text.startsWith("/")){
+            //inline command
         }else{
-            //The update does not have messages
-            Log.error(this,"update: "+update.toString());
+            try {
+                //get message, add it to containers
+                pairs.add(new Pair<>(chatID, text));
+
+                //wait for certain seconds, start the timer
+                handleTimeout(chatID);
+            } catch (Exception e) {
+                Log.error(this, "Message receiving has been interrupted.");
+                e.printStackTrace();
+            }
         }
     }
 
