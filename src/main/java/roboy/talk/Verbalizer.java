@@ -79,8 +79,7 @@ public class Verbalizer {
 		return new SpeechAction(StatementBuilder.random(segues)
 				+ interpretation.getAssociation());
 	}
-	
-	
+
 	private static final RandomList<String> preAnecdotes =
             new RandomList<>("here is an interesting bit of trivia. ", "how about this? ");
 	private static final RandomList<String> anecdotes =
@@ -92,7 +91,35 @@ public class Verbalizer {
 		return new SpeechAction(prefix+StatementBuilder.random(anecdotes)
 				+ interpretation.getSentence());
 	}
-	
+
+	public static final RandomList<String> startSomething =
+			new RandomList<>("Let's go. ", "Can't wait to start. ", "Nice, let's start. ", "Yeah, let's go. "
+			);
+
+	public static final RandomList<String> userIsSure =
+			new RandomList<>("You seem to be pretty sure about that. ", "You said yes. ", "I heard a yes from you. ", "A clear yes. "
+			);
+
+	public static final RandomList<String> userProbablyYes =
+			new RandomList<>("The chance is quite high. ", "Might be true. ", "You're not sure but probably yes. "
+			);
+
+	public static final RandomList<String> userIsUncertain =
+			new RandomList<>("Maybe you have never thought of that before. ", "Maybe, maybe not. ", "You don't know, no problem. ", "I don't know either. "
+			);
+
+	public static final RandomList<String> userProbablyNo =
+			new RandomList<>("The chance is quite low. -", "Might be false. ", "You're not sure but probably no. ", "Probably not. "
+			);
+
+	public static final RandomList<String> userSaysNo =
+			new RandomList<>("Not at all.", "A clear no.", "That was clear. No.", "A no from you.", "Nope."
+			);
+
+	public static final RandomList<String> roboyNotUnderstand =
+			new RandomList<>("Oh no, I didn't get what you said.", "I didn't understand you correctly.", "Sorry? What did you say?"
+			);
+
 	private Interpretation verbalizeDates(Interpretation interpretation){
 		StringBuilder sb = new StringBuilder();
 		String sentence = interpretation.getSentence();

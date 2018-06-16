@@ -79,7 +79,7 @@ public class Segue {
         BORED {
             @Override
             public RandomList<String> getPossibleSegues() {
-                return PhraseCollection.SEGUE_BORED;
+                return PhraseCollection.OFFER_GAME_PHRASES;
             }
         };
 

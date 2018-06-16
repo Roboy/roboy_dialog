@@ -1,0 +1,4 @@
+%s, you won, you are awesome!
+And the Oscar goes to ... %s.
+Wow, you defeated me. I have to try harder next time!
+Congratulations %s, you are awesome!

@@ -24,6 +24,9 @@
       "implementation": "roboy.dialog.states.ordinaryStates.GamingSnapchatState",
       "transitions": {
         "gameEnded" : "QuestionAnswering"
+      },
+      "parameters": {
+        "filterFile": "resources/gameResources/snapchat-filters.json"
       }
     },
     {
@@ -31,7 +34,11 @@
       "implementation": "roboy.dialog.states.ordinaryStates.ChooseGameState",
       "transitions": {
         "choseSnapchat" : "GamingSnapchatState",
-        "chose20questions" : "GamingTwentyQuestionsState"
+        "chose20questions" : "GamingTwentyQuestionsState",
+        "exitGame": "QuestionAnswering"
+      },
+      "parameters":{
+        "gameFile": "resources/gameResources/game-selection.json"
       }
     },
     {

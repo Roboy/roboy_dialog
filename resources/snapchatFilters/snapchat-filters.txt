@@ -1,6 +1,0 @@
-roboy
-mustache
-sunglasses
-hat
-flies
-crown

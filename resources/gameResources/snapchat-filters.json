@@ -1,0 +1,39 @@
+{
+  "roboy": [
+    "roboy",
+    "robot",
+    "you",
+    "your face"
+  ],
+  "mustache": [
+    "mustache",
+    "beard",
+    "barb"
+  ],
+  "sunglasses": [
+    "sunglasses",
+    "glasses",
+    "shades"
+  ],
+  "hat": [
+    "hat",
+    "cap",
+    "headpiece"
+  ],
+  "flies": [
+    "flies",
+    "fly",
+    "bugs",
+    "bug",
+    "insects",
+    "insect",
+    "vermin"
+  ],
+  "crown": [
+    "crown",
+    "king",
+    "queen",
+    "royal",
+    "tiara"
+  ]
+}

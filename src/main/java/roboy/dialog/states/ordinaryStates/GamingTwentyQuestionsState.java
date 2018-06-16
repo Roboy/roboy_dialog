@@ -1,17 +1,25 @@
 package roboy.dialog.states.ordinaryStates;
 
+import com.ibm.watson.developer_cloud.alchemy.v1.model.SAORelation;
 import com.markozajc.akiwrapper.Akiwrapper;
 import com.markozajc.akiwrapper.AkiwrapperBuilder;
 import com.markozajc.akiwrapper.core.entities.Question;
 import com.markozajc.akiwrapper.Akiwrapper.Answer;
 import com.markozajc.akiwrapper.core.entities.Guess;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import roboy.context.Context;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
-import roboy.linguistics.sentenceanalysis.IntentAnalyzer;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
+import roboy.talk.PhraseCollection;
+import roboy.talk.Verbalizer;
 
+import java.io.IOException;
+import java.lang.ref.PhantomReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +29,8 @@ public class GamingTwentyQuestionsState extends State {
 	private static final double PROBABILITY_THRESHOLD = 0.85;
 	private final static String TRANSITION_GAME_ENDED = "gameEnded";
 
+	private final Logger LOGGER = LogManager.getLogger();
+
 	private Akiwrapper aw = new AkiwrapperBuilder().setFilterProfanity(true).build();
 	private Question nextQuestion = null;
 	private Guess currentGuess = null;
@@ -29,10 +39,10 @@ public class GamingTwentyQuestionsState extends State {
 	private boolean userReady = false;
 	private boolean guessesAvailable = false;
 	private boolean gameFinished = false;
-	private int numberGuesses = 0;
+	private boolean stopGame = false;
 
 	private boolean filterApplied = false;
-	private String winner = "roboy";
+	private String winner = "";
 
 	public GamingTwentyQuestionsState(String stateIdentifier, StateParameters params) {
 		super(stateIdentifier, params);
@@ -42,7 +52,7 @@ public class GamingTwentyQuestionsState extends State {
 	public Output act() {
 
 		if(!userReady){
-			return Output.say("Now think of a character and tell me when you're ready to start the game.");
+			return Output.say(PhraseCollection.AKINATOR_INTRO_PHRASES.getRandomElement());
 
 		} else if(guessesAvailable) {
 
@@ -50,6 +60,8 @@ public class GamingTwentyQuestionsState extends State {
 				return doAGuess();
 			}
 			catch (Exception e){
+				LOGGER.error("-> Error on finding a guess:" + e.getMessage());
+				gameFinished = true;
 				return Output.say("I have a problem finding a guess...");
 			}
 		}
@@ -65,10 +77,16 @@ public class GamingTwentyQuestionsState extends State {
 
 
 		String intent = getIntent (input);
+		Linguistics.UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
 
-		if(!isUserReady(intent)){
+		if(checkUserSaidStop(input)){
+			gameFinished = true;
+			winner = "interruption";
+			return Output.sayNothing();
 
-			return Output.say("Nice, then let's start");
+		} else if(!userReady && inputSentiment == Linguistics.UtteranceSentiment.POSITIVE){
+			userReady = true;
+			return Output.say(Verbalizer.startSomething.getRandomElement());
 
 		} else if(guessesAvailable){
 
@@ -81,6 +99,7 @@ public class GamingTwentyQuestionsState extends State {
 				return saveUsersEstimate(intent);
 			}
 			catch (Exception e){
+				LOGGER.error("Error in processing input: " + e);
 				return Output.say("I have a problem processing your input...");
 			}
 		}
@@ -90,32 +109,29 @@ public class GamingTwentyQuestionsState extends State {
 	public State getNextState() {
 
 		if(gameFinished){
-			applyFilter(winner);
+			if(!winner.equals("interruption")) {
+				applyFilter(winner);
+			}
 			resetGame();
 			return getTransition(TRANSITION_GAME_ENDED);
 
-		} else {
+		}
+		else {
 			return this;
 		}
 	}
 
 	private String getIntent(Interpretation input) {
 
-
-		List<String	> tokens = input.getTokens();
-
-
-
-
-
 		String intent = null;
+		Linguistics.UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
+		if(inputSentiment == Linguistics.UtteranceSentiment.POSITIVE){
+			intent = "yes";
+		} else if (inputSentiment == Linguistics.UtteranceSentiment.NEGATIVE) {
+			intent = "no";
+		}
 
-		for(String token : tokens) {
-			if(token.equals("yes")) {
-				intent = "yes";
-			} else if (token.equals("no")) {
-				intent = "no";
-			} else if(token.equals("ready")) {
+/*			} else if(token.equals("ready")) {
 				intent = "ready";
 			} else if(token.equals("back")) {
 				intent = "back";
@@ -126,95 +142,92 @@ public class GamingTwentyQuestionsState extends State {
 			} else if(token.equals("probably")) {
 				intent = "probably";
 			}
-		}
+		}*/
 
 		return intent;
 	}
 
-	private Output askNextQuestion() throws NullPointerException{
+	private Output askNextQuestion(){
 
-		String nextQuestionString = null;
+		String nextQuestionString;
 		try {
 			nextQuestion = aw.getCurrentQuestion();
 			nextQuestionString = nextQuestion.getQuestion();
-			++numberGuesses;
 		}
 		catch(NullPointerException e){
+			winner = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue().getName();
 			gameFinished = true;
-			return Output.say("I throw in the towel, I think I have no idea what to ask next. You win!");
+			LOGGER.error("No more questions available: " + e);
+			return Output.say("I throw in the towel, I think I have no idea what to ask next.");
 		}
 		return Output.say(nextQuestionString);
 	}
 
-	private Output saveUsersEstimate(String intent) throws Exception {
+	private Output saveUsersEstimate(String intent) {
+
+		try {
 
 		//check if guesses above threshold are available
 		if(aw.getGuessesAboveProbability(PROBABILITY_THRESHOLD).size() > 0){
 			guessesAvailable = true;
 		}
 
-		if (intent != null) {
-			switch (intent) {
-				case "yes":
-					aw.answerCurrentQuestion(Answer.YES);
-					return Output.sayNothing();
-				//break;
-				case "no":
-					aw.answerCurrentQuestion(Answer.NO);
-					return Output.sayNothing();
-				//break;
+			if (intent != null) {
+				switch (intent) {
+					case "yes":
+						aw.answerCurrentQuestion(Answer.YES);
+						return Output.say(Verbalizer.userIsSure.getRandomElement());
+					case "no":
+						aw.answerCurrentQuestion(Answer.NO);
+						return Output.say(Verbalizer.userSaysNo.getRandomElement());
+					case "dont know":
+						aw.answerCurrentQuestion(Answer.DONT_KNOW);
+						return Output.say(Verbalizer.userIsUncertain.getRandomElement());
+					case "probably":
+						aw.answerCurrentQuestion(Answer.PROBABLY);
+						return Output.say(Verbalizer.userProbablyYes.getRandomElement());
+					case "probably not":
+						aw.answerCurrentQuestion(Answer.PROBABLY_NOT);
+						return Output.say(Verbalizer.userProbablyNo.getRandomElement());
+					case "back":
+						aw.undoAnswer();
+						return Output.sayNothing();
+					default:
+						return Output.say("Please answer with either YES, NO, DONT KNOW, PROBABLY or PROBABLY NOT or go back one question with BACK.");
+				}
+			} else {
 
-				case "dont know":
-					aw.answerCurrentQuestion(Answer.DONT_KNOW);
-					return Output.sayNothing();
-				//break;
-
-				case "probably":
-					aw.answerCurrentQuestion(Answer.PROBABLY);
-					return Output.sayNothing();
-				//break;
-
-				case "probably not":
-					aw.answerCurrentQuestion(Answer.PROBABLY_NOT);
-					return Output.sayNothing();
-				//break;
-
-				case "back":
-					aw.undoAnswer();
-					return Output.sayNothing();
-				//break;
-
-				default:
-					return Output.say("Please answer with either YES, NO, DONT KNOW, PROBABLY or PROBABLY NOT or go back one step with BACK.");
-				//break;
+				return Output.say(Verbalizer.roboyNotUnderstand.getRandomElement());
 			}
-		}
-
-		else {
-
-			return Output.say("I didn't understand your answer correctly.");
+		} catch (IOException e){
+			LOGGER.error("IO Exception: " + e.toString());
+			return Output.sayNothing();
 		}
 	}
 
-	private Output doAGuess () throws Exception{
+	private Output doAGuess (){
 
 
 		String roboyAnswer = "";
 
-		for(Guess guess : aw.getGuessesAboveProbability(PROBABILITY_THRESHOLD)) {
-			if(!declined.contains(Long.valueOf(guess.getIdLong()))) {
+		try {
 
-				roboyAnswer = "Let me guess... I think it is " + guess.getName() + "?";
-				currentGuess = guess;
-				++numberGuesses;
-				break;
+			for (Guess guess : aw.getGuessesAboveProbability(PROBABILITY_THRESHOLD)) {
+				if (!declined.contains(Long.valueOf(guess.getIdLong()))) {
+
+					roboyAnswer = PhraseCollection.QUESTION_ANSWERING_START.getRandomElement() + guess.getName();
+					currentGuess = guess;
+					break;
+				}
 			}
+		}catch (IOException e){
+			LOGGER.error(e.toString());
 		}
 
 		if(roboyAnswer.isEmpty()){
 			gameFinished = true;
-			winner = "interlocutor";
-			roboyAnswer = "Congratulations, you defeated me. I have no more guesses.";
+			winner = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue().getName();
+			roboyAnswer = String.format(PhraseCollection.ROBOY_LOSER_PHRASES.getRandomElement(), winner);
 		}
 
 		return Output.say(roboyAnswer);
@@ -224,7 +237,8 @@ public class GamingTwentyQuestionsState extends State {
 
 		if (intent.equals("yes")){
 			gameFinished = true;
-			return Output.say("I won at my " + numberGuesses + ". guess.");
+			winner = "roboy";
+			return Output.say(PhraseCollection.ROBOY_WINNER_PHRASES.getRandomElement());
 		} else {
 			declined.add(Long.valueOf(currentGuess.getIdLong()));
 			return Output.sayNothing();
@@ -238,25 +252,32 @@ public class GamingTwentyQuestionsState extends State {
 		userReady = false;
 		guessesAvailable = false;
 		gameFinished = false;
-		numberGuesses = 0;
-		winner = "roboy";
+		winner = "";
 	}
 
-	private boolean isUserReady(String intent){
+	private boolean checkUserSaidStop(Interpretation input){
 
-		if(intent.equals("ready")) {
-			userReady = true;
+		stopGame = false;
+		List<String> tokens = input.getTokens();
+		if(tokens != null && !tokens.isEmpty()){
+			if(tokens.contains("boring") || tokens.contains("stop") || tokens.contains("bored")){
+				stopGame = true;
+
+			}
 		}
-
-		return userReady;
+		return stopGame;
 	}
 
 	private void applyFilter(String winner){
-		RosMainNode rmn = getRosMainNode();
+
 		if(winner.equals("roboy")){
-			filterApplied = rmn.ApplyFilter("flies");
+			filterApplied = getRosMainNode().ApplyFilter("flies");
+			LOGGER.info("Snapchat-Filter Service Callback: " + filterApplied);
+			//TODO: display roboy face with sunglasses
 		} else {
-			filterApplied = rmn.ApplyFilter("crown");
+			filterApplied = getRosMainNode().ApplyFilter("crown");
+			LOGGER.info("Snapchat-Filter Service Callback: " + filterApplied);
+			//TODO: display roboy face with tears
 		}
 	}
 

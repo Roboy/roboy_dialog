@@ -1,19 +1,23 @@
 package roboy.logic;
 
 import org.bytedeco.javacpp.presets.opencv_core;
+import org.json.JSONObject;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jLabel;
 import roboy.memory.Neo4jProperty;
 import roboy.memory.Neo4jRelationship;
+import roboy.util.RandomList;
 
 import java.util.*;
 
 public class Inference implements InferenceEngine {
     final static List<String> positiveTokens = Arrays.asList("yes", "yep", "yeah", "ok", "sure", "do",
-            "of course", "go ahead");
+            "of course", "go ahead", "okay");
     final static List<String> negativeTokens = Arrays.asList("no", "nope", "later", "not", "dont", "do not");
+    //TODO: add uncertaintyTokens + the rest of akinator answers
+    //maybe search existing library
 
     private String inferName(Interpretation input) {
         if (input.getSentenceType().compareTo(Linguistics.SentenceType.STATEMENT) == 0) {
@@ -44,7 +48,6 @@ public class Inference implements InferenceEngine {
         }
         return null;
     }
-
 
     @Override
     public HashMap<Neo4jProperty, String> inferProperties(ArrayList<Neo4jProperty> keys, Interpretation input) {
@@ -118,5 +121,41 @@ public class Inference implements InferenceEngine {
         } else {
             return Linguistics.UtteranceSentiment.NEUTRAL;
         }
+    }
+
+    @Override
+    public List<String> inferSnapchatFilter(Interpretation input, Map<String,List<String>> existingFilterMap){
+
+        List<String> tokens = input.getTokens();
+        if(tokens != null && !tokens.isEmpty()) {
+            List<String> desiredFilters = new ArrayList<String>();
+            for(String token : tokens){
+                for(Map.Entry<String, List<String>> entry  : existingFilterMap.entrySet()){
+                    if(entry.getValue().contains(token)){
+                        desiredFilters.add(entry.getKey());
+                    }
+                }
+            }
+            return desiredFilters;
+        }
+        return null;
+    }
+
+    @Override
+    public String inferGame(Interpretation input, Map<String,List<String>> existingGamesMap){
+
+        List<String> tokens = input.getTokens();
+        if(tokens != null && !tokens.isEmpty()) {
+            String desiredGame = null;
+            for(String token : tokens){
+                for(Map.Entry<String, List<String>> entry  : existingGamesMap.entrySet()){
+                    if(entry.getValue().contains(token)){
+                        desiredGame = entry.getKey();
+                    }
+                }
+            }
+            return desiredGame;
+        }
+        return null;
     }
 }

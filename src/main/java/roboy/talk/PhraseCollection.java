@@ -34,12 +34,18 @@ public class PhraseCollection {
             = readFile("resources/phraseLists/segue-jobs.txt");
     public static RandomList<String> SEGUE_PICKUP
             = readFile("resources/phraseLists/segue-pickup.txt");
-    public static RandomList<String> SEGUE_BORED
-            = readFile("resources/phraseLists/bored.txt");
-    public static RandomList<String> SNAPCHAT_FILTERS
-            = readFile("resources/snapchatFilters/snapchat-filters.txt");
-
-
+    public static RandomList<String> OFFER_GAME_PHRASES
+            = readFile("resources/phraseLists/offer-game-phrases.txt");
+    public static RandomList<String> AKINATOR_INTRO_PHRASES
+            = readFile("resources/phraseLists/akinator-intro-phrases.txt");
+    public static RandomList<String> ROBOY_WINNER_PHRASES
+            = readFile("resources/phraseLists/roboy-winner-phrases.txt");
+    public static RandomList<String> ROBOY_LOSER_PHRASES
+            = readFile("resources/phraseLists/roboy-loser-phrases.txt");
+    public static RandomList<String> GAME_ASKING_PHRASES
+            = readFile("resources/phraseLists/game-asking-phrases.txt");
+    public static RandomList<String> OFFER_FILTER_PHRASES
+            = readFile("resources/phraseLists/offer-snapchat-filter.txt");
     // Added for the ExpoPersonality
     public static RandomList<String> FACTS
             = readFile("resources/phraseLists/expoPhrases/facts.txt");

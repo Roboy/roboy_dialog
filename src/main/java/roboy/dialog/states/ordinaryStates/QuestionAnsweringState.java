@@ -16,6 +16,7 @@ import roboy.memory.nodes.MemoryNodeModel;
 import roboy.memory.nodes.Roboy;
 import roboy.dialog.Segue;
 import roboy.talk.PhraseCollection;
+import roboy.talk.Verbalizer;
 import roboy.util.RandomList;
 
 import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
@@ -66,7 +67,7 @@ public class QuestionAnsweringState extends State {
     private String answerAfterUnspecifiedQuestion = ""; // the answer to use if specifying question is answered with YES
     private boolean userWantsGame = false;
 
-    private final static double THRESHOLD_BORED = 0.5;
+    private final static double THRESHOLD_BORED = 0.3;
     private boolean roboySuggestedGame = false;
 
     public QuestionAnsweringState(String stateIdentifier, StateParameters params) {
@@ -78,7 +79,7 @@ public class QuestionAnsweringState extends State {
 
         if(Math.random() > THRESHOLD_BORED && questionsAnswered > 2){
             roboySuggestedGame = true;
-            return Output.sayNothing().setSegue(new Segue(Segue.SegueType.BORED, 1));
+            return Output.say(PhraseCollection.OFFER_GAME_PHRASES.getRandomElement());
         }
         if (askingSpecifyingQuestion) {
             return Output.sayNothing();
@@ -93,14 +94,14 @@ public class QuestionAnsweringState extends State {
     @Override
     public Output react(Interpretation input) {
 
-        if(roboySuggestedGame && userSaysYes(input)){
+        if(roboySuggestedGame && getInference().inferSentiment(input) == Linguistics.UtteranceSentiment.POSITIVE){
             roboySuggestedGame = false;
             userWantsGame = true;
-            return Output.say("Let's play a game!");
+            return Output.say(Verbalizer.startSomething.getRandomElement());
         }
 
         if(userWantsGameCheck(input)) {
-            return Output.say("Let's play a game!");
+            return Output.say(Verbalizer.startSomething.getRandomElement());
 
         }else if (askingSpecifyingQuestion) {
                 askingSpecifyingQuestion = false;
@@ -279,18 +280,12 @@ public class QuestionAnsweringState extends State {
         userWantsGame = false;
 
         List<String> tokens = input.getTokens();
-        for (String token:tokens){
-            if(token.equals("game")){
+        if (tokens != null && !tokens.isEmpty()){
+            if(tokens.contains("game") || tokens.contains("play") || tokens.contains("games")){
                 userWantsGame = true;
-                break;
             }
         }
         return userWantsGame;
-    }
-
-    private boolean userSaysYes(Interpretation input){
-        //TODO: get intent
-        return true;//(input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.YES) == 0);
     }
 
     @Override

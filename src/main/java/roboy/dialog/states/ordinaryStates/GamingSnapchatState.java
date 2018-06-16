@@ -1,43 +1,65 @@
 package roboy.dialog.states.ordinaryStates;
 
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.talk.PhraseCollection;
+
 
 import roboy.ros.RosMainNode;
+import roboy.talk.PhraseCollection;
+import roboy.util.SynonymFileParser;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class GamingSnapchatState extends State {
 
-
     private final static String TRANSITION_GAME_ENDED = "gameEnded";
+    private final static String EXISTING_FILTERS_ID = "filterFile";
 
-    private final static ArrayList<String> possibleFilters = PhraseCollection.SNAPCHAT_FILTERS;
+    private final Logger LOGGER = LogManager.getLogger();
+    private SynonymFileParser scParser;
+
     private boolean filterApplied = false;
-    private String desiredFilter = null;
+    private List<String> desiredFilters = new ArrayList<>();
     private boolean stopGame = false;
 
+    private String suggestedFilter = "";
+
     public GamingSnapchatState(String stateIdentifier, StateParameters params) {
+
         super(stateIdentifier, params);
+        String filterListPath = params.getParameter(EXISTING_FILTERS_ID);
+        LOGGER.info(" -> The filterList path: " + filterListPath);
+        scParser = new SynonymFileParser(filterListPath);
     }
 
     @Override
     public Output act() {
-
-        return Output.say("What filter do you want? " + possibleFilters);
+        suggestedFilter = scParser.getRandomKey();
+        return Output.say(String.format(PhraseCollection.OFFER_FILTER_PHRASES.getRandomElement(), suggestedFilter));
     }
 
     @Override
     public Output react(Interpretation input) {
+
+        Linguistics.UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
+        List<String> inputFilters = getInference().inferSnapchatFilter(input, scParser.getSynonyms());
+
         if(!checkUserSaidStop(input)) {
-            desiredFilter = getFilterFromInput(input);
-            RosMainNode rmn = getRosMainNode();
-            filterApplied = rmn.ApplyFilter(desiredFilter);
+            if (inputSentiment == Linguistics.UtteranceSentiment.POSITIVE) {
+                desiredFilters.add(suggestedFilter);
+            } else if (inputFilters != null) {
+                desiredFilters = inputFilters;
+            }
+            for(String filter : desiredFilters){
+                filterApplied = getRosMainNode().ApplyFilter(filter);
+            }
+            desiredFilters.clear();
         }
         return Output.sayNothing();
     }
@@ -54,27 +76,16 @@ public class GamingSnapchatState extends State {
     }
 
 
-    private String getFilterFromInput(Interpretation input){
+    private boolean checkUserSaidStop(Interpretation input){
 
-        String filter = null;
+        stopGame = false;
         List<String> tokens = input.getTokens();
-        for (String token : tokens){
-            token = " " + token + " ";
-            if(possibleFilters.contains(token)){
-            filter = token.trim();
-            System.out.println(filter);
-            break;
+        if(tokens != null && !tokens.isEmpty()){
+                if(tokens.contains("boring") || tokens.contains("stop") || tokens.contains("bored")){
+                    stopGame = true;
+
             }
         }
-        return filter;
-    }
-
-    private boolean checkUserSaidStop(Interpretation input){
-        //TODO: get intent stop
-        stopGame = false;
-        //if(input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.STOP) == 0){
-          //  stopGame = true;
-        //}
         return stopGame;
     }
 }
