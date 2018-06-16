@@ -38,21 +38,15 @@ public class TelegramOutput implements OutputDevice {
                 String message = ((SpeechAction) a).getText();
                 communicationHandler.sendMessage(message, this.uuid);
             }else if (a instanceof EmotionAction) {
+                String stickerID = null;
                 switch(((EmotionAction) a).getState()){
-                    case "shy":
-                        communicationHandler.sendSticker(this.uuid, "CAADAgADSwAD5dCAEBGmde8-twTLAg");
-                        break;
-                    case "smileblink":
-                        communicationHandler.sendSticker(this.uuid, "CAADAgADSgAD5dCAEMQakIa3aHHSAg");
-                        break;
-                    case "kiss":
-                        communicationHandler.sendSticker(this.uuid, "CAADAgADOQAD5dCAEOtbfZz0NKh2Ag");
-                        break;
-                    case "lookleft":
-                    case "lookright":
-                        communicationHandler.sendSticker(this.uuid, "CAADAgADFQAD5dCAEKM0TS8sjXiAAg");
-                        break;
+                    case "shy": stickerID = "CAADAgADSwAD5dCAEBGmde8-twTLAg"; break;
+                    case "smileblink": stickerID = "CAADAgADSgAD5dCAEMQakIa3aHHSAg"; break;
+                    case "kiss": stickerID = "CAADAgADOQAD5dCAEOtbfZz0NKh2Ag"; break;
+                    case "lookleft": //same as lookright
+                    case "lookright": stickerID = "CAADAgADFQAD5dCAEKM0TS8sjXiAAg"; break;
                 }
+                if(stickerID != null) communicationHandler.sendSticker(this.uuid, stickerID);
 
 
             }
