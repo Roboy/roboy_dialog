@@ -91,8 +91,7 @@ public class Conversation extends Thread {
         if(paused){//if this is a restart
             paused = false;
             logger.info("############# Conversation restarted ############");
-        }
-        else {//if this is an initial start
+        } else {//if this is an initial start
             actions = personality.startConversation();
             logger.info("############# Conversation started ############");
         }

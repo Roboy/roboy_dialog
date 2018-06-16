@@ -40,9 +40,7 @@ public class RosMainNode extends AbstractNodeMain {
 
         if (!ConfigManager.ROS_ENABLED) {
             LOGGER.warn("ROS is disabled in config.properties, but you are still trying to use it");
-        }
-
-        else {
+        } else {
             services = new RosManager();
 
             if (ConfigManager.ROS_MASTER_IP == null || ConfigManager.ROS_MASTER_IP.isEmpty()) {

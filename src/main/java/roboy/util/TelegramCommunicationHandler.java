@@ -156,8 +156,7 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
             // check if the result initialized
             if(result == null) {
                 result = new Pair<>(chatID, message);
-            }
-            else {
+            } else {
                 // sum all of the messages
                 String newMessage = result.getValue()+ " " + message;
 

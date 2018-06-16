@@ -61,11 +61,9 @@ public class UzupisState extends State {
 
         if (alreadyAsked.isEmpty()) {
             currentIntent = UzupisIntents.INTRO;
-        }
-        else if (alreadyAsked.size()==1 && person.getName() == null) {
+        } else if (alreadyAsked.size()==1 && person.getName() == null) {
             currentIntent = UzupisIntents.NAME;
-        }
-        else {
+        } else {
             if (person.getName() != null && !alreadyAsked.contains(NAME)) {
                 alreadyAsked.add(UzupisIntents.NAME);
             }

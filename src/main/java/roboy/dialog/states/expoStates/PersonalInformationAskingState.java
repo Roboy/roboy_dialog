@@ -86,8 +86,7 @@ public class PersonalInformationAskingState extends ExpoState {
                     otherIndex = questions.indexOf(question);
                 }
                 while (getContext().OTHER_Q.contains(otherIndex));
-            }
-            else {
+            } else {
                 question = questions.getRandomElement();
             }
             LOGGER.info(" -> Selected question: " + question);

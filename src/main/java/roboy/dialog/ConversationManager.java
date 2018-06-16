@@ -47,8 +47,7 @@ public class ConversationManager {
         //Initialize the ROS node.
         if(ConfigManager.ROS_ENABLED){
             rosMainNode = new RosMainNode();
-        }
-        else{
+        } else{
             // TODO: create a nice offline interface for RosMainNode, similar to DummyMemory
             rosMainNode = null;
         }
@@ -57,8 +56,7 @@ public class ConversationManager {
 
         if (ConfigManager.ROS_ENABLED && ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_memory")) {
             memory = new Neo4jMemory(rosMainNode);
-        }
-        else {
+        } else {
             memory = new DummyMemory();
         }
 
@@ -107,8 +105,7 @@ public class ConversationManager {
                 //Reset the conversation before rerun.
                 c.resetConversation(new Interlocutor(memory));
             }
-        }
-        else {//non-roboy mode
+        } else {//non-roboy mode
             if (ConfigManager.INPUT.contains("telegram")) {
 
                 // initialize telegram bot
@@ -120,8 +117,7 @@ public class ConversationManager {
                 } catch (TelegramApiException e) {
                     logger.error("Telegram bots api error: ", e);
                 }
-            }
-            else if(ConfigManager.INPUT.contains("cmdline")){
+            } else if(ConfigManager.INPUT.contains("cmdline")){
                 Conversation c = createConversation(rosMainNode, analyzers, new Inference(), memory, "local");
                 c.start();
                 try {//Since this is roboy mode and only one conversation happens, we need to wait for it to finish so we don't clog the command line.
@@ -155,8 +151,7 @@ public class ConversationManager {
         Conversation c = conversations.get(uuid);
         if (c != null) {
             c.pauseExecution();
-        }
-        else{
+        } else {
             logger.error("Conversation to be paused does not exist...");
         }
     }
@@ -169,8 +164,7 @@ public class ConversationManager {
         Conversation c = conversations.get(uuid);
         if (c != null) {
             c.endConversation();
-        }
-        else{
+        } else {
             logger.error("Conversation to be stopped does not exist...");
         }
     }
@@ -184,8 +178,7 @@ public class ConversationManager {
         Conversation c = conversations.get(uuid);
         if (c != null) {
             c.start();
-        }
-        else{
+        } else {
             logger.error("Conversation to be started does not exist...");
         }
     }
@@ -227,8 +220,7 @@ public class ConversationManager {
             if (ConfigManager.ROS_ENABLED) {
                 logger.warn("ROS is enabled but this conversation did not recieve a ROS node. Ignore this warning if this was intended.");
             }
-        }
-        else{
+        } else {
             context.initializeROS(rosMainNode);
         }
 
