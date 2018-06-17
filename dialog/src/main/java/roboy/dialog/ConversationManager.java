@@ -52,7 +52,7 @@ public class ConversationManager {
             rosMainNode = null;
         }
 
-        Neo4jMemoryInterface memory = new Neo4jMemory();
+        memory = new Neo4jMemory();
 
 
         //Compose the analyzer chain.
