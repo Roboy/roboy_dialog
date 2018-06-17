@@ -42,7 +42,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>roboy.dialog.DialogSystem</mainClass>
+                            <mainClass>roboy.dialog.ConversationManager</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
