@@ -99,10 +99,8 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
         }
 
         Message message = update.getMessage();
-        if(message.hasText()){
-            // the message could be a sticker, a photo or a file but does not have any text to interpret
-            return;
-        }
+        // the message could be a sticker, a photo or a file but does not have any text to interpret
+        if(!message.hasText()) return;
 
         String chatID = message.getChatId().toString();
         String text = message.getText();
