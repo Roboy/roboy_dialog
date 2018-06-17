@@ -1,8 +1,0 @@
-Package: roboy-dialog
-Version: 2.1.9
-Section: misc
-Priority: low
-Architecture: all
-Description: roboy dialog system
-Maintainer: Alona Kharchenko <unicorn@roboy.org>
-Depends: junit4, libcommons-codec-java, libgoogle-gson-java, default-jre | java6-runtime
