@@ -13,7 +13,7 @@ import java.util.HashMap;
  * Handles telegram API and hands threads their respective messages.
  *
  */
-public class TelegramInput implements InputDevice {
+public class TelegramInput implements InputDevice, CleanUp {
     //static part since there is only one API handle
     private static final Logger logger = LogManager.getLogger();
     private static final HashMap<String, TelegramInput> inputDevices = new HashMap<>(); //maps uuid to InputDevices so we can sort messages into them
@@ -83,5 +83,10 @@ public class TelegramInput implements InputDevice {
             message = ""; //consume message
         }
         return newInput;
+    }
+
+    @Override
+    public void cleanup() {
+        inputDevices.values().remove(this);
     }
 }

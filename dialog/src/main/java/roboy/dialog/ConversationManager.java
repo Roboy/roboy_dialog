@@ -28,6 +28,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
+
+import static javafx.application.Platform.exit;
 
 /**
  * Central managing node for roboy_dialog.
@@ -112,18 +115,32 @@ public class ConversationManager {
                 } catch (TelegramApiException e) {
                     logger.error("Telegram bots api error: ", e);
                 }
-            } else if(ConfigManager.INPUT.contains("cmdline")){
+            } else if (ConfigManager.INPUT.contains("cmdline")) {
                 Conversation c = createConversation(rosMainNode, analyzers, new Inference(), memory, "local");
                 c.start();
                 try {//Since this is roboy mode and only one conversation happens, we need to wait for it to finish so we don't clog the command line.
                     logger.info("Waiting for conversation to end.");
                     c.join();
-                }catch (InterruptedException ie) {
+                } catch (InterruptedException ie) {
                     logger.error("ConversationManager has been interrupted: " + ie.getMessage());
                 }
             }
+            logger.info("####################################################\n#                SYSTEM LOADED                     #\n####################################################\n");
+
+            //wait for user commands
+            Scanner scanner = new Scanner(System.in);
+
+            while (true) {
+                String command = scanner.next();
+                switch (command) {
+                    case "shutdown"://gracefully say bye
+                        for (Conversation c : conversations.values()) c.endConversation();
+                        exit();
+                    default:
+                        System.out.println("Command not found. Currently supported commands: shutdown");
+                }
+            }
         }
-        logger.info("####################################################\n#                SYSTEM LOADED                     #\n####################################################\n");
     }
 
     /**
@@ -135,6 +152,10 @@ public class ConversationManager {
         Conversation conversation = createConversation(rosMainNode, analyzers, new Inference(), memory, uuid);
         conversations.put(uuid, conversation);
         conversation.start();
+    }
+
+    protected static void deregisterConversation(Conversation c){
+        conversations.values().remove(c);
     }
 
 

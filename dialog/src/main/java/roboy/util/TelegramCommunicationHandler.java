@@ -1,5 +1,6 @@
 package roboy.util;
 
+import org.telegram.telegrambots.TelegramBotsApi;
 import roboy.util.Pair;
 import org.apache.commons.io.IOUtils;
 import org.apache.jena.atlas.logging.Log;
@@ -35,6 +36,7 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
     // CHAT ID ----- ITS MESSAGE
     private volatile List<Pair<String, String>> pairs = new ArrayList<>();
     private List<Timeout> telegramTimeouts; //Timeouts
+    private final static int initTime = (int) (System.currentTimeMillis() / 1000L); //in order to discard messages older than launch
 
     private TelegramCommunicationHandler(){
         super();
@@ -101,6 +103,7 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
         Message message = update.getMessage();
         // the message could be a sticker, a photo or a file but does not have any text to interpret
         if(!message.hasText()) return;
+        if(message.getDate() < initTime) return;//Discard messages from before launch
 
         String chatID = message.getChatId().toString();
         String text = message.getText();

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Meta class to combine multiple input devices.
  */
-public class MultiInputDevice implements InputDevice{
+public class MultiInputDevice implements InputDevice, CleanUp{
 
 	private InputDevice mainInput;
 	private ArrayList<InputDevice> additionalInputs;
@@ -30,4 +30,26 @@ public class MultiInputDevice implements InputDevice{
 		return result;
 	}
 
+	/**
+	 * Calls cleanup() for every included input device that implements CleanUp.
+	 */
+	@Override
+	public void cleanup() {
+
+		//mainInput; if null, it probably has already been cleaned
+		if(mainInput != null && mainInput instanceof CleanUp){
+			((CleanUp) mainInput).cleanup();
+			mainInput = null;
+		}
+		//additionalInputs; if an additionalInput has been cleaned it will be removed from additionalInputs
+		for(InputDevice device : additionalInputs){
+			if(device instanceof CleanUp) ((CleanUp) device).cleanup();
+		}
+		additionalInputs.clear();
+	}
+
+	@Override
+	public void finalize(){//just in case someone forgot to clean their mess
+		this.cleanup();
+	}
 }

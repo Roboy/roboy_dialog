@@ -3,6 +3,7 @@ package roboy.dialog;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.dialog.action.Action;
+import roboy.dialog.action.SpeechAction;
 import roboy.dialog.personality.StateBasedPersonality;
 import roboy.io.Input;
 import roboy.io.MultiInputDevice;
@@ -13,6 +14,7 @@ import roboy.memory.nodes.Interlocutor;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -80,6 +82,12 @@ public class Conversation extends Thread {
         isRunning = false;
         personality.reset();
         this.interrupt();//to wake conversations that wait for input
+
+        //Say bye
+        List<Action> l = new ArrayList<>();
+        l.add(new SpeechAction("Sorry. It seems I have to stop playing now. See you soon. Bye!"));
+        multiOut.act(l);
+
         logger.info("############# Conversation forcibly ended ############");
     }
 
@@ -133,7 +141,11 @@ public class Conversation extends Thread {
                 e.printStackTrace();
             }
         }
-        //not setting isRunning() = false, so the thread may easily be restarted
+        if(!paused){//if this thread is about to die
+            multiIn.cleanup();
+            multiOut.cleanup();
+            ConversationManager.deregisterConversation(this);
+        }
     }
 
     /**
