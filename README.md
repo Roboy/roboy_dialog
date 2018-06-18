@@ -20,12 +20,23 @@ The repository contains a project that can be readily imported into Eclipse. Bes
 **UPD** (maven related)
 In order to compile, in the directory containing `pom.xml` run: 
 ```
-mvn compile
+mvn clean install
 ```
 
-To execute:
+Make sure to set the following environment variables to meaningful values (ROS can wasily be run via docker, for Neo4J installation docs look at `memory`):
+```bash
+export NEO4J_ADDRESS=bolt://my-neo4j-database:7687                
+export NEO4J_USERNAME=user
+export NEO4J_PASSWORD=pass
+export ROS_HOSTNAME=local-hostname
+export ROS_MASTER_URI=http://rosmaster:11311
 ```
-mvn exec:java -Dexec.mainClass="roboy.dialog.DialogSystem"
+
+Also have a look at `nlu/README.md` for getting the Word2Vec model.
+
+Afterwards, run the dialog system via
+```bash
+java -cp dialog/target/roboy-dialog-system-2.1.9-jar-with-dependencies.jar roboy.dialog.DialogSystem
 ```
 
 ## How to extend it
