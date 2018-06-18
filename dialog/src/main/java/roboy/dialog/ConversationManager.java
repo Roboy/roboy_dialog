@@ -30,7 +30,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
-import static javafx.application.Platform.exit;
 
 /**
  * Central managing node for roboy_dialog.
@@ -135,7 +134,7 @@ public class ConversationManager {
                 switch (command) {
                     case "shutdown"://gracefully say bye
                         for (Conversation c : conversations.values()) c.endConversation();
-                        exit();
+                        System.exit(0);
                     default:
                         System.out.println("Command not found. Currently supported commands: shutdown");
                 }
