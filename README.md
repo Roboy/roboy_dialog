@@ -36,7 +36,7 @@ Also have a look at `nlu/README.md` for getting the Word2Vec model.
 
 Afterwards, run the dialog system via
 ```bash
-java -cp dialog/target/roboy-dialog-system-2.1.9-jar-with-dependencies.jar roboy.dialog.DialogSystem
+java -cp dialog/target/roboy-dialog-system-2.1.9-jar-with-dependencies.jar roboy.dialog.ConversationManager
 ```
 
 ## How to extend it
