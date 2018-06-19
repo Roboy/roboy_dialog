@@ -85,6 +85,9 @@ public class TelegramInput implements InputDevice, CleanUp {
         return newInput;
     }
 
+    /**
+     * Deregisters the instance from the static ledger. Must be called when it should be destroyed or it will stay in memory until the end of operation.
+     */
     @Override
     public void cleanup() {
         inputDevices.values().remove(this);

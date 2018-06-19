@@ -153,8 +153,12 @@ public class ConversationManager {
         conversation.start();
     }
 
-    protected static void deregisterConversation(Conversation c){
-        conversations.values().remove(c);
+    /**
+     * Deregisters a conversation from the conversationmanager. Should only be called from a conversation when it ends.
+     * @param conversation The conversation object to be deregistered
+     */
+    protected static void deregisterConversation(Conversation conversation){
+        conversations.values().remove(conversation);
     }
 
 
