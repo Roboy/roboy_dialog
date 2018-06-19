@@ -23,7 +23,7 @@ In order to compile, in the directory containing `pom.xml` run:
 mvn clean install
 ```
 
-Make sure to set the following environment variables to meaningful values (ROS can wasily be run via docker, for Neo4J installation docs look at `memory`):
+Make sure to set the following environment variables to meaningful values (ROS can easily be run via docker, for Neo4J installation docs look at `memory`):
 ```bash
 export NEO4J_ADDRESS=bolt://my-neo4j-database:7687                
 export NEO4J_USERNAME=user
@@ -36,7 +36,8 @@ Also have a look at `nlu/README.md` for getting the Word2Vec model.
 
 Afterwards, run the dialog system via
 ```bash
-java -cp dialog/target/roboy-dialog-system-2.1.9-jar-with-dependencies.jar roboy.dialog.DialogSystem
+java -Xmx6g -d64 -cp dialog/target/ \
+    roboy-dialog-system-2.1.9-jar-with-dependencies.jar roboy.dialog.DialogSystem
 ```
 
 ## How to extend it
