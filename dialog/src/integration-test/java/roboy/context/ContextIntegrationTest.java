@@ -1,11 +1,14 @@
 package roboy.context;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import roboy.ros.RosMainNode;
 
 import static org.junit.Assert.assertNotEquals;
 
+@Deprecated
+@Ignore
 public class ContextIntegrationTest {
     @BeforeClass
     public static void initializeWithROS() {
