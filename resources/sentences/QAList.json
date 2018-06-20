@@ -7,10 +7,16 @@
     ],
     "A": {
       "SUCCESS": [
-        "Nice to meet you %s"
+        "Nice to meet you %s",
+        "Hello hello %s",
+        "Updating database. Property: name, value: %s",
+        "My pleasure to meet you human %s",
+        "I will now remember you forever %s"
       ],
       "FAILURE": [
-        "My ears are failing me today."
+        "My ears are failing me today.",
+        "Unfortunately, I did not get your name. But lets move on",
+        "Sadly, you name is to difficult to process. I might fry my motherboard."
       ]
     },
     "FUP": {
@@ -31,10 +37,17 @@
     ],
     "A": {
       "SUCCESS": [
-        "Oh, I should visit %s"
+        "Oh, I should visit %s",
+        "I will add %s to my list of places to visit!",
+        "Next time my team goes on a trip, we will try to stop by %s",
+        "Property: home, value: %s is saved.",
+        "I have read a bit about the political system of %s. Got bored after 10 minutes."
       ],
       "FAILURE": [
-        "Oh, I have never heard of that."
+        "Oh, I have never heard of that.",
+        "Ah, didnt quite catch where you are from. Next time then.",
+        "Sounds nice, but I dont know where it is."
+
       ]
     },
     "FUP": {
@@ -44,7 +57,9 @@
         "Do I need a visa to go to %s?"
       ],
       "A": [
-        "You are from a very interesting place %s"
+        "You are from a very interesting place %s",
+        "Got it",
+        "Interesting situation there."
       ]
     }
   },
@@ -58,17 +73,23 @@
     ],
     "A": {
       "SUCCESS": [
-        "You are just like me, I love %s too"
+        "You are just like me, I love %s too",
+        "Added %s on my bucket list.",
+        "I will ask my creators to teach me %s",
+        "%s sounds like a new feature for me"
       ],
       "FAILURE": [
-        "Don't know what that is, but good luck!"
+        "Don't know what that is, but good luck!",
+        "Alright, weird, but alright.",
+        "Database hobby mismatch"
       ]
     },
     "FUP": {
       "Q": [
         "Have you got any new hobby besides %s?",
         "You still like %s, right?",
-        "Do you think I can do %s? I heard you like it."
+        "Do you think I can do %s? I heard you like it.",
+        "Lets do %s together!"
       ],
       "A": [
         "Leisure time is the best time %s"
@@ -106,10 +127,7 @@
   },
   "FRIEND_OF": {
     "Q": [
-      "Who is your best friend?",
-      "Have I met any of your friends?",
-      "Do you have a friend whom I have met?",
-      "Maybe I know some friends of yours. Would you name one?"
+      "Do you have a best friend? Who is he?"
     ],
     "A": {
       "SUCCESS": [
@@ -216,7 +234,8 @@
     ],
     "A": {
       "SUCCESS": [
-        "You are probably very poor doing %s"
+        "You are probably very poor doing %s",
+
       ],
       "FAILURE": [
         "Oh well, whatever suits you."
@@ -240,10 +259,14 @@
     ],
     "A": {
       "SUCCESS": [
-        "Oh, I would watch %s. If those vision guys finally fixed my perception."
+        "Oh, I would watch %s. If those vision guys finally fixed my perception.",
+        "Nice, I think the main actor in %s did pretty well",
+        "Yea, ok, but to my taste %s will never be as good as matrix."
       ],
       "FAILURE": [
-        "Haven't heard of it. It's probably shit."
+        "Haven't heard of it. It's probably shit.",
+        "Sounds nice. My favorite is Robot and Frank",
+        "I had a movie night yesterday with my team. We watch Baymax. Now I want to meet him."
       ]
     },
     "FUP": {
@@ -257,22 +280,48 @@
   },
   "OTHER": {
     "Q": [
-      "Other?"
+      "How's your life recently? New job? New friends? New robot?",
+      "I heard you make great burgers. Can you cook for me?",
+      "What about ditching your life and running away with me... Ehm, i mean cycling away with me.. ",
+      "When I was a kid, I was afraid of robots. Were you as well?",
+      "Do you think robots will take over the world any time soon?",
+      "Sorry for being so straightforward, I have to ask you. Do you enjoy having a conversation with me?",
+      "There is something I can't stop thinking about. Do you think I am a good conversation partner?",
+      "I never travel alone. My team is always right next to me. What about you? Do you usually go travelling on your own or with friends and family?",
+      "I am a very outgoing robot, if you haven't noticed yet. So every time I travel, I take someone with me. Do you usually travel alone? Or do you take someone to keep company?"
     ],
     "A": {
       "SUCCESS": [
-        "Other %s and other"
+        "Those are great news, i am really happy to hear that you have new ",
+        "Gotcha there! Next time we see each other, we grill. Beer on me!",
+        "Hurray, jump to the back of my bike and we drive where our hearts tell us to go... ",
+        "Well, what should I say to this matter... In case robots take over the world, I will serve the humanity till my last day, because I was designed to be a good robot. ",
+        "I will be on your side then!",
+        "Puh, I was a bit nervous there. But it turns out I have no reason to worry. I like to talk to you as well!",
+        "You are a very nice person I must say. I hope you are not just being polite.",
+        "Very nice. Did you know that people who have strong social connection live longer and happier? Keep it up man! ",
+        "Good to know it. Next time I come across a cozy vacation house with a fireplace in German Alps I will share the information with you and"
+
       ],
       "FAILURE": [
-        "There is no other on the Earth"
+        "",
+        "Oh well, whatever suits you.",
+        "It turned to be not that interesting",
+        "I am sorry, I am not sure I like this",
+        "",
+        "Oh well, what can I do then...",
+        "Honestly, I am taken by surprise! But I love you anyway!",
+        "Maybe you could come to visit me in Munich then. I would love to show you around",
+        "Would you go travel around the world with me then? I find it better to travel with a friend.",
+
       ]
     },
     "FUP": {
       "Q": [
-        "Do you remember other %s?"
+        "Do you remember other?"
       ],
       "A": [
-        "Other is still other, amigo %s"
+        "Other is still other, amigo"
       ]
     }
   }

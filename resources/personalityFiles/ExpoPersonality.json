@@ -1,0 +1,89 @@
+{
+  "comment": "A personality implemented for Hannover Messe 2018. Could be used for demonstration purposes",
+  "initialState": "Greetings",
+  "states": [
+    {
+      "identifier": "Greetings",
+      "implementation": "roboy.dialog.states.ordinaryStates.PassiveGreetingsState",
+      "fallback": "WildTalk",
+      "transitions": {
+        "greetingDetected": "Intro"
+      }
+    },
+    {
+      "identifier": "Intro",
+      "implementation": "roboy.dialog.states.expoStates.ExpoIntroductionState",
+      "fallback": "WildTalk",
+      "transitions": {
+        "newPerson": "PersonalQA",
+        "skills": "SkillsState",
+        "roboy": "RoboyQA",
+        "abilities": "AbilitiesState"
+      },
+      "parameters": {
+        "infoFile": "resources/sentences/RoboyInfoList.json"
+      }
+    },
+    {
+      "identifier": "SkillsState",
+      "implementation": "roboy.dialog.states.expoStates.DemonstrateSkillsState",
+      "fallback": "WildTalk",
+      "transitions": {
+        "abilities": "AbilitiesState",
+        "roboy": "RoboyQA",
+        "newPerson": "PersonalQA"
+      },
+      "parameters": {
+
+      }
+    },
+    {
+      "identifier": "RoboyQA",
+      "implementation": "roboy.dialog.states.expoStates.RoboyQAState",
+      "fallback": "WildTalk",
+      "transitions": {
+        "skills": "SkillsState",
+        "abilities": "AbilitiesState",
+        "newPerson": "PersonalQA"
+      },
+      "parameters": {
+        "infoFile": "resources/sentences/RoboyInfoList.json"
+      }
+    },
+    {
+      "identifier": "AbilitiesState",
+      "implementation": "roboy.dialog.states.expoStates.DemonstrateAbilitiesState",
+      "fallback": "WildTalk",
+      "transitions": {
+        "abilityWasDemonstrated": "PersonalQA",
+        "abilityDemonstrationSkipped": "PersonalQA"
+      },
+      "parameters": {
+
+      }
+    },
+    {
+      "identifier": "PersonalQA",
+      "implementation": "roboy.dialog.states.expoStates.PersonalInformationAskingState",
+      "fallback": "WildTalk",
+      "transitions": {
+        "skills": "SkillsState",
+        "abilities": "AbilitiesState",
+        "roboy": "RoboyQA"
+      },
+      "parameters": {
+        "qaFile": "resources/sentences/QAList.json"
+      }
+    },
+    {
+      "identifier": "WildTalk",
+      "implementation": "roboy.dialog.states.ordinaryStates.WildTalkState",
+      "transitions": {}
+    },
+    {
+      "identifier": "Farewell",
+      "implementation": "roboy.dialog.states.ordinaryStates.FarewellState",
+      "transitions": {}
+    }
+  ]
+}
