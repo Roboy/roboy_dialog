@@ -100,6 +100,7 @@ public class GamingTwentyQuestionsState extends State {
 			}
 			catch (Exception e){
 				LOGGER.error("Error in processing input: " + e);
+
 				return Output.say("I have a problem processing your input...");
 			}
 		}
@@ -272,12 +273,13 @@ public class GamingTwentyQuestionsState extends State {
 
 		if(winner.equals("roboy")){
 			filterApplied = getRosMainNode().ApplyFilter("flies");
+			getRosMainNode().ShowEmotion("sunglasses");
 			LOGGER.info("Snapchat-Filter Service Callback: " + filterApplied);
-			//TODO: display roboy face with sunglasses
+
 		} else {
 			filterApplied = getRosMainNode().ApplyFilter("crown");
 			LOGGER.info("Snapchat-Filter Service Callback: " + filterApplied);
-			//TODO: display roboy face with tears
+			getRosMainNode().ShowEmotion("tears");
 		}
 	}
 

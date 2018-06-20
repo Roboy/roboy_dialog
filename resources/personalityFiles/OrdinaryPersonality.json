@@ -47,7 +47,7 @@
         "finishedQuestionAnswering": "Farewell",
         "loopToNewPerson": "PersonalQA",
         "loopToKnownPerson": "FollowUp",
-        "switchToGaming":"ChooseGameState"
+        "switchToGaming": "ChooseGameState"
       }
     },
     {
