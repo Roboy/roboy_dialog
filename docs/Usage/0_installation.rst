@@ -9,6 +9,7 @@ Requirements
 - Git
 - Word2Vec File (for Parser) TODO: Add links to relevant Parser Doc
 - Neo4J Todo: Add link to relevant memory section
+- Working Internet Connection for downloading dependencies
 
 
 Recommendations
@@ -20,24 +21,26 @@ Recommendations
     - Needed for ``ROS Kinetic``
 
 
+[1] Note that ``apt`` is bugged with Ubuntu 16.04. See: https://bugs.launchpad.net/ubuntu/+source/appstream/+bug/1583845 if you get problems with ``apt-update``.
+
 Using command line
 ------------------
 
-Install Maven on the computer.
-``sudo apt install maven``
-
 Clone the Dialog Manager repository.
 ``git clone https://github.com/Roboy/roboy_dialog -b devel --recursive``
+>Note: Replace devel with the branch you desire. 
+
+Set Environmental Variables (if not done so already)
+See Memory Documentation for more Information
 
 Navigate to the root module.
 ``cd roboy_dialog``
 
-Compile the project - Maven will take care of the rest.
-``mvn compile`` Todo: Change this to mvn clean install?
+Clean and then Install the project using Maven
+``mvn clean install``
 
 Execute the project.
-``mvn exec:java -Dexec.mainClass="roboy.dialog.DialogSystem"`` TODO: This command is changed, what is it supposed to be?
-
+```java -Xmx6g -d64 -cp dialog/target/ roboy-dialog-system-2.1.9-jar-with-dependencies.jar roboy.dialog.DialogSystem```
 
 Using IDE (Eclipse, Intellij IDEA)
 ----------------------------------
@@ -45,7 +48,7 @@ Using IDE (Eclipse, Intellij IDEA)
 Clone the Dialog Manager repository.
 ``git clone https://github.com/Roboy/roboy_dialog``
 
+Important: Make sure the submodules are initialized. 
+
 Now, import Dialog System as a Maven project into the IDE of your choice. Build and execute using ``roboy.dialog.DialogSystem`` as the main class.
 
-
-[1] Note that ``apt`` is partially broken with Xubuntu 16.04 and that you will require to deinstall _____ in order to get ``apt-get update`` to work
