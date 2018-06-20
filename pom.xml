@@ -18,6 +18,26 @@
     </modules>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <id>Pull Word2Vec Corpus</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>wget</executable>
+                            <commandlineArgs>-nv -c http://bot.roboy.org:8081/~roboy/roboy_enwik8.txt -O resources_nlu/word2vec/roboy_enwik8.txt</commandlineArgs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
         <resources>
             <resource>
                 <directory>resources</directory>
