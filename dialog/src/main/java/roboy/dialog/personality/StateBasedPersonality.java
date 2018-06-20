@@ -309,7 +309,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
             segueHandler(previousActions, react.getSegue());
         }
 
-        // add emotion action to the output if defined (not implemented yet)
+        // add emotion action to the output if defined
         if (react.hasEmotion()) {
             previousActions.add(new EmotionAction(react.getEmotion()));
         }
