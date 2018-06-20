@@ -52,3 +52,7 @@ Important: Make sure the submodules are initialized.
 
 Now, import Dialog System as a Maven project into the IDE of your choice. Build and execute using ``roboy.dialog.DialogSystem`` as the main class.
 
+Troubleshooting
+------------------------------
+
+See the Troubleshooting Page
