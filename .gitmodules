@@ -1,7 +1,6 @@
 [submodule "roboy_parser"]
 	path = roboy_parser
 	url = git://github.com/Roboy/roboy_parser.git
-	branch = devel
 [submodule "roboy_memory"]
 	path = roboy_memory
 	url = https://github.com/Roboy/roboy_memory.git
