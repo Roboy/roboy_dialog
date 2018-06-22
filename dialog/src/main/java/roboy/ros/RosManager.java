@@ -53,7 +53,8 @@ class RosManager {
                 try {
                     subscriberMap.put(subscriber, node.newSubscriber(subscriber.address, subscriber.type));
                     LOGGER.info("{} subscriber initialization SUCCESS!", subscriber.toString());
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     success = false;
                     LOGGER.warn("{} subscriber initialization FAILED!", subscriber.toString());
                 }

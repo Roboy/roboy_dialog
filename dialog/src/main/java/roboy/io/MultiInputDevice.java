@@ -53,4 +53,3 @@ public class MultiInputDevice implements InputDevice, CleanUp{
 		this.cleanup();
 	}
 }
-
