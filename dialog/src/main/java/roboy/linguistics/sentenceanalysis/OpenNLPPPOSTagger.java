@@ -23,8 +23,7 @@ public class OpenNLPPPOSTagger implements Analyzer{
 		  modelIn = new FileInputStream("resources/en-pos-maxent.bin");
 		  POSModel model = new POSModel(modelIn);
 		  tagger = new POSTaggerME(model);
-		}
-		catch (IOException e) {
+		}catch (IOException e) {
 		  // Model loading failed, handle the error
 		  e.printStackTrace();
 		}
@@ -32,8 +31,7 @@ public class OpenNLPPPOSTagger implements Analyzer{
 		  if (modelIn != null) {
 		    try {
 		      modelIn.close();
-		    }
-		    catch (IOException e) {
+		    }catch (IOException e) {
 				e.printStackTrace();
 		    }
 		  }

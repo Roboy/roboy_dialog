@@ -68,7 +68,6 @@ public class IntroductionState extends State {
 
     @Override
     public Output react(Interpretation input) {
-
         // expecting something like "My name is NAME"
 
         // 1. get name
@@ -86,7 +85,7 @@ public class IntroductionState extends State {
 
         // 2. get interlocutor object from context
         // this also should query memory and do other magic
-        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         person.addName(name);
         // Roboy roboy = new Roboy(getMemory());
 
@@ -135,7 +134,7 @@ public class IntroductionState extends State {
     }
 
     private void updateInterlocutorInContext(Interlocutor interlocutor) {
-        Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(interlocutor);
+        getContext().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(interlocutor);
     }
 
     private String getIntroPhrase() {

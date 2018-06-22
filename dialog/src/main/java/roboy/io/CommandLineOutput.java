@@ -3,7 +3,6 @@ package roboy.io;
 import java.util.List;
 
 import roboy.dialog.action.Action;
-import roboy.dialog.action.FaceAction;
 import roboy.dialog.action.SpeechAction;
 
 /**
@@ -21,7 +20,7 @@ public class CommandLineOutput implements OutputDevice{
 		for(Action a : actions){
 			if(a instanceof SpeechAction){
 //				int duration = ((SpeechAction) a).getText().length()==0 ? 0 : 1 + ((SpeechAction) a).getText().length()/8;
-//				emotion.act(new FaceAction("speak", duration));
+//				emotion.act(new EmotionAction("speak", duration));
 				System.out.println("[Roboy]: " + ((SpeechAction) a).getText());
 			}
 		}

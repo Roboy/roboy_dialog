@@ -51,7 +51,7 @@ public class UzupisState extends State {
 
         alreadyAsked = new ArrayList<>();
 
-        person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        person = getContext().ACTIVE_INTERLOCUTOR.getValue();
     }
 
     @Override
@@ -61,11 +61,9 @@ public class UzupisState extends State {
 
         if (alreadyAsked.isEmpty()) {
             currentIntent = UzupisIntents.INTRO;
-        }
-        else if (alreadyAsked.size()==1 && person.getName() == null) {
+        } else if (alreadyAsked.size()==1 && person.getName() == null) {
             currentIntent = UzupisIntents.NAME;
-        }
-        else {
+        } else {
             if (person.getName() != null && !alreadyAsked.contains(NAME)) {
                 alreadyAsked.add(UzupisIntents.NAME);
             }
@@ -121,7 +119,7 @@ public class UzupisState extends State {
     @Override
     public State getNextState() {
 
-        Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+        getContext().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
 
         if (alreadyAsked.size() != toAskCounter) {
             return getTransition("loop");
@@ -134,8 +132,7 @@ public class UzupisState extends State {
         try {
             ProcessBuilder pb = new ProcessBuilder("python", CertificatesGeneratorScript, "0", color, plant, animal, word, name, "2018");
             pb.start();
-        }
-        catch (IOException e) {
+        }catch (IOException e) {
             logger.error(e.getMessage());
         }
         return getTransition("next");

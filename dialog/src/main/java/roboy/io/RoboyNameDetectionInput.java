@@ -88,8 +88,7 @@ public class RoboyNameDetectionInput implements InputDevice{
 			Interpretation interpretation = new Interpretation();
 			interpretation.setRoboy(true);
 			return new Input(null, interpretation);
-		}
-		else {
+		} else {
 			return new Input(null);
 		}
 	}

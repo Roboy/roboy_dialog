@@ -48,10 +48,7 @@ public class Lexicon
 			}
 
 			return interLiteralList;
-		}
-		
-		else
-		{
+		} else {
 			String bifContainsValue = "";
 			for (String permutation : permutationList)
 			{
@@ -88,9 +85,7 @@ public class Lexicon
 						if ( qsolution.get("redirects") != null )
 						{
 							literalURI = qsolution.get("redirects");
-						}
-						else
-						{
+						} else {
 							literalURI = qsolution.get("subject");
 
 						}
@@ -123,9 +118,7 @@ public class Lexicon
 							    }
 
 							}
-						}
-						else
-						{
+						} else {
 							tmpLexiconLiteral.URI = literalURI.toString();
 							tmpLexiconLiteral.QuestionMatch = resultQuestionMatch;
 							String tmplabel=literalLabel.toString();
@@ -146,8 +139,7 @@ public class Lexicon
 						}
 
 					}
-				}
-				catch (Exception e)
+				}catch (Exception e)
 				{
 					System.out.println("Exception caught: " + e.toString());
 				}
@@ -214,8 +206,7 @@ public class Lexicon
 						literal.typeOfOwner.add(typeOfOwner.toString());
 					}
 				}
-			}
-			catch (Exception e)
+			}catch (Exception e)
 			{
 				System.out.println("Exception caught: " + e.toString());
 			}
@@ -240,9 +231,7 @@ public class Lexicon
 					tmplabel = tmplabel.trim();
 				}
 
-			}
-			else
-			{
+			} else {
 				tmplabel = literal.label;
 			}
 

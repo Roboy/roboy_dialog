@@ -67,7 +67,7 @@ public class RoboyQAState extends ExpoState {
 
     @Override
     public Output act() {
-        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         String intentPhrase = roboyIntentPhrases.getRandomElement();
         intentIsFriend = intentPhrase.contains("friend");
         return Output.say(String.format(connectingPhrases.getRandomElement(), person.getName()) + intentPhrase);

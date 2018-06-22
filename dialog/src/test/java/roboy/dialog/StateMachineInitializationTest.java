@@ -1,6 +1,7 @@
 package roboy.dialog;
 
 import org.junit.Test;
+import roboy.context.Context;
 import roboy.dialog.states.definitions.State;
 import roboy.logic.Inference;
 
@@ -14,7 +15,8 @@ public class StateMachineInitializationTest {
     // after loading, the initial state equals the active state
     @Test
     public void activeStateIsSetToInitialState() {
-        DialogStateMachine machine = new DialogStateMachine(new Inference());
+        Context context = new Context();
+        DialogStateMachine machine = new DialogStateMachine(new Inference(), context);
         machine.loadFromString(MiniTestStateMachineCreator.getMiniStateMachineString());
 
         assertTrue(machine.getInitialState() == machine.getActiveState());
@@ -24,7 +26,8 @@ public class StateMachineInitializationTest {
     // all states from the string are present in the machine
     @Test
     public void machineContainsAllStates() {
-        DialogStateMachine machine = new DialogStateMachine(new Inference());
+        Context context = new Context();
+        DialogStateMachine machine = new DialogStateMachine(new Inference(), context);
         machine.loadFromString(MiniTestStateMachineCreator.getMiniStateMachineString());
         assertTrue( machine.getStateByIdentifier("Greetings") != null );
         assertTrue( machine.getStateByIdentifier("Farewell") != null );
@@ -34,7 +37,8 @@ public class StateMachineInitializationTest {
     // all transitions from the string are present in the machine
     @Test
     public void transitionsAreOK() {
-        DialogStateMachine machine = new DialogStateMachine(new Inference());
+        Context context = new Context();
+        DialogStateMachine machine = new DialogStateMachine(new Inference(), context);
         machine.loadFromString(MiniTestStateMachineCreator.getMiniStateMachineString());
         State greetings = machine.getStateByIdentifier("Greetings");
         State farewell = machine.getStateByIdentifier("Farewell");
@@ -47,7 +51,8 @@ public class StateMachineInitializationTest {
     // all parameters from the string are present in the machine
     @Test
     public void parametersAreOK() {
-        DialogStateMachine machine = new DialogStateMachine(new Inference());
+        Context context = new Context();
+        DialogStateMachine machine = new DialogStateMachine(new Inference(), context);
         machine.loadFromString(MiniTestStateMachineCreator.getMiniStateMachineString());
         State farewell = machine.getStateByIdentifier("Farewell");
 
@@ -58,7 +63,8 @@ public class StateMachineInitializationTest {
     // all fallbacks from the string are present in the machine
     @Test
     public void fallbackIsOK() {
-        DialogStateMachine machine = new DialogStateMachine(new Inference());
+        Context context = new Context();
+        DialogStateMachine machine = new DialogStateMachine(new Inference(), context);
         machine.loadFromString(MiniTestStateMachineCreator.getMiniStateMachineString());
         State greetings = machine.getStateByIdentifier("Greetings");
         State farewell = machine.getStateByIdentifier("Farewell");
