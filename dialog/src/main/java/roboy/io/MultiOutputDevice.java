@@ -45,3 +45,4 @@ public class MultiOutputDevice implements OutputDevice, CleanUp{
 		this.cleanup();
 	}
 }
+
