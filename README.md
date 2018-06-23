@@ -1,5 +1,5 @@
 # DialogSystem
-[![Documentation Status](https://readthedocs.org/projects/roboydialog/badge/?version=master)](http://roboydialog.readthedocs.io/en/master/?badge=master)
+[![Documentation Status](https://readthedocs.org/projects/roboydialog/badge/?version=latest)](http://roboydialog.readthedocs.io/en/master/?badge=latest)
 
 ## What is it 
 
