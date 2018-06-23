@@ -1,0 +1,71 @@
+{
+  "comment": "A simple bot personality.",
+  "initialState": "TelegramBot",
+  "states": [
+    {
+      "identifier": "TelegramBot",
+      "implementation": "roboy.dialog.states.botboy.BotBoyState",
+      "transitions": {
+        "initialized":"Intro"
+      }
+    },
+    {
+      "identifier": "Greetings",
+      "implementation": "roboy.dialog.states.ordinaryStates.PassiveGreetingsState",
+      "transitions": {
+        "greetingDetected": "Intro"
+      }
+    },
+    {
+      "identifier": "Intro",
+      "implementation": "roboy.dialog.states.ordinaryStates.IntroductionState",
+      "transitions": {
+        "knownPerson": "FollowUp",
+        "newPerson": "PersonalQA"
+      },
+      "parameters": {
+        "infoFile": "resources/sentences/RoboyInfoList.json"
+      }
+    },
+    {
+      "identifier": "FollowUp",
+      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationFollowUpState",
+      "transitions": {
+        "questionAnswering": "QuestionAnswering"
+      },
+      "parameters": {
+        "qaFile": "resources/sentences/QAList.json"
+      }
+    },
+    {
+      "identifier": "PersonalQA",
+      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationAskingState",
+      "transitions": {
+        "questionAnswering": "QuestionAnswering"
+      },
+      "parameters": {
+        "qaFile": "resources/sentences/QAList.json"
+      }
+    },
+    {
+      "identifier": "QuestionAnswering",
+      "implementation": "roboy.dialog.states.ordinaryStates.QuestionAnsweringState",
+      "fallback": "WildTalk",
+      "transitions": {
+        "finishedQuestionAnswering": "Farewell",
+        "loopToNewPerson": "PersonalQA",
+        "loopToKnownPerson": "FollowUp"
+      }
+    },
+    {
+      "identifier": "WildTalk",
+      "implementation": "roboy.dialog.states.ordinaryStates.WildTalkState",
+      "transitions": {}
+    },
+    {
+      "identifier": "Farewell",
+      "implementation": "roboy.dialog.states.ordinaryStates.FarewellState",
+      "transitions": {}
+    }
+  ]
+}

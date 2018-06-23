@@ -3,7 +3,7 @@ package roboy.io;
 import java.util.List;
 
 import roboy.dialog.action.Action;
-import roboy.dialog.action.FaceAction;
+import roboy.dialog.action.EmotionAction;
 import roboy.ros.RosMainNode;
 
 /**
@@ -20,19 +20,19 @@ public class EmotionOutput implements OutputDevice
 	@Override
 	public void act(List<Action> actions) {
 		for (Action a : actions) {
-			if (a instanceof FaceAction) {
-				System.out.print(((FaceAction) a).getState());
-				rosMainNode.ShowEmotion(((FaceAction) a).getState());
+			if (a instanceof EmotionAction) {
+				System.out.print(((EmotionAction) a).getState());
+				rosMainNode.ShowEmotion(((EmotionAction) a).getState());
 			}
 		}
 	}
 
 	public void act(Action action) {
-		if (action instanceof FaceAction) {
-			if (((FaceAction) action).getDuration()>0)
+		if (action instanceof EmotionAction) {
+			if (((EmotionAction) action).getDuration()>0)
 			{
-				System.out.print(((FaceAction) action).getState());
-				rosMainNode.ShowEmotion(((FaceAction) action).getState());
+				System.out.print(((EmotionAction) action).getState());
+				rosMainNode.ShowEmotion(((EmotionAction) action).getState());
 			}
 
 		}

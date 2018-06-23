@@ -3,10 +3,7 @@ package roboy.memory.nodes;
 import com.google.gson.Gson;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import roboy.memory.Neo4jLabel;
-import roboy.memory.Neo4jMemoryInterface;
-import roboy.memory.Neo4jProperty;
-import roboy.memory.Neo4jRelationship;
+import roboy.memory.*;
 import roboy.util.UzupisIntents;
 
 import java.io.IOException;
@@ -62,17 +59,19 @@ public class Interlocutor extends MemoryNodeModel {
             }
             // Create new node if match is not found.
             else {
-                try {
-                    int id = memory.create(this);
-                    // Need to retrieve the created node by the id returned by memory
-                    MemoryNodeModel node = fromJSON(memory.getById(id), new Gson());
-                    setId(node.getId());
-                    setRelationships(node.getRelationships() != null ? node.getRelationships() : new HashMap<>());
-                    setProperties(node.getProperties() != null ? node.getProperties() : new HashMap<>());
-                    FAMILIAR = false;
-                } catch (InterruptedException | IOException e) {
-                    LOGGER.warn("Unexpected memory error: provided ID not found upon querying.");
-                    e.printStackTrace();
+                if(!(memory instanceof DummyMemory)) {
+                    try {
+                        int id = memory.create(this);
+                        // Need to retrieve the created node by the id returned by memory
+                        MemoryNodeModel node = fromJSON(memory.getById(id), new Gson());
+                        setId(node.getId());
+                        setRelationships(node.getRelationships() != null ? node.getRelationships() : new HashMap<>());
+                        setProperties(node.getProperties() != null ? node.getProperties() : new HashMap<>());
+                        FAMILIAR = false;
+                    } catch (InterruptedException | IOException e) {
+                        LOGGER.warn("Unexpected memory error: provided ID not found upon querying.");
+                        e.printStackTrace();
+                    }
                 }
             }
         }

@@ -12,7 +12,7 @@ import roboy.util.Maps;
 public class CelebritySimilarityInput implements InputDevice{
 
 	@Override
-	public Input listen() throws InterruptedException, IOException {
+	public Input listen() {
 		Interpretation interpretation = new Interpretation();
 		interpretation.setCelebrity("Sponge Bob");
 		return new Input(null, interpretation);

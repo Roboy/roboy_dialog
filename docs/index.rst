@@ -14,8 +14,9 @@ defined via a certain Roboy Personality description (file).
 Within the particular conversation flow stages, the behavioural variability is obtained by extending and redefining
 the common RDSM State to produce a certain social interaction.
 The RDMS State both as actor and as reactor regarding the internally formulated output and externally acquired input.
-The voice input is processed via the Listening Device -> Speech-to-Text -> Analyzers & Semantic Parser -> Linguistics package
+For example, the voice input is processed via the Listening Device -> Speech-to-Text -> Analyzers & Semantic Parser -> Linguistics package
 -> (InferenceEngine) -> State sequence.
+It also allows being deployed on a multitude of communication channels for a broader interaction audience.
 
 The overview diagram shows the external systems which Dialog System interacts with, and the tasks for which the system is responsible.
 
@@ -40,6 +41,7 @@ In development:
 - Roboy updates the information (name, occupation, ect.) about people he meets
 - Roboy updates the information about himself
 - Roboy recognizes the intent behind an asked questions (age, creator, capabilities etc.)
+- The Roboy Dialog is fully deployable on multiple internet channels.
 
 
 Relevant Background Information and Pre-Requisites
