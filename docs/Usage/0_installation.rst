@@ -7,7 +7,6 @@ Requirements
 - Apache Maven
 - Java 8 (Oracle is prefered)
 - Git
-- Word2Vec File (for Parser) TODO: Add links to relevant Parser Doc
 - Neo4J Todo: Add link to relevant memory section
 - Working Internet Connection for downloading dependencies
 
@@ -21,7 +20,7 @@ Recommendations
     - Needed for ``ROS Kinetic``
 
 
-[1] Note that ``apt`` is bugged with Ubuntu 16.04. See: https://bugs.launchpad.net/ubuntu/+source/appstream/+bug/1583845 if you get problems with ``apt-update``.
+.. note:: Note that ``apt`` is bugged with Ubuntu 16.04. See: https://bugs.launchpad.net/ubuntu/+source/appstream/+bug/1583845 if you get problems with ``apt-update``.
 
 Using command line
 ------------------
@@ -40,7 +39,7 @@ Clean and then Install the project using Maven
 ``mvn clean install``
 
 Execute the project.
-```java -Xmx6g -d64 -cp dialog/target/ roboy-dialog-system-2.1.9-jar-with-dependencies.jar roboy.dialog.DialogSystem```
+``java -Xmx6g -d64 -cp dialog/target/ roboy-dialog-system-2.1.9-jar-with-dependencies.jar roboy.dialog.DialogSystem``
 
 Using IDE (Eclipse, Intellij IDEA)
 ----------------------------------

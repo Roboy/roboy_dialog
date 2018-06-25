@@ -18,7 +18,6 @@ public class Neo4jMemoryOperations {
 
     /**
      * Cypher Method that is never called
-     * TODO: Implement this feature or refactor it out, it's kind of here because there was a service
      * @param query
      * @return
      */
