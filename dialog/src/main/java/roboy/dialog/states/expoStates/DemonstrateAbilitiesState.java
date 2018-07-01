@@ -128,8 +128,7 @@ enum RoboyAbility {
                 TimeUnit.SECONDS.sleep(1);
                 node.ShowEmotion(KISS);
                 TimeUnit.SECONDS.sleep(1);
-            }
-            catch (InterruptedException e) {
+            }catch (InterruptedException e) {
                 logger.error(e.getMessage());
             }
         }
@@ -159,9 +158,7 @@ enum RoboyAbility {
                 for (int i=0; i<parts.size();i++) {
                     node.PerformMovement(parts.get(i), name);
                 }
-            }
-
-            catch (InterruptedException e) {
+            }catch (InterruptedException e) {
                 logger.error(e.getMessage());
             }
 

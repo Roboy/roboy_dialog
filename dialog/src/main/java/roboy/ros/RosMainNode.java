@@ -40,9 +40,7 @@ public class RosMainNode extends AbstractNodeMain {
 
         if (!ConfigManager.ROS_ENABLED) {
             LOGGER.warn("ROS is disabled in config.properties, but you are still trying to use it");
-        }
-
-        else {
+        } else {
             services = new RosManager();
 
             if (ConfigManager.ROS_MASTER_IP == null || ConfigManager.ROS_MASTER_IP.isEmpty()) {
@@ -61,8 +59,6 @@ public class RosMainNode extends AbstractNodeMain {
             nodeMainExecutor.execute(this, nodeConfiguration);
             rosConnectionLatch = new CountDownLatch(1);
             waitForLatchUnlock(rosConnectionLatch, "ROS init");
-
-            Context.getInstance().initializeROS(this);
         }
     }
 
@@ -83,8 +79,7 @@ public class RosMainNode extends AbstractNodeMain {
             pb.redirectError();
             pb.start();
             pb.wait();
-        }
-        catch (IOException e) {
+        }catch (IOException e) {
             LOGGER.error(e.getMessage());
         }
 

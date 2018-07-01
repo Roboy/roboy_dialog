@@ -131,20 +131,6 @@ public class GamingTwentyQuestionsState extends State {
 		} else if (inputSentiment == Linguistics.UtteranceSentiment.NEGATIVE) {
 			intent = "no";
 		}
-
-/*			} else if(token.equals("ready")) {
-				intent = "ready";
-			} else if(token.equals("back")) {
-				intent = "back";
-			} else if(token.equals("dont")) {
-				intent = "dont know";
-			} else if(token.equals("not")) {
-				intent = "probably not";
-			} else if(token.equals("probably")) {
-				intent = "probably";
-			}
-		}*/
-
 		return intent;
 	}
 
@@ -156,7 +142,7 @@ public class GamingTwentyQuestionsState extends State {
 			nextQuestionString = nextQuestion.getQuestion();
 		}
 		catch(NullPointerException e){
-			winner = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue().getName();
+			winner = getContext().ACTIVE_INTERLOCUTOR.getValue().getName();
 			gameFinished = true;
 			LOGGER.error("No more questions available: " + e);
 			return Output.say("I throw in the towel, I think I have no idea what to ask next.");
@@ -227,7 +213,7 @@ public class GamingTwentyQuestionsState extends State {
 
 		if(roboyAnswer.isEmpty()){
 			gameFinished = true;
-			winner = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue().getName();
+			winner = getContext().ACTIVE_INTERLOCUTOR.getValue().getName();
 			roboyAnswer = String.format(PhraseCollection.ROBOY_LOSER_PHRASES.getRandomElement(), winner);
 		}
 

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class Context {
 
     Logger LOGGER = LogManager.getLogger();
-    private static final Object initializationLock = new Object();
+    private final Object initializationLock = new Object();
 
     /* VALUES */
     public final ValueInterface<FaceCoordinates, CoordinateSet> FACE_COORDINATES =
@@ -45,8 +45,8 @@ public class Context {
             new HistoryInterface<>(new ValueHistory<Integer>());
 
     /* GUI */
-    private static final ArrayList guiValues = new ArrayList();
-    private static final ArrayList guiHistories = new ArrayList();
+    private final ArrayList guiValues = new ArrayList();
+    private final ArrayList guiHistories = new ArrayList();
 
     /* INTERNAL UPDATERS */
     public final DialogTopicsUpdater DIALOG_TOPICS_UPDATER;
@@ -63,13 +63,10 @@ public class Context {
     private final FaceCoordinatesObserver FACE_COORDINATES_OBSERVER;
 
 
-    // By calling getInstance, Context initializes its updaters and observers.
-    private static Context context = Context.getInstance();
-
     /**
      * Builds the class to instance maps.
      */
-    private Context() {
+    public Context() {
         /* INTERNAL UPDATER INITIALIZATION */
         DIALOG_TOPICS_UPDATER = new DialogTopicsUpdater(DIALOG_TOPICS.valueHistory);
         DIALOG_INTENTS_UPDATER = new DialogIntentsUpdater(DIALOG_INTENTS.valueHistory);
@@ -100,14 +97,13 @@ public class Context {
      * @param ros
      */
     public void initializeROS(RosMainNode ros) {
-        Context ctx = Context.getInstance();
         synchronized (initializationLock) {
             // Initialize only if not already done.
             if(!rosInitialized) {
 
                 /* EXTERNAL UPDATERS INITIALIZED HERE */
 //                AUDIO_ANGLES_UPDATER = new AudioDirectionUpdater(AUDIO_ANGLES.valueHistory, ros);
-//                ROS_TEST_UPDATER = new ROSTestUpdater(ROS_TEST.valueHistory, ros);
+                if(ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_test")) ROS_TEST_UPDATER = new ROSTestUpdater(ROS_TEST.valueHistory, ros);
                 // TODO Add a FACE_COORDINATE_UPDATER.
                 // Edit the data type and integration tests, once the real data type is used.
 
@@ -116,22 +112,6 @@ public class Context {
         }
     }
 
-    /**
-     * The access point to Context, including thread-safe Singleton initialization.
-     */
-    public static Context getInstance() {
-        if (context == null) {
-            // Extra block instead of synchronizing over entire getInstance method.
-            // This way, we do not sync when context was initialized earlier -> better performance.
-            synchronized (initializationLock) {
-                // Need to check for null again in case some other thread got here before.
-                if(context == null) {
-                    context = new Context();
-                }
-            }
-        }
-        return context;
-    }
 
     private void addToGUI(Object ... elements) {
         for(Object newElement : elements) {

@@ -46,6 +46,8 @@ public class PhraseCollection {
             = readFile("resources/phraseLists/game-asking-phrases.txt");
     public static RandomList<String> OFFER_FILTER_PHRASES
             = readFile("resources/phraseLists/offer-snapchat-filter.txt");
+    public static RandomList<String> PROFANITY_CHECK_WORDS
+            = FileLineReader.readFile("resources/phraseLists/profanity-check-list.txt");
     // Added for the ExpoPersonality
     public static RandomList<String> FACTS
             = readFile("resources/phraseLists/expoPhrases/facts.txt");

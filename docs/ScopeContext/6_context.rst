@@ -4,7 +4,7 @@
 Context
 *******
 
-The goal of Context is to collect information about Roboy's environment and state. This information can be used by the dialog manager and also to react upon situations that match certain conditions, such as turning the head of Roboy when the Interlocutor moves.
+The goal of Context is to collect information about Roboy's or a conversation's environment and state. This information can be used by the dialog manager and also to react upon situations that match certain conditions, such as turning the head of Roboy when the Interlocutor moves.
 
 Architecture
 ============
