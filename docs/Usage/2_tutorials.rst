@@ -578,6 +578,7 @@ Available inputs are:
     - ``cmdline``
     - ``upd`` (listens for incoming udp packets in the port specified below)
     - ``bing`` (requires Internet connection and the ``roboy_speech_recognition`` ROS package)
+    - ``telegram`` (requires Internet connection and a prepared telegram bot, see 1. Getting Started for more details. For the standard usecase, telegram should be set as both, in- and output.)
     
 Arbitraty of the following outputs can be used simultaniously at the runtime::
     - ``cerevoice`` (requires ``roboy_speech_synthesis`` ROS package)
@@ -585,6 +586,7 @@ Arbitraty of the following outputs can be used simultaniously at the runtime::
     - ``ibm`` (uses IBM Bluemix, requires Internet connection, user & pass configured below)
     - ``emotions`` (requires ``roboy_face`` ROS package)
     - ``udp`` (sends packets on the port configure below)
+    - ``telegram`` (requires Internet connection and a prepared telegram bot, see 1. Getting Started for more details. For the standard usecase, telegram should be set as both, in- and output.)
 
 Example IO config::
 

@@ -35,3 +35,17 @@ Clone the Dialog Manager repository.
 
 Now, import Dialog System as a Maven project into the IDE of your choice. Build and execute using ``roboy.dialog.ConversationManager`` as the main class.
 
+Using a telegram bot for I/O
+----------------------------
+
+Register a bot as described on the `telegram website`_.
+.._telegram website: https://core.telegram.org/bots#3-how-do-i-create-a-bot
+
+Place your telegram-bot authentification token in a JSON-File structured like this:
+.. code:: json
+    {
+    "TOKEN":"AAAAAAAAA:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "BOT_USERNAME":"Botname"
+    }
+
+Provide the path to this file to the Dialog System via ``TELEGRAM_API_TOKENS_FILE: "/path/to/example.json"`` in ``config.properties``.

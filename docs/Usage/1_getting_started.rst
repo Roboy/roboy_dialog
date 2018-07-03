@@ -45,4 +45,4 @@ Pick the corresponding interface, depending on which part of the system you want
 | Output device      | de.roboy.io.OutputDevice                         |
 +--------------------+--------------------------------------------------+
 
-The interfaces are deliberately simple, containing only 0 - 2 methods that have to be implemented. Once you implemented your new classes include them in the personality used in ``de.roboy.dialog.DialogSystem``, if you only implemented single states or directly in ``de.roboy.dialog.DialogSystem`` for everything else.
+The interfaces are deliberately simple, containing only 0 - 2 methods that have to be implemented. Once you implemented your new classes include them in the personality used in ``de.roboy.dialog.ConversationManager``, if you only implemented single states or directly in ``de.roboy.dialog.ConversationManager`` for everything else.
