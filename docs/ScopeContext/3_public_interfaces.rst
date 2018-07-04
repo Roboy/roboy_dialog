@@ -5,6 +5,11 @@ Public Interfaces
 
 Interfaces to other (sub)modules are realized through direct function calls. The original, now deprecated, ROS interfaces are still present and may be used, if required.
 
+Direct Function Calls
+-------------------------
+
+TODO: COPY
+
 ROS
 -------------
 

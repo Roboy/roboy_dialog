@@ -3,13 +3,13 @@ Semantic Parser
 
 Semantic parser is used to translate text representation into formal language representation. The aim is to be able to process user utterances and react upon them.
 
-roboy_parser is based on `SEMPRE <http://nlp.stanford.edu/software/sempre/>`. It is currently being modified to fulfill Roboy Dialog system needs.
+roboy_parser is based on `SEMPRE <http://nlp.stanford.edu/software/sempre/>`_ . It is currently being modified to fulfill Roboy Dialog system needs.
 
 
 Installation
 ------------
 
-By installing dialog via the main POM file, it will automatically install the parser complete, with all dependencies. TODO: Add link
+By installing dialog via the main POM file, it will automatically install the parser complete, with all dependencies. For information, see `here <http://roboydialog.readthedocs.io/en/master/Usage/0_installation.html>`_.
 
 Architecture
 ------------
@@ -61,7 +61,7 @@ If you wish to start parser individually, there are basic instructions on that i
 Configurations
 """"""""""""""
 
-To test parser, you can run following execution configurations using ``maven``. For more information refer to `project documentation <http://github.com/Roboy/roboy_parser>`
+To test parser, you can run following execution configurations using ``maven``. For more information refer to `project documentation <http://github.com/Roboy/roboy_parser>`_
 
 .. csv-table:: Possible parser configurations
   :header: "Command", "Options"

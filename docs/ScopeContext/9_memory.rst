@@ -1,4 +1,4 @@
-The memory module
+The Memory Module
 =================
 
 General design
