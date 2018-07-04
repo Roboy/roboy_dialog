@@ -30,7 +30,7 @@ Clone the Dialog Manager repository.
 
 .. tip:: If you wish to clone another branch, e.g. devel, just simply replace ``master`` with the branch's name.
 
-Set `Environmental Variables <http://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html>`_(if not done so already)
+Set `Environmental Variables <http://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html>`_ (if not done so already)
 
 Navigate to the root module.
 ``cd roboy_dialog``
@@ -54,4 +54,4 @@ Now, import Dialog System as a Maven project into the IDE of your choice. Build 
 Troubleshooting
 ------------------------------
 
-See the `Troubleshooting Page <http://roboy-dialog.readthedocs.io/en/latest/Usage/9_troubleshooting.html>`
+See the `Troubleshooting Page <http://roboy-dialog.readthedocs.io/en/latest/Usage/9_troubleshooting.html>`_ 
