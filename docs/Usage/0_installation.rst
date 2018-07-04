@@ -7,7 +7,7 @@ Requirements
 - Apache Maven
 - Java 8 (Oracle is prefered)
 - Git
-- `Neo4J <http://roboy-memory.readthedocs.io/en/latest/Usage/0_installation.html#local-neo4j-instance>`
+- `Neo4J <http://roboy-memory.readthedocs.io/en/latest/Usage/0_installation.html#local-neo4j-instance>`_
 - Working Internet Connection for downloading dependencies
 
 
@@ -30,7 +30,7 @@ Clone the Dialog Manager repository.
 
 .. tip:: If you wish to clone another branch, e.g. devel, just simply replace ``master`` with the branch's name.
 
-Set `Environmental Variables <http://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html>` (if not done so already)
+Set `Environmental Variables <http://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html>`_(if not done so already)
 
 Navigate to the root module.
 ``cd roboy_dialog``
