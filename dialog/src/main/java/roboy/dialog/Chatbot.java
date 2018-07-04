@@ -4,11 +4,8 @@ package roboy.dialog;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
-import roboy.context.ContextGUI;
-import roboy.dialog.action.Action;
 import roboy.dialog.action.SpeechAction;
 import roboy.dialog.personality.StateBasedPersonality;
-import roboy.io.Input;
 import roboy.io.MultiInputDevice;
 import roboy.io.MultiOutputDevice;
 import roboy.linguistics.sentenceanalysis.*;
@@ -17,14 +14,12 @@ import roboy.logic.InferenceEngine;
 import roboy.memory.DummyMemory;
 import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jMemoryInterface;
-import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
 import roboy.util.ConfigManager;
 import roboy.util.IO;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,10 +51,12 @@ public class Chatbot {
         // TODO deal with memory
         Neo4jMemoryInterface memory;
         if (ConfigManager.ROS_ENABLED && ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_memory")) {
-            memory = new Neo4jMemory(rosMainNode);
+            memory = new Neo4jMemory();
         } else {
             memory = new DummyMemory();
         }
+
+        Context context = new Context();
 
         logger.info("Initializing analyzers...");
 
@@ -82,7 +79,7 @@ public class Chatbot {
 
         logger.info("Creating StateBasedPersonality...");
 
-        StateBasedPersonality personality = new StateBasedPersonality(inference, rosMainNode, memory, new Verbalizer());
+        StateBasedPersonality personality = new StateBasedPersonality(inference, rosMainNode, memory, context, new Verbalizer());
         File personalityFile = new File(ConfigManager.PERSONALITY_FILE);
 
 
@@ -91,7 +88,7 @@ public class Chatbot {
             while (true) {
                 // do all actions defined in startConversation() or answer()
                 try {
-                    String input = multiIn.listen().sentence;
+                    String input = multiIn.listen().getSentence();
                     String out = rosMainNode.GenerateAnswer(input);
                     multiOut.act(Arrays.asList(new SpeechAction(out)));
                 } catch (InterruptedException e) {

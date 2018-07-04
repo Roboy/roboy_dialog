@@ -9,6 +9,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import roboy.linguistics.Triple;
 import roboy.util.ConfigManager;
@@ -167,19 +169,24 @@ public class SemanticParserAnalyzer implements Analyzer {
      */
     private List<Triple> extract_triples(String input) {
         List<Triple> result = new ArrayList<>();
-        input = input.replace(")", " )");
-        input = input.replace("(", "( ");
-        String[] tokens = input.split(" ");
-        for (int i = 0; i < tokens.length; i++) {
-            if (tokens[i].contains("triple") && i + 3 < tokens.length && !tokens[i].contains("triples")) {
-                result.add(new Triple(tokens[i + 2], tokens[i + 1], tokens[i + 3]));
-            } else if (tokens[i].contains("(") && i + 2 < tokens.length && tokens[i + 1].contains(":")) {
-                if (tokens[i + 1].contains("!"))
-                    result.add(new Triple(tokens[i + 1].replaceAll("!", ""), tokens[i + 2], null));
-                else
-                    result.add(new Triple(tokens[i + 1], null, tokens[i + 2]));
+        if (input != null) {
+            if (input.contains("triple")) {
+                List<String> tripleStrings = new ArrayList<>();
+                Pattern regex = Pattern.compile("\\((.*?)\\)");
+                input = input.substring(1, input.length() - 1);
+                Matcher regexMatcher = regex.matcher(input);
+                while (regexMatcher.find()) {
+                    tripleStrings.add(regexMatcher.group(1));
+                }
+                for (String tripleString : tripleStrings) {
+                    String[] tokens = tripleString.split(" ");
+                    if (tokens.length == 4) {
+                        result.add(new Triple(tokens[1], tokens[2], tokens[3]));
+                    }
+                }
             }
         }
+
         return result;
     }
 

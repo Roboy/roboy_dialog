@@ -7,20 +7,15 @@ import roboy.context.contextObjects.IntentValue;
 import roboy.dialog.Segue;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.Triple;
+import roboy.dialog.states.definitions.ExpoState;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jProperty;
 import roboy.memory.Neo4jRelationship;
 import roboy.memory.nodes.Interlocutor;
-import roboy.memory.nodes.Roboy;
 import roboy.util.QAJsonParser;
 import roboy.util.RandomList;
 
 import java.util.*;
 
-import static roboy.memory.Neo4jProperty.abilities;
-import static roboy.memory.Neo4jProperty.skills;
 import static roboy.memory.Neo4jRelationship.*;
 
 /**
@@ -40,25 +35,28 @@ import static roboy.memory.Neo4jRelationship.*;
  *
  * PersonalInformationAskingState interface:
  * 1) Fallback is not required.
- * 2) Outgoing transitions that have to be defined:
- *    - TRANSITION_INFO_OBTAINED:    following state if the question was asked
+ * 2) Outgoing transitions that have to be defined,
+ *    following state if the question was asked:
+ *    - skills,
+ *    - abilities,
+ *    - roboy.
  * 3) Required parameters: path to the QAList.json file.
  */
-public class PersonalInformationAskingState extends State {
+public class PersonalInformationAskingState extends ExpoState {
     public final static String INTENTS_HISTORY_ID = "PIA";
+
+    private final String[] TRANSITION_NAMES = { "skills", "abilities", "roboy" };
+    private final String[] INTENT_NAMES = TRANSITION_NAMES;
+
+    private final String QA_FILE_PARAMETER_ID = "qaFile";
+
+    private final Logger LOGGER = LogManager.getLogger();
 
     private QAJsonParser qaValues;
     private Neo4jRelationship[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
     private Neo4jRelationship selectedPredicate;
     private int otherIndex;
     private State nextState;
-
-    private final String SELECTED_SKILLS = "skills";
-    private final String SELECTED_ABILITIES = "abilities";
-    private final String SELECTED_ROBOY_QA = "roboy";
-
-    private final String QA_FILE_PARAMETER_ID = "qaFile";
-    final Logger LOGGER = LogManager.getLogger();
 
     public PersonalInformationAskingState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
@@ -69,12 +67,12 @@ public class PersonalInformationAskingState extends State {
 
     @Override
     public Output act() {
-        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         LOGGER.info(" -> Retrieved Interlocutor: " + person.getName());
 
         for (Neo4jRelationship predicate : predicates) {
             IntentValue intentValue = new IntentValue(INTENTS_HISTORY_ID, predicate);
-            if(!Context.getInstance().DIALOG_INTENTS.contains(intentValue)) {
+            if(!getContext().DIALOG_INTENTS.contains(intentValue)) {
                 selectedPredicate = predicate;
                 LOGGER.info(" -> Selected predicate: " + selectedPredicate.type);
                 break;
@@ -91,9 +89,8 @@ public class PersonalInformationAskingState extends State {
                     question = questions.getRandomElement();
                     otherIndex = questions.indexOf(question);
                 }
-                while (Context.getInstance().OTHER_Q.contains(otherIndex));
-            }
-            else {
+                while (getContext().OTHER_Q.contains(otherIndex));
+            } else {
                 question = questions.getRandomElement();
             }
             LOGGER.info(" -> Selected question: " + question);
@@ -101,8 +98,8 @@ public class PersonalInformationAskingState extends State {
             LOGGER.error(" -> The list of " + selectedPredicate.type + " questions is empty or null");
         }
         try {
-            Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, selectedPredicate));
-            Context.getInstance().OTHER_QUESTIONS_UPDATER.updateValue(otherIndex);
+            getContext().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, selectedPredicate));
+            getContext().OTHER_QUESTIONS_UPDATER.updateValue(otherIndex);
             LOGGER.info(" -> Dialog IntentsHistory updated");
         } catch (Exception e) {
             LOGGER.error(" -> Error on updating the IntentHistory: " + e.getMessage());
@@ -113,7 +110,7 @@ public class PersonalInformationAskingState extends State {
 
     @Override
     public Output react(Interpretation input) {
-        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         LOGGER.info("-> Retrieved Interlocutor: " + person.getName());
         RandomList<String> answers;
         String answer = "I have no words";
@@ -122,8 +119,8 @@ public class PersonalInformationAskingState extends State {
             if (result != null && !result.equals("")) {
                 LOGGER.info(" -> Inference was successful");
                 answers = qaValues.getSuccessAnswers(selectedPredicate);
-                person.addInformation(selectedPredicate.type, result);
-                Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+                person.addInformation(selectedPredicate, result);
+                getContext().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
                 LOGGER.info(" -> Updated Interlocutor: " + person.getName());
             } else {
                 LOGGER.warn(" -> Inference failed");
@@ -142,11 +139,11 @@ public class PersonalInformationAskingState extends State {
                 answer = String.format(answers.getRandomElement(), result);
             }
         } else {
-            LOGGER.error(" -> The list of " + selectedPredicate.type + " answers is empty or null");
+            LOGGER.error(" -> The list of " + selectedPredicate + " answers is empty or null");
         }
 
         LOGGER.info(" -> Produced answer: " + answer);
-        nextState = getRandomTransition();
+        nextState = getTransitionRandomly(TRANSITION_NAMES, INTENT_NAMES, INTENTS_HISTORY_ID);
         Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE, 0.5);
         if (answer == "") {
             return Output.useFallback();
@@ -162,7 +159,7 @@ public class PersonalInformationAskingState extends State {
     @Override
     protected Set<String> getRequiredTransitionNames() {
         // optional: define all required transitions here:
-        return newSet(SELECTED_SKILLS, SELECTED_ABILITIES, SELECTED_ROBOY_QA);
+        return newSet(TRANSITION_NAMES);
     }
 
     @Override
@@ -171,122 +168,6 @@ public class PersonalInformationAskingState extends State {
     }
 
     private String InferResult(Interpretation input) {
-        String result = null;
-        // TODO: What is the condition?
-        if (input.getSentenceType() == Linguistics.SentenceType.STATEMENT) {
-            List<String> tokens = input.getTokens();
-            if (tokens.size() == 1) {
-                result = tokens.get(0).toLowerCase();
-                LOGGER.info(" -> Retrieved only one token: " + result);
-            } else {
-                if (input.getObjAnswer() != null) {
-                    LOGGER.info(" -> OBJ_ANSWER exits");
-                    result = input.getObjAnswer();
-                    if (!result.equals("")) {
-                        LOGGER.info(" -> Retrieved OBJ_ANSWER result " + result);
-                    } else {
-                        LOGGER.warn(" -> OBJ_ANSWER result is empty");
-                        if (input.getParsingOutcome() == Linguistics.ParsingOutcome.SUCCESS &&
-                                input.getSemTriples().size() > 0) {
-                            List<Triple> sem_triple = input.getSemTriples();
-                            LOGGER.info(" -> Semantic parsing is successful and semantic triple exists");
-                            if (sem_triple.get(0).predicate.contains(selectedPredicate.type)) {
-                                LOGGER.info(" -> Semantic predicate " + selectedPredicate.type + " exits");
-                                result = sem_triple.get(0).object.toLowerCase();
-                                LOGGER.info(" -> Retrieved object " + result);
-                            } else {
-                                LOGGER.warn(" -> Semantic predicate " + selectedPredicate.type + " does not exit");
-                            }
-                        } else {
-                            LOGGER.warn(" -> Semantic parsing failed or semantic triple does not exist");
-                        }
-                    }
-                } else {
-                    LOGGER.warn(" -> OBJ_ANSWER does not exit");
-                    if (input.getParsingOutcome() == Linguistics.ParsingOutcome.SUCCESS &&
-                            input.getSemTriples().size() > 0) {
-                        List<Triple> sem_triple = input.getSemTriples();
-                        LOGGER.info(" -> Semantic parsing is successful and semantic triple exists");
-                        if (sem_triple.get(0).predicate.contains(selectedPredicate.type)) {
-                            LOGGER.info(" -> Semantic predicate " + selectedPredicate.type + " exits");
-                            result = sem_triple.get(0).object.toLowerCase();
-                            LOGGER.info(" -> Retrieved object " + result);
-                        } else {
-                            LOGGER.warn(" -> Semantic predicate " + selectedPredicate.type + " does not exit");
-                        }
-                    } else {
-                        LOGGER.warn(" -> Semantic parsing failed or semantic triple does not exist");
-                    }
-                }
-            }
-        } else {
-            LOGGER.warn(" -> The sentence type is NOT a STATEMENT");
-        }
-        return result;
-    }
-
-    private State getRandomTransition() {
-        LOGGER.info("Try to choose a random transition");
-        int dice = (int) (3 * Math.random() + 1);
-        switch (dice) {
-            case 1:
-                String skill = chooseIntentAttribute(skills);
-                if (!skill.equals("")) {
-                    Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, skills, skill));
-                    LOGGER.info("SELECTED_SKILLS transition");
-                    return getTransition(SELECTED_SKILLS);
-                } else {
-                    LOGGER.info("Stay in the current state");
-                    return this;
-                }
-            case 2:
-                String ability = chooseIntentAttribute(abilities);
-                if (!ability.equals("")) {
-                    Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, abilities, ability));
-                    LOGGER.info("SELECTED_ABILITIES transition");
-                    return getTransition(SELECTED_ABILITIES);
-                } else {
-                    LOGGER.info("Stay in the current state");
-                    return this;
-                }
-            case 3:
-                LOGGER.info("SELECTED_ROBOY_QA transition");
-                return getTransition(SELECTED_ROBOY_QA);
-            default:
-                LOGGER.info("Stay in the current state");
-                return this;
-        }
-    }
-
-    private String chooseIntentAttribute(Neo4jProperty predicate) {
-        LOGGER.info("Trying to choose the intent attribute");
-        Roboy roboy = new Roboy(getMemory());
-        String attribute = "";
-        HashMap<String, Object> properties = roboy.getProperties();
-        if (roboy.getProperties() != null && !roboy.getProperties().isEmpty()) {
-            if (properties.containsKey(predicate.type)) {
-                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(predicate.type).toString().split(",")));
-                int count = 0;
-                do {
-                    attribute = retrievedResult.getRandomElement();
-                    count++;
-                } while (lastNIntentsContainAttribute(attribute, 2) && count < retrievedResult.size());
-            }
-        }
-        LOGGER.info("The chosen attribute: " + attribute);
-        return attribute;
-    }
-
-    private boolean lastNIntentsContainAttribute(String attribute, int n) {
-        Map<Integer, IntentValue> lastIntentValues = Context.getInstance().DIALOG_INTENTS.getLastNValues(n);
-
-        for (IntentValue value : lastIntentValues.values()) {
-            if (value.getAttribute() != null) {
-                if (value.getAttribute().equals(attribute)) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return getInference().inferRelationship(selectedPredicate, input);
     }
 }

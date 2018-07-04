@@ -6,22 +6,16 @@ import roboy.context.Context;
 import roboy.context.contextObjects.IntentValue;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
+import roboy.dialog.states.definitions.ExpoState;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jProperty;
 import roboy.memory.nodes.Interlocutor;
-import roboy.memory.nodes.Roboy;
 import roboy.ros.RosMainNode;
 import roboy.talk.PhraseCollection;
 import roboy.util.RandomList;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
-
-import static roboy.memory.Neo4jProperty.abilities;
-import static roboy.memory.Neo4jProperty.skills;
 
 /**
  * Enum implementation of Roboy's skills.
@@ -146,18 +140,18 @@ enum RoboySkillIntent {
  *
  * ExpoIntroductionState interface:
  * 1) Fallback is required.
- * 2) Outgoing transitions that have to be defined:
- *    - roboy:     following state if the question was answered or the joke/fact were told
- *    - abilities: following state if the question was answered or the joke/fact were told
- *    - newPerson: following state if the question was answered or the joke/fact were told
+ * 2) Outgoing transitions that have to be defined,
+ *    following state if the question was answered or the joke/fact were told:
+ *    - roboy,
+ *    - abilities,
+ *    - newPerson.
  * 3) No parameters are used.
  */
-public class DemonstrateSkillsState extends State {
+public class DemonstrateSkillsState extends ExpoState {
     public final static String INTENTS_HISTORY_ID = "RSS";
 
-    private final String SELECTED_ABILITIES = "abilities";
-    private final String SELECTED_ROBOY_QA = "roboy";
-    private final String LEARN_ABOUT_PERSON = "newPerson";
+    private final String[] TRANSITION_NAMES = { "abilities", "roboy", "newPerson" };
+    private final String[] INTENT_NAMES = TRANSITION_NAMES;
 
     private final Logger LOGGER = LogManager.getLogger();
 
@@ -170,7 +164,7 @@ public class DemonstrateSkillsState extends State {
 
     @Override
     public Output act() {
-        IntentValue intentValue = Context.getInstance().DIALOG_INTENTS.getLastValue();
+        IntentValue intentValue = getContext().DIALOG_INTENTS.getLastValue();
         if (intentValue.getNeo4jPropertyValue() == Neo4jProperty.skills) {
             LOGGER.info("Extracted intent value: [" +
                     intentValue.getId() + " / " +
@@ -194,12 +188,12 @@ public class DemonstrateSkillsState extends State {
 
     @Override
     public Output react(Interpretation input) {
-        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
 
         Linguistics.UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
         LOGGER.info("The detected sentiment is " + inputSentiment);
 
-        nextState = getRandomTransition();
+        nextState = getTransitionRandomly(TRANSITION_NAMES, INTENT_NAMES, INTENTS_HISTORY_ID);
         String output = skillIntent.getResponsePhrase(input, inputSentiment, person.getName(), getRosMainNode());
         return output != null && !output.equals("") ? Output.say(output) : Output.useFallback();
     }
@@ -218,74 +212,8 @@ public class DemonstrateSkillsState extends State {
         return null;
     }
 
-    private State getRandomTransition() {
-        LOGGER.info("Try to choose a random transition");
-        int dice = (int) (3 * Math.random() + 1);
-        switch (dice) {
-            case 1:
-                String skill = chooseIntentAttribute(skills);
-                if (!skill.equals("")) {
-                    Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, skills, skill));
-                    LOGGER.info("Stay in the current state");
-                    return this;
-                } else {
-                    LOGGER.info("LEARN_ABOUT_PERSON transition");
-                    return getTransition(LEARN_ABOUT_PERSON);
-                }
-            case 2:
-                String ability = chooseIntentAttribute(abilities);
-                if (!ability.equals("")) {
-                    Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, abilities, ability));
-                    LOGGER.info("SELECTED_ABILITIES transition");
-                    return getTransition(SELECTED_ABILITIES);
-                } else {
-                    LOGGER.info("LEARN_ABOUT_PERSON transition");
-                    return getTransition(LEARN_ABOUT_PERSON);
-                }
-            case 3:
-                LOGGER.info("SELECTED_ROBOY_QA transition");
-                return getTransition(SELECTED_ROBOY_QA);
-            default:
-                LOGGER.info("LEARN_ABOUT_PERSON transition");
-                return getTransition(LEARN_ABOUT_PERSON);
-        }
-    }
-
-    private String chooseIntentAttribute(Neo4jProperty predicate) {
-        LOGGER.info("Trying to choose the intent attribute");
-        Roboy roboy = new Roboy(getMemory());
-        String attribute = "";
-        HashMap<String, Object> properties = roboy.getProperties();
-        if (roboy.getProperties() != null && !roboy.getProperties().isEmpty()) {
-            if (properties.containsKey(predicate.type)) {
-                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(predicate.type).toString().split(",")));
-                int count = 0;
-                do {
-                    attribute = retrievedResult.getRandomElement();
-                    count++;
-                } while (lastNIntentsContainAttribute(attribute, 2) && count < retrievedResult.size());
-            }
-        }
-        LOGGER.info("The chosen attribute: " + attribute);
-        return attribute;
-    }
-
-    private boolean lastNIntentsContainAttribute(String attribute, int n) {
-        Map<Integer, IntentValue> lastIntentValues = Context.getInstance().DIALOG_INTENTS.getLastNValues(n);
-
-        for (IntentValue value : lastIntentValues.values()) {
-            if (value.getAttribute() != null) {
-                if (value.getAttribute().equals(attribute)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-
     @Override
     protected Set<String> getRequiredTransitionNames() {
-        return newSet(SELECTED_ROBOY_QA, SELECTED_ABILITIES, LEARN_ABOUT_PERSON);
+        return newSet(TRANSITION_NAMES);
     }
 }

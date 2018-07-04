@@ -19,7 +19,6 @@ public class AnswerAnalyzerTest {
 		assertEquals("bill gates", analyze("I am Bill Gates"));
 		assertEquals("jack", analyze("My friends call me Jack"));
 		assertEquals("bill", analyze("You can call me Bill"));
-		assertEquals("bob", analyze("call me Bob"));
 //		assertEquals("bob", analyze("Call me Bob")); // Doesn't work due to POS tagger error
 	}
 	

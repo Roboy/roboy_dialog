@@ -17,6 +17,7 @@ import roboy.util.RandomList;
 import java.util.Set;
 
 import static roboy.memory.Neo4jRelationship.*;
+import static roboy.memory.Neo4jProperty.*;
 
 /**
  * Personal Information Update State
@@ -60,13 +61,13 @@ public class PersonalInformationFollowUpState extends State {
 
     @Override
     public Output act() {
-        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         LOGGER.info("-> Retrieved Interlocutor: " + person.getName());
 
         for (Neo4jRelationship predicate : predicates) {
             if (person.hasRelationship(predicate) &&
-                    !Context.getInstance().DIALOG_INTENTS.contains(new IntentValue(INTENTS_HISTORY_ID, predicate)) &&
-                    !Context.getInstance().DIALOG_INTENTS.contains(new IntentValue(PersonalInformationAskingState.INTENTS_HISTORY_ID, predicate))) {
+                    !getContext().DIALOG_INTENTS.contains(new IntentValue(INTENTS_HISTORY_ID, predicate)) &&
+                    !getContext().DIALOG_INTENTS.contains(new IntentValue(PersonalInformationAskingState.INTENTS_HISTORY_ID, predicate))) {
                 selectedPredicate = predicate;
                 LOGGER.info(" -> Selected predicate: " + selectedPredicate.type);
                 break;
@@ -79,7 +80,7 @@ public class PersonalInformationFollowUpState extends State {
             String retrievedResult = "";
             RandomList<MemoryNodeModel> nodes = getMemNodesByIds(person.getRelationships(selectedPredicate));
             if (!nodes.isEmpty()) {
-                retrievedResult = nodes.getRandomElement().getProperties().get("name").toString();
+                retrievedResult = nodes.getRandomElement().getProperties().get(name).toString();
                 LOGGER.info(" -> Retrieved memory node name: " + retrievedResult);
             } else {
                 LOGGER.error("Could not retrieve memory data");
@@ -93,7 +94,7 @@ public class PersonalInformationFollowUpState extends State {
                     LOGGER.error(" -> The list of " + selectedPredicate.type + " questions is empty or null");
                 }
                 try {
-                    Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, selectedPredicate));
+                    getContext().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, selectedPredicate));
                     LOGGER.info(" -> Dialog IntentsHistory updated");
                 } catch (Exception e) {
                     LOGGER.error(" -> Error on updating the IntentHistory: " + e.getMessage());
@@ -110,7 +111,7 @@ public class PersonalInformationFollowUpState extends State {
 
     @Override
     public Output react(Interpretation input) {
-        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         LOGGER.info("-> Retrieved Interlocutor: " + person.getName());
         RandomList<String> answers;
         String answer = "I have no words";
@@ -120,8 +121,8 @@ public class PersonalInformationFollowUpState extends State {
             if (result != null && !result.equals("")) {
                 LOGGER.info(" -> Inference was successful");
                 answers = qaValues.getFollowUpAnswers(selectedPredicate);
-                person.addInformation(selectedPredicate.type, result);
-                Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+                person.addInformation(selectedPredicate, result);
+                getContext().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
                 LOGGER.info(" -> Updated Interlocutor: " + person.getName());
             } else {
                 LOGGER.warn(" -> Inference failed");
@@ -131,7 +132,7 @@ public class PersonalInformationFollowUpState extends State {
             if (answers != null && !answers.isEmpty()) {
                 answer = String.format(answers.getRandomElement(), "");
             } else {
-                LOGGER.error(" -> The list of " + selectedPredicate.type + " answers is empty or null");
+                LOGGER.error(" -> The list of " + selectedPredicate + " answers is empty or null");
             }
         } else {
             LOGGER.error(" -> Selected predicate is null");

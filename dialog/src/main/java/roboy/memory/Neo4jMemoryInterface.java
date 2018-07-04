@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Implements the high-level-querying tasks to the Memory services using RosMainNode.
+ * Implements the high-level-querying tasks to the Memory services.
  */
 public interface Neo4jMemoryInterface extends Memory<MemoryNodeModel>
 {

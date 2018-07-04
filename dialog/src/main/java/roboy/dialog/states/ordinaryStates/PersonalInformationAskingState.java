@@ -62,7 +62,7 @@ public class PersonalInformationAskingState extends State {
 
     @Override
     public Output act() {
-        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         LOGGER.info(" -> Retrieved Interlocutor: " + person.getName());
 
         for (Neo4jRelationship predicate : predicates) {
@@ -81,7 +81,7 @@ public class PersonalInformationAskingState extends State {
             LOGGER.error(" -> The list of " + selectedPredicate.type + " questions is empty or null");
         }
         try {
-            Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, selectedPredicate));
+            getContext().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, selectedPredicate));
             LOGGER.info(" -> Dialog IntentsHistory updated");
         } catch (Exception e) {
             LOGGER.error(" -> Error on updating the IntentHistory: " + e.getMessage());
@@ -91,7 +91,7 @@ public class PersonalInformationAskingState extends State {
 
     @Override
     public Output react(Interpretation input) {
-        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         LOGGER.info("-> Retrieved Interlocutor: " + person.getName());
         RandomList<String> answers;
         String answer = "I have no words";
@@ -100,8 +100,8 @@ public class PersonalInformationAskingState extends State {
         if (result != null && !result.equals("")) {
             LOGGER.info(" -> Inference was successful");
             answers = qaValues.getSuccessAnswers(selectedPredicate);
-            person.addInformation(selectedPredicate.type, result);
-            Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+            person.addInformation(selectedPredicate, result);
+            getContext().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
             LOGGER.info(" -> Updated Interlocutor: " + person.getName());
         } else {
             LOGGER.warn(" -> Inference failed");
@@ -112,7 +112,7 @@ public class PersonalInformationAskingState extends State {
         if (answers != null && !answers.isEmpty()) {
             answer = String.format(answers.getRandomElement(), result);
         } else {
-            LOGGER.error(" -> The list of " + selectedPredicate.type + " answers is empty or null");
+            LOGGER.error(" -> The list of " + selectedPredicate + " answers is empty or null");
         }
         LOGGER.info(" -> Produced answer: " + answer);
         nextState = getTransition(TRANSITION_INFO_OBTAINED);
@@ -137,43 +137,6 @@ public class PersonalInformationAskingState extends State {
     }
 
     private String InferResult(Interpretation input) {
-        String result = null;
-        // TODO: What is the condition?
-        if (input.getSentenceType().compareTo(Linguistics.SentenceType.STATEMENT) == 0) {
-            List<String> tokens = input.getTokens();
-            if (tokens.size() == 1) {
-                result = tokens.get(0).toLowerCase();
-                LOGGER.info("Retrieved only one token: " + result);
-            } else {
-                if (input.getParsingOutcome() == Linguistics.ParsingOutcome.SUCCESS &&
-                        input.getSemTriples().size() > 0) {
-                    List<Triple> sem_triple = input.getSemTriples();
-                    LOGGER.info("Semantic parsing is successful and semantic triple exists");
-                    if (sem_triple.get(0).predicate.contains(selectedPredicate.type)) {
-                        LOGGER.info(" -> Semantic predicate " + selectedPredicate.type + " exits");
-                        result = sem_triple.get(0).object.toLowerCase();
-                        LOGGER.info("Retrieved object " + result);
-                    } else {
-                        LOGGER.warn("Semantic predicate " + selectedPredicate.type + " does not exit");
-                    }
-                } else {
-                    LOGGER.warn("Semantic parsing failed or semantic triple does not exist");
-                    if (input.getObjAnswer() != null) {
-                        LOGGER.info("OBJ_ANSWER exits");
-                        result = input.getObjAnswer().toLowerCase();
-                        if (!result.equals("")) {
-                            LOGGER.info("Retrieved OBJ_ANSWER result " + result);
-                        } else {
-                            LOGGER.warn("OBJ_ANSWER result is empty");
-                        }
-                    } else {
-                        LOGGER.warn("OBJ_ANSWER does not exit");
-                    }
-                }
-            }
-        } else {
-            LOGGER.warn(" -> The sentence type is NOT a STATEMENT");
-        }
-        return result;
+        return getInference().inferRelationship(selectedPredicate, input);
     }
 }

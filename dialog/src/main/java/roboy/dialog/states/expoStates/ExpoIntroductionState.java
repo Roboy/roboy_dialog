@@ -4,9 +4,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
 import roboy.context.contextObjects.IntentValue;
+import roboy.dialog.states.definitions.ExpoState;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.memory.Neo4jProperty;
 import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.Roboy;
 import roboy.util.Agedater;
@@ -28,15 +30,16 @@ import static roboy.memory.Neo4jProperty.*;
  *
  * ExpoIntroductionState interface:
  * 1) Fallback is not required.
- * 2) Outgoing transitions that have to be defined:
- *    - skills:    following state if Roboy introduced himself
- *    - roboy:     following state if Roboy introduced himself
- *    - abilities: following state if Roboy introduced himself
- *    - newPerson: following state if Roboy introduced himself
+ * 2) Outgoing transitions that have to be defined,
+ *    following state if Roboy introduced himself:
+ *    - skills,
+ *    - roboy,
+ *    - abilities,
+ *    - newPerson.
  * 3) Used 'infoFile' parameter containing Roboy answer phrases.
  *    Requires a path to RoboyInfoList.json
  */
-public class ExpoIntroductionState extends State {
+public class ExpoIntroductionState extends ExpoState {
     public final static String INTENTS_HISTORY_ID = "RIS";
 
     private final String SELECTED_SKILLS = "skills";
@@ -82,7 +85,7 @@ public class ExpoIntroductionState extends State {
 
         // 2. get interlocutor object from context
         // this also should query memory and do other magic
-        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         person.addName(name);
 
         // 3. update interlocutor in context
@@ -109,36 +112,36 @@ public class ExpoIntroductionState extends State {
 
         // Get some random properties facts
         if (roboy.getProperties() != null && !roboy.getProperties().isEmpty()) {
-            HashMap<String, Object> properties = roboy.getProperties();
-            if (properties.containsKey(full_name.type)) {
-                result += " " + String.format(infoValues.getSuccessAnswers(full_name).getRandomElement(), properties.get(full_name.type));
+            HashMap<Neo4jProperty, Object> properties = roboy.getProperties();
+            if (properties.containsKey(full_name)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(full_name).getRandomElement(), properties.get(full_name));
             }
-            if (properties.containsKey(birthdate.type)) {
-                HashMap<String, Integer> ages = new Agedater().determineAge(properties.get(birthdate.type).toString());
+            if (properties.containsKey(birthdate)) {
+                HashMap<String, Integer> ages = new Agedater().determineAge(properties.get(birthdate).toString());
                 String retrievedAge = "0 days";
                 if (ages.get("years") > 0) {
                     retrievedAge = ages.get("years") + " years";
                 } else if (ages.get("months") > 0) {
-                    retrievedAge = ages.get("months") + " years";
+                    retrievedAge = ages.get("months") + " months";
                 } else {
                     retrievedAge = ages.get("days") + " days";
                 }
                 result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), retrievedAge);
-            } else if (properties.containsKey(age.type)) {
-                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), properties.get(age.type) + " years!");
+            } else if (properties.containsKey(age)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), properties.get(age) + " years!");
             }
-            if (properties.containsKey(skills.type)) {
-                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("skills").toString().split(",")));
+            if (properties.containsKey(skills)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(skills).toString().split(",")));
                 retrievedRandomSkill = retrievedResult.getRandomElement();
                 result += " " + String.format(infoValues.getSuccessAnswers(skills).getRandomElement(), retrievedRandomSkill);
             }
-            if (properties.containsKey(abilities.type)) {
-                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("abilities").toString().split(",")));
+            if (properties.containsKey(abilities)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(abilities).toString().split(",")));
                 retrievedRandomAbility = retrievedResult.getRandomElement();
                 result += " " + String.format(infoValues.getSuccessAnswers(abilities).getRandomElement(), retrievedRandomAbility);
             }
-            if (properties.containsKey(future.type)) {
-                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get("future").toString().split(",")));
+            if (properties.containsKey(future)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(future).toString().split(",")));
                 result += " " + String.format(infoValues.getSuccessAnswers(future).getRandomElement(), retrievedResult.getRandomElement()) + " ";
             }
         }
@@ -147,7 +150,7 @@ public class ExpoIntroductionState extends State {
             result = " I am Roboy 2.0! ";
         }
 
-        nextState = getRandomTransition(retrievedRandomSkill, retrievedRandomAbility);
+        nextState = getTransitionRandomly(retrievedRandomSkill, retrievedRandomAbility);
 
         return result;
     }
@@ -160,14 +163,14 @@ public class ExpoIntroductionState extends State {
         return String.format(responsePhrases.getRandomElement(), name);
     }
 
-    private State getRandomTransition(String skill, String ability) {
+    private State getTransitionRandomly(String skill, String ability) {
         int dice = (int) (3 * Math.random() + 1);
         switch (dice) {
             case 1:
-                Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, skills, skill));
+                getContext().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, skills, skill));
                 return getTransition(SELECTED_SKILLS);
             case 2:
-                Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, abilities, ability));
+                getContext().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, abilities, ability));
                 return getTransition(SELECTED_ABILITIES);
             case 3:
                 return getTransition(SELECTED_ROBOY_QA);
@@ -177,6 +180,6 @@ public class ExpoIntroductionState extends State {
     }
 
     private void updateInterlocutorInContext(Interlocutor interlocutor) {
-        Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(interlocutor);
+        getContext().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(interlocutor);
     }
 }

@@ -3,6 +3,8 @@ package roboy.context.contextObjects;
 import roboy.memory.Neo4jProperty;
 import roboy.memory.Neo4jRelationship;
 
+import java.util.Objects;
+
 /**
  * The value of the question intent based on Neo4j Relationship or a string.
  * Referenced by the intents history id to distinguish between the States
@@ -101,5 +103,21 @@ public class IntentValue {
         }
 
         return equality;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getNeo4jRelationshipValue(), getNeo4jPropertyValue(), getStringValue(), getAttribute());
+    }
+
+    @Override
+    public String toString() {
+        return "IntentValue{" +
+                "id='" + id + '\'' +
+                ", neo4jRelationshipValue=" + neo4jRelationshipValue +
+                ", neo4jPropertyValue=" + neo4jPropertyValue +
+                ", stringValue='" + stringValue + '\'' +
+                ", attribute='" + attribute + '\'' +
+                '}';
     }
 }

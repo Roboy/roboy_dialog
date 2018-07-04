@@ -3,6 +3,7 @@ package roboy.io;
 import java.io.IOException;
 
 import roboy.linguistics.Linguistics;
+import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.util.Maps;
 /* 
  edu.cmu.sphinx - responsible for 
@@ -84,9 +85,10 @@ public class RoboyNameDetectionInput implements InputDevice{
 		//get a string that was recognized
 		String utterance = recog_copy.getResult().getHypothesis();
 		if ( utterance.contains("ROBOY") ){
-			return new Input(null, Maps.stringObjectMap("isRoboy",true));
-		}
-		else {
+			Interpretation interpretation = new Interpretation();
+			interpretation.setRoboy(true);
+			return new Input(null, interpretation);
+		} else {
 			return new Input(null);
 		}
 	}

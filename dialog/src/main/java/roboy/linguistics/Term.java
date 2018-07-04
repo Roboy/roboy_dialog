@@ -1,6 +1,8 @@
 package roboy.linguistics;
 
 import java.util.List;
+import java.util.Objects;
+
 
 public class Term {
     private List<String> pos = null;
@@ -38,5 +40,25 @@ public class Term {
                 ", prob=" + probability +
                 ", concept='" + concept + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        Term comparableObject = (Term) obj;
+        return Float.compare(comparableObject.getProbability(), getProbability()) == 0 &&
+                Objects.equals(getPos(), comparableObject.getPos()) &&
+                Objects.equals(getConcept(), comparableObject.getConcept());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getPos(), getProbability(), getConcept());
     }
 }

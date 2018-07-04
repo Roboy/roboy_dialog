@@ -1,6 +1,8 @@
 /bin/
 /target/
-/roboy_parser/target
+/dialog/target
+/nlu/target
+/memory/target
 .metadata
 tmp/
 *.tmp
@@ -18,5 +20,6 @@ local.properties
 .target
 
 resources/word2vec_toy_data_and_model
+resources_nlu/word2vec/roboy_enwik8.txt
 
 docs/doxyxml

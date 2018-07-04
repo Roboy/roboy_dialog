@@ -1,7 +1,6 @@
 package roboy.io;
 
-import java.util.HashMap;
-import java.util.Map;
+import roboy.linguistics.sentenceanalysis.Interpretation;
 
 /**
  * The result of an input device consists of a sentence, if it is an audio device, and
@@ -9,17 +8,28 @@ import java.util.Map;
  */
 public class Input {
 	
-	public String sentence;
-	public Map<String,Object> attributes;
+	private String sentence;
+	private Interpretation attributes;
 	
 	public Input(String sentence){
 		this.sentence = sentence;
-		attributes = new HashMap<>();
+		attributes = null;
 	}
 	
-	public Input(String sentence, Map<String,Object> attributes){
+	public Input(String sentence, Interpretation attributes){
 		this.sentence = sentence;
 		this.attributes = attributes;
 	}
 
+	public String getSentence() {
+	    return sentence;
+    }
+
+    public Interpretation getAttributes(){
+	    return attributes;
+    }
+
+    public void setAttributes(Interpretation interpretation) {
+	    attributes = interpretation;
+    }
 }

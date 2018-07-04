@@ -176,7 +176,7 @@ public class QuestionAnsweringState extends State {
 
         } else if (Math.random() < 0.5) { // loop back to previous states with probability 0.5
 
-            Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+            Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
             Neo4jRelationship[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
             RelationshipAvailability availability = person.checkRelationshipAvailability(predicates);
 
@@ -200,8 +200,8 @@ public class QuestionAnsweringState extends State {
 
     private Output useMemoryOrFallback(Interpretation input) {
         try {
-            if (input.semParserTriples != null) {
-                Output memoryAnswer = answerFromMemory(input.semParserTriples);
+            if (input.getSemTriples() != null) {
+                Output memoryAnswer = answerFromMemory(input.getSemTriples());
                 if (memoryAnswer != null) return memoryAnswer;
             }
         } catch (Exception e) {
@@ -269,7 +269,7 @@ public class QuestionAnsweringState extends State {
     private boolean isIntentsHistoryComplete(Neo4jRelationship[] predicates) {
         boolean isComplete = true;
         for (Neo4jRelationship predicate : predicates) {
-            if (!Context.getInstance().DIALOG_INTENTS.contains(new IntentValue(PersonalInformationFollowUpState.INTENTS_HISTORY_ID, predicate))) {
+            if (!getContext().DIALOG_INTENTS.contains(new IntentValue(PersonalInformationFollowUpState.INTENTS_HISTORY_ID, predicate))) {
                 isComplete = false;
             }
         }

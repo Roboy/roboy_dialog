@@ -23,7 +23,7 @@ import roboy.util.Maps;
  */
 public class SentenceAnalyzer implements Analyzer{
 	
-	private Map<String,String> meanings;
+	private Map<String, String> meanings;
 	
 	public SentenceAnalyzer () throws IOException, JsonSyntaxException, JsonIOException {
 		// find meaning

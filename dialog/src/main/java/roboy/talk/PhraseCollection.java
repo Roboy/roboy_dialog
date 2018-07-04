@@ -28,6 +28,8 @@ public class PhraseCollection {
             = FileLineReader.readFile("resources/phraseLists/segue-jobs.txt");
     public static RandomList<String> SEGUE_PICKUP
             = FileLineReader.readFile("resources/phraseLists/segue-pickup.txt");
+    public static RandomList<String> PROFANITY_CHECK_WORDS
+            = FileLineReader.readFile("resources/phraseLists/profanity-check-list.txt");
 
     // Added for the ExpoPersonality
     public static RandomList<String> FACTS

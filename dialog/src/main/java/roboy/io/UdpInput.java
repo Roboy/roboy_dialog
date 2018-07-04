@@ -23,8 +23,7 @@ public class UdpInput implements InputDevice {
         DatagramPacket receivedPacket = new DatagramPacket(in, in.length);
         try {
             serverSocket.receive(receivedPacket);
-        }
-        catch (Exception e)
+        }catch (Exception e)
         {
             e.printStackTrace();
         }
