@@ -18,5 +18,5 @@ Technical Constraints
 
   "IntelliJ IDEA", "Difficulties with importing the project to NetBeans and Eclipse"
   "rosjava", "Due to using both Java and ros"
-  "Java => 1.8.0", "Reasonably recent and stable Java release"
+  "Java 1.8.0", "Reasonably recent and stable Java release"
 
