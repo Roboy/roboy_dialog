@@ -9,8 +9,10 @@ To remember information about itself and its conversation partners, their hobbie
 Implementation
 --------------
 
-Roboy's Dialog System interactions with the Memory module (`learn more <http://roboy-memory.readthedocs.io/>`_) are based on ROS messages.
-The messages are sent using the methods in ``roboy.memory.Neo4jMemoryOperations``, which implements the four query types based on the specified Memory services. Alternatively, one can use methods within ``roboy.ros.RosMainNode`` to send queries via ROS, however this is now deprecated. 
+Roboy's Dialog System interactions with the Memory module (`learn more <http://roboy-memory.readthedocs.io/>`_) is done via direct function calls.
+The messages are sent using the methods in ``roboy.memory.Neo4jMemoryOperations``, which implements the four query types based on the specified Memory services. 
+
+.. note:: Alternatively, one can use methods within ``roboy.ros.RosMainNode`` to send queries via ROS, however this is now deprecated and will require some tinkering around with code to get working. Save yourself the headache, don't go back to this form of communication unless absolutely neccessary.
 
 +--------------------+--------------------------------------------------+
 | Method name        | Description                                      |
