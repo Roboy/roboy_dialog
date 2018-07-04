@@ -26,4 +26,4 @@ ContextIntegrationTest should have been deprecated and ignored during the testin
 Memory Specific Exceptions
 --------------------------------------
 
-Memory has it's own `page`<http://roboy-memory.readthedocs.io/en/latest/Usage/3_troubleshooting.html#possible-common-exceptions> regarding exceptions. 
+Memory has it's own `page <http://roboy-memory.readthedocs.io/en/latest/Usage/3_troubleshooting.html#possible-common-exceptions>` regarding exceptions. 
