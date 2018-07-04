@@ -9,28 +9,7 @@ roboy_parser is based on `SEMPRE <http://nlp.stanford.edu/software/sempre/>`. It
 Installation
 ------------
 
-In order to use semantic parser, you need to:
-
-- clone ``roboy_parser`` repository::
-
-	git clone http://github.com/Roboy/roboy_parser
-
-- navigate to created repository::
-
-	cd roboy_parser
-
-- download dependencies::
-
-    ./pull-dependencies roboy
-
-- build it::
-
-	mvn clean
-	mvn install
-
-- run it::
-
-	mvn exec:java -Dexec.mainClass=edu.stanford.nlp.sempre.Main
+By installing dialog via the main POM file, it will automatically install the parser complete, with all dependencies. TODO: Add link
 
 Architecture
 ------------
@@ -75,7 +54,9 @@ Roboy parser currently has currently following functionalities:
 Usage
 -----
 
-In order to run the parser, you need to run **roboy_parser** first - see instructions on `project Github <http://github.com/Roboy/roboy_parser>` and then run Dialog System.
+The parser has been configured, so that it is automatically started when dialog is started. Dependencies and resources shall be automatically downloaded for you.
+
+If you wish to start parser individually, there are basic instructions on that in the README.md file of Dialog or more advanced to be found in the parser documentation.
 
 Configurations
 """"""""""""""

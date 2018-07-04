@@ -22,3 +22,8 @@ ContextIntegrationTest Fails
 -------------------------------------------------------------------------------------------------------------
 
 ContextIntegrationTest should have been deprecated and ignored during the testing phase in Maven. If for some reason you have this error, make sure that you are on the latest version of your branch. 
+
+Memory Specific Exceptions
+--------------------------------------
+
+Memory has it's own `page`<http://roboy-memory.readthedocs.io/en/latest/Usage/3_troubleshooting.html#possible-common-exceptions> regarding exceptions. 

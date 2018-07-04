@@ -11,6 +11,7 @@ Technical Constraints
   :widths: 20, 40
 
   "Ubuntu => 16.04", "Default Roboy OS"
+  "Java => 1.8.0", "Reasonably recent and stable Java release. Sun.audio was removed with JDK9, thus it will not compile for any newer Java versions."
 
 .. csv-table:: Programming Constraints
   :header: "Constraint Name", "Description"
@@ -18,5 +19,3 @@ Technical Constraints
 
   "IntelliJ IDEA", "Difficulties with importing the project to NetBeans and Eclipse"
   "rosjava", "Due to using both Java and ros"
-  "Java => 1.8.0", "Reasonably recent and stable Java release"
-

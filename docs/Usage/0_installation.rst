@@ -26,11 +26,11 @@ Using command line
 ------------------
 
 Clone the Dialog Manager repository.
-``git clone https://github.com/Roboy/roboy_dialog -b devel --recursive``
->Note: Replace devel with the branch you desire. 
+``git clone https://github.com/Roboy/roboy_dialog -b master --recursive``
 
-Set Environmental Variables (if not done so already)
-See Memory Documentation for more Information
+.. tip:: If you wish to clone another branch, e.g. devel, just simply replace ``master`` with the branch's name.
+
+Set `Environmental Variables`<http://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html> (if not done so already)
 
 Navigate to the root module.
 ``cd roboy_dialog``
@@ -44,14 +44,14 @@ Execute the project.
 Using IDE (Eclipse, Intellij IDEA)
 ----------------------------------
 
-Clone the Dialog Manager repository.
+Clone the Dialog Manager repository either using your IDE's VCS Tools or using the command line.
 ``git clone https://github.com/Roboy/roboy_dialog``
 
-Important: Make sure the submodules are initialized. 
+.. attention:: Make sure the submodules are initialized. 
 
 Now, import Dialog System as a Maven project into the IDE of your choice. Build and execute using ``roboy.dialog.DialogSystem`` as the main class.
 
 Troubleshooting
 ------------------------------
 
-See the Troubleshooting Page
+See the `Troubleshooting Page`<http://roboy-dialog.readthedocs.io/en/latest/Usage/9_troubleshooting.htmll>

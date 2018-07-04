@@ -3,8 +3,7 @@
 Public Interfaces
 ==================
 
-Interfaces to other (sub)modules are realized through ROS (rosjava) and websockets.
-Currently X interfaces  have been designed for communication.
+Interfaces to other (sub)modules are realized through direct function calls. The original, now deprecated, ROS interfaces are still present and may be used, if required.
 
 ROS
 -------------
