@@ -55,14 +55,13 @@ memory module.
 
 Once the ROS and Neo4j dependencies are satisfied, run the dialog system via
 ```bash
-java -Xmx6g -d64 -cp dialog/target/roboy-dialog-system-2.1.9-jar-with-dependencies.jar \
-    roboy.dialog.DialogSystem
+> ./start.sh
 ```
 
 #### Running NLU only
 
 ```bash
-java -Xmx6g -d64 -cp \
+> java -Xmx6g -d64 -cp \
     nlu/parser/target/roboy-parser-2.0.0-jar-with-dependencies.jar \
     edu.stanford.nlp.sempre.roboy.SemanticAnalyzerInterface.java
 ```
