@@ -4,7 +4,7 @@ Dialog System Scope
 ===================
 
 The Roboy Dialog System talks to and logically embeds the Roboy Semantic Parser and the Roboy Memory Module.
-The Memory Module is called by Roboy Dialog to and takes the a JSON query as a its parameter.
+The Memory Module is called by Roboy Dialog to and takes the a `JSON String <http://roboy-memory.readthedocs.io/en/latest/ScopeContext/3_public_interfaces.html>` as a its parameter.
 
 The Semantic Parser receives input in form of an Interpretation via a websocket.
 
