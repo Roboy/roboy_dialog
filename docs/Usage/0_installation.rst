@@ -1,10 +1,11 @@
+************
 Installation
-=============
+************
 
 We use Apache Maven build automation tool.
 
 Using command line
-------------------
+==================
 
 Install Maven on the computer.
 ``sudo apt install maven``
@@ -28,7 +29,7 @@ Execute the project.
 
 
 Using IDE (Eclipse, Intellij IDEA)
-----------------------------------
+==================================
 
 Clone the Dialog Manager repository.
 ``git clone https://github.com/Roboy/roboy_dialog``
@@ -36,7 +37,7 @@ Clone the Dialog Manager repository.
 Now, import Dialog System as a Maven project into the IDE of your choice. Build and execute using ``roboy.dialog.ConversationManager`` as the main class.
 
 Using a telegram bot for I/O
-----------------------------
+============================
 
 Register a bot as described on the `telegram website`_.
 .._telegram website: https://core.telegram.org/bots#3-how-do-i-create-a-bot

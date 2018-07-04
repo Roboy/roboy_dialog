@@ -4,7 +4,6 @@ Development tutorials
 
 This page is a collection of useful tutorials if you want to develop or enhance parts of the Dialog System.
 
-=================================
 Adding and Input- or OutputDevice
 =================================
 In order to add new ``roboy.io.InputDevice`` and ``roboy.io.OutputDevice`` classes, changes in multiple locations are necessary.

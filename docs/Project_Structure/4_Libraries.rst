@@ -1,7 +1,6 @@
-.. _Libraries:
-
+*******************************
 Libraries and External Software
-===============================
+*******************************
 
 Contains a list of the libraries and external software used by this system.
 

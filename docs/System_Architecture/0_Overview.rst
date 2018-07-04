@@ -12,7 +12,7 @@ Below, the general functionality of the system is explained. For details see the
 Conversation flow
 =================
 
-In order to understand we will..
+In order to understand how the Dialog System works, a basic lifecycle of a *Conversation* is drawn here exemplary:
 
 **When the DialogSystem is started**, the *ConversationManager* initializes the Dialog Systems *Memory*, the *NLU* and the configured *InputDevice*. The *InputDevice* then starts listening to it's service.
 
