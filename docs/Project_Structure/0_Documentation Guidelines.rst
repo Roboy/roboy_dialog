@@ -27,4 +27,4 @@ Developer manual
 	The developer manual section is where developers go in order to learn about or look up specific 	implementation details while developing.
 
 This section contains implementation specific details that need additional explanation and general information about the project structure (where to find what, etc.). 
-If extending the dialog system in a specific place requires multiple steps all over the dialog system, please add a tutorial for this. (For example ``InputDevice`` and ``OutputDevice``)
+If extending the dialog system in a specific place requires multiple steps all over the dialog system, please add a tutorial for this. (For example ``roboy.io.InputDevice`` and ``roboy.io.OutputDevice``)
