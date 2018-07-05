@@ -9,8 +9,8 @@ import roboy.ros.RosMainNode;
 
 import static org.junit.Assert.assertNotEquals;
 
-
 @Deprecated
+@Ignore
 public class ContextIntegrationTest {
     private RosMainNode ros;
     private Context context;
