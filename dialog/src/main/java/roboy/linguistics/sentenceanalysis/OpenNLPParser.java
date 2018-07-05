@@ -30,16 +30,14 @@ public class OpenNLPParser implements Analyzer{
 			modelIn = new FileInputStream("resources/en-parser-chunking.bin");
 			ParserModel model = new ParserModel(modelIn);
 			parser = ParserFactory.create(model);
-		}
-		catch (IOException e) {
+		}catch (IOException e) {
 		  e.printStackTrace();
 		}
 		finally {
 		  if (modelIn != null) {
 		    try {
 		      modelIn.close();
-		    }
-		    catch (IOException e) {
+		    }catch (IOException e) {
 		    }
 		  }
 		}

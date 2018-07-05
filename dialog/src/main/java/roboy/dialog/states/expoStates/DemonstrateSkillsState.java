@@ -164,7 +164,7 @@ public class DemonstrateSkillsState extends ExpoState {
 
     @Override
     public Output act() {
-        IntentValue intentValue = Context.getInstance().DIALOG_INTENTS.getLastValue();
+        IntentValue intentValue = getContext().DIALOG_INTENTS.getLastValue();
         if (intentValue.getNeo4jPropertyValue() == Neo4jProperty.skills) {
             LOGGER.info("Extracted intent value: [" +
                     intentValue.getId() + " / " +
@@ -188,7 +188,7 @@ public class DemonstrateSkillsState extends ExpoState {
 
     @Override
     public Output react(Interpretation input) {
-        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
 
         Linguistics.UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
         LOGGER.info("The detected sentiment is " + inputSentiment);

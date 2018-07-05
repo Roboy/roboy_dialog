@@ -45,11 +45,16 @@ Set `Environmental Variables <http://roboy-memory.readthedocs.io/en/latest/Usage
 Navigate to the root module.
 ``cd roboy_dialog``
 
-Clean and then Install the project using Maven
-``mvn clean install``
+Download roboy parser.
+``git submodule update --init ./roboy_parser``
+
+Install roboy parser as described in the roboy_parser docs or the 'semantic parser' page in 'INTERFACES AND SCOPE'.
+
+Compile the project - Maven will take care of the rest.
+``mvn compile``
 
 Execute the project.
-``java -Xmx6g -d64 -cp dialog/target/ roboy-dialog-system-2.1.9-jar-with-dependencies.jar roboy.dialog.DialogSystem``
+``mvn exec:java -Dexec.mainClass="roboy.dialog.ConversationManager"``
 
 Using IDE (Eclipse, Intellij IDEA)
 ----------------------------------
@@ -59,7 +64,7 @@ Clone the Dialog Manager repository either using your IDE's VCS Tools or using t
 
 .. attention:: Make sure the submodules are initialized. 
 
-Now, import Dialog System as a Maven project into the IDE of your choice. Build and execute using ``roboy.dialog.DialogSystem`` as the main class.
+Now, import Dialog System as a Maven project into the IDE of your choice. Build and execute using ``roboy.dialog.ConversationManager`` as the main class.
 
 Troubleshooting
 ------------------------------

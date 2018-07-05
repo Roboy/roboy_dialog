@@ -1,5 +1,6 @@
 package roboy.dialog;
 
+import roboy.context.Context;
 import roboy.dialog.tutorials.tutorialStates.ToyFarewellState;
 import roboy.dialog.tutorials.tutorialStates.ToyGreetingsState;
 import roboy.dialog.states.definitions.StateParameters;
@@ -50,7 +51,8 @@ public class MiniTestStateMachineCreator {
     public static DialogStateMachine getMiniStateMachine() {
 
         InferenceEngine inference = new Inference();
-        DialogStateMachine machine = new DialogStateMachine(inference);
+        Context context = new Context();
+        DialogStateMachine machine = new DialogStateMachine(inference, context);
 
         StateParameters paramsGreetings = new StateParameters(machine);
         paramsGreetings.setParameter("PARAMETER_NAME", "PARAMETER_VALUE");

@@ -34,6 +34,10 @@ public class IO {
 	}
 
 	public static MultiInputDevice getInputs(RosMainNode rosMainNode) throws SocketException{
+		return getInputs(rosMainNode, null);
+	}
+
+	public static MultiInputDevice getInputs(RosMainNode rosMainNode, String uuid) throws SocketException{
 		MultiInputDevice multiIn;
 		switch (ConfigManager.INPUT) {
 			case "cmdline":
@@ -45,7 +49,9 @@ public class IO {
 			case "udp":
 				multiIn = new MultiInputDevice(new UdpInput(ConfigManager.DATAGRAM_SOCKET));
 				break;
-
+			case "telegram":
+				multiIn = new MultiInputDevice(new TelegramInput(uuid));
+				break;
 			default:
 				multiIn = new MultiInputDevice(new CommandLineInput());
 		}
@@ -53,6 +59,10 @@ public class IO {
 	}
 
 	public static MultiOutputDevice getOutputs(RosMainNode rosMainNode) throws SocketException, UnknownHostException{
+		return getOutputs(rosMainNode, null);
+	}
+
+	public static MultiOutputDevice getOutputs(RosMainNode rosMainNode, String uuid) throws SocketException, UnknownHostException{
 		MultiOutputDevice multiOut;
 		List<OutputDevice> outputs = new ArrayList<>();
 		for (String output: ConfigManager.OUTPUTS) {
@@ -76,6 +86,9 @@ public class IO {
 					outputs.add(new UdpOutput(ConfigManager.DATAGRAM_SOCKET,
 							ConfigManager.UDP_HOST_ADDRESS,
 							ConfigManager.UDP_OUT_SOCKET));
+					break;
+				case "telegram":
+					outputs.add(new TelegramOutput(uuid));
 					break;
 				default:
 					outputs.add(new CommandLineOutput());

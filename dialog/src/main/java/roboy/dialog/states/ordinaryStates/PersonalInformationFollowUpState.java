@@ -61,13 +61,13 @@ public class PersonalInformationFollowUpState extends State {
 
     @Override
     public Output act() {
-        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         LOGGER.info("-> Retrieved Interlocutor: " + person.getName());
 
         for (Neo4jRelationship predicate : predicates) {
             if (person.hasRelationship(predicate) &&
-                    !Context.getInstance().DIALOG_INTENTS.contains(new IntentValue(INTENTS_HISTORY_ID, predicate)) &&
-                    !Context.getInstance().DIALOG_INTENTS.contains(new IntentValue(PersonalInformationAskingState.INTENTS_HISTORY_ID, predicate))) {
+                    !getContext().DIALOG_INTENTS.contains(new IntentValue(INTENTS_HISTORY_ID, predicate)) &&
+                    !getContext().DIALOG_INTENTS.contains(new IntentValue(PersonalInformationAskingState.INTENTS_HISTORY_ID, predicate))) {
                 selectedPredicate = predicate;
                 LOGGER.info(" -> Selected predicate: " + selectedPredicate.type);
                 break;
@@ -94,7 +94,7 @@ public class PersonalInformationFollowUpState extends State {
                     LOGGER.error(" -> The list of " + selectedPredicate.type + " questions is empty or null");
                 }
                 try {
-                    Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, selectedPredicate));
+                    getContext().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, selectedPredicate));
                     LOGGER.info(" -> Dialog IntentsHistory updated");
                 } catch (Exception e) {
                     LOGGER.error(" -> Error on updating the IntentHistory: " + e.getMessage());
@@ -111,7 +111,7 @@ public class PersonalInformationFollowUpState extends State {
 
     @Override
     public Output react(Interpretation input) {
-        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         LOGGER.info("-> Retrieved Interlocutor: " + person.getName());
         RandomList<String> answers;
         String answer = "I have no words";
@@ -122,7 +122,7 @@ public class PersonalInformationFollowUpState extends State {
                 LOGGER.info(" -> Inference was successful");
                 answers = qaValues.getFollowUpAnswers(selectedPredicate);
                 person.addInformation(selectedPredicate, result);
-                Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+                getContext().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
                 LOGGER.info(" -> Updated Interlocutor: " + person.getName());
             } else {
                 LOGGER.warn(" -> Inference failed");

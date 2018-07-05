@@ -372,7 +372,7 @@ Then we have to add a new entry into our local ontology - Neo4jRelationships::
 
 Go back to your state and inside the act() method implement the following logic::
 
-    Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+    Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
 
     RandomList<String> questions = qaValues.getQuestions(Neo4jRelationships.LIKE);
     String question = questions.getRandomElement();

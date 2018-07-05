@@ -85,7 +85,7 @@ public class ExpoIntroductionState extends ExpoState {
 
         // 2. get interlocutor object from context
         // this also should query memory and do other magic
-        Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         person.addName(name);
 
         // 3. update interlocutor in context
@@ -167,10 +167,10 @@ public class ExpoIntroductionState extends ExpoState {
         int dice = (int) (3 * Math.random() + 1);
         switch (dice) {
             case 1:
-                Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, skills, skill));
+                getContext().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, skills, skill));
                 return getTransition(SELECTED_SKILLS);
             case 2:
-                Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, abilities, ability));
+                getContext().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, abilities, ability));
                 return getTransition(SELECTED_ABILITIES);
             case 3:
                 return getTransition(SELECTED_ROBOY_QA);
@@ -180,6 +180,6 @@ public class ExpoIntroductionState extends ExpoState {
     }
 
     private void updateInterlocutorInContext(Interlocutor interlocutor) {
-        Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(interlocutor);
+        getContext().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(interlocutor);
     }
 }

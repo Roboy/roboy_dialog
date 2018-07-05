@@ -22,11 +22,12 @@ import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
 
 public class ContextTest {
+    Context context = new Context();
 
     @Test
     public void setAndGetDialogTopics() {
-        DialogTopicsUpdater updater = Context.getInstance().DIALOG_TOPICS_UPDATER;
-        HistoryInterface<DialogTopics, Integer, String> topics = Context.getInstance().DIALOG_TOPICS;
+        DialogTopicsUpdater updater = context.DIALOG_TOPICS_UPDATER;
+        HistoryInterface<DialogTopics, Integer, String> topics = context.DIALOG_TOPICS;
 
         updater.updateValue("test1");
         assertEquals("test1", (topics.getLastValue()));
@@ -38,8 +39,8 @@ public class ContextTest {
 
     @Test
     public void setAndGetDialogIntents() {
-        DialogIntentsUpdater updater = Context.getInstance().DIALOG_INTENTS_UPDATER;
-        HistoryInterface<DialogIntents, Integer, IntentValue> intents = Context.getInstance().DIALOG_INTENTS;
+        DialogIntentsUpdater updater = context.DIALOG_INTENTS_UPDATER;
+        HistoryInterface<DialogIntents, Integer, IntentValue> intents = context.DIALOG_INTENTS;
 
         updater.updateValue(new IntentValue("test_id1", Neo4jRelationship.FROM));
         IntentValue testIntent = intents.getLastValue();
@@ -53,11 +54,11 @@ public class ContextTest {
 
     @Test
     public void testInterlocutor() {
-        Interlocutor in = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        Interlocutor in = context.ACTIVE_INTERLOCUTOR.getValue();
         assertNull(in);
         Interlocutor in2 = new Interlocutor(new DummyMemory());
-        Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(in2);
-        in = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+        context.ACTIVE_INTERLOCUTOR_UPDATER.updateValue(in2);
+        in = context.ACTIVE_INTERLOCUTOR.getValue();
         assertEquals("Should return the last added Interlocutor instance!", in, in2);
     }
 
@@ -114,8 +115,8 @@ public class ContextTest {
         int updateFrequency = 1; //Assuming the updater's frequency is 1 second!
         int sleeptime = updateFrequency * 1000 * 2; // Here in millis and double the actual update time.
         FaceCoordinatesObserver observer = Mockito.spy(new FaceCoordinatesObserver());
-        Context.getInstance().FACE_COORDINATES.getContextObject().addObserver(observer);
-        Context.getInstance().FACE_COORDINATES.getContextObject().updateValue(new CoordinateSet(0,0,0));
+        context.FACE_COORDINATES.getContextObject().addObserver(observer);
+        context.FACE_COORDINATES.getContextObject().updateValue(new CoordinateSet(0,0,0));
         Thread.sleep(sleeptime);
         // Check that the value in FaceCoordinates was updated -> should trigger the observer.
         Mockito.verify(observer, Mockito.atLeast(1)).update(any(), any());
