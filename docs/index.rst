@@ -86,7 +86,7 @@ Contents:
 .. toctree::
   :maxdepth: 1
   :glob:
-  :caption: Usage and Installation
+  :caption: User manual
 
   Usage/*
 
@@ -102,7 +102,7 @@ Contents:
 .. toctree::
   :maxdepth: 1
   :glob:
-  :caption: Project structure
+  :caption: Developer manual
 
   Project_Structure/*
 
