@@ -13,7 +13,7 @@ In the figure you may see a simplified overview of the dialog system. Below that
 .. figure:: images/architecture_diagram_simplified.png
   :alt: Dialog System architecture
 
-  Click `here<images/architecture_diagram.png>`_ in order to see the detailed overview partially provided within the subsections.
+  Click :download:`here <images/architecture_diagram.png>` in order to see the detailed overview partially provided within the subsections.
 
 Conversation flow
 =================
