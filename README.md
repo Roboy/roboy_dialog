@@ -44,20 +44,28 @@ The implementation of the pipeline is in Java. Integrations with tools in other 
 
 ### Quick-Install
 
-The quick guide for people who don't care about any of the technical mumbo jumbo.
+The quick guide for people who don't care about any of the technical mumbo jumbo. This is a local installation guide.
 
-1. [Set Environmental Variables](#set-environmental-variables)
-2. Download Needed Programs `sudo apt-get install maven openjdk--jdk git docker.io`
-3. Download and run Neo4J `sudo docker run --publish=7474:7474 --publish=7687:7687 --volume=$HOME/neo4j/data:/data --volume=$HOME/neo4j/logs:/logs neo4j:3.0`
-4. Git Clone Devel `git clone https://github.com/Roboy/roboy_dialog -b devel --recursive`
-5. Change Directory `cd roboy_dialog`
-6. Maven Magic `mvn clean install`
-7. Run the Program `java -Xmx6g -d64 -cp dialog/target/roboy-dialog-system-2.1.9-jar-with-dependencies.jar roboy.dialog.DialogSystem`
+[Set Environmental Variables](#set-environmental-variables). **Only do this once.**
+
+```bash
+sudo apt-get install maven openjdk-9-jdk git docker.io
+
+sudo docker run --publish=7474:7474 --publish=7687:7687 --volume=$HOME/neo4j/data:/data --volume=$HOME/neo4j/logs:/logs neo4j:3.0
+
+git clone https://github.com/Roboy/roboy_dialog -b devel --recursive
+
+cd roboy_dialog
+
+mvn clean install
+
+java -Xmx6g -d64 -cp dialog/target/roboy-dialog-system-2.1.9-jar-with-dependencies.jar roboy.dialog.DialogSystem
+```
 
 ### Requirements
 
 - Apache Maven
-- Java 8 (Oracle is prefered)
+- Java 8 (Oracle is preferred)
 - Git
 - [Neo4J](http://roboy-memory.readthedocs.io/en/latest/Usage/0_installation.html#local-neo4j-instance)
 - Working Internet Connection for downloading dependencies
