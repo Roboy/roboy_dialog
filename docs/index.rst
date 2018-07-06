@@ -6,7 +6,7 @@
 Roboy Dialog System
 ===========================================================
 
-The Roboy Dialog (or Dialog Manager) System (RDS) is a sophisticated software module representing the cognitive capabilities
+The Roboy Dialog System (RDS) is a sophisticated software module representing the cognitive capabilities
 of the humanoid anthropomimetic robot Roboy.
 The goal of the project is to implement dialog routines and knowledge extraction for a realistic human-like
 conversation flow which is achieved by utilizing various behaviour models represented by the State Machine (RDSM) finite automaton
@@ -16,11 +16,11 @@ the common RDSM State to produce a certain social interaction.
 The RDMS State both as actor and as reactor regarding the internally formulated output and externally acquired input.
 For example, the voice input is processed via the Listening Device -> Speech-to-Text -> Analyzers & Semantic Parser -> Linguistics package
 -> (InferenceEngine) -> State sequence.
-It also allows being deployed on a multitude of communication channels for a broader interaction audience.
+The RDS in- and output is not limited to speech. It also supports functionalities like emotional in/output, acting on the actual roboy and being deployed on a multitude of communication channels for a broader interaction audience.
 
 The overview diagram shows the external systems which Dialog System interacts with, and the tasks for which the system is responsible.
 
-.. figure:: images/overview_diagram.jpg
+.. figure:: images/overview_diagram.png
     :alt: Overview diagram
 
 Status
@@ -35,13 +35,13 @@ Stable functionality:
 - Roboy asks questions about people he meets
 - Roboy stores and retrieves the information about people he meets
 - Roboy stores and retrieves the information about himself
+- Roboy Dialog is deployable on multi-user communication channels
 
 In development:
 
 - Roboy updates the information (name, occupation, ect.) about people he meets
 - Roboy updates the information about himself
 - Roboy recognizes the intent behind an asked questions (age, creator, capabilities etc.)
-- The Roboy Dialog is fully deployable on multiple internet channels.
 
 
 Relevant Background Information and Pre-Requisites
@@ -86,25 +86,25 @@ Contents:
 .. toctree::
   :maxdepth: 1
   :glob:
-  :caption: Usage and Installation
+  :caption: User manual
 
-  Usage/*
+  user_manual/*
 
-.. _ScopeContext:
+.. _systemArchitecture:
 .. toctree::
   :maxdepth: 1
   :glob:
-  :caption: Interfaces and Scope
+  :caption: System architecture
 
-  ScopeContext/*
-  
-.. _Architecture:
+  system_architecture/*
+
+.. _developerManual:
 .. toctree::
-   :maxdepth: 1
-   :glob:
-   :caption: Architecture
-   
-   Architecture/*
+  :maxdepth: 1
+  :glob:
+  :caption: Developer manual
+
+  developer_manual/*
 
 .. toctree::
    :maxdepth: 1
