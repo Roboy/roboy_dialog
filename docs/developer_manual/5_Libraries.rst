@@ -90,5 +90,10 @@ Methods such as ``getRelation()`` or ``setProperties()`` were implemented to all
 Other
 =====
 
+TelegramBots Library
+--------------------
+
+To receive and send messages the library in the following github link has been used: https://github.com/rubenlagus/TelegramBots
+
 .. csv-table:: Libraries and external Software
   :header: "Name", "URL/Author", "License", Description
