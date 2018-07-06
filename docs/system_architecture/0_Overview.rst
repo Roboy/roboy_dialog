@@ -2,13 +2,13 @@
 Architecture overview
 *********************
 
-The Roboy Dialog System consists of three interacting parts: The Dialog Systems **`core`_**, which provides infrastructure to each conversation the dialogsystem can have with a user and overall management of the Dialog System, **`conversations`**, which are threads handling per-user interaction and are embedded into the Dialog System and **`world interfaces`_**, which are services and interfaces over which the Roboy Dialog System may communicate with users.
+The Roboy Dialog System consists of three interacting parts: The Dialog Systems **`core`_**, which provides infrastructure to each conversation the Dialog System can have with a user and overall management of the Dialog System, **`conversations`**, which are threads handling per-user interaction and are embedded into the Dialog System and **`world interfaces`_**, which are services and interfaces over which the Roboy Dialog System may communicate with users.
 
 .. _core: :ref:`The Dialog System Core`
 .. _conversations: :ref:`Conversation`
 .. _world interfaces: :ref:`World Interfaces`
 
-In the figure you may see a simplified overview of the dialog system. Below that, the general functionality of the system is explained. For details see the specific sub-pages of one of the three parts. Although this is a description of the systems architecture, we will mention implementation specific details for easier understanding.
+In the figure you may see a simplified overview of the Dialog System. Below that, the general functionality of the system is explained. For details see the specific sub-pages of one of the three parts. Although this is a description of the systems architecture, we will mention implementation specific details for easier understanding.
 
 .. figure:: images/architecture_diagram_simplified.png
   :alt: Dialog System architecture

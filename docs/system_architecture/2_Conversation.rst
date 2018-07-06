@@ -53,7 +53,7 @@ The ``act()`` and ``react()`` functions return a ``State.Output`` object. This o
 
 The ``Output`` objects are created using static factory functions inside ``act()`` or ``react()`` in a very simple way. For example, if Roboy should react with a phrase, the ``react()`` function could be implemented like this: ``return Output.say("some text here")``. Here, ``Output.say`` is the static factory function that creates an ``Output`` object.
 
-To improve the dialog flow, you can add segues to the ``Output`` objects using ``outputObj.setSegue()``. A segue is a smooth transition from one topic to the next. It is also planned to add control over Roboy's face to the ``Output`` objects but this feature is not implemented yet.
+To improve the dialog flow, you can add segues to the ``Output`` objects using ``outputObj.setSegue()``. A segue is a smooth transition from one topic to the next. Or you can add emotions to the ``Output`` objects using ``outputObj.setEmotion()``. A emotion is used for creating emotional actions which can be shown at Roboy's face by ``FaceAction`` or at Telegram chats by ``EmotionAction`` using stickers.
 
 
 State Transitions

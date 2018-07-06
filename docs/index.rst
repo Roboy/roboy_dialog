@@ -42,6 +42,7 @@ In development:
 - Roboy updates the information (name, occupation, ect.) about people he meets
 - Roboy updates the information about himself
 - Roboy recognizes the intent behind an asked questions (age, creator, capabilities etc.)
+- Roboy analyzes emotion and responds accordingly
 
 
 Relevant Background Information and Pre-Requisites

@@ -4,7 +4,7 @@
 The Dialog System Core
 **********************
 
-The Dialog System Core takes care of spawning, deleting and managing *Conversations*, initializing and providing all necessary static core features and services like the memory, the NLU, Statemachine, etc. to *Conversations*.
+The Dialog System Core takes care of spawning, deleting and managing *Conversations*, initializing and providing all necessary static core features and services like the memory, the NLU, StateMachine, etc. to *Conversations*.
 Its heart is the *ConversationManager*, which is accompanied by the external services of *Memory* and *NLU* and the *InputDevices* and *OutputDevices* which provide interfaces to communication channels which we call *World Interfaces*, since the Roboy Dialog System may interface the world through these.
 
 .. image:: images/DialogSystem_Core.png
@@ -51,6 +51,13 @@ General architecture can be seen on the diagram below.
     :alt: Semantic parser general architecture
 
 For more information please refer to :ref:`The Roboy Parser`.
+
+Linguistic Analyzers
+--------------------
+
+Linguistic analyzers (derived from ``de.roboy.linguistics.sentenceanalysis.Analyzer``) process user utterances to provide some information (SentenceType, Tokens, Emotion etc.) for Interpretation (``de.roboy.linguistics.sentenceanalysis.Interpretation``).
+
+For example, EmotionAnalyzer (``de.roboy.linguistics.sentenceanalysis.EmotionAnalyzer``) processes user utterances and sets emotion variable of Interpretation (``de.roboy.linguistics.sentenceanalysis.Interpretation``) with related RoboyEmotion (``de.roboy.dialog.emotions.RoboyEmotion``) value, by this way Interpretation can be checked at StateBasedPersonality (``de.roboy.dialog.personality.StateBasedPersonality``) for special treatment (responding according to emotion or responding with EmotionAction etc.)
 
 Memory (The memory module)
 ==========================
