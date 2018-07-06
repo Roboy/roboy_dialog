@@ -1,7 +1,7 @@
 .. _technical-interfaces:
 
-Public Interfaces
-==================
+Public ROS Interfaces
+===============================
 
 Interfaces to other (sub)modules are realized through direct function calls, as opposed to ROS calls. Despite this, some features, such as those listed below, still require ROS to communicate.
 

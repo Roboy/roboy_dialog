@@ -1,7 +1,7 @@
 .. _system_constraints:
 
-Constraints
-===========
+Project Constraints
+======================
 
 Technical Constraints
 ----------------------
