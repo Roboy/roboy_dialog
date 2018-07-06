@@ -1,3 +1,5 @@
+.. _Conversation:
+
 ************
 Conversation
 ************
@@ -12,6 +14,8 @@ StateMachine
 ============
 
 The ``roboy.dialog.DialogStateMachine`` is the unpopulated base for ``roboy.dialog.StateBasedPersonality``. It is unique to each *Conversation*, as each dialog usually is in a different state. It holds the *InferenceEngine* and the *Context* for a *Conversation*, as it should be the only part of it, accessing these. Its task is to handle traversing through the *States* of a *Personality* whereas a ``StateBasedPersonality`` enhances the features of the ``DialogStateMachine`` by augmenting the state-traversing functionalities with interaction-specific non-state behaviour like detecting the end of a conversation.
+
+.. _personality_and_states:
 
 Personality and states
 ======================
@@ -100,7 +104,7 @@ Current standard Personality
 Current standard personality is used to interact with a single person. After Roboy hears a greeting and learns the name of the person, he will ask a few personal questions and answer some general questions about himself or the environment.
 
 .. figure:: images/ordinary_personality.png
-:alt: Current standard personality
+  :alt: Current standard personality
 
 
 Overview over Implemented States
@@ -129,7 +133,7 @@ The goal of ``roboy.context.Context`` is to collect information about Roboy's or
 Architecture
 ------------
 
-.. figure:: ../images/context.png
+.. figure:: images/context.png
  :alt: Context architecture
 
 The Context supports storing data as a ``Value`` or ``ValueHistory``. A ``Value`` only stores the latest data object that was pushed to it. A ``ValueHistory`` stores every value it receives and assigns each a unique key, thus the values can be ordered by their adding time. These may be accessed through ``Value Interface`` and ``History Interface`` implementations and may be changed through ``Updater`` implementations. For more information see `Using the Context`_.

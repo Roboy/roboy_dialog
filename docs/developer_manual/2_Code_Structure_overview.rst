@@ -1,3 +1,5 @@
+.. _Code structure overview:
+
 ***********************
 Code structure overview
 ***********************

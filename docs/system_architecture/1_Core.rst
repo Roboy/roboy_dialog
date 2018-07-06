@@ -1,3 +1,5 @@
+.. _The Dialog System Core:
+
 **********************
 The Dialog System Core
 **********************
@@ -6,7 +8,7 @@ The Dialog System Core takes care of spawning, deleting and managing *Conversati
 Its heart is the *ConversationManager*, which is accompanied by the external services of *Memory* and *NLU* and the *InputDevices* and *OutputDevices* which provide interfaces to communication channels which we call *World Interfaces*, since the Roboy Dialog System may interface the world through these.
 
 .. image:: images/DialogSystem_Core.png
-:alt: Dialog System Core architecture
+    :alt: Dialog System Core architecture
 
 ConversationManager
 ===================
@@ -14,7 +16,7 @@ ConversationManager
 The ``roboy.dialog.ConversationManager`` is the central managing node for the Dialog System. It is the entry point of the program. When ``roboy.dialog.ConversationManager.main()`` is launched, it initializes all necessary modules and then enters control-mode, where it assumes a behaviour depending on the selected *InputDevice* in order to provide control over the *Conversations*.
 
 
-**During the initialization phase** all components that are included in the Dialog System core are initialized. This especially includes the *NLU* (in form of a queue of several ``roboy.linguistics.sentenceanalysis.Analyzer`` classes) and *world interface* specific initializations (*world interfaces* may for different reasons need a centralized initialization seperate from the I/O devices which are used to communicate with them).
+**During the initialization phase** all components that are included in the Dialog System core are initialized. This especially includes the *NLU* (in form of a queue of several ``roboy.linguistics.sentenceanalysis.Analyzer`` classes) and *world interface* specific initializations ( *world interfaces* may for different reasons need a centralized initialization separate from the I/O devices which are used to communicate with them).
 
 **In order to manage Conversations ** it stores them by UUID, which is in the format "[world-interface-name]-[uuid-from-world-interface]", for example "telegram-aaaaaaaaaaaa". Then it provides an API consisting of methods that allow controlling the *Conversation* threads if you know their uuid. It allows creating and spawning new *Conversations* and restarting, stopping and pausing existing ones. Also it allows deregistering *Conversations* so they can properly be destroyed when they are over.
 
@@ -45,8 +47,8 @@ Semantic parser is based on the language model and NLP algorithms that then appl
 
 General architecture can be seen on the diagram below.
 
-.. figure:: ../images/parser.png
-:alt: Semantic parser general architecture
+.. figure:: images/parser.png
+    :alt: Semantic parser general architecture
 
 For more information please refer to `The Roboy Parser`_.
 

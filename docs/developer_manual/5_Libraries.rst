@@ -4,6 +4,8 @@ Libraries and External Software
 
 Contains a list of the libraries and external software used by this system.
 
+.. _The Roboy Parser:
+
 The Roboy Parser
 ================
 
@@ -12,13 +14,12 @@ Implementation
 
 roboy_parser is a separate Java project and is communicating using ``WebSocket``. Dialog system has a client implemented in ``SemanticParserAnalyzer.java`` class. It is therefore part of Natural Language Understanding unit.
 
-For full documentation please refer the roboy parser docs acessible through the `roboy parser github repository`_.
-.. _roboy parser github repository: http://github.com/Roboy/roboy_parser
+For full documentation please refer the roboy parser docs acessible through the `roboy parser github repository <http://github.com/Roboy/roboy_parser>`_.
 
 Current parser was modified from SEMPRE and currently has following components
 
-.. figure:: ../images/PARSER_arch.png
-:alt: Semantic parser components
+.. figure:: images/PARSER_arch.png
+  :alt: Semantic parser components
 
 Functionalities
 """""""""""""""
@@ -26,13 +27,13 @@ Functionalities
 Roboy parser currently has currently following functionalities:
 
 .. csv-table:: Semantic Parser algorithms used
-:header: "Functionality", "Software used", "Summary"
+  :header: "Functionality", "Software used", "Summary"
   :widths: 20, 20, 60
 
-        "Tokens", "OpenNLP", "Tokenized utterance"
-        "POS Tags", "OpenNLP", "Tagging tokens as part of speech"
-        "NER Tags", "OpenNLP", "Tool used to tag named entities like PERSON, NUMBER, ORGANIZATION"
-        "Triple extraction", "OpenIE", "Tool used to extract triples from sentences in form ``(Subject,Predicate,Object)``"
+  "Tokens", "OpenNLP", "Tokenized utterance"
+  "POS Tags", "OpenNLP", "Tagging tokens as part of speech"
+  "NER Tags", "OpenNLP", "Tool used to tag named entities like PERSON, NUMBER, ORGANIZATION"
+  "Triple extraction", "OpenIE", "Tool used to extract triples from sentences in form ``(Subject,Predicate,Object)``"
   "Parser result", "Parser", "Logical representation of an utterance"
   "Parser answer", "Parser", "Answer for resulting parser result"
   "Follow-up", "Parser", "Follow-up questions for underspecified term"
@@ -48,13 +49,15 @@ Configurations
 To test parser, you can run following execution configurations using ``maven``. For more information refer to `project documentation <http://github.com/Roboy/roboy_parser>`
 
 .. csv-table:: Possible parser configurations
-:header: "Command", "Options"
+  :header: "Command", "Options"
   :widths: 20, 40
 
-          "interactive", "Standard lexicon and grammar, communication over terminal. Does not load all the models ahead. Error retrieval enabled."
-          "demo-error", "Standard lexicon and grammar, communication over socket. Loads all the models ahead. Error retrieval enabled"
-          "demo", "Standard lexicon and grammar, communication over socket. Loads all the models ahead. Error retrieval disabled"
-          "debug", "Standard lexicon and grammar, communication over server (web page available). Does not load all the models ahead. Error retrieval enabled"
+  "interactive", "Standard lexicon and grammar, communication over terminal. Does not load all the models ahead. Error retrieval enabled."
+  "demo-error", "Standard lexicon and grammar, communication over socket. Loads all the models ahead. Error retrieval enabled"
+  "demo", "Standard lexicon and grammar, communication over socket. Loads all the models ahead. Error retrieval disabled"
+  "debug", "Standard lexicon and grammar, communication over server (web page available). Does not load all the models ahead. Error retrieval enabled"
+
+.. _Roboy memory:
 
 Roboy Memory
 ============

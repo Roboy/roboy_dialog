@@ -1,3 +1,5 @@
+.. _Development tutorials:
+
 *********************
 Development tutorials
 *********************
@@ -164,19 +166,21 @@ Or, if you provide a wrong answer::
     [You]:   one
     [Roboy]: Well, 2 plus 2 is 4!
 
-To learn more details about states and personalities, refer to the :ref:`personality_and_states` page. There, you will find details about state fallbacks, parameters and interfaces, as well as more information about different personalities and more output options.
+To learn more details about states and personalities, refer to :ref:`personality_and_states`. There, you will find details about state fallbacks, parameters and interfaces, as well as more information about different personalities and more output options.
 
 
-.. _tut_new_personality:
+
 
 .. highlight:: json
+
+.. _tut_new_personality:
 
 Creating a New Personality
 --------------------------
 
 Roboy's Dialog System can be used in different environments and situations like fairs, conferences, demos or as a chatbot on social networks. For every given situation, Roboy's behaviour should be different. We use personalities to define Roboy's way of talking.
 
-In this tutorial you will learn how to create a new personality. Make sure that you know the basic functionality of states. If you are not familiar with them, read the :ref:`tut_new_state` tutorial. General information about personalities can be found on the :ref:`personality_and_states` page.
+In this tutorial you will learn how to create a new personality. Make sure that you know the basic functionality of states. If you are not familiar with them, read the :ref:`tut_new_state` tutorial. General information about personalities can be found on :ref:`personality_and_states`.
 
 Personalities are defined inside JSON personality files. Each file represents a state machine and defines:
 
@@ -250,7 +254,7 @@ With two states defined, we can now take a look at the complete personality file
 
 This file is stored under ``resources/personalityFiles/tutorial/MathTest.json``. You can try running this personality by setting the path (``PERSONALITY_FILE``) in the config file (``config.properties``).
 
-When you create a new personality file you might forget to define important transitions. To find errors faster, you can define the state interface (required transitions, parameters and fallback) for every state when you implement it. While loading the personality file, the Dialog System will check whether the state has everything it needs and warn you if something is missing. Read more about state interfaces on the :ref:`personality_and_states` page.
+When you create a new personality file you might forget to define important transitions. To find errors faster, you can define the state interface (required transitions, parameters and fallback) for every state when you implement it. While loading the personality file, the Dialog System will check whether the state has everything it needs and warn you if something is missing. Read more about state interfaces on :ref:`personality_and_states`.
 
 
 Fallbacks and parameters
@@ -271,7 +275,7 @@ There are two additional properties that you can add to a state definition: ``pa
       }
     }
 
-Let's take a look at both properties. Here we define ``RandomAnswer`` (which is an identifier of another state in the same personality file) as the fallback for the state with identifier ``Intro``. This means that if ``Intro`` cannot react to an input, the ``RandomAnswer`` will be asked instead. The property ``parameters`` allows you to pass parameters to the state. Each parameter has a name (here ``introductionSentence``) and a string value. The state implementation can access the value by the name. Parameters are very useful to pass resource file paths to states. Read more about fallbacks and parameters on the :ref:`personality_and_states` page.
+Let's take a look at both properties. Here we define ``RandomAnswer`` (which is an identifier of another state in the same personality file) as the fallback for the state with identifier ``Intro``. This means that if ``Intro`` cannot react to an input, the ``RandomAnswer`` will be asked instead. The property ``parameters`` allows you to pass parameters to the state. Each parameter has a name (here ``introductionSentence``) and a string value. The state implementation can access the value by the name. Parameters are very useful to pass resource file paths to states. Read more about fallbacks and parameters on :ref:`personality_and_states`.
 
 
 
@@ -281,7 +285,7 @@ Larger personality
 It is not easy to create interesting conversations using only two states (assuming relatively simple states of course). Usually, you will use at least five different states in one conversation. To get some experience in writing personality files, let's create a file that uses four states. Don't worry, you don't have to implement the states here. We will use four already pre-implemented toy states that can be found in the ``roboy.dialog.tutorials.tutorialStates`` package. The final personality should look like this:
 
 .. figure:: images/toy_personality.png
-:alt: Toy personality
+    :alt: Toy personality
 
 As you can see, we have four states that are connected to each other. The names of the transitions are denoted on the arrows. Now, try to write a personality file to represent this personality. Following these steps might be helpful:
 
@@ -364,6 +368,8 @@ We can add a new entry there with a new intent. Let it be "LIKE":
           ]
         }
     }
+
+.. highlight:: java
 
 Then we have to add a new entry into our local ontology - Neo4jRelationships::
 
@@ -544,6 +550,8 @@ Knowledge Retriever
 2. Implement ``edu.stanford.nlp.sempre.roboy.error.KnowledgeRetriever`` class with analyze method.
 
 3. Add knowledge retriever in constructor of ``edu.stanford.nlp.sempre.roboy.ErrorRetrieval`` class.
+
+.. _Using the Context:
 
 Using the Context
 =================

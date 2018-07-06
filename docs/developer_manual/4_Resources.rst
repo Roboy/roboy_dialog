@@ -2,7 +2,9 @@
 Resources
 *********
 
-.. TODO: config properties reference
+For the ``config.properties`` resource, please see `Configuration`_.
+
+.. _JSON Resources:
 
 JSON Resources
 ==============
@@ -59,6 +61,8 @@ JSON Resources
         "TOKEN":"AAAAAAAAA:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "BOT_USERNAME":"Botname"
         }
+
+
 CSV Resources
 =============
 
