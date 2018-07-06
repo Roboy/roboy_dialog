@@ -69,7 +69,7 @@ public abstract class ExpoState extends State {
                     if (!attribute.equals("")) {
                         IntentValue historyValue = new IntentValue(intentsHistoryId, property, attribute);
                         LOGGER.debug("The intent history value: " + historyValue);
-                        Context.getInstance().DIALOG_INTENTS_UPDATER.updateValue(historyValue);
+                        getContext().DIALOG_INTENTS_UPDATER.updateValue(historyValue);
                         LOGGER.info(transitionNames[dice] + " transition");
                         return getTransition(transitionNames[dice]);
                     } else {
@@ -120,7 +120,7 @@ public abstract class ExpoState extends State {
      * @return true if contains otherwise false
      */
     private boolean lastNIntentsContainAttribute(String attribute, int n) {
-        Map<Integer, IntentValue> lastIntentValues = Context.getInstance().DIALOG_INTENTS.getLastNValues(n);
+        Map<Integer, IntentValue> lastIntentValues = getContext().DIALOG_INTENTS.getLastNValues(n);
 
         for (IntentValue value : lastIntentValues.values()) {
             if (value.getAttribute() != null) {

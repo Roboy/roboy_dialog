@@ -5,6 +5,7 @@ import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.context.Context;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.InferenceEngine;
 import roboy.memory.Neo4jMemoryInterface;
@@ -68,6 +69,7 @@ public abstract class State {
         private final OutputType type;
         private final Interpretation interpretation;
         private Segue segue;
+        private String emotion;
 
         /**
          * Private constructor, used only inside static methods.
@@ -78,6 +80,7 @@ public abstract class State {
             this.type = type;
             this.interpretation = interpretation;
             this.segue = null;
+            this.emotion = null;
         }
 
         //  Static creators
@@ -191,6 +194,22 @@ public abstract class State {
         public Segue getSegue() {
             return segue;
         }
+
+        // Emotion
+        /*
+         * @param s emotion to add
+         * @return the same Output object so you can chain multiple function calls on it
+         */
+        public Output setEmotion(String emotion) {
+            if (type == OutputType.USE_FALLBACK) {
+                logger.warn("Adding a emotion to an answer that requires fallback is not allowed! " +
+                        "Emotion behaviour is defined in the fallback state.");
+            }
+            this.emotion = emotion;
+            return this;
+        }
+        public boolean hasEmotion() { return emotion != null; }
+        public String getEmotion() { return emotion; }
 
     }
 
@@ -491,6 +510,16 @@ public abstract class State {
         if (getParameters() == null) return null;
         return getParameters().getInference();
     }
+
+    /**
+     * Shortcut for getParameters().getStateMachine().getContext()
+     * @return Context
+     */
+    protected Context getContext() {
+        if (getParameters() == null) return null;
+        return getParameters().getStateMachine().getContext();
+    }
+
 
     //endregion
 

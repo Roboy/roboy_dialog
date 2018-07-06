@@ -72,8 +72,7 @@ public class QAFileParser {
                 successAnswers.put(entry.getKey(), new Gson().fromJson(successAnswersJson, listType));
                 failureAnswers.put(entry.getKey(), new Gson().fromJson(failureAnswersJson, listType));
             }
-        }
-        catch (Exception e)
+        }catch (Exception e)
         {
             logger.error("JSON was not parsed correctly");
             logger.error(e.getMessage());
