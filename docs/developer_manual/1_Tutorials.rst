@@ -615,15 +615,245 @@ Adding a new Internal Updater
 ``SAMPLE_UPDATER = new SampleUpdater(DIALOG_TOPICS.valueHistory); // Initialize in the constructor``
 
 
-Adding and Input- or OutputDevice
-=================================
+Adding generic Input- or OutputDevice
+=====================================
 In order to add new ``roboy.io.InputDevice`` and ``roboy.io.OutputDevice`` classes, changes in multiple locations are necessary.
-
 1. Implement your ``InputDevice`` or ``OutputDevice`` implementation using ``class [YOUR CLASSNAME] extends InputDevice`` (or OutputDevice, if you're doing output).
 2. If your device needs additional cleaning in order to be destroyed properly, additionally use ``implements CleanUp`` and implement the ``cleanup()`` method.
 3. Add your devices to ``roboy.util.io`` in ``getInputs()`` and ``getOutputs()``, so the dialog system may use them if they're chosen in the configuration.
 4. Add a (commented) input/output configuration to ``config.properties``.
 
-``roboy.dialog.Cleanup`` **must** be implemented if an InputDevice or OutputDevice needs static or external action when it gets destroyed! Otherwise, memory leaks may occur!
-An example for this is ``roboy.dialog.io.TelegramInput``.
+
+.. highlight:: java
+
+.. _tut_io_social:
+
+Social Media Integration
+========================
+
+
+A new InputDevice for a social media
+------------------------------------
+
+First create a new class in roboy.io folder, namely "MySocialMediaInput" that implements from "roboy.io.InputDevice". 
+
+
+    // inside MySocialMediaInput.java
+
+    public class MySocialMediaInput implements InputDevice {
+
+    }
+
+One function called “listen()” has to be implemented.
+
+    @Override
+    public Input listen() throws InterruptedException, IOException {
+        return null;
+    }
+
+Since you will have an "InputDevice" for each user then you need at least a unique identifier for each user right? So each of this unique identifiers should mapped to an "InputDevice". Therefore, create a static hashmap for it as follows.
+
+.. NOTE::
+    In further steps unique identifier mentioned as uuid
+
+
+    private static final HashMap<String, MySocialMediaInput> inputDevices = new HashMap<>();
+
+
+Add a constructor that receives the uuid as parameter
+
+    // inside MySocialMediaInput.java
+
+    public MySocialMediaInput(String uuid){
+        //constructor
+        synchronized(inputDevices){
+            inputDevices.put(uuid, this)””
+        }
+    }
+
+At this point, we received the uuid and have a hashmap of each "MySocialMediaInput". What else we need to implement? 
+- Return messages as "roboy.io.Input" in the "listen()" method
+- Receive the messages
+
+.. Note::
+    The order is actually reversed for the sake of tutorial of course you need to receive messages before you return them.
+
+Let’s continue with first one. To return a message we need a message so create a "String" for it right below the "HashMap".
+
+    private volatile String message;
+
+We need to initialize it in constructor. Add the following into the beginning of constructor.
+
+    // inside public MySocialMediaInput(String uuid)
+
+    this.message = "";
+
+Finally finish the listen method
+    
+    // inside MySocialMediaInput.java
+
+    public Input listen() throws InterruptedException, IOException {
+        Input newInput;
+        syncronized(this){
+            while(message.equals(“”)){
+                try{
+                    this.wait();
+                }
+                catch(InterruptedException e){
+                    if(message == null||message.equals(“”)){
+                        throw e;
+                    }
+                }
+            }
+            newInput = new Input(message);
+            message = “”;
+        }
+        return newInput;
+    }
+
+Nice, now only thing to worry about is how to receive the message. 
+
+Create a static "onUpdate(Pair<String, String>)" function that will be called from your "SocialMediaHandler" class with pair parameter that consits of the uuid and the message.
+
+..Note::
+    There is no "SocialMediaHandler" as template. You should have a handler or any logic that receive the messages from your soical media. Then you need to call this function after applied your logic (e.g. wait for a certain time to answer.)
+
+    
+    public static void onUpdate(Pair<String, String> update){
+        //get the uuid
+
+        //get the inputdevice
+
+        //assign the message to the input device
+    }
+
+
+..Note::
+    Pair "roboy.pair" that has to strings
+    TO DO: 
+
+To create the uuid that we discussed before, get the unique identifier from the "update". And add a social media name as prefix.
+
+    //get the uuid
+
+    String id = update.getKey();
+    String uuid = "MySocialMedia-" + id;
+
+..Note::
+    Why we add a prefix? Because it is possible if there is a same identifier from another social media. 
+
+Now we need to get the input device there is an existing one with the uuid.
+
+    //get the inputdevice
+
+    MySocialMediaInput input = inputDevices.get(uuid);
+    if (input == null){
+	    try{
+		    ConversationManager.spawnConversation(uuid);	
+        }catch(IOException e){
+            // do your logging or other error handling stuff
+            return;
+        }
+        input = inputDevices.get(uuid);
+    }
+
+As you can see if there is no inputdevice with respective uuid. "ConversationManager.spawnConversation(uuid)" is used. It magically creates the inputDevice (as well as the Conversation and the magical stuff that you do not need to worry about)
+
+Finally add another interface namely "CleanUp" and add its "cleanup()" method.
+    // inside MySocialMediaInput.java
+
+    public class MySocialMediaInput implements InputDevice, CleanUp {
+        
+        ...
+
+        @Override
+        public void cleanup() {
+            inputDevices.values().remove(this);
+        }
+
+    }
+
+Done! Congratulations, you have just created your social media input device. . But it doesn’t work with only input device you also need to an output device for each conversation to send the output.
+
+A new OutputDevice for a social media
+-------------------------------------
+
+You have perfectly working input device for your social media. But that only for receiving messages, we also need to send messages.
+
+Create a new class in "roboy.io" folder namely "MySocialMediaOutput" that implements from "roboy.io.OutputDevice". 
+
+    // inside MySocialOutput.java
+
+    public class MySocialMediaOutput implements OutputDevice {
+
+    }
+
+You should override a method namely “act” and List of actions as parameter.
+
+    @Override
+    public void act(List<Action> actions){
+        // handle actions
+    }
+
+Leave the inside of the method empty for now.
+
+As discussed before there is an OutputDevice for a user that is communicating with. And a unique identifier that is representing the user for each OutputDevice. Again just like our InputDevice you need a constructor and uuid as parameter.
+
+    // inside MySocialOutput.java
+
+    private String uuid;
+    
+    public MySocialMediaOutput(String uuid){
+        //constructor
+        this.uuid = uuid.substring(uuid.indexOf('-')+1);
+    }
+
+Remember the uuid in "MySocialMediaInput" was “MySocialMedia-”+id. Here it is splitted from the original user id that will be using for sending message.
+
+Finish the "act" method
+
+    // handle actions
+    for(Action a : actions) {
+        if (a instanceof SpeechAction) {
+            // Normal text message
+            String message = ((SpeechAction) a).getText();
+            /* SEND THE MESSAGE with your social media handler or directly here the way is up to you */
+        }else if (a instanceof EmotionAction) {
+            String stickerID = null;
+            switch(((EmotionAction) a).getState()){
+                case "shy": /*use the method that sends an sticker or emoji or anything that shows emotions, again you can user your social media handler or any other method */
+        break;
+        }
+    }
+
+..Note::
+    In this tutorial, only shy emotion has been used, but there are several emotions you can check "roboy.emotions.RoboyEmotion.java" if you want more!
+
+	/* */ these comments are not completed you should use your way that is sending a message via social media using the user’s id.
+
+
+
+Telegram: Handle commands
+-------------------------
+
+New inline commands can be handled in "onUpdateReceived" method which is in "TelegramCommunicationHandler" class. 
+
+Find the below if code block in onUpdateReceived.
+
+    if(text.startsWith("/")){
+        //command
+    }
+
+This block is only checking if the incoming message has a '/' at the beginning of the word, just like all the commands “/start”, “/stop”, “/desired_command”
+
+Let's try to send a sticker after a command catch. Check if the command is "/like".
+    
+    //command
+    if(text == “/like”){
+        String stickerId = “CAADAgADOQAD5dCAEOtbfZz0NKh2Ag”
+        sendSticker(chatID, stickerID)
+    }
+
+..Note::
+    Each sticker has its own unique id in Telegram.
 
