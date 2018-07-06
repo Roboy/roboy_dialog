@@ -27,22 +27,4 @@ The implementation of the pipeline is in Java. Integrations with tools in other 
 How to extend it?
 =================
 
-Pick the corresponding interface, depending on which part of the system you want to extend. If you want to add new devices go for the input or output device interfaces. If you want to extend the linguistic analysis implement the Analyzer interface or extend the SentenceAnalyzer class. If you are happy with input, linguistics and output and just want to create more dialog, implement the Personality interface.
-
-+--------------------+--------------------------------------------------+
-| Create a new ...   | By implementing ...                              |
-+====================+==================================================+
-| Input Device       | de.roboy.io.InputDevice                          |
-+--------------------+--------------------------------------------------+
-| NLP Analyzer       | de.roboy.linguistics.sentenceanalysis.Analyzer   |
-+--------------------+--------------------------------------------------+
-| State Machine      | de.roboy.dialog.personality.Personality          |
-+--------------------+--------------------------------------------------+
-| State              | de.roboy.dialog.personality.states.State         |
-+--------------------+--------------------------------------------------+
-| Action type        | de.roboy.dialog.action.Action                    |
-+--------------------+--------------------------------------------------+
-| Output device      | de.roboy.io.OutputDevice                         |
-+--------------------+--------------------------------------------------+
-
-The interfaces are deliberately simple, containing only 0 - 2 methods that have to be implemented. Once you implemented your new classes include them in the personality used in ``de.roboy.dialog.ConversationManager``, if you only implemented single states or directly in ``de.roboy.dialog.ConversationManager`` for everything else.
+If you do not know how the system works please refer the "System architecture" section. If you know the part you want to extend or are sure you do not need to understand the detailed functionality of the overall system you may directly start with the "Developer manual" section. The `Code structure overview`_ section is a good place to start.

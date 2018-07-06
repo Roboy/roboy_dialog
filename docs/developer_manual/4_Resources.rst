@@ -2,6 +2,8 @@
 Resources
 *********
 
+.. TODO: config properties reference
+
 JSON Resources
 ==============
 
@@ -50,6 +52,13 @@ JSON Resources
       }
     }
 
+- telegram tokens - contain tokens for registered telegram bots to allow the Dialog System to connect to the telegram API::
+
+    .. code:: json
+        {
+        "TOKEN":"AAAAAAAAA:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "BOT_USERNAME":"Botname"
+        }
 CSV Resources
 =============
 

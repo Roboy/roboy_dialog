@@ -1,6 +1,11 @@
-*********
-Tutorials
-*********
+*********************
+Development tutorials
+*********************
+
+This page is a collection of useful tutorials if you want to develop or enhance parts of the Dialog System.
+
+Changing the dialog systems behaviour during a conversation
+===========================================================
 
 .. highlight:: java
 
@@ -8,7 +13,7 @@ Tutorials
 .. _tut_new_state:
 
 Adding a New State
-==================
+------------------
 
 Roboy often visits different events and you might want him to say something specific, for example mention a company or a sponsor. One way to do this would be to modify an existing state. However, these changes are often discarded as you still want to have the old behaviour. There is a better way: create a new custom state specifically for your needs.
 
@@ -161,13 +166,13 @@ Or, if you provide a wrong answer::
 
 To learn more details about states and personalities, refer to the :ref:`personality_and_states` page. There, you will find details about state fallbacks, parameters and interfaces, as well as more information about different personalities and more output options.
 
-.. _tut_new_personality:
 
+.. _tut_new_personality:
 
 .. highlight:: json
 
 Creating a New Personality
-==========================
+--------------------------
 
 Roboy's Dialog System can be used in different environments and situations like fairs, conferences, demos or as a chatbot on social networks. For every given situation, Roboy's behaviour should be different. We use personalities to define Roboy's way of talking.
 
@@ -301,10 +306,8 @@ You might be wondering why such a complex system with all those JSON files is ne
 
 While the editor is not implemented yet, we still have good news for you. You *can* define personalities directly from code and don't have to worry about creating a personality file (and updating it while refactoring). This feature is especially useful when writing unit tests for single states or smaller state machines. This tutorial does not cover creating personalities from code but there are good examples in the ``roboy.dialog.tutorials.StateMachineExamples`` class. Take a look at it if you need to define personalities from code.
 
-
-
 Adding New Questions to the State
-=================================
+---------------------------------
 
 There exists a list of questions, we may want Roboy to ask in order to acquire new information about people and the environment.
 It is stored in the resources directory under sentences/QAList.json and follows the next JSON structure as given:
@@ -381,9 +384,8 @@ Go back to your state and inside the act() method implement the following logic:
 
 Now, we can ask these newly added questions and later process the answers in the react() method.
 
-
 Querying the Memory from the Dialog System
-==========================================
+------------------------------------------
 
 
 Indeed, the newly created state may be the pinnacle of State Machines practice, but it does not yet exploit all of the Roboy Dialog System capabilities, such as
@@ -451,15 +453,14 @@ Furthermore, we wanted to make it less of miserable routine thus there is a help
         }
     }
 
-
 Creating a Value History / Storing and Updating Values in the Context
-=====================================================================
+---------------------------------------------------------------------
 
 See :ref:`context`
 
 
 Extending the Lexicon and the Grammar
-=====================================
+-------------------------------------
 
 This tutorial explains how to create or change grammar and lexicon used in the semantic parser.
 
@@ -516,8 +517,9 @@ For lexicon::
 
     -SimpleLexicon.inPaths
 
+
 Scoring Functions and Knowledge Retrieval
-=========================================
+-----------------------------------------
 
 Currently, our semantic parser uses error retrieval mechanism that can be modified in the following steps:
 
@@ -543,78 +545,85 @@ Knowledge Retriever
 
 3. Add knowledge retriever in constructor of ``edu.stanford.nlp.sempre.roboy.ErrorRetrieval`` class.
 
-Editing the Config File
-=======================
+Using the Context
+=================
 
-Dialog System is configured using the ``config.properties`` file in the root of the project. 
 
-ROS configuration
-^^^^^^^^^^^^^^^^^
+How to add Values?
+------------------
 
-Dialog outsources many tasks to other modules implemented in Pyhton or C++ as ROS packages. In the config file you can enabled/disable ROS modules, choose which packages to use, and set the ``ROS_MASTER_URI``. 
+Here we describe how a new Value can be created and added to the Context. Sample implementations can be found inside ``roboy.context.contextObjects`` package.
 
-Available ROS packages are:
-    - ``roboy_gnlp`` (generative model for answer generation)
-    - ``roboy_memory`` (Neo4j graph-based memory)
-    - ``roboy_speech_synthesis`` (text to speech using Cerevoice)
-    - ``roboy_speech_recognition`` (speech to text using Bing Speech API)
-    - ``roboy_audio`` (audio source localization)
-    - ``roboy_vision`` (face recogntion & object classification and localization)
-    - ``roboy_face`` (triggers emotions)
+1. Consider what type of data will be stored in the Value. For this example, we chose ``String``.
 
-Example ROS config::
+2. In the ``contextObjects`` directory, create a new class which inherits from the Value class. The final signature should look similar to: ``public class SampleValue extends Value<String>`` (replacing String with your type).
 
-    ROS_ENABLED: true
-    ROS_MASTER_IP: 10.183.49.162
-    ROS_ACTIVE_PKGS:
-      - roboy_memory
-      - roboy_speech_synthesis
+3. Make the value available for the Dialog System by defining a ``ValueInterface`` in the ``Context.java`` class, among other class variables. A ``ValueInterface`` takes two type parameters: the ``Value`` class created in step 2, and its data type (in our case, ``String``). Example: ``public final ValueInterface<SampleValue, String> SAMPLE_VALUE = new ValueInterface<>(new SampleValue());``
 
-Inputs and Outputs
-^^^^^^^^^^^^^^^^^^
-   
-A developer can choose how to interact with the dialog system. For example, for debugging purposes there are command line input and output. Importantly, there can be only one input, but many outputs. 
+4. Congratulations, you can now query the new Value object! ...but it does not receive any values yet. To change this, see "How to add Updaters?" below.
 
-Available inputs are:
-    - ``cmdline``
-    - ``upd`` (listens for incoming udp packets in the port specified below)
-    - ``bing`` (requires Internet connection and the ``roboy_speech_recognition`` ROS package)
-    - ``telegram`` (requires Internet connection and a prepared telegram bot, see 1. Getting Started for more details. For the standard usecase, telegram should be set as both, in- and output.)
-    
-Arbitraty of the following outputs can be used simultaniously at the runtime::
-    - ``cerevoice`` (requires ``roboy_speech_synthesis`` ROS package)
-    - ``cmdline``
-    - ``ibm`` (uses IBM Bluemix, requires Internet connection, user & pass configured below)
-    - ``emotions`` (requires ``roboy_face`` ROS package)
-    - ``udp`` (sends packets on the port configure below)
-    - ``telegram`` (requires Internet connection and a prepared telegram bot, see 1. Getting Started for more details. For the standard usecase, telegram should be set as both, in- and output.)
+How to add ValueHistories?
+--------------------------
 
-Example IO config::
+ValueHistories extend the functionality of Values by storing all data objects sent to them. Over the ``getNLastValues(int n)`` method, a map with several most recent data objects can be retrieved, including their ordering. The ``contains(V value)`` method checks whether an object is currently found in the history - note that ValueHistories have size limits, therefore oldest values disappear from the history when new ones are added.
 
-    INPUT: cmdline
-    OUTPUTS:
-     - cmdline
-     - ibm
-     - cerevoice
+Adding a ``ValueHistory`` is very much alike to adding a ``Value``, just make sure to:
 
-Personality
-^^^^^^^^^^^
+1. extend ``ValueHistory<>`` instead of ``Value<>``. If the history should keep more than the default 50 values, override the getMaxLimit() method to return your desired limit value.
 
-Here you specify the state machine description store in the JSON file containing personality, i.e. states and transitions between them::
+2. in ``Context.java``, create a ``HistoryInterface`` instead of ``ValueInterface``.
 
-    PERSONALITY_FILE: "resources/personalityFiles/OrdinaryPersonality.json"
-    
-Utilities
-^^^^^^^^^^
- 
-Configure third party communication ports, credentials, etc.::
+How to add Updaters?
+--------------------
 
-    UDP_IN_SOCKET: 55555
-    UDP_OUT_SOCKET: 55556
-    UDP_HOST_ADDRESS: 127.0.0.1
+New values can only flow into the Context over an ``Updater`` instance. Internal Updaters can be used by the dialog manager to actively add new values. External Updaters run in separate threads and query or listen for new values, for example over a ROS connection.
 
-    PARSER_PORT: 5000
+Updaters only add a single new data unit, relying on the ``AbstractValue.updateValue()`` method. Thanks to the inheritance chain, you can use an arbitrary Value or ValueHistory implementation as the target of an updater.
 
-    IBM_TTS_USER: x
-    IBM_TTS_PASS: x
+Adding an External Updater
+""""""""""""""""""""""""""
+Currently, there are two implementations of an External Updater: ``PeriodicUpdater`` and ``ROSTopicUpdater``.
+
+``PeriodicUpdater`` calls an updating method after a certain time interval has passed. To use the periodic updating functionality:
+
+1. Create a class extending ``PeriodicUpdater`` and implement its ``update()`` method. It should retrieve the values and finally add them over the ``target.updateValue(value)`` method call.
+
+2. A constructor is required for the class. Simply match the PeriodicUpdater constructor and call ``super(target)`` within - or use the two-parameter constructor to change the update frequency (by default 1 second).
+
+``ROSTopicUpdater`` subscribes itself to a ROS Topic and reacts to messages coming from the topic. To use:
+
+1. Create a class extending ``ROSTopicUpdater`` and define the ``getTargetSubscriber()`` method, which will point the updater towards its target ROS topic. The options for the subscriber can be found in the ``RosSubscribers.java`` class.
+
+2. Implement the ``update()`` method of the new class. This method will be called whenever a new message is stored in the internal ``message`` variable, so it might be enough to just call ``target.updateValue(message)``. If the data needs to be extracted from the message first, do it in the ``update()`` before calling ``target.updateValue``.
+
+All External Updaters need to be initialized in the ``Context.java`` class. To do this:
+
+1. Define the External Updater a private class variable to the ``Context.java`` class (look for the external updater definition section).
+
+4. If the Updater depends on ROS, add its initialization into the ``Context.initializeROS(RosMainNode ros)`` method, otherwise add it to the private constructor ``Context()``. As the parameter, use the inner ``value`` or ``valueHistory`` variable from a ``ValueInterface`` or a ``HistoryInterface``.
+
+Adding a new Internal Updater
+"""""""""""""""""""""""""""""
+1. Create a class extending InternalUpdater<*targetClass*, *valueType*>. The class and data type of the target ``Value`` or ``ValueHistory`` are the generic parameters for the updater.
+
+2. A constructor is required for the class. Simply match the InternalUpdater constructor and call ``super(target)`` within. An example is in the ``DialogTopicsUpdater`` class.
+
+4. Define the Internal Updater in the ``Context.java`` class. Initialize the updater within the private ``Context()`` constructor. For example:
+
+``public final SampleUpdater SAMPLE_UPDATER; // Define as class variable``
+
+``SAMPLE_UPDATER = new SampleUpdater(DIALOG_TOPICS.valueHistory); // Initialize in the constructor``
+
+
+Adding and Input- or OutputDevice
+=================================
+In order to add new ``roboy.io.InputDevice`` and ``roboy.io.OutputDevice`` classes, changes in multiple locations are necessary.
+
+1. Implement your ``InputDevice`` or ``OutputDevice`` implementation using ``class [YOUR CLASSNAME] extends InputDevice`` (or OutputDevice, if you're doing output).
+2. If your device needs additional cleaning in order to be destroyed properly, additionally use ``implements CleanUp`` and implement the ``cleanup()`` method.
+3. Add your devices to ``roboy.util.io`` in ``getInputs()`` and ``getOutputs()``, so the dialog system may use them if they're chosen in the configuration.
+4. Add a (commented) input/output configuration to ``config.properties``.
+
+``roboy.dialog.Cleanup`` **must** be implemented if an InputDevice or OutputDevice needs static or external action when it gets destroyed! Otherwise, memory leaks may occur!
+An example for this is ``roboy.dialog.io.TelegramInput``.
 

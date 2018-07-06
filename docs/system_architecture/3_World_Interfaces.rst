@@ -85,14 +85,4 @@ Telegram
     **I/O Device**
 Chose ``telegram`` in- and output in ``config.properties``.
 
-Use a telegram bot to interface with the world. In order to use this, register a bot Register a bot as described on the `telegram website`_. And place your telegram-bot authentification token in a JSON-File structured like this:
-.. _telegram website: https://core.telegram.org/bots#3-how-do-i-create-a-bot
-
-
-.. code:: json
-{
-    "TOKEN":"AAAAAAAAA:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    "BOT_USERNAME":"Botname"
-}
-
-Provide the path to this file to the Dialog System via ``TELEGRAM_API_TOKENS_FILE: "/path/to/example.json"`` in ``config.properties``.
+Use a telegram bot to interface with the world. See `Optional steps`_ for more information.
