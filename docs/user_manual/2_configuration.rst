@@ -50,7 +50,7 @@ Arbitraty of the following outputs can be used simultaniously at the runtime::
     - ``ibm`` (uses IBM Bluemix, requires Internet connection, user & pass configured below)
     - ``emotions`` (requires ``roboy_face`` ROS package)
     - ``udp`` (sends packets on the port configure below)
-    - ``telegram`` (requires Internet connection and a prepared telegram bot, see `Installation`_ for more information. For the standard usecase, telegram should be set as both, in- and output.)
+    - ``telegram`` (requires Internet connection and a prepared telegram bot, see :ref:`Installation` for more information. For the standard usecase, telegram should be set as both, in- and output.)
 
 Example IO config::
 
@@ -89,6 +89,6 @@ Configure third party communication ports, credentials, etc.
     IBM_TTS_USER: x
     IBM_TTS_PASS: x
 
-**Telegram JSON-File path** (see `JSON Resources`_) ::
+**Telegram JSON-File path** (see :ref:`JSON Resources`) ::
 
     TELEGRAM_API_TOKENS_FILE: "/path/to/example.json"

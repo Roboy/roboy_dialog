@@ -5,7 +5,7 @@ Conversation
 ************
 
 A *Conversation* is a concept for everything necessary for conducting a dialog with a single counterpart. It's task is traversing through the different states of the interaction with the user to provide a maximally human-like experience.
-It recieves Input through it's *InputDevice* and uses this Input in combination with the *InferenceEngine* and the *StateMachine* to traverse through the correct *States* as defined in the configured *Personality*. If it needs or learns information about the counterpart of the dialog, it uses the *Interlocutor* (see `Roboy Memory`_) to access the Dialog Systems *Memory*. If it needs to store or inquire information about the environment it is in it uses its *Context* for this.
+It recieves Input through it's *InputDevice* and uses this Input in combination with the *InferenceEngine* and the *StateMachine* to traverse through the correct *States* as defined in the configured *Personality*. If it needs or learns information about the counterpart of the dialog, it uses the *Interlocutor* (see :ref:`Roboy Memory`) to access the Dialog Systems *Memory*. If it needs to store or inquire information about the environment it is in it uses its *Context* for this.
 
 .. image:: images/DialogSystem_Conversation.png
   :alt: Dialog System Conversation Thread architecture
@@ -136,7 +136,7 @@ Architecture
 .. figure:: images/context.png
  :alt: Context architecture
 
-The Context supports storing data as a ``Value`` or ``ValueHistory``. A ``Value`` only stores the latest data object that was pushed to it. A ``ValueHistory`` stores every value it receives and assigns each a unique key, thus the values can be ordered by their adding time. These may be accessed through ``Value Interface`` and ``History Interface`` implementations and may be changed through ``Updater`` implementations. For more information see `Using the Context`_.
+The Context supports storing data as a ``Value`` or ``ValueHistory``. A ``Value`` only stores the latest data object that was pushed to it. A ``ValueHistory`` stores every value it receives and assigns each a unique key, thus the values can be ordered by their adding time. These may be accessed through ``Value Interface`` and ``History Interface`` implementations and may be changed through ``Updater`` implementations. For more information see :ref:`Using the Context`.
 
 Inference engine
 ================

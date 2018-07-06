@@ -27,4 +27,4 @@ The implementation of the pipeline is in Java. Integrations with tools in other 
 How to extend it?
 =================
 
-If you do not know how the system works please refer the "System architecture" section. If you know the part you want to extend or are sure you do not need to understand the detailed functionality of the overall system you may directly start with the "Developer manual" section. The `Code structure overview`_ section is a good place to start.
+If you do not know how the system works please refer the "System architecture" section. If you know the part you want to extend or are sure you do not need to understand the detailed functionality of the overall system you may directly start with the "Developer manual" section. The :ref:`Code structure overview` section is a good place to start.

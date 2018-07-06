@@ -92,4 +92,4 @@ Telegram
 
 Choose ``telegram`` in- and output in ``config.properties``.
 
-Use a telegram bot to interface with the world. See `Optional steps`_ for more information.
+Use a telegram bot to interface with the world. See :ref:`Optional steps` for more information.

@@ -2,7 +2,7 @@
 Resources
 *********
 
-For the ``config.properties`` resource, please see `Configuration`_.
+For the ``config.properties`` resource, please see :ref:`Configuration`.
 
 .. _JSON Resources:
 
