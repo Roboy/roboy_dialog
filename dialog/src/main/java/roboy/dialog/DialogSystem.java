@@ -16,7 +16,7 @@ import java.io.IOException;
 @Deprecated
 public class DialogSystem {
     public static void main(String[] args) throws IOException{
-        ConversationManager.main(args);
         System.err.println("Using DialogSystem is deprecated! Please use ConversationManager instead!");
+        ConversationManager.main(args);
     }
 }

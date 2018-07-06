@@ -90,23 +90,24 @@ Contents:
 
   user_manual/*
 
-.. _systemArchitecture:
+.. _SystemArchitecture:
 .. toctree::
   :maxdepth: 1
   :glob:
   :caption: System architecture
 
-  system_architecture/*
+  System_Architecture/*
 
-.. _developerManual:
+.. _ProjectStructure:
 .. toctree::
   :maxdepth: 1
   :glob:
   :caption: Developer manual
 
-  developer_manual/*
+  Project_Structure/*
 
 .. toctree::
    :maxdepth: 1
 
    about-arc42
+
