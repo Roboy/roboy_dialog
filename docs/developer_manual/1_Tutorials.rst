@@ -644,8 +644,7 @@ A new InputDevice for a social media
 ------------------------------------
 
 First create a new class in roboy.io folder, namely "MySocialMediaInput" that implements from "roboy.io.InputDevice". 
-
-
+::
     // inside MySocialMediaInput.java
 
     public class MySocialMediaInput implements InputDevice {
@@ -653,7 +652,7 @@ First create a new class in roboy.io folder, namely "MySocialMediaInput" that im
     }
 
 One function called “listen()” has to be implemented.
-
+::
     @Override
     public Input listen() throws InterruptedException, IOException {
         return null;
@@ -664,12 +663,12 @@ Since you will have an "InputDevice" for each user then you need at least a uniq
 .. NOTE::
     In further steps unique identifier mentioned as uuid
 
-
+::
     private static final HashMap<String, MySocialMediaInput> inputDevices = new HashMap<>();
 
 
 Add a constructor that receives the uuid as parameter
-
+::
     // inside MySocialMediaInput.java
 
     public MySocialMediaInput(String uuid){
@@ -687,17 +686,17 @@ At this point, we received the uuid and have a hashmap of each "MySocialMediaInp
     The order is actually reversed for the sake of tutorial of course you need to receive messages before you return them.
 
 Let’s continue with first one. To return a message we need a message so create a "String" for it right below the "HashMap".
-
+::
     private volatile String message;
 
 We need to initialize it in constructor. Add the following into the beginning of constructor.
-
+::
     // inside public MySocialMediaInput(String uuid)
 
     this.message = "";
 
 Finally finish the listen method
-    
+:: 
     // inside MySocialMediaInput.java
 
     public Input listen() throws InterruptedException, IOException {
@@ -726,7 +725,7 @@ Create a static "onUpdate(Pair<String, String>)" function that will be called fr
 .. Note::
     There is no "SocialMediaHandler" as template. You should have a handler or any logic that receive the messages from your soical media. Then you need to call this function after applied your logic (e.g. wait for a certain time to answer.)
 
-    
+::   
     public static void onUpdate(Pair<String, String> update){
         //get the uuid
 
@@ -741,7 +740,7 @@ Create a static "onUpdate(Pair<String, String>)" function that will be called fr
     TO DO: 
 
 To create the uuid that we discussed before, get the unique identifier from the "update". And add a social media name as prefix.
-
+::
     //get the uuid
 
     String id = update.getKey();
@@ -756,8 +755,8 @@ Now we need to get the input device there is an existing one with the uuid.
 
     MySocialMediaInput input = inputDevices.get(uuid);
     if (input == null){
-	    try{
-		    ConversationManager.spawnConversation(uuid);	
+        try{
+            ConversationManager.spawnConversation(uuid);	
         }catch(IOException e){
             // do your logging or other error handling stuff
             return;
