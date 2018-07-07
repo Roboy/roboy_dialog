@@ -51,7 +51,7 @@ The quick guide for people who don't care about any of the technical mumbo jumbo
 ```bash
 sudo apt-get install maven openjdk-9-jdk git docker.io
 
-sudo docker run --publish=7474:7474 --publish=7687:7687 --volume=$HOME/neo4j/data:/data --volume=$HOME/neo4j/logs:/logs neo4j:3.0
+sudo docker run --publish=7474:7474 --publish=7687:7687 --volume=$HOME/neo4j/data:/data --volume=$HOME/neo4j/logs:/logs neo4j:3.4
 
 git clone https://github.com/Roboy/roboy_dialog -b devel --recursive
 
@@ -91,7 +91,7 @@ sudo docker run \
     --publish=7474:7474 --publish=7687:7687 \
     --volume=$HOME/neo4j/data:/data \
     --volume=$HOME/neo4j/logs:/logs \
-    neo4j:3.0
+    neo4j:3.4
 ```
 
 #### Clone the Dialog Manager repository
