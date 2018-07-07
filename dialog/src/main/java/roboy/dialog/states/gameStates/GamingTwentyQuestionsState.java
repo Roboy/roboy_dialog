@@ -1,4 +1,4 @@
-package roboy.dialog.states.ordinaryStates;
+package roboy.dialog.states.gameStates;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.SAORelation;
 import com.markozajc.akiwrapper.Akiwrapper;

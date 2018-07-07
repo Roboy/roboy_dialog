@@ -35,17 +35,17 @@ public class PhraseCollection {
     public static RandomList<String> SEGUE_PICKUP
             = readFile("resources/phraseLists/segue-pickup.txt");
     public static RandomList<String> OFFER_GAME_PHRASES
-            = readFile("resources/phraseLists/offer-game-phrases.txt");
+            = readFile("resources/phraseLists/gamePhrases/offer-game-phrases.txt");
     public static RandomList<String> AKINATOR_INTRO_PHRASES
-            = readFile("resources/phraseLists/akinator-intro-phrases.txt");
+            = readFile("resources/phraseLists/gamePhrases/akinator-intro-phrases.txt");
     public static RandomList<String> ROBOY_WINNER_PHRASES
-            = readFile("resources/phraseLists/roboy-winner-phrases.txt");
+            = readFile("resources/phraseLists/gamePhrases/roboy-winner-phrases.txt");
     public static RandomList<String> ROBOY_LOSER_PHRASES
-            = readFile("resources/phraseLists/roboy-loser-phrases.txt");
+            = readFile("resources/phraseLists/gamePhrases/roboy-loser-phrases.txt");
     public static RandomList<String> GAME_ASKING_PHRASES
-            = readFile("resources/phraseLists/game-asking-phrases.txt");
+            = readFile("resources/phraseLists/gamePhrases/game-asking-phrases.txt");
     public static RandomList<String> OFFER_FILTER_PHRASES
-            = readFile("resources/phraseLists/offer-snapchat-filter.txt");
+            = readFile("resources/phraseLists/gamePhrases/offer-snapchat-filter.txt");
     public static RandomList<String> PROFANITY_CHECK_WORDS
             = FileLineReader.readFile("resources/phraseLists/profanity-check-list.txt");
     // Added for the ExpoPersonality
