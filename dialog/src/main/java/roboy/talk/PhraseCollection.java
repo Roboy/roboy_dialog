@@ -33,7 +33,7 @@ public class PhraseCollection {
     public static RandomList<String> SEGUE_JOBS
             = readFile("resources/phraseLists/segue-jobs.txt");
     public static RandomList<String> SEGUE_PICKUP
-            = readFile("resources/phraseLists/segue-pickup.txt");
+            = FileLineReader.readFile("resources/phraseLists/segue-pickup.txt");
     public static RandomList<String> OFFER_GAME_PHRASES
             = readFile("resources/phraseLists/gamePhrases/offer-game-phrases.txt");
     public static RandomList<String> AKINATOR_INTRO_PHRASES

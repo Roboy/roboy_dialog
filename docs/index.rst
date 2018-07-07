@@ -6,7 +6,7 @@
 Roboy Dialog System
 ===========================================================
 
-The Roboy Dialog (or Dialog Manager) System (RDS) is a sophisticated software module representing the cognitive capabilities
+The Roboy Dialog System (RDS) is a sophisticated software module representing the cognitive capabilities
 of the humanoid anthropomimetic robot Roboy.
 The goal of the project is to implement dialog routines and knowledge extraction for a realistic human-like
 conversation flow which is achieved by utilizing various behaviour models represented by the State Machine (RDSM) finite automaton
@@ -20,7 +20,7 @@ It also allows being deployed on a multitude of communication channels for a bro
 
 The overview diagram shows the external systems which Dialog System interacts with, and the tasks for which the system is responsible.
 
-.. figure:: images/overview_diagram.jpg
+.. figure:: images/overview_diagram.png
     :alt: Overview diagram
 
 Status
@@ -35,6 +35,7 @@ Stable functionality:
 - Roboy asks questions about people he meets
 - Roboy stores and retrieves the information about people he meets
 - Roboy stores and retrieves the information about himself
+- Roboy Dialog is deployable on multi-user communication channels
 
 In development:
 
@@ -86,27 +87,28 @@ Contents:
 .. toctree::
   :maxdepth: 1
   :glob:
-  :caption: Usage and Installation
+  :caption: User manual
 
   Usage/*
 
-.. _ScopeContext:
+.. _SystemArchitecture:
 .. toctree::
   :maxdepth: 1
   :glob:
-  :caption: Interfaces and Scope
+  :caption: System architecture
 
-  ScopeContext/*
-  
-.. _Architecture:
+  System_Architecture/*
+
+.. _ProjectStructure:
 .. toctree::
-   :maxdepth: 1
-   :glob:
-   :caption: Architecture
-   
-   Architecture/*
+  :maxdepth: 1
+  :glob:
+  :caption: Developer manual
+
+  Project_Structure/*
 
 .. toctree::
    :maxdepth: 1
 
    about-arc42
+

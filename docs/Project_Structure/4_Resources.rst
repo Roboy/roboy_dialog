@@ -1,12 +1,9 @@
-
-
+*********
 Resources
-=========
-
-Resources are located in resources folder and comprise important text files containing necessary inputs for the RDS.
+*********
 
 JSON Resources
---------------
+==============
 
 - personality files - contain the description of Roboy's personality::
 
@@ -53,8 +50,23 @@ JSON Resources
       }
     }
 
+- synonym lists - contain keys and possible synonyms
+
+    {
+      "key1": [
+        "synonym1",
+        "synonym2",
+        "synonym3"
+      ],
+      "key2": [
+        "synonym1",
+        "synonym2",
+        "synonym3"
+      ]
+    }
+
 CSV Resources
--------------
+=============
 
 - trivia - funny facts Roboy would love to tell you in the following form:
 
@@ -66,12 +78,12 @@ CSV Resources
 
 
 BIN Resources
--------------
+=============
 
 - BIN files contain the models for the Roboy Semantic Parser
 
 XML Resources
--------------
+=============
 
 - contains the configuration for the Roboy Dialog Logger where you can set the logger scope and the means of output
 

@@ -1,5 +1,6 @@
+*********
 Tutorials
-=========
+*********
 
 .. highlight:: java
 
@@ -7,7 +8,7 @@ Tutorials
 .. _tut_new_state:
 
 Adding a New State
-------------------
+==================
 
 Roboy often visits different events and you might want him to say something specific, for example mention a company or a sponsor. One way to do this would be to modify an existing state. However, these changes are often discarded as you still want to have the old behaviour. There is a better way: create a new custom state specifically for your needs.
 
@@ -166,7 +167,7 @@ To learn more details about states and personalities, refer to the :ref:`persona
 .. highlight:: json
 
 Creating a New Personality
---------------------------
+==========================
 
 Roboy's Dialog System can be used in different environments and situations like fairs, conferences, demos or as a chatbot on social networks. For every given situation, Roboy's behaviour should be different. We use personalities to define Roboy's way of talking.
 
@@ -303,7 +304,7 @@ While the editor is not implemented yet, we still have good news for you. You *c
 
 
 Adding New Questions to the State
----------------------------------
+=================================
 
 There exists a list of questions, we may want Roboy to ask in order to acquire new information about people and the environment.
 It is stored in the resources directory under sentences/QAList.json and follows the next JSON structure as given:
@@ -382,7 +383,7 @@ Now, we can ask these newly added questions and later process the answers in the
 
 
 Querying the Memory from the Dialog System
-------------------------------------------
+==========================================
 
 
 Indeed, the newly created state may be the pinnacle of State Machines practice, but it does not yet exploit all of the Roboy Dialog System capabilities, such as
@@ -452,13 +453,13 @@ Furthermore, we wanted to make it less of miserable routine thus there is a help
 
 
 Creating a Value History / Storing and Updating Values in the Context
-------------------------------------------
+=====================================================================
 
 See :ref:`context`
 
 
 Extending the Lexicon and the Grammar
--------------------------------------
+=====================================
 
 This tutorial explains how to create or change grammar and lexicon used in the semantic parser.
 
@@ -516,7 +517,7 @@ For lexicon::
     -SimpleLexicon.inPaths
 
 Scoring Functions and Knowledge Retrieval
------------------------------------------
+=========================================
 
 Currently, our semantic parser uses error retrieval mechanism that can be modified in the following steps:
 
@@ -543,7 +544,7 @@ Knowledge Retriever
 3. Add knowledge retriever in constructor of ``edu.stanford.nlp.sempre.roboy.ErrorRetrieval`` class.
 
 Editing the Config File
------------------------
+=======================
 
 Dialog System is configured using the ``config.properties`` file in the root of the project. 
 
@@ -578,6 +579,7 @@ Available inputs are:
     - ``cmdline``
     - ``upd`` (listens for incoming udp packets in the port specified below)
     - ``bing`` (requires Internet connection and the ``roboy_speech_recognition`` ROS package)
+    - ``telegram`` (requires Internet connection and a prepared telegram bot, see 1. Getting Started for more details. For the standard usecase, telegram should be set as both, in- and output.)
     
 Arbitraty of the following outputs can be used simultaniously at the runtime::
     - ``cerevoice`` (requires ``roboy_speech_synthesis`` ROS package)
@@ -585,6 +587,7 @@ Arbitraty of the following outputs can be used simultaniously at the runtime::
     - ``ibm`` (uses IBM Bluemix, requires Internet connection, user & pass configured below)
     - ``emotions`` (requires ``roboy_face`` ROS package)
     - ``udp`` (sends packets on the port configure below)
+    - ``telegram`` (requires Internet connection and a prepared telegram bot, see 1. Getting Started for more details. For the standard usecase, telegram should be set as both, in- and output.)
 
 Example IO config::
 
@@ -614,8 +617,4 @@ Configure third party communication ports, credentials, etc.::
 
     IBM_TTS_USER: x
     IBM_TTS_PASS: x
-
-Show the GUI with Context contents during runtime:
-
-    CONTEXT_GUI_ENABLED: true
 
