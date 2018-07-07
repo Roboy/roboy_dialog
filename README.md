@@ -18,10 +18,11 @@
             - [Running NLU only](#running-nlu-only)
         - [Installing and Usage via an IDE](#installing-and-usage-via-an-ide)
         - [Troubleshooting](#troubleshooting)
-    - [Explanations](#explanations)
-        - [Environmental Variables](#environmental-variables)
-            - [ROS Master References](#ros-master-references)
-            - [Neo4J References](#neo4j-references)
+    - [Environmental Variables](#environmental-variables)
+        - [ROS Master References](#ros-master-references)
+        - [Neo4J References](#neo4j-references)
+        - [Redis References](#redis-references)
+        - [Example](#example)
     - [Using the Google Word2Vec Model in NLU](#using-the-google-word2vec-model-in-nlu)
 
 ## What is this Project
@@ -46,7 +47,7 @@ The implementation of the pipeline is in Java. Integrations with tools in other 
 
 The quick guide for people who don't care about any of the technical mumbo jumbo. This is a local installation guide.
 
-[Set Environmental Variables](#set-environmental-variables). **Only do this once.**
+[Set Environmental Variables](#environmental-variables). **Only do this once.**
 
 ```bash
 sudo apt-get install maven openjdk-9-jdk git docker.io
@@ -74,6 +75,10 @@ java -Xmx6g -d64 -cp dialog/target/roboy-dialog-system-2.1.9-jar-with-dependenci
 
 - Intellij
 - At least 8GB of RAM
+- At least 6GB of Disk Space
+    - ~ 4GB for Maven Dependencies
+    - ~ 500MB for Roboy_Dialog with all sub-modules and files generated via mvn clean install
+    - Rest is a ballpark estimate for Neo4J, Redis, ROS and their dependencies
 - Ubuntu (or variation) 16.04 LTS
     - Needed for `ROS Kinetic`
     - If you do not need ROS features, any version of Linux should do
@@ -102,20 +107,9 @@ Enter your project directory with `cd roboy_dialog`
 
 > Tip: If you wish to clone another branch, e.g. `devel`, just simply replace `master` with the branch's name.
 
-#### Set [Environmental Variables](http://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html)
+#### Set Environmental Variables
 
-If not done so already. Your `.bashrc` should look like:
-
-``` bash
-
-    export ROS_MASTER_URI="http://127.0.0.1:11311"
-    export ROS_HOSTNAME="127.0.0.1"
-    export NEO4J_ADDRESS="bolt://127.0.0.1:7687"
-    export NEO4J_USERNAME="neo4j"
-    export NEO4J_PASSWORD="neo4jpassword"
-    export REDIS_URI="redis://localhost:6379/0"
-    export REDIS_PASSWORD="root"
-```
+Set the environmental variables described [here](#environmental-variables)
 
 #### Installing
 
@@ -160,11 +154,35 @@ Clone the Dialog Manager repository either using your IDE's VCS Tools or using t
 
 See the [Troubleshooting Page](http://roboy-dialog.readthedocs.io/en/latest/Usage/9_troubleshooting.html)
 
-## Explanations
+## Environmental Variables
 
-### Environmental Variables
+One needs to set environmental variables, to tell roboy_dialog where specific services are located. These are passed into the program and used to set the variables...
 
-#### ROS Master References
+```java
+public final static String ROS_MASTER_URI;
+public final static String ROS_HOSTNAME;
+public final static String NEO4J_ADDRESS;
+public final static String NEO4J_USERNAME;
+public final static String NEO4J_PASSWORD;
+public final static String REDIS_URI;
+public final static String REDIS_PASSWORD;
+```
+
+One does this by adding references to your `.bashrc` or `.bash_profile`, that `roboy_dialog` shall read from...
+
+``` bash
+export ROS_MASTER_URI="***"
+export ROS_HOSTNAME="***"
+export NEO4J_ADDRESS="***"
+export NEO4J_USERNAME="***"
+export NEO4J_PASSWORD="***"
+export REDIS_URI="***"
+export REDIS_PASSWORD="***"
+```
+
+See [here](#example) for an example.
+
+### ROS Master References
 
 Dialog is tied into the Roboy architecture as a ROS node.
 Therefore, make sure to set the following environment variables to meaningful values:
@@ -177,7 +195,7 @@ export ROS_MASTER_URI=http://rosmaster:11311
 If no remote development instance of ROS master is available, just run
 `roscore` in a [docker container](http://wiki.ros.org/docker/Tutorials/Docker).
 
-#### Neo4J References
+### Neo4J References
 
 The dialog system's memory module uses Neo4j, a graph database which is
 stores relations between entities observed by roboy (names, hobbies, locations etc.).
@@ -191,6 +209,28 @@ export NEO4J_PASSWORD=pass
 If no remote development instance of Neo4j is available, just run
 `Neo4j` in a [docker container](https://neo4j.com/developer/docker/#_how_to_use_the_neo4j_docker_image). For more options and additional information, refer to `docs/Usage` in the
 memory module.
+
+### Redis References
+
+Redis is a software used for face features storage on a remote server. In most cases, you can simply ignore this.
+
+```bash
+export REDIS_URI="***"
+export REDIS_PASSWORD="***"
+```
+
+### Example
+
+Here is an example, if one were to want to locally run `roboy_dialog`. In most cases you would not even need the last two lines.
+``` bash
+export ROS_MASTER_URI="http://127.0.0.1:11311"
+export ROS_HOSTNAME="127.0.0.1"
+export NEO4J_ADDRESS="bolt://127.0.0.1:7687"
+export NEO4J_USERNAME="neo4j"
+export NEO4J_PASSWORD="neo4jpassword"
+export REDIS_URI="redis://localhost:6379/0"
+export REDIS_PASSWORD="root"
+```
 
 ## Using the Google Word2Vec Model in NLU
 
