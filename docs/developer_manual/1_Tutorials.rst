@@ -643,7 +643,7 @@ Social Media Integration
 A new InputDevice for a social media
 ------------------------------------
 
-First create a new class in roboy.io folder, namely "MySocialMediaInput" that implements from "roboy.io.InputDevice". 
+First create a new class in roboy.io folder, namely ``MySocialMediaInput`` that implements from ``roboy.io.InputDevice``. 
 ::
     // inside MySocialMediaInput.java
 
@@ -659,7 +659,7 @@ One function called “listen()” has to be implemented.
     }
 
 
-Since you will have an "InputDevice" for each user then you need at least a unique identifier for each user right? So each of this unique identifiers should mapped to an "InputDevice". Therefore, create a static hashmap for it as follows.
+Since you will have an ``InputDevice`` for each user then you need at least a unique identifier for each user right? So each of this unique identifiers should mapped to an ``InputDevice``. Therefore, create a static hashmap for it as follows.
 ::
     private static final HashMap<String, MySocialMediaInput> inputDevices = new HashMap<>();
 
@@ -671,20 +671,22 @@ Add a constructor that receives the uuid as parameter
     // inside MySocialMediaInput.java
 
     public MySocialMediaInput(String uuid){
+
         //constructor
+
         synchronized(inputDevices){
-            inputDevices.put(uuid, this)””
+            inputDevices.put(uuid, this)
         }
     }
 
-At this point, we received the uuid and have a hashmap of each "MySocialMediaInput". What else we need to implement?:
-- Return messages as "roboy.io.Input" in the "listen()" method
+At this point, we received the uuid and have a hashmap of each ``MySocialMediaInput``. What else we need to implement?:
+- Return messages as ``roboy.io.Input`` in the ``listen()`` method
 - Receive the messages
 
 .. Note::
     The order is actually reversed for the sake of tutorial of course you need to receive messages before you return them.
 
-Let’s continue with first one. To return a message we need a message so create a "String" for it right below the "HashMap".
+Let’s continue with first one. To return a message we need a message so create a ``String`` for it right below the ``HashMap``.
 ::
     private volatile String message;
 
@@ -697,22 +699,22 @@ We need to initialize it in constructor. Add the following into the beginning of
 Finally finish the listen method
 :: 
     // inside MySocialMediaInput.java
-
+    
     public Input listen() throws InterruptedException, IOException {
         Input newInput;
         syncronized(this){
-            while(message.equals(“”)){
+            while(message.equals("")){
                 try{
                     this.wait();
                 }
                 catch(InterruptedException e){
-                    if(message == null||message.equals(“”)){
+                    if(message == null||message.equals("")){
                         throw e;
                     }
                 }
             }
             newInput = new Input(message);
-            message = “”;
+            message = "";
         }
         return newInput;
     }
@@ -720,9 +722,9 @@ Finally finish the listen method
 Nice, now only thing to worry about is how to receive the message. 
 
 .. Note::
-    There is no "SocialMediaHandler" as template. You should have a handler or any logic that receive the messages from your soical media. Then you need to call this function after applied your logic (e.g. wait for a certain time to answer.)
+    There is no ``SocialMediaHandler`` as template. You should have a handler or any logic that receive the messages from your soical media. Then you need to call this function after applied your logic (e.g. wait for a certain time to answer.)
 
-Create a static "onUpdate(Pair<String, String>)" function that will be called from your "SocialMediaHandler" class with pair parameter that consits of the uuid and the message.
+Create a static ``onUpdate(Pair<String, String>)`` function that will be called from your ``SocialMediaHandler`` class with pair parameter that consits of the uuid and the message.
 ::
     public static void onUpdate(Pair<String, String> update){
         //get the uuid
@@ -732,7 +734,7 @@ Create a static "onUpdate(Pair<String, String>)" function that will be called fr
         //assign the message to the input device
     }
 
-To create the uuid that we discussed before, get the unique identifier from the "update". And add a social media name as prefix.
+To create the uuid that we discussed before, get the unique identifier from the ``update``. And add a social media name as prefix.
 ::
     //get the uuid
 
@@ -757,9 +759,9 @@ Now we need to get the input device there is an existing one with the uuid.
         input = inputDevices.get(uuid);
     }
 
-As you can see if there is no inputdevice with respective uuid. "ConversationManager.spawnConversation(uuid)" is used. It magically creates the inputDevice (as well as the Conversation and the magical stuff that you do not need to worry about)
+As you can see if there is no inputdevice with respective uuid. ``ConversationManager.spawnConversation(uuid)`` is used. It magically creates the inputDevice (as well as the Conversation and the magical stuff that you do not need to worry about)
 
-Finally add another interface namely "CleanUp" and add its "cleanup()" method.
+Finally add another interface namely ``CleanUp`` and add its ``cleanup()`` method.
 ::
     // inside MySocialMediaInput.java
 
@@ -781,7 +783,7 @@ A new OutputDevice for a social media
 
 You have perfectly working input device for your social media. But that only for receiving messages, we also need to send messages.
 
-Create a new class in "roboy.io" folder namely "MySocialMediaOutput" that implements from "roboy.io.OutputDevice". 
+Create a new class in ``roboy.io`` folder namely ``MySocialMediaOutput`` that implements from ``roboy.io.OutputDevice``. 
 ::
     // inside MySocialOutput.java
 
@@ -789,7 +791,7 @@ Create a new class in "roboy.io" folder namely "MySocialMediaOutput" that implem
 
     }
 
-You should override a method namely “act” and List of actions as parameter.
+You should override a method namely ``act`` and List of actions as parameter.
 ::
     @override
     public void act(List<Action> actions){
@@ -809,9 +811,9 @@ As discussed before there is an OutputDevice for a user that is communicating wi
         this.uuid = uuid.substring(uuid.indexOf('-')+1);
     }
 
-Remember the uuid in "MySocialMediaInput" was “MySocialMedia-”+id. Here it is splitted from the original user id that will be using for sending message.
+Remember the uuid in ``MySocialMediaInput`` was “MySocialMedia-”+id. Here it is splitted from the original user id that will be using for sending message.
 
-Finish the "act" method
+Finish the ``act`` method
 ::
     // handle actions
     for(Action a : actions) {
@@ -828,7 +830,7 @@ Finish the "act" method
     }
 
 .. Note::
-    In this tutorial, only shy emotion has been used, but there are several emotions you can check "roboy.emotions.RoboyEmotion.java" if you want more!
+    In this tutorial, only shy emotion has been used, but there are several emotions you can check ``roboy.emotions.RoboyEmotion.java`` if you want more!
 
 	/* */ these comments are not completed you should use your way that is sending a message via social media using the user’s id.
 
@@ -836,7 +838,7 @@ Finish the "act" method
 Telegram: Handle commands
 -------------------------
 
-New inline commands can be handled in "onUpdateReceived" method which is in "TelegramCommunicationHandler" class. 
+New inline commands can be handled in ``onUpdateReceived`` method which is in ``TelegramCommunicationHandler`` class. 
 
 Find the below if code block in onUpdateReceived.
 ::
