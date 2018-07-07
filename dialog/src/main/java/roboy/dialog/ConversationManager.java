@@ -82,40 +82,30 @@ public class ConversationManager {
         analyzers.add(new ProfanityAnalyzer());
 
 
-        //Roboy mode: Repeat a conversation a few times.
-        if(ConfigManager.ROS_ENABLED) {
+        //I/O specific core behaviour
 
+        //telegram needs to initialize the telegram API interface and then go into command mode so it can dynamically spawn, delete and manage incoming conversations with many parallelly interacting users
+        if (ConfigManager.INPUT.contains("telegram")) {
+
+            // initialize telegram bot
+            ApiContextInitializer.init();
+            TelegramBotsApi telegramBotApi = new TelegramBotsApi();
+
+            try {
+                telegramBotApi.registerBot(TelegramCommunicationHandler.getInstance());
+            } catch (TelegramApiException e) {
+                logger.error("Telegram bots api error: ", e);
+            }
+
+            logger.info("####################################################\n#                SYSTEM LOADED                     #\n####################################################\n");
+            commandMode();
+
+        } else if (ConfigManager.INPUT.contains("cmdline") | ConfigManager.INPUT.contains("cerevoice") | ConfigManager.INPUT.contains("udp") | ConfigManager.INPUT.contains("bing")) {//default single-point of interaction behaviour; start a single conversation, wait for it to end, repeat if necessary; no command mode necessary
             Conversation c = createConversation(rosMainNode, analyzers, new Inference(), memory, "local");
 
-            //Repeat conversation c.
-            for (int numConversations = 0; numConversations < 50; numConversations++) {
-                logger.info("PRESS ENTER TO START THE DIALOG. ROBOY WILL WAIT FOR SOMEONE TO GREET HIM (HI, HELLO)");
-                System.in.read();
+            do {//repeat conversations if configured to do so
+                demoReadyCheck();
 
-                c.start();
-                try {//Since this is roboy mode and only one conversation happens, we need to wait for it to finish so we don't clog the command line.
-                    logger.info("Waiting for conversation to end.");
-                    c.join();
-                }catch (InterruptedException ie) {
-                    logger.error("ConversationManager has been interrupted: " + ie.getMessage());
-                }
-                //Reset the conversation before rerun.
-                c.resetConversation(new Interlocutor(memory));
-            }
-        } else {//non-roboy mode
-            if (ConfigManager.INPUT.contains("telegram")) {
-
-                // initialize telegram bot
-                ApiContextInitializer.init();
-                TelegramBotsApi telegramBotApi = new TelegramBotsApi();
-
-                try {
-                    telegramBotApi.registerBot(TelegramCommunicationHandler.getInstance());
-                } catch (TelegramApiException e) {
-                    logger.error("Telegram bots api error: ", e);
-                }
-            } else if (ConfigManager.INPUT.contains("cmdline")) {
-                Conversation c = createConversation(rosMainNode, analyzers, new Inference(), memory, "local");
                 c.start();
                 try {//Since this is roboy mode and only one conversation happens, we need to wait for it to finish so we don't clog the command line.
                     logger.info("Waiting for conversation to end.");
@@ -123,22 +113,9 @@ public class ConversationManager {
                 } catch (InterruptedException ie) {
                     logger.error("ConversationManager has been interrupted: " + ie.getMessage());
                 }
-            }
-            logger.info("####################################################\n#                SYSTEM LOADED                     #\n####################################################\n");
-
-            //wait for user commands
-            Scanner scanner = new Scanner(System.in);
-
-            while (true) {
-                String command = scanner.next();
-                switch (command) {
-                    case "shutdown"://gracefully say bye
-                        for (Conversation c : conversations.values()) c.endConversation();
-                        System.exit(0);
-                    default:
-                        System.out.println("Command not found. Currently supported commands: shutdown");
-                }
-            }
+                //Reset the conversation before rerun.
+                c.resetConversation(new Interlocutor(memory));
+            } while(ConfigManager.INFINITE_REPETITION);
         }
     }
 
@@ -257,5 +234,35 @@ public class ConversationManager {
 
 
         return new Conversation(personality, personalityFile, multiIn, multiOut, analyzers);
+    }
+
+    /**
+     * Pauses execution until enter is hit if DEMO_MODE is configured. Very useful for fairs and other demonstations where you'd want to explain something before demonstrating the dialog systems capabilities
+     * @throws IOException
+     */
+    private static void demoReadyCheck() throws IOException{
+        if(ConfigManager.DEMO_MODE){
+            logger.info("PRESS ENTER TO START THE DIALOG. ROBOY WILL WAIT FOR SOMEONE TO GREET HIM (HI, HELLO)");
+            System.in.read();
+        }
+    }
+
+    /**
+     * Assume command mode: In ConversationManager thread wait for commands on cmdline and manage conversations according to them
+     */
+    private static void commandMode(){
+        //wait for user commands
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            String command = scanner.next();
+            switch (command) {
+                case "shutdown"://gracefully say bye
+                    for (Conversation c : conversations.values()) c.endConversation();
+                    System.exit(0);
+                default:
+                    System.out.println("Command not found. Currently supported commands: shutdown");
+            }
+        }
     }
 }

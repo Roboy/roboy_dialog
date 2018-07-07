@@ -62,6 +62,22 @@ Example IO config::
 
 Additional configuration from the "Utilities" paragraph may be required.
 
+System behaviour flags
+^^^^^^^^^^^^^^^^^^^^^^
+
+Debug flag for en/disabling debug specific behaviour::
+
+    DEBUG = false
+
+Demo mode flag for en/disabling demo mode. This is for fairs and such where one would prepare the system for showing whilst giving a talk. ::
+
+    DEMO_MODE: false
+
+Infinite repitition flag: For input that require a single instance of the dialog system (like command line or on the roboy). En/disables beginning a new conversation after one has ended or ending the dialog system when the conversation has ended. ::
+
+    INFINITE_REPETITION: true
+
+
 Personality
 ^^^^^^^^^^^
 
