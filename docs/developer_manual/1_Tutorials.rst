@@ -677,7 +677,7 @@ Add a constructor that receives the uuid as parameter
         }
     }
 
-At this point, we received the uuid and have a hashmap of each "MySocialMediaInput". What else we need to implement? 
+At this point, we received the uuid and have a hashmap of each "MySocialMediaInput". What else we need to implement?:
 - Return messages as "roboy.io.Input" in the "listen()" method
 - Receive the messages
 
@@ -731,7 +731,7 @@ Create a static "onUpdate(Pair<String, String>)" function that will be called fr
 
         //assign the message to the input device
     }
-    
+
 To create the uuid that we discussed before, get the unique identifier from the "update". And add a social media name as prefix.
 ::
     //get the uuid
