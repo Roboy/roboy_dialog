@@ -663,6 +663,7 @@ Since you will have an "InputDevice" for each user then you need at least a uniq
 .. NOTE::
     In further steps unique identifier mentioned as uuid
 
+
 ::
     private static final HashMap<String, MySocialMediaInput> inputDevices = new HashMap<>();
 
@@ -725,7 +726,8 @@ Create a static "onUpdate(Pair<String, String>)" function that will be called fr
 .. Note::
     There is no "SocialMediaHandler" as template. You should have a handler or any logic that receive the messages from your soical media. Then you need to call this function after applied your logic (e.g. wait for a certain time to answer.)
 
-::   
+
+::
     public static void onUpdate(Pair<String, String> update){
         //get the uuid
 
