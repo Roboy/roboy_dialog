@@ -29,11 +29,11 @@ Currently, it also provides with the next custom methods:
     - RecognizeSpeech
     - GenerateAnswer
     - ShowEmotion
-    - CreateMemoryQuery
-    - UpdateMemoryQuery
-    - GetMemoryQuery
-    - DeleteMemoryQuery
-    - CypherMemoryQuery
+    - [Deprecated] CreateMemoryQuery
+    - [Deprecated] UpdateMemoryQuery
+    - [Deprecated] GetMemoryQuery
+    - [Deprecated] DeleteMemoryQuery
+    - [Deprecated] CypherMemoryQuery
     - DetectIntent
     - addListener
     - waitForLatchUnlock
