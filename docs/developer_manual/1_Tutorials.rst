@@ -68,7 +68,7 @@ Now, we can write some logic and define what our new state should do. The ``act(
 
     return Output.say("What is 2 plus 2?");
 
-The interlocutor's answer will be passed to the ``react(...)`` function once it is available. Inside, we should check whether the answer is correct and react based on correctness. This code is one of the simplest ways to do this::
+The interlocutor's answer will be passed to the ``react(...)`` function once it is available. Inside, we should check whether the answer is correct and react based on correctness. If we also want to add emotion to our output, ``setEmotion()`` method can be used. This code is one of the simplest ways to do this::
 
     // inside public Output react(Interpretation input)
 
@@ -79,11 +79,11 @@ The interlocutor's answer will be passed to the ``react(...)`` function once it 
     if (tokens != null && ((List) tokens).size() > 0 && tokens.get(0).equals("four")) {
         // answer correct
         next = getTransition("personKnowsMath");
-        return Output.say("You are good at math!");
+        return Output.say("You are good at math!").setEmotion("happiness");
     } else {
         // answer incorrect
         next = getTransition("personDoesNotKnowMath");
-        return Output.say("Well, 2 plus 2 is 4!");
+        return Output.say("Well, 2 plus 2 is 4!").setEmotion("sadness");
     }
 
 Note a few things here:
@@ -132,12 +132,12 @@ That's it, you have just created your first state! Here is how the class should 
             if (tokens != null && ((List) tokens).size() > 0 && tokens.get(0).equals("four")) {
                 // answer correct
                 next = getTransition("personKnowsMath");
-                return Output.say("You are good at math!");
+                return Output.say("You are good at math!").setEmotion("happiness");
 
             } else {
                 // answer incorrect
                 next = getTransition("personDoesNotKnowMath");
-                return Output.say("Well, 2 plus 2 is 4!");
+                return Output.say("Well, 2 plus 2 is 4!").setEmotion("sadness");
             }
         }
 
