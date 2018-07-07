@@ -658,15 +658,13 @@ One function called “listen()” has to be implemented.
         return null;
     }
 
+
 Since you will have an "InputDevice" for each user then you need at least a unique identifier for each user right? So each of this unique identifiers should mapped to an "InputDevice". Therefore, create a static hashmap for it as follows.
-
-.. NOTE::
-    In further steps unique identifier mentioned as uuid
-
-
 ::
     private static final HashMap<String, MySocialMediaInput> inputDevices = new HashMap<>();
 
+.. NOTE::
+    In further steps unique identifier mentioned as uuid
 
 Add a constructor that receives the uuid as parameter
 ::
@@ -721,12 +719,10 @@ Finally finish the listen method
 
 Nice, now only thing to worry about is how to receive the message. 
 
-Create a static "onUpdate(Pair<String, String>)" function that will be called from your "SocialMediaHandler" class with pair parameter that consits of the uuid and the message.
-
 .. Note::
     There is no "SocialMediaHandler" as template. You should have a handler or any logic that receive the messages from your soical media. Then you need to call this function after applied your logic (e.g. wait for a certain time to answer.)
 
-
+Create a static "onUpdate(Pair<String, String>)" function that will be called from your "SocialMediaHandler" class with pair parameter that consits of the uuid and the message.
 ::
     public static void onUpdate(Pair<String, String> update){
         //get the uuid
