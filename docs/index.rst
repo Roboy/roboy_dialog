@@ -16,7 +16,7 @@ the common RDSM State to produce a certain social interaction.
 The RDMS State both as actor and as reactor regarding the internally formulated output and externally acquired input.
 For example, the voice input is processed via the Listening Device -> Speech-to-Text -> Analyzers & Semantic Parser -> Linguistics package
 -> (InferenceEngine) -> State sequence.
-It also allows being deployed on a multitude of communication channels for a broader interaction audience.
+The RDS in- and output is not limited to speech. It also supports functionalities like emotional in/output, acting on the actual roboy and being deployed on a multitude of communication channels for a broader interaction audience.
 
 The overview diagram shows the external systems which Dialog System interacts with, and the tasks for which the system is responsible.
 
@@ -88,7 +88,7 @@ Contents:
   :glob:
   :caption: User manual
 
-  Usage/*
+  user_manual/*
 
 .. _SystemArchitecture:
 .. toctree::
