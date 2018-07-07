@@ -846,13 +846,14 @@ Find the below if code block in onUpdateReceived.
         //command
     }
 
-This block is only checking if the incoming message has a '/' at the beginning of the word, just like all the commands “/start”, “/stop”, “/desired_command”
+This block is only checking if the incoming message has a '/' at the beginning of the word, just like all the commands "/start", "/stop", "/desired_command"
 
 Let's try to send a sticker after a command catch. Check if the command is "/like".
 ::
     //command
-    if(text == “/like”){
-        String stickerId = “CAADAgADOQAD5dCAEOtbfZz0NKh2Ag”
+
+    if(text == "/like"){
+        String stickerId = "CAADAgADOQAD5dCAEOtbfZz0NKh2Ag"
         sendSticker(chatID, stickerID)
     }
 
