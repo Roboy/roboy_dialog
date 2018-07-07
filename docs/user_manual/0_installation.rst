@@ -22,8 +22,5 @@ Telegram deployment
 -------------------
 
 1. Register a bot as described on the `telegram website <https://core.telegram.org/bots#3-how-do-i-create-a-bot>`_.
-
-Place your telegram-bot authentification token in a JSON-File as described in :ref:`JSON Resources`.
-
-Configure the Dialog System to use file and to interact with the world via telegram as described in :ref:`Configuration`.
-
+2. Place your telegram-bot authentification token in a JSON-File as described in :ref:`JSON Resources`.
+3. Configure the Dialog System to use file and to interact with the world via telegram as described in :ref:`Configuration`.

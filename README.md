@@ -160,7 +160,7 @@ Clone the Dialog Manager repository either using your IDE's VCS Tools or using t
 
 ### Troubleshooting
 
-See the [Troubleshooting Page](http://roboy-dialog.readthedocs.io/en/latest/Usage/9_troubleshooting.html)
+See the [Troubleshooting Page](http://roboydialog.readthedocs.io/en/latest/user_manual/9_Troubleshooting.html)
 
 ## Environmental Variables
 
