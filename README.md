@@ -9,6 +9,7 @@
         - [Quick-Install](#quick-install)
         - [Requirements](#requirements)
         - [Recommendations](#recommendations)
+        - [Optional](#optional)
         - [Installing and Usage via Command Line](#installing-and-usage-via-command-line)
             - [Neo4J](#neo4j)
             - [Clone the Dialog Manager repository](#clone-the-dialog-manager-repository)
@@ -76,15 +77,21 @@ java -Xmx6g -d64 -cp dialog/target/roboy-dialog-system-2.1.9-jar-with-dependenci
 
 - Intellij
 - At least 8GB of RAM
+    - This project will run with a 4GB of RAM, however development will be a horror-show.
+- Ubuntu (or variation) 16.04 LTS
+    - Needed for `ROS Kinetic`
+    - If you do not need ROS features, any version of Linux should do
 - At least 6GB of Disk Space
     - ~ 4GB for Maven Dependencies
     - ~ 500MB for Roboy_Dialog with all sub-modules and files generated via mvn clean install
     - Rest is a ballpark estimate for Neo4J, Redis, ROS and their dependencies
-- Ubuntu (or variation) 16.04 LTS
-    - Needed for `ROS Kinetic`
-    - If you do not need ROS features, any version of Linux should do
 
 > Note that `apt` is bugged with Ubuntu 16.04. See: https://bugs.launchpad.net/ubuntu/+source/appstream/+bug/1583845 if you get problems with `apt-update`.
+
+### Optional
+
+- ROS
+- Redis
 
 ### Installing and Usage via Command Line
 

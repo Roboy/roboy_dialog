@@ -10,7 +10,7 @@ If you are running the class via Maven, add ``export MAVEN_OPTS="-Xmx6g"`` to yo
 
 If you are running via IntelliJ and running ``DialogSystem`` as an application, add ``-Xmx6g`` to the VM Options. (Likely a similar process for other IDEs)
 
-> Note: 6g can be replaced with a larger/smaller number. The project has been confirmed to work with 3000 mb (3000m) as one's parameter.
+.. note:: 6g can be replaced with a larger/smaller number. The project has been confirmed to work with 3000 mb (3000m) as one's parameter.
 
 
 Building Sempre External Dependencies 1.0.0 Fails to Build
