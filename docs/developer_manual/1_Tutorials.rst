@@ -731,12 +731,7 @@ Create a static "onUpdate(Pair<String, String>)" function that will be called fr
 
         //assign the message to the input device
     }
-
-
-.. Note::
-    Pair "roboy.pair" that has to strings
-    TO DO: 
-
+    
 To create the uuid that we discussed before, get the unique identifier from the "update". And add a social media name as prefix.
 ::
     //get the uuid
