@@ -1,25 +1,32 @@
-# DialogSystem
+# Roboy Dialog System
+
 [![Documentation Status](https://readthedocs.org/projects/roboydialog/badge/?version=latest)](http://roboydialog.readthedocs.io/en/master/?badge=latest)
 
-## What is it
+- [Roboy Dialog System](#roboy-dialog-system)
+    - [What is this Project](#what-is-this-project)
+    - [Installation Guide](#installation-guide)
+        - [Requirements](#requirements)
+        - [Recommendations](#recommendations)
+        - [Command Line Installation Instructions](#command-line-installation-instructions)
+        - [IDE Installation Instructions](#ide-installation-instructions)
+    - [Environmental Variables](#environmental-variables)
+        - [Neo4j](#neo4j)
+        - [ROS-master](#ros-master)
+        - [Redis](#redis)
+    - [Running the Dialog System](#running-the-dialog-system)
+    - [Running NLU only](#running-nlu-only)
+        - [Using the Google Word2Vec Model in NLU](#using-the-google-word2vec-model-in-nlu)
+    - [Troubleshooting](#troubleshooting)
+    - [Configuration of Roboy_Dialog](#configuration-of-roboydialog)
 
-This repository contains a dialog system developed for the humanoid robot Roboy (roboy.org).
+## What is this Project
 
-## How does it work
+This repository contains a dialog system developed for the humanoid robot [Roboy](roboy.org). One can find more information about this project through its [documentation](https://readthedocs.org/projects/roboydialog/).
 
-The basic NLP architecture is designed as a pipeline. An input device (derived from de.roboy.io.InputDevice) is producing text, which is passed to a variety of linguistic analyzers (derived from de.roboy.linguistics.sentenceanalysis.Analyzer). This currently consists of a Tokenizer and a POS tagger (both in de.roboy.linguistics.sentenceanalysis.SentenceAnalyzer) but could in the future be accompanied by named entity recognition, a syntactical and semantical analysis, an interpretation of the sentence type or other tools. The results of all these linguistics analyzers are collected together with the original text (de.roboy.linguistics.sentenceanalysis.Interpretation) and passed on to a state machine (states are derived from de.roboy.dialog.personality.states.State) within a personality class (derived from de.roboy.dialog.personality.Personality) that decides how to react to the utterance. In the future, the intentions (de.roboy.logic.Intention) determined by the state machine will then formulated into proper sentences or other actions (de.roboy.dialog.action.Action) by a module called Verbalizer. Currently, these actions are still directly created in the personality class. Finally, the created actions are sent to the corresponding output device (de.roboy.io.OutputDevice).
-
-There are interfaces for each step in the processing pipeline to enable an easy exchange of elements. The goal would be to easily exchange personalities based on the occasion.
-
-The implementation of the pipeline is in Java. Integrations with tools in other languages, like C++ RealSense stuff, should be wrapped in a module in the pipeline.
-
-## How to run it
-
-The repository contains a project that can be readily imported into Eclipse. Best use the Git Eclipse Plugin to check it out. The code can be executed by running de.roboy.dialog.DialogSystem.
+## Installation Guide
 
 ### Requirements
 
-- Tested on Ubuntu >= 16.04 and MacOS
 - Apache Maven
 - Java 8 (Oracle is preferred)
 - `ruby` 1.8.7 or 1.9
@@ -30,29 +37,12 @@ The repository contains a project that can be readily imported into Eclipse. Bes
 - `make`
 - `zip`
 
-*Make sure that you are using Java 1.8 both for `java` and `javac`! You can check this by running*
+*Make sure that you are using Java 1.8 both for* `java` *and* `javac` *! You can check this by running*
 ```bash
 javac -version
 java -version
 ```
 
-### Quick installation snippet
-
-[Set up Neo4j](#neo4j).
-
-```bash
-sudo apt-get install maven openjdk-8-jdk git docker.io ruby
-
-sudo docker run --publish=7474:7474 --publish=7687:7687 --volume=$HOME/neo4j/data:/data --volume=$HOME/neo4j/logs:/logs neo4j:3.4
-
-git clone https://github.com/Roboy/roboy_dialog --recursive
-
-cd roboy_dialog
-
-mvn clean install
-
-./start.sh
-```
 ### Recommendations
 
 - Intellij
@@ -61,17 +51,71 @@ mvn clean install
     - ~ 4GB for Maven Dependencies
     - ~ 500MB for Roboy_Dialog with all sub-modules and files generated via mvn clean install
     - Rest is a ballpark estimate for Neo4J, Redis, ROS and their dependencies
-- Ubuntu (or variation) 16.04 LTS
+- Ubuntu (or variation) 16.04 LTS or Mac OSX
     - Needed for `ROS Kinetic`
     - If you do not need ROS features, any version of Linux should do
 
-### External dependencies
+### Command Line Installation Instructions
 
-You need to set environment variables to tell `roboy_dialog`
-where Neo4j, ROS (optional) and Redis (optional) are located.
-Just add the `export VARIABLE=value` statements to your `$HOME/.bashrc`.
+[Set up Neo4j](#neo4j).
 
-#### Neo4j
+```bash
+# Install Maven, Java, Docker and other programs needed
+sudo apt-get install maven openjdk-8-jdk git docker.io make wget zip
+# Download and Run Neo4J for Docker
+sudo docker run --publish=7474:7474 --publish=7687:7687 --volume=$HOME/neo4j/data:/data --volume=$HOME/neo4j/logs:/logs neo4j:3.4
+# Clone Dialog's Master Branch (replace master with devel for other branches)
+git clone https://github.com/Roboy/roboy_dialog --recursive -b master
+# Change Directory to Dialog
+cd roboy_dialog
+# Download Dependencies and Install
+mvn clean install
+# Use this to Start Dialog
+./start.sh
+```
+
+### IDE Installation Instructions
+
+Clone the Dialog Manager repository either using your IDE's VCS Tools or using the command line.
+`git clone https://github.com/Roboy/roboy_dialog`
+
+*Attention: Make sure that the git sub-modules are initialized!*
+
+1. Import Dialog System as a Maven project into the IDE
+2. Download the Maven Dependencies
+3. Execute `roboy.dialog.ConversationManager` as the main class.
+
+**Do not forget to start [Neo4J](#neo4j)!**
+
+## Environmental Variables
+
+You need to set environment variables to tell `roboy_dialog` where Neo4j, ROS (optional) and Redis (optional) are located. In most cases, it shall suffice just to set the Neo4J variables. These are passed into the program and used to set the variables in Dialog...
+
+```java
+public final static String ROS_MASTER_URI;
+public final static String ROS_HOSTNAME;
+public final static String NEO4J_ADDRESS;
+public final static String NEO4J_USERNAME;
+public final static String NEO4J_PASSWORD;
+public final static String REDIS_URI;
+public final static String REDIS_PASSWORD;
+```
+
+One does this by adding references to your `.bashrc` or `.bash_profile`, that `roboy_dialog` shall read from...
+
+``` bash
+export ROS_MASTER_URI="***"
+export ROS_HOSTNAME="***"
+export NEO4J_ADDRESS="***"
+export NEO4J_USERNAME="***"
+export NEO4J_PASSWORD="***"
+export REDIS_URI="***"
+export REDIS_PASSWORD="***"
+```
+
+See [here](https://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html#configuring-the-package) for more details, as well as an example.
+
+### Neo4j
 
 The dialog system's memory module uses Neo4j, a graph database which is
 stores relations between enttities observed by roboy (names, hobbies, locations etc.).
@@ -96,7 +140,7 @@ sudo docker run \
     neo4j:3.4
 ```
 
-#### ROS-master
+### ROS-master
 
 **Note: Running ROS is only necessary when running `roboy_dialog` in the Roboy architecture. Otherwise, you may also set `ROS_ENABLED: false` in `config.properties`.**
 
@@ -111,16 +155,16 @@ export ROS_MASTER_URI=http://rosmaster:11311
 If no remote development instance of ROS master is available, just run
 `roscore` in a [docker container](http://wiki.ros.org/docker/Tutorials/Docker).
 
-#### Redis
+### Redis
 
-Redis is a software used for facial feature-storage on a remote server. In most cases, you can simply ignore this.
+Redis is a software used for facial feature-storage on a remote server. In most cases, you can simply ignore this, as the average project **does not** need this.
 
 ```bash
 export REDIS_URI="***"
 export REDIS_PASSWORD="***"
 ```
 
-### Running the Dialog System
+## Running the Dialog System
 
 Once the Neo4j (and ROS) dependencies are satisfied, run the dialog system via ...
 
@@ -128,30 +172,13 @@ Once the Neo4j (and ROS) dependencies are satisfied, run the dialog system via .
 ./start.sh
 ```
 
-#### Running NLU only
+## Running NLU only
 
 ```bash
 java -Xmx6g -d64 -cp \
     nlu/parser/target/roboy-parser-2.0.0-jar-with-dependencies.jar \
     edu.stanford.nlp.sempre.roboy.SemanticAnalyzerInterface.java
 ```
-
-### Installation and Usage via IDE
-
-Clone the Dialog Manager repository either using your IDE's VCS Tools or using the command line.
-`git clone https://github.com/Roboy/roboy_dialog`
-
-*Attention: Make sure that the git sub-modules are initialized!*
-
-1. Import Dialog System as a Maven project into the IDE
-2. Download the Maven Dependencies
-3. Execute `roboy.dialog.ConversationManager` as the main class.
-
-**Do not forget to start [Neo4J](#neo4j)!**
-
-### Troubleshooting
-
-See the [Troubleshooting Page](http://roboy-dialog.readthedocs.io/en/latest/Usage/9_troubleshooting.html)
 
 ### Using the Google Word2Vec Model in NLU
 
@@ -162,17 +189,11 @@ which can be retrieved from [here](https://s3.amazonaws.com/dl4j-distribution/Go
 In order to use it, store and extract it under `resources_nlu/word2vec`. Then just set
 `WORD2VEC_GOOGLE: true` in `parser.properties`.
 
-## How to extend it
+## Troubleshooting
 
-Pick the corresponding interface, depending on which part of the system you want to extend. If you want to add new devices go for the input or output device interfaces. If you want to extend the linguistic analysis implement the Analyzer interface or extend the SentenceAnalyzer class. If you are happy with input, linguistics and output and just want to create more dialog, implement the Personality interface.
+See the [Troubleshooting Page](http://roboydialog.readthedocs.io/en/devel/Usage/9_troubleshooting.html)
 
-|Create a new ...|By implementing ...   |
-|----------------|-----------------------|
-|Input Device    |de.roboy.io.InputDevice|
-|NLP Analyzer    |de.roboy.linguistics.sentenceanalysis.Analyzer|
-|State Machine   |de.roboy.dialog.personality.Personality|
-|State           |de.roboy.dialog.personality.states.State|
-|Action type     |de.roboy.dialog.action.Action|
-|Output device   |de.roboy.io.OutputDevice|
+## Configuration of Roboy_Dialog
 
-The interfaces are deliberately simple, containing only 0 - 2 methods that have to be implemented. Once you implemented your new classes include them in the personality used in de.roboy.dialog.DialogSystem, if you only implemented single states or directly in de.roboy.dialog.DialogSystem for everything else.
+One is able to customize the modules that are enabled, when dialog starts. One does this by altering the options in `config.properties`. For more details, see the [detailed documentation page](https://roboydialog.readthedocs.io/en/devel/user_manual/2_configuration.html#configuration
+
