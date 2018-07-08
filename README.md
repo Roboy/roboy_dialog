@@ -29,9 +29,15 @@ The repository contains a project that can be readily imported into Eclipse. Bes
 - `make`
 - `zip`
 
+*Make sure that you are using Java 1.8 both for* `java` *and* `javac` *! You can check this by running*
+```bash
+javac -version
+java -version
+```
+
 ### Quick installation snippet
 
-[Set Environment Variables](#environmental-variables). **Only do this once.**
+[Set up Neo4j](#neo4j).
 
 ```bash
 sudo apt-get install maven openjdk-9-jdk git docker.io
@@ -58,7 +64,7 @@ mvn clean install
     - Needed for `ROS Kinetic`
     - If you do not need ROS features, any version of Linux should do
 
-### Service dependencies
+### External dependencies
 
 You need to set environment variables to tell `roboy_dialog`
 where Neo4j, ROS (optional) and Redis (optional) are located.
@@ -67,10 +73,6 @@ where Neo4j, ROS (optional) and Redis (optional) are located.
 
 The dialog system's memory module uses Neo4j, a graph database which is
 stores relations between enttities observed by roboy (names, hobbies, locations etc.).
-Therefore, make sure to set the following environment variables to meaningful values:
-
-The dialog system's memory module uses Neo4j, a graph database which is
-stores relations between entities observed by roboy (names, hobbies, locations etc.).
 Therefore, make sure to set the following environment variables to meaningful values:
 
 ```bash
@@ -94,7 +96,7 @@ sudo docker run \
 
 #### ROS-master
 
-###### Note: Running ROS is only necessary when running `roboy_dialog` in the Roboy architecture. Otherwise, you may also set `ROS_ENABLED: false` in `config.properties`.
+**Note: Running ROS is only necessary when running `roboy_dialog` in the Roboy architecture. Otherwise, you may also set `ROS_ENABLED: false` in `config.properties`.**
 
 Dialog is tied into the Roboy architecture as a ROS node.
 Therefore, make sure to set the following environment variables to meaningful values:
@@ -137,7 +139,7 @@ java -Xmx6g -d64 -cp \
 Clone the Dialog Manager repository either using your IDE's VCS Tools or using the command line.
 `git clone https://github.com/Roboy/roboy_dialog`
 
-*Attention: Make sure the sub-modules are initialized!*
+*Attention: Make sure that the git sub-modules are initialized!*
 
 1. Import Dialog System as a Maven project into the IDE
 2. Download the Maven Dependencies
