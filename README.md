@@ -40,7 +40,7 @@ java -version
 [Set up Neo4j](#neo4j).
 
 ```bash
-sudo apt-get install maven openjdk-9-jdk git docker.io
+sudo apt-get install maven openjdk-8-jdk git docker.io ruby
 
 sudo docker run --publish=7474:7474 --publish=7687:7687 --volume=$HOME/neo4j/data:/data --volume=$HOME/neo4j/logs:/logs neo4j:3.4
 
