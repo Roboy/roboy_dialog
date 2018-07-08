@@ -6,17 +6,15 @@ Contains a list of the libraries and external software used by this system.
 
 .. _The Roboy Parser:
 
-The Roboy Parser
-================
+Natural Language Understanding (nlu/roboy_parser)
+=================================================
 
 Implementation
 --------------
 
-roboy_parser is a separate Java project and is communicating using ``WebSocket``. Dialog system has a client implemented in ``SemanticParserAnalyzer.java`` class. It is therefore part of Natural Language Understanding unit.
+The NLU submodule is used to translate text inputs into formal semantic representations. This allows for capturing the semantic intent behind a statement or question, and using knowledge bases to translate formal question representations into answers.
 
-For full documentation please refer the roboy parser docs acessible through the `roboy parser github repository <http://github.com/Roboy/roboy_parser>`_.
-
-Current parser was modified from SEMPRE and currently has following components
+The roboy_parser NLU module is based on `SEMPRE <http://nlp.stanford.edu/software/sempre/>`. It is currently being modified to fulfill Roboy Dialog system needs. It's architecture looks like this:
 
 .. figure:: images/PARSER_arch.png
   :alt: Semantic parser components
@@ -24,19 +22,19 @@ Current parser was modified from SEMPRE and currently has following components
 Functionalities
 """""""""""""""
 
-Roboy parser currently has currently following functionalities:
+Roboy NLU currently has the following functionalities:
 
 .. csv-table:: Semantic Parser algorithms used
   :header: "Functionality", "Software used", "Summary"
   :widths: 20, 20, 60
 
-  "Tokens", "OpenNLP", "Tokenized utterance"
-  "POS Tags", "OpenNLP", "Tagging tokens as part of speech"
-  "NER Tags", "OpenNLP", "Tool used to tag named entities like PERSON, NUMBER, ORGANIZATION"
-  "Triple extraction", "OpenIE", "Tool used to extract triples from sentences in form ``(Subject,Predicate,Object)``"
-  "Parser result", "Parser", "Logical representation of an utterance"
-  "Parser answer", "Parser", "Answer for resulting parser result"
-  "Follow-up", "Parser", "Follow-up questions for underspecified term"
+  "Tokenization", "OpenNLP", "Tokenized utterance"
+  "POS Tagging", "OpenNLP", "Tagging tokens as part of speech"
+  "NER Tagging", "OpenNLP", "Tool used to tag named entities like PERSON, NUMBER, ORGANIZATION"
+  "Triplet extraction", "OpenIE", "Tool used to extract triples from sentences in form ``(Subject,Predicate,Object)``"
+  "Semantic parsing", "SEMPRE", "Logical representation of an utterance"
+  "Semantic question answering", "SEMPRE", "Answer for resulting parser result"
+  "Follow-up question specification", "SEMPRE", "Follow-up questions for underspecified term"
 
 Usage
 -----

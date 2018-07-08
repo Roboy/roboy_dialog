@@ -45,31 +45,35 @@ The implementation of the pipeline is in Java. Integrations with tools in other 
 
 ### Quick-Install
 
-The quick guide for people who don't care about any of the technical mumbo jumbo. This is a local installation guide.
+The quick guide for people who don't care about any of the technical mumbo jumbo, this is a minimal local installation:
 
-[Set Environmental Variables](#environmental-variables). **Only do this once.**
+[Set Environment Variables](#environmental-variables). **Only do this once.**
 
 ```bash
 sudo apt-get install maven openjdk-9-jdk git docker.io
 
 sudo docker run --publish=7474:7474 --publish=7687:7687 --volume=$HOME/neo4j/data:/data --volume=$HOME/neo4j/logs:/logs neo4j:3.4
 
-git clone https://github.com/Roboy/roboy_dialog -b devel --recursive
+git clone https://github.com/Roboy/roboy_dialog --recursive
 
 cd roboy_dialog
 
 mvn clean install
 
-java -Xmx6g -d64 -cp dialog/target/roboy-dialog-system-2.1.9-jar-with-dependencies.jar roboy.dialog.DialogSystem
+./start.sh
 ```
 
 ### Requirements
 
 - Apache Maven
 - Java 8 (Oracle is preferred)
-- Git
+- `ruby` 1.8.7 or 1.9
+- `git`
 - [Neo4J](http://roboy-memory.readthedocs.io/en/latest/Usage/0_installation.html#local-neo4j-instance)
 - Working Internet Connection for downloading dependencies
+- `wget`
+- `make`
+- `zip`
 
 ### Recommendations
 
@@ -105,28 +109,25 @@ sudo docker run \
 
 Enter your project directory with `cd roboy_dialog`
 
-> Tip: If you wish to clone another branch, e.g. `devel`, just simply replace `master` with the branch's name.
+If you wish to clone another branch, e.g. `devel`, just simply replace `master` with the branches name.
 
-#### Set Environmental Variables
+#### Set Environment Variables
 
-Set the environmental variables described [here](#environmental-variables)
+Set the environment variables described [here](#environment-variables)
 
 #### Installing
 
-Clean, Compile, Test, Install and praise Maven.
-`mvn clean install`
+Clean, Compile, Test, Install and praise Maven:
 
-> To be done in the project root directory, this POM calls all other POMs.
+```bash
+cd roboy_dialog
+mvn clean install
+```
 
-#### Running the Conversation Manager
-
-`mvn exec:java -Dexec.mainClass="roboy.dialog.ConversationManager"`
-
-or...
+#### Running the Dialog System
 
 ``` bash
-java -Xmx6g -d64 -cp dialog/target/roboy-dialog-system-2.1.9-jar-with-dependencies.jar \
-    roboy.dialog.DialogSystem
+./start.sh
 ```
 
 #### Running NLU only
@@ -154,35 +155,31 @@ Clone the Dialog Manager repository either using your IDE's VCS Tools or using t
 
 See the [Troubleshooting Page](http://roboy-dialog.readthedocs.io/en/latest/Usage/9_troubleshooting.html)
 
-## Environmental Variables
+## Environment Variables
 
-One needs to set environmental variables, to tell roboy_dialog where specific services are located. These are passed into the program and used to set the variables...
-
-```java
-public final static String ROS_MASTER_URI;
-public final static String ROS_HOSTNAME;
-public final static String NEO4J_ADDRESS;
-public final static String NEO4J_USERNAME;
-public final static String NEO4J_PASSWORD;
-public final static String REDIS_URI;
-public final static String REDIS_PASSWORD;
-```
-
-One does this by adding references to your `.bashrc` or `.bash_profile`, that `roboy_dialog` shall read from...
-
-``` bash
-export ROS_MASTER_URI="***"
-export ROS_HOSTNAME="***"
-export NEO4J_ADDRESS="***"
-export NEO4J_USERNAME="***"
-export NEO4J_PASSWORD="***"
-export REDIS_URI="***"
-export REDIS_PASSWORD="***"
-```
+You need to set environment variables to tell `roboy_dialog`
+where Neo4j, ROS (optional) and Redis (optional) are located.
 
 See [here](#example) for an example.
 
-### ROS Master References
+### Neo4J setup
+
+The dialog system's memory module uses Neo4j, a graph database which is
+stores relations between entities observed by roboy (names, hobbies, locations etc.).
+Therefore, make sure to set the following environment variables to meaningful values:
+``bash
+export NEO4J_ADDRESS=bolt://my-neo4j-database:7687
+export NEO4J_USERNAME=user
+export NEO4J_PASSWORD=pass
+``
+
+If no remote development instance of Neo4j is available, just run
+Neo4j in a [docker container](https://neo4j.com/developer/docker/#_how_to_use_the_neo4j_docker_image). For more options and additional information, refer to `docs/Usage` in the
+memory module.
+
+### ROS-master setup
+
+##### Note: Running ROS is only necessary when running `roboy_dialog` in the Roboy architecture. Otherwise, you may also set `ROS_ENABLED: false` in `config.properties`.
 
 Dialog is tied into the Roboy architecture as a ROS node.
 Therefore, make sure to set the following environment variables to meaningful values:
@@ -195,24 +192,9 @@ export ROS_MASTER_URI=http://rosmaster:11311
 If no remote development instance of ROS master is available, just run
 `roscore` in a [docker container](http://wiki.ros.org/docker/Tutorials/Docker).
 
-### Neo4J References
+### Redis setup
 
-The dialog system's memory module uses Neo4j, a graph database which is
-stores relations between entities observed by roboy (names, hobbies, locations etc.).
-Therefore, make sure to set the following environment variables to meaningful values:
-``bash
-export NEO4J_ADDRESS=bolt://my-neo4j-database:7687
-export NEO4J_USERNAME=user
-export NEO4J_PASSWORD=pass
-``
-
-If no remote development instance of Neo4j is available, just run
-`Neo4j` in a [docker container](https://neo4j.com/developer/docker/#_how_to_use_the_neo4j_docker_image). For more options and additional information, refer to `docs/Usage` in the
-memory module.
-
-### Redis References
-
-Redis is a software used for face features storage on a remote server. In most cases, you can simply ignore this.
+Redis is a software used for facial feature-storage on a remote server. In most cases, you can simply ignore this.
 
 ```bash
 export REDIS_URI="***"
@@ -221,13 +203,15 @@ export REDIS_PASSWORD="***"
 
 ### Example
 
-Here is an example, if one were to want to locally run `roboy_dialog`. In most cases you would not even need the last two lines.
+Here is an example how you might initialize the environment in a local setup.
+In most development cases you would only need the first three lines.
+
 ``` bash
-export ROS_MASTER_URI="http://127.0.0.1:11311"
-export ROS_HOSTNAME="127.0.0.1"
 export NEO4J_ADDRESS="bolt://127.0.0.1:7687"
 export NEO4J_USERNAME="neo4j"
 export NEO4J_PASSWORD="neo4jpassword"
+export ROS_MASTER_URI="http://127.0.0.1:11311"
+export ROS_HOSTNAME="127.0.0.1"
 export REDIS_URI="redis://localhost:6379/0"
 export REDIS_PASSWORD="root"
 ```
