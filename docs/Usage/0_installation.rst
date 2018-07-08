@@ -1,52 +1,26 @@
+.. _Installation:
+
 ************
 Installation
 ************
 
-We use Apache Maven build automation tool.
+In order to install the dialog system, one must clone it from GitHub::
 
-Using command line
-==================
+    git clone https://github.com/Roboy/roboy_dialog -b master --recursive
 
-Install Maven on the computer.
-``sudo apt install maven``
+A working version of Maven is required to build and resolve dependencies. Please refer to the ``README.md`` of `master <https://github.com/Roboy/roboy_dialog/blob/master/README.md>`_ or `devel <https://github.com/Roboy/roboy_dialog/blob/devel/README.md#installation>`_ for further installation instructions.
 
-Clone the Dialog Manager repository.
-``git clone https://github.com/Roboy/roboy_dialog``
-
-Navigate to the root module.
-``cd roboy_dialog``
-
-Download roboy parser.
-``git submodule update --init ./roboy_parser``
-
-Install roboy parser as described in the roboy_parser docs or the 'semantic parser' page in 'INTERFACES AND SCOPE'.
-
-Compile the project - Maven will take care of the rest.
-``mvn compile``
-
-Execute the project.
-``mvn exec:java -Dexec.mainClass="roboy.dialog.ConversationManager"``
+Changing the default configuration, for example the input/output is explained in :ref:`Configuration`.
 
 
-Using IDE (Eclipse, Intellij IDEA)
-==================================
+.. _Optional steps:
 
-Clone the Dialog Manager repository.
-``git clone https://github.com/Roboy/roboy_dialog``
+Optional steps
+==============
 
-Now, import Dialog System as a Maven project into the IDE of your choice. Build and execute using ``roboy.dialog.ConversationManager`` as the main class.
+Telegram deployment
+-------------------
 
-Using a telegram bot for I/O
-============================
-
-Register a bot as described on the `telegram website`_.
-.._telegram website: https://core.telegram.org/bots#3-how-do-i-create-a-bot
-
-Place your telegram-bot authentification token in a JSON-File structured like this:
-.. code:: json
-    {
-    "TOKEN":"AAAAAAAAA:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    "BOT_USERNAME":"Botname"
-    }
-
-Provide the path to this file to the Dialog System via ``TELEGRAM_API_TOKENS_FILE: "/path/to/example.json"`` in ``config.properties``.
+1. Register a bot as described on the `telegram website <https://core.telegram.org/bots#3-how-do-i-create-a-bot>`_.
+2. Place your telegram-bot authentification token in a JSON-File as described in :ref:`JSON Resources`.
+3. Configure the Dialog System to use file and to interact with the world via telegram as described in :ref:`Configuration`.
