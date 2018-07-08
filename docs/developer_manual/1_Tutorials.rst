@@ -862,3 +862,23 @@ Let's try to send a sticker after a command catch. Check if the command is "/lik
 .. Note::
     Each sticker has its own unique id in Telegram.
 
+Adding new entries to config.properties
+=======================================
+
+In order to add a new configuration possibility, changes in ``config.properties`` and ``roboy.util.ConfigManager`` are necessary. This tutorial will use the boolean example of ``DEMO_MODE`` so it may be retraced by looking at the existing code.
+
+.. highlight:: json
+
+1. Add a new property to ``config.properties`` ::
+
+	DEMO_MODE: false
+
+.. highlight:: java
+
+2. Add your new value and a default initialization to the top of``roboy.util.ConfigManager`` ::
+
+	public static boolean DEMO_MODE = false;
+
+3. Read the new value from ``config.properties`` in the lower part of ``roboy.util.ConfigManager`` ::
+
+	DEMO_MODE = yamlConfig.getBoolean("DEMO_MODE");
