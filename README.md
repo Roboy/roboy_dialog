@@ -15,7 +15,7 @@ The implementation of the pipeline is in Java. Integrations with tools in other 
 
 ## How to run it
 
-The repository contains a project that can be readily imported into Eclipse. Best use the EGit Eclipse Plugin to check it out. The code can be executed by running de.roboy.dialog.DialogSystem.
+The repository contains a project that can be readily imported into Eclipse. Best use the Git Eclipse Plugin to check it out. The code can be executed by running de.roboy.dialog.DialogSystem.
 
 ### Requirements
 
