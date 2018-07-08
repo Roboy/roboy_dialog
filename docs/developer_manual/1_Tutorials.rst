@@ -462,7 +462,7 @@ Furthermore, we wanted to make it less of miserable routine thus there is a help
 Creating a Value History / Storing and Updating Values in the Context
 ---------------------------------------------------------------------
 
-See :ref:`context`
+See :ref:`Using the Context`
 
 
 Extending the Lexicon and the Grammar
@@ -625,7 +625,9 @@ Adding a new Internal Updater
 
 Adding generic Input- or OutputDevice
 =====================================
+
 In order to add new ``roboy.io.InputDevice`` and ``roboy.io.OutputDevice`` classes, changes in multiple locations are necessary.
+
 1. Implement your ``InputDevice`` or ``OutputDevice`` implementation using ``class [YOUR CLASSNAME] extends InputDevice`` (or OutputDevice, if you're doing output).
 2. If your device needs additional cleaning in order to be destroyed properly, additionally use ``implements CleanUp`` and implement the ``cleanup()`` method.
 3. Add your devices to ``roboy.util.io`` in ``getInputs()`` and ``getOutputs()``, so the dialog system may use them if they're chosen in the configuration.

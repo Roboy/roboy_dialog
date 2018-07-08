@@ -80,4 +80,4 @@ For more advanced functionality like *world interfaces* you'd need to implement 
 | Output device      | de.roboy.io.OutputDevice                         |
 +--------------------+--------------------------------------------------+
 
-The interfaces are deliberately simple, containing only 0 - 2 methods that have to be implemented. Once you implemented your new classes include them in the personality used in ``de.roboy.dialog.ConversationManager``, if you only implemented single states or directly in ``de.roboy.dialog.ConversationManager`` for everything else.
+The interfaces are deliberately simple, containing only 0 - 2 methods that have to be implemented. Once you implemented your new classes include them in the personality used in ``de.roboy.dialog.Conversation``, or create your own personality. Some static things, especially more complicated I/O devices or input analyzers need to be added to ``roboy.dialog.ConversationManager`` or other places. Please have a look at :ref:`_Development tutorials`.
