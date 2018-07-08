@@ -19,6 +19,7 @@ The repository contains a project that can be readily imported into Eclipse. Bes
 
 ### Requirements
 
+- Tested on Ubuntu >= 16.04 and MacOS
 - Apache Maven
 - Java 8 (Oracle is preferred)
 - `ruby` 1.8.7 or 1.9
@@ -68,6 +69,7 @@ mvn clean install
 
 You need to set environment variables to tell `roboy_dialog`
 where Neo4j, ROS (optional) and Redis (optional) are located.
+Just add the `export VARIABLE=value` statements to your `$HOME/.bashrc`.
 
 #### Neo4j
 
