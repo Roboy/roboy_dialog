@@ -9,7 +9,7 @@
         - [Recommendations](#recommendations)
         - [Command Line Installation Instructions](#command-line-installation-instructions)
         - [IDE Installation Instructions](#ide-installation-instructions)
-    - [Environmental Variables](#environmental-variables)
+    - [Environment Variables](#environment-variables)
         - [Neo4j](#neo4j)
         - [ROS-master](#ros-master)
         - [Redis](#redis)
@@ -62,11 +62,11 @@ java -version
 ```bash
 # Install Maven, Java, Docker and other programs needed
 sudo apt-get install maven openjdk-8-jdk git docker.io make wget zip
-# Download and Run Neo4J for Docker
+# Download and Run Neo4J with Docker
 sudo docker run --publish=7474:7474 --publish=7687:7687 --volume=$HOME/neo4j/data:/data --volume=$HOME/neo4j/logs:/logs neo4j:3.4
 # Clone Dialog's Master Branch (replace master with devel for other branches)
 git clone https://github.com/Roboy/roboy_dialog --recursive -b master
-# Change Directory to Dialog
+# Change Directory to your new clone
 cd roboy_dialog
 # Download Dependencies and Install
 mvn clean install
@@ -87,33 +87,11 @@ Clone the Dialog Manager repository either using your IDE's VCS Tools or using t
 
 **Do not forget to start [Neo4J](#neo4j)!**
 
-## Environmental Variables
+## Environment Variables
 
-You need to set environment variables to tell `roboy_dialog` where Neo4j, ROS (optional) and Redis (optional) are located. In most cases, it shall suffice just to set the Neo4J variables. These are passed into the program and used to set the variables in Dialog...
+You need to set environment variables to tell `roboy_dialog` where Neo4j, ROS (optional) and Redis (optional) are located. In most cases, it shall suffice just to set the Neo4J variables. Just add the `export VARIABLE=value` statements to your `$HOME/.bashrc`.
 
-```java
-public final static String ROS_MASTER_URI;
-public final static String ROS_HOSTNAME;
-public final static String NEO4J_ADDRESS;
-public final static String NEO4J_USERNAME;
-public final static String NEO4J_PASSWORD;
-public final static String REDIS_URI;
-public final static String REDIS_PASSWORD;
-```
-
-One does this by adding references to your `.bashrc` or `.bash_profile`, that `roboy_dialog` shall read from...
-
-``` bash
-export ROS_MASTER_URI="***"
-export ROS_HOSTNAME="***"
-export NEO4J_ADDRESS="***"
-export NEO4J_USERNAME="***"
-export NEO4J_PASSWORD="***"
-export REDIS_URI="***"
-export REDIS_PASSWORD="***"
-```
-
-See [here](https://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html#configuring-the-package) for more details, as well as an example.
+Since all of these dependencies are actually required by `roboy_memory`, you can find more detailed installation instructions in [the memory docs](https://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html#configuring-the-package).
 
 ### Neo4j
 
