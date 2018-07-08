@@ -29,7 +29,7 @@ The repository contains a project that can be readily imported into Eclipse. Bes
 - `make`
 - `zip`
 
-*Make sure that you are using Java 1.8 both for* `java` *and* `javac` *! You can check this by running*
+*Make sure that you are using Java 1.8 both for `java` and `javac`! You can check this by running*
 ```bash
 javac -version
 java -version
