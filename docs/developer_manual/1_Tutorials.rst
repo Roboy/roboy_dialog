@@ -661,7 +661,7 @@ One function called “listen()” has to be implemented.
     }
 
 
-Since you will have an ``InputDevice`` for each user then you need at least a unique identifier for each user right? So each of this unique identifiers should mapped to an ``InputDevice``. Therefore, create a static hashmap for it as follows.
+Since you will have an ``InputDevice`` for each user then you need at least a unique identifier for each user right? So each of this unique identifiers should mapped to an ``InputDevice``. And since a generic social media input device is structured in a way that a single entry point is necessary, you need a central point to find all our inputdevices. Therefore, create a static hashmap for it as follows.
 ::
     private static final HashMap<String, MySocialMediaInput> inputDevices = new HashMap<>();
 
@@ -763,7 +763,7 @@ Now we need to get the input device there is an existing one with the uuid.
 
 As you can see if there is no inputdevice with respective uuid. ``ConversationManager.spawnConversation(uuid)`` is used. It magically creates the inputDevice (as well as the Conversation and the magical stuff that you do not need to worry about)
 
-Finally add another interface namely ``CleanUp`` and add its ``cleanup()`` method.
+Since you needed to store references to your devices in the hashmap, you need to delete them when a conversation is over so the garbage collector can delete them. Therefore the device needs cleaning. Finally, implement another interface namely ``CleanUp`` and override its ``cleanup()`` method.
 ::
     // inside MySocialMediaInput.java
 
