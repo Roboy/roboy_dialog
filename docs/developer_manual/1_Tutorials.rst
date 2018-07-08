@@ -278,7 +278,6 @@ There are two additional properties that you can add to a state definition: ``pa
 Let's take a look at both properties. Here we define ``RandomAnswer`` (which is an identifier of another state in the same personality file) as the fallback for the state with identifier ``Intro``. This means that if ``Intro`` cannot react to an input, the ``RandomAnswer`` will be asked instead. The property ``parameters`` allows you to pass parameters to the state. Each parameter has a name (here ``introductionSentence``) and a string value. The state implementation can access the value by the name. Parameters are very useful to pass resource file paths to states. Read more about fallbacks and parameters on :ref:`personality_and_states`.
 
 
-
 Larger personality
 ^^^^^^^^^^^^^^^^^^
 
@@ -653,7 +652,8 @@ First create a new class in roboy.io folder, namely ``MySocialMediaInput`` that 
 
     }
 
-One function called “listen()” has to be implemented.
+One function namely “listen()” has to be implemented. This function is called by a thread and should return a new `Input` or keep the thread waiting if there isn't any new `Input` available.
+
 ::
     @Override
     public Input listen() throws InterruptedException, IOException {
@@ -835,6 +835,8 @@ Finish the ``act`` method
     In this tutorial, only shy emotion has been used, but there are several emotions you can check ``roboy.emotions.RoboyEmotion.java`` if you want more!
 
 	/* */ these comments are not completed you should use your way that is sending a message via social media using the user’s id.
+
+Now you need to tell the dialog system how to use your new in- and output. Refer to :ref:`tut_generic_social_media_io` in order to tell the dialog system where to find them and how to allow users to activate them. Now rebuild your code, select your Input/OutputDevice in config.properties and run it to see the work you have achieved.
 
 
 Telegram: Handle commands
