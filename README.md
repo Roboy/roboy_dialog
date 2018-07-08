@@ -17,7 +17,7 @@
     - [Running NLU only](#running-nlu-only)
         - [Using the Google Word2Vec Model in NLU](#using-the-google-word2vec-model-in-nlu)
     - [Troubleshooting](#troubleshooting)
-    - [Configuration of Roboy_Dialog](#configuration-of-roboydialog)
+    - [Configuration of roboy_dialog](#configuration-of-roboy_dialog)
 
 ## What is this Project
 
@@ -171,7 +171,7 @@ In order to use it, store and extract it under `resources_nlu/word2vec`. Then ju
 
 See the [Troubleshooting Page](http://roboydialog.readthedocs.io/en/devel/Usage/9_troubleshooting.html)
 
-## Configuration of Roboy_Dialog
+## Configuration of roboy_dialog
 
 One is able to customize the modules that are enabled, when dialog starts. One does this by altering the options in `config.properties`. For more details, see the [detailed documentation page](https://roboydialog.readthedocs.io/en/devel/user_manual/2_configuration.html#configuration
 
