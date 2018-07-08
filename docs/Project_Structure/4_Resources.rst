@@ -50,7 +50,7 @@ JSON Resources
       }
     }
 
-- synonym lists - contain keys and possible synonyms
+- synonym lists - contain keys and possible synonyms::
 
     {
       "key1": [
