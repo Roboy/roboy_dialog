@@ -36,25 +36,6 @@ Roboy NLU currently has the following functionalities:
   "Semantic question answering", "SEMPRE", "Answer for resulting parser result"
   "Follow-up question specification", "SEMPRE", "Follow-up questions for underspecified term"
 
-Usage
------
-
-In order to run the parser, you need to run **roboy_parser** first - see instructions on `project Github <http://github.com/Roboy/roboy_parser>` and then run Dialog System.
-
-Configurations
-""""""""""""""
-
-To test parser, you can run following execution configurations using ``maven``. For more information refer to `project documentation <http://github.com/Roboy/roboy_parser>`
-
-.. csv-table:: Possible parser configurations
-  :header: "Command", "Options"
-  :widths: 20, 40
-
-  "interactive", "Standard lexicon and grammar, communication over terminal. Does not load all the models ahead. Error retrieval enabled."
-  "demo-error", "Standard lexicon and grammar, communication over socket. Loads all the models ahead. Error retrieval enabled"
-  "demo", "Standard lexicon and grammar, communication over socket. Loads all the models ahead. Error retrieval disabled"
-  "debug", "Standard lexicon and grammar, communication over server (web page available). Does not load all the models ahead. Error retrieval enabled"
-
 .. _Roboy memory:
 
 Roboy Memory
