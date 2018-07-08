@@ -652,7 +652,7 @@ First create a new class in roboy.io folder, namely ``MySocialMediaInput`` that 
 
     }
 
-One function namely “listen()” has to be implemented. This function is called by a thread and should return a new `Input` or keep the thread waiting if there isn't any new `Input` available.
+One function namely “listen()” has to be implemented. This function is called by a thread and should return a new ``Input`` or keep the thread waiting if there isn't any new ``Input`` available.
 
 ::
     @Override
