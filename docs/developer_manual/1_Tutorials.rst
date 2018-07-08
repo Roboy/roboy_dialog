@@ -631,7 +631,7 @@ In order to add new ``roboy.io.InputDevice`` and ``roboy.io.OutputDevice`` class
 1. Implement your ``InputDevice`` or ``OutputDevice`` implementation using ``class [YOUR CLASSNAME] extends InputDevice`` (or OutputDevice, if you're doing output).
 2. If your device needs additional cleaning in order to be destroyed properly, additionally use ``implements CleanUp`` and implement the ``cleanup()`` method.
 3. Add your devices to ``roboy.util.io`` in ``getInputs()`` and ``getOutputs()``, so the dialog system may use them if they're chosen in the configuration.
-4. Add a (commented) input/output configuration to ``config.properties``.
+4. Add a (commented) input/output configuration to ``config.properties``. (See :ref:`tut_config_properties` how to do this)
 
 
 .. highlight:: java
@@ -861,6 +861,8 @@ Let's try to send a sticker after a command catch. Check if the command is "/lik
 
 .. Note::
     Each sticker has its own unique id in Telegram.
+
+.. _tut_config_properties:
 
 Adding new entries to config.properties
 =======================================
