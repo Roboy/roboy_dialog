@@ -622,6 +622,8 @@ Adding a new Internal Updater
 ``SAMPLE_UPDATER = new SampleUpdater(DIALOG_TOPICS.valueHistory); // Initialize in the constructor``
 
 
+.. _tut_generic_social_media_io:
+
 Adding generic Input- or OutputDevice
 =====================================
 
