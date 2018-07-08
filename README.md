@@ -151,7 +151,7 @@ Clone the Dialog Manager repository either using your IDE's VCS Tools or using t
 
 See the [Troubleshooting Page](http://roboy-dialog.readthedocs.io/en/latest/Usage/9_troubleshooting.html)
 
-#### Using the Google Word2Vec Model in NLU
+### Using the Google Word2Vec Model in NLU
 
 For a more complete but also much more memory-intensive Word Vector model,
 the NLU module has the ability to parse the GoogleNews word vector collection,
