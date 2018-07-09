@@ -34,4 +34,4 @@ Memory has it's own `page <http://roboy-memory.readthedocs.io/en/latest/Usage/3_
 Github
 --------------------------------
 
-If you encounter an error that has not been addressed, feel free to check the issues section of `Dialog, NLU <https://github.com/Roboy/roboy_dialog/issues>`_ and `Memory <https://github.com/Roboy/roboy_memory/issues>`_ on Github. There, one can check if the issue has been already been reported and if there is a fix. If you still can't find an answer to your question, create a Github issue, so that the dev team is notified and can help.
+If you encounter an error that has not been addressed, feel free to check the issues section of `Dialog and NLU <https://github.com/Roboy/roboy_dialog/issues>`_, as well as that of `Memory <https://github.com/Roboy/roboy_memory/issues>`_, on Github. There, one can check if the issue has been already been reported and if there is a fix. If you still can't find an answer to your question, create a Github issue, so that the dev team is notified and can help.
