@@ -108,3 +108,17 @@ Configure third party communication ports, credentials, etc.
 **Telegram JSON-File path** (see :ref:`JSON Resources`) ::
 
     TELEGRAM_API_TOKENS_FILE: "/path/to/example.json"
+
+.. _configuration_telegram_bot:
+
+Configuring a telegram bot
+==========================
+
+If you'd like to use the ``telegram`` in- or output registering your own bot is necessary. Please proceed as follows:
+
+
+1. Register a bot as described on the `telegram website <https://core.telegram.org/bots#3-how-do-i-create-a-bot>`_.
+
+Place your telegram-bot authentification token in a JSON-File as described in :ref:`JSON Resources`.
+
+Configure the Dialog System to use your file and to interact with the world via telegram as described above.

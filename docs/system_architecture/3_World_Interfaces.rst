@@ -92,4 +92,6 @@ Telegram
 
 Choose ``telegram`` in- and output in ``config.properties``.
 
-Use a telegram bot to interface with the world. See :ref:`Optional steps` for more information.
+Use a telegram bot to interface with the world. See :ref:`configuration_telegram_bot` for more information.
+
+If the dialog system has been configured to use telegram as input world interface, the command line switches into control mode where an operator may use the ``shutdown`` command for a safe shutdown that makes the dialog system properly say goodbye to active interlocutors.

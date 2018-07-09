@@ -84,39 +84,50 @@ public class ConversationManager {
 
         //I/O specific core behaviour
 
-        //telegram needs to initialize the telegram API interface and then go into command mode so it can dynamically spawn, delete and manage incoming conversations with many parallelly interacting users
-        if (ConfigManager.INPUT.contains("telegram")) {
+        switch(ConfigManager.INPUT){
 
-            // initialize telegram bot
-            ApiContextInitializer.init();
-            TelegramBotsApi telegramBotApi = new TelegramBotsApi();
+            //telegram needs to initialize the telegram API interface and then go into command mode so it can dynamically spawn, delete and manage incoming conversations with many parallelly interacting users
+            case "telegram":
+                // initialize telegram bot
+                ApiContextInitializer.init();
+                TelegramBotsApi telegramBotApi = new TelegramBotsApi();
 
-            try {
-                telegramBotApi.registerBot(TelegramCommunicationHandler.getInstance());
-            } catch (TelegramApiException e) {
-                logger.error("Telegram bots api error: ", e);
-            }
-
-            logger.info("####################################################\n#                SYSTEM LOADED                     #\n####################################################\n");
-            commandMode();
-
-        } else if (ConfigManager.INPUT.contains("cmdline") | ConfigManager.INPUT.contains("cerevoice") | ConfigManager.INPUT.contains("udp") | ConfigManager.INPUT.contains("bing")) {//default single-point of interaction behaviour; start a single conversation, wait for it to end, repeat if necessary; no command mode necessary
-            Conversation c = createConversation(rosMainNode, analyzers, new Inference(), memory, "local");
-
-            do {//repeat conversations if configured to do so
-                demoReadyCheck();
-
-                c.start();
-                try {//Since this is roboy mode and only one conversation happens, we need to wait for it to finish so we don't clog the command line.
-                    logger.info("Waiting for conversation to end.");
-                    c.join();
-                } catch (InterruptedException ie) {
-                    logger.error("ConversationManager has been interrupted: " + ie.getMessage());
+                try {
+                    telegramBotApi.registerBot(TelegramCommunicationHandler.getInstance());
+                } catch (TelegramApiException e) {
+                    logger.error("Telegram bots api error: ", e);
                 }
-                //Reset the conversation before rerun.
-                c.resetConversation(new Interlocutor(memory));
-            } while(ConfigManager.INFINITE_REPETITION);
-        }
+
+                logger.info("####################################################\n#                SYSTEM LOADED                     #\n####################################################\n");
+                commandMode();
+                break;
+
+            //default single-point of interaction behaviour; start a single conversation, wait for it to end, repeat if necessary; no command mode necessary
+            case "cmdline":
+            case "cerevoice":
+            case "udp":
+            case "bing":
+                Conversation c = createConversation(rosMainNode, analyzers, new Inference(), memory, "local");
+                do {//repeat conversations if configured to do so
+                    demoReadyCheck();
+
+                    c.start();
+                    try {//Since this is roboy mode and only one conversation happens, we need to wait for it to finish so we don't clog the command line.
+                        logger.info("Waiting for conversation to end.");
+                        c.join();
+                    } catch (InterruptedException ie) {
+                        logger.error("ConversationManager has been interrupted: " + ie.getMessage());
+                    }
+                    //Reset the conversation before rerun.
+                    c.resetConversation(new Interlocutor(memory));
+                } while(ConfigManager.INFINITE_REPETITION);
+                break;
+
+            //input device not known
+            default:
+                logger.error("Configured input device" + ConfigManager.INPUT + "not known! Aborting!");
+                System.exit(1);
+            }
     }
 
     /**
