@@ -15,6 +15,35 @@ If you are running via IntelliJ and running ``DialogSystem`` as an application, 
 
 .. note:: 6g can be replaced with a larger/smaller number. The project has been confirmed to work with 3000 mb (3000m) as one's parameter.
 
+Gnutls Handshake Fails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you get an error similar to that below, it means that your internet is working. Please check that your internet connection works.
+
+.. code-block:: bash
+  
+  --- exec-maven-plugin:1.6.0:exec (Pull dependencies) @ roboy-parser-nonmaven-deps ---
+  ===== Downloading roboy: Roboy extra utilities (need to compile)
+  Cloning into 'fig'...
+  fatal: unable to access 'https://github.com/percyliang/fig/': gnutls_handshake() failed: Error in the pull function.
+  [ERROR] Command execution failed.
+          org.apache.commons.exec.ExecuteException: Process exited with an error: 1 (Exit value: 1)
+          at org.apache.commons.exec.DefaultExecutor.executeInternal(DefaultExecutor.java:404)
+
+          .................................
+
+          at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:356)
+  [INFO] ------------------------------------------------------------------------
+  [INFO] Reactor Summary:
+  [INFO] 
+  [INFO] Sempre External Dependencies ....................... FAILURE [  0.892 s]
+  [INFO] Roboy Semantic Parser .............................. SKIPPED
+  [INFO] Roboy Semantic Parser Modules ...................... SKIPPED
+  [INFO] Roboy Memory ....................................... SKIPPED
+  [INFO] Roboy Dialog System ................................ SKIPPED
+  [INFO] Roboy Dialog System Modules ........................ SKIPPED
+  [ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:1.6.0:exec (Pull dependencies) on project roboy-parser-nonmaven-deps: Command execution failed. Process exited with an error: 1 (Exit value: 1) -> [Help 1]
+
 
 Building Sempre External Dependencies 1.0.0 Fails to Build
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
