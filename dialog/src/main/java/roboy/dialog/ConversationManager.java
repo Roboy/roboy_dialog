@@ -107,9 +107,9 @@ public class ConversationManager {
             case "cerevoice":
             case "udp":
             case "bing":
-                Conversation c = createConversation(rosMainNode, analyzers, new Inference(), memory, "local");
                 do {//repeat conversations if configured to do so
                     demoReadyCheck();
+                    Conversation c = createConversation(rosMainNode, analyzers, new Inference(), memory, "local");
 
                     c.start();
                     try {//Since this is roboy mode and only one conversation happens, we need to wait for it to finish so we don't clog the command line.
@@ -118,8 +118,6 @@ public class ConversationManager {
                     } catch (InterruptedException ie) {
                         logger.error("ConversationManager has been interrupted: " + ie.getMessage());
                     }
-                    //Reset the conversation before rerun.
-                    c.resetConversation(new Interlocutor(memory));
                 } while(ConfigManager.INFINITE_REPETITION);
                 break;
 
@@ -149,20 +147,6 @@ public class ConversationManager {
         conversations.values().remove(conversation);
     }
 
-
-    /**
-     * Pauses conversation so it may be resumed via startConversation.
-     * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
-     */
-    public static void pauseConversation(String uuid){
-        Conversation c = conversations.get(uuid);
-        if (c != null) {
-            c.pauseExecution();
-        } else {
-            logger.error("Conversation to be paused does not exist...");
-        }
-    }
-
     /**
      * Stops conversation thread for uuid.
      * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
@@ -175,21 +159,6 @@ public class ConversationManager {
             logger.error("Conversation to be stopped does not exist...");
         }
     }
-
-    /**
-     * Starts a conversation that is paused or stopped.
-     * NOT NECESSARY AFTER SPAWNCONVERSATION
-     * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
-     */
-    public static void startConversation(String uuid){
-        Conversation c = conversations.get(uuid);
-        if (c != null) {
-            c.start();
-        } else {
-            logger.error("Conversation to be started does not exist...");
-        }
-    }
-
 
     /**
      * returns the threadID of the conversation with interlocutor uuid

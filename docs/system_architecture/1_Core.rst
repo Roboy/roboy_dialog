@@ -18,7 +18,7 @@ The ``roboy.dialog.ConversationManager`` is the central managing node for the Di
 
 **During the initialization phase** all components that are included in the Dialog System core are initialized. This especially includes the *NLU* (in form of a queue of several ``roboy.linguistics.sentenceanalysis.Analyzer`` classes) and *world interface* specific initializations ( *world interfaces* may for different reasons need a centralized initialization separate from the I/O devices which are used to communicate with them).
 
-**In order to manage Conversations** it stores them by UUID, which is in the format "[world-interface-name]-[uuid-from-world-interface]", for example "telegram-aaaaaaaaaaaa". Then it provides an API consisting of methods that allow controlling the *Conversation* threads if you know their uuid. It allows creating and spawning new *Conversations* and restarting, stopping and pausing existing ones. Also it allows deregistering *Conversations* so they can properly be destroyed when they are over.
+**In order to manage Conversations** it stores them by UUID, which is in the format "[world-interface-name]-[uuid-from-world-interface]", for example "telegram-aaaaaaaaaaaa". Then it provides an API consisting of methods that allow controlling the *Conversation* threads if you know their uuid. It allows creating and spawning new *Conversations* and stopping existing ones. Also it allows deregistering *Conversations* so they can properly be destroyed when they are over.
 
 InputDevice & OutputDevice
 ==========================
