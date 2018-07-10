@@ -1,6 +1,13 @@
-*********
-Tutorials
-*********
+.. _Development tutorials:
+
+*********************
+Development tutorials
+*********************
+
+This page is a collection of useful tutorials if you want to develop or enhance parts of the Dialog System.
+
+Changing the dialog systems behaviour during a conversation
+===========================================================
 
 .. highlight:: java
 
@@ -8,7 +15,7 @@ Tutorials
 .. _tut_new_state:
 
 Adding a New State
-==================
+------------------
 
 Roboy often visits different events and you might want him to say something specific, for example mention a company or a sponsor. One way to do this would be to modify an existing state. However, these changes are often discarded as you still want to have the old behaviour. There is a better way: create a new custom state specifically for your needs.
 
@@ -61,22 +68,22 @@ Now, we can write some logic and define what our new state should do. The ``act(
 
     return Output.say("What is 2 plus 2?");
 
-The interlocutor's answer will be passed to the ``react(...)`` function once it is available. Inside, we should check whether the answer is correct and react based on correctness. This code is one of the simplest ways to do this::
+The interlocutor's answer will be passed to the ``react(...)`` function once it is available. Inside, we should check whether the answer is correct and react based on correctness. If we also want to add emotion to our output, ``setEmotion()`` method can be used. This code is one of the simplest ways to do this::
 
     // inside public Output react(Interpretation input)
 
     // get tokens (= single words of the input)
-    String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
+    List<String> tokens = input.getTokens();
 
     // check if the answer is correct (simplest version)
-    if (tokens.length > 0 && tokens[0].equals("four")) {
+    if (tokens != null && ((List) tokens).size() > 0 && tokens.get(0).equals("four")) {
         // answer correct
         next = getTransition("personKnowsMath");
-        return Output.say("You are good at math!");
+        return Output.say("You are good at math!").setEmotion("happiness");
     } else {
         // answer incorrect
         next = getTransition("personDoesNotKnowMath");
-        return Output.say("Well, 2 plus 2 is 4!");
+        return Output.say("Well, 2 plus 2 is 4!").setEmotion("sadness");
     }
 
 Note a few things here:
@@ -119,18 +126,18 @@ That's it, you have just created your first state! Here is how the class should 
         public Output react(Interpretation input) {
 
             // get tokens (= single words of the input)
-            String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
+            List<String> tokens = input.getTokens();
 
             // check if the answer is correct (simplest version)
-            if (tokens.length > 0 && tokens[0].equals("four")) {
+            if (tokens != null && ((List) tokens).size() > 0 && tokens.get(0).equals("four")) {
                 // answer correct
                 next = getTransition("personKnowsMath");
-                return Output.say("You are good at math!");
+                return Output.say("You are good at math!").setEmotion("happiness");
 
             } else {
                 // answer incorrect
                 next = getTransition("personDoesNotKnowMath");
-                return Output.say("Well, 2 plus 2 is 4!");
+                return Output.say("Well, 2 plus 2 is 4!").setEmotion("sadness");
             }
         }
 
@@ -159,19 +166,21 @@ Or, if you provide a wrong answer::
     [You]:   one
     [Roboy]: Well, 2 plus 2 is 4!
 
-To learn more details about states and personalities, refer to the :ref:`personality_and_states` page. There, you will find details about state fallbacks, parameters and interfaces, as well as more information about different personalities and more output options.
+To learn more details about states and personalities, refer to :ref:`personality_and_states`. There, you will find details about state fallbacks, parameters and interfaces, as well as more information about different personalities and more output options.
 
-.. _tut_new_personality:
+
 
 
 .. highlight:: json
 
+.. _tut_new_personality:
+
 Creating a New Personality
-==========================
+--------------------------
 
 Roboy's Dialog System can be used in different environments and situations like fairs, conferences, demos or as a chatbot on social networks. For every given situation, Roboy's behaviour should be different. We use personalities to define Roboy's way of talking.
 
-In this tutorial you will learn how to create a new personality. Make sure that you know the basic functionality of states. If you are not familiar with them, read the :ref:`tut_new_state` tutorial. General information about personalities can be found on the :ref:`personality_and_states` page.
+In this tutorial you will learn how to create a new personality. Make sure that you know the basic functionality of states. If you are not familiar with them, read the :ref:`tut_new_state` tutorial. General information about personalities can be found on :ref:`personality_and_states`.
 
 Personalities are defined inside JSON personality files. Each file represents a state machine and defines:
 
@@ -245,7 +254,7 @@ With two states defined, we can now take a look at the complete personality file
 
 This file is stored under ``resources/personalityFiles/tutorial/MathTest.json``. You can try running this personality by setting the path (``PERSONALITY_FILE``) in the config file (``config.properties``).
 
-When you create a new personality file you might forget to define important transitions. To find errors faster, you can define the state interface (required transitions, parameters and fallback) for every state when you implement it. While loading the personality file, the Dialog System will check whether the state has everything it needs and warn you if something is missing. Read more about state interfaces on the :ref:`personality_and_states` page.
+When you create a new personality file you might forget to define important transitions. To find errors faster, you can define the state interface (required transitions, parameters and fallback) for every state when you implement it. While loading the personality file, the Dialog System will check whether the state has everything it needs and warn you if something is missing. Read more about state interfaces on :ref:`personality_and_states`.
 
 
 Fallbacks and parameters
@@ -266,8 +275,7 @@ There are two additional properties that you can add to a state definition: ``pa
       }
     }
 
-Let's take a look at both properties. Here we define ``RandomAnswer`` (which is an identifier of another state in the same personality file) as the fallback for the state with identifier ``Intro``. This means that if ``Intro`` cannot react to an input, the ``RandomAnswer`` will be asked instead. The property ``parameters`` allows you to pass parameters to the state. Each parameter has a name (here ``introductionSentence``) and a string value. The state implementation can access the value by the name. Parameters are very useful to pass resource file paths to states. Read more about fallbacks and parameters on the :ref:`personality_and_states` page.
-
+Let's take a look at both properties. Here we define ``RandomAnswer`` (which is an identifier of another state in the same personality file) as the fallback for the state with identifier ``Intro``. This means that if ``Intro`` cannot react to an input, the ``RandomAnswer`` will be asked instead. The property ``parameters`` allows you to pass parameters to the state. Each parameter has a name (here ``introductionSentence``) and a string value. The state implementation can access the value by the name. Parameters are very useful to pass resource file paths to states. Read more about fallbacks and parameters on :ref:`personality_and_states`.
 
 
 Larger personality
@@ -276,7 +284,7 @@ Larger personality
 It is not easy to create interesting conversations using only two states (assuming relatively simple states of course). Usually, you will use at least five different states in one conversation. To get some experience in writing personality files, let's create a file that uses four states. Don't worry, you don't have to implement the states here. We will use four already pre-implemented toy states that can be found in the ``roboy.dialog.tutorials.tutorialStates`` package. The final personality should look like this:
 
 .. figure:: images/toy_personality.png
-:alt: Toy personality
+    :alt: Toy personality
 
 As you can see, we have four states that are connected to each other. The names of the transitions are denoted on the arrows. Now, try to write a personality file to represent this personality. Following these steps might be helpful:
 
@@ -301,10 +309,8 @@ You might be wondering why such a complex system with all those JSON files is ne
 
 While the editor is not implemented yet, we still have good news for you. You *can* define personalities directly from code and don't have to worry about creating a personality file (and updating it while refactoring). This feature is especially useful when writing unit tests for single states or smaller state machines. This tutorial does not cover creating personalities from code but there are good examples in the ``roboy.dialog.tutorials.StateMachineExamples`` class. Take a look at it if you need to define personalities from code.
 
-
-
 Adding New Questions to the State
-=================================
+---------------------------------
 
 There exists a list of questions, we may want Roboy to ask in order to acquire new information about people and the environment.
 It is stored in the resources directory under sentences/QAList.json and follows the next JSON structure as given:
@@ -362,6 +368,8 @@ We can add a new entry there with a new intent. Let it be "LIKE":
         }
     }
 
+.. highlight:: java
+
 Then we have to add a new entry into our local ontology - Neo4jRelationships::
 
     public enum Neo4jRelationships {
@@ -381,9 +389,8 @@ Go back to your state and inside the act() method implement the following logic:
 
 Now, we can ask these newly added questions and later process the answers in the react() method.
 
-
 Querying the Memory from the Dialog System
-==========================================
+------------------------------------------
 
 
 Indeed, the newly created state may be the pinnacle of State Machines practice, but it does not yet exploit all of the Roboy Dialog System capabilities, such as
@@ -451,15 +458,14 @@ Furthermore, we wanted to make it less of miserable routine thus there is a help
         }
     }
 
-
 Creating a Value History / Storing and Updating Values in the Context
-=====================================================================
+---------------------------------------------------------------------
 
-See :ref:`context`
+See :ref:`Using the Context`
 
 
 Extending the Lexicon and the Grammar
-=====================================
+-------------------------------------
 
 This tutorial explains how to create or change grammar and lexicon used in the semantic parser.
 
@@ -516,8 +522,9 @@ For lexicon::
 
     -SimpleLexicon.inPaths
 
+
 Scoring Functions and Knowledge Retrieval
-=========================================
+-----------------------------------------
 
 Currently, our semantic parser uses error retrieval mechanism that can be modified in the following steps:
 
@@ -543,78 +550,340 @@ Knowledge Retriever
 
 3. Add knowledge retriever in constructor of ``edu.stanford.nlp.sempre.roboy.ErrorRetrieval`` class.
 
-Editing the Config File
-=======================
+.. _Using the Context:
 
-Dialog System is configured using the ``config.properties`` file in the root of the project. 
+Using the Context
+=================
 
-ROS configuration
-^^^^^^^^^^^^^^^^^
 
-Dialog outsources many tasks to other modules implemented in Pyhton or C++ as ROS packages. In the config file you can enabled/disable ROS modules, choose which packages to use, and set the ``ROS_MASTER_URI``. 
+How to add Values?
+------------------
 
-Available ROS packages are:
-    - ``roboy_gnlp`` (generative model for answer generation)
-    - ``roboy_memory`` (Neo4j graph-based memory)
-    - ``roboy_speech_synthesis`` (text to speech using Cerevoice)
-    - ``roboy_speech_recognition`` (speech to text using Bing Speech API)
-    - ``roboy_audio`` (audio source localization)
-    - ``roboy_vision`` (face recogntion & object classification and localization)
-    - ``roboy_face`` (triggers emotions)
+Here we describe how a new Value can be created and added to the Context. Sample implementations can be found inside ``roboy.context.contextObjects`` package.
 
-Example ROS config::
+1. Consider what type of data will be stored in the Value. For this example, we chose ``String``.
 
-    ROS_ENABLED: true
-    ROS_MASTER_IP: 10.183.49.162
-    ROS_ACTIVE_PKGS:
-      - roboy_memory
-      - roboy_speech_synthesis
+2. In the ``contextObjects`` directory, create a new class which inherits from the Value class. The final signature should look similar to: ``public class SampleValue extends Value<String>`` (replacing String with your type).
 
-Inputs and Outputs
-^^^^^^^^^^^^^^^^^^
-   
-A developer can choose how to interact with the dialog system. For example, for debugging purposes there are command line input and output. Importantly, there can be only one input, but many outputs. 
+3. Make the value available for the Dialog System by defining a ``ValueInterface`` in the ``Context.java`` class, among other class variables. A ``ValueInterface`` takes two type parameters: the ``Value`` class created in step 2, and its data type (in our case, ``String``). Example: ``public final ValueInterface<SampleValue, String> SAMPLE_VALUE = new ValueInterface<>(new SampleValue());``
 
-Available inputs are:
-    - ``cmdline``
-    - ``upd`` (listens for incoming udp packets in the port specified below)
-    - ``bing`` (requires Internet connection and the ``roboy_speech_recognition`` ROS package)
-    - ``telegram`` (requires Internet connection and a prepared telegram bot, see 1. Getting Started for more details. For the standard usecase, telegram should be set as both, in- and output.)
+4. Congratulations, you can now query the new Value object! ...but it does not receive any values yet. To change this, see "How to add Updaters?" below.
+
+How to add ValueHistories?
+--------------------------
+
+ValueHistories extend the functionality of Values by storing all data objects sent to them. Over the ``getNLastValues(int n)`` method, a map with several most recent data objects can be retrieved, including their ordering. The ``contains(V value)`` method checks whether an object is currently found in the history - note that ValueHistories have size limits, therefore oldest values disappear from the history when new ones are added.
+
+Adding a ``ValueHistory`` is very much alike to adding a ``Value``, just make sure to:
+
+1. extend ``ValueHistory<>`` instead of ``Value<>``. If the history should keep more than the default 50 values, override the getMaxLimit() method to return your desired limit value.
+
+2. in ``Context.java``, create a ``HistoryInterface`` instead of ``ValueInterface``.
+
+How to add Updaters?
+--------------------
+
+New values can only flow into the Context over an ``Updater`` instance. Internal Updaters can be used by the dialog manager to actively add new values. External Updaters run in separate threads and query or listen for new values, for example over a ROS connection.
+
+Updaters only add a single new data unit, relying on the ``AbstractValue.updateValue()`` method. Thanks to the inheritance chain, you can use an arbitrary Value or ValueHistory implementation as the target of an updater.
+
+Adding an External Updater
+""""""""""""""""""""""""""
+Currently, there are two implementations of an External Updater: ``PeriodicUpdater`` and ``ROSTopicUpdater``.
+
+``PeriodicUpdater`` calls an updating method after a certain time interval has passed. To use the periodic updating functionality:
+
+1. Create a class extending ``PeriodicUpdater`` and implement its ``update()`` method. It should retrieve the values and finally add them over the ``target.updateValue(value)`` method call.
+
+2. A constructor is required for the class. Simply match the PeriodicUpdater constructor and call ``super(target)`` within - or use the two-parameter constructor to change the update frequency (by default 1 second).
+
+``ROSTopicUpdater`` subscribes itself to a ROS Topic and reacts to messages coming from the topic. To use:
+
+1. Create a class extending ``ROSTopicUpdater`` and define the ``getTargetSubscriber()`` method, which will point the updater towards its target ROS topic. The options for the subscriber can be found in the ``RosSubscribers.java`` class.
+
+2. Implement the ``update()`` method of the new class. This method will be called whenever a new message is stored in the internal ``message`` variable, so it might be enough to just call ``target.updateValue(message)``. If the data needs to be extracted from the message first, do it in the ``update()`` before calling ``target.updateValue``.
+
+All External Updaters need to be initialized in the ``Context.java`` class. To do this:
+
+1. Define the External Updater a private class variable to the ``Context.java`` class (look for the external updater definition section).
+
+4. If the Updater depends on ROS, add its initialization into the ``Context.initializeROS(RosMainNode ros)`` method, otherwise add it to the private constructor ``Context()``. As the parameter, use the inner ``value`` or ``valueHistory`` variable from a ``ValueInterface`` or a ``HistoryInterface``.
+
+Adding a new Internal Updater
+"""""""""""""""""""""""""""""
+1. Create a class extending InternalUpdater<*targetClass*, *valueType*>. The class and data type of the target ``Value`` or ``ValueHistory`` are the generic parameters for the updater.
+
+2. A constructor is required for the class. Simply match the InternalUpdater constructor and call ``super(target)`` within. An example is in the ``DialogTopicsUpdater`` class.
+
+4. Define the Internal Updater in the ``Context.java`` class. Initialize the updater within the private ``Context()`` constructor. For example:
+
+``public final SampleUpdater SAMPLE_UPDATER; // Define as class variable``
+
+``SAMPLE_UPDATER = new SampleUpdater(DIALOG_TOPICS.valueHistory); // Initialize in the constructor``
+
+
+.. _tut_generic_social_media_io:
+
+Adding generic Input- or OutputDevice
+=====================================
+
+In order to add new ``roboy.io.InputDevice`` and ``roboy.io.OutputDevice`` classes, changes in multiple locations are necessary.
+
+1. Implement your ``InputDevice`` or ``OutputDevice`` implementation using ``class [YOUR CLASSNAME] extends InputDevice`` (or OutputDevice, if you're doing output).
+2. If your device needs additional cleaning in order to be destroyed properly, additionally use ``implements CleanUp`` and implement the ``cleanup()`` method.
+3. Add your devices to ``roboy.util.io`` in ``getInputs()`` and ``getOutputs()``, so the dialog system may use them if they're chosen in the configuration.
+4. Add a (commented) input/output configuration to ``config.properties``. (See :ref:`tut_config_properties` how to do this)
+
+
+.. highlight:: java
+
+.. _tut_io_social:
+
+Social Media Integration
+========================
+
+
+A new InputDevice for a social media
+------------------------------------
+
+First create a new class in roboy.io folder, namely ``MySocialMediaInput`` that implements from ``roboy.io.InputDevice``. 
+::
+    // inside MySocialMediaInput.java
+
+    public class MySocialMediaInput implements InputDevice {
+
+    }
+
+One function namely “listen()” has to be implemented. This function is called by a thread and should return a new ``Input`` or keep the thread waiting if there isn't any new ``Input`` available.
+::
+    @Override
+    public Input listen() throws InterruptedException, IOException {
+        return null;
+    }
+
+
+Since you will have an ``InputDevice`` for each user then you need at least a unique identifier for each user right? So each of this unique identifiers should mapped to an ``InputDevice``. And since a generic social media input device is structured in a way that a single entry point is necessary, you need a central point to find all our inputdevices. Therefore, create a static hashmap for it as follows.
+::
+    private static final HashMap<String, MySocialMediaInput> inputDevices = new HashMap<>();
+
+.. NOTE::
+    In further steps unique identifier mentioned as uuid
+
+Add a constructor that receives the uuid as parameter
+::
+    // inside MySocialMediaInput.java
+
+    public MySocialMediaInput(String uuid){
+
+        //constructor
+
+        synchronized(inputDevices){
+            inputDevices.put(uuid, this)
+        }
+    }
+
+At this point, we received the uuid and have a hashmap of each ``MySocialMediaInput``. What else we need to implement?:
+- Return messages as ``roboy.io.Input`` in the ``listen()`` method
+- Receive the messages
+
+.. Note::
+    The order is actually reversed for the sake of tutorial of course you need to receive messages before you return them.
+
+Let’s continue with first one. To return a message we need a message so create a ``String`` for it right below the ``HashMap``.
+::
+    private volatile String message;
+
+We need to initialize it in constructor. Add the following into the beginning of constructor.
+::
+    // inside public MySocialMediaInput(String uuid)
+
+    this.message = "";
+
+Finally finish the listen method
+:: 
+    // inside MySocialMediaInput.java
     
-Arbitraty of the following outputs can be used simultaniously at the runtime::
-    - ``cerevoice`` (requires ``roboy_speech_synthesis`` ROS package)
-    - ``cmdline``
-    - ``ibm`` (uses IBM Bluemix, requires Internet connection, user & pass configured below)
-    - ``emotions`` (requires ``roboy_face`` ROS package)
-    - ``udp`` (sends packets on the port configure below)
-    - ``telegram`` (requires Internet connection and a prepared telegram bot, see 1. Getting Started for more details. For the standard usecase, telegram should be set as both, in- and output.)
+    public Input listen() throws InterruptedException, IOException {
+        Input newInput;
+        syncronized(this){
+            while(message.equals("")){
+                try{
+                    this.wait();
+                }
+                catch(InterruptedException e){
+                    if(message == null||message.equals("")){
+                        throw e;
+                    }
+                }
+            }
+            newInput = new Input(message);
+            message = "";
+        }
+        return newInput;
+    }
 
-Example IO config::
+Nice, now only thing to worry about is how to receive the message. 
 
-    INPUT: cmdline
-    OUTPUTS:
-     - cmdline
-     - ibm
-     - cerevoice
+.. Note::
+    There is no ``SocialMediaHandler`` as template. You should have a handler or any logic that receive the messages from your soical media. Then you need to call this function after applied your logic (e.g. wait for a certain time to answer.)
 
-Personality
-^^^^^^^^^^^
+Create a static ``onUpdate(Pair<String, String>)`` function that will be called from your ``SocialMediaHandler`` class with pair parameter that consits of the uuid and the message.
+::
+    public static void onUpdate(Pair<String, String> update){
+        //get the uuid
 
-Here you specify the state machine description store in the JSON file containing personality, i.e. states and transitions between them::
+        //get the inputdevice
 
-    PERSONALITY_FILE: "resources/personalityFiles/OrdinaryPersonality.json"
+        //assign the message to the input device
+    }
+
+To create the uuid that we discussed before, get the unique identifier from the ``update``. And add a social media name as prefix.
+::
+    //get the uuid
+
+    String id = update.getKey();
+    String uuid = "MySocialMedia-" + id;
+
+.. Note::
+    Why we add a prefix? Because it is possible if there is a same identifier from another social media. 
+
+Now we need to get the input device there is an existing one with the uuid.
+::
+    //get the inputdevice
+
+    MySocialMediaInput input = inputDevices.get(uuid);
+    if (input == null){
+        try{
+            ConversationManager.spawnConversation(uuid);	
+        }catch(IOException e){
+            // do your logging or other error handling stuff
+            return;
+        }
+        input = inputDevices.get(uuid);
+    }
+
+As you can see if there is no inputdevice with respective uuid. ``ConversationManager.spawnConversation(uuid)`` is used. It magically creates the inputDevice (as well as the Conversation and the magical stuff that you do not need to worry about)
+
+Since you needed to store references to your devices in the hashmap, you need to delete them when a conversation is over so the garbage collector can delete them. Therefore the device needs cleaning. Finally, implement another interface namely ``CleanUp`` and override its ``cleanup()`` method.
+::
+    // inside MySocialMediaInput.java
+
+    public class MySocialMediaInput implements InputDevice, CleanUp {
+        
+        ...
+
+        @override
+        public void cleanup() {
+            inputDevices.values().remove(this);
+        }
+
+    }
+
+Done! Congratulations, you have just created your social media input device. . But it doesn’t work with only input device you also need to an output device for each conversation to send the output.
+
+A new OutputDevice for a social media
+-------------------------------------
+
+You have perfectly working input device for your social media. But that only for receiving messages, we also need to send messages.
+
+Create a new class in ``roboy.io`` folder namely ``MySocialMediaOutput`` that implements from ``roboy.io.OutputDevice``. 
+::
+    // inside MySocialOutput.java
+
+    public class MySocialMediaOutput implements OutputDevice {
+
+    }
+
+You should override a method namely ``act`` and List of actions as parameter.
+::
+    @override
+    public void act(List<Action> actions){
+        // handle actions
+    }
+
+Leave the inside of the method empty for now.
+
+As discussed before there is an OutputDevice for a user that is communicating with. And a unique identifier that is representing the user for each OutputDevice. Again just like our InputDevice you need a constructor and uuid as parameter.
+::
+    // inside MySocialOutput.java
+
+    private String uuid;
     
-Utilities
-^^^^^^^^^^
- 
-Configure third party communication ports, credentials, etc.::
+    public MySocialMediaOutput(String uuid){
+        //constructor
+        this.uuid = uuid.substring(uuid.indexOf('-')+1);
+    }
 
-    UDP_IN_SOCKET: 55555
-    UDP_OUT_SOCKET: 55556
-    UDP_HOST_ADDRESS: 127.0.0.1
+Remember the uuid in ``MySocialMediaInput`` was “MySocialMedia-”+id. Here it is splitted from the original user id that will be using for sending message.
 
-    PARSER_PORT: 5000
+Finish the ``act`` method
+::
+    // handle actions
+    for(Action a : actions) {
+        if (a instanceof SpeechAction) {
+            // Normal text message
+            String message = ((SpeechAction) a).getText();
+            /* SEND THE MESSAGE with your social media handler or directly here the way is up to you */
+        }else if (a instanceof EmotionAction) {
+            String stickerID = null;
+            switch(((EmotionAction) a).getState()){
+                case "shy": /*use the method that sends an sticker or emoji or anything that shows emotions, again you can user your social media handler or any other method */
+        break;
+        }
+    }
 
-    IBM_TTS_USER: x
-    IBM_TTS_PASS: x
+.. Note::
+    In this tutorial, only shy emotion has been used, but there are several emotions you can check ``roboy.emotions.RoboyEmotion.java`` if you want more!
 
+	/* */ these comments are not completed you should use your way that is sending a message via social media using the user’s id.
+
+Now you need to tell the dialog system how to use your new in- and output. Refer to :ref:`tut_generic_social_media_io` in order to tell the dialog system where to find them and how to allow users to activate them. Now rebuild your code, select your Input/OutputDevice in config.properties and run it to see the work you have achieved.
+
+
+Telegram: Handle commands
+-------------------------
+
+New inline commands can be handled in ``onUpdateReceived`` method which is in ``TelegramCommunicationHandler`` class. 
+
+Find the below if code block in onUpdateReceived.
+::
+    if(text.startsWith("/")){
+        //command
+    }
+
+This block is only checking if the incoming message has a '/' at the beginning of the word, just like all the commands "/start", "/stop", "/desired_command"
+
+Let's try to send a sticker after a command catch. Check if the command is "/like".
+::
+    //command
+
+    if(text == "/like"){
+        String stickerId = "CAADAgADOQAD5dCAEOtbfZz0NKh2Ag"
+        sendSticker(chatID, stickerID)
+    }
+
+.. Note::
+    Each sticker has its own unique id in Telegram.
+
+.. _tut_config_properties:
+
+Adding new entries to config.properties
+=======================================
+
+In order to add a new configuration possibility, changes in ``config.properties`` and ``roboy.util.ConfigManager`` are necessary. This tutorial will use the boolean example of ``DEMO_MODE`` so it may be retraced by looking at the existing code.
+
+.. highlight:: json
+
+1. Add a new property to ``config.properties`` ::
+
+	DEMO_MODE: false
+
+.. highlight:: java
+
+2. Add your new value and a default initialization to the top of``roboy.util.ConfigManager`` ::
+
+	public static boolean DEMO_MODE = false;
+
+3. Read the new value from ``config.properties`` in the lower part of ``roboy.util.ConfigManager`` ::
+
+	DEMO_MODE = yamlConfig.getBoolean("DEMO_MODE");
