@@ -8,6 +8,7 @@
         - [Requirements](#requirements)
         - [Recommendations](#recommendations)
         - [Command Line Installation Instructions](#command-line-installation-instructions)
+            - [Installation without Neo4J Tests](#installation-without-neo4j-tests)
         - [IDE Installation Instructions](#ide-installation-instructions)
     - [Environment Variables](#environment-variables)
         - [Neo4j](#neo4j)
@@ -17,7 +18,7 @@
     - [Running NLU only](#running-nlu-only)
         - [Using the Google Word2Vec Model in NLU](#using-the-google-word2vec-model-in-nlu)
     - [Troubleshooting](#troubleshooting)
-    - [Configuration of roboy_dialog](#configuration-of-roboy_dialog)
+    - [Configuration of roboy_dialog](#configuration-of-roboydialog)
 
 ## What is this Project
 
@@ -73,6 +74,14 @@ mvn clean install
 # Use this to Start Dialog
 ./start.sh
 ```
+
+#### Installation without Neo4J Tests
+
+In the event that you do not require Neo4J or do not wish that the Neo4J tests execute (ie. situations with no internet connection and only remote instance setup), you can have the Neo4J tests ignored. The system property shall also be applied to all submodule's POMs.
+
+Simply append `-D neo4jtest=false` to your maven command.
+
+Example: `mvn clean install -D neo4jtest=false`, `mvn test -D neo4jtest=false`
 
 ### IDE Installation Instructions
 
