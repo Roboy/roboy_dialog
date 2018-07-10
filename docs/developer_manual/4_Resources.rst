@@ -62,13 +62,12 @@ JSON Resources
         "BOT_USERNAME":"Botname"
         }
 
-
 CSV Resources
 =============
 
 - trivia - funny facts Roboy would love to tell you in the following form:
 
-    keyword;Reddit;The sentence contining the particular fact with regard to the keyword
+    keyword;Reddit;The sentence containing the particular fact with regard to the keyword
 
 .. warning::
 
