@@ -13,7 +13,7 @@ User manual
 All information necessary for someone deploying the dialog system in order to have a humanlike interaction service goes here. This incorporates information or references to them on how to install (especially this information should be in the respective README and just be referenced in this documentation), configure and run the dialog system. Additionally this section includes short explanations and references to development-specific stuff typical users might need like how to build a personality for their usecase.
 
 System architecture
-============
+===================
 
 .. Note::
 	The system architecture section is where developers go to understand the dialog system.

@@ -1,3 +1,5 @@
+.. _World Interfaces:
+
 ****************
 World Interfaces
 ****************
@@ -5,7 +7,7 @@ World Interfaces
 A world interace is any external service, device, etc. that enables the Dialog System to interact with the world outside of the dialog system. Interaction with a *World Interface* is provided to a conversation via *InputDevices* and *OutputDevices*. Some need to be initialized or controlled which would be done by the *ConversationManager*. This page is a list of currently supported *World Interfaces* and provides information on how to use them and how they work.
 
 .. image:: images/DialogSystem_World_Interfaces.png
-:alt: Dialog System World Interfaces
+    :alt: Dialog System World Interfaces
 
 ROS
 ===
@@ -45,7 +47,8 @@ Cerevoice
 
 .. NOTE::
     **I/O Device**
-Chose ``cerevoice`` in- and output in ``config.properties``.
+
+Choose ``cerevoice`` in- and output in ``config.properties``.
 
 Cerevoice is a software for speech-to-text and text-to-speech processing. An external cerevoice software instance must be provided in order for the Dialog System to use this.
 
@@ -56,7 +59,8 @@ UDP
 
 .. NOTE::
     **I/O Device**
-Chose ``udp`` in- and output in ``config.properties``.
+
+Choose ``udp`` in- and output in ``config.properties``.
 
 The dialog system may recieve and send in- and output that needs no further processing through a udp port configured in ``config.properties``.
 
@@ -65,7 +69,8 @@ Bing
 
 .. NOTE::
     **Input Device**
-Chose ``bing`` input in ``config.properties``.
+
+Choose ``bing`` input in ``config.properties``.
 
 Bing speech-to-text processing. Requires internet connection and the ``roboy_speech_recognition`` ROS package.
 
@@ -74,7 +79,8 @@ Command line
 
 .. NOTE::
     **I/O Device**
-Chose ``cmd`` in- and output in ``config.properties``.
+
+Choose ``cmd`` in- and output in ``config.properties``.
 
 In- and output via the command line in which the Dialog System is launched. Pure text-based in- and output.
 
@@ -83,16 +89,9 @@ Telegram
 
 .. NOTE::
     **I/O Device**
-Chose ``telegram`` in- and output in ``config.properties``.
 
-Use a telegram bot to interface with the world. In order to use this, register a bot Register a bot as described on the `telegram website`_. And place your telegram-bot authentification token in a JSON-File structured like this:
-.. _telegram website: https://core.telegram.org/bots#3-how-do-i-create-a-bot
+Choose ``telegram`` in- and output in ``config.properties``.
 
+Use a telegram bot to interface with the world. See :ref:`configuration_telegram_bot` for more information.
 
-.. code:: json
-{
-    "TOKEN":"AAAAAAAAA:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    "BOT_USERNAME":"Botname"
-}
-
-Provide the path to this file to the Dialog System via ``TELEGRAM_API_TOKENS_FILE: "/path/to/example.json"`` in ``config.properties``.
+If the dialog system has been configured to use telegram as input world interface, the command line switches into control mode where an operator may use the ``shutdown`` command for a safe shutdown that makes the dialog system properly say goodbye to active interlocutors.

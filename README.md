@@ -15,7 +15,7 @@ The implementation of the pipeline is in Java. Integrations with tools in other 
 
 ## How to run it
 
-The repository contains a project that can be readily imported into Eclipse. Best use the EGit Eclipse Plugin to check it out. The code can be executed by running de.roboy.dialog.DialogSystem.
+The repository contains a project that can be readily imported into Eclipse. Best use the EGit Eclipse Plugin to check it out. The code can be executed by running roboy.dialog.ConversationManager.
 
 #### Building
 
@@ -56,7 +56,7 @@ memory module.
 Once the ROS and Neo4j dependencies are satisfied, run the dialog system via
 ```bash
 java -Xmx6g -d64 -cp dialog/target/roboy-dialog-system-2.1.9-jar-with-dependencies.jar \
-    roboy.dialog.DialogSystem
+    roboy.dialog.ConversationManager
 ```
 
 #### Running NLU only
@@ -89,4 +89,4 @@ Pick the corresponding interface, depending on which part of the system you want
 |Action type     |de.roboy.dialog.action.Action|
 |Output device   |de.roboy.io.OutputDevice|
 
-The interfaces are deliberately simple, containing only 0 - 2 methods that have to be implemented. Once you implemented your new classes include them in the personality used in de.roboy.dialog.DialogSystem, if you only implemented single states or directly in de.roboy.dialog.DialogSystem for everything else.
+The interfaces are deliberately simple, containing only 0 - 2 methods that have to be implemented. Once you implemented your new classes include them in the personality used in roboy.dialog.ConversationManager, if you only implemented single states or directly in de.roboy.dialog.DialogSystem for everything else.

@@ -64,17 +64,6 @@ public class Conversation extends Thread {
         }
     }
 
-
-    /**
-     * Pauses Thread execution without ending the conversation
-     */
-    synchronized void pauseExecution(){
-        isRunning = false;
-        paused = true;
-        this.interrupt();
-        logger.info("############# Conversation paused ############");
-    }
-
     /**
      * Ends conversation and resets state to initial. Does not reset gathered information.
      */
@@ -110,6 +99,7 @@ public class Conversation extends Thread {
 
             // now stop if conversation ended
             if (personality.conversationEnded()) {
+                isRunning = false;
                 break;
             }
 
@@ -147,33 +137,4 @@ public class Conversation extends Thread {
             ConversationManager.deregisterConversation(this);
         }
     }
-
-    /**
-     * Requires the conversation to be stopped.
-     * Resets this conversation so this thread may be reused.
-     *
-     * @param person The interlocutor for this conversation to talk to after the reset.
-     */
-    synchronized void resetConversation(Interlocutor person){
-        if(isRunning){
-            logger.error("Trying to reset a running conversation is not a good idea. Will not comply...");
-            return;
-        }
-        logger.info("############# Reset State Machine ############");
-        // now reset --> conversationEnded() will now return false --> new conversation possible
-        personality.reset();
-        //Same for flushing the interlocutor.
-        personality.getContext().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
-
-        try {
-            // create "fresh" State objects using loadFromFile() at the beginning of every conversation
-            // otherwise some states (with possibly bad implementation) will keep the old internal variables
-            personality.loadFromFile(personalityFile);
-
-        } catch (FileNotFoundException e) {
-            logger.error("Personality file not found: " + e.getMessage());
-        }
-        isRunning = true;
-    }
-
 }
