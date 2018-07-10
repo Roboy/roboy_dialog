@@ -50,21 +50,6 @@ JSON Resources
       }
     }
 
-- synonym lists - contain keys and possible synonyms
-
-    {
-      "key1": [
-        "synonym1",
-        "synonym2",
-        "synonym3"
-      ],
-      "key2": [
-        "synonym1",
-        "synonym2",
-        "synonym3"
-      ]
-    }
-
 CSV Resources
 =============
 

@@ -17,11 +17,10 @@ import java.util.*;
 public class Inference implements InferenceEngine {
     final Logger LOGGER = LogManager.getLogger();
 
-    final static List<String> positiveTokens = Arrays.asList("yes", "yep", "yeah", "ok", "sure", "do",
-            "of course", "go ahead", "okay");
-    final static List<String> negativeTokens = Arrays.asList("no", "nope", "later", "not", "dont", "do not");
-    //TODO: add uncertaintyTokens + the rest of akinator answers
-    //maybe search existing library
+    final static List<String> positiveTokens = Arrays.asList("yes", "yep", "yeah", "ok", "sure", "course", "go ahead", "okay", "totally", "surely", "positive", "ready");
+    final static List<String> negativeTokens = Arrays.asList("no", "nope", "later", "not", "dont", "negative");
+    final static List<String> uncertaintyTokens = Arrays.asList("guess", "probably", "could", "likely", "know", "not sure", "idea", "perhaps", "depends", "maybe", "think", "might");
+
 
     private String inferName(Interpretation input) {
         if (input.getSentenceType().compareTo(Linguistics.SentenceType.STATEMENT) == 0) {
@@ -141,6 +140,10 @@ public class Inference implements InferenceEngine {
         // Brute-force implementation
         boolean positive = false;
         boolean negative = false;
+        boolean uncertain = false;
+        if(input.getSentence().contains("no idea") || input.getSentence().contains("do not know") || input.getSentence().contains("maybe")){
+            return Linguistics.UtteranceSentiment.MAYBE;
+        }
         List<String> tokens = input.getTokens();
         if (tokens != null && !tokens.isEmpty()) {
             for (String token : positiveTokens) {
@@ -155,8 +158,18 @@ public class Inference implements InferenceEngine {
                     break;
                 }
             }
+            for(String token : uncertaintyTokens){
+                if(tokens.contains(token)){
+                    uncertain = true;
+                    break;
+                }
+            }
         }
-        if (positive && !negative) {
+        if (positive && !negative && uncertain) {
+            return Linguistics.UtteranceSentiment.UNCERTAIN_POS;
+        } else if (!positive && negative && uncertain) {
+            return Linguistics.UtteranceSentiment.UNCERTAIN_NEG;
+        } else if (positive && !negative) {
             return Linguistics.UtteranceSentiment.POSITIVE;
         } else if (!positive && negative) {
             return Linguistics.UtteranceSentiment.NEGATIVE;
@@ -165,7 +178,6 @@ public class Inference implements InferenceEngine {
         }
     }
 
-    @Override
     public List<String> inferSnapchatFilter(Interpretation input, Map<String,List<String>> existingFilterMap){
 
         List<String> tokens = input.getTokens();
@@ -183,21 +195,4 @@ public class Inference implements InferenceEngine {
         return null;
     }
 
-    @Override
-    public String inferGame(Interpretation input, Map<String,List<String>> existingGamesMap){
-
-        List<String> tokens = input.getTokens();
-        if(tokens != null && !tokens.isEmpty()) {
-            String desiredGame = null;
-            for(String token : tokens){
-                for(Map.Entry<String, List<String>> entry  : existingGamesMap.entrySet()){
-                    if(entry.getValue().contains(token)){
-                        desiredGame = entry.getKey();
-                    }
-                }
-            }
-            return desiredGame;
-        }
-        return null;
-    }
 }

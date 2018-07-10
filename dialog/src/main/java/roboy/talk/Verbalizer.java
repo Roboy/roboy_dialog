@@ -109,15 +109,15 @@ public class Verbalizer {
 			);
 
 	public static final RandomList<String> userProbablyNo =
-			new RandomList<>("The chance is quite low. -", "Might be false. ", "You're not sure but probably no. ", "Probably not. "
+			new RandomList<>("The chance is quite low. ", "Might be false. ", "You're not sure but probably no. ", "Probably not. "
 			);
 
 	public static final RandomList<String> userSaysNo =
-			new RandomList<>("Not at all.", "A clear no.", "That was clear. No.", "A no from you.", "Nope."
+			new RandomList<>("Not at all. ", "A clear no. ", "That was clear. No. ", "A no from you. ", "Nope. "
 			);
 
 	public static final RandomList<String> roboyNotUnderstand =
-			new RandomList<>("Oh no, I didn't get what you said.", "I didn't understand you correctly.", "Sorry? What did you say?"
+			new RandomList<>("Oh no, I didn't get what you said. ", "I didn't understand you correctly. ", "Sorry? What did you say? "
 			);
 
 	private Interpretation verbalizeDates(Interpretation interpretation){

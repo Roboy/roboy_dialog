@@ -9,6 +9,7 @@ import com.markozajc.akiwrapper.core.entities.Guess;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
+import roboy.dialog.Segue;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
@@ -17,16 +18,18 @@ import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
 import roboy.talk.PhraseCollection;
 import roboy.talk.Verbalizer;
+import roboy.util.RandomList;
 
 import java.io.IOException;
 import java.lang.ref.PhantomReference;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GamingTwentyQuestionsState extends State {
 
 
-	private static final double PROBABILITY_THRESHOLD = 0.85;
+	private static final double PROBABILITY_THRESHOLD = 0.6;
 	private final static String TRANSITION_GAME_ENDED = "gameEnded";
 
 	private final Logger LOGGER = LogManager.getLogger();
@@ -42,6 +45,7 @@ public class GamingTwentyQuestionsState extends State {
 	private boolean stopGame = false;
 
 	private boolean filterApplied = false;
+	private boolean emotionShown = false;
 	private String winner = "";
 
 	public GamingTwentyQuestionsState(String stateIdentifier, StateParameters params) {
@@ -124,14 +128,22 @@ public class GamingTwentyQuestionsState extends State {
 
 	private String getIntent(Interpretation input) {
 
-		String intent = null;
+		List<String> tokens = input.getTokens();
 		Linguistics.UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
-		if(inputSentiment == Linguistics.UtteranceSentiment.POSITIVE){
-			intent = "yes";
+		if(tokens.contains("back") || tokens.contains("repeat")){
+			return "back";
+		} else if (inputSentiment == Linguistics.UtteranceSentiment.UNCERTAIN_NEG){
+			return "probably not";
+		} else if (inputSentiment == Linguistics.UtteranceSentiment.UNCERTAIN_POS){
+			return "probably";
+		} else if(inputSentiment == Linguistics.UtteranceSentiment.POSITIVE){
+			return "yes";
 		} else if (inputSentiment == Linguistics.UtteranceSentiment.NEGATIVE) {
-			intent = "no";
+			return "no";
+		} else if (inputSentiment == Linguistics.UtteranceSentiment.MAYBE) {
+			return "dont know";
 		}
-		return intent;
+		return null;
 	}
 
 	private Output askNextQuestion(){
@@ -180,7 +192,9 @@ public class GamingTwentyQuestionsState extends State {
 						aw.undoAnswer();
 						return Output.sayNothing();
 					default:
-						return Output.say("Please answer with either YES, NO, DONT KNOW, PROBABLY or PROBABLY NOT or go back one question with BACK.");
+						String answer = String.format(PhraseCollection.AKINATOR_ERROR_PHRASES.getRandomElement(), getContext().ACTIVE_INTERLOCUTOR.getValue().getName());
+						Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE, 0.5);
+						return Output.say(answer).setSegue(s);
 				}
 			} else {
 
@@ -259,13 +273,16 @@ public class GamingTwentyQuestionsState extends State {
 
 		if(winner.equals("roboy")){
 			filterApplied = getRosMainNode().ApplyFilter("flies");
-			getRosMainNode().ShowEmotion("sunglasses");
 			LOGGER.info("Snapchat-Filter Service Callback: " + filterApplied);
+			emotionShown = getRosMainNode().ShowEmotion("sunglasses");
+			LOGGER.info("Face Emotion Service Callback: " + emotionShown);
+
 
 		} else {
 			filterApplied = getRosMainNode().ApplyFilter("crown");
 			LOGGER.info("Snapchat-Filter Service Callback: " + filterApplied);
-			getRosMainNode().ShowEmotion("tears");
+			emotionShown = getRosMainNode().ShowEmotion("tears");
+			LOGGER.info("Face Emotion Service Callback: " + emotionShown);
 		}
 	}
 
