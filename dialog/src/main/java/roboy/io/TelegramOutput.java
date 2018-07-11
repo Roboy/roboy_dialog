@@ -16,7 +16,7 @@ public class TelegramOutput implements OutputDevice {
     private String uuid;
 
     /**
-     * Handles sending messages to the TelegramAPI from the DialogSystem
+     * Handles sending messages to the TelegramAPI from the Dialog System
      * @param uuid The uuid of the interlocutor must be formed like this: "telegram-[uuid from service]"
      */
     public TelegramOutput(String uuid) {
