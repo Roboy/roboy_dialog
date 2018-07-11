@@ -8,6 +8,7 @@
         - [Requirements](#requirements)
         - [Recommendations](#recommendations)
         - [Command Line Installation Instructions](#command-line-installation-instructions)
+            - [Running Neo4J's Docker Image as Non-Root](#running-neo4js-docker-image-as-non-root)
             - [Installation without Neo4J Tests](#installation-without-neo4j-tests)
         - [IDE Installation Instructions](#ide-installation-instructions)
     - [Environment Variables](#environment-variables)
@@ -50,7 +51,7 @@ java -version
 - At least 8GB of RAM
 - At least 6GB of Disk Space
     - ~ 4GB for Maven Dependencies
-    - ~ 500MB for Roboy_Dialog with all sub-modules and files generated via mvn clean install
+    - ~ 500MB for Roboy_Dialog with all sub-modules and files generated via `mvn clean install`
     - Rest is a ballpark estimate for Neo4J, Redis, ROS and their dependencies
 - Ubuntu (or variation) 16.04 LTS or Mac OSX
     - Needed for `ROS Kinetic`
@@ -75,6 +76,10 @@ mvn clean install
 ./start.sh
 ```
 
+#### Running Neo4J's Docker Image as Non-Root
+
+See [here](https://neo4j.com/docs/operations-manual/current/installation/docker/#docker-user) for more information.
+
 #### Installation without Neo4J Tests
 
 In the event that you do not require Neo4J or do not wish that the Neo4J tests execute (ie. situations with no internet connection and only remote instance setup), you can have the Neo4J tests ignored. The system property shall also be applied to all submodule's POMs.
@@ -82,6 +87,8 @@ In the event that you do not require Neo4J or do not wish that the Neo4J tests e
 Simply append `-D neo4jtest=false` to your maven command.
 
 Example: `mvn clean install -D neo4jtest=false`, `mvn test -D neo4jtest=false`
+
+> This shall disable `roboy_memorie`'s `org.roboy.memory.util.Neo4jTest` & `dialog`'s `roboy.memory.MemoryIntegrationTest` from running, as they require an active Neo4J instance to complete.
 
 ### IDE Installation Instructions
 
