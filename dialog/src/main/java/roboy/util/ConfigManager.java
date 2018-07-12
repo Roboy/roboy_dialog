@@ -45,6 +45,8 @@ public class ConfigManager {
 
     public static String TELEGRAM_API_TOKENS_FILE = "";
 
+    public static List<String> DISABLED_LOGGER;
+
     static {
         // this block is called once at and will initialize config
         // alternative: create a singleton for this class
@@ -115,6 +117,9 @@ public class ConfigManager {
             ACTION_CLIENT_SCRIPT = yamlConfig.getString("ACTION_CLIENT_SCRIPT");
 
             TELEGRAM_API_TOKENS_FILE = yamlConfig.getString("TELEGRAM_API_TOKENS_FILE");
+
+            DISABLED_LOGGER = yamlConfig.getList(String.class, "DISABLE_LOGGER");
+
         } catch(ConfigurationException | FileNotFoundException e) {
             LOGGER.error("Exception while reading YAML configurations from "+yamlConfigFile);
             LOGGER.error(e.getMessage());
