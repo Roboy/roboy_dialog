@@ -34,10 +34,10 @@ This repository contains a dialog system developed for the humanoid robot [Roboy
 - `ruby` 1.8.7 or 1.9
 - `git`
 - [Neo4J](http://roboy-memory.readthedocs.io/en/latest/Usage/0_installation.html#local-neo4j-instance)
-- Working Internet Connection for downloading dependencies
 - `wget`
 - `make`
 - `zip`
+- Working Internet Connection for downloading dependencies!
 
 *Make sure that you are using Java 1.8 both for* `java` *and* `javac` *! You can check this by running*
 ```bash
@@ -82,18 +82,16 @@ See [here](https://neo4j.com/docs/operations-manual/current/installation/docker/
 
 #### Installation without Neo4J Tests
 
-In the event that you do not require Neo4J or do not wish that the Neo4J tests execute (ie. situations with no internet connection and only remote instance setup), you can have the Neo4J tests ignored. The system property shall also be applied to all submodule's POMs.
-
-Simply append `-D neo4jtest=false` to your maven command.
+If you do not require Neo4J, or otherwise wish to prevent Neo4J-dependent tests execute (ie. situations with no internet connection and only remote instance setup), you can have the Neo4J tests ignored, by simply appending `-D neo4jtest=false` to your maven command.
 
 Example: `mvn clean install -D neo4jtest=false`, `mvn test -D neo4jtest=false`
 
-> This shall disable `roboy_memorie`'s `org.roboy.memory.util.Neo4jTest` & `dialog`'s `roboy.memory.MemoryIntegrationTest` from running, as they require an active Neo4J instance to complete.
+This will disable `roboy_memory`'s `org.roboy.memory.util.Neo4jTest` & `dialog`'s `roboy.memory.MemoryIntegrationTest`, since both require an active Neo4J database instance.
 
 ### IDE Installation Instructions
 
 Clone the Dialog Manager repository either using your IDE's VCS Tools or using the command line.
-`git clone https://github.com/Roboy/roboy_dialog`
+`git clone --recursive https://github.com/Roboy/roboy_dialog`
 
 *Attention: Make sure that the git sub-modules are initialized!*
 
@@ -105,7 +103,7 @@ Clone the Dialog Manager repository either using your IDE's VCS Tools or using t
 
 ## Environment Variables
 
-You need to set environment variables to tell `roboy_dialog` where Neo4j, ROS (optional) and Redis (optional) are located. In most cases, it shall suffice just to set the Neo4J variables. Just add the `export VARIABLE=value` statements to your `$HOME/.bashrc`.
+You need to set environment variables to tell `roboy_dialog` where Neo4j, ROS (optional) and Redis (optional) are located. In most cases, it will suffice just to set the Neo4J variables. Just add the `export VARIABLE=value` statements to your `$HOME/.bashrc`.
 
 Since all of these dependencies are actually required by `roboy_memory`, you can find more detailed installation instructions in [the memory docs](https://roboy-memory.readthedocs.io/en/latest/Usage/1_getting_started.html#configuring-the-package).
 
@@ -136,7 +134,7 @@ sudo docker run \
 
 ### ROS-master
 
-**Note: Running ROS is only necessary when running `roboy_dialog` in the Roboy architecture. Otherwise, you may also set `ROS_ENABLED: false` in `config.properties`.**
+**Note: Running ROS is only necessary when running `roboy_dialog` within the Roboy architecture. Otherwise, you may also set `ROS_ENABLED: false` in `config.properties`.**
 
 Dialog is tied into the Roboy architecture as a ROS node.
 Therefore, make sure to set the following environment variables to meaningful values:
