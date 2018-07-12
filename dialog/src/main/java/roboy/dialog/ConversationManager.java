@@ -1,7 +1,11 @@
 package roboy.dialog;
 
+import edu.stanford.nlp.sempre.roboy.utils.LogController;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
+import org.roboy.memory.util.LoggerInterface;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
@@ -45,6 +49,8 @@ public class ConversationManager {
     private static Neo4jMemoryInterface memory;
 
     public static void main(String[] args) throws IOException {
+
+        loggerSetup();
 
         //Initialize the ROS node.
         if(ConfigManager.ROS_ENABLED){
@@ -126,6 +132,17 @@ public class ConversationManager {
                 logger.error("Configured input device" + ConfigManager.INPUT + "not known! Aborting!");
                 System.exit(1);
             }
+    }
+
+    private static void loggerSetup() {
+        LogController.setLogger(ConfigManager.PARSER_LOG_MODE);
+        LoggerInterface.setLogger(ConfigManager.MEMORY_LOG_MODE);
+
+        Configurator.setAllLevels(
+                LogManager.getRootLogger().getName(),
+                ConfigManager.DIALOG_LOG_MODE == 0 ? Level.OFF :
+                        ConfigManager.DIALOG_LOG_MODE == 1 ? Level.WARN : Level.INFO
+                );
     }
 
     /**
