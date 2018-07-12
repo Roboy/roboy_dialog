@@ -10,6 +10,9 @@ import roboy.util.RandomList;
 
 import java.util.Set;
 
+import static roboy.util.ConfigManager.ROS_ACTIVE_PKGS;
+import static roboy.util.ConfigManager.ROS_ENABLED;
+
 /**
  * This fallback state will query the generative model over ROS to create a reply for any situation.
  *
@@ -46,8 +49,13 @@ public class WildTalkState extends State {
         String sentence = input.getSentence();
         RosMainNode rmn = getRosMainNode();
         if (rmn == null) {
-            return Output.say(rosFailurePhrases.getRandomElement())
-                    .setSegue(new Segue(Segue.SegueType.DISTRACT, 0.8));
+            if(ROS_ENABLED && ROS_ACTIVE_PKGS.contains("roboy_gnlp")){
+                return Output.say(rosFailurePhrases.getRandomElement())
+                        .setSegue(new Segue(Segue.SegueType.DISTRACT, 0.8));
+            }
+            else{
+                return Output.say("I am out of words.").setSegue(new Segue(Segue.SegueType.DISTRACT, 0.8));
+            }
         }
 
         String reaction = rmn.GenerateAnswer(sentence);
