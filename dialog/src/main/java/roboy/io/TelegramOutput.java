@@ -9,6 +9,13 @@ import roboy.util.TelegramCommunicationHandler;
 
 import java.util.List;
 
+/**
+ * TelegramOutput is design to be allocated for each conversation.
+ * Each user that texts to roboy via Telegram has its own TelegramOutput in the system.
+ * After an answer or multiple answers(depending on personality) are created in the system,
+ * TelegramOutput of the conversation gets the interpreted actions(EmotionAction, SpeechAction etc.)
+ * Depending on the action’s type it decide a message type(text, sticker) and send it to the its user via TelegramCommunicationHandler.
+ */
 public class TelegramOutput implements OutputDevice {
 
     private TelegramCommunicationHandler communicationHandler = TelegramCommunicationHandler.getInstance();
