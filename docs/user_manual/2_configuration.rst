@@ -97,10 +97,6 @@ Configure third party communication ports, credentials, etc.
     UDP_OUT_SOCKET: 55556
     UDP_HOST_ADDRESS: 127.0.0.1
 
-**Semantic parser port** ::
-
-    PARSER_PORT: 5000
-
 **IBM Watson text-to-speech** ::
 
     IBM_TTS_USER: x
