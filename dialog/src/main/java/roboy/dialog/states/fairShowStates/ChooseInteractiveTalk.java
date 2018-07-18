@@ -1,4 +1,4 @@
-package roboy.dialog.states.monologStates;
+package roboy.dialog.states.fairShowStates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,11 +8,11 @@ import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.nodes.Roboy;
 
 /**
- * Idle state.
- * Roboy is waiting TBD minutes to autonomously start a conversation.
+ * Passive state to start a conversation.
+ * Roboy is introducing himself autonomously
  *
  */
-public class IdleState extends State {
+public class ChooseInteractiveTalk extends State {
 
     private final Logger LOGGER = LogManager.getLogger();
 
@@ -20,7 +20,7 @@ public class IdleState extends State {
 
     private Roboy roboy;
 
-    public IdleState(String stateIdentifier, StateParameters params) {
+    public ChooseInteractiveTalk(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
     }
 

@@ -4,14 +4,14 @@
   "states": [
     {
       "identifier": "Idle",
-      "implementation": "roboy.dialog.states.monologStates.IdleState",
-      "transitions":{
+      "implementation": "roboy.dialog.states.fairShowStates.IdleState",
+      "transitions": {
         "timeIsUp": "ActiveIntro"
       }
     },
     {
       "identifier": "ActiveIntro",
-      "implementation": "roboy.dialog.states.monologStates.ActiveIntroState",
+      "implementation": "roboy.dialog.states.fairShowStates.ActiveIntroState",
       "transitions": {
         "peopleAround": "InfoTalk",
         "lonelyRoboy": "Idle"
@@ -19,7 +19,7 @@
     },
     {
       "identifier": "InfoTalk",
-      "implementation": "roboy.dialog.states.monologStates.InfoTalkState",
+      "implementation": "roboy.dialog.states.fairShowStates.InfoTalkState",
       "transitions": {
         "personDetected": "ChooseInteractiveTalk",
         "lonelyRoboy": "Idle"
@@ -27,15 +27,70 @@
     },
     {
       "identifier": "ChooseInteractiveTalk",
-      "implementation": "roboy.dialog.states.monologStates.InfoTalkState",
+      "implementation": "roboy.dialog.states.fairShowStates.InfoTalkState",
       "transitions": {
         "newPerson": "PersonalQA",
-        "roboy": "RoboyQA",
         "math": "Math",
         "akinator": "Akinator",
         "snapchat": "Snapchat",
-        "phoneDetected": "SocialMedia"
+        "phoneDetected": "SocialMedia",
+        "other": "GeneralQA"
       }
+    },
+    {
+      "identifier": "PersonalQA",
+      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationAskingState",
+      "transitions": {
+        "finished": "InfoTalk"
+      },
+      "parameters": {
+      "qaFile": "resources/sentences/QAList.json"
+      }
+    },
+    {
+      "identifier": "Math",
+      "implementation": "roboy.dialog.states.fairShowStates.MathState",
+      "transitions": {
+        "finished": "InfoTalk"
+      }
+    },
+    {
+      "identifier": "Snapchat",
+      "implementation": "roboy.dialog.states.gameStates.GamingSnapchatState",
+      "transitions": {
+        "finished": "InfoTalk"
+      }
+    },
+    {
+      "identifier": "Akinator",
+      "implementation": "roboy.dialog.states.gameStates.GamingTwentyQuestionsState",
+      "transitions": {
+        "finished": "InfoTalk"
+      }
+    },
+    {
+      "identifier": "SocialMedia",
+      "implementation": "roboy.dialog.states.gameStates.SocialMediaState",
+      "transitions": {
+        "finished": "InfoTalk"
+      }
+    },
+    {
+      "identifier": "GeneralQA",
+      "implementation": "roboy.dialog.states.ordinaryStates.QuestionAnsweringState",
+      "transitions": {
+        "finished": "InfoTalk"
+      }
+    },
+    {
+      "identifier": "WildTalk",
+      "implementation": "roboy.dialog.states.ordinaryStates.WildTalkState",
+      "transitions": {}
+    },
+    {
+      "identifier": "Farewell",
+      "implementation": "roboy.dialog.states.ordinaryStates.FarewellState",
+      "transitions": {}
     }
   ]
 }

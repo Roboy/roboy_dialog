@@ -1,37 +1,33 @@
-package roboy.dialog.states.monologStates;
+package roboy.dialog.states.fairShowStates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.logic.StatementInterpreter;
 import roboy.memory.nodes.Roboy;
-import roboy.talk.Verbalizer;
-
-import java.util.Set;
 
 /**
- * Passive state to start a conversation.
- * Roboy is introducing himself autonomously
+ * Idle state.
+ * Roboy is waiting TBD minutes to autonomously start a conversation.
  *
  */
-public class ActiveIntroState extends State {
+public class IdleState extends State {
+
+    private final static String TRANSITION_TIME_IS_UP = "timeIsUp";
 
     private final Logger LOGGER = LogManager.getLogger();
 
     private State nextState;
 
-    private Roboy roboy;
-
-    public ActiveIntroState(String stateIdentifier, StateParameters params) {
+    public IdleState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
     }
 
     @Override
     public Output act() {
-
-        return Output.say(roboy.getName());
+        nextState = getTransition(TRANSITION_TIME_IS_UP);
+        return Output.say("I am in IdleState");
     }
 
     @Override
@@ -42,7 +38,7 @@ public class ActiveIntroState extends State {
 
     @Override
     public State getNextState() {
-        return this;
+        return nextState;
     }
 
 }
