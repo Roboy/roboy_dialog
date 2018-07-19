@@ -45,9 +45,9 @@ public class ConfigManager {
 
     public static String TELEGRAM_API_TOKENS_FILE = "";
 
-    public static int MEMORY_LOG_MODE = 2;
-    public static int DIALOG_LOG_MODE = 2;
-    public static int PARSER_LOG_MODE = 2;
+    public static String MEMORY_LOG_MODE = "";
+    public static String DIALOG_LOG_MODE = "";
+    public static String PARSER_LOG_MODE = "";
 
     static {
         // this block is called once at and will initialize config
@@ -120,9 +120,9 @@ public class ConfigManager {
 
             TELEGRAM_API_TOKENS_FILE = yamlConfig.getString("TELEGRAM_API_TOKENS_FILE");
 
-            MEMORY_LOG_MODE = logMode(yamlConfig.getString("MEMORY_LOG_MODE"));
-            PARSER_LOG_MODE = logMode(yamlConfig.getString("PARSER_LOG_MODE"));
-            DIALOG_LOG_MODE = logMode(yamlConfig.getString("DIALOG_LOG_MODE"));
+            MEMORY_LOG_MODE = (yamlConfig.getString("MEMORY_LOG_MODE"));
+            PARSER_LOG_MODE = (yamlConfig.getString("PARSER_LOG_MODE"));
+            DIALOG_LOG_MODE = (yamlConfig.getString("DIALOG_LOG_MODE"));
 
         } catch(ConfigurationException | FileNotFoundException e) {
             LOGGER.error("Exception while reading YAML configurations from "+yamlConfigFile);
@@ -130,14 +130,7 @@ public class ConfigManager {
         }
     }
 
-    private static int logMode(String str){
-        str=str.toLowerCase();
-        if(str.equals("off"))
-                return 0;
-        if(str.equals("warn"))
-            return 1;
-        return 2; //INFO
-    }
+
 
 
 }

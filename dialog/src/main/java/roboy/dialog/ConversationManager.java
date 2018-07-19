@@ -1,11 +1,11 @@
 package roboy.dialog;
 
-import edu.stanford.nlp.sempre.roboy.utils.LogController;
+import edu.stanford.nlp.sempre.roboy.utils.NLULoggerController;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.Configurator;
-import org.roboy.memory.util.LoggerInterface;
+import org.roboy.memory.util.MemoryLoggerInterface;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
@@ -16,7 +16,6 @@ import roboy.io.MultiOutputDevice;
 import roboy.linguistics.sentenceanalysis.*;
 import roboy.logic.Inference;
 import roboy.logic.InferenceEngine;
-import roboy.memory.DummyMemory;
 import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.Neo4jProperty;
@@ -135,14 +134,12 @@ public class ConversationManager {
     }
 
     private static void loggerSetup() {
-        LogController.setLogger(ConfigManager.PARSER_LOG_MODE);
-        LoggerInterface.setLogger(ConfigManager.MEMORY_LOG_MODE);
-
-        Configurator.setAllLevels(
-                LogManager.getRootLogger().getName(),
-                ConfigManager.DIALOG_LOG_MODE == 0 ? Level.OFF :
-                        ConfigManager.DIALOG_LOG_MODE == 1 ? Level.WARN : Level.INFO
-                );
+        //Set Logging Level for Parser
+        NLULoggerController.setLogger(ConfigManager.PARSER_LOG_MODE);
+        //Set Logging Level for Memory
+        MemoryLoggerInterface.setLogger(ConfigManager.MEMORY_LOG_MODE);
+        //Set Logging Level for Dialog System
+        Configurator.setAllLevels(LogManager.getRootLogger().getName(), Level.toLevel(ConfigManager.DIALOG_LOG_MODE, Level.ALL));
     }
 
     /**
