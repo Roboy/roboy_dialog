@@ -4,13 +4,13 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.Ignore;
 import roboy.ros.RosMainNode;
 
 import static org.junit.Assert.assertNotEquals;
 
 
-
-
+@Deprecated
 public class ContextIntegrationTest {
     private RosMainNode ros;
     private Context context;
@@ -28,6 +28,7 @@ public class ContextIntegrationTest {
      *
      * Also, publishing needs to be done externally (e.g. manually via [rostopic pub -r 1 /roboy std_msgs/String "data: 'Test'"]).
      */
+    @Ignore
     @Test
     public void checkROSTopicUpdating() throws Exception {
         int updateFrequency = 1; //Assuming the updater's frequency is 1 second!
