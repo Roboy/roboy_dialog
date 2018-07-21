@@ -87,7 +87,10 @@ public class ConfigManager {
             DEMO_MODE = yamlConfig.getBoolean("DEMO_MODE");
             INFINITE_REPETITION = yamlConfig.getBoolean("INFINITE_REPETITION");
 
-            INPUT = yamlConfig.getString( "INPUT");
+            String input = yamlConfig.getString( "INPUT");
+            if(input != null){
+                INPUT = input;
+            }
             List<String> outputs = yamlConfig.getList(String.class, "OUTPUTS");
             if (outputs != null) {
                 OUTPUTS = outputs;
