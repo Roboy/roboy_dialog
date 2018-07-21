@@ -1,13 +1,17 @@
 package roboy.logic;
 
+import org.json.JSONObject;
 import roboy.linguistics.Linguistics.UtteranceSentiment;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jLabel;
 import roboy.memory.Neo4jProperty;
 import roboy.memory.Neo4jRelationship;
+import roboy.util.RandomList;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public interface InferenceEngine {
 
@@ -83,5 +87,6 @@ public interface InferenceEngine {
      * @return String containing inferred result/null if NA
      */
     UtteranceSentiment inferSentiment(Interpretation input);
+
 
 }

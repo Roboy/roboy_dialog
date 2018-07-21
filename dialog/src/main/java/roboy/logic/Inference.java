@@ -3,21 +3,24 @@ package roboy.logic;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bytedeco.javacpp.presets.opencv_core;
+import org.json.JSONObject;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.Neo4jLabel;
 import roboy.memory.Neo4jProperty;
 import roboy.memory.Neo4jRelationship;
+import roboy.util.RandomList;
 
 import java.util.*;
 
 public class Inference implements InferenceEngine {
     final Logger LOGGER = LogManager.getLogger();
 
-    final static List<String> positiveTokens = Arrays.asList("yes", "yep", "yeah", "ok", "sure", "do",
-            "of course", "go ahead");
-    final static List<String> negativeTokens = Arrays.asList("no", "nope", "later", "not", "dont", "do not");
+    final static List<String> positiveTokens = Arrays.asList("yes", "yep", "yeah", "ok", "sure", "course", "go ahead", "okay", "totally", "surely", "positive", "ready");
+    final static List<String> negativeTokens = Arrays.asList("no", "nope", "later", "not", "dont", "negative");
+    final static List<String> uncertaintyTokens = Arrays.asList("guess", "probably", "could", "likely", "know", "not sure", "idea", "perhaps", "depends", "maybe", "think", "might");
+
 
     private String inferName(Interpretation input) {
         if (input.getSentenceType().compareTo(Linguistics.SentenceType.STATEMENT) == 0) {
@@ -48,7 +51,6 @@ public class Inference implements InferenceEngine {
         }
         return null;
     }
-
 
     @Override
     public HashMap<Neo4jProperty, String> inferProperties(ArrayList<Neo4jProperty> keys, Interpretation input) {
@@ -138,6 +140,10 @@ public class Inference implements InferenceEngine {
         // Brute-force implementation
         boolean positive = false;
         boolean negative = false;
+        boolean uncertain = false;
+        if(input.getSentence().contains("no idea") || input.getSentence().contains("do not know") || input.getSentence().contains("maybe")){
+            return Linguistics.UtteranceSentiment.MAYBE;
+        }
         List<String> tokens = input.getTokens();
         if (tokens != null && !tokens.isEmpty()) {
             for (String token : positiveTokens) {
@@ -152,8 +158,18 @@ public class Inference implements InferenceEngine {
                     break;
                 }
             }
+            for(String token : uncertaintyTokens){
+                if(tokens.contains(token)){
+                    uncertain = true;
+                    break;
+                }
+            }
         }
-        if (positive && !negative) {
+        if (positive && !negative && uncertain) {
+            return Linguistics.UtteranceSentiment.UNCERTAIN_POS;
+        } else if (!positive && negative && uncertain) {
+            return Linguistics.UtteranceSentiment.UNCERTAIN_NEG;
+        } else if (positive && !negative) {
             return Linguistics.UtteranceSentiment.POSITIVE;
         } else if (!positive && negative) {
             return Linguistics.UtteranceSentiment.NEGATIVE;
@@ -161,4 +177,22 @@ public class Inference implements InferenceEngine {
             return Linguistics.UtteranceSentiment.NEUTRAL;
         }
     }
+
+    public List<String> inferSnapchatFilter(Interpretation input, Map<String,List<String>> existingFilterMap){
+
+        List<String> tokens = input.getTokens();
+        if(tokens != null && !tokens.isEmpty()) {
+            List<String> desiredFilters = new ArrayList<String>();
+            for(String token : tokens){
+                for(Map.Entry<String, List<String>> entry  : existingFilterMap.entrySet()){
+                    if(entry.getValue().contains(token)){
+                        desiredFilters.add(entry.getKey());
+                    }
+                }
+            }
+            return desiredFilters;
+        }
+        return null;
+    }
+
 }

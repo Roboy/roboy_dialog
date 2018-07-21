@@ -30,7 +30,7 @@ public class Linguistics {
     }
 
     public enum UtteranceSentiment {
-	    POSITIVE, NEUTRAL, NEGATIVE
+	    POSITIVE, NEUTRAL, NEGATIVE, UNCERTAIN_POS, UNCERTAIN_NEG, MAYBE
     }
 
 	public static final List<String> tobe = Lists.stringList("am","are","is","was","were","been");
