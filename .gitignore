@@ -23,3 +23,52 @@ resources/word2vec_toy_data_and_model
 resources_nlu/word2vec/roboy_enwik8.txt
 
 docs/doxyxml
+
+# NLU stuff
+
+lib
+fig
+sfig
+refdb
+virtuoso-opensource
+
+classes
+libsempre
+sempre.jar
+module-classes.txt
+
+state
+out
+test-output
+
+.project
+.classpath
+.settings
+.idea
+semparse.iml
+*~
+*.swp
+*.bak
+*.pyc
+*.cache
+*.DS_Store
+java.hprof.txt
+
+# Symlinks
+/c
+/e
+/t
+/x
+scr
+rdf
+
+# interactive outputs
+int-output*
+int-backup
+interactive/.ipynb_checkpoints
+# Community server logs
+community-server/data
+community-server/data-backup
+
+*.iml
+nlu/parser/target/
