@@ -23,6 +23,8 @@ public class ConfigManager {
     public static String MCG_SEARCH = "https://concept.research.microsoft.com/api/Concept/ScoreByProb?instance=";
 
     // JSON files
+    public static String LEXICON_FILE = "resources_nlu/lexicons/roboy-demo.lexicon";
+    public static String GRAMMAR_FILE = "resources_nlu/roboy-demo.grammar";
     public static String SCHEMA_FILE = "lib/fb_data/93.exec/schema2.ttl";
     public static String GLOSSARY_FILE = "src/main/java/edu/stanford/nlp/sempre/roboy/data/database_glossary.json";
     public static String DATABASE_FILE = "src/main/java/edu/stanford/nlp/sempre/roboy/data/database_indexing.json";
@@ -30,6 +32,7 @@ public class ConfigManager {
     public static String SCORE_WEIGHTS_FILE = "src/main/java/edu/stanford/nlp/sempre/roboy/data/score_weights.json";
     public static String DB_TYPES_FILE = "src/main/java/edu/stanford/nlp/sempre/roboy/data/database_names.json";
     public static String FOLLOW_FILE = "src/main/java/edu/stanford/nlp/sempre/roboy/data/follow_up_patterns.json";
+    public static String RPQA_TRAINING_EXAMPLES = "resources_nlu/rpqa/dummy.examples";
 
     // Flags
     public static int DEBUG = 1;
@@ -84,6 +87,8 @@ public class ConfigManager {
             MCG_SEARCH  = yamlConfig.getString("MCG_SEARCH");
 
             // JSON files
+            LEXICON_FILE         = yamlConfig.getString("LEXICON_FILE");
+            GRAMMAR_FILE         = yamlConfig.getString("GRAMMAR_FILE");
             GLOSSARY_FILE        = yamlConfig.getString("GLOSSARY_FILE");
             DATABASE_FILE        = yamlConfig.getString("DATABASE_FILE");
             WORD2VEC_FILE        = yamlConfig.getString("WORD2VEC_FILE");
@@ -91,6 +96,7 @@ public class ConfigManager {
             DB_TYPES_FILE        = yamlConfig.getString("TYPES_FILE");
             SCHEMA_FILE          = yamlConfig.getString("SCHEMA_FILE");
             FOLLOW_FILE          = yamlConfig.getString("FOLLOW_FILE");
+            RPQA_TRAINING_EXAMPLES = yamlConfig.getString("RPQA_TRAINING_EXAMPLES");
 
             DEBUG           = yamlConfig.getInt("DEBUG");
 

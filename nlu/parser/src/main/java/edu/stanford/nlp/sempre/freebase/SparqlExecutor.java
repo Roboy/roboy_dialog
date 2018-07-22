@@ -64,7 +64,7 @@ public class SparqlExecutor extends Executor {
     @Option(gloss = "Whether to return supporting information (e.g., 'length' for the 'longest river')")
     public boolean includeSupportingInfo = false;
 
-    @Option public int verbose = 1;
+    @Option public int verbose = 3;
   }
 
   public static Options opts = new Options();

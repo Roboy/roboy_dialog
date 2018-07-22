@@ -2,6 +2,7 @@ package edu.stanford.nlp.sempre.roboy;
 
 import com.google.common.collect.Sets;
 
+import edu.stanford.nlp.sempre.roboy.config.ConfigManager;
 import edu.stanford.nlp.sempre.*;
 import java.util.*;
 import fig.basic.*;
@@ -25,25 +26,40 @@ public class SemanticAnalyzerInterface
         private String followUpA;
         private String utteranceType;
 
-        public Result(Master.Response resp, Executor executor) {
+        public Result(Master.Response resp, Executor executor)
+        {
             ex = resp.getExample();
-            if (
-                ex.getPredDerivations().size() > 0 &&
-                resp.getCandidateIndex() >= 0
-            ) {
-                Derivation deriv = resp.getDerivation();
-                deriv.ensureExecuted(executor, ex.context);
-                parse = deriv.getFormula().toString();
-                answer = deriv.getValue().toString();
-                if (deriv.followUps != null && deriv.followUps.size() > 0) {
-                    followUpQ = deriv.followUps.get(0).getKey();
-                    followUpA = deriv.followUps.get(0).getValue();
-                }
+            if (ex != null)
+            {
+                derivationIteration: for (Derivation deriv : ex.predDerivations)
+                {
+                    Value val = deriv.getValue();
+                    while (val instanceof ListValue) {
+                        if (((ListValue) val).values.size() > 0)
+                            val = ((ListValue) val).values.get(0);
+                        else
+                            continue derivationIteration;
+                    }
 
-                if (parse.contains("triple") || parse.contains("string"))
-                  utteranceType = "statement";
-                else
-                  utteranceType = "question";
+                    LogInfo.logs("Received reply: %s", val.pureString());
+
+                    parse = deriv.getFormula().toString();
+                    answer = val.pureString();
+                    if (answer.indexOf(':') >= 0)
+                        answer = answer.substring(answer.lastIndexOf(':') + 1).replace("_", " ");
+
+                    if (deriv.followUps != null && deriv.followUps.size() > 0) {
+                        followUpQ = deriv.followUps.get(0).getKey();
+                        followUpA = deriv.followUps.get(0).getValue();
+                    }
+
+                    if (parse.contains("triple") || parse.contains("string"))
+                        utteranceType = "statement";
+                    else
+                        utteranceType = "question";
+
+                    break;
+                }
             }
         }
 
@@ -133,11 +149,11 @@ public class SemanticAnalyzerInterface
         LanguageAnalyzer.opts.languageAnalyzer = "corenlp.CoreNLPAnalyzer";
         Learner.opts.maxTrainIters = 10;
         Params.opts.initWeightsRandomly = true;
-        SimpleLexicon.opts.inPaths = Arrays.asList("resources_nlu/lexicons/roboy-demo.lexicon");
-        SparqlExecutor.opts.endpointUrl = "http://dbpedia.org/sparql";
-        Grammar.opts.inPaths = Arrays.asList("resources_nlu/roboy-final.grammar");
-        Dataset.opts.inPaths.add(new Pair<String, String>("train", "resources_nlu/rpqa/dummy.examples"));
-        SparqlExecutor.opts.endpointUrl = "http://dbpedia.org/sparql";
+
+        SimpleLexicon.opts.inPaths = Arrays.asList(ConfigManager.LEXICON_FILE);
+        SparqlExecutor.opts.endpointUrl = ConfigManager.DB_SPARQL;
+        Grammar.opts.inPaths = Arrays.asList(ConfigManager.GRAMMAR_FILE);
+        Dataset.opts.inPaths.add(new Pair<String, String>("train", ConfigManager.RPQA_TRAINING_EXAMPLES));
     }
 
     /**

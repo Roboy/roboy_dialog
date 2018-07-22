@@ -72,7 +72,7 @@ public class SemanticParserAnalyzer implements Analyzer {
 
         // Read parse/answer if available
         if (result.hasSuccessfulParse()) {
-            interpretation.setAnswer(get_answers(result.getAnswer()));
+            interpretation.setAnswer(result.getAnswer());
             interpretation.setParse(result.getParse());
             interpretation.setSemTriples(extract_triples(result.getParse()));
             interpretation.setParsingOutcome(Linguistics.ParsingOutcome.SUCCESS);
@@ -88,59 +88,6 @@ public class SemanticParserAnalyzer implements Analyzer {
         }
 
         return interpretation;
-    }
-
-    /**
-     * Function reading parser answer in returned JSON string.
-     * List can contain triples, strings or doubles.
-     *
-     * @param answer String containing parser answer received by analyzer.
-     * @return String formed by joined list.
-     */
-    private String get_answers(String answer) {
-        List<String> result = new ArrayList<>();
-
-        //Check if contains triples
-        List<Triple> triples = extract_triples(answer);
-        if (triples.size() > 0) {
-            result.add("triples");
-            for (Triple t : triples) {
-                result.add(t.toString());
-            }
-            return result.toString();
-        }
-        String[] tokens = answer.split(" ");
-        for (int i = 0; i < tokens.length; i++) {
-            // Number/String type
-            if ((tokens[i].contains("number") || tokens[i].contains("string")) && i + 1 < tokens.length) {
-                for (int j = i + 1; j < tokens.length; j++) {
-                    result.add(tokens[j].replaceAll("\\)", ""));
-                    if (tokens[j].contains(")")) break;
-
-                }
-                return String.join(" ", result);
-            }
-            // Name value type
-            else if ((tokens[i].contains("name") && i + 1 < tokens.length)) {
-                for (int j = i + 1; j < tokens.length; j++) {
-                    if (!tokens[j].contains("null"))
-                        result.add(tokens[j].replaceAll("\\)", ""));
-                    if (tokens[j].contains("\")")) break;
-
-                }
-                return String.join(" ", result);
-            }
-            // Result from DBpedia / different knowledge base
-            else if (tokens[i].contains(":") && !tokens[i].contains("fb:")) {
-                for (int j = i; j < tokens.length; j++) {
-                    if (!tokens[j].contains("null"))
-                        result.add(tokens[j].replaceAll("\\)", ""));
-                    if (tokens[j].contains(")")) break;
-                }
-                return String.join(" ", result);
-            }
-        }
-        return null;
     }
 
     /**
