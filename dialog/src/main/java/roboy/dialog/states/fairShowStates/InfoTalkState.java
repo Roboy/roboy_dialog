@@ -27,7 +27,7 @@ public class InfoTalkState extends State {
     @Override
     public Output act() {
 
-        return Output.say(roboy.getName());
+        return Output.say(getContext().PERSON_DETECTION.getLastNValues(5).toString());
     }
 
     @Override

@@ -7,6 +7,7 @@ import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
 import roboy.util.ConfigManager;
 import roboy_communication_cognition.DirectionVector;
+import std_msgs.Bool;
 
 import java.util.ArrayList;
 
@@ -44,6 +45,9 @@ public class Context {
     public final HistoryInterface<ValueHistory<Integer>, Integer, Integer> OTHER_Q =
             new HistoryInterface<>(new ValueHistory<Integer>());
 
+    public final HistoryInterface<DetecedPerson,Integer, std_msgs.Bool> PERSON_DETECTION =
+            new HistoryInterface<>(new DetecedPerson());
+
     /* GUI */
     private final ArrayList guiValues = new ArrayList();
     private final ArrayList guiHistories = new ArrayList();
@@ -58,6 +62,7 @@ public class Context {
     private boolean rosInitialized = false;
     private AudioDirectionUpdater AUDIO_ANGLES_UPDATER;
     private ROSTestUpdater ROS_TEST_UPDATER;
+    private DetectedPersonUpdater DETECTED_PERSON_UPDATER;
 
     /* OBSERVERS */
     private final FaceCoordinatesObserver FACE_COORDINATES_OBSERVER;
@@ -106,6 +111,8 @@ public class Context {
                 if(ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_test")) ROS_TEST_UPDATER = new ROSTestUpdater(ROS_TEST.valueHistory, ros);
                 // TODO Add a FACE_COORDINATE_UPDATER.
                 // Edit the data type and integration tests, once the real data type is used.
+
+                if(ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_vision")) DETECTED_PERSON_UPDATER = new DetectedPersonUpdater(PERSON_DETECTION.valueHistory, ros);
 
                 rosInitialized = true;
             }

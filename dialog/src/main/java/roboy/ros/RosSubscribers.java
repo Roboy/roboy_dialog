@@ -2,7 +2,6 @@ package roboy.ros;
 
 import roboy_communication_cognition.*;
 import roboy_communication_control.Strings;
-import std_msgs.Int8;
 
 public enum RosSubscribers {
     DIRECTION_VECTOR("roboy_audio", "/roboy/cognition/audio/direction_of_arrival", DirectionVector._TYPE),
