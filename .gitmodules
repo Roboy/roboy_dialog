@@ -1,4 +1,4 @@
-[submodule "memory"]
+[submodule "roboy_memory"]
 	path = memory
 	url = https://github.com/Roboy/roboy_memory.git
-	branch = master
+	branch = develop
