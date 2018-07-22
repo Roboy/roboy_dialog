@@ -1,8 +1,3 @@
-[submodule "nlu"]
-	path = nlu
-	url = git://github.com/Roboy/roboy_parser.git
-	branch = master
-
 [submodule "memory"]
 	path = memory
 	url = https://github.com/Roboy/roboy_memory.git
