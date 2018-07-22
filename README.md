@@ -37,7 +37,7 @@ This repository contains a dialog system developed for the humanoid robot [Roboy
 - `wget`
 - `make`
 - `zip`
-- Working Internet Connection for downloading dependencies!
+- Working Internet Connection is required for downloading dependencies!
 
 *Make sure that you are using Java 1.8 both for* `java` *and* `javac` *! You can check this by running*
 ```bash
