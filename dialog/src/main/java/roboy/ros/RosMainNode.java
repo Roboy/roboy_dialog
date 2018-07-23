@@ -413,6 +413,7 @@ public class RosMainNode extends AbstractNodeMain {
 
         if(services.notInitialized(RosServiceClients.SNAPCHATFILTER)) {
             // FALLBACK RETURN VALUE
+            LOGGER.info("ApplyFilter not initialized");
             return false;
         }
 
