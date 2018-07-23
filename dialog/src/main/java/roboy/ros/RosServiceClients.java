@@ -20,7 +20,8 @@ enum RosServiceClients {
     GETMEMORY("roboy_memory", "/roboy/cognition/memory/get", DataQuery._TYPE),
     DELETEMEMORY("roboy_memory", "/roboy/cognition/memory/remove", DataQuery._TYPE),
     CYPHERMEMORY("roboy_memory", "/roboy/cognition/memory/cypher", DataQuery._TYPE),
-    INTENT("roboy_intents", "/roboy/cognition/detect_intent", DetectIntent._TYPE);
+    INTENT("roboy_intents", "/roboy/cognition/detect_intent", DetectIntent._TYPE),
+    SNAPCHATFILTER("roboy_filters", "/roboy/cognition/apply_filter", ApplyFilter._TYPE);
 
     String rosPackage;
     String address;

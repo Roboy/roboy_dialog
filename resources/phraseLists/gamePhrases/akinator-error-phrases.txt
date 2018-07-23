@@ -1,0 +1,5 @@
+"Oh %s, I would really like to talk about that. But for this game we have to stick to yes no answers. ",
+"Oupsi, I couldn't get that. I only need a yes or no from you. Or maybe you are not sure? ",
+"Sorry for my confusion right now. Think again about your character, %s, and then tell me - yes or no? ",
+"Puuuh, that was really hard to understand. Try it again. ",
+"Hey you guys over there, could you please be more quiet. Sorry, %s it's so loud, I can't understand what you're saying. "

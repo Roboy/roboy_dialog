@@ -46,7 +46,37 @@
       "transitions": {
         "finishedQuestionAnswering": "Farewell",
         "loopToNewPerson": "PersonalQA",
-        "loopToKnownPerson": "FollowUp"
+        "loopToKnownPerson": "FollowUp",
+        "switchToGaming": "ChooseGameState"
+      }
+    },
+    {
+      "identifier": "GamingTwentyQuestionsState",
+      "implementation": "roboy.dialog.states.gameStates.GamingTwentyQuestionsState",
+      "transitions": {
+      "gameEnded" : "QuestionAnswering"
+      }
+    },
+    {
+      "identifier": "GamingSnapchatState",
+      "implementation": "roboy.dialog.states.gameStates.GamingSnapchatState",
+      "transitions": {
+        "gameEnded" : "QuestionAnswering"
+      },
+      "parameters": {
+        "filterFile": "resources/gameResources/snapchat-filters.json"
+      }
+    },
+    {
+      "identifier": "ChooseGameState",
+      "implementation": "roboy.dialog.states.gameStates.ChooseGameState",
+      "transitions": {
+        "choseSnapchat" : "GamingSnapchatState",
+        "chose20questions" : "GamingTwentyQuestionsState",
+        "exitGame": "QuestionAnswering"
+      },
+      "parameters":{
+        "gameFile": "resources/gameResources/game-selection.json"
       }
     },
     {
