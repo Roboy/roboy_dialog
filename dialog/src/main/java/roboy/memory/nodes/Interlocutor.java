@@ -1,9 +1,11 @@
 package roboy.memory.nodes;
 
 import com.google.gson.Gson;
+import jnr.ffi.annotations.In;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.memory.*;
+import roboy.util.Uuid;
 import roboy.util.UzupisIntents;
 
 import java.io.IOException;
@@ -24,6 +26,16 @@ public class Interlocutor extends MemoryNodeModel {
         super(memory);
     }
 
+    public Interlocutor(Neo4jMemoryInterface memory, String name) {
+        super(memory);
+        this.addName(name);
+    }
+
+    public Interlocutor(Neo4jMemoryInterface memory, Uuid uuid) {
+        super(memory);
+        this.addUuid(uuid);
+    }
+
     /**
      * After executing this method, the person field contains a node that
      * is in sync with memory and represents the interlocutor.
@@ -34,48 +46,68 @@ public class Interlocutor extends MemoryNodeModel {
     public void addName(String name) {
         setProperty(Neo4jProperty.name, name);
         setLabel(Neo4jLabel.Person);
+        FAMILIAR = this.init(this)
+    }
 
-            ArrayList<Integer> ids = new ArrayList<>();
-            // Query memory for matching persons.
-            try {
-                ids = memory.getByQuery(this);
-            } catch (InterruptedException | IOException e) {
-                LOGGER.info("Exception while querying memory, assuming person unknown.");
-                e.printStackTrace();
-            }
-            // Pick first if matches found.
-            if (ids != null && !ids.isEmpty()) {
-                //TODO Change from using first id to specifying if multiple matches are found.
-                try {
-                    MemoryNodeModel node = fromJSON(memory.getById(ids.get(0)), new Gson());
-                    setId(node.getId());
-                    setRelationships(node.getRelationships() != null ? node.getRelationships() : new HashMap<>());
-                    setProperties(node.getProperties() != null ? node.getProperties() : new HashMap<>());
-                    FAMILIAR = true;
-                } catch (InterruptedException | IOException e) {
-                    LOGGER.warn("Unexpected memory error: provided ID not found upon querying.");
-                    e.printStackTrace();
-                }
-            }
-            // Create new node if match is not found.
-            else {
-                if(!(memory instanceof DummyMemory)) {
-                    try {
-                        int id = memory.create(this);
-                        // Need to retrieve the created node by the id returned by memory
-                        MemoryNodeModel node = fromJSON(memory.getById(id), new Gson());
-                        setId(node.getId());
-                        setRelationships(node.getRelationships() != null ? node.getRelationships() : new HashMap<>());
-                        setProperties(node.getProperties() != null ? node.getProperties() : new HashMap<>());
-                        FAMILIAR = false;
-                    } catch (InterruptedException | IOException e) {
-                        LOGGER.warn("Unexpected memory error: provided ID not found upon querying.");
-                        e.printStackTrace();
-                    }
-                }
+    public void addUuid(Uuid uuid) {
+        setProperty(uuid.getType().toNeo4jProperty(), uuid);
+        setLabel(uuid.getType().toNeo4jLabel());
+        FAMILIAR = this.init(this);
+    }
+
+    private boolean init(Interlocutor interlocutor) {
+        MemoryNodeModel node = this.queryForMatchingNodes(interlocutor);
+        if (node != null) {
+            this.set(node);
+            return true;
+        } else {
+            node = this.create(interlocutor);
+            if (node != null) {
+                this.set(node);
             }
         }
+        return false;
+    }
 
+    private MemoryNodeModel queryForMatchingNodes(Interlocutor interlocutor) {
+        ArrayList<Integer> ids = new ArrayList<>();
+        // Query memory for matching persons.
+        try {
+            ids = memory.getByQuery(interlocutor);
+        } catch (InterruptedException | IOException e) {
+            LOGGER.info("Exception while querying memory, assuming person unknown.");
+            e.printStackTrace();
+        }
+        // Pick first if matches found.
+        if (ids != null && !ids.isEmpty()) {
+            //TODO Change from using first id to specifying if multiple matches are found.
+            try {
+                return fromJSON(memory.getById(ids.get(0)), new Gson());
+            } catch (InterruptedException | IOException e) {
+                LOGGER.warn("Unexpected memory error: provided ID not found upon querying.");
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private MemoryNodeModel create(Interlocutor interlocutor) {
+        if(!(memory instanceof DummyMemory)) {
+            try {
+                int id = memory.create(interlocutor);
+                // Need to retrieve the created node by the id returned by memory
+                return fromJSON(memory.getById(id), new Gson());
+            } catch (InterruptedException | IOException e) {
+                LOGGER.warn("Unexpected memory error: provided ID not found upon querying.");
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void set(MemoryNodeModel node) {
+        setId(node.getId());
+        setRelationships(node.getRelationships() != null ? node.getRelationships() : new HashMap<>());
+        setProperties(node.getProperties() != null ? node.getProperties() : new HashMap<>());
+    }
 
     public String getName() {
         return (String) getProperty(Neo4jProperty.name);
