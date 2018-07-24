@@ -1,7 +1,10 @@
 package roboy.dialog;
 
+import edu.stanford.nlp.sempre.roboy.utils.logging.ParserLogController;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
@@ -246,5 +249,14 @@ public class ConversationManager {
                     System.out.println("Command not found. Currently supported commands: shutdown");
             }
         }
+    }
+
+    private static void loggerSetup() {
+        //Set Logging Level for Parser
+        ParserLogController.setLogger(ConfigManager.PARSER_LOG_MODE);
+        //Set Logging Level for Memory
+//        MemoryLoggerInterface.setLogger(ConfigManager.MEMORY_LOG_MODE);
+        //Set Logging Level for Dialog System
+        Configurator.setAllLevels(LogManager.getRootLogger().getName(), Level.toLevel(ConfigManager.DIALOG_LOG_MODE, Level.ALL));
     }
 }
