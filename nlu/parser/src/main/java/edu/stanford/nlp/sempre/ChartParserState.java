@@ -2,7 +2,7 @@ package edu.stanford.nlp.sempre;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.MapUtils;
 
 import java.lang.reflect.Array;
@@ -67,7 +67,7 @@ public abstract class ChartParserState extends ParserState {
         for (String cat : chart[i][i + len].keySet()) {
           List<Derivation> derivations = chart[i][i + len].get(cat);
           for (Derivation deriv : derivations) {
-            LogInfo.logs("ParserState.visualize: %s(%s:%s): %s", cat, i, i + len, deriv);
+            LogInfoToggle.logs("ParserState.visualize: %s(%s:%s): %s", cat, i, i + len, deriv);
           }
         }
       }
@@ -75,7 +75,7 @@ public abstract class ChartParserState extends ParserState {
   }
 
   protected void addToChart(Derivation deriv) {
-    if (parser.verbose(3)) LogInfo.logs("addToChart %s: %s", deriv.cat, deriv);
+    if (parser.verbose(3)) LogInfoToggle.logs("addToChart %s: %s", deriv.cat, deriv);
 
     if (Parser.opts.pruneErrorValues && deriv.value instanceof ErrorValue) return;
 

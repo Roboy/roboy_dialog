@@ -1,6 +1,6 @@
 package edu.stanford.nlp.sempre;
 
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.PriorityQueue;
 
 import java.util.ArrayList;
@@ -93,7 +93,7 @@ class QueueParserAgenda implements ParserAgenda<PrioritizedDerivationStream> {
   @Override
   public void clear() {
    // hopefully this is never called since we sample just one
-    LogInfo.warning("QueueParserAgenda: clear is only called when we have more than one sample");
+    LogInfoToggle.warning("QueueParserAgenda: clear is only called when we have more than one sample");
     while (agenda.hasNext())
       agenda.next();
   }

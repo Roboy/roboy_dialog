@@ -3,7 +3,7 @@ package edu.stanford.nlp.sempre.cprune;
 import java.io.*;
 import java.util.*;
 
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 import edu.stanford.nlp.sempre.*;
 
 /**
@@ -57,10 +57,10 @@ public class CollaborativePruner {
    */
   public static void loadNeighbors() {
     if (opts.neighborFilePath == null) {
-      LogInfo.logs("neighborFilePath is null.");
+      LogInfoToggle.logs("neighborFilePath is null.");
       return;
     }
-    LogInfo.begin_track("Loading cached neighbors from %s", opts.neighborFilePath);
+    LogInfoToggle.begin_track("Loading cached neighbors from %s", opts.neighborFilePath);
     uidToCachedNeighbors = new HashMap<>();
     try {
       BufferedReader reader = IOUtils.openIn(opts.neighborFilePath);
@@ -75,7 +75,7 @@ public class CollaborativePruner {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
   public static void initialize(Example ex, Mode mode) {
@@ -119,7 +119,7 @@ public class CollaborativePruner {
     patternFreqEntries.sort(new ValueComparator<>(false));
 
     // Gather the patterns
-    LogInfo.begin_track("Predicted patterns");
+    LogInfoToggle.begin_track("Predicted patterns");
     int rank = 0;
     Set<String> predictedRulesStrings = new HashSet<>();
     predictedPatterns = new HashMap<>();
@@ -127,14 +127,14 @@ public class CollaborativePruner {
       FormulaPattern newPattern = entry.getValue();
       predictedPatterns.put(newPattern.pattern, newPattern);
       predictedRulesStrings.addAll(customRules.get(newPattern.pattern));
-      LogInfo.logs((rank + 1) + ". " + newPattern.pattern + " (" + newPattern.frequency + ")");
+      LogInfoToggle.logs((rank + 1) + ". " + newPattern.pattern + " (" + newPattern.frequency + ")");
       rank++;
       if (rank >= opts.maxPredictedPatterns)
         break;
     }
     // Gather the rules
     predictedRules = customGrammar.getRules(predictedRulesStrings);
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
   public static String getPatternString(Derivation deriv) {
@@ -165,7 +165,7 @@ public class CollaborativePruner {
 
     if (deriv.isRootCat() && deriv.compatibility == 1) {
       foundConsistentDerivation = true;
-      LogInfo.logs("Found consistent deriv: %s", deriv);
+      LogInfoToggle.logs("Found consistent deriv: %s", deriv);
 
       String patternString = getPatternString(deriv);
       FormulaPattern newConsistentPattern = new FormulaPattern(patternString, 0);

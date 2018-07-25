@@ -3,7 +3,7 @@ package edu.stanford.nlp.sempre.cprune;
 import java.util.regex.Pattern;
 
 import edu.stanford.nlp.sempre.Derivation;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 
 public class FormulaPattern implements Comparable<FormulaPattern> {
   public String pattern;
@@ -65,7 +65,7 @@ public class FormulaPattern implements Comparable<FormulaPattern> {
     formula = whitespace.matcher(formula).replaceAll(" ");
 
     if (CollaborativePruner.opts.verbose >= 2)
-      LogInfo.logs("PATTERN: %s -> %s", deriv.formula, formula);
+      LogInfoToggle.logs("PATTERN: %s -> %s", deriv.formula, formula);
     return formula;
   }
 
@@ -96,7 +96,7 @@ public class FormulaPattern implements Comparable<FormulaPattern> {
           }
         }
         if (i == formula.length() - 1) {
-          LogInfo.fails("Unbalanced parentheses: %s", formula);
+          LogInfoToggle.fails("Unbalanced parentheses: %s", formula);
         }
       }
     }

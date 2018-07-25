@@ -1,7 +1,7 @@
 package edu.stanford.nlp.sempre;
 
 import com.google.common.base.Joiner;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.MapUtils;
 import fig.basic.Pair;
 import fig.basic.StopWatch;
@@ -45,7 +45,7 @@ public class CoarseParser {
     Map<String, Boolean> done = new HashMap<>();
     for (String node : graph.keySet())
       traverse(catUnaryRules, node, graph, done);
-    LogInfo.logs("Coarse parser: %d catUnaryRules (sorted), %d nonCatUnaryRules", catUnaryRules.size(), grammar.rules.size() - catUnaryRules.size());
+    LogInfoToggle.logs("Coarse parser: %d catUnaryRules (sorted), %d nonCatUnaryRules", catUnaryRules.size(), grammar.rules.size() - catUnaryRules.size());
   }
 
   /** Helper function for transitive closure of unary rules. */
@@ -148,18 +148,18 @@ public class CoarseParser {
 
     private void addToChart(String cat, int start, int end) {
       if (Parser.opts.verbose >= 5)
-        LogInfo.logs("Adding to chart %s(%s,%s)", cat, start, end);
+        LogInfoToggle.logs("Adding to chart %s(%s,%s)", cat, start, end);
       MapUtils.putIfAbsent(chart[start][end], cat, new ArrayList<CategorySpan>());
     }
 
     private void addToChart(String parentCat, String childCat, int start, int end) {
       if (Parser.opts.verbose >= 5)
-        LogInfo.logs("Adding to chart %s(%s,%s)-->%s(%s,%s)", parentCat, start, end, childCat, start, end);
+        LogInfoToggle.logs("Adding to chart %s(%s,%s)-->%s(%s,%s)", parentCat, start, end, childCat, start, end);
       MapUtils.addToList(chart[start][end], parentCat, new CategorySpan(childCat, start, end));    }
 
     private void addToChart(String parentCat, String leftCat, String rightCat, int start, int i, int end) {
       if (Parser.opts.verbose >= 5)
-        LogInfo.logs("Adding to chart %s(%s,%s)-->%s(%s,%s) %s(%s,%s)", parentCat, start, end, leftCat, start, i, rightCat, i, end);
+        LogInfoToggle.logs("Adding to chart %s(%s,%s)-->%s(%s,%s) %s(%s,%s)", parentCat, start, end, leftCat, start, i, rightCat, i, end);
       MapUtils.addToList(chart[start][end], parentCat, new CategorySpan(leftCat, start, i));
       MapUtils.addToList(chart[start][end], parentCat, new CategorySpan(rightCat, i, end));
     }
@@ -218,7 +218,7 @@ public class CoarseParser {
           Collections.sort(toRemoveCats);
           for (String cat : toRemoveCats) {
             if (Parser.opts.verbose >= 5)
-              LogInfo.logs("Pruning chart %s(%s,%s)", cat, start, end);
+              LogInfoToggle.logs("Pruning chart %s(%s,%s)", cat, start, end);
             chart[start][end].remove(cat);
           }
         }

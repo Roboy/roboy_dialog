@@ -3,7 +3,7 @@ package edu.stanford.nlp.sempre;
 import java.util.*;
 
 import fig.basic.LispTree;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 
 public class ListValue extends Value {
   public final List<Value> values;
@@ -30,7 +30,7 @@ public class ListValue extends Value {
 
   public void log() {
     for (Value value : values)
-      LogInfo.logs("%s", value);
+      LogInfoToggle.logs("%s", value);
   }
 
   @Override

@@ -1,6 +1,6 @@
 package edu.stanford.nlp.sempre;
 
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 import fig.exec.Execution;
 
 import java.io.*;
@@ -46,7 +46,7 @@ public final class ExampleUtils {
     String basePath = "preds-iter" + iter + "-" + group + ".examples";
     String outPath = Execution.getFile(basePath);
     if (outPath == null || examples.size() == 0) return;
-    LogInfo.begin_track("Writing examples to %s", basePath);
+    LogInfoToggle.begin_track("Writing examples to %s", basePath);
     PrintWriter out = IOUtils.openOutHard(outPath);
 
     LispTree p = LispTree.proto;
@@ -82,7 +82,7 @@ public final class ExampleUtils {
       }
     }
     out.close();
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
   public static void writeParaphraseSDF(int iter, String group, Example ex,

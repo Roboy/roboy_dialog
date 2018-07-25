@@ -1,7 +1,7 @@
 package edu.stanford.nlp.sempre.freebase.utils;
 
 import edu.stanford.nlp.io.IOUtils;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,7 +25,7 @@ public final class LinkedExtractionFileUtils {
 
   public Map<String, Set<String>> getIdToExtractionsMap() throws IOException {
 
-    LogInfo.log("Uploading id-to-extraction-set map");
+    LogInfoToggle.log("Uploading id-to-extraction-set map");
     Map<String, Set<String>> res = new HashMap<String, Set<String>>();
 
     BufferedReader reader = IOUtils.getBufferedFileReader(extractionFile);
@@ -42,13 +42,13 @@ public final class LinkedExtractionFileUtils {
       extractionSet.add(tokens[ARG1_INDEX] + DELIMITER_PATTERN + tokens[PREDICATE_INDEX] + DELIMITER_PATTERN + DELIMITER_PATTERN + tokens[ARG2_INDEX]);
     }
     reader.close();
-    LogInfo.log("Done uploading id-to-extraction-set map");
+    LogInfoToggle.log("Done uploading id-to-extraction-set map");
     return res;
   }
 
   public Set<String> getLinkedIdSet() throws IOException {
 
-    LogInfo.log("Uploading linked MIDs set");
+    LogInfoToggle.log("Uploading linked MIDs set");
     Set<String> res = new HashSet<String>();
 
     BufferedReader reader = IOUtils.getBufferedFileReader(extractionFile);
@@ -59,13 +59,13 @@ public final class LinkedExtractionFileUtils {
       res.add(tokens[MID_INDEX]);
     }
     reader.close();
-    LogInfo.log("Done uploading linked IDs set");
+    LogInfoToggle.log("Done uploading linked IDs set");
     return res;
   }
 
   public Map<String, Map<String, List<String>>> getIdToArg2ToPredicateListMap() throws IOException {
 
-    LogInfo.begin_track("Uploading id-to-arg-predicate-list-map");
+    LogInfoToggle.begin_track("Uploading id-to-arg-predicate-list-map");
     // BinaryNormalizer normalizer = new BinaryNormalizer();
 
     Map<String, Map<String, List<String>>> res = new HashMap<String, Map<String, List<String>>>();
@@ -93,7 +93,7 @@ public final class LinkedExtractionFileUtils {
       }
       predicateList.add(predicate);
     }
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
     return res;
   }
 

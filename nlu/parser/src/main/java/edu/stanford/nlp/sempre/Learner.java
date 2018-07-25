@@ -2,7 +2,7 @@ package edu.stanford.nlp.sempre;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.Maps;
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 import fig.exec.Execution;
 
 import java.io.PrintWriter;
@@ -94,14 +94,14 @@ public class Learner {
    * @param evaluations Evaluations per iteration per group.
    */
   public void learn(int numIters, Map<String, List<Evaluation>> evaluations) {
-    LogInfo.begin_track("Learner.learn()");
+    LogInfoToggle.begin_track("Learner.learn()");
     // if when we start we have parameters already - need to sort the semantic functions.
     if (!params.isEmpty())
       sortOnFeedback();
     // For each iteration, go through the groups and parse (updating if train).
     for (int iter = 0; iter <= numIters; iter++) {
 
-      LogInfo.begin_track("Iteration %s/%s", iter, numIters);
+      LogInfoToggle.begin_track("Iteration %s/%s", iter, numIters);
       Execution.putOutput("iter", iter);
 
       // Averaged over all iterations
@@ -110,7 +110,7 @@ public class Learner {
 
       // Clear
       for (String group : dataset.groups())
-        meanEvaluations.put(group, new Evaluation());
+        meanEvaluations.put(group, new EvaluationToggle());
 
       // Test and train
       for (String group : dataset.groups()) {
@@ -125,12 +125,12 @@ public class Learner {
         Evaluation eval = processExamples(iter, group, dataset.examples(group), updateWeights);
         MapUtils.addToList(evaluations, group, eval);
         meanEvaluations.get(group).add(eval);
-        StopWatchSet.logStats();
+        StopwatchSetToggle.logStats();
         writeParams(iter);
       }
-      LogInfo.end_track();
+      LogInfoToggle.end_track();
     }
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
   private void writeParams(int iter) {
@@ -142,7 +142,7 @@ public class Learner {
   }
 
   public void onlineLearnExample(Example ex) {
-    LogInfo.begin_track("onlineLearnExample: %s derivations", ex.predDerivations.size());
+    LogInfoToggle.begin_track("onlineLearnExample: %s derivations", ex.predDerivations.size());
     HashMap<String, Double> counts = new HashMap<>();
     for (Derivation deriv : ex.predDerivations) {
       deriv.compatibility = parser.valueEvaluator.getCompatibility(ex.targetValue, deriv.value);
@@ -151,7 +151,7 @@ public class Learner {
     }
     ParserState.computeExpectedCounts(ex.predDerivations, counts);
     params.update(counts);
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
   public void onlineLearnExampleByFormula(Example ex, List<Formula> formulas) {
@@ -164,7 +164,7 @@ public class Learner {
 
   private Evaluation processExamples(int iter, String group,
       List<Example> examples, boolean computeExpectedCounts) {
-    Evaluation evaluation = new Evaluation();
+    Evaluation evaluation = new EvaluationToggle();
 
     if (examples.size() == 0)
       return evaluation;
@@ -172,18 +172,18 @@ public class Learner {
     final String prefix = "iter=" + iter + "." + group;
 
     Execution.putOutput("group", group);
-    LogInfo.begin_track_printAll(
+    LogInfoToggle.begin_track_printAll(
         "Processing %s: %s examples", prefix, examples.size());
-    LogInfo.begin_track("Examples");
+    LogInfoToggle.begin_track("Examples");
 
     if (opts.numParallelThreads > 1) {
       // Parallelize!
       Parallelizer<Example> paral = new Parallelizer<>(opts.numParallelThreads);
       LearnerParallelProcessor processor = new LearnerParallelProcessor(
           parser, params, prefix, computeExpectedCounts, evaluation);
-      LogInfo.begin_threads();
+      LogInfoToggle.begin_threads();
       paral.process(examples, processor);
-      LogInfo.end_threads();
+      LogInfoToggle.end_threads();
 
     } else {
       // Original code (single-threaded)
@@ -194,7 +194,7 @@ public class Learner {
 
         Example ex = examples.get(e);
 
-        LogInfo.begin_track_printAll(
+        LogInfoToggle.begin_track_printAll(
             "%s: example %s/%s: %s", prefix, e, examples.size(), ex.id);
         ex.log();
         Execution.putOutput("example", e);
@@ -202,9 +202,9 @@ public class Learner {
         ParserState state = parseExample(params, ex, computeExpectedCounts);
         if (computeExpectedCounts) {
           if (opts.checkGradient) {
-            LogInfo.begin_track("Checking gradient");
+            LogInfoToggle.begin_track("Checking gradient");
             checkGradient(ex, state);
-            LogInfo.end_track();
+            LogInfoToggle.end_track();
           }
           if (state.expectedCounts!=null)
             SempreUtils.addToDoubleMap(counts, state.expectedCounts);
@@ -217,12 +217,12 @@ public class Learner {
           }
         }
 
-        LogInfo.logs("Current: %s", ex.evaluation.summary());
+        LogInfoToggle.logs("Current: %s", ex.evaluation.summary());
         evaluation.add(ex.evaluation);
-        LogInfo.logs("Cumulative(%s): %s", prefix, evaluation.summary());
+        LogInfoToggle.logs("Cumulative(%s): %s", prefix, evaluation.summary());
 
         printLearnerEventsIter(ex, iter, group);
-        LogInfo.end_track();
+        LogInfoToggle.end_track();
         if (opts.addFeedback && computeExpectedCounts)
           addFeedback(ex);
 
@@ -247,30 +247,30 @@ public class Learner {
     if (opts.sortOnFeedback && computeExpectedCounts)
       sortOnFeedback();
 
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
     logEvaluationStats(evaluation, prefix);
     evaluation.putOutput(prefix.replace('.', '-'));
     printLearnerEventsSummary(evaluation, iter, group);
     ExampleUtils.writeEvaluationSDF(iter, group, evaluation, examples.size());
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
     return evaluation;
   }
 
   private void checkGradient(Example ex, ParserState state) {
     double eps = 1e-2;
     for (String feature : state.expectedCounts.keySet()) {
-      LogInfo.begin_track("feature=%s", feature);
+      LogInfoToggle.begin_track("feature=%s", feature);
       double computedGradient = state.expectedCounts.get(feature);
       Params perturbedParams = this.params.copyParams();
       perturbedParams.getWeights().put(feature, perturbedParams.getWeight(feature) + eps);
       ParserState perturbedState = parseExample(perturbedParams, ex, true);
       double checkedGradient = (perturbedState.objectiveValue - state.objectiveValue) / eps;
-      LogInfo.logs("Learner.checkGradient(): weight=%s, pertWeight=%s, obj=%s, pertObj=%s, feature=%s, computed=%s, checked=%s, diff=%s",
+      LogInfoToggle.logs("Learner.checkGradient(): weight=%s, pertWeight=%s, obj=%s, pertObj=%s, feature=%s, computed=%s, checked=%s, diff=%s",
               params.getWeight(feature), perturbedParams.getWeight(feature),
               state.objectiveValue, perturbedState.objectiveValue,
               feature,
               computedGradient, checkedGradient, Math.abs(checkedGradient - computedGradient));
-      LogInfo.end_track();
+      LogInfoToggle.end_track();
     }
   }
 
@@ -287,31 +287,31 @@ public class Learner {
   }
 
   private ParserState parseExample(Params params, Example ex, boolean computeExpectedCounts) {
-    StopWatchSet.begin("Parser.parse");
+    StopwatchSetToggle.begin("Parser.parse");
     ParserState res = this.parser.parse(params, ex, computeExpectedCounts);
-    StopWatchSet.end();
+    StopwatchSetToggle.end();
     return res;
   }
 
   private void updateWeights(Map<String, Double> counts) {
-    StopWatchSet.begin("Learner.updateWeights");
-    LogInfo.begin_track("Updating learner weights");
+    StopwatchSetToggle.begin("Learner.updateWeights");
+    LogInfoToggle.begin_track("Updating learner weights");
     double sum = 0;
     for (double v : counts.values()) sum += v * v;
     if (opts.verbose >= 2)
       SempreUtils.logMap(counts, "gradient");
-    LogInfo.logs("L2 norm: %s", Math.sqrt(sum));
+    LogInfoToggle.logs("L2 norm: %s", Math.sqrt(sum));
     params.update(counts);
     if (opts.verbose >= 2)
       params.log();
     counts.clear();
-    LogInfo.end_track();
-    StopWatchSet.end();
+    LogInfoToggle.end_track();
+    StopwatchSetToggle.end();
   }
 
   // Print summary over all examples
   private void logEvaluationStats(Evaluation evaluation, String prefix) {
-    LogInfo.logs("Stats for %s: %s", prefix, evaluation.summary());
+    LogInfoToggle.logs("Stats for %s: %s", prefix, evaluation.summary());
     evaluation.logStats(prefix);
     evaluation.putOutput(prefix);
     evaluation.putOutput(prefix.replaceAll("iter=", "").replace('.', '_'));

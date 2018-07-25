@@ -2,7 +2,7 @@ package edu.stanford.nlp.sempre;
 
 import edu.stanford.nlp.sempre.roboy.DatabaseInfo;
 import com.google.common.collect.Lists;
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 import fig.html.HtmlElement;
 import fig.html.HtmlUtils;
 import java.net.InetSocketAddress;
@@ -21,7 +21,9 @@ import java.util.concurrent.ExecutorService;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 
-import static fig.basic.LogInfo.logs;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
+
+import static edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle.logs;
 
 final class SecureIdentifiers {
   private SecureIdentifiers() { }
@@ -118,7 +120,7 @@ public class Server {
       String sessionId = null;
       if (cookie != null) sessionId = cookie.getValue();
       if (opts.verbose >= 2)
-        LogInfo.logs("GET %s from %s (%ssessionId=%s)", uri, remoteHost, isNewSession ? "new " : "", sessionId);
+        LogInfoToggle.logs("GET %s from %s (%ssessionId=%s)", uri, remoteHost, isNewSession ? "new " : "", sessionId);
 
       String uriPath = uri.getPath();
       if (uriPath.equals("/")) uriPath += "index.html";
@@ -637,14 +639,14 @@ public class Server {
 
     void getFile(String path) throws IOException {
       if (!new File(path).exists()) {
-        LogInfo.logs("File doesn't exist: %s", path);
+        LogInfoToggle.logs("File doesn't exist: %s", path);
         exchange.sendResponseHeaders(404, 0);  // File not found
         return;
       }
 
       setHeaders(getMimeType(path));
       if (opts.verbose >= 2)
-        LogInfo.logs("Sending %s", path);
+        LogInfoToggle.logs("Sending %s", path);
       OutputStream out = new BufferedOutputStream(exchange.getResponseBody());
       InputStream in = new FileInputStream(path);
       IOUtils.copy(in, out);
@@ -663,12 +665,12 @@ public class Server {
       server.createContext("/", new Handler());
       server.setExecutor(pool);
       server.start();
-      LogInfo.logs("Server started at http://%s:%s/sempre", hostname, opts.port);
-      LogInfo.log("Press Ctrl-D to terminate.");
-      while (LogInfo.stdin.readLine() != null) { }
-      LogInfo.log("Shutting down server...");
+      LogInfoToggle.logs("Server started at http://%s:%s/sempre", hostname, opts.port);
+      LogInfoToggle.log("Press Ctrl-D to terminate.");
+      while (LogInfoToggle.stdin.readLine() != null) { }
+      LogInfoToggle.log("Shutting down server...");
       server.stop(0);
-      LogInfo.log("Shutting down executor pool...");
+      LogInfoToggle.log("Shutting down executor pool...");
       pool.shutdown();
     } catch (IOException e) {
       throw new RuntimeException(e);

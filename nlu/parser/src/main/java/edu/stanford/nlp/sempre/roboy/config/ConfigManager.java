@@ -3,7 +3,7 @@ package edu.stanford.nlp.sempre.roboy.config;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import org.apache.commons.configuration2.YAMLConfiguration;
 import org.apache.commons.configuration2.ex.ConfigurationException;
 
@@ -65,7 +65,7 @@ public class ConfigManager {
      * It is called only once at the beginning
      */
     private static void initializeConfig() {
-        LogInfo.begin_track("Initializing Config");
+        LogInfoToggle.begin_track("Initializing Config");
 
         // Init all local variables
         YAMLConfiguration yamlConfig = new YAMLConfiguration();
@@ -75,7 +75,7 @@ public class ConfigManager {
         {
             File propertiesFile = new File(yamlConfigFile);
             if (!propertiesFile.exists()) { // propertiesFile == null doesn't work!
-                LogInfo.error("Could not find "+yamlConfigFile+" file in project path! YAML configurations will be unavailable.");
+                LogInfoToggle.error("Could not find "+yamlConfigFile+" file in project path! YAML configurations will be unavailable.");
                 return;
             }
             FileReader propertiesReader = new FileReader(propertiesFile);
@@ -132,8 +132,8 @@ public class ConfigManager {
             FOLLOW_UPS = gson.fromJson(reader, type);
 
         } catch(ConfigurationException | IOException e) {
-            LogInfo.errors("Exception while reading YAML configurations from %s", yamlConfigFile);
-            LogInfo.errors(e.getMessage());
+            LogInfoToggle.errors("Exception while reading YAML configurations from %s", yamlConfigFile);
+            LogInfoToggle.errors(e.getMessage());
         }
     }
 

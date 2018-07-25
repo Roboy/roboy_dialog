@@ -12,7 +12,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import edu.stanford.nlp.sempre.roboy.utils.XMLReader;
 import fig.basic.IOUtils;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 
 /**
  * Entity Helper use Microsoft Concept Graph APIs to resolve underspecified types in the lexicon
@@ -71,7 +71,7 @@ public class MCGRetriever extends KnowledgeRetriever {
                         result.candidates.add(single.get("URI"));
                         result.candidatesInfo.add(gson.toJson(single));
                         if (ConfigManager.DEBUG > 3){
-                            LogInfo.logs("MCG candidate: %s", single.toString());
+                            LogInfoToggle.logs("MCG candidate: %s", single.toString());
                         }
                         out.println(single.toString());
                     }

@@ -2,7 +2,7 @@ package edu.stanford.nlp.sempre;
 
 import fig.basic.LispTree;
 import fig.basic.Option;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 
 /**
  * Takes two unaries and merges (takes the intersection) of them.
@@ -49,12 +49,12 @@ public class MergeFn extends SemanticFn {
         SemType type = child0.type.meet(child1.type);
         FeatureVector features = new FeatureVector();
         if (opts.verbose >= 5)
-          LogInfo.logs("MergeFn: %s | %s | %s", child0, child1, type);
+          LogInfoToggle.logs("MergeFn: %s | %s | %s", child0, child1, type);
 
         if (!type.isValid()) {
           if (opts.hardTypeCheck) {
             if (opts.showTypeCheckFailures)
-              LogInfo.warnings("MergeFn: type check failed: [%s : %s] AND [%s : %s]", child0.formula, child0.type, child1.formula, child1.type);
+              LogInfoToggle.warnings("MergeFn: type check failed: [%s : %s] AND [%s : %s]", child0.formula, child0.type, child1.formula, child1.type);
             return null;
           }
         }

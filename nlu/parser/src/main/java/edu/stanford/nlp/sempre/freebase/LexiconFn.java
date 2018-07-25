@@ -4,7 +4,7 @@ import com.google.common.base.Joiner;
 import edu.stanford.nlp.sempre.*;
 import edu.stanford.nlp.sempre.freebase.lexicons.LexicalEntry;
 import edu.stanford.nlp.sempre.freebase.lexicons.LexicalEntry.BinaryLexicalEntry;
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 import org.apache.lucene.queryparser.classic.ParseException;
 
 import java.io.IOException;
@@ -29,7 +29,7 @@ public class LexiconFn extends SemanticFn {
 
   public static Options opts = new Options();
   private static Lexicon lexicon;
-  public static Evaluation lexEval = new Evaluation();
+  public static Evaluation lexEval = new EvaluationToggle();
 
   private String mode;  // unary, binary, or entity
   private EntityLexicon.SearchStrategy entitySearchStrategy;  // For entities, how to search
@@ -179,7 +179,7 @@ public class LexiconFn extends SemanticFn {
       newDeriv.addLocalChoice("LexiconFn " + newDeriv.startEndString(ex.getTokens()) + " " + entry);
 
     if (opts.verbose >= 3) {
-      LogInfo.logs(
+      LogInfoToggle.logs(
               "LexiconFn: %s [%s => %s ~ %s | %s]: popularity = %s, distance = %s, type = %s, source=%s",
               mode, word, entry.normalizedTextDesc, entry.fbDescriptions, newDeriv.formula,
               entry.getPopularity(), entry.getDistance(), newDeriv.type, entry.source);
@@ -189,7 +189,7 @@ public class LexiconFn extends SemanticFn {
 
   public DerivationStream call(Example ex, Callable c) {
 
-    if (opts.verbose >= 5) LogInfo.begin_track("LexicalFn.call: %s", c.childStringValue(0));
+    if (opts.verbose >= 5) LogInfoToggle.begin_track("LexicalFn.call: %s", c.childStringValue(0));
 
     String query = c.childStringValue(0);
     DerivationStream res;
@@ -199,7 +199,7 @@ public class LexiconFn extends SemanticFn {
         // Entities
         case "entity": {
           // if (opts.verbose >= 2)
-          // LogInfo.log("LexiconFn: querying for entity: " + query);
+          // LogInfoToggle.log("LexiconFn: querying for entity: " + query);
 
           List<? extends LexicalEntry> entries = lexicon.lookupEntities(query, entitySearchStrategy);
           lexEval.add("entity", !entries.isEmpty());
@@ -237,23 +237,23 @@ public class LexiconFn extends SemanticFn {
       throw new RuntimeException(e);
     }
 
-    if (opts.verbose >= 5) LogInfo.end_track();
+    if (opts.verbose >= 5) LogInfoToggle.end_track();
     return res;
   }
 
   // if there was bridging then have a rule from tokens to binary
   @Override
   public void addFeedback(Example ex) {
-    LogInfo.begin_track("LexiconFn.addFeedback");
+    LogInfoToggle.begin_track("LexiconFn.addFeedback");
     Set<Pair<String, Formula>> correctLexemeFormulaMatches = collectLexemeFormulaPairs(ex);
 
     for (Pair<String, Formula> pair: correctLexemeFormulaMatches) {
-      LogInfo.logs("LexiconFn.addFeedback: %s => %s", pair.getFirst(), pair.getSecond());
+      LogInfoToggle.logs("LexiconFn.addFeedback: %s => %s", pair.getFirst(), pair.getSecond());
       // TODO(joberant): hack to get id
       MapUtils.addToSet(correctEntryToExampleIds, pair, Integer.parseInt(ex.id.substring(ex.id.lastIndexOf(':') + 1)));
       BinaryLexicon.getInstance().updateLexicon(pair, correctEntryToExampleIds.get(pair).size());
     }
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
   private static Set<Pair<String, Formula>> collectLexemeFormulaPairs(Example ex) {
@@ -292,10 +292,10 @@ public class LexiconFn extends SemanticFn {
 
   @Override
   public void sortOnFeedback(Params params) {
-    LogInfo.begin_track("Learner.sortLexiconOnFeedback");
+    LogInfoToggle.begin_track("Learner.sortLexiconOnFeedback");
     BinaryLexicon.getInstance().sortLexiconByFeedback(params);
     UnaryLexicon.getInstance().sortLexiconByFeedback(params);
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
   // todo - this method is grammar specific and that is bad
@@ -327,7 +327,7 @@ public class LexiconFn extends SemanticFn {
 
       if (!rightContext[0].equals(ex.lemmaToken(deriv.end + i))) {
         if (opts.verbose >= 4) {
-          LogInfo.logs(
+          LogInfoToggle.logs(
                   "RIGHT CONTEXT MISMATCH: full lexeme=%s, normalized text=%s left context=%s, right context=%s example=%s, formula=%s",
                   bEntry.fullLexeme,
                   bEntry.normalizedTextDesc,
@@ -346,7 +346,7 @@ public class LexiconFn extends SemanticFn {
         break;
       if (!leftContext[leftContext.length - i - 1].equals(ex.lemmaToken(deriv.start - i - 1))) {
         if (opts.verbose >= 2) {
-          LogInfo.logs(
+          LogInfoToggle.logs(
                   "LEFT CONTEXT MISMATCH: full lexeme=%s, normalized text=%s left context=%s, right context=%s example=%s, formula=%s",
                   bEntry.fullLexeme,
                   bEntry.normalizedTextDesc,

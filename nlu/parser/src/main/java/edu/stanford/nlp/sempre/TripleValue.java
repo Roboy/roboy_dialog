@@ -1,7 +1,7 @@
 package edu.stanford.nlp.sempre;
 
 import fig.basic.LispTree;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 
 import java.util.*;
 

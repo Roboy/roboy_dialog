@@ -10,7 +10,7 @@ import java.util.*;
 
 import com.google.gson.Gson;
 import fig.basic.IOUtils;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 
 /**
  * Word2Vec to resolve underspecified types in the lexicon
@@ -51,7 +51,7 @@ public class Word2VecRetriever extends KnowledgeRetriever {
                 result.candidates.add(entry.formula.toString());
                 result.candidatesInfo.add(this.gson.toJson(record));
                 if (ConfigManager.DEBUG > 3)
-                    LogInfo.logs("Word2Vec: %s",record.toString());
+                    LogInfoToggle.logs("Word2Vec: %s",record.toString());
 
                 out.println(record.toString());
             }

@@ -6,7 +6,7 @@ import edu.stanford.nlp.sempre.roboy.config.ConfigManager;
 import edu.stanford.nlp.sempre.roboy.utils.SparqlUtils;
 import edu.stanford.nlp.sempre.roboy.utils.XMLReader;
 import fig.basic.IOUtils;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import org.apache.commons.lang.WordUtils;
 
 import java.io.PrintWriter;
@@ -71,7 +71,7 @@ public class LabelRetriever extends KnowledgeRetriever {
                         result.candidates.add(u);
                         result.candidatesInfo.add(this.gson.toJson(single));
                         if (ConfigManager.DEBUG > 3){
-                            LogInfo.logs("Label candidate: %s", single.toString());
+                            LogInfoToggle.logs("Label candidate: %s", single.toString());
                         }
                         out.println(single.toString());
                     }

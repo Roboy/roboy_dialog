@@ -341,7 +341,7 @@ public class JavaExecutor extends Executor {
     for (int i = 0; i < types.length; i++) {
       cost += typeCastCost(types[i], args[i]);
       if (cost >= INVALID_TYPE_COST) {
-        // LogInfo.dbgs("NOT COMPATIBLE: want %s, got %s with type %s", types[i], args[i], args[i].getClass());
+        // LogInfoToggle.dbgs("NOT COMPATIBLE: want %s, got %s with type %s", types[i], args[i], args[i].getClass());
         break;
       }
     }

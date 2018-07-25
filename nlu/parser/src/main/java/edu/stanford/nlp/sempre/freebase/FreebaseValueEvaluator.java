@@ -1,6 +1,6 @@
 package edu.stanford.nlp.sempre.freebase;
 
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 import java.util.List;
 import edu.stanford.nlp.sempre.*;
 
@@ -74,7 +74,7 @@ public class FreebaseValueEvaluator implements ValueEvaluator {
 
     if (pred instanceof ErrorValue) return 0;  // Never award points for error
     if (pred == null) {
-      LogInfo.warning("Predicted value is null!");
+      LogInfoToggle.warning("Predicted value is null!");
       return 0;
     }
     if (target.getClass() != pred.getClass()) return 0;

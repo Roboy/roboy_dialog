@@ -1,6 +1,6 @@
 package edu.stanford.nlp.sempre;
 
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.MapUtils;
 
 import java.util.Map;
@@ -21,10 +21,10 @@ public final class SempreUtils {
   }
 
   public static <K, V> void logMap(Map<K, V> map, String desc) {
-    LogInfo.begin_track("Logging %s map", desc);
+    LogInfoToggle.begin_track("Logging %s map", desc);
     for (K key : map.keySet())
-      LogInfo.log(key + "\t" + map.get(key));
-    LogInfo.end_track();
+      LogInfoToggle.log(key + "\t" + map.get(key));
+    LogInfoToggle.end_track();
   }
 
   public static void addToDoubleMap(Map<String, Double> mutatedMap, Map<String, Double> addedMap) {

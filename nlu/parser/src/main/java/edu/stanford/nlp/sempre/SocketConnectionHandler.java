@@ -4,7 +4,7 @@ package edu.stanford.nlp.sempre;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 import jline.console.ConsoleReader;
 
 import java.io.IOException;
@@ -44,15 +44,15 @@ public class SocketConnectionHandler implements Runnable {
           while (clientSocket.isConnected()) {
             line = input.readLine();
             if (line != null) {
-              LogInfo.logs("%s", line);
-              int indent = LogInfo.getIndLevel();
+              LogInfoToggle.logs("%s", line);
+              int indent = LogInfoToggle.getIndLevel();
               try {
                 Response res = master.processQuery(session, line);
                 System.out.println(res.getAll());
                 output.println(res.getAll());
               } catch (Throwable t) {
-                while (LogInfo.getIndLevel() > indent)
-                  LogInfo.end_track();
+                while (LogInfoToggle.getIndLevel() > indent)
+                  LogInfoToggle.end_track();
                 t.printStackTrace();
               }
             }

@@ -3,7 +3,7 @@ package edu.stanford.nlp.sempre.cprune;
 import java.util.List;
 
 import edu.stanford.nlp.sempre.*;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 
 /**
  * A parser that first tries to exploit the macro grammar and only fall back to full search when needed.
@@ -41,22 +41,22 @@ class CPruneFloatingParserState extends ParserState {
 
   @Override
   public void infer() {
-    LogInfo.begin_track("CPruneFloatingParser.infer()");
+    LogInfoToggle.begin_track("CPruneFloatingParser.infer()");
     boolean exploitSucceeds = exploit();
     if (computeExpectedCounts) {
-      LogInfo.begin_track("Summary of Collaborative Pruning");
-      LogInfo.logs("Exploit succeeds: " + exploitSucceeds);
-      LogInfo.logs("Exploit success rate: " + CollaborativePruner.stats.successfulExploit + "/" + CollaborativePruner.stats.totalExploit);
-      LogInfo.end_track();
+      LogInfoToggle.begin_track("Summary of Collaborative Pruning");
+      LogInfoToggle.logs("Exploit succeeds: " + exploitSucceeds);
+      LogInfoToggle.logs("Exploit success rate: " + CollaborativePruner.stats.successfulExploit + "/" + CollaborativePruner.stats.totalExploit);
+      LogInfoToggle.end_track();
     }
     // Explore only on the first training iteration
     if (CollaborativePruner.stats.iter.equals("0.train") && computeExpectedCounts && !exploitSucceeds
         && (CollaborativePruner.stats.totalExplore <= CollaborativePruner.opts.maxExplorationIters)) {
       explore();
-      LogInfo.logs("Consistent pattern: " + CollaborativePruner.getConsistentPattern(ex));
-      LogInfo.logs("Explore success rate: " + CollaborativePruner.stats.successfulExplore + "/" + CollaborativePruner.stats.totalExplore);
+      LogInfoToggle.logs("Consistent pattern: " + CollaborativePruner.getConsistentPattern(ex));
+      LogInfoToggle.logs("Explore success rate: " + CollaborativePruner.stats.successfulExplore + "/" + CollaborativePruner.stats.totalExplore);
     }
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
   @Override
@@ -64,7 +64,7 @@ class CPruneFloatingParserState extends ParserState {
   }
 
   public void explore() {
-    LogInfo.begin_track("Explore");
+    LogInfoToggle.begin_track("Explore");
     CollaborativePruner.initialize(ex, CollaborativePruner.Mode.EXPLORE);
     ParserState exploreParserState = ((CPruneFloatingParser) parser).exploreParser.newParserState(params, ex, computeExpectedCounts);
     exploreParserState.infer();
@@ -78,11 +78,11 @@ class CPruneFloatingParserState extends ParserState {
     CollaborativePruner.stats.totalExplore += 1;
     if (CollaborativePruner.foundConsistentDerivation)
       CollaborativePruner.stats.successfulExplore += 1;
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
   public boolean exploit() {
-    LogInfo.begin_track("Exploit");
+    LogInfoToggle.begin_track("Exploit");
     CollaborativePruner.initialize(ex, CollaborativePruner.Mode.EXPLOIT);
     Grammar miniGrammar = new MiniGrammar(CollaborativePruner.predictedRules);
     Parser exploitParser = new FloatingParser(new Parser.Spec(miniGrammar, parser.extractor, parser.executor, parser.valueEvaluator));
@@ -99,7 +99,7 @@ class CPruneFloatingParserState extends ParserState {
     CollaborativePruner.stats.totalExploit += 1;
     if (succeeds)
       CollaborativePruner.stats.successfulExploit += 1;
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
     return succeeds;
   }
 }
@@ -113,10 +113,10 @@ class MiniGrammar extends Grammar {
   public MiniGrammar(List<Rule> rules) {
     this.rules.addAll(rules);
     if (CollaborativePruner.opts.verbose >= 2) {
-      LogInfo.begin_track("MiniGrammar Rules");
+      LogInfoToggle.begin_track("MiniGrammar Rules");
       for (Rule rule : rules)
-        LogInfo.logs("%s %s", rule, rule.isAnchored() ? "[A]" : "[F]");
-      LogInfo.end_track();
+        LogInfoToggle.logs("%s %s", rule, rule.isAnchored() ? "[A]" : "[F]");
+      LogInfoToggle.end_track();
     }
   }
 

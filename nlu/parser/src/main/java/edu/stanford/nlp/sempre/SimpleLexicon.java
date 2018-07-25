@@ -1,6 +1,6 @@
 package edu.stanford.nlp.sempre;
 
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -74,7 +74,7 @@ public final class SimpleLexicon {
   Map<String, List<Entry>> entries = new HashMap<String, List<Entry>>();
 
   public void read(String path) {
-    LogInfo.begin_track("SimpleLexicon.read(%s)", path);
+    LogInfoToggle.begin_track("SimpleLexicon.read(%s)", path);
     try {
       BufferedReader in = IOUtils.openIn(path);
       String line;
@@ -130,11 +130,11 @@ public final class SimpleLexicon {
           // In the future, add other mechanisms for lemmatization.
         }
       }
-      LogInfo.logs("Read %s lines, generated %d entries (now %d total)", numLines, entries.size() - oldNumEntries, entries.size());
+      LogInfoToggle.logs("Read %s lines, generated %d entries (now %d total)", numLines, entries.size() - oldNumEntries, entries.size());
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
   public void add(String json) {

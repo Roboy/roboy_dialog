@@ -6,7 +6,7 @@ import edu.stanford.nlp.sempre.SimpleLexicon;
 import edu.stanford.nlp.sempre.roboy.config.ConfigManager;
 import edu.stanford.nlp.sempre.roboy.utils.SparqlUtils;
 import fig.basic.IOUtils;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 
 import java.io.PrintWriter;
 import java.lang.reflect.Type;
@@ -31,7 +31,7 @@ public class LexiconGenerator {
 
         for (String lexeme: lexemes){
             if (ConfigManager.DEBUG > 0)
-                LogInfo.logs("New lexeme added: %s",lexeme);
+                LogInfoToggle.logs("New lexeme added: %s",lexeme);
             out.println(lexeme);
 //            SimpleLexicon.getSingleton().add(lexeme);
         }

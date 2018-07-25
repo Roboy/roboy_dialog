@@ -5,7 +5,7 @@ import edu.stanford.nlp.sempre.ContextValue;
 import edu.stanford.nlp.sempre.roboy.UnderspecifiedInfo;
 import edu.stanford.nlp.sempre.roboy.config.ConfigManager;
 import edu.stanford.nlp.sempre.roboy.lexicons.word2vec.Word2vec;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 
 import java.util.*;
 
@@ -64,7 +64,7 @@ public class Word2VecScore extends ScoringFunction {
             if (Double.isNaN(score))
                 score = 0.0;
             if (ConfigManager.DEBUG > 4)
-                LogInfo.logs("Word2Vec: %s -> %s", candidate.get("URI"), score);
+                LogInfoToggle.logs("Word2Vec: %s -> %s", candidate.get("URI"), score);
             result.candidatesScores.add(score*this.weight);
         }
         return result;

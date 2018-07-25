@@ -6,9 +6,10 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import edu.stanford.nlp.sempre.Json;
+import edu.stanford.nlp.sempre.roboy.utils.logging.EvaluationToggle;
 import fig.basic.Evaluation;
 import fig.basic.IOUtils;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.exec.Execution;
 
 public class SimulationAnalyzer {
@@ -20,20 +21,20 @@ public class SimulationAnalyzer {
     return null;
   }
 
-  static Evaluation qEval = new Evaluation();
-  static Evaluation acceptEval = new Evaluation();
-  static Evaluation dEval = new Evaluation();
+  static Evaluation qEval = new EvaluationToggle();
+  static Evaluation acceptEval = new EvaluationToggle();
+  static Evaluation dEval = new EvaluationToggle();
   static int queryCount = 0;
 
   // add stats to the query.
   public synchronized static void addStats(Map<String, Object> query, String jsonResponse) {
     Map<String, Object> stats = getStats(jsonResponse);
     Map<String, Object> line = new LinkedHashMap<String, Object>(query);
-    LogInfo.logs("stats: %s", stats);
+    LogInfoToggle.logs("stats: %s", stats);
     if (stats == null) {
-      LogInfo.logs("No stats");
-      LogInfo.log(query);
-      LogInfo.log(jsonResponse);
+      LogInfoToggle.logs("No stats");
+      LogInfoToggle.log(query);
+      LogInfoToggle.log(jsonResponse);
       return;
     }
 

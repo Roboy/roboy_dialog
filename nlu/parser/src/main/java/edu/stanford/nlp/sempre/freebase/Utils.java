@@ -1,7 +1,7 @@
 package edu.stanford.nlp.sempre.freebase;
 
 import fig.basic.IOUtils;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -98,7 +98,7 @@ public final class Utils {
   }
   public static Map<String, String> readCanonicalIdMap(String canonicalIdMapPath, int maxInputLines) {
     Map<String, String> canonicalIdMap = new HashMap<String, String>();
-    LogInfo.begin_track("Read %s", canonicalIdMapPath);
+    LogInfoToggle.begin_track("Read %s", canonicalIdMapPath);
     try {
       BufferedReader in = IOUtils.openIn(canonicalIdMapPath);
       String line;
@@ -106,7 +106,7 @@ public final class Utils {
       while (numInputLines < maxInputLines && (line = in.readLine()) != null) {
         numInputLines++;
         if (numInputLines % 10000000 == 0)
-          LogInfo.logs("Read %s lines", numInputLines);
+          LogInfoToggle.logs("Read %s lines", numInputLines);
         String[] tokens = line.split("\t");
         if (tokens.length != 2)
           throw new RuntimeException("Bad format: " + line);
@@ -116,7 +116,7 @@ public final class Utils {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
     return canonicalIdMap;
   }
 }

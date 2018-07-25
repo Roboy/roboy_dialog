@@ -2,7 +2,7 @@ package edu.stanford.nlp.sempre.freebase.utils;
 
 import edu.stanford.nlp.io.IOUtils;
 import fig.basic.LispTree;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.MapUtils;
 
 import java.io.IOException;
@@ -14,7 +14,7 @@ public final class SemparseLogTools {
 
   public static void main(String[] args) throws IOException {
 
-    LogInfo.begin_track_printAll("analyze");
+    LogInfoToggle.begin_track_printAll("analyze");
     if (args[0].equals("compare")) {
       compareLogs(args[1], args[2], args[3]);
     } else if (args[0].equals("diff")) {
@@ -25,7 +25,7 @@ public final class SemparseLogTools {
     if (args[0].equals("result_list")) {
       printResultList(args[1], args[2]);
     }
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
   private static void printResultList(String log, String field) {
@@ -153,11 +153,11 @@ public final class SemparseLogTools {
       if (start) {
         if (line.contains("Example:")) {
           if (print && example != null) {
-            LogInfo.log(example);
-            LogInfo.log(targetFormula);
-            LogInfo.log(targetValue);
-            LogInfo.log(trueDeriv);
-            LogInfo.log(predDeriv);
+            LogInfoToggle.log(example);
+            LogInfoToggle.log(targetFormula);
+            LogInfoToggle.log(targetValue);
+            LogInfoToggle.log(trueDeriv);
+            LogInfoToggle.log(predDeriv);
           }
           example = line;
           targetFormula = null; targetValue = null; trueDeriv = null;
@@ -205,11 +205,11 @@ public final class SemparseLogTools {
 
     if (correctnessList1.size() != correctnessList2.size())
       throw new RuntimeException("lists are not same size");
-    LogInfo.logs("Size of correctness: %s", correctnessList1.size());
+    LogInfoToggle.logs("Size of correctness: %s", correctnessList1.size());
 
     for (int i = 0; i < correctnessList1.size(); ++i) {
       if (!correctnessList1.get(i).equals(correctnessList2.get(i))) {
-        LogInfo.log("example: " + i + " log1: " + correctnessList1.get(i) + " log2: " + correctnessList2.get(i));
+        LogInfoToggle.log("example: " + i + " log1: " + correctnessList1.get(i) + " log2: " + correctnessList2.get(i));
       }
     }
   }
@@ -224,7 +224,7 @@ public final class SemparseLogTools {
         int slashIndex = line.indexOf('/');
         int openCurlyIndex = line.indexOf('{');
         numOfIterations = Integer.parseInt(line.substring(slashIndex + 1, openCurlyIndex - 1));
-        LogInfo.logs("Number of iterations=%s", numOfIterations);
+        LogInfoToggle.logs("Number of iterations=%s", numOfIterations);
       }
       if (line.contains("Processing iter=" + numOfIterations + ".dev")) {
         start = true;
@@ -237,13 +237,13 @@ public final class SemparseLogTools {
             if (field.equals(tokenParts[0]))
               res.add(Double.parseDouble(tokenParts[1]));
           }
-//          LogInfo.logs()
+//          LogInfoToggle.logs()
 //          int correctIndex = line.indexOf(" correct=");
 //          int oracleIndex = line.indexOf(" oracle=");
 //          int partCorrectIndex = line.indexOf(" partCorrect=");
 //          int partOracleIndex= line.indexOf(" partOracle=");
 //          int afterPartOracleIndex = line.indexOf("\\s+",partOracleIndex);
-//          LogInfo.logs("part oracle index=%s, after=%s",partCorrectIndex,afterPartOracleIndex);
+//          LogInfoToggle.logs("part oracle index=%s, after=%s",partCorrectIndex,afterPartOracleIndex);
 //          if (field.equals("oracle"))
 //            res.add(Double.parseDouble(line.substring(oracleIndex + 8, partCorrectIndex)));
 //          if (field.equals("correct"))

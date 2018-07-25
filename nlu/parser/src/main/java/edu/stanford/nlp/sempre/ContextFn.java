@@ -1,7 +1,7 @@
 package edu.stanford.nlp.sempre;
 
 import java.util.*;
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 
 /**
  * Produces predicates but do it from the logical forms

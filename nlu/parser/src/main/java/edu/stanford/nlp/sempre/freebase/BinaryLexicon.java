@@ -9,7 +9,7 @@ import edu.stanford.nlp.sempre.freebase.lexicons.LexicalEntry.BinaryLexicalEntry
 import edu.stanford.nlp.sempre.freebase.lexicons.LexicalEntry.LexiconValue;
 import edu.stanford.nlp.sempre.freebase.lexicons.normalizers.EntryNormalizer;
 import edu.stanford.nlp.sempre.freebase.lexicons.normalizers.PrepDropNormalizer;
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 import fig.exec.Execution;
 
 import java.io.IOException;
@@ -63,7 +63,7 @@ public final class BinaryLexicon {
 
   private void read(String lexiconFile) throws IOException {
 
-    LogInfo.begin_track_printAll("Loading binary lexicon file " + lexiconFile);
+    LogInfoToggle.begin_track_printAll("Loading binary lexicon file " + lexiconFile);
     for (String line : IOUtils.readLines(lexiconFile)) {
       LexiconValue lv = Json.readValueHard(line, LexiconValue.class);
       String lexemeKey = lv.lexeme;
@@ -75,8 +75,8 @@ public final class BinaryLexicon {
       }
     }
     sortLexiconEntries();
-    LogInfo.log("Number of entries: " + lexemeToEntryList.size());
-    LogInfo.end_track();
+    LogInfoToggle.log("Number of entries: " + lexemeToEntryList.size());
+    LogInfoToggle.end_track();
   }
 
   public void addEntryToMap(String lexemeKey, LexiconValue lv) {
@@ -101,7 +101,7 @@ public final class BinaryLexicon {
 
     if (info == null) {
       if (opts.verbose >= 3)
-        LogInfo.log("BinaryLexicon: skipping entry since there is no info for formula: " + lexValue.formula.toString());
+        LogInfoToggle.log("BinaryLexicon: skipping entry since there is no info for formula: " + lexValue.formula.toString());
       return Collections.emptyList();
     }
     // get alignment features
@@ -143,9 +143,9 @@ public final class BinaryLexicon {
       boolean valid = fbFormulasInfo.isReversed(formula);
       if (opts.verbose >= 3) {
         if (!valid)
-          LogInfo.logs("BinaryLexicon: invalid formula: %s", formula);
+          LogInfoToggle.logs("BinaryLexicon: invalid formula: %s", formula);
         else
-          LogInfo.logs("BinaryLexicon: valid formula: %s", formula);
+          LogInfoToggle.logs("BinaryLexicon: valid formula: %s", formula);
       }
       return valid;
     }
@@ -153,9 +153,9 @@ public final class BinaryLexicon {
   }
 
   public void updateLexicon(Pair<String, Formula> lexemeFormulaPair, int support) {
-    StopWatchSet.begin("BinaryLexicon.updateLexicon");
+    StopwatchSetToggle.begin("BinaryLexicon.updateLexicon");
     if (opts.verbose > 0)
-      LogInfo.logs("Pair=%s, score=%s", lexemeFormulaPair, support);
+      LogInfoToggle.logs("Pair=%s, score=%s", lexemeFormulaPair, support);
     boolean exists = false;
     String lexeme = lexemeFormulaPair.getFirst();
     Formula formula = lexemeFormulaPair.getSecond();
@@ -165,7 +165,7 @@ public final class BinaryLexicon {
       if (bEntry.formula.equals(formula)) {
         bEntry.alignmentScores.put("Feedback", (double) support);
         if (opts.verbose > 0)
-          LogInfo.logs("Entry exists: %s", bEntry);
+          LogInfoToggle.logs("Entry exists: %s", bEntry);
         exists = true;
         break;
       }
@@ -173,7 +173,7 @@ public final class BinaryLexicon {
     if (!exists) {
       BinaryFormulaInfo bInfo = fbFormulasInfo.getBinaryInfo(formula);
       if (bInfo == null) {
-        LogInfo.warnings("BinaryLexicon.updateLexicon: no binary info for %s", formula);
+        LogInfoToggle.warnings("BinaryLexicon.updateLexicon: no binary info for %s", formula);
         return;
       }
       BinaryLexicalEntry newEntry =
@@ -182,25 +182,25 @@ public final class BinaryLexicon {
                       bInfo.popularity, bInfo.expectedType1, bInfo.expectedType2, bInfo.unitId, bInfo.unitDesc, new HashMap<>(), lexeme);
       MapUtils.addToList(lexemeToEntryList, lexeme, newEntry);
       newEntry.alignmentScores.put("Feedback", (double) support);
-      LogInfo.logs("Adding new binary entry=%s", newEntry);
+      LogInfoToggle.logs("Adding new binary entry=%s", newEntry);
 
     }
-    StopWatchSet.end();
+    StopwatchSetToggle.end();
   }
 
   public void sortLexiconByFeedback(Params params) {
-    StopWatchSet.begin("BinaryLexicon.sortLexiconByFeedback");
-    LogInfo.log("Number of entries: " + lexemeToEntryList.size());
+    StopwatchSetToggle.begin("BinaryLexicon.sortLexiconByFeedback");
+    LogInfoToggle.log("Number of entries: " + lexemeToEntryList.size());
     BinaryLexEntrybyFeaturesComparator comparator =
             new BinaryLexEntrybyFeaturesComparator(params);
     for (String lexeme : lexemeToEntryList.keySet()) {
       Collections.sort(lexemeToEntryList.get(lexeme), comparator);
       if (opts.verbose > 1) {
-        LogInfo.logs("Sorted list for lexeme=%s", lexeme);
+        LogInfoToggle.logs("Sorted list for lexeme=%s", lexeme);
         for (BinaryLexicalEntry bEntry : lexemeToEntryList.get(lexeme)) {
           FeatureVector fv = new FeatureVector();
           LexiconFn.getBinaryEntryFeatures(bEntry, fv);
-          LogInfo.logs("Entry=%s, dotprod=%s", bEntry, fv.dotProduct(comparator.params));
+          LogInfoToggle.logs("Entry=%s, dotprod=%s", bEntry, fv.dotProduct(comparator.params));
         }
       }
     }
@@ -219,7 +219,7 @@ public final class BinaryLexicon {
     }
 
 
-    StopWatchSet.end();
+    StopwatchSetToggle.end();
   }
 
   public class BinaryLexEntrybyFeaturesComparator implements Comparator<BinaryLexicalEntry> {

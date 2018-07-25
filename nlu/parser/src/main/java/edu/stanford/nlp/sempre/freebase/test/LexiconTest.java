@@ -5,7 +5,7 @@ import edu.stanford.nlp.sempre.freebase.lexicons.EntrySource;
 import edu.stanford.nlp.sempre.freebase.lexicons.LexicalEntry.BinaryLexicalEntry;
 import edu.stanford.nlp.sempre.freebase.lexicons.LexicalEntry.UnaryLexicalEntry;
 import edu.stanford.nlp.sempre.freebase.UnaryLexicon;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -23,7 +23,7 @@ public class LexiconTest {
     double intersection = 0.0;
 
     List<UnaryLexicalEntry> entries = unary.lookupEntries("continent");
-    LogInfo.logs("Num of unary entries for 'continent': %s", entries.size());
+    LogInfoToggle.logs("Num of unary entries for 'continent': %s", entries.size());
     for (UnaryLexicalEntry entry : entries) {
       if (entry.formula.toString().equals("(fb:type.object.type fb:location.continent)")) {
         if (entry.source == EntrySource.ALIGNMENT) {
@@ -45,7 +45,7 @@ public class LexiconTest {
     popularity = 0.0;
     intersection = 0.0;
     entries = unary.lookupEntries("lawyer");
-    LogInfo.logs("Num of unary entries for 'lawyer': %s", entries.size());
+    LogInfoToggle.logs("Num of unary entries for 'lawyer': %s", entries.size());
     for (UnaryLexicalEntry entry : entries) {
       if (entry.formula.toString().equals("(fb:people.person.profession fb:en.attorney)")) {
         if (entry.source == EntrySource.ALIGNMENT) {
@@ -70,7 +70,7 @@ public class LexiconTest {
 
     BinaryLexicon lexicon = BinaryLexicon.getInstance();
     List<BinaryLexicalEntry> entries = lexicon.lookupEntries("bear in");
-    LogInfo.logs("Num of binary entries for 'bear in': %s", entries.size());
+    LogInfoToggle.logs("Num of binary entries for 'bear in': %s", entries.size());
     BinaryLexicalEntry top = entries.get(0);
     assertEquals("people born here", top.fbDescriptions.iterator().next());
     assertEquals("!fb:location.location.people_born_here", top.formula.toString());

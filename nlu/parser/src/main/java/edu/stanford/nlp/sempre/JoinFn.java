@@ -1,7 +1,7 @@
 package edu.stanford.nlp.sempre;
 
 import fig.basic.LispTree;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.Option;
 
 
@@ -197,7 +197,7 @@ public class JoinFn extends SemanticFn {
       SemType type = opts.specializedTypeCheck ? specializedTypeCheck(binaryType, unaryType) : binaryType.apply(unaryType);
       if (!type.isValid()) {
         if (opts.showTypeCheckFailures)
-          LogInfo.warnings("JoinFn: type check failed: [%s : %s] JOIN [%s : %s]",
+          LogInfoToggle.warnings("JoinFn: type check failed: [%s : %s] JOIN [%s : %s]",
               binaryFormula, binaryType,
               unaryFormula, unaryType);
         return null;
@@ -216,13 +216,13 @@ public class JoinFn extends SemanticFn {
       if (opts.typeInference) {
         SemType fullType = TypeInference.inferType(f);
         if (opts.verbose >= 2)
-          LogInfo.logs("JoinFn.typeInference: %s => %s [coarse type = %s]", f, fullType, type);
+          LogInfoToggle.logs("JoinFn.typeInference: %s => %s [coarse type = %s]", f, fullType, type);
         if (!fullType.isValid()) return null;  // Rule out logical form
         type = fullType;  // Use the more specific type
       }
 
       if (opts.verbose >= 3) {
-        LogInfo.logs(
+        LogInfoToggle.logs(
                 "JoinFn: binary: %s [%s], unary: %s [%s], result: %s [%s]",
                 binaryFormula, binaryType, unaryFormula, unaryType, f, type);
       }

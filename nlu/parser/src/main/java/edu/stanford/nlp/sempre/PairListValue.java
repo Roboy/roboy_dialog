@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import fig.basic.LispTree;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.Pair;
 
 /**
@@ -41,7 +41,7 @@ public class PairListValue extends Value {
 
   public void log() {
     for (Pair<Value, Value> pair : pairs)
-      LogInfo.logs("%s | %s", pair.getFirst(), pair.getSecond());
+      LogInfoToggle.logs("%s | %s", pair.getFirst(), pair.getSecond());
   }
 
   @Override

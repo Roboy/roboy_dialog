@@ -66,7 +66,7 @@ public class BlockFn extends SemanticFn {
         List<Derivation> args = c.getChildren();
         if (args.size() == 1) {
           Derivation onlyChild = args.get(0);
-          // LogInfo.logs("1 BlockFn %s : %s Example.size=%d, callInfo(%d,%d)",
+          // LogInfoToggle.logs("1 BlockFn %s : %s Example.size=%d, callInfo(%d,%d)",
           // onlyChild, mode, ex.getTokens().size(), onlyChild.getStart(),
           // onlyChild.getEnd());
 

@@ -3,7 +3,7 @@ package edu.stanford.nlp.sempre.cache;
 import java.io.*;
 import java.net.*;
 
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 
 /**
  * Cache backed by a remote service (see StringCacheServer).
@@ -22,21 +22,21 @@ public class RemoteStringCache implements StringCache {
 
   public RemoteStringCache(String path, String host, int port) {
     try {
-      LogInfo.begin_track("RemoteStringCache: connecting to %s:%s to access %s", host, port, path);
+      LogInfoToggle.begin_track("RemoteStringCache: connecting to %s:%s to access %s", host, port, path);
       this.socket = new Socket(host, port);
       this.out = new PrintWriter(socket.getOutputStream(), true);
       this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
       String response = makeRequest("open", path, null);
-      LogInfo.logs("Using cache path=%s, host=%s, port=%s", path, host, port);
+      LogInfoToggle.logs("Using cache path=%s, host=%s, port=%s", path, host, port);
       if (!response.equals("OK")) {
         throw new RuntimeException(response);
       }
-      LogInfo.end_track();
+      LogInfoToggle.end_track();
     } catch (UnknownHostException e) {
-      LogInfo.end_track();
+      LogInfoToggle.end_track();
       throw new RuntimeException(e);
     } catch (IOException e) {
-      LogInfo.end_track();
+      LogInfoToggle.end_track();
       throw new RuntimeException(e);
     }
   }
@@ -54,7 +54,7 @@ public class RemoteStringCache implements StringCache {
           if (result.equals(StringCacheServer.nullString)) result = null;
           return result;
         } catch (NullPointerException e) {
-          LogInfo.logs("RemoteStringCache.makeRequest(%s, %s, %s) failed", method, key, value);
+          LogInfoToggle.logs("RemoteStringCache.makeRequest(%s, %s, %s) failed", method, key, value);
         }
       }
       throw new NullPointerException();

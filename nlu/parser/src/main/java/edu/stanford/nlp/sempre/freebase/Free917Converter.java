@@ -10,7 +10,7 @@ import edu.stanford.nlp.stats.ClassicCounter;
 import edu.stanford.nlp.stats.Counter;
 import edu.stanford.nlp.util.StringUtils;
 import fig.basic.LispTree;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.MapUtils;
 import fig.basic.Option;
 import fig.exec.Execution;
@@ -368,7 +368,7 @@ public class Free917Converter implements Runnable {
       examples.add(example.toJson());
       formulaWriter.println(example.targetFormula);
     }
-    LogInfo.log("Arg count distribution: " + argnumCounter);
+    LogInfoToggle.log("Arg count distribution: " + argnumCounter);
     reader.close();
     formulaWriter.close();
 
@@ -681,7 +681,7 @@ public class Free917Converter implements Runnable {
 
       MapUtils.add(idToNameMap, id, name);
     }
-    LogInfo.log("Number of entries: " + idToNameMap.size());
+    LogInfoToggle.log("Number of entries: " + idToNameMap.size());
 
     PrintWriter writer = IOUtils.getPrintWriter(outFile);
     int i = 0;

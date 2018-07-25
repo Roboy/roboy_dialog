@@ -1,5 +1,6 @@
 package edu.stanford.nlp.sempre;
 
+import edu.stanford.nlp.sempre.roboy.utils.logging.EvaluationToggle;
 import fig.basic.Evaluation;
 
 /**
@@ -10,7 +11,7 @@ import fig.basic.Evaluation;
  */
 public abstract class Executor {
   public static class Response {
-    public Response(Value value) { this(value, new Evaluation()); }
+    public Response(Value value) { this(value, new EvaluationToggle()); }
     public Response(Value value, Evaluation stats) {
       this.value = value;
       this.stats = stats;

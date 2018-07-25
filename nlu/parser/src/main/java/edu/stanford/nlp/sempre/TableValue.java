@@ -1,7 +1,7 @@
 package edu.stanford.nlp.sempre;
 
 import fig.basic.LispTree;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.StrUtils;
 
 import java.util.ArrayList;
@@ -62,10 +62,10 @@ public class TableValue extends Value {
   }
 
   public void log() {
-    LogInfo.begin_track("%s", StrUtils.join(header, "\t"));
+    LogInfoToggle.begin_track("%s", StrUtils.join(header, "\t"));
     for (List<Value> row : rows)
-      LogInfo.logs("%s", StrUtils.join(row, "\t"));
-    LogInfo.end_track();
+      LogInfoToggle.logs("%s", StrUtils.join(row, "\t"));
+    LogInfoToggle.end_track();
   }
 
   // Note: don't compare the headers right now

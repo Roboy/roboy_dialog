@@ -98,7 +98,7 @@ public class VoxelWorld extends World {
 
   @Override
   public Set<Item> has(String rel, Set<Object> values) {
-    // LogInfo.log(values);
+    // LogInfoToggle.log(values);
     return this.allItems.stream().filter(i -> values.contains(i.get(rel))).collect(Collectors.toSet());
   }
 

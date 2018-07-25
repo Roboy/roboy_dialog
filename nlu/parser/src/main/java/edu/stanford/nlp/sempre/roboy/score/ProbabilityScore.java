@@ -5,7 +5,7 @@ import edu.stanford.nlp.sempre.ContextValue;
 import edu.stanford.nlp.sempre.roboy.UnderspecifiedInfo;
 import edu.stanford.nlp.sempre.roboy.config.ConfigManager;
 import edu.stanford.nlp.sempre.roboy.lexicons.word2vec.Word2vec;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,7 +48,7 @@ public class ProbabilityScore extends ScoringFunction {
             candidate = this.gson.fromJson(canString, candidate.getClass());
             // Check similarity
             if (ConfigManager.DEBUG > 4)
-                LogInfo.logs("Probability: %s -> %s", candidate.get("URI"), Double.valueOf(candidate.get("Refcount")));
+                LogInfoToggle.logs("Probability: %s -> %s", candidate.get("URI"), Double.valueOf(candidate.get("Refcount")));
             result.candidatesScores.add(Double.valueOf(candidate.get("Refcount"))*this.weight);
         }
         return result;

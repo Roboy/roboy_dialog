@@ -9,7 +9,7 @@ import edu.stanford.nlp.sempre.roboy.lexicons.word2vec.Word2vec;
 import edu.stanford.nlp.sempre.roboy.score.*;
 import edu.stanford.nlp.sempre.roboy.utils.SparqlUtils;
 import fig.basic.LispTree;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 
 import java.lang.reflect.Type;
 import java.util.*;
@@ -61,7 +61,7 @@ public class ErrorRetrieval {
             this.helpers.add(new Word2VecRetriever(this.vec));
         }
         catch(Exception e){
-            LogInfo.logs("Exception in Word2Vec: "+e.getMessage());
+            LogInfoToggle.logs("Exception in Word2Vec: "+e.getMessage());
         }
 
         // Add scoring functions
@@ -171,12 +171,12 @@ public class ErrorRetrieval {
      */
     public List<UnderspecifiedInfo> createCandidates(List<UnderspecifiedInfo> termList){
         for (UnderspecifiedInfo term:termList) {
-            LogInfo.begin_track("Analyzing term: %s", term.term);
+            LogInfoToggle.begin_track("Analyzing term: %s", term.term);
             for (KnowledgeRetriever helper : this.helpers)
             {
                 term.addCandidates(helper.analyze(term));
             }
-            LogInfo.end_track();
+            LogInfoToggle.end_track();
         }
         return termList;
     }
@@ -188,12 +188,12 @@ public class ErrorRetrieval {
      */
     public List<UnderspecifiedInfo> createScores(List<UnderspecifiedInfo> termList){
         for (UnderspecifiedInfo term:termList) {
-            LogInfo.begin_track("Scoring term: %s", term.term);
+            LogInfoToggle.begin_track("Scoring term: %s", term.term);
             for (ScoringFunction scorer : this.scorers)
             {
                 term.addScores(scorer.score(term, this.context));
             }
-            LogInfo.end_track();
+            LogInfoToggle.end_track();
         }
         return termList;
     }
@@ -242,7 +242,7 @@ public class ErrorRetrieval {
     public List<Map.Entry<String,String>> formQuestion(String term, List<String> candidate) {
         List<Map.Entry<String,String>> result = new ArrayList<>();
         for (String c:candidate) {
-            LogInfo.logs(c);
+            LogInfoToggle.logs(c);
             Type type = new TypeToken<Map<String, String>>(){}.getType();
             Map<String, String> c_map = this.gson.fromJson(c, type);
             String desc = sparqlUtil.returnDescr(c_map.get("URI"),dbpediaUrl);
@@ -304,7 +304,7 @@ public class ErrorRetrieval {
                 String entity = formula.substring(start, end).substring(formula.substring(start, end).indexOf("'") + 1);
                 String best = replacements.get(entity);
                 if (ConfigManager.DEBUG > 5)
-                    LogInfo.logs("Forming: %s - %s", best, full_type);
+                    LogInfoToggle.logs("Forming: %s - %s", best, full_type);
                 if (this.underInfo.candidates.contains(entity)) {
                     for (int i = 0; i < this.underInfo.followUps.size(); i++) {
                         Map.Entry<String, String> entry = new java.util.AbstractMap.SimpleEntry<String, String>
@@ -334,13 +334,13 @@ public class ErrorRetrieval {
      * @param key             term to replace
      */
     public LispTree replaceEntity(LispTree new_formula, String replace, String key) {
-        LogInfo.logs("Old %s %s %s",replace,key,new_formula.toString());
+        LogInfoToggle.logs("Old %s %s %s",replace,key,new_formula.toString());
         if (new_formula.toString().contains("has_type") && key.contains("type"))
             return Formula.fromString(new_formula.toString().replaceAll("has_type ".concat(replace),key.replaceAll("\\(","").replaceAll("\\)",""))).toLispTree();
         else
             return Formula.fromString(new_formula.toString().replaceAll(replace,key)).toLispTree();
 //        if (new_formula!= null && new_formula.isLeaf()) {
-//            LogInfo.logs("Leaf");
+//            LogInfoToggle.logs("Leaf");
 //            if (!key.contains(" "))
 //                return LispTree.proto.newLeaf(new_formula.value.replaceAll(replace, key));
 //            else{
@@ -348,7 +348,7 @@ public class ErrorRetrieval {
 //            }
 //        }
 //        else if (new_formula.children.get(0).value!= null && new_formula.children.get(0).value == "string"){
-//            LogInfo.logs("String");
+//            LogInfoToggle.logs("String");
 //            NameValue result = new NameValue(new_formula.children.get(1).value.replaceAll(replace, key));
 //            return result.toLispTree();
 //        }
@@ -358,7 +358,7 @@ public class ErrorRetrieval {
 //                new_formula.children.remove(i+1);
 //            }
 //        }
-//        LogInfo.logs("Old %s %s %s",replace,key,new_formula.toString());
+//        LogInfoToggle.logs("Old %s %s %s",replace,key,new_formula.toString());
 //        return new_formula;
     }
 
@@ -367,7 +367,7 @@ public class ErrorRetrieval {
      */
     public List<Derivation> postprocess(){
         // Create and score candidates
-        LogInfo.begin_track("Error retrieval:");
+        LogInfoToggle.begin_track("Error retrieval:");
         // Remove derivations that are the same
         List<Derivation> remove = new ArrayList();
         List<String> formulas = new ArrayList();
@@ -381,14 +381,14 @@ public class ErrorRetrieval {
         }
         this.derivations.removeAll(remove);
         if (ConfigManager.DEBUG > 0)
-            LogInfo.logs("Checking %d derivations",this.derivations.size());
+            LogInfoToggle.logs("Checking %d derivations",this.derivations.size());
 
         if (this.derivations != null) {
             // Get term
             List<UnderspecifiedInfo> missingTerms = checkUnderspecified();
             if (ConfigManager.DEBUG > 0) {
                 for (UnderspecifiedInfo i : missingTerms) {
-                    LogInfo.logs("Detected underspecified term: %s %s", i.term, i.type.name());
+                    LogInfoToggle.logs("Detected underspecified term: %s %s", i.term, i.type.name());
                 }
             }
 
@@ -397,7 +397,7 @@ public class ErrorRetrieval {
             if (ConfigManager.DEBUG > 1) {
                 for (UnderspecifiedInfo termInfo : missingTerms) {
                     for (int i = 0; i < termInfo.candidatesInfo.size(); i++) {
-                        LogInfo.logs("Final candidates: %s -> %s", termInfo.term, termInfo.candidatesInfo.get(i).toString());
+                        LogInfoToggle.logs("Final candidates: %s -> %s", termInfo.term, termInfo.candidatesInfo.get(i).toString());
                     }
                 }
             }
@@ -408,7 +408,7 @@ public class ErrorRetrieval {
             if (ConfigManager.DEBUG > 1) {
                 for (UnderspecifiedInfo termInfo : missingTerms) {
                     for (int i = 0; i < termInfo.candidatesScores.size(); i++) {
-                        LogInfo.logs("Final scores: %s %f", termInfo.candidates.get(i).toString(), termInfo.candidatesScores.get(i));
+                        LogInfoToggle.logs("Final scores: %s %f", termInfo.candidates.get(i).toString(), termInfo.candidatesScores.get(i));
                     }
                 }
             }
@@ -421,10 +421,10 @@ public class ErrorRetrieval {
             }
             if (ConfigManager.DEBUG > 1) {
                 for (String key : replaces.keySet()) {
-                    LogInfo.logs("Best replacement for %s : %s", key, replaces.get(key));
+                    LogInfoToggle.logs("Best replacement for %s : %s", key, replaces.get(key));
                 }
                 for (Map.Entry<String, String> entry : this.underInfo.followUps) {
-                    LogInfo.logs("FollowUp question -> %s -> %s", entry.getKey(), entry.getValue());
+                    LogInfoToggle.logs("FollowUp question -> %s -> %s", entry.getKey(), entry.getValue());
                 }
             }
 
@@ -437,7 +437,7 @@ public class ErrorRetrieval {
             }
         }
 
-        LogInfo.end_track();
+        LogInfoToggle.end_track();
         return this.derivations;
     }
 

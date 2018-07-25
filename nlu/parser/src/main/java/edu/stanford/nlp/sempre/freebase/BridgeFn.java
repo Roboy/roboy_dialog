@@ -3,7 +3,7 @@ package edu.stanford.nlp.sempre.freebase;
 import edu.stanford.nlp.sempre.freebase.FbFormulasInfo.BinaryFormulaInfo;
 import edu.stanford.nlp.sempre.MergeFormula.Mode;
 import fig.basic.LispTree;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.Option;
 import edu.stanford.nlp.sempre.LanguageInfo.DependencyEdge;
 import edu.stanford.nlp.sempre.*;
@@ -74,11 +74,11 @@ public class BridgeFn extends SemanticFn {
 
   @Override
   public void sortOnFeedback(Params params) {
-    LogInfo.begin_track("Learner.BridgeFeedback");
+    LogInfoToggle.begin_track("Learner.BridgeFeedback");
     FbFormulasInfo fbFormulasInfo = FbFormulasInfo.getSingleton();
     Comparator<Formula> feedbackComparator = fbFormulasInfo.new FormulaByFeaturesComparator(params);
     fbFormulasInfo.sortType2ToBinaryMaps(feedbackComparator);
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
 
@@ -126,7 +126,7 @@ public class BridgeFn extends SemanticFn {
         BinaryFormulaInfo binaryInfo = fbFormulaInfo.getBinaryInfo(binary);
 
         if (opts.verbose >= 3)
-          LogInfo.logs("%s => %s", modifierType, binary);
+          LogInfoToggle.logs("%s => %s", modifierType, binary);
 
         if (headTypes.contains(binaryInfo.expectedType1)) {
           BridgingInfo bridgingInfo = new BridgingInfo(ex, c, binaryInfo, headFirst, headDeriv, modifierDeriv);
@@ -147,7 +147,7 @@ public class BridgeFn extends SemanticFn {
     ArrayList<BridgingInfo> bridgingInfoList = new ArrayList<>();
 
     if (opts.verbose >= 1)
-      LogInfo.logs("bridgeEntity: %s | %s", modifierDeriv, modifierTypes);
+      LogInfoToggle.logs("bridgeEntity: %s | %s", modifierDeriv, modifierTypes);
 
     for (String modifierType : modifierTypes) { // For each head type...
       List<Formula> binaries = fbFormulaInfo.getBinariesForType2(modifierType);
@@ -157,7 +157,7 @@ public class BridgeFn extends SemanticFn {
         BinaryFormulaInfo binaryInfo = fbFormulaInfo.getBinaryInfo(binary);
 
         if (opts.verbose >= 3)
-          LogInfo.logs("%s => %s", modifierType, binary);
+          LogInfoToggle.logs("%s => %s", modifierType, binary);
 
         BridgingInfo bridgingInfo = new BridgingInfo(ex, c, binaryInfo, headFirst, null, modifierDeriv);
         bridgingInfoList.add(bridgingInfo);
@@ -224,7 +224,7 @@ public class BridgeFn extends SemanticFn {
     assert ex != null;
 
     if (opts.verbose >= 2)
-      LogInfo.logs("child1=%s, child2=%s", ex.phrase(c.child(0).start, c.child(0).end), ex.phrase(c.child(1).start, c.child(1).end));
+      LogInfoToggle.logs("child1=%s, child2=%s", ex.phrase(c.child(0).start, c.child(0).end), ex.phrase(c.child(1).start, c.child(1).end));
 
     // Example: modifier[Braveheart] head[Mel Gibson plays in]
     Derivation headDeriv = headFirst ? c.child(0) : c.child(1);
@@ -347,17 +347,17 @@ public class BridgeFn extends SemanticFn {
           throw new RuntimeException("Bad description " + description);
       }
       if (opts.verbose >= 2)
-        LogInfo.logs("mode=%s,deriv=%s", description, res);
+        LogInfoToggle.logs("mode=%s,deriv=%s", description, res);
       return res;
     }
     // not every BridgingInfo produces a derivation so we iterate until we find one
     private Derivation nextEntity() {
 
       if (opts.verbose >= 3)
-        LogInfo.begin_track("Compute next entity");
+        LogInfoToggle.begin_track("Compute next entity");
       BridgingInfo currBridgingInfo = bridgingInfoList.get(currIndex++);
       if (opts.verbose >= 2)
-        LogInfo.logs("BridgeFn.nextEntity: binary=%s, popularity=%s", currBridgingInfo.bInfo.formula,
+        LogInfoToggle.logs("BridgeFn.nextEntity: binary=%s, popularity=%s", currBridgingInfo.bInfo.formula,
                 currBridgingInfo.bInfo.popularity);
       List<List<String>> exampleInfo = generateExampleInfo(currBridgingInfo.ex, currBridgingInfo.c); // this is not done in text to text matcher so done here
       Formula join = new JoinFormula(currBridgingInfo.bInfo.formula, currBridgingInfo.modifierDeriv.formula);
@@ -377,7 +377,7 @@ public class BridgeFn extends SemanticFn {
       }
 
       if (opts.verbose >= 2)
-        LogInfo.logs("BridgeStringFn: %s", join);
+        LogInfoToggle.logs("BridgeStringFn: %s", join);
 
       // features
       res.addFeature("BridgeFn", "entity");
@@ -395,7 +395,7 @@ public class BridgeFn extends SemanticFn {
 
 
       if (opts.verbose >= 3)
-        LogInfo.end_track();
+        LogInfoToggle.end_track();
       return res;
     }
 
@@ -420,7 +420,7 @@ public class BridgeFn extends SemanticFn {
     private Derivation nextInject() {
       BridgingInfo currBridgingInfo = bridgingInfoList.get(currIndex++);
       if (opts.verbose >= 2)
-        LogInfo.logs("BridgingFn.nextInject: binary=%s, popularity=%s", currBridgingInfo.bInfo.formula,
+        LogInfoToggle.logs("BridgingFn.nextInject: binary=%s, popularity=%s", currBridgingInfo.bInfo.formula,
                 currBridgingInfo.bInfo.popularity);
       JoinFormula headFormula = (JoinFormula) Formulas.betaReduction(currBridgingInfo.headDeriv.formula);
 
@@ -443,7 +443,7 @@ public class BridgeFn extends SemanticFn {
       }
 
       if (opts.verbose >= 3)
-        LogInfo.logs("BridgeFn: injecting %s to %s --> %s ", currBridgingInfo.modifierDeriv.formula, headFormula, bridgedFormula);
+        LogInfoToggle.logs("BridgeFn: injecting %s to %s --> %s ", currBridgingInfo.modifierDeriv.formula, headFormula, bridgedFormula);
 
       String headModifierOrder = headFirst ? "head-modifier" : "modifier-head";
       res.addFeature("BridgeFn",
@@ -467,7 +467,7 @@ public class BridgeFn extends SemanticFn {
       BridgingInfo currBridgingInfo = bridgingInfoList.get(currIndex++);
 
       if (opts.verbose >= 2)
-        LogInfo.logs("BridgingFn.nextUnary: binary=%s, popularity=%s", currBridgingInfo.bInfo.formula,
+        LogInfoToggle.logs("BridgingFn.nextUnary: binary=%s, popularity=%s", currBridgingInfo.bInfo.formula,
                 currBridgingInfo.bInfo.popularity);
 
       Formula bridgedFormula = buildBridge(currBridgingInfo.headDeriv.formula,
