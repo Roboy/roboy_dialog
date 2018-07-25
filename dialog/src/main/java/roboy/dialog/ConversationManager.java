@@ -49,6 +49,7 @@ public class ConversationManager {
     private static Neo4jMemoryInterface memory;
 
     public static void main(String[] args) throws IOException {
+        loggerSetup();
 
         //Initialize the ROS node.
         if(ConfigManager.ROS_ENABLED){
@@ -258,6 +259,6 @@ public class ConversationManager {
         //Set Logging Level for Memory
         MemoryLoggerInterface.setLogger(ConfigManager.MEMORY_LOG_MODE);
         //Set Logging Level for Dialog System
-        Configurator.setAllLevels(LogManager.getRootLogger().getName(), Level.toLevel(ConfigManager.DIALOG_LOG_MODE, Level.ALL));
+        Configurator.setAllLevels(LogManager.getRootLogger().getName(), Level.toLevel(ConfigManager.DIALOG_LOG_MODE, Level.INFO));
     }
 }

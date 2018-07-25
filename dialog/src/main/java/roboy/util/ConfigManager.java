@@ -45,9 +45,9 @@ public class ConfigManager {
 
     public static String TELEGRAM_API_TOKENS_FILE = "";
 
-    public static String MEMORY_LOG_MODE = "";
-    public static String DIALOG_LOG_MODE = "";
-    public static String PARSER_LOG_MODE = "";
+    public static String MEMORY_LOG_MODE = "INFO";
+    public static String DIALOG_LOG_MODE = "INFO";
+    public static String PARSER_LOG_MODE = "ALL";
 
     static {
         // this block is called once at and will initialize config
