@@ -4,7 +4,7 @@ import fig.basic.LogInfo;
 
 import java.io.PrintWriter;
 
-public class LogInfoToggler extends LogInfo {
+public class LogInfoToggle extends LogInfo {
 
 
     public static void begin_track(String format, Object... args) {

@@ -1,6 +1,5 @@
 package edu.stanford.nlp.sempre.roboy.utils.logging;
 
-import fig.basic.LogInfo;
 
 public class ParserLogController {
     private static boolean ALL = true;
@@ -18,9 +17,9 @@ public class ParserLogController {
             return;
         }
 
-        if(!s.toLowerCase().equals("info")){
-            LogInfo.warning("Invalid Level Passed:\t"+s);
-            LogInfo.warning("Please Check Dialog's Config.Properties. Now Defaulting to INFO");
+        if(!s.toLowerCase().equals("all")){
+            LogInfoToggle.warning("Invalid Level Passed to NLU:\t"+s);
+            LogInfoToggle.warning("Please Check Dialog's Config.Properties. Now Defaulting to ALL");
         }
         ALL =true;
         WARN=true;
