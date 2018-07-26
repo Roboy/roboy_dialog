@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.memory.*;
 import roboy.util.Uuid;
+import roboy.util.UuidType;
 import roboy.util.UzupisIntents;
 
 import java.io.IOException;
@@ -46,7 +47,7 @@ public class Interlocutor extends MemoryNodeModel {
     public void addName(String name) {
         setProperty(Neo4jProperty.name, name);
         setLabel(Neo4jLabel.Person);
-        FAMILIAR = this.init(this)
+        FAMILIAR = this.init(this);
     }
 
     public void addUuid(Uuid uuid) {
@@ -88,6 +89,7 @@ public class Interlocutor extends MemoryNodeModel {
                 e.printStackTrace();
             }
         }
+        return null;
     }
 
     private MemoryNodeModel create(Interlocutor interlocutor) {
@@ -101,6 +103,7 @@ public class Interlocutor extends MemoryNodeModel {
                 e.printStackTrace();
             }
         }
+        return null;
     }
 
     private void set(MemoryNodeModel node) {
@@ -111,6 +114,10 @@ public class Interlocutor extends MemoryNodeModel {
 
     public String getName() {
         return (String) getProperty(Neo4jProperty.name);
+    }
+
+    public Uuid getUuid(UuidType type) {
+        return new Uuid(type, (String) getProperty(type.toNeo4jProperty()));
     }
 
     public boolean hasRelationship(Neo4jRelationship relationship) {

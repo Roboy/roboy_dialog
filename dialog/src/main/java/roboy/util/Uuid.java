@@ -7,6 +7,7 @@ public class Uuid {
 
     public Uuid(UuidType type, String id) throws IllegalArgumentException {
         if (type.isValidUuid(id)) {
+            this.type = type;
             this.uuid = id;
         } else {
             throw new IllegalArgumentException("The provided UUID for type " + type + " is invalid!");
