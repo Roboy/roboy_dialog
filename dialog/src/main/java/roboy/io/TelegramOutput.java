@@ -52,6 +52,7 @@ public class TelegramOutput implements OutputDevice {
                     case "kiss": stickerID = "CAADAgADOQAD5dCAEOtbfZz0NKh2Ag"; break;
                     case "lookleft": //same as lookright
                     case "lookright": stickerID = "CAADAgADFQAD5dCAEKM0TS8sjXiAAg"; break;
+                    //TODO: other RoboyEmotions
                 }
                 if(stickerID != null) communicationHandler.sendSticker(this.uuid, stickerID);
 

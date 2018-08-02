@@ -79,11 +79,11 @@ The interlocutor's answer will be passed to the ``react(...)`` function once it 
     if (tokens != null && ((List) tokens).size() > 0 && tokens.get(0).equals("four")) {
         // answer correct
         next = getTransition("personKnowsMath");
-        return Output.say("You are good at math!").setEmotion("happiness");
+        return Output.say("You are good at math!").setEmotion(RoboyEmotion.HAPPINESS);
     } else {
         // answer incorrect
         next = getTransition("personDoesNotKnowMath");
-        return Output.say("Well, 2 plus 2 is 4!").setEmotion("sadness");
+        return Output.say("Well, 2 plus 2 is 4!").setEmotion(RoboyEmotion.SADNESS);
     }
 
 Note a few things here:
@@ -106,7 +106,7 @@ That's it, you have just created your first state! Here is how the class should 
 
     import roboy.dialog.states.definitions.State;
     import roboy.dialog.states.definitions.StateParameters;
-    import roboy.linguistics.Linguistics;
+    import roboy.emotions.RoboyEmotion;
     import roboy.linguistics.sentenceanalysis.Interpretation;
 
     public class DoYouKnowMathState extends State {
@@ -132,12 +132,12 @@ That's it, you have just created your first state! Here is how the class should 
             if (tokens != null && ((List) tokens).size() > 0 && tokens.get(0).equals("four")) {
                 // answer correct
                 next = getTransition("personKnowsMath");
-                return Output.say("You are good at math!").setEmotion("happiness");
+                return Output.say("You are good at math!").setEmotion(RoboyEmotion.HAPPINESS);
 
             } else {
                 // answer incorrect
                 next = getTransition("personDoesNotKnowMath");
-                return Output.say("Well, 2 plus 2 is 4!").setEmotion("sadness");
+                return Output.say("Well, 2 plus 2 is 4!").setEmotion(RoboyEmotion.SADNESS);
             }
         }
 
