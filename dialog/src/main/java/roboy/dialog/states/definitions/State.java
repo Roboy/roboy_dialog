@@ -81,7 +81,6 @@ public abstract class State {
             this.type = type;
             this.interpretation = interpretation;
             this.segue = null;
-            this.emotion = null;
             if(interpretation != null){
                 this.emotion = interpretation.getEmotion();
             }
@@ -367,6 +366,7 @@ public abstract class State {
      * @return interpretations
      */
     public abstract Output act();
+
 
     /**
      * Defines how to react to an input. This is usually the answer to the incoming question or some other statement.
