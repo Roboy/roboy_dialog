@@ -85,18 +85,22 @@ public class GamingTwentyQuestionsState extends State {
 
 		if(checkUserSaidStop(input)){
 			gameFinished = true;
-			winner = "interruption";
 			return Output.sayNothing();
 
 		} else if(!userReady && inputSentiment == Linguistics.UtteranceSentiment.POSITIVE){
 			userReady = true;
 			return Output.say(Verbalizer.startSomething.getRandomElement());
 
+		} else if(gameFinished){
+
+			return Output.sayNothing();
+
 		} else if(guessesAvailable){
 
 			return processUserGuessAnswer(intent);
 
-		} else {
+		}
+		else {
 
 			try {
 
@@ -114,7 +118,7 @@ public class GamingTwentyQuestionsState extends State {
 	public State getNextState() {
 
 		if(gameFinished){
-			if(!winner.equals("interruption")) {
+			if (getRosMainNode() != null) {
 				applyFilter(winner);
 			}
 			resetGame();
@@ -226,6 +230,7 @@ public class GamingTwentyQuestionsState extends State {
 		}
 
 		if(roboyAnswer.isEmpty()){
+			guessesAvailable = false;
 			gameFinished = true;
 			winner = getContext().ACTIVE_INTERLOCUTOR.getValue().getName();
 			roboyAnswer = String.format(PhraseCollection.ROBOY_LOSER_PHRASES.getRandomElement(), winner);
@@ -273,16 +278,11 @@ public class GamingTwentyQuestionsState extends State {
 
 		if(winner.equals("roboy")){
 			filterApplied = getRosMainNode().ApplyFilter("flies");
-			LOGGER.info("Snapchat-Filter Service Callback: " + filterApplied);
 			emotionShown = getRosMainNode().ShowEmotion("sunglasses");
-			LOGGER.info("Face Emotion Service Callback: " + emotionShown);
-
 
 		} else {
 			filterApplied = getRosMainNode().ApplyFilter("crown");
-			LOGGER.info("Snapchat-Filter Service Callback: " + filterApplied);
 			emotionShown = getRosMainNode().ShowEmotion("tears");
-			LOGGER.info("Face Emotion Service Callback: " + emotionShown);
 		}
 	}
 

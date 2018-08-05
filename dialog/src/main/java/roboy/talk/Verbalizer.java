@@ -120,6 +120,10 @@ public class Verbalizer {
 			new RandomList<>("Oh no, I didn't get what you said. ", "I didn't understand you correctly. ", "Sorry? What did you say? "
 			);
 
+	public static final RandomList<String> rosDisconnect =
+			new RandomList<>("Oh no, where is my ROS connection? I need it. ", "I was looking for my ROS master everywhere but I can find it. ", "I think I have no ROS connection. ", "Hello? Hello? Any ROS master out there? Hmm, I can't hear anybody. "
+			);
+
 	private Interpretation verbalizeDates(Interpretation interpretation){
 		StringBuilder sb = new StringBuilder();
 		String sentence = interpretation.getSentence();
