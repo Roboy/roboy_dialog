@@ -1,5 +1,4 @@
 {
-  "comment": "Personality that is running by itself.",
   "initialState": "Idle",
   "states": [
     {
@@ -70,7 +69,7 @@
     },
     {
       "identifier": "SocialMedia",
-      "implementation": "roboy.dialog.states.gameStates.SocialMediaState",
+      "implementation": "roboy.dialog.states.fairShowStates.SocialMediaState",
       "transitions": {
         "finished": "InfoTalk"
       }
