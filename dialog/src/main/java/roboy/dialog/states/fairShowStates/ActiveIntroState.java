@@ -2,6 +2,7 @@ package roboy.dialog.states.fairShowStates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.dialog.states.definitions.MonologState;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.sentenceanalysis.Interpretation;
@@ -13,7 +14,7 @@ import roboy.talk.Verbalizer;
  * Roboy is introducing himself autonomously
  *
  */
-public class ActiveIntroState extends State {
+public class ActiveIntroState extends MonologState {
 
     private final static String TRANSITION_PEOPLE_AROUND = "peopleAround";
     private final static String TRANSITION_LONELY_ROBOY = "lonelyRoboy";
@@ -28,19 +29,13 @@ public class ActiveIntroState extends State {
 
     @Override
     public Output act() {
-        nextState = getTransition(TRANSITION_LONELY_ROBOY);
+
         return Output.say(Verbalizer.greetings.getRandomElement());
     }
 
     @Override
-    public Output react(Interpretation input) {
-
-        return Output.sayNothing();
-    }
-
-    @Override
     public State getNextState() {
-        return nextState;
+        return this;
     }
 
 }

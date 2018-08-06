@@ -5,12 +5,12 @@ import org.apache.logging.log4j.Logger;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.SpeechAction;
 import roboy.dialog.personality.StateBasedPersonality;
+import roboy.dialog.states.definitions.MonologState;
 import roboy.io.Input;
 import roboy.io.MultiInputDevice;
 import roboy.io.MultiOutputDevice;
 import roboy.linguistics.sentenceanalysis.Analyzer;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.nodes.Interlocutor;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -101,6 +101,12 @@ public class Conversation extends Thread {
             if (personality.conversationEnded()) {
                 isRunning = false;
                 break;
+            }
+
+            //skip user input if needed
+            if(personality.skippingNeeded()){
+                actions = personality.skipUserInput();
+                continue;
             }
 
             // listen to interlocutor if conversation didn't end

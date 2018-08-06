@@ -2,6 +2,7 @@ package roboy.dialog.states.fairShowStates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.dialog.states.definitions.MonologState;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.sentenceanalysis.Interpretation;
@@ -15,13 +16,13 @@ import java.util.TimerTask;
  * Roboy is waiting TBD minutes to autonomously start a conversation.
  *
  */
-public class IdleState extends State {
+public class IdleState extends MonologState {
 
     private final static String TRANSITION_TIME_IS_UP = "timeIsUp";
 
     private State nextState;
 
-    private final long delay = 1000*5;
+    private final long delay = 1000*3; //msecs
     Timer timer = new Timer();
 
     public IdleState(String stateIdentifier, StateParameters params) {
@@ -30,16 +31,10 @@ public class IdleState extends State {
 
     @Override
     public Output act() {
-
+        timer.schedule(timerTask, delay);
         return Output.say("I am in IdleState");
     }
 
-    @Override
-    public Output react(Interpretation input) {
-
-        timer.schedule(timerTask, delay);
-        return Output.sayNothing();
-    }
 
     @Override
     public State getNextState() {
@@ -51,8 +46,9 @@ public class IdleState extends State {
         @Override
         public void run() {
             nextState = getTransition(TRANSITION_TIME_IS_UP);
-            getNextState();
         }
     };
 
 }
+
+

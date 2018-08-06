@@ -2,6 +2,7 @@ package roboy.dialog.states.fairShowStates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.dialog.states.definitions.MonologState;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.sentenceanalysis.Interpretation;
@@ -12,7 +13,7 @@ import roboy.memory.nodes.Roboy;
  * Roboy is introducing himself autonomously
  *
  */
-public class MathState extends State {
+public class MathState extends MonologState {
 
     private final Logger LOGGER = LogManager.getLogger();
 
@@ -30,11 +31,6 @@ public class MathState extends State {
         return Output.say(roboy.getName());
     }
 
-    @Override
-    public Output react(Interpretation input) {
-
-        return Output.sayNothing();
-    }
 
     @Override
     public State getNextState() {
