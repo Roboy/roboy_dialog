@@ -66,7 +66,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Roboy Dialog Manager'
+project = u'Roboy Dialog System'
 copyright = u'2018, Roboy, based on Template by Dr. Peter'
 author = u'Roboy, based on Template by Dr. Peter'
 

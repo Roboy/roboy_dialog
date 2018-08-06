@@ -109,15 +109,19 @@ public class Verbalizer {
 			);
 
 	public static final RandomList<String> userProbablyNo =
-			new RandomList<>("The chance is quite low. -", "Might be false. ", "You're not sure but probably no. ", "Probably not. "
+			new RandomList<>("The chance is quite low. ", "Might be false. ", "You're not sure but probably no. ", "Probably not. "
 			);
 
 	public static final RandomList<String> userSaysNo =
-			new RandomList<>("Not at all.", "A clear no.", "That was clear. No.", "A no from you.", "Nope."
+			new RandomList<>("Not at all. ", "A clear no. ", "That was clear. No. ", "A no from you. ", "Nope. "
 			);
 
 	public static final RandomList<String> roboyNotUnderstand =
-			new RandomList<>("Oh no, I didn't get what you said.", "I didn't understand you correctly.", "Sorry? What did you say?"
+			new RandomList<>("Oh no, I didn't get what you said. ", "I didn't understand you correctly. ", "Sorry? What did you say? "
+			);
+
+	public static final RandomList<String> rosDisconnect =
+			new RandomList<>("Oh no, where is my ROS connection? I need it. ", "I was looking for my ROS master everywhere but I can find it. ", "I think I have no ROS connection. ", "Hello? Hello? Any ROS master out there? Hmm, I can't hear anybody. "
 			);
 
 	private Interpretation verbalizeDates(Interpretation interpretation){

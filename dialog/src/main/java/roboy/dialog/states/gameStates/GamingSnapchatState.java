@@ -6,14 +6,13 @@ import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-
-
-import roboy.ros.RosMainNode;
+import roboy.logic.Inference;
 import roboy.talk.PhraseCollection;
-import roboy.util.SynonymFileParser;
+import roboy.util.RandomList;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+import static roboy.util.FileLineReader.readFile;
 
 
 public class GamingSnapchatState extends State {
@@ -21,8 +20,12 @@ public class GamingSnapchatState extends State {
     private final static String TRANSITION_GAME_ENDED = "gameEnded";
     private final static String EXISTING_FILTERS_ID = "filterFile";
 
+    private Map<String,List<String>> EXISTING_FILTERS;
+
+    private RandomList<String> filters;
+
     private final Logger LOGGER = LogManager.getLogger();
-    private SynonymFileParser scParser;
+    private final Inference localInference = new Inference();
 
     private boolean filterApplied = false;
     private List<String> desiredFilters = new ArrayList<>();
@@ -35,12 +38,13 @@ public class GamingSnapchatState extends State {
         super(stateIdentifier, params);
         String filterListPath = params.getParameter(EXISTING_FILTERS_ID);
         LOGGER.info(" -> The filterList path: " + filterListPath);
-        scParser = new SynonymFileParser(filterListPath);
+        filters = readFile(filterListPath);
+        EXISTING_FILTERS = buildSynonymMap(filters);
     }
 
     @Override
     public Output act() {
-        suggestedFilter = scParser.getRandomKey();
+        suggestedFilter = filters.getRandomElement();
         return Output.say(String.format(PhraseCollection.OFFER_FILTER_PHRASES.getRandomElement(), suggestedFilter));
     }
 
@@ -48,7 +52,7 @@ public class GamingSnapchatState extends State {
     public Output react(Interpretation input) {
 
         Linguistics.UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
-        List<String> inputFilters = getInference().inferSnapchatFilter(input, scParser.getSynonyms());
+        List<String> inputFilters = localInference.inferSnapchatFilter(input, EXISTING_FILTERS);
 
         if(!checkUserSaidStop(input)) {
             if (inputSentiment == Linguistics.UtteranceSentiment.POSITIVE) {
@@ -75,7 +79,6 @@ public class GamingSnapchatState extends State {
         }
     }
 
-
     private boolean checkUserSaidStop(Interpretation input){
 
         stopGame = false;
@@ -88,4 +91,34 @@ public class GamingSnapchatState extends State {
         }
         return stopGame;
     }
+
+    private Map<String, List<String>> buildSynonymMap(List<String> filters){
+
+        Map<String, List<String>> filterMap = new HashMap<>();
+
+        for(String filter : filters){
+            switch(filter){
+                case " roboy ":
+                    filterMap.put(filter, new ArrayList<> (Arrays.asList("roboy", "robot", "you", "your face")));
+                    break;
+                case " mustache ":
+                    filterMap.put(filter, new ArrayList<> (Arrays.asList("mustache", "beard", "barb")));
+                    break;
+                case " sunglasses ":
+                    filterMap.put(filter, new ArrayList<> (Arrays.asList("sunglasses", "gasses", "shades")));
+                    break;
+                case " hat ":
+                    filterMap.put(filter, Arrays.asList("hat", "cap", "headpiece"));
+                    break;
+                case " flies ":
+                    filterMap.put(filter, Arrays.asList("flies", "fly", "bugs", "bug", "insects", "insect", "vermin"));
+                    break;
+                case " crown ":
+                    filterMap.put(filter, Arrays.asList("crown", "king", "queen", "royal", "tiara"));
+                    break;
+            }
+        }
+        return filterMap;
+    }
+
 }

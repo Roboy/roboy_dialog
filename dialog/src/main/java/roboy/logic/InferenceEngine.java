@@ -88,25 +88,5 @@ public interface InferenceEngine {
      */
     UtteranceSentiment inferSentiment(Interpretation input);
 
-    /**
-     * Basic inference method
-     * Infers the snapchat filter of the user's input
-     * tries to extract and ground the information from the available Interpretation
-     *
-     * @param input,existingFilterMap
-     * @return List containing inferred result/null if NA
-     */
-    List<String> inferSnapchatFilter(Interpretation input, Map<String,List<String>> existingFilterMap);
-
-    /**
-     * Basic inference method
-     * Infers the game of the user's input
-     * tries to extract and ground the information from the available Interpretation
-     *
-     * @param input,existingGamesMap
-     * @return String containing inferred result/null if NA
-     */
-    String inferGame(Interpretation input, Map<String,List<String>> existingGamesMap);
-
 
 }

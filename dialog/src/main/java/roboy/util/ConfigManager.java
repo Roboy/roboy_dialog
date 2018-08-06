@@ -22,6 +22,8 @@ public class ConfigManager {
     public static String ACTION_CLIENT_SCRIPT = "/home/roboy/workspace/Roboy/src/roboy_dialog/resources/scripts/action_client.py";
 
     public static boolean DEBUG = true;
+    public static boolean DEMO_MODE = false;
+    public static boolean INFINITE_REPETITION = false;
 
     public static String INPUT = "cmdline";
     public static List<String> OUTPUTS = new ArrayList<>();
@@ -82,6 +84,8 @@ public class ConfigManager {
             }
 
             DEBUG = yamlConfig.getBoolean("DEBUG");
+            DEMO_MODE = yamlConfig.getBoolean("DEMO_MODE");
+            INFINITE_REPETITION = yamlConfig.getBoolean("INFINITE_REPETITION");
 
             INPUT = yamlConfig.getString( "INPUT");
             List<String> outputs = yamlConfig.getList(String.class, "OUTPUTS");

@@ -2,6 +2,10 @@
 Resources
 *********
 
+For the ``config.properties`` resource, please see :ref:`Configuration`.
+
+.. _JSON Resources:
+
 JSON Resources
 ==============
 
@@ -50,27 +54,20 @@ JSON Resources
       }
     }
 
-- synonym lists - contain keys and possible synonyms
+- telegram tokens - contain tokens for registered telegram bots to allow the Dialog System to connect to the telegram API::
 
-    {
-      "key1": [
-        "synonym1",
-        "synonym2",
-        "synonym3"
-      ],
-      "key2": [
-        "synonym1",
-        "synonym2",
-        "synonym3"
-      ]
-    }
+    .. code:: json
+        {
+        "TOKEN":"AAAAAAAAA:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "BOT_USERNAME":"Botname"
+        }
 
 CSV Resources
 =============
 
 - trivia - funny facts Roboy would love to tell you in the following form:
 
-    keyword;Reddit;The sentence contining the particular fact with regard to the keyword
+    keyword;Reddit;The sentence containing the particular fact with regard to the keyword
 
 .. warning::
 

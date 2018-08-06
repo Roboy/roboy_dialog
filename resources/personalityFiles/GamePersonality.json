@@ -26,7 +26,7 @@
         "gameEnded" : "QuestionAnswering"
       },
       "parameters": {
-        "filterFile": "resources/gameResources/snapchat-filters.json"
+        "filterFile": "resources/gameResources/snapchat-filters.txt"
       }
     },
     {
@@ -36,9 +36,6 @@
         "choseSnapchat" : "GamingSnapchatState",
         "chose20questions" : "GamingTwentyQuestionsState",
         "exitGame": "QuestionAnswering"
-      },
-      "parameters":{
-        "gameFile": "resources/gameResources/game-selection.json"
       }
     },
     {

@@ -29,12 +29,12 @@ public class DoYouKnowMathState extends State {
         if (tokens != null && ((List) tokens).size() > 0 && tokens.get(0).equals("four")) {
             // answer correct
             next = getTransition("personKnowsMath");
-            return Output.say("You are good at math!");
+            return Output.say("You are good at math!").setEmotion("happiness");
 
         } else {
             // answer incorrect
             next = getTransition("personDoesNotKnowMath");
-            return Output.say("Well, 2 plus 2 is 4!");
+            return Output.say("Well, 2 plus 2 is 4!").setEmotion("sadness");
         }
     }
 
