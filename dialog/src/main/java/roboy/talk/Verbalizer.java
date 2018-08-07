@@ -124,6 +124,10 @@ public class Verbalizer {
 			new RandomList<>("Oh no, where is my ROS connection? I need it. ", "I was looking for my ROS master everywhere but I can find it. ", "I think I have no ROS connection. ", "Hello? Hello? Any ROS master out there? Hmm, I can't hear anybody. "
 			);
 
+	public static final RandomList<String> roboyIntro =
+			new RandomList<>("I am Roboy. Happy to be here! ", "My name is Roboy. Thank you for having me! ", "You can call me Roboy. What a nice place here. "
+			);
+
 	private Interpretation verbalizeDates(Interpretation interpretation){
 		StringBuilder sb = new StringBuilder();
 		String sentence = interpretation.getSentence();

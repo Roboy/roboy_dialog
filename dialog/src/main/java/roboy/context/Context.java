@@ -7,6 +7,7 @@ import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
 import roboy.util.ConfigManager;
 import roboy_communication_cognition.DirectionVector;
+import roboy_communication_control.Strings;
 import std_msgs.Bool;
 
 import java.util.ArrayList;
@@ -47,6 +48,12 @@ public class Context {
 
     public final HistoryInterface<DetecedPerson,Integer, std_msgs.Bool> PERSON_DETECTION =
             new HistoryInterface<>(new DetecedPerson());
+
+    public final HistoryInterface<PeopleAround,Integer, std_msgs.Int8> CROWD_DETECTION =
+            new HistoryInterface<>(new PeopleAround());
+
+    public final HistoryInterface<DetectedObjects,Integer, Strings> OBJECT_DETECTION =
+            new HistoryInterface<>(new DetectedObjects());
 
     /* GUI */
     private final ArrayList guiValues = new ArrayList();
