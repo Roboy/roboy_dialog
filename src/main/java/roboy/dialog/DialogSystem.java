@@ -65,6 +65,7 @@ public class DialogSystem {
 
         // Do not disable the following two analyzers!
         // They allow simple states to work without running SemanticParserAnalyzer
+        //TODO: Add analyzer for ID
         analyzers.add(new Preprocessor());
         analyzers.add(new SimpleTokenizer());
 
@@ -117,7 +118,7 @@ public class DialogSystem {
                 }
 
                 // listen to interlocutor if conversation didn't end
-                Input raw;
+                Input raw; 
                 try {
                     raw = multiIn.listen();
                 } catch (Exception e) {
@@ -126,6 +127,7 @@ public class DialogSystem {
                 }
 
                 // analyze
+                //TODO this is where stuff gets analyzed! I need to define a new analyzer too! 
                 Interpretation interpretation = new Interpretation(raw.sentence, raw.attributes);
                 for (Analyzer a : analyzers) {
                     try {
