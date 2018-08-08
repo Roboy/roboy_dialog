@@ -12,13 +12,14 @@ import org.ros.node.service.ServiceResponseListener;
 
 import org.ros.node.topic.Subscriber;
 import roboy.context.Context;
-import roboy.emotions.RoboyEmotion;
+import roboy.io.SpeakerInfo;
 import roboy.util.ConfigManager;
 import roboy_communication_cognition.*;
 import roboy_communication_control.*;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.HashMap;
 import java.util.concurrent.CountDownLatch;
 
 public class RosMainNode extends AbstractNodeMain {
@@ -40,7 +41,9 @@ public class RosMainNode extends AbstractNodeMain {
 
         if (!ConfigManager.ROS_ENABLED) {
             LOGGER.warn("ROS is disabled in config.properties, but you are still trying to use it");
-        } else {
+        }
+
+        else {
             services = new RosManager();
 
             if (ConfigManager.ROS_MASTER_IP == null || ConfigManager.ROS_MASTER_IP.isEmpty()) {
@@ -59,6 +62,8 @@ public class RosMainNode extends AbstractNodeMain {
             nodeMainExecutor.execute(this, nodeConfiguration);
             rosConnectionLatch = new CountDownLatch(1);
             waitForLatchUnlock(rosConnectionLatch, "ROS init");
+
+            Context.getInstance().initializeROS(this);
         }
     }
 
@@ -79,7 +84,8 @@ public class RosMainNode extends AbstractNodeMain {
             pb.redirectError();
             pb.start();
             pb.wait();
-        }catch (IOException e) {
+        }
+        catch (IOException e) {
             LOGGER.error(e.getMessage());
         }
 
@@ -115,13 +121,17 @@ public class RosMainNode extends AbstractNodeMain {
         return ((boolean) resp);
     }
 
-    public String RecognizeSpeech() {
+    public HashMap<SpeakerInfo, String> RecognizeSpeech() {
+    	
+    	//TODO
+        int id = 0; //init 0
+        int speakerCount = 1; //init 1
 
         if(services.notInitialized(RosServiceClients.STT)) {
             // FALLBACK RETURN VALUE
             return null;
         }
-
+        
         ServiceClient<RecognizeSpeechRequest, RecognizeSpeechResponse> sttClient = services.getService(RosServiceClients.STT);
         rosConnectionLatch = new CountDownLatch(1);
         RecognizeSpeechRequest request = sttClient.newMessage();
@@ -141,7 +151,16 @@ public class RosMainNode extends AbstractNodeMain {
         };
         sttClient.call(request,  listener);
         waitForLatchUnlock(rosConnectionLatch, sttClient.getName().toString());
-        return ((String) resp);
+        
+        //Test
+        //id = 0; //TODO set right ID if given
+        ///speakerCount = 1; // TODO set right speaker count if given
+        SpeakerInfo speakers = new SpeakerInfo(id, speakerCount);
+        HashMap<SpeakerInfo,String> speakerResponseMap = new HashMap<SpeakerInfo,String>();
+        speakerResponseMap.put(speakers, (String) resp);
+        //TODO define hashmap outside function
+        //return ((String) resp);
+        return speakerResponseMap;
 
     }
 
@@ -182,16 +201,11 @@ public class RosMainNode extends AbstractNodeMain {
         return answer;
     }
 
-    public boolean ShowEmotion(RoboyEmotion emotion) {
-
-        return ShowEmotion(emotion.type);
-    }
-
     public boolean ShowEmotion(String emotion) {
 
         if(services.notInitialized(RosServiceClients.EMOTION)) {
             // FALLBACK RETURN VALUE
-            LOGGER.info("RoboyEmotion not initialized");
+            LOGGER.info("Emotions not initialized");
             return false;
         }
         ServiceClient<ShowEmotionRequest, ShowEmotionResponse> emotionClient = services.getService(RosServiceClients.EMOTION);
@@ -217,7 +231,6 @@ public class RosMainNode extends AbstractNodeMain {
         return ((boolean) resp);
     }
 
-    @Deprecated
     public String CreateMemoryQuery(String query) {
 
         if(services.notInitialized(RosServiceClients.CREATEMEMORY)) {
@@ -247,7 +260,7 @@ public class RosMainNode extends AbstractNodeMain {
         waitForLatchUnlock(rosConnectionLatch, createMemoryClient.getName().toString());
         return ((String) resp);
     }
-    @Deprecated
+
     public String UpdateMemoryQuery(String query) {
 
         if(services.notInitialized(RosServiceClients.UPDATEMEMORY)) {
@@ -278,7 +291,6 @@ public class RosMainNode extends AbstractNodeMain {
         return ((String) resp);
     }
 
-    @Deprecated
     public String GetMemoryQuery(String query) {
 
         if(services.notInitialized(RosServiceClients.GETMEMORY)) {
@@ -309,7 +321,6 @@ public class RosMainNode extends AbstractNodeMain {
         return ((String) resp);
     }
 
-    @Deprecated
     public String DeleteMemoryQuery(String query) {
 
         if(services.notInitialized(RosServiceClients.DELETEMEMORY)) {
@@ -339,7 +350,7 @@ public class RosMainNode extends AbstractNodeMain {
         waitForLatchUnlock(rosConnectionLatch, deleteMemoryClient.getName().toString());
         return ((String) resp);
     }
-    @Deprecated
+
     public String CypherMemoryQuery(String query) {
 
         if(services.notInitialized(RosServiceClients.CYPHERMEMORY)) {
@@ -407,38 +418,6 @@ public class RosMainNode extends AbstractNodeMain {
         }
         Subscriber s = services.getSubscriber(subscriber);
         s.addMessageListener(listener);
-    }
-
-    public boolean ApplyFilter(String filterName) {
-
-        if(services.notInitialized(RosServiceClients.SNAPCHATFILTER)) {
-            // FALLBACK RETURN VALUE
-            LOGGER.info("ApplyFilter not initialized");
-            return false;
-        }
-
-        ServiceClient<ApplyFilterRequest, ApplyFilterResponse> snapchatFilterClient = services.getService(RosServiceClients.SNAPCHATFILTER);
-        rosConnectionLatch = new CountDownLatch(1);
-        ApplyFilterRequest request = snapchatFilterClient.newMessage();
-        request.setName(filterName);
-
-        ServiceResponseListener<ApplyFilterResponse> listener = new ServiceResponseListener<ApplyFilterResponse>() {
-            @Override
-            public void onSuccess(ApplyFilterResponse response) {
-//                System.out.println(response.getSuccess());
-                resp = response.getSuccess();
-                rosConnectionLatch.countDown();
-            }
-
-            @Override
-            public void onFailure(RemoteException e) {
-                rosConnectionLatch.countDown();
-                throw new RosRuntimeException(e);
-            }
-        };
-        snapchatFilterClient.call(request,  listener);
-        waitForLatchUnlock(rosConnectionLatch, snapchatFilterClient.getName().toString());
-        return ((boolean) resp);
     }
 
     /**

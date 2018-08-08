@@ -1,5 +1,8 @@
 package roboy.io;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import roboy.ros.RosMainNode;
 
 /**
@@ -15,9 +18,14 @@ public class BingInput implements InputDevice
 	@Override
 	public Input listen()
 	{
-		String text = rosMainNode.RecognizeSpeech();
-	    System.out.println(text);
-		return new Input(text);
+		HashMap<SpeakerInfo, String> input = rosMainNode.RecognizeSpeech();
+		
+		Map.Entry<SpeakerInfo, String> entry = input.entrySet().iterator().next();
+		SpeakerInfo speakers = entry.getKey();
+		String text = entry.getValue();
+
+		System.out.println(text); 
+		return new Input(text, speakers);
 	}
 	
 }
