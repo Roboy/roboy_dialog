@@ -24,6 +24,7 @@ import sun.security.krb5.Config;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,7 +94,9 @@ public class DialogSystem {
             logger.info("PRESS ENTER TO START THE DIALOG. ROBOY WILL WAIT FOR SOMEONE TO GREET HIM (HI, HELLO)");
             System.in.read();
             // flush the interlocutor
+
             Interlocutor person = new Interlocutor(memory);
+
             Context.getInstance().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
 
             try {
@@ -118,25 +121,35 @@ public class DialogSystem {
                 }
 
                 // listen to interlocutor if conversation didn't end
-                Input raw; 
-                try {
-                    raw = multiIn.listen();
-                } catch (Exception e) {
-                    logger.error("Exception in input: " + e.getMessage());
-                    return;
+                int speakerCount = 1; //min one speaker
+                ArrayList<Input> raw = new ArrayList<Input>();
+
+                for(int i = 0; i<speakerCount; i++){
+                    //TODO let listen give back an array - yes? no?
+                    try {
+                        raw.add(multiIn.listen());
+                    } catch (Exception e) {
+                        logger.error("Exception in input: " + e.getMessage());
+                        return;
+                    }
+                    speakerCount = ((SpeakerInfo)raw.get(0).attributes.get("speakerInfo")).getSpeakerCount();
                 }
 
+
                 // analyze
-                //TODO this is where stuff gets analyzed! I need to define a new analyzer too! 
-                Interpretation interpretation = new Interpretation(raw.sentence, raw.attributes);
-                for (Analyzer a : analyzers) {
-                    try {
-                        interpretation = a.analyze(interpretation);
-                    } catch (Exception e) {
-                        logger.error("Exception in analyzer " + a.getClass().getName() + ": " + e.getMessage());
-                        e.printStackTrace();
+                ArrayList<Interpretation> interpretation = new ArrayList<Interpretation>();
+                for(int i=0; i<speakerCount;i++){
+                    interpretation.add(new Interpretation(raw.get(i).sentence, raw.get(i).attributes));
+                    for (Analyzer a : analyzers) {
+                        try {
+                            interpretation.set(i, a.analyze(interpretation.get(i)));
+                        } catch (Exception e) {
+                            logger.error("Exception in analyzer " + a.getClass().getName() + ": " + e.getMessage());
+                            e.printStackTrace();
+                        }
                     }
                 }
+
 
                 // answer
                 try {

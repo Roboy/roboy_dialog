@@ -27,6 +27,7 @@ public class Context {
     public final ValueInterface<ActiveInterlocutor, Interlocutor> ACTIVE_INTERLOCUTOR =
             new ValueInterface<>(new ActiveInterlocutor());
 
+
     /* VALUE HISTORIES */
     public final HistoryInterface<DialogTopics, Integer, String> DIALOG_TOPICS =
             new HistoryInterface<>(new DialogTopics());

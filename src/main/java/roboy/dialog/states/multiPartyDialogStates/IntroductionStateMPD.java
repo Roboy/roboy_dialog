@@ -6,6 +6,7 @@ import roboy.context.Context;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.dialog.states.definitions.State.Output;
+import roboy.io.SpeakerInfo;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
@@ -22,6 +23,7 @@ import roboy.util.RandomList;
 
 import java.util.*;
 
+import static roboy.memory.Neo4jProperty.name;
 import static roboy.memory.Neo4jRelationship.*;
 import static roboy.memory.Neo4jProperty.*;
 import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
@@ -44,26 +46,35 @@ public class IntroductionStateMPD extends State{
 		return null;
 	}
 
-	@Override
-	public Output react(Interpretation input) {
-		// TODO Check form of interpretation input -> might need another format 
-		// expecting something like "My name is NAME"
+    @Override
+    public Output react(Interpretation input) {
+        return null;
+    }
 
-        // TODO 1. Check number of speakers
-		// TODO 2. two possibilities: one speaker or two 
-		
-		// 3. get name -> case: one speaker 
-		//TODO: Input might be different -> changes how we get the name... 
-        String name = getNameFromInput(input);
-        
-        if (name == null) {
-            // input couldn't be parsed properly
-            // TODO: do something intelligent if the parser fails
-            nextState = this;
-            LOGGER.warn("IntroductionState couldn't get name! Staying in the same state.");
-            return Output.say("Sorry, my parser is out of service.");
-            // alternatively: Output.useFallback() or Output.sayNothing()
-        }
+    public Output react(ArrayList<Interpretation> input) {
+
+		int speakerCount = ((SpeakerInfo)input.get(0).getFeature("speakerInfo")).getSpeakerCount();
+
+		for(int i=0; i<speakerCount; i++){
+			// expecting something like "My name is NAME"
+			String name = getNameFromInput(input.get(i));
+			if (name == null) {
+				// input couldn't be parsed properly
+				// TODO: do something intelligent if the parser fails
+				nextState = this;
+				LOGGER.warn("IntroductionState couldn't get name! Staying in the same state.");
+				return Output.say("Sorry, my parser is out of service.");
+				// alternatively: Output.useFallback() or Output.sayNothing()
+			}
+
+			// 2. get interlocutor object from context
+			// this also should query memory and do other magic
+			//TODO continue
+			Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
+			person.addName(name);
+			// Roboy roboy = new Roboy(getMemory());
+
+		}
         
 		return Output.say(getIntroPhrase());
 	}
@@ -78,7 +89,7 @@ public class IntroductionStateMPD extends State{
         return introPhrases.getRandomElement();
     }
     
-    // TODO 
+    // TODO
     private String getNameFromInput(Interpretation input) {
         String result = null;
         if (input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.STATEMENT) == 0) {

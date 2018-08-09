@@ -347,6 +347,7 @@ public abstract class State {
     public abstract Output react(Interpretation input);
 
 
+
     /**
      * After this state has reacted, the personality state machine will ask this state to which state to go next.
      * If this state is not ready, it will return itself. Otherwise, depending on internal conditions, this state
@@ -359,6 +360,11 @@ public abstract class State {
 
     //endregion
 
+
+    //TODO ged rid of this hacky stuff !
+    public Output react(ArrayList<Interpretation> input) {
+        return null;
+    }
 
 
     // #####################################################
