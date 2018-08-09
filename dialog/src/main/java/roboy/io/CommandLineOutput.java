@@ -31,4 +31,5 @@ public class CommandLineOutput implements OutputDevice{
 			}
 		}
 	}
+
 }
