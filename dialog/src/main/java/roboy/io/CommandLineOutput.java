@@ -11,6 +11,8 @@ import roboy.dialog.action.SpeechAction;
  */
 public class CommandLineOutput implements OutputDevice{
 
+	private boolean emotionFlag = false; //turn on/off emotion output
+
 //	private EmotionOutput emotion;
 //	public CommandLineOutput(EmotionOutput emotion)
 //	{
@@ -23,10 +25,9 @@ public class CommandLineOutput implements OutputDevice{
 //				int duration = ((SpeechAction) a).getText().length()==0 ? 0 : 1 + ((SpeechAction) a).getText().length()/8;
 //				emotion.act(new EmotionAction("speak", duration));
 				System.out.println("[Roboy]: " + ((SpeechAction) a).getText());
-			}else if (a instanceof EmotionAction) {
+			}else if (emotionFlag == true && a instanceof EmotionAction) {
 				System.out.println("[RoboyEmotion]: " + ((EmotionAction) a).getState());
 			}
 		}
 	}
-
 }
