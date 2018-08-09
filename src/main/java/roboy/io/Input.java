@@ -26,6 +26,7 @@ public class Input {
 	public Input(String sentence, SpeakerInfo speakerInfo) {
 		this.sentence = sentence;
 		this.attributes = new HashMap<>();
+		//TODO 
 		this.attributes.put("speakerInfo", speakerInfo);
 	}
 

@@ -4,8 +4,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
 import roboy.dialog.action.Action;
-import roboy.dialog.action.EmotionAction;
+import roboy.dialog.action.FaceAction;
 import roboy.dialog.action.SpeechAction;
+import roboy.io.SpeakerInfo;
+import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.InferenceEngine;
 import roboy.logic.StatementInterpreter;
@@ -46,8 +48,8 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
     private boolean stopTalking;
 
 
-    public StateBasedPersonality(InferenceEngine inference, RosMainNode rosMainNode, Neo4jMemoryInterface memory, Context context, Verbalizer verb) {
-        super(inference, context, rosMainNode, memory);
+    public StateBasedPersonality(InferenceEngine inference, RosMainNode rosMainNode, Neo4jMemoryInterface memory, Verbalizer verb) {
+        super(inference, rosMainNode, memory);
         verbalizer = verb;
         stopTalking = false;
     }
@@ -122,7 +124,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
 
     @Override
-    public List<Action> answer(Interpretation input) {
+    public List<Action> answer(ArrayList<Interpretation> input) {
 
         if (conversationEnded()) {
             logger.error("The end of conversation was reached! Maybe you forgot to call reset() or loadFromFile()?");
@@ -139,17 +141,20 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
         // SPECIAL NON-STATE BASED BEHAVIOUR
         // TODO: special treatment for profanity, etc.
-        if (input.getEmotion() != null) {
-            // change emotional expression based on input
-            answerActions.add(new EmotionAction(input.getEmotion()));
+        /*
+        if (input.getFeatures().containsKey(Linguistics.EMOTION)) {
+            // change facial expression based on input
+            answerActions.add(new FaceAction((String) input.getFeatures().get(Linguistics.EMOTION)));
         }
-        String sentence = input.getSentence();
+        String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
         if (StatementInterpreter.isFromList(sentence, Verbalizer.farewells)) {
             // stop conversation once the interlocutor says a farewell
             endConversation();
             answerActions.add(new SpeechAction(Verbalizer.farewells.getRandomElement()));
             return answerActions;
         }
+        */
+        //TODO put that back in and handle how to react when we have more people in one conversation
 
 
         // ACTIVE STATE REACTS TO INPUT
@@ -217,10 +222,8 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
             segueHandler(previousActions, act.getSegue());
         }
 
-        // add emotion action to the output if defined
-        if (act.hasEmotion()) {
-            previousActions.add(new EmotionAction(act.getEmotion()));
-        }
+        // add face action to the output if defined (not implemented yet)
+        // TODO
     }
 
 
@@ -232,16 +235,30 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
      * @param input input from the person Roboy speaks to
      * @param previousActions list of previous action to append the verbalized result
      */
-    private void stateReact(State state, Interpretation input, List<Action> previousActions) {
+    private void stateReact(State state, ArrayList<Interpretation> input, List<Action> previousActions) {
 
         State.Output react;
-        try {
-            react = state.react(input);
-        } catch (Exception e) {
-            exceptionHandler(state, e, previousActions, false);
-            return;
+        //Differentiate depending on number of speaker
+        int speakerCount = ((SpeakerInfo)input.get(0).getFeature("speakerInfo")).getSpeakerCount();
+        if(speakerCount==1){
+            try {
+                react = state.react(input.get(0));
+            } catch (Exception e) {
+                exceptionHandler(state, e, previousActions, false);
+                return;
+            }
         }
-
+        else if(speakerCount>1){
+            try {
+                react = state.react(input);
+            } catch (Exception e) {
+                exceptionHandler(state, e, previousActions, false);
+                return;
+            }
+        }
+        else {
+            react = null;
+        }
 
         if (react == null) {
             logger.warn("state reacted with null. This should not happen! " +
@@ -309,10 +326,8 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
             segueHandler(previousActions, react.getSegue());
         }
 
-        // add emotion action to the output if defined
-        if (react.hasEmotion()) {
-            previousActions.add(new EmotionAction(react.getEmotion()));
-        }
+        // add face action to the output if defined (not implemented yet)
+        // TODO
     }
 
     /**
@@ -333,7 +348,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
         // check if the interlocutor's name is required
         if (rndSegue.contains("%s")) {
             // we need to get the name of the interlocutor
-            Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
+            Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
             if (person == null || person.getName() == null) {
                 // no interlocutor or no name -> skip segue
                 return;

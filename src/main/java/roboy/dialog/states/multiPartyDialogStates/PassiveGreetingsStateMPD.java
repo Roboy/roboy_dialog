@@ -7,6 +7,8 @@ import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.StatementInterpreter;
 import roboy.talk.Verbalizer;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Set;
 
 /**
@@ -36,6 +38,12 @@ public class PassiveGreetingsStateMPD extends State {
 
     @Override
     public Output react(Interpretation input) {
+        return null;
+    }
+
+
+    public Output react(ArrayList<Interpretation> input) {
+        /*
         String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
         boolean inputOK = StatementInterpreter.isFromList(sentence, Verbalizer.greetings) ||
                 StatementInterpreter.isFromList(sentence, Verbalizer.roboyNames) ||
@@ -45,7 +53,7 @@ public class PassiveGreetingsStateMPD extends State {
             next = getTransition(TRANSITION_GREETING_DETECTED);
             return Output.say(Verbalizer.greetings.getRandomElement());
         }
-
+*/
         return Output.sayNothing();
     }
 
