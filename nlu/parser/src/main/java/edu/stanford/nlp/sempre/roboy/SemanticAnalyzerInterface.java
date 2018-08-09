@@ -26,9 +26,9 @@ public class SemanticAnalyzerInterface
         private String followUpA;
         private String utteranceType;
 
-        public Result(Master.Response resp, Executor executor)
+        public Result(Example example, Executor executor)
         {
-            ex = resp.getExample();
+            ex = example;
             if (ex != null)
             {
                 derivationIteration: for (Derivation deriv : ex.predDerivations)
@@ -159,8 +159,19 @@ public class SemanticAnalyzerInterface
     /**
      * @brief analyze
      */
-    public Result analyze(String s) {
-        return new Result(master.processQuery(session, s), builder.executor);
+    public Result analyze(String s)
+    {
+        Example.Builder b = new Example.Builder();
+        b.setId("session:" + session.id);
+        b.setUtterance(query);
+        b.setContext(session.context);
+
+        Example ex = b.createExample();
+        ex.preprocess();
+
+        builder.parser.parse(builder.params, ex, false, builder.error_retrieval);
+        ex.logWithoutContext();
+        return new Result(ex, builder.executor);
     }
 
     /**
