@@ -1,7 +1,6 @@
 package roboy.memory.nodes;
 
 import com.google.gson.Gson;
-import jnr.ffi.annotations.In;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.memory.*;
