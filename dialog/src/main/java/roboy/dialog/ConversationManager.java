@@ -16,7 +16,6 @@ import roboy.io.MultiOutputDevice;
 import roboy.linguistics.sentenceanalysis.*;
 import roboy.logic.Inference;
 import roboy.logic.InferenceEngine;
-import roboy.memory.DummyMemory;
 import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.Neo4jProperty;
@@ -255,10 +254,19 @@ public class ConversationManager {
 
     private static void loggerSetup() {
         //Set Logging Level for Parser
-        ParserLogController.setLogger(ConfigManager.PARSER_LOG_MODE);
+        if(Level.getLevel(ConfigManager.PARSER_LOG_MODE)==null){
+            logger.warn("Invalid Level Passed to Parser:\t"+ConfigManager.DIALOG_LOG_MODE);
+            logger.warn("Please Check Dialog's Config.Properties. Now Defaulting to INFO");
+        }
+        ParserLogController.setLogger(Level.toLevel(ConfigManager.PARSER_LOG_MODE, Level.INFO));
         //Set Logging Level for Memory
         MemoryLoggerInterface.setLogger(ConfigManager.MEMORY_LOG_MODE);
         //Set Logging Level for Dialog System
+        //Sets all levels of the Dialog system's logger to that specified, otherwise default to INFO
+        if(Level.getLevel(ConfigManager.DIALOG_LOG_MODE)==null){
+            logger.warn("Invalid Level Passed to Dialog:\t"+ConfigManager.DIALOG_LOG_MODE);
+            logger.warn("Please Check Dialog's Config.Properties. Now Defaulting to INFO");
+        }
         Configurator.setAllLevels(LogManager.getRootLogger().getName(), Level.toLevel(ConfigManager.DIALOG_LOG_MODE, Level.INFO));
     }
 }
