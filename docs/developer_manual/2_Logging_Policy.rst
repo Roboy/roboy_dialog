@@ -81,5 +81,7 @@ WARN          lg.warn()     WARNING       lg.warning()  WARN          lg.warning
 INFO          lg.info()     INFO          lg.info()     INFO          lg.log()      Information regarding the usage of module (e.g. Config Choices, Major Modules Loaded)
 -             -             CONFIG        lg.config()   -             -             Avoid using this level
 DEBUG         lg.debug()    FINE          lg.fine()     DEBUG         lg.dbg()      Information not directly relevant to execution of program, unless debugging. This includes tests and parsing details.
+============  ============  ============  ============  ============  ============  ===================================
+
 
 .. note:: Refrain from using any lower levels
