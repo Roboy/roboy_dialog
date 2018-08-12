@@ -1,7 +1,7 @@
 package edu.stanford.nlp.sempre.roboy.lexicons.word2vec;
 
 import edu.stanford.nlp.sempre.roboy.config.ConfigManager;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import org.deeplearning4j.models.embeddings.WeightLookupTable;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
 import org.deeplearning4j.models.word2vec.Word2Vec;
@@ -28,28 +28,28 @@ public class Word2vec {
         threshold = ConfigManager.W2V_THRES;
 
         // Get all files paths
-        // LogInfo.logs("Loading files...");
+        // LogInfoToggle.logs("Loading files...");
         this.dataGetter = new ToyDataGetter(false);
-        // LogInfo.logs("Loading files...");
+        // LogInfoToggle.logs("Loading files...");
         this.dataGetter.ensureToyModelIsPresent();
-        // LogInfo.logs("Loading files...");
+        // LogInfoToggle.logs("Loading files...");
         this.modelPath = this.dataGetter.getToyModelFilePath();
 
         // Load model
-        // LogInfo.logs("Loading models...");
+        // LogInfoToggle.logs("Loading models...");
         File gModel = new File(modelPath);
         this.vec = WordVectorSerializer.readWord2VecModel(gModel);
 
         // Weight tables
-        // LogInfo.logs("Weight tables...");
+        // LogInfoToggle.logs("Weight tables...");
         this.weightLookupTable = this.vec.lookupTable();
         this.vectors = weightLookupTable.vectors();
 
-        LogInfo.begin_track("Tests -> ");
-        LogInfo.logs("Closest words: %s", this.getClosest("queen",10));
-        LogInfo.logs("Closest word to female from : \"women\",\"queen\",\"elisabeth\" -> %s", this.getBest("female", Arrays.asList("women","queen","elisabeth")));
-        LogInfo.logs("Closest word to swimming from : \"literature\",\"activity\",\"sports\" -> : %s",this.getBest("swimming", Arrays.asList("literature","activity","sports")));
-        LogInfo.end_track();
+        LogInfoToggle.begin_track("Tests -> ");
+        LogInfoToggle.logs("Closest words: %s", this.getClosest("queen",10));
+        LogInfoToggle.logs("Closest word to female from : \"women\",\"queen\",\"elisabeth\" -> %s", this.getBest("female", Arrays.asList("women","queen","elisabeth")));
+        LogInfoToggle.logs("Closest word to swimming from : \"literature\",\"activity\",\"sports\" -> : %s",this.getBest("swimming", Arrays.asList("literature","activity","sports")));
+        LogInfoToggle.end_track();
     }
 
     public void setThreshold(double t){
@@ -86,19 +86,19 @@ public class Word2vec {
         try{
             Word2vec vec = new Word2vec();
             if (ConfigManager.DEBUG > 3) {
-                LogInfo.logs("Tests -> ");
+                LogInfoToggle.logs("Tests -> ");
                 vec.setThreshold(0);
-                LogInfo.logs("Closest words: %s", vec.getClosest("queen", 10).toString());
-                LogInfo.logs("Closest word to queen from : " +
+                LogInfoToggle.logs("Closest words: %s", vec.getClosest("queen", 10).toString());
+                LogInfoToggle.logs("Closest word to queen from : " +
                         "\"people\",\"activities\",\"politics\",\"culture\" -> %s",
                         vec.getBest("queen",
                                 Arrays.asList("people", "activities", "politics", "culture")).toString());
-                LogInfo.logs("Closest word to swimming from : \"literature\",\"music\",\"sports\" -> : %s",
+                LogInfoToggle.logs("Closest word to swimming from : \"literature\",\"music\",\"sports\" -> : %s",
                         vec.getBest("swimming",
                                 Arrays.asList("literature", "music", "sports")).toString());
             }
         } catch(Exception e){
-            LogInfo.errors("Exception in Word2Vec: %s", e.getMessage());
+            LogInfoToggle.errors("Exception in Word2Vec: %s", e.getMessage());
         }
 
     }

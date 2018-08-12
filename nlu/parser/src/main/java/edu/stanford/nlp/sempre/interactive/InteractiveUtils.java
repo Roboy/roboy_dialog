@@ -22,7 +22,7 @@ import edu.stanford.nlp.sempre.Parser;
 import edu.stanford.nlp.sempre.Rule;
 import edu.stanford.nlp.sempre.SemanticFn;
 import fig.basic.LispTree;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.Option;
 import fig.basic.Ref;
 
@@ -60,7 +60,7 @@ public final class InteractiveUtils {
 
   public static Derivation stripBlock(Derivation deriv) {
     if (opts.verbose > 0)
-      LogInfo.logs("StripBlock %s %s %s", deriv, deriv.rule, deriv.cat);
+      LogInfoToggle.logs("StripBlock %s %s %s", deriv, deriv.rule, deriv.cat);
     while ((deriv.rule.sem instanceof BlockFn || deriv.rule.sem instanceof IdentityFn) && deriv.children.size() == 1) {
       deriv = deriv.child(0);
     }
@@ -81,7 +81,7 @@ public final class InteractiveUtils {
       String formula = pair.get(1);
 
       if (formula.equals("()")) {
-        LogInfo.logs("Error: Got empty formula");
+        LogInfoToggle.logs("Error: Got empty formula");
         continue;
       }
 
@@ -91,13 +91,13 @@ public final class InteractiveUtils {
       Example ex = b.createExample();
       ex.preprocess();
 
-      LogInfo.logs("Parsing body: %s", ex.utterance);
+      LogInfoToggle.logs("Parsing body: %s", ex.utterance);
       ((InteractiveBeamParser)parser).parseWithoutExecuting(params, ex, false);
 
       boolean found = false;
       Formula targetFormula = Formulas.fromLispTree(LispTree.proto.parseFromString(formula));
       for (Derivation d : ex.predDerivations) {
-        // LogInfo.logs("considering: %s", d.formula.toString());
+        // LogInfoToggle.logs("considering: %s", d.formula.toString());
         if (d.formula.equals(targetFormula)) {
           found = true;
           allDerivs.add(stripDerivation(d));
@@ -105,7 +105,7 @@ public final class InteractiveUtils {
         }
       }
       if (!found && !formula.equals("?")) {
-        LogInfo.errors("matching formula not found: %s :: %s", utt, formula);
+        LogInfoToggle.errors("matching formula not found: %s :: %s", utt, formula);
         numFailed++;
       }
       // just making testing easier, use top derivation when we formula is not
@@ -125,7 +125,7 @@ public final class InteractiveUtils {
       refResponse.value.stats.put("num_failed", numFailed);
       refResponse.value.stats.put("num_body", body.size());
     }
-    // LogInfo.logs("returning deriv list %s, \n %s", allDerivs.toString(),
+    // LogInfoToggle.logs("returning deriv list %s, \n %s", allDerivs.toString(),
     // jsonDef);
     return allDerivs;
   }
@@ -160,7 +160,7 @@ public final class InteractiveUtils {
   }
 
   public static synchronized void addRuleInteractive(Rule rule, Parser parser) {
-    LogInfo.logs("addRuleInteractive: %s", rule);
+    LogInfoToggle.logs("addRuleInteractive: %s", rule);
     if (parser instanceof InteractiveBeamParser) {
       parser.addRule(rule);
     } else {

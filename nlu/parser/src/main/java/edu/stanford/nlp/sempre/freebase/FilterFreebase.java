@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import edu.stanford.nlp.sempre.Formula;
 import edu.stanford.nlp.sempre.Formulas;
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 import fig.exec.Execution;
 
 import java.io.BufferedReader;
@@ -71,7 +71,7 @@ public class FilterFreebase implements Runnable {
 
   // Fill out |keepProperties|
   private void readKeep() {
-    LogInfo.begin_track("readKeep");
+    LogInfoToggle.begin_track("readKeep");
 
     // Always keep schema
     keepProperties.addAll(schemaProperties);
@@ -82,7 +82,7 @@ public class FilterFreebase implements Runnable {
 
     // Keep properties mentioned in examples
     for (String path : examplesPaths) {
-      LogInfo.logs("Reading %s", path);
+      LogInfoToggle.logs("Reading %s", path);
       Iterator<LispTree> it = LispTree.proto.parseFromFile(path);
       while (it.hasNext()) {
         LispTree tree = it.next();
@@ -114,12 +114,12 @@ public class FilterFreebase implements Runnable {
     for (String property : keepProperties)
       out.println(property);
     out.close();
-    LogInfo.logs("Keeping %s properties", keepProperties.size());
-    LogInfo.end_track();
+    LogInfoToggle.logs("Keeping %s properties", keepProperties.size());
+    LogInfoToggle.end_track();
   }
 
   private void filterTuples() {
-    LogInfo.begin_track("filterTuples");
+    LogInfoToggle.begin_track("filterTuples");
     TDoubleMap<String> propertyCounts = new TDoubleMap<String>();
 
     PrintWriter out = IOUtils.openOutHard(Execution.getFile("0.ttl"));
@@ -133,7 +133,7 @@ public class FilterFreebase implements Runnable {
       while (numInputLines < maxInputLines && (line = in.readLine()) != null) {
         numInputLines++;
         if (numInputLines % 10000000 == 0)
-          LogInfo.logs("filterTuples: Read %s lines, written %d lines", numInputLines, numOutputLines);
+          LogInfoToggle.logs("filterTuples: Read %s lines, written %d lines", numInputLines, numOutputLines);
         String[] tokens = Utils.parseTriple(line);
         if (tokens == null) continue;
         String arg1 = tokens[0];
@@ -162,7 +162,7 @@ public class FilterFreebase implements Runnable {
 
     // Make a second pass to only output general properties.
     if (keepGeneralPropertiesOnlyForSeenEntities) {
-      LogInfo.begin_track("Second pass to output general properties for the %d seen entities", seenEntities.size());
+      LogInfoToggle.begin_track("Second pass to output general properties for the %d seen entities", seenEntities.size());
       try {
         BufferedReader in = IOUtils.openIn(inPath);
         String line;
@@ -171,7 +171,7 @@ public class FilterFreebase implements Runnable {
         while (numInputLines < maxInputLines && (line = in.readLine()) != null) {
           numInputLines++;
           if (numInputLines % 10000000 == 0)
-            LogInfo.logs("filterTuples: Read %s lines, written %d lines", numInputLines, numOutputLines);
+            LogInfoToggle.logs("filterTuples: Read %s lines, written %d lines", numInputLines, numOutputLines);
           String[] tokens = Utils.parseTriple(line);
           if (tokens == null) continue;
           String arg1 = tokens[0];
@@ -190,7 +190,7 @@ public class FilterFreebase implements Runnable {
       } catch (IOException e) {
         throw new RuntimeException(e);
       }
-      LogInfo.end_track();
+      LogInfoToggle.end_track();
     }
 
     out.close();
@@ -204,7 +204,7 @@ public class FilterFreebase implements Runnable {
     }
     propertyCountsOut.close();
 
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
   public void run() {

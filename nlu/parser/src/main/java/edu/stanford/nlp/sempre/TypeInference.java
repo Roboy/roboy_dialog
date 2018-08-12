@@ -1,6 +1,6 @@
 package edu.stanford.nlp.sempre;
 
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 
 import java.util.*;
 
@@ -95,7 +95,7 @@ public final class TypeInference {
       }
       SemType newType = ref.value.meet(type);
       if (!newType.isValid() && opts.verbose >= 2)
-        LogInfo.warnings("Invalid type from [%s MEET %s]", ref.value, type);
+        LogInfoToggle.warnings("Invalid type from [%s MEET %s]", ref.value, type);
       ref.value = newType;
       return newType;
     }
@@ -131,7 +131,7 @@ public final class TypeInference {
     } catch (TypeException e) {
       type = SemType.bottomType;
     }
-    if (opts.verbose >= 2) LogInfo.logs("TypeInference: %s => %s", formula, type);
+    if (opts.verbose >= 2) LogInfoToggle.logs("TypeInference: %s => %s", formula, type);
     return type;
   }
 
@@ -144,7 +144,7 @@ public final class TypeInference {
   // |env| specifies the mapping form variables to their types.  This should be updated.
   private static SemType inferType(Formula formula, Env env, SemType type) throws TypeException {
     if (opts.verbose >= 5)
-      LogInfo.logs("TypeInference.inferType(%s, %s, %s)", formula, env, type);
+      LogInfoToggle.logs("TypeInference.inferType(%s, %s, %s)", formula, env, type);
     if (formula instanceof VariableFormula) {
       return check(env.updateType(((VariableFormula) formula).name, type));
 

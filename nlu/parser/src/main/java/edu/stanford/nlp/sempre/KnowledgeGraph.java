@@ -3,7 +3,7 @@ package edu.stanford.nlp.sempre;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 
 
 /**
@@ -27,7 +27,7 @@ public abstract class KnowledgeGraph {
           return (KnowledgeGraph) classObject.getDeclaredMethod("fromLispTree", LispTree.class).invoke(null, tree);
         } catch (InvocationTargetException e) {
           e.getCause().printStackTrace();
-          LogInfo.fail(e.getCause());
+          LogInfoToggle.fail(e.getCause());
           throw new RuntimeException(e);
         } catch (IllegalAccessException | IllegalArgumentException |
             NoSuchMethodException | SecurityException | ClassNotFoundException e) {

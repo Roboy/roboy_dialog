@@ -1,6 +1,6 @@
 package edu.stanford.nlp.sempre;
 
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 import java.util.*;
 
 /**
@@ -49,7 +49,7 @@ public class SimpleLexiconFn extends SemanticFn {
     List<SimpleLexicon.Entry> newEntries = new ArrayList<SimpleLexicon.Entry>();
     for (SimpleLexicon.Entry e : entries) {
       if (opts.verbose >= 3)
-        LogInfo.logs("SimpleLexiconFn: %s => %s [type = %s meet-> %s]", phrase, e.formula, e.type, restrictType.meet(e.type));
+        LogInfoToggle.logs("SimpleLexiconFn: %s => %s [type = %s meet-> %s]", phrase, e.formula, e.type, restrictType.meet(e.type));
       if (!restrictType.toString().contains(e.type.toString())) {
         continue;
       }

@@ -1,7 +1,7 @@
 package edu.stanford.nlp.sempre.freebase;
 
 import fig.basic.IOUtils;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.Option;
 import fig.exec.Execution;
 
@@ -45,7 +45,7 @@ public class BuildCanonicalIdMap implements Runnable {
 
   void computeAllowableIds() {
     // Compute allowable ids
-    LogInfo.begin_track("Compute allowable ids");
+    LogInfoToggle.begin_track("Compute allowable ids");
     try {
       BufferedReader in = IOUtils.openIn(rawPath);
       String line;
@@ -53,19 +53,19 @@ public class BuildCanonicalIdMap implements Runnable {
       while (numInputLines < maxInputLines && (line = in.readLine()) != null) {
         numInputLines++;
         if (numInputLines % 10000000 == 0)
-          LogInfo.logs("Read %s lines, %d allowable ids", numInputLines, allowableIds.size());
+          LogInfoToggle.logs("Read %s lines, %d allowable ids", numInputLines, allowableIds.size());
         String[] tokens = Utils.parseTriple(line);
         if (tokens == null) continue;
         String arg1 = tokens[0];
         if (!arg1.startsWith("fb:g.") && !arg1.startsWith("fb:m."))
           allowableIds.add(arg1);
       }
-      LogInfo.logs("%d allowable ids", allowableIds.size());
+      LogInfoToggle.logs("%d allowable ids", allowableIds.size());
       in.close();
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
   void flush(String mid, List<String> ids) {
@@ -108,7 +108,7 @@ public class BuildCanonicalIdMap implements Runnable {
       while (numInputLines < maxInputLines && (line = in.readLine()) != null) {
         numInputLines++;
         if (numInputLines % 10000000 == 0)
-          LogInfo.logs("Read %s lines, %d entities", numInputLines, numMids);
+          LogInfoToggle.logs("Read %s lines, %d entities", numInputLines, numMids);
         String[] tokens = Utils.parseTriple(line);
         if (tokens == null) continue;
         String arg1 = tokens[0];

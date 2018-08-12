@@ -7,7 +7,7 @@ import edu.stanford.nlp.sempre.roboy.DbFormulasInfo.BinaryFormulaInfo;
 import edu.stanford.nlp.sempre.roboy.DbFormulasInfo.UnaryFormulaInfo;
 import edu.stanford.nlp.sempre.*;
 import edu.stanford.nlp.sempre.roboy.config.ConfigManager;
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -37,7 +37,7 @@ public final class DatabaseInfo {
     public static String defaultDB; //"lib/fb_data/93.exec/schema2.ttl";
 
     public static void setDefault(String formula){
-      //LogInfo.logs("Default %s", formula);
+      //LogInfoToggle.logs("Default %s", formula);
       defaultDB = formula;};
     public static String getDefault(){return defaultDB;};
   }
@@ -149,13 +149,13 @@ public final class DatabaseInfo {
   // Return null if we don't know anything.
   public String typeToUnit(String type, String property) {
     if (type == null) {
-      // LogInfo.errors("No type information for property: %s", property);
+      // LogInfoToggle.errors("No type information for property: %s", property);
       return null;
     }
     if (type.equals(getType(property,"ID")) || type.equals(getType(property,"FLOAT"))) {
       String unit = unit2Map.get(property);
       if (unit == null) {
-        // LogInfo.errors("No unit information for property: %s", property);
+        // LogInfoToggle.errors("No unit information for property: %s", property);
         return NumberValue.unitless;
       }
       return unit;
@@ -205,14 +205,14 @@ public final class DatabaseInfo {
 //        try {
 //          uri = URLEncoder.encode(uri, "UTF-8");
 //        } catch(Exception e) {
-//          LogInfo.errors("Exception: %s", e);
+//          LogInfoToggle.errors("Exception: %s", e);
 //        }
 //      }
     }
     if (uri.contains("/") && (uri.contains(",") || uri.contains("("))) {
        uri = "<".concat(uri).concat(">");
     }
-    // LogInfo.logs("Warning: invalid Database uri!: %s", uri);
+    // LogInfoToggle.logs("Warning: invalid Database uri!: %s", uri);
     // Don't do any conversion; this is not necessarily the best thing to do.
     return uri;
   }
@@ -235,23 +235,23 @@ public final class DatabaseInfo {
         JsonReader reader = new JsonReader(new FileReader(prop.getProperty("TYPES")));
         Type type = new TypeToken<Map<String, Map<String, String>>>(){}.getType();
         mapTypes = gson.fromJson(reader, type);
-//        LogInfo.logs("%s", mapTypes.toString());
+//        LogInfoToggle.logs("%s", mapTypes.toString());
       }
       catch (Exception e) {
         throw new RuntimeException(e);
       }
     }
-//    LogInfo.logs("Hello there: %s -- %s", head, id);
+//    LogInfoToggle.logs("Hello there: %s -- %s", head, id);
     if (head.contains(mapTypes.get("fb").get("PREFIX"))||
         opts.getDefault().contains(mapTypes.get("fb").get("PREFIX"))){
-//      LogInfo.logs("Freebase: %s", id);
+//      LogInfoToggle.logs("Freebase: %s", id);
       return mapTypes.get("fb").get(id);
     }
     else if (head.contains(mapTypes.get("dbpedia").get("PREFIX")) ||
          head.contains("resource:") || head.contains("property:") ||
             opts.getDefault().contains(mapTypes.get("dbpedia").get("PREFIX")) ||
             opts.getDefault().contains("resource:") || opts.getDefault().contains("property:")){
-//      LogInfo.logs("DBpedia: %s -> %s", id, mapTypes.get("dbpedia").get(id));
+//      LogInfoToggle.logs("DBpedia: %s -> %s", id, mapTypes.get("dbpedia").get(id));
       return mapTypes.get("dbpedia").get(id);
     }
     else{

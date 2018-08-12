@@ -14,7 +14,7 @@ import com.google.common.collect.ObjectArrays;
 import com.google.common.collect.Sets;
 
 import edu.stanford.nlp.sempre.*;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.Option;
 
 /**
@@ -62,7 +62,7 @@ public class DALExecutor extends Executor {
     } catch (Exception e) {
       // Comment this out if we expect lots of innocuous type checking failures
       if (opts.printStackTrace) {
-        LogInfo.log("Failed to execute " + formula.toString());
+        LogInfoToggle.log("Failed to execute " + formula.toString());
         e.printStackTrace();
       }
       return new Response(ErrorValue.badJava(e.toString()));
@@ -164,9 +164,9 @@ public class DALExecutor extends Executor {
         world.selected = prevSelected;
         world.merge();
       }
-      // LogInfo.logs("CBlocking prevselected=%s selected=%s all=%s",
+      // LogInfoToggle.logs("CBlocking prevselected=%s selected=%s all=%s",
       // prevSelected, world.selected, world.allitems);
-      // LogInfo.logs("BlockingWorldIs %s", world.toJSON());
+      // LogInfoToggle.logs("BlockingWorldIs %s", world.toJSON());
       world.previous = prevPrevious;
     }
     // } else if (f.mode == ActionFormula.Mode.let) {
@@ -230,7 +230,7 @@ public class DALExecutor extends Executor {
       // special unary
       if (v instanceof NameValue) {
         String id = ((NameValue) v).id;
-        // LogInfo.logs("%s : this %s, all: %s", id,
+        // LogInfoToggle.logs("%s : this %s, all: %s", id,
         // world.selected().toString(), world.allitems.toString());
         if (id.equals(SpecialSets.All))
           return world.all();
@@ -406,7 +406,7 @@ public class DALExecutor extends Executor {
 
       cost += typeCastCost(types[i], args[i]);
       if (cost >= INVALID_TYPE_COST) {
-        LogInfo.dbgs("NOT COMPATIBLE: want %s, got %s with type %s", types[i], args[i], args[i].getClass());
+        LogInfoToggle.dbgs("NOT COMPATIBLE: want %s, got %s with type %s", types[i], args[i], args[i].getClass());
         break;
       }
     }

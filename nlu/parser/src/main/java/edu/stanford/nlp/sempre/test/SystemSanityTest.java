@@ -4,8 +4,9 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 
 import edu.stanford.nlp.sempre.*;
-import fig.basic.Pair;
 import fig.basic.Evaluation;
+import fig.basic.Pair;
+import edu.stanford.nlp.sempre.roboy.utils.logging.EvaluationToggle;
 
 import org.testng.annotations.Test;
 

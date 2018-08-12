@@ -4,7 +4,7 @@ import edu.stanford.nlp.sempre.*;
 
 import com.google.common.base.Function;
 import fig.basic.LispTree;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.Option;
 import fig.exec.Execution;
 
@@ -36,10 +36,10 @@ public class ExecuteExamples implements Runnable {
       cache.put(formula, response = executor.execute(formula, null));
     if (!(response.value instanceof ListValue) ||
         ((ListValue) response.value).values.size() == 0) {
-      LogInfo.logs("BAD QUERY: %s => %s", formula, response.value);
+      LogInfoToggle.logs("BAD QUERY: %s => %s", formula, response.value);
       return false;
     } else {
-      LogInfo.logs("GOOD QUERY: %s => %s", formula, response.value);
+      LogInfoToggle.logs("GOOD QUERY: %s => %s", formula, response.value);
       return true;
     }
   }

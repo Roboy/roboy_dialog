@@ -5,7 +5,7 @@ import static org.testng.AssertJUnit.assertEquals;
 import org.testng.annotations.Test;
 
 import edu.stanford.nlp.sempre.*;
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 
 /**
  * Test type system.

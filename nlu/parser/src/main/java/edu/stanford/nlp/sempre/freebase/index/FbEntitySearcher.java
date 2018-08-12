@@ -1,6 +1,6 @@
 package edu.stanford.nlp.sempre.freebase.index;
 
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.StopWatch;
 import org.apache.lucene.analysis.core.KeywordAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
@@ -32,7 +32,7 @@ public class FbEntitySearcher {
 
   public FbEntitySearcher(String indexDir, int numOfDocs, String searchingStrategy) throws IOException {
 
-    LogInfo.begin_track("Constructing Searcher");
+    LogInfoToggle.begin_track("Constructing Searcher");
     if (!searchingStrategy.equals("exact") && !searchingStrategy.equals("inexact"))
       throw new RuntimeException("Bad searching strategy: " + searchingStrategy);
     this.searchStrategy = searchingStrategy;
@@ -41,13 +41,13 @@ public class FbEntitySearcher {
         Version.LUCENE_44,
         FbIndexField.TEXT.fieldName(),
         searchingStrategy.equals("exact") ? new KeywordAnalyzer() : new StandardAnalyzer(Version.LUCENE_44));
-    LogInfo.log("Opening index dir: " + indexDir);
+    LogInfoToggle.log("Opening index dir: " + indexDir);
     IndexReader indexReader = DirectoryReader.open(SimpleFSDirectory.open(new File(indexDir)));
     indexSearcher = new IndexSearcher(indexReader);
-    LogInfo.log("Opened index with " + indexReader.numDocs() + " documents.");
+    LogInfoToggle.log("Opened index with " + indexReader.numDocs() + " documents.");
 
     this.numOfDocs = numOfDocs;
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
   public synchronized List<Document> searchDocs(String question) throws IOException, ParseException {
@@ -94,14 +94,14 @@ public class FbEntitySearcher {
       List<Document> docs = searcher.searchDocs(question);
       watch.stop();
       for (Document doc : docs) {
-        LogInfo.log(
+        LogInfoToggle.log(
             "Mid: " + doc.get(FbIndexField.MID.fieldName()) + "\t" +
                 "id: " + doc.get(FbIndexField.ID.fieldName()) + "\t" +
                 "types: " + doc.get(FbIndexField.TYPES.fieldName()) + "\t" +
                 "Name: " + doc.get(FbIndexField.TEXT.fieldName()) + "\t" +
                 "Popularity: " + doc.get(FbIndexField.POPULARITY.fieldName()));
       }
-      LogInfo.logs("Number of docs: %s, Time: %s", docs.size(), watch);
+      LogInfoToggle.logs("Number of docs: %s, Time: %s", docs.size(), watch);
     }
   }
 }

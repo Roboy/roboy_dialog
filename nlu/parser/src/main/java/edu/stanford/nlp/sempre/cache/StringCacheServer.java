@@ -1,6 +1,6 @@
 package edu.stanford.nlp.sempre.cache;
 
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.Option;
 import fig.exec.Execution;
 
@@ -52,7 +52,7 @@ public class StringCacheServer implements Runnable {
         String line;
         int numGets = 0, numPuts = 0, numErrors = 0;
         while (!terminated && (line = in.readLine()) != null) {
-          // LogInfo.logs("Input: %s", line);
+          // LogInfoToggle.logs("Input: %s", line);
           String[] tokens = line.split("\t");
           String response = null;
           if (tokens[0].equals("open") && tokens.length == 2) {
@@ -73,14 +73,14 @@ public class StringCacheServer implements Runnable {
               response = "OK";
               synchronized (cache) {
                 if (cache.getPath() == null) {
-                  LogInfo.begin_track("Loading %s", path);
+                  LogInfoToggle.begin_track("Loading %s", path);
                   try {
                     cache.init(path, readOnly);
                   } catch (Throwable t) {
                     response = "ERROR: " + t;
                   }
-                  LogInfo.logs("Response: %s", response);
-                  LogInfo.end_track();
+                  LogInfoToggle.logs("Response: %s", response);
+                  LogInfoToggle.end_track();
                 }
               }
             }
@@ -121,12 +121,12 @@ public class StringCacheServer implements Runnable {
             response = "ERROR: " + line;
             numErrors++;
           }
-          // LogInfo.logs("Response: %s", response);
+          // LogInfoToggle.logs("Response: %s", response);
           out.println(response);
           out.flush();
         }
         in.close();
-        LogInfo.logs("[%s] Closed connection %s: %d gets, %d puts, %d errors", new Date(), client, numGets, numPuts, numErrors);
+        LogInfoToggle.logs("[%s] Closed connection %s: %d gets, %d puts, %d errors", new Date(), client, numGets, numPuts, numErrors);
       } catch (IOException e) {
         throw new RuntimeException(e);
       }
@@ -134,17 +134,17 @@ public class StringCacheServer implements Runnable {
   }
 
   public void run() {
-    LogInfo.logs("[%s] Starting server on port %d", new Date(), port);
+    LogInfoToggle.logs("[%s] Starting server on port %d", new Date(), port);
 
     try {
       ServerSocket server = new ServerSocket(port);
       while (!terminated) {
         Socket client = server.accept();
-        LogInfo.logs("[%s] Opened connection from %s", new Date(), client);
+        LogInfoToggle.logs("[%s] Opened connection from %s", new Date(), client);
         Thread t = new Thread(new ClientHandler(client));
         t.start();
       }
-      LogInfo.log("Done");
+      LogInfoToggle.log("Done");
     } catch (IOException e) {
       throw new RuntimeException(e);
     }

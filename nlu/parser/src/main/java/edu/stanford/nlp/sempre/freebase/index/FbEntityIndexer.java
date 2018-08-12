@@ -1,7 +1,7 @@
 package edu.stanford.nlp.sempre.freebase.index;
 
 import edu.stanford.nlp.io.IOUtils;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import org.apache.lucene.analysis.core.KeywordAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.*;
@@ -40,7 +40,7 @@ public class FbEntityIndexer {
    */
   public void index() throws IOException {
 
-    LogInfo.begin_track("Indexing");
+    LogInfoToggle.begin_track("Indexing");
     BufferedReader reader = IOUtils.getBufferedFileReader(nameFile);
     String line;
     int indexed = 0;
@@ -68,15 +68,15 @@ public class FbEntityIndexer {
       indexed++;
 
       if (indexed % 1000000 == 0) {
-        LogInfo.log("Number of lines: " + indexed);
+        LogInfoToggle.log("Number of lines: " + indexed);
       }
     }
     reader.close();
-    LogInfo.log("Indexed lines: " + indexed);
+    LogInfoToggle.log("Indexed lines: " + indexed);
 
     indexer.close();
-    LogInfo.log("Done");
-    LogInfo.end_track("Indexing");
+    LogInfoToggle.log("Done");
+    LogInfoToggle.end_track("Indexing");
   }
 
   public static void main(String[] args) throws IOException {

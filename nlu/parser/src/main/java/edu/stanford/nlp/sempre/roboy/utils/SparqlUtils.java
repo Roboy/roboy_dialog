@@ -18,7 +18,7 @@ import java.io.*;
 import java.util.*;
 
 import edu.stanford.nlp.sempre.roboy.config.ConfigManager;
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -137,7 +137,7 @@ public class SparqlUtils {
                 return null;
         }
         catch(UnsupportedEncodingException e){
-            LogInfo.logs("WrongFormat of the input: %s", json);
+            LogInfoToggle.logs("WrongFormat of the input: %s", json);
         }
         return null;
     }
@@ -156,8 +156,8 @@ public class SparqlUtils {
             String url = String.format("%s?default-graph-uri=http://dbpedia.org&query=%s&format=xml",
                     endpointUrl, URLEncoder.encode(formQuery(json,"en"), "UTF-8"));
             if(ConfigManager.DEBUG > 5) {
-                LogInfo.logs("SPARQL query: %s", formQuery(json));
-                LogInfo.logs("Query: %s", url);
+                LogInfoToggle.logs("SPARQL query: %s", formQuery(json));
+                LogInfoToggle.logs("Query: %s", url);
             }
             ServerResponse response = makeRequest(url);
 
@@ -179,7 +179,7 @@ public class SparqlUtils {
                 return null;
         }
         catch(UnsupportedEncodingException e){
-            LogInfo.logs("WrongFormat of the input: %s", json);
+            LogInfoToggle.logs("WrongFormat of the input: %s", json);
         }
         return null;
     }
@@ -207,8 +207,8 @@ public class SparqlUtils {
                 list = reader.readArrayXml(response.getXml());
             }
             if(ConfigManager.DEBUG > 7) {
-                LogInfo.logs("SPARQL query: %s", formQuery(json));
-                LogInfo.logs("URL: %s", url);
+                LogInfoToggle.logs("SPARQL query: %s", formQuery(json));
+                LogInfoToggle.logs("URL: %s", url);
                 System.out.println("Result: "+response.getXml());
                 System.out.println("Result: "+list.toString());
             }
@@ -224,7 +224,7 @@ public class SparqlUtils {
                 return null;
         }
         catch(UnsupportedEncodingException e){
-            LogInfo.logs("WrongFormat of the input: %s", json);
+            LogInfoToggle.logs("WrongFormat of the input: %s", json);
         }
         return null;
     }
@@ -259,7 +259,7 @@ public class SparqlUtils {
             }
         }
         catch(UnsupportedEncodingException e){
-            LogInfo.logs("WrongFormat of the input: %s", json);
+            LogInfoToggle.logs("WrongFormat of the input: %s", json);
         }
         return null;
     }

@@ -2,10 +2,9 @@ package edu.stanford.nlp.sempre;
 
 import java.util.*;
 
+import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 import fig.basic.Evaluation;
-import fig.basic.LogInfo;
 import fig.basic.Parallelizer;
-import fig.basic.StopWatchSet;
 import fig.exec.Execution;
 
 /**
@@ -33,42 +32,42 @@ public class LearnerParallelProcessor implements Parallelizer.Processor<Example>
 
   @Override
   public void process(Example ex, int i, int n) {
-    LogInfo.begin_track_printAll(
+    LogInfoToggle.begin_track_printAll(
         "%s: example %s/%s: %s", prefix, i, n, ex.id);
     ex.log();
     Execution.putOutput("example", i);
 
-    StopWatchSet.begin("Parser.parse");
+    StopwatchSetToggle.begin("Parser.parse");
     ParserState state = parser.parse(params, ex, computeExpectedCounts);
-    StopWatchSet.end();
+    StopwatchSetToggle.end();
 
     if (computeExpectedCounts) {
       Map<String, Double> counts = new HashMap<>();
       SempreUtils.addToDoubleMap(counts, state.expectedCounts);
 
       // Gathered enough examples, update parameters
-      StopWatchSet.begin("Learner.updateWeights");
-      LogInfo.begin_track("Updating learner weights");
+      StopwatchSetToggle.begin("Learner.updateWeights");
+      LogInfoToggle.begin_track("Updating learner weights");
       if (Learner.opts.verbose >= 2)
         SempreUtils.logMap(counts, "gradient");
       double sum = 0;
       for (double v : counts.values()) sum += v * v;
-      LogInfo.logs("L2 norm: %s", Math.sqrt(sum));
+      LogInfoToggle.logs("L2 norm: %s", Math.sqrt(sum));
       synchronized (params) {
         params.update(counts);
       }
       counts.clear();
-      LogInfo.end_track();
-      StopWatchSet.end();
+      LogInfoToggle.end_track();
+      StopwatchSetToggle.end();
     }
 
-    LogInfo.logs("Current: %s", ex.evaluation.summary());
+    LogInfoToggle.logs("Current: %s", ex.evaluation.summary());
     synchronized (evaluation) {
       evaluation.add(ex.evaluation);
-      LogInfo.logs("Cumulative(%s): %s", prefix, evaluation.summary());
+      LogInfoToggle.logs("Cumulative(%s): %s", prefix, evaluation.summary());
     }
 
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
 
     // To save memory
     ex.clean();

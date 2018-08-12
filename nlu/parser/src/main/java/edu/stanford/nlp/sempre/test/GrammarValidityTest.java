@@ -4,7 +4,7 @@ import edu.stanford.nlp.sempre.*;
 
 import org.testng.annotations.Test;
 
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 
 import java.util.*;
 import java.nio.file.*;
@@ -29,9 +29,9 @@ public class GrammarValidityTest {
           try {
             if (filePath.toString().toLowerCase().endsWith(".grammar")) {
               Grammar test = new Grammar();
-              LogInfo.logs("Reading grammar file: %s", filePath.toString());
+              LogInfoToggle.logs("Reading grammar file: %s", filePath.toString());
               test.read(filePath.toString());
-              LogInfo.logs("Finished reading", filePath.toString());
+              LogInfoToggle.logs("Finished reading", filePath.toString());
               successes.add(filePath.toString());
             }
           }
@@ -40,18 +40,18 @@ public class GrammarValidityTest {
           }
         });
       }
-      LogInfo.begin_track("Following grammar tests passed:");
+      LogInfoToggle.begin_track("Following grammar tests passed:");
       for (String path : successes)
-        LogInfo.logs("%s", path);
-      LogInfo.end_track();
-      LogInfo.begin_track("Following grammar tests failed:");
+        LogInfoToggle.logs("%s", path);
+      LogInfoToggle.end_track();
+      LogInfoToggle.begin_track("Following grammar tests failed:");
       for (String path : failures)
-        LogInfo.logs("%s", path);
-      LogInfo.end_track();
+        LogInfoToggle.logs("%s", path);
+      LogInfoToggle.end_track();
       assertEquals(0, failures.size());
     }
     catch (Exception ex) {
-      LogInfo.logs(ex.toString());
+      LogInfoToggle.logs(ex.toString());
     }
   }
 }

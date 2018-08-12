@@ -6,7 +6,7 @@ import com.google.common.collect.HashBiMap;
 import edu.stanford.nlp.sempre.freebase.FbFormulasInfo.BinaryFormulaInfo;
 import edu.stanford.nlp.sempre.freebase.FbFormulasInfo.UnaryFormulaInfo;
 import edu.stanford.nlp.sempre.*;
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -94,7 +94,7 @@ public final class FreebaseInfo {
    * @throws IOException
    */
   public void readSchema() throws IOException {
-    LogInfo.begin_track("Loading Freebase schema: %s", opts.schemaPath);
+    LogInfoToggle.begin_track("Loading Freebase schema: %s", opts.schemaPath);
     BufferedReader in = IOUtils.openInHard(opts.schemaPath);
 
     // Include mediator types
@@ -114,11 +114,11 @@ public final class FreebaseInfo {
         // reverse properties are not 1:1.  We should monitor this and make
         // sure we don't lose any alignments.
         if (masterToOppositeMap.containsKey(arg1)) {
-          // LogInfo.errors("arg1 exists multiple times: %s", line);
+          // LogInfoToggle.errors("arg1 exists multiple times: %s", line);
           continue;
         }
         if (masterToOppositeMap.inverse().containsKey(arg2)) {
-          // LogInfo.errors("arg2 exists multiple times: %s", line);
+          // LogInfoToggle.errors("arg2 exists multiple times: %s", line);
           continue;
         }
         masterToOppositeMap.put(arg1, arg2);
@@ -132,11 +132,11 @@ public final class FreebaseInfo {
         else throw new RuntimeException("Invalid xsd:boolean: " + arg2);
       } else if (property.equals("fb:type.property.schema")) {  // schema => type1
         if (type1Map.containsKey(arg1))
-          LogInfo.errors("%s already has type1 %s, assigning %s", arg1, type1Map.get(arg1), arg2);
+          LogInfoToggle.errors("%s already has type1 %s, assigning %s", arg1, type1Map.get(arg1), arg2);
         type1Map.put(arg1, arg2);
       } else if (property.equals("fb:type.property.expected_type")) {  // expected_type => type2
         if (type2Map.containsKey(arg1))
-          LogInfo.errors("%s already has type2 %s, assigning %s", arg1, type2Map.get(arg1), arg2);
+          LogInfoToggle.errors("%s already has type2 %s, assigning %s", arg1, type2Map.get(arg1), arg2);
         type2Map.put(arg1, arg2);
       } else if (property.equals("fb:type.property.unit")) {
         unit2Map.put(arg1, arg2);
@@ -172,8 +172,8 @@ public final class FreebaseInfo {
       if (property.equals(NAME))
         nameMap.put(arg1, edu.stanford.nlp.sempre.freebase.Utils.parseStr(arg2));
     }
-    LogInfo.logs("%d CVTs, (%d,%d) property types, %d property units", cvts.size(), type1Map.size(), type2Map.size(), unit2Map.size());
-    LogInfo.end_track();
+    LogInfoToggle.logs("%d CVTs, (%d,%d) property types, %d property units", cvts.size(), type1Map.size(), type2Map.size(), unit2Map.size());
+    LogInfoToggle.end_track();
   }
 
   public Map<Formula, BinaryFormulaInfo> createBinaryFormulaInfoMap() {
@@ -239,13 +239,13 @@ public final class FreebaseInfo {
   // Return null if we don't know anything.
   public String typeToUnit(String type, String property) {
     if (type == null) {
-      // LogInfo.errors("No type information for property: %s", property);
+      // LogInfoToggle.errors("No type information for property: %s", property);
       return null;
     }
     if (type.equals(INT) || type.equals(FLOAT)) {
       String unit = unit2Map.get(property);
       if (unit == null) {
-        // LogInfo.errors("No unit information for property: %s", property);
+        // LogInfoToggle.errors("No unit information for property: %s", property);
         return NumberValue.unitless;
       }
       return unit;
@@ -284,7 +284,7 @@ public final class FreebaseInfo {
   }
   public static String uri2id(String uri) {
     if (!uri.startsWith(freebaseNamespace)) {
-      LogInfo.logs("Warning: invalid Freebase uri: %s", uri);
+      LogInfoToggle.logs("Warning: invalid Freebase uri: %s", uri);
       // Don't do any conversion; this is not necessarily the best thing to do.
       return uri;
     }

@@ -5,7 +5,7 @@ import static org.testng.AssertJUnit.assertEquals;
 import java.util.*;
 import java.util.function.Predicate;
 
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 import edu.stanford.nlp.sempre.*;
 import edu.stanford.nlp.sempre.Parser.Spec;
 import edu.stanford.nlp.sempre.interactive.InteractiveBeamParser;
@@ -39,7 +39,7 @@ public class FloatingParsingTest {
           String formula = deriv.formula.toString();
           if (required.stream().anyMatch(s -> formula.indexOf(s)!=-1)) {
             match ++;
-            LogInfo.log("Got a match: " + formula);
+            LogInfoToggle.log("Got a match: " + formula);
           }
         }
         if (match == 0)
@@ -71,7 +71,7 @@ public class FloatingParsingTest {
   }
 
   protected static void parse(String beamUtt, String floatUtt, ContextValue context, Predicate<Example> checker) {
-    LogInfo.begin_track("Cannonical: %s\t Float: %s", beamUtt, floatUtt);
+    LogInfoToggle.begin_track("Cannonical: %s\t Float: %s", beamUtt, floatUtt);
 
     Example.Builder b = new Example.Builder();
     b.setId("session:test");
@@ -83,7 +83,7 @@ public class FloatingParsingTest {
     Spec defSpec = defaultSpec();
     Parser parser = new InteractiveBeamParser(defSpec);
     ParserState state = parser.parse(new Params(), ex, false);
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
 
     // Add the floating parser and check?
     if (checker != null) {
@@ -102,7 +102,7 @@ public class FloatingParsingTest {
   public void basicTest() {
     String defaultBlocks = "[[1,1,1,\"Green\",[]],[1,2,1,\"Blue\",[]],[2,2,1,\"Red\",[]],[3,2,2,\"Yellow\",[]]]";
     ContextValue context = getContext(defaultBlocks);
-    LogInfo.begin_track("testJoin");
+    LogInfoToggle.begin_track("testJoin");
 
     parse("select all", "select all", context, contains("(: select *)"));
     // parse("select has color red", "red blocks", context, contains("(:for (color red) (: select))"));
@@ -115,13 +115,13 @@ public class FloatingParsingTest {
     // parse("select has color red or has color green", "select red and green", context, contains("(:for (or (color red) (color green)) (: select))"));
     // parse("select has color red or has color green", "select red or green", context, contains("(:for (or (color red) (color green)) (: select))"));
     parse("remove has color red ; remove has color blue", "remove red then remove blue", context, moreThan(0));
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
   public void advanced() {
     String defaultBlocks = "[[1,1,1,\"Green\",[]],[1,2,1,\"Blue\",[]],[2,2,1,\"Red\",[]],[3,2,2,\"Yellow\",[]]]";
     ContextValue context = getContext(defaultBlocks);
-    LogInfo.begin_track("testJoin");
+    LogInfoToggle.begin_track("testJoin");
 
     parse("repeat 4 [add yellow]", "add 4 yellow blocks", context, hasAll("(:loop", "(number 4)", "(color yellow)"));
     parse("repeat 4 [for has color red [ add yellow left ] ]", "put 4 yellow left of red", context, hasAll(":for", "red", "left"));
@@ -138,15 +138,15 @@ public class FloatingParsingTest {
     parse("", "repeat 3 [delete top of all]", context, moreThan(0));
     // parse("", "add 3 red to left", context, hasAll("(:loop (number 3) (: add red left))"));
     // parse("repeat 5 [ add red left ]", "add 5 red left", context, hasAll("(:loop (number 5) (: add red left))"));
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
   // things we won't handle
   public void outOfScope() {
     String defaultBlocks = "[[1,1,1,\"Green\",[]],[1,2,1,\"Blue\",[]],[2,2,1,\"Red\",[]],[3,2,2,\"Yellow\",[]]]";
     ContextValue context = getContext(defaultBlocks);
-    LogInfo.begin_track("testJoin");
+    LogInfoToggle.begin_track("testJoin");
 
     parse("", "repeat 3 [ repeat 3 [delete very top of all] ]", context, moreThan(0));
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 }

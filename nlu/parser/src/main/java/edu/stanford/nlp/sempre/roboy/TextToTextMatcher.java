@@ -6,7 +6,7 @@ import edu.stanford.nlp.sempre.*;
 import edu.stanford.nlp.stats.ClassicCounter;
 import edu.stanford.nlp.stats.Counter;
 import edu.stanford.nlp.stats.Counters;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.Option;
 
 import java.util.ArrayList;
@@ -118,7 +118,7 @@ public class TextToTextMatcher {
       Counters.maxInPlace(stemFeatures, TokenLevelMatchFeatures.extractTokenMatchFeatures(exampleStems, fbDescStems, false));
     }
     if (ConfigManager.DEBUG >= 3) {
-      LogInfo.logs("Binary formula desc: %s, token match: %s, stem match: %s", fbDescs, tokenFeatures, stemFeatures);
+      LogInfoToggle.logs("Binary formula desc: %s, token match: %s, stem match: %s", fbDescs, tokenFeatures, stemFeatures);
     }
     addFeaturesToVector(tokenFeatures, "binary_token", vector);
     addFeaturesToVector(stemFeatures, "binary_stem", vector);

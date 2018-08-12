@@ -5,7 +5,7 @@ import edu.stanford.nlp.stats.ClassicCounter;
 import edu.stanford.nlp.stats.Counter;
 import edu.stanford.nlp.sempre.*;
 import fig.basic.LispTree;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.MapUtils;
 
 import java.io.FileNotFoundException;
@@ -81,7 +81,7 @@ public final class FbFormulasInfo {
                         info.expectedType2, info.expectedType1, info.unitId, info.unitDesc, info.descriptions, info.popularity));
       }
     }
-    LogInfo.log("Adding reverse formulas: " + entriesToAdd.size());
+    LogInfoToggle.log("Adding reverse formulas: " + entriesToAdd.size());
     for (BinaryFormulaInfo e : entriesToAdd) {
       binaryFormulaInfoMap.put(e.formula, e);
     }
@@ -97,16 +97,16 @@ public final class FbFormulasInfo {
 
   private void loadFormulaInfo() throws IOException {
 
-    LogInfo.begin_track("Loading formula info...");
-    LogInfo.log("Adding schema properties");
+    LogInfoToggle.begin_track("Loading formula info...");
+    LogInfoToggle.log("Adding schema properties");
     binaryFormulaInfoMap = freebaseInfo.createBinaryFormulaInfoMap();
     unaryFormulaInfoMap = freebaseInfo.createUnaryFormulaInfoMap();
-    LogInfo.log("Current number of binary formulas: " + binaryFormulaInfoMap.size());
-    LogInfo.log("Current number of unary formulas: " + unaryFormulaInfoMap.size());
+    LogInfoToggle.log("Current number of binary formulas: " + binaryFormulaInfoMap.size());
+    LogInfoToggle.log("Current number of unary formulas: " + unaryFormulaInfoMap.size());
 
-    LogInfo.log("Compuing reverse for schema formulas");
+    LogInfoToggle.log("Compuing reverse for schema formulas");
     computeReverseFormulaInfo();
-    LogInfo.log("Current number of binary formulas: " + binaryFormulaInfoMap.size());
+    LogInfoToggle.log("Current number of binary formulas: " + binaryFormulaInfoMap.size());
     for (BinaryFormulaInfo info : binaryFormulaInfoMap.values()) {
 
       MapUtils.addToList(atomicExtype2ToBinaryMap, info.expectedType2, info.formula);
@@ -115,13 +115,13 @@ public final class FbFormulasInfo {
       }
     }
 
-    LogInfo.log("Generate formulas through CVTs");
+    LogInfoToggle.log("Generate formulas through CVTs");
     generateCvtFormulas(); // generate formulas for CVTs
-    LogInfo.log("Current number of binary formulas: " + binaryFormulaInfoMap.size());
+    LogInfoToggle.log("Current number of binary formulas: " + binaryFormulaInfoMap.size());
     // we first sort by popularity
     Comparator<Formula> comparator = getPopularityComparator();
     sortType2ToBinaryMaps(comparator);
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
   public void sortType2ToBinaryMaps(Comparator<Formula> comparator) {

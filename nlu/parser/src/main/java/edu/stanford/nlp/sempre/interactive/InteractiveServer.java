@@ -38,7 +38,7 @@ import edu.stanford.nlp.sempre.Session;
 import edu.stanford.nlp.sempre.StringValue;
 import edu.stanford.nlp.sempre.Value;
 import fig.basic.IOUtils;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.MapUtils;
 import fig.basic.Option;
 
@@ -221,8 +221,8 @@ public class InteractiveServer {
         message = e.toString();
         response.lines.add(String.format("Exceeded the maximum allowed time: %ss", opts.maxExecutionTime));
         response.stats.put("uncaught_error", message);
-        LogInfo.flush();
-        LogInfo.resetInfos();
+        LogInfoToggle.flush();
+        LogInfoToggle.resetInfos();
       } finally {
         future.cancel(true);
         executor.shutdown();
@@ -305,7 +305,7 @@ public class InteractiveServer {
             jsonMap.put("candidates", responseMap.get("candidates"));
             logLine(opts.fullResponseLogPath + ".sandbox", Json.writeValueAsStringHard(jsonMap));
           }
-          // LogInfo.log(Json.writeValueAsStringHard(jsonMap));
+          // LogInfoToggle.log(Json.writeValueAsStringHard(jsonMap));
         }
       }
     }
@@ -341,16 +341,16 @@ public class InteractiveServer {
       server.createContext("/", new Handler());
       server.setExecutor(pool);
       server.start();
-      LogInfo.logs("JSON Server (%d threads) started at http://%s:%s/sempre", opts.numThreads, hostname, opts.port);
-      LogInfo.log("Press Ctrl-D to terminate.");
-      LogInfo.begin_threads();
-      while (LogInfo.stdin.readLine() != null) {
+      LogInfoToggle.logs("JSON Server (%d threads) started at http://%s:%s/sempre", opts.numThreads, hostname, opts.port);
+      LogInfoToggle.log("Press Ctrl-D to terminate.");
+      LogInfoToggle.begin_threads();
+      while (LogInfoToggle.stdin.readLine() != null) {
       }
-      LogInfo.log("Shutting down server...");
+      LogInfoToggle.log("Shutting down server...");
       server.stop(0);
-      LogInfo.log("Shutting down executor pool...");
+      LogInfoToggle.log("Shutting down executor pool...");
       pool.shutdown();
-      LogInfo.end_threads();
+      LogInfoToggle.end_threads();
     } catch (IOException e) {
       throw new RuntimeException(e);
     }

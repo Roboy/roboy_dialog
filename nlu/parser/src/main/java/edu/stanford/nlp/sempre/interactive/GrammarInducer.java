@@ -24,7 +24,7 @@ import edu.stanford.nlp.sempre.Rule;
 import edu.stanford.nlp.sempre.SemanticFn;
 import edu.stanford.nlp.sempre.VariableFormula;
 import fig.basic.LispTree;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.Option;
 
 /**
@@ -110,12 +110,12 @@ public class GrammarInducer {
       }
 
       if (opts.verbose > 1) {
-        LogInfo.logs("Simple Packing", chartList.size());
-        LogInfo.logs("chartList.size = %d", chartList.size());
-        LogInfo.log("Potential packings: ");
-        this.matches.forEach(d -> LogInfo.logs("%f: %s\t %s", d.getScore(), d.formula, d.allAnchored()));
-        LogInfo.logs("packing: %s", packing);
-        LogInfo.logs("formulaToCat: %s", formulaToCat);
+        LogInfoToggle.logs("Simple Packing", chartList.size());
+        LogInfoToggle.logs("chartList.size = %d", chartList.size());
+        LogInfoToggle.log("Potential packings: ");
+        this.matches.forEach(d -> LogInfoToggle.logs("%f: %s\t %s", d.getScore(), d.formula, d.allAnchored()));
+        LogInfoToggle.logs("packing: %s", packing);
+        LogInfoToggle.logs("formulaToCat: %s", formulaToCat);
       }
     }
     if (opts.useBestPacking) {
@@ -131,11 +131,11 @@ public class GrammarInducer {
       }
 
       if (opts.verbose > 1) {
-        LogInfo.logs("chartList.size = %d", chartList.size());
-        LogInfo.log("Potential packings: ");
-        this.matches.forEach(d -> LogInfo.logs("%f: %s\t", d.getScore(), d.formula));
-        LogInfo.logs("BestPacking: %s", bestPacking);
-        LogInfo.logs("formulaToCat: %s", formulaToCat);
+        LogInfoToggle.logs("chartList.size = %d", chartList.size());
+        LogInfoToggle.log("Potential packings: ");
+        this.matches.forEach(d -> LogInfoToggle.logs("%f: %s\t", d.getScore(), d.formula));
+        LogInfoToggle.logs("BestPacking: %s", bestPacking);
+        LogInfoToggle.logs("formulaToCat: %s", formulaToCat);
       }
     }
 
@@ -145,12 +145,12 @@ public class GrammarInducer {
 
   private void filterRule(Rule rule) {
     if (rule.isCatUnary()) {
-      LogInfo.logs("GrammarInducer.filterRule: not allowing CatUnary rules %s", rule.toString());
+      LogInfoToggle.logs("GrammarInducer.filterRule: not allowing CatUnary rules %s", rule.toString());
       return;
     }
       
     if (RHSs.contains(rule.rhs.toString())) {
-      LogInfo.logs("GrammarInducer.filterRule: already have %s", rule.toString());
+      LogInfoToggle.logs("GrammarInducer.filterRule: already have %s", rule.toString());
       return;
     }
     int numNT = 0;
@@ -159,7 +159,7 @@ public class GrammarInducer {
     }
     
     if (numNT > GrammarInducer.opts.maxNonterminals ) {
-      LogInfo.logs("GrammarInducer.filterRule: too many nontermnimals (max %d) %s", GrammarInducer.opts.maxNonterminals, rule.rhs.toString());
+      LogInfoToggle.logs("GrammarInducer.filterRule: too many nontermnimals (max %d) %s", GrammarInducer.opts.maxNonterminals, rule.rhs.toString());
       return;
     }
     inducedRules.add(rule);
@@ -270,13 +270,13 @@ public class GrammarInducer {
 
       // or it's a previous bestEndsAtI[j] for i-minLength+1 <= j < i
       for (int j = blockingIndex(matches, i) + 1; j < i; j++) {
-        // LogInfo.dbgs("BlockingIndex: %d, j=%d, i=%d", blockingIndex(matches,
+        // LogInfoToggle.dbgs("BlockingIndex: %d, j=%d, i=%d", blockingIndex(matches,
         // i), j, i);
         if (bestEndsAtI.get(j).score >= bestOverall.score)
           bestOverall = bestEndsAtI.get(j);
       }
       if (opts.verbose > 1)
-        LogInfo.logs("maximalAtI[%d] = %f: %s, BlockingIndex: %d", i, bestOverall.score, bestOverall.packing,
+        LogInfoToggle.logs("maximalAtI[%d] = %f: %s, BlockingIndex: %d", i, bestOverall.score, bestOverall.packing,
             blockingIndex(matches, i));
       if (bestOverall.score > Double.NEGATIVE_INFINITY)
         maximalAtI.add(i, bestOverall);
@@ -307,10 +307,10 @@ public class GrammarInducer {
 
   // populate grammarInfo.formula, replacing everything that can be replaced
   private void buildFormula(Derivation deriv, Map<String, String> replaceMap) {
-    // LogInfo.logs("BUILDING %s at (%d,%d) %s", deriv, deriv.start, deriv.end,
+    // LogInfoToggle.logs("BUILDING %s at (%d,%d) %s", deriv, deriv.start, deriv.end,
     // catFormulaKey(deriv));
     if (replaceMap.containsKey(catFormulaKey(deriv))) {
-      // LogInfo.logs("Found match %s, %s, %s", catFormulaKey(deriv),
+      // LogInfoToggle.logs("Found match %s, %s, %s", catFormulaKey(deriv),
       // replaceMap, deriv);
       deriv.grammarInfo.formula = new VariableFormula(replaceMap.get(catFormulaKey(deriv)));
       return;
@@ -338,7 +338,7 @@ public class GrammarInducer {
         if (!(f instanceof LambdaFormula))
           throw new RuntimeException("Expected LambdaFormula, but got " + f);
         Formula after = renameBoundVars(f, new HashSet<>());
-        // LogInfo.logs("renameBoundVar %s === %s", after, f);
+        // LogInfoToggle.logs("renameBoundVar %s === %s", after, f);
         f = Formulas.lambdaApply((LambdaFormula) after, arg.grammarInfo.formula);
       }
       deriv.grammarInfo.formula = f;
@@ -350,9 +350,9 @@ public class GrammarInducer {
     } else {
       deriv.grammarInfo.formula = deriv.formula;
     }
-    // LogInfo.logs("BUILT %s for %s", deriv.grammarInfo.formula,
+    // LogInfoToggle.logs("BUILT %s for %s", deriv.grammarInfo.formula,
     // deriv.formula);
-    // LogInfo.log("built " + deriv.grammarInfo.formula);
+    // LogInfoToggle.log("built " + deriv.grammarInfo.formula);
   }
 
   private String newName(String s) {
@@ -385,7 +385,7 @@ public class GrammarInducer {
   private SemanticFn getSemantics(final Derivation def, List<Derivation> packings) {
     Formula baseFormula = def.grammarInfo.formula;
     if (opts.verbose > 0)
-      LogInfo.logs("getSemantics %s", baseFormula);
+      LogInfoToggle.logs("getSemantics %s", baseFormula);
     if (packings.size() == 0) {
       SemanticFn constantFn = new ConstantFn();
       LispTree newTree = LispTree.proto.newList();
@@ -409,7 +409,7 @@ public class GrammarInducer {
   private List<String> getRHS(Derivation def, List<Derivation> packings) {
     List<String> rhs = new ArrayList<>(headTokens);
     for (Derivation deriv : packings) {
-      // LogInfo.logs("got (%d,%d):%s:%s", deriv.start, deriv.end,
+      // LogInfoToggle.logs("got (%d,%d):%s:%s", deriv.start, deriv.end,
       // deriv.formula, deriv.cat);
       rhs.set(deriv.start, getNormalCat(deriv));
       for (int i = deriv.start + 1; i < deriv.end; i++) {

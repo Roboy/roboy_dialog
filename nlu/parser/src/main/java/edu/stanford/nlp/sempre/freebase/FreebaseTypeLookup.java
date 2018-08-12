@@ -3,7 +3,7 @@ package edu.stanford.nlp.sempre.freebase;
 import java.util.*;
 import edu.stanford.nlp.sempre.*;
 import edu.stanford.nlp.sempre.cache.*;
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 
 /**
  * Provides types of Freebase entities and properties.

@@ -1,7 +1,7 @@
 package edu.stanford.nlp.sempre.freebase;
 
 import fig.basic.IOUtils;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import fig.basic.MapUtils;
 import fig.basic.Option;
 import fig.exec.Execution;
@@ -31,7 +31,7 @@ public class CanonicalizeIds implements Runnable {
     Map<String, String> canonicalIdMap = Utils.readCanonicalIdMap(canonicalIdMapPath, maxInputLines);
 
     // Do conversion
-    LogInfo.begin_track("Convert");
+    LogInfoToggle.begin_track("Convert");
     PrintWriter out = IOUtils.openOutHard(canonicalizedPath);
     out.println(Utils.ttlPrefix);
     try {
@@ -41,7 +41,7 @@ public class CanonicalizeIds implements Runnable {
       while (numInputLines < maxInputLines && (line = in.readLine()) != null) {
         numInputLines++;
         if (numInputLines % 10000000 == 0)
-          LogInfo.logs("Read %s lines", numInputLines);
+          LogInfoToggle.logs("Read %s lines", numInputLines);
         String[] tokens = Utils.parseTriple(line);
         if (tokens == null) continue;
         String arg1 = tokens[0];
@@ -71,7 +71,7 @@ public class CanonicalizeIds implements Runnable {
       throw new RuntimeException(e);
     }
     out.close();
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
   public static void main(String[] args) {

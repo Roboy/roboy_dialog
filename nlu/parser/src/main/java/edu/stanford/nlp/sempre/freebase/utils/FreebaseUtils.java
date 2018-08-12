@@ -3,7 +3,7 @@ package edu.stanford.nlp.sempre.freebase.utils;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import edu.stanford.nlp.io.IOUtils;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -142,7 +142,7 @@ public final class FreebaseUtils {
 
   public static Map<String, String> loadMid2NameMap(String filename) throws IOException {
 
-    LogInfo.log("Loading mid to name file...");
+    LogInfoToggle.log("Loading mid to name file...");
 
     Map<String, String> res = new HashMap<String, String>();
     BufferedReader reader = IOUtils.getBufferedFileReader(filename);
@@ -151,7 +151,7 @@ public final class FreebaseUtils {
       String[] tokens = line.split("\t");
       res.put(tokens[0], tokens[1]);
     }
-    LogInfo.log("Loaded " + res.keySet().size() + " MIDs");
+    LogInfoToggle.log("Loaded " + res.keySet().size() + " MIDs");
     return res;
   }
 

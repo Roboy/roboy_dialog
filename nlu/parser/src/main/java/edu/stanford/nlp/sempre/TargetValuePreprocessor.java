@@ -1,6 +1,6 @@
 package edu.stanford.nlp.sempre;
 
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 
 /**
  * Preprocess the targetValue of an example.

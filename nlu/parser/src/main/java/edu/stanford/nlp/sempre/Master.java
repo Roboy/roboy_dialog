@@ -3,7 +3,7 @@ package edu.stanford.nlp.sempre;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 import jline.console.ConsoleReader;
 
 import java.io.IOException;
@@ -162,23 +162,23 @@ public class Master {
   }
 
   protected void printHelp() {
-    LogInfo.log("Enter an utterance to parse or one of the following commands:");
-    LogInfo.log("  (help): show this help message");
-    LogInfo.log("  (status): prints out status of the system");
-    LogInfo.log("  (get |option|): get a command-line option (e.g., (get Parser.verbose))");
-    LogInfo.log("  (set |option| |value|): set a command-line option (e.g., (set Parser.verbose 5))");
-    LogInfo.log("  (reload): reload the grammar/parameters");
-    LogInfo.log("  (grammar): prints out the grammar");
-    LogInfo.log("  (params [|file|]): dumps all the model parameters");
-    LogInfo.log("  (select |candidate index|): show information about the |index|-th candidate of the last utterance.");
-    LogInfo.log("  (accept |candidate index|): record the |index|-th candidate as the correct answer for the last utterance.");
-    LogInfo.log("  (answer |answer|): record |answer| as the correct answer for the last utterance (e.g., (answer (list (number 3)))).");
-    LogInfo.log("  (rule |lhs| (|rhs_1| ... |rhs_k|) |sem|): adds a rule to the grammar (e.g., (rule $Number ($TOKEN) (NumberFn)))");
-    LogInfo.log("  (type |logical form|): perform type inference (e.g., (type (number 3)))");
-    LogInfo.log("  (execute |logical form|): execute the logical form (e.g., (execute (call + (number 3) (number 4))))");
-    LogInfo.log("  (def |key| |value|): define a macro to replace |key| with |value| in all commands (e.g., (def type fb:type.object type)))");
-    LogInfo.log("  (context [(user |user|) (date |date|) (exchange |exchange|) (graph |graph|)]): prints out or set the context");
-    LogInfo.log("Press Ctrl-D to exit.");
+    LogInfoToggle.log("Enter an utterance to parse or one of the following commands:");
+    LogInfoToggle.log("  (help): show this help message");
+    LogInfoToggle.log("  (status): prints out status of the system");
+    LogInfoToggle.log("  (get |option|): get a command-line option (e.g., (get Parser.verbose))");
+    LogInfoToggle.log("  (set |option| |value|): set a command-line option (e.g., (set Parser.verbose 5))");
+    LogInfoToggle.log("  (reload): reload the grammar/parameters");
+    LogInfoToggle.log("  (grammar): prints out the grammar");
+    LogInfoToggle.log("  (params [|file|]): dumps all the model parameters");
+    LogInfoToggle.log("  (select |candidate index|): show information about the |index|-th candidate of the last utterance.");
+    LogInfoToggle.log("  (accept |candidate index|): record the |index|-th candidate as the correct answer for the last utterance.");
+    LogInfoToggle.log("  (answer |answer|): record |answer| as the correct answer for the last utterance (e.g., (answer (list (number 3)))).");
+    LogInfoToggle.log("  (rule |lhs| (|rhs_1| ... |rhs_k|) |sem|): adds a rule to the grammar (e.g., (rule $Number ($TOKEN) (NumberFn)))");
+    LogInfoToggle.log("  (type |logical form|): perform type inference (e.g., (type (number 3)))");
+    LogInfoToggle.log("  (execute |logical form|): execute the logical form (e.g., (execute (call + (number 3) (number 4))))");
+    LogInfoToggle.log("  (def |key| |value|): define a macro to replace |key| with |value| in all commands (e.g., (def type fb:type.object type)))");
+    LogInfoToggle.log("  (context [(user |user|) (date |date|) (exchange |exchange|) (graph |graph|)]): prints out or set the context");
+    LogInfoToggle.log("Press Ctrl-D to exit.");
   }
 
   public void runServer() {
@@ -196,13 +196,13 @@ public class Master {
       reader.setPrompt("> ");
       String line;
       while ((line = reader.readLine()) != null) {
-        int indent = LogInfo.getIndLevel();
+        int indent = LogInfoToggle.getIndLevel();
         try {
           Response res = processQuery(session, line);
           System.out.println(res.getAll());
         } catch (Throwable t) {
-          while (LogInfo.getIndLevel() > indent)
-            LogInfo.end_track();
+          while (LogInfoToggle.getIndLevel() > indent)
+            LogInfoToggle.end_track();
           t.printStackTrace();
         }
       }
@@ -233,7 +233,7 @@ public class Master {
     // Hack: modifying a static variable to capture the logging.
     // Make sure we're synchronized!
     StringWriter stringOut = new StringWriter();
-    LogInfo.setFileOut(new PrintWriter(stringOut));
+    LogInfoToggle.setFileOut(new PrintWriter(stringOut));
 
     if (line.startsWith("("))
       handleCommand(session, line, response);
@@ -243,7 +243,7 @@ public class Master {
     // Clean up
     for (String outLine : stringOut.toString().split("\n"))
       response.lines.add(outLine);
-    LogInfo.setFileOut(null);
+    LogInfoToggle.setFileOut(null);
 
     // Log interaction to disk
     if (!Strings.isNullOrEmpty(opts.logPath)) {
@@ -307,13 +307,13 @@ public class Master {
     FeatureVector.logChoices("Pred", choices);
 
     // Print denotation
-    LogInfo.begin_track("Top formula");
-    LogInfo.logs("%s", deriv.formula);
-    LogInfo.end_track();
+    LogInfoToggle.begin_track("Top formula");
+    LogInfoToggle.logs("%s", deriv.formula);
+    LogInfoToggle.end_track();
     if (deriv.value != null) {
-      LogInfo.begin_track("Top value");
+      LogInfoToggle.begin_track("Top value");
       deriv.value.log();
-      LogInfo.end_track();
+      LogInfoToggle.end_track();
     }
   }
 
@@ -326,56 +326,56 @@ public class Master {
     if (command == null || command.equals("help")) {
       printHelp();
     } else if (command.equals("status")) {
-      LogInfo.begin_track("%d sessions", sessions.size());
+      LogInfoToggle.begin_track("%d sessions", sessions.size());
       for (Session otherSession : sessions.values())
-        LogInfo.log(otherSession + (session == otherSession ? " *" : ""));
-      LogInfo.end_track();
-      StopWatchSet.logStats();
+        LogInfoToggle.log(otherSession + (session == otherSession ? " *" : ""));
+      LogInfoToggle.end_track();
+      StopwatchSetToggle.logStats();
     } else if (command.equals("reload")) {
       builder.build();
     } else if (command.equals("grammar")) {
       for (Rule rule : builder.grammar.rules)
-        LogInfo.logs("%s", rule.toLispTree());
+        LogInfoToggle.logs("%s", rule.toLispTree());
     } else if (command.equals("params")) {
       if (tree.children.size() == 1) {
-        builder.params.write(LogInfo.stdout);
-        if (LogInfo.getFileOut() != null)
-          builder.params.write(LogInfo.getFileOut());
+        builder.params.write(LogInfoToggle.stdout);
+        if (LogInfoToggle.getFileOut() != null)
+          builder.params.write(LogInfoToggle.getFileOut());
       } else {
         builder.params.write(tree.child(1).value);
       }
     } else if (command.equals("get")) {
       if (tree.children.size() != 2) {
-        LogInfo.log("Invalid usage: (get |option|)");
+        LogInfoToggle.log("Invalid usage: (get |option|)");
         return;
       }
       String option = tree.child(1).value;
-      LogInfo.logs("%s", getOptionsParser().getValue(option));
+      LogInfoToggle.logs("%s", getOptionsParser().getValue(option));
     } else if (command.equals("set")) {
       if (tree.children.size() != 3) {
-        LogInfo.log("Invalid usage: (set |option| |value|)");
+        LogInfoToggle.log("Invalid usage: (set |option| |value|)");
         return;
       }
       String option = tree.child(1).value;
       String value = tree.child(2).value;
       if (!getOptionsParser().parse(new String[] {"-" + option, value}))
-        LogInfo.log("Unknown option: " + option);
+        LogInfoToggle.log("Unknown option: " + option);
     } else if (command.equals("select") || command.equals("accept") ||
                command.equals("s") || command.equals("a")) {
       // Select an answer
       if (tree.children.size() != 2) {
-        LogInfo.logs("Invalid usage: (%s |candidate index|)", command);
+        LogInfoToggle.logs("Invalid usage: (%s |candidate index|)", command);
         return;
       }
 
       Example ex = session.getLastExample();
       if (ex == null) {
-        LogInfo.log("No examples - please enter a query first.");
+        LogInfoToggle.log("No examples - please enter a query first.");
         return;
       }
       int index = Integer.parseInt(tree.child(1).value);
       if (index < 0 || index >= ex.predDerivations.size()) {
-        LogInfo.log("Candidate index out of range: " + index);
+        LogInfoToggle.log("Candidate index out of range: " + index);
         return;
       }
 
@@ -401,13 +401,13 @@ public class Master {
       }
     } else if (command.equals("answer")) {
       if (tree.children.size() != 2) {
-        LogInfo.log("Missing answer.");
+        LogInfoToggle.log("Missing answer.");
       }
 
       // Set the target value.
       Example ex = session.getLastExample();
       if (ex == null) {
-        LogInfo.log("Please enter a query first.");
+        LogInfoToggle.log("Please enter a query first.");
         return;
       }
       ex.setTargetValue(Values.fromLispTree(tree.child(1)));
@@ -416,22 +416,22 @@ public class Master {
       int n = builder.grammar.rules.size();
       builder.grammar.addStatement(tree.toString());
       for (int i = n; i < builder.grammar.rules.size(); i++)
-        LogInfo.logs("Added %s", builder.grammar.rules.get(i));
+        LogInfoToggle.logs("Added %s", builder.grammar.rules.get(i));
       // Need to update the parser given that the grammar has changed.
       builder.parser = null;
       builder.buildUnspecified();
     } else if (command.equals("type")) {
-      LogInfo.logs("%s", TypeInference.inferType(Formulas.fromLispTree(tree.child(1))));
+      LogInfoToggle.logs("%s", TypeInference.inferType(Formulas.fromLispTree(tree.child(1))));
     } else if (command.equals("execute")) {
       Example ex = session.getLastExample();
       ContextValue context = (ex != null ? ex.context : session.context);
       Executor.Response execResponse = builder.executor.execute(Formulas.fromLispTree(tree.child(1)), context);
-      LogInfo.logs("%s", execResponse.value);
+      LogInfoToggle.logs("%s", execResponse.value);
     } else if (command.equals("def")) {
       builder.grammar.interpretMacroDef(tree);
     } else if (command.equals("context")) {
       if (tree.children.size() == 1) {
-        LogInfo.logs("%s", session.context);
+        LogInfoToggle.logs("%s", session.context);
       } else {
         session.context = new ContextValue(tree);
       }
@@ -443,7 +443,7 @@ public class Master {
         session.context.exchanges, graph);
     }
     else {
-      LogInfo.log("Invalid command: " + tree);
+      LogInfoToggle.log("Invalid command: " + tree);
     }
   }
 
@@ -458,17 +458,17 @@ public class Master {
         .createExample();
 
     if (!Strings.isNullOrEmpty(opts.newExamplesPath)) {
-      LogInfo.begin_track("Adding new example");
+      LogInfoToggle.begin_track("Adding new example");
       Dataset.appendExampleToFile(opts.newExamplesPath, ex);
-      LogInfo.end_track();
+      LogInfoToggle.end_track();
     }
 
     if (opts.onlineLearnExamples) {
-      LogInfo.begin_track("Updating parameters");
+      LogInfoToggle.begin_track("Updating parameters");
       learner.onlineLearnExample(origEx);
       if (!Strings.isNullOrEmpty(opts.newParamsPath))
         builder.params.write(opts.newParamsPath);
-      LogInfo.end_track();
+      LogInfoToggle.end_track();
     }
   }
 

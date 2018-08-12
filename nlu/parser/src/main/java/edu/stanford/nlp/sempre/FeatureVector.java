@@ -3,7 +3,7 @@ package edu.stanford.nlp.sempre;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
-import fig.basic.*;
+import fig.basic.*; import edu.stanford.nlp.sempre.roboy.utils.logging.*;
 
 import java.util.*;
 
@@ -228,13 +228,13 @@ public class FeatureVector {
   }
 
   public static void logChoices(String prefix, Map<String, Integer> choices) {
-    LogInfo.begin_track("%s choices", prefix);
+    LogInfoToggle.begin_track("%s choices", prefix);
     for (Map.Entry<String, Integer> e : choices.entrySet()) {
       int value = e.getValue();
       if (value == 0) continue;
-      LogInfo.logs("%s %s", value > 0 ? "+" + value : value, e.getKey());
+      LogInfoToggle.logs("%s %s", value > 0 ? "+" + value : value, e.getKey());
     }
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
   public static void logFeatureWeights(String prefix, Map<String, Double> features, Params params) {
@@ -249,35 +249,35 @@ public class FeatureVector {
       entries.add(new java.util.AbstractMap.SimpleEntry<String, Double>(feature, value));
     }
     Collections.sort(entries, new ValueComparator<String, Double>(false));
-    LogInfo.begin_track_printAll("%s features [sum = %s] (format is feature value * weight)", prefix, Fmt.D(sumValue));
+    LogInfoToggle.begin_track_printAll("%s features [sum = %s] (format is feature value * weight)", prefix, Fmt.D(sumValue));
     if (entries.size() / 2 > opts.logFeaturesLimit) {
       for (Map.Entry<String, Double> entry : entries.subList(0, opts.logFeaturesLimit)) {
         String feature = entry.getKey();
         double value = entry.getValue();
         double weight = params.getWeight(feature);
-        LogInfo.logs("%-50s %6s = %s * %s", "[ " + feature + " ]", Fmt.D(value), Fmt.D(MapUtils.getDouble(features, feature, 0)), Fmt.D(weight));
+        LogInfoToggle.logs("%-50s %6s = %s * %s", "[ " + feature + " ]", Fmt.D(value), Fmt.D(MapUtils.getDouble(features, feature, 0)), Fmt.D(weight));
       }
-      LogInfo.logs("... (%d more features) ...", entries.size() - 2 * opts.logFeaturesLimit);
+      LogInfoToggle.logs("... (%d more features) ...", entries.size() - 2 * opts.logFeaturesLimit);
       for (Map.Entry<String, Double> entry : entries.subList(entries.size() - opts.logFeaturesLimit, entries.size())) {
         String feature = entry.getKey();
         double value = entry.getValue();
         double weight = params.getWeight(feature);
-        LogInfo.logs("%-50s %6s = %s * %s", "[ " + feature + " ]", Fmt.D(value), Fmt.D(MapUtils.getDouble(features, feature, 0)), Fmt.D(weight));
+        LogInfoToggle.logs("%-50s %6s = %s * %s", "[ " + feature + " ]", Fmt.D(value), Fmt.D(MapUtils.getDouble(features, feature, 0)), Fmt.D(weight));
       }
     } else {
       for (Map.Entry<String, Double> entry : entries) {
         String feature = entry.getKey();
         double value = entry.getValue();
         double weight = params.getWeight(feature);
-        LogInfo.logs("%-50s %6s = %s * %s", "[ " + feature + " ]", Fmt.D(value), Fmt.D(MapUtils.getDouble(features, feature, 0)), Fmt.D(weight));
+        LogInfoToggle.logs("%-50s %6s = %s * %s", "[ " + feature + " ]", Fmt.D(value), Fmt.D(MapUtils.getDouble(features, feature, 0)), Fmt.D(weight));
       }
     }
-    LogInfo.end_track();
+    LogInfoToggle.end_track();
   }
 
   public static void logFeatures(Map<String, Double> features) {
     for (String key : features.keySet()) {
-      LogInfo.logs("%s\t%s", key, features.get(key));
+      LogInfoToggle.logs("%s\t%s", key, features.get(key));
     }
   }
 

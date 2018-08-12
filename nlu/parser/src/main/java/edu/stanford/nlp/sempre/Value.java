@@ -3,7 +3,7 @@ package edu.stanford.nlp.sempre;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import fig.basic.LispTree;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 
 import java.util.Comparator;
 
@@ -15,8 +15,8 @@ import java.util.Comparator;
 public abstract class Value {
   public abstract LispTree toLispTree();
 
-  // Print using LogInfo.
-  public void log() { LogInfo.logs("%s", toString()); }
+  // Print using LogInfoToggle.
+  public void log() { LogInfoToggle.logs("%s", toString()); }
 
   @JsonValue
   public String toString() { return toLispTree().toString(); }

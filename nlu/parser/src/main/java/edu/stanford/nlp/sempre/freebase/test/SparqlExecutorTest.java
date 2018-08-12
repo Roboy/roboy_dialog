@@ -7,7 +7,7 @@ import edu.stanford.nlp.sempre.Value;
 import edu.stanford.nlp.sempre.ListValue;
 import edu.stanford.nlp.sempre.freebase.SparqlExecutor;
 import fig.basic.LispTree;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 import org.testng.annotations.Test;
 
 /**
@@ -62,7 +62,7 @@ public class SparqlExecutorTest {
 
   protected static void runFormula(SparqlExecutor executor, String formula, ValuesChecker checker) {
     Executor.Response response = executor.execute(Formulas.fromLispTree(LispTree.proto.parseFromString(formula)), null);
-    LogInfo.logs("RESULT: %s", response.value);
+    LogInfoToggle.logs("RESULT: %s", response.value);
     checker.checkValues(((ListValue) response.value).values);
   }
 

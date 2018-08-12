@@ -1,7 +1,7 @@
 package edu.stanford.nlp.sempre;
 
 import fig.basic.LispTree;
-import fig.basic.LogInfo;
+import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
 
 /**
  * Represents a logical predicate.
@@ -26,7 +26,7 @@ public class NameValue extends Value {
 
   public NameValue(String id, String description) {
     if (id == null) {
-      LogInfo.errors("Got null id, description is %s", description);
+      LogInfoToggle.errors("Got null id, description is %s", description);
       id = "fb:en.null";
     }
     this.id = id;

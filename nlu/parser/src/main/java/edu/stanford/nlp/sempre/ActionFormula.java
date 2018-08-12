@@ -59,7 +59,7 @@ public class ActionFormula extends Formula {
     if (mode == null)
       return null;
     for (Mode m : Mode.values()) {
-      // LogInfo.logs("mode string %s \t== %s \t!= %s", m.toString(), mode,
+      // LogInfoToggle.logs("mode string %s \t== %s \t!= %s", m.toString(), mode,
       // m.name());
       if (m.toString().equals(mode))
         return m;
