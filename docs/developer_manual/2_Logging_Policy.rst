@@ -72,7 +72,7 @@ Developers should use a standardized policy when it comes to defining the loggin
 
 ============  ============  ============  ============  ============  ============  ===================================
    Dialog                               Memory                   Parser             Description
------------------------------------  -----------------------  -----------------------  -----------------------  
+--------------------------  --------------------------  --------------------------  -----------------------------------  
 Level         Method        Level         Method        Level         Method        
 ============  ============  ============  ============  ============  ============  ===================================
 FATAL         lg.fatal()    SEVERE        lg.severe()   FATAL         lg.fail()     Problem requiring module to shutdown immidiately
