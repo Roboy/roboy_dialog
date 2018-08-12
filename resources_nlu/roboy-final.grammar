@@ -52,6 +52,10 @@
 (rule $QObjProp ($Limited) (SimpleLexiconFn (type "RoboyQRelNoun")))
 (rule $QDataProp ($Limited) (SimpleLexiconFn (type "RoboyQDataProp")))
 (rule $TypeProperty ($Limited) (SimpleLexiconFn (type "TypeProperty")))
+(rule $Binary ($PHRASE) (SimpleLexiconFn (type "RelationalNoun")))
+(rule $Binary ($PHRASE) (SimpleLexiconFn (type "RelationalAdjective")))
+(rule $Binary ($PHRASE) (SimpleLexiconFn (type "StateVerb")))
+(rule $Binary ($PHRASE) (SimpleLexiconFn (type "NewRelation")))
 
 (rule $PartObjProp ($Limited) (SimpleLexiconFn (type "StateVerb")))
 (rule $PartObjProp ($Limited) (SimpleLexiconFn (type "RelationalAdjective")))
@@ -62,6 +66,15 @@
 (rule $QDataProp ($Limited) (SimpleLexiconFn (type "DataQProp")))
 
 ### Entities
+# Matching entities (NamedEntity): note - don't lemmatize
+# Match an entity if it is a sequence of NE tags or NNP tags or of minimal length
+(rule $NamedEntity ($PHRASE) (FilterNerSpanFn PERSON ORGANIZATION LOCATION MISC))
+(rule $NamedEntity ($PHRASE) (FilterPosTagFn span NNP))
+
+(rule $Entity ($NamedEntity) (SimpleLexiconFn (type "NamedEntity")))
+(rule $Entity ($NamedEntity) (SimpleLexiconFn (type "NewEntity")))
+(rule $Entity ($NamedEntity) (OpenTypeFn entity))
+
 (rule $Entity ($EntityToken) (SimpleLexiconFn (type "NamedEntity")))
 (rule $Person ($ProNoun) (SimpleLexiconFn (type "Person")))
 (rule $Person ($Person do) (SimpleLexiconFn (type "Person")))
@@ -210,6 +223,24 @@
 (rule $Quest (date) (ConstantFn (rdf:type xsd:date) xsd:date))
 (rule $Quest (year) (ConstantFn (rdf:type xsd:date) xsd:date))
 (rule $Quest (day) (ConstantFn (rdf:type xsd:date) xsd:date))
+(rule $Unary (who) (ConstantFn (rdf:type foaf:person) foaf:person))
+(rule $Unary (who) (ConstantFn (rdf:type dbpedia:Organization) dbpedia:Organization))
+(rule $Unary (who) (ConstantFn (rdf:type dbpedia:Company) dbpedia:Company))
+(rule $Unary (where) (ConstantFn (rdf:type dbpedia:Organization) dbpedia:Organization))
+(rule $Unary (where) (ConstantFn (rdf:type dbpedia:Place) dbpedia:Place))
+(rule $Unary (where) (ConstantFn (rdf:type dbpedia:EducationalInstitution) dbpedia:EducationalInstitution))
+(rule $Unary (when) (ConstantFn (rdf:type xsd:date) xsd:date))
+(rule $Unary (how) (ConstantFn null null))
+(rule $Unary (can i) (ConstantFn null null))
+(rule $Unary (do) (ConstantFn null null))
+(rule $Unary (you call) (ConstantFn null null))
+(rule $Unary (what) (ConstantFn null null))
+(rule $Unary ($Unary $Unary) (ConstantFn null null))
+(rule $Unary (which $TOKEN) (ConstantFn null null))
+(rule $Unary (tell me (something optional)) (ConstantFn null null))
+(rule $Unary (date) (ConstantFn (rdf:type xsd:date) xsd:date))
+(rule $Unary (year) (ConstantFn (rdf:type xsd:date) xsd:date))
+(rule $Unary (day) (ConstantFn (rdf:type xsd:date) xsd:date))
 
 # Aggregation
 (rule $CountStr (how many) (ConstantFn null null))
@@ -240,10 +271,8 @@
 
 # DBpedia questions
 (rule $Set ($Unary $Set) (MergeFn and))
-(rule $Set ($Binary $Entity) (JoinFn forward))
-(rule $Set ($Entity $Binary) (JoinFn backward))
-(rule $Set ($Binary $Entity) (JoinFn forward))
-(rule $Set ($Entity $Binary) (JoinFn backward))
+(rule $BaseSet ($Entity ($Padding optional) $Binary) (JoinFn unary,binary unaryCanBeArg0 unaryCanBeArg1))
+(rule $BaseSet ($Binary ($Padding optional) $Entity) (JoinFn binary,unary unaryCanBeArg0 unaryCanBeArg1))
 (rule $Unary ($PredObj) (IdentityFn))
 (rule $Set ($Unary) (IdentityFn))
 (rule $BaseSet ($Subject ($Limited optional) $Predicate) (JoinFn unary,binary unaryCanBeArg0 unaryCanBeArg1))

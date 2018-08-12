@@ -13,24 +13,60 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import roboy.linguistics.Triple;
-import roboy.util.ConfigManager;
 
-import edu.stanford.nlp.sempre.roboy.SemanticAnalyzerInterface;
+import com.google.common.collect.Sets;
+
+import edu.stanford.nlp.sempre.roboy.config.ConfigManager;
+import edu.stanford.nlp.sempre.roboy.SparqlExecutor;
+import edu.stanford.nlp.sempre.*;
+import java.util.*;
+import fig.basic.*;
 
 /**
- * Semantic parser class. Connects DM to Roboy parser and adds its result to interpretation class.
+ * Semantic parser class. Connects DM to Sempre and adds its result to interpretation class.
  */
-public class SemanticParserAnalyzer implements Analyzer {
+public class SemanticParserAnalyzer implements Analyzer
+{
 
     private final static Logger logger = LogManager.getLogger();
-    private SemanticAnalyzerInterface semanticAnalyzer;
+
+    public Session session;
+    public Builder builder;
 
     /**
      * A constructor.
      * Creates ParserAnalyzer class and connects the parser to DM using a socket.
      */
     public SemanticParserAnalyzer() {
-        semanticAnalyzer = new SemanticAnalyzerInterface(false);
+        initOptions();  // Used instead of the OptionsParser from SEMPRE standalone client
+
+        builder = new Builder();
+        builder.build();
+        Dataset dataset = new Dataset();
+        dataset.read();
+        Learner learner = new Learner(builder.parser, builder.params, dataset);
+        learner.learn();
+        session = new Session("roboy");
+
+        // Run initial getSingleton to trigger instantiation of CoreNLP
+        InfoAnalyzer.getSingleton();
+    }
+
+    /**
+     * @brief initOptions
+     */
+    private void initOptions() {
+        Builder.opts.executor = "roboy.SparqlExecutor";
+        Builder.opts.simple_executor = "JavaExecutor";
+        FeatureExtractor.opts.featureDomains = Sets.newHashSet("rule");
+        LanguageAnalyzer.opts.languageAnalyzer = "corenlp.CoreNLPAnalyzer";
+        Learner.opts.maxTrainIters = 10;
+        Params.opts.initWeightsRandomly = true;
+
+        SimpleLexicon.opts.inPaths = Arrays.asList(ConfigManager.LEXICON_FILE);
+        SparqlExecutor.opts.endpointUrl = ConfigManager.DB_SPARQL;
+        Grammar.opts.inPaths = Arrays.asList(ConfigManager.GRAMMAR_FILE);
+        Dataset.opts.inPaths.add(new Pair<String, String>("train", ConfigManager.RPQA_TRAINING_EXAMPLES));
     }
 
     /**
@@ -45,102 +81,76 @@ public class SemanticParserAnalyzer implements Analyzer {
     public Interpretation analyze(Interpretation interpretation)
     {
         // Run parser analysis
-        SemanticAnalyzerInterface.Result result = semanticAnalyzer.analyze(interpretation.getSentence());
+        Example.Builder b = new Example.Builder();
+        b.setId("session:" + session.id);
+        b.setUtterance(interpretation.getSentence());
+        b.setContext(session.context);
 
-        // Read tokens
-        interpretation.setTokens(result.getTokens());
+        Example ex = b.createExample();
+        ex.preprocess();
 
-        // Read extracted non-semantic relations
-        interpretation.setTriples(extract_relations(result.getRelations()));
+        interpretation.setTokens(ex.getTokens());
+        interpretation.setTriples(extract_relations(ex.getRelation()));
+        interpretation.setPosTags(ex.getPosTag().toArray(new String[0]));
+        interpretation.setLemmas(ex.getLemmaTokens().toArray(new String[0]));
 
         // Read extracted sentiment
         try {
-            interpretation.setSentiment(Linguistics.UtteranceSentiment.valueOf(result.getSentiment().toUpperCase()));
+            interpretation.setSentiment(Linguistics.UtteranceSentiment.valueOf(ex.getGenInfo().sentiment.toUpperCase()));
         } catch (Exception e) {
             interpretation.setSentiment(Linguistics.UtteranceSentiment.NEUTRAL);
             logger.error("Sentiment is illegal: " + e.getMessage());
         }
 
-        // Read POS-tags
-        interpretation.setPosTags(result.getPostags());
-
-        // Read lemmatized tokens
-        interpretation.setLemmas(result.getLemmaTokens());
-
-        // Read utterance type (q/a)
-        interpretation.setUtteranceType(result.getType());
-
-        // Read parse/answer if available
-        if (result.hasSuccessfulParse()) {
-            interpretation.setAnswer(get_answers(result.getAnswer()));
-            interpretation.setParse(result.getParse());
-            interpretation.setSemTriples(extract_triples(result.getParse()));
-            interpretation.setParsingOutcome(Linguistics.ParsingOutcome.SUCCESS);
-        }
-        else
-            interpretation.setParsingOutcome(Linguistics.ParsingOutcome.FAILURE);
-
-        // Read followUp questions for underspecified terms
-        if (result.hasFollowUpQA()) {
-            interpretation.setUnderspecifiedQuestion(result.getFollowUpQ());
-            interpretation.setUnderspecifiedAnswer(result.getFollowUpA());
-            interpretation.setParsingOutcome(Linguistics.ParsingOutcome.UNDERSPECIFIED);
-        }
+        // Set callback to interpretation, such that expensive
+        // semantic features will only be calculated on demand.
+        interpretation.setSemanticAnalysisLambda(
+            (Interpretation i) -> this.executeSemanticAnalysis(i, ex)
+        );
 
         return interpretation;
     }
 
-    /**
-     * Function reading parser answer in returned JSON string.
-     * List can contain triples, strings or doubles.
-     *
-     * @param answer String containing parser answer received by analyzer.
-     * @return String formed by joined list.
-     */
-    private String get_answers(String answer) {
-        List<String> result = new ArrayList<>();
+    private void executeSemanticAnalysis(Interpretation result, Example ex)
+    {
+        builder.parser.parse(builder.params, ex, false, builder.error_retrieval);
+        ex.logWithoutContext();
+        
+        parsingResultProcessing:
+        {
+            derivationIteration: for (Derivation deriv : ex.predDerivations)
+            {
+                Value val = deriv.getValue();
+                while (val instanceof ListValue) {
+                    if (((ListValue) val).values.size() > 0)
+                        val = ((ListValue) val).values.get(0);
+                    else
+                        continue derivationIteration;
+                }
 
-        //Check if contains triples
-        List<Triple> triples = extract_triples(answer);
-        if (triples.size() > 0) {
-            result.add("triples");
-            for (Triple t : triples) {
-                result.add(t.toString());
+                logger.debug("Received reply: "+val.pureString());
+
+                result.setParse(deriv.getFormula().toString());
+                result.setSemTriples(extract_triples(result.getParse()));
+
+                String answer = val.pureString();
+                if (answer.indexOf(':') >= 0)
+                    answer = answer.substring(answer.lastIndexOf(':') + 1).replace("_", " ");
+                result.setAnswer(answer);
+
+                if (deriv.followUps != null && deriv.followUps.size() > 0) {
+                    result.setUnderspecifiedQuestion(deriv.followUps.get(0).getKey());
+                    result.setUnderspecifiedAnswer(deriv.followUps.get(0).getValue());
+                    result.setParsingOutcome(Linguistics.ParsingOutcome.UNDERSPECIFIED);
+                }
+                else
+                    result.setParsingOutcome(Linguistics.ParsingOutcome.SUCCESS);
+
+                break parsingResultProcessing;
             }
-            return result.toString();
+
+            result.setParsingOutcome(Linguistics.ParsingOutcome.FAILURE);
         }
-        String[] tokens = answer.split(" ");
-        for (int i = 0; i < tokens.length; i++) {
-            // Number/String type
-            if ((tokens[i].contains("number") || tokens[i].contains("string")) && i + 1 < tokens.length) {
-                for (int j = i + 1; j < tokens.length; j++) {
-                    result.add(tokens[j].replaceAll("\\)", ""));
-                    if (tokens[j].contains(")")) break;
-
-                }
-                return String.join(" ", result);
-            }
-            // Name value type
-            else if ((tokens[i].contains("name") && i + 1 < tokens.length)) {
-                for (int j = i + 1; j < tokens.length; j++) {
-                    if (!tokens[j].contains("null"))
-                        result.add(tokens[j].replaceAll("\\)", ""));
-                    if (tokens[j].contains("\")")) break;
-
-                }
-                return String.join(" ", result);
-            }
-            // Result from DBpedia / different knowledge base
-            else if (tokens[i].contains(":") && !tokens[i].contains("fb:")) {
-                for (int j = i; j < tokens.length; j++) {
-                    if (!tokens[j].contains("null"))
-                        result.add(tokens[j].replaceAll("\\)", ""));
-                    if (tokens[j].contains(")")) break;
-                }
-                return String.join(" ", result);
-            }
-        }
-        return null;
     }
 
     /**
@@ -202,6 +212,9 @@ public class SemanticParserAnalyzer implements Analyzer {
             while ((line = reader.readLine()) != null) {
                 Interpretation interpretation = new Interpretation(line);
                 analyzer.analyze(interpretation);
+
+                // Trigger semantic analysis (lazy execution)
+                interpretation.getParsingOutcome();
                 System.out.println(interpretation.toString());
             }
         } catch (IOException e) {

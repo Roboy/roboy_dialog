@@ -26,7 +26,7 @@ public class Linguistics {
 	}
 
     public enum ParsingOutcome {
-        SUCCESS, FAILURE, UNDERSPECIFIED
+        IN_PROGRESS, SUCCESS, FAILURE, UNDERSPECIFIED
     }
 
     public enum UtteranceSentiment {

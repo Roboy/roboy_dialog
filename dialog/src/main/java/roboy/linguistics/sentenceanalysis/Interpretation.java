@@ -10,6 +10,8 @@ import roboy.linguistics.DetectedEntity;
 import roboy.linguistics.Linguistics.*;
 import roboy.linguistics.Triple;
 
+import edu.stanford.nlp.sempre.*;
+
 import javax.annotation.Nullable;
 
 /**
@@ -42,19 +44,23 @@ public class Interpretation implements Cloneable {
     private boolean profanity = false;
     private String intent = null;
     private String intentDistance = null;
+    private UtteranceSentiment sentiment = null;
+
+    // Sempre-based features. These are expensive
+    // to compute, and will only be processed on demand
+    // by calling the semanticAnalyserLambda.
+    private ParsingOutcome parsingOutcome = null;
     private String parse = null;
-    private String parseAnswer = null;
-    private String underspecifiedTermQuestion = null;
+    private String answer = null;
     private String underspecifiedQuestion = null;
     private String underspecifiedAnswer = null;
-    private UtteranceSentiment sentiment = null;
-    private String utteranceType = null;
-    private ParsingOutcome parsingOutcome = null;
 
-
-    // new type safe fields to use with semantic parser, refactor to private fields + getter & setter later
-	// getting Objects without any type information from the hash map is not a good practice, this is not JavaScript
-	private String answer;
+    // Sempre framework callback which is needed to run semantic parsing
+    // on demand. This is triggered by makeSureSemanticParserIsExecuted.
+    interface SemanticAnalysisLambda {
+        void run(Interpretation interpretation);
+    }
+    private SemanticAnalysisLambda semanticAnalysisLambda = null;
 
 	public Interpretation() {
 	    LOGGER.debug("Empty Interpretation initialized");
@@ -72,10 +78,6 @@ public class Interpretation implements Cloneable {
 		this.sentence = sentence;
         LOGGER.debug("Interpretation initialized by sentence: " + sentence + " and Interpretation: " + interpretation);
 	}
-
-//	public Interpretation(SentenceType sentenceType){
-//		this.sentenceType = sentenceType;
-//	}
 
 	public Interpretation(SentenceType sentenceType, String sentence, Triple triple){
 		this.sentenceType = sentenceType;
@@ -116,16 +118,6 @@ public class Interpretation implements Cloneable {
 
     public void setTriples(List<Triple> triple) {
         this.triples = triple;
-    }
-
-    @Nullable
-    public List<Triple> getSemTriples() {
-        return semTriples;
-    }
-
-    public void setSemTriples(List<Triple> semTriples) {
-        this.semTriples = semTriples;
-        this.semTriples.removeIf(Objects::isNull);
     }
 
     @Nullable
@@ -266,7 +258,47 @@ public class Interpretation implements Cloneable {
     }
 
     @Nullable
+    public UtteranceSentiment getSentiment() {
+        return sentiment;
+    }
+
+    public void setSentiment(UtteranceSentiment sentiment) {
+        this.sentiment = sentiment;
+    }
+
+    ///////////////// Semantic-Parser-Derived Features ////////////////
+
+    public void setSemanticAnalysisLambda(SemanticAnalysisLambda lambda) {
+        this.semanticAnalysisLambda = lambda;
+    }
+
+    private void makeSureSemanticParserIsExecuted()
+    {
+        if (parsingOutcome != null)
+            return;
+
+        if (semanticAnalysisLambda == null) {
+            setParsingOutcome(ParsingOutcome.FAILURE);
+            return;
+        }
+
+        parsingOutcome = ParsingOutcome.IN_PROGRESS;
+        semanticAnalysisLambda.run(this);
+    }
+
+    @Nullable
+    public List<Triple> getSemTriples() {
+        return semTriples;
+    }
+
+    public void setSemTriples(List<Triple> semTriples) {
+        this.semTriples = semTriples;
+        this.semTriples.removeIf(Objects::isNull);
+    }
+
+    @Nullable
     public String getParse() {
+        makeSureSemanticParserIsExecuted();
         return parse;
     }
 
@@ -275,25 +307,8 @@ public class Interpretation implements Cloneable {
     }
 
     @Nullable
-    public String getParseAnswer() {
-        return parseAnswer;
-    }
-
-    public void setParseAnswer(String parseAnswer) {
-        this.parseAnswer = parseAnswer;
-    }
-
-    @Nullable
-    public String getUnderspecifiedTermQuestion() {
-        return underspecifiedTermQuestion;
-    }
-
-    public void setUnderspecifiedTermQuestion(String underspecifiedTermQuestion) {
-        this.underspecifiedTermQuestion = underspecifiedTermQuestion;
-    }
-
-    @Nullable
     public String getUnderspecifiedQuestion() {
+        makeSureSemanticParserIsExecuted();
         return underspecifiedQuestion;
     }
 
@@ -303,6 +318,7 @@ public class Interpretation implements Cloneable {
 
     @Nullable
     public String getUnderspecifiedAnswer() {
+        makeSureSemanticParserIsExecuted();
         return underspecifiedAnswer;
     }
 
@@ -311,25 +327,8 @@ public class Interpretation implements Cloneable {
     }
 
     @Nullable
-    public UtteranceSentiment getSentiment() {
-        return sentiment;
-    }
-
-    public void setSentiment(UtteranceSentiment sentiment) {
-        this.sentiment = sentiment;
-    }
-
-    @Nullable
-    public String getUtteranceType() {
-        return utteranceType;
-    }
-
-    public void setUtteranceType(String utteranceType) {
-        this.utteranceType = utteranceType;
-    }
-
-    @Nullable
     public ParsingOutcome getParsingOutcome() {
+        makeSureSemanticParserIsExecuted();
         return parsingOutcome;
     }
 
@@ -339,18 +338,12 @@ public class Interpretation implements Cloneable {
 
     @Nullable
     public String getAnswer() {
+        makeSureSemanticParserIsExecuted();
         return answer;
     }
 
     public void setAnswer(String answer) {
         this.answer = answer;
-    }
-
-    public void addTriple(Triple triple) {
-	    if (triples == null) {
-            triples = new ArrayList<>();
-        }
-        triples.add(triple);
     }
 
     // TODO the method copies the fields from the
@@ -375,27 +368,11 @@ public class Interpretation implements Cloneable {
             this.intent = interpretation.getIntent();
             this.intentDistance = interpretation.getIntentDistance();
             this.parse = interpretation.getParse();
-            this.parseAnswer = interpretation.getParseAnswer();
-            this.underspecifiedTermQuestion = interpretation.getUnderspecifiedTermQuestion();
             this.underspecifiedQuestion = interpretation.getUnderspecifiedQuestion();
             this.underspecifiedAnswer = interpretation.getUnderspecifiedAnswer();
             this.sentiment = interpretation.getSentiment();
-            this.utteranceType = interpretation.getUtteranceType();
             this.parsingOutcome = interpretation.getParsingOutcome();
         }
-//        Field[] fields = interpretation.getClass().getFields();
-//        Method[] localMethods = this.getClass().getMethods();
-//        for (Method m : interpretation.getClass().getMethods())
-//            if (m.getName().startsWith("get") && m.getParameterTypes().length == 0) {
-//                Object r = m.invoke(interpretation);
-//                Class<?> type = m.getReturnType();
-//                for (Method localMethod : localMethods) {
-//                    if (localMethod.getName().startsWith("set") && localMethod.getName().endsWith(m.getName().substring(3))) {
-//                        localMethod.invoke(this, r);
-//                    }
-//                }
-//                // do your thing with r
-//            }
     }
 
     public void put(Interpretation interpretation) {
@@ -454,12 +431,6 @@ public class Interpretation implements Cloneable {
             if (interpretation.getParse() != null) {
                 this.parse = interpretation.getParse();
             }
-            if (interpretation.getParseAnswer() != null) {
-                this.parseAnswer = interpretation.getParseAnswer();
-            }
-            if (interpretation.getUnderspecifiedTermQuestion() != null) {
-                this.underspecifiedTermQuestion = interpretation.getUnderspecifiedTermQuestion();
-            }
             if (interpretation.getUnderspecifiedQuestion() != null) {
                 this.underspecifiedQuestion = interpretation.getUnderspecifiedQuestion();
             }
@@ -468,9 +439,6 @@ public class Interpretation implements Cloneable {
             }
             if (interpretation.getSentiment() != null) {
                 this.sentiment = interpretation.getSentiment();
-            }
-            if (interpretation.getUtteranceType() != null) {
-                this.utteranceType = interpretation.getUtteranceType();
             }
             if (interpretation.getParsingOutcome() != null) {
                 this.parsingOutcome = interpretation.getParsingOutcome();
@@ -501,12 +469,9 @@ public class Interpretation implements Cloneable {
                 ", intent='" + intent + '\'' +
                 ", intentDistance='" + intentDistance + '\'' +
                 ", parse='" + parse + '\'' +
-                ", parseAnswer='" + parseAnswer + '\'' +
-                ", underspecifiedTermQuestion='" + underspecifiedTermQuestion + '\'' +
                 ", underspecifiedQuestion='" + underspecifiedQuestion + '\'' +
                 ", underspecifiedAnswer='" + underspecifiedAnswer + '\'' +
                 ", sentiment=" + sentiment +
-                ", utteranceType=" + utteranceType +
                 ", parserResult='" + parsingOutcome + '\'' +
                 ", answer='" + answer + '\'' +
                 ", parsingOutcome=" + parsingOutcome +
@@ -542,12 +507,9 @@ public class Interpretation implements Cloneable {
                 getEmotion() == comparableObject.getEmotion() &&
                 Objects.equals(getIntent(), comparableObject.getIntent()) &&
                 Objects.equals(getParse(), comparableObject.getParse()) &&
-                Objects.equals(getParseAnswer(), comparableObject.getParseAnswer()) &&
-                Objects.equals(getUnderspecifiedTermQuestion(), comparableObject.getUnderspecifiedTermQuestion()) &&
                 Objects.equals(getUnderspecifiedQuestion(), comparableObject.getUnderspecifiedQuestion()) &&
                 Objects.equals(getUnderspecifiedAnswer(), comparableObject.getUnderspecifiedAnswer()) &&
                 getSentiment() == comparableObject.getSentiment() &&
-                Objects.equals(getUtteranceType(), comparableObject.getUtteranceType()) &&
                 getParsingOutcome() == comparableObject.getParsingOutcome() &&
                 Objects.equals(getAnswer(), comparableObject.getAnswer());
     }
@@ -556,9 +518,9 @@ public class Interpretation implements Cloneable {
     public int hashCode() {
         int result = Objects.hash(getSentenceType(), getSentence(), getTriples(), getSemTriples(), getTokens(),
                 getKeywords(), getAssociation(), getPas(), getName(), getCelebrity(), isRoboy(), getObjAnswer(),
-                getPredAnswer(), getEmotion(), getIntent(), getIntentDistance(), getParse(), getParseAnswer(),
-                getUnderspecifiedTermQuestion(), getUnderspecifiedQuestion(), getUnderspecifiedAnswer(), getSentiment(),
-                getUtteranceType(), getParsingOutcome(), getAnswer());
+                getPredAnswer(), getEmotion(), getIntent(), getIntentDistance(), getParse(),
+                getUnderspecifiedQuestion(), getUnderspecifiedAnswer(), getSentiment(),
+                getParsingOutcome(), getAnswer());
         result = 31 * result + Arrays.hashCode(getPosTags());
         result = 31 * result + Arrays.hashCode(getLemmas());
         return result;
