@@ -70,7 +70,7 @@ Level Policy
 Developers should use a standardized policy when it comes to defining the logging. This helps keep the log consistent.
 
 
-===================================  =========  ============  =========  ============  =========  ============
+============  ============  ============  ============  ============  ============  ===================================
    Dialog                               Memory                   Parser             Description
 -----------------------------------  -----------------------  -----------------------  -----------------------  
 Level         Method        Level         Method        Level         Method        
