@@ -1,7 +1,6 @@
 package edu.stanford.nlp.sempre.roboy.utils.logging;
 
 
-import com.sun.istack.internal.NotNull;
 import org.apache.logging.log4j.Level;
 
 public class ParserLogController {
