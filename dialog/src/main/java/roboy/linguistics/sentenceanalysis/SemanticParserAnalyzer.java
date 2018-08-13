@@ -134,8 +134,15 @@ public class SemanticParserAnalyzer implements Analyzer
                 result.setSemTriples(extract_triples(result.getParse()));
 
                 String answer = val.pureString();
+                //Handle URL's
+                if (answer.contains("<http://dbpedia.org/resource/")){
+                    answer = answer.replace("<http://dbpedia.org/resource/", "");
+                    answer=answer.substring(0,answer.length()-1); //Remove > at the end of URL
+                }
                 if (answer.indexOf(':') >= 0)
                     answer = answer.substring(answer.lastIndexOf(':') + 1).replace("_", " ");
+                if (answer.contains("_(")) //Split String in the case of Georgia_(Country) to Georgia_ to Georgia
+                    answer = answer.split("[\\(]" )[0].replace("_", "");
                 result.setAnswer(answer);
 
                 if (deriv.followUps != null && deriv.followUps.size() > 0) {
