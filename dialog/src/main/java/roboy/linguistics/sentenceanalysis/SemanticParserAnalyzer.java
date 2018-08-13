@@ -142,7 +142,7 @@ public class SemanticParserAnalyzer implements Analyzer
 
                 String answer = val.pureString();
                 //Handle URL's
-                if (answer.contains("<http://dbpedia.org/resource/")){
+                if (answer.startsWith("<http://dbpedia.org/resource/")){
                     answer = answer.replace("<http://dbpedia.org/resource/", "");
                     answer=answer.substring(0,answer.length()-1); //Remove > at the end of URL
                 }
