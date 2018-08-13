@@ -85,10 +85,10 @@ Developers should use a standardized policy when it comes to defining the loggin
 Level         Method        Level         Method        Level         Method        
 ============  ============  ============  ============  ============  ============  ===================================
 FATAL         lg.fatal()    SEVERE        lg.severe()   FATAL         lg.fail()     Problem requiring module to shutdown immidiately
-ERROR         lg.error()    -             Use WARNING   ERROR         lg.error()    Problem that requires recommends a shutdown, but is not forcibly required
+ERROR         lg.error()    —             Use WARNING   ERROR         lg.error()    Problem that requires recommends a shutdown, but is not forcibly required
 WARN          lg.warn()     WARNING       lg.warning()  WARN          lg.warning()  Unexpected behaviour that should be corrected, but is handlable for the program
 INFO          lg.info()     INFO          lg.info()     INFO          lg.log()      Information regarding the usage of module (e.g. Config Choices, Major Modules Loaded)
--             -             CONFIG        lg.config()   -             -             Avoid using this level
+—             —             CONFIG        lg.config()   —             —             Avoid using this level
 DEBUG         lg.debug()    FINE          lg.fine()     DEBUG         lg.dbg()      Information not directly relevant to execution of program, unless debugging. This includes tests and parsing details.
 ============  ============  ============  ============  ============  ============  ===================================
 
