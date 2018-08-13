@@ -119,6 +119,7 @@ public class SparqlExecutor extends Executor {
       while ((line = reader.readLine()) != null)
         buf.append(line);
 
+      reader.close();
       // Check for blatant errors.
       String result = buf.toString();
       if (result.length() == 0)
@@ -239,7 +240,7 @@ public class SparqlExecutor extends Executor {
     dbInfo.opts.setDefault(formula.toString());
     return execute(formula, 0, opts.maxResults);
   }
-  public synchronized Response execute(Formula formula, int offset, int maxResults) {
+  public Response execute(Formula formula, int offset, int maxResults) {
     if (ConfigManager.DEBUG >= 7)
       LogInfoToggle.logs("SparqlExecutor.execute: %s", formula);
     String prefix = "exec-";
@@ -265,16 +266,18 @@ public class SparqlExecutor extends Executor {
     //// Record statistics
 
     // Update/print sparql stats
-    if (!serverResponse.cached) {
-      queryStats.timeFig.add(serverResponse.timeMs);
-      if (serverResponse.error != null) {
-        MapUtils.incr(queryStats.errors, serverResponse.error.type, 1);
-        if (serverResponse.beginTrack && ConfigManager.DEBUG >= 7)
-          LogInfoToggle.logs("Error: %s", serverResponse.error);
-      }
-      if (serverResponse.beginTrack && ConfigManager.DEBUG >= 7) {
-        LogInfoToggle.logs("time: %s", queryStats.timeFig);
-        LogInfoToggle.logs("errors: %s", queryStats.errors);
+    synchronized (queryStats) {
+      if (!serverResponse.cached) {
+        queryStats.timeFig.add(serverResponse.timeMs);
+        if (serverResponse.error != null) {
+          MapUtils.incr(queryStats.errors, serverResponse.error.type, 1);
+          if (serverResponse.beginTrack && ConfigManager.DEBUG >= 7)
+            LogInfoToggle.logs("Error: %s", serverResponse.error);
+        }
+        if (serverResponse.beginTrack && ConfigManager.DEBUG >= 7) {
+          LogInfoToggle.logs("time: %s", queryStats.timeFig);
+          LogInfoToggle.logs("errors: %s", queryStats.errors);
+        }
       }
     }
 
