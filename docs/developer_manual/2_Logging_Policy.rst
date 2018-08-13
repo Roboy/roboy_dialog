@@ -7,7 +7,7 @@ Logging Policy
 Loggers
 =======================
 
-Currently the system relies on three different logging systems. The end user may configure the level of logging in Dialog's ``Config.Properties`` file.
+Currently the system relies on three different logging systems. The end user may configure the level of logging in Dialog's ``Config.Properties`` file. Current recommendations can be found in the ``README.MD`` file of Dialog.
 
 .. seealso:: 
 
@@ -35,14 +35,23 @@ Dialog uses the Log4J, which is defined by the following levels.
 Parser
 -----------------------
 
-Parser uses a custom logging utility writen by `Percy Liang <https://github.com/percyliang/fig>`_. It has further been customized to have logging levels. Currently there are three levels.
+Parser uses a custom logging utility writen by `Percy Liang <https://github.com/percyliang/fig>`_. It has further been customized to have logging levels, provided by Log4J. See the ``edu/stanford/nlp/sempre/roboy/utils/logging/LogInfoToggle.java`` and ``edu/stanford/nlp/sempre/roboy/utils/logging/ParserLogController.java`` files for more information.
 
 .. hlist::
     :columns: 3
 
     * OFF
+    * FATAL
+    * ERROR
     * WARN
+    * INFO
+    * DEBUG
+    * TRACE
     * ALL
+
+.. seealso:: 
+
+    See `Log4J Level Page <https://logging.apache.org/log4j/2.x/manual/customloglevels.html>`_ for more information on these levels.
 
 Memory
 -----------------------

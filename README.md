@@ -20,6 +20,7 @@
         - [Using the Google Word2Vec Model in NLU](#using-the-google-word2vec-model-in-nlu)
     - [Troubleshooting](#troubleshooting)
     - [Configuration of roboy_dialog](#configuration-of-roboydialog)
+        - [Logging Levels](#logging-levels)
 
 ## What is this Project
 
@@ -189,3 +190,13 @@ See the [Troubleshooting Page](http://roboydialog.readthedocs.io/en/devel/Usage/
 
 One is able to customize the modules that are enabled, when dialog starts. One does this by altering the options in `config.properties`. For more details, see the [detailed documentation page](https://roboydialog.readthedocs.io/en/devel/user_manual/2_configuration.html#configuration
 
+### Logging Levels
+
+One can configure the amount of logging one gets from `memory`, `dialog` and `parser` individually. It is recommended that...
+
+| User Type    | Dialog | Parser | Memory |
+| ------------ | ------ | ------ | ------ |
+| Developer    | DEBUG  | DEBUG  | FINE   |
+| Regular User | INFO   | INFO   | INFO   |
+
+If you wish to have more detailed information, please view the [docs page](https://roboydialog.readthedocs.io/en/devel/developer_manual/2_Logging_Policy.html).

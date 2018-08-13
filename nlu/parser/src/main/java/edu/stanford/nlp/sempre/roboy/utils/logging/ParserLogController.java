@@ -8,6 +8,7 @@ public class ParserLogController {
     private static boolean WARN = true;
     private static Level level = Level.INFO;
 
+    @Deprecated
     /**
      * Set Logger to either ALL, WARN or OFF modes
      *
