@@ -60,39 +60,6 @@
                             <goal>install-file</goal>
                         </goals>
                     </execution>
-                    <execution>
-                        <id>install-models</id>
-                        <phase>pre-clean</phase>
-                        <configuration>
-                            <repositoryLayout>default</repositoryLayout>
-                            <groupId>edu.stanford.nlp</groupId>
-                            <artifactId>stanford-corenlp</artifactId>
-                            <version>3.5.2</version>
-                            <classifier>caseless-models</classifier>
-                            <file>${project.basedir}/lib/stanford-corenlp-caseless-models.jar</file>
-                            <packaging>jar</packaging>
-                            <generatePom>true</generatePom>
-                        </configuration>
-                        <goals>
-                            <goal>install-file</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>install-ejml</id>
-                        <phase>pre-clean</phase>
-                        <configuration>
-                            <repositoryLayout>default</repositoryLayout>
-                            <groupId>org.ejml</groupId>
-                            <artifactId>ejml-all</artifactId>
-                            <version>0.23</version>
-                            <file>${project.basedir}/lib/ejml.jar</file>
-                            <packaging>jar</packaging>
-                            <generatePom>true</generatePom>
-                        </configuration>
-                        <goals>
-                            <goal>install-file</goal>
-                        </goals>
-                    </execution>
                 </executions>
             </plugin>
 
