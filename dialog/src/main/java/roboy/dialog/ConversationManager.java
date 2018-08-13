@@ -79,7 +79,7 @@ public class ConversationManager {
 
 
         analyzers.add(new EmotionAnalyzer());
-        analyzers.add(new ProfanityAnalyzer());
+        //analyzers.add(new ProfanityAnalyzer());
 
 
         //I/O specific core behaviour

@@ -11,7 +11,9 @@ public enum RoboyEmotion {
     CAT_EYES("catiris"),
     KISS("kiss"),
     FACEBOOK_EYES("img:facebook"),
-    NEUTRAL("neutral");
+    NEUTRAL("neutral"),
+    HAPPINESS("happiness"),
+    SADNESS("sadness");
 
     public String type;
 
