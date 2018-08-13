@@ -25,10 +25,18 @@ import java.util.regex.Pattern;
 
 public class FbEntitySearcher {
 
-  private final QueryParser queryParser;
   private final IndexSearcher indexSearcher;
   private int numOfDocs = 50;
   private String searchStrategy;
+  private QueryParser queryParser;
+
+  private synchronized QueryParser freshQueryParser(){//needed since queryparser is not threadsafe and queryparser is very lightweight
+    return new QueryParser(
+            Version.LUCENE_44,
+            FbIndexField.TEXT.fieldName(),
+            this.searchStrategy.equals("exact") ? new KeywordAnalyzer() : new StandardAnalyzer(Version.LUCENE_44));
+  }
+
 
   public FbEntitySearcher(String indexDir, int numOfDocs, String searchingStrategy) throws IOException {
 
@@ -37,10 +45,7 @@ public class FbEntitySearcher {
       throw new RuntimeException("Bad searching strategy: " + searchingStrategy);
     this.searchStrategy = searchingStrategy;
 
-    queryParser = new QueryParser(
-        Version.LUCENE_44,
-        FbIndexField.TEXT.fieldName(),
-        searchingStrategy.equals("exact") ? new KeywordAnalyzer() : new StandardAnalyzer(Version.LUCENE_44));
+    queryParser = freshQueryParser();
     LogInfoToggle.log("Opening index dir: " + indexDir);
     IndexReader indexReader = DirectoryReader.open(SimpleFSDirectory.open(new File(indexDir)));
     indexSearcher = new IndexSearcher(indexReader);
@@ -50,7 +55,7 @@ public class FbEntitySearcher {
     LogInfoToggle.end_track();
   }
 
-  public synchronized List<Document> searchDocs(String question) throws IOException, ParseException {
+  public List<Document> searchDocs(String question) throws IOException, ParseException {
 
     List<Document> res = new LinkedList<Document>();
     if (searchStrategy.equals("exact"))
@@ -67,7 +72,11 @@ public class FbEntitySearcher {
   }
 
   private ScoreDoc[] getHits(String question) throws IOException, ParseException {
-    Query luceneQuery = queryParser.parse(question);
+    Query luceneQuery;
+    synchronized (queryParser) {
+      luceneQuery = queryParser.parse(question);
+      queryParser = freshQueryParser();
+    }
     ScoreDoc[] hits = indexSearcher.search(luceneQuery, numOfDocs).scoreDocs;
     return hits;
   }
