@@ -76,5 +76,11 @@ TelegramBots Library
 
 To receive and send messages the library in the following github link has been used: https://github.com/rubenlagus/TelegramBots
 
+
+Akinator Library
+--------------------
+
+To receive questions and send answers during the Akinator game the following API has been used: https://github.com/markozajc/Akiwrapper
+
 .. csv-table:: Libraries and external Software
   :header: "Name", "URL/Author", "License", Description

@@ -22,6 +22,7 @@ Available ROS packages are:
     - ``roboy_audio`` (audio source localization)
     - ``roboy_vision`` (face recogntion & object classification and localization)
     - ``roboy_face`` (triggers emotions)
+    - ``roboy_filters`` (triggers snapchat-filters)
 
 Example ROS config::
 

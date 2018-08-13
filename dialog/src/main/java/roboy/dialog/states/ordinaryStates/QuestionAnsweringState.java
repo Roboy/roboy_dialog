@@ -16,6 +16,7 @@ import roboy.memory.nodes.MemoryNodeModel;
 import roboy.memory.nodes.Roboy;
 import roboy.dialog.Segue;
 import roboy.talk.PhraseCollection;
+import roboy.talk.Verbalizer;
 import roboy.util.RandomList;
 
 import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
@@ -33,6 +34,7 @@ import static roboy.memory.Neo4jRelationship.*;
  * - tells a specifying followup question if the interlocutor's question was ambiguous
  *
  * This state:
+ * - checks if interlocutor wants to play a game
  * - returns the answer if provided by the parser
  * - asks the specifying followup question if provided by the parser
  * -    - if answered with yes --> will use the parser again to get the answer to the original question
@@ -54,7 +56,7 @@ public class QuestionAnsweringState extends State {
     private final static String TRANSITION_FINISHED_ANSWERING = "finishedQuestionAnswering";
     private final static String TRANSITION_LOOP_TO_NEW_PERSON = "loopToNewPerson";
     private final static String TRANSITION_LOOP_TO_KNOWN_PERSON = "loopToKnownPerson";
-
+    private final static String TRANSITION_TO_GAME = "switchToGaming";
     private final static int MAX_NUM_OF_QUESTIONS = 5;
     private int questionsAnswered = 0;
 
@@ -63,7 +65,10 @@ public class QuestionAnsweringState extends State {
 
     private boolean askingSpecifyingQuestion = false;
     private String answerAfterUnspecifiedQuestion = ""; // the answer to use if specifying question is answered with YES
+    private boolean userWantsGame = false;
 
+    private final static double THRESHOLD_BORED = 0.3;
+    private boolean roboySuggestedGame = false;
 
     public QuestionAnsweringState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
@@ -71,6 +76,11 @@ public class QuestionAnsweringState extends State {
 
     @Override
     public Output act() {
+
+        if(Math.random() > THRESHOLD_BORED && questionsAnswered > 2){
+            roboySuggestedGame = true;
+            return Output.say(PhraseCollection.OFFER_GAME_PHRASES.getRandomElement());
+        }
         if (askingSpecifyingQuestion) {
             return Output.sayNothing();
         }
@@ -84,13 +94,22 @@ public class QuestionAnsweringState extends State {
     @Override
     public Output react(Interpretation input) {
 
-        if (askingSpecifyingQuestion) {
-            askingSpecifyingQuestion = false;
-            return reactToSpecifyingAnswer(input);
+        if(roboySuggestedGame && getInference().inferSentiment(input) == Linguistics.UtteranceSentiment.POSITIVE){
+            roboySuggestedGame = false;
+            userWantsGame = true;
+            return Output.say(Verbalizer.startSomething.getRandomElement());
         }
 
-        return reactToQuestion(input);
+        if(userWantsGameCheck(input)) {
+            return Output.say(Verbalizer.startSomething.getRandomElement());
 
+        }else if (askingSpecifyingQuestion) {
+                askingSpecifyingQuestion = false;
+                return reactToSpecifyingAnswer(input);
+
+        } else{
+            return reactToQuestion(input);
+        }
 
     }
 
@@ -122,8 +141,6 @@ public class QuestionAnsweringState extends State {
             return Output.sayNothing().setSegue(new Segue(Segue.SegueType.AVOID_ANSWER, 1));
         }
     }
-
-
 
     private Output reactToQuestion(Interpretation input) {
 
@@ -168,7 +185,12 @@ public class QuestionAnsweringState extends State {
 
     @Override
     public State getNextState() {
-        if (askingSpecifyingQuestion) { // we are asking a yes/no question --> stay in this state
+
+        if(userWantsGame){
+            userWantsGame = false;
+            return getTransition(TRANSITION_TO_GAME);
+
+        } else if (askingSpecifyingQuestion) { // we are asking a yes/no question --> stay in this state
             return this;
 
         } else if (questionsAnswered > MAX_NUM_OF_QUESTIONS) { // enough questions answered --> finish asking
@@ -197,7 +219,6 @@ public class QuestionAnsweringState extends State {
 
     }
 
-
     private Output useMemoryOrFallback(Interpretation input) {
         try {
             if (input.getSemTriples() != null) {
@@ -223,7 +244,6 @@ public class QuestionAnsweringState extends State {
         String answer = "I like " + inferMemoryAnswer(triples, roboy) + "humans. ";
         return Output.say(answer);
     }
-
 
     private String inferMemoryAnswer(List<Triple> triples, Roboy roboy) {
         String answer = "";
@@ -255,6 +275,18 @@ public class QuestionAnsweringState extends State {
         return answer;
     }
 
+    private boolean userWantsGameCheck(Interpretation input){
+
+        userWantsGame = false;
+
+        List<String> tokens = input.getTokens();
+        if (tokens != null && !tokens.isEmpty()){
+            if(tokens.contains("game") || tokens.contains("play") || tokens.contains("games")){
+                userWantsGame = true;
+            }
+        }
+        return userWantsGame;
+    }
 
     @Override
     protected Set<String> getRequiredTransitionNames() {

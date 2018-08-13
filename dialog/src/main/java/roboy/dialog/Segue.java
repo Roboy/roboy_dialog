@@ -74,10 +74,14 @@ public class Segue {
         TEST_SEGUE_WITH_NAME {
             @Override
             public RandomList<String> getPossibleSegues() {
-                return new RandomList<>("This is a test segue, interlocutor's name is %s.");
+                return new RandomList<>("This is a test segue, interlocutor's name is %s."); }
+        },
+        BORED {
+            @Override
+            public RandomList<String> getPossibleSegues() {
+                return PhraseCollection.OFFER_GAME_PHRASES;
             }
         };
-
 
 
         /**

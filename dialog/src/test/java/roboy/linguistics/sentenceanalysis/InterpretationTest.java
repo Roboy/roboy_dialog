@@ -40,12 +40,9 @@ public class InterpretationTest {
     private String intent;
     private String intentDistance;
     private String parse;
-    private String parseAnswer;
-    private String underspecifiedTermQuestion;
     private String underspecifiedQuestion;
     private String underspecifiedAnswer;
     private Linguistics.UtteranceSentiment sentiment;
-    private String utteranceType;
     private Linguistics.ParsingOutcome parsingOutcome;
     private String answer;
 
@@ -80,12 +77,9 @@ public class InterpretationTest {
         intent = "neo4j intent";
         intentDistance = "0";
         parse = "parse";
-        parseAnswer = "parse answer";
-        underspecifiedTermQuestion = "underspecified term question";
         underspecifiedQuestion = "underspecified question";
         underspecifiedAnswer = "underspecified answer";
         sentiment = Linguistics.UtteranceSentiment.NEUTRAL;
-        utteranceType = "utterance";
         parsingOutcome = Linguistics.ParsingOutcome.SUCCESS;
 
         defaultInterpretation = new Interpretation();
@@ -98,7 +92,6 @@ public class InterpretationTest {
         defaultInterpretation.setParsingOutcome(parsingOutcome);
         defaultInterpretation.setTokens(tokens);
         defaultInterpretation.setPosTags(posTags);
-        defaultInterpretation.setUtteranceType(utteranceType);
         defaultInterpretation.setIntentDistance(intentDistance);
         defaultInterpretation.setIntent(intent);
         defaultInterpretation.setTriples(triples);
@@ -112,9 +105,7 @@ public class InterpretationTest {
         defaultInterpretation.setAssociation(association);
         defaultInterpretation.setKeywords(keywords);
         defaultInterpretation.setName(name);
-        defaultInterpretation.setParseAnswer(parseAnswer);
         defaultInterpretation.setUnderspecifiedQuestion(underspecifiedQuestion);
-        defaultInterpretation.setUnderspecifiedTermQuestion(underspecifiedTermQuestion);
         defaultInterpretation.setUnderspecifiedAnswer(underspecifiedAnswer);
 
         // TODO: How do we encapsulate the analyzers
@@ -240,18 +231,6 @@ public class InterpretationTest {
     }
 
     @Test
-    public void getParseAnswer() {
-        assertEquals(parseAnswer, defaultInterpretation.getParseAnswer());
-        assertEquals(defaultInterpretation.getParseAnswer(), analyzedInterpretation.getParseAnswer());
-    }
-
-    @Test
-    public void getUnderspecifiedTermQuestion() {
-        assertEquals(underspecifiedTermQuestion, defaultInterpretation.getUnderspecifiedTermQuestion());
-        assertEquals(defaultInterpretation.getUnderspecifiedTermQuestion(), analyzedInterpretation.getUnderspecifiedTermQuestion());
-    }
-
-    @Test
     public void getUnderspecifiedQuestion() {
         assertEquals(underspecifiedQuestion, defaultInterpretation.getUnderspecifiedQuestion());
         assertEquals(defaultInterpretation.getUnderspecifiedQuestion(), analyzedInterpretation.getUnderspecifiedQuestion());
@@ -267,12 +246,6 @@ public class InterpretationTest {
     public void getSentiment() {
         assertEquals(sentiment, defaultInterpretation.getSentiment());
         assertEquals(defaultInterpretation.getSentiment(), analyzedInterpretation.getSentiment());
-    }
-
-    @Test
-    public void getUtteranceType() {
-        assertEquals(utteranceType, defaultInterpretation.getUtteranceType());
-        assertEquals(defaultInterpretation.getUtteranceType(), analyzedInterpretation.getUtteranceType());
     }
 
     @Test

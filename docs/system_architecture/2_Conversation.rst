@@ -101,7 +101,7 @@ For every state, its interface is implemented by overriding three functions: ``g
 Current standard Personality
 ----------------------------
 
-Current standard personality is used to interact with a single person. After Roboy hears a greeting and learns the name of the person, he will ask a few personal questions and answer some general questions about himself or the environment.
+Current standard personality is used to interact with a single person. After Roboy hears a greeting and learns the name of the person, he will ask a few personal questions and answer some general questions about himself or the environment. He will also occasionally suggest to play a game.
 
 .. figure:: images/ordinary_personality.png
   :alt: Current standard personality
@@ -121,6 +121,12 @@ Overview over Implemented States
 **QuestionAnsweringState**: Roboy answers questions about itself or some general questions. Answers are provided by the parser (from sources like DBpedia) or the Memory.
 
 **WildTalkState**: This fallback state will query the deep learning generative model over ROS to create a reply for any situation.
+
+**ChooseGameState**: Roboy suggests a game by random choice or let the interlocutor select one.
+
+**GamingTwentyQuestionsState**: Roboy plays tries to guess a character the interlocutor is thinking of by asking yes-no-questions.
+
+**GamingSnapchatState**: Roboy suggests or the person can choose Snapchat-Filters which will then be sent over ROS to the snapchat-module.
 
 **FarewellState**: Roboy ends the conversation after a few statements.
 

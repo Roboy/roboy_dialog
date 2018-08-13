@@ -36,6 +36,8 @@ Stable functionality:
 - Roboy stores and retrieves the information about people he meets
 - Roboy stores and retrieves the information about himself
 - Roboy Dialog is deployable on multi-user communication channels
+- Roboy plays the Akinator game
+- Roboy can understand snapchat filters to be applied on people's faces
 
 In development:
 
