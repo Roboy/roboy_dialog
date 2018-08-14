@@ -38,6 +38,7 @@ public class FullNLPAnalyzer extends InfoAnalyzer {
         @Option(gloss = "What CoreNLP annotators to run")
         public List<String> annotators = Lists.newArrayList(
             "tokenize",
+            "tokenize",
             "ssplit",
             "truecase",
             "pos",
@@ -80,6 +81,7 @@ public class FullNLPAnalyzer extends InfoAnalyzer {
         Properties props = new Properties();
         props.setProperty("annotators", Joiner.on(',').join(opts.annotators));
         props.setProperty("coref.algorithm", "neural");
+        //props.setProperty("openie.resolve_coref", "true");
         props.setProperty("truecase.overwriteText", "true");
         props.setProperty("ner.applyFineGrained", "false");
         pipeline = new StanfordCoreNLP(props);
@@ -216,7 +218,7 @@ public class FullNLPAnalyzer extends InfoAnalyzer {
 //            LogInfoToggle.logs("Keywords extracted: %s", genInfo.keywords.toString());
             genInfo.sentiment_type = RNNCoreAnnotations.getPredictedClass(tree);
             genInfo.sentiment = sentence.get(SentimentCoreAnnotations.SentimentClass.class);
-//            LogInfoToggle.logs("Sentiment extracted: %s", genInfo.sentiment);
+            LogInfoToggle.logs("Sentiment extracted: %s", genInfo.sentiment);
         }
         return genInfo;
     }
@@ -248,20 +250,23 @@ public class FullNLPAnalyzer extends InfoAnalyzer {
 
     // Test on example sentence.
     public static void main(String[] args) {
-        CoreNLPAnalyzer analyzer = new CoreNLPAnalyzer();
+        FullNLPAnalyzer analyzer = new FullNLPAnalyzer();
         while (true) {
             try {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
                 System.out.println("Enter some text:");
                 String text = reader.readLine();
-                LanguageInfo langInfo = analyzer.analyze(text);
+                CoreNLPInfo langInfo = analyzer.analyze(text);
                 LogInfoToggle.begin_track("Analyzing \"%s\"", text);
-                LogInfoToggle.logs("tokens: %s", langInfo.tokens);
-                LogInfoToggle.logs("lemmaTokens: %s", langInfo.lemmaTokens);
-                LogInfoToggle.logs("posTags: %s", langInfo.posTags);
-                LogInfoToggle.logs("nerTags: %s", langInfo.nerTags);
-                LogInfoToggle.logs("nerValues: %s", langInfo.nerValues);
-                LogInfoToggle.logs("dependencyChildren: %s", langInfo.dependencyChildren);
+                LogInfoToggle.logs("tokens: %s", langInfo.lanInfo.tokens);
+                LogInfoToggle.logs("lemmaTokens: %s", langInfo.lanInfo.lemmaTokens);
+                LogInfoToggle.logs("posTags: %s", langInfo.lanInfo.posTags);
+                LogInfoToggle.logs("nerTags: %s", langInfo.lanInfo.nerTags);
+                LogInfoToggle.logs("nerValues: %s", langInfo.lanInfo.nerValues);
+                LogInfoToggle.logs("dependencyChildren: %s", langInfo.lanInfo.dependencyChildren);
+                LogInfoToggle.logs("keywords: %s", langInfo.senInfo.keywords);
+                LogInfoToggle.logs("sentiment: %s", langInfo.senInfo.sentiment);
+                LogInfoToggle.logs("relations: %s", langInfo.relInfo.relations);
                 LogInfoToggle.end_track();
             } catch (IOException e) {
                 e.printStackTrace();
