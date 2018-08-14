@@ -81,7 +81,10 @@ public abstract class State {
             this.type = type;
             this.interpretation = interpretation;
             this.segue = null;
-            this.emotion = interpretation.getEmotion();
+            this.emotion = null;
+            if(interpretation != null){
+                this.emotion = interpretation.getEmotion();
+            }
         }
 
         //  Static creators
