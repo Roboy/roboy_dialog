@@ -9,6 +9,7 @@ import roboy.util.ConfigManager;
 import roboy_communication_cognition.DirectionVector;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Singleton class serving as an interface to access all context objects.
@@ -26,6 +27,9 @@ public class Context {
 
     public final ValueInterface<ActiveInterlocutor, Interlocutor> ACTIVE_INTERLOCUTOR =
             new ValueInterface<>(new ActiveInterlocutor());
+
+    public final ValueInterface<ActiveInterlocutors, Map<Integer, Interlocutor>> ACTIVE_INTERLOCUTORS =
+            new ValueInterface<>(new ActiveInterlocutors());
 
     /* VALUE HISTORIES */
     public final HistoryInterface<DialogTopics, Integer, String> DIALOG_TOPICS =
@@ -52,6 +56,7 @@ public class Context {
     public final DialogTopicsUpdater DIALOG_TOPICS_UPDATER;
     public final DialogIntentsUpdater DIALOG_INTENTS_UPDATER;
     public final ActiveInterlocutorUpdater ACTIVE_INTERLOCUTOR_UPDATER;
+    public final ActiveInterlocutorsUpdater ACTIVE_INTERLOCUTORS_UPDATER;
     public final OtherQuestionsUpdater OTHER_QUESTIONS_UPDATER;
 
     /* EXTERNAL UPDATERS */
@@ -71,6 +76,7 @@ public class Context {
         DIALOG_TOPICS_UPDATER = new DialogTopicsUpdater(DIALOG_TOPICS.valueHistory);
         DIALOG_INTENTS_UPDATER = new DialogIntentsUpdater(DIALOG_INTENTS.valueHistory);
         ACTIVE_INTERLOCUTOR_UPDATER = new ActiveInterlocutorUpdater(ACTIVE_INTERLOCUTOR.value);
+        ACTIVE_INTERLOCUTORS_UPDATER = new ActiveInterlocutorsUpdater(ACTIVE_INTERLOCUTORS.value);
         OTHER_QUESTIONS_UPDATER = new OtherQuestionsUpdater(OTHER_Q.valueHistory);
 
         /* OBSERVER INITIALIZATION */

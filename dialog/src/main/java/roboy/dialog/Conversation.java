@@ -103,7 +103,21 @@ public class Conversation extends Thread {
                 break;
             }
 
+
             // listen to interlocutor if conversation didn't end
+            int speakerCount = 1; //min one speaker
+            ArrayList<Input> raw = new ArrayList<>();
+            for(int i = 0; i<speakerCount; i++){
+                //TODO let listen give back an array - yes? no?
+                try {
+                    raw.add(multiIn.listen());
+                } catch (Exception e) {
+                    logger.error("Exception in input: " + e.getMessage());
+                    return;
+                }
+                speakerCount = raw.get(0).getAttributes().getSpeakerInfo().getSpeakerCount();
+            }
+            /*
             Input raw;
             try {
                 raw = multiIn.listen();
@@ -111,7 +125,24 @@ public class Conversation extends Thread {
                 logger.error("Exception in input: " + e.getMessage());
                 return;
             }
+            */
 
+
+            // analyze
+            ArrayList<Interpretation> interpretation = new ArrayList<>();
+            for(int i=0; i<speakerCount;i++){
+                interpretation.add(new Interpretation(raw.get(i).getSentence(), raw.get(i).getAttributes()));
+                for (Analyzer a : analyzers) {
+                    try {
+                        interpretation.set(i, a.analyze(interpretation.get(i)));
+                    } catch (Exception e) {
+                        logger.error("Exception in analyzer " + a.getClass().getName() + ": " + e.getMessage());
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            /*
             // analyze
             Interpretation interpretation = new Interpretation(raw.getSentence(), raw.getAttributes());
             for (Analyzer a : analyzers) {
@@ -122,7 +153,9 @@ public class Conversation extends Thread {
                     e.printStackTrace();
                 }
             }
+            */
 
+            //TODO
             // answer
             try {
                 actions = personality.answer(interpretation);

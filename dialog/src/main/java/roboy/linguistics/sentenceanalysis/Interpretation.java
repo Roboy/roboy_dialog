@@ -6,6 +6,7 @@ import java.util.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.emotions.RoboyEmotion;
+import roboy.io.SpeakerInfo;
 import roboy.linguistics.DetectedEntity;
 import roboy.linguistics.Linguistics.*;
 import roboy.linguistics.Triple;
@@ -45,6 +46,9 @@ public class Interpretation implements Cloneable {
     private String intent = null;
     private String intentDistance = null;
     private UtteranceSentiment sentiment = null;
+
+    //Speaker Info
+    private SpeakerInfo speakerInfo = null;
 
     // Sempre-based features. These are expensive
     // to compute, and will only be processed on demand
@@ -332,6 +336,17 @@ public class Interpretation implements Cloneable {
         return parsingOutcome;
     }
 
+
+    //TODO
+    public void setSpeakerInfo(SpeakerInfo speakerInfo){
+	    this.speakerInfo = speakerInfo;
+    }
+
+    @Nullable
+    public SpeakerInfo getSpeakerInfo() {
+	    return speakerInfo;
+    }
+
     public void setParsingOutcome(ParsingOutcome parsingOutcome) {
         this.parsingOutcome = parsingOutcome;
     }
@@ -372,8 +387,11 @@ public class Interpretation implements Cloneable {
             this.underspecifiedAnswer = interpretation.getUnderspecifiedAnswer();
             this.sentiment = interpretation.getSentiment();
             this.parsingOutcome = interpretation.getParsingOutcome();
+            //TODO
+            this.speakerInfo = interpretation.getSpeakerInfo();
         }
     }
+
 
     public void put(Interpretation interpretation) {
 	    if (interpretation != null) {
@@ -443,6 +461,10 @@ public class Interpretation implements Cloneable {
             if (interpretation.getParsingOutcome() != null) {
                 this.parsingOutcome = interpretation.getParsingOutcome();
             }
+            //TODO
+            if(interpretation.getSpeakerInfo() != null){
+                this.speakerInfo = interpretation.getSpeakerInfo();
+            }
             this.isRoboy = interpretation.isRoboy();
         }
     }
@@ -474,8 +496,10 @@ public class Interpretation implements Cloneable {
                 ", sentiment=" + sentiment +
                 ", parserResult='" + parsingOutcome + '\'' +
                 ", answer='" + answer + '\'' +
-                ", parsingOutcome=" + parsingOutcome +
+                ", parsingOutcome=" + parsingOutcome + '\'' +
+                ", speakerInfo='" + speakerInfo +
                 '}';
+        //TODO
     }
 
     @Override

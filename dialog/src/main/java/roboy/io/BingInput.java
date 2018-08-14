@@ -2,6 +2,9 @@ package roboy.io;
 
 import roboy.ros.RosMainNode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Using Bing to perform speech to text. Requires internet connection.
  */
@@ -13,11 +16,16 @@ public class BingInput implements InputDevice
 		this.rosMainNode = node;
 }
 	@Override
-	public Input listen()
+	public Input listen() throws InterruptedException
 	{
-		String text = rosMainNode.RecognizeSpeech();
-	    System.out.println(text);
-		return new Input(text);
+		HashMap<SpeakerInfo, String> input = rosMainNode.RecognizeSpeech();
+
+		Map.Entry<SpeakerInfo, String> entry = input.entrySet().iterator().next();
+		SpeakerInfo speakers = entry.getKey();
+		String text = entry.getValue();
+
+		System.out.println(text);
+		return new Input(text, speakers);
 	}
 	
 }

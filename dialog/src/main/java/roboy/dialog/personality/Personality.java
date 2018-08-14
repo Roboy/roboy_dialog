@@ -1,5 +1,6 @@
 package roboy.dialog.personality;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import roboy.dialog.action.Action;
@@ -22,5 +23,5 @@ public interface Personality {
 	 * @param input The interpretation of the inputs
 	 * @return A list of actions to perform in response
 	 */
-	List<Action> answer(Interpretation input);
+	List<Action> answer(ArrayList<Interpretation> input);
 }

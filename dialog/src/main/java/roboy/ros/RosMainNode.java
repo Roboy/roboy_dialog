@@ -13,12 +13,14 @@ import org.ros.node.service.ServiceResponseListener;
 import org.ros.node.topic.Subscriber;
 import roboy.context.Context;
 import roboy.emotions.RoboyEmotion;
+import roboy.io.SpeakerInfo;
 import roboy.util.ConfigManager;
 import roboy_communication_cognition.*;
 import roboy_communication_control.*;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.HashMap;
 import java.util.concurrent.CountDownLatch;
 
 public class RosMainNode extends AbstractNodeMain {
@@ -115,7 +117,12 @@ public class RosMainNode extends AbstractNodeMain {
         return ((boolean) resp);
     }
 
-    public String RecognizeSpeech() {
+    public HashMap<SpeakerInfo, String> RecognizeSpeech() {
+
+        //TODO
+        int id = 0; //init 0
+        int speakerCount = 1; //init 1
+
 
         if(services.notInitialized(RosServiceClients.STT)) {
             // FALLBACK RETURN VALUE
@@ -141,7 +148,16 @@ public class RosMainNode extends AbstractNodeMain {
         };
         sttClient.call(request,  listener);
         waitForLatchUnlock(rosConnectionLatch, sttClient.getName().toString());
-        return ((String) resp);
+
+        //Test
+        //id = 0; //TODO set right ID if given
+        ///speakerCount = 1; // TODO set right speaker count if given
+        SpeakerInfo speakers = new SpeakerInfo(id, speakerCount);
+        HashMap<SpeakerInfo,String> speakerResponseMap = new HashMap<SpeakerInfo,String>();
+        speakerResponseMap.put(speakers, (String) resp);
+        //TODO define hashmap outside function
+        //return ((String) resp);
+        return speakerResponseMap;
 
     }
 
