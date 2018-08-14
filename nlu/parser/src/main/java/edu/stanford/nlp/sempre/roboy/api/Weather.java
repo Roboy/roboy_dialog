@@ -14,10 +14,8 @@ import java.net.URL;
 
 public class Weather  {
     final static String KEY = keyGetter.getKey("weatherkey");
-    public static String getData(String... args) throws Exception{
-        try {
-            return getHTML(args[0]);
-        }catch (Exception e) {return null;}
+    public static String getData(String country) throws Exception{
+        return getHTML(country);
     }
     public static String getHTML(String country) throws Exception {
         StringBuilder result = new StringBuilder();
