@@ -148,28 +148,6 @@ addModule('roboy', 'Roboy extra utilities (need to compile)', lambda {
   system 'make -C fig' or exit 1
   system 'mkdir -p lib && cd lib && ln -sf ../fig/fig.jar' or exit 1
 
-  pull('/u/nlp/data/semparse/resources/stanford-corenlp-full-2015-12-09.zip', '', {:symlink => true})
-  if not File.exists?('lib/stanford-corenlp-full-2015-12-09')
-    system "cd lib && unzip stanford-corenlp-full-2015-12-09.zip" or exit 1
-  end
-  pull('/u/nlp/data/semparse/resources/stanford-corenlp-caseless-2015-04-20-models.jar',
-       'stanford-corenlp-full-2015-12-09', {:symlink => true})
-  # Remove old file (for backward compatibility)
-  if Dir.glob('lib/stanford-corenlp*.jar').any?
-    system 'rm -v lib/stanford-corenlp*.jar' or exit 1
-  end
-  {'stanford-corenlp-3.6.0.jar' => 'stanford-corenlp.jar',
-   'stanford-corenlp-3.6.0-models.jar' => 'stanford-corenlp-models.jar',
-   'stanford-corenlp-caseless-2015-04-20-models.jar' => 'stanford-corenlp-caseless-models.jar',
-   'joda-time.jar' => 'joda-time.jar',
-   'jollyday.jar' => 'jollyday.jar',
-   'ejml-0.23.jar' => 'ejml.jar',
-   'slf4j-api.jar' => 'slf4j-api.jar',
-   'slf4j-simple.jar' => 'slf4j-simple.jar',
-  }.each { |key, value|
-    system "ln -sfv stanford-corenlp-full-2015-12-09/#{key} lib/#{value}" or exit 1
-  }
-
   # Freebase schema
   pull('/u/nlp/data/semparse/scr/freebase/state/execs/93.exec/schema2.ttl', 'fb_data/93.exec')
 
@@ -180,51 +158,6 @@ addModule('roboy', 'Roboy extra utilities (need to compile)', lambda {
   pull('/u/nlp/data/semparse/webquestions/dataset_11/webquestions.examples.train.json', 'data/webquestions/dataset_11')
   pull('/u/nlp/data/semparse/webquestions/dataset_11/webquestions.examples.test.json', 'data/webquestions/dataset_11')
 
-})
-
-addModule('corenlp', 'Stanford CoreNLP 3.6.0', lambda {
-  pull('/u/nlp/data/semparse/resources/stanford-corenlp-full-2015-12-09.zip', '', {:symlink => true})
-  if not File.exists?('lib/stanford-corenlp-full-2015-12-09')
-    system "cd lib && unzip stanford-corenlp-full-2015-12-09.zip" or exit 1
-  end
-  pull('/u/nlp/data/semparse/resources/stanford-corenlp-caseless-2015-04-20-models.jar',
-       'stanford-corenlp-full-2015-12-09', {:symlink => true})
-  # Remove old file (for backward compatibility)
-  if Dir.glob('lib/stanford-corenlp*.jar').any?
-    system 'rm -v lib/stanford-corenlp*.jar' or exit 1
-  end
-  {'stanford-corenlp-3.6.0.jar' => 'stanford-corenlp.jar',
-   'stanford-corenlp-3.6.0-models.jar' => 'stanford-corenlp-models.jar',
-   'stanford-corenlp-caseless-2015-04-20-models.jar' => 'stanford-corenlp-caseless-models.jar',
-   'joda-time.jar' => 'joda-time.jar',
-   'jollyday.jar' => 'jollyday.jar',
-   'ejml-0.23.jar' => 'ejml.jar',
-   'slf4j-api.jar' => 'slf4j-api.jar',
-   'slf4j-simple.jar' => 'slf4j-simple.jar',
-  }.each { |key, value|
-    system "ln -sfv stanford-corenlp-full-2015-12-09/#{key} lib/#{value}" or exit 1
-  }
-})
-
-addModule('corenlp-3.2.0', 'Stanford CoreNLP 3.2.0 (for backward reproducibility)', lambda {
-  pull('/u/nlp/data/semparse/resources/stanford-corenlp-full-2013-06-20.zip', '', {:symlink => true})
-  if not File.exists?('lib/stanford-corenlp-full-2013-06-20')
-    system "cd lib && unzip stanford-corenlp-full-2013-06-20.zip" or exit 1
-  end
-  pull('/u/nlp/data/semparse/resources/stanford-corenlp-caseless-2013-06-07-models.jar',
-       'stanford-corenlp-full-2013-06-20', {:symlink => true})
-  # Remove old file (for backward compatibility)
-  if Dir.glob('lib/stanford-corenlp*.jar').any?
-    system 'rm -v lib/stanford-corenlp*.jar' or exit 1
-  end
-  {'stanford-corenlp-3.2.0.jar' => 'stanford-corenlp.jar',
-   'stanford-corenlp-3.2.0-models.jar' => 'stanford-corenlp-models.jar',
-   'stanford-corenlp-caseless-2013-06-07-models.jar' => 'stanford-corenlp-caseless-models.jar',
-   'joda-time.jar' => 'joda-time.jar',
-   'jollyday.jar' => 'jollyday.jar'
-  }.each { |key, value|
-    system "ln -sfv stanford-corenlp-full-2013-06-20/#{key} lib/#{value}" or exit 1
-  }
 })
 
 addModule('freebase', 'Freebase: need to construct Freebase schemas', lambda {

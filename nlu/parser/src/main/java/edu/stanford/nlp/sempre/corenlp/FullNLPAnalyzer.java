@@ -36,11 +36,18 @@ import java.util.*;
 public class FullNLPAnalyzer extends InfoAnalyzer {
     public static class Options {
         @Option(gloss = "What CoreNLP annotators to run")
-        public List<String> annotators = Lists.newArrayList("tokenize", "ssplit",
-                "pos", "lemma", "ner", "parse", "depparse", "natlog", "openie", "sentiment");
-
-        @Option(gloss = "Whether to use case-sensitive models")
-        public boolean caseSensitive = false;
+        public List<String> annotators = Lists.newArrayList(
+            "tokenize",
+            "ssplit",
+            "truecase",
+            "pos",
+            "lemma",
+            "ner",
+            "parse",
+            "depparse",
+            "natlog",
+            "openie",
+            "sentiment");
     }
 
     public static Options opts = new Options();
@@ -71,15 +78,10 @@ public class FullNLPAnalyzer extends InfoAnalyzer {
         keyword_tags = String.join(" ", ConfigManager.KEYWORDS_TAGS);
         if (pipeline != null) return;
         Properties props = new Properties();
-        props.put("annotators", Joiner.on(',').join(opts.annotators));
-        if (opts.caseSensitive) {
-            props.put("pos.model", "edu/stanford/nlp/models/pos-tagger/english-bidirectional/english-bidirectional-distsim.tagger");
-            props.put("ner.model", "edu/stanford/nlp/models/ner/english.all.3class.distsim.crf.ser.gz,edu/stanford/nlp/models/ner/english.conll.4class.distsim.crf.ser.gz");
-        } else {
-            props.put("pos.model", "edu/stanford/nlp/models/pos-tagger/english-caseless-left3words-distsim.tagger");
-            props.put("ner.model", "edu/stanford/nlp/models/ner/english.all.3class.caseless.distsim.crf.ser.gz,edu/stanford/nlp/models/ner/english.conll.4class.caseless.distsim.crf.ser.gz");
-        }
-        props.put("ner.useSUTime", "0");
+        props.setProperty("annotators", Joiner.on(',').join(opts.annotators));
+        props.setProperty("coref.algorithm", "neural");
+        props.setProperty("truecase.overwriteText", "true");
+        props.setProperty("ner.applyFineGrained", "false");
         pipeline = new StanfordCoreNLP(props);
     }
 
@@ -96,7 +98,7 @@ public class FullNLPAnalyzer extends InfoAnalyzer {
     }
 
     public CoreNLPInfo analyze(String utterance) {
-        CoreNLPInfo coreInfo= new CoreNLPInfo();
+        CoreNLPInfo coreInfo = new CoreNLPInfo();
         // Break hyphens
         utterance = breakHyphens(utterance);
 
