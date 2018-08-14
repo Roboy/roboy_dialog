@@ -13,8 +13,8 @@ public class Movie{
     static String KEY = keyGetter.getKey("moviekey");
     static int randomInt = new Random().nextInt(20);
 
-
-    public static String getData(String... args) throws Exception {
+    //FIELD TITLE or OVERVIEW
+    public static String getData(String field) throws Exception {
         StringBuilder result = new StringBuilder();
         URL url = new URL(String.format("https://api.themoviedb.org/3/movie/now_playing?api_key=%s&language=en-US&page=1", KEY));
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -28,7 +28,7 @@ public class Movie{
 
         Object jsonObject = ((JsonObject) new JsonParser().parse(result.toString()))
                 .getAsJsonArray("results")
-                .get(randomInt).getAsJsonObject().get(args[0]);
+                .get(randomInt).getAsJsonObject().get(field);
 //        System.out.println(jsonObject);
         return result.toString();
     }
