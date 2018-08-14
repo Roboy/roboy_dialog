@@ -1,5 +1,6 @@
-package edu.stanford.nlp.sempre.roboy.api;
+package roboy.util.api;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -26,14 +27,14 @@ public class Movie{
         }
         rd.close();
 
-        Object jsonObject = ((JsonObject) new JsonParser().parse(result.toString()))
+        JsonElement jsonElement = ((JsonObject) new JsonParser().parse(result.toString()))
                 .getAsJsonArray("results")
                 .get(randomInt).getAsJsonObject().get(field);
 //        System.out.println(jsonObject);
-        return result.toString();
+        return jsonElement.getAsString();
     }
 
     public static void main(String[] args)throws Exception{
-        getData("title");getData("overview");
+        System.out.println(getData("title")+":\t"+getData("overview"));
     }
 }

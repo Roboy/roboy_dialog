@@ -1,6 +1,5 @@
-package edu.stanford.nlp.sempre.roboy.api;
+package roboy.util.api;
 
-import com.github.jsonldjava.utils.Obj;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
