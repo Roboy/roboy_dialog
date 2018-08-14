@@ -74,6 +74,3 @@ community-server/data-backup
 nlu/parser/target/
 
 nlu/parser/src/main/java/edu/stanford/nlp/sempre/roboy/api/apiKeys\.yml
-
-dialog/src/main/java/roboy/util/api/apiKeys\.yml
-dialog/src/main/java/roboy/util/api/apiKeys.yml
