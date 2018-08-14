@@ -122,7 +122,7 @@ public class Conversation extends Thread {
                     e.printStackTrace();
                 }
             }
-            logger.info(interpretation.toString());
+            logger.debug(interpretation.toString());
 
             // answer
             try {
