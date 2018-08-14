@@ -17,6 +17,7 @@ public class IdleState extends MonologState {
 
     private final static String TRANSITION_TIME_IS_UP = "timeIsUp";
     private final static String DELAY_ID = "delayInMins";
+    private final static int MIN_NUMBER_PEOPLE = 1;
     private final Logger LOGGER = LogManager.getLogger();
 
     private State nextState = this;
@@ -31,14 +32,17 @@ public class IdleState extends MonologState {
     @Override
     public Output act() {
 
-        try {
-            TimeUnit.SECONDS.sleep(6);
-            //TimeUnit.MINUTES.sleep(delay);
-            nextState = getTransition(TRANSITION_TIME_IS_UP);
+        long enteringTime = System.nanoTime();
+
+        while(notInVision() && (TimeUnit.MINUTES.toNanos(delay) > System.nanoTime() - enteringTime)) {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                LOGGER.error(e.getMessage());
+            }
         }
-        catch(InterruptedException e){
-            LOGGER.error("--> Unable to pause Conversation in Idle State " + e.getMessage());
-        }
+
+        nextState = getTransition(TRANSITION_TIME_IS_UP);
 
         return Output.sayNothing();
     }
@@ -47,6 +51,17 @@ public class IdleState extends MonologState {
     public State getNextState() {
         return nextState;
     }
+
+    private boolean notInVision(){
+
+            try {
+
+                return getContext().CROWD_DETECTION.getLastValue().getData() < MIN_NUMBER_PEOPLE;
+            } catch(NullPointerException e){
+                LOGGER.info("Make sure crowd detection publishing, receiving: " + e.getMessage());
+                return false;
+            }
+        }
 
 }
 

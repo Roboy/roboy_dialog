@@ -8,7 +8,7 @@
         "timeIsUp": "ActiveIntro"
       },
       "parameters":{
-        "delayInMins" : "10"
+        "delayInMins" : "1"
       }
     },
     {

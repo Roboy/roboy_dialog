@@ -31,16 +31,19 @@ public class ActiveIntroState extends MonologState {
 
     @Override
     public Output act() {
-        if(checkPplAround()){
-            nextState = getTransition(TRANSITION_PEOPLE_AROUND);
-        }else{
-            nextState = getTransition((TRANSITION_LONELY_ROBOY));
-        }
+
         return Output.say(Verbalizer.greetings.getRandomElement() + " " + Verbalizer.roboyIntro.getRandomElement() + PhraseCollection.ROBOY_PHRASES.getRandomElement());
     }
 
     @Override
     public State getNextState() {
+
+        if(checkPplAround()){
+            nextState = getTransition(TRANSITION_PEOPLE_AROUND);
+        }else{
+            nextState = getTransition((TRANSITION_LONELY_ROBOY));
+        }
+
         return nextState;
     }
 

@@ -23,13 +23,10 @@ enum InfoAbout {
 
         private RandomList<String> phrases = PhraseCollection.ROBOY_TEAM_PHRASES;
 
-
         @Override
-        public void performSpecialAction(RosMainNode rosNode){
+        public State.Output performSpecialAction(RosMainNode rosNode){
 
-
-            logger.info("synthesising: " + phrases.getRandomElement());
-            rosNode.SynthesizeSpeech(phrases.getRandomElement());
+            return State.Output.say(phrases.getRandomElement());
         }
 
     },
@@ -37,9 +34,9 @@ enum InfoAbout {
 
         private RandomList<String> phrases = PhraseCollection.MISSION_PHRASES;
         @Override
-        public void performSpecialAction(RosMainNode rosNode){
-            logger.info("synthesising: " + phrases.getRandomElement());
-            rosNode.SynthesizeSpeech(phrases.getRandomElement());
+        public State.Output performSpecialAction(RosMainNode rosNode){
+
+            return State.Output.say(phrases.getRandomElement());
         }
     },
     ABOUT_MOVEMENT {
@@ -49,7 +46,7 @@ enum InfoAbout {
         RandomList<String> phrases = PhraseCollection.MOVEMENT_PHRASES;
 
         @Override
-        public void performSpecialAction(RosMainNode rosNode){
+        public State.Output performSpecialAction(RosMainNode rosNode){
             //TODO: what can be moved?
             HashMap<String, String> parts = new HashMap<>();
             parts.put("shoulder_left", "left shoulder");
@@ -70,7 +67,7 @@ enum InfoAbout {
                 logger.error(e.getMessage());
             }
             logger.info("synthesising: " + String.format(phrases.getRandomElement(), randomPartLiteral));
-            rosNode.SynthesizeSpeech(String.format(phrases.getRandomElement(), randomPartLiteral));
+            return State.Output.say(String.format(phrases.getRandomElement(), randomPartLiteral));
         }
     },
     ABOUT_EMOTIONS {
@@ -80,19 +77,17 @@ enum InfoAbout {
 
 
         @Override
-        public void performSpecialAction(RosMainNode rosNode){
+        public State.Output performSpecialAction(RosMainNode rosNode){
 
             emotions.addAll(Arrays.asList(RoboyEmotion.values()));
-            logger.info("synthesising: " + phrases.getRandomElement());
-            rosNode.SynthesizeSpeech(phrases.getRandomElement());
-            logger.info("showing emotions");
-            rosNode.ShowEmotion(emotions.getRandomElement());
+
+            return State.Output.say(phrases.getRandomElement()).setEmotion(emotions.getRandomElement());
         }
     };
 
     private final static Logger logger = LogManager.getLogger();
 
-    public abstract void performSpecialAction(RosMainNode rosNode);
+    public abstract State.Output performSpecialAction(RosMainNode rosNode);
 
 }
 
@@ -124,7 +119,12 @@ public class InfoTalkState extends MonologState {
     public Output act() {
 
         activeInfo = selectRandomInfo();
-        activeInfo.performSpecialAction(getRosMainNode());
+
+        return activeInfo.performSpecialAction(getRosMainNode());
+    }
+
+    @Override
+    public State getNextState() {
 
         if(checkPplListening()){
             nextState = getTransition(TRANSITION_PERSON_DETECTED);
@@ -132,11 +132,6 @@ public class InfoTalkState extends MonologState {
             nextState = getTransition(TRANSITION_LONELY_ROBOY);
         }
 
-        return Output.sayNothing();
-    }
-
-    @Override
-    public State getNextState() {
         return nextState;
     }
 
