@@ -47,7 +47,7 @@ enum InfoAbout {
 
         @Override
         public State.Output performSpecialAction(RosMainNode rosNode){
-            //TODO: what can be moved?
+
             HashMap<String, String> parts = new HashMap<>();
             parts.put("shoulder_left", "left shoulder");
             parts.put("shoulder_right", "right shoulder");

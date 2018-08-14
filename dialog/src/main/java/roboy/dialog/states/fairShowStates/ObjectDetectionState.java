@@ -21,7 +21,7 @@ enum Objects {
         @Override
         public State.Output performSpecialAction(RosMainNode rmn){
 
-            return State.Output.say(phrases.getRandomElement()).setEmotion(RoboyEmotion.HEARTS);
+            return State.Output.say(connectingPhrases.getRandomElement() + phrases.getRandomElement()).setEmotion(RoboyEmotion.HEARTS);
 
         }
 
@@ -32,9 +32,9 @@ enum Objects {
 
         @Override
         public State.Output performSpecialAction(RosMainNode rmn){
-            logger.info("synthesising: " + phrases.getRandomElement());
-            rmn.SynthesizeSpeech(phrases.getRandomElement());
-            rmn.ShowEmotion(happyEmotions.getRandomElement());
+
+            return State.Output.say(connectingPhrases.getRandomElement() + phrases.getRandomElement()).setEmotion(happyEmotions.getRandomElement());
+
         }
 
     },
@@ -44,9 +44,9 @@ enum Objects {
 
         @Override
         public State.Output performSpecialAction(RosMainNode rmn){
-            logger.info("synthesising: " + phrases.getRandomElement());
-            rmn.SynthesizeSpeech(phrases.getRandomElement());
-            rmn.ShowEmotion(happyEmotions.getRandomElement());
+
+            return State.Output.say(connectingPhrases.getRandomElement() + phrases.getRandomElement()).setEmotion(happyEmotions.getRandomElement());
+
         }
     },
     CAR {
@@ -55,8 +55,9 @@ enum Objects {
 
         @Override
         public State.Output performSpecialAction(RosMainNode rmn){
-            logger.info("synthesising: " + phrases.getRandomElement());
-            rmn.SynthesizeSpeech(phrases.getRandomElement());
+
+            return State.Output.say(connectingPhrases.getRandomElement() + phrases.getRandomElement());
+
         }
     },
     CHAIR {
@@ -65,9 +66,9 @@ enum Objects {
 
         @Override
         public State.Output performSpecialAction(RosMainNode rmn){
-            logger.info("synthesising: " + phrases.getRandomElement());
-            rmn.SynthesizeSpeech(phrases.getRandomElement());
-            rmn.ShowEmotion(happyEmotions.getRandomElement());
+
+            return State.Output.say(connectingPhrases.getRandomElement() + phrases.getRandomElement()).setEmotion(happyEmotions.getRandomElement());
+
         }
 
     },
@@ -76,9 +77,8 @@ enum Objects {
 
         @Override
         public State.Output performSpecialAction(RosMainNode rmn){
-            logger.info("synthesising: " + phrases.getRandomElement());
-            rmn.SynthesizeSpeech(phrases.getRandomElement());
-            rmn.ShowEmotion(RoboyEmotion.TEETH);
+
+            return State.Output.say(connectingPhrases.getRandomElement() + phrases.getRandomElement()).setEmotion(RoboyEmotion.TEETH);
 
         }
     },
@@ -88,9 +88,9 @@ enum Objects {
 
         @Override
         public State.Output performSpecialAction(RosMainNode rmn){
-            logger.info("synthesising: " + phrases.getRandomElement());
-            rmn.SynthesizeSpeech(phrases.getRandomElement());
-            rmn.ShowEmotion(RoboyEmotion.ROLLING_EYES);
+
+            return State.Output.say(connectingPhrases.getRandomElement() + phrases.getRandomElement()).setEmotion(RoboyEmotion.ROLLING_EYES);
+
         }
     },
     SOFA {
@@ -100,9 +100,9 @@ enum Objects {
 
         @Override
         public State.Output performSpecialAction(RosMainNode rmn){
-            logger.info("synthesising: " + phrases.getRandomElement());
-            rmn.SynthesizeSpeech(phrases.getRandomElement());
-            rmn.ShowEmotion(RoboyEmotion.SHY);
+
+            return State.Output.say(connectingPhrases.getRandomElement() + phrases.getRandomElement()).setEmotion(RoboyEmotion.SHY);
+
         }
     },
     TVMONITOR {
@@ -113,16 +113,13 @@ enum Objects {
         @Override
         public State.Output performSpecialAction(RosMainNode rmn){
 
-            logger.info("synthesising: " + phrases.getRandomElement());
-            rmn.SynthesizeSpeech(phrases.getRandomElement());
-            rmn.ShowEmotion(socialMediaEmotions.getRandomElement());
+            return State.Output.say(connectingPhrases.getRandomElement() + phrases.getRandomElement()).setEmotion(socialMediaEmotions.getRandomElement());
+
         }
     };
 
     public RandomList<String> connectingPhrases = new RandomList<>(" and look there, ", " and over there i can see ", " oh see, ", " this is a really nice ");
     public RandomList<RoboyEmotion> happyEmotions = new RandomList<>(RoboyEmotion.SMILE_BLINK, RoboyEmotion.HAPPY, RoboyEmotion.SURPRISED, RoboyEmotion.TEETH);
-
-    private final static Logger logger = LogManager.getLogger();
 
     public abstract State.Output performSpecialAction(RosMainNode rosNode);
 
@@ -137,6 +134,8 @@ public class ObjectDetectionState extends MonologState {
 
     private final Set<Objects> detectedObjects = new HashSet<>();
 
+    private Vector<Output> outputs = new Vector<>();
+
     private final Logger logger = LogManager.getLogger();
 
     private State nextState = this;
@@ -148,17 +147,21 @@ public class ObjectDetectionState extends MonologState {
     @Override
     public Output act() {
 
-        checkObjects();
+        if(outputs.isEmpty()){
 
-        for(Objects obj : detectedObjects) {
-            logger.info("synthesising: " + connectingPhrases.getRandomElement());
-            getRosMainNode().SynthesizeSpeech(connectingPhrases.getRandomElement());
-            obj.performSpecialAction(getRosMainNode());
+            checkObjects();
+
+            for(Objects obj : detectedObjects) {
+
+                outputs.add(obj.performSpecialAction(getRosMainNode()));
+
+            }
         }
 
-        nextState = getTransition(TRANSITION_FINISHED);
+        Output current = outputs.remove(0);
+        if(outputs.isEmpty()) nextState = getTransition(TRANSITION_FINISHED);
 
-        return Output.sayNothing();
+        return current;
     }
 
     @Override
