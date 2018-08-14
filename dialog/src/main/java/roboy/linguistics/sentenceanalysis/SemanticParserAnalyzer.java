@@ -2,6 +2,8 @@ package roboy.linguistics.sentenceanalysis;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.linguistics.Entity;
+import roboy.linguistics.Keyword;
 import roboy.linguistics.Linguistics;
 
 import java.io.*;
@@ -93,6 +95,11 @@ public class SemanticParserAnalyzer implements Analyzer
         interpretation.setTriples(extract_relations(ex.getRelation()));
         interpretation.setPosTags(ex.getPosTag().toArray(new String[0]));
         interpretation.setLemmas(ex.getLemmaTokens().toArray(new String[0]));
+
+        for (String k: ex.getGenInfo().keywords) {
+            Keyword keyword = new Keyword(1.0, k);
+            interpretation.addKeyword(keyword);
+        }
 
         // Read extracted sentiment
         try {

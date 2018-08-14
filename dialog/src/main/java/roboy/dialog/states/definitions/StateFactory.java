@@ -83,11 +83,23 @@ public class StateFactory {
         Object stateObj;
         try {
             stateObj = ctor.newInstance(stateIdentifier, parameters);
-        } catch (InstantiationException | InvocationTargetException | IllegalAccessException e) {
-            logger.warn("Could not create an instance of " + className);
-            logger.warn("Exception message: " + e.getMessage());
+        }catch (InstantiationException  e){
+            logger.warn("[InstantiationException]Could not create an instance of " + className);
             return null;
         }
+        catch (InvocationTargetException e){
+            logger.warn("[InvocationTargetException]Could not create an instance of " + className);
+            return null;
+        }
+        catch (IllegalAccessException e){
+            logger.warn("[IllegalAccessException]Could not create an instance of " + className);
+            return null;
+        }
+//        catch (InstantiationException | InvocationTargetException | IllegalAccessException e) {
+//            logger.warn("Could not create an instance of " + className);
+//            logger.warn("Exception message: " + e.getMessage());
+//            return null;
+//        }
 
         // additional check if the created instance is really a subclass of State
         // this should be always the case

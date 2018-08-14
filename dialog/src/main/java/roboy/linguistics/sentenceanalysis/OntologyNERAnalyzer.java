@@ -1,14 +1,12 @@
 package roboy.linguistics.sentenceanalysis;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import roboy.linguistics.DetectedEntity;
+import roboy.linguistics.Keyword;
 import roboy.linguistics.Entity;
-import roboy.linguistics.Linguistics;
 
 /**
  * Checks for keywords from a list (knowledgebase/triviaWords.csv) and stores them in 
@@ -45,8 +43,8 @@ public class OntologyNERAnalyzer implements Analyzer{
 			for (int i = 0; i < tokens.size(); i++) {
 				if (entities.containsKey(tokens.get(i).toLowerCase())) {
 					Entity entity = entities.get(tokens.get(i).toLowerCase());
-					DetectedEntity detectedEntity = new DetectedEntity(i, entity);
-					interpretation.addKeyword(detectedEntity);
+					Keyword keyword = new Keyword(i, entity.getBaseForm());
+					interpretation.addKeyword(keyword);
 				}
 			}
 		}
