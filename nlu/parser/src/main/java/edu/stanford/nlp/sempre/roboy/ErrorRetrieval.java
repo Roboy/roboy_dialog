@@ -57,7 +57,7 @@ public class ErrorRetrieval {
         this.helpers.add(new EntityRetriever());
         this.helpers.add(new MCGRetriever());
         try {
-            this.vec = new Word2vec();
+            this.vec = Word2vec.getInstance();
             this.helpers.add(new Word2VecRetriever(this.vec));
         }
         catch(Exception e){

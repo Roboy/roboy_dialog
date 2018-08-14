@@ -9,6 +9,7 @@ import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.nodes.Interlocutor;
 import roboy.util.QAFileParser;
+import roboy.util.QAJsonParser;
 import roboy.util.UzupisIntents;
 
 import java.io.IOException;
@@ -41,8 +42,10 @@ public class UzupisState extends State {
 
     public UzupisState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
+        String qaListPath = params.getParameter(QAFILEPATH);
+        logger.info(" -> The qa list path: " + qaListPath);
+        QAFileParser parser = new QAFileParser(qaListPath);
 
-        QAFileParser parser = new QAFileParser(params.getParameter(QAFILEPATH));
         CertificatesGeneratorScript = params.getParameter(CERTIFICATESGENERATOR);
 
         questions = parser.getQuestions();
@@ -50,13 +53,11 @@ public class UzupisState extends State {
         failureAnswers = parser.getFailureAnswers();
 
         alreadyAsked = new ArrayList<>();
-
-        person = getContext().ACTIVE_INTERLOCUTOR.getValue();
     }
 
     @Override
     public Output act() {
-
+        person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         String toAsk;
 
         if (alreadyAsked.isEmpty()) {
@@ -80,6 +81,8 @@ public class UzupisState extends State {
 
     @Override
     public Output react(Interpretation input) {
+        person = getContext().ACTIVE_INTERLOCUTOR.getValue();
+
         String answer = input.getAnswer();
         String toAnswer = "";
         if (answer != null) {

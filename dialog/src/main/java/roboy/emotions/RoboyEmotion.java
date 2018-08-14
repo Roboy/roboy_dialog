@@ -30,7 +30,10 @@ public enum RoboyEmotion {
     HAPPY("happy"),
     TONGUE("tongue"),
     TEETH("teeth"),
-    HEARTS("hearts");
+    HEARTS("hearts"),
+    HAPPINESS("happiness"),
+    SADNESS("sadness"),
+    BEER_THIRSTY("beer");
 
     public String type;
 

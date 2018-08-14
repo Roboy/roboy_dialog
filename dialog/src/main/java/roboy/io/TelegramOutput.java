@@ -9,6 +9,13 @@ import roboy.util.TelegramCommunicationHandler;
 
 import java.util.List;
 
+/**
+ * TelegramOutput is design to be allocated for each conversation.
+ * Each user that texts to roboy via Telegram has its own TelegramOutput in the system.
+ * After an answer or multiple answers(depending on personality) are created in the system,
+ * TelegramOutput of the conversation gets the interpreted actions(EmotionAction, SpeechAction etc.)
+ * Depending on the action’s type it decide a message type(text, sticker) and send it to the its user via TelegramCommunicationHandler.
+ */
 public class TelegramOutput implements OutputDevice {
 
     private TelegramCommunicationHandler communicationHandler = TelegramCommunicationHandler.getInstance();
@@ -40,11 +47,15 @@ public class TelegramOutput implements OutputDevice {
             }else if (a instanceof EmotionAction) {
                 String stickerID = null;
                 switch(((EmotionAction) a).getState()){
+                    case "beer": stickerID = "CAADAgADKQAD5dCAEFX3hCMAAfM_awI"; break;
+                    case "sadness": stickerID = "CAADAgADiAAD5dCAEOQeh7anZFNuAg"; break;
+                    case "happiness": stickerID = "CAADAgADUQAD5dCAEIT4-Rl1t2BEAg"; break;
                     case "shy": stickerID = "CAADAgADSwAD5dCAEBGmde8-twTLAg"; break;
                     case "smileblink": stickerID = "CAADAgADSgAD5dCAEMQakIa3aHHSAg"; break;
                     case "kiss": stickerID = "CAADAgADOQAD5dCAEOtbfZz0NKh2Ag"; break;
                     case "lookleft": //same as lookright
                     case "lookright": stickerID = "CAADAgADFQAD5dCAEKM0TS8sjXiAAg"; break;
+                    //TODO: other RoboyEmotions
                 }
                 if(stickerID != null) communicationHandler.sendSticker(this.uuid, stickerID);
 
