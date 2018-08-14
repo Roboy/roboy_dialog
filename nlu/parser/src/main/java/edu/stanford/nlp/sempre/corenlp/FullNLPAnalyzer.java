@@ -36,11 +36,18 @@ import java.util.*;
 public class FullNLPAnalyzer extends InfoAnalyzer {
     public static class Options {
         @Option(gloss = "What CoreNLP annotators to run")
-        public List<String> annotators = Lists.newArrayList("tokenize", "ssplit",
-                "pos", "lemma", "ner", "parse", "depparse", "natlog", "openie", "sentiment");
-
-        @Option(gloss = "Whether to use case-sensitive models")
-        public boolean caseSensitive = false;
+        public List<String> annotators = Lists.newArrayList(
+            "tokenize",
+            "ssplit",
+            "truecase",
+            "pos",
+            "lemma",
+            "ner",
+            "parse",
+            "depparse",
+            "natlog",
+            "openie",
+            "sentiment");
     }
 
     public static Options opts = new Options();
@@ -73,6 +80,8 @@ public class FullNLPAnalyzer extends InfoAnalyzer {
         Properties props = new Properties();
         props.setProperty("annotators", Joiner.on(',').join(opts.annotators));
         props.setProperty("coref.algorithm", "neural");
+        props.setProperty("truecase.overwriteText", "true");
+        props.setProperty("ner.applyFineGrained", "false");
         pipeline = new StanfordCoreNLP(props);
     }
 
@@ -89,7 +98,7 @@ public class FullNLPAnalyzer extends InfoAnalyzer {
     }
 
     public CoreNLPInfo analyze(String utterance) {
-        CoreNLPInfo coreInfo= new CoreNLPInfo();
+        CoreNLPInfo coreInfo = new CoreNLPInfo();
         // Break hyphens
         utterance = breakHyphens(utterance);
 
