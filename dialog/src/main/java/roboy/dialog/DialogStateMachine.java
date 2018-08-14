@@ -85,17 +85,17 @@ public class DialogStateMachine {
         this.context = context;
 
         if (this.rosMainNode == null) {
-            logger.info("RosMainNode will be unavailable in DialogStateMachine (null was passed)");
+            logger.warn("RosMainNode will be unavailable in DialogStateMachine (null was passed)");
         }
         if (this.memory == null) {
-            logger.info("Memory will be unavailable in DialogStateMachine (null was passed)");
+            logger.warn("Memory will be unavailable in DialogStateMachine (null was passed)");
         }
         if (this.inference == null) {
-            logger.error("All your inference belong to us (null was passed)!");
+            logger.fatal("All your inference belong to us (null was passed)!");
             throw new IllegalArgumentException("The inference is null. Roboy is a vegetable! Pulling the plug!");
         }
         if (this.context == null){
-            logger.error("A conversation without context is not interpretable! (null was passed)");
+            logger.fatal("A conversation without context is not interpretable! (null was passed)");
             throw new IllegalArgumentException("The context is null. Roboy cannot talk without context. Stopping all dialog activity!");
         }
     }

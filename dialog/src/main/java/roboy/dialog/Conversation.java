@@ -128,6 +128,7 @@ public class Conversation extends Thread {
                     e.printStackTrace();
                 }
             }
+            logger.info(interpretation.toString());
 
             // answer
             try {
