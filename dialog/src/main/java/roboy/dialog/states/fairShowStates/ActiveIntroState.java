@@ -5,7 +5,10 @@ import org.apache.logging.log4j.Logger;
 import roboy.dialog.states.definitions.MonologState;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
+import roboy.talk.PhraseCollection;
 import roboy.talk.Verbalizer;
+
+
 
 /**
  * Active state to start a conversation.
@@ -16,9 +19,9 @@ public class ActiveIntroState extends MonologState {
 
     private final static String TRANSITION_PEOPLE_AROUND = "peopleAround";
     private final static String TRANSITION_LONELY_ROBOY = "lonelyRoboy";
-    private final int MIN_NUMBER_PEOPLE = 6;
+    private final int MIN_NUMBER_PEOPLE = 2;
 
-    private final Logger LOGGER = LogManager.getLogger();
+    private final Logger logger = LogManager.getLogger();
 
     private State nextState = this;
 
@@ -33,7 +36,7 @@ public class ActiveIntroState extends MonologState {
         }else{
             nextState = getTransition((TRANSITION_LONELY_ROBOY));
         }
-        return Output.say(Verbalizer.greetings.getRandomElement() + Verbalizer.roboyIntro.getRandomElement());
+        return Output.say(Verbalizer.greetings.getRandomElement() + " " + Verbalizer.roboyIntro.getRandomElement() + PhraseCollection.ROBOY_PHRASES.getRandomElement());
     }
 
     @Override
@@ -44,7 +47,13 @@ public class ActiveIntroState extends MonologState {
 
     private boolean checkPplAround(){
 
-        return getContext().CROWD_DETECTION.getLastValue().getData() >= MIN_NUMBER_PEOPLE;
+        try {
+
+            return getContext().CROWD_DETECTION.getLastValue().getData() >= MIN_NUMBER_PEOPLE;
+        } catch(NullPointerException e){
+            logger.info("Make sure crowd detection publishing, receiving: " + e.getMessage());
+            return false;
+        }
     }
 
 }

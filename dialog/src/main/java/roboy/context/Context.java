@@ -70,6 +70,8 @@ public class Context {
     private AudioDirectionUpdater AUDIO_ANGLES_UPDATER;
     private ROSTestUpdater ROS_TEST_UPDATER;
     private DetectedPersonUpdater DETECTED_PERSON_UPDATER;
+    private PeopleAroundUpdater CROWD_UPDATER;
+    private DetectedObjectsUpdater DETECTED_OBJ_UPDATER;
 
     /* OBSERVERS */
     private final FaceCoordinatesObserver FACE_COORDINATES_OBSERVER;
@@ -119,7 +121,11 @@ public class Context {
                 // TODO Add a FACE_COORDINATE_UPDATER.
                 // Edit the data type and integration tests, once the real data type is used.
 
-                if(ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_vision")) DETECTED_PERSON_UPDATER = new DetectedPersonUpdater(PERSON_DETECTION.valueHistory, ros);
+                if(ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_vision")) {
+                    DETECTED_PERSON_UPDATER = new DetectedPersonUpdater(PERSON_DETECTION.valueHistory, ros);
+                    DETECTED_OBJ_UPDATER = new DetectedObjectsUpdater(OBJECT_DETECTION.valueHistory, ros);
+                    CROWD_UPDATER = new PeopleAroundUpdater(CROWD_DETECTION.valueHistory, ros);
+                }
 
                 rosInitialized = true;
             }

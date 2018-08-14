@@ -1,4 +1,4 @@
 What game do you want to play? Maybe %s?
-Which one? Maybe %s?
+Which game would you like to play? Maybe %s?
 Yeah, I love games. Let's play %s.
-Cool, I am in the mood for the %s game.
+Cool, I am in the mood for the %s game. And you?

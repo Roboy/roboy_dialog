@@ -50,7 +50,6 @@ public class PhraseCollection {
             = readFile("resources/phraseLists/gamePhrases/akinator-error-phrases.txt");
     public static RandomList<String> PROFANITY_CHECK_WORDS
             = FileLineReader.readFile("resources/phraseLists/profanity-check-list.txt");
-    // Added for the ExpoPersonality
     public static RandomList<String> FACTS
             = readFile("resources/phraseLists/expoPhrases/facts.txt");
     public static RandomList<String> INFO_ROBOY_INTENT_PHRASES
@@ -69,5 +68,14 @@ public class PhraseCollection {
             = readFile("resources/phraseLists/expoPhrases/offer-math.txt");
     public static RandomList<String> PARSER_ERROR
             = readFile("resources/phraseLists/expoPhrases/parser-error.txt");
-
+    public static RandomList<String> ROBOY_TEAM_PHRASES
+            = readFile("resources/phraseLists/fairShowPhrases/roboy-team.txt");
+    public static RandomList<String> MISSION_PHRASES
+            =readFile("resources/phraseLists/fairShowPhrases/mission.txt");
+    public static RandomList<String> MOVEMENT_PHRASES
+            = readFile("resources/phraseLists/fairShowPhrases/movement.txt");
+    public static RandomList<String> EMOTION_PHRASES
+            = readFile("resources/phraseLists/fairShowPhrases/emotions.txt");
+    public static RandomList<String> ROBOY_PHRASES
+            = readFile("resources/phraseLists/fairShowPhrases/project-intro.txt");
 }

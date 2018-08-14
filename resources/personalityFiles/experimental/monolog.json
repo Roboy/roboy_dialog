@@ -1,0 +1,27 @@
+{
+  "initialState": "Idle",
+  "states": [
+    {
+      "identifier": "Idle",
+      "implementation": "roboy.dialog.states.fairShowStates.IdleState",
+      "transitions": {
+        "timeIsUp": "ActiveIntro"
+      }
+    },
+    {
+      "identifier": "ActiveIntro",
+      "implementation": "roboy.dialog.states.fairShowStates.ActiveIntroState",
+      "transitions": {
+        "lonelyRoboy": "Idle",
+        "peopleAround": "InfoTalk"
+      }
+    },
+    {
+      "identifier": "InfoTalk",
+      "implementation": "roboy.dialog.states.fairShowStates.InfoTalkState",
+      "transitions": {
+        "lonelyRoboy": "Idle"
+      }
+    }
+  ]
+}

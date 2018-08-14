@@ -6,32 +6,39 @@ import roboy.dialog.states.definitions.MonologState;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Idle state.
- * Roboy is waiting <delay> milliseconds to autonomously start a conversation.
+ * Roboy is waiting <delay> minutes to autonomously start a conversation.
  *
  */
 public class IdleState extends MonologState {
 
     private final static String TRANSITION_TIME_IS_UP = "timeIsUp";
+    private final static String DELAY_ID = "delayInMins";
     private final Logger LOGGER = LogManager.getLogger();
 
     private State nextState = this;
-
-    private final long delay = 1000 * 5; //msecs
-    Timer timer = new Timer();
+    private long delay;
 
     public IdleState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
-        timer.schedule(exitState, delay);
-        LOGGER.info("--> started Timer for " + delay + " msecs in Idle-State");
+        delay = Long.parseLong(params.getParameter(DELAY_ID));
+        LOGGER.info("--> Timer: " + delay + " mins in Idle-State");
     }
 
     @Override
     public Output act() {
+
+        try {
+            TimeUnit.SECONDS.sleep(6);
+            //TimeUnit.MINUTES.sleep(delay);
+            nextState = getTransition(TRANSITION_TIME_IS_UP);
+        }
+        catch(InterruptedException e){
+            LOGGER.error("--> Unable to pause Conversation in Idle State " + e.getMessage());
+        }
 
         return Output.sayNothing();
     }
@@ -40,16 +47,6 @@ public class IdleState extends MonologState {
     public State getNextState() {
         return nextState;
     }
-
-
-    TimerTask exitState = new TimerTask() {
-        @Override
-        public void run() {
-            nextState = getTransition(TRANSITION_TIME_IS_UP);
-            timer.cancel();
-            LOGGER.info("--> stopped Timer in Idle-State");
-        }
-    };
 
 }
 
