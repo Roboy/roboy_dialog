@@ -28,7 +28,7 @@ public class DbEntitySearcher {
   private final IndexSearcher indexSearcher;
   private int numOfDocs = 50;
   private String searchStrategy;
-  private QueryParser queryParser;
+
 
   private synchronized QueryParser freshQueryParser(){//needed since queryparser is not threadsafe and queryparser is very lightweight
     return new QueryParser(
@@ -44,7 +44,6 @@ public class DbEntitySearcher {
       throw new RuntimeException("Bad searching strategy: " + searchingStrategy);
     this.searchStrategy = searchingStrategy;
 
-    queryParser = freshQueryParser();
     LogInfoToggle.log("Opening index dir: " + indexDir);
     IndexReader indexReader = DirectoryReader.open(SimpleFSDirectory.open(new File(indexDir)));
     indexSearcher = new IndexSearcher(indexReader);
@@ -72,10 +71,8 @@ public class DbEntitySearcher {
 
   private ScoreDoc[] getHits(String question) throws IOException, ParseException {
     Query luceneQuery;
-    synchronized (queryParser) {
-      luceneQuery = queryParser.parse(question);
-      queryParser = freshQueryParser();
-    }
+    QueryParser queryParser = freshQueryParser();//always take a new one because this is cheaper than synchronizing
+    luceneQuery = queryParser.parse(question);
     ScoreDoc[] hits = indexSearcher.search(luceneQuery, numOfDocs).scoreDocs;
     return hits;
   }
