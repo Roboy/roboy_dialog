@@ -32,11 +32,10 @@
       "implementation": "roboy.dialog.states.fairShowStates.ChooseInteractiveTalkState",
       "transitions": {
         "newPerson": "InterlocutorIntro",
-        "personalQA": "PersonalQA",
         "math": "Math",
         "game": "ChooseGameState",
         "objectDetected": "ObjectDetection",
-        "generalQA": "GeneralQA"
+        "personalQA": "PersonalQA"
       }
     },
     {

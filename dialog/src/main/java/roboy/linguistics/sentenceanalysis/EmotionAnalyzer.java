@@ -72,7 +72,13 @@ public class EmotionAnalyzer implements Analyzer {
         }
 
         Word2Vec vec = Word2vec.getInstance().getModel();
-        INDArray mean = vec.getWordVectorsMean(labels);
+        INDArray mean;
+        try{
+            mean = vec.getWordVectorsMean(labels);
+        }catch (Exception e){
+            interpretation.setEmotion(RoboyEmotion.NEUTRAL);
+            return interpretation;
+        }
         if(!mean.isVector()){
             //if mean is not a vector just return without emotion
             LOGGER.error("MEAN IS NOT A VECTOR");

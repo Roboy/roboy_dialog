@@ -18,10 +18,10 @@ import java.util.Arrays;
  */
 public class ChooseInteractiveTalkState extends MonologState {
 
-    private final static String TRANSITION_PERSONAL_QA = "personalQA";
     private final static String TRANSITION_NEW_PERSON = "newPerson";
     private final static String TRANSITION_MATH = "math";
     private final static String TRANSITION_GAME = "game";
+    private final static String TRANSITION_PERSONAL_QA = "personalQA";
     private final static String TRANSITION_OBJECT_DETECTED = "objectDetected";
     private final static String TRANSITION_GENERAL_QA = "generalQA";
 
@@ -70,7 +70,7 @@ public class ChooseInteractiveTalkState extends MonologState {
      */
     private void resetAvailableInteractions() {
         availableInteractions.clear();
-        availableInteractions.addAll(Arrays.asList(TRANSITION_PERSONAL_QA, TRANSITION_MATH, TRANSITION_GAME, TRANSITION_GENERAL_QA));
+        availableInteractions.addAll(Arrays.asList(TRANSITION_PERSONAL_QA, TRANSITION_MATH, TRANSITION_GAME));
     }
 
     /**

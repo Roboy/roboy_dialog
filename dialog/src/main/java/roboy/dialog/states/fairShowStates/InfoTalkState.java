@@ -60,13 +60,13 @@ enum InfoAbout {
             String randomPartLiteral = parts.get(randomPart);
 
             try {
-                //TODO: what is 2nd parameter?
                 rosNode.PerformMovement(randomPart, "random1");
 
-            }catch (InterruptedException e) {
+            } catch (InterruptedException e) {
+
                 logger.error(e.getMessage());
             }
-            logger.info("synthesising: " + String.format(phrases.getRandomElement(), randomPartLiteral));
+
             return State.Output.say(String.format(phrases.getRandomElement(), randomPartLiteral));
         }
     },

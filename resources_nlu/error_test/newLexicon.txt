@@ -5887,3 +5887,39 @@
 {"features":" {score:0.15152674515697737} ","formula":"(rdf:type dbpedia:City)","lexeme":"city","type":"ClassNoun"}
 {"features":" {score:0.07924929805861808} ","formula":"property:municipality","lexeme":"municipality","type":"DataProp"}
 {"features":" {score:0.6171889755251683} ","formula":"resource:Ludwig_Maximilian_University_of_Munich","lexeme":"ludwig maximilian university of munich","type":"NamedEntity"}
+{"features":" {score:0.055132212042808534} ","formula":"dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.03828920185565949} ","formula":"property:woman","lexeme":"woman","type":"ObjProp"}
+{"features":" {score:0.07457736134529114} ","formula":"(rdf:type dbpedia:Politician)","lexeme":"politician","type":"ClassNoun"}
+{"features":" {score:0.055132212042808534} ","formula":"!property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.683304347826087} ","formula":"resource:Angela_Merkel","lexeme":"angela merkel","type":"NamedEntity"}
+{"features":" {score:0.022632212042808533} ","formula":"property:politicalLeader","lexeme":"political leader","type":"ObjProp"}
+{"features":" {score:0.03828920185565949} ","formula":"property:woman","lexeme":"woman","type":"DataProp"}
+{"features":" {score:0.022632212042808533} ","formula":"!property:politicalLeader","lexeme":"political leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"!dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.03828920185565949} ","formula":"!property:woman","lexeme":"woman","type":"ObjProp"}
+{"features":" {score:0.022632212042808533} ","formula":"!dbpedia:politicalLeader","lexeme":"political leader","type":"ObjectProp"}
+{"features":" {score:0.022632212042808533} ","formula":"property:politicalLeader","lexeme":"political leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"!property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.022632212042808533} ","formula":"dbpedia:politicalLeader","lexeme":"political leader","type":"ObjectProp"}
+{"features":" {score:0.022632212042808533} ","formula":"!property:politicalLeader","lexeme":"political leader","type":"ObjProp"}
+{"features":" {score:0.03828920185565949} ","formula":"!property:woman","lexeme":"woman","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.03828920185565949} ","formula":"property:woman","lexeme":"woman","type":"ObjProp"}
+{"features":" {score:0.07457736134529114} ","formula":"(rdf:type dbpedia:Politician)","lexeme":"politician","type":"ClassNoun"}
+{"features":" {score:0.055132212042808534} ","formula":"!property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.683304347826087} ","formula":"resource:Angela_Merkel","lexeme":"angela merkel","type":"NamedEntity"}
+{"features":" {score:0.022632212042808533} ","formula":"property:politicalLeader","lexeme":"political leader","type":"ObjProp"}
+{"features":" {score:0.03828920185565949} ","formula":"property:woman","lexeme":"woman","type":"DataProp"}
+{"features":" {score:0.022632212042808533} ","formula":"!property:politicalLeader","lexeme":"political leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"!dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.03828920185565949} ","formula":"!property:woman","lexeme":"woman","type":"ObjProp"}
+{"features":" {score:0.022632212042808533} ","formula":"!dbpedia:politicalLeader","lexeme":"political leader","type":"ObjectProp"}
+{"features":" {score:0.022632212042808533} ","formula":"property:politicalLeader","lexeme":"political leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"!property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.022632212042808533} ","formula":"dbpedia:politicalLeader","lexeme":"political leader","type":"ObjectProp"}
+{"features":" {score:0.022632212042808533} ","formula":"!property:politicalLeader","lexeme":"political leader","type":"ObjProp"}
+{"features":" {score:0.03828920185565949} ","formula":"!property:woman","lexeme":"woman","type":"DataProp"}

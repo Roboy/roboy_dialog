@@ -173,12 +173,16 @@ public class ObjectDetectionState extends MonologState {
     /**
      * fetches detected objects from vision and writes into a list
      */
-
     private void checkObjects(){
 
-        List<String> detectedThings = getContext().OBJECT_DETECTION.getLastValue().getNames();
-        for(String obj : detectedThings){
-            detectedObjects.add(Objects.valueOf(obj.toUpperCase()));
+        try {
+            List<String> detectedThings = getContext().OBJECT_DETECTION.getLastValue().getNames();
+            for (String obj : detectedThings) {
+                detectedObjects.add(Objects.valueOf(obj.toUpperCase()));
+            }
+        }catch (NullPointerException e){
+            nextState = getTransition(TRANSITION_FINISHED);
+            logger.error("Make sure object detection publisher is running, receiving: " + e.getMessage());
         }
 
     }
