@@ -139,8 +139,17 @@ public class ConversationManager {
      * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
      * @throws IOException If conversation could not created.
      */
-    public static void spawnConversation(String uuid) throws IOException{
-        Conversation conversation = createConversation(rosMainNode, analyzers, new Inference(), memory, uuid);
+    public static void spawnConversation(String uuid) throws IOException {
+        spawnConversation(uuid, null);
+    }
+    /**
+     * Creates and spawns a conversation for a chatuser.
+     * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
+     * @param name the name of the Interlocutor. Necessary for unique adressing by name (local nodes)
+     * @throws IOException If conversation could not created.
+     */
+    public static void spawnConversation(String uuid, String name) throws IOException{
+        Conversation conversation = createConversation(rosMainNode, analyzers, new Inference(), memory, uuid, name);
         conversations.put(uuid, conversation);
         conversation.start();
     }
@@ -177,18 +186,40 @@ public class ConversationManager {
         return (conv == null) ? null : (Long)conv.getId();
     }
 
-
     /**
-     * Creates and initializes a new conversation thread. Does not start the thread.
+     * Creates and initializes a new conversation thread. Only use for local threads that don't have uuids (uuid=local). Does not start the thread.
      * @param rosMainNode ROS node. Set null if ROS_ENABLED=false
      * @param analyzers   All analyzers necessary for analyzing the inputs from multiIn. Please provide these in correct order.
      * @param inference Inference engine. The better, the smarter roboy gets.
      * @param memory Roboy memory access. Without, we cannot remember anything and conversations stay shallow.
-     * @return roboy.dialog.Conversation object. Fully intialized, ready to launch.
+     * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
+     * @return null if uuroboy.dialog.Conversation object. Fully intialized, ready to launch.
      * @throws IOException In case the IOdevices could not be correctly initialized.
      */
 
     private static Conversation createConversation(RosMainNode rosMainNode, List<Analyzer> analyzers, InferenceEngine inference, Neo4jMemoryInterface memory, String uuid) throws IOException{
+        if(!uuid.equals("local")){
+            logger.error("Cannot create a Conversation for uuid " + uuid + " without a name!");
+            return null;
+        }
+        return createConversation(rosMainNode,analyzers,inference,memory,uuid,null);
+    }
+
+
+
+        /**
+         * Creates and initializes a new conversation thread. Does not start the thread.
+         * @param rosMainNode ROS node. Set null if ROS_ENABLED=false
+         * @param analyzers   All analyzers necessary for analyzing the inputs from multiIn. Please provide these in correct order.
+         * @param inference Inference engine. The better, the smarter roboy gets.
+         * @param memory Roboy memory access. Without, we cannot remember anything and conversations stay shallow.
+         * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local";
+         * @param name the name of the Interlocutor. Necessary for unique adressing by name (local nodes)
+         * @return roboy.dialog.Conversation object. Fully intialized, ready to launch.
+         * @throws IOException In case the IOdevices could not be correctly initialized.
+         */
+
+    private static Conversation createConversation(RosMainNode rosMainNode, List<Analyzer> analyzers, InferenceEngine inference, Neo4jMemoryInterface memory, String uuid, String name) throws IOException{
         logger.info("Creating new conversation...");
 
         //Create IODevices.
@@ -215,17 +246,19 @@ public class ConversationManager {
             logger.error("Memory is null while starting a conversation");
         }
         Interlocutor person = new Interlocutor(memory);
-        if(uuid.startsWith("telegram-")){
-            person.addUuid(new Uuid(UuidType.TELEGRAM_UUID, uuid.substring(uuid.indexOf('-')+1)));
-        }else if (uuid.startsWith("facebook-")){//not supported by dialog_system yet, only prepared this since it is supported by memory
-            person.addUuid(new Uuid(UuidType.FACEBOOK_UUID, uuid.substring(uuid.indexOf('-')+1)));
-        }else if(uuid.startsWith("slack-")){//not supported by dialog_system yet, only prepared this since it is supported by memory
-            person.addUuid(new Uuid(UuidType.SLACK_UUID, uuid.substring(uuid.indexOf('-')+1)));
-        }else if(uuid.equals("local")){
-            person.setLabel(Neo4jLabel.Person);
-        }
-        else{
-            logger.error("UUID format of UUID " + uuid + "not supported. Currently supported services: telegram, facebook, slack, local.");
+        if(name != null) {
+            if(uuid.equals("local")){//just to make sure, should not happen if IODevices are built correctly
+                person.addName(name);
+            }
+            else if (uuid.startsWith("telegram-")) {
+                person.addUuid(new Uuid(UuidType.TELEGRAM_UUID, uuid.substring(uuid.indexOf('-') + 1)), name);
+            } else if (uuid.startsWith("facebook-")) {//not supported by dialog_system yet, only prepared this since it is supported by memory
+                person.addUuid(new Uuid(UuidType.FACEBOOK_UUID, uuid.substring(uuid.indexOf('-') + 1)), name);
+            } else if (uuid.startsWith("slack-")) {//not supported by dialog_system yet, only prepared this since it is supported by memory
+                person.addUuid(new Uuid(UuidType.SLACK_UUID, uuid.substring(uuid.indexOf('-') + 1)), name);
+            } else {
+                logger.error("UUID format of UUID " + uuid + "not supported. Currently supported services: telegram, facebook, slack, local.");
+            }
         }
         context.ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
 

@@ -40,7 +40,7 @@ public class TelegramInput implements InputDevice, CleanUp {
      * Places them in the appropriate thread's message string. Creates thread beforehand, if necessary.
      * @param update contains a (sender uuid,message) string pair.
      */
-    public static void onUpdate(Pair<String, String> update) {
+    public static void onUpdate(Pair<String, String> update, String name) {
 
         String chatId = update.getKey();
         String uuid = "telegram-" + chatId;
@@ -49,7 +49,7 @@ public class TelegramInput implements InputDevice, CleanUp {
 
         if (input == null){//if Thread does not exist yet, create it and place the new message as it's input
             try {
-                ConversationManager.spawnConversation(uuid);
+                ConversationManager.spawnConversation(uuid, name);
             } catch (IOException e) {
                 logger.error("Could not create conversation for telegram uuid '" + chatId + "'!");
                 return;

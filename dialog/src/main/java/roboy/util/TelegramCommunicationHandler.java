@@ -34,7 +34,7 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
     private static final int INPUT_TIME_LIMIT = 5; //SECONDS
 
     // CHAT ID ----- ITS MESSAGE
-    private volatile List<Pair<String, String>> pairs = new ArrayList<>();
+    private volatile List<Pair<String,Pair<String, String>>> pairs = new ArrayList<>();
     private List<Timeout> telegramTimeouts; //Timeouts
     private final static int initTime = (int) (System.currentTimeMillis() / 1000L); //in order to discard messages older than launch
 
@@ -96,6 +96,7 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
      */
     @Override
     public void onUpdateReceived(Update update) {
+        String name = null;
         if(!update.hasMessage()){
             return;
         }
@@ -115,9 +116,18 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
             TelegramCommandHandler commandHandler = new TelegramCommandHandler(text, chatID);
             commandHandler.execute();
         }else{
+            if(message.getFrom().getUserName() != null){
+                name = message.getFrom().getUserName();
+            }
+            else if(message.getFrom().getFirstName() != null) {
+                name = message.getFrom().getFirstName();
+            }
+            else{
+                name = "Telegram user " + message.getFrom().getId().toString();
+            }
             try {
                 //get message, add it to containers
-                pairs.add(new Pair<>(chatID, text));
+                pairs.add(new Pair<>(name, new Pair<>(chatID, text)));
 
                 //wait for certain seconds, start the timer
                 handleTimeout(chatID);
@@ -145,28 +155,30 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
             }
         }
 
-        List<Pair<String, String>> removedObjects = new ArrayList<>();
+        List<Pair<String,Pair<String, String>>> removedObjects = new ArrayList<>();
 
         // get the all messages
-        Pair<String, String> result = null;
-        for(Pair<String, String> p : pairs){
+        Pair<String,Pair<String, String>> result = null;
+        for(Pair<String,Pair<String,String>> pa : pairs){
+            Pair<String,String> p = pa.getValue();
+            String name = pa.getKey();
             //Map a = new HashMap<String, String>();
             if(!chatID.equals(p.getKey())){
                 continue;
             }
 
-            removedObjects.add(p);
+            removedObjects.add(pa);
             String message = p.getValue();
 
             // check if the result initialized
             if(result == null) {
-                result = new Pair<>(chatID, message);
+                result = new Pair<>(name,new Pair<>(chatID, message));
             } else {
                 // sum all of the messages
                 String newMessage = result.getValue()+ " " + message;
 
                 //equal chat id
-                result = new Pair<>(chatID, newMessage);
+                result = new Pair<>(name,new Pair<>(chatID, newMessage));
             }
         }
 
@@ -174,7 +186,7 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
         if(result != null) {
             // notify the input device
             pairs.removeAll(removedObjects);
-            TelegramInput.onUpdate(result);
+            TelegramInput.onUpdate(result.getValue(), result.getKey());
         }
     }
 

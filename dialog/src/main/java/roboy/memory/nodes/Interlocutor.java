@@ -31,9 +31,9 @@ public class Interlocutor extends MemoryNodeModel {
         this.addName(name);
     }
 
-    public Interlocutor(Neo4jMemoryInterface memory, Uuid uuid) {
+    public Interlocutor(Neo4jMemoryInterface memory, Uuid uuid, String name) {
         super(memory);
-        this.addUuid(uuid);
+        this.addUuid(uuid, name);
     }
 
     /**
@@ -49,8 +49,9 @@ public class Interlocutor extends MemoryNodeModel {
         FAMILIAR = this.init(this);
     }
 
-    public void addUuid(Uuid uuid) {
-        setProperty(uuid.getType().toNeo4jProperty(), uuid);
+    public void addUuid(Uuid uuid, String name) {
+        setProperty(Neo4jProperty.name, name);
+        setProperty(uuid.getType().toNeo4jProperty(), uuid.getUuid());
         setLabel(uuid.getType().toNeo4jLabel());
         FAMILIAR = this.init(this);
     }
