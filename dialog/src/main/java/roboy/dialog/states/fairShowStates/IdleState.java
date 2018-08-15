@@ -59,7 +59,7 @@ public class IdleState extends MonologState {
                 return getContext().CROWD_DETECTION.getLastValue().getData() < MIN_NUMBER_PEOPLE;
             } catch(NullPointerException e){
                 LOGGER.info("Make sure crowd detection is publishing, receiving: " + e.getMessage());
-                return false;
+                return true;
             }
         }
 
