@@ -23,8 +23,26 @@ public class Word2vec {
     private final WeightLookupTable weightLookupTable;
     private final Iterator<INDArray> vectors;
     private double threshold;
+    private static Word2vec globalInstance;
 
-    public Word2vec() throws Exception {
+
+    public static Word2vec getInstance(){
+        if(globalInstance == null){
+            try {
+                globalInstance = new Word2vec();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return globalInstance;
+    }
+
+    public Word2Vec getModel(){
+        return this.vec;
+    }
+
+    private Word2vec() throws Exception {
         threshold = ConfigManager.W2V_THRES;
 
         // Get all files paths

@@ -25,7 +25,6 @@ public class BotBoyState extends State {
 
     public BotBoyState(String stateIdentifiers, StateParameters params){
         super(stateIdentifiers, params);
-
     }
 
     // first we wait for conversation to start

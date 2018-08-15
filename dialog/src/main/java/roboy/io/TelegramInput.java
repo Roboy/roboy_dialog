@@ -12,6 +12,9 @@ import java.util.HashMap;
 /**
  * Handles telegram API and hands threads their respective messages.
  *
+ * TelegramInput is design to be allocated for each conversation.
+ * Each new user that is communicating with roboy via Telegram will make a new TelegramInput in the system.
+ * On the other hand, the TelegramInputs that is already existing in the system will just be informed about the messages.
  */
 public class TelegramInput implements InputDevice, CleanUp {
     //static part since there is only one API handle
