@@ -10,15 +10,8 @@
       }
     },
     {
-      "identifier": "Greetings",
-      "implementation": "roboy.dialog.states.ordinaryStates.PassiveGreetingsState",
-      "transitions": {
-        "greetingDetected": "Intro"
-      }
-    },
-    {
       "identifier": "Intro",
-      "implementation": "roboy.dialog.states.ordinaryStates.IntroductionState",
+      "implementation": "roboy.dialog.states.botboy.BotBoyIntroductionState",
       "transitions": {
         "knownPerson": "FollowUp",
         "newPerson": "PersonalQA"
@@ -29,7 +22,7 @@
     },
     {
       "identifier": "FollowUp",
-      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationFollowUpState",
+      "implementation": "roboy.dialog.states.botboy.BotBoyPersonalInformationFollowUpState",
       "transitions": {
         "questionAnswering": "QuestionAnswering"
       },
@@ -39,7 +32,7 @@
     },
     {
       "identifier": "PersonalQA",
-      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationAskingState",
+      "implementation": "roboy.dialog.states.botboy.BotBoyPersonalInformationAskingState",
       "transitions": {
         "questionAnswering": "QuestionAnswering"
       },
@@ -49,7 +42,7 @@
     },
     {
       "identifier": "QuestionAnswering",
-      "implementation": "roboy.dialog.states.ordinaryStates.QuestionAnsweringState",
+      "implementation": "roboy.dialog.states.botboy.BotBoyQuestionAnsweringState",
       "fallback": "WildTalk",
       "transitions": {
         "finishedQuestionAnswering": "Farewell",
@@ -64,7 +57,7 @@
     },
     {
       "identifier": "Farewell",
-      "implementation": "roboy.dialog.states.ordinaryStates.FarewellState",
+      "implementation": "roboy.dialog.states.botboy.BotBoyFarewellState",
       "transitions": {}
     }
   ]

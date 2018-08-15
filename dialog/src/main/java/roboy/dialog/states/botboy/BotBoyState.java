@@ -5,6 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
+import roboy.emotions.RoboyEmotion;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.StatementInterpreter;
@@ -44,7 +45,8 @@ public class BotBoyState extends State {
 
         if(inputOK){
             next = getTransition(TRANSITION_INITIALIZED);
-            return Output.say(Verbalizer.greetings.getRandomElement());
+            return Output.say("Hey! I was looking for someone to chat.").setEmotion(RoboyEmotion.HAPPINESS);
+            //return Output.say(Verbalizer.greetings.getRandomElement());
         }
 
         return Output.sayNothing();
