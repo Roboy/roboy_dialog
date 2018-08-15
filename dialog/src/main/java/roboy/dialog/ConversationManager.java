@@ -16,15 +16,14 @@ import roboy.io.MultiOutputDevice;
 import roboy.linguistics.sentenceanalysis.*;
 import roboy.logic.Inference;
 import roboy.logic.InferenceEngine;
+import roboy.memory.Neo4jLabel;
 import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.Neo4jProperty;
 import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
-import roboy.util.ConfigManager;
-import roboy.util.IO;
-import roboy.util.TelegramCommunicationHandler;
+import roboy.util.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -215,7 +214,18 @@ public class ConversationManager {
             logger.error("Memory is null while starting a conversation");
         }
         Interlocutor person = new Interlocutor(memory);
-        person.setProperty(Neo4jProperty.telegram_id, uuid);
+        if(uuid.startsWith("telegram-")){
+            person.addUuid(new Uuid(UuidType.TELEGRAM_UUID, uuid.substring(uuid.indexOf('-')+1)));
+        }else if (uuid.startsWith("facebook-")){//not supported by dialog_system yet, only prepared this since it is supported by memory
+            person.addUuid(new Uuid(UuidType.FACEBOOK_UUID, uuid.substring(uuid.indexOf('-')+1)));
+        }else if(uuid.startsWith("slack-")){//not supported by dialog_system yet, only prepared this since it is supported by memory
+            person.addUuid(new Uuid(UuidType.SLACK_UUID, uuid.substring(uuid.indexOf('-')+1)));
+        }else if(uuid.equals("local")){
+            person.setLabel(Neo4jLabel.Person);
+        }
+        else{
+            logger.error("UUID format of UUID " + uuid + "not supported. Currently supported services: telegram, facebook, slack, local.");
+        }
         context.ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
 
 
