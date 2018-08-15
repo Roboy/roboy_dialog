@@ -32,9 +32,12 @@ public class IdleState extends MonologState {
     @Override
     public Output act() {
 
+        LOGGER.info("Starting Idle State, waiting " + delay + " Minute(s) until next Interaction!");
+
         long enteringTime = System.nanoTime();
 
-        while(notInVision() && (TimeUnit.MINUTES.toNanos(delay) > System.nanoTime() - enteringTime)) {
+        //while(notInVision() && (TimeUnit.MINUTES.toNanos(delay) > System.nanoTime() - enteringTime))
+        while(TimeUnit.MINUTES.toNanos(delay) > System.nanoTime() - enteringTime){
             try {
                 TimeUnit.SECONDS.sleep(1);
             } catch (InterruptedException e) {
