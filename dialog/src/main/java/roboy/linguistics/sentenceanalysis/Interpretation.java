@@ -1,16 +1,13 @@
 package roboy.linguistics.sentenceanalysis;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.emotions.RoboyEmotion;
-import roboy.linguistics.DetectedEntity;
+import roboy.linguistics.Keyword;
 import roboy.linguistics.Linguistics.*;
 import roboy.linguistics.Triple;
-
-import edu.stanford.nlp.sempre.*;
 
 import javax.annotation.Nullable;
 
@@ -32,7 +29,7 @@ public class Interpretation implements Cloneable {
     private List<String> tokens = null;
     private String[] posTags = null;
     private String[] lemmas = null;
-    private List<DetectedEntity> keywords = null;
+    private List<Keyword> keywords = null;
     private String association = null;
     private Map<SemanticRole, String> pas = null;
     private String name = null;
@@ -149,15 +146,15 @@ public class Interpretation implements Cloneable {
     }
 
     @Nullable
-    public List<DetectedEntity> getKeywords() {
+    public List<Keyword> getKeywords() {
         return keywords;
     }
 
-    public void setKeywords(List<DetectedEntity> keywords) {
+    public void setKeywords(List<Keyword> keywords) {
         this.keywords = keywords;
     }
 
-    public void addKeyword(DetectedEntity keyword) {
+    public void addKeyword(Keyword keyword) {
 	    if (keywords == null) {
             keywords = new ArrayList<>();
         }

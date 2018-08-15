@@ -13,7 +13,8 @@ public enum RoboyEmotion {
     FACEBOOK_EYES("img:facebook"),
     NEUTRAL("neutral"),
     HAPPINESS("happiness"),
-    SADNESS("sadness");
+    SADNESS("sadness"),
+    BEER_THIRSTY("beer");
 
     public String type;
 

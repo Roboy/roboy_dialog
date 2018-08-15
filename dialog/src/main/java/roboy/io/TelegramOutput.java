@@ -47,6 +47,9 @@ public class TelegramOutput implements OutputDevice {
             }else if (a instanceof EmotionAction) {
                 String stickerID = null;
                 switch(((EmotionAction) a).getState()){
+                    case "beer": stickerID = "CAADAgADKQAD5dCAEFX3hCMAAfM_awI"; break;
+                    case "sadness": stickerID = "CAADAgADiAAD5dCAEOQeh7anZFNuAg"; break;
+                    case "happiness": stickerID = "CAADAgADUQAD5dCAEIT4-Rl1t2BEAg"; break;
                     case "shy": stickerID = "CAADAgADSwAD5dCAEBGmde8-twTLAg"; break;
                     case "smileblink": stickerID = "CAADAgADSgAD5dCAEMQakIa3aHHSAg"; break;
                     case "kiss": stickerID = "CAADAgADOQAD5dCAEOtbfZz0NKh2Ag"; break;

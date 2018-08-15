@@ -25,7 +25,7 @@ DEMO_MODE: false
 INFINITE_REPETITION: true
 
 # only single input is allowed, defaults to cmdline
-INPUT: cmdline
+#INPUT: cmdline
 #INPUT: cerevoice
 #INPUT: udp
 #INPUT: bing
@@ -33,9 +33,8 @@ INPUT: telegram
 
 # multiple outputs are allowed, defaults to cmdline
 OUTPUTS:
-#- cmdline
-# - ibm
 # - cmdline
+# - ibm
 # - cerevoice
 # - freetts
 # - ibm
@@ -50,8 +49,8 @@ UDP_HOST_ADDRESS: 127.0.0.1
 PARSER_PORT: 5000
 # PERSONALITY_FILE: "resources/personalityFiles/ExpoPersonality.json"
 
-PERSONALITY_FILE: "resources/personalityFiles/OrdinaryPersonality.json"
-#PERSONALITY_FILE: "resources/personalityFiles/bot/TelegramBot.json"
+#PERSONALITY_FILE: "resources/personalityFiles/OrdinaryPersonality.json"
+PERSONALITY_FILE: "resources/personalityFiles/bot/TelegramBot.json"
 # PERSONALITY_FILE: "resources/personalityFiles/tutorial/MathTest.json"
 # PERSONALITY_FILE: "resources/personalityFiles/tutorial/ToyStateMachine.json"
 # PERSONALITY_FILE: "resources/personalityFiles/uzupis.json"
@@ -69,14 +68,18 @@ ACTION_CLIENT_SCRIPT: "/home/roboy/workspace/Roboy/src/roboy_dialog/resources/sc
 
 # Memory: java.util.logging
 #   https://docs.oracle.com/javase/7/docs/api/java/util/logging/Level.html
-MEMORY_LOG_MODE: "DEBUG" 
+MEMORY_LOG_MODE: "WARNING" 
 
 # Dialog: LOG4J 2
 #   https://logging.apache.org/log4j/2.x/log4j-api/apidocs/org/apache/logging/log4j/Level.html
 #   https://logging.apache.org/log4j/2.x/manual/customloglevels.html
-DIALOG_LOG_MODE: "DEBUG" 
+DIALOG_LOG_MODE: "WARN" 
 
 # Parser/NLU: LogInfo
 #   Supports all Log4J levels. See Documentation for more details
-PARSER_LOG_MODE: "DEBUG" 
+<<<<<<< Updated upstream
+PARSER_LOG_MODE: "WARN" 
+=======
+PARSER_LOG_MODE: "INFO" 
 TELEGRAM_API_TOKENS_FILE: "/Users/Apple/botboy/tokens.json"
+>>>>>>> Stashed changes
