@@ -55,6 +55,9 @@ public class Context {
     public final HistoryInterface<DetectedObjects,Integer, Strings> OBJECT_DETECTION =
             new HistoryInterface<>(new DetectedObjects());
 
+    public final HistoryInterface<BoothSentence, Integer, std_msgs.String > BOOTH_SENTENCE =
+            new HistoryInterface<>(new BoothSentence());
+
     /* GUI */
     private final ArrayList guiValues = new ArrayList();
     private final ArrayList guiHistories = new ArrayList();
@@ -72,6 +75,7 @@ public class Context {
     private DetectedPersonUpdater DETECTED_PERSON_UPDATER;
     private PeopleAroundUpdater CROWD_UPDATER;
     private DetectedObjectsUpdater DETECTED_OBJ_UPDATER;
+    private BoothSentenceUpdater BOOTH_SENTENCE_UPDATER;
 
     /* OBSERVERS */
     private final FaceCoordinatesObserver FACE_COORDINATES_OBSERVER;
@@ -125,6 +129,10 @@ public class Context {
                     DETECTED_PERSON_UPDATER = new DetectedPersonUpdater(PERSON_DETECTION.valueHistory, ros);
                     DETECTED_OBJ_UPDATER = new DetectedObjectsUpdater(OBJECT_DETECTION.valueHistory, ros);
                     CROWD_UPDATER = new PeopleAroundUpdater(CROWD_DETECTION.valueHistory, ros);
+                }
+
+                if(ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_nodered")){
+                    BOOTH_SENTENCE_UPDATER = new BoothSentenceUpdater(BOOTH_SENTENCE.valueHistory, ros);
                 }
 
                 rosInitialized = true;

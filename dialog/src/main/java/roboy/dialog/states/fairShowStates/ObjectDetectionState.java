@@ -26,7 +26,7 @@ enum Objects {
         }
 
     },
-    BYCICLE {
+    BICYCLE {
 
         private RandomList<String> phrases = new RandomList<>("a bycicle, I bet I can ride faster than you", "a bike, I could easily win the tour de France", "a bycicle, I learnt riding the bycicle when I was just three years old. And you?", "bike. I love bycicles. I only fell off my bike once.");
 
@@ -135,6 +135,7 @@ public class ObjectDetectionState extends MonologState {
     private final Set<Objects> detectedObjects = new HashSet<>();
 
     private Vector<Output> outputs = new Vector<>();
+    private Output currentOutput;
 
     private final Logger logger = LogManager.getLogger();
 
@@ -149,7 +150,7 @@ public class ObjectDetectionState extends MonologState {
 
         if(outputs.isEmpty()){
 
-            checkObjects();
+            getObjects();
 
             for(Objects obj : detectedObjects) {
 
@@ -158,10 +159,23 @@ public class ObjectDetectionState extends MonologState {
             }
         }
 
-        Output current = outputs.remove(0);
-        if(outputs.isEmpty()) nextState = getTransition(TRANSITION_FINISHED);
+        try {
 
-        return current;
+            currentOutput = outputs.remove(0);
+
+        } catch (ArrayIndexOutOfBoundsException e){
+
+            logger.info("No objects detected from Vision");
+            nextState = getTransition(TRANSITION_FINISHED);
+            return Output.sayNothing();
+        }
+
+        if(outputs.isEmpty()){
+
+            nextState = getTransition(TRANSITION_FINISHED);
+        }
+
+        return currentOutput;
     }
 
     @Override
@@ -173,16 +187,29 @@ public class ObjectDetectionState extends MonologState {
     /**
      * fetches detected objects from vision and writes into a list
      */
-    private void checkObjects(){
+    private void getObjects(){
+
+
+        List<String> detectedThings = new ArrayList<>();
 
         try {
-            List<String> detectedThings = getContext().OBJECT_DETECTION.getLastValue().getNames();
-            for (String obj : detectedThings) {
-                detectedObjects.add(Objects.valueOf(obj.toUpperCase()));
-            }
-        }catch (NullPointerException e){
+
+            detectedThings = getContext().OBJECT_DETECTION.getLastValue().getNames();
+
+        } catch (NullPointerException e){
             nextState = getTransition(TRANSITION_FINISHED);
             logger.error("Make sure object detection publisher is running, receiving: " + e.getMessage());
+        }
+
+        if(!detectedThings.isEmpty()) {
+            for (String obj : detectedThings) {
+                try{
+                    detectedObjects.add(Objects.valueOf(obj.toUpperCase()));
+                } catch (IllegalArgumentException e){
+                    logger.info(obj + " is not an object implemented in Dialog " + e.getMessage());
+                }
+
+            }
         }
 
     }

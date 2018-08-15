@@ -22,7 +22,7 @@ public class ChooseInteractiveTalkState extends MonologState {
     private final static String TRANSITION_MATH = "math";
     private final static String TRANSITION_GAME = "game";
     private final static String TRANSITION_PERSONAL_QA = "personalQA";
-    private final static String TRANSITION_OBJECT_DETECTED = "objectDetected";
+    private final static String TRANSITION_OBJECT_DETECTION = "objectDetected";
     private final static String TRANSITION_GENERAL_QA = "generalQA";
 
     private final Logger logger = LogManager.getLogger();
@@ -45,10 +45,6 @@ public class ChooseInteractiveTalkState extends MonologState {
 
             nextInteraction = TRANSITION_NEW_PERSON;
 
-        } else if(checkObjectsDetected()){
-
-            nextInteraction = TRANSITION_OBJECT_DETECTED;
-
         } else {
 
             nextInteraction = selectRandomInteraction();
@@ -70,7 +66,7 @@ public class ChooseInteractiveTalkState extends MonologState {
      */
     private void resetAvailableInteractions() {
         availableInteractions.clear();
-        availableInteractions.addAll(Arrays.asList(TRANSITION_PERSONAL_QA, TRANSITION_MATH, TRANSITION_GAME));
+        availableInteractions.addAll(Arrays.asList(TRANSITION_PERSONAL_QA, TRANSITION_MATH, TRANSITION_GAME, TRANSITION_OBJECT_DETECTION, TRANSITION_GENERAL_QA));
     }
 
     /**
@@ -88,13 +84,5 @@ public class ChooseInteractiveTalkState extends MonologState {
         return interaction;
     }
 
-    private boolean checkObjectsDetected(){
-        try {
-            return !getContext().OBJECT_DETECTION.getLastValue().getNames().isEmpty();
-        }catch(NullPointerException e){
-            logger.info("Make sure object detection is publishing, receiving: " + e.getMessage());
-            return false;
-        }
-    }
 
 }

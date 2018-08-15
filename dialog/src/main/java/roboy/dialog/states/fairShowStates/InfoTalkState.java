@@ -19,76 +19,11 @@ import java.util.*;
 
 enum InfoAbout {
 
-    ABOUT_TEAM {
-
-        private RandomList<String> phrases = PhraseCollection.ROBOY_TEAM_PHRASES;
-
-        @Override
-        public State.Output performSpecialAction(RosMainNode rosNode){
-
-            return State.Output.say(phrases.getRandomElement());
-        }
-
-    },
-    ABOUT_ROBOY {
-
-        private RandomList<String> phrases = PhraseCollection.MISSION_PHRASES;
-        @Override
-        public State.Output performSpecialAction(RosMainNode rosNode){
-
-            return State.Output.say(phrases.getRandomElement());
-        }
-    },
-    ABOUT_MOVEMENT {
-
-
-        Random random    = new Random();
-        RandomList<String> phrases = PhraseCollection.MOVEMENT_PHRASES;
-
-        @Override
-        public State.Output performSpecialAction(RosMainNode rosNode){
-
-            HashMap<String, String> parts = new HashMap<>();
-            parts.put("shoulder_left", "left shoulder");
-            parts.put("shoulder_right", "right shoulder");
-            parts.put("spine_right", "right leg");
-            parts.put("spine_left", "left leg");
-
-            List<String> bodyParts = new ArrayList<>(parts.keySet());
-
-            String randomPart = bodyParts.get(random.nextInt(bodyParts.size()));
-            String randomPartLiteral = parts.get(randomPart);
-
-            try {
-                rosNode.PerformMovement(randomPart, "random1");
-
-            } catch (InterruptedException e) {
-
-                logger.error(e.getMessage());
-            }
-
-            return State.Output.say(String.format(phrases.getRandomElement(), randomPartLiteral));
-        }
-    },
-    ABOUT_EMOTIONS {
-
-        private RandomList<String> phrases = PhraseCollection.EMOTION_PHRASES;
-        private RandomList<RoboyEmotion> emotions = new RandomList<>();
-
-
-        @Override
-        public State.Output performSpecialAction(RosMainNode rosNode){
-
-            emotions.addAll(Arrays.asList(RoboyEmotion.values()));
-
-            return State.Output.say(phrases.getRandomElement()).setEmotion(emotions.getRandomElement());
-        }
-    };
-
-    private final static Logger logger = LogManager.getLogger();
-
-    public abstract State.Output performSpecialAction(RosMainNode rosNode);
-
+    ABOUT_TEAM,
+    ABOUT_BOOTH,
+    ABOUT_ROBOY,
+    ABOUT_MOVEMENT,
+    ABOUT_EMOTIONS
 }
 
 /**
@@ -106,9 +41,14 @@ public class InfoTalkState extends MonologState {
     private final RandomList<InfoAbout> availableInformation = new RandomList<>();
     private InfoAbout activeInfo;
 
+    private RandomList<String> phrases = new RandomList<>();
+
     private final Logger logger = LogManager.getLogger();
 
     private State nextState = this;
+
+    private Random random    = new Random();
+    private RandomList<RoboyEmotion> emotions = new RandomList<>();
 
     public InfoTalkState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
@@ -120,7 +60,69 @@ public class InfoTalkState extends MonologState {
 
         activeInfo = selectRandomInfo();
 
-        return activeInfo.performSpecialAction(getRosMainNode());
+        switch(activeInfo){
+            case ABOUT_TEAM:
+
+                phrases = PhraseCollection.ROBOY_TEAM_PHRASES;
+                return Output.say(phrases.getRandomElement());
+
+            case ABOUT_BOOTH:
+
+                String boothSentence = "Look at this awesome booth here! Isn't it amazing what is already possible in technology? Come an talk to one of the guy and get more into the topic!";
+
+                try{
+
+                    boothSentence = getContext().BOOTH_SENTENCE.getLastValue().toString();
+
+                } catch (NullPointerException e){
+
+                    logger.info("No individual Booth Sentence received, make sure it is published " + e.getMessage());
+
+                }
+
+                return Output.say(boothSentence);
+
+            case ABOUT_ROBOY:
+
+                phrases = PhraseCollection.MISSION_PHRASES;
+                return  Output.say(phrases.getRandomElement());
+
+            case ABOUT_MOVEMENT:
+
+
+                phrases = PhraseCollection.MOVEMENT_PHRASES;
+
+                HashMap<String, String> parts = new HashMap<>();
+                parts.put("shoulder_left", "left shoulder");
+                parts.put("shoulder_right", "right shoulder");
+                parts.put("spine_right", "right leg");
+                parts.put("spine_left", "left leg");
+
+                List<String> bodyParts = new ArrayList<>(parts.keySet());
+
+                String randomPart = bodyParts.get(random.nextInt(bodyParts.size()));
+                String randomPartLiteral = parts.get(randomPart);
+
+//            try {
+                //               rosNode.PerformMovement(randomPart, "random1");
+////          } catch (InterruptedException e) {
+
+                //            logger.error(e.getMessage());
+                //           }
+
+                return State.Output.say(String.format(phrases.getRandomElement(), randomPartLiteral));
+
+            case ABOUT_EMOTIONS:
+
+                phrases = PhraseCollection.EMOTION_PHRASES;
+                emotions.addAll(Arrays.asList(RoboyEmotion.values()));
+
+                return State.Output.say(phrases.getRandomElement()).setEmotion(emotions.getRandomElement());
+
+
+        }
+
+        return Output.sayNothing();
     }
 
     @Override
