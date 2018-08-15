@@ -6,7 +6,12 @@
       "identifier": "TelegramBot",
       "implementation": "roboy.dialog.states.botboy.BotBoyState",
       "transitions": {
-        "initialized":"Intro"
+        "greetingDetected":"Intro",
+        "knownPerson": "FollowUp",
+        "newPerson": "PersonalQA"
+      },
+      "parameters": {
+        "infoFile": "resources/sentences/RoboyInfoList.json"
       }
     },
     {
