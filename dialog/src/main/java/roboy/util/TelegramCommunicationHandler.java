@@ -117,13 +117,13 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
             commandHandler.execute();
         }else{
             if(message.getFrom().getUserName() != null){
-                name = message.getFrom().getUserName();
+                name = message.getFrom().getUserName().toLowerCase();
             }
             else if(message.getFrom().getFirstName() != null) {
-                name = message.getFrom().getFirstName();
+                name = message.getFrom().getFirstName().toLowerCase();
             }
             else{
-                name = "Telegram user " + message.getFrom().getId().toString();
+                name = "telegram user " + message.getFrom().getId().toString();
             }
             try {
                 //get message, add it to containers

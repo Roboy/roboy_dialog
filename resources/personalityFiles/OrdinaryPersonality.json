@@ -5,7 +5,12 @@
       "identifier": "Greetings",
       "implementation": "roboy.dialog.states.ordinaryStates.PassiveGreetingsState",
       "transitions": {
-        "greetingDetected": "Intro"
+        "greetingDetected": "Intro",
+        "knownPerson": "FollowUp",
+        "newPerson": "PersonalQA"
+      },
+      "parameters": {
+        "infoFile": "resources/sentences/RoboyInfoList.json"
       }
     },
     {
