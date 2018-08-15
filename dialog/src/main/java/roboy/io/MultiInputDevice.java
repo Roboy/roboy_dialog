@@ -49,7 +49,7 @@ public class MultiInputDevice implements InputDevice, CleanUp{
 	}
 
 	@Override
-	public void finalize(){//just in case someone forgot to clean their mess
+	protected void finalize(){//just in case someone forgot to clean their mess
 		this.cleanup();
 	}
 }
