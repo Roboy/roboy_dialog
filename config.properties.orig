@@ -25,7 +25,7 @@ DEMO_MODE: false
 INFINITE_REPETITION: true
 
 # only single input is allowed, defaults to cmdline
-#INPUT: cmdline
+INPUT: cmdline
 #INPUT: cerevoice
 #INPUT: udp
 #INPUT: bing
@@ -33,8 +33,9 @@ INPUT: telegram
 
 # multiple outputs are allowed, defaults to cmdline
 OUTPUTS:
-# - cmdline
+#- cmdline
 # - ibm
+# - cmdline
 # - cerevoice
 # - freetts
 # - ibm
@@ -48,12 +49,21 @@ UDP_HOST_ADDRESS: 127.0.0.1
 
 PARSER_PORT: 5000
 # PERSONALITY_FILE: "resources/personalityFiles/ExpoPersonality.json"
+<<<<<<< 99ca23f32264e1c18002de44f0611b85cc742df2
 
-#PERSONALITY_FILE: "resources/personalityFiles/OrdinaryPersonality.json"
-PERSONALITY_FILE: "resources/personalityFiles/bot/TelegramBot.json"
+PERSONALITY_FILE: "resources/personalityFiles/OrdinaryPersonality.json"
+#PERSONALITY_FILE: "resources/personalityFiles/bot/TelegramBot.json"
 # PERSONALITY_FILE: "resources/personalityFiles/tutorial/MathTest.json"
 # PERSONALITY_FILE: "resources/personalityFiles/tutorial/ToyStateMachine.json"
 # PERSONALITY_FILE: "resources/personalityFiles/uzupis.json"
+=======
+# PERSONALITY_FILE: "resources/personalityFiles/OrdinaryPersonality.json"
+# PERSONALITY_FILE: "resources/personalityFiles/bot/TelegramBot.json"
+# PERSONALITY_FILE: "resources/personalityFiles/tutorial/MathTest.json"
+# PERSONALITY_FILE: "resources/personalityFiles/tutorial/ToyStateMachine.json"
+# PERSONALITY_FILE: "resources/personalityFiles/GamePersonality.json"
+PERSONALITY_FILE: "resources/personalityFiles/DevoPersonality.json"
+>>>>>>> Like, hypersexy space alien shit, or something
 
 IBM_TTS_USER: ""
 IBM_TTS_PASS: ""
@@ -68,18 +78,26 @@ ACTION_CLIENT_SCRIPT: "/home/roboy/workspace/Roboy/src/roboy_dialog/resources/sc
 
 # Memory: java.util.logging
 #   https://docs.oracle.com/javase/7/docs/api/java/util/logging/Level.html
-MEMORY_LOG_MODE: "WARNING" 
+<<<<<<< 99ca23f32264e1c18002de44f0611b85cc742df2
+MEMORY_LOG_MODE: "DEBUG" 
+=======
+MEMORY_LOG_MODE: "DEBUG"
+>>>>>>> Like, hypersexy space alien shit, or something
 
 # Dialog: LOG4J 2
 #   https://logging.apache.org/log4j/2.x/log4j-api/apidocs/org/apache/logging/log4j/Level.html
 #   https://logging.apache.org/log4j/2.x/manual/customloglevels.html
-DIALOG_LOG_MODE: "WARN" 
+<<<<<<< 99ca23f32264e1c18002de44f0611b85cc742df2
+DIALOG_LOG_MODE: "DEBUG" 
 
 # Parser/NLU: LogInfo
 #   Supports all Log4J levels. See Documentation for more details
-<<<<<<< Updated upstream
-PARSER_LOG_MODE: "WARN" 
-=======
-PARSER_LOG_MODE: "INFO" 
+PARSER_LOG_MODE: "DEBUG" 
 TELEGRAM_API_TOKENS_FILE: "/Users/Apple/botboy/tokens.json"
->>>>>>> Stashed changes
+=======
+DIALOG_LOG_MODE: "DEBUG"
+
+# Parser/NLU: LogInfo
+#   Supports all Log4J levels. See Documentation for more details
+PARSER_LOG_MODE: "DEBUG"
+>>>>>>> Like, hypersexy space alien shit, or something
