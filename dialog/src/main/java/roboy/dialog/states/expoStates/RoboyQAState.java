@@ -2,7 +2,6 @@ package roboy.dialog.states.expoStates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import roboy.context.Context;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.dialog.states.definitions.ExpoState;

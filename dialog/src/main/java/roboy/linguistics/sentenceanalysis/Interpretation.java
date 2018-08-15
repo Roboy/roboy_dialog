@@ -478,6 +478,55 @@ public class Interpretation implements Cloneable {
                 '}';
     }
 
+    public void toLowerCase() {
+        if (sentence != null) {
+            sentence = sentence.toLowerCase();
+        }
+        if (triples != null) {
+            for (int i = 0; i < triples.size(); i++) {
+                if (triples.get(i) != null) {
+                    triples.set(i, triples.get(i).toLowerCase());
+                }
+            }
+        }
+        if (tokens != null) {
+            for (int i = 0; i < tokens.size(); i++) {
+                if (tokens.get(i) != null) {
+                    tokens.set(i, tokens.get(i).toLowerCase());
+                }
+            }
+        }
+        if (this.lemmas != null) {
+            for (int i = 0; i < lemmas.length; i++) {
+                if (lemmas[i] != null) {
+                    lemmas[i] = lemmas[i].toLowerCase();
+                }
+            }
+        }
+        if (this.pas != null) {
+            for (SemanticRole key : pas.keySet()) {
+                if (pas.get(key) != null) {
+                    pas.replace(key, pas.get(key).toLowerCase());
+                }
+            }
+        }
+        if (this.name != null) {
+            this.name = this.name.toLowerCase();
+        }
+        if (this.objAnswer != null) {
+            this.objAnswer = this.objAnswer.toLowerCase();
+        }
+        if (this.predAnswer != null) {
+            this.predAnswer = this.predAnswer.toLowerCase();
+        }
+        if (this.underspecifiedQuestion != null) {
+            this.underspecifiedQuestion = this.underspecifiedQuestion.toLowerCase();
+        }
+        if (this.underspecifiedAnswer != null) {
+            this.underspecifiedAnswer = this.underspecifiedAnswer.toLowerCase();
+        }
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
