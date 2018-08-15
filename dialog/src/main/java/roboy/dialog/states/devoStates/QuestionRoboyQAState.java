@@ -21,6 +21,7 @@ import roboy.util.Agedater;
 import roboy.util.Pair;
 import roboy.util.QAJsonParser;
 import roboy.util.RandomList;
+import roboy.util.api.*;
 
 import java.util.*;
 
@@ -99,6 +100,11 @@ public class QuestionRoboyQAState extends ExpoState {
         askingSpecifyingQuestion = false;
         questionsAnswered++;
 
+        String answer = inferApiAnswer(input);
+        if (!answer.isEmpty()) {
+            return Output.say(answer);
+        }
+
         if (input.getTokens() != null && !(input.getTokens().contains("you") || input.getTokens().contains("your"))) {
             Linguistics.ParsingOutcome parseOutcome = input.getParsingOutcome();
             if (parseOutcome == null) {
@@ -176,6 +182,40 @@ public class QuestionRoboyQAState extends ExpoState {
         return Output.say(answer);
     }
 
+    private String inferApiAnswer(Interpretation input) {
+        Map<SemanticRole, String> pas = input.getPas();
+        String answer = "";
+        if (matchPas(pas, new Pair(SemanticRole.PATIENT, ".*\\bweather\\b.*"))) {
+            try {
+                answer = String.format("It seems like it is %s out there!", Weather.getData("munich"));
+            }
+            catch (Exception e) {
+                answer = "It seems a bit moody...";
+                LOGGER.error(e.getMessage());
+            }
+        } else if (matchPas(pas, new Pair(SemanticRole.AGENT, ".*\\bmovie.*"))) {
+            try {
+                answer = String.format("I have heard that %s is playing!", Movie.getData("title"));
+            }
+            catch (Exception e) {
+                answer = "Wall e is a great movie!";
+                LOGGER.error(e.getMessage());
+            }
+        } else if (matchPas(pas, new Pair(SemanticRole.PATIENT, ".+ in .+"), new Pair(SemanticRole.MANNER, "how"), new Pair(SemanticRole.PREDICATE, "say"), new Pair(SemanticRole.AGENT, "you")) ||
+                matchPas(pas, new Pair(SemanticRole.PATIENT, ".+ in .+"), new Pair(SemanticRole.PREDICATE, "is"), new Pair(SemanticRole.AGENT, "what"))) {
+            String[] parts = pas.get(SemanticRole.PATIENT).split(" in ");
+            assert(parts.length == 2);
+            try {
+                answer = answerStartingPhrases.getRandomElement() + " " + Translate.getData(parts[0], parts[1]);
+            }
+            catch (Exception e) {
+                answer = String.format("I am not sure whether I know %s", parts[1]);
+                LOGGER.error(e.getMessage());
+            }
+        }
+        return answer;
+    }
+
     private String inferMemoryAnswer(Interpretation input, Roboy roboy) {
 
         String answer = "";
@@ -210,13 +250,6 @@ public class QuestionRoboyQAState extends ExpoState {
         String answer = "";
         if (matchPas(pas, new Pair(SemanticRole.AGENT, "old")) || matchPas(pas, new Pair(SemanticRole.PATIENT, ".*\\bage\\b.*"))) {
             answer = extractAge(roboy);
-            // } else if (matchPas(pas, new Pair(SemanticRole.PATIENT, ".*\\bweather\\b.*"))) {
-            //     // -> Weather API
-            // } else if (matchPas(pas, new Pair(SemanticRole.AGENT, ".*\\bmovie.*"))) {
-            //     // -> Movie API
-            // } else if (matchPas(pas, new Pair(SemanticRole.PATIENT, ".+ in .+"), new Pair(SemanticRole.MANNER, "how"), new Pair(SemanticRole.PREDICATE, "say"), new Pair(SemanticRole.AGENT, "you")) ||
-            //         matchPas(pas, new Pair(SemanticRole.PATIENT, ".+ in .+"), new Pair(SemanticRole.PREDICATE, "is"), new Pair(SemanticRole.AGENT, "what"))) {
-            //     // translate(*,**)
         } else if (matchPas(pas, new Pair(SemanticRole.PREDICATE, "from"))) {
             answer = Math.random() > .5 ?
                     extractNodeNameForPredicate(Neo4jRelationship.FROM, roboy) :
