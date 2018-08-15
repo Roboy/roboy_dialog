@@ -1,0 +1,93 @@
+{
+  "initialState": "Greetings",
+  "states": [
+    {
+      "identifier": "Greetings",
+      "implementation": "roboy.dialog.states.ordinaryStates.PassiveGreetingsState",
+      "transitions": {
+        "greetingDetected": "Intro"
+      }
+    },
+    {
+      "identifier": "Intro",
+      "implementation": "roboy.dialog.states.ordinaryStates.IntroductionState",
+      "transitions": {
+        "knownPerson": "FollowUp",
+        "newPerson": "PersonalQA"
+      },
+      "parameters": {
+        "infoFile": "resources/sentences/RoboyInfoList.json"
+      }
+    },
+    {
+      "identifier": "FollowUp",
+      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationFollowUpState",
+      "transitions": {
+        "questionAnswering": "QuestionAnswering"
+      },
+      "parameters": {
+        "qaFile": "resources/sentences/QAList.json"
+      }
+    },
+    {
+      "identifier": "PersonalQA",
+      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationAskingState",
+      "transitions": {
+        "questionAnswering": "QuestionAnswering"
+      },
+      "parameters": {
+        "qaFile": "resources/sentences/QAList.json"
+      }
+    },
+    {
+      "identifier": "QuestionAnswering",
+      "implementation": "roboy.dialog.states.devoStates.QuestionRoboyQAState",
+      "fallback": "WildTalk",
+      "transitions": {
+        "finishedQuestionAnswering": "Farewell",
+        "loopToNewPerson": "PersonalQA",
+        "loopToKnownPerson": "FollowUp",
+        "switchToGaming": "ChooseGameState"
+      },
+      "parameters": {
+        "infoFile": "resources/sentences/RoboyInfoList.json"
+      }
+    },
+    {
+      "identifier": "GamingTwentyQuestionsState",
+      "implementation": "roboy.dialog.states.gameStates.GamingTwentyQuestionsState",
+      "transitions": {
+      "gameEnded" : "QuestionAnswering"
+      }
+    },
+    {
+      "identifier": "GamingSnapchatState",
+      "implementation": "roboy.dialog.states.gameStates.GamingSnapchatState",
+      "transitions": {
+        "gameEnded" : "QuestionAnswering"
+      },
+      "parameters": {
+        "filterFile": "resources/gameResources/snapchat-filters.txt"
+      }
+    },
+    {
+      "identifier": "ChooseGameState",
+      "implementation": "roboy.dialog.states.gameStates.ChooseGameState",
+      "transitions": {
+        "choseSnapchat" : "GamingSnapchatState",
+        "chose20questions" : "GamingTwentyQuestionsState",
+        "exitGame": "QuestionAnswering"
+      }
+    },
+    {
+      "identifier": "WildTalk",
+      "implementation": "roboy.dialog.states.ordinaryStates.WildTalkState",
+      "transitions": {}
+    },
+    {
+      "identifier": "Farewell",
+      "implementation": "roboy.dialog.states.ordinaryStates.FarewellState",
+      "transitions": {}
+    }
+  ]
+}
