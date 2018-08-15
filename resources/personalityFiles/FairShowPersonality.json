@@ -7,9 +7,10 @@
       "transitions": {
         "timeIsUp": "ActiveIntro"
       },
-      "parameters":{
-        "delayInMins" : "1"
+      "parameters": {
+        "delayInMins": "1"
       }
+
     },
     {
       "identifier": "ActiveIntro",

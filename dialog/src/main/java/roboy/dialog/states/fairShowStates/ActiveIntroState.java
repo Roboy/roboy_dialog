@@ -19,7 +19,7 @@ public class ActiveIntroState extends MonologState {
 
     private final static String TRANSITION_PEOPLE_AROUND = "peopleAround";
     private final static String TRANSITION_LONELY_ROBOY = "lonelyRoboy";
-    private final int MIN_NUMBER_PEOPLE = 2;
+    private final int MIN_NUMBER_PEOPLE = 1;
 
     private final Logger logger = LogManager.getLogger();
 
