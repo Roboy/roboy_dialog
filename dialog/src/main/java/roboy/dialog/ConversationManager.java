@@ -28,10 +28,7 @@ import roboy.util.TelegramCommunicationHandler;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 
 /**
@@ -214,9 +211,17 @@ public class ConversationManager {
         if(memory == null){
             logger.error("Memory is null while starting a conversation");
         }
+        /*
         Interlocutor person = new Interlocutor(memory);
         person.setProperty(Neo4jProperty.telegram_id, uuid);
         context.ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+        */
+
+        HashMap<Integer,Interlocutor> persons = new HashMap<>();
+        Interlocutor person = new Interlocutor(memory);
+        person.setProperty(Neo4jProperty.telegram_id, uuid);
+        persons.put(1, person);
+        context.ACTIVE_INTERLOCUTORS_UPDATER.updateValue(persons);
 
 
         return new Conversation(personality, personalityFile, multiIn, multiOut, analyzers);

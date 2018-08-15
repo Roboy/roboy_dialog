@@ -129,12 +129,12 @@ public class Conversation extends Thread {
 
 
             // analyze
-            ArrayList<Interpretation> interpretation = new ArrayList<>();
+            ArrayList<Interpretation> interpretations = new ArrayList<>();
             for(int i=0; i<speakerCount;i++){
-                interpretation.add(new Interpretation(raw.get(i).getSentence(), raw.get(i).getAttributes()));
+                interpretations.add(new Interpretation(raw.get(i).getSentence(), raw.get(i).getAttributes()));
                 for (Analyzer a : analyzers) {
                     try {
-                        interpretation.set(i, a.analyze(interpretation.get(i)));
+                        interpretations.set(i, a.analyze(interpretations.get(i)));
                     } catch (Exception e) {
                         logger.error("Exception in analyzer " + a.getClass().getName() + ": " + e.getMessage());
                         e.printStackTrace();
@@ -158,7 +158,7 @@ public class Conversation extends Thread {
             //TODO
             // answer
             try {
-                actions = personality.answer(interpretation);
+                actions = personality.answer(interpretations.get(0));
             } catch (Exception e) {
                 logger.error("Error in personality.answer: " + e.getMessage());
                 e.printStackTrace();

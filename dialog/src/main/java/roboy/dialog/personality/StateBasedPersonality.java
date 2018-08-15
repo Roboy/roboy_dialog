@@ -200,7 +200,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
             previousActions.add(verbalizer.verbalize(inter));
 
         } else if (act.requiresFallback()) {
-            logger.warn("act() required fallback! Fallbacks are currently only allowed in react().");
+           logger.warn("act() required fallback! Fallbacks are currently only allowed in react().");
 
         } else if (act.isEndOfConversation()) {
             endConversation();

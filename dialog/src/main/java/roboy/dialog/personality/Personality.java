@@ -23,5 +23,5 @@ public interface Personality {
 	 * @param input The interpretation of the inputs
 	 * @return A list of actions to perform in response
 	 */
-	List<Action> answer(ArrayList<Interpretation> input);
+	List<Action> answer(Interpretation input);
 }

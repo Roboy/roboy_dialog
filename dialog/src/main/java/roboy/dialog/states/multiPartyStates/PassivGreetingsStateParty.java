@@ -7,6 +7,7 @@ import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.StatementInterpreter;
 import roboy.talk.Verbalizer;
 
+import java.util.ArrayList;
 import java.util.Set;
 /**
  * Passive state to start a conversation.
@@ -17,6 +18,7 @@ import java.util.Set;
 //TODO The Input will change!!! Changes need to be followed through here!!!
 
 public class PassivGreetingsStateParty extends State {
+
 
     private final String TRANSITION_GREETING_DETECTED = "greetingDetected";
 
@@ -40,17 +42,22 @@ public class PassivGreetingsStateParty extends State {
 
 
     public Output react(ArrayList<Interpretation> input) {
-        /*
-        String sentence = (String) input.getFeatures().get(Linguistics.SENTENCE);
-        boolean inputOK = StatementInterpreter.isFromList(sentence, Verbalizer.greetings) ||
-                StatementInterpreter.isFromList(sentence, Verbalizer.roboyNames) ||
-                StatementInterpreter.isFromList(sentence, Verbalizer.triggers);
-        if (inputOK) {
-            next = getTransition(TRANSITION_GREETING_DETECTED);
-            return Output.say(Verbalizer.greetings.getRandomElement());
+
+        int speakerCount = input.get(0).getSpeakerInfo().getSpeakerCount();
+        for(int i=0; i<speakerCount; i++){
+            String sentence = (String) input.get(i).getSentence();
+            boolean inputOK = StatementInterpreter.isFromList(sentence, Verbalizer.greetings) ||
+                    StatementInterpreter.isFromList(sentence, Verbalizer.roboyNames) ||
+                    StatementInterpreter.isFromList(sentence, Verbalizer.triggers);
+            if(inputOK){
+                next = getTransition(TRANSITION_GREETING_DETECTED);
+                return Output.say(Verbalizer.greetings.getRandomElement());
+            }
+
         }
-*/
+
         return Output.sayNothing();
+
     }
 
     @Override

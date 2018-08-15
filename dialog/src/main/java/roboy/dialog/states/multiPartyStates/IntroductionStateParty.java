@@ -28,20 +28,33 @@ import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
 
 public class IntroductionStateParty extends State{
 
+    private QAJsonParser infoValues;
+
+    private final String LEARN_ABOUT_PERSON = "newPerson";
+
     private final RandomList<String> introPhrases = new RandomList<>("What's your name?");
     private final Logger LOGGER = LogManager.getLogger();
 
     private State nextState;
 
+    private final String INFO_FILE_PARAMETER_ID = "infoFile";
+
+    private RandomList<Neo4jRelationship> roboyRelatioshipPredicates = new RandomList<>(FROM, MEMBER_OF, LIVE_IN, HAS_HOBBY, FRIEND_OF, CHILD_OF, SIBLING_OF);
+
+    private final RandomList<String> failureResponsePhrases = new RandomList<>("Nice to meet you ");
+
+
     public IntroductionStateParty(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
-        // TODO Auto-generated constructor stub
+        String infoListPath = params.getParameter(INFO_FILE_PARAMETER_ID);
+        LOGGER.info(" -> The infoList path: " + infoListPath);
+        infoValues = new QAJsonParser(infoListPath);
     }
+
 
     @Override
     public Output act() {
-        // TODO Auto-generated method stub
-        return null;
+        return Output.say(getIntroPhrase());
     }
 
     @Override
@@ -49,33 +62,54 @@ public class IntroductionStateParty extends State{
         return null;
     }
 
+    @Override
     public Output react(ArrayList<Interpretation> input) {
+        // expecting something like "My name is NAME"
 
-        int speakerCount  = input.get(0).getSpeakerInfo().getSpeakerCount();
+        int speakerCount = input.get(0).getSpeakerInfo().getSpeakerCount();
+        ArrayList<String> names = new ArrayList<>();
+
+        //TODO we need to allocate enough interlocuters
+        Map<Integer, Interlocutor> persons = getContext().ACTIVE_INTERLOCUTORS.getValue();
 
         for(int i=0; i<speakerCount; i++){
-            // expecting something like "My name is NAME"
             String name = getNameFromInput(input.get(i));
-            if (name == null) {
-                // input couldn't be parsed properly
-                // TODO: do something intelligent if the parser fails
-                nextState = this;
-                LOGGER.warn("IntroductionState couldn't get name! Staying in the same state.");
-                return Output.say("Sorry, my parser is out of service.");
-                // alternatively: Output.useFallback() or Output.sayNothing()
+            names.add(name);
+            if(name==null){
+                //TODO handle this smart
+                //what is the next state, if we get one name but not two???
             }
-
             // 2. get interlocutor object from context
             // this also should query memory and do other magic
-            //TODO continue
-            Interlocutor person = Context.getInstance().ACTIVE_INTERLOCUTOR.getValue();
-            person.addName(name);
-            // Roboy roboy = new Roboy(getMemory());
-
+            persons.get(i).addName(name);
         }
 
-        return Output.say(getIntroPhrase());
+
+        // 3. update interlocutor in context
+        getContext().ACTIVE_INTERLOCUTORS_UPDATER.updateValue(persons);
+        String retrievedPersonalFact = "";
+        Double segueProbability = 0.0;
+
+        // person is not known
+        nextState = getTransition(LEARN_ABOUT_PERSON);
+        segueProbability = 0.6;
+
+
+        String retrievedRoboyFacts = getRoboyFactsPhrase(new Roboy(getMemory()));
+        Segue s = new Segue(Segue.SegueType.DISTRACT, segueProbability);
+        //TODO how to react to two or more persons persons
+
+        String response = failureResponsePhrases.getRandomElement();
+        for(int i=0; i<speakerCount; i++){
+            response = response + persons.get(i).getName() + " ";
+            if(i!=speakerCount){
+                response = response + "and ";
+            }
+        }
+
+        return Output.say(response + retrievedPersonalFact + retrievedRoboyFacts).setSegue(s);
     }
+
 
     @Override
     public State getNextState() {
@@ -87,40 +121,68 @@ public class IntroductionStateParty extends State{
         return introPhrases.getRandomElement();
     }
 
-    // TODO
     private String getNameFromInput(Interpretation input) {
-        String result = null;
-        if (input.getSentenceType().compareTo(Linguistics.SENTENCE_TYPE.STATEMENT) == 0) {
-            String[] tokens = (String[]) input.getFeatures().get(Linguistics.TOKENS);
-            if (tokens.length == 1) {
-                result =  tokens[0].replace("[", "").replace("]","").toLowerCase();
-                LOGGER.info(" -> Retrieved only one token: " + result);
-                return result;
-            } else {
-                if (input.getFeatures().get(Linguistics.PARSER_RESULT).toString().equals("SUCCESS") &&
-                        ((List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE)).size() != 0) {
-                    LOGGER.info(" -> Semantic parsing is successful and semantic triple exists");
-                    List<Triple> triple = (List<Triple>) input.getFeatures().get(Linguistics.SEM_TRIPLE);
-                    result = triple.get(0).object.toLowerCase();
-                    LOGGER.info(" -> Retrieved object " + result);
+        return getInference().inferProperty(name, input);
+    }
+
+
+    private String getRoboyFactsPhrase(Roboy roboy) {
+        String result = "";
+
+        // Get some random properties facts
+        if (roboy.getProperties() != null && !roboy.getProperties().isEmpty()) {
+            HashMap<Neo4jProperty, Object> properties = roboy.getProperties();
+            if (properties.containsKey(full_name)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(full_name).getRandomElement(), properties.get(full_name));
+            }
+            if (properties.containsKey(birthdate)) {
+                HashMap<String, Integer> ages = new Agedater().determineAge(properties.get(birthdate).toString());
+                String retrievedAge = "0 days";
+                if (ages.get("years") > 0) {
+                    retrievedAge = ages.get("years") + " years";
+                } else if (ages.get("months") > 0) {
+                    retrievedAge = ages.get("months") + " months";
                 } else {
-                    LOGGER.warn(" -> Semantic parsing failed or semantic triple does not exist");
-                    if (input.getFeatures().get(Linguistics.OBJ_ANSWER) != null) {
-                        LOGGER.info(" -> OBJ_ANSWER exits");
-                        String name = input.getFeatures().get(Linguistics.OBJ_ANSWER).toString().toLowerCase();
-                        if (!name.equals("")) {
-                            result = name;
-                            LOGGER.info(" -> Retrieved OBJ_ANSWER result " + result);
-                        } else {
-                            LOGGER.warn(" -> OBJ_ANSWER is empty");
-                        }
-                    } else {
-                        LOGGER.warn(" -> OBJ_ANSWER does not exit");
-                    }
+                    retrievedAge = ages.get("days") + " days";
                 }
+                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), retrievedAge);
+            } else if (properties.containsKey(age)) {
+                result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), properties.get(age) + " years!");
+            }
+            if (properties.containsKey(skills)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(skills).toString().split(",")));
+                result += " " + String.format(infoValues.getSuccessAnswers(skills).getRandomElement(), retrievedResult.getRandomElement());
+            }
+            if (properties.containsKey(abilities)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(abilities).toString().split(",")));
+                result += " " + String.format(infoValues.getSuccessAnswers(abilities).getRandomElement(), retrievedResult.getRandomElement());
+            }
+            if (properties.containsKey(future)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(future).toString().split(",")));
+                result += " " + String.format(infoValues.getSuccessAnswers(future).getRandomElement(), retrievedResult.getRandomElement());
             }
         }
+
+        if (result.equals("")) {
+            result = "I am Roboy 2.0! ";
+        }
+
+        // Get a random relationship fact
+        Neo4jRelationship predicate = roboyRelatioshipPredicates.getRandomElement();
+        MemoryNodeModel node = getMemNodesByIds(roboy.getRelationships(predicate)).getRandomElement();
+        if (node != null) {
+            String nodeName = "";
+            if (node.getProperties().containsKey(full_name) && !node.getProperties().get(full_name).equals("")) {
+                nodeName = node.getProperties().get(full_name).toString();
+            } else {
+                nodeName = node.getProperties().get(name).toString();
+            }
+            result += " " + String.format(infoValues.getSuccessAnswers(predicate).getRandomElement(), nodeName);
+        }
+
         return result;
     }
+
+
 
 }
