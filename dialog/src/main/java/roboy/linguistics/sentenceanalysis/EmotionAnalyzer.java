@@ -127,7 +127,7 @@ public class EmotionAnalyzer implements Analyzer {
             }
         }
         else if(sadSimilarity >= threshold){
-            if(sentenceNotNegative){
+            if(!sentencePositive){
                 interpretation.setEmotion(RoboyEmotion.SADNESS);
             }
         }

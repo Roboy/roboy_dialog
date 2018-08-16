@@ -32,7 +32,7 @@
         "questionAnswering": "QuestionAnswering"
       },
       "parameters": {
-        "qaFile": "resources/sentences/QAList.json"
+        "qaFile": "resources/sentences/TelegramQAList.json"
       }
     },
     {
@@ -42,7 +42,7 @@
         "questionAnswering": "QuestionAnswering"
       },
       "parameters": {
-        "qaFile": "resources/sentences/QAList.json"
+        "qaFile": "resources/sentences/TelegramQAList.json"
       }
     },
     {

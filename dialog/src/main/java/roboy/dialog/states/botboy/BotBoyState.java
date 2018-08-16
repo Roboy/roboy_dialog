@@ -107,17 +107,26 @@ public class BotBoyState extends State {
                 } else {
                     next = getTransition(UPDATE_KNOWN_PERSON);
                 }
+
+                String retrievedRoboyFacts = getRoboyFactsPhrase(new Roboy(getMemory()));
+                Segue s = new Segue(Segue.SegueType.DISTRACT, segueProbability);
+
+                return Output.say(getResponsePhrase(person.getName(), person.FAMILIAR) + retrievedPersonalFact + " It is great to see you again!")
+                        .setEmotion(RoboyEmotion.HAPPINESS)
+                        .setSegue(s);
             } else {
                 // 4b. person is not known
                 next = getTransition(LEARN_ABOUT_PERSON);
                 segueProbability = 0.6;
-            }
-            String retrievedRoboyFacts = getRoboyFactsPhrase(new Roboy(getMemory()));
-            Segue s = new Segue(Segue.SegueType.DISTRACT, segueProbability);
-            return Output.say(getResponsePhrase(person.getName(), person.FAMILIAR) +
-                    retrievedPersonalFact + retrievedRoboyFacts).setSegue(s);
-        }
 
+                String retrievedRoboyFacts = getRoboyFactsPhrase(new Roboy(getMemory()));
+                Segue s = new Segue(Segue.SegueType.DISTRACT, segueProbability);
+
+                return Output.say(getResponsePhrase(person.getName(), person.FAMILIAR) + retrievedPersonalFact + retrievedRoboyFacts)
+                        .setEmotion(RoboyEmotion.HAPPINESS)
+                        .setSegue(s);
+            }
+        }
 
     }
     private String getResponsePhrase(String name, boolean familiar) {
