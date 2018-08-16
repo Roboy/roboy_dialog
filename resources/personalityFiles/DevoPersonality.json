@@ -12,8 +12,8 @@
       "identifier": "Intro",
       "implementation": "roboy.dialog.states.devoStates.IntroductionState",
       "transitions": {
-        "knownPerson": "FollowUp",
-        "newPerson": "PersonalQA"
+        "knownPerson": "QuestionAnswering",
+        "newPerson": "QuestionAnswering"
       },
       "parameters": {
         "infoFile": "resources/sentences/RoboyInfoList.json"
