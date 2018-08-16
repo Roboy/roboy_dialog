@@ -53,6 +53,7 @@ public class ActiveIntroState extends MonologState {
         try {
 
             return getContext().CROWD_DETECTION.getLastValue().getData() >= MIN_NUMBER_PEOPLE;
+
         } catch(NullPointerException e){
             logger.info("Make sure crowd detection publishing, receiving: " + e.getMessage());
             return false;

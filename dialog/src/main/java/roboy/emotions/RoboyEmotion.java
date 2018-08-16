@@ -27,7 +27,7 @@ public enum RoboyEmotion {
     PIRATE("pirate"),
     SUNGLASSES("sunglasses"),
     SURPRISED("suprised"),
-    HAPPY("happy"),
+    HAPPY("lucky"),
     TONGUE("tongue"),
     TEETH("teeth"),
     HEARTS("hearts"),

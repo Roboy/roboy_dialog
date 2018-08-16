@@ -17,20 +17,31 @@ public class IdleState extends MonologState {
 
     private final static String TRANSITION_TIME_IS_UP = "timeIsUp";
     private final static String DELAY_ID = "delayInMins";
+    private final static String SHOW_TIME_ID = "showTimeinMins";
     private final static int MIN_NUMBER_PEOPLE = 1;
     private final Logger LOGGER = LogManager.getLogger();
 
     private State nextState = this;
     private long delay;
+    private long showTime;
+    private long startTime;
 
     public IdleState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
         delay = Long.parseLong(params.getParameter(DELAY_ID));
-        LOGGER.info("--> Timer: " + delay + " mins in Idle-State");
+        showTime = Long.parseLong(params.getParameter(SHOW_TIME_ID));
+        LOGGER.info("--> Timer: " + delay + " mins in Idle-State.");
+        LOGGER.info("--> Show takes: " + showTime + " mins.");
+        startTime = System.nanoTime();
     }
 
     @Override
     public Output act() {
+
+        if(TimeUnit.MINUTES.toNanos(showTime) < System.nanoTime() - startTime){
+            LOGGER.info("Closing Conversation");
+            return Output.endConversation();
+        }
 
         LOGGER.info("Starting Idle State, waiting " + delay + " Minute(s) until next Interaction!");
 
