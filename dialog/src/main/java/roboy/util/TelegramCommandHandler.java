@@ -87,8 +87,8 @@ public class TelegramCommandHandler
         {
             case PIC:
                 //Just a roboy image, should be changed to desired roboy url
-                int randomNum = ThreadLocalRandom.current().nextInt(0, pictureUrls.length+ 1);
-                String url = pictureUrls[randomNum-1];
+                int randomNum = ThreadLocalRandom.current().nextInt(0, pictureUrls.length);
+                String url = pictureUrls[randomNum];
                 tch.sendImageFromUrl(url, telegramChatID);
                 break;
             case SAY:
