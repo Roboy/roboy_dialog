@@ -5887,3 +5887,45 @@
 {"features":" {score:0.15152674515697737} ","formula":"(rdf:type dbpedia:City)","lexeme":"city","type":"ClassNoun"}
 {"features":" {score:0.07924929805861808} ","formula":"property:municipality","lexeme":"municipality","type":"DataProp"}
 {"features":" {score:0.6171889755251683} ","formula":"resource:Ludwig_Maximilian_University_of_Munich","lexeme":"ludwig maximilian university of munich","type":"NamedEntity"}
+{"features":" {score:0.02754881125994218} ","formula":"!property:market","lexeme":"market","type":"DataProp"}
+{"features":" {score:0.02492670177649229} ","formula":"!property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.02754881125994218} ","formula":"!property:market","lexeme":"market","type":"ObjProp"}
+{"features":" {score:0.03030440770662748} ","formula":"(rdf:type dbpedia:Area)","lexeme":"area","type":"ClassNoun"}
+{"features":" {score:0.018827202090850245} ","formula":"dbpedia:jurisdiction","lexeme":"jurisdiction","type":"ObjectProp"}
+{"features":" {score:0.03030440770662748} ","formula":"property:area","lexeme":"area","type":"ObjProp"}
+{"features":" {score:0.018827202090850245} ","formula":"property:jurisdiction","lexeme":"jurisdiction","type":"ObjProp"}
+{"features":" {score:0.02492670177649229} ","formula":"property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.02754881125994218} ","formula":"property:market","lexeme":"market","type":"DataProp"}
+{"features":" {score:0.03030440770662748} ","formula":"!property:area","lexeme":"area","type":"DataProp"}
+{"features":" {score:0.02492670177649229} ","formula":"!property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.018827202090850245} ","formula":"!property:jurisdiction","lexeme":"jurisdiction","type":"ObjProp"}
+{"features":" {score:0.02492670177649229} ","formula":"(rdf:type dbpedia:Place)","lexeme":"place","type":"ClassNoun"}
+{"features":" {score:0.07183589378992716} ","formula":"dbpedia:state","lexeme":"state","type":"ObjectProp"}
+{"features":" {score:0.3449200540738764} ","formula":"resource:Las_Vegas_Valley","lexeme":"las vegas valley","type":"NamedEntity"}
+{"features":" {score:0.07183589378992716} ","formula":"!property:state","lexeme":"state","type":"ObjProp"}
+{"features":" {score:0.010833333333333334} ","formula":"!property:economy","lexeme":"economy","type":"ObjProp"}
+{"features":" {score:0.036267271011303635} ","formula":"!property:nation","lexeme":"nation","type":"DataProp"}
+{"features":" {score:0.5069101221863358} ","formula":"resource:United_States","lexeme":"united states","type":"NamedEntity"}
+{"features":" {score:0.010833333333333334} ","formula":"property:economy","lexeme":"economy","type":"DataProp"}
+{"features":" {score:0.036267271011303635} ","formula":"property:nation","lexeme":"nation","type":"DataProp"}
+{"features":" {score:0.3376957938374635} ","formula":"resource:United_States_Army","lexeme":"united states army","type":"NamedEntity"}
+{"features":" {score:0.1210140109062195} ","formula":"(rdf:type dbpedia:Community)","lexeme":"community","type":"ClassNoun"}
+{"features":" {score:0.010833333333333334} ","formula":"!property:economy","lexeme":"economy","type":"DataProp"}
+{"features":" {score:0.010833333333333334} ","formula":"property:economy","lexeme":"economy","type":"ObjProp"}
+{"features":" {score:0.018827202090850245} ","formula":"!dbpedia:jurisdiction","lexeme":"jurisdiction","type":"ObjectProp"}
+{"features":" {score:0.018827202090850245} ","formula":"!property:jurisdiction","lexeme":"jurisdiction","type":"DataProp"}
+{"features":" {score:0.07183589378992716} ","formula":"property:state","lexeme":"state","type":"DataProp"}
+{"features":" {score:0.07183589378992716} ","formula":"!property:state","lexeme":"state","type":"DataProp"}
+{"features":" {score:0.02754881125994218} ","formula":"property:market","lexeme":"market","type":"ObjProp"}
+{"features":" {score:0.036267271011303635} ","formula":"property:nation","lexeme":"nation","type":"ObjProp"}
+{"features":" {score:0.3712715210874318} ","formula":"\u003chttp://dbpedia.org/resource/Georgia_(U.S._state)\u003e","lexeme":"georgia u.s. state","type":"NamedEntity"}
+{"features":" {score:0.13348385095596313} ","formula":"(rdf:type dbpedia:Cave)","lexeme":"cave","type":"ClassNoun"}
+{"features":" {score:0.018827202090850245} ","formula":"property:jurisdiction","lexeme":"jurisdiction","type":"DataProp"}
+{"features":" {score:0.07183589378992716} ","formula":"property:state","lexeme":"state","type":"ObjProp"}
+{"features":" {score:0.02492670177649229} ","formula":"property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.03030440770662748} ","formula":"property:area","lexeme":"area","type":"DataProp"}
+{"features":" {score:0.07183589378992716} ","formula":"!dbpedia:state","lexeme":"state","type":"ObjectProp"}
+{"features":" {score:0.13700512091318767} ","formula":"(rdf:type dbpedia:State)","lexeme":"state","type":"ClassNoun"}
+{"features":" {score:0.036267271011303635} ","formula":"!property:nation","lexeme":"nation","type":"ObjProp"}
+{"features":" {score:0.5019569461422774} ","formula":"resource:USA_Today","lexeme":"usa today","type":"NamedEntity"}
+{"features":" {score:0.03030440770662748} ","formula":"!property:area","lexeme":"area","type":"ObjProp"}
