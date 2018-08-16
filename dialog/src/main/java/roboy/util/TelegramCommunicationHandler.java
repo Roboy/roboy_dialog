@@ -108,11 +108,8 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
 
         String chatID = message.getChatId().toString();
         String text = message.getText();
-        Log.debug(this, "text: "+text);
         if(text.charAt(0) == '/'){
             //handle inline command
-            sendMessage("command captured",chatID);
-            Log.debug(this, "inline command captured");
             TelegramCommandHandler commandHandler = new TelegramCommandHandler(text, chatID);
             commandHandler.execute();
         }else{
