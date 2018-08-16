@@ -10,7 +10,7 @@
     },
     {
       "identifier": "Intro",
-      "implementation": "roboy.dialog.states.ordinaryStates.IntroductionState",
+      "implementation": "roboy.dialog.states.devoStates.IntroductionState",
       "transitions": {
         "knownPerson": "FollowUp",
         "newPerson": "PersonalQA"
@@ -31,9 +31,9 @@
     },
     {
       "identifier": "PersonalQA",
-      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationAskingState",
+      "implementation": "roboy.dialog.states.devoStates.PersonalInformationAskingState",
       "transitions": {
-        "questionAnswering": "QuestionAnswering"
+        "questionAnswering": "Farewell"
       },
       "parameters": {
         "qaFile": "resources/sentences/QAList.json"
@@ -44,7 +44,7 @@
       "implementation": "roboy.dialog.states.devoStates.QuestionRoboyQAState",
       "fallback": "WildTalk",
       "transitions": {
-        "finishedQuestionAnswering": "Farewell",
+        "finishedQuestionAnswering": "PersonalQA",
         "loopToNewPerson": "PersonalQA",
         "loopToKnownPerson": "FollowUp",
         "switchToGaming": "ChooseGameState"
