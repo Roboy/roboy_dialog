@@ -61,7 +61,7 @@ public class QuestionRoboyQAState extends ExpoState {
     private final static String TRANSITION_FINISHED_ANSWERING = "finishedQuestionAnswering";
     private final static String TRANSITION_LOOP_TO_NEW_PERSON = "loopToNewPerson";
     private final static String TRANSITION_LOOP_TO_KNOWN_PERSON = "loopToKnownPerson";
-    private final static int MAX_NUM_OF_QUESTIONS = 5;
+    private final static int MAX_NUM_OF_QUESTIONS = 6;
     private int questionsAnswered = 0;
 
     private final static RandomList<String> reenteringPhrases = PhraseCollection.QUESTION_ANSWERING_REENTERING;
@@ -120,34 +120,10 @@ public class QuestionRoboyQAState extends ExpoState {
 
     @Override
     public State getNextState() {
-
-        if (askingSpecifyingQuestion) { // we are asking a yes/no question --> stay in this state
-            return this;
-
-        } else if (questionsAnswered > MAX_NUM_OF_QUESTIONS) { // enough questions answered --> finish asking
+        if (questionsAnswered > MAX_NUM_OF_QUESTIONS) { // enough questions answered --> finish asking
             return getTransition(TRANSITION_FINISHED_ANSWERING);
-
-        } else if (Math.random() < 0.5) { // loop back to previous states with probability 0.5
-
-            Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
-            Neo4jRelationship[] predicates = {FROM, HAS_HOBBY, WORK_FOR, STUDY_AT};
-            Interlocutor.RelationshipAvailability availability = person.checkRelationshipAvailability(predicates);
-
-            if (availability == SOME_AVAILABLE) {
-                return (Math.random() < 0.3) ? getTransition(TRANSITION_LOOP_TO_KNOWN_PERSON) : getTransition(TRANSITION_LOOP_TO_NEW_PERSON);
-            } else if (availability == NONE_AVAILABLE) {
-                return getTransition(TRANSITION_LOOP_TO_NEW_PERSON);
-            } else {
-                if (!isIntentsHistoryComplete(predicates)) {
-                    return getTransition(TRANSITION_LOOP_TO_KNOWN_PERSON);
-                } else {
-                    return this;
-                }
-            }
-        } else { // stay in this state
-            return this;
         }
-
+        return this;
     }
 
     private Output useMemoryOrFallback(Interpretation input) {
