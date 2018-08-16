@@ -55,27 +55,31 @@ public class EmotionAnalyzer implements Analyzer {
         LOGGER.debug("tokens.size: "+String.valueOf(tokens.size()));
 
         if(tokens == null){
-            LOGGER.debug("TOKENS ARE NULL - It is impossible");
+            interpretation.setEmotion(RoboyEmotion.NEUTRAL);
             return interpretation;
         }
 
         List<String> labels = new ArrayList<>();
         for(int i = 0; i<tokens.size(); i++){
             String token = tokens.get(i);
-            LOGGER.error("token: "+token);
             //if token has a label that is not desired do not add.
             if(!dropout.contains(tags[i])){
-                LOGGER.debug("not droped out token: "+token);
                 labels.add(token);
             }
 
         }
 
         Word2Vec vec = Word2vec.getInstance().getModel();
-        INDArray mean = vec.getWordVectorsMean(labels);
+        INDArray mean;
+        try{
+            mean = vec.getWordVectorsMean(labels);
+        }catch(Exception e){
+            interpretation.setEmotion(RoboyEmotion.NEUTRAL);
+            return interpretation;
+        }
         if(!mean.isVector()){
             //if mean is not a vector just return without emotion
-            LOGGER.error("MEAN IS NOT A VECTOR");
+            interpretation.setEmotion(RoboyEmotion.NEUTRAL);
             return interpretation;
         }
 
@@ -83,11 +87,8 @@ public class EmotionAnalyzer implements Analyzer {
         boolean sentencePositive = false;
         boolean sentenceNotNegative = false; // not the same with positive
         if(interpretation.getSentiment() != null){
-            LOGGER.debug("interpretation.getSentiment() != null");
             sentencePositive = interpretation.getSentiment().equals(Linguistics.UtteranceSentiment.POSITIVE);
             sentenceNotNegative = !interpretation.getSentiment().equals(Linguistics.UtteranceSentiment.NEGATIVE);
-            LOGGER.debug("sentencePositive: "+String.valueOf(sentencePositive));
-            LOGGER.debug("sentenceNotNegative: "+String.valueOf(sentenceNotNegative));
         }
 
 
@@ -96,23 +97,15 @@ public class EmotionAnalyzer implements Analyzer {
         double happySimilarity = cosineSimilarity(dMean, happyVec);
         double shySimilarity = cosineSimilarity(dMean, shyVec);
 
-        LOGGER.debug("[dropout]beerSimilarity: "+String.valueOf(beerSimilarity));
-        LOGGER.debug("[dropout]sadSimilarity: "+String.valueOf(sadSimilarity));
-        LOGGER.debug("[dropout]happySimilarity: "+String.valueOf(happySimilarity));
-        LOGGER.debug("[dropout]shySimilarity: "+String.valueOf(shySimilarity));
 
         mean = vec.getWordVectorsMean(tokens);
         dMean = mean.data().asDouble();
 
+        //Calculated similarities without dropout
         double _beerSimilarity = cosineSimilarity(dMean, beerVec);
         double _sadSimilarity = cosineSimilarity(dMean, sadVec);
         double _happySimilarity = cosineSimilarity(dMean, happyVec);
         double _shySimilarity = cosineSimilarity(dMean, shyVec);
-
-        LOGGER.debug("[no dropout]beerSimilarity: "+String.valueOf(_beerSimilarity));
-        LOGGER.debug("[no dropout]sadSimilarity: "+String.valueOf(_sadSimilarity));
-        LOGGER.debug("[no dropout]happySimilarity: "+String.valueOf(_happySimilarity));
-        LOGGER.debug("[no dropout]shySimilarity: "+String.valueOf(_shySimilarity));
 
 
         if(beerSimilarity >= threshold){
@@ -141,7 +134,7 @@ public class EmotionAnalyzer implements Analyzer {
 
         return interpretation;
 
-//        //TODO: to be deleted
+//        // OLD EMOTION ANALYZER
 //        List<String> tokens = interpretation.getTokens();
 //        if (tokens != null && !tokens.isEmpty()) {
 //            if (tokens.contains("love") || tokens.contains("cute")) {
