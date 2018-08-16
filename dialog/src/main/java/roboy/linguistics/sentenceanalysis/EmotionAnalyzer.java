@@ -62,7 +62,6 @@ public class EmotionAnalyzer implements Analyzer {
         List<String> labels = new ArrayList<>();
         for(int i = 0; i<tokens.size(); i++){
             String token = tokens.get(i);
-            LOGGER.error("token: "+token);
             //if token has a label that is not desired do not add.
             if(!dropout.contains(tags[i])){
                 LOGGER.debug("not droped out token: "+token);
@@ -75,7 +74,7 @@ public class EmotionAnalyzer implements Analyzer {
         INDArray mean;
         try{
             mean = vec.getWordVectorsMean(labels);
-        }catch (Exception e){
+        }catch(Exception e){
             interpretation.setEmotion(RoboyEmotion.NEUTRAL);
             return interpretation;
         }
@@ -102,23 +101,14 @@ public class EmotionAnalyzer implements Analyzer {
         double happySimilarity = cosineSimilarity(dMean, happyVec);
         double shySimilarity = cosineSimilarity(dMean, shyVec);
 
-        LOGGER.debug("[dropout]beerSimilarity: "+String.valueOf(beerSimilarity));
-        LOGGER.debug("[dropout]sadSimilarity: "+String.valueOf(sadSimilarity));
-        LOGGER.debug("[dropout]happySimilarity: "+String.valueOf(happySimilarity));
-        LOGGER.debug("[dropout]shySimilarity: "+String.valueOf(shySimilarity));
-
         mean = vec.getWordVectorsMean(tokens);
         dMean = mean.data().asDouble();
 
+        //Calculated similarities without dropout
         double _beerSimilarity = cosineSimilarity(dMean, beerVec);
         double _sadSimilarity = cosineSimilarity(dMean, sadVec);
         double _happySimilarity = cosineSimilarity(dMean, happyVec);
         double _shySimilarity = cosineSimilarity(dMean, shyVec);
-
-        LOGGER.debug("[no dropout]beerSimilarity: "+String.valueOf(_beerSimilarity));
-        LOGGER.debug("[no dropout]sadSimilarity: "+String.valueOf(_sadSimilarity));
-        LOGGER.debug("[no dropout]happySimilarity: "+String.valueOf(_happySimilarity));
-        LOGGER.debug("[no dropout]shySimilarity: "+String.valueOf(_shySimilarity));
 
 
         if(beerSimilarity >= threshold){
@@ -147,7 +137,7 @@ public class EmotionAnalyzer implements Analyzer {
 
         return interpretation;
 
-//        //TODO: to be deleted
+//        // OLD EMOTION ANALYZER
 //        List<String> tokens = interpretation.getTokens();
 //        if (tokens != null && !tokens.isEmpty()) {
 //            if (tokens.contains("love") || tokens.contains("cute")) {
