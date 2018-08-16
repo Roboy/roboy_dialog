@@ -12,9 +12,9 @@ import java.util.Map;
  */
 public enum Neo4jLabel {
     Person("Person"),
-    TelegramPerson("Telegram_person"),
-    FacebookPerson("Facebook_person"),
-    SlackPerson("Slack_person"),
+    Telegram_person("Telegram_person"),
+    Facebook_person("Facebook_person"),
+    Slack_person("Slack_person"),
     Robot("Robot"),
     Company("Company"),
     University("University"),
