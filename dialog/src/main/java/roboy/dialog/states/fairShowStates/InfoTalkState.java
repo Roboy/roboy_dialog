@@ -6,10 +6,6 @@ import roboy.dialog.states.definitions.MonologState;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.emotions.RoboyEmotion;
-import roboy.memory.Neo4jMemory;
-import roboy.memory.nodes.MemoryNodeModel;
-import roboy.memory.nodes.Roboy;
-import roboy.ros.RosMainNode;
 import roboy.talk.PhraseCollection;
 import roboy.util.RandomList;
 

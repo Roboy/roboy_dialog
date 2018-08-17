@@ -6133,3 +6133,35 @@
 {"features":" {score:0.011707317073170733} ","formula":"!property:name","lexeme":"name","type":"DataProp"}
 {"features":" {score:0.03609756097560975} ","formula":"(rdf:type dbpedia:Politician)","lexeme":"politician","type":"ClassNoun"}
 {"features":" {score:0.013658536585365855} ","formula":"property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.04487804878048781} ","formula":"(rdf:type dbpedia:Person)","lexeme":"person","type":"ClassNoun"}
+{"features":" {score:0.011707317073170733} ","formula":"(rdf:type dbpedia:Name)","lexeme":"name","type":"ClassNoun"}
+{"features":" {score:0.011707317073170733} ","formula":"property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.315447027617413} ","formula":"resource:American_Recovery_and_Reinvestment_Act_of_2009","lexeme":"american recovery and reinvestment act of 2009","type":"NamedEntity"}
+{"features":" {score:0.04487804878048781} ","formula":"!property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.31076611015759087} ","formula":"resource:Presidency_of_Barack_Obama","lexeme":"presidency of barack obama","type":"NamedEntity"}
+{"features":" {score:0.04487804878048781} ","formula":"dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.015609756097560976} ","formula":"(rdf:type dbpedia:President)","lexeme":"president","type":"ClassNoun"}
+{"features":" {score:0.04487804878048781} ","formula":"property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.013658536585365855} ","formula":"!property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.021463414634146343} ","formula":"property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.015609756097560976} ","formula":"dbpedia:president","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.013658536585365855} ","formula":"!property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.04487804878048781} ","formula":"!property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.013658536585365855} ","formula":"property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.011707317073170733} ","formula":"property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.45063192385707596} ","formula":"resource:Barack_Obama","lexeme":"barack obama","type":"NamedEntity"}
+{"features":" {score:0.3089717584646591} ","formula":"resource:Patient_Protection_and_Affordable_Care_Act","lexeme":"patient protection and affordable care act","type":"NamedEntity"}
+{"features":" {score:0.31418317990326106} ","formula":"resource:Sean_Combs","lexeme":"sean combs","type":"NamedEntity"}
+{"features":" {score:0.010731707317073172} ","formula":"(rdf:type dbpedia:Celebrity)","lexeme":"celebrity","type":"ClassNoun"}
+{"features":" {score:0.015609756097560976} ","formula":"!dbpedia:president","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.04487804878048781} ","formula":"!dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.04487804878048781} ","formula":"property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.011707317073170733} ","formula":"!property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.011707317073170733} ","formula":"!property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.03609756097560975} ","formula":"(rdf:type dbpedia:Politician)","lexeme":"politician","type":"ClassNoun"}
+{"features":" {score:0.013658536585365855} ","formula":"property:candidate","lexeme":"candidate","type":"DataProp"}
