@@ -16,17 +16,9 @@
       "implementation": "roboy.dialog.states.fairShowStates.DemoQuestionAnsweringState",
       "transitions": {
         "lonelyRoboy": "DemoIdle",
-        "talkAboutObjects": "ObjectDetectionState",
         "finished": "Farewell"
       },
       "fallback": "WildTalk"
-    },
-    {
-      "identifier": "ObjectDetectionState",
-      "implementation": "roboy.dialog.states.fairShowStates.ObjectDetectionState",
-      "transitions":{
-        "finished": "DemoQuestionAnsweringState"
-      }
     },
     {
       "identifier": "WildTalk",

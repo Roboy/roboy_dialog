@@ -24,7 +24,6 @@ import java.util.List;
 public class DemoQuestionAnsweringState extends State {
 
     private final static String TRANSITION_LONELY_ROBOY = "lonelyRoboy";
-    private final static String TRANSITION_CHECK_OBJECTS = "talkAboutObjects";
     private final static String TRANSITION_FINISHED = "finished";
     private final static int MAX_NUM_OF_QUESTIONS = 3;
 
@@ -78,8 +77,6 @@ public class DemoQuestionAnsweringState extends State {
                 nextState = this;
                 if (askingSpecifyingQuestion) { // we are asking a yes/no question --> stay in this state
                     nextState = this;
-                } else if (Math.random() < 0.3) {
-                    nextState = getTransition(TRANSITION_CHECK_OBJECTS);
                 }
 
             } else {
@@ -236,5 +233,6 @@ public class DemoQuestionAnsweringState extends State {
             return false;
         }
     }
+
 
 }

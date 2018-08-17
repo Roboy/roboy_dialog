@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import roboy.dialog.states.definitions.MonologState;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
+import roboy.emotions.RoboyEmotion;
 import roboy.talk.PhraseCollection;
 import roboy.talk.Verbalizer;
 
@@ -51,6 +52,13 @@ public class DemoIdleState extends MonologState {
         }
 
         nextState = getTransition(TRANSITION_PERSON_DETECTED);
+
+        try{
+            getRosMainNode().ShowEmotion(RoboyEmotion.HAPPY);
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e){
+            LOGGER.error(e.getMessage());
+        }
 
         return Output.say(Verbalizer.greetings.getRandomElement() + " " + Verbalizer.roboyIntro.getRandomElement() + PhraseCollection.ROBOY_PHRASES.getRandomElement());
     }
