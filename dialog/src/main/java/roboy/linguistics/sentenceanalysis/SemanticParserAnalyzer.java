@@ -118,7 +118,7 @@ public class SemanticParserAnalyzer implements Analyzer
         return interpretation;
     }
 
-    private void executeSemanticAnalysis(Interpretation result, Example ex)
+    private synchronized void executeSemanticAnalysis(Interpretation result, Example ex)
     {
         builder.parser.parse(builder.params, ex, false, builder.error_retrieval);
         ex.logWithoutContext();
