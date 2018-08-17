@@ -72,17 +72,11 @@ public class DemoQuestionAnsweringState extends State {
             nextState = getTransition(TRANSITION_FINISHED);
         } else {
 
-            if (checkPersonListening()) {
+            nextState = this;
+            //if (askingSpecifyingQuestion) { // we are asking a yes/no question --> stay in this state
 
-                nextState = this;
-                if (askingSpecifyingQuestion) { // we are asking a yes/no question --> stay in this state
-                    nextState = this;
-                }
-
-            } else {
-                questionsAnswered = 0;
-                nextState = getTransition((TRANSITION_LONELY_ROBOY));
-            }
+             //   nextState = this;
+            //}
         }
 
         return nextState;
@@ -172,7 +166,6 @@ public class DemoQuestionAnsweringState extends State {
 
         return Output.useFallback();
     }
-
 
     private Output answerFromMemory(List<Triple> triples) {
 
