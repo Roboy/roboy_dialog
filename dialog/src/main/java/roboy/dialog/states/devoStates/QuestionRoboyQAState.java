@@ -84,10 +84,7 @@ public class QuestionRoboyQAState extends ExpoState {
 
     @Override
     public Output act() {
-        if (questionsAnswered > 0) {
-            return Output.say(reenteringPhrases.getRandomElement());
-        }
-        return Output.say("I'm pretty good at answering questions about myself and other stuff. What would you like to know?");
+        return Output.sayNothing();
     }
 
     @Override
@@ -107,9 +104,10 @@ public class QuestionRoboyQAState extends ExpoState {
 
         if (input.getTokens() != null && !(input.getTokens().contains("you") || input.getTokens().contains("your"))) {
             Linguistics.ParsingOutcome parseOutcome = input.getParsingOutcome();
+
             if (parseOutcome == null) {
                 LOGGER.error("Invalid parser outcome!");
-                return Output.say("Invalid parser outcome!");
+                return Output.useFallback();
             }
 
             if (parseOutcome == Linguistics.ParsingOutcome.SUCCESS) {
@@ -118,6 +116,8 @@ public class QuestionRoboyQAState extends ExpoState {
                     return Output.say(answerStartingPhrases.getRandomElement() + " " + input.getAnswer());
                 }
             }
+
+            return Output.useFallback();
         }
 
         // from here we know that dummyParserResult.equals("FAILURE")
@@ -134,7 +134,7 @@ public class QuestionRoboyQAState extends ExpoState {
 
     private Output useMemoryOrFallback(Interpretation input) {
         try {
-            if (input.getPas() != null || input.getTriples() != null) {
+            if ( input.getPas() != null || input.getTriples() != null) {
                 Output memoryAnswer = answerFromMemory(input);
                 if (memoryAnswer != null) return memoryAnswer;
             }
@@ -227,12 +227,14 @@ public class QuestionRoboyQAState extends ExpoState {
         if (matchPas(pas, new Pair(SemanticRole.AGENT, "old")) || matchPas(pas, new Pair(SemanticRole.PATIENT, ".*\\bage\\b.*"))) {
             answer = extractAge(roboy);
         } else if (matchPas(pas, new Pair(SemanticRole.PREDICATE, "from"))) {
-            extractNodeNameForPredicate(Neo4jRelationship.FROM, roboy);
+            answer = extractNodeNameForPredicate(Neo4jRelationship.FROM, roboy);
         } else if (matchPas(pas, new Pair(SemanticRole.LOCATION, ".*"))) {
             answer = extractNodeNameForPredicate(Neo4jRelationship.LIVE_IN, roboy);
-        } else if (matchPas(pas, new Pair(SemanticRole.AGENT, "you"), new Pair(SemanticRole.MANNER, "how"))) {
-            answer = "Yo moma says I am a good boy!";
-        } else if (matchPas(pas, new Pair(SemanticRole.AGENT, "who"))) {
+        }
+//        else if (matchPas(pas, new Pair(SemanticRole.AGENT, "you"), new Pair(SemanticRole.MANNER, "how"))) {
+//            answer = "Yo moma says I am a good boy!";
+//        }
+        else if (matchPas(pas, new Pair(SemanticRole.AGENT, "who"))) {
             if (matchPas(pas, new Pair(SemanticRole.PATIENT, "you"))) {
                 answer = extractNodeNameForPredicate(Neo4jProperty.full_name, roboy);
             } else if (matchPas(pas, new Pair(SemanticRole.PATIENT, ".*\\b(father|dad)\\b.*"))) {
@@ -263,7 +265,7 @@ public class QuestionRoboyQAState extends ExpoState {
     }
 
     private Neo4jRelationship inferPredicateFromObjectAnswer(String objectAnswer) {
-        if (objectAnswer.contains("hobb")) {
+        if (objectAnswer.contains("hobby")) {
             return Neo4jRelationship.HAS_HOBBY;
         } else if (objectAnswer.contains("member")) {
             return Neo4jRelationship.MEMBER_OF;

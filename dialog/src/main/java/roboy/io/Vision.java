@@ -13,6 +13,7 @@ import roboy.ros.Ros;
 /**
  * Vision helper class
  */
+@Deprecated
 public class Vision 
 {
 
