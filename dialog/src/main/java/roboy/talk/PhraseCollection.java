@@ -78,4 +78,6 @@ public class PhraseCollection {
             = readFile("resources/phraseLists/fairShowPhrases/emotions.txt");
     public static RandomList<String> ROBOY_PHRASES
             = readFile("resources/phraseLists/fairShowPhrases/project-intro.txt");
+    public static RandomList<String> ASK_NAME
+            = readFile("resources/phraseLists/question-name.txt");
 }

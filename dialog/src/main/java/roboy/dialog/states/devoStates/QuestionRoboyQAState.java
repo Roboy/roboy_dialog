@@ -3,10 +3,12 @@ package roboy.dialog.states.devoStates;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.contextObjects.IntentValue;
+import roboy.dialog.Segue;
 import roboy.dialog.states.definitions.ExpoState;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.dialog.states.ordinaryStates.PersonalInformationFollowUpState;
+import roboy.emotions.RoboyEmotion;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.Linguistics.SemanticRole;
 import roboy.linguistics.Triple;
@@ -17,6 +19,7 @@ import roboy.memory.nodes.Interlocutor;
 import roboy.memory.nodes.MemoryNodeModel;
 import roboy.memory.nodes.Roboy;
 import roboy.talk.PhraseCollection;
+import roboy.talk.Verbalizer;
 import roboy.util.Agedater;
 import roboy.util.Pair;
 import roboy.util.QAJsonParser;
@@ -62,7 +65,8 @@ public class QuestionRoboyQAState extends ExpoState {
     private final static String TRANSITION_FINISHED_ANSWERING = "finishedQuestionAnswering";
     private final static String TRANSITION_LOOP_TO_NEW_PERSON = "loopToNewPerson";
     private final static String TRANSITION_LOOP_TO_KNOWN_PERSON = "loopToKnownPerson";
-    private final static int MAX_NUM_OF_QUESTIONS = 6;
+    private final static String TRANSITION_SWITCH_TO_GAMING = "switchToGaming";
+    private final static int MAX_NUM_OF_QUESTIONS = 10;
     private int questionsAnswered = 0;
 
     private final static RandomList<String> reenteringPhrases = PhraseCollection.QUESTION_ANSWERING_REENTERING;
@@ -84,6 +88,9 @@ public class QuestionRoboyQAState extends ExpoState {
 
     @Override
     public Output act() {
+        if (questionsAnswered == MAX_NUM_OF_QUESTIONS/2) {
+            return Output.say(PhraseCollection.OFFER_GAME_PHRASES.getRandomElement());
+        }
         return Output.sayNothing();
     }
 
@@ -93,6 +100,18 @@ public class QuestionRoboyQAState extends ExpoState {
     }
 
     private Output reactToQuestion(Interpretation input) {
+
+        if (questionsAnswered == MAX_NUM_OF_QUESTIONS/2) {
+            if (getInference().inferSentiment(input) == Linguistics.UtteranceSentiment.POSITIVE) {
+                userWantsGame = true;
+                questionsAnswered++;
+                return Output.sayNothing().setSegue(new Segue(Segue.SegueType.PICKUP,0.5)).setEmotion(RoboyEmotion.HAPPY);
+            }
+            else {
+                questionsAnswered++;
+                return Output.sayNothing().setEmotion(RoboyEmotion.SADNESS);
+            }
+        }
 
         askingSpecifyingQuestion = false;
         questionsAnswered++;
@@ -126,7 +145,11 @@ public class QuestionRoboyQAState extends ExpoState {
 
     @Override
     public State getNextState() {
+        if (userWantsGame) {
+            return getTransition(TRANSITION_SWITCH_TO_GAMING);
+        }
         if (questionsAnswered > MAX_NUM_OF_QUESTIONS) { // enough questions answered --> finish asking
+            questionsAnswered = 0;
             return getTransition(TRANSITION_FINISHED_ANSWERING);
         }
         return this;

@@ -10,7 +10,7 @@ public class keyGetter {
     static YAMLConfiguration yamlConfiguration = new YAMLConfiguration();
     static String getKey(String key){
         try {
-            yamlConfiguration.read(new FileReader("dialog/src/main/java/roboy/util/api/apiKeys.yml"));
+            yamlConfiguration.read(new FileReader("resources/knowledgebase/apiKeys.yml"));
         } catch (ConfigurationException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {

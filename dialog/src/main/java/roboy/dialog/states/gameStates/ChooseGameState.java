@@ -9,6 +9,7 @@ import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.talk.PhraseCollection;
 import roboy.talk.Verbalizer;
+import roboy.util.ConfigManager;
 import roboy.util.RandomList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +20,7 @@ public class ChooseGameState extends State {
     private final static String TRANSITION_CHOSE_20_Q = "chose20questions";
     private final static String TRANSITION_EXIT = "exitGame";
 
-    private final static RandomList<String> EXISTING_GAMES = new RandomList<>(Arrays.asList("Snapchat", "Akinator"));
+    private RandomList<String> existingGames;
 
     private final Logger LOGGER = LogManager.getLogger();
 
@@ -28,12 +29,19 @@ public class ChooseGameState extends State {
 
     public ChooseGameState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
+        if (ConfigManager.INPUT == "telegram") {
+            existingGames = new RandomList<>(Arrays.asList("Akinator"));
+        }
+        else {
+            existingGames = new RandomList<>(Arrays.asList("Snapchat", "Akinator"));
+        }
+
     }
 
     @Override
     public Output act() {
         do {
-            suggestedGame = EXISTING_GAMES.getRandomElement();
+            suggestedGame = existingGames.getRandomElement();
         }
         while(getRosMainNode() == null && suggestedGame == "Snapchat");
 
@@ -45,7 +53,7 @@ public class ChooseGameState extends State {
         Linguistics.UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
         String inputGame = inferGame(input);
 
-        if (inputSentiment == Linguistics.UtteranceSentiment.POSITIVE){
+        if (inputSentiment == Linguistics.UtteranceSentiment.POSITIVE || inputSentiment == Linguistics.UtteranceSentiment.NEUTRAL){
             game = suggestedGame;
             return Output.say(Verbalizer.startSomething.getRandomElement());
         } else if (!inputGame.isEmpty()){

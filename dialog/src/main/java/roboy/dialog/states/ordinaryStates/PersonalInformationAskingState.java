@@ -43,11 +43,12 @@ import static roboy.memory.Neo4jRelationship.*;
  */
 public class PersonalInformationAskingState extends State {
     private QAJsonParser qaValues;
-    private Neo4jRelationship[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
+    private Neo4jRelationship[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT, LIVE_IN, FRIEND_OF, MEMBER_OF, WORK_FOR, OCCUPIED_AS };
     private Neo4jRelationship selectedPredicate;
     private State nextState;
 
     private final String TRANSITION_INFO_OBTAINED = "questionAnswering";
+    private final String TRANSITION_FOLLOWUP = "followUp";
     private final String QA_FILE_PARAMETER_ID = "qaFile";
     final Logger LOGGER = LogManager.getLogger();
 
@@ -66,8 +67,9 @@ public class PersonalInformationAskingState extends State {
         LOGGER.info(" -> Retrieved Interlocutor: " + person.getName());
 
         for (Neo4jRelationship predicate : predicates) {
-            if (!person.hasRelationship(predicate)) {
+            if (!person.hasRelationship(predicate) && !getContext().DIALOG_INTENTS.contains(new IntentValue(INTENTS_HISTORY_ID, predicate))) {
                 selectedPredicate = predicate;
+                getContext().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, predicate));
                 LOGGER.info(" -> Selected predicate: " + selectedPredicate.type);
                 break;
             }
@@ -121,11 +123,13 @@ public class PersonalInformationAskingState extends State {
             answer = String.format(answers.getRandomElement(), result);
         } else {
             LOGGER.error(" -> The list of " + selectedPredicate + " answers is empty or null");
+            nextState = getTransition(TRANSITION_INFO_OBTAINED);
+            return Output.useFallback();
         }
         LOGGER.info(" -> Produced answer: " + answer);
-        nextState = getTransition(TRANSITION_INFO_OBTAINED);
-        Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE, 0.5);
-        return Output.say(answer).setSegue(s);
+        nextState = getTransition(TRANSITION_FOLLOWUP);
+//        Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE, 0.5);
+        return Output.say(answer);
     }
 
     @Override

@@ -80,8 +80,7 @@ public class BotBoyState extends State {
 
             if(inputOK){
                 next = getTransition(TRANSITION_GREETING_DETECTED);
-                return Output.say("Hey! I was looking for someone to chat.").setEmotion(RoboyEmotion.HAPPINESS);
-                //return Output.say(Verbalizer.greetings.getRandomElement());
+                return Output.say(Verbalizer.privateGreetings.getRandomElement()).setEmotion(RoboyEmotion.HAPPINESS);
             }
 
             return Output.sayNothing();
@@ -117,7 +116,7 @@ public class BotBoyState extends State {
             } else {
                 // 4b. person is not known
                 next = getTransition(LEARN_ABOUT_PERSON);
-                segueProbability = 0.6;
+                segueProbability = 0.3;
 
                 String retrievedRoboyFacts = getRoboyFactsPhrase(new Roboy(getMemory()));
                 Segue s = new Segue(Segue.SegueType.DISTRACT, segueProbability);
