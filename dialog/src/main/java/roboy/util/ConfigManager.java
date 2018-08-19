@@ -49,6 +49,9 @@ public class ConfigManager {
     public static String DIALOG_LOG_MODE = "INFO";
     public static String PARSER_LOG_MODE = "ALL";
 
+    public static String PARLAI_HOST = "127.0.0.1";
+    public static int PARLAI_PORT = 8877;
+
     static {
         // this block is called once at and will initialize config
         // alternative: create a singleton for this class
@@ -120,9 +123,13 @@ public class ConfigManager {
 
             TELEGRAM_API_TOKENS_FILE = yamlConfig.getString("TELEGRAM_API_TOKENS_FILE");
 
+            PARLAI_HOST = yamlConfig.getString("PARLAI_HOST");
+            PARLAI_PORT = yamlConfig.getInt("PARLAI_PORT");
+
             MEMORY_LOG_MODE = (yamlConfig.getString("MEMORY_LOG_MODE"));
             PARSER_LOG_MODE = (yamlConfig.getString("PARSER_LOG_MODE"));
             DIALOG_LOG_MODE = (yamlConfig.getString("DIALOG_LOG_MODE"));
+
 
         } catch(ConfigurationException | FileNotFoundException e) {
             LOGGER.error("Exception while reading YAML configurations from "+yamlConfigFile);

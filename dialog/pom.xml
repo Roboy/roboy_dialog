@@ -429,6 +429,12 @@
             <artifactId>telegrambots</artifactId>
             <version>3.6.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>co.gongzh.procbridge</groupId>
+            <artifactId>procbridge</artifactId>
+            <version>1.0.2</version>
+        </dependency>
     </dependencies>
 
 </project>

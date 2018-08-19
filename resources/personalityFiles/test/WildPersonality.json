@@ -1,0 +1,21 @@
+{
+  "initialState": "QuestionAnswering",
+  "states": [
+    {
+      "identifier": "QuestionAnswering",
+      "implementation": "roboy.dialog.states.ordinaryStates.QuestionAnsweringState",
+      "fallback": "WildTalk",
+      "transitions": {
+        "finishedQuestionAnswering": "QuestionAnswering",
+        "loopToNewPerson": "QuestionAnswering",
+        "loopToKnownPerson": "QuestionAnswering",
+        "switchToGaming": "QuestionAnswering"
+      }
+    },
+    {
+      "identifier": "WildTalk",
+      "implementation": "roboy.dialog.states.ordinaryStates.WildTalkState",
+      "transitions": {}
+    }
+  ]
+}
