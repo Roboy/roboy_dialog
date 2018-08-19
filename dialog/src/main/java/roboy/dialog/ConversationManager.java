@@ -84,13 +84,8 @@ public class ConversationManager {
 
 
         analyzers.add(new EmotionAnalyzer());
-<<<<<<< 99ca23f32264e1c18002de44f0611b85cc742df2
-        //analyzers.add(new ProfanityAnalyzer());
-=======
         analyzers.add(new ProfanityAnalyzer());
         analyzers.add(new Postprocessor());
->>>>>>> Like, hypersexy space alien shit, or something
-
 
         //I/O specific core behaviour
 
