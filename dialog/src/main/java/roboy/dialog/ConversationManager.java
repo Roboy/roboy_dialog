@@ -87,6 +87,7 @@ public class ConversationManager {
         analyzers.add(new ProfanityAnalyzer());
         analyzers.add(new Postprocessor());
 
+
         //I/O specific core behaviour
 
         switch(ConfigManager.INPUT){
