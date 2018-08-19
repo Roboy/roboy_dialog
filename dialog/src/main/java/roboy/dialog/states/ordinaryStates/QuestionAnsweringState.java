@@ -76,18 +76,12 @@ public class QuestionAnsweringState extends State {
     @Override
     public Output act() {
 
-        if(Math.random() > THRESHOLD_BORED && questionsAnswered > 2){
+        if(Math.random() > THRESHOLD_BORED && questionsAnswered > 5){
             roboySuggestedGame = true;
+            questionsAnswered = 0;
             return Output.say(PhraseCollection.OFFER_GAME_PHRASES.getRandomElement());
         }
-        if (askingSpecifyingQuestion) {
-            return Output.sayNothing();
-        }
-
-        if (questionsAnswered > 0) {
-            return Output.say(reenteringPhrases.getRandomElement());
-        }
-        return Output.say("I'm pretty good at answering questions about myself and other stuff. What would you like to know?");
+        return Output.sayNothing();
     }
 
     @Override
