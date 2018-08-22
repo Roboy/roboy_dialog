@@ -227,7 +227,7 @@ public class QuestionRoboyQAState extends ExpoState {
         if (matchPas(pas, new Pair(SemanticRole.AGENT, "old")) || matchPas(pas, new Pair(SemanticRole.PATIENT, ".*\\bage\\b.*"))) {
             answer = extractAge(roboy);
         } else if (matchPas(pas, new Pair(SemanticRole.PREDICATE, "from"))) {
-            extractNodeNameForPredicate(Neo4jRelationship.FROM, roboy) :
+            extractNodeNameForPredicate(Neo4jRelationship.FROM, roboy);
         } else if (matchPas(pas, new Pair(SemanticRole.LOCATION, ".*"))) {
             answer = extractNodeNameForPredicate(Neo4jRelationship.LIVE_IN, roboy);
         } else if (matchPas(pas, new Pair(SemanticRole.AGENT, "you"), new Pair(SemanticRole.MANNER, "how"))) {
