@@ -470,7 +470,7 @@ Extending the Lexicon and the Grammar
 This tutorial explains how to create or change grammar and lexicon used in the semantic parser.
 
 Lexicon
-"""""""
+~~~~~~~~~~~~~~~~~~~~~~
 
 To create your own custom lexicon, you need to create a new file or copy an existing lexicon and add lexemes in the following format::
 
@@ -489,7 +489,7 @@ Additionally, you can also add features in JSON format for map::
     {lexeme:"name", formula:"rb:HAS_NAME", type:"DataProperty", features:"{feature1:0.5, feature2:0.3}"}
 
 Grammar
-"""""""
+~~~~~~~~~~~~~~~~~~~~~~
 
 To create your own custom grammar, you need to create a new file or copy existing grammar and add rules in the following format::
 
@@ -511,7 +511,7 @@ Example rules::
 For in-depth tutorial on expression and function types, refer to original SEMPRE `tutorial <https://github.com/percyliang/sempre/blob/master/TUTORIAL.md>`_ or `documentation <https://github.com/percyliang/sempre/blob/master/DOCUMENTATION.md>`_
 
 Used files in configuration
-"""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To use created files, you need to set the correct parameter in ``pom.xml`` file.
 For grammar::
@@ -529,7 +529,7 @@ Scoring Functions and Knowledge Retrieval
 Currently, our semantic parser uses error retrieval mechanism that can be modified in the following steps:
 
 Scoring Function
-""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~
 
 1. Move to package::
 
@@ -540,7 +540,7 @@ Scoring Function
 3. Add scoring function in constructor of ``edu.stanford.nlp.sempre.roboy.ErrorRetrieval`` class.
 
 Knowledge Retriever
-"""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~
 
 1. Move to package::
 
@@ -588,7 +588,7 @@ New values can only flow into the Context over an ``Updater`` instance. Internal
 Updaters only add a single new data unit, relying on the ``AbstractValue.updateValue()`` method. Thanks to the inheritance chain, you can use an arbitrary Value or ValueHistory implementation as the target of an updater.
 
 Adding an External Updater
-""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Currently, there are two implementations of an External Updater: ``PeriodicUpdater`` and ``ROSTopicUpdater``.
 
 ``PeriodicUpdater`` calls an updating method after a certain time interval has passed. To use the periodic updating functionality:
@@ -610,7 +610,7 @@ All External Updaters need to be initialized in the ``Context.java`` class. To d
 4. If the Updater depends on ROS, add its initialization into the ``Context.initializeROS(RosMainNode ros)`` method, otherwise add it to the private constructor ``Context()``. As the parameter, use the inner ``value`` or ``valueHistory`` variable from a ``ValueInterface`` or a ``HistoryInterface``.
 
 Adding a new Internal Updater
-"""""""""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 1. Create a class extending InternalUpdater<*targetClass*, *valueType*>. The class and data type of the target ``Value`` or ``ValueHistory`` are the generic parameters for the updater.
 
 2. A constructor is required for the class. Simply match the InternalUpdater constructor and call ``super(target)`` within. An example is in the ``DialogTopicsUpdater`` class.
@@ -660,12 +660,12 @@ For simplicities sake, an abstract class, ``APIHandler`` has been created to sim
 One must implement the methods...
 
 getKeyName
-"""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~
 
 The purpose of ``getKeyName`` is to tell APIHub, what the YAML key associated with the API Key in the ``apiKeys.yml`` file is. ``return "weatherkey";`` in most cases shall suffice.
 
 validateArguments
-"""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~
 
 This method should be used to check if the arguments passed by the user are validate. If the argument is incorrect, make sure to ``logger.error()`` what exactly the error is. A ``IllegalArgumentException`` shall be thrown, that you must deal with in your state. 
 
@@ -673,7 +673,7 @@ This method should be used to check if the arguments passed by the user are vali
     An ``IllegalArgumentException`` is a type of RuntimeException, thus is unchecked. See `here <https://www.geeksforgeeks.org/checked-vs-unchecked-exceptions-in-java/>`_ for more details. 
 
 getAPIURL
-""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~
 
 This method is in charge of creating the API Request URL. Assuming the ``getKeyName`` function is implemented correctly, the first parameter shall automatically send you the API Key from the ``apiKeys.yml`` file. The second parameter are the API Request Arguments that your state sends to APIHub. 
 
@@ -683,7 +683,7 @@ This method expects a valid API request URL to be returned, like ``http://api.op
     If you do not have any parameters, you should pass the value null to APIHub
 
 handleJSON
-"""""""""""""""""""""""
+~~~~~~~~~~~~~~~~~~~~~~
 
 This method should handle the processing of the JSON. The ``JSON`` parameter is the response from the webserver, whilst the arguments parameter is filled with the arguments given to it by the Handle JSON Arguments given to ``APIHandler``.
 
