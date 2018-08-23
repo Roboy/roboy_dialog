@@ -679,7 +679,7 @@ This method is in charge of creating the API Request URL. Assuming the ``getKeyN
 
 This method expects a valid API request URL to be returned, like ``http://api.openweathermap.org/data/2.5/weather?q=davos&APPID=xxxxxxxxx``.
 
-..note:
+.. note:
     If you do not have any parameters, you should pass the value null to APIHub
 
 handleJSON
@@ -687,7 +687,7 @@ handleJSON
 
 This method should handle the processing of the JSON. The ``JSON`` parameter is the response from the webserver, whilst the arguments parameter is filled with the arguments given to it by the Handle JSON Arguments given to ``APIHandler``.
 
-..note:
+.. note:
     If you do not have any parameters, you should pass the value null to APIHub
 
 Getting the Data
@@ -695,9 +695,8 @@ Getting the Data
 
 All you have to do, to get the data is to call the ``APIHub.getData()`` method. You first pass it the class you wish to use (must extend APIHandler). The second parameter is the API arguments and the third parameter is the handle JSON arguments.
 
-Below is a sample code from Dialog Evolutions SS2018 midterm presentation:
+Below is a sample code from Dialog Evolutions SS2018 midterm presentation::
 
-:: 
     String answer;
     
     //If the trigger phrase is spoken
@@ -718,8 +717,8 @@ Below is a sample code from Dialog Evolutions SS2018 midterm presentation:
             }
         }
     }
-
     // String answer is later passed to dialog via Output.say(answer)
+
 
 If all goes well, Roboy shall answer::
 
