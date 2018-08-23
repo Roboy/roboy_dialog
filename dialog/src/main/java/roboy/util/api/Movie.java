@@ -3,38 +3,39 @@ package roboy.util.api;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.sun.javaws.exceptions.InvalidArgumentException;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Random;
 
-public class Movie{
-    static String KEY = keyGetter.getKey("moviekey");
+public class Movie extends APIHandler{
     static int randomInt = new Random().nextInt(20);
 
-    //FIELD TITLE or OVERVIEW
-    public static String getData(String field) throws Exception {
-        StringBuilder result = new StringBuilder();
-        URL url = new URL(String.format("https://api.themoviedb.org/3/movie/now_playing?api_key=%s&language=en-US&page=1", KEY));
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("POST");
-        BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        String line;
-        while ((line = rd.readLine()) != null) {
-            result.append(line);
-        }
-        rd.close();
 
-        JsonElement jsonElement = ((JsonObject) new JsonParser().parse(result.toString()))
+    @Override
+    public URL APIrequestURL(String key, String... arguments) throws MalformedURLException {
+        return new URL(String.format("https://api.themoviedb.org/3/movie/now_playing?api_key=%s&language=en-US&page=1", key));
+    }
+
+    @Override
+    public String handleJSON(String JSON, String ... arguments) {
+        JsonElement jsonElement = ((JsonObject) new JsonParser().parse(JSON.toString()))
                 .getAsJsonArray("results")
-                .get(randomInt).getAsJsonObject().get(field);
-//        System.out.println(jsonObject);
+                .get(randomInt).getAsJsonObject().get(arguments[0]);
         return jsonElement.getAsString();
     }
 
-    public static void main(String[] args)throws Exception{
-        System.out.println(getData("title")+":\t"+getData("overview"));
+    @Override
+    public String getKeyName() {
+        return "moviekey";
+    }
+
+    @Override
+    public boolean validateArguments(String... arguments) {
+        return arguments.length==1;
     }
 }

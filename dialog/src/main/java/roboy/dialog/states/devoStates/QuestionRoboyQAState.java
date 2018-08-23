@@ -171,7 +171,7 @@ public class QuestionRoboyQAState extends ExpoState {
             }
         } else if (matchPas(pas, new Pair(SemanticRole.AGENT, ".*\\bmovie.*"))) {
             try {
-                answer = String.format("I have heard that %s is playing!", Movie.getData("title"));
+                answer = String.format("I have heard that %s is playing!", APIHub.getData(Movie.class,"title"));
             }
             catch (Exception e) {
                 answer = "Wall e is a great movie!";
