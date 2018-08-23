@@ -639,6 +639,99 @@ In order to add new ``roboy.io.InputDevice`` and ``roboy.io.OutputDevice`` class
 
 .. _tut_io_social:
 
+External API Integration
+========================
+
+To make the process of adding new external APIs easier, an interface is provided that will do most of the heavy lifting for you. All you have to do is to implement the ``APIHandler`` abstract class and ``APIHub.getData()`` shall handle the rest of the processing for you.
+
+Storing API Keys
+------------------------
+
+API Keys should be stored in the ``roboy_dialog/resources/knowledgebase/apiKeys.yml`` file. It is vitally important that this file does not end up on git. Entries should be stored in the YAML format: ``apikey: xxxxxxx_apikey_goes_here_xxxxxxx``. The first part of the entry is the YAML key, while the second is the actual API key.
+
+Implementing the Interface
+---------------------------
+
+For simplicities sake, an abstract class, ``APIHandler`` has been created to simplify the process of creating an external API call. 
+
+One must implement the methods...
+
+getKeyName
+"""""""""""""""""""""""
+
+The purpose of ``getKeyName`` is to tell APIHub, what the YAML key associated with the API Key in the ``apiKeys.yml`` file is. ``return "weatherkey";`` in most cases shall suffice.
+
+validateArguments
+"""""""""""""""""""""""
+
+This method should be used to check if the arguments passed by the user are validate. If the argument is incorrect, make sure to ``logger.error()`` what exactly the error is. A ``IllegalArgumentException`` shall be thrown, that you must deal with in your state.
+
+getAPIURL
+""""""""""""""""""""""
+
+This method is in charge of creating the API Request URL. Assuming the ``getKeyName`` function is implemented correctly, the first parameter shall automatically send you the API Key from the ``apiKeys.yml`` file. The second parameter are the API Request Arguments that your state sends to APIHub. 
+
+This method expects a valid API request URL to be returned, like ``http://api.openweathermap.org/data/2.5/weather?q=davos&APPID=xxxxxxxxx``.
+
+..note:
+    If you do not have any parameters, you should pass the value null to APIHub
+
+handleJSON
+"""""""""""""""""""""""
+
+This method should handle the processing of the JSON. The ``JSON`` parameter is the response from the webserver, whilst the arguments parameter is filled with the arguments given to it by the Handle JSON Arguments given to ``APIHandler``.
+
+..note:
+    If you do not have any parameters, you should pass the value null to APIHub
+
+Getting the Data
+--------------------------
+
+All you have to do, to get the data is to call the ``APIHub.getData()`` method. You first pass it the class you wish to use (must extend APIHandler). The second parameter is the API arguments and the third parameter is the handle JSON arguments.
+
+Below is a sample code from Dialog Evolutions SS2018 midterm presentation:
+
+:: 
+    String answer;
+    
+    //If the trigger phrase is spoken
+    if (matchPas(pas, new Pair(SemanticRole.PATIENT, ".*\\bweather\\b.*"))) {
+            try {
+                answer = 
+                    String.format(
+                        "It seems like it is %s out there!", 
+                        //We want the weather data using weather.class and from munich. There are no handleJSON arguments in this case
+                        APIHub.getData(Weather.class, new String[]{"munich"}, null)
+                    );
+            }
+            //In the event that something goes wrong, here is our "default phrase"
+            catch (Exception e) {
+                answer = "It seems a bit moody...";
+                //Print out additional logging.
+                LOGGER.error(e.getMessage());
+            }
+        }
+    }
+
+    // String answer is later passed to dialog via Output.say(answer)
+
+If all goes well, Roboy shall answer::
+
+    [You]:   what is the weather like
+    [Roboy]: It seems like it is cloudy out there!
+
+If an issue arises, you should see something amongst the lines of::
+
+    [You]:   what is the weather like
+    [ERROR] API Args:	: [munich, bavaria] --- roboy.util.api.APIHandler (16:56:50)
+    [ERROR] hJSON Args:	: null --- roboy.util.api.APIHandler (16:56:50)
+    [ERROR] API Arg Expects one location as Argument, JSON Arguments expects null as argument --- roboy.dialog.states.devoStates.QuestionRoboyQAState (16:56:50)
+    [Roboy]: It seems a bit moody...
+
+.. warning::
+
+    At the current point in time, APIHub/APIHandler assumes your API Key that is stored in the database is valid. It will not warn you of invalid keys, although it will become clear once you read the HTTP response code (`401 <https://httpstatuses.com/401>`_), but it is not stated explicitly.
+
 Social Media Integration
 ========================
 
