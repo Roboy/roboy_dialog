@@ -9,6 +9,9 @@ Loggers
 
 Currently the system relies on three different logging systems. The end user may configure the level of logging in Dialog's ``Config.Properties`` file. Current recommendations can be found in the ``README.MD`` file of Dialog.
 
+.. figure:: images/logcontroller.png
+  :alt: Log Controller UML
+
 .. seealso:: 
 
 Dialog
@@ -34,6 +37,9 @@ Dialog uses the Log4J, which is defined by the following levels.
 
 Parser
 -----------------------
+
+.. figure:: images/parserlogcontroller.png
+  :alt: Parser Log Controller 
 
 Parser uses a custom logging utility writen by `Percy Liang <https://github.com/percyliang/fig>`_. It has further been customized to have logging levels, provided by Log4J. See the ``edu/stanford/nlp/sempre/roboy/utils/logging/LogInfoToggle.java`` and ``edu/stanford/nlp/sempre/roboy/utils/logging/ParserLogController.java`` files for more information.
 
@@ -94,3 +100,4 @@ DEBUG         lg.debug()    FINE          lg.fine()     DEBUG         lg.dbg()  
 
 
 .. note:: Refrain from using any lower levels
+

@@ -644,6 +644,9 @@ External API Integration
 
 To make the process of adding new external APIs easier, an interface is provided that will do most of the heavy lifting for you. All you have to do is to implement the ``APIHandler`` abstract class and ``APIHub.getData()`` shall handle the rest of the processing for you.
 
+.. figure:: images/apihub.png
+  :alt: UML Diagram of Interface
+
 Storing API Keys
 ------------------------
 
@@ -664,7 +667,10 @@ The purpose of ``getKeyName`` is to tell APIHub, what the YAML key associated wi
 validateArguments
 """""""""""""""""""""""
 
-This method should be used to check if the arguments passed by the user are validate. If the argument is incorrect, make sure to ``logger.error()`` what exactly the error is. A ``IllegalArgumentException`` shall be thrown, that you must deal with in your state.
+This method should be used to check if the arguments passed by the user are validate. If the argument is incorrect, make sure to ``logger.error()`` what exactly the error is. A ``IllegalArgumentException`` shall be thrown, that you must deal with in your state. 
+
+..note:
+    An ``IllegalArgumentException`` is a type of RuntimeException, thus is unchecked. See `here <https://www.geeksforgeeks.org/checked-vs-unchecked-exceptions-in-java/>`_ for more details. 
 
 getAPIURL
 """"""""""""""""""""""
