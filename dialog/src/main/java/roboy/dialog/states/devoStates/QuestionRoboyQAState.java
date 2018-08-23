@@ -163,7 +163,7 @@ public class QuestionRoboyQAState extends ExpoState {
         String answer = "";
         if (matchPas(pas, new Pair(SemanticRole.PATIENT, ".*\\bweather\\b.*"))) {
             try {
-                answer = String.format("It seems like it is %s out there!", Weather.getData("munich"));
+                answer = String.format("It seems like it is %s out there!", APIHub.getData(Weather.class,"munich"));
             }
             catch (Exception e) {
                 answer = "It seems a bit moody...";
@@ -182,7 +182,7 @@ public class QuestionRoboyQAState extends ExpoState {
             String[] parts = pas.get(SemanticRole.PATIENT).split(" in ");
             assert(parts.length == 2);
             try {
-                answer = answerStartingPhrases.getRandomElement() + " " + Translate.getData(parts[0], parts[1]);
+                answer = answerStartingPhrases.getRandomElement() + " " + APIHub.getData(Translate.class, parts);
             }
             catch (Exception e) {
                 answer = String.format("I am not sure whether I know %s", parts[1]);
