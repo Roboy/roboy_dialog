@@ -109,16 +109,14 @@ public class Translate extends APIHandler {
         }
     }
 
-
-
     @Override
-    public URL APIrequestURL(String APIKey, String... arguments) throws MalformedURLException {
+    public URL getAPIURL(String APIKey, String... arguments) throws MalformedURLException {
         return new URL((String.format("https://translate.yandex.net/api/v1.5/tr.json/translate?key=%s&text=%s&lang=%s", APIKey, arguments[0].replace(" ", "%20"), handleLanguage(arguments[1]))));
     }
 
     @Override
     public String handleJSON(String JSON, String... arguments) {
-        Object jsonObject = ((JsonObject) new JsonParser().parse(JSON.toString())).get("text").getAsJsonArray().get(0).getAsString();
+        Object jsonObject = ((JsonObject) new JsonParser().parse(JSON)).get("text").getAsJsonArray().get(0).getAsString();
         return jsonObject.toString();
     }
 
@@ -131,4 +129,5 @@ public class Translate extends APIHandler {
     public boolean validateArguments(String... arguments) {
         return arguments.length==2;
     }
+
 }

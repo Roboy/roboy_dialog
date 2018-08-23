@@ -1,6 +1,5 @@
 package roboy.util.api;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import org.apache.commons.configuration2.YAMLConfiguration;
 import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.apache.logging.log4j.Logger;
@@ -9,20 +8,19 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.logging.LogManager;
 
 public abstract class APIHandler {
 
-    private final static Logger logger = org.apache.logging.log4j.LogManager.getLogger();
+    final static Logger logger = org.apache.logging.log4j.LogManager.getLogger();
 
-    public abstract URL APIrequestURL(String APIKey, String ... arguments) throws MalformedURLException;
+    public abstract URL getAPIURL(String APIKey, String ... arguments) throws MalformedURLException;
     public abstract String handleJSON(String JSON, String ... arguments);
     public abstract String getKeyName();
     public abstract boolean validateArguments(String ... arguments);
 
     public String getData(String ... arguments) throws IOException {
         if(!validateArguments(arguments)) logger.warn("Arguments are Invalid");
-        return handleJSON(getJSON(APIrequestURL(keyGetter.getKey(getKeyName()), arguments)), arguments);
+        return handleJSON(getJSON(getAPIURL(keyGetter.getKey(getKeyName()), arguments)), arguments);
     }
 
     private String getJSON(URL url) throws IOException {

@@ -17,7 +17,7 @@ public class Movie extends APIHandler{
 
 
     @Override
-    public URL APIrequestURL(String key, String... arguments) throws MalformedURLException {
+    public URL getAPIURL(String key, String... arguments) throws MalformedURLException {
         return new URL(String.format("https://api.themoviedb.org/3/movie/now_playing?api_key=%s&language=en-US&page=1", key));
     }
 
@@ -35,7 +35,5 @@ public class Movie extends APIHandler{
     }
 
     @Override
-    public boolean validateArguments(String... arguments) {
-        return arguments.length==1;
-    }
+    public boolean validateArguments(String... arguments) { return arguments.length==1; }
 }
