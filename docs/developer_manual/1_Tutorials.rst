@@ -669,7 +669,7 @@ validateArguments
 
 This method should be used to check if the arguments passed by the user are validate. If the argument is incorrect, make sure to ``logger.error()`` what exactly the error is. A ``IllegalArgumentException`` shall be thrown, that you must deal with in your state. 
 
-..note:
+.. Note::
     An ``IllegalArgumentException`` is a type of RuntimeException, thus is unchecked. See `here <https://www.geeksforgeeks.org/checked-vs-unchecked-exceptions-in-java/>`_ for more details. 
 
 getAPIURL
@@ -679,7 +679,7 @@ This method is in charge of creating the API Request URL. Assuming the ``getKeyN
 
 This method expects a valid API request URL to be returned, like ``http://api.openweathermap.org/data/2.5/weather?q=davos&APPID=xxxxxxxxx``.
 
-.. note:
+.. Note::
     If you do not have any parameters, you should pass the value null to APIHub
 
 handleJSON
@@ -687,7 +687,7 @@ handleJSON
 
 This method should handle the processing of the JSON. The ``JSON`` parameter is the response from the webserver, whilst the arguments parameter is filled with the arguments given to it by the Handle JSON Arguments given to ``APIHandler``.
 
-.. note:
+.. Note::
     If you do not have any parameters, you should pass the value null to APIHub
 
 Getting the Data
