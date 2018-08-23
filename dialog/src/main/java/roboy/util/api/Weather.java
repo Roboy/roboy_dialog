@@ -2,6 +2,7 @@ package roboy.util.api;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.sun.javaws.exceptions.InvalidArgumentException;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -25,9 +26,11 @@ public class Weather extends APIHandler {
     }
 
     @Override
-    public boolean validateArguments(String... arguments) {
-        return arguments.length==1;
+    public void validateArguments(String[] apiArg, String[] hJSONArgs) throws IllegalArgumentException {
+        if(apiArg.length==1 && hJSONArgs==null);
+        else throw new IllegalArgumentException("API Arg Expects one location as Argument, JSON Arguments expects null as argument");
     }
+
 
     private static String verbifyWeatherString(String weather){
         switch (weather.toLowerCase()){

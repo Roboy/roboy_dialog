@@ -163,7 +163,7 @@ public class QuestionRoboyQAState extends ExpoState {
         String answer = "";
         if (matchPas(pas, new Pair(SemanticRole.PATIENT, ".*\\bweather\\b.*"))) {
             try {
-                answer = String.format("It seems like it is %s out there!", APIHub.getData(Weather.class,"munich"));
+                answer = String.format("It seems like it is %s out there!", APIHub.getData(Weather.class, new String[]{"munich"}, null));
             }
             catch (Exception e) {
                 answer = "It seems a bit moody...";
@@ -171,7 +171,8 @@ public class QuestionRoboyQAState extends ExpoState {
             }
         } else if (matchPas(pas, new Pair(SemanticRole.AGENT, ".*\\bmovie.*"))) {
             try {
-                answer = String.format("I have heard that %s is playing!", APIHub.getData(Movie.class,"title"));
+                Movie.newRandomFilm();
+                answer = String.format("I have heard that %s is playing!", APIHub.getData(Movie.class,null, new String[]{"title"}));
             }
             catch (Exception e) {
                 answer = "Wall e is a great movie!";
@@ -180,9 +181,8 @@ public class QuestionRoboyQAState extends ExpoState {
         } else if (matchPas(pas, new Pair(SemanticRole.PATIENT, ".+ in .+"), new Pair(SemanticRole.MANNER, "how"), new Pair(SemanticRole.PREDICATE, "say"), new Pair(SemanticRole.AGENT, "you")) ||
                 matchPas(pas, new Pair(SemanticRole.PATIENT, ".+ in .+"), new Pair(SemanticRole.PREDICATE, "is"), new Pair(SemanticRole.AGENT, "what"))) {
             String[] parts = pas.get(SemanticRole.PATIENT).split(" in ");
-            assert(parts.length == 2);
             try {
-                answer = answerStartingPhrases.getRandomElement() + " " + APIHub.getData(Translate.class, parts);
+                answer = answerStartingPhrases.getRandomElement() + " " + APIHub.getData(Translate.class, parts, null);
             }
             catch (Exception e) {
                 answer = String.format("I am not sure whether I know %s", parts[1]);

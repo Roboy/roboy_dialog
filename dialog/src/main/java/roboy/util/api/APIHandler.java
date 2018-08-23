@@ -1,5 +1,6 @@
 package roboy.util.api;
 
+import com.sun.javaws.exceptions.InvalidArgumentException;
 import org.apache.commons.configuration2.YAMLConfiguration;
 import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.apache.logging.log4j.Logger;
@@ -8,6 +9,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 
 public abstract class APIHandler {
 
@@ -16,13 +18,19 @@ public abstract class APIHandler {
     public abstract URL getAPIURL(String APIKey, String ... arguments) throws MalformedURLException;
     public abstract String handleJSON(String JSON, String ... arguments);
     public abstract String getKeyName();
-    public abstract boolean validateArguments(String ... arguments);
+    public abstract void validateArguments(String[] apiArg, String[] hJSONArgs) throws IllegalArgumentException;
 
-    public String getData(String ... arguments) throws IOException {
-        if(!validateArguments(arguments)) logger.warn("Arguments are Invalid");
-        return handleJSON(getJSON(getAPIURL(keyGetter.getKey(getKeyName()), arguments)), arguments);
+    public String getData(String[] apiArguments, String[] handleJSONArguments) throws IOException{
+        try{
+            validateArguments(apiArguments, handleJSONArguments);
+        }
+        catch (IllegalArgumentException e){
+            logger.error(String.format("API Args:\t: %s", Arrays.toString(apiArguments)));
+            logger.error(String.format("hJSON Args:\t: %s", Arrays.toString(handleJSONArguments)));
+            throw e;
+        }
+        return handleJSON(getJSON(getAPIURL(keyGetter.getKey(getKeyName()), apiArguments)), handleJSONArguments);
     }
-
     private String getJSON(URL url) throws IOException {
         StringBuilder result = new StringBuilder();
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();

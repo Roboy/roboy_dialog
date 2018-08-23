@@ -125,9 +125,10 @@ public class Translate extends APIHandler {
         return "translatekey";
     }
 
-    @Override
-    public boolean validateArguments(String... arguments) {
-        return arguments.length==2;
-    }
 
+    @Override
+    public void validateArguments(String[] apiArg, String[] hJSONArgs) throws IllegalArgumentException {
+        if(apiArg.length==2 && hJSONArgs==null);
+        else throw new IllegalArgumentException("API Arg expects a phrase and a language as its argument, JSON Arguments expects null as argument");
+    }
 }

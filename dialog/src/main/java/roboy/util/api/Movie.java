@@ -3,7 +3,6 @@ package roboy.util.api;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.sun.javaws.exceptions.InvalidArgumentException;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -13,7 +12,7 @@ import java.net.URL;
 import java.util.Random;
 
 public class Movie extends APIHandler{
-    static int randomInt = new Random().nextInt(20);
+    private static int randomInt = 0;
 
 
     @Override
@@ -35,5 +34,18 @@ public class Movie extends APIHandler{
     }
 
     @Override
-    public boolean validateArguments(String... arguments) { return arguments.length==1; }
+    public void validateArguments(String[] apiArg, String[] hJSONArgs) throws IllegalArgumentException {
+        if(apiArg==null && hJSONArgs.length==1);
+        else throw new IllegalArgumentException("API Arg Expects Null as Argument, JSON Arguments expects one Parameter");
+    }
+
+
+    /**
+     * If you want a new film, call this method
+     */
+    public static void newRandomFilm(){
+        randomInt = new Random().nextInt(20);
+    }
+
+
 }
