@@ -1,11 +1,10 @@
 package org.roboy.context;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.Ignore;
-import roboy.ros.RosMainNode;
+import org.roboy.ros.RosMainNode;
 
 import static org.junit.Assert.assertNotEquals;
 

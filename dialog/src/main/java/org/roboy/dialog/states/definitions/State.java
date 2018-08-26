@@ -1,6 +1,5 @@
 package org.roboy.dialog.states.definitions;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import org.apache.logging.log4j.LogManager;
@@ -692,9 +691,8 @@ public abstract class State {
 
         if (ids != null && !ids.isEmpty()) {
             try {
-                Gson gson = new Gson();
                 for (Integer id : ids) {
-                    MemoryNodeModel requestedObject = getMemory().getById(id);
+                    MemoryNodeModel requestedObject = getMemory().getById(id, getMemory());
                     retrievedNodes.add(requestedObject);
                 }
             } catch (InterruptedException | IOException e) {
