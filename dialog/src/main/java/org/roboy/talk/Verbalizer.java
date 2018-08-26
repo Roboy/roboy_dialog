@@ -39,6 +39,7 @@ public class Verbalizer {
                     return literalSentence(interpretation);
             }
         }
+        return literalSentence(interpretation);
 	}
 
 	// possible names for RoboyModel as parsed by Bing speech recognition
