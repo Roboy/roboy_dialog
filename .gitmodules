@@ -1,3 +1,7 @@
 [submodule "roboy_memory"]
 	path = memory
 	url = https://github.com/Roboy/roboy_memory.git
+
+[submodule "roboy_ontology"]
+	path = ontology
+	url = https://github.com/Roboy/roboy_ontology.git

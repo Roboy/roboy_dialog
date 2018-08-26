@@ -199,6 +199,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.roboy.ontology</groupId>
+            <artifactId>roboy_ontology</artifactId>
+            <version>0.0.2</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.opennlp</groupId>
             <artifactId>opennlp-tools</artifactId>
             <version>1.7.0</version>

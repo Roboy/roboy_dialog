@@ -15,6 +15,7 @@
         <module>nlu</module>
         <module>memory</module>
         <module>dialog</module>
+        <module>ontology</module>
     </modules>
 
     <build>
