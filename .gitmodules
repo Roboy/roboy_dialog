@@ -2,6 +2,6 @@
 	path = memory
 	url = https://github.com/Roboy/roboy_memory.git
 
-[submodule "roboy_ontology"]
+[submodule "ontology"]
 	path = ontology
 	url = https://github.com/Roboy/roboy_ontology.git
