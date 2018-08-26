@@ -1,6 +1,6 @@
 package org.roboy.context.contextObjects;
 
-import roboy.util.ConfigManager;
+import org.roboy.util.ConfigManager;
 
 import java.util.Observable;
 import java.util.Observer;

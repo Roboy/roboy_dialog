@@ -3,7 +3,7 @@ package org.roboy.io;
 import java.util.ArrayList;
 import java.util.List;
 
-import roboy.dialog.action.Action;
+import org.roboy.dialog.action.Action;
 
 /**
  * Meta class to combine multiple output devices.

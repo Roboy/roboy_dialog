@@ -7,15 +7,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.roboy.context.Context;
 import org.roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.context.Context;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.logic.InferenceEngine;
+import org.roboy.logic.InferenceEngine;
 import org.roboy.memory.interfaces.Neo4jMemoryInterface;
 import org.roboy.memory.models.MemoryNodeModel;
-import roboy.dialog.DialogStateMachine;
-import roboy.dialog.Segue;
-import roboy.ros.RosMainNode;
-import roboy.util.RandomList;
+import org.roboy.dialog.DialogStateMachine;
+import org.roboy.dialog.Segue;
+import org.roboy.ros.RosMainNode;
+import org.roboy.util.RandomList;
 
 import java.io.IOException;
 import java.util.*;
@@ -696,8 +694,8 @@ public abstract class State {
             try {
                 Gson gson = new Gson();
                 for (Integer id : ids) {
-                    String requestedObject = getMemory().getById(id);
-                    retrievedNodes.add(gson.fromJson(requestedObject, MemoryNodeModel.class));
+                    MemoryNodeModel requestedObject = getMemory().getById(id);
+                    retrievedNodes.add(requestedObject);
                 }
             } catch (InterruptedException | IOException e) {
                 logger.error("Error on Memory data retrieval: " + e.getMessage());

@@ -1,8 +1,8 @@
 package org.roboy.context.contextObjects;
 
-import roboy.context.ROSTopicUpdater;
-import roboy.ros.RosMainNode;
-import roboy.ros.RosSubscribers;
+import org.roboy.context.ROSTopicUpdater;
+import org.roboy.ros.RosMainNode;
+import org.roboy.ros.RosSubscribers;
 import roboy_communication_cognition.DirectionVector;
 
 /**

@@ -3,10 +3,9 @@ package org.roboy.context;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.roboy.context.contextObjects.*;
-import roboy.context.contextObjects.*;
 import org.roboy.memory.models.nodes.Interlocutor;
-import roboy.ros.RosMainNode;
-import roboy.util.ConfigManager;
+import org.roboy.ros.RosMainNode;
+import org.roboy.util.ConfigManager;
 import roboy_communication_cognition.DirectionVector;
 
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package org.roboy.linguistics.sentenceanalysis;
 
-import roboy.linguistics.Linguistics.SentenceType;
+import org.roboy.linguistics.Linguistics.SentenceType;
 
 import java.util.List;
 

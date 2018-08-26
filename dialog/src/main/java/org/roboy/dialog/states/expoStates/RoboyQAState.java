@@ -8,23 +8,17 @@ import org.roboy.dialog.states.definitions.StateParameters;
 import org.roboy.linguistics.Linguistics;
 import org.roboy.linguistics.Triple;
 import org.roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.dialog.states.definitions.State;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.dialog.states.definitions.ExpoState;
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.Triple;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jRelationship;
+import org.roboy.ontology.Neo4jRelationship;
 import org.roboy.memory.models.nodes.Interlocutor;
 import org.roboy.memory.models.MemoryNodeModel;
 import org.roboy.memory.models.nodes.Roboy;
-import roboy.talk.PhraseCollection;
-import roboy.util.QAJsonParser;
-import roboy.util.RandomList;
+import org.roboy.talk.PhraseCollection;
+import org.roboy.util.QAJsonParser;
+import org.roboy.util.RandomList;
 
 import java.util.*;
 
-import static roboy.memory.Neo4jProperty.*;
+import static org.roboy.ontology.Neo4jProperty.*;
 
 /**
  * RoboyModel Question Answering State
@@ -111,7 +105,7 @@ public class RoboyQAState extends ExpoState {
             List<Triple> triples = input.getSemTriples();
             for (Triple result : triples) {
                 if (result.predicate != null) {
-                    for (Neo4jRelationship predicate : Roboy.VALID_NEO4J_RELATIONSHIPS) {
+                    for (Neo4jRelationship predicate : roboy.getNeo4jLegalRelationships()) {
                         if (result.predicate.contains(predicate.type)) {
                             String nodeName = extractNodeNameForPredicate(predicate, roboy);
                             if (nodeName != null) {

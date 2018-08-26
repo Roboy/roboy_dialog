@@ -5,12 +5,9 @@ import org.apache.logging.log4j.Logger;
 import org.roboy.linguistics.Linguistics;
 import org.roboy.linguistics.Triple;
 import org.roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.Triple;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jLabel;
-import roboy.memory.Neo4jProperty;
-import roboy.memory.Neo4jRelationship;
+import org.roboy.ontology.Neo4jLabel;
+import org.roboy.ontology.Neo4jProperty;
+import org.roboy.ontology.Neo4jRelationship;
 
 import java.util.*;
 

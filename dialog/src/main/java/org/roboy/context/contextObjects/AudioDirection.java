@@ -1,7 +1,6 @@
 package org.roboy.context.contextObjects;
 
 import org.roboy.context.ValueHistory;
-import roboy.context.ValueHistory;
 import roboy_communication_cognition.DirectionVector;
 
 /**

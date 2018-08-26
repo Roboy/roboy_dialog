@@ -1,11 +1,11 @@
 package org.roboy.dialog;
 
-import roboy.context.Context;
-import roboy.dialog.tutorials.tutorialStates.ToyFarewellState;
-import roboy.dialog.tutorials.tutorialStates.ToyGreetingsState;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.logic.Inference;
-import roboy.logic.InferenceEngine;
+import org.roboy.context.Context;
+import org.roboy.dialog.tutorials.tutorialStates.ToyFarewellState;
+import org.roboy.dialog.tutorials.tutorialStates.ToyGreetingsState;
+import org.roboy.dialog.states.definitions.StateParameters;
+import org.roboy.logic.Inference;
+import org.roboy.logic.InferenceEngine;
 
 /**
  * Helper class for testing: creates a minimal state machine with 2 states.

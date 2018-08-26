@@ -1,9 +1,8 @@
 package org.roboy.dialog.tutorials.tutorialStates;
 
 import org.roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.dialog.states.definitions.State;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.linguistics.sentenceanalysis.Interpretation;
+import org.roboy.dialog.states.definitions.State;
+import org.roboy.dialog.states.definitions.StateParameters;
 
 import java.util.List;
 

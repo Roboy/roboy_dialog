@@ -12,13 +12,8 @@ import org.roboy.dialog.states.definitions.State;
 import org.roboy.dialog.states.definitions.StateParameters;
 import org.roboy.linguistics.Linguistics;
 import org.roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.dialog.Segue;
-import roboy.dialog.states.definitions.State;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.talk.PhraseCollection;
-import roboy.talk.Verbalizer;
+import org.roboy.talk.PhraseCollection;
+import org.roboy.talk.Verbalizer;
 
 import java.io.IOException;
 import java.util.ArrayList;

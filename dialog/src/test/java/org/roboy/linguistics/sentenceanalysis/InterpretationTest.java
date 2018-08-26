@@ -2,11 +2,11 @@ package org.roboy.linguistics.sentenceanalysis;
 
 import org.junit.Before;
 import org.junit.Test;
-import roboy.emotions.RoboyEmotion;
-import roboy.linguistics.DetectedEntity;
-import roboy.linguistics.Entity;
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.Triple;
+import org.roboy.emotions.RoboyEmotion;
+import org.roboy.linguistics.DetectedEntity;
+import org.roboy.linguistics.Entity;
+import org.roboy.linguistics.Linguistics;
+import org.roboy.linguistics.Triple;
 
 import java.util.ArrayList;
 import java.util.HashMap;

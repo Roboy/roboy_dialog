@@ -2,28 +2,28 @@ package org.roboy.dialog.states.devoStates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import roboy.dialog.Segue;
-import roboy.dialog.states.definitions.State;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jProperty;
-import roboy.memory.Neo4jRelationship;
+import org.roboy.dialog.Segue;
+import org.roboy.dialog.states.definitions.State;
+import org.roboy.dialog.states.definitions.StateParameters;
+import org.roboy.linguistics.sentenceanalysis.Interpretation;
+import org.roboy.ontology.Neo4jProperty;
+import org.roboy.ontology.Neo4jRelationship;
 import org.roboy.memory.models.nodes.Interlocutor;
-import org.roboy.memory.models.nodes.Interlocutor.RelationshipAvailability;
+import org.roboy.ontology.NodeModel.RelationshipAvailability;
 import org.roboy.memory.models.MemoryNodeModel;
 import org.roboy.memory.models.nodes.Roboy;
-import roboy.util.Agedater;
-import roboy.util.QAJsonParser;
-import roboy.util.RandomList;
+import org.roboy.util.Agedater;
+import org.roboy.util.QAJsonParser;
+import org.roboy.util.RandomList;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Set;
 
-import static roboy.memory.Neo4jProperty.*;
-import static roboy.memory.Neo4jRelationship.*;
-import static org.roboy.memory.models.nodes.Interlocutor.RelationshipAvailability.NONE_AVAILABLE;
-import static org.roboy.memory.models.nodes.Interlocutor.RelationshipAvailability.SOME_AVAILABLE;
+import static org.roboy.ontology.Neo4jProperty.*;
+import static org.roboy.ontology.Neo4jRelationship.*;
+import static org.roboy.ontology.NodeModel.RelationshipAvailability.NONE_AVAILABLE;
+import static org.roboy.ontology.NodeModel.RelationshipAvailability.SOME_AVAILABLE;
 
 /**
  * This state will:
@@ -96,7 +96,7 @@ public class IntroductionState extends State {
         Double segueProbability = 0.0;
 
         // 4. check if person is known/familiar
-        if (person.FAMILIAR) {
+        if (person.isFamiliar()) {
             // 4a. person known/familiar
             // TODO: get some hobbies or occupation of the person to make answer more interesting
             RandomList<MemoryNodeModel> nodes = getMemNodesByIds(person.getRelationships(FRIEND_OF));
@@ -120,7 +120,7 @@ public class IntroductionState extends State {
         }
         String retrievedRoboyFacts = getRoboyFactsPhrase(new Roboy(getMemory()));
         Segue s = new Segue(Segue.SegueType.DISTRACT, segueProbability);
-        return Output.say(getResponsePhrase(person.getName(), person.FAMILIAR) +
+        return Output.say(getResponsePhrase(person.getName(), person.isFamiliar()) +
                 retrievedPersonalFact + retrievedRoboyFacts).setSegue(s);
     }
 

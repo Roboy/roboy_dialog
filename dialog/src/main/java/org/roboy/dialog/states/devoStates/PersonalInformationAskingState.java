@@ -2,16 +2,16 @@ package org.roboy.dialog.states.devoStates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import roboy.dialog.states.definitions.State;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jRelationship;
+import org.roboy.dialog.states.definitions.State;
+import org.roboy.dialog.states.definitions.StateParameters;
+import org.roboy.linguistics.sentenceanalysis.Interpretation;
+import org.roboy.ontology.Neo4jRelationship;
 import org.roboy.memory.models.nodes.Interlocutor;
-import roboy.util.QAJsonParser;
+import org.roboy.util.QAJsonParser;
 
 import java.util.Set;
 
-import static roboy.memory.Neo4jRelationship.*;
+import static org.roboy.ontology.Neo4jRelationship.*;
 
 /**
  * Personal Information Asking State

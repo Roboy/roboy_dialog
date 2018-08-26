@@ -1,12 +1,11 @@
 package org.roboy.io;
 
-import roboy.ros.RosMainNode;
+import org.roboy.ros.RosMainNode;
 
 /**
  * Using Bing to perform speech to text. Requires internet connection.
  */
-public class BingInput implements InputDevice 
-{
+public class BingInput implements InputDevice {
 	private RosMainNode rosMainNode;
 
 	public BingInput (RosMainNode node){

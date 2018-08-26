@@ -1,6 +1,6 @@
 package org.roboy.context.contextObjects;
 
-import roboy.context.InternalUpdater;
+import org.roboy.context.InternalUpdater;
 
 /**
  * Update the history of intents

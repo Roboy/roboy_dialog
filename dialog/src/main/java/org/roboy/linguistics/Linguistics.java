@@ -2,7 +2,7 @@ package org.roboy.linguistics;
 
 import java.util.List;
 
-import roboy.util.Lists;
+import org.roboy.util.Lists;
 
 /**
  * Collection of attribute names, enumerations, word lists etc. related to linguistics.

@@ -1,6 +1,6 @@
 package org.roboy.context.contextObjects;
 
-import roboy.context.ObservableValue;
+import org.roboy.context.ObservableValue;
 
 /**
  * xzy-coordinates of a person in the field of vision.

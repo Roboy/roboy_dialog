@@ -1,6 +1,6 @@
 package org.roboy.io;
 
-import roboy.linguistics.sentenceanalysis.Interpretation;
+import org.roboy.linguistics.sentenceanalysis.Interpretation;
 
 /**
  * The result of an input device consists of a sentence, if it is an audio device, and

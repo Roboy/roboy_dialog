@@ -1,6 +1,6 @@
 package org.roboy.context.contextObjects;
 
-import roboy.context.ValueHistory;
+import org.roboy.context.ValueHistory;
 
 /**
  * For testing a ROS topic connection which sends simple String messages.

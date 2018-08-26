@@ -1,18 +1,13 @@
 package org.roboy.dialog.states.botboy;
 
-import org.apache.jena.atlas.logging.Log;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.dialog.states.definitions.State;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.logic.StatementInterpreter;
-import roboy.talk.Verbalizer;
+import org.roboy.dialog.states.definitions.State;
+import org.roboy.dialog.states.definitions.StateParameters;
+import org.roboy.logic.StatementInterpreter;
+import org.roboy.talk.Verbalizer;
 
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Start a conversation with telegram.

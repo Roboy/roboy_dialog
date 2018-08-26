@@ -2,14 +2,14 @@ package org.roboy.dialog.states.gameStates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import roboy.dialog.Segue;
-import roboy.dialog.states.definitions.State;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.talk.PhraseCollection;
-import roboy.talk.Verbalizer;
-import roboy.util.RandomList;
+import org.roboy.dialog.Segue;
+import org.roboy.dialog.states.definitions.State;
+import org.roboy.dialog.states.definitions.StateParameters;
+import org.roboy.linguistics.Linguistics;
+import org.roboy.linguistics.sentenceanalysis.Interpretation;
+import org.roboy.talk.PhraseCollection;
+import org.roboy.talk.Verbalizer;
+import org.roboy.util.RandomList;
 import java.util.Arrays;
 import java.util.List;
 

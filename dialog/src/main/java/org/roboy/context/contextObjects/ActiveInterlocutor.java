@@ -1,6 +1,6 @@
 package org.roboy.context.contextObjects;
 
-import roboy.context.Value;
+import org.roboy.context.Value;
 import org.roboy.memory.models.nodes.Interlocutor;
 
 /**

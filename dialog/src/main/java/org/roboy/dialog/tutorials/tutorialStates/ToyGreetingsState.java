@@ -1,13 +1,11 @@
 package org.roboy.dialog.tutorials.tutorialStates;
 
 import org.roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.dialog.Segue;
-import roboy.dialog.states.definitions.State;
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.logic.StatementInterpreter;
-import roboy.talk.Verbalizer;
+import org.roboy.dialog.Segue;
+import org.roboy.dialog.states.definitions.State;
+import org.roboy.dialog.states.definitions.StateParameters;
+import org.roboy.logic.StatementInterpreter;
+import org.roboy.talk.Verbalizer;
 
 import java.util.*;
 

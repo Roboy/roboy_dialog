@@ -2,30 +2,30 @@ package org.roboy.dialog.states.devoStates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import roboy.context.contextObjects.IntentValue;
-import roboy.dialog.states.definitions.ExpoState;
-import roboy.dialog.states.definitions.State;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.dialog.states.ordinaryStates.PersonalInformationFollowUpState;
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.Linguistics.SemanticRole;
-import roboy.linguistics.Triple;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jRelationship;
-import roboy.memory.Neo4jProperty;
+import org.roboy.context.contextObjects.IntentValue;
+import org.roboy.dialog.states.definitions.ExpoState;
+import org.roboy.dialog.states.definitions.State;
+import org.roboy.dialog.states.definitions.StateParameters;
+import org.roboy.dialog.states.ordinaryStates.PersonalInformationFollowUpState;
+import org.roboy.linguistics.Linguistics;
+import org.roboy.linguistics.Linguistics.SemanticRole;
+import org.roboy.linguistics.Triple;
+import org.roboy.linguistics.sentenceanalysis.Interpretation;
+import org.roboy.ontology.Neo4jRelationship;
+import org.roboy.ontology.Neo4jProperty;
 import org.roboy.memory.models.MemoryNodeModel;
 import org.roboy.memory.models.nodes.Roboy;
-import roboy.talk.PhraseCollection;
-import roboy.util.Agedater;
-import roboy.util.Pair;
-import roboy.util.QAJsonParser;
-import roboy.util.RandomList;
-import roboy.util.api.*;
+import org.roboy.talk.PhraseCollection;
+import org.roboy.util.Agedater;
+import org.roboy.util.Pair;
+import org.roboy.util.QAJsonParser;
+import org.roboy.util.RandomList;
+import org.roboy.util.api.*;
 
 import java.util.*;
 
-import static roboy.memory.Neo4jProperty.full_name;
-import static roboy.memory.Neo4jProperty.name;
+import static org.roboy.ontology.Neo4jProperty.full_name;
+import static org.roboy.ontology.Neo4jProperty.name;
 
 /**
  * QuestionAnsweringState
@@ -303,7 +303,7 @@ public class QuestionRoboyQAState extends ExpoState {
     }
 
     private String extractNodeNameForPredicate(Neo4jProperty predicate, Roboy roboy) {
-        String property = roboy.getProperty(predicate).toString();
+        String property = roboy.getProperties(predicate).toString();
         if (property != null) {
             return String.format(infoValues.getSuccessAnswers(predicate).getRandomElement(), property);
         }
@@ -311,7 +311,7 @@ public class QuestionRoboyQAState extends ExpoState {
     }
 
     private String extractAge(Roboy roboy) {
-        HashMap<String, Integer> ages = new Agedater().determineAge(roboy.getProperty(Neo4jProperty.birthdate).toString());
+        HashMap<String, Integer> ages = new Agedater().determineAge(roboy.getProperties(Neo4jProperty.birthdate).toString());
         String retrievedAge = "0 days";
         if (ages.get("years") > 0) {
             retrievedAge = ages.get("years") + " years";

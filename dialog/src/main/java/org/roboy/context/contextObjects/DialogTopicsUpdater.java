@@ -1,6 +1,6 @@
 package org.roboy.context.contextObjects;
 
-import roboy.context.InternalUpdater;
+import org.roboy.context.InternalUpdater;
 
 /**
  * Updater available to all DM for adding new values to the DialogTopics attribute.

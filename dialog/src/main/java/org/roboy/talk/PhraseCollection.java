@@ -2,14 +2,6 @@ package org.roboy.talk;
 
 import org.roboy.util.FileLineReader;
 import org.roboy.util.RandomList;
-import roboy.util.FileLineReader;
-import roboy.util.RandomList;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static roboy.util.FileLineReader.readFile;
-
 
 /**
  * A (temporary) central class to store short lists of phrases.

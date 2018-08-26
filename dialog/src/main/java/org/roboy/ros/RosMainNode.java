@@ -13,9 +13,6 @@ import org.ros.node.service.ServiceClient;
 import org.ros.node.service.ServiceResponseListener;
 
 import org.ros.node.topic.Subscriber;
-import roboy.context.Context;
-import roboy.emotions.RoboyEmotion;
-import roboy.util.ConfigManager;
 import roboy_communication_cognition.*;
 import roboy_communication_control.*;
 

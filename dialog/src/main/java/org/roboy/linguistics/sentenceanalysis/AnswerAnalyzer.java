@@ -5,8 +5,8 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.Linguistics.SemanticRole;
+import org.roboy.linguistics.Linguistics;
+import org.roboy.linguistics.Linguistics.SemanticRole;
 
 /**
  * Checks the predicate argument structures produced by the OpenNLPParser analyzer

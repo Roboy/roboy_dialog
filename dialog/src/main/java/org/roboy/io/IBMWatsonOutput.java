@@ -11,10 +11,10 @@ import com.ibm.watson.developer_cloud.text_to_speech.v1.model.AudioFormat;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.model.Voice;
 import com.ibm.watson.developer_cloud.text_to_speech.v1.util.WaveUtils;
 
-import roboy.dialog.action.Action;
-import roboy.dialog.action.SpeechAction;
+import org.roboy.dialog.action.Action;
+import org.roboy.dialog.action.SpeechAction;
 
-import roboy.util.ConfigManager;
+import org.roboy.util.ConfigManager;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 

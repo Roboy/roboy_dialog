@@ -1,15 +1,13 @@
 package org.roboy.io;
 
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.util.Maps;
+import org.roboy.linguistics.sentenceanalysis.Interpretation;
 
 import java.util.Scanner;
 
 /**
  * Uses the command line as input device.
  */
-public class CommandLineInput implements InputDevice{
+public class CommandLineInput implements InputDevice {
 	
 	private Scanner sc = new Scanner(System.in);
 

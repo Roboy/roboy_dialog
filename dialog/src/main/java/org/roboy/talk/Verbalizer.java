@@ -1,23 +1,14 @@
 package org.roboy.talk;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.roboy.dialog.action.Action;
 import org.roboy.dialog.action.SpeechAction;
-import org.roboy.linguistics.Linguistics;
 import org.roboy.linguistics.sentenceanalysis.Interpretation;
 import org.roboy.util.Maps;
 import org.roboy.util.RandomList;
-import roboy.dialog.action.Action;
-import roboy.dialog.action.SpeechAction;
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.util.Maps;
-import roboy.util.RandomList;
 
 /**
  * Turns interpretations to actual utterances. This should in the future lead to diversifying
@@ -36,12 +27,18 @@ public class Verbalizer {
 	 */
 	public Action verbalize(Interpretation interpretation){
 		interpretation = verbalizeDates(interpretation);
-		switch(interpretation.getSentenceType()){
-		case Linguistics.SentenceType.GREETING: return greet(interpretation);
-		case Linguistics.SentenceType.SEGUE:    return segue(interpretation);
-		case Linguistics.SentenceType.ANECDOTE: return anecdote(interpretation);
-		default:       return literalSentence(interpretation);
-		}
+		if (interpretation.getSentenceType() != null) {
+            switch (interpretation.getSentenceType()) {
+                case GREETING:
+                    return greet(interpretation);
+                case SEGUE:
+                    return segue(interpretation);
+                case ANECDOTE:
+                    return anecdote(interpretation);
+                default:
+                    return literalSentence(interpretation);
+            }
+        }
 	}
 
 	// possible names for RoboyModel as parsed by Bing speech recognition

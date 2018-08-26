@@ -1,6 +1,6 @@
 package org.roboy.linguistics.sentenceanalysis;
 
-import roboy.emotions.RoboyEmotion;
+import org.roboy.emotions.RoboyEmotion;
 
 import java.util.List;
 

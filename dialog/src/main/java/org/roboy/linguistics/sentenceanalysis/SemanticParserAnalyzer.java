@@ -2,17 +2,15 @@ package org.roboy.linguistics.sentenceanalysis;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import roboy.linguistics.Linguistics;
+import org.roboy.linguistics.Linguistics;
+import org.roboy.linguistics.Triple;
 
 import java.io.*;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import roboy.linguistics.Triple;
 
 import com.google.common.collect.Sets;
 

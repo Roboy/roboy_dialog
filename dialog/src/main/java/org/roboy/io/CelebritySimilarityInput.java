@@ -1,15 +1,11 @@
 package org.roboy.io;
 
-import java.io.IOException;
-
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.util.Maps;
+import org.roboy.linguistics.sentenceanalysis.Interpretation;
 
 /**
  * Should perform the celebrity look-a-like vison input. Isn't implemented yet.
  */
-public class CelebritySimilarityInput implements InputDevice{
+public class CelebritySimilarityInput implements InputDevice {
 
 	@Override
 	public Input listen() {

@@ -1,23 +1,20 @@
 package org.roboy.linguistics.sentenceanalysis;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import roboy.emotions.RoboyEmotion;
-import roboy.linguistics.DetectedEntity;
-import roboy.linguistics.Linguistics.*;
-import roboy.linguistics.Triple;
-
-import edu.stanford.nlp.sempre.*;
+import org.roboy.emotions.RoboyEmotion;
+import org.roboy.linguistics.DetectedEntity;
+import org.roboy.linguistics.Linguistics.*;
+import org.roboy.linguistics.Triple;
 
 import javax.annotation.Nullable;
 
 /**
  * An interpretation of all inputs to RoboyModel consists of the sentence type and an
  * arbitrary map of features. Feature names are listed and documented in the
- * class roboy.linguistics.Linguistics.
+ * class org.roboy.linguistics.Linguistics.
  *
  * The interpretation class is also used to pass the output information from the
  * states to the verbalizer class.

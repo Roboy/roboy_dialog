@@ -7,13 +7,9 @@ import org.roboy.context.Context;
 import org.roboy.dialog.states.definitions.State;
 import org.roboy.dialog.states.definitions.StateFactory;
 import org.roboy.dialog.states.definitions.StateParameters;
-import roboy.context.Context;
-import roboy.logic.InferenceEngine;
+import org.roboy.logic.InferenceEngine;
 import org.roboy.memory.interfaces.Neo4jMemoryInterface;
-import roboy.dialog.states.definitions.State;
-import roboy.dialog.states.definitions.StateFactory;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.ros.RosMainNode;
+import org.roboy.ros.RosMainNode;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -10,11 +10,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.Linguistics.SentenceType;
-import roboy.linguistics.Term;
-import roboy.linguistics.Triple;
-import roboy.util.Maps;
+import org.roboy.linguistics.Linguistics.SentenceType;
+import org.roboy.linguistics.Term;
+import org.roboy.linguistics.Triple;
 
 /**
  * Tries to find triples with rather stupid heuristics and stores the results in the

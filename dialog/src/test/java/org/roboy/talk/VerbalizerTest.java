@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import roboy.dialog.action.SpeechAction;
-import roboy.linguistics.sentenceanalysis.Interpretation;
+import org.roboy.dialog.action.SpeechAction;
+import org.roboy.linguistics.sentenceanalysis.Interpretation;
 
 public class VerbalizerTest {
 	

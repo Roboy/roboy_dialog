@@ -6,20 +6,15 @@ import org.roboy.dialog.states.definitions.StateParameters;
 import org.roboy.emotions.RoboyEmotion;
 import org.roboy.linguistics.Linguistics;
 import org.roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.dialog.states.definitions.State;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.ros.RosMainNode;
-import roboy.talk.PhraseCollection;
-import roboy.util.RandomList;
+import org.roboy.dialog.states.definitions.State;
+import org.roboy.ros.RosMainNode;
+import org.roboy.talk.PhraseCollection;
+import org.roboy.util.RandomList;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
-
-import static roboy.emotions.RoboyEmotion.*;
 
 /**
  * Implementations of RoboyModel's abilities.

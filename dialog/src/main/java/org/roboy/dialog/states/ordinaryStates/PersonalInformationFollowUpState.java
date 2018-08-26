@@ -4,21 +4,19 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.roboy.context.contextObjects.IntentValue;
 import org.roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.context.contextObjects.IntentValue;
-import roboy.dialog.Segue;
-import roboy.dialog.states.definitions.State;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jRelationship;
+import org.roboy.dialog.Segue;
+import org.roboy.dialog.states.definitions.State;
+import org.roboy.dialog.states.definitions.StateParameters;
+import org.roboy.ontology.Neo4jRelationship;
 import org.roboy.memory.models.nodes.Interlocutor;
 import org.roboy.memory.models.MemoryNodeModel;
-import roboy.util.QAJsonParser;
-import roboy.util.RandomList;
+import org.roboy.util.QAJsonParser;
+import org.roboy.util.RandomList;
 
 import java.util.Set;
 
-import static roboy.memory.Neo4jRelationship.*;
-import static roboy.memory.Neo4jProperty.*;
+import static org.roboy.ontology.Neo4jRelationship.*;
+import static org.roboy.ontology.Neo4jProperty.*;
 
 /**
  * Personal Information Update State

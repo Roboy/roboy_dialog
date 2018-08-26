@@ -1,9 +1,9 @@
 package org.roboy.dialog;
 
 import org.junit.Test;
-import roboy.context.Context;
-import roboy.dialog.states.definitions.State;
-import roboy.logic.Inference;
+import org.roboy.context.Context;
+import org.roboy.dialog.states.definitions.State;
+import org.roboy.logic.Inference;
 
 import static org.junit.Assert.*;
 

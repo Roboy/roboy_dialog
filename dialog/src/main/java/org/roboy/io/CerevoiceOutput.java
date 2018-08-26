@@ -1,16 +1,15 @@
 package org.roboy.io;
 
 import java.util.List;
-import roboy.dialog.action.Action;
-import roboy.dialog.action.SpeechAction;
+import org.roboy.dialog.action.Action;
+import org.roboy.dialog.action.SpeechAction;
 
-import roboy.ros.RosMainNode;
+import org.roboy.ros.RosMainNode;
 
 /**
  * Cerevoice text to speech
  */
-public class CerevoiceOutput implements OutputDevice
-{
+public class CerevoiceOutput implements OutputDevice {
 
 	private RosMainNode rosMainNode;
 

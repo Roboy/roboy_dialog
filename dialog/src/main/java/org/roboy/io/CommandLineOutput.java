@@ -2,13 +2,13 @@ package org.roboy.io;
 
 import java.util.List;
 
-import roboy.dialog.action.Action;
-import roboy.dialog.action.SpeechAction;
+import org.roboy.dialog.action.Action;
+import org.roboy.dialog.action.SpeechAction;
 
 /**
  * Uses the command line as output device.
  */
-public class CommandLineOutput implements OutputDevice{
+public class CommandLineOutput implements OutputDevice {
 
 //	private EmotionOutput emotion;
 //	public CommandLineOutput(EmotionOutput emotion)

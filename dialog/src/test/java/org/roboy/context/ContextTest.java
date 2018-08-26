@@ -6,11 +6,11 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 import org.ros.internal.message.RawMessage;
 import org.ros.message.MessageListener;
-import roboy.context.contextObjects.*;
+import org.roboy.context.contextObjects.*;
 import org.roboy.memory.util.DummyMemory;
-import roboy.memory.Neo4jRelationship;
+import org.roboy.ontology.Neo4jRelationship;
 import org.roboy.memory.models.nodes.Interlocutor;
-import roboy.ros.RosMainNode;
+import org.roboy.ros.RosMainNode;
 import roboy_communication_cognition.DirectionVector;
 
 import java.util.HashMap;

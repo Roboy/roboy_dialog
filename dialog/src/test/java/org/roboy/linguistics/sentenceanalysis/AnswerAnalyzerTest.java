@@ -1,13 +1,11 @@
 package org.roboy.linguistics.sentenceanalysis;
 
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
-import roboy.linguistics.Linguistics;
+import static org.junit.Assert.*;
 
 public class AnswerAnalyzerTest {
 

@@ -3,10 +3,9 @@ package org.roboy.dialog.states.definitions;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.roboy.context.contextObjects.IntentValue;
-import roboy.context.contextObjects.IntentValue;
-import roboy.memory.Neo4jProperty;
+import org.roboy.ontology.Neo4jProperty;
 import org.roboy.memory.models.nodes.Roboy;
-import roboy.util.RandomList;
+import org.roboy.util.RandomList;
 
 import java.util.Arrays;
 import java.util.HashMap;

@@ -3,8 +3,8 @@ package org.roboy.dialog.personality;
 import java.util.List;
 
 import org.roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.dialog.action.Action;
-import roboy.linguistics.sentenceanalysis.Interpretation;
+import org.roboy.dialog.action.Action;
+
 
 /**
  * Personality interface. A personality is designed to define how RoboyModel reacts in every

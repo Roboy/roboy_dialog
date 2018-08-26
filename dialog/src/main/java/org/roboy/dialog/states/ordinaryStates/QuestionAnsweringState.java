@@ -6,28 +6,24 @@ import org.roboy.context.contextObjects.IntentValue;
 import org.roboy.linguistics.Linguistics;
 import org.roboy.linguistics.Triple;
 import org.roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.context.contextObjects.IntentValue;
-import roboy.dialog.states.definitions.State;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.Triple;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jRelationship;
+import org.roboy.dialog.states.definitions.State;
+import org.roboy.dialog.states.definitions.StateParameters;
+import org.roboy.ontology.Neo4jRelationship;
 import org.roboy.memory.models.nodes.Interlocutor;
-import org.roboy.memory.models.nodes.Interlocutor.RelationshipAvailability;
+import org.roboy.ontology.NodeModel.RelationshipAvailability;
 import org.roboy.memory.models.MemoryNodeModel;
 import org.roboy.memory.models.nodes.Roboy;
-import roboy.dialog.Segue;
-import roboy.talk.PhraseCollection;
-import roboy.talk.Verbalizer;
-import roboy.util.RandomList;
+import org.roboy.dialog.Segue;
+import org.roboy.talk.PhraseCollection;
+import org.roboy.talk.Verbalizer;
+import org.roboy.util.RandomList;
 
-import static org.roboy.memory.models.nodes.Interlocutor.RelationshipAvailability.*;
+import static org.roboy.ontology.NodeModel.RelationshipAvailability.*;
 
 import java.util.List;
 import java.util.Set;
 
-import static roboy.memory.Neo4jRelationship.*;
+import static org.roboy.ontology.Neo4jRelationship.*;
 
 /**
  * This state will answer generalStates questions.

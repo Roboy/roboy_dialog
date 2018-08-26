@@ -5,15 +5,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.Semaphore;
 
 import opennlp.tools.cmdline.parser.ParserTool;
 import opennlp.tools.parser.Parse;
 import opennlp.tools.parser.Parser;
 import opennlp.tools.parser.ParserFactory;
 import opennlp.tools.parser.ParserModel;
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.Linguistics.SemanticRole;
+import org.roboy.linguistics.Linguistics;
+import org.roboy.linguistics.Linguistics.SemanticRole;
 
 /**
  * Performs a sentence analysis using the Open NLP constituency parser, then interprets the

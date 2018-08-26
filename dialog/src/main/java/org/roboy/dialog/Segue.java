@@ -1,8 +1,8 @@
 package org.roboy.dialog;
 
 
-import roboy.talk.PhraseCollection;
-import roboy.util.RandomList;
+import org.roboy.talk.PhraseCollection;
+import org.roboy.util.RandomList;
 
 /**
  * A segue /ˈsɛɡweɪ/ is a smooth transition from one topic to the next.  (c) Wikipedia

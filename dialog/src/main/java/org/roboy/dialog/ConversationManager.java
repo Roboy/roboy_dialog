@@ -14,22 +14,17 @@ import org.roboy.util.TelegramCommunicationHandler;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
-import roboy.context.Context;
-import roboy.dialog.personality.StateBasedPersonality;
-import roboy.io.MultiInputDevice;
-import roboy.io.MultiOutputDevice;
-import roboy.linguistics.sentenceanalysis.*;
-import roboy.logic.Inference;
-import roboy.logic.InferenceEngine;
+import org.roboy.dialog.personality.StateBasedPersonality;
+import org.roboy.logic.Inference;
+import org.roboy.logic.InferenceEngine;
 import org.roboy.memory.Neo4jMemory;
 import org.roboy.memory.interfaces.Neo4jMemoryInterface;
-import roboy.memory.Neo4jProperty;
+import org.roboy.ontology.Neo4jProperty;
 import org.roboy.memory.models.nodes.Interlocutor;
-import roboy.ros.RosMainNode;
-import roboy.talk.Verbalizer;
-import roboy.util.ConfigManager;
-import roboy.util.IO;
-import roboy.util.TelegramCommunicationHandler;
+import org.roboy.ros.RosMainNode;
+import org.roboy.talk.Verbalizer;
+import org.roboy.util.ConfigManager;
+import org.roboy.util.IO;
 
 import java.io.File;
 import java.io.IOException;
@@ -221,7 +216,7 @@ public class ConversationManager {
             logger.error("Memory is null while starting a conversation");
         }
         Interlocutor person = new Interlocutor(memory);
-        person.setProperty(Neo4jProperty.telegram_id, uuid);
+        person.setProperties(Neo4jProperty.telegram_id, uuid);
         context.ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
 
 

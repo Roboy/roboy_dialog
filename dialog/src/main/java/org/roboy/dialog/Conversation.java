@@ -7,14 +7,9 @@ import org.roboy.io.MultiInputDevice;
 import org.roboy.io.MultiOutputDevice;
 import org.roboy.linguistics.sentenceanalysis.Analyzer;
 import org.roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.dialog.action.Action;
-import roboy.dialog.action.SpeechAction;
-import roboy.dialog.personality.StateBasedPersonality;
-import roboy.io.Input;
-import roboy.io.MultiInputDevice;
-import roboy.io.MultiOutputDevice;
-import roboy.linguistics.sentenceanalysis.Analyzer;
-import roboy.linguistics.sentenceanalysis.Interpretation;
+import org.roboy.dialog.action.Action;
+import org.roboy.dialog.action.SpeechAction;
+import org.roboy.dialog.personality.StateBasedPersonality;
 
 import java.io.File;
 import java.io.FileNotFoundException;

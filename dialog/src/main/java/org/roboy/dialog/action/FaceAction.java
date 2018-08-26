@@ -1,7 +1,6 @@
 package org.roboy.dialog.action;
 
 import org.roboy.emotions.RoboyEmotion;
-import roboy.emotions.RoboyEmotion;
 
 /**
  * Action used if the dialogue manager wants RoboyModel to express a certain facial expression,

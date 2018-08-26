@@ -1,7 +1,7 @@
 package org.roboy.io;
 
-import roboy.dialog.action.Action;
-import roboy.dialog.action.SpeechAction;
+import org.roboy.dialog.action.Action;
+import org.roboy.dialog.action.SpeechAction;
 
 import java.net.*;
 import java.util.List;

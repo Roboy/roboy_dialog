@@ -1,6 +1,6 @@
 package org.roboy.context.contextObjects;
 
-import roboy.context.ValueHistory;
+import org.roboy.context.ValueHistory;
 
 import java.util.HashMap;
 

@@ -8,7 +8,7 @@ import edu.wpi.rail.jrosbridge.services.ServiceRequest;
 import edu.wpi.rail.jrosbridge.callback.TopicCallback;
 import edu.wpi.rail.jrosbridge.messages.Message;
 
-import roboy.ros.Ros;
+import org.roboy.ros.Ros;
 
 /**
  * Vision helper class

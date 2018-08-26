@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import roboy.linguistics.Linguistics.SentenceType;
+import org.roboy.linguistics.Linguistics.SentenceType;
 
 public class DictionaryBasedSentenceTypeDetectorTest {
 	

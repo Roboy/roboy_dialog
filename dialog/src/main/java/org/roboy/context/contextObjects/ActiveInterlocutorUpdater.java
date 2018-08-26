@@ -1,6 +1,6 @@
 package org.roboy.context.contextObjects;
 
-import roboy.context.InternalUpdater;
+import org.roboy.context.InternalUpdater;
 import org.roboy.memory.models.nodes.Interlocutor;
 
 /**

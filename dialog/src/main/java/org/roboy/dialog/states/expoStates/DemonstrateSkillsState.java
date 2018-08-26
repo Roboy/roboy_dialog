@@ -8,17 +8,11 @@ import org.roboy.dialog.states.definitions.State;
 import org.roboy.dialog.states.definitions.StateParameters;
 import org.roboy.linguistics.Linguistics;
 import org.roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.context.contextObjects.IntentValue;
-import roboy.dialog.states.definitions.State;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.dialog.states.definitions.ExpoState;
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jProperty;
+import org.roboy.ontology.Neo4jProperty;
 import org.roboy.memory.models.nodes.Interlocutor;
-import roboy.ros.RosMainNode;
-import roboy.talk.PhraseCollection;
-import roboy.util.RandomList;
+import org.roboy.ros.RosMainNode;
+import org.roboy.talk.PhraseCollection;
+import org.roboy.util.RandomList;
 
 import java.util.Set;
 

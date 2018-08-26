@@ -1,18 +1,16 @@
 package org.roboy.dialog.states.ordinaryStates;
 
 import org.roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.dialog.states.definitions.State;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.dialog.Segue;
-import roboy.ros.RosMainNode;
-import roboy.util.RandomList;
+import org.roboy.dialog.states.definitions.State;
+import org.roboy.dialog.states.definitions.StateParameters;
+import org.roboy.dialog.Segue;
+import org.roboy.ros.RosMainNode;
+import org.roboy.util.RandomList;
 
 import java.util.Set;
 
-import static roboy.util.ConfigManager.ROS_ACTIVE_PKGS;
-import static roboy.util.ConfigManager.ROS_ENABLED;
+import static org.roboy.util.ConfigManager.ROS_ACTIVE_PKGS;
+import static org.roboy.util.ConfigManager.ROS_ENABLED;
 
 /**
  * This fallback state will query the generative model over ROS to create a reply for any situation.

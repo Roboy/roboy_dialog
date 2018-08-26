@@ -1,14 +1,12 @@
 package org.roboy.linguistics.sentenceanalysis;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import roboy.linguistics.DetectedEntity;
-import roboy.linguistics.Entity;
-import roboy.linguistics.Linguistics;
+import org.roboy.linguistics.DetectedEntity;
+import org.roboy.linguistics.Entity;
 
 /**
  * Checks for keywords from a list (knowledgebase/triviaWords.csv) and stores them in 

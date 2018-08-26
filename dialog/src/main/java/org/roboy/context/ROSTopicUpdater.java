@@ -1,8 +1,8 @@
 package org.roboy.context;
 
 import org.ros.message.MessageListener;
-import roboy.ros.RosMainNode;
-import roboy.ros.RosSubscribers;
+import org.roboy.ros.RosMainNode;
+import org.roboy.ros.RosSubscribers;
 
 /**
  * An external updater connected to a ROS topic that can push the arriving values to the target.
@@ -38,7 +38,7 @@ public abstract class ROSTopicUpdater<Message,Target> extends ExternalUpdater {
         addListener(listener, ros);
     }
 
-    protected void addListener(MessageListener listener, roboy.ros.RosMainNode ros) {
+    protected void addListener(MessageListener listener, RosMainNode ros) {
         ros.addListener(listener, getTargetSubscriber());
     }
 }

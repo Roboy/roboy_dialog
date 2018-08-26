@@ -3,8 +3,8 @@ package org.roboy.io;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import roboy.dialog.ConversationManager;
-import roboy.util.Pair;
+import org.roboy.dialog.ConversationManager;
+import org.roboy.util.Pair;
 
 import java.io.IOException;
 import java.util.HashMap;

@@ -6,8 +6,8 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonSyntaxException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import roboy.memory.Neo4jProperty;
-import roboy.memory.Neo4jRelationship;
+import org.roboy.ontology.Neo4jProperty;
+import org.roboy.ontology.Neo4jRelationship;
 
 import java.io.*;
 import java.lang.reflect.Field;

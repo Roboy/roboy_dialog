@@ -2,9 +2,7 @@ package org.roboy.io;
 
 import java.io.IOException;
 
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.util.Maps;
+import org.roboy.linguistics.sentenceanalysis.Interpretation;
 /* 
  edu.cmu.sphinx - responsible for 
  linking Sphinx functions

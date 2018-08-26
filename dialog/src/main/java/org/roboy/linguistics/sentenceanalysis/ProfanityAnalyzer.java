@@ -1,7 +1,7 @@
 package org.roboy.linguistics.sentenceanalysis;
 
-import roboy.talk.PhraseCollection;
-import roboy.util.RandomList;
+import org.roboy.talk.PhraseCollection;
+import org.roboy.util.RandomList;
 import java.util.List;
 
 /**

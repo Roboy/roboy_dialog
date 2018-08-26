@@ -1,8 +1,7 @@
 package org.roboy.util;
 
 import org.roboy.io.*;
-import roboy.io.*;
-import roboy.ros.RosMainNode;
+import org.roboy.ros.RosMainNode;
 
 import java.io.IOException;
 import java.net.SocketException;

@@ -1,7 +1,7 @@
 package org.roboy.util;
 
 import org.telegram.telegrambots.TelegramBotsApi;
-import roboy.util.Pair;
+import org.roboy.util.Pair;
 import org.apache.commons.io.IOUtils;
 import org.apache.jena.atlas.logging.Log;
 import org.apache.logging.log4j.LogManager;
@@ -17,7 +17,7 @@ import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.api.objects.User;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
-import roboy.io.TelegramInput;
+import org.roboy.io.TelegramInput;
 
 import java.io.*;
 import java.security.InvalidParameterException;

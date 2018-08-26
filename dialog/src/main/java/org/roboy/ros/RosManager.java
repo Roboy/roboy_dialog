@@ -6,11 +6,8 @@ import org.roboy.util.ConfigManager;
 import org.ros.node.ConnectedNode;
 import org.ros.node.service.ServiceClient;
 import org.ros.node.topic.Subscriber;
-import roboy.util.ConfigManager;
 
 import java.util.HashMap;
-
-
 
 /**
  * Stores all the Ros Service Clients and manages access to them.

@@ -3,9 +3,9 @@ package org.roboy.parser;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import roboy.memory.Neo4jRelationship;
-import roboy.util.JsonEntryModel;
-import roboy.util.QAJsonParser;
+import org.roboy.ontology.Neo4jRelationship;
+import org.roboy.util.JsonEntryModel;
+import org.roboy.util.QAJsonParser;
 
 import java.io.*;
 

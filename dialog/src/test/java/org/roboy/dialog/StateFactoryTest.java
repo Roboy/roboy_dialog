@@ -1,13 +1,13 @@
 package org.roboy.dialog;
 
 import org.junit.Test;
-import roboy.context.Context;
-import roboy.dialog.tutorials.tutorialStates.*;
-import roboy.dialog.states.definitions.State;
-import roboy.dialog.states.definitions.StateFactory;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.logic.Inference;
-import roboy.logic.InferenceEngine;
+import org.roboy.context.Context;
+import org.roboy.dialog.tutorials.tutorialStates.*;
+import org.roboy.dialog.states.definitions.State;
+import org.roboy.dialog.states.definitions.StateFactory;
+import org.roboy.dialog.states.definitions.StateParameters;
+import org.roboy.logic.Inference;
+import org.roboy.logic.InferenceEngine;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

@@ -1,6 +1,6 @@
 package org.roboy.linguistics.sentenceanalysis;
 
-import roboy.ros.RosMainNode;
+import org.roboy.ros.RosMainNode;
 
 /**
  * Calls a machine learning model to determine if the utterance of the other person represents

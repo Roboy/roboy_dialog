@@ -3,10 +3,9 @@ package org.roboy.io;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.roboy.dialog.action.EmotionAction;
-import roboy.dialog.action.Action;
-import roboy.dialog.action.EmotionAction;
-import roboy.dialog.action.SpeechAction;
-import roboy.util.TelegramCommunicationHandler;
+import org.roboy.dialog.action.Action;
+import org.roboy.dialog.action.SpeechAction;
+import org.roboy.util.TelegramCommunicationHandler;
 
 import java.util.List;
 

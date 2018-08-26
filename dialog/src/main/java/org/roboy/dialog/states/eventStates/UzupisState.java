@@ -5,17 +5,15 @@ import org.apache.logging.log4j.Logger;
 
 import org.roboy.dialog.states.definitions.StateParameters;
 import org.roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.dialog.states.definitions.State;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.linguistics.sentenceanalysis.Interpretation;
+import org.roboy.dialog.states.definitions.State;
 import org.roboy.memory.models.nodes.Interlocutor;
-import roboy.util.QAFileParser;
-import roboy.util.UzupisIntents;
+import org.roboy.util.QAFileParser;
+import org.roboy.ontology.util.UzupisIntents;
 
 import java.io.IOException;
 import java.util.*;
 
-import static roboy.util.UzupisIntents.*;
+import static org.roboy.ontology.util.UzupisIntents.*;
 
 
 /**

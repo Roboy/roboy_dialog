@@ -2,9 +2,9 @@ package org.roboy.io;
 
 import java.util.List;
 
-import roboy.dialog.action.Action;
-import roboy.dialog.action.EmotionAction;
-import roboy.ros.RosMainNode;
+import org.roboy.dialog.action.Action;
+import org.roboy.dialog.action.EmotionAction;
+import org.roboy.ros.RosMainNode;
 
 /**
  * RoboyModel's facial expression output.

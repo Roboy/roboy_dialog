@@ -1,7 +1,5 @@
 package org.roboy.linguistics.sentenceanalysis;
 
-import roboy.linguistics.Linguistics;
-
 import java.util.Arrays;
 import java.util.List;
 

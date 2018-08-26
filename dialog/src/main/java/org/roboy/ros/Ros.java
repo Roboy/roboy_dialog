@@ -1,8 +1,9 @@
 package org.roboy.ros;
-@Deprecated
+
 /**
  * Communication with ROS.
  */
+@Deprecated
 public class Ros {
 
     private static edu.wpi.rail.jrosbridge.Ros ros;

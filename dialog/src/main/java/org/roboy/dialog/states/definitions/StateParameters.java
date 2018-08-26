@@ -2,10 +2,10 @@ package org.roboy.dialog.states.definitions;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import roboy.logic.InferenceEngine;
+import org.roboy.logic.InferenceEngine;
 import org.roboy.memory.interfaces.Neo4jMemoryInterface;
-import roboy.dialog.DialogStateMachine;
-import roboy.ros.RosMainNode;
+import org.roboy.dialog.DialogStateMachine;
+import org.roboy.ros.RosMainNode;
 
 import java.util.HashMap;
 

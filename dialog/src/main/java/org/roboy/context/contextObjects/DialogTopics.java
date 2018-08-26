@@ -1,6 +1,6 @@
 package org.roboy.context.contextObjects;
 
-import roboy.context.ValueHistory;
+import org.roboy.context.ValueHistory;
 
 /**
  * A value history to hold the utterances from the interlocutor and RoboyModel.

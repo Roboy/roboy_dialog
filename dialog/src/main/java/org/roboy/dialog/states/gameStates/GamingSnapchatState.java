@@ -6,17 +6,13 @@ import org.roboy.dialog.states.definitions.State;
 import org.roboy.dialog.states.definitions.StateParameters;
 import org.roboy.linguistics.Linguistics;
 import org.roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.dialog.states.definitions.State;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.linguistics.Linguistics;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.logic.Inference;
-import roboy.talk.PhraseCollection;
-import roboy.util.RandomList;
+import org.roboy.logic.Inference;
+import org.roboy.talk.PhraseCollection;
+import org.roboy.util.RandomList;
 
 import java.util.*;
 
-import static roboy.util.FileLineReader.readFile;
+import static org.roboy.util.FileLineReader.readFile;
 
 
 public class GamingSnapchatState extends State {

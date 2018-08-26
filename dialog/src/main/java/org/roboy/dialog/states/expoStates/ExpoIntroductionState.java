@@ -7,21 +7,16 @@ import org.roboy.dialog.states.definitions.ExpoState;
 import org.roboy.dialog.states.definitions.State;
 import org.roboy.dialog.states.definitions.StateParameters;
 import org.roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.context.contextObjects.IntentValue;
-import roboy.dialog.states.definitions.ExpoState;
-import roboy.dialog.states.definitions.State;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.Neo4jProperty;
+import org.roboy.ontology.Neo4jProperty;
 import org.roboy.memory.models.nodes.Interlocutor;
 import org.roboy.memory.models.nodes.Roboy;
-import roboy.util.Agedater;
-import roboy.util.QAJsonParser;
-import roboy.util.RandomList;
+import org.roboy.util.Agedater;
+import org.roboy.util.QAJsonParser;
+import org.roboy.util.RandomList;
 
 import java.util.*;
 
-import static roboy.memory.Neo4jProperty.*;
+import static org.roboy.ontology.Neo4jProperty.*;
 
 
 /**

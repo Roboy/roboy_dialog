@@ -1,7 +1,7 @@
 package org.roboy.context.contextObjects;
 
-import roboy.memory.Neo4jProperty;
-import roboy.memory.Neo4jRelationship;
+import org.roboy.ontology.Neo4jProperty;
+import org.roboy.ontology.Neo4jRelationship;
 
 import java.util.Objects;
 

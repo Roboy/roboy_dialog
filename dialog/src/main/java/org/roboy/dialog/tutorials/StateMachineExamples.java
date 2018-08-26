@@ -4,12 +4,11 @@ import org.roboy.context.Context;
 import org.roboy.dialog.tutorials.tutorialStates.ToyGreetingsState;
 import org.roboy.dialog.tutorials.tutorialStates.ToyIntroState;
 import org.roboy.dialog.tutorials.tutorialStates.ToyRandomAnswerState;
-import roboy.context.Context;
-import roboy.dialog.DialogStateMachine;
-import roboy.dialog.states.definitions.StateParameters;
-import roboy.dialog.tutorials.tutorialStates.*;
-import roboy.logic.Inference;
-import roboy.logic.InferenceEngine;
+import org.roboy.dialog.DialogStateMachine;
+import org.roboy.dialog.states.definitions.StateParameters;
+import org.roboy.dialog.tutorials.tutorialStates.*;
+import org.roboy.logic.Inference;
+import org.roboy.logic.InferenceEngine;
 
 import java.io.File;
 
