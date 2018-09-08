@@ -39,6 +39,7 @@ public class TelegramInput implements InputDevice, CleanUp {
      * Gets called by the TelegramAPI Thread whenever a new telegram message arrives.
      * Places them in the appropriate thread's message string. Creates thread beforehand, if necessary.
      * @param update contains a (sender uuid,message) string pair.
+     * @param name the name of the Interlocutor. Necessary for unique adressing by name
      */
     public static void onUpdate(Pair<String, String> update, String name) {
 

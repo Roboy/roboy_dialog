@@ -31,7 +31,7 @@ import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.SOME_AVAI
 /**
  * Passive state to start a conversation.
  * Roboy is waiting until a greeting or his name is detected.
- *
+ * When he is greeted and is able to infer the name (for example from a chat service user page), then instead of asking for the name he begins with a personal question.
  */
 public class PassiveGreetingsState extends State {
 

@@ -839,6 +839,61 @@ Finish the ``act`` method
 
 Now you need to tell the dialog system how to use your new in- and output. Refer to :ref:`tut_generic_social_media_io` in order to tell the dialog system where to find them and how to allow users to activate them. Now rebuild your code, select your Input/OutputDevice in config.properties and run it to see the work you have achieved.
 
+New Memory UUID
+------------------
+
+If you create support for a new chat service, you will probably need to use uuids in the format "yourservicename-[uuid]". These must be carefully integrated with the memory in order to avoid confusion of the inter-service interlocutor recognition.
+
+First, check if `roboy.util.UUidType` already contains a type for the service you are integrating. If not, add it to `roboy.util.UuidType` in dialog and the attributes necessary for the id to `roboy.memory.Neo4jLabel` and `roboy.memory.Neo4jProperty` in roboy memory. (note: CamelCase is not supported for these)
+
+Second, add usage of your new UUID within `roboy.dialog.ConversationManager` (the section you are looking for is marked with `//memory uuid handling``).
+
+Now, an example:
+
+First, we create the telegram uuid:
+We create a `Neo4jProperty` by extending the enum at the beginning,
+::
+    public enum Neo4jProperty {
+    [...]
+    telegram_id("telegram_id"),
+    [...]
+::
+we create a `Neo4jLabel` by extending that enum too,
+::
+public enum Neo4jLabel {
+    [...]
+    Telegram_person("Telegram_person"),
+    [...]
+::
+then, we create the `UuidType` and the necessary conversions
+::
+    public enum UuidType {
+    TELEGRAM_UUID,
+    [...]
+    public boolean isValidUuid(String uuid) {
+    switch (this) {
+        case TELEGRAM_UUID:
+            return true;
+    [...]
+    public Neo4jProperty toNeo4jProperty() {
+    switch (this) {
+        case TELEGRAM_UUID:
+            return Neo4jProperty.telegram_id;
+    [...]
+    public Neo4jLabel toNeo4jLabel() {
+    switch (this) {
+        case TELEGRAM_UUID:
+            return Neo4jLabel.Telegram_person;
+    [...]
+::
+finally, we add our new service to `roboy.dialog.ConversationManager`
+::
+    //memory uuid handling
+    [...]
+        else if (uuid.startsWith("telegram-")) {
+            person.addUuid(new Uuid(UuidType.TELEGRAM_UUID, uuid.substring(uuid.indexOf('-') + 1)), name);
+    [...]
+::
 
 Telegram: Handle commands
 -------------------------
