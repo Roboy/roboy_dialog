@@ -103,6 +103,7 @@ public class ConversationManager {
                     logger.error("Telegram bots api error: ", e);
                 }
 
+                //begin operation
                 logger.info("####################################################\n#                SYSTEM LOADED                     #\n####################################################\n");
                 commandMode();
                 break;
@@ -115,8 +116,8 @@ public class ConversationManager {
                 do {//repeat conversations if configured to do so
                     demoReadyCheck();
                     Conversation c = createConversation(rosMainNode, analyzers, new Inference(), memory, "local");
-
                     c.start();
+
                     try {//Since this is roboy mode and only one conversation happens, we need to wait for it to finish so we don't clog the command line.
                         logger.info("Waiting for conversation to end.");
                         c.join();
@@ -135,7 +136,7 @@ public class ConversationManager {
 
     /**
      * Creates and spawns a conversation for a chatuser.
-     * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
+     * @param uuid should consist of "[world-interface-name]-[uuid]", if input allows only a single user, set to "local"
      * @throws IOException If conversation could not created.
      */
     public static void spawnConversation(String uuid) throws IOException {
@@ -143,7 +144,7 @@ public class ConversationManager {
     }
     /**
      * Creates and spawns a conversation for a chatuser.
-     * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
+     * @param uuid should consist of "[world-interface-name]-[uuid]", if input allows only a single user, set to "local"
      * @param name the name of the Interlocutor. Necessary for unique adressing by name (local nodes)
      * @throws IOException If conversation could not created.
      */
@@ -163,7 +164,7 @@ public class ConversationManager {
 
     /**
      * Stops conversation thread for uuid.
-     * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
+     * @param uuid should consist of "[world-interface-name]-[uuid]", if input allows only a single user, set to "local"
      */
     public static void stopConversation(String uuid){
         Conversation c = conversations.get(uuid);
@@ -176,7 +177,7 @@ public class ConversationManager {
 
     /**
      * returns the threadID of the conversation with interlocutor uuid
-     * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
+     * @param uuid should consist of "[world-interface-name]-[uuid]", if input allows only a single user, set to "local"
      * @return null if thread does not exist, threadID otherwise
      */
     public static Long getConversationThreadID(String uuid){
@@ -191,7 +192,7 @@ public class ConversationManager {
      * @param analyzers   All analyzers necessary for analyzing the inputs from multiIn. Please provide these in correct order.
      * @param inference Inference engine. The better, the smarter roboy gets.
      * @param memory Roboy memory access. Without, we cannot remember anything and conversations stay shallow.
-     * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
+     * @param uuid should consist of "[world-interface-name]-[uuid]", if input allows only a single user, set to "local"
      * @return null if uuroboy.dialog.Conversation object. Fully intialized, ready to launch.
      * @throws IOException In case the IOdevices could not be correctly initialized.
      */
@@ -212,7 +213,7 @@ public class ConversationManager {
          * @param analyzers   All analyzers necessary for analyzing the inputs from multiIn. Please provide these in correct order.
          * @param inference Inference engine. The better, the smarter roboy gets.
          * @param memory Roboy memory access. Without, we cannot remember anything and conversations stay shallow.
-         * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local";
+         * @param uuid should consist of "[world-interface-name]-[uuid]", if input allows only a single user, set to "local";
          * @param name the name of the Interlocutor. Necessary for unique adressing by name (local nodes)
          * @return roboy.dialog.Conversation object. Fully intialized, ready to launch.
          * @throws IOException In case the IOdevices could not be correctly initialized.
@@ -245,6 +246,8 @@ public class ConversationManager {
             logger.error("Memory is null while starting a conversation");
         }
         Interlocutor person = new Interlocutor(memory);
+
+        //memory uuid handling
         if(name != null) {
             if(uuid.equals("local")){//just to make sure, should not happen if IODevices are built correctly
                 person.addName(name);
@@ -280,11 +283,13 @@ public class ConversationManager {
      * Assume command mode: In ConversationManager thread wait for commands on cmdline and manage conversations according to them
      */
     private static void commandMode(){
-        //wait for user commands
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
+            //wait for user commands
             String command = scanner.next();
+
+            //process command
             switch (command) {
                 case "shutdown"://gracefully say bye
                     for (Conversation c : conversations.values()) c.endConversation();
@@ -295,6 +300,9 @@ public class ConversationManager {
         }
     }
 
+    /**
+     * Initializes logger based on settings in config.properties
+     */
     private static void loggerSetup() {
         //Set Logging Level for Parser
         if(Level.getLevel(ConfigManager.PARSER_LOG_MODE)==null){
