@@ -119,3 +119,36 @@ If you'd like to use the ``telegram`` in- or output registering your own bot is 
 2. Place your telegram-bot authentification token in a JSON-File as described in :ref:`JSON Resources`.
 
 3. Configure the Dialog System to use your file and to interact with the world via telegram as described above.
+
+
+Enabling External APIs
+===========================
+
+Roboy Dialog supports multiple external APIs. At the present moment, three external API sources are provided. 
+
+- OpenWeatherMap
+- The Movie DB
+- Yandex Translate
+
+If you wish to have Roboy be able to tell the weather, tell you upcoming movies and translate, you have to register on these websites, generate an API key and denote the key in the ``resources/knowledgebase/apiKeys.yml`` file. There you shall replace the ``xxxxxxx`` portions with your key. 
+
+.. warning:: 
+    Do not upload any changes to the apiKey file to Git. Consequences will be severe...
+
+Example:
+
+Say my key were 1234567890abc for all services, the YML file should look like
+
+.. highlight:: yaml
+    moviekey: 1234567890abc
+    translatekey: 1234567890abc
+    weatherkey: 1234567890abc
+
+Assuming the key is valid, Roboy should now be able to answer the following questions:
+
+- What is the weather like?
+- What movies are playing?
+- What is tree in french? [arbre]
+
+.. seealso::
+    See this link for more details on how to add your own APIs: :ref:`tut_ext_api`

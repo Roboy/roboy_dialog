@@ -637,7 +637,7 @@ In order to add new ``roboy.io.InputDevice`` and ``roboy.io.OutputDevice`` class
 
 .. highlight:: java
 
-.. _tut_io_social:
+.. _tut_ext_api:
 
 External API Integration
 ========================
@@ -736,6 +736,8 @@ If an issue arises, you should see something amongst the lines of::
 .. warning::
 
     At the current point in time, APIHub/APIHandler assumes your API Key that is stored in the database is valid. It will not warn you of invalid keys, although it will become clear once you read the HTTP response code (`401 <https://httpstatuses.com/401>`_), but it is not stated explicitly.
+
+.. _tut_io_social:
 
 Social Media Integration
 ========================
