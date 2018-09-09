@@ -141,6 +141,7 @@ Example
 Say my key were ``1234567890abc`` for all services, the YML file should look like
 
 .. code-block:: yaml
+
     moviekey: 1234567890abc
     translatekey: 1234567890abc
     weatherkey: 1234567890abc
