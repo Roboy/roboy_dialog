@@ -135,11 +135,12 @@ If you wish to have Roboy be able to tell the weather, tell you upcoming movies 
 .. warning:: 
     Do not upload any changes to the apiKey file to Git. Consequences will be severe...
 
-Example:
+Example
+^^^^^^^^^^
 
-Say my key were 1234567890abc for all services, the YML file should look like
+Say my key were ``1234567890abc`` for all services, the YML file should look like
 
-.. highlight:: yaml
+.. code-block:: yaml
     moviekey: 1234567890abc
     translatekey: 1234567890abc
     weatherkey: 1234567890abc
