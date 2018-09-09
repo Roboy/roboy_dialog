@@ -11,6 +11,7 @@ public class EmotionAction implements Action
 {
 	
 	private String state;
+	private String name;
 	private int duration;
 	
 	/**
@@ -36,6 +37,7 @@ public class EmotionAction implements Action
 	{
 		this.state = state.type;
 		this.duration = 1;
+		this.name = state.name();
 	}
 
 	/**
@@ -60,6 +62,7 @@ public class EmotionAction implements Action
 	{
 		this.state = state.type;
 		this.duration = duration;
+		this.name = state.name();
 	}
 
 	public String getState()
@@ -72,4 +75,9 @@ public class EmotionAction implements Action
 		return this.duration;
 	}
 
+	public String getName() {
+		if (this.name == null)
+			return  this.state;
+		return this.name;
+	}
 }

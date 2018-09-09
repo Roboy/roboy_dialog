@@ -14,4 +14,5 @@ public class Lists {
 		result.addAll(Arrays.asList(strings));
 		return result;
 	}
+
 }

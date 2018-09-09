@@ -111,7 +111,7 @@ public class BotBoyState extends State {
                 Segue s = new Segue(Segue.SegueType.DISTRACT, segueProbability);
 
                 return Output.say(getResponsePhrase(person.getName(), person.FAMILIAR) + retrievedPersonalFact + " It is great to see you again!")
-                        .setEmotion(RoboyEmotion.HAPPINESS)
+                        .setEmotion(RoboyEmotion.positive.getRandomElement())
                         .setSegue(s);
             } else {
                 // 4b. person is not known

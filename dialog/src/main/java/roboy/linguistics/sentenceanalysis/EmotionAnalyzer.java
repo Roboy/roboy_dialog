@@ -75,7 +75,7 @@ public class EmotionAnalyzer implements Analyzer {
         try{
             mean = vec.getWordVectorsMean(labels);
         }catch(Exception e){
-            interpretation.setEmotion(RoboyEmotion.NEUTRAL);
+            //interpretation.setEmotion(RoboyEmotion.NEUTRAL);
             return interpretation;
         }
         if(!mean.isVector()){
@@ -131,9 +131,9 @@ public class EmotionAnalyzer implements Analyzer {
                 interpretation.setEmotion(RoboyEmotion.SHY);
             }
         }
-        else{
-            interpretation.setEmotion(RoboyEmotion.NEUTRAL);
-        }
+//        else{
+//            interpretation.setEmotion(RoboyEmotion.NEUTRAL);
+//        }
 
         return interpretation;
 

@@ -156,6 +156,7 @@ public class QuestionRoboyQAState extends ExpoState {
     }
 
     private Output useMemoryOrFallback(Interpretation input) {
+        questionsAnswered++;
         try {
             if ( input.getPas() != null || input.getTriples() != null) {
                 Output memoryAnswer = answerFromMemory(input);
