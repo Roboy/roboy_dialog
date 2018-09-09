@@ -89,6 +89,7 @@ public class QuestionRoboyQAState extends ExpoState {
     @Override
     public Output act() {
         if (questionsAnswered == MAX_NUM_OF_QUESTIONS/2) {
+            questionsAnswered++;
             return Output.say(PhraseCollection.OFFER_GAME_PHRASES.getRandomElement());
         }
         return Output.sayNothing();
