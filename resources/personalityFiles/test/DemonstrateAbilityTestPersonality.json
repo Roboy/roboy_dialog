@@ -3,7 +3,7 @@
   "states": [
     {
       "identifier": "AbilityDemo",
-      "implementation": "roboy.dialog.states.expoStates.DemonstrateAbilitiesState",
+      "implementation": "org.roboy.dialog.states.expoStates.DemonstrateAbilitiesState",
       "transitions": {
         "abilityWasDemonstrated": "AbilityDemo",
         "abilityDemonstrationSkipped": "Farewell"
@@ -11,7 +11,7 @@
     },
     {
       "identifier": "Farewell",
-      "implementation": "roboy.dialog.states.ordinaryStates.FarewellState",
+      "implementation": "org.roboy.dialog.states.ordinaryStates.FarewellState",
       "transitions": {}
     }
   ]

@@ -12,15 +12,15 @@ import org.roboy.ontology.Neo4jRelationship;
 import java.util.*;
 
 public class Inference implements InferenceEngine {
-    final Logger LOGGER = LogManager.getLogger();
+    private final Logger LOGGER = LogManager.getLogger();
 
-    final static List<String> positiveTokens = Arrays.asList("yes", "yep", "yeah", "ok", "sure", "course", "go ahead", "okay", "totally", "surely", "positive", "ready");
-    final static List<String> negativeTokens = Arrays.asList("no", "nope", "later", "not", "dont", "negative");
-    final static List<String> uncertaintyTokens = Arrays.asList("guess", "probably", "could", "likely", "know", "not sure", "idea", "perhaps", "depends", "maybe", "think", "might");
-
+    private final static List<String> positiveTokens = Arrays.asList("yes", "yep", "yeah", "ok", "sure", "course", "go ahead", "okay", "totally", "surely", "positive", "ready");
+    private final static List<String> negativeTokens = Arrays.asList("no", "nope", "later", "not", "dont", "negative");
+    private final static List<String> uncertaintyTokens = Arrays.asList("guess", "probably", "could", "likely", "know", "not sure", "idea", "perhaps", "depends", "maybe", "think", "might");
 
     private String inferName(Interpretation input) {
-        if (input.getSentenceType().compareTo(Linguistics.SentenceType.STATEMENT) == 0) {
+        if (input.getSentenceType() != null &&
+                input.getSentenceType().compareTo(Linguistics.SentenceType.STATEMENT) == 0) {
             List<String> tokens = input.getTokens();
             if (tokens != null && !tokens.isEmpty()) {
                 if (tokens.size() == 1) {
@@ -51,17 +51,16 @@ public class Inference implements InferenceEngine {
 
     @Override
     public HashMap<Neo4jProperty, String> inferProperties(ArrayList<Neo4jProperty> keys, Interpretation input) {
+        HashMap<Neo4jProperty, String> inferenceResult = new HashMap<>();
+        for (Neo4jProperty key : keys) {
+            inferenceResult.put(key, null);
+        }
 
-            HashMap<Neo4jProperty, String> inferenceResult = new HashMap<>();
-            for (Neo4jProperty key : keys) {
-                inferenceResult.put(key, null);
-            }
+        if (keys.contains(Neo4jProperty.name)) {
+            inferenceResult.put(Neo4jProperty.name, inferProperty(Neo4jProperty.name, input));
+        }
 
-            if (keys.contains(Neo4jProperty.name)) {
-                inferenceResult.put(Neo4jProperty.name, inferProperty(Neo4jProperty.name, input));
-            }
-
-            return inferenceResult;
+        return inferenceResult;
     }
 
     @Override
@@ -138,9 +137,14 @@ public class Inference implements InferenceEngine {
         boolean positive = false;
         boolean negative = false;
         boolean uncertain = false;
-        if(input.getSentence().contains("no idea") || input.getSentence().contains("do not know") || input.getSentence().contains("maybe")){
+
+        if(input.getSentence() != null &&
+                (input.getSentence().contains("no idea") ||
+                        input.getSentence().contains("not sure") ||
+                        input.getSentence().contains("maybe"))) {
             return Linguistics.UtteranceSentiment.MAYBE;
         }
+
         List<String> tokens = input.getTokens();
         if (tokens != null && !tokens.isEmpty()) {
             for (String token : positiveTokens) {
@@ -149,12 +153,14 @@ public class Inference implements InferenceEngine {
                     break;
                 }
             }
+
             for (String token : negativeTokens) {
                 if (tokens.contains(token)) {
                     negative = true;
                     break;
                 }
             }
+
             for(String token : uncertaintyTokens){
                 if(tokens.contains(token)){
                     uncertain = true;
@@ -162,6 +168,7 @@ public class Inference implements InferenceEngine {
                 }
             }
         }
+
         if (positive && !negative && uncertain) {
             return Linguistics.UtteranceSentiment.UNCERTAIN_POS;
         } else if (!positive && negative && uncertain) {
@@ -176,10 +183,9 @@ public class Inference implements InferenceEngine {
     }
 
     public List<String> inferSnapchatFilter(Interpretation input, Map<String,List<String>> existingFilterMap){
-
         List<String> tokens = input.getTokens();
         if(tokens != null && !tokens.isEmpty()) {
-            List<String> desiredFilters = new ArrayList<String>();
+            List<String> desiredFilters = new ArrayList<>();
             for(String token : tokens){
                 for(Map.Entry<String, List<String>> entry  : existingFilterMap.entrySet()){
                     if(entry.getValue().contains(token)){

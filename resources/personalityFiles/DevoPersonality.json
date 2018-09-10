@@ -3,14 +3,14 @@
   "states": [
     {
       "identifier": "Greetings",
-      "implementation": "roboy.dialog.states.ordinaryStates.PassiveGreetingsState",
+      "implementation": "org.roboy.dialog.states.ordinaryStates.PassiveGreetingsState",
       "transitions": {
         "greetingDetected": "Intro"
       }
     },
     {
       "identifier": "Intro",
-      "implementation": "roboy.dialog.states.devoStates.IntroductionState",
+      "implementation": "org.roboy.dialog.states.devoStates.IntroductionState",
       "transitions": {
         "knownPerson": "QuestionAnswering",
         "newPerson": "QuestionAnswering"
@@ -21,7 +21,7 @@
     },
     {
       "identifier": "FollowUp",
-      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationFollowUpState",
+      "implementation": "org.roboy.dialog.states.ordinaryStates.PersonalInformationFollowUpState",
       "transitions": {
         "questionAnswering": "QuestionAnswering"
       },
@@ -31,7 +31,7 @@
     },
     {
       "identifier": "PersonalQA",
-      "implementation": "roboy.dialog.states.devoStates.PersonalInformationAskingState",
+      "implementation": "org.roboy.dialog.states.devoStates.PersonalInformationAskingState",
       "transitions": {
         "questionAnswering": "Farewell"
       },
@@ -41,7 +41,7 @@
     },
     {
       "identifier": "QuestionAnswering",
-      "implementation": "roboy.dialog.states.devoStates.QuestionRoboyQAState",
+      "implementation": "org.roboy.dialog.states.devoStates.QuestionRoboyQAState",
       "fallback": "WildTalk",
       "transitions": {
         "finishedQuestionAnswering": "PersonalQA",
@@ -55,14 +55,14 @@
     },
     {
       "identifier": "GamingTwentyQuestionsState",
-      "implementation": "roboy.dialog.states.gameStates.GamingTwentyQuestionsState",
+      "implementation": "org.roboy.dialog.states.gameStates.GamingTwentyQuestionsState",
       "transitions": {
       "gameEnded" : "QuestionAnswering"
       }
     },
     {
       "identifier": "GamingSnapchatState",
-      "implementation": "roboy.dialog.states.gameStates.GamingSnapchatState",
+      "implementation": "org.roboy.dialog.states.gameStates.GamingSnapchatState",
       "transitions": {
         "gameEnded" : "QuestionAnswering"
       },
@@ -72,7 +72,7 @@
     },
     {
       "identifier": "ChooseGameState",
-      "implementation": "roboy.dialog.states.gameStates.ChooseGameState",
+      "implementation": "org.roboy.dialog.states.gameStates.ChooseGameState",
       "transitions": {
         "choseSnapchat" : "GamingSnapchatState",
         "chose20questions" : "GamingTwentyQuestionsState",
@@ -81,12 +81,12 @@
     },
     {
       "identifier": "WildTalk",
-      "implementation": "roboy.dialog.states.ordinaryStates.WildTalkState",
+      "implementation": "org.roboy.dialog.states.ordinaryStates.WildTalkState",
       "transitions": {}
     },
     {
       "identifier": "Farewell",
-      "implementation": "roboy.dialog.states.ordinaryStates.FarewellState",
+      "implementation": "org.roboy.dialog.states.ordinaryStates.FarewellState",
       "transitions": {}
     }
   ]

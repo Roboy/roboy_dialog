@@ -25,7 +25,7 @@ public class RosMainNode extends AbstractNodeMain {
 //    private static RosMainNode node;
     private CountDownLatch rosConnectionLatch;
     private RosManager services = new RosManager();
-    protected Object resp;
+    private Object resp;
 
     String warning = "Trying to talk to ROS package %s, but it's not initialized or deactivated";
     String memoryFailure = "{" +

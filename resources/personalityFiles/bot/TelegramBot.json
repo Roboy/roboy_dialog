@@ -4,21 +4,21 @@
   "states": [
     {
       "identifier": "TelegramBot",
-      "implementation": "roboy.dialog.states.botboy.BotBoyState",
+      "implementation": "org.roboy.dialog.states.botboy.BotBoyState",
       "transitions": {
         "initialized":"Intro"
       }
     },
     {
       "identifier": "Greetings",
-      "implementation": "roboy.dialog.states.ordinaryStates.PassiveGreetingsState",
+      "implementation": "org.roboy.dialog.states.ordinaryStates.PassiveGreetingsState",
       "transitions": {
         "greetingDetected": "Intro"
       }
     },
     {
       "identifier": "Intro",
-      "implementation": "roboy.dialog.states.ordinaryStates.IntroductionState",
+      "implementation": "org.roboy.dialog.states.ordinaryStates.IntroductionState",
       "transitions": {
         "knownPerson": "FollowUp",
         "newPerson": "PersonalQA"
@@ -29,7 +29,7 @@
     },
     {
       "identifier": "FollowUp",
-      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationFollowUpState",
+      "implementation": "org.roboy.dialog.states.ordinaryStates.PersonalInformationFollowUpState",
       "transitions": {
         "questionAnswering": "QuestionAnswering"
       },
@@ -39,7 +39,7 @@
     },
     {
       "identifier": "PersonalQA",
-      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationAskingState",
+      "implementation": "org.roboy.dialog.states.ordinaryStates.PersonalInformationAskingState",
       "transitions": {
         "questionAnswering": "QuestionAnswering"
       },
@@ -49,7 +49,7 @@
     },
     {
       "identifier": "QuestionAnswering",
-      "implementation": "roboy.dialog.states.ordinaryStates.QuestionAnsweringState",
+      "implementation": "org.roboy.dialog.states.ordinaryStates.QuestionAnsweringState",
       "fallback": "WildTalk",
       "transitions": {
         "finishedQuestionAnswering": "Farewell",
@@ -59,12 +59,12 @@
     },
     {
       "identifier": "WildTalk",
-      "implementation": "roboy.dialog.states.ordinaryStates.WildTalkState",
+      "implementation": "org.roboy.dialog.states.ordinaryStates.WildTalkState",
       "transitions": {}
     },
     {
       "identifier": "Farewell",
-      "implementation": "roboy.dialog.states.ordinaryStates.FarewellState",
+      "implementation": "org.roboy.dialog.states.ordinaryStates.FarewellState",
       "transitions": {}
     }
   ]

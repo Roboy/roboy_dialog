@@ -4,7 +4,7 @@
   "states": [
     {
       "identifier": "MathTest",
-      "implementation" : "roboy.dialog.tutorials.tutorialStates.DoYouKnowMathState",
+      "implementation" : "org.roboy.dialog.tutorials.tutorialStates.DoYouKnowMathState",
       "transitions" : {
         "personKnowsMath" : "Farewell",
         "personDoesNotKnowMath" : "Farewell"
@@ -13,7 +13,7 @@
     },
     {
       "identifier": "Farewell",
-      "implementation" : "roboy.dialog.tutorials.tutorialStates.ToyFarewellState",
+      "implementation" : "org.roboy.dialog.tutorials.tutorialStates.ToyFarewellState",
       "transitions" : {},
       "comment": "Last state: Tells goodbye, ignores reply, ends the conversation."
     }

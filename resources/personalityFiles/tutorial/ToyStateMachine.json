@@ -4,7 +4,7 @@
   "states": [
     {
       "identifier": "Greetings",
-      "implementation": "roboy.dialog.tutorials.tutorialStates.ToyGreetingsState",
+      "implementation": "org.roboy.dialog.tutorials.tutorialStates.ToyGreetingsState",
       "fallback": "RandomAnswer",
       "transitions": {
         "next": "Intro",
@@ -14,7 +14,7 @@
     },
     {
       "identifier": "Intro",
-      "implementation": "roboy.dialog.tutorials.tutorialStates.ToyIntroState",
+      "implementation": "org.roboy.dialog.tutorials.tutorialStates.ToyIntroState",
       "transitions": {
         "next": "Farewell"
       },
@@ -25,13 +25,13 @@
     },
     {
       "identifier": "Farewell",
-      "implementation": "roboy.dialog.tutorials.tutorialStates.ToyFarewellState",
+      "implementation": "org.roboy.dialog.tutorials.tutorialStates.ToyFarewellState",
       "transitions": {},
       "comment": "Last state: Tells goodbye, ignores reply, ends the conversation."
     },
     {
       "identifier": "RandomAnswer",
-      "implementation": "roboy.dialog.tutorials.tutorialStates.ToyRandomAnswerState",
+      "implementation": "org.roboy.dialog.tutorials.tutorialStates.ToyRandomAnswerState",
       "transitions": {
         "next": "Farewell"
       },
