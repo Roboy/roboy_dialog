@@ -24,7 +24,7 @@ public class MiniTestStateMachineCreator {
                 "  \"states\": [\n" +
                 "    {\n" +
                 "      \"identifier\": \"Farewell\",\n" +
-                "      \"implementation\": \"roboy.dialog.tutorials.tutorialStates.ToyFarewellState\",\n" +
+                "      \"implementation\": \"org.roboy.dialog.tutorials.tutorialStates.ToyFarewellState\",\n" +
                 "      \"transitions\": {},\n" +
                 "      \"parameters\": {\n" +
                 "        \"PARAMETER_NAME\": \"PARAMETER_VALUE\"\n" +
@@ -32,7 +32,7 @@ public class MiniTestStateMachineCreator {
                 "    },\n" +
                 "    {\n" +
                 "      \"identifier\": \"Greetings\",\n" +
-                "      \"implementation\": \"roboy.dialog.tutorials.tutorialStates.ToyGreetingsState\",\n" +
+                "      \"implementation\": \"org.roboy.dialog.tutorials.tutorialStates.ToyGreetingsState\",\n" +
                 "      \"fallback\": \"Farewell\",\n" +
                 "      \"transitions\": {\n" +
                 "        \"next\": \"Farewell\",\n" +
