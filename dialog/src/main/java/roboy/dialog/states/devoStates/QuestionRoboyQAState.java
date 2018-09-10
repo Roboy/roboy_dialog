@@ -109,12 +109,13 @@ public class QuestionRoboyQAState extends ExpoState {
                 return Output.sayNothing().setSegue(new Segue(Segue.SegueType.PICKUP,0.5)).setEmotion(RoboyEmotion.HAPPY);
             }
             else {
-                questionsAnswered++;
+//                questionsAnswered++;
                 return Output.sayNothing().setEmotion(RoboyEmotion.SADNESS);
             }
         }
 
         askingSpecifyingQuestion = false;
+        userWantsGame = false;
         questionsAnswered++;
 
         String answer = inferApiAnswer(input);
@@ -157,7 +158,7 @@ public class QuestionRoboyQAState extends ExpoState {
     }
 
     private Output useMemoryOrFallback(Interpretation input) {
-        questionsAnswered++;
+//        questionsAnswered++;
         try {
             if ( input.getPas() != null || input.getTriples() != null) {
                 Output memoryAnswer = answerFromMemory(input);
