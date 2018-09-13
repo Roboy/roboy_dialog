@@ -217,6 +217,8 @@ public class ConversationManager {
         context.ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
         */
 
+
+        //TODO
         HashMap<Integer,Interlocutor> persons = new HashMap<>();
         Interlocutor person = new Interlocutor(memory);
         person.setProperty(Neo4jProperty.telegram_id, uuid);

@@ -3,7 +3,7 @@
   "states": [
     {
       "identifier": "Greetings",
-      "implementation": "roboy.dialog.states.multiPartyStates.PassiveGreetingsStateParty",
+      "implementation": "roboy.dialog.states.multiPartyStates.PassivGreetingsStateParty",
       "transitions": {
         "greetingDetected": "Intro"
       }
@@ -12,6 +12,7 @@
       "identifier": "Intro",
       "implementation": "roboy.dialog.states.multiPartyStates.IntroductionStateParty",
       "transitions": {
+        "knownPerson": "PersonalQA",
         "newPerson": "PersonalQA"
       },
       "parameters": {
@@ -34,7 +35,9 @@
       "fallback": "WildTalk",
       "transitions": {
         "finishedQuestionAnswering": "Farewell",
-        "loopToNewPerson": "PersonalQA"
+        "loopToNewPerson": "PersonalQA",
+        "loopToKnownPerson": "PersonalQA",
+        "switchToGaming": "PersonalQA"
       }
     },
     {

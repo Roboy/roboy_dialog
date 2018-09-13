@@ -67,6 +67,8 @@ public class QuestionAnsweringStateParty extends State {
     @Override
     public Output act() {
 
+        /*
+
         if(Math.random() > THRESHOLD_BORED && questionsAnswered > 2){
             roboySuggestedGame = true;
             return Output.say(PhraseCollection.OFFER_GAME_PHRASES.getRandomElement());
@@ -79,6 +81,9 @@ public class QuestionAnsweringStateParty extends State {
             return Output.say(reenteringPhrases.getRandomElement());
         }
         return Output.say("I'm pretty good at answering questions about myself and other stuff. What would you like to know?");
+
+        */
+        return Output.sayNothing();
     }
 
     @Override
@@ -88,6 +93,8 @@ public class QuestionAnsweringStateParty extends State {
 
     @Override
     public Output react(ArrayList<Interpretation> input) {
+
+        /*
 
         speakerCount = input.get(0).getSpeakerInfo().getSpeakerCount();
         for(int i=0; i<speakerCount; i++){
@@ -110,6 +117,9 @@ public class QuestionAnsweringStateParty extends State {
         } else{
             return reactToQuestion(input);
         }
+
+        */
+        return null;
     }
 
     @Override
@@ -157,6 +167,16 @@ public class QuestionAnsweringStateParty extends State {
 
         Map<Integer, Interlocutor> persons = getContext().ACTIVE_INTERLOCUTORS.getValue();
 
+        if(speakerCount>1) {
+            Interlocutor second = persons.get(2);
+            if(second != null){
+                //new person detected
+                Interlocutor person = new Interlocutor(getMemory());
+                persons.put(2, person);
+                getContext().ACTIVE_INTERLOCUTORS_UPDATER.updateValue(persons);
+                //TODO introduction new speaker
+            }
+        }
 
         for(int i=0; i<speakerCount; i++){
             String name = persons.get(i).getName();

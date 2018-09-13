@@ -57,7 +57,19 @@ public abstract class PersonalInformationAskingStateParty extends State {
 
     @Override
     public Output act() {
+
+        /*
         Map<Integer, Interlocutor> persons = getContext().ACTIVE_INTERLOCUTORS.getValue();
+        if(speakerCount>1) {
+            Interlocutor second = persons.get(2);
+            if(second != null){
+                //new person detected
+                Interlocutor person = new Interlocutor(getMemory());
+                persons.put(2, person);
+                getContext().ACTIVE_INTERLOCUTORS_UPDATER.updateValue(persons);
+                //TODO introduction new speaker
+            }
+        }
 
         for(int i=0; i<speakerCount; i++){
             LOGGER.info("-> Retrieved Interlocutors: " + persons.get(i).getName());
@@ -86,11 +98,16 @@ public abstract class PersonalInformationAskingStateParty extends State {
         } catch (Exception e) {
             LOGGER.error(" -> Error on updating the IntentHistory: " + e.getMessage());
         }
+
         return State.Output.say(question);
+        */
+        return State.Output.sayNothing();
     }
 
     @Override
     public Output react(ArrayList<Interpretation> input) {
+
+        /*
 
         Map<Integer, Interlocutor> persons = getContext().ACTIVE_INTERLOCUTORS.getValue();
         speakerCount = input.get(0).getSpeakerInfo().getSpeakerCount();
@@ -131,6 +148,9 @@ public abstract class PersonalInformationAskingStateParty extends State {
         nextState = getTransition(TRANSITION_INFO_OBTAINED);
         Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE, 0.5);
         return Output.say(retAnswer).setSegue(s);
+
+        */
+        return Output.sayNothing();
     }
 
     @Override

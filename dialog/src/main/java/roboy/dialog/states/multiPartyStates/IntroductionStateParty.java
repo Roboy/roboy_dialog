@@ -64,13 +64,24 @@ public class IntroductionStateParty extends State{
 
     @Override
     public Output react(ArrayList<Interpretation> input) {
+
+        /*
         // expecting something like "My name is NAME"
 
         int speakerCount = input.get(0).getSpeakerInfo().getSpeakerCount();
         ArrayList<String> names = new ArrayList<>();
 
-        //TODO we need to allocate enough interlocuters
         Map<Integer, Interlocutor> persons = getContext().ACTIVE_INTERLOCUTORS.getValue();
+
+        if(speakerCount>1) {
+            //New speaker detected
+            //add new interlocutor
+            Interlocutor person = new Interlocutor(getMemory());
+            // do I need this??
+            // person.setProperty(Neo4jProperty.telegram_id, uuid); //what is the string uuid
+            persons.put(2, person);
+            getContext().ACTIVE_INTERLOCUTORS_UPDATER.updateValue(persons);
+        }
 
         for(int i=0; i<speakerCount; i++){
             String name = getNameFromInput(input.get(i));
@@ -108,6 +119,9 @@ public class IntroductionStateParty extends State{
         }
 
         return Output.say(response + retrievedPersonalFact + retrievedRoboyFacts).setSegue(s);
+
+        */
+        return Output.say("Hi");
     }
 
 

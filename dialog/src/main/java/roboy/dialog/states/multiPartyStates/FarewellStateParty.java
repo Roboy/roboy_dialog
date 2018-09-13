@@ -42,6 +42,7 @@ public class FarewellStateParty extends State {
 
     @Override
     public Output react(ArrayList<Interpretation> input){
+        /*
         int speakerCount = input.get(0).getSpeakerInfo().getSpeakerCount();
         for(int i=0; i<speakerCount; i++){
             String sentence = input.get(i).getSentence();
@@ -52,6 +53,7 @@ public class FarewellStateParty extends State {
                 loops++;
             }
         }
+        */
         return Output.sayNothing();
     }
 
