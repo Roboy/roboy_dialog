@@ -50,7 +50,7 @@ java -version
 
 ### Recommendations
 
-- Intellij
+- [Intellij IDEA](https://www.jetbrains.com/idea/ "IDEA's Homepage")
 - At least 8GB of RAM
 - At least 6GB of Disk Space
     - ~ 4GB for Maven Dependencies
