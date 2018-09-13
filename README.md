@@ -167,6 +167,10 @@ Once the Neo4j (and ROS) dependencies are satisfied, run the dialog system via .
 ./start.sh
 ```
 
+If everything is running and configured correctly, you should be able to have a basic conversation like following
+
+![Roboy says hi!](/docs/img/roboydialog.png?raw=true "Roboy_greeting")
+
 ## Running NLU only
 
 ```bash
