@@ -2,7 +2,6 @@ package roboy.util.api;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.sun.javaws.exceptions.InvalidArgumentException;
 
 import java.net.MalformedURLException;
 import java.net.URL;

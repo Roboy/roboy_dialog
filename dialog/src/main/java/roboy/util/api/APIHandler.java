@@ -1,6 +1,5 @@
 package roboy.util.api;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import org.apache.commons.configuration2.YAMLConfiguration;
 import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.apache.logging.log4j.Logger;
