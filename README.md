@@ -24,8 +24,8 @@
 ## What is this Project
 This repository contains a dialog system developed for the humanoid robot [Roboy](roboy.org). One can find more information about this project through its [documentation](https://roboydialog.readthedocs.io/en/devel/index.html). There you will find general information on the dialog system, how to get it running and you will also find several tutorials to get you started. 
 
-In this branch you find the Roboy dialog system with an additional finite state machine (FSM) which enables Roboy to talk to more than one person in one conversation. But be careful, this is a work in progress, so stay tuned! It will change soon ;) 
-This is part of the Talk to Two project. The goal is to make roboy hear his environment and therefore be able to talk to multiple people around him at the same time. If you want to know all about this then take a look at our [git repo](https://github.com/Roboy/ss18_talk_to_two/tree/devel/speaker_diarization) and our [documentation](https://readthedocs.org/projects/roboydialog/).
+In this branch you find the Roboy dialog system with an additional finite state machine (FSM) which enables Roboy to talk to more than one person in one conversation. 
+The Multi-Party Dialog is part of the Talk to Two project. The goal is to make Roboy hear his environment and therefore be able to talk to multiple people around him at the same time. If you want to know all about this then take a look at our [git repo](https://github.com/Roboy/ss18_talk_to_two/tree/devel/speaker_diarization) and our [documentation](https://readthedocs.org/projects/roboydialog/).
 Now to the Multi-Party Dialog: In every state of the FSM a variable number of speaker inputs can be processed and Roboy will answer each speaker separately. New speakers can join at any point of the conversation. To learn more about see this [documentation](https://devanthro.atlassian.net/wiki/spaces/SS18/pages/306282674/Multi-Party+Dialog).
 
 The Multi-Party Dialog FSM is not running yet. But it will be very soon (fingers crossed ;) )! So, stay tuned!!! 
