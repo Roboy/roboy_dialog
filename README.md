@@ -24,7 +24,7 @@
 
 ## What is this Project
 
-![Roboy says hi!](/docs/img/to/roboycuteface.png?raw=true "Roboy_greeting")
+![Roboy says hi!](/docs/img/roboycuteface.png?raw=true "Roboy_greeting")
 
 This repository contains a dialog system developed for the humanoid robot [Roboy](roboy.org). One can find more information about this project through its [documentation](https://readthedocs.org/projects/roboydialog/).
 
