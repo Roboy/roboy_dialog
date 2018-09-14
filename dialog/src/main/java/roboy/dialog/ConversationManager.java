@@ -162,14 +162,19 @@ public class ConversationManager {
         conversations.values().remove(conversation);
     }
 
+    public static void stopConversation(String uuid){
+        stopConversation(uuid, false);
+    }
+
     /**
      * Stops conversation thread for uuid.
      * @param uuid should consist of "[world-interface-name]-[uuid]", if input allows only a single user, set to "local"
+     * @param hardStop Roboy doesn't say bye on hardstop. Default = false
      */
-    public static void stopConversation(String uuid){
+    public static void stopConversation(String uuid, boolean hardStop){
         Conversation c = conversations.get(uuid);
         if (c != null) {
-            c.endConversation();
+            c.endConversation(hardStop);
         } else {
             logger.error("Conversation to be stopped does not exist...");
         }
@@ -292,7 +297,7 @@ public class ConversationManager {
             //process command
             switch (command) {
                 case "shutdown"://gracefully say bye
-                    for (Conversation c : conversations.values()) c.endConversation();
+                    for (Conversation c : conversations.values()) c.endConversation(true);
                     System.exit(0);
                 default:
                     System.out.println("Command not found. Currently supported commands: shutdown");

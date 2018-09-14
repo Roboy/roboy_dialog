@@ -43,6 +43,8 @@ public class ConfigManager {
 
     public static boolean CONTEXT_GUI_ENABLED = false;
 
+    public static long CONVERSATION_TIMEOUT = 0;
+
     public static String TELEGRAM_API_TOKENS_FILE = "";
 
     public static String MEMORY_LOG_MODE = "INFO";
@@ -66,7 +68,9 @@ public class ConfigManager {
         YAMLConfiguration yamlConfig = new YAMLConfiguration();
         try
         {
+            System.out.println(System.getProperty("user.dir"));
             File propertiesFile = new File(yamlConfigFile);
+            System.out.println(propertiesFile.getAbsolutePath());
 
             if (!propertiesFile.exists()) { // propertiesFile == null doesn't work!
                 LOGGER.error("Could not find "+yamlConfigFile+" file in project path! YAML configurations will be unavailable.");
@@ -120,6 +124,13 @@ public class ConfigManager {
             CONTEXT_GUI_ENABLED = yamlConfig.getBoolean("CONTEXT_GUI_ENABLED");
 
             ACTION_CLIENT_SCRIPT = yamlConfig.getString("ACTION_CLIENT_SCRIPT");
+
+            long timeout = yamlConfig.getLong("CONVERSATION_TIMEOUT");
+            if (timeout < 0){
+                LOGGER.error("Invalid timeout setting: " + timeout + "disabling timeout...");
+            } else {
+                CONVERSATION_TIMEOUT = timeout;
+            }
 
             TELEGRAM_API_TOKENS_FILE = yamlConfig.getString("TELEGRAM_API_TOKENS_FILE");
 
