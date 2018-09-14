@@ -1,6 +1,7 @@
 package roboy.context;
 
 import com.google.gson.Gson;
+import junit.framework.TestCase;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
@@ -21,7 +22,7 @@ import java.util.TreeMap;
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
 
-public class ContextTest {
+public class ContextTest extends TestCase {
     Context context = new Context();
 
     @Test

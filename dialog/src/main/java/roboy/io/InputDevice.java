@@ -7,4 +7,8 @@ import java.io.IOException;
  */
 public interface InputDevice {
 	public Input listen() throws InterruptedException, IOException;
+
+	default public Input listen(long timeout) throws InterruptedException, IOException {
+		return this.listen();
+	}
 }

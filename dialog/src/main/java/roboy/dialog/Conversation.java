@@ -11,11 +11,13 @@ import roboy.io.MultiInputDevice;
 import roboy.io.MultiOutputDevice;
 import roboy.linguistics.sentenceanalysis.Analyzer;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.util.ConfigManager;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -67,17 +69,20 @@ public class Conversation extends Thread {
     /**
      * Ends conversation and resets state to initial. Does not reset gathered information.
      */
-    synchronized void endConversation(){//Ends conversation including
+    synchronized void endConversation(boolean hardStop){//Ends conversation including
         isRunning = false;
         personality.reset();
         this.interrupt();//to wake conversations that wait for input
 
-        //Say bye
-        List<Action> l = new ArrayList<>();
-        l.add(new SpeechAction("Sorry. It seems I have to stop playing now. See you soon. Bye!"));
-        multiOut.act(l);
+        if(!hardStop) {
+            //Say bye
+            List<Action> l = new ArrayList<>();
+            l.add(new SpeechAction("Sorry. It seems I have to stop playing now. See you soon. Bye!"));
+            multiOut.act(l);
+        }
 
         logger.info("############# Conversation forcibly ended ############");
+
     }
 
 
@@ -112,10 +117,14 @@ public class Conversation extends Thread {
             // listen to interlocutor if conversation didn't end
             Input raw;
             try {
-                raw = multiIn.listen();
+                raw = multiIn.listen(TimeUnit.SECONDS.toMillis(ConfigManager.CONVERSATION_TIMEOUT));
             } catch (Exception e) {
-                logger.error("Exception in input: " + e.getMessage());
-                return;
+                if(isRunning) {
+                    logger.error("Exception in input: " + e.getMessage());
+                    return;
+                } else {
+                    break;
+                }
             }
 
             // analyze

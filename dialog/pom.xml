@@ -27,6 +27,7 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>2.22.0</version>
                         <configuration>
+                            <workingDirectory>${project.parent.basedir}</workingDirectory>
                             <excludes>
                                 <exclude>roboy.memory.MemoryIntegrationTest</exclude>
                             </excludes>
