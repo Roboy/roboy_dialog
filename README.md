@@ -18,9 +18,10 @@
     - [Running the Dialog System](#running-the-dialog-system)
     - [Running NLU only](#running-nlu-only)
         - [Using the Google Word2Vec Model in NLU](#using-the-google-word2vec-model-in-nlu)
-    - [Troubleshooting](#troubleshooting)
     - [Configuration of roboy_dialog](#configuration-of-roboydialog)
         - [Logging Levels](#logging-levels)
+        - [Enabling External APIs](#enabling-external-apis)
+    - [Troubleshooting](#troubleshooting)
 
 ## What is this Project
 
@@ -34,7 +35,7 @@ This repository contains a dialog system developed for the humanoid robot [Roboy
 
 - Apache Maven
 - Java 8 (Oracle is preferred)
-- `ruby` 1.8.7 or 1.9
+- `ruby` (1.8.7 or 1.9 advised)
 - `git`
 - [Neo4J](http://roboy-memory.readthedocs.io/en/latest/Usage/0_installation.html#local-neo4j-instance)
 - `wget`
@@ -62,13 +63,13 @@ java -version
 
 ### Command Line Installation Instructions
 
-[Set up Neo4j](#neo4j).
+Assumes you have already [set up Neo4j](#neo4j).
 
 ```bash
-# Install Maven, Java, Docker and other programs needed
-sudo apt-get install maven openjdk-8-jdk git docker.io make wget zip
+# Install Maven, Java, Docker and other programs needed (installing openJDK because of simplicity)
+sudo apt-get install maven openjdk-8-jdk git docker.io make wget zip ruby
 # Download and Run Neo4J with Docker
-sudo docker run --publish=7474:7474 --publish=7687:7687 --volume=$HOME/neo4j/data:/data --volume=$HOME/neo4j/logs:/logs neo4j:3.4
+sudo docker run --publish=7474:7474 --publish=7687:7687 --volume=$HOME/neo4j/data:/data --volume=$HOME/neo4j/logs:/logs neo4j:3.0
 # Clone Dialog's Master Branch (replace master with devel for other branches)
 git clone https://github.com/Roboy/roboy_dialog --recursive -b master
 # Change Directory to your new clone
@@ -112,35 +113,29 @@ Since all of these dependencies are actually required by `roboy_memory`, you can
 
 ### Neo4j
 
-The dialog system's memory module uses Neo4j, a graph database which is
-stores relations between enttities observed by roboy (names, hobbies, locations etc.).
-Therefore, make sure to set the following environment variables to meaningful values:
+The dialog system's memory module uses Neo4j, a graph database which stores relations between enttities observed by roboy (names, hobbies, locations etc.).Therefore, make sure to set the following environment variables to meaningful values:
 
 ```bash
-export NEO4J_ADDRESS=bolt://my-neo4j-database:7687
+export NEO4J_ADDRESS=bolt://NEO4J-ADDRESS-GOES-HERE:7687
 export NEO4J_USERNAME=user
 export NEO4J_PASSWORD=pass
 ```
 
-If no remote development instance of Neo4j is available, just run
-Neo4j in a [docker container](https://neo4j.com/developer/docker/#_how_to_use_the_neo4j_docker_image).
-For more options and additional information, refer to `docs/Usage` in the
-memory module.
+If no remote development instance of Neo4j is available, just run Neo4j in a [docker container](https://neo4j.com/developer/docker/#_how_to_use_the_neo4j_docker_image). For more options and additional information, refer to `docs/Usage` in the memory module.
 
 ``` bash
 sudo docker run \
     --publish=7474:7474 --publish=7687:7687 \
     --volume=$HOME/neo4j/data:/data \
     --volume=$HOME/neo4j/logs:/logs \
-    neo4j:3.4
+    neo4j:3.0
 ```
 
 ### ROS-master
 
 **Note: Running ROS is only necessary when running `roboy_dialog` within the Roboy architecture. Otherwise, you may also set `ROS_ENABLED: false` in `config.properties`.**
 
-Dialog is tied into the Roboy architecture as a ROS node.
-Therefore, make sure to set the following environment variables to meaningful values:
+Dialog is tied into the Roboy architecture as a ROS node. Therefore, make sure to set the following environment variables to meaningful values:
 
 ```bash
 export ROS_HOSTNAME=local-hostname
@@ -181,16 +176,9 @@ java -Xmx6g -d64 -cp \
 
 ### Using the Google Word2Vec Model in NLU
 
-For a more complete but also much more memory-intensive Word Vector model,
-the NLU module has the ability to parse the GoogleNews word vector collection,
-which can be retrieved from [here](https://s3.amazonaws.com/dl4j-distribution/GoogleNews-vectors-negative300.bin.gz).
+For a more complete but also much more memory-intensive Word Vector model, the NLU module has the ability to parse the GoogleNews word vector collection, which can be retrieved from [here](https://s3.amazonaws.com/dl4j-distribution/GoogleNews-vectors-negative300.bin.gz).
 
-In order to use it, store and extract it under `resources_nlu/word2vec`. Then just set
-`WORD2VEC_GOOGLE: true` in `parser.properties`.
-
-## Troubleshooting
-
-See the [Troubleshooting Page](http://roboydialog.readthedocs.io/en/devel/Usage/9_troubleshooting.html)
+In order to use it, store and extract it under `resources_nlu/word2vec`. Then just set `WORD2VEC_GOOGLE: true` in `parser.properties`.
 
 ## Configuration of roboy_dialog
 
@@ -206,3 +194,11 @@ One can configure the amount of logging one gets from `memory`, `dialog` and `pa
 | Regular User | INFO   | INFO   | INFO   |
 
 If you wish to have more detailed information, please view the [docs page](https://roboydialog.readthedocs.io/en/devel/developer_manual/2_Logging_Policy.html).
+
+### Enabling External APIs
+
+If you want to set external APIs, you will have to create an `APIkeys.yml` file containing all the keys. For more information, see the [relevant documentation page](https://roboydialog.readthedocs.io/en/devel/user_manual/2_configuration.html#enabling-external-apis)
+
+## Troubleshooting
+
+See the [Troubleshooting Page](https://roboydialog.readthedocs.io/en/devel/user_manual/9_Troubleshooting.html)
