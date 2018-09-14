@@ -38,10 +38,11 @@ Stable functionality:
 - Roboy Dialog is deployable on multi-user communication channels
 - Roboy plays the Akinator game
 - Roboy can understand snapchat filters to be applied on people's faces
+- Roboy updates the information (name, occupation, ect.) about people he meets
+- Roboy can make use of external data sources and use these in conversation (external API support)
 
 In development:
 
-- Roboy updates the information (name, occupation, ect.) about people he meets
 - Roboy updates the information about himself
 - Roboy recognizes the intent behind an asked questions (age, creator, capabilities etc.)
 - Roboy analyzes emotion and responds accordingly
@@ -50,7 +51,8 @@ In development:
 Relevant Background Information and Pre-Requisites
 ---------------------------------------------------
 
-A User should be familiar with:
+A User should be familiar with
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Roboy Personality Files
 - Roboy Context
@@ -58,7 +60,8 @@ A User should be familiar with:
 - Roboy Semantic Parser Module
 - ROS
 
-A Developer should be familiar with:
+A Developer should be familiar with
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Roboy Personality Files
 - Roboy Context
@@ -71,16 +74,23 @@ A Developer should be familiar with:
 - rosjava
 - Sockets
 
-Reading list for a User:
+Reading list for a User
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - `rosjava Documentation <http://wiki.ros.org/rosjava>`_
 
-Reading list for a Developer:
+Reading list for a Developer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - `Java Documentation <http://www.oracle.com/technetwork/topics/newtojava/new2java-141543.html>`_
 - `Maven Documentation <https://maven.apache.org/index.html>`_
 - `rosjava Documentation <http://wiki.ros.org/rosjava>`_
 - `Roboy Memory Module Documentation <http://roboy-memory.readthedocs.io/>`_
+
+Community
+-------------------------------------
+
+Intrested? Do you want to contribute to Roboy? Did you find a bug that needs fixing? If so, feel free to contact the dialog development teams at `roboy_dialog <https://github.com/Roboy/roboy_dialog>`_ and/or `roboy_memory <https://github.com/Roboy/roboy_memory>`_.
 
 Contents:
 ----------
