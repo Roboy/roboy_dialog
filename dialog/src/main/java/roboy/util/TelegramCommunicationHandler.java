@@ -34,7 +34,7 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
     private static final int INPUT_TIME_LIMIT = 5; //SECONDS
 
     // CHAT ID ----- ITS MESSAGE
-    private volatile List<Pair<String,Pair<String, String>>> pairs = new ArrayList<>();
+    private volatile List<Pair<String,Pair<String, String>>> pairs = new ArrayList<>();//[UserName, [UserID, Message]]
     private List<Timeout> telegramTimeouts; //Timeouts
     private final static int initTime = (int) (System.currentTimeMillis() / 1000L); //in order to discard messages older than launch
 
@@ -113,6 +113,10 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
             TelegramCommandHandler commandHandler = new TelegramCommandHandler(text, chatID);
             commandHandler.execute();
         }else{
+            //try to find a suitable way to adress the interlocutor
+            //first, try to find their user name
+            //if that didn't work try to find their real first name
+            //if that also didn't work adress them as "telegram user [userid]
             if(message.getFrom().getUserName() != null){
                 name = message.getFrom().getUserName().toLowerCase();
             }
@@ -156,9 +160,9 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
 
         // get the all messages
         Pair<String,Pair<String, String>> result = null;
-        for(Pair<String,Pair<String,String>> pa : pairs){
-            Pair<String,String> p = pa.getValue();
-            String name = pa.getKey();
+        for(Pair<String,Pair<String,String>> pa : pairs){//iterate over triples: [Username, [ChatID, Text]]
+            Pair<String,String> p = pa.getValue();//get [ChatID,Text]
+            String name = pa.getKey();//get Username
             //Map a = new HashMap<String, String>();
             if(!chatID.equals(p.getKey())){
                 continue;

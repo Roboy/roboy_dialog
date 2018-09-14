@@ -62,8 +62,8 @@ JSON Resources
     "TOKEN":"AAAAAAAAA:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     "BOT_USERNAME":"Botname"
     }
-    
-    
+
+
 
 CSV Resources
 =============

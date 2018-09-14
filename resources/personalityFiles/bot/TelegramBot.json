@@ -7,7 +7,7 @@
       "implementation": "roboy.dialog.states.botboy.BotBoyState",
       "transitions": {
         "greetingDetected":"Intro",
-        "knownPerson": "FollowUp",
+        "knownPerson": "QuestionAnswering",
         "newPerson": "PersonalQA"
       },
       "parameters": {
@@ -17,8 +17,9 @@
     {
       "identifier": "Intro",
       "implementation": "roboy.dialog.states.botboy.BotBoyIntroductionState",
+      "fallback": "WildTalk",
       "transitions": {
-        "knownPerson": "FollowUp",
+        "knownPerson": "QuestionAnswering",
         "newPerson": "PersonalQA"
       },
       "parameters": {
@@ -27,7 +28,8 @@
     },
     {
       "identifier": "FollowUp",
-      "implementation": "roboy.dialog.states.botboy.BotBoyPersonalInformationFollowUpState",
+      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationFollowUpState",
+      "fallback": "WildTalk",
       "transitions": {
         "questionAnswering": "QuestionAnswering"
       },
@@ -37,9 +39,11 @@
     },
     {
       "identifier": "PersonalQA",
-      "implementation": "roboy.dialog.states.botboy.BotBoyPersonalInformationAskingState",
+      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationAskingState",
+      "fallback": "WildTalk",
       "transitions": {
-        "questionAnswering": "QuestionAnswering"
+        "questionAnswering": "QuestionAnswering",
+        "followUp": "FollowUp"
       },
       "parameters": {
         "qaFile": "resources/sentences/TelegramQAList.json"
@@ -47,12 +51,32 @@
     },
     {
       "identifier": "QuestionAnswering",
-      "implementation": "roboy.dialog.states.botboy.BotBoyQuestionAnsweringState",
+      "implementation": "roboy.dialog.states.devoStates.QuestionRoboyQAState",
       "fallback": "WildTalk",
       "transitions": {
-        "finishedQuestionAnswering": "Farewell",
+        "finishedQuestionAnswering": "PersonalQA",
         "loopToNewPerson": "PersonalQA",
-        "loopToKnownPerson": "FollowUp"
+        "loopToKnownPerson": "FollowUp",
+        "switchToGaming": "ChooseGameState"
+      },
+      "parameters": {
+        "infoFile": "resources/sentences/RoboyInfoList.json"
+      }
+    },
+    {
+      "identifier": "Akinator",
+      "implementation": "roboy.dialog.states.gameStates.GamingTwentyQuestionsState",
+      "transitions": {
+        "gameEnded": "QuestionAnswering"
+      }
+    },
+    {
+      "identifier": "ChooseGameState",
+      "implementation": "roboy.dialog.states.gameStates.ChooseGameState",
+      "transitions": {
+        "choseSnapchat" : "Snapchat",
+        "chose20questions" : "Akinator",
+        "exitGame": "QuestionAnswering"
       }
     },
     {

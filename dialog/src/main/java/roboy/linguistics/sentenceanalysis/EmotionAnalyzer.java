@@ -55,7 +55,7 @@ public class EmotionAnalyzer implements Analyzer {
         LOGGER.debug("tokens.size: "+String.valueOf(tokens.size()));
 
         if(tokens == null){
-            interpretation.setEmotion(RoboyEmotion.NEUTRAL);
+            LOGGER.debug("TOKENS ARE NULL - It is impossible");
             return interpretation;
         }
 
@@ -64,6 +64,7 @@ public class EmotionAnalyzer implements Analyzer {
             String token = tokens.get(i);
             //if token has a label that is not desired do not add.
             if(!dropout.contains(tags[i])){
+                LOGGER.debug("not droped out token: "+token);
                 labels.add(token);
             }
 
@@ -79,7 +80,7 @@ public class EmotionAnalyzer implements Analyzer {
         }
         if(!mean.isVector()){
             //if mean is not a vector just return without emotion
-            interpretation.setEmotion(RoboyEmotion.NEUTRAL);
+            LOGGER.error("MEAN IS NOT A VECTOR");
             return interpretation;
         }
 
@@ -87,8 +88,11 @@ public class EmotionAnalyzer implements Analyzer {
         boolean sentencePositive = false;
         boolean sentenceNotNegative = false; // not the same with positive
         if(interpretation.getSentiment() != null){
+            LOGGER.debug("interpretation.getSentiment() != null");
             sentencePositive = interpretation.getSentiment().equals(Linguistics.UtteranceSentiment.POSITIVE);
             sentenceNotNegative = !interpretation.getSentiment().equals(Linguistics.UtteranceSentiment.NEGATIVE);
+            LOGGER.debug("sentencePositive: "+String.valueOf(sentencePositive));
+            LOGGER.debug("sentenceNotNegative: "+String.valueOf(sentenceNotNegative));
         }
 
 
@@ -96,7 +100,6 @@ public class EmotionAnalyzer implements Analyzer {
         double sadSimilarity = cosineSimilarity(dMean, sadVec);
         double happySimilarity = cosineSimilarity(dMean, happyVec);
         double shySimilarity = cosineSimilarity(dMean, shyVec);
-
 
         mean = vec.getWordVectorsMean(tokens);
         dMean = mean.data().asDouble();

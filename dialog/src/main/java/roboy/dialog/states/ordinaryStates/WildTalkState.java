@@ -1,5 +1,10 @@
 package roboy.dialog.states.ordinaryStates;
 
+import co.gongzh.procbridge.ProcBridge;
+import co.gongzh.procbridge.ProcBridgeException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.json.JSONObject;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
@@ -10,8 +15,7 @@ import roboy.util.RandomList;
 
 import java.util.Set;
 
-import static roboy.util.ConfigManager.ROS_ACTIVE_PKGS;
-import static roboy.util.ConfigManager.ROS_ENABLED;
+import static roboy.util.ConfigManager.*;
 
 /**
  * This fallback state will query the generative model over ROS to create a reply for any situation.
@@ -27,6 +31,9 @@ import static roboy.util.ConfigManager.ROS_ENABLED;
  */
 public class WildTalkState extends State {
 
+    private final Logger LOGGER = LogManager.getLogger();
+    private ProcBridge pb;
+
     private RandomList<String> rosFailurePhrases = new RandomList<>(
             "Hey, who disconnected me from my beloved ros node? I need it! ",
             "Oh well, my generative model is not connected. That makes me sad. ",
@@ -36,6 +43,8 @@ public class WildTalkState extends State {
 
     public WildTalkState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
+        pb = new ProcBridge(PARLAI_HOST, PARLAI_PORT, 2000);
+
     }
 
     @Override
@@ -47,24 +56,19 @@ public class WildTalkState extends State {
     public Output react(Interpretation input) {
 
         String sentence = input.getSentence();
-        RosMainNode rmn = getRosMainNode();
-        if (rmn == null) {
-            if(ROS_ENABLED && ROS_ACTIVE_PKGS.contains("roboy_gnlp")){
-                return Output.say(rosFailurePhrases.getRandomElement())
-                        .setSegue(new Segue(Segue.SegueType.DISTRACT, 0.8));
-            }
-            else{
-                return Output.say("I am out of words.").setSegue(new Segue(Segue.SegueType.DISTRACT, 0.8));
-            }
-        }
 
-        String reaction = rmn.GenerateAnswer(sentence);
-
-        if (reaction == null) {
-            return Output.say("I am out of words.").setSegue(new Segue(Segue.SegueType.DISTRACT, 0.8));
-        } else {
-            return Output.say(reaction);
+        JSONObject resp;
+        try {
+            resp = pb.request("parlai", "{text_input: " + sentence + "}");
+            LOGGER.info(resp);
+            return Output.say(resp.getString("result"));
         }
+        catch (Exception e)
+        {
+            LOGGER.warn(e.getMessage());
+        }
+        return Output.sayNothing();
+
     }
 
     @Override

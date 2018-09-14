@@ -23,12 +23,26 @@ public class Inference implements InferenceEngine {
 
 
     private String inferName(Interpretation input) {
+        String name;
         if (input.getSentenceType().compareTo(Linguistics.SentenceType.STATEMENT) == 0) {
             List<String> tokens = input.getTokens();
             if (tokens != null && !tokens.isEmpty()) {
                 if (tokens.size() == 1) {
                     return tokens.get(0).toLowerCase();
                 } else {
+                    if (input.getPas().containsKey(Linguistics.SemanticRole.PREDICATE)) {
+                        name = input.getPas().get(Linguistics.SemanticRole.PREDICATE).toLowerCase();
+                        if (!name.contains(" ")){
+                            return name;
+                        }
+                    }
+                    if (!input.getTriples().isEmpty()) {
+                        name = input.getTriples().get(0).object.toLowerCase();
+                        if (!name.contains(" ")) {
+                            return name;
+                        }
+                    }
+
                     if (input.getParsingOutcome() == Linguistics.ParsingOutcome.SUCCESS &&
                             input.getSemTriples() != null) {
                         List<Triple> result = input.getSemTriples();
@@ -36,13 +50,13 @@ public class Inference implements InferenceEngine {
                             return result.get(0).object.toLowerCase();
                         } else {
                             if (input.getObjAnswer() != null) {
-                                String name = input.getObjAnswer();
+                                name = input.getObjAnswer();
                                 return !name.equals("") ? name : null;
                             }
                         }
                     } else {
                         if (input.getObjAnswer() != null) {
-                            String name = input.getObjAnswer();
+                            name = input.getObjAnswer();
                             return !name.equals("") ? name : null;
                         }
                     }

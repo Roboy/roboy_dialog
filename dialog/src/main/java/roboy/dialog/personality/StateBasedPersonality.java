@@ -6,6 +6,7 @@ import roboy.context.Context;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.EmotionAction;
 import roboy.dialog.action.SpeechAction;
+import roboy.dialog.states.definitions.MonologState;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.InferenceEngine;
 import roboy.logic.StatementInterpreter;
@@ -18,8 +19,7 @@ import roboy.ros.RosMainNode;
 import roboy.talk.PhraseCollection;
 import roboy.talk.Verbalizer;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Implementation of Personality based on a DialogStateMachine.
@@ -39,7 +39,6 @@ import java.util.List;
 public class StateBasedPersonality extends DialogStateMachine implements Personality {
 
     private final Logger logger = LogManager.getLogger();
-
 
     private final Verbalizer verbalizer;
 
@@ -93,7 +92,6 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
     }
 
 
-
     /**
      * Always called once by the (new) DialogSystem at the beginning of every new conversation.
      * @return list of actions based on act() of the initial/active state
@@ -118,6 +116,25 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
         List<Action> initialActions = new ArrayList<>();
         stateAct(activeState, initialActions);
         return initialActions;
+    }
+
+    public boolean skippingNeeded(){
+
+        return getActiveState().getClass().getSuperclass().equals(MonologState.class);
+    }
+
+    public List<Action> skipUserInput(){
+
+        List<Action> actions = new ArrayList<>();
+
+        State next = getActiveState().getNextState();
+        if (next == null) {
+            // no next state -> conversation ends
+            endConversation();
+        }
+        setActiveState(next);
+        stateAct(next, actions);
+        return actions;
     }
 
 
@@ -155,7 +172,6 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
         // ACTIVE STATE REACTS TO INPUT
         stateReact(activeState, input, answerActions);
 
-
         // MOVE TO THE NEXT STATE
         State next = activeState.getNextState();
         if (next == null) {
@@ -164,7 +180,6 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
             return answerActions;
         }
         setActiveState(next);
-
 
         // NEXT STATE ACTS
         stateAct(next, answerActions);
@@ -228,7 +243,7 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
      * Call the react function of the state. If the state can't react, recursively ask fallbacks.
      * Verbalize the resulting reaction and add it to the list of actions.
      *
-     * @param state state to call REact on
+     * @param state state to call React on
      * @param input input from the person Roboy speaks to
      * @param previousActions list of previous action to append the verbalized result
      */
@@ -236,7 +251,9 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
         State.Output react;
         try {
+
             react = state.react(input);
+
         } catch (Exception e) {
             exceptionHandler(state, e, previousActions, false);
             return;
@@ -248,7 +265,6 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
                     "It is not clear whether it wants to say nothing or ask the fallback.");
             return;  // say nothing, just return and don't modify the list
         }
-
 
         // first, resolve fallbacks if needed
         State fallback = state.getFallback();

@@ -1,0 +1,139 @@
+{
+  "initialState": "Idle",
+  "states": [
+    {
+      "identifier": "Idle",
+      "implementation": "roboy.dialog.states.fairShowStates.IdleState",
+      "transitions": {
+        "timeIsUp": "ActiveIntro"
+      },
+      "parameters": {
+        "delayInMins": "1",
+        "showTimeinMins": "5"
+      }
+
+    },
+    {
+      "identifier": "ActiveIntro",
+      "implementation": "roboy.dialog.states.fairShowStates.ActiveIntroState",
+      "transitions": {
+        "peopleAround": "InfoTalk",
+        "lonelyRoboy": "Idle"
+      }
+    },
+    {
+      "identifier": "InfoTalk",
+      "implementation": "roboy.dialog.states.fairShowStates.InfoTalkState",
+      "transitions": {
+        "personDetected": "ChooseInteractiveTalk",
+        "lonelyRoboy": "Idle"
+      }
+    },
+    {
+      "identifier": "ChooseInteractiveTalk",
+      "implementation": "roboy.dialog.states.fairShowStates.ChooseInteractiveTalkState",
+      "transitions": {
+        "newPerson": "InterlocutorIntro",
+        "math": "Math",
+        "game": "ChooseGameState",
+        "objectDetected": "ObjectDetection",
+        "personalQA": "PersonalQA",
+        "generalQA": "GeneralQA"
+      }
+    },
+    {
+      "identifier": "InterlocutorIntro",
+      "implementation": "roboy.dialog.states.ordinaryStates.IntroductionState",
+      "transitions": {
+        "knownPerson": "FollowUp",
+        "newPerson": "PersonalQA"
+      },
+      "parameters": {
+        "infoFile": "resources/sentences/RoboyInfoList.json"
+      }
+    },
+    {
+      "identifier": "PersonalQA",
+      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationAskingState",
+      "fallback": "WildTalk",
+      "transitions": {
+        "questionAnswering": "ChooseInteractiveTalk"
+      },
+      "parameters": {
+      "qaFile": "resources/sentences/QAList.json"
+      }
+    },
+    {
+      "identifier": "Snapchat",
+      "implementation": "roboy.dialog.states.gameStates.GamingSnapchatState",
+      "transitions": {
+        "gameEnded": "InfoTalk"
+      },
+      "parameters": {
+        "filterFile": "resources/gameResources/snapchat-filters.txt"
+      }
+    },
+    {
+      "identifier": "Akinator",
+      "implementation": "roboy.dialog.states.gameStates.GamingTwentyQuestionsState",
+      "transitions": {
+        "gameEnded": "InfoTalk"
+      }
+    },
+    {
+      "identifier": "GeneralQA",
+      "implementation": "roboy.dialog.states.ordinaryStates.QuestionAnsweringState",
+      "fallback": "WildTalk",
+      "transitions": {
+        "loopToNewPerson": "PersonalQA",
+        "loopToKnownPerson": "FollowUp",
+        "finishedQuestionAnswering": "InfoTalk",
+        "switchToGaming": "ChooseGameState"
+      }
+    },
+    {
+      "identifier": "ChooseGameState",
+      "implementation": "roboy.dialog.states.gameStates.ChooseGameState",
+      "transitions": {
+        "choseSnapchat" : "Snapchat",
+        "chose20questions" : "Akinator",
+        "exitGame": "InfoTalk"
+      }
+    },
+    {
+      "identifier": "FollowUp",
+      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationFollowUpState",
+      "transitions": {
+        "questionAnswering": "ChooseInteractiveTalk"
+      },
+      "parameters": {
+        "qaFile": "resources/sentences/QAList.json"
+      }
+    },
+    {
+      "identifier": "Math",
+      "implementation": "roboy.dialog.states.fairShowStates.MathState",
+      "fallback": "WildTalk",
+      "transitions":{
+        "finished": "InfoTalk"
+      }
+    },
+    {
+      "identifier": "ObjectDetection",
+      "implementation": "roboy.dialog.states.fairShowStates.ObjectDetectionState",
+      "transitions":{
+        "finished": "InfoTalk"
+      }
+    },
+    {
+      "identifier": "WildTalk",
+      "implementation": "roboy.dialog.states.ordinaryStates.WildTalkState",
+      "transitions": {}
+    },
+    {
+      "identifier": "Farewell",
+      "implementation": "roboy.dialog.states.ordinaryStates.FarewellState",
+      "transitions": {}
+    }
+  ]
+}

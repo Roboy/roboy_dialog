@@ -78,6 +78,9 @@ Infinite repitition flag: For input that require a single instance of the dialog
 
     INFINITE_REPETITION: true
 
+Conversation timeout: The duration waited since the last action until a conversation is discarded in seconds ::
+
+    CONVERSATION_TIMEOUT: 10800
 
 Personality
 ^^^^^^^^^^^

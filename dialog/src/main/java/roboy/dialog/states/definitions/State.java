@@ -64,7 +64,7 @@ public abstract class State {
         private final Logger logger = LogManager.getLogger();
 
         public enum OutputType {
-            INTERPRETATION, SAY_NOTHING, USE_FALLBACK, END_CONVERSATION
+            INTERPRETATION, SAY_NOTHING, USE_FALLBACK, END_CONVERSATION, SKIP_INPUT
         }
 
         private final OutputType type;
@@ -81,7 +81,6 @@ public abstract class State {
             this.type = type;
             this.interpretation = interpretation;
             this.segue = null;
-            this.emotion = null;
             if(interpretation != null){
                 this.emotion = interpretation.getEmotion();
             }
@@ -151,6 +150,14 @@ public abstract class State {
             return new Output(OutputType.END_CONVERSATION, new Interpretation(lastWords));
         }
 
+        /**
+         * Skip the users input
+         * @return State.Output object with appropriate settings
+         */
+        public static Output skipInput() {
+            return new Output(OutputType.SKIP_INPUT, null);
+        }
+
 
         // Non-static methods
 
@@ -168,6 +175,10 @@ public abstract class State {
 
         public boolean isEndOfConversation() {
             return type == OutputType.END_CONVERSATION;
+        }
+
+        public boolean isSkippingUser() {
+            return type == OutputType.SKIP_INPUT;
         }
 
         public Interpretation getInterpretation() {

@@ -54,15 +54,35 @@ public class Verbalizer {
 
 	public static final RandomList<String> greetings =
 			new RandomList<>("hello","hi","greetings",
-                    // "good morning", // not for the final demo ;)
+                    "good morning", // not for the final demo ;)
                     "howdy",
-                    // "good day", // not for the final demo ;)
-                    "hey", "good evening",
-					"what's up", "greeting to everyone here","hi there people",
-					"hello world","gruse gott","wazup wazup wazup","howdy humans",
-                    // "good day ladies and gentlemen",  // not for the final demo ;)
-                    "good evening ladies and gentlemen",
-                    "hey hey hey you there");
+                     "good day", // not for the final demo ;)
+                    "hey",
+					"good evening",
+					"what's up",
+					"greetings to everyone here",
+					"hi there people",
+					"hello world","gruse gott",
+					"wazup wazup wazup",
+					"howdy humans",
+                     "good day ladies and gentlemen",  // not for the final demo ;)
+                     "good evening ladies and gentlemen",
+                    "hey hey hey you there",
+					"Hey! I was looking for someone to chat.");
+
+	public static final RandomList<String> privateGreetings =
+			new RandomList<>("hello","hi","greetings",
+					"howdy",
+					"hey",
+					"what's up",
+					"hi there",
+					"hello world",
+					"gruse gott",
+					"servus",
+					"wazup wazup wazup",
+					"howdy humans",
+					"hey hey hey you there",
+					"Hey! I was looking for someone to chat.");
 	
 	private SpeechAction greet(Interpretation interpretation){
 		return new SpeechAction(StatementBuilder.random(greetings));
@@ -122,6 +142,10 @@ public class Verbalizer {
 
 	public static final RandomList<String> rosDisconnect =
 			new RandomList<>("Oh no, where is my ROS connection? I need it. ", "I was looking for my ROS master everywhere but I can find it. ", "I think I have no ROS connection. ", "Hello? Hello? Any ROS master out there? Hmm, I can't hear anybody. "
+			);
+
+	public static final RandomList<String> roboyIntro =
+			new RandomList<>("I am Roboy. Happy to be here! ", "My name is Roboy. Thank you for having me! ", "You can call me Roboy. What a nice place here. "
 			);
 
 	private Interpretation verbalizeDates(Interpretation interpretation){

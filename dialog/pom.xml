@@ -27,6 +27,7 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>2.22.0</version>
                         <configuration>
+                            <workingDirectory>${project.parent.basedir}</workingDirectory>
                             <excludes>
                                 <exclude>roboy.memory.MemoryIntegrationTest</exclude>
                             </excludes>
@@ -354,7 +355,7 @@
         <dependency>
             <groupId>org.ros.rosjava_messages</groupId>
             <artifactId>roboy_communication_control</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.3</version>
         </dependency>
 
         <dependency>
@@ -428,6 +429,12 @@
             <groupId>org.telegram</groupId>
             <artifactId>telegrambots</artifactId>
             <version>3.6.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>co.gongzh.procbridge</groupId>
+            <artifactId>procbridge</artifactId>
+            <version>1.0.2</version>
         </dependency>
     </dependencies>
 

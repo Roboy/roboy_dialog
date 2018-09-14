@@ -7,6 +7,8 @@ import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
 import roboy.util.ConfigManager;
 import roboy_communication_cognition.DirectionVector;
+import roboy_communication_control.Strings;
+import std_msgs.Bool;
 
 import java.util.ArrayList;
 
@@ -44,6 +46,18 @@ public class Context {
     public final HistoryInterface<ValueHistory<Integer>, Integer, Integer> OTHER_Q =
             new HistoryInterface<>(new ValueHistory<Integer>());
 
+    public final HistoryInterface<DetecedPerson,Integer, std_msgs.Bool> PERSON_DETECTION =
+            new HistoryInterface<>(new DetecedPerson());
+
+    public final HistoryInterface<PeopleAround,Integer, std_msgs.Int8> CROWD_DETECTION =
+            new HistoryInterface<>(new PeopleAround());
+
+    public final HistoryInterface<DetectedObjects,Integer, Strings> OBJECT_DETECTION =
+            new HistoryInterface<>(new DetectedObjects());
+
+    public final HistoryInterface<BoothSentence, Integer, std_msgs.String > BOOTH_SENTENCE =
+            new HistoryInterface<>(new BoothSentence());
+
     /* GUI */
     private final ArrayList guiValues = new ArrayList();
     private final ArrayList guiHistories = new ArrayList();
@@ -58,6 +72,10 @@ public class Context {
     private boolean rosInitialized = false;
     private AudioDirectionUpdater AUDIO_ANGLES_UPDATER;
     private ROSTestUpdater ROS_TEST_UPDATER;
+    private DetectedPersonUpdater DETECTED_PERSON_UPDATER;
+    private PeopleAroundUpdater CROWD_UPDATER;
+    private DetectedObjectsUpdater DETECTED_OBJ_UPDATER;
+    private BoothSentenceUpdater BOOTH_SENTENCE_UPDATER;
 
     /* OBSERVERS */
     private final FaceCoordinatesObserver FACE_COORDINATES_OBSERVER;
@@ -106,6 +124,16 @@ public class Context {
                 if(ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_test")) ROS_TEST_UPDATER = new ROSTestUpdater(ROS_TEST.valueHistory, ros);
                 // TODO Add a FACE_COORDINATE_UPDATER.
                 // Edit the data type and integration tests, once the real data type is used.
+
+                if(ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_vision")) {
+                    DETECTED_PERSON_UPDATER = new DetectedPersonUpdater(PERSON_DETECTION.valueHistory, ros);
+                    DETECTED_OBJ_UPDATER = new DetectedObjectsUpdater(OBJECT_DETECTION.valueHistory, ros);
+                    CROWD_UPDATER = new PeopleAroundUpdater(CROWD_DETECTION.valueHistory, ros);
+                }
+
+                if(ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_nodered")){
+                    BOOTH_SENTENCE_UPDATER = new BoothSentenceUpdater(BOOTH_SENTENCE.valueHistory, ros);
+                }
 
                 rosInitialized = true;
             }

@@ -3,6 +3,7 @@ package roboy.memory;
 import com.google.common.collect.Maps;
 
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Contains the relations available in Neo4j database.
@@ -25,6 +26,7 @@ public enum Neo4jProperty {
     line_id("line_id");
 
     public String type;
+    private static final Random random = new Random();
 
     Neo4jProperty(String type) {
         this.type = type;
@@ -41,6 +43,11 @@ public enum Neo4jProperty {
 
     public static Neo4jProperty lookupByType(String type) {
         return typeIndex.get(type);
+    }
+
+    public static Neo4jProperty getRandom() {
+        int x = random.nextInt(Neo4jProperty.class.getEnumConstants().length);
+        return Neo4jProperty.class.getEnumConstants()[x];
     }
 
     public static boolean contains(String type){

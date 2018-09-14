@@ -11,7 +11,6 @@ import org.ros.node.service.ServiceClient;
 import org.ros.node.service.ServiceResponseListener;
 
 import org.ros.node.topic.Subscriber;
-import roboy.context.Context;
 import roboy.emotions.RoboyEmotion;
 import roboy.util.ConfigManager;
 import roboy_communication_cognition.*;
@@ -399,16 +398,6 @@ public class RosMainNode extends AbstractNodeMain {
         return resp;
     }
 
-    public void addListener(MessageListener listener, RosSubscribers subscriber) {
-        if(services.notInitialized(subscriber)) {
-
-            LOGGER.warn(String.format(warning, subscriber.rosPackage));
-            return;
-        }
-        Subscriber s = services.getSubscriber(subscriber);
-        s.addMessageListener(listener);
-    }
-
     public boolean ApplyFilter(String filterName) {
 
         if(services.notInitialized(RosServiceClients.SNAPCHATFILTER)) {
@@ -440,6 +429,17 @@ public class RosMainNode extends AbstractNodeMain {
         waitForLatchUnlock(rosConnectionLatch, snapchatFilterClient.getName().toString());
         return ((boolean) resp);
     }
+
+    public void addListener(MessageListener listener, RosSubscribers subscriber) {
+        if(services.notInitialized(subscriber)) {
+
+            LOGGER.warn(String.format(warning, subscriber.rosPackage));
+            return;
+        }
+        Subscriber s = services.getSubscriber(subscriber);
+        s.addMessageListener(listener);
+    }
+
 
     /**
      * Helper method to block the calling thread until the latch is zeroed by some other task.

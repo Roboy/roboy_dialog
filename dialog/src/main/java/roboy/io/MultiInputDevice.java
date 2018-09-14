@@ -10,7 +10,7 @@ public class MultiInputDevice implements InputDevice, CleanUp{
 
 	private InputDevice mainInput;
 	private ArrayList<InputDevice> additionalInputs;
-	
+
 	public MultiInputDevice(InputDevice mainInput) {
 		this.mainInput = mainInput;
 		additionalInputs = new ArrayList<>();
@@ -19,12 +19,17 @@ public class MultiInputDevice implements InputDevice, CleanUp{
 	public void addInputDevice(InputDevice additionalInput) {
 		additionalInputs.add(additionalInput);
 	}
-	
+
 	@Override
 	public Input listen() throws InterruptedException, IOException {
-		Input result = mainInput.listen();
+		return this.listen(0);
+	}
+
+	@Override
+	public Input listen(long timeout) throws InterruptedException, IOException {
+		Input result = mainInput.listen(timeout);
 		for(InputDevice device : additionalInputs){
-			Input i = device.listen();
+			Input i = device.listen(timeout);
 			result.setAttributes(i.getAttributes());
 		}
 		return result;

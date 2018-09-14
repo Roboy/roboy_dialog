@@ -1,0 +1,34 @@
+{
+  "initialState": "DemoIdle",
+  "states": [
+    {
+      "identifier": "DemoIdle",
+      "implementation": "roboy.dialog.states.fairShowStates.DemoIdleState",
+      "transitions": {
+        "personDetected": "DemoQuestionAnsweringState"
+      },
+      "parameters": {
+        "showTimeinMins": "5"
+      }
+    },
+    {
+      "identifier": "DemoQuestionAnsweringState",
+      "implementation": "roboy.dialog.states.fairShowStates.DemoQuestionAnsweringState",
+      "transitions": {
+        "lonelyRoboy": "DemoIdle",
+        "finished": "Farewell"
+      },
+      "fallback": "WildTalk"
+    },
+    {
+      "identifier": "WildTalk",
+      "implementation": "roboy.dialog.states.ordinaryStates.WildTalkState",
+      "transitions": {}
+    },
+    {
+      "identifier": "Farewell",
+      "implementation": "roboy.dialog.states.ordinaryStates.FarewellState",
+      "transitions": {}
+    }
+  ]
+}

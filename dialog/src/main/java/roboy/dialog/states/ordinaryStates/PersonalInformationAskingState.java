@@ -43,11 +43,12 @@ import static roboy.memory.Neo4jRelationship.*;
  */
 public class PersonalInformationAskingState extends State {
     private QAJsonParser qaValues;
-    private Neo4jRelationship[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
+    private Neo4jRelationship[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT, LIVE_IN, FRIEND_OF, MEMBER_OF, WORK_FOR, OCCUPIED_AS };
     private Neo4jRelationship selectedPredicate;
     private State nextState;
 
     private final String TRANSITION_INFO_OBTAINED = "questionAnswering";
+    private final String TRANSITION_FOLLOWUP = "followUp";
     private final String QA_FILE_PARAMETER_ID = "qaFile";
     final Logger LOGGER = LogManager.getLogger();
 
@@ -66,58 +67,69 @@ public class PersonalInformationAskingState extends State {
         LOGGER.info(" -> Retrieved Interlocutor: " + person.getName());
 
         for (Neo4jRelationship predicate : predicates) {
-            if (!person.hasRelationship(predicate)) {
+            if (!person.hasRelationship(predicate) && !getContext().DIALOG_INTENTS.contains(new IntentValue(INTENTS_HISTORY_ID, predicate))) {
                 selectedPredicate = predicate;
+                getContext().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, predicate));
                 LOGGER.info(" -> Selected predicate: " + selectedPredicate.type);
                 break;
             }
         }
-        RandomList<String> questions = qaValues.getQuestions(selectedPredicate);
-        String question = "";
-        if (questions != null && !questions.isEmpty()) {
-            question = questions.getRandomElement();
-            LOGGER.info(" -> Selected question: " + question);
-        } else {
-            LOGGER.error(" -> The list of " + selectedPredicate.type + " questions is empty or null");
+        if (selectedPredicate != null) {
+            RandomList<String> questions = qaValues.getQuestions(selectedPredicate);
+            String question = "";
+            if (questions != null && !questions.isEmpty()) {
+                question = questions.getRandomElement();
+                LOGGER.info(" -> Selected question: " + question);
+            } else {
+                LOGGER.error(" -> The list of " + selectedPredicate.type + " questions is empty or null");
+            }
+            try {
+                getContext().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, selectedPredicate));
+                LOGGER.info(" -> Dialog IntentsHistory updated");
+            } catch (Exception e) {
+                LOGGER.error(" -> Error on updating the IntentHistory: " + e.getMessage());
+            }
+            return State.Output.say(question);
         }
-        try {
-            getContext().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, selectedPredicate));
-            LOGGER.info(" -> Dialog IntentsHistory updated");
-        } catch (Exception e) {
-            LOGGER.error(" -> Error on updating the IntentHistory: " + e.getMessage());
+        else {
+            return State.Output.say("I think I know everything about you already. Do you have anything else to share?");
         }
-        return State.Output.say(question);
     }
 
     @Override
     public Output react(Interpretation input) {
         Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         LOGGER.info("-> Retrieved Interlocutor: " + person.getName());
-        RandomList<String> answers;
+        RandomList<String> answers = new RandomList<>();
         String answer = "I have no words";
         String result = InferResult(input);
 
-        if (result != null && !result.equals("")) {
-            LOGGER.info(" -> Inference was successful");
-            answers = qaValues.getSuccessAnswers(selectedPredicate);
-            person.addInformation(selectedPredicate, result);
-            getContext().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
-            LOGGER.info(" -> Updated Interlocutor: " + person.getName());
-        } else {
-            LOGGER.warn(" -> Inference failed");
-            answers = qaValues.getFailureAnswers(selectedPredicate);
-            result = "";
-            LOGGER.warn(" -> The result is empty. Nothing to store");
+        if(selectedPredicate != null) {
+
+            if (result != null && !result.equals("")) {
+                LOGGER.info(" -> Inference was successful");
+                answers = qaValues.getSuccessAnswers(selectedPredicate);
+                person.addInformation(selectedPredicate, result);
+                getContext().ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
+                LOGGER.info(" -> Updated Interlocutor: " + person.getName());
+            } else {
+                LOGGER.warn(" -> Inference failed");
+                answers = qaValues.getFailureAnswers(selectedPredicate);
+                result = "";
+                LOGGER.warn(" -> The result is empty. Nothing to store");
+            }
         }
         if (answers != null && !answers.isEmpty()) {
             answer = String.format(answers.getRandomElement(), result);
         } else {
             LOGGER.error(" -> The list of " + selectedPredicate + " answers is empty or null");
+            nextState = getTransition(TRANSITION_INFO_OBTAINED);
+            return Output.useFallback();
         }
         LOGGER.info(" -> Produced answer: " + answer);
-        nextState = getTransition(TRANSITION_INFO_OBTAINED);
-        Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE, 0.5);
-        return Output.say(answer).setSegue(s);
+        nextState = getTransition(TRANSITION_FOLLOWUP);
+//        Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE, 0.5);
+        return Output.say(answer);
     }
 
     @Override

@@ -12,6 +12,8 @@ import roboy.memory.nodes.Interlocutor.RelationshipAvailability;
 import roboy.memory.nodes.Roboy;
 import roboy.memory.nodes.MemoryNodeModel;
 import roboy.dialog.Segue;
+import roboy.talk.PhraseCollection;
+import roboy.talk.Verbalizer;
 import roboy.util.Agedater;
 import roboy.util.QAJsonParser;
 import roboy.util.RandomList;
@@ -42,7 +44,6 @@ public class BotBoyIntroductionState extends State {
     private final String LEARN_ABOUT_PERSON = "newPerson";
     private final Logger LOGGER = LogManager.getLogger();
     private final String INFO_FILE_PARAMETER_ID = "infoFile";
-    private final RandomList<String> introPhrases = new RandomList<>("May I ask your name?");
     private final RandomList<String> successResponsePhrases = new RandomList<>("Hey, I know you, %s!", "Hey, I remember you, %s");
     private final RandomList<String> failureResponsePhrases = new RandomList<>("Nice to meet you, %s!", "Glad to meet you, %s");
 
@@ -74,7 +75,7 @@ public class BotBoyIntroductionState extends State {
             // TODO: do something intelligent if the parser fails
             nextState = this;
             LOGGER.warn("IntroductionState couldn't get name! Staying in the same state.");
-            return Output.say("Sorry, my parser is out of service.");
+            return Output.useFallback();
             // alternatively: Output.useFallback() or Output.sayNothing()
         }
 
@@ -139,7 +140,7 @@ public class BotBoyIntroductionState extends State {
     }
 
     private String getIntroPhrase() {
-        return introPhrases.getRandomElement();
+        return PhraseCollection.ASK_NAME.getRandomElement();
     }
 
     private String getResponsePhrase(String name, boolean familiar) {
@@ -173,17 +174,11 @@ public class BotBoyIntroductionState extends State {
             } else if (properties.containsKey(age)) {
                 result += " " + String.format(infoValues.getSuccessAnswers(age).getRandomElement(), properties.get(age) + " years!");
             }
-            if (properties.containsKey(skills)) {
+
+            Neo4jProperty property = Neo4jProperty.getRandom();
+            if (property == skills || property == abilities || property == future) {
                 RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(skills).toString().split(",")));
-                result += " " + String.format(infoValues.getSuccessAnswers(skills).getRandomElement(), retrievedResult.getRandomElement());
-            }
-            if (properties.containsKey(abilities)) {
-                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(abilities).toString().split(",")));
-                result += " " + String.format(infoValues.getSuccessAnswers(abilities).getRandomElement(), retrievedResult.getRandomElement());
-            }
-            if (properties.containsKey(future)) {
-                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(future).toString().split(",")));
-                result += " " + String.format(infoValues.getSuccessAnswers(future).getRandomElement(), retrievedResult.getRandomElement());
+                result += " Also, " + String.format(infoValues.getSuccessAnswers(skills).getRandomElement(), retrievedResult.getRandomElement());
             }
         }
 

@@ -5887,6 +5887,457 @@
 {"features":" {score:0.15152674515697737} ","formula":"(rdf:type dbpedia:City)","lexeme":"city","type":"ClassNoun"}
 {"features":" {score:0.07924929805861808} ","formula":"property:municipality","lexeme":"municipality","type":"DataProp"}
 {"features":" {score:0.6171889755251683} ","formula":"resource:Ludwig_Maximilian_University_of_Munich","lexeme":"ludwig maximilian university of munich","type":"NamedEntity"}
+{"features":" {score:0.055132212042808534} ","formula":"dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.03828920185565949} ","formula":"property:woman","lexeme":"woman","type":"ObjProp"}
+{"features":" {score:0.07457736134529114} ","formula":"(rdf:type dbpedia:Politician)","lexeme":"politician","type":"ClassNoun"}
+{"features":" {score:0.055132212042808534} ","formula":"!property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.683304347826087} ","formula":"resource:Angela_Merkel","lexeme":"angela merkel","type":"NamedEntity"}
+{"features":" {score:0.022632212042808533} ","formula":"property:politicalLeader","lexeme":"political leader","type":"ObjProp"}
+{"features":" {score:0.03828920185565949} ","formula":"property:woman","lexeme":"woman","type":"DataProp"}
+{"features":" {score:0.022632212042808533} ","formula":"!property:politicalLeader","lexeme":"political leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"!dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.03828920185565949} ","formula":"!property:woman","lexeme":"woman","type":"ObjProp"}
+{"features":" {score:0.022632212042808533} ","formula":"!dbpedia:politicalLeader","lexeme":"political leader","type":"ObjectProp"}
+{"features":" {score:0.022632212042808533} ","formula":"property:politicalLeader","lexeme":"political leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"!property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.022632212042808533} ","formula":"dbpedia:politicalLeader","lexeme":"political leader","type":"ObjectProp"}
+{"features":" {score:0.022632212042808533} ","formula":"!property:politicalLeader","lexeme":"political leader","type":"ObjProp"}
+{"features":" {score:0.03828920185565949} ","formula":"!property:woman","lexeme":"woman","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.03828920185565949} ","formula":"property:woman","lexeme":"woman","type":"ObjProp"}
+{"features":" {score:0.07457736134529114} ","formula":"(rdf:type dbpedia:Politician)","lexeme":"politician","type":"ClassNoun"}
+{"features":" {score:0.055132212042808534} ","formula":"!property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.683304347826087} ","formula":"resource:Angela_Merkel","lexeme":"angela merkel","type":"NamedEntity"}
+{"features":" {score:0.022632212042808533} ","formula":"property:politicalLeader","lexeme":"political leader","type":"ObjProp"}
+{"features":" {score:0.03828920185565949} ","formula":"property:woman","lexeme":"woman","type":"DataProp"}
+{"features":" {score:0.022632212042808533} ","formula":"!property:politicalLeader","lexeme":"political leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"!dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.03828920185565949} ","formula":"!property:woman","lexeme":"woman","type":"ObjProp"}
+{"features":" {score:0.022632212042808533} ","formula":"!dbpedia:politicalLeader","lexeme":"political leader","type":"ObjectProp"}
+{"features":" {score:0.022632212042808533} ","formula":"property:politicalLeader","lexeme":"political leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"!property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.022632212042808533} ","formula":"dbpedia:politicalLeader","lexeme":"political leader","type":"ObjectProp"}
+{"features":" {score:0.022632212042808533} ","formula":"!property:politicalLeader","lexeme":"political leader","type":"ObjProp"}
+{"features":" {score:0.03828920185565949} ","formula":"!property:woman","lexeme":"woman","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.03828920185565949} ","formula":"property:woman","lexeme":"woman","type":"ObjProp"}
+{"features":" {score:0.07457736134529114} ","formula":"(rdf:type dbpedia:Politician)","lexeme":"politician","type":"ClassNoun"}
+{"features":" {score:0.055132212042808534} ","formula":"!property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.683304347826087} ","formula":"resource:Angela_Merkel","lexeme":"angela merkel","type":"NamedEntity"}
+{"features":" {score:0.022632212042808533} ","formula":"property:politicalLeader","lexeme":"political leader","type":"ObjProp"}
+{"features":" {score:0.03828920185565949} ","formula":"property:woman","lexeme":"woman","type":"DataProp"}
+{"features":" {score:0.022632212042808533} ","formula":"!property:politicalLeader","lexeme":"political leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"!dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.03828920185565949} ","formula":"!property:woman","lexeme":"woman","type":"ObjProp"}
+{"features":" {score:0.022632212042808533} ","formula":"!dbpedia:politicalLeader","lexeme":"political leader","type":"ObjectProp"}
+{"features":" {score:0.022632212042808533} ","formula":"property:politicalLeader","lexeme":"political leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"!property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.022632212042808533} ","formula":"dbpedia:politicalLeader","lexeme":"political leader","type":"ObjectProp"}
+{"features":" {score:0.022632212042808533} ","formula":"!property:politicalLeader","lexeme":"political leader","type":"ObjProp"}
+{"features":" {score:0.03828920185565949} ","formula":"!property:woman","lexeme":"woman","type":"DataProp"}
+{"features":" {score:0.04487804878048781} ","formula":"(rdf:type dbpedia:Person)","lexeme":"person","type":"ClassNoun"}
+{"features":" {score:0.011707317073170733} ","formula":"(rdf:type dbpedia:Name)","lexeme":"name","type":"ClassNoun"}
+{"features":" {score:0.011707317073170733} ","formula":"property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.315447027617413} ","formula":"resource:American_Recovery_and_Reinvestment_Act_of_2009","lexeme":"american recovery and reinvestment act of 2009","type":"NamedEntity"}
+{"features":" {score:0.04487804878048781} ","formula":"!property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.31076611015759087} ","formula":"resource:Presidency_of_Barack_Obama","lexeme":"presidency of barack obama","type":"NamedEntity"}
+{"features":" {score:0.04487804878048781} ","formula":"dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.015609756097560976} ","formula":"(rdf:type dbpedia:President)","lexeme":"president","type":"ClassNoun"}
+{"features":" {score:0.04487804878048781} ","formula":"property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.013658536585365855} ","formula":"!property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.021463414634146343} ","formula":"property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.015609756097560976} ","formula":"dbpedia:president","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.013658536585365855} ","formula":"!property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.04487804878048781} ","formula":"!property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.013658536585365855} ","formula":"property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.011707317073170733} ","formula":"property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.45063192385707596} ","formula":"resource:Barack_Obama","lexeme":"barack obama","type":"NamedEntity"}
+{"features":" {score:0.3089717584646591} ","formula":"resource:Patient_Protection_and_Affordable_Care_Act","lexeme":"patient protection and affordable care act","type":"NamedEntity"}
+{"features":" {score:0.31418317990326106} ","formula":"resource:Sean_Combs","lexeme":"sean combs","type":"NamedEntity"}
+{"features":" {score:0.010731707317073172} ","formula":"(rdf:type dbpedia:Celebrity)","lexeme":"celebrity","type":"ClassNoun"}
+{"features":" {score:0.015609756097560976} ","formula":"!dbpedia:president","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.04487804878048781} ","formula":"!dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.04487804878048781} ","formula":"property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.011707317073170733} ","formula":"!property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.011707317073170733} ","formula":"!property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.03609756097560975} ","formula":"(rdf:type dbpedia:Politician)","lexeme":"politician","type":"ClassNoun"}
+{"features":" {score:0.013658536585365855} ","formula":"property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.04487804878048781} ","formula":"(rdf:type dbpedia:Person)","lexeme":"person","type":"ClassNoun"}
+{"features":" {score:0.011707317073170733} ","formula":"(rdf:type dbpedia:Name)","lexeme":"name","type":"ClassNoun"}
+{"features":" {score:0.011707317073170733} ","formula":"property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.315447027617413} ","formula":"resource:American_Recovery_and_Reinvestment_Act_of_2009","lexeme":"american recovery and reinvestment act of 2009","type":"NamedEntity"}
+{"features":" {score:0.04487804878048781} ","formula":"!property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.31076611015759087} ","formula":"resource:Presidency_of_Barack_Obama","lexeme":"presidency of barack obama","type":"NamedEntity"}
+{"features":" {score:0.04487804878048781} ","formula":"dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.015609756097560976} ","formula":"(rdf:type dbpedia:President)","lexeme":"president","type":"ClassNoun"}
+{"features":" {score:0.04487804878048781} ","formula":"property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.013658536585365855} ","formula":"!property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.021463414634146343} ","formula":"property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.015609756097560976} ","formula":"dbpedia:president","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.013658536585365855} ","formula":"!property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.04487804878048781} ","formula":"!property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.013658536585365855} ","formula":"property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.011707317073170733} ","formula":"property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.45063192385707596} ","formula":"resource:Barack_Obama","lexeme":"barack obama","type":"NamedEntity"}
+{"features":" {score:0.3089717584646591} ","formula":"resource:Patient_Protection_and_Affordable_Care_Act","lexeme":"patient protection and affordable care act","type":"NamedEntity"}
+{"features":" {score:0.31418317990326106} ","formula":"resource:Sean_Combs","lexeme":"sean combs","type":"NamedEntity"}
+{"features":" {score:0.010731707317073172} ","formula":"(rdf:type dbpedia:Celebrity)","lexeme":"celebrity","type":"ClassNoun"}
+{"features":" {score:0.015609756097560976} ","formula":"!dbpedia:president","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.04487804878048781} ","formula":"!dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.04487804878048781} ","formula":"property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.011707317073170733} ","formula":"!property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.011707317073170733} ","formula":"!property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.03609756097560975} ","formula":"(rdf:type dbpedia:Politician)","lexeme":"politician","type":"ClassNoun"}
+{"features":" {score:0.013658536585365855} ","formula":"property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.04487804878048781} ","formula":"(rdf:type dbpedia:Person)","lexeme":"person","type":"ClassNoun"}
+{"features":" {score:0.011707317073170733} ","formula":"(rdf:type dbpedia:Name)","lexeme":"name","type":"ClassNoun"}
+{"features":" {score:0.011707317073170733} ","formula":"property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.315447027617413} ","formula":"resource:American_Recovery_and_Reinvestment_Act_of_2009","lexeme":"american recovery and reinvestment act of 2009","type":"NamedEntity"}
+{"features":" {score:0.04487804878048781} ","formula":"!property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.31076611015759087} ","formula":"resource:Presidency_of_Barack_Obama","lexeme":"presidency of barack obama","type":"NamedEntity"}
+{"features":" {score:0.04487804878048781} ","formula":"dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.015609756097560976} ","formula":"(rdf:type dbpedia:President)","lexeme":"president","type":"ClassNoun"}
+{"features":" {score:0.04487804878048781} ","formula":"property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.013658536585365855} ","formula":"!property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.021463414634146343} ","formula":"property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.015609756097560976} ","formula":"dbpedia:president","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.013658536585365855} ","formula":"!property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.04487804878048781} ","formula":"!property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.013658536585365855} ","formula":"property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.011707317073170733} ","formula":"property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.45063192385707596} ","formula":"resource:Barack_Obama","lexeme":"barack obama","type":"NamedEntity"}
+{"features":" {score:0.3089717584646591} ","formula":"resource:Patient_Protection_and_Affordable_Care_Act","lexeme":"patient protection and affordable care act","type":"NamedEntity"}
+{"features":" {score:0.31418317990326106} ","formula":"resource:Sean_Combs","lexeme":"sean combs","type":"NamedEntity"}
+{"features":" {score:0.010731707317073172} ","formula":"(rdf:type dbpedia:Celebrity)","lexeme":"celebrity","type":"ClassNoun"}
+{"features":" {score:0.015609756097560976} ","formula":"!dbpedia:president","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.04487804878048781} ","formula":"!dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.04487804878048781} ","formula":"property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.011707317073170733} ","formula":"!property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.011707317073170733} ","formula":"!property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.03609756097560975} ","formula":"(rdf:type dbpedia:Politician)","lexeme":"politician","type":"ClassNoun"}
+{"features":" {score:0.013658536585365855} ","formula":"property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.04487804878048781} ","formula":"(rdf:type dbpedia:Person)","lexeme":"person","type":"ClassNoun"}
+{"features":" {score:0.011707317073170733} ","formula":"(rdf:type dbpedia:Name)","lexeme":"name","type":"ClassNoun"}
+{"features":" {score:0.011707317073170733} ","formula":"property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.315447027617413} ","formula":"resource:American_Recovery_and_Reinvestment_Act_of_2009","lexeme":"american recovery and reinvestment act of 2009","type":"NamedEntity"}
+{"features":" {score:0.04487804878048781} ","formula":"!property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.31076611015759087} ","formula":"resource:Presidency_of_Barack_Obama","lexeme":"presidency of barack obama","type":"NamedEntity"}
+{"features":" {score:0.04487804878048781} ","formula":"dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.015609756097560976} ","formula":"(rdf:type dbpedia:President)","lexeme":"president","type":"ClassNoun"}
+{"features":" {score:0.04487804878048781} ","formula":"property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.013658536585365855} ","formula":"!property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.021463414634146343} ","formula":"property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.015609756097560976} ","formula":"dbpedia:president","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.013658536585365855} ","formula":"!property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.04487804878048781} ","formula":"!property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.013658536585365855} ","formula":"property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.011707317073170733} ","formula":"property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.45063192385707596} ","formula":"resource:Barack_Obama","lexeme":"barack obama","type":"NamedEntity"}
+{"features":" {score:0.3089717584646591} ","formula":"resource:Patient_Protection_and_Affordable_Care_Act","lexeme":"patient protection and affordable care act","type":"NamedEntity"}
+{"features":" {score:0.31418317990326106} ","formula":"resource:Sean_Combs","lexeme":"sean combs","type":"NamedEntity"}
+{"features":" {score:0.010731707317073172} ","formula":"(rdf:type dbpedia:Celebrity)","lexeme":"celebrity","type":"ClassNoun"}
+{"features":" {score:0.015609756097560976} ","formula":"!dbpedia:president","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.04487804878048781} ","formula":"!dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.04487804878048781} ","formula":"property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.011707317073170733} ","formula":"!property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.011707317073170733} ","formula":"!property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.03609756097560975} ","formula":"(rdf:type dbpedia:Politician)","lexeme":"politician","type":"ClassNoun"}
+{"features":" {score:0.013658536585365855} ","formula":"property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.04487804878048781} ","formula":"(rdf:type dbpedia:Person)","lexeme":"person","type":"ClassNoun"}
+{"features":" {score:0.011707317073170733} ","formula":"(rdf:type dbpedia:Name)","lexeme":"name","type":"ClassNoun"}
+{"features":" {score:0.011707317073170733} ","formula":"property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.315447027617413} ","formula":"resource:American_Recovery_and_Reinvestment_Act_of_2009","lexeme":"american recovery and reinvestment act of 2009","type":"NamedEntity"}
+{"features":" {score:0.04487804878048781} ","formula":"!property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.31076611015759087} ","formula":"resource:Presidency_of_Barack_Obama","lexeme":"presidency of barack obama","type":"NamedEntity"}
+{"features":" {score:0.04487804878048781} ","formula":"dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.015609756097560976} ","formula":"(rdf:type dbpedia:President)","lexeme":"president","type":"ClassNoun"}
+{"features":" {score:0.04487804878048781} ","formula":"property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.013658536585365855} ","formula":"!property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.021463414634146343} ","formula":"property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.015609756097560976} ","formula":"dbpedia:president","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.013658536585365855} ","formula":"!property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.04487804878048781} ","formula":"!property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.013658536585365855} ","formula":"property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.011707317073170733} ","formula":"property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.45063192385707596} ","formula":"resource:Barack_Obama","lexeme":"barack obama","type":"NamedEntity"}
+{"features":" {score:0.3089717584646591} ","formula":"resource:Patient_Protection_and_Affordable_Care_Act","lexeme":"patient protection and affordable care act","type":"NamedEntity"}
+{"features":" {score:0.31418317990326106} ","formula":"resource:Sean_Combs","lexeme":"sean combs","type":"NamedEntity"}
+{"features":" {score:0.010731707317073172} ","formula":"(rdf:type dbpedia:Celebrity)","lexeme":"celebrity","type":"ClassNoun"}
+{"features":" {score:0.015609756097560976} ","formula":"!dbpedia:president","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.04487804878048781} ","formula":"!dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.04487804878048781} ","formula":"property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.011707317073170733} ","formula":"!property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.011707317073170733} ","formula":"!property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.03609756097560975} ","formula":"(rdf:type dbpedia:Politician)","lexeme":"politician","type":"ClassNoun"}
+{"features":" {score:0.013658536585365855} ","formula":"property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.04487804878048781} ","formula":"(rdf:type dbpedia:Person)","lexeme":"person","type":"ClassNoun"}
+{"features":" {score:0.011707317073170733} ","formula":"(rdf:type dbpedia:Name)","lexeme":"name","type":"ClassNoun"}
+{"features":" {score:0.011707317073170733} ","formula":"property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.315447027617413} ","formula":"resource:American_Recovery_and_Reinvestment_Act_of_2009","lexeme":"american recovery and reinvestment act of 2009","type":"NamedEntity"}
+{"features":" {score:0.04487804878048781} ","formula":"!property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.31076611015759087} ","formula":"resource:Presidency_of_Barack_Obama","lexeme":"presidency of barack obama","type":"NamedEntity"}
+{"features":" {score:0.04487804878048781} ","formula":"dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.015609756097560976} ","formula":"(rdf:type dbpedia:President)","lexeme":"president","type":"ClassNoun"}
+{"features":" {score:0.04487804878048781} ","formula":"property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.013658536585365855} ","formula":"!property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.021463414634146343} ","formula":"property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.015609756097560976} ","formula":"dbpedia:president","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.013658536585365855} ","formula":"!property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.04487804878048781} ","formula":"!property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.013658536585365855} ","formula":"property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.011707317073170733} ","formula":"property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.45063192385707596} ","formula":"resource:Barack_Obama","lexeme":"barack obama","type":"NamedEntity"}
+{"features":" {score:0.3089717584646591} ","formula":"resource:Patient_Protection_and_Affordable_Care_Act","lexeme":"patient protection and affordable care act","type":"NamedEntity"}
+{"features":" {score:0.31418317990326106} ","formula":"resource:Sean_Combs","lexeme":"sean combs","type":"NamedEntity"}
+{"features":" {score:0.010731707317073172} ","formula":"(rdf:type dbpedia:Celebrity)","lexeme":"celebrity","type":"ClassNoun"}
+{"features":" {score:0.015609756097560976} ","formula":"!dbpedia:president","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.04487804878048781} ","formula":"!dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.04487804878048781} ","formula":"property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.011707317073170733} ","formula":"!property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.011707317073170733} ","formula":"!property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.03609756097560975} ","formula":"(rdf:type dbpedia:Politician)","lexeme":"politician","type":"ClassNoun"}
+{"features":" {score:0.013658536585365855} ","formula":"property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.04487804878048781} ","formula":"(rdf:type dbpedia:Person)","lexeme":"person","type":"ClassNoun"}
+{"features":" {score:0.011707317073170733} ","formula":"(rdf:type dbpedia:Name)","lexeme":"name","type":"ClassNoun"}
+{"features":" {score:0.011707317073170733} ","formula":"property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.315447027617413} ","formula":"resource:American_Recovery_and_Reinvestment_Act_of_2009","lexeme":"american recovery and reinvestment act of 2009","type":"NamedEntity"}
+{"features":" {score:0.04487804878048781} ","formula":"!property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.31076611015759087} ","formula":"resource:Presidency_of_Barack_Obama","lexeme":"presidency of barack obama","type":"NamedEntity"}
+{"features":" {score:0.04487804878048781} ","formula":"dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.015609756097560976} ","formula":"(rdf:type dbpedia:President)","lexeme":"president","type":"ClassNoun"}
+{"features":" {score:0.04487804878048781} ","formula":"property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.013658536585365855} ","formula":"!property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.021463414634146343} ","formula":"property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.015609756097560976} ","formula":"dbpedia:president","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.013658536585365855} ","formula":"!property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.04487804878048781} ","formula":"!property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.013658536585365855} ","formula":"property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.011707317073170733} ","formula":"property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.45063192385707596} ","formula":"resource:Barack_Obama","lexeme":"barack obama","type":"NamedEntity"}
+{"features":" {score:0.3089717584646591} ","formula":"resource:Patient_Protection_and_Affordable_Care_Act","lexeme":"patient protection and affordable care act","type":"NamedEntity"}
+{"features":" {score:0.31418317990326106} ","formula":"resource:Sean_Combs","lexeme":"sean combs","type":"NamedEntity"}
+{"features":" {score:0.010731707317073172} ","formula":"(rdf:type dbpedia:Celebrity)","lexeme":"celebrity","type":"ClassNoun"}
+{"features":" {score:0.015609756097560976} ","formula":"!dbpedia:president","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.04487804878048781} ","formula":"!dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.04487804878048781} ","formula":"property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.011707317073170733} ","formula":"!property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.011707317073170733} ","formula":"!property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.03609756097560975} ","formula":"(rdf:type dbpedia:Politician)","lexeme":"politician","type":"ClassNoun"}
+{"features":" {score:0.013658536585365855} ","formula":"property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.03828920185565949} ","formula":"property:woman","lexeme":"woman","type":"ObjProp"}
+{"features":" {score:0.07457736134529114} ","formula":"(rdf:type dbpedia:Politician)","lexeme":"politician","type":"ClassNoun"}
+{"features":" {score:0.055132212042808534} ","formula":"!property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.683304347826087} ","formula":"resource:Angela_Merkel","lexeme":"angela merkel","type":"NamedEntity"}
+{"features":" {score:0.022632212042808533} ","formula":"property:politicalLeader","lexeme":"political leader","type":"ObjProp"}
+{"features":" {score:0.03828920185565949} ","formula":"property:woman","lexeme":"woman","type":"DataProp"}
+{"features":" {score:0.022632212042808533} ","formula":"!property:politicalLeader","lexeme":"political leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"!dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.03828920185565949} ","formula":"!property:woman","lexeme":"woman","type":"ObjProp"}
+{"features":" {score:0.022632212042808533} ","formula":"!dbpedia:politicalLeader","lexeme":"political leader","type":"ObjectProp"}
+{"features":" {score:0.022632212042808533} ","formula":"property:politicalLeader","lexeme":"political leader","type":"DataProp"}
+{"features":" {score:0.055132212042808534} ","formula":"!property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.022632212042808533} ","formula":"dbpedia:politicalLeader","lexeme":"political leader","type":"ObjectProp"}
+{"features":" {score:0.022632212042808533} ","formula":"!property:politicalLeader","lexeme":"political leader","type":"ObjProp"}
+{"features":" {score:0.03828920185565949} ","formula":"!property:woman","lexeme":"woman","type":"DataProp"}
+{"features":" {score:0.04487804878048781} ","formula":"(rdf:type dbpedia:Person)","lexeme":"person","type":"ClassNoun"}
+{"features":" {score:0.011707317073170733} ","formula":"(rdf:type dbpedia:Name)","lexeme":"name","type":"ClassNoun"}
+{"features":" {score:0.011707317073170733} ","formula":"property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.315447027617413} ","formula":"resource:American_Recovery_and_Reinvestment_Act_of_2009","lexeme":"american recovery and reinvestment act of 2009","type":"NamedEntity"}
+{"features":" {score:0.04487804878048781} ","formula":"!property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.31076611015759087} ","formula":"resource:Presidency_of_Barack_Obama","lexeme":"presidency of barack obama","type":"NamedEntity"}
+{"features":" {score:0.04487804878048781} ","formula":"dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.015609756097560976} ","formula":"(rdf:type dbpedia:President)","lexeme":"president","type":"ClassNoun"}
+{"features":" {score:0.04487804878048781} ","formula":"property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.013658536585365855} ","formula":"!property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.021463414634146343} ","formula":"property:leader","lexeme":"leader","type":"ObjProp"}
+{"features":" {score:0.015609756097560976} ","formula":"dbpedia:president","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.013658536585365855} ","formula":"!property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.04487804878048781} ","formula":"!property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.013658536585365855} ","formula":"property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.011707317073170733} ","formula":"property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.45063192385707596} ","formula":"resource:Barack_Obama","lexeme":"barack obama","type":"NamedEntity"}
+{"features":" {score:0.3089717584646591} ","formula":"resource:Patient_Protection_and_Affordable_Care_Act","lexeme":"patient protection and affordable care act","type":"NamedEntity"}
+{"features":" {score:0.31418317990326106} ","formula":"resource:Sean_Combs","lexeme":"sean combs","type":"NamedEntity"}
+{"features":" {score:0.010731707317073172} ","formula":"(rdf:type dbpedia:Celebrity)","lexeme":"celebrity","type":"ClassNoun"}
+{"features":" {score:0.015609756097560976} ","formula":"!dbpedia:president","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.04487804878048781} ","formula":"!dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.04487804878048781} ","formula":"property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.021463414634146343} ","formula":"dbpedia:leader","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.011707317073170733} ","formula":"!property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.021463414634146343} ","formula":"!property:leader","lexeme":"leader","type":"DataProp"}
+{"features":" {score:0.011707317073170733} ","formula":"!property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.03609756097560975} ","formula":"(rdf:type dbpedia:Politician)","lexeme":"politician","type":"ClassNoun"}
+{"features":" {score:0.013658536585365855} ","formula":"property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.042009095673847544} ","formula":"property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.8907573812580232} ","formula":"resource:Donald_Trump","lexeme":"donald trump","type":"NamedEntity"}
+{"features":" {score:0.0861954571238255} ","formula":"property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.042009095673847544} ","formula":"dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.545266447683966} ","formula":"resource:Trump_Model_Management","lexeme":"trump model management","type":"NamedEntity"}
+{"features":" {score:0.0861954571238255} ","formula":"!property:candidate","lexeme":"candidate","type":"DataProp"}
+{"features":" {score:0.027895863596415774} ","formula":"(rdf:type dbpedia:Name)","lexeme":"name","type":"ClassNoun"}
+{"features":" {score:0.042009095673847544} ","formula":"!property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.027895863596415774} ","formula":"property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.027895863596415774} ","formula":"!property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.042009095673847544} ","formula":"(rdf:type dbpedia:Person)","lexeme":"person","type":"ClassNoun"}
+{"features":" {score:0.0861954571238255} ","formula":"property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.042009095673847544} ","formula":"property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.042009095673847544} ","formula":"!dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.027895863596415774} ","formula":"!property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.7012836970474968} ","formula":"resource:Donald_J._Trump_State_Park","lexeme":"donald j. trump state park","type":"NamedEntity"}
+{"features":" {score:0.700770218228498} ","formula":"\u003chttp://dbpedia.org/resource/Donald_Trump_(song)\u003e","lexeme":"donald trump song","type":"NamedEntity"}
+{"features":" {score:0.5462934053219635} ","formula":"\u003chttp://dbpedia.org/resource/Donald_Trump,_Jr.\u003e","lexeme":"donald trump, jr.","type":"NamedEntity"}
+{"features":" {score:0.042009095673847544} ","formula":"!property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.06954035692232868} ","formula":"(rdf:type dbpedia:Politician)","lexeme":"politician","type":"ClassNoun"}
+{"features":" {score:0.027895863596415774} ","formula":"property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.04269494056017155} ","formula":"(rdf:type dbpedia:Celebrity)","lexeme":"celebrity","type":"ClassNoun"}
+{"features":" {score:0.0861954571238255} ","formula":"!property:candidate","lexeme":"candidate","type":"ObjProp"}
+{"features":" {score:0.02754881125994218} ","formula":"!property:market","lexeme":"market","type":"DataProp"}
+{"features":" {score:0.5755008526150316} ","formula":"resource:United_States","lexeme":"united states","type":"NamedEntity"}
+{"features":" {score:0.02754881125994218} ","formula":"!property:market","lexeme":"market","type":"ObjProp"}
+{"features":" {score:0.08751242573062579} ","formula":"dbpedia:state","lexeme":"state","type":"ObjectProp"}
+{"features":" {score:0.07595872349463977} ","formula":"!property:jurisdiction","lexeme":"jurisdiction","type":"ObjProp"}
+{"features":" {score:0.03030440770662748} ","formula":"(rdf:type dbpedia:Area)","lexeme":"area","type":"ClassNoun"}
+{"features":" {score:0.07595872349463977} ","formula":"!dbpedia:jurisdiction","lexeme":"jurisdiction","type":"ObjectProp"}
+{"features":" {score:0.03030440770662748} ","formula":"property:area","lexeme":"area","type":"ObjProp"}
+{"features":" {score:0.1526816528538863} ","formula":"(rdf:type dbpedia:State)","lexeme":"state","type":"ClassNoun"}
+{"features":" {score:0.0370556704996106} ","formula":"property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.02754881125994218} ","formula":"property:market","lexeme":"market","type":"DataProp"}
+{"features":" {score:0.15117955282330514} ","formula":"(rdf:type dbpedia:Community)","lexeme":"community","type":"ClassNoun"}
+{"features":" {score:0.07595872349463977} ","formula":"property:jurisdiction","lexeme":"jurisdiction","type":"ObjProp"}
+{"features":" {score:0.03030440770662748} ","formula":"!property:area","lexeme":"area","type":"DataProp"}
+{"features":" {score:0.38557999580675983} ","formula":"resource:Las_Vegas_Valley","lexeme":"las vegas valley","type":"NamedEntity"}
+{"features":" {score:0.07957891535682556} ","formula":"property:nation","lexeme":"nation","type":"DataProp"}
+{"features":" {score:0.5303599433230969} ","formula":"resource:USA_Today","lexeme":"usa today","type":"NamedEntity"}
+{"features":" {score:0.012150918220480283} ","formula":"property:economy","lexeme":"economy","type":"ObjProp"}
+{"features":" {score:0.07595872349463977} ","formula":"!property:jurisdiction","lexeme":"jurisdiction","type":"DataProp"}
+{"features":" {score:0.0370556704996106} ","formula":"property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.012150918220480283} ","formula":"!property:economy","lexeme":"economy","type":"DataProp"}
+{"features":" {score:0.08751242573062579} ","formula":"!property:state","lexeme":"state","type":"DataProp"}
+{"features":" {score:0.08751242573062579} ","formula":"!dbpedia:state","lexeme":"state","type":"ObjectProp"}
+{"features":" {score:0.0370556704996106} ","formula":"(rdf:type dbpedia:Place)","lexeme":"place","type":"ClassNoun"}
+{"features":" {score:0.4179297464449643} ","formula":"\u003chttp://dbpedia.org/resource/Georgia_(U.S._state)\u003e","lexeme":"georgia u.s. state","type":"NamedEntity"}
+{"features":" {score:0.07957891535682556} ","formula":"!property:nation","lexeme":"nation","type":"DataProp"}
+{"features":" {score:0.08751242573062579} ","formula":"property:state","lexeme":"state","type":"ObjProp"}
+{"features":" {score:0.02754881125994218} ","formula":"property:market","lexeme":"market","type":"ObjProp"}
+{"features":" {score:0.0370556704996106} ","formula":"!property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.0370556704996106} ","formula":"!property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.08751242573062579} ","formula":"property:state","lexeme":"state","type":"DataProp"}
+{"features":" {score:0.07595872349463977} ","formula":"property:jurisdiction","lexeme":"jurisdiction","type":"DataProp"}
+{"features":" {score:0.07957891535682556} ","formula":"!property:nation","lexeme":"nation","type":"ObjProp"}
+{"features":" {score:0.012150918220480283} ","formula":"property:economy","lexeme":"economy","type":"DataProp"}
+{"features":" {score:0.03030440770662748} ","formula":"property:area","lexeme":"area","type":"DataProp"}
+{"features":" {score:0.08751242573062579} ","formula":"!property:state","lexeme":"state","type":"ObjProp"}
+{"features":" {score:0.07595872349463977} ","formula":"dbpedia:jurisdiction","lexeme":"jurisdiction","type":"ObjectProp"}
+{"features":" {score:0.012150918220480283} ","formula":"!property:economy","lexeme":"economy","type":"ObjProp"}
+{"features":" {score:0.160990172624588} ","formula":"(rdf:type dbpedia:Cave)","lexeme":"cave","type":"ClassNoun"}
+{"features":" {score:0.07957891535682556} ","formula":"property:nation","lexeme":"nation","type":"ObjProp"}
+{"features":" {score:0.4062865242661592} ","formula":"resource:United_States_Army","lexeme":"united states army","type":"NamedEntity"}
+{"features":" {score:0.03030440770662748} ","formula":"!property:area","lexeme":"area","type":"ObjProp"}
+{"features":" {score:0.3381166879130506} ","formula":"\u003chttp://dbpedia.org/resource/Oblivion_(2013_film)\u003e","lexeme":"oblivion 2013 film","type":"NamedEntity"}
+{"features":" {score:0.054397506351323476} ","formula":"property:star","lexeme":"star","type":"DataProp"}
+{"features":" {score:0.7009578544061303} ","formula":"resource:Tom_Cruise_Purple","lexeme":"tom cruise purple","type":"NamedEntity"}
+{"features":" {score:0.005154639175257732} ","formula":"property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.7011494252873564} ","formula":"resource:Being_Tom_Cruise","lexeme":"being tom cruise","type":"NamedEntity"}
+{"features":" {score:0.054397506351323476} ","formula":"!property:star","lexeme":"star","type":"ObjProp"}
+{"features":" {score:0.054397506351323476} ","formula":"!property:star","lexeme":"star","type":"DataProp"}
+{"features":" {score:0.052604761197394934} ","formula":"(rdf:type dbpedia:MusicalArtist)","lexeme":"musical artist","type":"ClassNoun"}
+{"features":" {score:0.896551724137931} ","formula":"resource:Tom_Cruise","lexeme":"tom cruise","type":"NamedEntity"}
+{"features":" {score:0.09603880213707994} ","formula":"!property:actor","lexeme":"actor","type":"ObjProp"}
+{"features":" {score:0.052604761197394934} ","formula":"!dbpedia:musicalArtist","lexeme":"musical artist","type":"ObjectProp"}
+{"features":" {score:0.054397506351323476} ","formula":"(rdf:type dbpedia:Star)","lexeme":"star","type":"ClassNoun"}
+{"features":" {score:0.052604761197394934} ","formula":"dbpedia:musicalArtist","lexeme":"musical artist","type":"ObjectProp"}
+{"features":" {score:0.005154639175257732} ","formula":"(rdf:type dbpedia:Person)","lexeme":"person","type":"ClassNoun"}
+{"features":" {score:0.09603880213707994} ","formula":"!property:actor","lexeme":"actor","type":"DataProp"}
+{"features":" {score:0.09603880213707994} ","formula":"property:actor","lexeme":"actor","type":"DataProp"}
+{"features":" {score:0.005154639175257732} ","formula":"dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.005154639175257732} ","formula":"!dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.054397506351323476} ","formula":"property:star","lexeme":"star","type":"ObjProp"}
+{"features":" {score:0.09603880213707994} ","formula":"(rdf:type dbpedia:Actor)","lexeme":"actor","type":"ClassNoun"}
+{"features":" {score:0.0867470011652745} ","formula":"(rdf:type dbpedia:Celebrity)","lexeme":"celebrity","type":"ClassNoun"}
+{"features":" {score:0.09603880213707994} ","formula":"property:actor","lexeme":"actor","type":"ObjProp"}
+{"features":" {score:0.005154639175257732} ","formula":"property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.005154639175257732} ","formula":"!property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.005154639175257732} ","formula":"!property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.012132196162046908} ","formula":"property:market","lexeme":"market","type":"DataProp"}
+{"features":" {score:0.09491380273946312} ","formula":"!property:nation","lexeme":"nation","type":"DataProp"}
+{"features":" {score:0.0298982803415515} ","formula":"!dbpedia:state","lexeme":"state","type":"ObjectProp"}
+{"features":" {score:0.012132196162046908} ","formula":"property:market","lexeme":"market","type":"ObjProp"}
+{"features":" {score:0.0298982803415515} ","formula":"property:state","lexeme":"state","type":"ObjProp"}
+{"features":" {score:0.0298982803415515} ","formula":"property:state","lexeme":"state","type":"DataProp"}
+{"features":" {score:0.09491380273946312} ","formula":"!property:nation","lexeme":"nation","type":"ObjProp"}
+{"features":" {score:0.09259691534965023} ","formula":"dbpedia:jurisdiction","lexeme":"jurisdiction","type":"ObjectProp"}
+{"features":" {score:0.09259691534965023} ","formula":"!dbpedia:jurisdiction","lexeme":"jurisdiction","type":"ObjectProp"}
+{"features":" {score:0.09259691534965023} ","formula":"!property:jurisdiction","lexeme":"jurisdiction","type":"ObjProp"}
+{"features":" {score:0.5069967108616201} ","formula":"resource:Regions_of_France","lexeme":"regions of france","type":"NamedEntity"}
+{"features":" {score:0.012132196162046908} ","formula":"!property:market","lexeme":"market","type":"DataProp"}
+{"features":" {score:0.16148168835788965} ","formula":"dbpedia:kingdom","lexeme":"kingdom","type":"ObjectProp"}
+{"features":" {score:0.5618006384498346} ","formula":"resource:Communes_of_France","lexeme":"communes of france","type":"NamedEntity"}
+{"features":" {score:0.0298982803415515} ","formula":"!property:state","lexeme":"state","type":"DataProp"}
+{"features":" {score:0.0298982803415515} ","formula":"(rdf:type dbpedia:State)","lexeme":"state","type":"ClassNoun"}
+{"features":" {score:0.09259691534965023} ","formula":"property:jurisdiction","lexeme":"jurisdiction","type":"DataProp"}
+{"features":" {score:0.025450552493445022} ","formula":"property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.0298982803415515} ","formula":"!property:state","lexeme":"state","type":"ObjProp"}
+{"features":" {score:0.025450552493445022} ","formula":"!property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.16148168835788965} ","formula":"!dbpedia:kingdom","lexeme":"kingdom","type":"ObjectProp"}
+{"features":" {score:0.5987827256883081} ","formula":"resource:France","lexeme":"france","type":"NamedEntity"}
+{"features":" {score:0.09491380273946312} ","formula":"property:nation","lexeme":"nation","type":"ObjProp"}
+{"features":" {score:0.025450552493445022} ","formula":"(rdf:type dbpedia:Place)","lexeme":"place","type":"ClassNoun"}
+{"features":" {score:0.4358805129140693} ","formula":"resource:Paris","lexeme":"paris","type":"NamedEntity"}
+{"features":" {score:0.09491380273946312} ","formula":"property:nation","lexeme":"nation","type":"DataProp"}
+{"features":" {score:0.0298982803415515} ","formula":"dbpedia:state","lexeme":"state","type":"ObjectProp"}
+{"features":" {score:0.025450552493445022} ","formula":"!property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.012132196162046908} ","formula":"!property:market","lexeme":"market","type":"ObjProp"}
+{"features":" {score:0.09259691534965023} ","formula":"!property:jurisdiction","lexeme":"jurisdiction","type":"DataProp"}
+{"features":" {score:0.09259691534965023} ","formula":"property:jurisdiction","lexeme":"jurisdiction","type":"ObjProp"}
+{"features":" {score:0.5763360876788288} ","formula":"resource:Departments_of_France","lexeme":"departments of france","type":"NamedEntity"}
+{"features":" {score:0.025450552493445022} ","formula":"property:place","lexeme":"place","type":"ObjProp"}
 {"features":" {score:0.02754881125994218} ","formula":"!property:market","lexeme":"market","type":"DataProp"}
 {"features":" {score:0.02492670177649229} ","formula":"!property:place","lexeme":"place","type":"ObjProp"}
 {"features":" {score:0.02754881125994218} ","formula":"!property:market","lexeme":"market","type":"ObjProp"}
@@ -5929,3 +6380,465 @@
 {"features":" {score:0.036267271011303635} ","formula":"!property:nation","lexeme":"nation","type":"ObjProp"}
 {"features":" {score:0.5019569461422774} ","formula":"resource:USA_Today","lexeme":"usa today","type":"NamedEntity"}
 {"features":" {score:0.03030440770662748} ","formula":"!property:area","lexeme":"area","type":"ObjProp"}
+{"features":" {score:0.1446695566177368} ","formula":"(rdf:type dbpedia:President)","lexeme":"president","type":"ClassNoun"}
+{"features":" {score:0.1446695566177368} ","formula":"dbpedia:leader","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.1446695566177368} ","formula":"!dbpedia:leader","lexeme":"president","type":"ObjectProp"}
+{"features":" {score:0.3167914263218081} ","formula":"\u003chttp://dbpedia.org/resource/Nashi_(youth_movement)\u003e","lexeme":"nashi youth movement","type":"NamedEntity"}
+{"features":" {score:0.13008587360382082} ","formula":"!dbpedia:chairman","lexeme":"chairman","type":"ObjectProp"}
+{"features":" {score:0.683508932661475} ","formula":"resource:Vladimir_Putin","lexeme":"vladimir putin","type":"NamedEntity"}
+{"features":" {score:0.13880642652511596} ","formula":"!dbpedia:commander","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.37777169617119044} ","formula":"\u003chttp://dbpedia.org/resource/Russian_presidential_election,_2004\u003e","lexeme":"russian presidential election, 2004","type":"NamedEntity"}
+{"features":" {score:0.13880642652511596} ","formula":"dbpedia:commander","lexeme":"leader","type":"ObjectProp"}
+{"features":" {score:0.13008587360382082} ","formula":"dbpedia:chairman","lexeme":"chairman","type":"ObjectProp"}
+{"features":" {score:0.12559207677841186} ","formula":"(rdf:type dbpedia:Deputy)","lexeme":"deputy","type":"ClassNoun"}
+{"features":" {score:0.04278201647385404} ","formula":"!dbpedia:state","lexeme":"state","type":"ObjectProp"}
+{"features":" {score:0.16464441987324152} ","formula":"!property:nation","lexeme":"nation","type":"DataProp"}
+{"features":" {score:0.390711041013616} ","formula":"resource:Hamburg","lexeme":"hamburg","type":"NamedEntity"}
+{"features":" {score:0.0265957764727325} ","formula":"property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.0265957764727325} ","formula":"!property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.04278201647385404} ","formula":"property:state","lexeme":"state","type":"ObjProp"}
+{"features":" {score:0.0665176406596795} ","formula":"dbpedia:jurisdiction","lexeme":"jurisdiction","type":"ObjectProp"}
+{"features":" {score:0.04278201647385404} ","formula":"property:state","lexeme":"state","type":"DataProp"}
+{"features":" {score:0.04278201647385404} ","formula":"!property:state","lexeme":"state","type":"DataProp"}
+{"features":" {score:0.0665176406596795} ","formula":"!property:jurisdiction","lexeme":"jurisdiction","type":"ObjProp"}
+{"features":" {score:0.04560972112981648} ","formula":"!property:market","lexeme":"market","type":"ObjProp"}
+{"features":" {score:0.0265957764727325} ","formula":"property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.1708839304854649} ","formula":"property:economy","lexeme":"economy","type":"ObjProp"}
+{"features":" {score:0.0265957764727325} ","formula":"(rdf:type dbpedia:Place)","lexeme":"place","type":"ClassNoun"}
+{"features":" {score:0.0665176406596795} ","formula":"property:jurisdiction","lexeme":"jurisdiction","type":"DataProp"}
+{"features":" {score:0.39425857691081134} ","formula":"resource:Munich","lexeme":"munich","type":"NamedEntity"}
+{"features":" {score:0.0665176406596795} ","formula":"property:jurisdiction","lexeme":"jurisdiction","type":"ObjProp"}
+{"features":" {score:0.0265957764727325} ","formula":"!property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.0665176406596795} ","formula":"!dbpedia:jurisdiction","lexeme":"jurisdiction","type":"ObjectProp"}
+{"features":" {score:0.16464441987324152} ","formula":"property:nation","lexeme":"nation","type":"ObjProp"}
+{"features":" {score:0.16783925965428353} ","formula":"!dbpedia:kingdom","lexeme":"kingdom","type":"ObjectProp"}
+{"features":" {score:0.04278201647385404} ","formula":"!property:state","lexeme":"state","type":"ObjProp"}
+{"features":" {score:0.04560972112981648} ","formula":"!property:market","lexeme":"market","type":"DataProp"}
+{"features":" {score:0.5636600189777636} ","formula":"resource:Nazi_Germany","lexeme":"nazi germany","type":"NamedEntity"}
+{"features":" {score:0.16464441987324152} ","formula":"!property:nation","lexeme":"nation","type":"ObjProp"}
+{"features":" {score:0.04560972112981648} ","formula":"property:market","lexeme":"market","type":"ObjProp"}
+{"features":" {score:0.16783925965428353} ","formula":"dbpedia:kingdom","lexeme":"kingdom","type":"ObjectProp"}
+{"features":" {score:0.16464441987324152} ","formula":"property:nation","lexeme":"nation","type":"DataProp"}
+{"features":" {score:0.0665176406596795} ","formula":"!property:jurisdiction","lexeme":"jurisdiction","type":"DataProp"}
+{"features":" {score:0.6794585619104976} ","formula":"resource:Germany","lexeme":"germany","type":"NamedEntity"}
+{"features":" {score:0.39519054887256505} ","formula":"resource:Berlin","lexeme":"berlin","type":"NamedEntity"}
+{"features":" {score:0.1708839304854649} ","formula":"!property:economy","lexeme":"economy","type":"DataProp"}
+{"features":" {score:0.1708839304854649} ","formula":"property:economy","lexeme":"economy","type":"DataProp"}
+{"features":" {score:0.04278201647385404} ","formula":"(rdf:type dbpedia:State)","lexeme":"state","type":"ClassNoun"}
+{"features":" {score:0.04560972112981648} ","formula":"property:market","lexeme":"market","type":"DataProp"}
+{"features":" {score:0.04278201647385404} ","formula":"dbpedia:state","lexeme":"state","type":"ObjectProp"}
+{"features":" {score:0.1708839304854649} ","formula":"!property:economy","lexeme":"economy","type":"ObjProp"}
+{"features":" {score:0.4458469683247078} ","formula":"resource:European_Union","lexeme":"european union","type":"NamedEntity"}
+{"features":" {score:0.3971572799386617} ","formula":"resource:Music_recording_sales_certification","lexeme":"music recording sales certification","type":"NamedEntity"}
+{"features":" {score:0.19172790675584056} ","formula":"!property:area","lexeme":"area","type":"DataProp"}
+{"features":" {score:0.6703273238665586} ","formula":"resource:Europe","lexeme":"europe","type":"NamedEntity"}
+{"features":" {score:0.2959099621073451} ","formula":"dbpedia:region","lexeme":"region","type":"ObjectProp"}
+{"features":" {score:0.4372570114560367} ","formula":"resource:Middle_Ages","lexeme":"middle ages","type":"NamedEntity"}
+{"features":" {score:0.17893260906040026} ","formula":"!property:continent","lexeme":"continent","type":"ObjProp"}
+{"features":" {score:0.2959099621073451} ","formula":"property:region","lexeme":"region","type":"DataProp"}
+{"features":" {score:0.17893260906040026} ","formula":"property:continent","lexeme":"continent","type":"ObjProp"}
+{"features":" {score:0.14541114583315107} ","formula":"!property:economy","lexeme":"economy","type":"DataProp"}
+{"features":" {score:0.06096718820401578} ","formula":"property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.2959099621073451} ","formula":"!property:region","lexeme":"region","type":"DataProp"}
+{"features":" {score:0.2959099621073451} ","formula":"property:region","lexeme":"region","type":"ObjProp"}
+{"features":" {score:0.19172790675584056} ","formula":"property:area","lexeme":"area","type":"ObjProp"}
+{"features":" {score:0.04914569086494519} ","formula":"!property:market","lexeme":"market","type":"DataProp"}
+{"features":" {score:0.06096718820401578} ","formula":"!property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.17893260906040026} ","formula":"!dbpedia:continent","lexeme":"continent","type":"ObjectProp"}
+{"features":" {score:0.19172790675584056} ","formula":"(rdf:type dbpedia:Area)","lexeme":"area","type":"ClassNoun"}
+{"features":" {score:0.19172790675584056} ","formula":"!property:area","lexeme":"area","type":"ObjProp"}
+{"features":" {score:0.14541114583315107} ","formula":"!property:economy","lexeme":"economy","type":"ObjProp"}
+{"features":" {score:0.24948306868373704} ","formula":"(rdf:type dbpedia:Continent)","lexeme":"continent","type":"ClassNoun"}
+{"features":" {score:0.2959099621073451} ","formula":"!property:region","lexeme":"region","type":"ObjProp"}
+{"features":" {score:0.04914569086494519} ","formula":"!property:market","lexeme":"market","type":"ObjProp"}
+{"features":" {score:0.14541114583315107} ","formula":"property:economy","lexeme":"economy","type":"ObjProp"}
+{"features":" {score:0.17893260906040026} ","formula":"dbpedia:continent","lexeme":"continent","type":"ObjectProp"}
+{"features":" {score:0.3818665746476778} ","formula":"resource:UEFA_Europa_League","lexeme":"uefa europa league","type":"NamedEntity"}
+{"features":" {score:0.14541114583315107} ","formula":"property:economy","lexeme":"economy","type":"DataProp"}
+{"features":" {score:0.06096718820401578} ","formula":"(rdf:type dbpedia:Place)","lexeme":"place","type":"ClassNoun"}
+{"features":" {score:0.17893260906040026} ","formula":"property:continent","lexeme":"continent","type":"DataProp"}
+{"features":" {score:0.2959099621073451} ","formula":"!dbpedia:region","lexeme":"region","type":"ObjectProp"}
+{"features":" {score:0.04914569086494519} ","formula":"property:market","lexeme":"market","type":"ObjProp"}
+{"features":" {score:0.06096718820401578} ","formula":"property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.19172790675584056} ","formula":"property:area","lexeme":"area","type":"DataProp"}
+{"features":" {score:0.17893260906040026} ","formula":"!property:continent","lexeme":"continent","type":"DataProp"}
+{"features":" {score:0.04914569086494519} ","formula":"property:market","lexeme":"market","type":"DataProp"}
+{"features":" {score:0.2959099621073451} ","formula":"(rdf:type dbpedia:Region)","lexeme":"region","type":"ClassNoun"}
+{"features":" {score:0.06096718820401578} ","formula":"!property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.37337397287915275} ","formula":"resource:United_States_Navy","lexeme":"united states navy","type":"NamedEntity"}
+{"features":" {score:0.013793234483649334} ","formula":"!property:location","lexeme":"location","type":"DataProp"}
+{"features":" {score:0.3224235460515639} ","formula":"resource:U.S._state","lexeme":"u.s. state","type":"NamedEntity"}
+{"features":" {score:0.3547119279351195} ","formula":"resource:American_Civil_War","lexeme":"american civil war","type":"NamedEntity"}
+{"features":" {score:0.013793234483649334} ","formula":"property:location","lexeme":"location","type":"ObjProp"}
+{"features":" {score:0.013793234483649334} ","formula":"dbpedia:location","lexeme":"location","type":"ObjectProp"}
+{"features":" {score:0.021966824730237325} ","formula":"property:feature","lexeme":"feature","type":"DataProp"}
+{"features":" {score:0.013793234483649334} ","formula":"!dbpedia:location","lexeme":"location","type":"ObjectProp"}
+{"features":" {score:0.01683011555009418} ","formula":"property:abbreviation","lexeme":"abbreviation","type":"DataProp"}
+{"features":" {score:0.01683011555009418} ","formula":"!property:abbreviation","lexeme":"abbreviation","type":"ObjProp"}
+{"features":" {score:0.013793234483649334} ","formula":"property:location","lexeme":"location","type":"DataProp"}
+{"features":" {score:0.021966824730237325} ","formula":"!property:feature","lexeme":"feature","type":"ObjProp"}
+{"features":" {score:0.3780362175989992} ","formula":"resource:United_States_Census_Bureau","lexeme":"united states census bureau","type":"NamedEntity"}
+{"features":" {score:0.013793234483649334} ","formula":"!property:location","lexeme":"location","type":"ObjProp"}
+{"features":" {score:0.021966824730237325} ","formula":"property:feature","lexeme":"feature","type":"ObjProp"}
+{"features":" {score:0.01683011555009418} ","formula":"!property:abbreviation","lexeme":"abbreviation","type":"DataProp"}
+{"features":" {score:0.5118030180877406} ","formula":"resource:United_States","lexeme":"united states","type":"NamedEntity"}
+{"features":" {score:0.021966824730237325} ","formula":"!property:feature","lexeme":"feature","type":"DataProp"}
+{"features":" {score:0.01683011555009418} ","formula":"property:abbreviation","lexeme":"abbreviation","type":"ObjProp"}
+{"features":" {score:0.39343532363954176} ","formula":"\u003chttp://dbpedia.org/resource/Salon_(website)\u003e","lexeme":"salon website","type":"NamedEntity"}
+{"features":" {score:0.03681289980044732} ","formula":"!property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.023183089391543316} ","formula":"property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.3786297717788662} ","formula":"resource:Alexander_von_Humboldt","lexeme":"alexander von humboldt","type":"NamedEntity"}
+{"features":" {score:0.01230769230769231} ","formula":"dbpedia:routeLine","lexeme":"line","type":"ObjectProp"}
+{"features":" {score:0.05373960618789379} ","formula":"dbpedia:brand","lexeme":"brand","type":"ObjectProp"}
+{"features":" {score:0.03681289980044732} ","formula":"property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.3746308982221216} ","formula":"resource:Pope_Alexander_VI","lexeme":"pope alexander vi","type":"NamedEntity"}
+{"features":" {score:0.05373960618789379} ","formula":"!property:brand","lexeme":"brand","type":"ObjProp"}
+{"features":" {score:0.023183089391543316} ","formula":"!dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.023183089391543316} ","formula":"!property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.05373960618789379} ","formula":"property:brand","lexeme":"brand","type":"ObjProp"}
+{"features":" {score:0.01230769230769231} ","formula":"!property:line","lexeme":"line","type":"ObjProp"}
+{"features":" {score:0.01230769230769231} ","formula":"!property:line","lexeme":"line","type":"DataProp"}
+{"features":" {score:0.03681289980044732} ","formula":"!property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.023183089391543316} ","formula":"!property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.397716586460902} ","formula":"resource:Alec_Baldwin","lexeme":"alec baldwin","type":"NamedEntity"}
+{"features":" {score:0.01230769230769231} ","formula":"property:line","lexeme":"line","type":"ObjProp"}
+{"features":" {score:0.023183089391543316} ","formula":"property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.05373960618789379} ","formula":"!dbpedia:brand","lexeme":"brand","type":"ObjectProp"}
+{"features":" {score:0.03681289980044732} ","formula":"(rdf:type dbpedia:Name)","lexeme":"name","type":"ClassNoun"}
+{"features":" {score:0.01230769230769231} ","formula":"property:line","lexeme":"line","type":"DataProp"}
+{"features":" {score:0.5426921993804562} ","formula":"resource:Alex_Ferguson","lexeme":"alex ferguson","type":"NamedEntity"}
+{"features":" {score:0.023183089391543316} ","formula":"dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.13999229669570923} ","formula":"(rdf:type dbpedia:Wrestler)","lexeme":"wrestler","type":"ClassNoun"}
+{"features":" {score:0.01230769230769231} ","formula":"!dbpedia:routeLine","lexeme":"line","type":"ObjectProp"}
+{"features":" {score:0.03681289980044732} ","formula":"property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.05373960618789379} ","formula":"!property:brand","lexeme":"brand","type":"DataProp"}
+{"features":" {score:0.023183089391543316} ","formula":"(rdf:type dbpedia:Person)","lexeme":"person","type":"ClassNoun"}
+{"features":" {score:0.12696447372436523} ","formula":"(rdf:type dbpedia:Jockey)","lexeme":"jockey","type":"ClassNoun"}
+{"features":" {score:0.05373960618789379} ","formula":"property:brand","lexeme":"brand","type":"DataProp"}
+{"features":" {score:0.13098052740097046} ","formula":"(rdf:type dbpedia:Swimmer)","lexeme":"swimmer","type":"ClassNoun"}
+{"features":" {score:0.39343532363954176} ","formula":"\u003chttp://dbpedia.org/resource/Salon_(website)\u003e","lexeme":"salon website","type":"NamedEntity"}
+{"features":" {score:0.03681289980044732} ","formula":"!property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.023183089391543316} ","formula":"property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.3786297717788662} ","formula":"resource:Alexander_von_Humboldt","lexeme":"alexander von humboldt","type":"NamedEntity"}
+{"features":" {score:0.01230769230769231} ","formula":"dbpedia:routeLine","lexeme":"line","type":"ObjectProp"}
+{"features":" {score:0.05373960618789379} ","formula":"dbpedia:brand","lexeme":"brand","type":"ObjectProp"}
+{"features":" {score:0.03681289980044732} ","formula":"property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.3746308982221216} ","formula":"resource:Pope_Alexander_VI","lexeme":"pope alexander vi","type":"NamedEntity"}
+{"features":" {score:0.05373960618789379} ","formula":"!property:brand","lexeme":"brand","type":"ObjProp"}
+{"features":" {score:0.023183089391543316} ","formula":"!dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.023183089391543316} ","formula":"!property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.05373960618789379} ","formula":"property:brand","lexeme":"brand","type":"ObjProp"}
+{"features":" {score:0.01230769230769231} ","formula":"!property:line","lexeme":"line","type":"ObjProp"}
+{"features":" {score:0.01230769230769231} ","formula":"!property:line","lexeme":"line","type":"DataProp"}
+{"features":" {score:0.03681289980044732} ","formula":"!property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.023183089391543316} ","formula":"!property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.397716586460902} ","formula":"resource:Alec_Baldwin","lexeme":"alec baldwin","type":"NamedEntity"}
+{"features":" {score:0.01230769230769231} ","formula":"property:line","lexeme":"line","type":"ObjProp"}
+{"features":" {score:0.023183089391543316} ","formula":"property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.05373960618789379} ","formula":"!dbpedia:brand","lexeme":"brand","type":"ObjectProp"}
+{"features":" {score:0.03681289980044732} ","formula":"(rdf:type dbpedia:Name)","lexeme":"name","type":"ClassNoun"}
+{"features":" {score:0.01230769230769231} ","formula":"property:line","lexeme":"line","type":"DataProp"}
+{"features":" {score:0.5426921993804562} ","formula":"resource:Alex_Ferguson","lexeme":"alex ferguson","type":"NamedEntity"}
+{"features":" {score:0.023183089391543316} ","formula":"dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.13999229669570923} ","formula":"(rdf:type dbpedia:Wrestler)","lexeme":"wrestler","type":"ClassNoun"}
+{"features":" {score:0.01230769230769231} ","formula":"!dbpedia:routeLine","lexeme":"line","type":"ObjectProp"}
+{"features":" {score:0.03681289980044732} ","formula":"property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.05373960618789379} ","formula":"!property:brand","lexeme":"brand","type":"DataProp"}
+{"features":" {score:0.023183089391543316} ","formula":"(rdf:type dbpedia:Person)","lexeme":"person","type":"ClassNoun"}
+{"features":" {score:0.12696447372436523} ","formula":"(rdf:type dbpedia:Jockey)","lexeme":"jockey","type":"ClassNoun"}
+{"features":" {score:0.05373960618789379} ","formula":"property:brand","lexeme":"brand","type":"DataProp"}
+{"features":" {score:0.13098052740097046} ","formula":"(rdf:type dbpedia:Swimmer)","lexeme":"swimmer","type":"ClassNoun"}
+{"features":" {score:0.39343532363954176} ","formula":"\u003chttp://dbpedia.org/resource/Salon_(website)\u003e","lexeme":"salon website","type":"NamedEntity"}
+{"features":" {score:0.03681289980044732} ","formula":"!property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.023183089391543316} ","formula":"property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.3786297717788662} ","formula":"resource:Alexander_von_Humboldt","lexeme":"alexander von humboldt","type":"NamedEntity"}
+{"features":" {score:0.01230769230769231} ","formula":"dbpedia:routeLine","lexeme":"line","type":"ObjectProp"}
+{"features":" {score:0.05373960618789379} ","formula":"dbpedia:brand","lexeme":"brand","type":"ObjectProp"}
+{"features":" {score:0.03681289980044732} ","formula":"property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.3746308982221216} ","formula":"resource:Pope_Alexander_VI","lexeme":"pope alexander vi","type":"NamedEntity"}
+{"features":" {score:0.05373960618789379} ","formula":"!property:brand","lexeme":"brand","type":"ObjProp"}
+{"features":" {score:0.023183089391543316} ","formula":"!dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.023183089391543316} ","formula":"!property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.05373960618789379} ","formula":"property:brand","lexeme":"brand","type":"ObjProp"}
+{"features":" {score:0.01230769230769231} ","formula":"!property:line","lexeme":"line","type":"ObjProp"}
+{"features":" {score:0.01230769230769231} ","formula":"!property:line","lexeme":"line","type":"DataProp"}
+{"features":" {score:0.03681289980044732} ","formula":"!property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.023183089391543316} ","formula":"!property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.397716586460902} ","formula":"resource:Alec_Baldwin","lexeme":"alec baldwin","type":"NamedEntity"}
+{"features":" {score:0.01230769230769231} ","formula":"property:line","lexeme":"line","type":"ObjProp"}
+{"features":" {score:0.023183089391543316} ","formula":"property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.05373960618789379} ","formula":"!dbpedia:brand","lexeme":"brand","type":"ObjectProp"}
+{"features":" {score:0.03681289980044732} ","formula":"(rdf:type dbpedia:Name)","lexeme":"name","type":"ClassNoun"}
+{"features":" {score:0.01230769230769231} ","formula":"property:line","lexeme":"line","type":"DataProp"}
+{"features":" {score:0.5426921993804562} ","formula":"resource:Alex_Ferguson","lexeme":"alex ferguson","type":"NamedEntity"}
+{"features":" {score:0.023183089391543316} ","formula":"dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.13999229669570923} ","formula":"(rdf:type dbpedia:Wrestler)","lexeme":"wrestler","type":"ClassNoun"}
+{"features":" {score:0.01230769230769231} ","formula":"!dbpedia:routeLine","lexeme":"line","type":"ObjectProp"}
+{"features":" {score:0.03681289980044732} ","formula":"property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.05373960618789379} ","formula":"!property:brand","lexeme":"brand","type":"DataProp"}
+{"features":" {score:0.023183089391543316} ","formula":"(rdf:type dbpedia:Person)","lexeme":"person","type":"ClassNoun"}
+{"features":" {score:0.12696447372436523} ","formula":"(rdf:type dbpedia:Jockey)","lexeme":"jockey","type":"ClassNoun"}
+{"features":" {score:0.05373960618789379} ","formula":"property:brand","lexeme":"brand","type":"DataProp"}
+{"features":" {score:0.13098052740097046} ","formula":"(rdf:type dbpedia:Swimmer)","lexeme":"swimmer","type":"ClassNoun"}
+{"features":" {score:0.02754881125994218} ","formula":"!property:market","lexeme":"market","type":"DataProp"}
+{"features":" {score:0.02492670177649229} ","formula":"!property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.02754881125994218} ","formula":"!property:market","lexeme":"market","type":"ObjProp"}
+{"features":" {score:0.03030440770662748} ","formula":"(rdf:type dbpedia:Area)","lexeme":"area","type":"ClassNoun"}
+{"features":" {score:0.018827202090850245} ","formula":"dbpedia:jurisdiction","lexeme":"jurisdiction","type":"ObjectProp"}
+{"features":" {score:0.03030440770662748} ","formula":"property:area","lexeme":"area","type":"ObjProp"}
+{"features":" {score:0.018827202090850245} ","formula":"property:jurisdiction","lexeme":"jurisdiction","type":"ObjProp"}
+{"features":" {score:0.02492670177649229} ","formula":"property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.02754881125994218} ","formula":"property:market","lexeme":"market","type":"DataProp"}
+{"features":" {score:0.03030440770662748} ","formula":"!property:area","lexeme":"area","type":"DataProp"}
+{"features":" {score:0.02492670177649229} ","formula":"!property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.018827202090850245} ","formula":"!property:jurisdiction","lexeme":"jurisdiction","type":"ObjProp"}
+{"features":" {score:0.02492670177649229} ","formula":"(rdf:type dbpedia:Place)","lexeme":"place","type":"ClassNoun"}
+{"features":" {score:0.07183589378992716} ","formula":"dbpedia:state","lexeme":"state","type":"ObjectProp"}
+{"features":" {score:0.3449200540738764} ","formula":"resource:Las_Vegas_Valley","lexeme":"las vegas valley","type":"NamedEntity"}
+{"features":" {score:0.07183589378992716} ","formula":"!property:state","lexeme":"state","type":"ObjProp"}
+{"features":" {score:0.010833333333333334} ","formula":"!property:economy","lexeme":"economy","type":"ObjProp"}
+{"features":" {score:0.036267271011303635} ","formula":"!property:nation","lexeme":"nation","type":"DataProp"}
+{"features":" {score:0.5069101221863358} ","formula":"resource:United_States","lexeme":"united states","type":"NamedEntity"}
+{"features":" {score:0.010833333333333334} ","formula":"property:economy","lexeme":"economy","type":"DataProp"}
+{"features":" {score:0.036267271011303635} ","formula":"property:nation","lexeme":"nation","type":"DataProp"}
+{"features":" {score:0.3376957938374635} ","formula":"resource:United_States_Army","lexeme":"united states army","type":"NamedEntity"}
+{"features":" {score:0.1210140109062195} ","formula":"(rdf:type dbpedia:Community)","lexeme":"community","type":"ClassNoun"}
+{"features":" {score:0.010833333333333334} ","formula":"!property:economy","lexeme":"economy","type":"DataProp"}
+{"features":" {score:0.010833333333333334} ","formula":"property:economy","lexeme":"economy","type":"ObjProp"}
+{"features":" {score:0.018827202090850245} ","formula":"!dbpedia:jurisdiction","lexeme":"jurisdiction","type":"ObjectProp"}
+{"features":" {score:0.018827202090850245} ","formula":"!property:jurisdiction","lexeme":"jurisdiction","type":"DataProp"}
+{"features":" {score:0.07183589378992716} ","formula":"property:state","lexeme":"state","type":"DataProp"}
+{"features":" {score:0.07183589378992716} ","formula":"!property:state","lexeme":"state","type":"DataProp"}
+{"features":" {score:0.02754881125994218} ","formula":"property:market","lexeme":"market","type":"ObjProp"}
+{"features":" {score:0.036267271011303635} ","formula":"property:nation","lexeme":"nation","type":"ObjProp"}
+{"features":" {score:0.3712715210874318} ","formula":"\u003chttp://dbpedia.org/resource/Georgia_(U.S._state)\u003e","lexeme":"georgia u.s. state","type":"NamedEntity"}
+{"features":" {score:0.13348385095596313} ","formula":"(rdf:type dbpedia:Cave)","lexeme":"cave","type":"ClassNoun"}
+{"features":" {score:0.018827202090850245} ","formula":"property:jurisdiction","lexeme":"jurisdiction","type":"DataProp"}
+{"features":" {score:0.07183589378992716} ","formula":"property:state","lexeme":"state","type":"ObjProp"}
+{"features":" {score:0.02492670177649229} ","formula":"property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.03030440770662748} ","formula":"property:area","lexeme":"area","type":"DataProp"}
+{"features":" {score:0.07183589378992716} ","formula":"!dbpedia:state","lexeme":"state","type":"ObjectProp"}
+{"features":" {score:0.13700512091318767} ","formula":"(rdf:type dbpedia:State)","lexeme":"state","type":"ClassNoun"}
+{"features":" {score:0.036267271011303635} ","formula":"!property:nation","lexeme":"nation","type":"ObjProp"}
+{"features":" {score:0.5019569461422774} ","formula":"resource:USA_Today","lexeme":"usa today","type":"NamedEntity"}
+{"features":" {score:0.03030440770662748} ","formula":"!property:area","lexeme":"area","type":"ObjProp"}
+{"features":" {score:0.5633483858744451} ","formula":"resource:FC_Bayern_Munich","lexeme":"fc bayern munich","type":"NamedEntity"}
+{"features":" {score:0.0048526863084922016} ","formula":"property:film","lexeme":"film","type":"DataProp"}
+{"features":" {score:0.15446644224988318} ","formula":"dbpedia:municipality","lexeme":"municipality","type":"ObjectProp"}
+{"features":" {score:0.15446644224988318} ","formula":"!property:municipality","lexeme":"municipality","type":"ObjProp"}
+{"features":" {score:0.006745657462310337} ","formula":"!property:university","lexeme":"university","type":"ObjProp"}
+{"features":" {score:0.0200734452320266} ","formula":"!property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.006745657462310337} ","formula":"(rdf:type dbpedia:University)","lexeme":"university","type":"ClassNoun"}
+{"features":" {score:0.2703449835345485} ","formula":"dbpedia:city","lexeme":"city","type":"ObjectProp"}
+{"features":" {score:0.2703449835345485} ","formula":"property:city","lexeme":"city","type":"DataProp"}
+{"features":" {score:0.0200734452320266} ","formula":"!property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.0048526863084922016} ","formula":"!property:film","lexeme":"film","type":"DataProp"}
+{"features":" {score:0.0200734452320266} ","formula":"property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.2703449835345485} ","formula":"!property:city","lexeme":"city","type":"ObjProp"}
+{"features":" {score:0.2703449835345485} ","formula":"!dbpedia:city","lexeme":"city","type":"ObjectProp"}
+{"features":" {score:0.15446644224988318} ","formula":"!dbpedia:municipality","lexeme":"municipality","type":"ObjectProp"}
+{"features":" {score:0.5245180850163047} ","formula":"resource:Munich_Agreement","lexeme":"munich agreement","type":"NamedEntity"}
+{"features":" {score:0.0200734452320266} ","formula":"property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.6420831407783865} ","formula":"resource:Munich","lexeme":"munich","type":"NamedEntity"}
+{"features":" {score:0.5336177996667898} ","formula":"resource:Ludwig_Maximilian_University_of_Munich","lexeme":"ludwig maximilian university of munich","type":"NamedEntity"}
+{"features":" {score:0.15446644224988318} ","formula":"(rdf:type dbpedia:Municipality)","lexeme":"municipality","type":"ClassNoun"}
+{"features":" {score:0.15446644224988318} ","formula":"!property:municipality","lexeme":"municipality","type":"DataProp"}
+{"features":" {score:0.15446644224988318} ","formula":"property:municipality","lexeme":"municipality","type":"ObjProp"}
+{"features":" {score:0.394651691061635} ","formula":"resource:1972_Summer_Olympics","lexeme":"1972 summer olympics","type":"NamedEntity"}
+{"features":" {score:0.006745657462310337} ","formula":"property:university","lexeme":"university","type":"ObjProp"}
+{"features":" {score:0.2703449835345485} ","formula":"!property:city","lexeme":"city","type":"DataProp"}
+{"features":" {score:0.15446644224988318} ","formula":"property:municipality","lexeme":"municipality","type":"DataProp"}
+{"features":" {score:0.0200734452320266} ","formula":"(rdf:type dbpedia:Place)","lexeme":"place","type":"ClassNoun"}
+{"features":" {score:0.006745657462310337} ","formula":"!dbpedia:university","lexeme":"university","type":"ObjectProp"}
+{"features":" {score:0.0048526863084922016} ","formula":"property:film","lexeme":"film","type":"ObjProp"}
+{"features":" {score:0.0048526863084922016} ","formula":"!property:film","lexeme":"film","type":"ObjProp"}
+{"features":" {score:0.0048526863084922016} ","formula":"!dbpedia:film","lexeme":"film","type":"ObjectProp"}
+{"features":" {score:0.0048526863084922016} ","formula":"dbpedia:film","lexeme":"film","type":"ObjectProp"}
+{"features":" {score:0.2703449835345485} ","formula":"(rdf:type dbpedia:City)","lexeme":"city","type":"ClassNoun"}
+{"features":" {score:0.006745657462310337} ","formula":"dbpedia:university","lexeme":"university","type":"ObjectProp"}
+{"features":" {score:0.05713644355625896} ","formula":"(rdf:type dbpedia:Airport)","lexeme":"airport","type":"ClassNoun"}
+{"features":" {score:0.2703449835345485} ","formula":"property:city","lexeme":"city","type":"ObjProp"}
+{"features":" {score:0.006745657462310337} ","formula":"!property:university","lexeme":"university","type":"DataProp"}
+{"features":" {score:0.006745657462310337} ","formula":"property:university","lexeme":"university","type":"DataProp"}
+{"features":" {score:0.024354053257352713} ","formula":"property:economy","lexeme":"economy","type":"ObjProp"}
+{"features":" {score:0.024354053257352713} ","formula":"property:economy","lexeme":"economy","type":"DataProp"}
+{"features":" {score:0.019684884847898314} ","formula":"property:case","lexeme":"case","type":"ObjProp"}
+{"features":" {score:0.04119084299478716} ","formula":"!property:nation","lexeme":"nation","type":"DataProp"}
+{"features":" {score:0.04307977245656418} ","formula":"property:state","lexeme":"state","type":"DataProp"}
+{"features":" {score:0.018446601941747572} ","formula":"!property:market","lexeme":"market","type":"DataProp"}
+{"features":" {score:0.04307977245656418} ","formula":"!property:state","lexeme":"state","type":"ObjProp"}
+{"features":" {score:0.019684884847898314} ","formula":"!property:case","lexeme":"case","type":"DataProp"}
+{"features":" {score:0.12119717597961427} ","formula":"dbpedia:kingdom","lexeme":"kingdom","type":"ObjectProp"}
+{"features":" {score:0.02330097087378641} ","formula":"(rdf:type dbpedia:Place)","lexeme":"place","type":"ClassNoun"}
+{"features":" {score:0.019684884847898314} ","formula":"!property:case","lexeme":"case","type":"ObjProp"}
+{"features":" {score:0.02330097087378641} ","formula":"!property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.04307977245656418} ","formula":"dbpedia:state","lexeme":"state","type":"ObjectProp"}
+{"features":" {score:0.02330097087378641} ","formula":"property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.019684884847898314} ","formula":"property:case","lexeme":"case","type":"DataProp"}
+{"features":" {score:0.12119717597961427} ","formula":"!dbpedia:kingdom","lexeme":"kingdom","type":"ObjectProp"}
+{"features":" {score:0.04307977245656418} ","formula":"property:state","lexeme":"state","type":"ObjProp"}
+{"features":" {score:0.018446601941747572} ","formula":"property:market","lexeme":"market","type":"DataProp"}
+{"features":" {score:0.024354053257352713} ","formula":"!property:economy","lexeme":"economy","type":"ObjProp"}
+{"features":" {score:0.3600622212941572} ","formula":"\u003chttp://dbpedia.org/resource/Galicia_(Eastern_Europe)\u003e","lexeme":"galicia eastern europe","type":"NamedEntity"}
+{"features":" {score:0.04119084299478716} ","formula":"!property:nation","lexeme":"nation","type":"ObjProp"}
+{"features":" {score:0.3138386448463968} ","formula":"resource:Odessa","lexeme":"odessa","type":"NamedEntity"}
+{"features":" {score:0.04119084299478716} ","formula":"property:nation","lexeme":"nation","type":"DataProp"}
+{"features":" {score:0.024354053257352713} ","formula":"!property:economy","lexeme":"economy","type":"DataProp"}
+{"features":" {score:0.018446601941747572} ","formula":"property:market","lexeme":"market","type":"ObjProp"}
+{"features":" {score:0.38531734665303335} ","formula":"resource:Ukrainian_Soviet_Socialist_Republic","lexeme":"ukrainian soviet socialist republic","type":"NamedEntity"}
+{"features":" {score:0.04307977245656418} ","formula":"!dbpedia:state","lexeme":"state","type":"ObjectProp"}
+{"features":" {score:0.3847475641953887} ","formula":"resource:Kiev","lexeme":"kiev","type":"NamedEntity"}
+{"features":" {score:0.04307977245656418} ","formula":"!property:state","lexeme":"state","type":"DataProp"}
+{"features":" {score:0.6268662072925639} ","formula":"resource:Ukraine","lexeme":"ukraine","type":"NamedEntity"}
+{"features":" {score:0.04119084299478716} ","formula":"property:nation","lexeme":"nation","type":"ObjProp"}
+{"features":" {score:0.02330097087378641} ","formula":"!property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.04307977245656418} ","formula":"(rdf:type dbpedia:State)","lexeme":"state","type":"ClassNoun"}
+{"features":" {score:0.019684884847898314} ","formula":"(rdf:type dbpedia:Case)","lexeme":"case","type":"ClassNoun"}
+{"features":" {score:0.02330097087378641} ","formula":"property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.018446601941747572} ","formula":"!property:market","lexeme":"market","type":"ObjProp"}
+{"features":" {score:0.5197176288417931} ","formula":"!property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.6084271220137483} ","formula":"resource:Bob_Dylan","lexeme":"bob dylan","type":"NamedEntity"}
+{"features":" {score:0.5197176288417931} ","formula":"property:name","lexeme":"name","type":"ObjProp"}
+{"features":" {score:0.13272552490234377} ","formula":"(rdf:type dbpedia:Comedian)","lexeme":"comedian","type":"ClassNoun"}
+{"features":" {score:0.13186320699751378} ","formula":"(rdf:type dbpedia:Wrestler)","lexeme":"wrestler","type":"ClassNoun"}
+{"features":" {score:0.08796091386892277} ","formula":"(rdf:type dbpedia:Person)","lexeme":"person","type":"ClassNoun"}
+{"features":" {score:0.03137576233741292} ","formula":"property:student","lexeme":"student","type":"ObjProp"}
+{"features":" {score:0.08796091386892277} ","formula":"property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.08796091386892277} ","formula":"!property:person","lexeme":"person","type":"ObjProp"}
+{"features":" {score:0.13504673363640904} ","formula":"(rdf:type dbpedia:Jockey)","lexeme":"jockey","type":"ClassNoun"}
+{"features":" {score:0.08796091386892277} ","formula":"property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.03137576233741292} ","formula":"!property:student","lexeme":"student","type":"DataProp"}
+{"features":" {score:0.5197176288417931} ","formula":"property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.5197176288417931} ","formula":"(rdf:type dbpedia:Name)","lexeme":"name","type":"ClassNoun"}
+{"features":" {score:0.5398806299023015} ","formula":"resource:Bob_Hope","lexeme":"bob hope","type":"NamedEntity"}
+{"features":" {score:0.08796091386892277} ","formula":"!dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.5197176288417931} ","formula":"!property:name","lexeme":"name","type":"DataProp"}
+{"features":" {score:0.061251357772163846} ","formula":"(rdf:type dbpedia:Artist)","lexeme":"artist","type":"ClassNoun"}
+{"features":" {score:0.45588200764843745} ","formula":"resource:Robert_De_Niro","lexeme":"robert de niro","type":"NamedEntity"}
+{"features":" {score:0.08796091386892277} ","formula":"!property:person","lexeme":"person","type":"DataProp"}
+{"features":" {score:0.03137576233741292} ","formula":"!property:student","lexeme":"student","type":"ObjProp"}
+{"features":" {score:0.3332550072731342} ","formula":"resource:Bobsleigh","lexeme":"bobsleigh","type":"NamedEntity"}
+{"features":" {score:0.5361657367614264} ","formula":"resource:Bob_Marley","lexeme":"bob marley","type":"NamedEntity"}
+{"features":" {score:0.08796091386892277} ","formula":"dbpedia:person","lexeme":"person","type":"ObjectProp"}
+{"features":" {score:0.03137576233741292} ","formula":"property:student","lexeme":"student","type":"DataProp"}
+{"features":" {score:0.039105719999382775} ","formula":"(rdf:type dbpedia:Airport)","lexeme":"airport","type":"ClassNoun"}
+{"features":" {score:0.0048526863084922016} ","formula":"property:film","lexeme":"film","type":"DataProp"}
+{"features":" {score:0.006745657462310337} ","formula":"(rdf:type dbpedia:University)","lexeme":"university","type":"ClassNoun"}
+{"features":" {score:0.06491494770435727} ","formula":"!property:institution","lexeme":"institution","type":"DataProp"}
+{"features":" {score:0.13518829246017713} ","formula":"(rdf:type dbpedia:City)","lexeme":"city","type":"ClassNoun"}
+{"features":" {score:0.13518829246017713} ","formula":"!property:city","lexeme":"city","type":"ObjProp"}
+{"features":" {score:0.02476466395722725} ","formula":"property:municipality","lexeme":"municipality","type":"DataProp"}
+{"features":" {score:0.007118905612640406} ","formula":"property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.02476466395722725} ","formula":"!dbpedia:municipality","lexeme":"municipality","type":"ObjectProp"}
+{"features":" {score:0.007118905612640406} ","formula":"(rdf:type dbpedia:Place)","lexeme":"place","type":"ClassNoun"}
+{"features":" {score:0.06491494770435727} ","formula":"property:institution","lexeme":"institution","type":"DataProp"}
+{"features":" {score:0.02476466395722725} ","formula":"!property:municipality","lexeme":"municipality","type":"ObjProp"}
+{"features":" {score:0.6285851188338059} ","formula":"resource:Texas_Tech_University","lexeme":"texas tech university","type":"NamedEntity"}
+{"features":" {score:0.34189207904479085} ","formula":"!property:university","lexeme":"university","type":"DataProp"}
+{"features":" {score:0.6252712786778605} ","formula":"resource:Private_university","lexeme":"private university","type":"NamedEntity"}
+{"features":" {score:0.06491494770435727} ","formula":"!property:institution","lexeme":"institution","type":"ObjProp"}
+{"features":" {score:0.0048526863084922016} ","formula":"!property:film","lexeme":"film","type":"ObjProp"}
+{"features":" {score:0.34189207904479085} ","formula":"property:university","lexeme":"university","type":"DataProp"}
+{"features":" {score:0.3574573272887659} ","formula":"resource:1972_Summer_Olympics","lexeme":"1972 summer olympics","type":"NamedEntity"}
+{"features":" {score:0.0048526863084922016} ","formula":"dbpedia:film","lexeme":"film","type":"ObjectProp"}
+{"features":" {score:0.13518829246017713} ","formula":"dbpedia:city","lexeme":"city","type":"ObjectProp"}
+{"features":" {score:0.4527074563224413} ","formula":"resource:ETH_Zurich","lexeme":"eth zurich","type":"NamedEntity"}
+{"features":" {score:0.5069005576208179} ","formula":"resource:Munich_Agreement","lexeme":"munich agreement","type":"NamedEntity"}
+{"features":" {score:0.539723393814838} ","formula":"resource:Rensselaer_Polytechnic_Institute","lexeme":"rensselaer polytechnic institute","type":"NamedEntity"}
+{"features":" {score:0.007118905612640406} ","formula":"!property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.6278378455727189} ","formula":"resource:Saint_Petersburg_State_University","lexeme":"saint petersburg state university","type":"NamedEntity"}
+{"features":" {score:0.13518829246017713} ","formula":"property:city","lexeme":"city","type":"DataProp"}
+{"features":" {score:0.006745657462310337} ","formula":"!property:university","lexeme":"university","type":"ObjProp"}
+{"features":" {score:0.34189207904479085} ","formula":"(rdf:type dbpedia:University)","lexeme":"university","type":"ClassNoun"}
+{"features":" {score:0.34189207904479085} ","formula":"property:university","lexeme":"university","type":"ObjProp"}
+{"features":" {score:0.06491494770435727} ","formula":"dbpedia:institution","lexeme":"institution","type":"ObjectProp"}
+{"features":" {score:0.13518829246017713} ","formula":"!dbpedia:city","lexeme":"city","type":"ObjectProp"}
+{"features":" {score:0.007118905612640406} ","formula":"!property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.0048526863084922016} ","formula":"!property:film","lexeme":"film","type":"DataProp"}
+{"features":" {score:0.6244656133828996} ","formula":"resource:Munich","lexeme":"munich","type":"NamedEntity"}
+{"features":" {score:0.02476466395722725} ","formula":"dbpedia:municipality","lexeme":"municipality","type":"ObjectProp"}
+{"features":" {score:0.34189207904479085} ","formula":"!property:university","lexeme":"university","type":"ObjProp"}
+{"features":" {score:0.34189207904479085} ","formula":"dbpedia:university","lexeme":"university","type":"ObjectProp"}
+{"features":" {score:0.5156482342007435} ","formula":"resource:Ludwig_Maximilian_University_of_Munich","lexeme":"ludwig maximilian university of munich","type":"NamedEntity"}
+{"features":" {score:0.34189207904479085} ","formula":"!dbpedia:university","lexeme":"university","type":"ObjectProp"}
+{"features":" {score:0.006745657462310337} ","formula":"property:university","lexeme":"university","type":"ObjProp"}
+{"features":" {score:0.006745657462310337} ","formula":"!dbpedia:university","lexeme":"university","type":"ObjectProp"}
+{"features":" {score:0.0048526863084922016} ","formula":"property:film","lexeme":"film","type":"ObjProp"}
+{"features":" {score:0.0048526863084922016} ","formula":"!dbpedia:film","lexeme":"film","type":"ObjectProp"}
+{"features":" {score:0.06491494770435727} ","formula":"property:institution","lexeme":"institution","type":"ObjProp"}
+{"features":" {score:0.006745657462310337} ","formula":"dbpedia:university","lexeme":"university","type":"ObjectProp"}
+{"features":" {score:0.02476466395722725} ","formula":"!property:municipality","lexeme":"municipality","type":"DataProp"}
+{"features":" {score:0.06491494770435727} ","formula":"!dbpedia:institution","lexeme":"institution","type":"ObjectProp"}
+{"features":" {score:0.02476466395722725} ","formula":"(rdf:type dbpedia:Municipality)","lexeme":"municipality","type":"ClassNoun"}
+{"features":" {score:0.006745657462310337} ","formula":"!property:university","lexeme":"university","type":"DataProp"}
+{"features":" {score:0.02476466395722725} ","formula":"property:municipality","lexeme":"municipality","type":"ObjProp"}
+{"features":" {score:0.007118905612640406} ","formula":"property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.5222235130111524} ","formula":"resource:FC_Bayern_Munich","lexeme":"fc bayern munich","type":"NamedEntity"}
+{"features":" {score:0.13518829246017713} ","formula":"property:city","lexeme":"city","type":"ObjProp"}
+{"features":" {score:0.13518829246017713} ","formula":"!property:city","lexeme":"city","type":"DataProp"}
+{"features":" {score:0.006745657462310337} ","formula":"property:university","lexeme":"university","type":"DataProp"}
+{"features":" {score:0.46914285714285714} ","formula":"resource:Alona_Bondarenko","lexeme":"alona bondarenko","type":"NamedEntity"}
+{"features":" {score:0.32234833338271296} ","formula":"resource:Alona_Tal","lexeme":"alona tal","type":"NamedEntity"}
+{"features":" {score:0.34205261966160366} ","formula":"resource:Alona_Regional_Council","lexeme":"alona regional council","type":"NamedEntity"}
+{"features":" {score:0.30342857142857144} ","formula":"resource:Olena_Dvornichenko","lexeme":"olena dvornichenko","type":"NamedEntity"}
+{"features":" {score:0.30228571428571427} ","formula":"resource:Alona_Alegre","lexeme":"alona alegre","type":"NamedEntity"}
+{"features":" {score:0.46914285714285714} ","formula":"resource:Alona_Bondarenko","lexeme":"alona bondarenko","type":"NamedEntity"}
+{"features":" {score:0.32234833338271296} ","formula":"resource:Alona_Tal","lexeme":"alona tal","type":"NamedEntity"}
+{"features":" {score:0.34205261966160366} ","formula":"resource:Alona_Regional_Council","lexeme":"alona regional council","type":"NamedEntity"}
+{"features":" {score:0.30342857142857144} ","formula":"resource:Olena_Dvornichenko","lexeme":"olena dvornichenko","type":"NamedEntity"}
+{"features":" {score:0.30228571428571427} ","formula":"resource:Alona_Alegre","lexeme":"alona alegre","type":"NamedEntity"}
+{"features":" {score:0.46914285714285714} ","formula":"resource:Alona_Bondarenko","lexeme":"alona bondarenko","type":"NamedEntity"}
+{"features":" {score:0.32234833338271296} ","formula":"resource:Alona_Tal","lexeme":"alona tal","type":"NamedEntity"}
+{"features":" {score:0.34205261966160366} ","formula":"resource:Alona_Regional_Council","lexeme":"alona regional council","type":"NamedEntity"}
+{"features":" {score:0.30342857142857144} ","formula":"resource:Olena_Dvornichenko","lexeme":"olena dvornichenko","type":"NamedEntity"}
+{"features":" {score:0.30228571428571427} ","formula":"resource:Alona_Alegre","lexeme":"alona alegre","type":"NamedEntity"}
+{"features":" {score:0.3} ","formula":"resource:Mihir_Rakshit","lexeme":"mihir rakshit","type":"NamedEntity"}
+{"features":" {score:0.3} ","formula":"resource:Tushar_Rakshit","lexeme":"tushar rakshit","type":"NamedEntity"}
+{"features":" {score:0.08495274583498637} ","formula":"dbpedia:bird","lexeme":"bird","type":"ObjectProp"}
+{"features":" {score:0.08495274583498637} ","formula":"!dbpedia:bird","lexeme":"bird","type":"ObjectProp"}
+{"features":" {score:0.08495274583498637} ","formula":"(rdf:type dbpedia:Bird)","lexeme":"bird","type":"ClassNoun"}
+{"features":" {score:0.3576923076923077} ","formula":"resource:Maasina_Ruru","lexeme":"maasina ruru","type":"NamedEntity"}
+{"features":" {score:0.010526315789473684} ","formula":"property:word","lexeme":"word","type":"ObjProp"}
+{"features":" {score:0.1044997806611814} ","formula":"(rdf:type dbpedia:Town)","lexeme":"town","type":"ClassNoun"}
+{"features":" {score:0.4617332560218821} ","formula":"resource:Yeah_Yeah_Yeahs","lexeme":"yeah yeah yeahs","type":"NamedEntity"}
+{"features":" {score:0.010526315789473684} ","formula":"!property:word","lexeme":"word","type":"ObjProp"}
+{"features":" {score:0.010526315789473684} ","formula":"!property:word","lexeme":"word","type":"DataProp"}
+{"features":" {score:0.36860687021256944} ","formula":"resource:Clap_Your_Hands_Say_Yeah","lexeme":"clap your hands say yeah","type":"NamedEntity"}
+{"features":" {score:0.3732392820973618} ","formula":"\u003chttp://dbpedia.org/resource/Yea,_Victoria\u003e","lexeme":"yea, victoria","type":"NamedEntity"}
+{"features":" {score:0.010526315789473684} ","formula":"property:word","lexeme":"word","type":"DataProp"}
+{"features":" {score:0.02567163814449966} ","formula":"property:economy","lexeme":"economy","type":"DataProp"}
+{"features":" {score:0.08450248734030909} ","formula":"property:nation","lexeme":"nation","type":"DataProp"}
+{"features":" {score:0.0587563043972628} ","formula":"property:state","lexeme":"state","type":"ObjProp"}
+{"features":" {score:0.655103930106647} ","formula":"resource:Ukraine","lexeme":"ukraine","type":"NamedEntity"}
+{"features":" {score:0.018446601941747572} ","formula":"!property:market","lexeme":"market","type":"DataProp"}
+{"features":" {score:0.415187410413021} ","formula":"resource:Kiev","lexeme":"kiev","type":"NamedEntity"}
+{"features":" {score:0.1350558975711465} ","formula":"dbpedia:kingdom","lexeme":"kingdom","type":"ObjectProp"}
+{"features":" {score:0.026219150202174017} ","formula":"property:case","lexeme":"case","type":"DataProp"}
+{"features":" {score:0.0587563043972628} ","formula":"(rdf:type dbpedia:State)","lexeme":"state","type":"ClassNoun"}
+{"features":" {score:0.035429939596904714} ","formula":"!property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.08450248734030909} ","formula":"property:nation","lexeme":"nation","type":"ObjProp"}
+{"features":" {score:0.018446601941747572} ","formula":"property:market","lexeme":"market","type":"DataProp"}
+{"features":" {score:0.02567163814449966} ","formula":"!property:economy","lexeme":"economy","type":"ObjProp"}
+{"features":" {score:0.3600622212941572} ","formula":"\u003chttp://dbpedia.org/resource/Galicia_(Eastern_Europe)\u003e","lexeme":"galicia eastern europe","type":"NamedEntity"}
+{"features":" {score:0.08450248734030909} ","formula":"!property:nation","lexeme":"nation","type":"ObjProp"}
+{"features":" {score:0.0587563043972628} ","formula":"!dbpedia:state","lexeme":"state","type":"ObjectProp"}
+{"features":" {score:0.035429939596904714} ","formula":"property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.0587563043972628} ","formula":"!property:state","lexeme":"state","type":"DataProp"}
+{"features":" {score:0.035429939596904714} ","formula":"property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.1350558975711465} ","formula":"!dbpedia:kingdom","lexeme":"kingdom","type":"ObjectProp"}
+{"features":" {score:0.035429939596904714} ","formula":"(rdf:type dbpedia:Place)","lexeme":"place","type":"ClassNoun"}
+{"features":" {score:0.02567163814449966} ","formula":"property:economy","lexeme":"economy","type":"ObjProp"}
+{"features":" {score:0.02567163814449966} ","formula":"!property:economy","lexeme":"economy","type":"DataProp"}
+{"features":" {score:0.3138386448463968} ","formula":"resource:Odessa","lexeme":"odessa","type":"NamedEntity"}
+{"features":" {score:0.0587563043972628} ","formula":"property:state","lexeme":"state","type":"DataProp"}
+{"features":" {score:0.035429939596904714} ","formula":"!property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.026219150202174017} ","formula":"(rdf:type dbpedia:Case)","lexeme":"case","type":"ClassNoun"}
+{"features":" {score:0.018446601941747572} ","formula":"property:market","lexeme":"market","type":"ObjProp"}
+{"features":" {score:0.026219150202174017} ","formula":"!property:case","lexeme":"case","type":"DataProp"}
+{"features":" {score:0.0587563043972628} ","formula":"dbpedia:state","lexeme":"state","type":"ObjectProp"}
+{"features":" {score:0.0587563043972628} ","formula":"!property:state","lexeme":"state","type":"ObjProp"}
+{"features":" {score:0.026219150202174017} ","formula":"property:case","lexeme":"case","type":"ObjProp"}
+{"features":" {score:0.018446601941747572} ","formula":"!property:market","lexeme":"market","type":"ObjProp"}
+{"features":" {score:0.08450248734030909} ","formula":"!property:nation","lexeme":"nation","type":"DataProp"}
+{"features":" {score:0.48692732175259695} ","formula":"resource:Ukrainian_Soviet_Socialist_Republic","lexeme":"ukrainian soviet socialist republic","type":"NamedEntity"}
+{"features":" {score:0.026219150202174017} ","formula":"!property:case","lexeme":"case","type":"ObjProp"}

@@ -26,8 +26,10 @@ public class CommandLineOutput implements OutputDevice{
 //				emotion.act(new EmotionAction("speak", duration));
 				System.out.println("[Roboy]: " + ((SpeechAction) a).getText());
 			}else if (emotionFlag == true && a instanceof EmotionAction) {
+
 				System.out.println("[RoboyEmotion]: " + ((EmotionAction) a).getState());
 			}
 		}
 	}
+
 }
