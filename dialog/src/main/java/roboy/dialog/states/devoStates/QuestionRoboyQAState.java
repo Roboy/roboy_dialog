@@ -102,18 +102,20 @@ public class QuestionRoboyQAState extends ExpoState {
     private Output reactToQuestion(Interpretation input) {
 
         if (questionsAnswered == MAX_NUM_OF_QUESTIONS/2) {
+            questionsAnswered++;
             if (getInference().inferSentiment(input) == Linguistics.UtteranceSentiment.POSITIVE) {
                 userWantsGame = true;
                 questionsAnswered++;
                 return Output.sayNothing().setSegue(new Segue(Segue.SegueType.PICKUP,0.5)).setEmotion(RoboyEmotion.HAPPY);
             }
             else {
-                questionsAnswered++;
+//                questionsAnswered++;
                 return Output.sayNothing().setEmotion(RoboyEmotion.SADNESS);
             }
         }
 
         askingSpecifyingQuestion = false;
+        userWantsGame = false;
         questionsAnswered++;
 
         String answer = inferApiAnswer(input);
@@ -156,6 +158,7 @@ public class QuestionRoboyQAState extends ExpoState {
     }
 
     private Output useMemoryOrFallback(Interpretation input) {
+//        questionsAnswered++;
         try {
             if ( input.getPas() != null || input.getTriples() != null) {
                 Output memoryAnswer = answerFromMemory(input);

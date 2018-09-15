@@ -5,6 +5,8 @@ import org.apache.logging.log4j.Logger;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.EmotionAction;
 import roboy.dialog.action.SpeechAction;
+import roboy.emotions.RoboyEmotion;
+import roboy.memory.nodes.Roboy;
 import roboy.util.TelegramCommunicationHandler;
 
 import java.util.List;
@@ -45,20 +47,8 @@ public class TelegramOutput implements OutputDevice {
                 String message = ((SpeechAction) a).getText();
                 communicationHandler.sendMessage(message, this.uuid);
             }else if (a instanceof EmotionAction) {
-                String stickerID = null;
-                switch(((EmotionAction) a).getState()){
-                    case "beer": stickerID = "CAADAgADKQAD5dCAEFX3hCMAAfM_awI"; break;
-                    case "sadness": stickerID = "CAADAgADiAAD5dCAEOQeh7anZFNuAg"; break;
-                    case "happiness": stickerID = "CAADAgADUQAD5dCAEIT4-Rl1t2BEAg"; break;
-                    case "shy": stickerID = "CAADAgADSwAD5dCAEBGmde8-twTLAg"; break;
-                    case "smileblink": stickerID = "CAADAgADSgAD5dCAEMQakIa3aHHSAg"; break;
-                    case "kiss": stickerID = "CAADAgADOQAD5dCAEOtbfZz0NKh2Ag"; break;
-                    case "lookleft": //same as lookright
-                    case "lookright": stickerID = "CAADAgADFQAD5dCAEKM0TS8sjXiAAg"; break;
-                    //TODO: other RoboyEmotions
-                    default: break;
-                }
-                if(stickerID != null) communicationHandler.sendSticker(this.uuid, stickerID);
+                String stickerID = RoboyEmotion.valueOf(((EmotionAction) a).getName()).telegramID;
+                if (stickerID != null) communicationHandler.sendSticker(this.uuid, stickerID);
 
 
             }

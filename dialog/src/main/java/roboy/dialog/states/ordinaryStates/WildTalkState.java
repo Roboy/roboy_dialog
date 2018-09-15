@@ -55,7 +55,7 @@ public class WildTalkState extends State {
     @Override
     public Output react(Interpretation input) {
 
-        String sentence = input.getSentence();
+        String sentence = input.getSentence().replace(",", ".");
 
         JSONObject resp;
         try {

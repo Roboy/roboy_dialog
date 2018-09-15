@@ -8,16 +8,19 @@ import com.markozajc.akiwrapper.Akiwrapper.Answer;
 import com.markozajc.akiwrapper.core.entities.Guess;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.yecht.ruby.Out;
 import roboy.context.Context;
 import roboy.dialog.Segue;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
+import roboy.emotions.RoboyEmotion;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
 import roboy.talk.PhraseCollection;
 import roboy.talk.Verbalizer;
+import roboy.util.Lists;
 import roboy.util.RandomList;
 
 import java.io.IOException;
@@ -213,14 +216,14 @@ public class GamingTwentyQuestionsState extends State {
 	private Output doAGuess (){
 
 
-		String roboyAnswer = "";
+		Output roboyAnswer = null;
 
 		try {
 
 			for (Guess guess : aw.getGuessesAboveProbability(PROBABILITY_THRESHOLD)) {
 				if (!declined.contains(Long.valueOf(guess.getIdLong()))) {
 
-					roboyAnswer = PhraseCollection.QUESTION_ANSWERING_START.getRandomElement() + guess.getName();
+					roboyAnswer = Output.say(PhraseCollection.QUESTION_ANSWERING_START.getRandomElement() + guess.getName());
 					currentGuess = guess;
 					break;
 				}
@@ -233,10 +236,10 @@ public class GamingTwentyQuestionsState extends State {
 			guessesAvailable = false;
 			gameFinished = true;
 			winner = getContext().ACTIVE_INTERLOCUTOR.getValue().getName();
-			roboyAnswer = String.format(PhraseCollection.ROBOY_LOSER_PHRASES.getRandomElement(), winner);
+			roboyAnswer = Output.say(String.format(PhraseCollection.ROBOY_LOSER_PHRASES.getRandomElement(), winner)).setEmotion(RoboyEmotion.loserEmotions.getRandomElement());
 		}
 
-		return Output.say(roboyAnswer);
+		return roboyAnswer;
 	}
 
 	private Output processUserGuessAnswer(String intent){
@@ -244,7 +247,7 @@ public class GamingTwentyQuestionsState extends State {
 		if (intent.equals("yes")){
 			gameFinished = true;
 			winner = "roboy";
-			return Output.say(PhraseCollection.ROBOY_WINNER_PHRASES.getRandomElement());
+			return Output.say(PhraseCollection.ROBOY_WINNER_PHRASES.getRandomElement()).setEmotion(RoboyEmotion.winnerEmotions.getRandomElement());
 		} else {
 			declined.add(Long.valueOf(currentGuess.getIdLong()));
 			return Output.sayNothing();
