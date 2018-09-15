@@ -7,9 +7,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Sets;
 import edu.stanford.nlp.sempre.roboy.utils.logging.EvaluationToggle;
+import edu.stanford.nlp.sempre.roboy.utils.logging.ParserLogController;
 import fig.basic.Evaluation;
 import fig.basic.LispTree;
 import edu.stanford.nlp.sempre.roboy.utils.logging.LogInfoToggle;
+import org.apache.logging.log4j.Level;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -272,41 +274,45 @@ public class Example {
   }
 
   public void log() {
-    LogInfoToggle.begin_track("Example: %s", utterance);
-    LogInfoToggle.logs("Tokens: %s", getTokens());
-    LogInfoToggle.logs("Lemmatized tokens: %s", getLemmaTokens());
-    LogInfoToggle.logs("POS tags: %s", languageInfo.posTags);
-    LogInfoToggle.logs("NER tags: %s", languageInfo.nerTags);
-    LogInfoToggle.logs("NER values: %s", languageInfo.nerValues);
-    if (context != null)
-      LogInfoToggle.logs("context: %s", context);
-    if (targetFormula != null)
-      LogInfoToggle.logs("targetFormula: %s", targetFormula);
-    if (targetValue != null)
-      LogInfoToggle.logs("targetValue: %s", targetValue);
-    LogInfoToggle.logs("Sentiment: %s", genInfo.sentiment);
-    LogInfoToggle.logs("Keywords: %s", genInfo.keywords.toString());
-    LogInfoToggle.logs("Dependency children: %s", languageInfo.dependencyChildren);
-    LogInfoToggle.logs("Extracted relations: %s", relationInfo.relations.toString());
-    LogInfoToggle.end_track();
+    if(ParserLogController.getLevel().isLessSpecificThan(Level.DEBUG)) {
+      LogInfoToggle.begin_track("Example: %s", utterance);
+      LogInfoToggle.logs("Tokens: %s", getTokens());
+      LogInfoToggle.logs("Lemmatized tokens: %s", getLemmaTokens());
+      LogInfoToggle.logs("POS tags: %s", languageInfo.posTags);
+      LogInfoToggle.logs("NER tags: %s", languageInfo.nerTags);
+      LogInfoToggle.logs("NER values: %s", languageInfo.nerValues);
+      if (context != null)
+        LogInfoToggle.logs("context: %s", context);
+      if (targetFormula != null)
+        LogInfoToggle.logs("targetFormula: %s", targetFormula);
+      if (targetValue != null)
+        LogInfoToggle.logs("targetValue: %s", targetValue);
+      LogInfoToggle.logs("Sentiment: %s", genInfo.sentiment);
+      LogInfoToggle.logs("Keywords: %s", genInfo.keywords.toString());
+      LogInfoToggle.logs("Dependency children: %s", languageInfo.dependencyChildren);
+      LogInfoToggle.logs("Extracted relations: %s", relationInfo.relations.toString());
+      LogInfoToggle.end_track();
+    }
   }
 
   public void logWithoutContext() {
-    LogInfoToggle.begin_track("Example: %s", utterance);
-    LogInfoToggle.logs("Tokens: %s", getTokens());
-    LogInfoToggle.logs("Lemmatized tokens: %s", getLemmaTokens());
-    LogInfoToggle.logs("POS tags: %s", languageInfo.posTags);
-    LogInfoToggle.logs("NER tags: %s", languageInfo.nerTags);
-    LogInfoToggle.logs("NER values: %s", languageInfo.nerValues);
-    if (targetFormula != null)
-      LogInfoToggle.logs("targetFormula: %s", targetFormula);
-    if (targetValue != null)
-      LogInfoToggle.logs("targetValue: %s", targetValue);
-    LogInfoToggle.logs("Sentiment: %s", genInfo.sentiment);
-    LogInfoToggle.logs("Keywords: %s", genInfo.keywords.toString());
-    LogInfoToggle.logs("Dependency children: %s", languageInfo.dependencyChildren);
-    LogInfoToggle.logs("Extracted relations: %s", relationInfo.relations.toString());
-    LogInfoToggle.end_track();
+    if(ParserLogController.getLevel().isLessSpecificThan(Level.DEBUG)) {
+      LogInfoToggle.begin_track("Example: %s", utterance);
+      LogInfoToggle.logs("Tokens: %s", getTokens());
+      LogInfoToggle.logs("Lemmatized tokens: %s", getLemmaTokens());
+      LogInfoToggle.logs("POS tags: %s", languageInfo.posTags);
+      LogInfoToggle.logs("NER tags: %s", languageInfo.nerTags);
+      LogInfoToggle.logs("NER values: %s", languageInfo.nerValues);
+      if (targetFormula != null)
+        LogInfoToggle.logs("targetFormula: %s", targetFormula);
+      if (targetValue != null)
+        LogInfoToggle.logs("targetValue: %s", targetValue);
+      LogInfoToggle.logs("Sentiment: %s", genInfo.sentiment);
+      LogInfoToggle.logs("Keywords: %s", genInfo.keywords.toString());
+      LogInfoToggle.logs("Dependency children: %s", languageInfo.dependencyChildren);
+      LogInfoToggle.logs("Extracted relations: %s", relationInfo.relations.toString());
+      LogInfoToggle.end_track();
+    }
   }
 
   public List<Derivation> getCorrectDerivations() {

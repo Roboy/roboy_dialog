@@ -17,12 +17,19 @@ public class Triple {
 		this.object = object;
 	}
 
+	public Triple toLowerCase() {
+	    return new Triple(
+                this.subject != null ? this.subject.toLowerCase() : null,
+                this.predicate != null ? this.predicate.toLowerCase() : null,
+                this.object != null ? this.object.toLowerCase() : null);
+    }
+
     @Override
     public String toString() {
         return "Triple{" +
-                "SUB: '" + subject + '\'' +
-                ", PRED: '" + predicate + '\'' +
-                ", OBJ: '" + object + '\'' +
+                "SUB: '" + subject + "\'," +
+                "PRED: '" + predicate + "\'," +
+                "OBJ: '" + object + "\'" +
                 '}';
     }
 
