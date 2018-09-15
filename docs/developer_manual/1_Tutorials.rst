@@ -470,7 +470,7 @@ Extending the Lexicon and the Grammar
 This tutorial explains how to create or change grammar and lexicon used in the semantic parser.
 
 Lexicon
-"""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To create your own custom lexicon, you need to create a new file or copy an existing lexicon and add lexemes in the following format::
 
@@ -489,7 +489,7 @@ Additionally, you can also add features in JSON format for map::
     {lexeme:"name", formula:"rb:HAS_NAME", type:"DataProperty", features:"{feature1:0.5, feature2:0.3}"}
 
 Grammar
-"""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To create your own custom grammar, you need to create a new file or copy existing grammar and add rules in the following format::
 
@@ -511,7 +511,7 @@ Example rules::
 For in-depth tutorial on expression and function types, refer to original SEMPRE `tutorial <https://github.com/percyliang/sempre/blob/master/TUTORIAL.md>`_ or `documentation <https://github.com/percyliang/sempre/blob/master/DOCUMENTATION.md>`_
 
 Used files in configuration
-"""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To use created files, you need to set the correct parameter in ``pom.xml`` file.
 For grammar::
@@ -529,7 +529,7 @@ Scoring Functions and Knowledge Retrieval
 Currently, our semantic parser uses error retrieval mechanism that can be modified in the following steps:
 
 Scoring Function
-""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Move to package::
 
@@ -540,7 +540,7 @@ Scoring Function
 3. Add scoring function in constructor of ``edu.stanford.nlp.sempre.roboy.ErrorRetrieval`` class.
 
 Knowledge Retriever
-"""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Move to package::
 
@@ -588,7 +588,7 @@ New values can only flow into the Context over an ``Updater`` instance. Internal
 Updaters only add a single new data unit, relying on the ``AbstractValue.updateValue()`` method. Thanks to the inheritance chain, you can use an arbitrary Value or ValueHistory implementation as the target of an updater.
 
 Adding an External Updater
-""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Currently, there are two implementations of an External Updater: ``PeriodicUpdater`` and ``ROSTopicUpdater``.
 
 ``PeriodicUpdater`` calls an updating method after a certain time interval has passed. To use the periodic updating functionality:
@@ -610,7 +610,7 @@ All External Updaters need to be initialized in the ``Context.java`` class. To d
 4. If the Updater depends on ROS, add its initialization into the ``Context.initializeROS(RosMainNode ros)`` method, otherwise add it to the private constructor ``Context()``. As the parameter, use the inner ``value`` or ``valueHistory`` variable from a ``ValueInterface`` or a ``HistoryInterface``.
 
 Adding a new Internal Updater
-"""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. Create a class extending InternalUpdater<*targetClass*, *valueType*>. The class and data type of the target ``Value`` or ``ValueHistory`` are the generic parameters for the updater.
 
 2. A constructor is required for the class. Simply match the InternalUpdater constructor and call ``super(target)`` within. An example is in the ``DialogTopicsUpdater`` class.
@@ -636,6 +636,106 @@ In order to add new ``roboy.io.InputDevice`` and ``roboy.io.OutputDevice`` class
 
 
 .. highlight:: java
+
+.. _tut_ext_api:
+
+External API Integration
+========================
+
+To make the process of adding new external APIs easier, an interface is provided that will do most of the heavy lifting for you. All you have to do is to implement the ``APIHandler`` abstract class and ``APIHub.getData()`` shall handle the rest of the processing for you.
+
+.. figure:: images/apihub.png
+  :alt: UML Diagram of Interface
+
+Storing API Keys
+------------------------
+
+API Keys should be stored in the ``roboy_dialog/resources/knowledgebase/apiKeys.yml`` file. It is vitally important that this file does not end up on git. Entries should be stored in the YAML format: ``apikey: xxxxxxx_apikey_goes_here_xxxxxxx``. The first part of the entry is the YAML key, while the second is the actual API key.
+
+Implementing the Interface
+---------------------------
+
+For simplicities sake, an abstract class, ``APIHandler`` has been created to simplify the process of creating an external API call. 
+
+One must implement the methods...
+
+getKeyName
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The purpose of ``getKeyName`` is to tell APIHub, what the YAML key associated with the API Key in the ``apiKeys.yml`` file is. ``return "weatherkey";`` in most cases shall suffice.
+
+validateArguments
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This method should be used to check if the arguments passed by the user are validate. If the argument is incorrect, make sure to ``logger.error()`` what exactly the error is. A ``IllegalArgumentException`` shall be thrown, that you must deal with in your state. 
+
+.. Note::
+    An ``IllegalArgumentException`` is a type of RuntimeException, thus is unchecked. See `here <https://www.geeksforgeeks.org/checked-vs-unchecked-exceptions-in-java/>`_ for more details. 
+
+getAPIURL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This method is in charge of creating the API Request URL. Assuming the ``getKeyName`` function is implemented correctly, the first parameter shall automatically send you the API Key from the ``apiKeys.yml`` file. The second parameter are the API Request Arguments that your state sends to APIHub. 
+
+This method expects a valid API request URL to be returned, like ``http://api.openweathermap.org/data/2.5/weather?q=davos&APPID=xxxxxxxxx``.
+
+.. Note::
+    If you do not have any parameters, you should pass the value null to APIHub
+
+handleJSON
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This method should handle the processing of the JSON. The ``JSON`` parameter is the response from the webserver, whilst the arguments parameter is filled with the arguments given to it by the Handle JSON Arguments given to ``APIHandler``.
+
+.. Note::
+    If you do not have any parameters, you should pass the value null to APIHub
+
+Getting the Data
+--------------------------
+
+All you have to do, to get the data is to call the ``APIHub.getData()`` method. You first pass it the class you wish to use (must extend APIHandler). The second parameter is the API arguments and the third parameter is the handle JSON arguments.
+
+Below is a sample code from Dialog Evolutions SS2018 midterm presentation::
+
+    String answer;
+    
+    //If the trigger phrase is spoken
+    if (matchPas(pas, new Pair(SemanticRole.PATIENT, ".*\\bweather\\b.*"))) {
+            try {
+                answer = 
+                    String.format(
+                        "It seems like it is %s out there!", 
+                        //We want the weather data using weather.class and from munich. There are no handleJSON arguments in this case
+                        APIHub.getData(Weather.class, new String[]{"munich"}, null)
+                    );
+            }
+            //In the event that something goes wrong, here is our "default phrase"
+            catch (Exception e) {
+                answer = "It seems a bit moody...";
+                //Print out additional logging.
+                LOGGER.error(e.getMessage());
+            }
+        }
+    }
+    // String answer is later passed to dialog via Output.say(answer)
+
+
+If all goes well, Roboy shall answer::
+
+    [You]:   what is the weather like
+    [Roboy]: It seems like it is cloudy out there!
+
+If an issue arises, you should see something amongst the lines of::
+
+    [You]:   what is the weather like
+    [ERROR] API Args:	: [munich, bavaria] --- roboy.util.api.APIHandler (16:56:50)
+    [ERROR] hJSON Args:	: null --- roboy.util.api.APIHandler (16:56:50)
+    [ERROR] API Arg Expects one location as Argument, JSON Arguments expects null as argument --- roboy.dialog.states.devoStates.QuestionRoboyQAState (16:56:50)
+    [Roboy]: It seems a bit moody...
+
+.. warning::
+
+    At the current point in time, APIHub/APIHandler assumes your API Key that is stored in the database is valid. It will not warn you of invalid keys, although it will become clear once you read the HTTP response code (`401 <https://httpstatuses.com/401>`_), but it is not stated explicitly.
 
 .. _tut_io_social:
 
