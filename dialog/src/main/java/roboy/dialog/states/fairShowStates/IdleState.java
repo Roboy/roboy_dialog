@@ -9,7 +9,7 @@ import roboy.dialog.states.definitions.StateParameters;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Idle state.
+ * Idle state for the fair show personality.
  * Roboy is waiting <delay> minutes to autonomously start a conversation.
  *
  */

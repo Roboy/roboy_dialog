@@ -12,30 +12,20 @@ import roboy.util.RandomList;
 import java.util.*;
 
 
-
-enum InfoAbout {
-
-    ABOUT_TEAM,
-    ABOUT_BOOTH,
-    ABOUT_ROBOY,
-    ABOUT_MOVEMENT,
-    ABOUT_EMOTIONS
-}
-
 /**
  * Roboy is talking about several topics autonomously
  * - team
  * - mission
  * - movement
- * - emotions
+ * - emotion
  */
 public class InfoTalkState extends MonologState {
 
     private final static String TRANSITION_PERSON_DETECTED = "personDetected";
     private final static String TRANSITION_LONELY_ROBOY = "lonelyRoboy";
 
-    private final RandomList<InfoAbout> availableInformation = new RandomList<>();
-    private InfoAbout activeInfo;
+    private final RandomList<String> availableInformation = new RandomList<>();
+    private String activeInfo;
 
     private RandomList<String> phrases = new RandomList<>();
 
@@ -57,12 +47,16 @@ public class InfoTalkState extends MonologState {
         activeInfo = selectRandomInfo();
 
         switch(activeInfo){
-            case ABOUT_TEAM:
+            case "ABOUT_TEAM":
 
                 phrases = PhraseCollection.ROBOY_TEAM_PHRASES;
                 return Output.say(phrases.getRandomElement());
 
-            case ABOUT_BOOTH:
+            case "ABOUT_BOOTH":
+
+                /**
+                 * in the future sentences about the booth will be received from the node-red GUI via ROS messages
+                 */
 
                 String boothSentence = "Look at this awesome booth here! Isn't it amazing what is already possible in technology? Come an talk to one of the guy and get more into the topic!";
 
@@ -78,12 +72,12 @@ public class InfoTalkState extends MonologState {
 
                 return Output.say(boothSentence);
 
-            case ABOUT_ROBOY:
+            case "ABOUT_ROBOY":
 
                 phrases = PhraseCollection.MISSION_PHRASES;
                 return  Output.say(phrases.getRandomElement());
 
-            case ABOUT_MOVEMENT:
+            case "ABOUT_MOVEMENT":
 
 
                 phrases = PhraseCollection.MOVEMENT_PHRASES;
@@ -99,16 +93,15 @@ public class InfoTalkState extends MonologState {
                 String randomPart = bodyParts.get(random.nextInt(bodyParts.size()));
                 String randomPartLiteral = parts.get(randomPart);
 
-//            try {
-                //               rosNode.PerformMovement(randomPart, "random1");
-////          } catch (InterruptedException e) {
-
-                //            logger.error(e.getMessage());
-                //           }
+                try {
+                    getRosMainNode().PerformMovement(randomPart, "random1");
+                } catch (InterruptedException e) {
+                    logger.error(e.getMessage());
+                }
 
                 return State.Output.say(String.format(phrases.getRandomElement(), randomPartLiteral));
 
-            case ABOUT_EMOTIONS:
+            case "ABOUT_EMOTIONS":
 
                 phrases = PhraseCollection.EMOTION_PHRASES;
                 emotions.addAll(Arrays.asList(RoboyEmotion.values()));
@@ -139,7 +132,7 @@ public class InfoTalkState extends MonologState {
      */
     private void resetAvailableInformation() {
         availableInformation.clear();
-        availableInformation.addAll(Arrays.asList(InfoAbout.values()));
+        availableInformation.addAll(Arrays.asList("ABOUT_TEAM", "ABOUT_BOOTH", "ABOUT_ROBOY", "ABOUT_MOVEMENT", "ABOUT_EMOTIONS"));
     }
 
     /**
@@ -147,8 +140,8 @@ public class InfoTalkState extends MonologState {
      * If the list becomes empty this way, resets it to the initial state
      * @return one of the available pieces of information
      */
-    private InfoAbout selectRandomInfo() {
-        InfoAbout infoAbout = availableInformation.getRandomElement();
+    private String selectRandomInfo() {
+        String infoAbout = availableInformation.getRandomElement();
         availableInformation.remove(infoAbout);
         if (availableInformation.size() == 0) {
             resetAvailableInformation(); // reset if all infos were used

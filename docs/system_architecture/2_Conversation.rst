@@ -96,6 +96,11 @@ After the personality file was loaded and the state machine was initialized, the
 
 For every state, its interface is implemented by overriding three functions: ``getRequiredTransitionNames()``, ``isFallbackRequired()`` and ``getRequiredParameterNames()``. Note, that you don't have to override those functions if your state has no specific requirements.
 
+Monolog State
+---------------
+
+Some use cases require switching between states without having to react on a input from an interlocutor.
+So states can inherit from ``roboy.dialog.states.definitions.MonologState`` to skip the user input. They do not implement the ``react()`` method but only ``act()`` and ``getNextState()``.
 
 
 Current standard Personality
