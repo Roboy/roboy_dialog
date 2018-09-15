@@ -6,6 +6,7 @@ import com.markozajc.akiwrapper.AkiwrapperBuilder;
 import com.markozajc.akiwrapper.core.entities.Question;
 import com.markozajc.akiwrapper.Akiwrapper.Answer;
 import com.markozajc.akiwrapper.core.entities.Guess;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
@@ -29,12 +30,12 @@ import java.util.List;
 public class GamingTwentyQuestionsState extends State {
 
 
-	private static final double PROBABILITY_THRESHOLD = 0.6;
+	private final static double PROBABILITY_THRESHOLD = 0.6;
 	private final static String TRANSITION_GAME_ENDED = "gameEnded";
 
 	private final Logger LOGGER = LogManager.getLogger();
 
-	private Akiwrapper aw = new AkiwrapperBuilder().setFilterProfanity(true).build();
+	private Akiwrapper aw;
 	private Question nextQuestion = null;
 	private Guess currentGuess = null;
 
@@ -43,6 +44,7 @@ public class GamingTwentyQuestionsState extends State {
 	private boolean guessesAvailable = false;
 	private boolean gameFinished = false;
 	private boolean stopGame = false;
+	private boolean network = false;
 
 	private boolean filterApplied = false;
 	private boolean emotionShown = false;
@@ -50,11 +52,31 @@ public class GamingTwentyQuestionsState extends State {
 
 	public GamingTwentyQuestionsState(String stateIdentifier, StateParameters params) {
 		super(stateIdentifier, params);
+		startAW();
+	}
+
+	private void startAW(){
+		startAW(false);
+	}
+	private void startAW(boolean force){
+		if(force || aw==null){
+			try{
+				aw = new AkiwrapperBuilder().setFilterProfanity(true).build();
+				network=true;
+			}catch (Exception e){
+				aw = null;
+				LOGGER.warn("Exception Init AkiWrapper. Please check your network connection.");
+				if(LOGGER.getLevel().isLessSpecificThan(Level.DEBUG))e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
 	public Output act() {
-
+		startAW();
+		if(!network){
+			return Output.say("A network connection is required to play this game, should I try and look for a connection again?");
+		}
 		if(!userReady){
 			return Output.say(PhraseCollection.AKINATOR_INTRO_PHRASES.getRandomElement());
 
@@ -82,6 +104,11 @@ public class GamingTwentyQuestionsState extends State {
 
 		String intent = getIntent (input);
 		Linguistics.UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
+
+		if(!network){
+			if(inputSentiment == Linguistics.UtteranceSentiment.NEGATIVE) gameFinished=true;
+			return Output.sayNothing();
+		}
 
 		if(checkUserSaidStop(input)){
 			gameFinished = true;
@@ -253,7 +280,7 @@ public class GamingTwentyQuestionsState extends State {
 
 	private void resetGame(){
 
-		aw = new AkiwrapperBuilder().setFilterProfanity(true).build();
+		startAW(true);
 		declined.clear();
 		userReady = false;
 		guessesAvailable = false;
