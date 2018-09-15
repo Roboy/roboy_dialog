@@ -15,11 +15,19 @@ public class DictionaryBasedSentenceTypeDetector implements Analyzer{
 	public Interpretation analyze(Interpretation interpretation) {
 		List<String> tokens = interpretation.getTokens();
 		String[] posTags = interpretation.getPosTags();
-		SentenceType sentenceType = determineSentenceType(tokens, posTags);
-		interpretation.setSentenceType(sentenceType);
+
+		//Sentence Types shall be handled in Semantic Parser Analyzer. This is a fallback, in the event that SPA does not detect the sentence type
+		if(interpretation.getSentenceType().equals(SentenceType.STATEMENT)){
+		    SentenceType sentenceType = determineSentenceType(tokens, posTags);
+            interpretation.setSentenceType(sentenceType);
+
+        }
 		return interpretation;
 	}
 
+    /**
+     * Fallback Sentence Type Detection, main Detector now in {@link SemanticParserAnalyzer}
+     */
 	private SentenceType determineSentenceType(List<String> tokens, String[] posTags){
 		if (tokens != null && !tokens.isEmpty()) {
             String first = tokens.get(0).toLowerCase();
