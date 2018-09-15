@@ -2,12 +2,15 @@ package roboy.dialog.states.gameStates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.yecht.ruby.Out;
+import roboy.dialog.Segue;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.Inference;
 import roboy.talk.PhraseCollection;
+import roboy.talk.Verbalizer;
 import roboy.util.RandomList;
 
 import java.util.*;
@@ -15,7 +18,7 @@ import java.util.*;
 import static roboy.util.FileLineReader.readFile;
 
 
-public class GamingSnapchatState extends State {
+public class GamingSnapchatState extends GameState {
 
     private final static String TRANSITION_GAME_ENDED = "gameEnded";
     private final static String EXISTING_FILTERS_ID = "filterFile";
@@ -119,6 +122,28 @@ public class GamingSnapchatState extends State {
             }
         }
         return filterMap;
+    }
+
+    public boolean canStartGame(){
+        return getRosMainNode() != null;
+    }
+
+    @Override
+    public Output cannotStartWarning() {
+        LOGGER.info("Trying to start Snapchat Game but ROS is not initialised.");
+        Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE, 0.5);
+        return Output.say(Verbalizer.rosDisconnect.getRandomElement() + String.format("What a pity, %s. Snapchat is not possible right now. ",
+                getContext().ACTIVE_INTERLOCUTOR.getValue().getName())).setSegue(s);
+    }
+
+    @Override
+    public Collection<String> getTags(){
+        return Arrays.asList("snapchat", "filters", "filter");
+    }
+
+    @Override
+    public String getTransitionName() {
+        return "choseSnapchat";
     }
 
 }

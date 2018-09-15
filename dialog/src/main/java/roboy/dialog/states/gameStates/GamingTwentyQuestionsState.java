@@ -18,15 +18,17 @@ import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
 import roboy.talk.PhraseCollection;
 import roboy.talk.Verbalizer;
+import roboy.util.NetworkUtils;
 import roboy.util.RandomList;
 
 import java.io.IOException;
 import java.lang.ref.PhantomReference;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
-public class GamingTwentyQuestionsState extends State {
+public class GamingTwentyQuestionsState extends GameState {
 
 
 	private static final double PROBABILITY_THRESHOLD = 0.6;
@@ -34,7 +36,7 @@ public class GamingTwentyQuestionsState extends State {
 
 	private final Logger LOGGER = LogManager.getLogger();
 
-	private Akiwrapper aw = new AkiwrapperBuilder().setFilterProfanity(true).build();
+	private Akiwrapper aw;
 	private Question nextQuestion = null;
 	private Guess currentGuess = null;
 
@@ -53,8 +55,42 @@ public class GamingTwentyQuestionsState extends State {
 	}
 
 	@Override
-	public Output act() {
+	public boolean canStartGame() {
+		setAW(false);
+		return aw!=null && aw.getServer().isUp();
+	}
 
+	@Override
+	public Output cannotStartWarning() {
+		return Output.say("Sorry, I need Internet Access to play this game");
+	}
+
+	@Override
+	public Collection<String> getTags(){
+		return Arrays.asList("akinator", "guessing", "questions");
+	}
+
+	@Override
+	public String getTransitionName() {
+		return "chose20questions";
+	}
+
+	private void setAW(boolean force){
+		if ((force || aw == null)) {
+			if(NetworkUtils.isInternetWorking()) {
+				aw = new AkiwrapperBuilder().setFilterProfanity(true).build();
+			}
+			else{
+				LOGGER.warn("No Internet Connection");
+			}
+		}
+		LOGGER.debug("AW Object already exists. Was not overwritten");
+	}
+
+
+	@Override
+	public Output act() {
+		setAW(false);
 		if(!userReady){
 			return Output.say(PhraseCollection.AKINATOR_INTRO_PHRASES.getRandomElement());
 
@@ -253,7 +289,7 @@ public class GamingTwentyQuestionsState extends State {
 
 	private void resetGame(){
 
-		aw = new AkiwrapperBuilder().setFilterProfanity(true).build();
+		setAW(true);
 		declined.clear();
 		userReady = false;
 		guessesAvailable = false;
