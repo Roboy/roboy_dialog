@@ -58,11 +58,11 @@ import java.util.Set;
 public class QAJsonParser {
     private final Logger LOGGER = LogManager.getLogger();
 
-    private static Map<String, RandomList<String>> questions;
-    private static Map<String, RandomList<String>> successAnswers;
-    private static Map<String, RandomList<String>> failureAnswers;
-    private static Map<String, RandomList<String>> followUpQuestions;
-    private static Map<String, RandomList<String>> followUpAnswers;
+    private Map<String, RandomList<String>> questions;
+    private Map<String, RandomList<String>> successAnswers;
+    private Map<String, RandomList<String>> failureAnswers;
+    private Map<String, RandomList<String>> followUpQuestions;
+    private Map<String, RandomList<String>> followUpAnswers;
 
     private Gson gson;
 
