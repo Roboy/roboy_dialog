@@ -2,8 +2,10 @@ package roboy.dialog.states.gameStates;
 
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
+import roboy.linguistics.sentenceanalysis.Interpretation;
 
 import java.util.Collection;
+import java.util.List;
 
 public abstract class GameState extends State {
 
@@ -39,4 +41,18 @@ public abstract class GameState extends State {
      * @return Collection of tags
      */
     public abstract Collection<String> getTags();
+
+
+
+    public boolean checkUserSaidStop(Interpretation input){
+        boolean stopGame = false;
+        List<String> tokens = input.getTokens();
+        if(tokens != null && !tokens.isEmpty()){
+            if(tokens.contains("boring") || tokens.contains("stop") || tokens.contains("bored")){
+                stopGame = true;
+
+            }
+        }
+        return stopGame;
+    }
 }

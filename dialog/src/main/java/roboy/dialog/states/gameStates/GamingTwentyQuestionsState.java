@@ -50,35 +50,6 @@ public class GamingTwentyQuestionsState extends GameState {
 	}
 
 	@Override
-	public boolean canStartGame() {
-		setAW(false);
-		return aw!=null && aw.getServer().isUp();
-	}
-
-	@Override
-	public Output cannotStartWarning() {
-		return Output.say("Sorry, I need Internet Access to play this game");
-	}
-
-	@Override
-	public Collection<String> getTags(){
-		return Arrays.asList("akinator", "guessing", "questions");
-	}
-
-	private void setAW(boolean force){
-		if ((force || aw == null)) {
-			if(NetworkUtils.isInternetWorking()) {
-				aw = new AkiwrapperBuilder().setFilterProfanity(true).build();
-			}
-			else{
-				LOGGER.warn("No Internet Connection");
-			}
-		}
-		LOGGER.debug("AW Object already exists. Was not overwritten");
-	}
-
-
-	@Override
 	public Output act() {
 		setAW(false);
 		if(!userReady){
@@ -109,7 +80,8 @@ public class GamingTwentyQuestionsState extends GameState {
 		String intent = getIntent (input);
 		Linguistics.UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
 
-		if(checkUserSaidStop(input)){
+		stopGame = checkUserSaidStop(input);
+		if(stopGame){
 			gameFinished = true;
 			return Output.sayNothing();
 
@@ -287,19 +259,6 @@ public class GamingTwentyQuestionsState extends GameState {
 		winner = "";
 	}
 
-	private boolean checkUserSaidStop(Interpretation input){
-
-		stopGame = false;
-		List<String> tokens = input.getTokens();
-		if(tokens != null && !tokens.isEmpty()){
-			if(tokens.contains("boring") || tokens.contains("stop") || tokens.contains("bored")){
-				stopGame = true;
-
-			}
-		}
-		return stopGame;
-	}
-
 	private void applyFilter(String winner){
 
 		if(winner.equals("roboy")){
@@ -311,5 +270,37 @@ public class GamingTwentyQuestionsState extends GameState {
 			emotionShown = getRosMainNode().ShowEmotion("tears");
 		}
 	}
+
+
+	@Override
+	public boolean canStartGame() {
+		setAW(false);
+		return aw!=null && aw.getServer().isUp();
+	}
+
+	@Override
+	public Output cannotStartWarning() {
+		return Output.say("Sorry, I need Internet Access to play this game");
+	}
+
+	@Override
+	public Collection<String> getTags(){
+		return Arrays.asList("akinator", "guessing", "questions");
+	}
+
+	private void setAW(boolean force){
+		if ((force || aw == null)) {
+			if(NetworkUtils.isInternetWorking()) {
+				aw = new AkiwrapperBuilder().setFilterProfanity(true).build();
+			}
+			else{
+				LOGGER.warn("No Internet Connection");
+			}
+		}
+		LOGGER.debug("AW Object already exists. Was not overwritten");
+	}
+
+
+
 
 }

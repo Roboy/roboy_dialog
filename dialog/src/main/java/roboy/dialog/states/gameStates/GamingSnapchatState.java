@@ -58,7 +58,8 @@ public class GamingSnapchatState extends GameState {
         Linguistics.UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
         List<String> inputFilters = localInference.inferSnapchatFilter(input, EXISTING_FILTERS);
 
-        if(!checkUserSaidStop(input)) {
+        stopGame = checkUserSaidStop(input);
+        if(!stopGame) {
             if (inputSentiment == Linguistics.UtteranceSentiment.POSITIVE) {
                 desiredFilters.add(suggestedFilter);
             } else if (inputFilters != null) {
@@ -81,19 +82,6 @@ public class GamingSnapchatState extends GameState {
         } else {
             return this;
         }
-    }
-
-    private boolean checkUserSaidStop(Interpretation input){
-
-        stopGame = false;
-        List<String> tokens = input.getTokens();
-        if(tokens != null && !tokens.isEmpty()){
-                if(tokens.contains("boring") || tokens.contains("stop") || tokens.contains("bored")){
-                    stopGame = true;
-
-            }
-        }
-        return stopGame;
     }
 
     private Map<String, List<String>> buildSynonymMap(List<String> filters){
@@ -125,6 +113,7 @@ public class GamingSnapchatState extends GameState {
         return filterMap;
     }
 
+    @Override
     public boolean canStartGame(){
         return getRosMainNode() != null;
     }
