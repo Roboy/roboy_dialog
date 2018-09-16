@@ -26,6 +26,7 @@ public enum Neo4jLabel {
     Location("Location"),
     Organization("Organization"),
     Other("Other"),
+    Created_by("Created_by"),
     None("");
 
     public String type;

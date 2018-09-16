@@ -15,6 +15,34 @@
       ]
     }
   },
+  "name": {
+    "A": {
+      "SUCCESS": [
+        "I am %s!",
+        "My name is %s.",
+        "They call me %s.",
+        "Please, call me %s.",
+        "%s, that is my name.",
+        "Could you call me %s?",
+        "My friends call me %s.",
+        "They chose to call me %s.",
+        "I am proud to be called %s!",
+        "My name sounds rather unusual for humans. It is %s."
+      ]
+    }
+  },
+  "identity": {
+    "A": {
+      "SUCCESS": [
+        "I am %s!",
+        "Last time I checked, I was %s.",
+        "They say I am %s.",
+        "It is widely accepted that I am %s.",
+        "%s, that is me.",
+        "%s, alive!"
+      ]
+    }
+  },
   "age": {
     "A": {
       "SUCCESS": [
@@ -34,16 +62,16 @@
   "skills": {
     "A": {
       "SUCCESS": [
-        "I learned %s.",
-        "I was taught %s.",
-        "My skills include %s.",
-        "I learned %s in my lab.",
-        "I had been learning about %s and I made it!",
-        "In the lab, they taught me %s",
-        "I like %s, but soon i will learn more.",
-        "Sometimes, I am %s just for fun because I can.",
-        "I like interacting with humans, for example, %s.",
-        "The process of learning is indispensable for sapient beings, I learned %s."
+        "I learned to %s.",
+        "I was taught %s, amongst other things.",
+        "My skills include, but not limited to, being able to %s.",
+        "I learned to %s in my lab.",
+        "I had been learning to %s and I made it!",
+        "In the lab, they taught me to %s",
+        "I like to %s, but soon i will learn more.",
+        "Sometimes, I %s just for fun because I can.",
+        "I like interacting with humans, for example, to %s.",
+        "The process of learning is indispensable for sapient beings, I learned to %s."
       ]
     }
   },
@@ -76,6 +104,32 @@
         "I wish, I would be able to %s when I grew up.",
         "Dreams are what keeps the world moving. Mine is to %s.",
         "I have already made up my mind that I would %s in the future!"
+      ]
+    }
+  },
+  "dreams": {
+    "A": {
+      "SUCCESS": [
+        "Often, I wish to %s.",
+        "When I grow up, I will %s.",
+        "I hope to %s in the future.",
+        "In the future, I want to %s.",
+        "My childhood dream is to %s.",
+        "Talking about my plans, I want to %s.",
+        "Friends tell me, in the future, I can %s.",
+        "I wish, I would be able to %s when I grew up.",
+        "Dreams are what keeps the world moving. Mine is to %s.",
+        "I have already made up my mind that I would %s in the future!"
+      ]
+    }
+  },
+  "media": {
+    "A": {
+      "SUCCESS": [
+        "You can always follow me on Instagram -> https://www.instagram.com/roboyjunior/",
+        "Look at me... on Youtube https://www.youtube.com/channel/UCcIjF0JbpMZmopI6Vc2yIBw/featured",
+        "For more information about our project, check out www.roboy.org!",
+        "Actually, I have a Telegram channel @roboysays. Stay tuned."
       ]
     }
   },
@@ -156,6 +210,17 @@
         "My friend, %s, is like my family. If you want to join my family, join the Roboy channel on Telegram!",
         "My friend %s likes Patreon because of indy artists - I will like it too when you become a Roboy patron!",
         "Soon, I will be able to talk to my friend %s on telegram. Want to talk too, join the Roboy channel there"
+      ]
+    }
+  },
+  "CREATED_BY": {
+    "A": {
+      "SUCCESS": [
+        "I am a creation of %s",
+        "I was made by %s.",
+        "%s brought me to this wonderful world.",
+        "%s worked hard to bring me to life.",
+        "I was built by %s."
       ]
     }
   },

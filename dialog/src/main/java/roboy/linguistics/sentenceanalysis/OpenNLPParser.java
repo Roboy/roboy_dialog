@@ -1,8 +1,6 @@
 package roboy.linguistics.sentenceanalysis;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Semaphore;
@@ -48,10 +46,14 @@ public class OpenNLPParser implements Analyzer{
 		String sentence = interpretation.getSentence();
 		if (sentence != null) {
 			sentence = sentence.trim();
-			if (!sentence.endsWith(".")
-					&& !sentence.endsWith("?")
-					&& !sentence.endsWith("!")) {
-				sentence = sentence + " .";
+			if (sentence.endsWith(".")
+					|| sentence.endsWith("?")
+					|| sentence.endsWith("!")) {
+				// insert a space before end punctuation
+				String end = sentence.substring(sentence.length()-1);
+				sentence = sentence.substring(0,sentence.length()-1) + " " + end;
+			} else {
+					sentence = sentence + " .";
 			}
 			if (sentence.length() > 0 && Character.isLowerCase(sentence.charAt(0))) {
 				sentence = Character.toUpperCase(sentence.charAt(0)) + sentence.substring(1, sentence.length());
@@ -234,13 +236,20 @@ public class OpenNLPParser implements Analyzer{
 		return sb;
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException{
 //		Interpretation i = new Interpretation("The man is seen by the boy with the binoculars.");
 		System.out.println("Initializing...");
-		Interpretation i = new Interpretation("Bill said that Mike like to play the piano.");
-		OpenNLPParser parser = new OpenNLPParser();
-		System.out.println("Parsing...");
-		parser.analyze(i);
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		while(true) {
+			String text = reader.readLine();
+			Interpretation i = new Interpretation(text);
+			OpenNLPParser parser = new OpenNLPParser();
+			System.out.println("Parsing...");
+			parser.analyze(i);
+			i.getPas().forEach((k, v) -> System.out.println(k + ": " + v));
+			System.out.println("done");
+		}
+
 	}
 
 }

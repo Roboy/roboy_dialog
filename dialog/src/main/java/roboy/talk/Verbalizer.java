@@ -89,8 +89,7 @@ public class Verbalizer {
 	}
 	
 	public static final RandomList<String> farewells = new RandomList<>(
-			"ciao", "goodbye", "cheerio", "bye",
-            "see you", "farewell", "bye-bye");
+			"ciao", "goodbye", "cheerio", "bye", "farewell", "bye-bye");
 	
 	private static final RandomList<String> segues =
             new RandomList<>("talking about ","since you mentioned ","on the topic of ");

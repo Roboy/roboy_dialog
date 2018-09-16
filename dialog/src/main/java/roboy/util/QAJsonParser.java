@@ -22,6 +22,9 @@ class JsonModel {
     JsonEntryModel abilities;
     JsonEntryModel age;
     JsonEntryModel future;
+    JsonEntryModel dreams;
+    JsonEntryModel identity;
+    JsonEntryModel media;
     JsonEntryModel FROM;
     JsonEntryModel HAS_HOBBY;
     JsonEntryModel LIVE_IN;
@@ -33,6 +36,7 @@ class JsonModel {
     JsonEntryModel IS;
     JsonEntryModel CHILD_OF;
     JsonEntryModel SIBLING_OF;
+    JsonEntryModel CREATED_BY;
     JsonEntryModel OTHER;
     JsonEntryModel APPLES;
     JsonEntryModel ANIMAL;

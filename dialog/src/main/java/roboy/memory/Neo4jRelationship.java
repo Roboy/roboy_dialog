@@ -24,7 +24,8 @@ public enum Neo4jRelationship {
     SIBLING_OF("SIBLING_OF"),
     KNOW("KNOW"),
     OTHER("OTHER"),
-    IS("IS");
+    IS("IS"),
+    CREATED_BY("CREATED_BY");
 
     public String type;
 
@@ -39,6 +40,7 @@ public enum Neo4jRelationship {
         if(relationship.equals(WORK_FOR) || relationship.equals(STUDY_AT)) return Organization;
         if(relationship.equals(OCCUPIED_AS)) return Occupation;
         if(relationship.equals(OTHER)) return Other;
+        if(relationship.equals(CREATED_BY)) return Created_by;
         else return None;
     }
 

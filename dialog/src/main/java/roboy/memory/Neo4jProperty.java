@@ -23,7 +23,10 @@ public enum Neo4jProperty {
     telegram_id("telegram_id"),
     slack_id("slack_id"),
     whatsapp_id("whatsapp_id"),
-    line_id("line_id");
+    line_id("line_id"),
+    identitiy("identity"),
+    dreams("dreams"),
+    media("media");
 
     public String type;
     private static final Random random = new Random();

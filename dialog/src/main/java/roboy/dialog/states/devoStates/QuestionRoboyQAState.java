@@ -123,6 +123,11 @@ public class QuestionRoboyQAState extends ExpoState {
             return Output.say(answer);
         }
 
+        // catch jokes
+        if (input.getTokens().contains("joke") || input.getTokens().contains("funny")) {
+            return Output.say(PhraseCollection.JOKES.getRandomElement()).setEmotion(RoboyEmotion.positive.getRandomElement());
+        }
+
         if (input.getTokens() != null && !(input.getTokens().contains("you") || input.getTokens().contains("your"))) {
             Linguistics.ParsingOutcome parseOutcome = input.getParsingOutcome();
 
@@ -225,7 +230,10 @@ public class QuestionRoboyQAState extends ExpoState {
         List<Triple> triples = input.getTriples();
 
         if (pas != null) {
-            return inferPasAnswer(pas, roboy);
+            answer = inferPasAnswer(pas, roboy);
+            if (!answer.isEmpty()) {
+                return answer;
+            }
         }
 
         if (triples != null) {
@@ -254,29 +262,41 @@ public class QuestionRoboyQAState extends ExpoState {
             answer = extractAge(roboy);
         } else if (matchPas(pas, new Pair(SemanticRole.PREDICATE, "from"))) {
             answer = extractNodeNameForPredicate(Neo4jRelationship.FROM, roboy);
-        } else if (matchPas(pas, new Pair(SemanticRole.LOCATION, ".*"))) {
-            answer = extractNodeNameForPredicate(Neo4jRelationship.LIVE_IN, roboy);
         }
+        // LOCATION picks up random questions not related to LIVE_IN
+//        else if (matchPas(pas, new Pair(SemanticRole.LOCATION, ".*"))) {
+//            answer = extractNodeNameForPredicate(Neo4jRelationship.LIVE_IN, roboy);
+//        }
 //        else if (matchPas(pas, new Pair(SemanticRole.AGENT, "you"), new Pair(SemanticRole.MANNER, "how"))) {
 //            answer = "Yo moma says I am a good boy!";
 //        }
         else if (matchPas(pas, new Pair(SemanticRole.AGENT, "who"))) {
-            if (matchPas(pas, new Pair(SemanticRole.PATIENT, "you"))) {
-                answer = extractNodeNameForPredicate(Neo4jProperty.full_name, roboy);
+            if (matchPas(pas, new Pair(SemanticRole.PATIENT, "you"), new Pair(SemanticRole.PREDICATE, "are"))) {
+                answer = extractNodeNameForPredicate(Neo4jProperty.name, roboy) + " "
+                        + extractNodeNameForPredicate(Neo4jProperty.identitiy, roboy);
             } else if (matchPas(pas, new Pair(SemanticRole.PATIENT, ".*\\b(father|dad)\\b.*"))) {
                 answer = extractNodeNameForPredicate(Neo4jRelationship.CHILD_OF, roboy);
             } else if (matchPas(pas, new Pair(SemanticRole.PATIENT, ".*\\b(sibling|brother)\\b.*"))){
                 answer = extractNodeNameForPredicate(Neo4jRelationship.SIBLING_OF, roboy);
+            } else if (matchPas(pas, new Pair(SemanticRole.PREDICATE, "created|made|built"), new Pair(SemanticRole.PATIENT, "you"))) {
+                answer = extractNodeNameForPredicate(Neo4jRelationship.CREATED_BY, roboy);
             }
         } else if (matchPas(pas, new Pair(SemanticRole.PREDICATE, "do|like"), new Pair(SemanticRole.AGENT, "you"))){
-            double prob = Math.random();
-            if (prob < .3) {
-                answer = extractNodeNameForPredicate(Neo4jProperty.abilities, roboy);
-            } else if(prob < .7) {
-                answer = extractNodeNameForPredicate(Neo4jRelationship.HAS_HOBBY, roboy);
-            } else {
+//            double prob = Math.random();
+//            if (prob < .3) {
+//                answer = extractNodeNameForPredicate(Neo4jProperty.abilities, roboy);
+//            } else if(prob < .7) {
+//                answer = extractNodeNameForPredicate(Neo4jRelationship.HAS_HOBBY, roboy);
+//            } else {
                 answer = extractNodeNameForPredicate(Neo4jProperty.skills, roboy);
-            }
+//            }
+        } else if (matchPas(pas, new Pair(SemanticRole.PREDICATE, "dream|wish"), new Pair(SemanticRole.AGENT, "you"))) {
+            answer = extractNodeNameForPredicate(Neo4jProperty.dreams, roboy);
+        }
+        else if (matchPas(pas, new Pair(SemanticRole.PATIENT, "you"), new Pair(SemanticRole.PREDICATE, "are"),
+                new Pair(SemanticRole.AGENT, "what"))) {
+            answer = extractNodeNameForPredicate(Neo4jProperty.name, roboy) + " "
+                    + extractNodeNameForPredicate(Neo4jProperty.identitiy, roboy);
         }
 
         return answer;
@@ -284,6 +304,11 @@ public class QuestionRoboyQAState extends ExpoState {
 
     private String inferTripleAnswer(List<Triple> triples, Roboy roboy) {
         String answer = "";
+        for (Triple t: triples) {
+            if (t.subject.matches(".*\\b(meet|see|know)\\b.*")) {
+                answer = infoValues.getSuccessAnswers(Neo4jProperty.media).getRandomElement();
+            }
+        }
         // else if {OBJ: *} -> query * -> I'm sure I know a typeof(*) called *! (Where does he live? :))
         //
         // 	if * in Neo4jRelationship.FRIEND_OF
@@ -337,7 +362,15 @@ public class QuestionRoboyQAState extends ExpoState {
     private String extractNodeNameForPredicate(Neo4jProperty predicate, Roboy roboy) {
         String property = roboy.getProperty(predicate).toString();
         if (property != null) {
-            return String.format(infoValues.getSuccessAnswers(predicate).getRandomElement(), property);
+            // check if there are multiple things in it
+            RandomList<String> properties = new RandomList<>(property.split(","));
+            //pick 2 random properties to talk about
+            String propertiesToShare = properties.getRandomElement();
+            properties.remove(propertiesToShare); // so we dont pick the same one again
+            if (!properties.isEmpty()) {
+                propertiesToShare += " and " + properties.getRandomElement();
+            }
+            return String.format(infoValues.getSuccessAnswers(predicate).getRandomElement(), propertiesToShare);
         }
         return null;
     }
@@ -361,7 +394,7 @@ public class QuestionRoboyQAState extends ExpoState {
         boolean allCriteriaSatisfied = true;
         for (Pair<SemanticRole, String> criterion : matchCriteria) {
             if (!pas.containsKey(criterion.getKey()) ||
-                    !pas.get(criterion.getKey()).matches(criterion.getValue())) {
+                    !pas.get(criterion.getKey()).matches("(?i)"+criterion.getValue())) { // (?i)-> case insesitive
                 allCriteriaSatisfied = false;
                 break;
             }

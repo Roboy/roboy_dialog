@@ -176,6 +176,7 @@ public class Interpretation implements Cloneable {
     }
 
     public void setPas(Map<SemanticRole, String> pas) {
+	    pas.forEach((k,v) -> v.toLowerCase());
         this.pas = pas;
     }
 
