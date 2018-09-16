@@ -30,7 +30,6 @@ import java.util.List;
 
 public class GamingTwentyQuestionsState extends GameState {
 
-
 	private static final double PROBABILITY_THRESHOLD = 0.6;
 	private final static String TRANSITION_GAME_ENDED = "gameEnded";
 
@@ -50,6 +49,8 @@ public class GamingTwentyQuestionsState extends GameState {
 	private boolean emotionShown = false;
 	private String winner = "";
 
+	public static String transitionName = "chose20questions";
+
 	public GamingTwentyQuestionsState(String stateIdentifier, StateParameters params) {
 		super(stateIdentifier, params);
 	}
@@ -68,11 +69,6 @@ public class GamingTwentyQuestionsState extends GameState {
 	@Override
 	public Collection<String> getTags(){
 		return Arrays.asList("akinator", "guessing", "questions");
-	}
-
-	@Override
-	public String getTransitionName() {
-		return "chose20questions";
 	}
 
 	private void setAW(boolean force){

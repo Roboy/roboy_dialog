@@ -8,6 +8,8 @@ import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.talk.PhraseCollection;
 import roboy.talk.Verbalizer;
+import roboy.util.Maps;
+import roboy.util.Pair;
 import roboy.util.RandomList;
 
 import java.util.*;
@@ -36,9 +38,17 @@ public class ChooseGameState extends State {
     //Can't fill this at constructor or static constructor level, so it is done in act()
     private void fillExistingGameMap(){
         if(EXISTING_GAME_MAP.isEmpty()){
-            //TODO find a better solution for the value, can we somehow get the transitions from the method cleanly? Should we convert it to Static?
-            EXISTING_GAME_MAP.put("Akinator", (GameState) getTransition("chose20questions"));
-            EXISTING_GAME_MAP.put("Snapchat", (GameState) getTransition("choseSnapchat"));
+            addElement("Akinator", (GamingTwentyQuestionsState          .transitionName));
+            addElement("Snapchat", (GamingSnapchatState                 .transitionName));
+        }
+    }
+
+    private void addElement(String key, String transitionName){
+        if(getAllTransitions().containsKey(transitionName)){
+            EXISTING_GAME_MAP.put(key, (GameState) getTransition(transitionName));
+        }
+        else{
+            LOGGER.error("Cannot add "+transitionName+" to EXISTING_GAME_MAP because transition does not exist");
         }
     }
 
@@ -47,12 +57,12 @@ public class ChooseGameState extends State {
         fillExistingGameMap();
 
         //Pick a game that is playable
-        RandomList<String> randomList = new RandomList<String>();
+        RandomList<String> randomList = new RandomList<>();
         randomList.addAll(
                 //Streams to Filter, because why have Java 1.8 if we can't make use of it
                 //Basically: Get all keys, turn that list into a stream, filter the stream by whether the key's value (the game) is capable of starting. Then put all those who can start into a random list.
                 EXISTING_GAME_MAP.keySet().stream().filter(s -> EXISTING_GAME_MAP.get(s).canStartGame())
-                        .collect(Collectors.toCollection(RandomList::new)));
+                        .collect(Collectors.toCollection(ArrayList::new)));
 
         //If no games are playable
         if(randomList.isEmpty()){
@@ -127,7 +137,8 @@ public class ChooseGameState extends State {
         else{
             //Does game exist in Map --> Basically, should we launch a game...
             if(EXISTING_GAME_MAP.containsKey(game)) {
-                return getTransition(EXISTING_GAME_MAP.get(game).getTransitionName());
+                String transition = Maps.value2Key( getAllTransitions(), EXISTING_GAME_MAP.get(game)).get();
+                return getTransition(transition);
             }
             //Or repeat this state again, because we need to check something
             else{

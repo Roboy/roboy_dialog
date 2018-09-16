@@ -36,6 +36,8 @@ public class GamingSnapchatState extends GameState {
 
     private String suggestedFilter = "";
 
+    public static String transitionName = "choseSnapchat";
+
     public GamingSnapchatState(String stateIdentifier, StateParameters params) {
 
         super(stateIdentifier, params);
@@ -138,11 +140,6 @@ public class GamingSnapchatState extends GameState {
     @Override
     public Collection<String> getTags(){
         return Arrays.asList("snapchat", "filters", "filter");
-    }
-
-    @Override
-    public String getTransitionName() {
-        return "choseSnapchat";
     }
 
 }

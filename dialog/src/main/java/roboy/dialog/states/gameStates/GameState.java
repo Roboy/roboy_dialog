@@ -7,6 +7,8 @@ import java.util.Collection;
 
 public abstract class GameState extends State {
 
+    public static String transitionName;
+
     /**
      * Create a state object with given identifier (state name) and parameters.
      * <p>
@@ -37,10 +39,4 @@ public abstract class GameState extends State {
      * @return Collection of tags
      */
     public abstract Collection<String> getTags();
-
-    /**
-     * Get the Transition name, that is used to denote the GameState
-     * @return Transition Name
-     */
-    public abstract String getTransitionName();
 }
