@@ -9,10 +9,11 @@ import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.talk.PhraseCollection;
 import roboy.talk.Verbalizer;
 import roboy.util.Maps;
-import roboy.util.Pair;
 import roboy.util.RandomList;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class ChooseGameState extends State {

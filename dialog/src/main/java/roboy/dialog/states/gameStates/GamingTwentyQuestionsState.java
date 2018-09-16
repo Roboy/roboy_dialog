@@ -1,28 +1,22 @@
 package roboy.dialog.states.gameStates;
 
-import com.ibm.watson.developer_cloud.alchemy.v1.model.SAORelation;
 import com.markozajc.akiwrapper.Akiwrapper;
-import com.markozajc.akiwrapper.AkiwrapperBuilder;
-import com.markozajc.akiwrapper.core.entities.Question;
 import com.markozajc.akiwrapper.Akiwrapper.Answer;
+import com.markozajc.akiwrapper.AkiwrapperBuilder;
 import com.markozajc.akiwrapper.core.entities.Guess;
+import com.markozajc.akiwrapper.core.entities.Question;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import roboy.context.Context;
 import roboy.dialog.Segue;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.nodes.Interlocutor;
-import roboy.ros.RosMainNode;
 import roboy.talk.PhraseCollection;
 import roboy.talk.Verbalizer;
 import roboy.util.NetworkUtils;
-import roboy.util.RandomList;
 
 import java.io.IOException;
-import java.lang.ref.PhantomReference;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;

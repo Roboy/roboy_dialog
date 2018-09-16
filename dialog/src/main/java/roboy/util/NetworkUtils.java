@@ -8,7 +8,7 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 
 public class NetworkUtils {
-    private static final int TIMEOUT = 250;
+    private static final int TIMEOUT = 1000;
     private static final Logger LOGGER = LogManager.getLogger();
 
     public static boolean isInternetWorking(String addr){
@@ -31,7 +31,7 @@ public class NetworkUtils {
     }
     //Shamelessly stolen from stackoverflow
     //Credits: https://stackoverflow.com/questions/9922543/why-does-inetaddress-isreachable-return-false-when-i-can-ping-the-ip-address
-    private static boolean isReachable(String addr, int timeOutMillis) {
+    public static boolean isReachable(String addr, int timeOutMillis) {
         try {
             try (Socket soc = new Socket()) {
                 soc.connect(new InetSocketAddress(addr, 80), timeOutMillis);
