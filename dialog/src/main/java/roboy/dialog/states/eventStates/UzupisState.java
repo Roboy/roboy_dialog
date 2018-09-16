@@ -8,8 +8,8 @@ import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.memory.nodes.Interlocutor;
-import roboy.util.QAFileParser;
 import roboy.util.QAJsonParser;
+import roboy.util.RandomList;
 import roboy.util.UzupisIntents;
 
 import java.io.IOException;
@@ -32,9 +32,9 @@ public class UzupisState extends State {
     private final int toAskCounter = UzupisIntents.values().length;
     private UzupisIntents currentIntent;
 
-    private Map<String, List<String>> questions;
-    private Map<String, List<String>> successAnswers;
-    private Map<String, List<String>> failureAnswers;
+    private Map<String, RandomList<String>> questions;
+    private Map<String, RandomList<String>> successAnswers;
+    private Map<String, RandomList<String>> failureAnswers;
 
     private String CertificatesGeneratorScript;
 
@@ -44,7 +44,7 @@ public class UzupisState extends State {
         super(stateIdentifier, params);
         String qaListPath = params.getParameter(QAFILEPATH);
         logger.info(" -> The qa list path: " + qaListPath);
-        QAFileParser parser = new QAFileParser(qaListPath);
+        QAJsonParser parser = new QAJsonParser(qaListPath);
 
         CertificatesGeneratorScript = params.getParameter(CERTIFICATESGENERATOR);
 
