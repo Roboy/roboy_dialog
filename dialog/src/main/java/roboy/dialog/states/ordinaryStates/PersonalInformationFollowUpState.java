@@ -114,7 +114,7 @@ public class PersonalInformationFollowUpState extends State {
         Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         LOGGER.info("-> Retrieved Interlocutor: " + person.getName());
         RandomList<String> answers;
-        String answer = "I have no words";
+        String answer = "";
         String result = InferUpdateResult(input);
 
         if (selectedPredicate != null) {
@@ -140,7 +140,11 @@ public class PersonalInformationFollowUpState extends State {
 
         nextState = getTransition(TRANSITION_INFO_UPDATED);
         Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE);
-        return Output.say(answer).setSegue(s);
+        if (!answer.isEmpty()) {
+            return Output.say(answer).setSegue(s);
+        } else {
+            return Output.useFallback();
+        }
     }
 
     @Override

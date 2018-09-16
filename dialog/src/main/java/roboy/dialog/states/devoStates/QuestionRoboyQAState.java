@@ -263,10 +263,9 @@ public class QuestionRoboyQAState extends ExpoState {
         } else if (matchPas(pas, new Pair(SemanticRole.PREDICATE, "from"))) {
             answer = extractNodeNameForPredicate(Neo4jRelationship.FROM, roboy);
         }
-        // LOCATION picks up random questions not related to LIVE_IN
-//        else if (matchPas(pas, new Pair(SemanticRole.LOCATION, ".*"))) {
-//            answer = extractNodeNameForPredicate(Neo4jRelationship.LIVE_IN, roboy);
-//        }
+        else if (matchPas(pas, new Pair(SemanticRole.LOCATION, "where"), new Pair(SemanticRole.PREDICATE, "live"))) {
+            answer = extractNodeNameForPredicate(Neo4jRelationship.LIVE_IN, roboy);
+        }
 //        else if (matchPas(pas, new Pair(SemanticRole.AGENT, "you"), new Pair(SemanticRole.MANNER, "how"))) {
 //            answer = "Yo moma says I am a good boy!";
 //        }

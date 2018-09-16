@@ -101,7 +101,7 @@ public class PersonalInformationAskingState extends State {
         Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         LOGGER.info("-> Retrieved Interlocutor: " + person.getName());
         RandomList<String> answers = new RandomList<>();
-        String answer = "I have no words";
+        String answer = "";
         String result = InferResult(input);
 
         if(selectedPredicate != null) {
