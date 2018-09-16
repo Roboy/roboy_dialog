@@ -46,6 +46,8 @@ public class ConfigManager {
     public static long CONVERSATION_TIMEOUT = 0;
 
     public static String TELEGRAM_API_TOKENS_FILE = "";
+    public static int TELEGRAM_TYPING_DELAY = 0;
+    public static int TELEGRAM_PROCESSING_DELAY = 2;
 
     public static String MEMORY_LOG_MODE = "INFO";
     public static String DIALOG_LOG_MODE = "INFO";
@@ -136,6 +138,8 @@ public class ConfigManager {
             }
 
             TELEGRAM_API_TOKENS_FILE = yamlConfig.getString("TELEGRAM_API_TOKENS_FILE");
+            TELEGRAM_PROCESSING_DELAY = yamlConfig.getInt("TELEGRAM_PROCESSING_DELAY");
+            TELEGRAM_TYPING_DELAY = yamlConfig.getInt("TELEGRAM_TYPING_DELAY");
 
             PARLAI_HOST = yamlConfig.getString("PARLAI_HOST");
             PARLAI_PORT = yamlConfig.getInt("PARLAI_PORT");

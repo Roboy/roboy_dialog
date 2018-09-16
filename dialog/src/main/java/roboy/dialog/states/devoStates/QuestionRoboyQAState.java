@@ -66,7 +66,7 @@ public class QuestionRoboyQAState extends ExpoState {
     private final static String TRANSITION_LOOP_TO_NEW_PERSON = "loopToNewPerson";
     private final static String TRANSITION_LOOP_TO_KNOWN_PERSON = "loopToKnownPerson";
     private final static String TRANSITION_SWITCH_TO_GAMING = "switchToGaming";
-    private final static int MAX_NUM_OF_QUESTIONS = 10;
+    private final static int MAX_NUM_OF_QUESTIONS = 5;
     private int questionsAnswered = 0;
 
     private final static RandomList<String> reenteringPhrases = PhraseCollection.QUESTION_ANSWERING_REENTERING;
@@ -75,6 +75,7 @@ public class QuestionRoboyQAState extends ExpoState {
 
     private boolean askingSpecifyingQuestion = false;
     private String answerAfterUnspecifiedQuestion = ""; // the answer to use if specifying question is answered with YES
+    private boolean offeredGame = false;
     private boolean userWantsGame = false;
 
     private QAJsonParser infoValues;
@@ -88,7 +89,8 @@ public class QuestionRoboyQAState extends ExpoState {
 
     @Override
     public Output act() {
-        if (questionsAnswered == MAX_NUM_OF_QUESTIONS/2) {
+        if (Math.random() < 0.1) {
+            offeredGame = true;
             return Output.say(PhraseCollection.OFFER_GAME_PHRASES.getRandomElement());
         }
         return Output.sayNothing();
@@ -101,15 +103,15 @@ public class QuestionRoboyQAState extends ExpoState {
 
     private Output reactToQuestion(Interpretation input) {
 
-        if (questionsAnswered == MAX_NUM_OF_QUESTIONS/2) {
+        if (offeredGame) {
             questionsAnswered++;
+            offeredGame = false;
             if (getInference().inferSentiment(input) == Linguistics.UtteranceSentiment.POSITIVE) {
                 userWantsGame = true;
                 questionsAnswered++;
                 return Output.sayNothing().setSegue(new Segue(Segue.SegueType.PICKUP,0.5)).setEmotion(RoboyEmotion.HAPPY);
             }
             else {
-//                questionsAnswered++;
                 return Output.sayNothing().setEmotion(RoboyEmotion.SADNESS);
             }
         }
@@ -142,6 +144,12 @@ public class QuestionRoboyQAState extends ExpoState {
                     return Output.say(answerStartingPhrases.getRandomElement() + " " + input.getAnswer());
                 }
             }
+            // use a random fact and avoid answer.
+            if (input.getTokens().size() > 2 && input.isQuestion()) {
+                Interpretation i = new Interpretation(PhraseCollection.FACTS.getRandomElement());
+                i.setSentenceType(Linguistics.SentenceType.ANECDOTE);
+                return Output.say(i);
+            }
 
             return Output.useFallback();
         }
@@ -163,7 +171,6 @@ public class QuestionRoboyQAState extends ExpoState {
     }
 
     private Output useMemoryOrFallback(Interpretation input) {
-//        questionsAnswered++;
         try {
             if ( input.getPas() != null || input.getTriples() != null) {
                 Output memoryAnswer = answerFromMemory(input);

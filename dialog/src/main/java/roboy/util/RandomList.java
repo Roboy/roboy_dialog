@@ -2,6 +2,7 @@ package roboy.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -48,6 +49,13 @@ public class RandomList<T> extends ArrayList<T> {
         }
         int id = (int) (Math.random() * size());
         return get(id);
+    }
+
+    public RandomList<T> shuffle() {
+        RandomList<T> tmp = (RandomList<T>) this.clone();
+        Collections.shuffle(tmp);
+        return tmp;
+
     }
 
 }

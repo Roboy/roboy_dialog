@@ -40,7 +40,15 @@ public enum RoboyEmotion {
     MIB("maninblack", "CAADAgADXQAD5dCAEJY_NKT6hMaOAg"),
     MINDBLOWN("mindblown","CAADAgADsgAD5dCAEBmMXCCt4Sh6Ag"),
     DANCE("dance", "CAADAgADrgAD5dCAEP7FI8ogeANNAg"),
-    SUPERMAN("superman","CAADAgADoQAD5dCAEN7_d_TMkG8CAg");
+    SUPERMAN("superman","CAADAgADoQAD5dCAEN7_d_TMkG8CAg"),
+    PICKLEROBOY("neutral", "CAADAgADwgAD5dCAEKjfQCRuUDfYAg"),
+    THUMBSUP("neutral","CAADAgADYAAD5dCAEIqcImOJTl-_Ag"),
+    POSTCARDFACE("neutral","CAADAgADRQAD5dCAEE75Fhiqn2p-Ag"),
+    ANGEL("neutral", "CAADAgADTQAD5dCAEDafVf7FGlynAg"),
+    RAINBOW("neutral", "CAADAgADVQAD5dCAEHTBjm9cSbBTAg"),
+    RAINBOWVR("neutral", "CAADAgADZgAD5dCAED-lBppglhuaAg"),
+    BUNNY("neutral", "CAADAgADUgAD5dCAEJKbI9Fpaw5-Ag"),
+    MONOCLE("neutral", "CAADAgADUwAD5dCAEG5fdActwqACAg");
 
 
     public String type;
@@ -55,7 +63,8 @@ public enum RoboyEmotion {
             DANCE,
             SUNGLASSES,
             SUPERMAN,
-            KENNY);
+            KENNY,
+            MONOCLE);
 
     public static RandomList<RoboyEmotion> loserEmotions = new RandomList(
             MIB,
@@ -67,7 +76,14 @@ public enum RoboyEmotion {
             NEUTRAL,
             TONGUE,
             HAPPINESS,
-            KISS);
+            KISS,
+            BUNNY,
+            RAINBOW,
+            RAINBOWVR,
+            ANGEL,
+            POSTCARDFACE,
+            THUMBSUP,
+            PICKLEROBOY);
 
 
 }

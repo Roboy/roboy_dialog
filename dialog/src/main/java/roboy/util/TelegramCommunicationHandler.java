@@ -1,7 +1,5 @@
 package roboy.util;
 
-import org.telegram.telegrambots.TelegramBotsApi;
-import roboy.util.Pair;
 import org.apache.commons.io.IOUtils;
 import org.apache.jena.atlas.logging.Log;
 import org.apache.logging.log4j.LogManager;
@@ -14,7 +12,6 @@ import org.telegram.telegrambots.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.api.methods.send.SendSticker;
 import org.telegram.telegrambots.api.objects.Message;
 import org.telegram.telegrambots.api.objects.Update;
-import org.telegram.telegrambots.api.objects.User;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 import roboy.io.TelegramInput;
@@ -30,8 +27,8 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
     private final static Logger logger = LogManager.getLogger();
 
     private static final String tokensPath = ConfigManager.TELEGRAM_API_TOKENS_FILE;//place path to your token file here
-    private static final int TYPING_TIME_LIMIT = 3; //SECONDS
-    private static final int INPUT_TIME_LIMIT = 5; //SECONDS
+    private static final int TYPING_DELAY = ConfigManager.TELEGRAM_TYPING_DELAY; //SECONDS
+    private static final int PROCESSING_DELAY = ConfigManager.TELEGRAM_PROCESSING_DELAY; //SECONDS
 
     // CHAT ID ----- ITS MESSAGE
     private volatile List<Pair<String,Pair<String, String>>> pairs = new ArrayList<>();//[UserName, [UserID, Message]]
@@ -66,7 +63,7 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
 
         // if the list is empty create the first timeout and set it
         if(telegramTimeouts.isEmpty()){
-            Timeout t  = new Timeout(millisecond * INPUT_TIME_LIMIT);
+            Timeout t  = new Timeout(millisecond * PROCESSING_DELAY);
             t.setUnique(chatID);
 
             telegramTimeouts.add(t);
@@ -82,7 +79,7 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
 
         if(!hasStarted){
             // there is no timeout for given chatID so start one
-            Timeout t  = new Timeout(millisecond * INPUT_TIME_LIMIT);
+            Timeout t  = new Timeout(millisecond * PROCESSING_DELAY);
             t.setUnique(chatID);
             t.start(this);
 
@@ -203,7 +200,7 @@ public class TelegramCommunicationHandler extends TelegramLongPollingBot impleme
         try {
             sendTypingFromChatID(chatID);
 
-            TimeUnit.SECONDS.sleep(TYPING_TIME_LIMIT);
+            TimeUnit.SECONDS.sleep(TYPING_DELAY);
 
             SendMessage sendMessageRequest = new SendMessage();
             sendMessageRequest.setChatId(chatID);//who should get the message? the sender from which we got the message...

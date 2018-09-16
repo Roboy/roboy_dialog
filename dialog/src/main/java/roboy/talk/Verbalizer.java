@@ -71,17 +71,17 @@ public class Verbalizer {
 					"Hey! I was looking for someone to chat.");
 
 	public static final RandomList<String> privateGreetings =
-			new RandomList<>("hello","hi","greetings",
-					"howdy",
-					"hey",
-					"what's up",
-					"hi there",
-					"hello world",
-					"gruse gott",
-					"servus",
-					"wazup wazup wazup",
-					"howdy humans",
-					"hey hey hey you there",
+			new RandomList<>("hello.","hi.","greetings!",
+					"howdy!",
+					"hey, ",
+					"what's up?",
+					"hi there!",
+					"hello world!",
+					"gruse gott!",
+					"servus,",
+					"wazup wazup wazup!!!",
+					"howdy humans?",
+					"hey hey hey you there!",
 					"Hey! I was looking for someone to chat.");
 	
 	private SpeechAction greet(Interpretation interpretation){
@@ -98,15 +98,29 @@ public class Verbalizer {
 		return new SpeechAction(StatementBuilder.random(segues)
 				+ interpretation.getAssociation());
 	}
+	public static final RandomList<String> KNOWN_PERSON_WITH_NAME = new RandomList<>("I know you, %s!",
+			"My buddy %s is here!", "Look at you %s. Glad you stopped by to chat.",
+			"What a nice surprise, %s, that you decided to talk to me",
+			"Look who's here! %s my friend!");
+
+	public static final RandomList<String> NEW_PERSON_WITH_NAME = new RandomList<>("Nice to meet you %s",
+			"It is my pleasure to meet you, good sir (or milady) %s!",
+			"I'm happy to know you %s!",
+			"Glad, I got a chance to get to know you %s.");
+
+	private static final RandomList<String> CONTASING_CONJUNCTIONS = new RandomList<>("but,",
+			"however, ", "nevertheless, ", "on the other hand, ", "alternatively, ");
 
 	private static final RandomList<String> preAnecdotes =
             new RandomList<>("here is an interesting bit of trivia. ", "how about this? ");
 	private static final RandomList<String> anecdotes =
-            new RandomList<>("did you know ","did you know that ","i read that ",
-					"i heard that ", "have you heard this: ");
+            new RandomList<>("Did you know this?","Did you know? ","I read this thing. ",
+					"Yesterday I found read this interesting fact. ", "Have you heard this: ", "Probably unrelated, ", "I think you should know this.",
+					"I bet you didn't know this.", "Can you imagine? ", "I was browsing Reddit in my free time. And guess what?");
 	
 	private SpeechAction anecdote(Interpretation interpretation){
-		String prefix = Math.random()<0.3 ? StatementBuilder.random(preAnecdotes) : "";
+		String prefix = PhraseCollection.SEGUE_AVOID_ANSWER.getRandomElement();
+		prefix += CONTASING_CONJUNCTIONS.getRandomElement();
 		return new SpeechAction(prefix+StatementBuilder.random(anecdotes)
 				+ interpretation.getSentence());
 	}

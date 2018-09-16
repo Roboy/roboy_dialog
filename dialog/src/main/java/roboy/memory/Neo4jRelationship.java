@@ -35,12 +35,25 @@ public enum Neo4jRelationship {
 
     public static Neo4jLabel determineNodeType(Neo4jRelationship relationship) {
         // TODO expand list as new Node types are added.
-        if(relationship.equals(HAS_HOBBY)) return Hobby;
-        if(relationship.equals(FROM)) return Country;
-        if(relationship.equals(WORK_FOR) || relationship.equals(STUDY_AT)) return Organization;
-        if(relationship.equals(OCCUPIED_AS)) return Occupation;
-        if(relationship.equals(OTHER)) return Other;
-        if(relationship.equals(CREATED_BY)) return Created_by;
+        // TODO return list of Neo4jLabels, friend_of->(person,robot)
+        if(relationship.equals(HAS_HOBBY))
+            return Hobby;
+        if(relationship.equals(FROM))
+            return Country;
+        if(relationship.equals(WORK_FOR) ||
+                relationship.equals(STUDY_AT) ||
+                relationship.equals(MEMBER_OF))
+            return Organization;
+        if(relationship.equals(OCCUPIED_AS))
+            return Occupation;
+        if(relationship.equals(OTHER))
+            return Other;
+        if(relationship.equals(LIVE_IN))
+            return Location;
+        if(relationship.equals(FRIEND_OF) ||
+                relationship.equals(CHILD_OF))
+            return Person;
+
         else return None;
     }
 

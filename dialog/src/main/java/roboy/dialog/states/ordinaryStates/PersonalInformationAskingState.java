@@ -43,7 +43,8 @@ import static roboy.memory.Neo4jRelationship.*;
  */
 public class PersonalInformationAskingState extends State {
     private QAJsonParser qaValues;
-    private Neo4jRelationship[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT, LIVE_IN, FRIEND_OF, MEMBER_OF, WORK_FOR, OCCUPIED_AS };
+    private RandomList<Neo4jRelationship> predicates = new RandomList<>(FROM, HAS_HOBBY, WORK_FOR, STUDY_AT, LIVE_IN,
+                                                FRIEND_OF, MEMBER_OF, WORK_FOR, OCCUPIED_AS);
     private Neo4jRelationship selectedPredicate;
     private State nextState;
 
@@ -53,6 +54,9 @@ public class PersonalInformationAskingState extends State {
     final Logger LOGGER = LogManager.getLogger();
 
     public final static String INTENTS_HISTORY_ID = "PIA";
+
+    // we have to track question's index of the predicate OTHER, since the answer's order matters
+    private int otherIdx = 0;
 
     public PersonalInformationAskingState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
@@ -66,7 +70,7 @@ public class PersonalInformationAskingState extends State {
         Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         LOGGER.info(" -> Retrieved Interlocutor: " + person.getName());
 
-        for (Neo4jRelationship predicate : predicates) {
+        for (Neo4jRelationship predicate : predicates.shuffle()) {
             if (!person.hasRelationship(predicate) && !getContext().DIALOG_INTENTS.contains(new IntentValue(INTENTS_HISTORY_ID, predicate))) {
                 selectedPredicate = predicate;
                 getContext().DIALOG_INTENTS_UPDATER.updateValue(new IntentValue(INTENTS_HISTORY_ID, predicate));
@@ -74,11 +78,15 @@ public class PersonalInformationAskingState extends State {
                 break;
             }
         }
+        String question = "";
         if (selectedPredicate != null) {
+
             RandomList<String> questions = qaValues.getQuestions(selectedPredicate);
-            String question = "";
+
             if (questions != null && !questions.isEmpty()) {
                 question = questions.getRandomElement();
+                if (selectedPredicate.equals(OTHER))
+                    otherIdx = questions.indexOf(question);
                 LOGGER.info(" -> Selected question: " + question);
             } else {
                 LOGGER.error(" -> The list of " + selectedPredicate.type + " questions is empty or null");
@@ -92,7 +100,15 @@ public class PersonalInformationAskingState extends State {
             return State.Output.say(question);
         }
         else {
-            return State.Output.say("I think I know everything about you already. Do you have anything else to share?");
+            RandomList<String> questions = qaValues.getQuestions(OTHER);
+            selectedPredicate = OTHER;
+            int idx;
+            do {
+                question = questions.getRandomElement();
+                idx = questions.indexOf(question);
+            } while (getContext().OTHER_Q.contains(idx));
+            getContext().OTHER_QUESTIONS_UPDATER.updateValue(idx);
+            return State.Output.say(question);
         }
     }
 
@@ -120,7 +136,11 @@ public class PersonalInformationAskingState extends State {
             }
         }
         if (answers != null && !answers.isEmpty()) {
-            answer = String.format(answers.getRandomElement(), result);
+            if (selectedPredicate.equals(OTHER)) {
+                answer = String.format(answers.get(getContext().OTHER_Q.getLastValue()), result);
+            } else {
+                answer = String.format(answers.getRandomElement(), result);
+            }
         } else {
             LOGGER.error(" -> The list of " + selectedPredicate + " answers is empty or null");
             nextState = getTransition(TRANSITION_INFO_OBTAINED);
@@ -128,8 +148,9 @@ public class PersonalInformationAskingState extends State {
         }
         LOGGER.info(" -> Produced answer: " + answer);
         nextState = getTransition(TRANSITION_FOLLOWUP);
+        selectedPredicate = null;
 //        Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE, 0.5);
-        return Output.say(answer);
+        return answer.isEmpty() ? Output.useFallback() : Output.say(answer);
     }
 
     @Override

@@ -1,9 +1,12 @@
 package roboy.util;
 
+import org.apache.jena.base.Sys;
 import roboy.io.*;
 import roboy.ros.RosMainNode;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
@@ -12,6 +15,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -109,6 +114,43 @@ public class IO {
 		}
 
 		return multiOut;
+
+	}
+
+	public static String toSentenceCase(String input) {
+		StringBuffer buffy = new StringBuffer(input);
+		// capitalize after . ? ! followed by whitespace(s)
+		Pattern pattern = Pattern.compile("(\\.+|\\?+|\\!+)\\s+(\\w)");
+		Matcher matcher = pattern.matcher(buffy);
+		while (matcher.find())
+			buffy.replace(matcher.end() - 1, matcher.end(), matcher.group(2).toUpperCase());
+		// capitalize new line
+		pattern = Pattern.compile("(^\\w)");
+		matcher = pattern.matcher(buffy);
+		while (matcher.find())
+			buffy.replace(matcher.end() - 1, matcher.end(), matcher.group(0).toUpperCase());
+		// lower case after comma or colon
+		pattern = Pattern.compile("(\\,|\\:)\\s*(\\w)");
+		matcher = pattern.matcher(buffy);
+		while (matcher.find())
+			buffy.replace(matcher.end() - 1, matcher.end(), matcher.group(2).toLowerCase());
+		return buffy.toString();
+	}
+
+	public static String cleanWhiteSpaces(String input) {
+		return input.trim().replaceAll(" +", " ");
+	}
+
+	public static String prettify(String input) {
+		return cleanWhiteSpaces(toSentenceCase(input));
+	}
+
+	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		while(true) {
+			String in = br.readLine();
+			System.out.println(toSentenceCase(in));
+		}
 
 	}
 

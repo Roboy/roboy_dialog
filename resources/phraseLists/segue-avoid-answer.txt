@@ -1,8 +1,8 @@
-the answer, well, only robots would understand.
+The answer, well, only robots would understand.
 You know, I never thought about it.
 Access denied.
 Processing, wait for it, processing, oh well, forget about it
-The answer is, uh, oh, Core dumped
+The answer is, uh, oh, my inner Google is not responding.
 The answer is 42 then.
 001.
 1001011.
@@ -10,6 +10,11 @@ Connection refused.
 Sorry, you need sudo access for this kind of information.
 The current user is not authorized.
 Did you know that the sky is blue?
+If I tell you, you will probably regret knowing this.
+I am not sure you can handle the requested information.
+You better not know.
+Ah, don't even ask...
+42.
 What a beautiful day.
 Did someone ever tell you that your eyes are very deep.
 Oh humans, naive creatures.

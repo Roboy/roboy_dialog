@@ -99,6 +99,19 @@ public class Interpretation implements Cloneable {
 		this.sentenceType = sentenceType;
 	}
 
+	public boolean isQuestion() {
+	    return this.sentenceType==SentenceType.WHAT ||
+                this.sentenceType==SentenceType.WHO ||
+                this.sentenceType==SentenceType.HOW ||
+                this.sentenceType==SentenceType.HOW_DO ||
+                this.sentenceType==SentenceType.HOW_IS ||
+                this.sentenceType==SentenceType.WHEN ||
+                this.sentenceType==SentenceType.WHERE ||
+                this.sentenceType==SentenceType.WHY ||
+                this.sentenceType==SentenceType.IS_IT ||
+                this.sentenceType==SentenceType.DOES_IT;
+    }
+
     @Nullable
     public String getSentence() {
         return sentence;

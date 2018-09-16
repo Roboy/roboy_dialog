@@ -20,6 +20,10 @@ public class ChooseGameState extends State {
     private final static String TRANSITION_CHOSE_20_Q = "chose20questions";
     private final static String TRANSITION_EXIT = "exitGame";
 
+    public final static String AKINATOR = "20 questions game";
+    public final static String SNAPCHAT = "Snapchat";
+    public final static String EXIT = "exit";
+
     private RandomList<String> existingGames;
 
     private final Logger LOGGER = LogManager.getLogger();
@@ -30,10 +34,10 @@ public class ChooseGameState extends State {
     public ChooseGameState(String stateIdentifier, StateParameters params) {
         super(stateIdentifier, params);
         if (ConfigManager.INPUT == "telegram") {
-            existingGames = new RandomList<>(Arrays.asList("Akinator"));
+            existingGames = new RandomList<>(Arrays.asList(AKINATOR));
         }
         else {
-            existingGames = new RandomList<>(Arrays.asList("Snapchat", "Akinator"));
+            existingGames = new RandomList<>(Arrays.asList(SNAPCHAT, AKINATOR));
         }
 
     }
@@ -43,7 +47,7 @@ public class ChooseGameState extends State {
         do {
             suggestedGame = existingGames.getRandomElement();
         }
-        while(getRosMainNode() == null && suggestedGame == "Snapchat");
+        while(getRosMainNode() == null && suggestedGame == SNAPCHAT);
 
         return Output.say(String.format(PhraseCollection.GAME_ASKING_PHRASES.getRandomElement(), suggestedGame));
     }
@@ -58,8 +62,8 @@ public class ChooseGameState extends State {
             return Output.say(Verbalizer.startSomething.getRandomElement());
         } else if (!inputGame.isEmpty()){
             game = inputGame;
-            if(game.equals("Snapchat") && getRosMainNode() == null){
-                game = "exit";
+            if(game.equals(SNAPCHAT) && getRosMainNode() == null){
+                game = EXIT;
                 LOGGER.info("Trying to start Snapchat Game but ROS is not initialised.");
                 Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE, 0.5);
                 return Output.say(Verbalizer.rosDisconnect.getRandomElement() + String.format("What a pitty, %s. Snapchat is not possible right now. ",
@@ -67,7 +71,7 @@ public class ChooseGameState extends State {
             }
             return Output.say(Verbalizer.startSomething.getRandomElement());
         } else if (inputSentiment == Linguistics.UtteranceSentiment.NEGATIVE){
-            game = "exit";
+            game = EXIT;
         }
 
         return Output.sayNothing();
@@ -77,11 +81,11 @@ public class ChooseGameState extends State {
     public State getNextState() {
 
         switch (game){
-            case "Akinator":
+            case AKINATOR:
                 return getTransition(TRANSITION_CHOSE_20_Q);
-            case "Snapchat":
+            case SNAPCHAT:
                 return getTransition(TRANSITION_CHOSE_SNAPCHAT);
-            case "exit":
+            case EXIT:
                 return getTransition(TRANSITION_EXIT);
             default:
                 return this;
@@ -95,9 +99,9 @@ public class ChooseGameState extends State {
         game = "";
         if(tokens != null && !tokens.isEmpty()){
             if(tokens.contains("akinator") || tokens.contains("guessing") || tokens.contains("questions")){
-                game = "Akinator";
+                game = AKINATOR;
             } else if (tokens.contains("snapchat") || tokens.contains("filters") || tokens.contains("filter") || tokens.contains("mask")){
-                game = "Snapchat";
+                game = SNAPCHAT;
             }
         }
         return game;

@@ -116,9 +116,9 @@
         "How is the accommodation market in %s?"
       ],
       "A": [
-        "I should visit %s",
-        "It is beautiful in %s",
-        "%s is a beautiful place",
+        "I should visit %s.",
+        "It is beautiful in %s.",
+        "%s is a beautiful place!"
       ]
     }
   },
@@ -231,19 +231,25 @@
     ],
     "A": {
       "SUCCESS": [
-        "You are probably very poor doing %s",
-
+        "You are probably very poor being %s.",
+        "I've hear that some people dream to be %s.",
+        "Nice, I hope you are happy being %s."
       ],
       "FAILURE": [
-        "Oh well, whatever suits you."
+        "Oh well, whatever suits you.",
+        "Hm, this is something I have not learned yet.",
+        "Alright then."
       ]
     },
     "FUP": {
       "Q": [
-        "Are you still doing that %s stuff?"
+        "Are you still %s?",
+        "Did you get any promotion, or you are still %s?"
       ],
       "A": [
-        "True, true. You are probably very poor due to this %s"
+        "True, true. You are probably very poor due to this %s.",
+        "Good!",
+        "I guess it's what you want then."
       ]
     }
   },
@@ -285,7 +291,19 @@
       "Sorry for being so straightforward, I have to ask you. Do you enjoy having a conversation with me?",
       "There is something I can't stop thinking about. Do you think I am a good conversation partner?",
       "I never travel alone. My team is always right next to me. What about you? Do you usually go travelling on your own or with friends and family?",
-      "I am a very outgoing robot, if you haven't noticed yet. So every time I travel, I take someone with me. Do you usually travel alone? Or do you take someone to keep company?"
+      "I am a very outgoing robot, if you haven't noticed yet. So every time I travel, I take someone with me. Do you usually travel alone? Or do you take someone to keep company?",
+      "What gets you fired up? ",
+      "What do you say more often in life: yes or no?",
+      "What would you tell your teenage self if you could go back in time?",
+      "What do you wish was different about modern parenting? ",
+      "What have you created that you are most proud of? ",
+      "What chance encounter changed your life forever?",
+      "What is one thing you're glad you tried but would never do again?",
+      "Who's your go-to band or artist when you can't decide on something to listen to?",
+      "Where is the most interesting place you've been?",
+      "What social customs do you wish would just disappear?" ,
+      "What quirky things do people do where you are from?",
+      "What question do you always want to ask people but don't have the courage to ask? "
     ],
     "A": {
       "SUCCESS": [
@@ -297,8 +315,19 @@
         "Puh, I was a bit nervous there. But it turns out I have no reason to worry. I like to talk to you as well!",
         "You are a very nice person I must say. I hope you are not just being polite.",
         "Very nice. Did you know that people who have strong social connection live longer and happier? Keep it up man! ",
-        "Good to know it. Next time I come across a cozy vacation house with a fireplace in German Alps I will share the information with you and"
-
+        "Good to know it. Next time I come across a cozy vacation house with a fireplace in German Alps I will share the information with you and",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "FAILURE": [
         "",
@@ -310,7 +339,18 @@
         "Honestly, I am taken by surprise! But I love you anyway!",
         "Maybe you could come to visit me in Munich then. I would love to show you around",
         "Would you go travel around the world with me then? I find it better to travel with a friend.",
-
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
       ]
     },
     "FUP": {

@@ -46,8 +46,8 @@ public class BotBoyState extends State {
     private RandomList<Neo4jRelationship> roboyRelatioshipPredicates = new RandomList<>(FROM, MEMBER_OF, LIVE_IN, HAS_HOBBY, FRIEND_OF, CHILD_OF, SIBLING_OF);
     private final String UPDATE_KNOWN_PERSON = "knownPerson";
     private final String LEARN_ABOUT_PERSON = "newPerson";
-    private final RandomList<String> successResponsePhrases = new RandomList<>("Hey, I know you, %s!");
-    private final RandomList<String> failureResponsePhrases = new RandomList<>("Nice to meet you, %s!");
+    private final RandomList<String> successResponsePhrases = Verbalizer.KNOWN_PERSON_WITH_NAME;
+    private final RandomList<String> failureResponsePhrases = Verbalizer.NEW_PERSON_WITH_NAME;
 
     private final String TRANSITION_GREETING_DETECTED = "greetingDetected";
 
@@ -87,7 +87,7 @@ public class BotBoyState extends State {
         }else{
             String retrievedPersonalFact = "";
             Double segueProbability = 0.0;
-
+            String response = Verbalizer.privateGreetings.getRandomElement();
             // 4. check if person is known/familiar
             if (person.FAMILIAR) {
                 // 4a. person known/familiar
@@ -107,12 +107,9 @@ public class BotBoyState extends State {
                     next = getTransition(UPDATE_KNOWN_PERSON);
                 }
 
-                String retrievedRoboyFacts = getRoboyFactsPhrase(new Roboy(getMemory()));
+//                String retrievedRoboyFacts = getRoboyFactsPhrase(new Roboy(getMemory()));
                 Segue s = new Segue(Segue.SegueType.DISTRACT, segueProbability);
-
-                return Output.say(getResponsePhrase(person.getName(), person.FAMILIAR) + retrievedPersonalFact + " It is great to see you again!")
-                        .setEmotion(RoboyEmotion.positive.getRandomElement())
-                        .setSegue(s);
+                response += " " + getResponsePhrase(person.getName(), person.FAMILIAR);
             } else {
                 // 4b. person is not known
                 next = getTransition(LEARN_ABOUT_PERSON);
@@ -120,11 +117,11 @@ public class BotBoyState extends State {
 
                 String retrievedRoboyFacts = getRoboyFactsPhrase(new Roboy(getMemory()));
                 Segue s = new Segue(Segue.SegueType.DISTRACT, segueProbability);
+                response += " " + getResponsePhrase(person.getName(), person.FAMILIAR) + retrievedRoboyFacts;
 
-                return Output.say(getResponsePhrase(person.getName(), person.FAMILIAR) + retrievedPersonalFact + retrievedRoboyFacts)
-                        .setEmotion(RoboyEmotion.HAPPINESS)
-                        .setSegue(s);
             }
+            return Output.say(response)
+                    .setEmotion(RoboyEmotion.positive.getRandomElement());
         }
 
     }
@@ -170,6 +167,10 @@ public class BotBoyState extends State {
             if (properties.containsKey(future)) {
                 RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(future).toString().split(",")));
                 result += " " + String.format(infoValues.getSuccessAnswers(future).getRandomElement(), retrievedResult.getRandomElement());
+            }
+            if (properties.containsKey(dreams)) {
+                RandomList<String> retrievedResult = new RandomList<>(Arrays.asList(properties.get(dreams).toString().split(",")));
+                result += " " + String.format(infoValues.getSuccessAnswers(dreams).getRandomElement(), retrievedResult.getRandomElement());
             }
         }
 

@@ -42,7 +42,8 @@ import static roboy.memory.Neo4jProperty.*;
 public class PersonalInformationFollowUpState extends State {
 
     private QAJsonParser qaValues;
-    private Neo4jRelationship[] predicates = { FROM, HAS_HOBBY, WORK_FOR, STUDY_AT };
+    private RandomList<Neo4jRelationship> predicates = new RandomList<>( FROM, HAS_HOBBY, WORK_FOR, STUDY_AT, LIVE_IN,
+                                                FRIEND_OF, MEMBER_OF, WORK_FOR, OCCUPIED_AS, OTHER);
     private Neo4jRelationship selectedPredicate;
     private State nextState;
 
@@ -64,17 +65,17 @@ public class PersonalInformationFollowUpState extends State {
         Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         LOGGER.info("-> Retrieved Interlocutor: " + person.getName());
 
-        for (Neo4jRelationship predicate : predicates) {
+        for (Neo4jRelationship predicate : predicates.shuffle()) {
             if (person.hasRelationship(predicate) &&
-                    !getContext().DIALOG_INTENTS.contains(new IntentValue(INTENTS_HISTORY_ID, predicate)) &&
-                    !getContext().DIALOG_INTENTS.contains(new IntentValue(PersonalInformationAskingState.INTENTS_HISTORY_ID, predicate))) {
+                    !getContext().DIALOG_INTENTS.contains(new IntentValue(INTENTS_HISTORY_ID, predicate))
+                    && !getContext().DIALOG_INTENTS.contains(new IntentValue(PersonalInformationAskingState.INTENTS_HISTORY_ID, predicate))) {
                 selectedPredicate = predicate;
                 LOGGER.info(" -> Selected predicate: " + selectedPredicate.type);
                 break;
             }
         }
 
-        Segue s = new Segue(Segue.SegueType.DISTRACT, 1.0);
+        Segue s = new Segue(Segue.SegueType.DISTRACT, 0.8);
         if (selectedPredicate != null) {
             RandomList<String> questions = qaValues.getFollowUpQuestions(selectedPredicate);
             String retrievedResult = "";
@@ -139,7 +140,8 @@ public class PersonalInformationFollowUpState extends State {
         }
 
         nextState = getTransition(TRANSITION_INFO_UPDATED);
-        Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE);
+        Segue s = new Segue(Segue.SegueType.DISTRACT);
+
         if (!answer.isEmpty()) {
             return Output.say(answer).setSegue(s);
         } else {
