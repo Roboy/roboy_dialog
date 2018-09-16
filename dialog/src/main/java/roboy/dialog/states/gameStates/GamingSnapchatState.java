@@ -130,9 +130,8 @@ public class GamingSnapchatState extends GameState {
 
     @Override
     public Output cannotStartWarning() {
-        LOGGER.info("Trying to start Snapchat Game but ROS is not initialised.");
         Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE, 0.5);
-        return Output.say(Verbalizer.rosDisconnect.getRandomElement() + String.format("What a pity, %s. Snapchat is not possible right now. ",
+        return Output.say(Verbalizer.rosDisconnect.getRandomElement() + String.format("What a pity, %s. Snapchat is not possible right now.",
                 getContext().ACTIVE_INTERLOCUTOR.getValue().getName())).setSegue(s);
     }
 

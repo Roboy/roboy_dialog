@@ -17,8 +17,7 @@ public class ChooseGameState extends State {
 
 
     /*
-    Hey, if you want to add a new GameState, you will need to add your GameState into the HashMap EXISTING_GAME_MAP.
-    If you implemented it correctly, all should work here without problems :)
+    Hey, if you want to add a new GameState, you will need to add your GameState into the HashMap EXISTING_GAME_MAP. That should be it. Don't forget to increment the initialCapacity of the HashMap
      */
 
     private final static String TRANSITION_EXIT = "exitGame";
@@ -37,7 +36,7 @@ public class ChooseGameState extends State {
     //Can't fill this at constructor or static constructor level, so it is done in act()
     private void fillExistingGameMap(){
         if(EXISTING_GAME_MAP.isEmpty()){
-            //TODO find a better solution for the value, can we somehow get the transitions from the method cleanly?
+            //TODO find a better solution for the value, can we somehow get the transitions from the method cleanly? Should we convert it to Static?
             EXISTING_GAME_MAP.put("Akinator", (GameState) getTransition("chose20questions"));
             EXISTING_GAME_MAP.put("Snapchat", (GameState) getTransition("choseSnapchat"));
         }
@@ -49,18 +48,22 @@ public class ChooseGameState extends State {
 
         //Pick a game that is playable
         RandomList<String> randomList = new RandomList<String>();
-        randomList.addAll( //Streams to Filter, because why have Java 1.8 if we can't make use of it
+        randomList.addAll(
+                //Streams to Filter, because why have Java 1.8 if we can't make use of it
+                //Basically: Get all keys, turn that list into a stream, filter the stream by whether the key's value (the game) is capable of starting. Then put all those who can start into a random list.
                 EXISTING_GAME_MAP.keySet().stream().filter(s -> EXISTING_GAME_MAP.get(s).canStartGame())
                         .collect(Collectors.toCollection(RandomList::new)));
 
         //If no games are playable
         if(randomList.isEmpty()){
             LOGGER.info("No games available");
+
             suggestedGame = "exit";
             return Output.say("I do not think I know any games that are playable in this environment. Should I try again?");
         }
         //Choose a random game that is playable
         else{
+            LOGGER.debug(""+randomList.size()+" games are available to play");
             suggestedGame = randomList.getRandomElement();
             return Output.say(String.format(PhraseCollection.GAME_ASKING_PHRASES.getRandomElement(), suggestedGame));
         }
@@ -74,7 +77,7 @@ public class ChooseGameState extends State {
         Linguistics.UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
         String inputGame = inferGame(input);
 
-        //Should we try again?
+        //If no games can be played, should we try again?
         if(suggestedGame.equals("exit")){
             if(inputSentiment == Linguistics.UtteranceSentiment.NEGATIVE){
                 game = suggestedGame;
@@ -82,31 +85,15 @@ public class ChooseGameState extends State {
         }
         //If a game can be played...
         else {
-            //If you AGREE with the selected game, do this
+            //If you AGREE with the selected game, try to play the game
             if (inputSentiment == Linguistics.UtteranceSentiment.POSITIVE) {
-                //Can we run the game?
-                if(EXISTING_GAME_MAP.get(suggestedGame).canStartGame()) {
-                    game = suggestedGame;
-                    return Output.say(Verbalizer.startSomething.getRandomElement());
-                }
-                else{
-                    game = "exit";
-                    return EXISTING_GAME_MAP.get(suggestedGame).cannotStartWarning();
-                }
+                return attemptGameLaunch(suggestedGame);
             }
-            //If you suggested your OWN game, do this
+            //If you suggested your OWN game, try to play the game
             if (!inputGame.isEmpty()) {
-                //Can we run the game?
-                if(EXISTING_GAME_MAP.get(inputGame).canStartGame()) {
-                    game = inputGame;
-                    return Output.say(Verbalizer.startSomething.getRandomElement());
-                }
-                else{
-                    game = "exit";
-                    return EXISTING_GAME_MAP.get(inputGame).cannotStartWarning();
-                }
+                return attemptGameLaunch(inputGame);
             }
-            //If you DISAGREE with the game, quit...
+            //If you DISAGREE with the selected game, exit...
             if (inputSentiment == Linguistics.UtteranceSentiment.NEGATIVE) {
                 game = "exit";
             }
@@ -115,15 +102,34 @@ public class ChooseGameState extends State {
         return Output.sayNothing();
     }
 
+    private Output attemptGameLaunch(String inputGame) {
+        //Check if Game is playable
+        if(EXISTING_GAME_MAP.get(inputGame).canStartGame()) {
+            //If so, lets go start it
+            game = inputGame;
+            return Output.say(Verbalizer.startSomething.getRandomElement());
+        }
+        else{
+            //Else, quit and issue a warning
+            LOGGER.warn("Detected that the given game cannot be played for some reason");
+
+            game = "exit";
+            return EXISTING_GAME_MAP.get(inputGame).cannotStartWarning();
+        }
+    }
+
     @Override
     public State getNextState() {
+        //CASE: EXIT
         if(game.equals("exit")) {
             return getTransition(TRANSITION_EXIT);
         }
         else{
+            //Does game exist in Map --> Basically, should we launch a game...
             if(EXISTING_GAME_MAP.containsKey(game)) {
                 return getTransition(EXISTING_GAME_MAP.get(game).getTransitionName());
             }
+            //Or repeat this state again, because we need to check something
             else{
                 return this;
             }
@@ -142,20 +148,24 @@ public class ChooseGameState extends State {
     }
     
     private String inferGame(Interpretation input){
-    //VERY IMPORTANT: If your tags conflict, the one with higher priority in the hashmap shall be taken
+    //VERY IMPORTANT: If your tags conflict, the one which comes first in the Hash Map shall be taken, the other shall be ignored. If for some reason you have conflicting Tags, rewrite this method
         List<String> tokens = input.getTokens();
-        String game = "";
+        String inferredGame = "";
+        //If Tokens Exist
         if(tokens != null && !tokens.isEmpty()) {
+            //Get All Keys
             for (String key : EXISTING_GAME_MAP.keySet()) {
+                //Get all Tags from each Keys Value
                 for (String tag : EXISTING_GAME_MAP.get(key).getTags()) {
+                    //If Tag is found in tokens
                     if (tokens.contains(tag)) {
-                        game = key;
-                        return game;
+                        //Return the key/game
+                        return key;
                     }
                 }
             }
         }
-        return game;
+        return inferredGame;
     }
 
 
