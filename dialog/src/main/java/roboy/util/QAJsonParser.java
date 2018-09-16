@@ -92,15 +92,29 @@ public class QAJsonParser {
                 String jsonString = Resources.toString(url, Charsets.UTF_8);
                 JsonElement jsonTree = jsonParser.parse(jsonString);
                 Set<Map.Entry<String, JsonElement>> entrySet = ((JsonObject) jsonTree).entrySet();
-                Type listType = new TypeToken<RandomList<String>>() {
-                }.getType();
+                Type listType = new TypeToken<RandomList<String>>() {}.getType();
                 for (Map.Entry<String, JsonElement> entry : entrySet) {
 
-                    JsonElement questionsJson = entry.getValue().getAsJsonObject().get("Q").getAsJsonArray();
-                    JsonElement successAnswersJson = entry.getValue().getAsJsonObject().get("A").getAsJsonObject().get("SUCCESS");
-                    JsonElement failureAnswersJson = entry.getValue().getAsJsonObject().get("A").getAsJsonObject().get("FAILURE");
-                    JsonElement followUpQuestionsJson = entry.getValue().getAsJsonObject().get("FUP").getAsJsonObject().get("Q");
-                    JsonElement followUpAnswersJson = entry.getValue().getAsJsonObject().get("FUP").getAsJsonObject().get("A");
+                    JsonElement questionsJson = entry.getValue().getAsJsonObject().get("Q");
+                    if (questionsJson != null) {
+                        questionsJson = questionsJson.getAsJsonArray();
+                    }
+                    JsonElement successAnswersJson = entry.getValue().getAsJsonObject().get("A");
+                    if (successAnswersJson != null) {
+                        successAnswersJson = successAnswersJson.getAsJsonObject().get("SUCCESS");
+                    }
+                    JsonElement failureAnswersJson = entry.getValue().getAsJsonObject().get("A");
+                    if (failureAnswersJson != null) {
+                        failureAnswersJson = failureAnswersJson.getAsJsonObject().get("FAILURE");
+                    }
+                    JsonElement followUpQuestionsJson = entry.getValue().getAsJsonObject().get("FUP");
+                    if (followUpQuestionsJson != null) {
+                        followUpQuestionsJson = followUpQuestionsJson.getAsJsonObject().get("Q");
+                    }
+                    JsonElement followUpAnswersJson = entry.getValue().getAsJsonObject().get("FUP");
+                    if (followUpAnswersJson != null) {
+                        followUpAnswersJson = followUpAnswersJson.getAsJsonObject().get("A");
+                    }
 
                     questions.put(entry.getKey(), gson.fromJson(questionsJson, listType));
                     successAnswers.put(entry.getKey(), gson.fromJson(successAnswersJson, listType));
