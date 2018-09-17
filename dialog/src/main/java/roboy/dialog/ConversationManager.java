@@ -296,11 +296,14 @@ public class ConversationManager {
 
             //process command
             switch (command) {
-                case "shutdown"://gracefully say bye
+                case "shutdown"://shutdown system
                     for (Conversation c : conversations.values()) c.endConversation(true);
                     System.exit(0);
+                case "byeAndShutdown"://gracefully shut down by bowing out
+                    for (Conversation c : conversations.values()) c.endConversation(false);
+                    System.exit(0);
                 default:
-                    System.out.println("Command not found. Currently supported commands: shutdown");
+                    System.out.println("Command not found. Currently supported commands: shutdown, byeAndShutdown");
             }
         }
     }
