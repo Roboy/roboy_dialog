@@ -100,7 +100,7 @@ public class EmotionAnalyzer implements Analyzer {
 
         mean = vec.getWordVectorsMean(tokens);
         dMean = mean.data().asDouble();
-
+      
         //Calculated similarities without dropout
         double _beerSimilarity = cosineSimilarity(dMean, beerVec);
         double _sadSimilarity = cosineSimilarity(dMean, sadVec);

@@ -9,6 +9,9 @@ Loggers
 
 Currently the system relies on three different logging systems. The end user may configure the level of logging in Dialog's ``Config.Properties`` file. Current recommendations can be found in the ``README.MD`` file of Dialog.
 
+.. figure:: images/logcontroller.png
+  :alt: Log Controller UML
+
 .. seealso:: 
 
 Dialog
@@ -34,6 +37,9 @@ Dialog uses the Log4J, which is defined by the following levels.
 
 Parser
 -----------------------
+
+.. figure:: images/parserlogcontroller.png
+  :alt: Parser Log Controller 
 
 Parser uses a custom logging utility writen by `Percy Liang <https://github.com/percyliang/fig>`_. It has further been customized to have logging levels, provided by Log4J. See the ``edu/stanford/nlp/sempre/roboy/utils/logging/LogInfoToggle.java`` and ``edu/stanford/nlp/sempre/roboy/utils/logging/ParserLogController.java`` files for more information.
 
@@ -85,12 +91,13 @@ Developers should use a standardized policy when it comes to defining the loggin
 Level         Method        Level         Method        Level         Method        
 ============  ============  ============  ============  ============  ============  ===================================
 FATAL         lg.fatal()    SEVERE        lg.severe()   FATAL         lg.fail()     Problem requiring module to shutdown immidiately
-ERROR         lg.error()    -             Use WARNING   ERROR         lg.error()    Problem that requires recommends a shutdown, but is not forcibly required
+ERROR         lg.error()    —             Use WARNING   ERROR         lg.error()    Problem that requires recommends a shutdown, but is not forcibly required
 WARN          lg.warn()     WARNING       lg.warning()  WARN          lg.warning()  Unexpected behaviour that should be corrected, but is handlable for the program
 INFO          lg.info()     INFO          lg.info()     INFO          lg.log()      Information regarding the usage of module (e.g. Config Choices, Major Modules Loaded)
--             -             CONFIG        lg.config()   -             -             Avoid using this level
+—             —             CONFIG        lg.config()   —             —             Avoid using this level
 DEBUG         lg.debug()    FINE          lg.fine()     DEBUG         lg.dbg()      Information not directly relevant to execution of program, unless debugging. This includes tests and parsing details.
 ============  ============  ============  ============  ============  ============  ===================================
 
 
 .. note:: Refrain from using any lower levels
+
