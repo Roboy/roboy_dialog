@@ -6,29 +6,10 @@ import com.google.gson.JsonParser;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Translate  {
-    static final String KEY = keyGetter.getKey("translatekey");
-
-
-    //Language: Either Language code such as DE or language name. Text is the text to translate
-    public static String getData(String text, String language) throws Exception {
-        StringBuilder result = new StringBuilder();
-        URL url = new URL(APIify(text, handleLanguage(language)));
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("POST");
-        BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        String line;
-        while ((line = rd.readLine()) != null) {
-            result.append(line);
-        }
-        rd.close();
-
-        Object jsonObject = ((JsonObject) new JsonParser().parse(result.toString())).get("text").getAsJsonArray().get(0).getAsString();
-//        System.out.println(jsonObject);
-        return jsonObject.toString();
-    }
+public class Translate extends APIHandler {
 
     private static String handleLanguage(String language) {
         switch (language.toLowerCase()){
@@ -128,13 +109,26 @@ public class Translate  {
         }
     }
 
-    private static String APIify(String text, String targetLang){
-        String s = String.format("https://translate.yandex.net/api/v1.5/tr.json/translate?key=%s&text=%s&lang=%s", KEY, text.replace(" ", "%20"), targetLang);
-//        System.out.println(s);
-        return s;
+    @Override
+    public URL getAPIURL(String APIKey, String... arguments) throws MalformedURLException {
+        return new URL((String.format("https://translate.yandex.net/api/v1.5/tr.json/translate?key=%s&text=%s&lang=%s", APIKey, arguments[0].replace(" ", "%20"), handleLanguage(arguments[1]))));
     }
 
-    public static void main(String[] args) throws Exception{
-        System.out.println(getData("cheese is the best vegetable", "german"));
+    @Override
+    public String handleJSON(String JSON, String... arguments) {
+        Object jsonObject = ((JsonObject) new JsonParser().parse(JSON)).get("text").getAsJsonArray().get(0).getAsString();
+        return jsonObject.toString();
+    }
+
+    @Override
+    public String getKeyName() {
+        return "translatekey";
+    }
+
+
+    @Override
+    public void validateArguments(String[] apiArg, String[] hJSONArgs) throws IllegalArgumentException {
+        if(apiArg.length==2 && hJSONArgs==null);
+        else throw new IllegalArgumentException("API Arg expects a phrase and a language as its argument, JSON Arguments expects null as argument");
     }
 }
