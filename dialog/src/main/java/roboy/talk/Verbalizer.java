@@ -70,7 +70,11 @@ public class Verbalizer {
 	
 	public static final RandomList<String> farewells = new RandomList<>(
 			"ciao", "goodbye", "cheerio", "bye",
-            "see you", "farewell", "bye-bye");
+            "see you", "farewell", "bye-bye", "What a nice conversation! I have to think about everything we" +
+			" were talking about. Let's talk again next time.",
+			"I feel tired now, maybe my battery is low? Let's talk again later.",
+			"Don't you think that the dialog team is amazing? They are happy to " +
+					"tell you more about my system. Just ask one of them!");
 	
 	private static final RandomList<String> segues =
             new RandomList<>("talking about ","since you mentioned ","on the topic of ");
