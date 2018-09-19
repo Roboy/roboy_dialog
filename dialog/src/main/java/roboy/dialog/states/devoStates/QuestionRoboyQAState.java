@@ -109,7 +109,7 @@ public class QuestionRoboyQAState extends ExpoState {
             Linguistics.ParsingOutcome parseOutcome = input.getParsingOutcome();
             if (parseOutcome == null) {
                 LOGGER.error("Invalid parser outcome!");
-                return Output.say("Invalid parser outcome!");
+                return Output.useFallback();
             }
 
             if (parseOutcome == Linguistics.ParsingOutcome.SUCCESS) {
