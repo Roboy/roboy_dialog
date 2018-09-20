@@ -1,0 +1,20 @@
+{
+  "initialState": "StoryTelling",
+  "states": [
+    {
+      "identifier": "StoryTelling",
+      "implementation": "roboy.dialog.states.eventStates.StoryTellingState",
+      "transitions": {
+        "next": "StoryTelling"
+      },
+      "parameters": {
+        "stories": "oh boy roboy=/home/pi/test.wav"
+      }
+    },
+    {
+      "identifier": "WildTalk",
+      "implementation": "roboy.dialog.states.ordinaryStates.WildTalkState",
+      "transitions": {}
+    }
+  ]
+}

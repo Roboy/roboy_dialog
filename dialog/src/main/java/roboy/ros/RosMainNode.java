@@ -114,6 +114,36 @@ public class RosMainNode extends AbstractNodeMain {
         return ((boolean) resp);
     }
 
+    public boolean PlaySoundFile(String filename) {
+
+        if(services.notInitialized(RosServiceClients.SOUNDPLAY)) {
+            // FALLBACK RETURN VALUE
+            return false;
+        }
+
+        ServiceClient<TalkRequest, TalkResponse> soundClient = services.getService(RosServiceClients.SOUNDPLAY);
+        rosConnectionLatch = new CountDownLatch(1);
+        TalkRequest request = soundClient.newMessage();
+        request.setText(filename);
+        ServiceResponseListener<TalkResponse> listener = new ServiceResponseListener<TalkResponse>() {
+            @Override
+            public void onSuccess(TalkResponse response) {
+//                System.out.println(response.getSuccess());
+                resp = response.getSuccess();
+                rosConnectionLatch.countDown();
+            }
+
+            @Override
+            public void onFailure(RemoteException e) {
+                rosConnectionLatch.countDown();
+                throw new RosRuntimeException(e);
+            }
+        };
+        soundClient.call(request,  listener);
+        waitForLatchUnlock(rosConnectionLatch, soundClient.getName().toString());
+        return ((boolean) resp);
+    }
+
     public String RecognizeSpeech() {
 
         if(services.notInitialized(RosServiceClients.STT)) {

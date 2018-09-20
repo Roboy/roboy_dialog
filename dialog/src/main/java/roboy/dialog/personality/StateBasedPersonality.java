@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import roboy.context.Context;
 import roboy.dialog.action.Action;
 import roboy.dialog.action.EmotionAction;
+import roboy.dialog.action.SoundAction;
 import roboy.dialog.action.SpeechAction;
 import roboy.dialog.states.definitions.MonologState;
 import roboy.linguistics.sentenceanalysis.Interpretation;
@@ -20,6 +21,7 @@ import roboy.talk.PhraseCollection;
 import roboy.talk.Verbalizer;
 
 import java.util.*;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Implementation of Personality based on a DialogStateMachine.
@@ -43,6 +45,8 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
     private final Verbalizer verbalizer;
 
     private boolean stopTalking;
+
+    private ReentrantLock lock = new ReentrantLock();
 
 
     public StateBasedPersonality(InferenceEngine inference, RosMainNode rosMainNode, Neo4jMemoryInterface memory, Context context, Verbalizer verb) {
@@ -160,6 +164,8 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
             // change emotional expression based on input
             answerActions.add(new EmotionAction(input.getEmotion()));
         }
+
+
         String sentence = input.getSentence();
         if (StatementInterpreter.isFromList(sentence, Verbalizer.farewells)) {
             // stop conversation once the interlocutor says a farewell
@@ -170,7 +176,9 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
 
 
         // ACTIVE STATE REACTS TO INPUT
+        lock.lock();
         stateReact(activeState, input, answerActions);
+        lock.unlock();
 
         // MOVE TO THE NEXT STATE
         State next = activeState.getNextState();
@@ -235,6 +243,10 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
         // add emotion action to the output if defined
         if (act.hasEmotion()) {
             previousActions.add(new EmotionAction(act.getEmotion()));
+        }
+
+        if(act.hasSound()) {
+            previousActions.add(new SoundAction(act.getSoundFilename()));
         }
     }
 
@@ -328,6 +340,10 @@ public class StateBasedPersonality extends DialogStateMachine implements Persona
         // add emotion action to the output if defined
         if (react.hasEmotion()) {
             previousActions.add(new EmotionAction(react.getEmotion()));
+        }
+
+        if(react.hasSound()) {
+            previousActions.add(new SoundAction(react.getSoundFilename()));
         }
     }
 

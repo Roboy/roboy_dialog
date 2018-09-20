@@ -71,6 +71,7 @@ public abstract class State {
         private final Interpretation interpretation;
         private Segue segue;
         private RoboyEmotion emotion;
+        private String sound;
 
         /**
          * Private constructor, used only inside static methods.
@@ -225,6 +226,18 @@ public abstract class State {
         }
         public boolean hasEmotion() { return emotion != null; }
         public RoboyEmotion getEmotion() { return emotion; }
+
+        public Output addSound(String filename) {
+            if (type == OutputType.USE_FALLBACK) {
+                logger.warn("Adding a sound to an answer that requires fallback is not allowed! " +
+                        "Sound behaviour is defined in the fallback state.");
+            }
+            this.sound = filename;
+            return this;
+        }
+
+        public boolean hasSound() {return sound != null; }
+        public String getSoundFilename() { return sound; }
 
     }
 

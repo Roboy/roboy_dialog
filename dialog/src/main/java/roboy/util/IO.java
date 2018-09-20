@@ -95,6 +95,9 @@ public class IO {
 				case "telegram":
 					outputs.add(new TelegramOutput(uuid));
 					break;
+				case "sound":
+					outputs.add(new SoundOutput(rosMainNode));
+					break;
 				default:
 					outputs.add(new CommandLineOutput());
 			}

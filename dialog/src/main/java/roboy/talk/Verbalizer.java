@@ -46,7 +46,7 @@ public class Verbalizer {
             new RandomList<>("yes", "I do", "sure", "of course", " go ahead");
 
 	public static final RandomList<String> denial =
-            new RandomList<>("no", "nope", "later", "other time", "not");
+            new RandomList<>("no", "nope", "later", "other time", "not", "next time", "nah");
 
 	// triggers that will start the conversation
 	public static final RandomList<String> triggers =
@@ -83,6 +83,24 @@ public class Verbalizer {
 					"howdy humans?",
 					"hey hey hey you there!",
 					"Hey! I was looking for someone to chat.");
+
+	public static final RandomList<String> askForFeedback =
+			new RandomList<>("So, how did you find it?",
+					"did you like it?",
+					"what do you think? was it good?",
+					"here it is. i hope you enjoyed it. did you?",
+					"what do you thing? was it good, bad, excellent?");
+
+	public static final RandomList<String> takePositiveFeedback =
+			new RandomList<>("Yay! That is amazing!",
+					"Good, I was worried for a second",
+					"Thank you, thank you.",
+					"Oh, thanks, that makes me a bit happier");
+
+	public static final RandomList<String> takeNegativeFeedback =
+			new RandomList<>("uh-oh, alright then.",
+					"Okay, thank you for being honest",
+					"Got it, will note it for the future");
 	
 	private SpeechAction greet(Interpretation interpretation){
 		return new SpeechAction(StatementBuilder.random(greetings));
@@ -126,7 +144,8 @@ public class Verbalizer {
 	}
 
 	public static final RandomList<String> startSomething =
-			new RandomList<>("Let's go. ", "Can't wait to start. ", "Nice, let's start. ", "Yeah, let's go. "
+			new RandomList<>("Let's go. ", "Can't wait to start. ", "Nice, let's start. ", "Yeah, let's go. ",
+					"Alright, here we go.", "You asked for it.", "Let's do it!"
 			);
 
 	public static final RandomList<String> userIsSure =
