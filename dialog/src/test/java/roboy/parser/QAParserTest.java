@@ -4,7 +4,6 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import roboy.memory.Neo4jRelationship;
-import roboy.util.JsonEntryModel;
 import roboy.util.QAJsonParser;
 
 import java.io.*;
@@ -52,11 +51,6 @@ public class QAParserTest {
         parser = new QAJsonParser(path);
     }
 
-    @Test
-    public void testEntryEquivalency() {
-        // TODO: Check entry equivalence with mock class
-        JsonEntryModel IS = new JsonEntryModel();
-    }
 
     @Test
     public void testQuestions() {

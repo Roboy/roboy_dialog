@@ -13,6 +13,7 @@ import roboy.linguistics.Linguistics;
 import roboy.linguistics.Linguistics.SemanticRole;
 import roboy.linguistics.Triple;
 import roboy.linguistics.sentenceanalysis.Interpretation;
+import roboy.logic.StatementInterpreter;
 import roboy.memory.Neo4jRelationship;
 import roboy.memory.Neo4jProperty;
 import roboy.memory.nodes.Interlocutor;
@@ -66,7 +67,8 @@ public class QuestionRoboyQAState extends ExpoState {
     private final static String TRANSITION_LOOP_TO_NEW_PERSON = "loopToNewPerson";
     private final static String TRANSITION_LOOP_TO_KNOWN_PERSON = "loopToKnownPerson";
     private final static String TRANSITION_SWITCH_TO_GAMING = "switchToGaming";
-    private final static int MAX_NUM_OF_QUESTIONS = 5;
+    private final static String TRANSITION_STORY = "tellStory";
+    private final static int MAX_NUM_OF_QUESTIONS = 3;
     private int questionsAnswered = 0;
 
     private final static RandomList<String> reenteringPhrases = PhraseCollection.QUESTION_ANSWERING_REENTERING;
@@ -77,6 +79,8 @@ public class QuestionRoboyQAState extends ExpoState {
     private String answerAfterUnspecifiedQuestion = ""; // the answer to use if specifying question is answered with YES
     private boolean offeredGame = false;
     private boolean userWantsGame = false;
+    private boolean offeredStory = false;
+    private boolean userWantsStory = false;
 
     private QAJsonParser infoValues;
 
@@ -89,9 +93,13 @@ public class QuestionRoboyQAState extends ExpoState {
 
     @Override
     public Output act() {
-        if (Math.random() < 0.1) {
+        if (Math.random() < 0.3) {
             offeredGame = true;
             return Output.say(PhraseCollection.OFFER_GAME_PHRASES.getRandomElement());
+        }
+        if(Math.random() < 0.6) {
+            offeredStory = true;
+            return Output.say(Verbalizer.confirmStory.getRandomElement());
         }
         return Output.sayNothing();
     }
@@ -113,6 +121,15 @@ public class QuestionRoboyQAState extends ExpoState {
             }
             else {
                 return Output.sayNothing().setEmotion(RoboyEmotion.SADNESS);
+            }
+        }
+
+        if (offeredStory || input.getTokens().contains("story") || input.getTokens().contains("interesting")) {
+            if (StatementInterpreter.isFromList(input.getSentence(), Verbalizer.consent)) {
+                questionsAnswered++;
+                userWantsStory = true;
+                offeredGame = false;
+                return Output.say(Verbalizer.startSomething.getRandomElement());
             }
         }
 
@@ -161,7 +178,12 @@ public class QuestionRoboyQAState extends ExpoState {
     @Override
     public State getNextState() {
         if (userWantsGame) {
+            userWantsGame = false;
             return getTransition(TRANSITION_SWITCH_TO_GAMING);
+        }
+        if (userWantsStory) {
+            userWantsStory = false;
+            return getTransition(TRANSITION_STORY);
         }
         if (questionsAnswered > MAX_NUM_OF_QUESTIONS) { // enough questions answered --> finish asking
             questionsAnswered = 0;

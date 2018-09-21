@@ -6918,3 +6918,77 @@
 {"features":" {score:0.13518829246017713} ","formula":"!property:city","lexeme":"city","type":"DataProp"}
 {"features":" {score:0.007118905612640406} ","formula":"!property:place","lexeme":"place","type":"ObjProp"}
 {"features":" {score:0.006745657462310337} ","formula":"property:university","lexeme":"university","type":"DataProp"}
+{"features":" {score:0.039105719999382775} ","formula":"(rdf:type dbpedia:Airport)","lexeme":"airport","type":"ClassNoun"}
+{"features":" {score:0.0048526863084922016} ","formula":"property:film","lexeme":"film","type":"DataProp"}
+{"features":" {score:0.13518829246017713} ","formula":"property:city","lexeme":"city","type":"DataProp"}
+{"features":" {score:0.006745657462310337} ","formula":"!property:university","lexeme":"university","type":"ObjProp"}
+{"features":" {score:0.006745657462310337} ","formula":"(rdf:type dbpedia:University)","lexeme":"university","type":"ClassNoun"}
+{"features":" {score:0.13518829246017713} ","formula":"(rdf:type dbpedia:City)","lexeme":"city","type":"ClassNoun"}
+{"features":" {score:0.13518829246017713} ","formula":"!dbpedia:city","lexeme":"city","type":"ObjectProp"}
+{"features":" {score:0.13518829246017713} ","formula":"!property:city","lexeme":"city","type":"ObjProp"}
+{"features":" {score:0.02476466395722725} ","formula":"property:municipality","lexeme":"municipality","type":"DataProp"}
+{"features":" {score:0.007118905612640406} ","formula":"!property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.0048526863084922016} ","formula":"!property:film","lexeme":"film","type":"DataProp"}
+{"features":" {score:0.6244656133828996} ","formula":"resource:Munich","lexeme":"munich","type":"NamedEntity"}
+{"features":" {score:0.007118905612640406} ","formula":"property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.02476466395722725} ","formula":"dbpedia:municipality","lexeme":"municipality","type":"ObjectProp"}
+{"features":" {score:0.02476466395722725} ","formula":"!dbpedia:municipality","lexeme":"municipality","type":"ObjectProp"}
+{"features":" {score:0.007118905612640406} ","formula":"(rdf:type dbpedia:Place)","lexeme":"place","type":"ClassNoun"}
+{"features":" {score:0.5156482342007435} ","formula":"resource:Ludwig_Maximilian_University_of_Munich","lexeme":"ludwig maximilian university of munich","type":"NamedEntity"}
+{"features":" {score:0.02476466395722725} ","formula":"!property:municipality","lexeme":"municipality","type":"ObjProp"}
+{"features":" {score:0.006745657462310337} ","formula":"property:university","lexeme":"university","type":"ObjProp"}
+{"features":" {score:0.006745657462310337} ","formula":"!dbpedia:university","lexeme":"university","type":"ObjectProp"}
+{"features":" {score:0.0048526863084922016} ","formula":"property:film","lexeme":"film","type":"ObjProp"}
+{"features":" {score:0.0048526863084922016} ","formula":"!property:film","lexeme":"film","type":"ObjProp"}
+{"features":" {score:0.3574573272887659} ","formula":"resource:1972_Summer_Olympics","lexeme":"1972 summer olympics","type":"NamedEntity"}
+{"features":" {score:0.0048526863084922016} ","formula":"!dbpedia:film","lexeme":"film","type":"ObjectProp"}
+{"features":" {score:0.0048526863084922016} ","formula":"dbpedia:film","lexeme":"film","type":"ObjectProp"}
+{"features":" {score:0.13518829246017713} ","formula":"dbpedia:city","lexeme":"city","type":"ObjectProp"}
+{"features":" {score:0.006745657462310337} ","formula":"dbpedia:university","lexeme":"university","type":"ObjectProp"}
+{"features":" {score:0.02476466395722725} ","formula":"!property:municipality","lexeme":"municipality","type":"DataProp"}
+{"features":" {score:0.5069005576208179} ","formula":"resource:Munich_Agreement","lexeme":"munich agreement","type":"NamedEntity"}
+{"features":" {score:0.02476466395722725} ","formula":"(rdf:type dbpedia:Municipality)","lexeme":"municipality","type":"ClassNoun"}
+{"features":" {score:0.006745657462310337} ","formula":"!property:university","lexeme":"university","type":"DataProp"}
+{"features":" {score:0.02476466395722725} ","formula":"property:municipality","lexeme":"municipality","type":"ObjProp"}
+{"features":" {score:0.007118905612640406} ","formula":"property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.5222235130111524} ","formula":"resource:FC_Bayern_Munich","lexeme":"fc bayern munich","type":"NamedEntity"}
+{"features":" {score:0.13518829246017713} ","formula":"property:city","lexeme":"city","type":"ObjProp"}
+{"features":" {score:0.13518829246017713} ","formula":"!property:city","lexeme":"city","type":"DataProp"}
+{"features":" {score:0.007118905612640406} ","formula":"!property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.006745657462310337} ","formula":"property:university","lexeme":"university","type":"DataProp"}
+{"features":" {score:0.024354053257352713} ","formula":"property:economy","lexeme":"economy","type":"ObjProp"}
+{"features":" {score:0.024354053257352713} ","formula":"property:economy","lexeme":"economy","type":"DataProp"}
+{"features":" {score:0.019684884847898314} ","formula":"property:case","lexeme":"case","type":"ObjProp"}
+{"features":" {score:0.04119084299478716} ","formula":"!property:nation","lexeme":"nation","type":"DataProp"}
+{"features":" {score:0.04307977245656418} ","formula":"property:state","lexeme":"state","type":"DataProp"}
+{"features":" {score:0.018446601941747572} ","formula":"!property:market","lexeme":"market","type":"DataProp"}
+{"features":" {score:0.04307977245656418} ","formula":"!property:state","lexeme":"state","type":"ObjProp"}
+{"features":" {score:0.019684884847898314} ","formula":"!property:case","lexeme":"case","type":"DataProp"}
+{"features":" {score:0.12119717597961427} ","formula":"dbpedia:kingdom","lexeme":"kingdom","type":"ObjectProp"}
+{"features":" {score:0.02330097087378641} ","formula":"(rdf:type dbpedia:Place)","lexeme":"place","type":"ClassNoun"}
+{"features":" {score:0.019684884847898314} ","formula":"!property:case","lexeme":"case","type":"ObjProp"}
+{"features":" {score:0.02330097087378641} ","formula":"!property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.04307977245656418} ","formula":"dbpedia:state","lexeme":"state","type":"ObjectProp"}
+{"features":" {score:0.02330097087378641} ","formula":"property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.019684884847898314} ","formula":"property:case","lexeme":"case","type":"DataProp"}
+{"features":" {score:0.12119717597961427} ","formula":"!dbpedia:kingdom","lexeme":"kingdom","type":"ObjectProp"}
+{"features":" {score:0.04307977245656418} ","formula":"property:state","lexeme":"state","type":"ObjProp"}
+{"features":" {score:0.018446601941747572} ","formula":"property:market","lexeme":"market","type":"DataProp"}
+{"features":" {score:0.024354053257352713} ","formula":"!property:economy","lexeme":"economy","type":"ObjProp"}
+{"features":" {score:0.3600622212941572} ","formula":"\u003chttp://dbpedia.org/resource/Galicia_(Eastern_Europe)\u003e","lexeme":"galicia eastern europe","type":"NamedEntity"}
+{"features":" {score:0.04119084299478716} ","formula":"!property:nation","lexeme":"nation","type":"ObjProp"}
+{"features":" {score:0.3138386448463968} ","formula":"resource:Odessa","lexeme":"odessa","type":"NamedEntity"}
+{"features":" {score:0.04119084299478716} ","formula":"property:nation","lexeme":"nation","type":"DataProp"}
+{"features":" {score:0.024354053257352713} ","formula":"!property:economy","lexeme":"economy","type":"DataProp"}
+{"features":" {score:0.018446601941747572} ","formula":"property:market","lexeme":"market","type":"ObjProp"}
+{"features":" {score:0.38531734665303335} ","formula":"resource:Ukrainian_Soviet_Socialist_Republic","lexeme":"ukrainian soviet socialist republic","type":"NamedEntity"}
+{"features":" {score:0.04307977245656418} ","formula":"!dbpedia:state","lexeme":"state","type":"ObjectProp"}
+{"features":" {score:0.3847475641953887} ","formula":"resource:Kiev","lexeme":"kiev","type":"NamedEntity"}
+{"features":" {score:0.04307977245656418} ","formula":"!property:state","lexeme":"state","type":"DataProp"}
+{"features":" {score:0.6268662072925639} ","formula":"resource:Ukraine","lexeme":"ukraine","type":"NamedEntity"}
+{"features":" {score:0.04119084299478716} ","formula":"property:nation","lexeme":"nation","type":"ObjProp"}
+{"features":" {score:0.02330097087378641} ","formula":"!property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.04307977245656418} ","formula":"(rdf:type dbpedia:State)","lexeme":"state","type":"ClassNoun"}
+{"features":" {score:0.019684884847898314} ","formula":"(rdf:type dbpedia:Case)","lexeme":"case","type":"ClassNoun"}
+{"features":" {score:0.02330097087378641} ","formula":"property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.018446601941747572} ","formula":"!property:market","lexeme":"market","type":"ObjProp"}

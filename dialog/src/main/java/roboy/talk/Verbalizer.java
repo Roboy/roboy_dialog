@@ -180,6 +180,10 @@ public class Verbalizer {
 			new RandomList<>("I am Roboy. Happy to be here! ", "My name is Roboy. Thank you for having me! ", "You can call me Roboy. What a nice place here. "
 			);
 
+	public static final RandomList<String> confirmStory =
+			new RandomList<>("Alright, story then you get a story.",
+					"My pleasure to tell you a story");
+
 	private Interpretation verbalizeDates(Interpretation interpretation){
 		StringBuilder sb = new StringBuilder();
 		String sentence = interpretation.getSentence();

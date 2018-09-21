@@ -51,7 +51,7 @@ public class ActiveIntroState extends MonologState {
     private boolean checkPplAround(){
 
         try {
-
+            logger.info("People around: " + getContext().CROWD_DETECTION.getLastValue().getData());
             return getContext().CROWD_DETECTION.getLastValue().getData() >= MIN_NUMBER_PEOPLE;
 
         } catch(NullPointerException e){
