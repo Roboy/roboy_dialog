@@ -80,7 +80,7 @@
     },
     {
       "identifier": "TellStory",
-      "implementation": "roboy.dialog.states.gameStates.StoryTellingState",
+      "implementation": "roboy.dialog.states.eventStates.StoryTellingState",
       "transitions": {
         "next" : "PersonalQA"
       },
