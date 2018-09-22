@@ -15,6 +15,7 @@ import roboy.util.ConfigManager;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -96,6 +97,11 @@ public class Conversation extends Thread {
         } else {//if this is an initial start
             actions = personality.startConversation();
             logger.info("############# Conversation started ############");
+            try {
+                System.in.read();
+            } catch (IOException e) {
+                logger.error(e.getMessage());
+            }
         }
 
         while (isRunning) {
