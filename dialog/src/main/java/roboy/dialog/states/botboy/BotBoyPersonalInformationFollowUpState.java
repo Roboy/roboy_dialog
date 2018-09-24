@@ -113,7 +113,7 @@ public class BotBoyPersonalInformationFollowUpState extends State {
         Interlocutor person = getContext().ACTIVE_INTERLOCUTOR.getValue();
         LOGGER.info("-> Retrieved Interlocutor: " + person.getName());
         RandomList<String> answers;
-        String answer = "I have no words";
+        String answer = "";
         String result = InferUpdateResult(input);
 
         if (selectedPredicate != null) {
@@ -139,6 +139,11 @@ public class BotBoyPersonalInformationFollowUpState extends State {
 
         nextState = getTransition(TRANSITION_INFO_UPDATED);
         Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE);
+
+        if (answer.equals("")) {
+            return Output.useFallback();
+        }
+
         return Output.say(answer).setSegue(s);
     }
 
