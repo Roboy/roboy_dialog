@@ -3,6 +3,7 @@ package roboy.util.api;
 import org.apache.commons.configuration2.YAMLConfiguration;
 import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.apache.logging.log4j.Logger;
+import roboy.util.ConfigManager;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -49,7 +50,7 @@ public abstract class APIHandler {
 
         static String getKey(String key) {
             try {
-                yamlConfiguration.read(new FileReader("resources/knowledgebase/apiKeys.yml"));
+                yamlConfiguration.read(new FileReader(ConfigManager.EXTERNAL_API_KEY_LIST));
             } catch (ConfigurationException e) {
                 logger.error("Config File contains Errors");
                 logger.error(e.getMessage());
