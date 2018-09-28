@@ -197,7 +197,7 @@ If you wish to have more detailed information, please view the [docs page](https
 
 ### Enabling External APIs
 
-If you want to set external APIs, you will have to create an `APIkeys.yml` file containing all the keys. For more information, see the [relevant documentation page](https://roboydialog.readthedocs.io/en/devel/user_manual/2_configuration.html#enabling-external-apis)
+If you want to set external APIs, you will have to create an `api.key` file containing all the keys. For more information, see the [relevant documentation page](https://roboydialog.readthedocs.io/en/devel/user_manual/2_configuration.html#enabling-external-apis)
 
 ## Troubleshooting
 

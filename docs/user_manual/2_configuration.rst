@@ -130,7 +130,7 @@ Roboy Dialog supports multiple external APIs. At the present moment, three exter
 - The Movie DB
 - Yandex Translate
 
-If you wish to have Roboy be able to tell the weather, tell you upcoming movies and translate, you have to register on these websites, generate an API key and denote the key in the ``resources/knowledgebase/apiKeys.yml`` file. There you shall replace the ``xxxxxxx`` portions with your key. 
+If you wish to have Roboy be able to tell the weather, tell you upcoming movies and translate, you have to register on these websites, generate an API key and denote the key in the ``resources/knowledgebase/api.key`` file. There you shall replace the ``xxxxxxx`` portions with your key.
 
 .. warning:: 
     Do not upload any changes to the apiKey file to Git. Consequences will be severe...
