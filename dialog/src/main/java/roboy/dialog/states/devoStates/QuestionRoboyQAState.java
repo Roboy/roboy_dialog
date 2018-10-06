@@ -93,11 +93,11 @@ public class QuestionRoboyQAState extends ExpoState {
 
     @Override
     public Output act() {
-        if (Math.random() < 0.3) {
+        if (Math.random() < 0) {
             offeredGame = true;
             return Output.say(PhraseCollection.OFFER_GAME_PHRASES.getRandomElement());
         }
-        if(Math.random() < 0.6) {
+        if(Math.random() < 0.05) {
             offeredStory = true;
             return Output.say(Verbalizer.confirmStory.getRandomElement());
         }

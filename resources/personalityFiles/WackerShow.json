@@ -35,7 +35,7 @@
       "transitions": {
         "newPerson": "InterlocutorIntro",
         "math": "Math",
-        "game": "ChooseGameState",
+        "game": "PersonalQA",
         "objectDetected": "ObjectDetection",
         "personalQA": "PersonalQA",
         "generalQA": "GeneralQA"

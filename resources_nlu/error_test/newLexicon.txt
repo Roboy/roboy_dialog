@@ -6992,3 +6992,109 @@
 {"features":" {score:0.019684884847898314} ","formula":"(rdf:type dbpedia:Case)","lexeme":"case","type":"ClassNoun"}
 {"features":" {score:0.02330097087378641} ","formula":"property:place","lexeme":"place","type":"DataProp"}
 {"features":" {score:0.018446601941747572} ","formula":"!property:market","lexeme":"market","type":"ObjProp"}
+{"features":" {score:0.04497633274836032} ","formula":"dbpedia:school","lexeme":"school","type":"ObjectProp"}
+{"features":" {score:0.004000398279457181} ","formula":"property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.23928566465179055} ","formula":"!dbpedia:state","lexeme":"state","type":"ObjectProp"}
+{"features":" {score:0.01571197572250911} ","formula":"dbpedia:team","lexeme":"team","type":"ObjectProp"}
+{"features":" {score:0.020602241780125662} ","formula":"(rdf:type dbpedia:Area)","lexeme":"area","type":"ClassNoun"}
+{"features":" {score:0.06181670468015462} ","formula":"!property:university","lexeme":"university","type":"DataProp"}
+{"features":" {score:0.004000398279457181} ","formula":"property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.12948527336120605} ","formula":"(rdf:type dbpedia:District)","lexeme":"district","type":"ClassNoun"}
+{"features":" {score:0.5720439401120807} ","formula":"resource:Michigan","lexeme":"michigan","type":"NamedEntity"}
+{"features":" {score:0.020602241780125662} ","formula":"property:area","lexeme":"area","type":"DataProp"}
+{"features":" {score:0.004000398279457181} ","formula":"(rdf:type dbpedia:Place)","lexeme":"place","type":"ClassNoun"}
+{"features":" {score:0.06181670468015462} ","formula":"property:university","lexeme":"university","type":"DataProp"}
+{"features":" {score:0.020602241780125662} ","formula":"property:area","lexeme":"area","type":"ObjProp"}
+{"features":" {score:0.23928566465179055} ","formula":"!property:state","lexeme":"state","type":"DataProp"}
+{"features":" {score:0.004000398279457181} ","formula":"!property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.04497633274836032} ","formula":"!property:school","lexeme":"school","type":"DataProp"}
+{"features":" {score:0.13264328241348267} ","formula":"(rdf:type dbpedia:Community)","lexeme":"community","type":"ClassNoun"}
+{"features":" {score:0.04497633274836032} ","formula":"property:school","lexeme":"school","type":"DataProp"}
+{"features":" {score:0.06181670468015462} ","formula":"dbpedia:university","lexeme":"university","type":"ObjectProp"}
+{"features":" {score:0.4286662644078575} ","formula":"resource:Detroit","lexeme":"detroit","type":"NamedEntity"}
+{"features":" {score:0.020602241780125662} ","formula":"!property:area","lexeme":"area","type":"ObjProp"}
+{"features":" {score:0.00760847769190393} ","formula":"!dbpedia:jurisdiction","lexeme":"jurisdiction","type":"ObjectProp"}
+{"features":" {score:0.23928566465179055} ","formula":"property:state","lexeme":"state","type":"DataProp"}
+{"features":" {score:0.00760847769190393} ","formula":"dbpedia:jurisdiction","lexeme":"jurisdiction","type":"ObjectProp"}
+{"features":" {score:0.014931363700492493} ","formula":"property:program","lexeme":"program","type":"ObjProp"}
+{"features":" {score:0.014931363700492493} ","formula":"property:program","lexeme":"program","type":"DataProp"}
+{"features":" {score:0.5430869601583628} ","formula":"resource:University_of_Michigan","lexeme":"university of michigan","type":"NamedEntity"}
+{"features":" {score:0.004000398279457181} ","formula":"!property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.23928566465179055} ","formula":"!property:state","lexeme":"state","type":"ObjProp"}
+{"features":" {score:0.04497633274836032} ","formula":"!property:school","lexeme":"school","type":"ObjProp"}
+{"features":" {score:0.00760847769190393} ","formula":"!property:jurisdiction","lexeme":"jurisdiction","type":"ObjProp"}
+{"features":" {score:0.00760847769190393} ","formula":"property:jurisdiction","lexeme":"jurisdiction","type":"ObjProp"}
+{"features":" {score:0.020602241780125662} ","formula":"!property:area","lexeme":"area","type":"DataProp"}
+{"features":" {score:0.5123400340145537} ","formula":"\u003chttp://dbpedia.org/resource/Ann_Arbor,_Michigan\u003e","lexeme":"ann arbor, michigan","type":"NamedEntity"}
+{"features":" {score:0.04497633274836032} ","formula":"property:school","lexeme":"school","type":"ObjProp"}
+{"features":" {score:0.01571197572250911} ","formula":"!dbpedia:team","lexeme":"team","type":"ObjectProp"}
+{"features":" {score:0.00760847769190393} ","formula":"!property:jurisdiction","lexeme":"jurisdiction","type":"DataProp"}
+{"features":" {score:0.06181670468015462} ","formula":"property:university","lexeme":"university","type":"ObjProp"}
+{"features":" {score:0.04497633274836032} ","formula":"!dbpedia:school","lexeme":"school","type":"ObjectProp"}
+{"features":" {score:0.014931363700492493} ","formula":"!property:program","lexeme":"program","type":"DataProp"}
+{"features":" {score:0.5140407617029581} ","formula":"resource:Michigan_State_University","lexeme":"michigan state university","type":"NamedEntity"}
+{"features":" {score:0.23928566465179055} ","formula":"property:state","lexeme":"state","type":"ObjProp"}
+{"features":" {score:0.30652677306930154} ","formula":"(rdf:type dbpedia:State)","lexeme":"state","type":"ClassNoun"}
+{"features":" {score:0.04497633274836032} ","formula":"(rdf:type dbpedia:School)","lexeme":"school","type":"ClassNoun"}
+{"features":" {score:0.06181670468015462} ","formula":"!property:university","lexeme":"university","type":"ObjProp"}
+{"features":" {score:0.06181670468015462} ","formula":"(rdf:type dbpedia:University)","lexeme":"university","type":"ClassNoun"}
+{"features":" {score:0.23928566465179055} ","formula":"dbpedia:state","lexeme":"state","type":"ObjectProp"}
+{"features":" {score:0.014931363700492493} ","formula":"!property:program","lexeme":"program","type":"ObjProp"}
+{"features":" {score:0.00760847769190393} ","formula":"property:jurisdiction","lexeme":"jurisdiction","type":"DataProp"}
+{"features":" {score:0.06181670468015462} ","formula":"!dbpedia:university","lexeme":"university","type":"ObjectProp"}
+{"features":" {score:0.039105719999382775} ","formula":"(rdf:type dbpedia:Airport)","lexeme":"airport","type":"ClassNoun"}
+{"features":" {score:0.0048526863084922016} ","formula":"property:film","lexeme":"film","type":"DataProp"}
+{"features":" {score:0.006745657462310337} ","formula":"(rdf:type dbpedia:University)","lexeme":"university","type":"ClassNoun"}
+{"features":" {score:0.13518829246017713} ","formula":"(rdf:type dbpedia:City)","lexeme":"city","type":"ClassNoun"}
+{"features":" {score:0.06491494770435727} ","formula":"!property:institution","lexeme":"institution","type":"DataProp"}
+{"features":" {score:0.13518829246017713} ","formula":"!property:city","lexeme":"city","type":"ObjProp"}
+{"features":" {score:0.02476466395722725} ","formula":"property:municipality","lexeme":"municipality","type":"DataProp"}
+{"features":" {score:0.007118905612640406} ","formula":"property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.02476466395722725} ","formula":"!dbpedia:municipality","lexeme":"municipality","type":"ObjectProp"}
+{"features":" {score:0.007118905612640406} ","formula":"(rdf:type dbpedia:Place)","lexeme":"place","type":"ClassNoun"}
+{"features":" {score:0.06491494770435727} ","formula":"property:institution","lexeme":"institution","type":"DataProp"}
+{"features":" {score:0.02476466395722725} ","formula":"!property:municipality","lexeme":"municipality","type":"ObjProp"}
+{"features":" {score:0.6285851188338059} ","formula":"resource:Texas_Tech_University","lexeme":"texas tech university","type":"NamedEntity"}
+{"features":" {score:0.34189207904479085} ","formula":"!property:university","lexeme":"university","type":"DataProp"}
+{"features":" {score:0.6252712786778605} ","formula":"resource:Private_university","lexeme":"private university","type":"NamedEntity"}
+{"features":" {score:0.0048526863084922016} ","formula":"!property:film","lexeme":"film","type":"ObjProp"}
+{"features":" {score:0.06491494770435727} ","formula":"!property:institution","lexeme":"institution","type":"ObjProp"}
+{"features":" {score:0.3574573272887659} ","formula":"resource:1972_Summer_Olympics","lexeme":"1972 summer olympics","type":"NamedEntity"}
+{"features":" {score:0.34189207904479085} ","formula":"property:university","lexeme":"university","type":"DataProp"}
+{"features":" {score:0.0048526863084922016} ","formula":"dbpedia:film","lexeme":"film","type":"ObjectProp"}
+{"features":" {score:0.13518829246017713} ","formula":"dbpedia:city","lexeme":"city","type":"ObjectProp"}
+{"features":" {score:0.4527074563224413} ","formula":"resource:ETH_Zurich","lexeme":"eth zurich","type":"NamedEntity"}
+{"features":" {score:0.5069005576208179} ","formula":"resource:Munich_Agreement","lexeme":"munich agreement","type":"NamedEntity"}
+{"features":" {score:0.539723393814838} ","formula":"resource:Rensselaer_Polytechnic_Institute","lexeme":"rensselaer polytechnic institute","type":"NamedEntity"}
+{"features":" {score:0.007118905612640406} ","formula":"!property:place","lexeme":"place","type":"ObjProp"}
+{"features":" {score:0.13518829246017713} ","formula":"property:city","lexeme":"city","type":"DataProp"}
+{"features":" {score:0.006745657462310337} ","formula":"!property:university","lexeme":"university","type":"ObjProp"}
+{"features":" {score:0.6278378455727189} ","formula":"resource:Saint_Petersburg_State_University","lexeme":"saint petersburg state university","type":"NamedEntity"}
+{"features":" {score:0.34189207904479085} ","formula":"(rdf:type dbpedia:University)","lexeme":"university","type":"ClassNoun"}
+{"features":" {score:0.34189207904479085} ","formula":"property:university","lexeme":"university","type":"ObjProp"}
+{"features":" {score:0.13518829246017713} ","formula":"!dbpedia:city","lexeme":"city","type":"ObjectProp"}
+{"features":" {score:0.06491494770435727} ","formula":"dbpedia:institution","lexeme":"institution","type":"ObjectProp"}
+{"features":" {score:0.007118905612640406} ","formula":"!property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.0048526863084922016} ","formula":"!property:film","lexeme":"film","type":"DataProp"}
+{"features":" {score:0.6244656133828996} ","formula":"resource:Munich","lexeme":"munich","type":"NamedEntity"}
+{"features":" {score:0.02476466395722725} ","formula":"dbpedia:municipality","lexeme":"municipality","type":"ObjectProp"}
+{"features":" {score:0.34189207904479085} ","formula":"!property:university","lexeme":"university","type":"ObjProp"}
+{"features":" {score:0.34189207904479085} ","formula":"dbpedia:university","lexeme":"university","type":"ObjectProp"}
+{"features":" {score:0.5156482342007435} ","formula":"resource:Ludwig_Maximilian_University_of_Munich","lexeme":"ludwig maximilian university of munich","type":"NamedEntity"}
+{"features":" {score:0.34189207904479085} ","formula":"!dbpedia:university","lexeme":"university","type":"ObjectProp"}
+{"features":" {score:0.006745657462310337} ","formula":"property:university","lexeme":"university","type":"ObjProp"}
+{"features":" {score:0.006745657462310337} ","formula":"!dbpedia:university","lexeme":"university","type":"ObjectProp"}
+{"features":" {score:0.0048526863084922016} ","formula":"property:film","lexeme":"film","type":"ObjProp"}
+{"features":" {score:0.0048526863084922016} ","formula":"!dbpedia:film","lexeme":"film","type":"ObjectProp"}
+{"features":" {score:0.06491494770435727} ","formula":"property:institution","lexeme":"institution","type":"ObjProp"}
+{"features":" {score:0.006745657462310337} ","formula":"dbpedia:university","lexeme":"university","type":"ObjectProp"}
+{"features":" {score:0.02476466395722725} ","formula":"!property:municipality","lexeme":"municipality","type":"DataProp"}
+{"features":" {score:0.02476466395722725} ","formula":"(rdf:type dbpedia:Municipality)","lexeme":"municipality","type":"ClassNoun"}
+{"features":" {score:0.06491494770435727} ","formula":"!dbpedia:institution","lexeme":"institution","type":"ObjectProp"}
+{"features":" {score:0.006745657462310337} ","formula":"!property:university","lexeme":"university","type":"DataProp"}
+{"features":" {score:0.02476466395722725} ","formula":"property:municipality","lexeme":"municipality","type":"ObjProp"}
+{"features":" {score:0.007118905612640406} ","formula":"property:place","lexeme":"place","type":"DataProp"}
+{"features":" {score:0.5222235130111524} ","formula":"resource:FC_Bayern_Munich","lexeme":"fc bayern munich","type":"NamedEntity"}
+{"features":" {score:0.13518829246017713} ","formula":"property:city","lexeme":"city","type":"ObjProp"}
+{"features":" {score:0.13518829246017713} ","formula":"!property:city","lexeme":"city","type":"DataProp"}
+{"features":" {score:0.006745657462310337} ","formula":"property:university","lexeme":"university","type":"DataProp"}
