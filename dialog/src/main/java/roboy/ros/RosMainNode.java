@@ -15,6 +15,8 @@ import roboy.emotions.RoboyEmotion;
 import roboy.util.ConfigManager;
 import roboy_communication_cognition.*;
 import roboy_communication_control.*;
+import std_srvs.TriggerRequest;
+import std_srvs.TriggerResponse;
 
 import java.io.IOException;
 import java.net.URI;
@@ -84,6 +86,34 @@ public class RosMainNode extends AbstractNodeMain {
 
     }
 
+    public boolean StartCupGameSmach() {
+        if(services.notInitialized(RosServiceClients.STARTCUPGAME)) {
+            return false;
+        }
+
+        ServiceClient<TriggerRequest, TriggerResponse> cupGameClient = services.getService(RosServiceClients.STARTCUPGAME);
+        rosConnectionLatch = new CountDownLatch(1);
+        TriggerRequest request = cupGameClient.newMessage();
+        ServiceResponseListener<TriggerResponse> listener = new ServiceResponseListener<TriggerResponse>() {
+            @Override
+            public void onSuccess(TriggerResponse response) {
+//                System.out.println(response.getSuccess());
+                resp = response.getSuccess();
+                rosConnectionLatch.countDown();
+            }
+
+            @Override
+            public void onFailure(RemoteException e) {
+                rosConnectionLatch.countDown();
+                throw new RosRuntimeException(e);
+            }
+        };
+        cupGameClient.call(request,  listener);
+        waitForLatchUnlock(rosConnectionLatch, cupGameClient.getName().toString());
+        return ((boolean) resp);
+
+
+    }
     public boolean SynthesizeSpeech(String text) {
 
         if(services.notInitialized(RosServiceClients.SPEECHSYNTHESIS)) {

@@ -2,7 +2,7 @@ package roboy.ros;
 
 import roboy_communication_cognition.*;
 import roboy_communication_control.*;
-
+import std_srvs.Trigger;
 /**
  * Stores the different client addresses and corresponding ROS message types.
  */
@@ -22,7 +22,8 @@ enum RosServiceClients {
     CYPHERMEMORY("roboy_memory", "/roboy/cognition/memory/cypher", DataQuery._TYPE),
     INTENT("roboy_intents", "/roboy/cognition/detect_intent", DetectIntent._TYPE),
     SNAPCHATFILTER("roboy_filters", "/roboy/cognition/apply_filter", ApplyFilter._TYPE),
-    SOUNDPLAY("sound_play", "/roboy/matrix/sound/play", Talk._TYPE);
+    SOUNDPLAY("sound_play", "/roboy/matrix/sound/play", Talk._TYPE),
+    STARTCUPGAME("roboy_soli", "roboy/cupgame/start", Trigger._TYPE);
 
     String rosPackage;
     String address;

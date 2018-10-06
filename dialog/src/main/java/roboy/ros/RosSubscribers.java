@@ -3,6 +3,7 @@ package roboy.ros;
 import roboy_communication_cognition.*;
 import roboy_communication_control.Strings;
 
+
 public enum RosSubscribers {
     DIRECTION_VECTOR("roboy_audio", "/roboy/cognition/audio/direction_of_arrival", DirectionVector._TYPE),
     FACE_COORDINATES("roboy_vision", "/roboy/cognition/vision/coordinates", FaceCoordinates._TYPE),
@@ -12,6 +13,8 @@ public enum RosSubscribers {
     NUMBER_PEOPLE_AROUND("roboy_vision", "/roboy/cognition/vision/people_around", std_msgs.Int8._TYPE),
     PERSON_LISTENING("roboy_vision", "/roboy/cognition/vision/person_listening", std_msgs.Bool._TYPE),
     BOOTH_SENTENCE("roboy_nodered", "/roboy/cognition/nodered/boothsentence", std_msgs.String._TYPE),
+    CUP_GAME_READY("roboy_soli", "/roboy/control/ball", std_msgs.Bool._TYPE),
+    CUP_GAME_STATE("roboy_soli", "/roboy/control/smach", std_msgs.String._TYPE)
     ;
 
     String rosPackage;

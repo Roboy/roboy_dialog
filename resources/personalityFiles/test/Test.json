@@ -1,15 +1,13 @@
 {
-  "initialState": "StoryTelling",
+  "initialState": "CupGame",
   "states": [
     {
-      "identifier": "StoryTelling",
-      "implementation": "roboy.dialog.states.eventStates.StoryTellingState",
+      "identifier": "CupGame",
+      "implementation": "roboy.dialog.states.gameStates.CupGameState",
       "transitions": {
-        "next": "StoryTelling"
+        "next": "CupGame"
       },
-      "parameters": {
-        "stories": "oh boy roboy=/home/pi/test.wav"
-      }
+      "fallback": "WildTalk"
     },
     {
       "identifier": "WildTalk",
