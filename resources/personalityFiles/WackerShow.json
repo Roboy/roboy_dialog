@@ -79,28 +79,11 @@
       }
     },
     {
-      "identifier": "TellStory",
-      "implementation": "roboy.dialog.states.eventStates.StoryTellingState",
-      "transitions": {
-        "next" : "PersonalQA"
-      },
-      "parameters": {
-        "stories": "magic glass=/home/roboy/Downloads/story.wav"
-      }
-    },
-    {
-      "identifier": "Akinator",
-      "implementation": "roboy.dialog.states.gameStates.GamingTwentyQuestionsState",
-      "transitions": {
-        "gameEnded": "QuestionAnswering"
-      }
-    },
-    {
       "identifier": "ChooseGameState",
       "implementation": "roboy.dialog.states.gameStates.ChooseGameState",
       "transitions": {
         "choseSnapchat" : "Snapchat",
-        "chose20questions" : "Akinator",
+        "chose20questions" : "QuestionAnswering",
         "exitGame": "QuestionAnswering"
       }
     },
@@ -113,6 +96,16 @@
       "identifier": "Farewell",
       "implementation": "roboy.dialog.states.botboy.BotBoyFarewellState",
       "transitions": {}
+    },
+    {
+      "identifier": "TellStory",
+      "implementation": "roboy.dialog.states.eventStates.StoryTellingState",
+      "transitions": {
+        "next" : "PersonalQA"
+      },
+      "parameters": {
+        "stories": "magic glass=/home/roboy/Downloads/story.wav"
+      }
     }
   ]
 }
