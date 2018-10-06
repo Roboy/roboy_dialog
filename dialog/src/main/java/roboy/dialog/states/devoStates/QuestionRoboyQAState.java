@@ -75,8 +75,6 @@ public class QuestionRoboyQAState extends ExpoState {
     private final static RandomList<String> answerStartingPhrases = PhraseCollection.QUESTION_ANSWERING_START;
     private final String INFO_FILE_PARAMETER_ID = "infoFile";
 
-    private boolean askingSpecifyingQuestion = false;
-    private String answerAfterUnspecifiedQuestion = ""; // the answer to use if specifying question is answered with YES
     private boolean offeredGame = false;
     private boolean userWantsGame = false;
     private boolean offeredStory = false;
@@ -93,14 +91,16 @@ public class QuestionRoboyQAState extends ExpoState {
 
     @Override
     public Output act() {
-        if (Math.random() < 0) {
+        if (questionsAnswered >= MAX_NUM_OF_QUESTIONS && !offeredGame) {
             offeredGame = true;
             return Output.say(PhraseCollection.OFFER_GAME_PHRASES.getRandomElement());
         }
-        if(Math.random() < 0.05) {
-            offeredStory = true;
-            return Output.say(Verbalizer.confirmStory.getRandomElement());
-        }
+        else
+            offeredGame = false;
+        // if(Math.random() < 0.05) {
+        //     offeredStory = true;
+        //     return Output.say(Verbalizer.confirmStory.getRandomElement());
+        // }
         return Output.sayNothing();
     }
 
@@ -108,13 +108,16 @@ public class QuestionRoboyQAState extends ExpoState {
     public Output react(Interpretation input) {
         return reactToQuestion(input);
     }
-
-    private Output reactToQuestion(Interpretation input) {
+    private Output reactToQuestion(Interpretation input)
+    {
+        // -- Decide whether to go forward on proposed transitions
 
         if (offeredGame) {
-            questionsAnswered++;
-            offeredGame = false;
-            if (getInference().inferSentiment(input) == Linguistics.UtteranceSentiment.POSITIVE) {
+            if (input.getSentiment() == Linguistics.UtteranceSentiment.POSITIVE ||
+                input.getSentiment() == Linguistics.UtteranceSentiment.NEUTRAL ||
+                input.getSentiment() == Linguistics.UtteranceSentiment.UNCERTAIN_POS ||
+                input.getSentiment() == Linguistics.UtteranceSentiment.MAYBE
+            ) {
                 userWantsGame = true;
                 questionsAnswered++;
                 return Output.sayNothing().setSegue(new Segue(Segue.SegueType.PICKUP,0.5)).setEmotion(RoboyEmotion.HAPPY);
@@ -125,97 +128,81 @@ public class QuestionRoboyQAState extends ExpoState {
         }
 
         if (offeredStory || input.getTokens().contains("story") || input.getTokens().contains("interesting")) {
+            offeredGame = false;
             if (StatementInterpreter.isFromList(input.getSentence(), Verbalizer.consent)) {
                 questionsAnswered++;
                 userWantsStory = true;
-                offeredGame = false;
                 return Output.say(Verbalizer.startSomething.getRandomElement());
             }
         }
 
-        askingSpecifyingQuestion = false;
+        // -- Reset transition proposals
+
         userWantsGame = false;
+        userWantsStory = false;
         questionsAnswered++;
+
+        // -- Try to interpret input as API request
 
         String answer = inferApiAnswer(input);
         if (!answer.isEmpty()) {
             return Output.say(answer);
         }
 
-        // catch jokes
+        // -- Try to interpret input as Joke request
+
         if (input.getTokens().contains("joke") || input.getTokens().contains("funny")) {
             return Output.say(PhraseCollection.JOKES.getRandomElement()).setEmotion(RoboyEmotion.positive.getRandomElement());
         }
 
-        if (input.getTokens() != null && !(input.getTokens().contains("you") || input.getTokens().contains("your"))) {
-            Linguistics.ParsingOutcome parseOutcome = input.getParsingOutcome();
+        // -- Try to interpret input as Memory request
 
-            if (parseOutcome == null) {
-                LOGGER.error("Invalid parser outcome!");
-                return Output.useFallback();
-            }
-
-            if (parseOutcome == Linguistics.ParsingOutcome.SUCCESS) {
-                if (input.getAnswer() != null) {
-                    // tell the answer, that was provided by the parser
-                    return Output.say(answerStartingPhrases.getRandomElement() + " " + input.getAnswer());
-                }
-            }
-            // use a random fact and avoid answer.
-            if (input.getTokens().size() > 2 && input.isQuestion()) {
-                Interpretation i = new Interpretation(PhraseCollection.FACTS.getRandomElement());
-                i.setSentenceType(Linguistics.SentenceType.ANECDOTE);
-                return Output.say(i);
-            }
-
-            return Output.useFallback();
-        }
-
-        // from here we know that dummyParserResult.equals("FAILURE")
-        return useMemoryOrFallback(input);
-    }
-
-    @Override
-    public State getNextState() {
-        if (userWantsGame) {
-            userWantsGame = false;
-            return getTransition(TRANSITION_SWITCH_TO_GAMING);
-        }
-        if (userWantsStory) {
-            userWantsStory = false;
-            return getTransition(TRANSITION_STORY);
-        }
-        if (questionsAnswered > MAX_NUM_OF_QUESTIONS) { // enough questions answered --> finish asking
-            questionsAnswered = 0;
-            return getTransition(TRANSITION_FINISHED_ANSWERING);
-        }
-        return this;
-    }
-
-    private Output useMemoryOrFallback(Interpretation input) {
         try {
             if ( input.getPas() != null || input.getTriples() != null) {
-                Output memoryAnswer = answerFromMemory(input);
-                if (memoryAnswer != null) return memoryAnswer;
+                // try to use memory to answer
+                Roboy roboy = new Roboy(getMemory());
+                answer = inferMemoryAnswer(input, roboy);
+                //String answer = String.format(infoValues.getSuccessAnswers(predicate).getRandomElement(), inferMemoryAnswer(input, roboy));
+                if (!answer.isEmpty()) {
+                    return Output.say(answer);
+                }
             }
         } catch (Exception e) {
             LOGGER.warn(e.getMessage());
         }
 
+        // -- Try to interpret input as parsable question
+
+        Linguistics.ParsingOutcome parseOutcome = input.getParsingOutcome();
+        if (parseOutcome == Linguistics.ParsingOutcome.SUCCESS) {
+            if (input.getAnswer() != null) {
+                // tell the answer, that was provided by the parser
+                return Output.say(answerStartingPhrases.getRandomElement()+" "+input.getAnswer());
+            }
+        }
+
         return Output.useFallback();
     }
 
-    private Output answerFromMemory(Interpretation input) {
-
-        // try to use memory to answer
-        Roboy roboy = new Roboy(getMemory());
-
-        //String answer = String.format(infoValues.getSuccessAnswers(predicate).getRandomElement(), inferMemoryAnswer(input, roboy));
-        String answer = String.format("%s", inferMemoryAnswer(input, roboy));
-        if (answer.equals("")) {
-            return Output.useFallback();
+    @Override
+    public State getNextState() {
+        State nextState = null;
+        if (userWantsGame) {
+            nextState = getTransition(TRANSITION_SWITCH_TO_GAMING);
         }
-        return Output.say(answer);
+        else if (userWantsStory) {
+            nextState = getTransition(TRANSITION_STORY);
+        }
+        else if (questionsAnswered > MAX_NUM_OF_QUESTIONS) { // enough questions answered --> finish asking
+            nextState = getTransition(TRANSITION_FINISHED_ANSWERING);
+        }
+        if (nextState != null) {
+            userWantsGame = false;
+            userWantsStory = false;
+            questionsAnswered = 0;
+            return nextState;
+        }
+        return this;
     }
 
     private String inferApiAnswer(Interpretation input) {
@@ -295,9 +282,9 @@ public class QuestionRoboyQAState extends ExpoState {
         else if (matchPas(pas, new Pair(SemanticRole.LOCATION, "where"), new Pair(SemanticRole.PREDICATE, "live"))) {
             answer = extractNodeNameForPredicate(Neo4jRelationship.LIVE_IN, roboy);
         }
-//        else if (matchPas(pas, new Pair(SemanticRole.AGENT, "you"), new Pair(SemanticRole.MANNER, "how"))) {
-//            answer = "Yo moma says I am a good boy!";
-//        }
+        else if (matchPas(pas, new Pair(SemanticRole.AGENT, "you"), new Pair(SemanticRole.MANNER, "how"))) {
+            answer = "I am really happy!";
+        }
         else if (matchPas(pas, new Pair(SemanticRole.AGENT, "who"))) {
             if (matchPas(pas, new Pair(SemanticRole.PATIENT, "you"), new Pair(SemanticRole.PREDICATE, "are"))) {
                 answer = extractNodeNameForPredicate(Neo4jProperty.name, roboy) + " "
