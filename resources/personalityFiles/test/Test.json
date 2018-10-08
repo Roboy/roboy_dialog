@@ -7,6 +7,9 @@
       "transitions": {
         "next": "CupGame"
       },
+      "parameters": {
+        "cupGamePhrases": "resources/sentences/CupGame.json"
+      },
       "fallback": "WildTalk"
     },
     {

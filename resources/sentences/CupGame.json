@@ -1,0 +1,76 @@
+{
+  "SHUFFLE": {
+    "Q": [
+      "you shall shuffle the cups, my friend. let me know when you are ready"
+    ],
+    "A": {
+      "SUCCESS": [
+        "Alright. Let me check with my superpower soli where did you hide the ball"
+      ],
+      "FAILURE": [
+        "Hm, seems you are not done yet. I give you another try."
+      ]
+    }
+  },
+  "FIND_CUPS": {
+    "Q": [
+      "i am looking for cups"
+    ]
+  },
+  "SCAN": {
+    "Q": [
+      "so are you ready to hear the oracle's prophecy?"
+    ],
+    "A": {
+      "SUCCESS": [
+        "Hold your breath, ladies and gentlemen!"
+      ]
+    }
+  },
+  "GOTOCUP0": {
+    "Q": [
+      "wubba lubba dub dub, doing magic for this cup 0"
+    ]
+  },
+  "GOTOCUP1": {
+    "Q": [
+      "wubba lubba dub dub, doing magic for this cup 1"
+    ]
+  },
+  "GOTOCUP2": {
+    "Q": [
+      "wubba lubba dub dub, doing magic for this cup 2"
+    ]
+  },
+  "GUESS": {
+    "Q": [
+      "I think I found it there. So do I win now?"
+    ],
+    "A": {
+      "SUCCESS": [
+        "ha-ha"
+      ]
+    }
+  },
+  "OFFER_REPEAT": {
+    "Q": [
+      "wanna play again?"
+    ],
+    "A": {
+      "SUCCESS": [
+        "Here we go again then!",
+        "let's do it again"
+      ],
+      "FAILURE": [
+        "I believe you've had enough of my magic"
+      ]
+    }
+  },
+  "EXIT": {
+    "A": {
+      "SUCCESS": [
+        "Wanna stop playing? Sure, if you say so."
+      ]
+    }
+  }
+}
