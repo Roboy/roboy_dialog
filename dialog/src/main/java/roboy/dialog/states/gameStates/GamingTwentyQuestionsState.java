@@ -37,7 +37,7 @@ public class GamingTwentyQuestionsState extends State {
 
 	private final Logger LOGGER = LogManager.getLogger();
 
-	private Akiwrapper aw = new AkiwrapperBuilder().setFilterProfanity(true).build();
+	private Akiwrapper aw = null;
 	private Question nextQuestion = null;
 	private Guess currentGuess = null;
 
@@ -57,6 +57,10 @@ public class GamingTwentyQuestionsState extends State {
 
 	@Override
 	public Output act() {
+
+		if (aw==null) {
+			aw = new AkiwrapperBuilder().setFilterProfanity(true).build();
+		}
 
 		if(!userReady){
 			return Output.say(PhraseCollection.AKINATOR_INTRO_PHRASES.getRandomElement());

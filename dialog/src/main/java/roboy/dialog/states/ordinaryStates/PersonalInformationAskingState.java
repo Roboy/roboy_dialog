@@ -100,13 +100,14 @@ public class PersonalInformationAskingState extends State {
             return State.Output.say(question);
         }
         else {
-            RandomList<String> questions = qaValues.getQuestions(OTHER);
+            RandomList<String> questions = (RandomList<String>) qaValues.getQuestions(OTHER).clone();
             selectedPredicate = OTHER;
             int idx;
             do {
                 question = questions.getRandomElement();
                 idx = questions.indexOf(question);
-            } while (getContext().OTHER_Q.contains(idx));
+                questions.remove(question);
+            } while (!questions.isEmpty() && getContext().OTHER_Q.contains(idx));
             getContext().OTHER_QUESTIONS_UPDATER.updateValue(idx);
             return State.Output.say(question);
         }
@@ -161,7 +162,7 @@ public class PersonalInformationAskingState extends State {
     @Override
     protected Set<String> getRequiredTransitionNames() {
         // optional: define all required transitions here:
-        return newSet(TRANSITION_INFO_OBTAINED);
+        return newSet(TRANSITION_INFO_OBTAINED, TRANSITION_FOLLOWUP);
     }
 
     @Override
