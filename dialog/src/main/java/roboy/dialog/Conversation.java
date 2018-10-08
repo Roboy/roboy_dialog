@@ -97,11 +97,11 @@ public class Conversation extends Thread {
         } else {//if this is an initial start
             actions = personality.startConversation();
             logger.info("############# Conversation started ############");
-            try {
-                System.in.read();
-            } catch (IOException e) {
-                logger.error(e.getMessage());
-            }
+            // try {
+            //     System.in.read();
+            // } catch (IOException e) {
+            //     logger.error(e.getMessage());
+            // }
         }
 
         while (isRunning) {
