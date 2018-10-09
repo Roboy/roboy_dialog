@@ -1,11 +1,11 @@
 {
-  "initialState": "ActiveIntro",
+  "initialState": "Greetings",
   "states": [
     {
       "identifier": "Idle",
       "implementation": "roboy.dialog.states.fairShowStates.IdleState",
       "transitions": {
-        "timeIsUp": "ActiveIntro"
+        "timeIsUp": "Intro"
       },
       "parameters": {
         "delayInMins": "0",
@@ -14,11 +14,34 @@
 
     },
     {
+      "identifier": "Greetings",
+      "implementation": "roboy.dialog.states.ordinaryStates.PassiveGreetingsState",
+      "transitions": {
+        "greetingDetected": "ActiveIntro",
+        "knownPerson": "FollowUp",
+        "newPerson": "PersonalQA"
+      },
+      "parameters": {
+        "infoFile": "resources/sentences/RoboyInfoList.json"
+      }
+    },
+    {
       "identifier": "ActiveIntro",
       "implementation": "roboy.dialog.states.fairShowStates.ActiveIntroState",
       "transitions": {
-        "peopleAround": "InfoTalk",
+        "peopleAround": "Intro",
         "lonelyRoboy": "InfoTalk"
+      }
+    },
+    {
+      "identifier": "Intro",
+      "implementation": "roboy.dialog.states.ordinaryStates.IntroductionState",
+      "transitions": {
+        "knownPerson": "FollowUp",
+        "newPerson": "PersonalQA"
+      },
+      "parameters": {
+        "infoFile": "resources/sentences/RoboyInfoList.json"
       }
     },
     {
