@@ -24,7 +24,6 @@ import java.util.*;
 import static roboy.memory.Neo4jRelationship.*;
 import static roboy.memory.Neo4jProperty.*;
 import static roboy.memory.nodes.Interlocutor.RelationshipAvailability.*;
-
 /**
  * This state will:
  * - ask the interlocutor for his name

@@ -68,7 +68,7 @@ public class QuestionRoboyQAState extends ExpoState {
     private final static String TRANSITION_LOOP_TO_KNOWN_PERSON = "loopToKnownPerson";
     private final static String TRANSITION_SWITCH_TO_GAMING = "switchToGaming";
     private final static String TRANSITION_STORY = "tellStory";
-    private final static int MAX_NUM_OF_QUESTIONS = 3;
+    private final static int MAX_NUM_OF_QUESTIONS = 1;
     private int questionsAnswered = 0;
 
     private final static RandomList<String> reenteringPhrases = PhraseCollection.QUESTION_ANSWERING_REENTERING;
