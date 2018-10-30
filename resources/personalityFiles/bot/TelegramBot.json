@@ -6,19 +6,17 @@
       "identifier": "TelegramBot",
       "implementation": "roboy.dialog.states.botboy.BotBoyState",
       "transitions": {
-        "initialized":"Intro"
-      }
-    },
-    {
-      "identifier": "Greetings",
-      "implementation": "roboy.dialog.states.ordinaryStates.PassiveGreetingsState",
-      "transitions": {
-        "greetingDetected": "Intro"
+        "greetingDetected":"Intro",
+        "knownPerson": "FollowUp",
+        "newPerson": "PersonalQA"
+      },
+      "parameters": {
+        "infoFile": "resources/sentences/RoboyInfoList.json"
       }
     },
     {
       "identifier": "Intro",
-      "implementation": "roboy.dialog.states.ordinaryStates.IntroductionState",
+      "implementation": "roboy.dialog.states.botboy.BotBoyIntroductionState",
       "transitions": {
         "knownPerson": "FollowUp",
         "newPerson": "PersonalQA"
@@ -29,22 +27,22 @@
     },
     {
       "identifier": "FollowUp",
-      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationFollowUpState",
+      "implementation": "roboy.dialog.states.botboy.BotBoyPersonalInformationFollowUpState",
       "transitions": {
         "questionAnswering": "QuestionAnswering"
       },
       "parameters": {
-        "qaFile": "resources/sentences/QAList.json"
+        "qaFile": "resources/sentences/TelegramQAList.json"
       }
     },
     {
       "identifier": "PersonalQA",
-      "implementation": "roboy.dialog.states.ordinaryStates.PersonalInformationAskingState",
+      "implementation": "roboy.dialog.states.botboy.BotBoyPersonalInformationAskingState",
       "transitions": {
         "questionAnswering": "QuestionAnswering"
       },
       "parameters": {
-        "qaFile": "resources/sentences/QAList.json"
+        "qaFile": "resources/sentences/TelegramQAList.json"
       }
     },
     {
@@ -54,7 +52,34 @@
       "transitions": {
         "finishedQuestionAnswering": "Farewell",
         "loopToNewPerson": "PersonalQA",
-        "loopToKnownPerson": "FollowUp"
+        "loopToKnownPerson": "FollowUp",
+        "switchToGaming": "ChooseGameState"
+      }
+    },
+    {
+      "identifier": "GamingTwentyQuestionsState",
+      "implementation": "roboy.dialog.states.gameStates.GamingTwentyQuestionsState",
+      "transitions": {
+        "gameEnded" : "QuestionAnswering"
+      }
+    },
+    {
+      "identifier": "GamingSnapchatState",
+      "implementation": "roboy.dialog.states.gameStates.GamingSnapchatState",
+      "transitions": {
+        "gameEnded" : "QuestionAnswering"
+      },
+      "parameters": {
+        "filterFile": "resources/gameResources/snapchat-filters.txt"
+      }
+    },
+    {
+      "identifier": "ChooseGameState",
+      "implementation": "roboy.dialog.states.gameStates.ChooseGameState",
+      "transitions": {
+        "choseSnapchat" : "GamingSnapchatState",
+        "chose20questions" : "GamingTwentyQuestionsState",
+        "exitGame": "QuestionAnswering"
       }
     },
     {
@@ -64,7 +89,7 @@
     },
     {
       "identifier": "Farewell",
-      "implementation": "roboy.dialog.states.ordinaryStates.FarewellState",
+      "implementation": "roboy.dialog.states.botboy.BotBoyFarewellState",
       "transitions": {}
     }
   ]
