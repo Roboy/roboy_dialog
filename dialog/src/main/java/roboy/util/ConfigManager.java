@@ -46,6 +46,7 @@ public class ConfigManager {
     public static long CONVERSATION_TIMEOUT = 0;
 
     public static String TELEGRAM_API_TOKENS_FILE = "";
+    public static String EXTERNAL_API_KEY_LIST = "resources/knowledgebase/api.key";
 
     public static String MEMORY_LOG_MODE = "INFO";
     public static String DIALOG_LOG_MODE = "INFO";
@@ -133,6 +134,7 @@ public class ConfigManager {
             }
 
             TELEGRAM_API_TOKENS_FILE = yamlConfig.getString("TELEGRAM_API_TOKENS_FILE");
+            EXTERNAL_API_KEY_LIST = yamlConfig.getString("EXTERNAL_API_KEY_LIST");
 
             MEMORY_LOG_MODE = (yamlConfig.getString("MEMORY_LOG_MODE"));
             PARSER_LOG_MODE = (yamlConfig.getString("PARSER_LOG_MODE"));

@@ -650,7 +650,7 @@ To make the process of adding new external APIs easier, an interface is provided
 Storing API Keys
 ------------------------
 
-API Keys should be stored in the ``roboy_dialog/resources/knowledgebase/apiKeys.yml`` file. It is vitally important that this file does not end up on git. Entries should be stored in the YAML format: ``apikey: xxxxxxx_apikey_goes_here_xxxxxxx``. The first part of the entry is the YAML key, while the second is the actual API key.
+API Keys should be stored in the ``roboy_dialog/resources/knowledgebase/api.key`` file. It is vitally important that this file does not end up on git. Entries should be stored in the YAML format: ``apikey: xxxxxxx_apikey_goes_here_xxxxxxx``. The first part of the entry is the YAML key, while the second is the actual API key.
 
 Implementing the Interface
 ---------------------------
@@ -662,7 +662,7 @@ One must implement the methods...
 getKeyName
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The purpose of ``getKeyName`` is to tell APIHub, what the YAML key associated with the API Key in the ``apiKeys.yml`` file is. ``return "weatherkey";`` in most cases shall suffice.
+The purpose of ``getKeyName`` is to tell APIHub, what the YAML key associated with the API Key in the ``api.key`` file is. ``return "weatherkey";`` in most cases shall suffice.
 
 validateArguments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -675,7 +675,7 @@ This method should be used to check if the arguments passed by the user are vali
 getAPIURL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This method is in charge of creating the API Request URL. Assuming the ``getKeyName`` function is implemented correctly, the first parameter shall automatically send you the API Key from the ``apiKeys.yml`` file. The second parameter are the API Request Arguments that your state sends to APIHub. 
+This method is in charge of creating the API Request URL. Assuming the ``getKeyName`` function is implemented correctly, the first parameter shall automatically send you the API Key from the ``api.key`` file. The second parameter are the API Request Arguments that your state sends to APIHub.
 
 This method expects a valid API request URL to be returned, like ``http://api.openweathermap.org/data/2.5/weather?q=davos&APPID=xxxxxxxxx``.
 
