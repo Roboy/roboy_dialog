@@ -2,12 +2,14 @@ package roboy.dialog.states.gameStates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import roboy.dialog.Segue;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 import roboy.logic.Inference;
 import roboy.talk.PhraseCollection;
+import roboy.talk.Verbalizer;
 import roboy.util.RandomList;
 
 import java.util.*;
@@ -15,7 +17,7 @@ import java.util.*;
 import static roboy.util.FileLineReader.readFile;
 
 
-public class GamingSnapchatState extends State {
+public class GamingSnapchatState extends GameState {
 
     private final static String TRANSITION_GAME_ENDED = "gameEnded";
     private final static String EXISTING_FILTERS_ID = "filterFile";
@@ -32,6 +34,8 @@ public class GamingSnapchatState extends State {
     private boolean stopGame = false;
 
     private String suggestedFilter = "";
+
+    public static String transitionName = "choseSnapchat";
 
     public GamingSnapchatState(String stateIdentifier, StateParameters params) {
 
@@ -54,7 +58,8 @@ public class GamingSnapchatState extends State {
         Linguistics.UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
         List<String> inputFilters = localInference.inferSnapchatFilter(input, EXISTING_FILTERS);
 
-        if(!checkUserSaidStop(input)) {
+        stopGame = checkUserSaidStop(input);
+        if(!stopGame) {
             if (inputSentiment == Linguistics.UtteranceSentiment.POSITIVE) {
                 desiredFilters.add(suggestedFilter);
             } else if (inputFilters != null) {
@@ -77,19 +82,6 @@ public class GamingSnapchatState extends State {
         } else {
             return this;
         }
-    }
-
-    private boolean checkUserSaidStop(Interpretation input){
-
-        stopGame = false;
-        List<String> tokens = input.getTokens();
-        if(tokens != null && !tokens.isEmpty()){
-                if(tokens.contains("boring") || tokens.contains("stop") || tokens.contains("bored")){
-                    stopGame = true;
-
-            }
-        }
-        return stopGame;
     }
 
     private Map<String, List<String>> buildSynonymMap(List<String> filters){
@@ -119,6 +111,23 @@ public class GamingSnapchatState extends State {
             }
         }
         return filterMap;
+    }
+
+    @Override
+    public boolean canStartGame(){
+        return getRosMainNode() != null;
+    }
+
+    @Override
+    public Output cannotStartWarning() {
+        Segue s = new Segue(Segue.SegueType.CONNECTING_PHRASE, 0.5);
+        return Output.say(Verbalizer.rosDisconnect.getRandomElement() + String.format("What a pity, %s. Snapchat is not possible right now.",
+                getContext().ACTIVE_INTERLOCUTOR.getValue().getName())).setSegue(s);
+    }
+
+    @Override
+    public Collection<String> getTags(){
+        return Arrays.asList("snapchat", "filters", "filter");
     }
 
 }

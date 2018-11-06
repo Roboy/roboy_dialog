@@ -1,40 +1,35 @@
 package roboy.dialog.states.gameStates;
 
-import com.ibm.watson.developer_cloud.alchemy.v1.model.SAORelation;
 import com.markozajc.akiwrapper.Akiwrapper;
-import com.markozajc.akiwrapper.AkiwrapperBuilder;
-import com.markozajc.akiwrapper.core.entities.Question;
 import com.markozajc.akiwrapper.Akiwrapper.Answer;
+import com.markozajc.akiwrapper.AkiwrapperBuilder;
 import com.markozajc.akiwrapper.core.entities.Guess;
+import com.markozajc.akiwrapper.core.entities.Question;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import roboy.context.Context;
 import roboy.dialog.Segue;
 import roboy.dialog.states.definitions.State;
 import roboy.dialog.states.definitions.StateParameters;
 import roboy.linguistics.Linguistics;
 import roboy.linguistics.sentenceanalysis.Interpretation;
-import roboy.memory.nodes.Interlocutor;
-import roboy.ros.RosMainNode;
 import roboy.talk.PhraseCollection;
 import roboy.talk.Verbalizer;
-import roboy.util.RandomList;
+import roboy.util.NetworkUtils;
 
 import java.io.IOException;
-import java.lang.ref.PhantomReference;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
-public class GamingTwentyQuestionsState extends State {
-
+public class GamingTwentyQuestionsState extends GameState {
 
 	private static final double PROBABILITY_THRESHOLD = 0.6;
 	private final static String TRANSITION_GAME_ENDED = "gameEnded";
 
 	private final Logger LOGGER = LogManager.getLogger();
 
-	private Akiwrapper aw = new AkiwrapperBuilder().setFilterProfanity(true).build();
+	private Akiwrapper aw;
 	private Question nextQuestion = null;
 	private Guess currentGuess = null;
 
@@ -48,13 +43,15 @@ public class GamingTwentyQuestionsState extends State {
 	private boolean emotionShown = false;
 	private String winner = "";
 
+	public static String transitionName = "chose20questions";
+
 	public GamingTwentyQuestionsState(String stateIdentifier, StateParameters params) {
 		super(stateIdentifier, params);
 	}
 
 	@Override
 	public Output act() {
-
+		setAW(false);
 		if(!userReady){
 			return Output.say(PhraseCollection.AKINATOR_INTRO_PHRASES.getRandomElement());
 
@@ -83,7 +80,8 @@ public class GamingTwentyQuestionsState extends State {
 		String intent = getIntent (input);
 		Linguistics.UtteranceSentiment inputSentiment = getInference().inferSentiment(input);
 
-		if(checkUserSaidStop(input)){
+		stopGame = checkUserSaidStop(input);
+		if(stopGame){
 			gameFinished = true;
 			return Output.sayNothing();
 
@@ -253,25 +251,12 @@ public class GamingTwentyQuestionsState extends State {
 
 	private void resetGame(){
 
-		aw = new AkiwrapperBuilder().setFilterProfanity(true).build();
+		setAW(true);
 		declined.clear();
 		userReady = false;
 		guessesAvailable = false;
 		gameFinished = false;
 		winner = "";
-	}
-
-	private boolean checkUserSaidStop(Interpretation input){
-
-		stopGame = false;
-		List<String> tokens = input.getTokens();
-		if(tokens != null && !tokens.isEmpty()){
-			if(tokens.contains("boring") || tokens.contains("stop") || tokens.contains("bored")){
-				stopGame = true;
-
-			}
-		}
-		return stopGame;
 	}
 
 	private void applyFilter(String winner){
@@ -285,5 +270,37 @@ public class GamingTwentyQuestionsState extends State {
 			emotionShown = getRosMainNode().ShowEmotion("tears");
 		}
 	}
+
+
+	@Override
+	public boolean canStartGame() {
+		setAW(false);
+		return aw!=null && aw.getServer().isUp();
+	}
+
+	@Override
+	public Output cannotStartWarning() {
+		return Output.say("Sorry, I need Internet Access to play this game");
+	}
+
+	@Override
+	public Collection<String> getTags(){
+		return Arrays.asList("akinator", "guessing", "questions");
+	}
+
+	private void setAW(boolean force){
+		if ((force || aw == null)) {
+			if(NetworkUtils.isInternetWorking()) {
+				aw = new AkiwrapperBuilder().setFilterProfanity(true).build();
+			}
+			else{
+				LOGGER.warn("No Internet Connection");
+			}
+		}
+		LOGGER.debug("AW Object already exists. Was not overwritten");
+	}
+
+
+
 
 }
