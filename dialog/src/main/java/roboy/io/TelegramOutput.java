@@ -29,7 +29,6 @@ public class TelegramOutput implements OutputDevice {
     public TelegramOutput(String uuid) {
         this.uuid = uuid.substring(uuid.indexOf('-')+1);
         logger.info("Creating TelegramOutput for " + uuid + "! Setting this.uuid to " + this.uuid + "...");
-        logger.error("output initialized with: "+uuid);
     }
 
     /**
@@ -56,6 +55,7 @@ public class TelegramOutput implements OutputDevice {
                     case "lookleft": //same as lookright
                     case "lookright": stickerID = "CAADAgADFQAD5dCAEKM0TS8sjXiAAg"; break;
                     //TODO: other RoboyEmotions
+                    default: break;
                 }
                 if(stickerID != null) communicationHandler.sendSticker(this.uuid, stickerID);
 

@@ -16,15 +16,14 @@ import roboy.io.MultiOutputDevice;
 import roboy.linguistics.sentenceanalysis.*;
 import roboy.logic.Inference;
 import roboy.logic.InferenceEngine;
+import roboy.memory.Neo4jLabel;
 import roboy.memory.Neo4jMemory;
 import roboy.memory.Neo4jMemoryInterface;
 import roboy.memory.Neo4jProperty;
 import roboy.memory.nodes.Interlocutor;
 import roboy.ros.RosMainNode;
 import roboy.talk.Verbalizer;
-import roboy.util.ConfigManager;
-import roboy.util.IO;
-import roboy.util.TelegramCommunicationHandler;
+import roboy.util.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -105,6 +104,7 @@ public class ConversationManager {
                     logger.error("Telegram bots api error: ", e);
                 }
 
+                //begin operation
                 logger.info("####################################################\n#                SYSTEM LOADED                     #\n####################################################\n");
                 commandMode();
                 break;
@@ -117,8 +117,8 @@ public class ConversationManager {
                 do {//repeat conversations if configured to do so
                     demoReadyCheck();
                     Conversation c = createConversation(rosMainNode, analyzers, new Inference(), memory, "local");
-
                     c.start();
+
                     try {//Since this is roboy mode and only one conversation happens, we need to wait for it to finish so we don't clog the command line.
                         logger.info("Waiting for conversation to end.");
                         c.join();
@@ -137,11 +137,20 @@ public class ConversationManager {
 
     /**
      * Creates and spawns a conversation for a chatuser.
-     * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
+     * @param uuid should consist of "[world-interface-name]-[uuid]", if input allows only a single user, set to "local"
      * @throws IOException If conversation could not created.
      */
-    public static void spawnConversation(String uuid) throws IOException{
-        Conversation conversation = createConversation(rosMainNode, analyzers, new Inference(), memory, uuid);
+    public static void spawnConversation(String uuid) throws IOException {
+        spawnConversation(uuid, null);
+    }
+    /**
+     * Creates and spawns a conversation for a chatuser.
+     * @param uuid should consist of "[world-interface-name]-[uuid]", if input allows only a single user, set to "local"
+     * @param name the name of the Interlocutor. Necessary for unique adressing by name (local nodes)
+     * @throws IOException If conversation could not created.
+     */
+    public static void spawnConversation(String uuid, String name) throws IOException{
+        Conversation conversation = createConversation(rosMainNode, analyzers, new Inference(), memory, uuid, name);
         conversations.put(uuid, conversation);
         conversation.start();
     }
@@ -154,14 +163,19 @@ public class ConversationManager {
         conversations.values().remove(conversation);
     }
 
+    public static void stopConversation(String uuid){
+        stopConversation(uuid, false);
+    }
+
     /**
      * Stops conversation thread for uuid.
-     * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
+     * @param uuid should consist of "[world-interface-name]-[uuid]", if input allows only a single user, set to "local"
+     * @param hardStop Roboy doesn't say bye on hardstop. Default = false
      */
-    public static void stopConversation(String uuid){
+    public static void stopConversation(String uuid, boolean hardStop){
         Conversation c = conversations.get(uuid);
         if (c != null) {
-            c.endConversation();
+            c.endConversation(hardStop);
         } else {
             logger.error("Conversation to be stopped does not exist...");
         }
@@ -169,7 +183,7 @@ public class ConversationManager {
 
     /**
      * returns the threadID of the conversation with interlocutor uuid
-     * @param uuid should consist of "servicename-[uuid]", if input allows only a single user, set to "local"
+     * @param uuid should consist of "[world-interface-name]-[uuid]", if input allows only a single user, set to "local"
      * @return null if thread does not exist, threadID otherwise
      */
     public static Long getConversationThreadID(String uuid){
@@ -178,18 +192,40 @@ public class ConversationManager {
         return (conv == null) ? null : (Long)conv.getId();
     }
 
-
     /**
-     * Creates and initializes a new conversation thread. Does not start the thread.
+     * Creates and initializes a new conversation thread. Only use for local threads that don't have uuids (uuid=local). Does not start the thread.
      * @param rosMainNode ROS node. Set null if ROS_ENABLED=false
      * @param analyzers   All analyzers necessary for analyzing the inputs from multiIn. Please provide these in correct order.
      * @param inference Inference engine. The better, the smarter roboy gets.
      * @param memory Roboy memory access. Without, we cannot remember anything and conversations stay shallow.
-     * @return roboy.dialog.Conversation object. Fully intialized, ready to launch.
+     * @param uuid should consist of "[world-interface-name]-[uuid]", if input allows only a single user, set to "local"
+     * @return null if uuroboy.dialog.Conversation object. Fully intialized, ready to launch.
      * @throws IOException In case the IOdevices could not be correctly initialized.
      */
 
     private static Conversation createConversation(RosMainNode rosMainNode, List<Analyzer> analyzers, InferenceEngine inference, Neo4jMemoryInterface memory, String uuid) throws IOException{
+        if(!uuid.equals("local")){
+            logger.error("Cannot create a Conversation for uuid " + uuid + " without a name!");
+            return null;
+        }
+        return createConversation(rosMainNode,analyzers,inference,memory,uuid,null);
+    }
+
+
+
+        /**
+         * Creates and initializes a new conversation thread. Does not start the thread.
+         * @param rosMainNode ROS node. Set null if ROS_ENABLED=false
+         * @param analyzers   All analyzers necessary for analyzing the inputs from multiIn. Please provide these in correct order.
+         * @param inference Inference engine. The better, the smarter roboy gets.
+         * @param memory Roboy memory access. Without, we cannot remember anything and conversations stay shallow.
+         * @param uuid should consist of "[world-interface-name]-[uuid]", if input allows only a single user, set to "local";
+         * @param name the name of the Interlocutor. Necessary for unique adressing by name (local nodes)
+         * @return roboy.dialog.Conversation object. Fully intialized, ready to launch.
+         * @throws IOException In case the IOdevices could not be correctly initialized.
+         */
+
+    private static Conversation createConversation(RosMainNode rosMainNode, List<Analyzer> analyzers, InferenceEngine inference, Neo4jMemoryInterface memory, String uuid, String name) throws IOException{
         logger.info("Creating new conversation...");
 
         //Create IODevices.
@@ -216,7 +252,22 @@ public class ConversationManager {
             logger.error("Memory is null while starting a conversation");
         }
         Interlocutor person = new Interlocutor(memory);
-        person.setProperty(Neo4jProperty.telegram_id, uuid);
+
+        //memory uuid handling
+        if(name != null) {
+            if(uuid.equals("local")){//just to make sure, should not happen if IODevices are built correctly
+                person.addName(name);
+            }
+            else if (uuid.startsWith("telegram-")) {
+                person.addUuid(new Uuid(UuidType.TELEGRAM_UUID, uuid.substring(uuid.indexOf('-') + 1)), name);
+            } else if (uuid.startsWith("facebook-")) {//not supported by dialog_system yet, only prepared this since it is supported by memory
+                person.addUuid(new Uuid(UuidType.FACEBOOK_UUID, uuid.substring(uuid.indexOf('-') + 1)), name);
+            } else if (uuid.startsWith("slack-")) {//not supported by dialog_system yet, only prepared this since it is supported by memory
+                person.addUuid(new Uuid(UuidType.SLACK_UUID, uuid.substring(uuid.indexOf('-') + 1)), name);
+            } else {
+                logger.error("UUID format of UUID " + uuid + "not supported. Currently supported services: telegram, facebook, slack, local.");
+            }
+        }
         context.ACTIVE_INTERLOCUTOR_UPDATER.updateValue(person);
 
 
@@ -238,21 +289,29 @@ public class ConversationManager {
      * Assume command mode: In ConversationManager thread wait for commands on cmdline and manage conversations according to them
      */
     private static void commandMode(){
-        //wait for user commands
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
+            //wait for user commands
             String command = scanner.next();
+
+            //process command
             switch (command) {
-                case "shutdown"://gracefully say bye
-                    for (Conversation c : conversations.values()) c.endConversation();
+                case "shutdown"://shutdown system
+                    for (Conversation c : conversations.values()) c.endConversation(true);
+                    System.exit(0);
+                case "byeAndShutdown"://gracefully shut down by bowing out
+                    for (Conversation c : conversations.values()) c.endConversation(false);
                     System.exit(0);
                 default:
-                    System.out.println("Command not found. Currently supported commands: shutdown");
+                    System.out.println("Command not found. Currently supported commands: shutdown, byeAndShutdown");
             }
         }
     }
 
+    /**
+     * Initializes logger based on settings in config.properties
+     */
     private static void loggerSetup() {
         //Set Logging Level for Parser
         if(Level.getLevel(ConfigManager.PARSER_LOG_MODE)==null){

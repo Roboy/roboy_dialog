@@ -21,4 +21,12 @@ public class Uuid {
     public UuidType getType() {
         return type;
     }
+
+    @Override
+    public String toString() {
+        return "Uuid{" +
+                "type=" + type +
+                ", uuid='" + uuid + '\'' +
+                '}';
+    }
 }

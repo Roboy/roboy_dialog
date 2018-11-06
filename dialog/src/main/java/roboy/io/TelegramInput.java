@@ -39,8 +39,9 @@ public class TelegramInput implements InputDevice, CleanUp {
      * Gets called by the TelegramAPI Thread whenever a new telegram message arrives.
      * Places them in the appropriate thread's message string. Creates thread beforehand, if necessary.
      * @param update contains a (sender uuid,message) string pair.
+     * @param name the name of the Interlocutor. Necessary for unique adressing by name
      */
-    public static void onUpdate(Pair<String, String> update) {
+    public static void onUpdate(Pair<String, String> update, String name) {
 
         String chatId = update.getKey();
         String uuid = "telegram-" + chatId;
@@ -49,7 +50,7 @@ public class TelegramInput implements InputDevice, CleanUp {
 
         if (input == null){//if Thread does not exist yet, create it and place the new message as it's input
             try {
-                ConversationManager.spawnConversation(uuid);
+                ConversationManager.spawnConversation(uuid, name);
             } catch (IOException e) {
                 logger.error("Could not create conversation for telegram uuid '" + chatId + "'!");
                 return;
@@ -64,22 +65,36 @@ public class TelegramInput implements InputDevice, CleanUp {
         }
     }
 
+    @Override
+    public Input listen() throws InterruptedException {
+        return this.listen(0);
+    }
+
     /**
      * Thread waits in listen() until a new input is provided and the thread is interrupted, then returns with said input.
      * If the thread is interrupted without Input waiting to be consumed, listen() throws an IOException
+     * @param timeout timeout in ms, no timeout if timeout = 0
      * @throws InterruptedException: InterruptedException thrown by the thread when interrupted while wait()ing
+     * @throws IllegalArgumentException if timeout is negative (should be prevented via ConfigManager)
      */
     @Override
-    public Input listen() throws InterruptedException {
+    public Input listen(long timeout) throws InterruptedException {
         Input newInput;
         synchronized (this) {
             while(message.equals("")){//while no new messages for this thread exist: wait
                 try {
-                    this.wait();
+                    this.wait(timeout);
                 }catch (InterruptedException e) {//Thread woke up! Process new information!
                     if(message == null || message.equals("")){//if this interrupt was not triggered because new messages arrived, throw exception to be handled
                         throw e;
                     }
+                }
+                if(message == null || message.equals("")){//timeout triggered
+                    String uuid = "";
+                    for(String id : inputDevices.keySet()) if(inputDevices.get(id) == this) uuid = id;
+
+                    logger.info("Conversation for " + uuid + "timed out!");
+                    ConversationManager.stopConversation(uuid, true);
                 }
             }
             newInput = new Input(message);

@@ -2,12 +2,13 @@ package roboy.talk;
 
 import static org.junit.Assert.*;
 
+import junit.framework.TestCase;
 import org.junit.Test;
 
 import roboy.dialog.action.SpeechAction;
 import roboy.linguistics.sentenceanalysis.Interpretation;
 
-public class VerbalizerTest {
+public class VerbalizerTest extends TestCase {
 	
 	@Test
 	public void testDates() {

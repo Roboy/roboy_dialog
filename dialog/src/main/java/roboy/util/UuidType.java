@@ -35,11 +35,11 @@ public enum UuidType {
     public Neo4jLabel toNeo4jLabel() {
         switch (this) {
             case TELEGRAM_UUID:
-                return Neo4jLabel.TelegramPerson;
+                return Neo4jLabel.Telegram_person;
             case SLACK_UUID:
-                return Neo4jLabel.SlackPerson;
+                return Neo4jLabel.Slack_person;
             case FACEBOOK_UUID:
-                return Neo4jLabel.FacebookPerson;
+                return Neo4jLabel.Facebook_person;
         }
         throw new AssertionError("Unknown error on enum entry: " + this);
     }

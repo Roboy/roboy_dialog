@@ -754,10 +754,16 @@ First create a new class in roboy.io folder, namely ``MySocialMediaInput`` that 
 
     }
 
-One function namely “listen()” has to be implemented. This function is called by a thread and should return a new ``Input`` or keep the thread waiting if there isn't any new ``Input`` available.
+One function namely “listen()” must be implemented. This function is called by a thread and should return a new ``Input`` or keep the thread waiting if there isn't any new ``Input`` available.
+Since we want our social media input to support timeout because people often just do not answer on social media, we will implement ``listen(long timeout)`` and the call this one in ``listen()``.
 ::
     @Override
     public Input listen() throws InterruptedException, IOException {
+        return listen(0);
+    }
+
+    @Override
+    public Input listen(long timeout) throws InterruptedException, IOException {
         return null;
     }
 
@@ -783,7 +789,7 @@ Add a constructor that receives the uuid as parameter
     }
 
 At this point, we received the uuid and have a hashmap of each ``MySocialMediaInput``. What else we need to implement?:
-- Return messages as ``roboy.io.Input`` in the ``listen()`` method
+- Return messages as ``roboy.io.Input`` in the ``listen(long timeout)`` method
 - Receive the messages
 
 .. Note::
@@ -799,16 +805,16 @@ We need to initialize it in constructor. Add the following into the beginning of
 
     this.message = "";
 
-Finally finish the listen method
+Now, we'll write the message processing logic.
 :: 
     // inside MySocialMediaInput.java
     
-    public Input listen() throws InterruptedException, IOException {
+    public Input listen(long timeout) throws InterruptedException, IOException {
         Input newInput;
         syncronized(this){
             while(message.equals("")){
                 try{
-                    this.wait();
+                    this.wait(timeout);
                 }
                 catch(InterruptedException e){
                     if(message == null||message.equals("")){
@@ -818,6 +824,34 @@ Finally finish the listen method
             }
             newInput = new Input(message);
             message = "";
+        }
+        return newInput;
+    }
+
+To finish the listen method we also need to properly handle what happens if we did not recieve a new message before the timeout. In that case we need to find the uuid associated with this input and then stop the Conversation for it.
+The complete ``listen(long timeout)`` now looks like this:
+::
+    public Input listen(long timeout) throws InterruptedException, IOException {
+        Input newInput;
+        synchronized (this) {
+            while(message.equals("")){
+                try {
+                    this.wait(timeout);
+                }catch (InterruptedException e) {
+                    if(message == null || message.equals("")){
+                        throw e;
+                    }
+                }
+                if(message == null || message.equals("")){//timeout triggered
+                    String uuid = "";
+                    for(String id : inputDevices.keySet()) if(inputDevices.get(id) == this) uuid = id;
+
+                    logger.info("Conversation for " + uuid + "timed out!");
+                    ConversationManager.stopConversation(uuid, true);
+                }
+            }
+            newInput = new Input(message);
+            message = ""; //consume message
         }
         return newInput;
     }
@@ -939,6 +973,61 @@ Finish the ``act`` method
 
 Now you need to tell the dialog system how to use your new in- and output. Refer to :ref:`tut_generic_social_media_io` in order to tell the dialog system where to find them and how to allow users to activate them. Now rebuild your code, select your Input/OutputDevice in config.properties and run it to see the work you have achieved.
 
+New Memory UUID
+------------------
+
+If you create support for a new chat service, you will probably need to use uuids in the format "yourservicename-[uuid]". These must be carefully integrated with the memory in order to avoid confusion of the inter-service interlocutor recognition.
+
+First, check if `roboy.util.UUidType` already contains a type for the service you are integrating. If not, add it to `roboy.util.UuidType` in dialog and the attributes necessary for the id to `roboy.memory.Neo4jLabel` and `roboy.memory.Neo4jProperty` in roboy memory. (note: CamelCase is not supported for these)
+
+Second, add usage of your new UUID within `roboy.dialog.ConversationManager` (the section you are looking for is marked with `//memory uuid handling``).
+
+Now, an example:
+
+First, we create the telegram uuid:
+We create a `Neo4jProperty` by extending the enum at the beginning,
+::
+    public enum Neo4jProperty {
+    [...]
+    telegram_id("telegram_id"),
+    [...]
+::
+we create a `Neo4jLabel` by extending that enum too,
+::
+public enum Neo4jLabel {
+    [...]
+    Telegram_person("Telegram_person"),
+    [...]
+::
+then, we create the `UuidType` and the necessary conversions
+::
+    public enum UuidType {
+    TELEGRAM_UUID,
+    [...]
+    public boolean isValidUuid(String uuid) {
+    switch (this) {
+        case TELEGRAM_UUID:
+            return true;
+    [...]
+    public Neo4jProperty toNeo4jProperty() {
+    switch (this) {
+        case TELEGRAM_UUID:
+            return Neo4jProperty.telegram_id;
+    [...]
+    public Neo4jLabel toNeo4jLabel() {
+    switch (this) {
+        case TELEGRAM_UUID:
+            return Neo4jLabel.Telegram_person;
+    [...]
+::
+finally, we add our new service to `roboy.dialog.ConversationManager`
+::
+    //memory uuid handling
+    [...]
+        else if (uuid.startsWith("telegram-")) {
+            person.addUuid(new Uuid(UuidType.TELEGRAM_UUID, uuid.substring(uuid.indexOf('-') + 1)), name);
+    [...]
+::
 
 Telegram: Handle commands
 -------------------------
