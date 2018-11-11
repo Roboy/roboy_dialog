@@ -63,7 +63,7 @@
       "identifier": "GamingTwentyQuestionsState",
       "implementation": "roboy.dialog.states.gameStates.GamingTwentyQuestionsState",
       "transitions": {
-      "gameEnded" : "QuestionAnswering"
+        "gameEnded" : "QuestionAnswering"
       }
     },
     {

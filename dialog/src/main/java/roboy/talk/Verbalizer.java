@@ -43,7 +43,7 @@ public class Verbalizer {
 			new RandomList<>("roboi", "robot", "boy", "roboboy", "robot", "roboy");
 
 	public static final RandomList<String> consent =
-            new RandomList<>("yes", "I do", "sure", "of course", " go ahead");
+            new RandomList<>("yes", "I do", "sure", "of course", "go ahead", "ok", "okay", "fine");
 
 	public static final RandomList<String> denial =
             new RandomList<>("no", "nope", "later", "other time", "not", "next time", "nah");

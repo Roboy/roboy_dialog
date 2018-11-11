@@ -56,7 +56,7 @@ public class QuestionAnsweringState extends State {
     private final static String TRANSITION_LOOP_TO_NEW_PERSON = "loopToNewPerson";
     private final static String TRANSITION_LOOP_TO_KNOWN_PERSON = "loopToKnownPerson";
     private final static String TRANSITION_TO_GAME = "switchToGaming";
-    private final static int MAX_NUM_OF_QUESTIONS = 5;
+    private final static int MAX_NUM_OF_QUESTIONS = 20;
     private int questionsAnswered = 0;
 
     private final static RandomList<String> reenteringPhrases = PhraseCollection.QUESTION_ANSWERING_REENTERING;

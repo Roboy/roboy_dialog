@@ -16,6 +16,7 @@ import roboy.talk.Verbalizer;
 import roboy.util.QAJsonParser;
 import roboy.util.RandomList;
 
+import java.io.IOException;
 import java.util.*;
 
 import static roboy.util.FileLineReader.readFile;
@@ -39,11 +40,13 @@ public class CupGameState extends State {
     }
 
 
-    private final static String FIND_CUPS = "FIND_CUPS";
-    private final static String GOTOCUP1 = "GOTOCUP1";
-    private final static String GOTOCUP2 = "GOTOCUP2";
-    private final static String GOTOCUP3 = "GOTOCUP3";
-    private final static String FINISHED = "FINISHED";
+    private final static String GETTINGREADY = "GETTINGREADY";
+    private final static String MOVINGTOCUP0 = "MOVINGTOCUP0";
+    private final static String MOVINGTOCUP1 = "MOVINGTOCUP1";
+    private final static String MOVINGTOCUP2 = "MOVINGTOCUP2";
+    private final static String DONE = "DONE";
+
+    private boolean first = true;
 
     private CupGamePhase phase = CupGamePhase.SHUFFLE;
 
@@ -57,53 +60,76 @@ public class CupGameState extends State {
 
     @Override
     public Output act() {
-//        switch (phase){
-//            case SHUFFLE:
-//                return Output.say(phrases.getQuestions(phase.toString()).getRandomElement());
-//            case SCAN:
         if (phase == CupGamePhase.SCAN) {
-                // TODO get response from the state machine
-//                if (getRosMainNode().StartCupGameSmach()) {
-                    // if smach start is successful
-                    // comment on actions while not finished exploring
-                    String prevState = "";
-                    String currentSmachState = getContext().CUP_GAME_SMACH_STATE_MSG.getValue();
-                    while(!currentSmachState.equals(FINISHED)) {
-                        currentSmachState = getContext().CUP_GAME_SMACH_STATE_MSG.getValue();
-                        if (!currentSmachState.equals(prevState)) {
-                            LOGGER.info("[CupGameState] commenting: " + currentSmachState);
-                            switch (getContext().CUP_GAME_SMACH_STATE_MSG.getValue()) {
-                                case FIND_CUPS:
-                                    getRosMainNode().SynthesizeSpeech(
-                                            phrases.getQuestions(getContext().CUP_GAME_SMACH_STATE_MSG.
-                                                    getValue()).
-                                                    getRandomElement());
-                                    break;
-                                case GOTOCUP1:
-                                    getRosMainNode().ShowEmotion(RoboyEmotion.HYPNO_COLOUR_EYES);
+            startSmach();
+//            getRosMainNode().StartCupGameSmach();
+            // if smach start is successful
+            // comment on actions while not finished exploring
+            String prevState = "";
 
-                                    getRosMainNode().SynthesizeSpeech(
-                                            phrases.getQuestions(getContext().CUP_GAME_SMACH_STATE_MSG.
-                                                    getValue()).
-                                                    getRandomElement());
-                                    break;
-                            }
+            String currentSmachState  = getContext().CUP_GAME_SMACH_STATE_MSG.getValue();
+            while(currentSmachState == null) {
+                 currentSmachState = getContext().CUP_GAME_SMACH_STATE_MSG.getValue();
+            }
 
-                            prevState = currentSmachState;
-                        }
-//                    }
+            while(!currentSmachState.equals(DONE)) {
+                currentSmachState = getContext().CUP_GAME_SMACH_STATE_MSG.getValue();
+
+                if (!currentSmachState.equals(prevState)) {
+                    LOGGER.info("[CupGameState] commenting: " + currentSmachState);
+                    switch (getContext().CUP_GAME_SMACH_STATE_MSG.getValue()) {
+                        case GETTINGREADY:
+                            getRosMainNode().SynthesizeSpeech(
+                                    phrases.getQuestions(getContext().CUP_GAME_SMACH_STATE_MSG.
+                                            getValue()).
+                                            getRandomElement());
+                            break;
+                        case MOVINGTOCUP0:
+//                                    getRosMainNode().ShowEmotion(RoboyEmotion.HYPNO_COLOUR_EYES);
+
+                            getRosMainNode().SynthesizeSpeech(
+                                    phrases.getQuestions(getContext().CUP_GAME_SMACH_STATE_MSG.
+                                            getValue()).
+                                            getRandomElement());
+                            break;
+                        case MOVINGTOCUP1:
+//                                    getRosMainNode().ShowEmotion(RoboyEmotion.HYPNO_COLOUR_EYES);
+
+                            getRosMainNode().SynthesizeSpeech(
+                                    phrases.getQuestions(getContext().CUP_GAME_SMACH_STATE_MSG.
+                                            getValue()).
+                                            getRandomElement());
+                            break;
+                        case MOVINGTOCUP2:
+//                                    getRosMainNode().ShowEmotion(RoboyEmotion.HYPNO_COLOUR_EYES);
+
+                            getRosMainNode().SynthesizeSpeech(
+                                    phrases.getQuestions(getContext().CUP_GAME_SMACH_STATE_MSG.
+                                            getValue()).
+                                            getRandomElement());
+                            break;
+                    }
+
+                    prevState = currentSmachState;
                 }
-//                return Output.say(phrases.getQuestions(phase.toString()).getRandomElement());
-//            case GUESS:
-//                return Output.say("I think I found it there. So do I win now?");
-//            case OFFER_REPEAT:
-//                return Output.say("wanna play again?");
-//            default:
-//                return Output.sayNothing();
+            }
+            return Output.sayNothing();
         }
-        return Output.say(phrases.getQuestions(phase.toString()).getRandomElement());
-
+        if (phase == CupGamePhase.OFFER_REPEAT || phase == CupGamePhase.SHUFFLE)
+            return Output.say(phrases.getQuestions(phase.toString()).getRandomElement());
+        else
+            return Output.sayNothing();
     }
+
+    void startSmach() {
+        try {
+            ProcessBuilder pb = new ProcessBuilder("/home/missxa/workspace/Roboy/src/roboy_dialog/dialog/pub.sh");
+            pb.start();
+        }catch (IOException e) {
+            LOGGER.error(e.getMessage());
+        }
+    }
+
 
     @Override
     public Output react(Interpretation input) {
@@ -122,13 +148,13 @@ public class CupGameState extends State {
                     break;
 //                    return Output.say("Hm, seems you are not done yet. I give you another try");
                 }
-            case SCAN:
-                next = CupGamePhase.GUESS;
-                break;
+//            case SCAN:
+//                next = CupGamePhase.GUESS;
+//                break;
 //                return Output.useFallback();
-            case GUESS:
-                next = CupGamePhase.OFFER_REPEAT;
-                break;
+//            case GUESS:
+//                next = CupGamePhase.OFFER_REPEAT;
+//                break;
 //                return Output.say("ha-ha.");
             case OFFER_REPEAT:
                 if (StatementInterpreter.isFromList(input.getSentence(),Verbalizer.consent)) {

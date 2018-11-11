@@ -80,4 +80,6 @@ public class PhraseCollection {
             = readFile("resources/phraseLists/fairShowPhrases/project-intro.txt");
     public static RandomList<String> ASK_NAME
             = readFile("resources/phraseLists/question-name.txt");
+    public static RandomList<String> INFINEON
+            = readFile("resources/phraseLists/infineon.txt");
 }

@@ -1,25 +1,56 @@
 {
   "SHUFFLE": {
     "Q": [
-      "you shall shuffle the cups, my friend. let me know when you are ready"
+      "you shall shuffle the cups, my friend. let me know when you are ready.",
+      "Ok, ok, you shuffle those cups, and I even look away! Let me know when you’re ready.",
+      "Put the ball below the cups, then move them. I will try to keep track.",
+      "You know how this works. You try to hide the ball – I try to find it. Go hide it.",
+      "Take the ball, put it below a cup, shuffle the cups. Then let’s see if I can find it.",
+      "I have a challenge for you. You hide the ball, I try to find it. Shuffle well, it should not be too easy."
     ],
     "A": {
       "SUCCESS": [
-        "Alright. Let me check with my superpower soli where did you hide the ball"
+        "Alright. Let me check with my superpower secret technology from Infineon where did you hide the ball",
+        "Oh nice, I think I can already feel it. I can feel it. Give me a second. Still looking.",
+        "So you’re ready, let’s see then.",
+        "Done? Good!",
+        "This is great, I have no idea where the ball is.",
+        "You sure put the ball back did you? Let’s see."
       ],
       "FAILURE": [
-        "Hm, seems you are not done yet. I give you another try."
+        "Hm, seems you are not done yet. I give you another try.",
+        "You seem busy. I wait a bit longer.",
+        "Keep shuffling, I will listen to some music",
+        "You keep shuffling, I keep shuff-e-ling",
+        "Great, I was not ready anyway",
+        "I prefer waiting, it is awesome to hang out."
       ]
     }
   },
-  "FIND_CUPS": {
+  "GETTINGREADY": {
     "Q": [
-      "i am looking for cups"
+      "getting ready",
+      "let me show you some magic",
+      "so are you ready to hear the oracle's prophecy?",
+      "Are you ready, because I am?",
+      "Looking, looking, looking",
+      "This is fun, I love looking for the ball",
+      "I think we both know I will have it found in no time",
+      "I can feel the ball, can you feel the ball? It is invisible, yet I know it is there, and where",
+      "Watch me find this ball",
+      "I am looking"
     ]
   },
   "SCAN": {
     "Q": [
-      "so are you ready to hear the oracle's prophecy?"
+      "so are you ready to hear the oracle's prophecy?",
+      "Are you ready, because I am?",
+      "Looking, looking, looking",
+      "This is fun, I love looking for the ball",
+      "I think we both know I will have it found in no time",
+      "I can feel the ball, can you feel the ball? It is invisible, yet I know it is there, and where",
+      "Watch me find this ball",
+      "I am looking"
     ],
     "A": {
       "SUCCESS": [
@@ -27,49 +58,71 @@
       ]
     }
   },
-  "GOTOCUP0": {
+  "MOVINGTOCUP0": {
     "Q": [
       "wubba lubba dub dub, doing magic for this cup 0"
     ]
   },
-  "GOTOCUP1": {
+  "MOVINGTOCUP1": {
     "Q": [
       "wubba lubba dub dub, doing magic for this cup 1"
     ]
   },
-  "GOTOCUP2": {
+  "MOVINGTOCUP2": {
     "Q": [
       "wubba lubba dub dub, doing magic for this cup 2"
     ]
   },
   "GUESS": {
     "Q": [
-      "I think I found it there. So do I win now?"
+      "I think I found it there. So do I win now?",
+      "Here it is",
+      "I think it is here",
+      "We both know, if you lift that cup, we will find the ball.",
+      "I believe it is below this cup"
     ],
     "A": {
       "SUCCESS": [
-        "ha-ha"
+        "Oh yeah, that was fun.",
+        "I knew it, great!",
+        "This was so much fun!"
       ]
     }
   },
   "OFFER_REPEAT": {
     "Q": [
-      "wanna play again?"
+      "Do you want to play again?",
+      "Let’s keep playing, ok?",
+      "I want to play again, are you in?",
+      "Please, let’s play again!"
     ],
     "A": {
       "SUCCESS": [
-        "Here we go again then!",
-        "let's do it again"
+        "Great! Here we go.",
+        "Oh yeah, let’s do this.",
+        "Awesome, we start right away.",
+        "Starting the game again",
+        "Here we go again!"
+
       ],
       "FAILURE": [
-        "I believe you've had enough of my magic"
+        "Fine, next please.",
+        "Really? That’s a pity, but ok.",
+        "I can understand, there is no fun in loosing against a robot.",
+        "But I was on such a roll, fine.",
+        "You will come back, right?"
       ]
     }
   },
   "EXIT": {
     "A": {
       "SUCCESS": [
-        "Wanna stop playing? Sure, if you say so."
+        "Wanna stop playing? Sure, if you say so.",
+        "Enough already? Sure, let’s stop.",
+        "Wait, you’re leaving mid game? Ok then.",
+        "Maybe it is for the better for everyone if we stop here",
+        "I understand, let’s stop.",
+        "Oki doki, that is it then. Bye bye"
       ]
     }
   }
