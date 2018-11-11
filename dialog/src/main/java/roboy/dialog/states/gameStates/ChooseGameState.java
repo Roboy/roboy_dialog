@@ -18,10 +18,12 @@ public class ChooseGameState extends State {
 
     private final static String TRANSITION_CHOSE_SNAPCHAT = "choseSnapchat";
     private final static String TRANSITION_CHOSE_20_Q = "chose20questions";
+    private final static String TRANSITION_CHOSE_CUPGAME = "choseCupgame";
     private final static String TRANSITION_EXIT = "exitGame";
 
     public final static String AKINATOR = "20 questions game";
     public final static String SNAPCHAT = "Snapchat";
+    public final static String CUPGAME = "cupgame";
     public final static String EXIT = "exit";
 
     private RandomList<String> existingGames;
@@ -37,7 +39,7 @@ public class ChooseGameState extends State {
             existingGames = new RandomList<>(Arrays.asList(AKINATOR));
         }
         else {
-            existingGames = new RandomList<>(Arrays.asList(SNAPCHAT, AKINATOR));
+            existingGames = new RandomList<>(Arrays.asList(CUPGAME, AKINATOR));
         }
 
     }
@@ -85,6 +87,8 @@ public class ChooseGameState extends State {
                 return getTransition(TRANSITION_CHOSE_20_Q);
             case SNAPCHAT:
                 return getTransition(TRANSITION_CHOSE_SNAPCHAT);
+            case CUPGAME:
+                return getTransition(TRANSITION_CHOSE_CUPGAME);    
             case EXIT:
                 return getTransition(TRANSITION_EXIT);
             default:

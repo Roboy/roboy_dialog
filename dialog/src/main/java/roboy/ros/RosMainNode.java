@@ -15,6 +15,7 @@ import roboy.emotions.RoboyEmotion;
 import roboy.util.ConfigManager;
 import roboy_communication_cognition.*;
 import roboy_communication_control.*;
+
 import std_srvs.TriggerRequest;
 import std_srvs.TriggerResponse;
 
@@ -90,7 +91,6 @@ public class RosMainNode extends AbstractNodeMain {
         if(services.notInitialized(RosServiceClients.STARTCUPGAME)) {
             return false;
         }
-
         ServiceClient<TriggerRequest, TriggerResponse> cupGameClient = services.getService(RosServiceClients.STARTCUPGAME);
         rosConnectionLatch = new CountDownLatch(1);
         TriggerRequest request = cupGameClient.newMessage();

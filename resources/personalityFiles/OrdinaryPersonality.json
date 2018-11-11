@@ -82,8 +82,20 @@
       "transitions": {
         "choseSnapchat" : "GamingSnapchatState",
         "chose20questions" : "GamingTwentyQuestionsState",
+        "choseCupgame": "CupGame",
         "exitGame": "QuestionAnswering"
       }
+    },
+    {
+      "identifier": "CupGame",
+      "implementation": "roboy.dialog.states.gameStates.CupGameState",
+      "transitions": {
+        "next": "QuestionAnswering"
+      },
+      "parameters": {
+        "cupGamePhrases": "resources/sentences/CupGame.json"
+      },
+      "fallback": "WildTalk"
     },
     {
       "identifier": "WildTalk",

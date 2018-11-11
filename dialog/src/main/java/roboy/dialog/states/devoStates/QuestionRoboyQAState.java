@@ -68,7 +68,7 @@ public class QuestionRoboyQAState extends ExpoState {
     private final static String TRANSITION_LOOP_TO_KNOWN_PERSON = "loopToKnownPerson";
     private final static String TRANSITION_SWITCH_TO_GAMING = "switchToGaming";
     private final static String TRANSITION_STORY = "tellStory";
-    private final static int MAX_NUM_OF_QUESTIONS = 3;
+    private final static int MAX_NUM_OF_QUESTIONS = 5;
     private int questionsAnswered = 0;
 
     private final static RandomList<String> reenteringPhrases = PhraseCollection.QUESTION_ANSWERING_REENTERING;
@@ -120,7 +120,7 @@ public class QuestionRoboyQAState extends ExpoState {
             ) {
                 userWantsGame = true;
                 questionsAnswered++;
-                return Output.sayNothing().setSegue(new Segue(Segue.SegueType.PICKUP,0.5)).setEmotion(RoboyEmotion.HAPPY);
+                return Output.sayNothing().setSegue(new Segue(Segue.SegueType.PICKUP,0.2)).setEmotion(RoboyEmotion.HAPPY);
             }
             else {
                 return Output.sayNothing().setEmotion(RoboyEmotion.SADNESS);
@@ -153,6 +153,13 @@ public class QuestionRoboyQAState extends ExpoState {
 
         if (input.getTokens().contains("joke") || input.getTokens().contains("funny")) {
             return Output.say(PhraseCollection.JOKES.getRandomElement()).setEmotion(RoboyEmotion.positive.getRandomElement());
+        }
+
+        // -- Try to interpret input as a game request
+
+        if (input.getTokens().contains("game") || input.getTokens().contains("play")) {
+            userWantsGame = true;
+            return Output.sayNothing();
         }
 
         // -- Try to interpret input as Memory request

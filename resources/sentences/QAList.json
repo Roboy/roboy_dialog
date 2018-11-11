@@ -139,7 +139,7 @@
     },
     "FUP": {
       "Q": [
-        "Have you made any new friends, %s?"
+        "Have you made any new friends except %s?"
       ],
       "A": [
         "Oh, I have met %s they're nice."
