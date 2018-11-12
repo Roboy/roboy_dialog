@@ -90,7 +90,8 @@
       "identifier": "CupGame",
       "implementation": "roboy.dialog.states.gameStates.CupGameState",
       "transitions": {
-        "next": "QuestionAnswering"
+        "next": "QuestionAnswering",
+        "exit": "QuestionAnswering"
       },
       "parameters": {
         "cupGamePhrases": "resources/sentences/CupGame.json"
