@@ -2,6 +2,7 @@ package roboy.ros;
 
 import roboy_communication_cognition.*;
 import roboy_communication_control.Strings;
+import std_msgs.Int32;
 
 
 public enum RosSubscribers {
@@ -14,7 +15,9 @@ public enum RosSubscribers {
     PERSON_LISTENING("roboy_vision", "/roboy/cognition/vision/person_listening", std_msgs.Bool._TYPE),
     BOOTH_SENTENCE("roboy_nodered", "/roboy/cognition/nodered/boothsentence", std_msgs.String._TYPE),
     CUP_GAME_READY("roboy_soli", "/roboy/control/ball", std_msgs.Bool._TYPE),
-    CUP_GAME_STATE("roboy_soli", "/roboy/control/smach", std_msgs.String._TYPE)
+    CUP_GAME_STATE("roboy_soli", "/roboy/control/smach", std_msgs.String._TYPE),
+    CUP_GAME_CUP("roboy_soli", "/roboy/control/ball_detected", Int32._TYPE)
+
     ;
 
     String rosPackage;

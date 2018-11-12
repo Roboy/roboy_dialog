@@ -113,7 +113,10 @@ public class CupGameState extends State {
                     prevState = currentSmachState;
                 }
             }
-            return Output.sayNothing();
+            // the smach is done so we should know the answer
+            int winningCup = getContext().CUP_GAME_CUP_MSG.getValue();
+            //TODO add variety for the phrases here
+            return Output.say("I think the ball is under the cup number " + winningCup + ".");
         }
         if (phase == CupGamePhase.OFFER_REPEAT || phase == CupGamePhase.SHUFFLE)
             return Output.say(phrases.getQuestions(phase.toString()).getRandomElement());
@@ -123,7 +126,7 @@ public class CupGameState extends State {
 
     void startSmach() {
         try {
-            ProcessBuilder pb = new ProcessBuilder("/home/missxa/workspace/Roboy/src/roboy_dialog/dialog/pub.sh");
+            ProcessBuilder pb = new ProcessBuilder("/home/roboy/workspace/Roboy/src/roboy_dialog/dialog/pub.sh");
             pb.start();
         }catch (IOException e) {
             LOGGER.error(e.getMessage());

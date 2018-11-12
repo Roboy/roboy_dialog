@@ -60,6 +60,8 @@ public class Context {
     public final ValueInterface<CupGameSmachState, String> CUP_GAME_SMACH_STATE_MSG =
             new ValueInterface<>(new CupGameSmachState());
 
+    public final ValueInterface<CupGameCup, Integer> CUP_GAME_CUP_MSG =
+            new ValueInterface<>(new CupGameCup());
     /* GUI */
     private final ArrayList guiValues = new ArrayList();
     private final ArrayList guiHistories = new ArrayList();
@@ -79,6 +81,7 @@ public class Context {
     private DetectedObjectsUpdater DETECTED_OBJ_UPDATER;
     private BoothSentenceUpdater BOOTH_SENTENCE_UPDATER;
     private CupGameSmachStateUpdater CUP_GAME_SMACH_UPDATER;
+    private CupGameCupUpdater CUP_GAME_CUP_UPDATER;
 
     /* OBSERVERS */
     private final FaceCoordinatesObserver FACE_COORDINATES_OBSERVER;
@@ -140,6 +143,7 @@ public class Context {
 
                 if(ConfigManager.ROS_ACTIVE_PKGS.contains("roboy_soli")){
                     CUP_GAME_SMACH_UPDATER = new CupGameSmachStateUpdater(CUP_GAME_SMACH_STATE_MSG.value, ros);
+                    CUP_GAME_CUP_UPDATER = new CupGameCupUpdater(CUP_GAME_CUP_MSG.value, ros);
                 }
 
                 rosInitialized = true;
