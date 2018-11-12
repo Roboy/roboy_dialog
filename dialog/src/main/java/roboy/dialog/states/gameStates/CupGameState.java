@@ -72,47 +72,51 @@ public class CupGameState extends State {
                  currentSmachState = getContext().CUP_GAME_SMACH_STATE_MSG.getValue();
             }
 
-            while(!currentSmachState.equals(DONE)) {
-                currentSmachState = getContext().CUP_GAME_SMACH_STATE_MSG.getValue();
+            move("shoulder_left_getready");
+            LOGGER.info("trying to move");
+            getRosMainNode().SynthesizeSpeech("i am doing magic for the cups");
 
-                if (!currentSmachState.equals(prevState)) {
-                    LOGGER.info("[CupGameState] commenting: " + currentSmachState);
-                    switch (getContext().CUP_GAME_SMACH_STATE_MSG.getValue()) {
-                        case GETTINGREADY:
-                            getRosMainNode().SynthesizeSpeech(
-                                    phrases.getQuestions(getContext().CUP_GAME_SMACH_STATE_MSG.
-                                            getValue()).
-                                            getRandomElement());
-                            break;
-                        case MOVINGTOCUP0:
-//                                    getRosMainNode().ShowEmotion(RoboyEmotion.HYPNO_COLOUR_EYES);
+//             while(!currentSmachState.equals(DONE)) {
+//                 currentSmachState = getContext().CUP_GAME_SMACH_STATE_MSG.getValue();
 
-                            getRosMainNode().SynthesizeSpeech(
-                                    phrases.getQuestions(getContext().CUP_GAME_SMACH_STATE_MSG.
-                                            getValue()).
-                                            getRandomElement());
-                            break;
-                        case MOVINGTOCUP1:
-//                                    getRosMainNode().ShowEmotion(RoboyEmotion.HYPNO_COLOUR_EYES);
+//                 if (!currentSmachState.equals(prevState)) {
+//                     LOGGER.info("[CupGameState] commenting: " + currentSmachState);
+//                     switch (getContext().CUP_GAME_SMACH_STATE_MSG.getValue()) {
+//                         case GETTINGREADY:
+//                             getRosMainNode().SynthesizeSpeech(
+//                                     phrases.getQuestions(getContext().CUP_GAME_SMACH_STATE_MSG.
+//                                             getValue()).
+//                                             getRandomElement());
+//                             break;
+//                         case MOVINGTOCUP0:
+// //                                    getRosMainNode().ShowEmotion(RoboyEmotion.HYPNO_COLOUR_EYES);
 
-                            getRosMainNode().SynthesizeSpeech(
-                                    phrases.getQuestions(getContext().CUP_GAME_SMACH_STATE_MSG.
-                                            getValue()).
-                                            getRandomElement());
-                            break;
-                        case MOVINGTOCUP2:
-//                                    getRosMainNode().ShowEmotion(RoboyEmotion.HYPNO_COLOUR_EYES);
+//                             getRosMainNode().SynthesizeSpeech(
+//                                     phrases.getQuestions(getContext().CUP_GAME_SMACH_STATE_MSG.
+//                                             getValue()).
+//                                             getRandomElement());
+//                             break;
+//                         case MOVINGTOCUP1:
+// //                                    getRosMainNode().ShowEmotion(RoboyEmotion.HYPNO_COLOUR_EYES);
 
-                            getRosMainNode().SynthesizeSpeech(
-                                    phrases.getQuestions(getContext().CUP_GAME_SMACH_STATE_MSG.
-                                            getValue()).
-                                            getRandomElement());
-                            break;
-                    }
+//                             getRosMainNode().SynthesizeSpeech(
+//                                     phrases.getQuestions(getContext().CUP_GAME_SMACH_STATE_MSG.
+//                                             getValue()).
+//                                             getRandomElement());
+//                             break;
+//                         case MOVINGTOCUP2:
+// //                                    getRosMainNode().ShowEmotion(RoboyEmotion.HYPNO_COLOUR_EYES);
 
-                    prevState = currentSmachState;
-                }
-            }
+//                             getRosMainNode().SynthesizeSpeech(
+//                                     phrases.getQuestions(getContext().CUP_GAME_SMACH_STATE_MSG.
+//                                             getValue()).
+//                                             getRandomElement());
+//                             break;
+//                     }
+
+//                     prevState = currentSmachState;
+//                 }
+//             }
             // the smach is done so we should know the answer
             int winningCup = getContext().CUP_GAME_CUP_MSG.getValue();
             //TODO add variety for the phrases here
@@ -127,6 +131,15 @@ public class CupGameState extends State {
     void startSmach() {
         try {
             ProcessBuilder pb = new ProcessBuilder("/home/roboy/workspace/Roboy/src/roboy_dialog/dialog/pub.sh");
+            pb.start();
+        }catch (IOException e) {
+            LOGGER.error(e.getMessage());
+        }
+    }
+
+    void move(String name) {
+        try {
+            ProcessBuilder pb = new ProcessBuilder("/home/roboy/workspace/Roboy/src/roboy_controller/scripts/move.sh " + name);
             pb.start();
         }catch (IOException e) {
             LOGGER.error(e.getMessage());
