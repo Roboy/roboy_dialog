@@ -61,16 +61,16 @@ public class CupGameState extends State {
     @Override
     public Output act() {
         if (phase == CupGamePhase.SCAN) {
-            startSmach();
+//            startSmach();
 //            getRosMainNode().StartCupGameSmach();
             // if smach start is successful
             // comment on actions while not finished exploring
             String prevState = "";
 
-            String currentSmachState  = getContext().CUP_GAME_SMACH_STATE_MSG.getValue();
-            while(currentSmachState == null) {
-                 currentSmachState = getContext().CUP_GAME_SMACH_STATE_MSG.getValue();
-            }
+//            String currentSmachState  = getContext().CUP_GAME_SMACH_STATE_MSG.getValue();
+//            while(currentSmachState == null) {
+//                 currentSmachState = getContext().CUP_GAME_SMACH_STATE_MSG.getValue();
+//            }
 
             move("shoulder_left_getready");
             LOGGER.info("trying to move");
@@ -118,7 +118,13 @@ public class CupGameState extends State {
 //                 }
 //             }
             // the smach is done so we should know the answer
-            int winningCup = getContext().CUP_GAME_CUP_MSG.getValue();
+            int winningCup = 0;
+            try {
+                winningCup = getContext().CUP_GAME_CUP_MSG.getValue();
+            }
+            catch (Exception e) {
+                LOGGER.warn(e.getMessage());
+            }
             //TODO add variety for the phrases here
             return Output.say("I think the ball is under the cup number " + winningCup + ".");
         }
